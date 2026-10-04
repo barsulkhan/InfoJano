@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b1220">
 <meta name="description" content="InfoJano — simple everyday tools and useful information. See it, tap it, get it done.">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow"><meta name="author" content="InfoJano"><meta property="og:title" content="InfoJano — Simple Everyday Tools"><meta property="og:description" content="Free, simple everyday calculators, converters and useful tools."><meta property="og:type" content="website">
 <title>InfoJano — Simple Everyday Tools</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ℹ️</text></svg>">
 <style>
@@ -28,13 +28,13 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 .footer{text-align:center;color:#7b8494;font-size:11px;padding:25px 10px 40px}.footer a{color:#52627b}
 @media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}.hero h1{font-size:27px}.nav button:nth-child(3){display:none}}
 @media(min-width:900px){.wrap{padding:20px 16px}.hero{padding:32px}.tool{min-height:130px}} .chips{display:flex;gap:7px;overflow:auto;margin-top:11px;padding-bottom:2px}.chips button{white-space:nowrap;border:1px solid #ffffff33;background:#ffffff12;color:#fff;border-radius:999px;padding:7px 10px;font-size:11px}.tool:focus{outline:3px solid #93c5fd;outline-offset:2px}@media(max-width:700px){.wrap{padding-bottom:76px}.nav{display:none}.grid{gap:8px}.card.tool{padding:13px;min-height:112px}}.bottom-nav{position:fixed;left:10px;right:10px;bottom:10px;z-index:30;background:#0b1220ee;backdrop-filter:blur(10px);border-radius:16px;padding:7px;display:flex;justify-content:space-around;box-shadow:0 8px 30px #0003}.bottom-nav button{background:transparent;border:0;color:#fff;font-size:11px;padding:7px 12px;border-radius:10px}.bottom-nav button:first-child{background:#ffffff14}@media(min-width:701px){.bottom-nav{display:none}}
-</style>
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.guide{padding:15px}.guide-icon{font-size:24px}.guide h3{margin:7px 0 5px;font-size:15px}.guide p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}@media(max-width:700px){.guide-grid{grid-template-columns:1fr 1fr}.guide{padding:13px}.guide p{font-size:11px}}
 </head>
 <body>
 <header class="header">
   <div class="top">
     <div><div class="brand">ℹ️ InfoJano</div><div class="tag">See it • Tap it • Get it done</div></div>
-    <div class="nav"><button onclick="goHome()">Home</button><button onclick="showSection('tools')">Tools</button><button onclick="showSection('about')">About</button></div>
+    <div class="nav"><button onclick="goHome()">Home</button><button onclick="showSection('tools')">Tools</button><button onclick="showSection('about')">About</button><button onclick="showSection('guides')">Guides</button></div>
   </div>
 </header>
 
@@ -81,7 +81,44 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   <p class="note">More useful tools, guides and information will be added over time.</p>
 </section>
 
-<nav class="bottom-nav"><button onclick="goHome()">🏠 Home</button><button onclick="$('search').focus();window.scrollTo({top:0,behavior:'smooth'})">🔎 Search</button><button onclick="$('toolGrid').scrollIntoView({behavior:'smooth'})">🧮 Tools</button><button onclick="showSection('about')">ℹ️ About</button></nav><footer class="footer">
+
+<section id="guides" class="card panel" style="margin-top:16px">
+  <div class="section-title"><h2>📚 Useful Guides</h2><span>Simple answers</span></div>
+  <div class="guide-grid">
+    <article class="guide card">
+      <div class="guide-icon">🎂</div>
+      <h3>How to calculate age</h3>
+      <p>Enter your date of birth and InfoJano calculates your age in years, months and days.</p>
+    </article>
+    <article class="guide card">
+      <div class="guide-icon">💳</div>
+      <h3>How EMI is calculated</h3>
+      <p>EMI depends on loan amount, annual interest rate and the number of months. Use the EMI tool for a quick estimate.</p>
+    </article>
+    <article class="guide card">
+      <div class="guide-icon">⚖️</div>
+      <h3>What is BMI?</h3>
+      <p>BMI is a simple height-and-weight screening measure. It is useful as a general guide, not a diagnosis.</p>
+    </article>
+    <article class="guide card">
+      <div class="guide-icon">🏷️</div>
+      <h3>How discount works</h3>
+      <p>Discount amount equals the original price multiplied by the discount percentage. The final price is original price minus savings.</p>
+    </article>
+    <article class="guide card">
+      <div class="guide-icon">📏</div>
+      <h3>cm, m, inch and more</h3>
+      <p>Use Unit Converter when you need to convert common length or weight units quickly.</p>
+    </article>
+    <article class="guide card">
+      <div class="guide-icon">▣</div>
+      <h3>What is a QR code?</h3>
+      <p>A QR code can store text or a web address that a phone camera can scan.</p>
+    </article>
+  </div>
+</section>
+
+<nav class="bottom-nav"><button onclick="goHome()">🏠 Home</button><button onclick="$('search').focus();window.scrollTo({top:0,behavior:'smooth'})">🔎 Search</button><button onclick="$('toolGrid').scrollIntoView({behavior:'smooth'})">🧮 Tools</button><button onclick="showSection('guides')">📚 Guides</button></nav><footer class="footer">
   <div>InfoJano • Global Everyday Utility Portal</div>
   <div>Privacy-minded • Mobile-first • Built for everyone</div>
 </footer>
@@ -89,7 +126,12 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 
 <script>
 const $=id=>document.getElementById(id);
-function showSection(id){$('about').classList.toggle('hide',id!=='about'); if(id==='about') window.scrollTo({top:$('about').offsetTop-70,behavior:'smooth'}); else goHome();}
+function showSection(id){
+  $('about').classList.toggle('hide',id!=='about');
+  $('guides').classList.toggle('hide',id!=='guides');
+  if(id==='about'||id==='guides') window.scrollTo({top:$(id).offsetTop-70,behavior:'smooth'});
+  else goHome();
+}
 function goHome(){$('about').classList.add('hide');$('toolPanel').classList.add('hide');window.scrollTo({top:0,behavior:'smooth'});}
 function searchFocus(){$('search').focus();filterTools();}
 function filterTools(){const q=$('search').value.trim().toLowerCase();let n=0;document.querySelectorAll('.tool').forEach(x=>{const ok=!q||x.dataset.name.includes(q);x.classList.toggle('hide',!ok);if(ok)n++});$('toolCount').textContent=n+' tools';$('noResults').classList.toggle('hide',n>0);} function quickFilter(type){$('search').value=type;filterTools();$('toolGrid').scrollIntoView({behavior:'smooth'});} function clearFilter(){$('search').value='';filterTools();}
@@ -125,5 +167,7 @@ function makeQR(){const s=$('qrText').value.trim();if(!s)return $('qrR').textCon
 filterTools();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-</body>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","url":"https://barsulkhan.github.io/InfoJano/","description":"Simple everyday calculators, converters and useful tools."}
+</script></body>
 </html>
