@@ -9,7 +9,7 @@
 <meta property="og:description" content="Simple everyday tools, calculators and useful guides for everyone.">
 <meta property="og:type" content="website">
 <meta name="robots" content="index,follow">
-<title>InfoJano — Simple Everyday Tools</title>
+<title>InfoJano — Everyday Calculators, Converters & Useful Tools</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ℹ️</text></svg>">
 <style>
 :root{--bg:#f4f7fb;--card:#fff;--ink:#172033;--muted:#687386;--brand:#0b1220;--accent:#2563eb;--soft:#eef4ff;--line:#e5eaf2;--good:#087f5b}
@@ -88,6 +88,10 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 .guide-card details{margin-top:12px}.guide-card summary{cursor:pointer;font-weight:700;color:#2563eb}
 @media(max-width:700px){.guides{margin-top:22px}.guides-grid{grid-template-columns:1fr;gap:10px}.guide-card{padding:15px;border-radius:16px}.guide-card h3{font-size:17px}}
 
+
+.tool .icon svg{width:38px;height:38px}
+@media(max-width:700px){.tool{min-height:142px}.tool h3{font-size:17px}.tool p{font-size:12.5px}}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
@@ -137,6 +141,13 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
     <div class="card tool" data-name="bill split tip calculator" onclick="openTool('bill')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 6h28v36l-4-3-5 3-5-3-5 3-5-3-4 3z" fill="#fff7ed" stroke="#ea580c" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 15h14M17 21h14M17 27h9" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Bill Split</h3><p>Split bill + tip.</p></div>
     <div class="card tool" data-name="text counter" onclick="openTool('text')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="8" width="34" height="32" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/><path d="M15 17h18M15 24h18M15 31h11" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Text Counter</h3><p>Count words & characters.</p></div>
     <div class="card tool" data-name="qr maker generator" onclick="openTool('qr')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="14" height="14" fill="none" stroke="#0f172a" stroke-width="3"/><rect x="28" y="6" width="14" height="14" fill="none" stroke="#0f172a" stroke-width="3"/><rect x="6" y="28" width="14" height="14" fill="none" stroke="#0f172a" stroke-width="3"/><path d="M29 29h5v5h-5zM37 29h5v5h-5zM29 37h5v5h-5zM37 37h5v5h-5z" fill="#2563eb"/></svg></div><h3>QR Maker</h3><p>Create a QR code.</p></div>
+
+    <div class="card tool" data-name="loan calculator loan payment interest" onclick="openTool('loanCalc')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="32" rx="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/><path d="M12 17h24M14 25h6M28 25h6M14 32h6M28 32h6" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Loan Calculator</h3><p>Payment & total interest.</p></div>
+    <div class="card tool" data-name="savings calculator savings growth" onclick="openTool('savings')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 30c8-1 10-11 18-11 5 0 7 4 14 2" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/><path d="M33 15h9v9" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="33" width="34" height="8" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/></svg></div><h3>Savings</h3><p>Estimate savings growth.</p></div>
+    <div class="card tool" data-name="percentage change calculator percent change" onclick="openTool('pctChange')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 34V14M10 14l-5 5M10 14l5 5M38 14v20M38 34l-5-5M38 34l5-5" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 30l12-12" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/></svg></div><h3>% Change</h3><p>Increase or decrease.</p></div>
+    <div class="card tool" data-name="time calculator duration time difference" onclick="openTool('timeCalc')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="25" r="15" fill="#ecfeff" stroke="#0891b2" stroke-width="2.5"/><path d="M24 25V16M24 25l7 4M18 6h12" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Time Calculator</h3><p>Find time duration.</p></div>
+    <div class="card tool" data-name="number to words converter numbers words" onclick="openTool('numWords')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="32" rx="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2.5"/><path d="M13 17h22M13 24h14M13 31h18" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Number to Words</h3><p>Write numbers in words.</p></div>
+    <div class="card tool" data-name="more unit converter length mass temperature area" onclick="openTool('unit')"><div class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16" fill="#ecfeff" stroke="#0891b2" stroke-width="2.5"/><path d="M24 12v24M12 24h24M17 17l14 14M31 17L17 31" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>More Converters</h3><p>More length & weight units.</p></div><h3>Loan Summary</h3><p>Compare interest cost.</p></div>
   </div>
 
   <div id="noResults" class="card hide" style="margin-top:10px;text-align:center">No tool found. Try another word.</div>
@@ -228,9 +239,15 @@ emi:()=>`<h2>💳 EMI Calculator</h2><div class="formgrid">${field('Loan amount'
 bmi:()=>`<h2>⚖️ BMI Calculator</h2><div class="formgrid">${field('Weight (kg)','bw')} ${field('Height (cm)','bh')}</div><div class="actions"><button class="btn" onclick="calcBMI()">Calculate BMI</button></div><div id="bmiR" class="result">Enter your weight and height.</div>`,
 discount:()=>`<h2>🏷️ Discount Calculator</h2><div class="formgrid">${field('Original price','price')} ${field('Discount %','disc')}</div><div class="actions"><button class="btn" onclick="calcDisc()">Calculate</button></div><div id="discR" class="result">Find final price and savings.</div>`,
 date:()=>`<h2>📅 Date Difference</h2><div class="formgrid">${field('Start date','ds','date')} ${field('End date','de','date')}</div><div class="actions"><button class="btn" onclick="calcDate()">Calculate</button></div><div id="dateR" class="result">Select both dates.</div>`,
-unit:()=>`<h2>📏 Unit Converter</h2><div class="formgrid"><div class="field"><label>Value</label><input id="uv" type="number"></div><div class="field"><label>From</label><select id="uf"><option>cm</option><option>m</option><option>km</option><option>inch</option><option>kg</option><option>g</option><option>lb</option></select></div><div class="field"><label>To</label><select id="ut"><option>mm</option><option>cm</option><option>m</option><option>km</option><option>inch</option><option>kg</option><option>g</option><option>lb</option></select></div></div><div class="actions"><button class="btn" onclick="convertUnit()">Convert</button></div><div id="unitR" class="result">Choose units and enter a value.</div>`,
+unit:()=>`<h2>📏 Unit Converter</h2><div class="formgrid"><div class="field"><label>Value</label><input id="uv" type="number"></div><div class="field"><label>From</label><select id="uf"><option>mm</option><option>cm</option><option>m</option><option>km</option><option>inch</option><option>ft</option><option>yd</option><option>mi</option><option>g</option><option>kg</option><option>oz</option><option>lb</option></select></div><div class="field"><label>To</label><select id="ut"><option>mm</option><option>cm</option><option>m</option><option>km</option><option>inch</option><option>ft</option><option>yd</option><option>mi</option><option>g</option><option>kg</option><option>oz</option><option>lb</option></select></div></div><div class="actions"><button class="btn" onclick="convertUnit()">Convert</button></div><div id="unitR" class="result">Choose units and enter a value.</div>`, 
 bill:()=>`<h2>🧾 Bill Split + Tip</h2><div class="formgrid">${field('Bill amount','bill')} ${field('Tip %','tip')} ${field('People','people')}</div><div class="actions"><button class="btn" onclick="calcBill()">Calculate</button></div><div id="billR" class="result">Split a bill in seconds.</div>`,
 text:()=>`<h2>🔤 Text Counter</h2><div class="field"><label>Write or paste text</label><textarea id="txt" oninput="countText()"></textarea></div><div class="actions"><button class="btn" onclick="countText()">Count</button><button class="btn alt" onclick="copyText()">Copy</button></div><div id="textR" class="result">0 words • 0 characters</div>`,
+
+loanCalc:()=>`<h2>🏦 Loan Calculator</h2><div class="formgrid">${field('Loan amount','lcAmount')} ${field('Annual interest %','lcRate')} ${field('Months','lcMonths')}</div><div class="actions"><button class="btn" onclick="calcLoan()">Calculate</button></div><div id="lcR" class="result">Enter loan details.</div>`,
+savings:()=>`<h2>💰 Savings Calculator</h2><div class="formgrid">${field('Starting savings','svStart')} ${field('Monthly contribution','svMonthly')} ${field('Annual return %','svRate')} ${field('Months','svMonths')}</div><div class="actions"><button class="btn" onclick="calcSavings()">Calculate</button></div><div id="svR" class="result">Estimate your future savings.</div>`,
+pctChange:()=>`<h2>📈 Percentage Change</h2><div class="formgrid">${field('Old value','pcOld')} ${field('New value','pcNew')}</div><div class="actions"><button class="btn" onclick="calcPctChange()">Calculate</button></div><div id="pcR" class="result">Find the increase or decrease.</div>`,
+timeCalc:()=>`<h2>🕐 Time Calculator</h2><div class="formgrid">${field('Start time','tmStart','time')} ${field('End time','tmEnd','time')}</div><div class="actions"><button class="btn" onclick="calcTime()">Calculate</button></div><div id="tmR" class="result">Find the duration between two times.</div>`,
+numWords:()=>`<h2>🔢 Number to Words</h2><div class="formgrid">${field('Number','nwNumber')}</div><div class="actions"><button class="btn" onclick="numberToWordsTool()">Convert</button></div><div id="nwR" class="result">Enter a whole number up to 999,999,999,999.</div>`,
 qr:()=>`<h2>▣ QR Maker</h2><div class="field"><label>Text or URL</label><input id="qrText" placeholder="https://example.com"></div><div class="actions"><button class="btn" onclick="makeQR()">Make QR</button></div><div id="qrR" class="result" style="text-align:center">Enter text or a link.</div>`
 };
 
@@ -241,10 +258,61 @@ function calcEMI(){const P=v('loan'),r=v('rate')/1200,n=v('months');if(!(P>0&&n>
 function calcBMI(){const w=v('bw'),h=v('bh')/100;if(!(w>0&&h>0))return $('bmiR').textContent='Enter valid values.';const b=w/(h*h);let c=b<18.5?'Underweight':b<25?'Normal range':b<30?'Overweight':'Obesity';$('bmiR').textContent=`BMI: ${b.toFixed(1)} • ${c}`;}
 function calcDisc(){const p=v('price'),d=v('disc');if(!(p>=0&&d>=0))return $('discR').textContent='Enter valid values.';const s=p*d/100;$('discR').textContent=`You save: ${s.toFixed(2)} • Final price: ${(p-s).toFixed(2)}`;}
 function calcDate(){const a=new Date($('ds').value),b=new Date($('de').value);if(isNaN(a)||isNaN(b))return $('dateR').textContent='Select both dates.';$('dateR').textContent=`${Math.round(Math.abs(b-a)/86400000)} days`;}
-function convertUnit(){const x=v('uv'),f=$('uf').value,t=$('ut').value;if(!isFinite(x))return $('unitR').textContent='Enter a value.';const groups={length:{mm:1,cm:10,m:1000,km:1000000,inch:25.4},mass:{g:1,kg:1000,lb:453.59237}};let g=Object.keys(groups).find(k=>groups[k][f]&&groups[k][t]);if(!g)return $('unitR').textContent='These units cannot be converted together.';const ans=x*groups[g][f]/groups[g][t];$('unitR').textContent=`${x} ${f} = ${ans.toFixed(6).replace(/\.?0+$/,'')} ${t}`;}
+function convertUnit(){const x=v('uv'),f=$('uf').value,t=$('ut').value;if(!isFinite(x))return $('unitR').textContent='Enter a value.';const groups={length:{mm:1,cm:10,m:1000,km:1000000,inch:25.4,ft:304.8,yd:914.4,mi:1609344},mass:{g:1,kg:1000,oz:28.349523125,lb:453.59237}};let g=Object.keys(groups).find(k=>groups[k][f]&&groups[k][t]);if(!g)return $('unitR').textContent='These units cannot be converted together.';const ans=x*groups[g][f]/groups[g][t];$('unitR').textContent=`${x} ${f} = ${ans.toFixed(6).replace(/\.?0+$/,'')} ${t}`;},mass:{g:1,kg:1000,lb:453.59237}};let g=Object.keys(groups).find(k=>groups[k][f]&&groups[k][t]);if(!g)return $('unitR').textContent='These units cannot be converted together.';const ans=x*groups[g][f]/groups[g][t];$('unitR').textContent=`${x} ${f} = ${ans.toFixed(6).replace(/\.?0+$/,'')} ${t}`;}
 function calcBill(){const b=v('bill'),t=v('tip'),p=v('people');if(!(b>=0&&p>0))return $('billR').textContent='Enter valid values.';const total=b+b*t/100;$('billR').textContent=`Total: ${total.toFixed(2)} • Each person: ${(total/p).toFixed(2)}`;}
 function countText(){const s=$('txt').value,words=s.trim()?s.trim().split(/\s+/).length:0;$('textR').textContent=`${words} words • ${s.length} characters`;}
 async function copyText(){try{await navigator.clipboard.writeText($('txt').value);$('textR').textContent='Copied ✓';}catch(e){$('textR').textContent='Copy is not available in this browser.'}}
+
+function calcLoan(){
+  const P=v('lcAmount'), r=v('lcRate')/1200, n=v('lcMonths');
+  if(!(P>0&&n>0&&r>=0)) return $('lcR').textContent='Enter valid loan details.';
+  const e=r?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;
+  $('lcR').textContent=`Monthly payment: ${e.toFixed(2)} • Total interest: ${(e*n-P).toFixed(2)} • Total paid: ${(e*n).toFixed(2)}`;
+}
+function calcSavings(){
+  const start=v('svStart'), monthly=v('svMonthly'), annual=v('svRate'), months=v('svMonths');
+  if(!(start>=0&&monthly>=0&&months>0&&annual>=0)) return $('svR').textContent='Enter valid savings details.';
+  const r=annual/1200; let fv=start;
+  for(let i=0;i<months;i++) fv=fv*(1+r)+monthly;
+  const contributed=start+monthly*months;
+  $('svR').textContent=`Estimated value: ${fv.toFixed(2)} • Contributions: ${contributed.toFixed(2)} • Growth: ${(fv-contributed).toFixed(2)}`;
+}
+function calcPctChange(){
+  const old=v('pcOld'), neu=v('pcNew');
+  if(!isFinite(old)||!isFinite(neu)||old===0) return $('pcR').textContent='Enter valid values; old value cannot be 0.';
+  const c=(neu-old)/Math.abs(old)*100;
+  $('pcR').textContent=`Change: ${c.toFixed(2)}% • ${c>=0?'Increase':'Decrease'}`;
+}
+function calcTime(){
+  const a=$('tmStart').value,b=$('tmEnd').value;
+  if(!a||!b) return $('tmR').textContent='Select both times.';
+  const [ah,am]=a.split(':').map(Number),[bh,bm]=b.split(':').map(Number);
+  let mins=(bh*60+bm)-(ah*60+am); if(mins<0) mins+=1440;
+  $('tmR').textContent=`Duration: ${Math.floor(mins/60)} hours ${mins%60} minutes`;
+}
+function numberToWordsTool(){
+  const raw=$('nwNumber').value.trim(), n=Number(raw);
+  if(!/^-?\\d+$/.test(raw)||!Number.isSafeInteger(n)||Math.abs(n)>999999999999) return $('nwR').textContent='Enter a whole number up to 999,999,999,999.';
+  const small=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+  const tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  function under1000(x){
+    let s='';
+    if(x>=100){s+=small[Math.floor(x/100)]+' hundred';x%=100;if(x)s+=' ';}
+    if(x>=20){s+=tens[Math.floor(x/10)];x%=10;if(x)s+=' '+small[x];}
+    else if(x>0||s==='')s+=small[x];
+    return s;
+  }
+  function whole(x){
+    if(x<1000)return under1000(x);
+    const parts=[];
+    const groups=[[1e9,'billion'],[1e6,'million'],[1e3,'thousand']];
+    for(const [v,label] of groups){if(x>=v){parts.push(whole(Math.floor(x/v))+' '+label);x%=v;}}
+    if(x)parts.push(under1000(x));
+    return parts.join(' ');
+  }
+  const negative=n<0?'minus ':'';
+  $('nwR').textContent=negative+whole(Math.abs(n));
+}
 function makeQR(){const s=$('qrText').value.trim();if(!s)return $('qrR').textContent='Enter text or a URL.';$('qrR').innerHTML='<div id="qrcode"></div><div class="note">QR generated below.</div>';if(!window.QRCode){$('qrR').insertAdjacentHTML('afterbegin','QR library loading…');return}new QRCode($('qrcode'),{text:s,width:180,height:180});}
 filterTools();
 </script>
