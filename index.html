@@ -302,7 +302,7 @@ function calcTime(){
 }
 function numberToWordsTool(){
   const raw=$('nwNumber').value.trim(), n=Number(raw);
-  if(!/^-?\\d+$/.test(raw)||!Number.isSafeInteger(n)||Math.abs(n)>999999999999) return $('nwR').textContent='Enter a whole number up to 999,999,999,999.';
+  if(!/^-?\d+$/.test(raw)||!Number.isSafeInteger(n)||Math.abs(n)>999999999999) return $('nwR').textContent='Enter a whole number up to 999,999,999,999.';
   const small=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
   const tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
   function under1000(x){
