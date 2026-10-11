@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://barsulkhan.github.io/InfoJano/sitemap.xml
