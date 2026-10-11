@@ -257,7 +257,18 @@ function calcEMI(){const P=v('loan'),r=v('rate')/1200,n=v('months');if(!(P>0&&n>
 function calcBMI(){const w=v('bw'),h=v('bh')/100;if(!(w>0&&h>0))return $('bmiR').textContent='Enter valid values.';const b=w/(h*h);let c=b<18.5?'Underweight':b<25?'Normal range':b<30?'Overweight':'Obesity';$('bmiR').textContent=`BMI: ${b.toFixed(1)} • ${c}`;}
 function calcDisc(){const p=v('price'),d=v('disc');if(!(p>=0&&d>=0))return $('discR').textContent='Enter valid values.';const s=p*d/100;$('discR').textContent=`You save: ${s.toFixed(2)} • Final price: ${(p-s).toFixed(2)}`;}
 function calcDate(){const a=new Date($('ds').value),b=new Date($('de').value);if(isNaN(a)||isNaN(b))return $('dateR').textContent='Select both dates.';$('dateR').textContent=`${Math.round(Math.abs(b-a)/86400000)} days`;}
-function convertUnit(){const x=v('uv'),f=$('uf').value,t=$('ut').value;if(!isFinite(x))return $('unitR').textContent='Enter a value.';const groups={length:{mm:1,cm:10,m:1000,km:1000000,inch:25.4,ft:304.8,yd:914.4,mi:1609344},mass:{g:1,kg:1000,oz:28.349523125,lb:453.59237}};let g=Object.keys(groups).find(k=>groups[k][f]&&groups[k][t]);if(!g)return $('unitR').textContent='These units cannot be converted together.';const ans=x*groups[g][f]/groups[g][t];$('unitR').textContent=`${x} ${f} = ${ans.toFixed(6).replace(/\.?0+$/,'')} ${t}`;},mass:{g:1,kg:1000,lb:453.59237}};let g=Object.keys(groups).find(k=>groups[k][f]&&groups[k][t]);if(!g)return $('unitR').textContent='These units cannot be converted together.';const ans=x*groups[g][f]/groups[g][t];$('unitR').textContent=`${x} ${f} = ${ans.toFixed(6).replace(/\.?0+$/,'')} ${t}`;}
+function convertUnit(){
+  const x=v('uv'), f=$('uf').value, t=$('ut').value;
+  if(!isFinite(x)) return $('unitR').textContent='Enter a value.';
+  const groups={
+    length:{mm:1,cm:10,m:1000,km:1000000,inch:25.4,ft:304.8,yd:914.4,mi:1609344},
+    mass:{g:1,kg:1000,oz:28.349523125,lb:453.59237}
+  };
+  const group=Object.keys(groups).find(k=>groups[k][f]!==undefined&&groups[k][t]!==undefined);
+  if(!group) return $('unitR').textContent='These units cannot be converted together.';
+  const ans=x*groups[group][f]/groups[group][t];
+  $('unitR').textContent=`${x} ${f} = ${ans.toFixed(6).replace(/\.?0+$/,'')} ${t}`;
+}
 function calcBill(){const b=v('bill'),t=v('tip'),p=v('people');if(!(b>=0&&p>0))return $('billR').textContent='Enter valid values.';const total=b+b*t/100;$('billR').textContent=`Total: ${total.toFixed(2)} • Each person: ${(total/p).toFixed(2)}`;}
 function countText(){const s=$('txt').value,words=s.trim()?s.trim().split(/\s+/).length:0;$('textR').textContent=`${words} words • ${s.length} characters`;}
 async function copyText(){try{await navigator.clipboard.writeText($('txt').value);$('textR').textContent='Copied ✓';}catch(e){$('textR').textContent='Copy is not available in this browser.'}}
