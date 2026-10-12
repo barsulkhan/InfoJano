@@ -1,0 +1,13 @@
+
+{
+  "id": "/InfoJano/",
+  "name": "InfoJano",
+  "short_name": "InfoJano",
+  "description": "Useful tools and information for everyday life",
+  "start_url": "/InfoJano/",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111827",
+  "orientation": "portrait"
+}
