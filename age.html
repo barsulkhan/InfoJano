@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate your exact age in years, months and days with InfoJano's free online Age Calculator.">
+  <meta name="robots" content="index,follow">
+  <title>Age Calculator - Exact Age in Years, Months and Days | InfoJano</title>
+  <link rel="canonical" href="https://barsulkhan.github.io/InfoJano/age.html">
+  <meta name="theme-color" content="#0b1220">
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;padding:20px;font-family:Arial,sans-serif;background:#f1f5fb;color:#172033}
+    main{max-width:650px;margin:25px auto}
+    header{background:#0b1220;color:white;padding:18px;border-radius:14px}
+    header a{color:#7dd3fc;text-decoration:none;font-weight:bold}
+    .card{background:white;margin-top:18px;padding:24px;border-radius:16px;box-shadow:0 4px 16px #0000000d}
+    h1{font-size:27px;margin:0 0 10px}
+    p{line-height:1.6;color:#536176}
+    label{display:block;font-weight:bold;margin:18px 0 8px}
+    input,button{width:100%;padding:14px;border-radius:10px;font-size:16px}
+    input{border:1px solid #cbd5e1;background:white}
+    button{margin-top:18px;border:0;background:#1673f9;color:white;font-weight:bold;cursor:pointer}
+    #result{margin-top:20px;padding:18px;background:#eff6ff;border-radius:12px;line-height:1.8}
+    footer{text-align:center;font-size:13px;color:#64748b;margin:24px 0}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a href="/InfoJano/">← InfoJano Home</a>
+      <p style="color:#dbeafe;margin-bottom:0">See it • Tap it • Get it done</p>
+    </header>
+
+    <section class="card">
+      <h1>Free Age Calculator</h1>
+      <p>Enter your date of birth to calculate your exact age in years, months and days.</p>
+
+      <label for="dob">Date of birth</label>
+      <input id="dob" type="date" required>
+
+      <button id="calculate" type="button">Calculate My Age</button>
+      <div id="result" class="hidden" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <h2>How to calculate your age</h2>
+      <p>Select your birth date and tap Calculate My Age. The calculator compares your birth date with today's date and shows your age in years, months and days.</p>
+    </section>
+
+    <footer>InfoJano · Free everyday tools for everyone</footer>
+  </main>
+
+  <script>
+    const dobInput = document.getElementById("dob");
+    const result = document.getElementById("result");
+
+    function localDateString(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+
+    dobInput.max = localDateString(new Date());
+
+    document.getElementById("calculate").addEventListener("click", () => {
+      if (!dobInput.value) {
+        result.classList.remove("hidden");
+        result.textContent = "Please select your date of birth.";
+        return;
+      }
+
+      const [year, month, day] = dobInput.value.split("-").map(Number);
+      const birth = new Date(year, month - 1, day);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (birth > today) {
+        result.classList.remove("hidden");
+        result.textContent = "Date of birth cannot be in the future.";
+        return;
+      }
+
+      let years = today.getFullYear() - year;
+      let months = today.getMonth() + 1 - month;
+      let days = today.getDate() - day;
+
+      if (days < 0) {
+        months--;
+        const previousMonthDays = new Date(
+          today.getFullYear(), today.getMonth(), 0
+        ).getDate();
+        days += previousMonthDays;
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      result.classList.remove("hidden");
+      result.replaceChildren();
+
+      const heading = document.createElement("strong");
+      heading.textContent = "Your exact age";
+      const details = document.createElement("p");
+      details.textContent = `${years} years, ${months} months and ${days} days`;
+      details.style.color = "#172033";
+      details.style.fontWeight = "bold";
+      result.append(heading, details);
+    });
+  </script>
+</body>
+</html>
