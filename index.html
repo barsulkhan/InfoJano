@@ -328,5 +328,15 @@ function makeQR(){const s=$('qrText').value.trim();if(!s)return $('qrR').textCon
 filterTools();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/InfoJano/sw.js")
+      .catch((error) => console.error("Service Worker registration failed:", error));
+  });
+}
+</script>
+  
 </body>
 </html>
