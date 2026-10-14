@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Date Difference Calculator - Days Between Dates | InfoJano</title>
+<meta name="description" content="Calculate the number of days, weeks, months and years between two dates with InfoJano's free date difference calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/date-difference.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Date Difference Calculator</h1>
+<p>Find the time between two dates</p>
+</header>
+<main>
+<div class="card">
+<h2>Calculate Date Difference</h2>
+<label for="start">Start Date</label>
+<input id="start" type="date">
+<label for="end">End Date</label>
+<input id="end" type="date">
+<button onclick="calculateDifference()">Calculate Difference</button>
+<div id="result" class="result" aria-live="polite">Choose two dates to calculate the difference.</div>
+</div>
+<section>
+<h2>How to Calculate the Difference Between Dates</h2>
+<p>Select a start date and an end date. The calculator finds the number of elapsed days and provides an approximate number of weeks, months and years.</p>
+<p>The day count is the elapsed time between dates and does not count both the start and end date inclusively.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function calculateDifference(){
+const a=document.getElementById('start').value;
+const b=document.getElementById('end').value;
+const out=document.getElementById('result');
+if(!a||!b){
+out.textContent='Please select both dates.';
+return;
+}
+const start=new Date(a+'T00:00:00Z');
+const end=new Date(b+'T00:00:00Z');
+const days=Math.abs(Math.round((end-start)/86400000));
+const weeks=Math.floor(days/7);
+const years=Math.floor(days/365.2425);
+const months=Math.floor(days/30.4369);
+out.innerHTML='Difference: <strong>'+days.toLocaleString('en-US')+' days</strong><br>Weeks: <strong>'+weeks+'</strong><br>Approximate months: <strong>'+months+'</strong><br>Approximate years: <strong>'+years+'</strong>';
+}
+</script>
+</body>
+</html>
