@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percentage Calculator - Free Online Tool | InfoJano</title>
+<meta name="description" content="Calculate percentages easily with InfoJano's free online percentage calculator. Find a percentage, percentage increase, decrease and more.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/percentage.html">
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4f7fb;color:#172033}
+header{background:#123d8a;color:white;padding:20px;text-align:center}
+main{max-width:600px;margin:22px auto;padding:18px}
+.card{background:white;padding:22px;border-radius:14px;box-shadow:0 2px 12px #0001}
+input{width:100%;box-sizing:border-box;padding:13px;margin:8px 0 16px;border:1px solid #bbb;border-radius:8px;font-size:17px}
+button{width:100%;padding:14px;background:#1458c8;color:white;border:0;border-radius:8px;font-size:17px}
+#result{font-weight:bold;font-size:20px;margin-top:18px;overflow-wrap:anywhere}
+a{color:#1458c8}
+footer{text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<header><h1>Percentage Calculator</h1><p>Free online calculator by InfoJano</p></header>
+<main>
+<div class="card">
+<h2>Calculate a Percentage</h2>
+<label for="percent">Percentage (%)</label>
+<input id="percent" type="number" placeholder="Example: 20">
+<label for="number">Number</label>
+<input id="number" type="number" placeholder="Example: 150">
+<button onclick="calculate()">Calculate</button>
+<div id="result" aria-live="polite"></div>
+</div>
+<section>
+<h2>How to calculate a percentage</h2>
+<p>To find a percentage of a number, multiply the number by the percentage and divide by 100.</p>
+<p><strong>Formula:</strong> Percentage × Number ÷ 100</p>
+<p>Example: 20% of 150 = 30.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer>© InfoJano</footer>
+<script>
+function calculate(){
+const p=document.getElementById('percent').value;
+const n=document.getElementById('number').value;
+const r=document.getElementById('result');
+if(p===''||n===''||!Number.isFinite(Number(p))||!Number.isFinite(Number(n))){
+r.textContent='Please enter both numbers.';
+return;
+}
+r.textContent=Number(p)+'% of '+Number(n)+' = '+(Number(p)*Number(n)/100);
+}
+</script>
+</body>
+</html>
