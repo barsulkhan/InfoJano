@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time Calculator - Hours and Minutes Between Times | InfoJano</title>
+<meta name="description" content="Calculate the time between two times in hours and minutes with InfoJano's free online time calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/time-calculator.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Time Calculator</h1>
+<p>Calculate elapsed hours and minutes</p>
+</header>
+<main>
+<div class="card">
+<h2>Calculate Time Difference</h2>
+<label for="start">Start Time</label>
+<input id="start" type="time">
+<label for="end">End Time</label>
+<input id="end" type="time">
+<button onclick="calculateTime()">Calculate Difference</button>
+<div id="result" class="result" aria-live="polite">Choose a start time and end time.</div>
+</div>
+<section>
+<h2>How to Calculate Time Difference</h2>
+<p>Choose the start and end times to calculate the elapsed time in hours and minutes. If the end time is earlier than the start time, the calculator assumes the end time is on the following day.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function calculateTime(){
+const s=document.getElementById('start').value;
+const e=document.getElementById('end').value;
+const out=document.getElementById('result');
+if(!s||!e){
+out.textContent='Please select both times.';
+return;
+}
+const [sh,sm]=s.split(':').map(Number);
+const [eh,em]=e.split(':').map(Number);
+let start=sh*60+sm;
+let end=eh*60+em;
+if(end<start)end+=1440;
+const diff=end-start;
+const hours=Math.floor(diff/60);
+const minutes=diff%60;
+out.innerHTML='Time difference: <strong>'+hours+' hours '+minutes+' minutes</strong><br>Total minutes: <strong>'+diff+'</strong>';
+}
+</script>
+</body>
+</html>
