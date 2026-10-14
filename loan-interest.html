@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan Interest Calculator - Simple Interest | InfoJano</title>
+<meta name="description" content="Calculate simple loan interest and total repayment with InfoJano's free online loan interest calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/loan-interest.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.9;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Loan Interest Calculator</h1>
+<p>Calculate simple interest and total repayment</p>
+</header>
+<main>
+<div class="card">
+<h2>Calculate Loan Interest</h2>
+<label for="principal">Loan Amount</label>
+<input id="principal" type="number" min="0" step="any" placeholder="Example: 50000">
+<label for="rate">Annual Interest Rate (%)</label>
+<input id="rate" type="number" min="0" step="any" placeholder="Example: 8">
+<label for="years">Loan Period (Years)</label>
+<input id="years" type="number" min="0" step="any" placeholder="Example: 2">
+<button onclick="calculate()">Calculate Interest</button>
+<div id="result" class="result" aria-live="polite">Enter your loan details.</div>
+</div>
+<section>
+<h2>What Is Simple Interest?</h2>
+<p>Simple interest is calculated on the original principal amount for the chosen period.</p>
+<p><strong>Formula:</strong> Simple Interest = Principal × Annual Rate × Time ÷ 100.</p>
+<p>This calculator estimates simple interest, not reducing-balance or compound interest.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function calculate(){
+const pInput=document.getElementById('principal').value;
+const rInput=document.getElementById('rate').value;
+const tInput=document.getElementById('years').value;
+const out=document.getElementById('result');
+const p=Number(pInput),r=Number(rInput),t=Number(tInput);
+if(pInput===''||rInput===''||tInput===''||!Number.isFinite(p)||!Number.isFinite(r)||!Number.isFinite(t)||p<0||r<0||t<0){
+out.textContent='Please enter valid non-negative values.';
+return;
+}
+const interest=p*r*t/100;
+const total=p+interest;
+const money=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
+out.innerHTML='Simple Interest: <strong>'+money(interest)+'</strong><br>Total Repayment: <strong>'+money(total)+'</strong><br>Original Loan: '+money(p);
+}
+</script>
+</body>
+</html>
