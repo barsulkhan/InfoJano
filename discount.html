@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discount Calculator - Free Online Savings Tool | InfoJano</title>
+<meta name="description" content="Calculate discounts, sale prices and savings instantly with InfoJano's free online discount calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/discount.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.9;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Discount Calculator</h1>
+<p>Calculate your savings and final sale price</p>
+</header>
+<main>
+<div class="card">
+<h2>Calculate Discount</h2>
+<label for="price">Original Price</label>
+<input id="price" type="number" min="0" step="any" placeholder="Example: 1000">
+<label for="discount">Discount (%)</label>
+<input id="discount" type="number" min="0" max="100" step="any" placeholder="Example: 20">
+<button onclick="calculateDiscount()">Calculate Discount</button>
+<div id="result" class="result" aria-live="polite">Enter the original price and discount.</div>
+</div>
+<section>
+<h2>How to Calculate a Discount</h2>
+<p>Multiply the original price by the discount percentage and divide by 100 to find your savings. Subtract the savings from the original price to find the final price.</p>
+<p><strong>Discount amount</strong> = Original price × Discount percentage ÷ 100</p>
+<p><strong>Final price</strong> = Original price − Discount amount</p>
+<p>Example: If an item costs 1000 and has a 20% discount, you save 200 and pay 800.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function calculateDiscount(){
+const priceInput=document.getElementById('price').value;
+const discountInput=document.getElementById('discount').value;
+const out=document.getElementById('result');
+const price=Number(priceInput);
+const discount=Number(discountInput);
+if(priceInput===''||discountInput===''||!Number.isFinite(price)||!Number.isFinite(discount)||price<0||discount<0||discount>100){
+out.textContent='Please enter a valid price and a discount from 0 to 100.';
+return;
+}
+const saved=price*discount/100;
+const finalPrice=price-saved;
+const money=n=>n.toLocaleString('en-IN',{maximumFractionDigits:2});
+out.innerHTML='You save: <strong>'+money(saved)+'</strong><br>Final price: <strong>'+money(finalPrice)+'</strong><br>Original price: '+money(price);
+}
+</script>
+</body>
+</html>
