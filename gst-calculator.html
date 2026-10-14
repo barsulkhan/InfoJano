@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GST Calculator - Calculate GST Online | InfoJano</title>
+<meta name="description" content="Calculate GST amount and total price instantly with InfoJano's free online GST calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/gst-calculator.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input,select{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:white}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.9;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>GST Calculator</h1>
+<p>Calculate GST amount and final price</p>
+</header>
+<main>
+<div class="card">
+<h2>Calculate GST</h2>
+<label for="price">Price Before GST</label>
+<input id="price" type="number" min="0" step="any" placeholder="Example: 1000">
+<label for="rate">GST Rate</label>
+<select id="rate">
+<option value="0">0%</option>
+<option value="3">3%</option>
+<option value="5">5%</option>
+<option value="12">12%</option>
+<option value="18" selected>18%</option>
+<option value="28">28%</option>
+</select>
+<button onclick="calculateGST()">Calculate GST</button>
+<div id="result" class="result" aria-live="polite">Enter the price and select a GST rate.</div>
+</div>
+<section>
+<h2>What Is GST?</h2>
+<p>Goods and Services Tax (GST) is an indirect tax applied to many goods and services in India. The applicable rate depends on the item or service.</p>
+<h2>GST Formula</h2>
+<p>GST Amount = Price Before GST × GST Rate ÷ 100.</p>
+<p>Final Price = Price Before GST + GST Amount.</p>
+<p>This calculator adds GST to a pre-tax price. It does not determine the legally applicable GST rate for a product or service.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function calculateGST(){
+const priceInput=document.getElementById('price').value;
+const rateInput=document.getElementById('rate').value;
+const out=document.getElementById('result');
+const price=Number(priceInput),rate=Number(rateInput);
+if(priceInput===''||!Number.isFinite(price)||price<0){
+out.textContent='Please enter a valid non-negative price.';
+return;
+}
+const gst=price*rate/100;
+const total=price+gst;
+const money=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
+out.innerHTML='Price Before GST: <strong>'+money(price)+'</strong><br>GST Amount ('+rate+'%): <strong>'+money(gst)+'</strong><br>Total Price: <strong>'+money(total)+'</strong>';
+}
+</script>
+</body>
+</html>
