@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tip Calculator - Calculate Tip and Split Bills | InfoJano</title>
+<meta name="description" content="Calculate restaurant tips, total bills and per-person payments with InfoJano's free online tip calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/tip-calculator.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.9;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Tip Calculator</h1>
+<p>Calculate tips and split the bill</p>
+</header>
+<main>
+<div class="card">
+<h2>Calculate Your Tip</h2>
+<label for="bill">Bill Amount</label>
+<input id="bill" type="number" min="0" step="any" placeholder="Example: 1000">
+<label for="tip">Tip Percentage (%)</label>
+<input id="tip" type="number" min="0" max="100" step="any" value="10">
+<label for="people">Number of People</label>
+<input id="people" type="number" min="1" step="1" value="1">
+<button onclick="calculateTip()">Calculate Tip</button>
+<div id="result" class="result" aria-live="polite">Enter the bill amount to begin.</div>
+</div>
+<section>
+<h2>How to Calculate a Tip</h2>
+<p>Multiply the bill amount by the tip percentage and divide by 100. Add the tip to the bill to find the total payment.</p>
+<p><strong>Tip</strong> = Bill Amount × Tip Percentage ÷ 100.</p>
+<p><strong>Total</strong> = Bill Amount + Tip.</p>
+<p>This calculator estimates the tip you enter. Local tipping customs and service charges vary.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function calculateTip(){
+const bInput=document.getElementById('bill').value;
+const tInput=document.getElementById('tip').value;
+const pInput=document.getElementById('people').value;
+const out=document.getElementById('result');
+const bill=Number(bInput),tipRate=Number(tInput),people=Number(pInput);
+if(bInput===''||tInput===''||pInput===''||!Number.isFinite(bill)||!Number.isFinite(tipRate)||!Number.isInteger(people)||bill<0||tipRate<0||tipRate>100||people<1){
+out.textContent='Enter a valid bill, tip percentage from 0 to 100, and a whole number of people.';
+return;
+}
+const tip=bill*tipRate/100;
+const total=bill+tip;
+const money=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
+out.innerHTML='Tip Amount: <strong>'+money(tip)+'</strong><br>Total Bill: <strong>'+money(total)+'</strong><br>Per Person: <strong>'+money(total/people)+'</strong>';
+}
+</script>
+</body>
+</html>
