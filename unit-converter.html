@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit Converter - Length, Weight and Temperature | InfoJano</title>
+<meta name="description" content="Convert length, weight, and temperature units instantly with InfoJano's free online unit converter.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/unit-converter.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+select,input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:white}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Unit Converter</h1>
+<p>Convert length, weight and temperature units</p>
+</header>
+<main>
+<div class="card">
+<h2>Convert Units</h2>
+<label for="category">Conversion Type</label>
+<select id="category" onchange="updateUnits()">
+<option value="length">Length</option>
+<option value="weight">Weight</option>
+<option value="temperature">Temperature</option>
+</select>
+<label for="value">Value to Convert</label>
+<input id="value" type="number" step="any" placeholder="Enter a value">
+<label for="from">From</label>
+<select id="from"></select>
+<label for="to">To</label>
+<select id="to"></select>
+<button onclick="convert()">Convert</button>
+<div id="result" class="result" aria-live="polite">Enter a value and choose your units.</div>
+</div>
+<section>
+<h2>About Unit Conversion</h2>
+<p>Unit conversion changes a measurement from one unit to another without changing the actual quantity.</p>
+<p>For example, 1 kilometre equals 1,000 metres, and 1 kilogram equals 1,000 grams.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+const units={
+length:{
+'Millimetre (mm)':0.001,
+'Centimetre (cm)':0.01,
+'Metre (m)':1,
+'Kilometre (km)':1000,
+'Inch (in)':0.0254,
+'Foot (ft)':0.3048,
+'Yard (yd)':0.9144,
+'Mile (mi)':1609.344
+},
+weight:{
+'Milligram (mg)':0.000001,
+'Gram (g)':0.001,
+'Kilogram (kg)':1,
+'Tonne (t)':1000,
+'Ounce (oz)':0.028349523125,
+'Pound (lb)':0.45359237
+},
+temperature:{
+'Celsius (°C)': 'C',
+'Fahrenheit (°F)': 'F',
+'Kelvin (K)': 'K'
+}
+};
+function updateUnits(){
+const category=document.getElementById('category').value;
+const from=document.getElementById('from');
+const to=document.getElementById('to');
+from.innerHTML='';
+to.innerHTML='';
+Object.keys(units[category]).forEach((name,i)=>{
+from.add(new Option(name,name));
+to.add(new Option(name,name));
+});
+if(category==='length'){
+from.value='Metre (m)';
+to.value='Kilometre (km)';
+}else if(category==='weight'){
+from.value='Kilogram (kg)';
+to.value='Gram (g)';
+}else{
+from.value='Celsius (°C)';
+to.value='Fahrenheit (°F)';
+}
+document.getElementById('result').textContent='Enter a value and choose your units.';
+}
+function convert(){
+const category=document.getElementById('category').value;
+const input=document.getElementById('value').value;
+const from=document.getElementById('from').value;
+const to=document.getElementById('to').value;
+const out=document.getElementById('result');
+if(input===''||!Number.isFinite(Number(input))){
+out.textContent='Please enter a valid number.';
+return;
+}
+const value=Number(input);
+let answer;
+if(category==='temperature'){
+let c;
+if(from==='Celsius (°C)')c=value;
+else if(from==='Fahrenheit (°F)')c=(value-32)*5/9;
+else c=value-273.15;
+if(to==='Celsius (°C)')answer=c;
+else if(to==='Fahrenheit (°F)')answer=c*9/5+32;
+else answer=c+273.15;
+}else{
+answer=value*units[category][from]/units[category][to];
+}
+out.innerHTML='<strong>'+value+' '+from+'</strong><br>equals<br><strong>'+Number(answer.toPrecision(10)).toLocaleString('en-US')+' '+to+'</strong>';
+}
+updateUnits();
+</script>
+</body>
+</html>
