@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Code Generator - Free Online QR Maker | InfoJano</title>
+<meta name="description" content="Create QR codes for links, text, contact details and more with InfoJano's free online QR code generator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/qr-maker.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+textarea{width:100%;min-height:110px;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:16px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+#qr{margin-top:20px;text-align:center;overflow-wrap:anywhere}
+#qr img{max-width:100%;height:auto;background:white;padding:10px;border:1px solid #ddd}
+.note{font-size:14px;color:#4b5563}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>QR Code Generator</h1>
+<p>Create a QR code for text or a website link</p>
+</header>
+<main>
+<div class="card">
+<h2>Make Your QR Code</h2>
+<label for="content">Text or Website URL</label>
+<textarea id="content" placeholder="Enter text or paste a website link"></textarea>
+<button onclick="makeQR()">Generate QR Code</button>
+<div id="qr" aria-live="polite"></div>
+<p class="note">An internet connection is required to generate the QR code. Do not enter passwords or sensitive personal information.</p>
+</div>
+<section>
+<h2>What Is a QR Code?</h2>
+<p>A QR code is a two-dimensional code that a phone camera can scan to open a link or read stored information.</p>
+<h2>How to Use This QR Maker</h2>
+<p>Enter a website link or text and tap Generate QR Code. Scan the resulting image with a phone camera to test it.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function makeQR(){
+const value=document.getElementById('content').value.trim();
+const box=document.getElementById('qr');
+box.replaceChildren();
+if(!value){
+box.textContent='Please enter text or a website URL first.';
+return;
+}
+const img=document.createElement('img');
+img.alt='Generated QR code';
+img.width=260;
+img.height=260;
+img.src='https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+encodeURIComponent(value);
+img.onerror=function(){
+box.textContent='Could not generate the QR code. Check your internet connection and try again.';
+};
+box.appendChild(img);
+const link=document.createElement('a');
+link.href=img.src;
+link.download='infojano-qr.png';
+link.textContent='Open QR image to save';
+link.style.display='block';
+link.style.marginTop='12px';
+link.target='_blank';
+link.rel='noopener';
+box.appendChild(link);
+}
+</script>
+</body>
+</html>
