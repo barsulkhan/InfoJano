@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMI Calculator - Free Online Loan Calculator | InfoJano</title>
+<meta name="description" content="Calculate your monthly loan EMI, total interest and total repayment with InfoJano's free online EMI calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/emi.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033}
+header{background:#10458e;color:#fff;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.8;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>EMI Calculator</h1>
+<p>Calculate your monthly loan payment</p>
+</header>
+<main>
+<div class="card">
+<h2>Calculate Loan EMI</h2>
+<label for="amount">Loan Amount</label>
+<input id="amount" type="number" min="1" placeholder="Example: 500000">
+<label for="rate">Annual Interest Rate (%)</label>
+<input id="rate" type="number" min="0" step="any" placeholder="Example: 8.5">
+<label for="years">Loan Tenure (Years)</label>
+<input id="years" type="number" min="0.01" step="any" placeholder="Example: 5">
+<button onclick="calculate()">Calculate EMI</button>
+<div id="result" class="result" aria-live="polite">Enter your loan details to calculate.</div>
+</div>
+<section>
+<h2>What is EMI?</h2>
+<p>EMI means Equated Monthly Instalment. It is the fixed monthly payment made towards a loan, including principal and interest.</p>
+<h2>EMI Formula</h2>
+<p>EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</p>
+<p>P is the loan amount, r is the monthly interest rate and n is the total number of monthly payments.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<script>
+function calculate(){
+const P=Number(document.getElementById('amount').value);
+const annual=Number(document.getElementById('rate').value);
+const years=Number(document.getElementById('years').value);
+const out=document.getElementById('result');
+if(!document.getElementById('amount').value||!document.getElementById('rate').value||!document.getElementById('years').value||P<=0||annual<0||years<=0){
+out.textContent='Please enter a valid loan amount, interest rate and loan tenure.';
+return;
+}
+const n=Math.round(years*12);
+const r=annual/1200;
+const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+const total=emi*n;
+const money=x=>x.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
+out.innerHTML='Monthly EMI: <strong>'+money(emi)+'</strong><br>Total Interest: <strong>'+money(total-P)+'</strong><br>Total Repayment: <strong>'+money(total)+'</strong>';
+}
+</script>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+</body>
+</html>
