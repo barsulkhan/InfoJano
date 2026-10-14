@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Counter - Character and Sentence Counter | InfoJano</title>
+<meta name="description" content="Count words, characters, sentences and paragraphs instantly with InfoJano's free online text counter.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/text-counter.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:700px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+textarea{width:100%;min-height:220px;padding:14px;border:1px solid #bbb;border-radius:8px;font-size:16px;resize:vertical}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.stat{background:#edf3ff;padding:14px;border-radius:9px}
+.num{font-size:24px;font-weight:bold;display:block}
+button{width:100%;margin-top:14px;padding:13px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:16px}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Word Counter</h1>
+<p>Count words, characters and sentences instantly</p>
+</header>
+<main>
+<div class="card">
+<h2>Enter Your Text</h2>
+<textarea id="text" placeholder="Type or paste your text here..." oninput="countText()"></textarea>
+<div class="stats" aria-live="polite">
+<div class="stat">Words<span class="num" id="words">0</span></div>
+<div class="stat">Characters<span class="num" id="chars">0</span></div>
+<div class="stat">Characters without spaces<span class="num" id="noSpaces">0</span></div>
+<div class="stat">Sentences<span class="num" id="sentences">0</span></div>
+<div class="stat">Paragraphs<span class="num" id="paragraphs">0</span></div>
+<div class="stat">Reading time<span class="num" id="reading">0 min</span></div>
+</div>
+<button onclick="clearText()">Clear Text</button>
+</div>
+<section>
+<h2>What Is a Word Counter?</h2>
+<p>A word counter measures the number of words and characters in a piece of text. It is useful for essays, articles, social media posts and writing assignments.</p>
+<h2>How to Use This Tool</h2>
+<p>Type or paste text into the box. The word, character, sentence and paragraph counts update automatically as you write.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function countText(){
+const text=document.getElementById('text').value;
+const trimmed=text.trim();
+const words=trimmed?trimmed.split(/\s+/u).length:0;
+const sentences=trimmed?(trimmed.match(/[.!?]+(?=\s|$)/g)||[]).length:0;
+const paragraphs=trimmed?trimmed.split(/\n\s*\n/).filter(p=>p.trim()).length:0;
+document.getElementById('words').textContent=words.toLocaleString();
+document.getElementById('chars').textContent=text.length.toLocaleString();
+document.getElementById('noSpaces').textContent=text.replace(/\s/g,'').length.toLocaleString();
+document.getElementById('sentences').textContent=sentences.toLocaleString();
+document.getElementById('paragraphs').textContent=paragraphs.toLocaleString();
+document.getElementById('reading').textContent=(words?Math.max(1,Math.ceil(words/200)):0)+' min';
+}
+function clearText(){
+document.getElementById('text').value='';
+countText();
+}
+</script>
+</body>
+</html>
