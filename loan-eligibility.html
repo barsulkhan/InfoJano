@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan Affordability Calculator | InfoJano</title>
+<meta name="description" content="Estimate an affordable monthly loan payment from your income and expenses with InfoJano's free loan affordability calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/loan-eligibility.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.9;overflow-wrap:anywhere}
+a{color:#1458c8}
+.note{font-size:14px;color:#4b5563}
+</style>
+</head>
+<body>
+<header>
+<h1>Loan Affordability Calculator</h1>
+<p>Estimate a manageable monthly loan payment</p>
+</header>
+<main>
+<div class="card">
+<h2>Estimate Loan Affordability</h2>
+<label for="income">Monthly Take-Home Income (₹)</label>
+<input id="income" type="number" min="0" step="any" placeholder="Example: 40000">
+<label for="expenses">Monthly Expenses and Existing EMIs (₹)</label>
+<input id="expenses" type="number" min="0" step="any" placeholder="Example: 20000">
+<label for="share">Income Share for New EMI (%)</label>
+<input id="share" type="number" min="1" max="100" step="any" value="30">
+<button onclick="calculate()">Estimate Affordability</button>
+<div id="result" class="result" aria-live="polite">Enter your monthly income and expenses.</div>
+<p class="note">This is a simple budgeting estimate, not a bank approval or a guarantee of loan eligibility.</p>
+</div>
+<section>
+<h2>How This Calculator Works</h2>
+<p>The calculator estimates the amount remaining after monthly expenses, then applies the percentage you choose to estimate a potential new EMI budget.</p>
+<p>Actual loan eligibility depends on lender rules, credit history, existing debt, income stability and other factors.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function calculate(){
+const i=document.getElementById('income').value;
+const e=document.getElementById('expenses').value;
+const s=document.getElementById('share').value;
+const out=document.getElementById('result');
+const income=Number(i),expenses=Number(e),share=Number(s);
+if(i===''||e===''||s===''||!Number.isFinite(income)||!Number.isFinite(expenses)||!Number.isFinite(share)||income<=0||expenses<0||share<=0||share>100){
+out.textContent='Please enter valid income, expenses and a percentage from 1 to 100.';
+return;
+}
+const remaining=income-expenses;
+const budget=Math.max(0,Math.min(remaining,income*share/100));
+const money=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
+out.innerHTML='Monthly Income: <strong>'+money(income)+'</strong><br>After Expenses: <strong>'+money(remaining)+'</strong><br>Estimated New EMI Budget: <strong>'+money(budget)+'</strong>';
+if(remaining<0)out.innerHTML+='<br><strong>Your entered expenses exceed your income.</strong>';
+}
+</script>
+</body>
+</html>
