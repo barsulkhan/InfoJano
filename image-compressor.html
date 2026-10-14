@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Compressor Online Free - InfoJano</title>
+<meta name="description" content="Compress images online for free. Reduce JPG and PNG image file size in KB, resize dimensions and download images in your browser.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/image-compressor.html">
+<style>
+*{box-sizing:border-box}body{margin:0;padding:18px;font-family:Arial,sans-serif;background:#f2f5fb;color:#172033}.wrap{max-width:650px;margin:auto}h1{font-size:27px}.panel{background:white;padding:18px;border-radius:14px;margin:16px 0;box-shadow:0 3px 15px #0001}label{display:block;font-weight:bold;margin-top:14px}input,select,button{width:100%;padding:12px;margin:8px 0;border:1px solid #ccd3df;border-radius:8px;font:inherit}input[type=range]{padding:0}button{background:#1459d9;color:white;border:0;font-weight:bold;cursor:pointer}img{display:block;max-width:100%;max-height:300px;margin:12px auto;object-fit:contain}.note{font-size:13px;color:#596579;line-height:1.5}a{color:#1459d9}#status{overflow-wrap:anywhere;line-height:1.6}
+</style>
+</head>
+<body><main class="wrap">
+<p><a href="./index.html">InfoJano Home</a></p>
+<h1>Image Compressor</h1>
+<p>Reduce your image file size for online forms, applications and sharing.</p>
+<section class="panel">
+<label for="file">1. Choose an image</label>
+<input id="file" type="file" accept="image/*">
+<div id="originalInfo" class="note">No image selected.</div>
+<img id="preview" alt="Selected image preview" hidden>
+<label for="format">2. Output format</label>
+<select id="format"><option value="image/jpeg">JPG - smaller file size</option><option value="image/png">PNG - lossless style</option><option value="image/webp">WebP - compact size</option></select>
+<label for="quality">3. Image quality: <span id="qvalue">70</span>%</label>
+<input id="quality" type="range" min="10" max="100" value="70">
+<label for="width">4. Maximum width in pixels (optional)</label>
+<input id="width" type="number" min="1" max="12000" placeholder="Leave blank to keep original width">
+<label for="target">Target file size in KB (optional)</label>
+<input id="target" type="number" min="1" max="20000" placeholder="Example: 200">
+<button id="compress">Compress Image</button>
+<div id="status" role="status"></div>
+<a id="download" hidden download="infojano-compressed.jpg">Download compressed image</a>
+<p class="note">Your image is processed locally in your browser and is not uploaded to a server. Target KB is best-effort; exact size cannot be guaranteed for every image.</p>
+</section>
+<section class="panel"><h2>How to use</h2><p>Choose an image, select the format and quality, optionally enter a target size in KB, then tap Compress Image and download the result.</p></section>
+</main>
+<script>
+const fileInput=document.getElementById('file'),quality=document.getElementById('quality'),format=document.getElementById('format'),widthInput=document.getElementById('width'),targetInput=document.getElementById('target'),preview=document.getElementById('preview'),originalInfo=document.getElementById('originalInfo'),status=document.getElementById('status'),download=document.getElementById('download');
+let image=null,originalName='image';
+quality.addEventListener('input',()=>document.getElementById('qvalue').textContent=quality.value);
+fileInput.addEventListener('change',()=>{const f=fileInput.files[0];image=null;download.hidden=true;status.textContent='';if(!f){preview.hidden=true;originalInfo.textContent='No image selected.';return;}originalName=f.name.replace(/\.[^.]+$/,'')||'image';const url=URL.createObjectURL(f);const im=new Image();im.onload=()=>{image=im;preview.src=url;preview.hidden=false;originalInfo.textContent='Original size: '+(f.size/1024).toFixed(1)+' KB | Dimensions: '+im.naturalWidth+' × '+im.naturalHeight+' px';};im.onerror=()=>{URL.revokeObjectURL(url);status.textContent='Could not open this image. Please choose another file.'};im.src=url;});
+function encode(canvas,mime,q){return new Promise(resolve=>canvas.toBlob(resolve,mime,q));}
+document.getElementById('compress').addEventListener('click',async()=>{if(!image){status.textContent='Please choose an image first.';return;}const btn=document.getElementById('compress');btn.disabled=true;download.hidden=true;status.textContent='Compressing image...';try{const originalW=image.naturalWidth,originalH=image.naturalHeight;let maxW=parseInt(widthInput.value,10);if(!Number.isFinite(maxW)||maxW<1)maxW=originalW;maxW=Math.min(maxW,originalW);const scale=Math.min(1,maxW/originalW);const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(originalW*scale));canvas.height=Math.max(1,Math.round(originalH*scale));const ctx=canvas.getContext('2d');if(format.value==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);}ctx.drawImage(image,0,0,canvas.width,canvas.height);const mime=format.value;const targetKB=parseFloat(targetInput.value);let q=Number(quality.value)/100;let blob=await encode(canvas,mime,q);if(targetKB>0&&mime!=='image/png'){for(let i=0;i<9&&blob&&blob.size>targetKB*1024&&q>0.12;i++){q=Math.max(0.12,q-0.1);blob=await encode(canvas,mime,q);}}if(!blob)throw new Error('Encoding failed');const url=URL.createObjectURL(blob);download.href=url;const ext=mime==='image/png'?'png':mime==='image/webp'?'webp':'jpg';download.download=originalName+'-compressed.'+ext;download.textContent='Download compressed image ('+(blob.size/1024).toFixed(1)+' KB)';download.hidden=false;let msg='Compressed size: '+(blob.size/1024).toFixed(1)+' KB | Dimensions: '+canvas.width+' × '+canvas.height+' px';if(targetKB>0&&blob.size>targetKB*1024)msg+=' | Target size not reached. Try reducing width or quality.';else if(targetKB>0)msg+=' | Target size reached.';status.textContent=msg;}catch(e){status.textContent='Compression failed. Please try another image or format.';}finally{btn.disabled=false;}});
+</script>
+</body>
+</html>
