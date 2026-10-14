@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Resizer - Resize Images Online | InfoJano</title>
+<meta name="description" content="Resize images directly in your browser with InfoJano's free image resizer. Set custom dimensions and download your resized image.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/image-resizer.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input,select{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:white}
+button,.download{display:block;width:100%;margin-top:16px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px;text-align:center;text-decoration:none}
+#preview{display:block;max-width:100%;max-height:320px;margin:18px auto}
+#status{margin-top:14px;overflow-wrap:anywhere}
+.note{font-size:14px;color:#4b5563}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Image Resizer</h1>
+<p>Resize images on your phone or computer</p>
+</header>
+<main>
+<div class="card">
+<h2>Resize Your Image</h2>
+<label for="file">Choose an Image</label>
+<input id="file" type="file" accept="image/*">
+<img id="preview" alt="Image preview" hidden>
+<label for="width">Width (pixels)</label>
+<input id="width" type="number" min="1" max="10000" placeholder="Example: 600">
+<label for="height">Height (pixels)</label>
+<input id="height" type="number" min="1" max="10000" placeholder="Example: 400">
+<label for="format">Output Format</label>
+<select id="format">
+<option value="image/jpeg">JPG</option>
+<option value="image/png">PNG</option>
+</select>
+<label><input id="ratio" type="checkbox" checked style="width:auto"> Keep original aspect ratio</label>
+<button type="button" onclick="resizeImage()">Resize Image</button>
+<div id="status" aria-live="polite">Choose an image to begin.</div>
+<a id="download" class="download" hidden>Download Resized Image</a>
+<p class="note">Your image is processed in your browser and is not uploaded to InfoJano. Very large images may use substantial phone memory.</p>
+</div>
+<section>
+<h2>How to Resize an Image</h2>
+<p>Select an image, enter the desired width and height in pixels, choose an output format, and tap Resize Image.</p>
+<p>Keeping the aspect ratio helps prevent the image from looking stretched. JPG is suitable for photographs, while PNG can preserve transparency.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+let sourceImage=null;
+let originalWidth=0;
+let originalHeight=0;
+let currentUrl=null;
+const fileInput=document.getElementById('file');
+const widthInput=document.getElementById('width');
+const heightInput=document.getElementById('height');
+const preview=document.getElementById('preview');
+const status=document.getElementById('status');
+const download=document.getElementById('download');
+fileInput.addEventListener('change',()=>{
+const file=fileInput.files&&fileInput.files[0];
+sourceImage=null;
+download.hidden=true;
+preview.hidden=true;
+if(currentUrl){URL.revokeObjectURL(currentUrl);currentUrl=null;}
+if(!file){status.textContent='Choose an image to begin.';return;}
+if(!file.type.startsWith('image/')){status.textContent='Please choose a valid image file.';return;}
+const url=URL.createObjectURL(file);
+const img=new Image();
+img.onload=()=>{
+sourceImage=img;
+originalWidth=img.naturalWidth;
+originalHeight=img.naturalHeight;
+widthInput.value=originalWidth;
+heightInput.value=originalHeight;
+preview.src=url;
+preview.hidden=false;
+status.textContent='Original size: '+originalWidth+' × '+originalHeight+' pixels.';
+};
+img.onerror=()=>{
+URL.revokeObjectURL(url);
+status.textContent='Could not open this image. Please try another file.';
+};
+img.src=url;
+});
+widthInput.addEventListener('input',()=>{
+if(!sourceImage||!document.getElementById('ratio').checked)return;
+const w=Number(widthInput.value);
+if(w>0)heightInput.value=Math.max(1,Math.round(w*originalHeight/originalWidth));
+});
+heightInput.addEventListener('input',()=>{
+if(!sourceImage||!document.getElementById('ratio').checked)return;
+const h=Number(heightInput.value);
+if(h>0)widthInput.value=Math.max(1,Math.round(h*originalWidth/originalHeight));
+});
+document.getElementById('ratio').addEventListener('change',()=>{
+if(document.getElementById('ratio').checked&&sourceImage){
+heightInput.value=Math.max(1,Math.round(Number(widthInput.value)*originalHeight/originalWidth));
+}
+});
+function resizeImage(){
+if(!sourceImage){status.textContent='Please choose an image first.';return;}
+const w=Number(widthInput.value),h=Number(heightInput.value);
+if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000){
+status.textContent='Enter width and height between 1 and 10000 pixels.';
+return;
+}
+try{
+const canvas=document.createElement('canvas');
+canvas.width=w;
+canvas.height=h;
+const ctx=canvas.getContext('2d');
+if(!ctx){status.textContent='Image processing is not supported in this browser.';return;}
+if(document.getElementById('format').value==='image/jpeg'){
+ctx.fillStyle='#ffffff';
+ctx.fillRect(0,0,w,h);
+}
+ctx.drawImage(sourceImage,0,0,w,h);
+canvas.toBlob(blob=>{
+if(!blob){status.textContent='Could not resize this image. Try a smaller size.';return;}
+if(currentUrl)URL.revokeObjectURL(currentUrl);
+currentUrl=URL.createObjectURL(blob);
+download.href=currentUrl;
+download.download='infojano-resized.'+(document.getElementById('format').value==='image/png'?'png':'jpg');
+download.hidden=false;
+status.textContent='Done! New size: '+w+' × '+h+' pixels. File size: '+(blob.size/1024).toFixed(1)+' KB.';
+},document.getElementById('format').value,0.92);
+}catch(e){
+status.textContent='Unable to resize this image. Try a smaller image or dimensions.';
+}
+}
+</script>
+</body>
+</html>
