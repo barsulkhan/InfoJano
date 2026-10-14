@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Currency Converter - Free Online Exchange Calculator | InfoJano</title>
+<meta name="description" content="Convert currencies using an exchange rate you enter with InfoJano's free online currency converter.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/currency-converter.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input,select{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:white}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;overflow-wrap:anywhere}
+a{color:#1458c8}
+.note{font-size:14px;color:#4b5563}
+</style>
+</head>
+<body>
+<header>
+<h1>Currency Converter</h1>
+<p>Convert money between currencies</p>
+</header>
+<main>
+<div class="card">
+<h2>Convert Currency</h2>
+<label for="amount">Amount</label>
+<input id="amount" type="number" min="0" step="any" placeholder="Example: 100">
+<label for="from">From Currency</label>
+<select id="from">
+<option value="INR">INR - Indian Rupee</option>
+<option value="USD">USD - US Dollar</option>
+<option value="EUR">EUR - Euro</option>
+<option value="GBP">GBP - British Pound</option>
+<option value="BDT">BDT - Bangladeshi Taka</option>
+<option value="AED">AED - UAE Dirham</option>
+<option value="JPY">JPY - Japanese Yen</option>
+<option value="CAD">CAD - Canadian Dollar</option>
+</select>
+<label for="to">To Currency</label>
+<select id="to">
+<option value="USD">USD - US Dollar</option>
+<option value="INR">INR - Indian Rupee</option>
+<option value="EUR">EUR - Euro</option>
+<option value="GBP">GBP - British Pound</option>
+<option value="BDT">BDT - Bangladeshi Taka</option>
+<option value="AED">AED - UAE Dirham</option>
+<option value="JPY">JPY - Japanese Yen</option>
+<option value="CAD">CAD - Canadian Dollar</option>
+</select>
+<label for="rate">Exchange Rate (1 unit of From = how many To?)</label>
+<input id="rate" type="number" min="0" step="any" placeholder="Enter current exchange rate">
+<button onclick="convert()">Convert</button>
+<div id="result" class="result" aria-live="polite">Enter an amount and exchange rate.</div>
+<p class="note">This tool uses the rate you enter. It does not fetch live exchange rates. Check a trusted financial source for the latest rate.</p>
+</div>
+<section>
+<h2>How Currency Conversion Works</h2>
+<p>Multiply the amount by the exchange rate to estimate its value in another currency.</p>
+<p><strong>Formula:</strong> Converted Amount = Original Amount × Exchange Rate.</p>
+<p>Actual bank or money-transfer amounts may differ because of fees and provider rates.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function convert(){
+const amountInput=document.getElementById('amount').value;
+const rateInput=document.getElementById('rate').value;
+const from=document.getElementById('from').value;
+const to=document.getElementById('to').value;
+const out=document.getElementById('result');
+const amount=Number(amountInput),rate=Number(rateInput);
+if(amountInput===''||rateInput===''||!Number.isFinite(amount)||!Number.isFinite(rate)||amount<0||rate<=0){
+out.textContent='Please enter a valid amount and an exchange rate greater than zero.';
+return;
+}
+const result=amount*rate;
+out.innerHTML='<strong>'+amount.toLocaleString('en-US')+' '+from+'</strong><br>equals<br><strong>'+result.toLocaleString('en-US',{maximumFractionDigits:6})+' '+to+'</strong>';
+}
+</script>
+</body>
+</html>
