@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Number to Words Converter - Free Online Tool | InfoJano</title>
+<meta name="description" content="Convert numbers into English words instantly with InfoJano's free number to words converter.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/number-to-words.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:18px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;overflow-wrap:anywhere}
+a{color:#1458c8}
+</style>
+</head>
+<body>
+<header>
+<h1>Number to Words Converter</h1>
+<p>Convert numbers into English words</p>
+</header>
+<main>
+<div class="card">
+<h2>Convert Number</h2>
+<label for="number">Enter a whole number</label>
+<input id="number" type="number" step="1" placeholder="Example: 12345">
+<button onclick="convertNumber()">Convert to Words</button>
+<div id="result" class="result" aria-live="polite">Your result will appear here.</div>
+<button onclick="copyResult()">Copy Words</button>
+</div>
+<section>
+<h2>What Is a Number to Words Converter?</h2>
+<p>This tool converts a whole number into English words. It can help with writing amounts, learning numbers and preparing simple documents.</p>
+<h2>How to Use</h2>
+<p>Enter a whole number and tap Convert to Words. Copy the result if needed.</p>
+</section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script>
+function under1000(n){
+const ones=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+let words='';
+if(n>=100){
+words+=ones[Math.floor(n/100)]+' hundred';
+n%=100;
+if(n)words+=' ';
+}
+if(n>=20){
+words+=tens[Math.floor(n/10)];
+if(n%10)words+='-'+ones[n%10];
+}else if(n>0||words===''){
+words+=ones[n];
+}
+return words;
+}
+function toWords(n){
+if(n===0)return 'zero';
+const scales=['','thousand','million','billion','trillion','quadrillion'];
+let parts=[];
+let i=0;
+while(n>0){
+const chunk=n%1000;
+if(chunk){
+let part=under1000(chunk);
+if(scales[i])part+=' '+scales[i];
+parts.unshift(part);
+}
+n=Math.floor(n/1000);
+i++;
+}
+return parts.join(' ');
+}
+function convertNumber(){
+const input=document.getElementById('number').value;
+const out=document.getElementById('result');
+if(input===''||!Number.isSafeInteger(Number(input))){
+out.textContent='Please enter a valid whole number within the supported range.';
+return;
+}
+let n=Number(input);
+if(Math.abs(n)>999999999999999){
+out.textContent='Please enter a number between -999,999,999,999,999 and 999,999,999,999,999.';
+return;
+}
+let words=n<0?'minus '+toWords(Math.abs(n)):toWords(n);
+out.textContent=words.charAt(0).toUpperCase()+words.slice(1);
+}
+async function copyResult(){
+const text=document.getElementById('result').textContent;
+if(!text||text==='Your result will appear here.'){
+return;
+}
+try{
+await navigator.clipboard.writeText(text);
+alert('Words copied.');
+}catch(e){
+alert('Please select and copy the result manually.');
+}
+}
+</script>
+</body>
+</html>
