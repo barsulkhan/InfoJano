@@ -65,7 +65,7 @@ jobs:
             gradle --no-daemon assembleDebug \
               -PtoolId="$tool_id" \
               -PtoolName="$tool_name" \
-              -PtoolUrl="https://barsulkhan.github.io/InfoJano/$page"
+              -PtoolUrl="https://barsulkhan.github.io/InfoJano/$page?app=1"
             filename="InfoJano-${tool_name// /-}.apk"
             cp app/build/outputs/apk/debug/app-debug.apk "dist/$filename"
             echo "Built $filename"
@@ -113,4 +113,5 @@ jobs:
             These are debug-signed test builds and require internet access.
           draft: false
           prerelease: true
+          overwrite_files: true
           files: android/dist/*.apk
