@@ -33,6 +33,7 @@ jobs:
         run: python -m pip install --user pillow
 
       - name: Build one APK for each remaining tool
+        working-directory: android
         shell: bash
         run: |
           set -euo pipefail
