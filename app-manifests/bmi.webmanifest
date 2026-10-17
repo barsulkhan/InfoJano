@@ -1,0 +1,23 @@
+{
+  "id": "/InfoJano/bmi.html",
+  "name": "InfoJano — BMI Calculator",
+  "short_name": "BMI Calculator",
+  "description": "Install the InfoJano BMI Calculator tool for quick access.",
+  "start_url": "/InfoJano/bmi.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/InfoJano/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
