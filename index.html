@@ -226,6 +226,20 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 @keyframes ij-convert-turn{0%,100%{transform:rotate(0)}50%{transform:rotate(180deg)}}
 @media(prefers-reduced-motion:reduce){.tool:nth-child(n) .icon,.tool:nth-child(10) .icon:after{animation:none!important}}
 
+
+/* Center and enlarge tool labels for easier reading on phones */
+@media(max-width:1000px){
+  .card.tool{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:178px;padding:16px 12px}
+  .card.tool .icon{justify-content:center;margin:0 auto 4px}
+  .card.tool h3{width:100%;font-size:20px;line-height:1.25;font-weight:800;margin:8px 0 6px;text-align:center;overflow-wrap:anywhere}
+  .card.tool p{width:100%;font-size:13.5px;line-height:1.4;text-align:center}
+}
+@media(max-width:420px){
+  .card.tool{min-height:172px;padding:14px 9px}
+  .card.tool h3{font-size:18px;line-height:1.25}
+  .card.tool p{font-size:13px}
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
