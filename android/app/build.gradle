@@ -2,15 +2,21 @@ plugins {
     id 'com.android.application'
 }
 
+def toolId = providers.gradleProperty('toolId').getOrElse('agecalculator')
+def toolName = providers.gradleProperty('toolName').getOrElse('Age Calculator')
+def toolUrl = providers.gradleProperty('toolUrl').getOrElse('https://barsulkhan.github.io/InfoJano/age.html')
+
 android {
     namespace 'com.infojano.agecalculator'
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.infojano.agecalculator'
+        applicationId "com.infojano.${toolId}"
         minSdk 23
         targetSdk 35
         versionCode 1
         versionName '1.0.0'
+        resValue "string", "app_name", toolName
+        resValue "string", "tool_url", toolUrl
     }
 }
