@@ -1,0 +1,23 @@
+{
+  "id": "/InfoJano/percentage.html",
+  "name": "InfoJano — Percentage Calculator",
+  "short_name": "Percentage Calculator",
+  "description": "Install the InfoJano Percentage Calculator tool for quick access.",
+  "start_url": "/InfoJano/percentage.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/InfoJano/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

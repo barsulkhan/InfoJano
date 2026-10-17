@@ -1,0 +1,23 @@
+{
+  "id": "/InfoJano/loan-interest.html",
+  "name": "InfoJano — Loan Interest Calculator",
+  "short_name": "Loan Interest Calculator",
+  "description": "Install the InfoJano Loan Interest Calculator tool for quick access.",
+  "start_url": "/InfoJano/loan-interest.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/InfoJano/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

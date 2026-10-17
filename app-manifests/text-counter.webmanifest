@@ -1,0 +1,23 @@
+{
+  "id": "/InfoJano/text-counter.html",
+  "name": "InfoJano — Text Counter",
+  "short_name": "Text Counter",
+  "description": "Install the InfoJano Text Counter tool for quick access.",
+  "start_url": "/InfoJano/text-counter.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/InfoJano/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
