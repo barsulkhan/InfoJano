@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Savings Calculator - Estimate Future Savings | InfoJano</title>
+<meta name="description" content="Estimate how your savings may grow with a starting balance, monthly contributions, an assumed annual return and a time period.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/savings.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.8;overflow-wrap:anywhere}
+a{color:#1458c8}
+footer{text-align:center;padding:24px}
+</style>
+</head>
+<body>
+<header><h1>Savings Calculator</h1><p>Estimate your future savings</p></header>
+<main>
+<div class="card">
+<h2>Calculate Future Savings</h2>
+<label for="start">Starting savings (₹)</label><input id="start" type="number" min="0" step="any" placeholder="Example: 10000">
+<label for="monthly">Monthly contribution (₹)</label><input id="monthly" type="number" min="0" step="any" placeholder="Example: 2000">
+<label for="rate">Assumed annual return (%)</label><input id="rate" type="number" min="0" max="100" step="any" value="0">
+<label for="months">Duration (months)</label><input id="months" type="number" min="1" max="1200" step="1" placeholder="Example: 12">
+<button onclick="calculate()">Calculate Savings</button>
+<div id="result" class="result" aria-live="polite">Enter your savings details to estimate the future value.</div>
+</div>
+<section><h2>How it works</h2><p>This estimate applies an assumed monthly rate to the starting balance and monthly contributions. Actual returns can vary and are not guaranteed.</p></section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer>© InfoJano</footer>
+<script>
+function calculate(){
+ const start=Number(document.getElementById('start').value);
+ const monthly=Number(document.getElementById('monthly').value);
+ const annual=Number(document.getElementById('rate').value);
+ const months=Number(document.getElementById('months').value);
+ const out=document.getElementById('result');
+ if(![start,monthly,annual,months].every(Number.isFinite)||start<0||monthly<0||annual<0||annual>100||!Number.isInteger(months)||months<1||months>1200){out.textContent='Please enter valid non-negative amounts, a return from 0 to 100%, and a duration of 1–1200 whole months.';return;}
+ const r=Math.pow(1+annual/100,1/12)-1;
+ let balance=start;
+ for(let i=0;i<months;i++){balance=balance*(1+r)+monthly;}
+ const contributed=start+monthly*months;
+ const fmt=n=>'₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+ out.innerHTML='<strong>Estimated future savings:</strong> '+fmt(balance)+'<br><strong>Total amount contributed:</strong> '+fmt(contributed)+'<br><strong>Estimated growth:</strong> '+fmt(balance-contributed)+'<br><small>Illustrative estimate only, not financial advice or a guaranteed return.</small>';
+}
+</script>
+</body>
+</html>
