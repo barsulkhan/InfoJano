@@ -126,30 +126,33 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 }
 
 
-/* InfoJano animated tool icons — subtle, lightweight, and accessible */
+/* InfoJano animated tool icons — more visible on phones */
 .tool .icon {
-  transform-origin: 50% 60%;
-  animation: infojano-icon-float 3.2s ease-in-out infinite;
+  transform-origin: 50% 65%;
+  animation: infojano-icon-bounce 2s ease-in-out infinite;
+  will-change: transform;
 }
-.tool:nth-child(4n + 2) .icon { animation-delay: .35s; }
-.tool:nth-child(4n + 3) .icon { animation-delay: .7s; }
-.tool:nth-child(4n + 4) .icon { animation-delay: 1.05s; }
+.tool:nth-child(4n + 2) .icon { animation-delay: .25s; }
+.tool:nth-child(4n + 3) .icon { animation-delay: .5s; }
+.tool:nth-child(4n + 4) .icon { animation-delay: .75s; }
 .tool:hover .icon, .tool:focus-visible .icon {
   animation: infojano-icon-pop .55s ease-in-out 1;
 }
 .tool:active .icon { animation: infojano-icon-pop .35s ease-in-out 1; }
-@keyframes infojano-icon-float {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-3px) rotate(-2deg); }
+@keyframes infojano-icon-bounce {
+  0%, 100% { transform: translateY(0) rotate(0) scale(1); }
+  35% { transform: translateY(-7px) rotate(-5deg) scale(1.1); }
+  60% { transform: translateY(0) rotate(3deg) scale(1.03); }
 }
 @keyframes infojano-icon-pop {
   0%, 100% { transform: scale(1) rotate(0); }
-  45% { transform: scale(1.13) rotate(-5deg); }
-  75% { transform: scale(.98) rotate(3deg); }
+  45% { transform: translateY(-5px) scale(1.18) rotate(-7deg); }
+  75% { transform: scale(.98) rotate(4deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .tool .icon, .tool:hover .icon, .tool:focus-visible .icon, .tool:active .icon {
     animation: none !important;
+    will-change: auto;
   }
 }
 
