@@ -10,6 +10,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings;
 import android.graphics.Color;
+import android.content.ContentValues;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Base64;
+import android.webkit.JavascriptInterface;
+import android.widget.Toast;
+import java.io.OutputStream;
 import android.view.Window;
 
 public class MainActivity extends Activity {
@@ -34,6 +41,7 @@ public class MainActivity extends Activity {
         settings.setUseWideViewPort(true);
         settings.setSupportZoom(false);
         webView.setWebViewClient(new WebViewClient());
+        webView.addJavascriptInterface(new PdfDownloadBridge(), "AndroidBridge");
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onShowFileChooser(WebView view, ValueCallback<Uri[]> callback,
@@ -61,6 +69,32 @@ public class MainActivity extends Activity {
             webView.loadUrl(getString(com.infojano.agecalculator.R.string.tool_url));
         } else {
             webView.restoreState(savedInstanceState);
+        }
+    }
+
+
+    private class PdfDownloadBridge {
+        @JavascriptInterface
+        public boolean savePdf(String base64Data, String fileName) {
+            try {
+                byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Downloads.DISPLAY_NAME, fileName == null ? "infojano-images.pdf" : fileName);
+                values.put(MediaStore.Downloads.MIME_TYPE, "application/pdf");
+                values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+                Uri uri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+                if (uri == null) throw new Exception("Could not create download file");
+                try (OutputStream stream = getContentResolver().openOutputStream(uri)) {
+                    if (stream == null) throw new Exception("Could not open download file");
+                    stream.write(bytes);
+                    stream.flush();
+                }
+                runOnUiThread(() -> Toast.makeText(MainActivity.this, "PDF saved to Downloads", Toast.LENGTH_LONG).show());
+                return true;
+            } catch (Exception e) {
+                runOnUiThread(() -> Toast.makeText(MainActivity.this, "Could not save PDF. Please try again.", Toast.LENGTH_LONG).show());
+                return false;
+            }
         }
     }
 
