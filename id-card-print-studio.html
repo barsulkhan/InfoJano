@@ -72,7 +72,7 @@ const $=id=>document.getElementById(id), sources=[], objectUrls=[];
  * Do not let one document's fixes alter another document's profile.
  */
 const DOCUMENT_RULES=Object.freeze({
- 'Ayushman Bharat Card':Object.freeze({imageAutoSplit:true,pdfAutoSplit:false,workflow:'ayushman-jpg-split-v1'}),
+ 'Ayushman Bharat Card':Object.freeze({imageAutoSplit:true,maxImageCandidates:2,pdfAutoSplit:false,workflow:'ayushman-jpg-split-v2'}),
  'Aadhaar Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'aadhaar-manual-crop-v1'}),
  'Voter ID':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'voter-manual-crop-pending'}),
  'PAN Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'pan-manual-crop-pending'}),
@@ -105,9 +105,14 @@ function detectCardRegions(canvas){
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function addDetectedSources(name,canvas,allowAutoDetect=true){
- // Keep PDF pages intact for manual cropping; retain automatic card splitting for uploaded JPG/PNG photos.
+ // Keep PDF pages intact for manual cropping; retain automatic splitting only for document profiles that enable it.
  if(allowAutoDetect){
-  const regions=detectCardRegions(canvas);
+  let regions=detectCardRegions(canvas);
+  const rules=activeDocumentRules();
+  // Ayushman uploads can contain a card plus a separate portrait; keep the two largest detected regions only.
+  if(rules.maxImageCandidates&&regions.length>rules.maxImageCandidates){
+   regions=regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h)).slice(0,rules.maxImageCandidates);
+  }
   if(regions.length>1){
    regions.sort((a,b)=>a.y-b.y||a.x-b.x);
    regions.forEach((r,i)=>{const item=makeImageSource(name+' — detected card '+(i+1),cropRegion({canvas},r));sources.push(item);addOption(item,sources.length-1)});
