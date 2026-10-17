@@ -78,7 +78,7 @@ function detectCardRegions(canvas){
  if(count>=Math.max(20,Math.floor((rw+rh)*.12))&&rw>gw*.12&&rh>gh*.025&&ratio>.75&&ratio<2.8)components.push({x:minX*step,y:minY*step,w:Math.min(w,(maxX+1)*step)-minX*step,h:Math.min(h,(maxY+1)*step)-minY*step});
  }
  components.sort((a,b)=>b.w*b.h-a.w*a.h);const chosen=[];
- for(const r of components){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.25||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.25)){const px=Math.max(step,Math.round(r.w*.03)),py=Math.max(step,Math.round(r.h*.03)),x=Math.max(0,r.x-px),y=Math.max(0,r.y-py),right=Math.min(w,r.x+r.w+px),bottom=Math.min(h,r.y+r.h+py);chosen.push({x,y,w:right-x,h:bottom-y});}}
+ for(const r of components){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.25||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.25)){const x=Math.max(0,r.x),y=Math.max(0,r.y),right=Math.min(w,r.x+r.w),bottom=Math.min(h,r.y+r.h);chosen.push({x,y,w:right-x,h:bottom-y});}}
  return chosen.sort((a,b)=>a.x-b.x||a.y-b.y).slice(0,12);
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
