@@ -1,0 +1,23 @@
+{
+  "id": "/InfoJano/image-to-pdf.html",
+  "name": "InfoJano — Image to PDF",
+  "short_name": "Image to PDF",
+  "description": "Install the InfoJano Image to PDF tool for quick access.",
+  "start_url": "/InfoJano/image-to-pdf.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/InfoJano/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

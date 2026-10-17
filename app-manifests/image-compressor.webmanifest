@@ -1,0 +1,23 @@
+{
+  "id": "/InfoJano/image-compressor.html",
+  "name": "InfoJano — Image Compressor",
+  "short_name": "Image Compressor",
+  "description": "Install the InfoJano Image Compressor tool for quick access.",
+  "start_url": "/InfoJano/image-compressor.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/InfoJano/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

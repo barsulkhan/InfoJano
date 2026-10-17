@@ -1,0 +1,23 @@
+{
+  "id": "/InfoJano/loan-eligibility.html",
+  "name": "InfoJano — Loan Eligibility Calculator",
+  "short_name": "Loan Eligibility Calculator",
+  "description": "Install the InfoJano Loan Eligibility Calculator tool for quick access.",
+  "start_url": "/InfoJano/loan-eligibility.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/InfoJano/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
