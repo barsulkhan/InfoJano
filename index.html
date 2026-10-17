@@ -103,6 +103,28 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 .page-links-grid a{display:block;padding:10px 12px;border:1px solid #e5eaf2;border-radius:11px;color:#1d4ed8;text-decoration:none;font-size:13px;font-weight:650;background:#f8fafc}
 .page-links-grid a:focus,.page-links-grid a:hover{outline:2px solid #93c5fd;background:#eef4ff}
 
+
+/* Tester-friendly layout: keep cards readable on phones and narrow tablet views */
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .card.tool { min-height: 142px; padding: 16px 14px; }
+  .tool .icon { height: 44px; }
+  .tool .icon svg { width: 42px; height: 42px; }
+  .tool h3 { font-size: 18px; }
+  .tool p { font-size: 13px; line-height: 1.4; }
+  .info-grid { grid-template-columns: 1fr; }
+  .guides-grid { grid-template-columns: 1fr; gap: 10px; }
+  .guide-card { padding: 16px; }
+  .page-links-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .page-links-grid a { font-size: 14px; padding: 12px; }
+}
+@media (max-width: 420px) {
+  .grid { gap: 10px; }
+  .card.tool { padding: 14px 12px; min-height: 136px; }
+  .tool h3 { font-size: 17px; }
+  .tool p { font-size: 12.5px; }
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
