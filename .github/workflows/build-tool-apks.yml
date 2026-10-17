@@ -105,12 +105,12 @@ jobs:
       - name: Publish tool APK release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: infojano-tool-apps-v1.0.0
-          name: InfoJano Tool Apps v1.0.0
+          tag_name: infojano-tool-apps-v1.1.0
+          name: InfoJano Tool Apps v1.1.0
           body: |
-            Separate Android APKs for individual InfoJano tools.
-            Each app opens its matching tool page directly.
-            These are debug-signed test builds and require internet access.
+            InfoJano individual tool apps v1.1.0.
+            Updated app identity to avoid conflicts with earlier test installs.
+            Each app opens its matching tool page directly. These debug-signed builds require internet access.
           draft: false
           prerelease: true
           overwrite_files: true
