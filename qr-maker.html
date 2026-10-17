@@ -14,16 +14,17 @@ main{max-width:650px;margin:24px auto;padding:16px}
 .card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
 label{display:block;margin-top:15px;font-weight:600}
 textarea{width:100%;min-height:110px;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
-button{width:100%;margin-top:16px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+button{width:100%;margin-top:16px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px;cursor:pointer}
+button:disabled{opacity:.65;cursor:wait}
 #qr{margin-top:20px;text-align:center;overflow-wrap:anywhere}
 #qr img{max-width:100%;height:auto;background:white;padding:10px;border:1px solid #ddd}
+#qr .qr-download{display:block;margin-top:12px;padding:13px 16px;border-radius:10px;background:#1458c8;color:#fff;text-decoration:none;font-weight:700}
+#qr .qr-status{font-size:14px;color:#475569;margin-top:10px}
 .note{font-size:14px;color:#4b5563}
 a{color:#1458c8}
-
-/* InfoJano animated page-entry loader */
 .ij-page-loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#f2f6ff;color:#172033;transition:opacity .28s ease,visibility .28s ease}.ij-page-loader.ij-loaded{opacity:0;visibility:hidden;pointer-events:none}.ij-loader-card{width:min(82vw,300px);padding:28px 22px;border-radius:22px;background:#fff;box-shadow:0 12px 38px #102a5018;text-align:center}.ij-loader-mark{width:66px;height:66px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#dbeafe,#eff6ff);color:#1458c8;font-size:34px;font-weight:800;animation:ij-loader-bob .85s ease-in-out infinite alternate}.ij-loader-ring{width:34px;height:34px;margin:0 auto 13px;border:4px solid #dbeafe;border-top-color:#2563eb;border-right-color:#06b6d4;border-radius:50%;animation:ij-loader-spin .8s linear infinite}.ij-loader-title{font-size:18px;font-weight:800;margin:0 0 5px}.ij-loader-subtitle{font-size:13px;color:#64748b;margin:0}.ij-loader-dots{display:flex;justify-content:center;gap:5px;margin-top:14px}.ij-loader-dots span{width:7px;height:7px;border-radius:50%;background:#2563eb;animation:ij-loader-dot .8s ease-in-out infinite alternate}.ij-loader-dots span:nth-child(2){animation-delay:.18s}.ij-loader-dots span:nth-child(3){animation-delay:.36s}@keyframes ij-loader-spin{to{transform:rotate(360deg)}}@keyframes ij-loader-bob{to{transform:translateY(-6px) scale(1.04)}}@keyframes ij-loader-dot{to{opacity:.25;transform:translateY(-4px)}}@media(prefers-reduced-motion:reduce){.ij-loader-mark,.ij-loader-ring,.ij-loader-dots span{animation:none!important}.ij-page-loader{transition:none}}
 </style>
-  <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
+<link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
 </head>
 <body>
@@ -33,7 +34,7 @@ a{color:#1458c8}
 <h2>Make Your QR Code</h2>
 <label for="content">Text or Website URL</label>
 <textarea id="content" placeholder="Enter text or paste a website link"></textarea>
-<button onclick="makeQR()">Generate QR Code</button>
+<button id="generate-button" type="button" onclick="makeQR()">Generate QR Code</button>
 <div id="qr" aria-live="polite"></div>
 <p class="note">An internet connection is required to generate the QR code. Do not enter passwords or sensitive personal information.</p>
 </div>
@@ -47,63 +48,80 @@ a{color:#1458c8}
 <section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
 <h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
 <p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="password-generator.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Password Generator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">generate a random password.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="text-counter.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14M12 5v14M8 19h8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Text Counter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">count words and characters.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="image-to-pdf.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v6h5M9 13h6m-6 3h6"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Image to PDF Converter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">combine images into a PDF.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="image-compressor.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8 9 3 3-3 3m8-6-3 3 3 3"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Image Compressor</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">reduce image file size.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="password-generator.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg></span><strong style="font-size:15px;line-height:1.3">Password Generator</strong><span style="font-size:13px;line-height:1.45;color:#64748b">generate a random password.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a>
+<a href="text-counter.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14M12 5v14M8 19h8"/></svg></span><strong style="font-size:15px;line-height:1.3">Text Counter</strong><span style="font-size:13px;line-height:1.45;color:#64748b">count words and characters.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a>
+<a href="image-to-pdf.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v6h5M9 13h6m-6 3h6"/></svg></span><strong style="font-size:15px;line-height:1.3">Image to PDF Converter</strong><span style="font-size:13px;line-height:1.45;color:#64748b">combine images into a PDF.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a>
+<a href="image-compressor.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8 9 3 3-3 3m8-6-3 3 3 3"/></svg></span><strong style="font-size:15px;line-height:1.3">Image Compressor</strong><span style="font-size:13px;line-height:1.45;color:#64748b">reduce image file size.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a></div>
 </section>
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script>
+let qrObjectUrl = null;
 function makeQR(){
 const value=document.getElementById('content').value.trim();
 const box=document.getElementById('qr');
+const button=document.getElementById('generate-button');
 box.replaceChildren();
-if(!value){
-box.textContent='Please enter text or a website URL first.';
-return;
-}
+if(qrObjectUrl){URL.revokeObjectURL(qrObjectUrl);qrObjectUrl=null;}
+if(!value){box.textContent='Please enter text or a website URL first.';return;}
+button.disabled=true;
+button.textContent='Generating QR Code… Please wait';
+const status=document.createElement('p');
+status.className='qr-status';
+status.textContent='Generating your QR code…';
+box.appendChild(status);
+const source='https://api.qrserver.com/v1/create-qr-code/?size=520x520&data='+encodeURIComponent(value);
 const img=document.createElement('img');
 img.alt='Generated QR code';
 img.width=260;
 img.height=260;
-img.src='https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+encodeURIComponent(value);
+img.onload=async function(){
+button.disabled=false;
+button.textContent='Generate QR Code';
+box.replaceChildren(img);
+const download=document.createElement('a');
+download.className='qr-download';
+download.href='#';
+download.textContent='Download QR Code (PNG)';
+download.setAttribute('role','button');
+download.addEventListener('click',async function(event){
+event.preventDefault();
+download.textContent='Downloading… Please wait';
+download.style.pointerEvents='none';
+try{
+const response=await fetch(source,{mode:'cors',cache:'no-store'});
+if(!response.ok)throw new Error('QR image download failed');
+const blob=await response.blob();
+if(!blob.type.includes('image'))throw new Error('Invalid QR image');
+if(qrObjectUrl)URL.revokeObjectURL(qrObjectUrl);
+qrObjectUrl=URL.createObjectURL(blob);
+const now=new Date();
+const stamp=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'-'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0')+String(now.getSeconds()).padStart(2,'0')+'-'+String(now.getMilliseconds()).padStart(3,'0');
+const file=document.createElement('a');
+file.href=qrObjectUrl;
+file.download='InfoJano-QR-'+stamp+'.png';
+file.style.display='none';
+document.body.appendChild(file);
+file.click();
+file.remove();
+download.textContent='✓ Download started — check your Downloads folder';
+download.style.background='#15803d';
+}catch(error){
+download.textContent='Download failed — tap to retry';
+download.style.pointerEvents='auto';
+download.style.background='#b91c1c';
+}
+});
+box.appendChild(download);
+};
 img.onerror=function(){
+button.disabled=false;
+button.textContent='Generate QR Code';
 box.textContent='Could not generate the QR code. Check your internet connection and try again.';
 };
-box.appendChild(img);
-const link=document.createElement('a');
-link.href=img.src;
-link.download='infojano-qr.png';
-link.textContent='Open QR image to save';
-link.style.display='block';
-link.style.marginTop='12px';
-link.target='_blank';
-link.rel='noopener';
-box.appendChild(link);
+img.src=source;
 }
 </script>
-
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
 <script src="/InfoJano/download-progress.js" defer></script>
 <script src="/InfoJano/install.js" defer></script>
