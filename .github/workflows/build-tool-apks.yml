@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p dist android/app/src/main/res/drawable-nodpi
+          mkdir -p dist app/src/main/res/drawable-nodpi
           while IFS='|' read -r tool_id tool_name page icon_text; do
             [ -z "$tool_id" ] && continue
             echo "::group::Building $tool_name"
@@ -59,14 +59,14 @@ jobs:
           x=(512-(box[2]-box[0]))/2-box[0]
           y=(512-(box[3]-box[1]))/2-box[1]-8
           d.text((x,y), letters, font=font, fill=bg)
-          im.save("android/app/src/main/res/drawable-nodpi/tool_icon.png")
+          im.save("app/src/main/res/drawable-nodpi/tool_icon.png")
           PY
             gradle --no-daemon assembleDebug \
               -PtoolId="$tool_id" \
               -PtoolName="$tool_name" \
               -PtoolUrl="https://barsulkhan.github.io/InfoJano/$page"
             filename="InfoJano-${tool_name// /-}.apk"
-            cp android/app/build/outputs/apk/debug/app-debug.apk "dist/$filename"
+            cp app/build/outputs/apk/debug/app-debug.apk "dist/$filename"
             echo "Built $filename"
             echo "::endgroup::"
           done <<'TOOLS'
@@ -97,7 +97,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: InfoJano-Tool-APKs
-          path: dist/*.apk
+          path: android/dist/*.apk
           if-no-files-found: error
           retention-days: 30
 
@@ -112,4 +112,4 @@ jobs:
             These are debug-signed test builds and require internet access.
           draft: false
           prerelease: true
-          files: dist/*.apk
+          files: android/dist/*.apk
