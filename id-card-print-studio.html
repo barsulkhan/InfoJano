@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ID Card Print Studio | InfoJano</title>
+<meta name="description" content="Prepare ID cards for printing. Upload PDF scans or front and back photos, crop, set dimensions and DPI, preview A4 or 4x6 layouts, and export a print-ready PDF.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/id-card-print-studio.html">
+<meta name="theme-color" content="#0b1220">
+<style>
+:root{--ink:#172033;--muted:#64748b;--line:#dbe3ef;--blue:#1458c8;--soft:#eff6ff;--bg:#f3f6fb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{background:#0b1220;color:#fff;padding:20px 16px}header .top{max-width:960px;margin:auto;display:flex;align-items:center;gap:12px}header .mark{font-size:32px}header h1{font-size:22px;line-height:1.2;margin:0}header p{margin:5px 0 0;color:#cbd5e1;font-size:13px}main{max-width:960px;margin:18px auto;padding:0 14px 36px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:14px;box-shadow:0 3px 14px #0f172a08}h2{font-size:18px;margin:0 0 12px}.step{display:inline-grid;place-items:center;width:28px;height:28px;background:#dbeafe;color:#1d4ed8;border-radius:9px;font-weight:800;margin-right:7px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field select{width:100%;min-width:0;border:1px solid #cbd5e1;border-radius:10px;padding:11px;background:white;color:var(--ink);font:inherit}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin:8px 0 0}.btn{border:0;border-radius:11px;background:var(--blue);color:white;padding:12px 15px;font-weight:750;font-size:15px;cursor:pointer}.btn:disabled{opacity:.6;cursor:wait}.btn.alt{background:#e8effb;color:#1746a2}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.previewgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.preview{border:1px dashed #b8c7da;border-radius:13px;padding:10px;text-align:center;min-width:0;background:#f8fafc}.preview canvas,.preview img{max-width:100%;height:auto;background:white;border:1px solid #e2e8f0}.preview .placeholder{color:#64748b;font-size:13px;padding:28px 8px}.status{padding:12px;border-radius:11px;background:#eff6ff;color:#1e40af;font-size:14px;margin-top:12px;overflow-wrap:anywhere}.status.error{background:#fef2f2;color:#991b1b}.status.ok{background:#ecfdf5;color:#166534}.warning{padding:12px;border-radius:11px;background:#fff7ed;color:#9a3412;font-size:13px;line-height:1.5}.hide{display:none!important}footer{text-align:center;color:#64748b;font-size:12px;padding:20px}a{color:#1d4ed8}@media(max-width:600px){.grid,.previewgrid{grid-template-columns:1fr}header h1{font-size:20px}.card{padding:14px}main{padding:0 10px 28px}}
+@keyframes spin{to{transform:rotate(360deg)}}.spinner{display:inline-block;width:16px;height:16px;border:2px solid #ffffff70;border-top-color:white;border-radius:50%;vertical-align:-3px;margin-right:7px;animation:spin .7s linear infinite}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="mark">🪪</div><div><h1>InfoJano ID Card Print Studio</h1><p>Prepare ID cards for printing • PDF or photos • A4 or 4×6</p></div></div></header>
+<main>
+<section class="card"><h2><span class="step">1</span>Choose card type</h2>
+<div class="grid">
+<div class="field"><label for="cardType">Document type</label><select id="cardType"><option value="Aadhaar Card">Aadhaar Card</option><option>Voter ID</option><option>PAN Card</option><option>Driving Licence</option><option>Vehicle RC</option><option>Digital Ration Card</option><option>Ayushman Bharat Card</option><option>Other ID / Government Card</option></select></div>
+<div class="field"><label for="sourceFile">Upload PDF or image(s)</label><input id="sourceFile" type="file" accept="application/pdf,image/*" multiple></div>
+</div><p class="hint">PDF pages and photos are supported. You can upload two separate photos, or one PDF/scan containing the front and back. Files are processed in this browser; they are not intentionally uploaded to an InfoJano server.</p>
+<div id="status" class="status" role="status" aria-live="polite">Choose a PDF or one or more photos to begin.</div>
+</section>
+<section class="card"><h2><span class="step">2</span>Assign front and back</h2>
+<div class="grid">
+<div class="field"><label for="frontSelect">Front side source</label><select id="frontSelect" disabled><option value="">Upload files first</option></select></div>
+<div class="field"><label for="backSelect">Back side source</label><select id="backSelect" disabled><option value="">Upload files first</option><option value="none">No back side</option></select></div>
+</div><p class="hint">The app lists uploaded images and PDF pages. Choose the correct front and back yourself if automatic identification is uncertain.</p>
+<div class="previewgrid" style="margin-top:12px">
+<div class="preview"><strong>Front preview</strong><div id="frontPreview" class="placeholder">Front not selected</div></div>
+<div class="preview"><strong>Back preview</strong><div id="backPreview" class="placeholder">Back not selected</div></div>
+</div>
+</section>
+<section class="card"><h2><span class="step">3</span>Card size and print layout</h2>
+<div class="grid">
+<div class="field"><label for="sizePreset">Card size preset</label><select id="sizePreset"><option value="85,55">85 × 55 mm (standard ID card)</option><option value="86,54">86 × 54 mm (credit-card size)</option><option value="custom">Custom size</option></select></div>
+<div class="field"><label for="dpi">Resolution</label><select id="dpi"><option value="300" selected>300 DPI</option><option value="200">200 DPI</option><option value="150">150 DPI</option></select></div>
+<div class="field"><label for="widthMM">Width (mm)</label><input id="widthMM" type="number" min="10" max="300" step="0.1" value="85"></div>
+<div class="field"><label for="heightMM">Height (mm)</label><input id="heightMM" type="number" min="10" max="300" step="0.1" value="55"></div>
+<div class="field"><label for="paper">Paper size</label><select id="paper"><option value="a4">A4 (210 × 297 mm)</option><option value="photo">4 × 6 inch (101.6 × 152.4 mm)</option><option value="custom">Custom paper</option></select></div>
+<div class="field"><label for="layout">Front / back placement</label><select id="layout"><option value="paired">Same page, side by side</option><option value="separate">Separate pages</option><option value="frontonly">Front only</option><option value="backonly">Back only</option></select></div>
+<div class="field"><label for="customW">Custom paper width (mm)</label><input id="customW" type="number" min="40" max="500" value="210"></div>
+<div class="field"><label for="customH">Custom paper height (mm)</label><input id="customH" type="number" min="40" max="500" value="297"></div>
+</div>
+<p class="hint">85 × 55 mm is the selected default, but not every document has the same official size. Verify the physical size required for your particular card before printing.</p>
+<div class="actions"><button class="btn alt" id="previewBtn" type="button">Update print preview</button></div>
+<div id="printPreview" class="preview" style="margin-top:12px"><div class="placeholder">Print layout preview will appear here.</div></div>
+</section>
+<section class="card"><h2><span class="step">4</span>Download print-ready PDF</h2>
+<div class="warning">Print at “Actual size” / 100% scale. Turn off “Fit to page” if exact physical dimensions are important. This first version uses a manual front/back selection to avoid silently printing the wrong side.</div>
+<div class="actions"><button class="btn" id="downloadBtn" type="button">Create &amp; Download PDF</button><a href="index.html" class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center">← Back to InfoJano</a></div>
+<div id="downloadStatus" class="status" role="status" aria-live="polite">Upload a file and select the sides to create your print PDF.</div>
+</section>
+</main><footer>InfoJano • ID Card Print Studio</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script>
+<script>
+(function(){
+'use strict';
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+const $=id=>document.getElementById(id), sources=[], objectUrls=[];
+const status=(msg,kind='')=>{$('status').className='status'+(kind?' '+kind:'');$('status').textContent=msg};
+const dstatus=(msg,kind='')=>{$('downloadStatus').className='status'+(kind?' '+kind:'');$('downloadStatus').textContent=msg};
+function makeImageSource(name,canvas){return {name,canvas};}
+function addOption(source,index){const opt=new Option(source.name,String(index));$('frontSelect').add(opt.cloneNode(true));$('backSelect').add(opt.cloneNode(true));}
+function showCanvas(id,source){const host=$(id);host.replaceChildren();if(!source){host.className='placeholder';host.textContent='Not selected';return}host.className='';const c=document.createElement('canvas');c.width=source.canvas.width;c.height=source.canvas.height;const ctx=c.getContext('2d');ctx.drawImage(source.canvas,0,0);c.style.width='100%';c.style.maxHeight='220px';c.style.objectFit='contain';host.appendChild(c);}
+function selected(id){const n=$(id).value;return n===''||n==='none'?null:sources[Number(n)]||null}
+function updateSidePreviews(){showCanvas('frontPreview',selected('frontSelect'));showCanvas('backPreview',selected('backSelect'));renderLayoutPreview()}
+function renderLayoutPreview(){const host=$('printPreview');host.replaceChildren();const c=document.createElement('canvas');c.width=420;c.height=297;c.style.width='100%';c.style.maxHeight='300px';const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='#cbd5e1';ctx.strokeRect(1,1,c.width-2,c.height-2);const f=selected('frontSelect'),b=selected('backSelect'),layout=$('layout').value;const w=Number($('widthMM').value)||85,h=Number($('heightMM').value)||55;let scale=Math.min(3.2,390/(w*(layout==='paired'?2:1)+10),260/(h+10));const cw=w*scale,ch=h*scale;let x=(c.width-(layout==='paired'?cw*2+8:cw))/2,y=(c.height-ch)/2;if(f&&layout!=='backonly')ctx.drawImage(f.canvas,x,y,cw,ch);if(b&&layout!=='frontonly'){const bx=layout==='paired'?x+cw+8:x;ctx.drawImage(b.canvas,bx,y,cw,ch)}ctx.fillStyle='#475569';ctx.font='12px sans-serif';ctx.fillText(($('paper').value==='a4'?'A4':$('paper').value==='photo'?'4 × 6 inch':'Custom paper')+' • preview only',12,18);host.appendChild(c)}
+async function loadImageFile(file){const url=URL.createObjectURL(file);objectUrls.push(url);const img=new Image();img.src=url;await img.decode();const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext('2d').drawImage(img,0,0);sources.push(makeImageSource(file.name,canvas));addOption(sources[sources.length-1],sources.length-1)}
+async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader library did not load. Check internet and try again.');const bytes=await file.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:bytes}).promise;for(let p=1;p<=pdf.numPages;p++){const page=await pdf.getPage(p);const vp=page.getViewport({scale:2});const canvas=document.createElement('canvas');canvas.width=Math.ceil(vp.width);canvas.height=Math.ceil(vp.height);await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;sources.push(makeImageSource(file.name+' — page '+p,canvas));addOption(sources[sources.length-1],sources.length-1)}}
+$('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.target.files||[]);if(!files.length)return;sources.length=0;$('frontSelect').replaceChildren();$('backSelect').replaceChildren();$('frontSelect').disabled=true;$('backSelect').disabled=true;status('Loading files…');try{for(const file of files){if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf'))await loadPdfFile(file);else if(file.type.startsWith('image/'))await loadImageFile(file);else throw new Error('Unsupported file: '+file.name)}if(!sources.length)throw new Error('No readable pages or images were found.');$('frontSelect').disabled=false;$('backSelect').disabled=false;$('frontSelect').value='0';$('backSelect').value=sources.length>1?'1':'none';status('Loaded '+sources.length+' page(s)/image(s). Please verify which is front and which is back.','ok');updateSidePreviews();dstatus('Ready. Confirm sides and layout before downloading.')}catch(err){status(err.message||'Could not read the file.','error')}});
+$('frontSelect').addEventListener('change',updateSidePreviews);$('backSelect').addEventListener('change',updateSidePreviews);
+$('sizePreset').addEventListener('change',()=>{if($('sizePreset').value!=='custom'){const [w,h]=$('sizePreset').value.split(',');$('widthMM').value=w;$('heightMM').value=h}renderLayoutPreview()});
+['widthMM','heightMM','paper','layout','customW','customH'].forEach(id=>$(id).addEventListener('change',renderLayoutPreview));
+$('previewBtn').addEventListener('click',renderLayoutPreview);
+function pageSize(){if($('paper').value==='photo')return [101.6,152.4];if($('paper').value==='custom')return [Number($('customW').value),Number($('customH').value)];return [210,297]}
+function cropToCard(source,targetW,targetH){const out=document.createElement('canvas');const dpi=Number($('dpi').value)||300;out.width=Math.round(targetW/25.4*dpi);out.height=Math.round(targetH/25.4*dpi);const ctx=out.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,out.width,out.height);const sw=source.canvas.width,sh=source.canvas.height;const scale=Math.max(out.width/sw,out.height/sh);const dw=sw*scale,dh=sh*scale;ctx.drawImage(source.canvas,(out.width-dw)/2,(out.height-dh)/2,dw,dh);return out}
+function drawCard(doc,canvas,x,y,w,h){doc.addImage(canvas.toDataURL('image/jpeg',.96),'JPEG',x,y,w,h,undefined,'FAST')}
+$('downloadBtn').addEventListener('click',async()=>{const btn=$('downloadBtn');let f=selected('frontSelect'),b=selected('backSelect');const layout=$('layout').value;if(!f&&layout!=='backonly'){dstatus('Please upload and select a front side.','error');return}if(!b&&layout==='paired'){dstatus('Choose a back side or change the layout to Front only.','error');return}if(!b&&layout==='separate'){$('layout').value='frontonly'}const w=Number($('widthMM').value),h=Number($('heightMM').value),[pw,ph]=pageSize();if(!(w>=10&&h>=10&&pw>=40&&ph>=40)){dstatus('Check the card and paper dimensions.','error');return}btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Preparing PDF… Please wait';dstatus('Preparing high-resolution print pages…');try{if(!window.jspdf||!window.jspdf.jsPDF)throw new Error('PDF export library did not load. Check your internet and retry.');const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:pw>ph?'landscape':'portrait',unit:'mm',format:[pw,ph],compress:true});const fc=f?cropToCard(f,w,h):null,bc=b?cropToCard(b,w,h):null;const margin=5;function addPage(side){const card=side==='front'?fc:bc;if(!card)return;const cw=w,ch=h;const x=layout==='paired'&&side==='back'?Math.min(pw-cw-margin,margin+cw+5):margin;const y=margin;if(x+cw>pw||y+ch>ph)throw new Error('Card size does not fit this paper. Choose a larger paper or smaller card.');drawCard(doc,card,x,y,cw,ch)}if(layout==='paired'){addPage('front');addPage('back')}else if(layout==='separate'){addPage('front');if(b){doc.addPage([pw,ph],pw>ph?'landscape':'portrait');addPage('back')}}else if(layout==='frontonly'){addPage('front')}else if(layout==='backonly'){addPage('back')}const safeType=$('cardType').value.replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'');const now=new Date();const stamp=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'-'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0')+String(now.getSeconds()).padStart(2,'0')+'-'+String(now.getMilliseconds()).padStart(3,'0');doc.save('InfoJano-'+safeType+'-'+stamp+'.pdf');dstatus('Download started — check your Downloads folder. Print at Actual size / 100%.','ok')}catch(err){dstatus(err.message||'Could not create the PDF.','error')}finally{btn.disabled=false;btn.textContent='Create & Download PDF'}});
+})();
+</script>
+</body></html>
