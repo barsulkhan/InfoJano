@@ -1,5 +1,4 @@
 (function(){
-  if (location.pathname.endsWith('/image-to-pdf.html')) return; // This tool has its own PDF save-progress display.
   let timer=null;
   function getNotice(){
     let box=document.getElementById('ijGlobalDownloadNotice');
@@ -20,9 +19,9 @@
     else{icon.style.animation='ijGlobalDlSpin .8s linear infinite';icon.style.border='3px solid #475569';icon.style.borderTopColor='#38bdf8';icon.style.background='transparent';icon.textContent='';}
   }
   document.addEventListener('click',function(event){
-    const link=event.target.closest&&event.target.closest('a[download]');
+    const link=event.target.closest&&event.target.closest('a[download], a[href*=".apk" i], a[href*="/releases/download/"]');
     if(!link||link.hidden||!link.href)return;
     show('Starting your download…',false);
-    timer=setTimeout(()=>show('Download started. Check your Downloads folder.',true),1400);
+    timer=setTimeout(()=>show('Download started. Check your Downloads folder.',true),2200);
   },true);
 })();
