@@ -42,7 +42,7 @@
 <div class="field"><label for="customW">Custom paper width (mm)</label><input id="customW" type="number" min="40" max="500" value="210"></div>
 <div class="field"><label for="customH">Custom paper height (mm)</label><input id="customH" type="number" min="40" max="500" value="297"></div>
 </div>
-<p class="hint">The black cutting guide is drawn 0.5 mm inside the card boundary, keeping the selected card size unchanged. The full detected image is fitted without cropping off its edges; if the source aspect ratio differs, a small white margin may remain.</p>
+<p class="hint">Auto-detection can miss thin borders on white cards. Check that every word is visible in both previews. The black cutting guide is inset 2 mm from the final card edge and does not change the selected print dimensions. A4 and 4 × 6 inch are both available.</p>
 <div class="actions"><button class="btn alt" id="previewBtn" type="button">Update print preview</button></div>
 <div id="printPreview" class="preview" style="margin-top:12px"><div class="placeholder">Print layout preview will appear here.</div></div>
 </section>
@@ -67,19 +67,19 @@ function addOption(source,index){const opt=new Option(source.name,String(index))
 function detectCardRegions(canvas){
  const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;
  if(w<80||h<60)return [];
- const data=ctx.getImageData(0,0,w,h).data,step=Math.max(1,Math.floor(Math.min(w,h)/700));
- const row=new Int32Array(h);
- for(let y=0;y<h;y+=step){let n=0;for(let x=0;x<w;x+=step){const i=(y*w+x)*4;if(data[i]<232||data[i+1]<232||data[i+2]<232)n++;}row[y]=n;}
- const minRow=Math.max(3,Math.floor((w/step)*0.025)),bands=[];let start=-1,last=-1;
- for(let y=0;y<h;y+=step){if(row[y]>=minRow){if(start<0)start=y;last=y;}else if(start>=0&&y-last>Math.max(8,Math.floor(h*.012))){if(last-start>h*.025)bands.push([Math.max(0,start-3*step),Math.min(h,last+4*step)]);start=-1;}}
- if(start>=0&&last-start>h*.025)bands.push([Math.max(0,start-3*step),Math.min(h,last+4*step)]);
- const out=[];
- for(const [y1,y2] of bands){const bh=y2-y1,cols=new Int32Array(w);for(let y=y1;y<y2;y+=step){for(let x=0;x<w;x+=step){const i=(y*w+x)*4;if(data[i]<232||data[i+1]<232||data[i+2]<232)cols[x]++;}}
- const minCol=Math.max(3,Math.floor((bh/step)*.06));let xs=-1,xl=-1;
- for(let x=0;x<w;x+=step){if(cols[x]>=minCol){if(xs<0)xs=x;xl=x;}else if(xs>=0&&x-xl>Math.max(8,Math.floor(w*.012))){if(xl-xs>w*.12)out.push({x:Math.max(0,xs-3*step),y:y1,w:Math.min(w,xl+4*step)-Math.max(0,xs-3*step),h:bh});xs=-1;}}
- if(xs>=0&&xl-xs>w*.12)out.push({x:Math.max(0,xs-3*step),y:y1,w:Math.min(w,xl+4*step)-Math.max(0,xs-3*step),h:bh});
+ const data=ctx.getImageData(0,0,w,h).data,step=Math.max(1,Math.floor(Math.min(w,h)/900)),gw=Math.ceil(w/step),gh=Math.ceil(h/step);
+ const dark=new Uint8Array(gw*gh);
+ for(let gy=0;gy<gh;gy++)for(let gx=0;gx<gw;gx++){const i=(Math.min(h-1,gy*step)*w+Math.min(w-1,gx*step))*4;dark[gy*gw+gx]=(data[i]<205||data[i+1]<205||data[i+2]<205)?1:0;}
+ const seen=new Uint8Array(dark.length),components=[];
+ for(let sy=0;sy<gh;sy++)for(let sx=0;sx<gw;sx++){const si=sy*gw+sx;if(!dark[si]||seen[si])continue;const stack=[si];let minX=sx,maxX=sx,minY=sy,maxY=sy,count=0;seen[si]=1;
+ while(stack.length){const q=stack.pop(),x=q%gw,y=Math.floor(q/gw);count++;minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);
+ for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue;const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=gw||ny>=gh)continue;const ni=ny*gw+nx;if(dark[ni]&&!seen[ni]){seen[ni]=1;stack.push(ni);}}}
+ const rw=maxX-minX+1,rh=maxY-minY+1,ratio=rw/rh;
+ if(count>=Math.max(20,Math.floor((rw+rh)*.12))&&rw>gw*.12&&rh>gh*.025&&ratio>.75&&ratio<2.8)components.push({x:minX*step,y:minY*step,w:Math.min(w,(maxX+1)*step)-minX*step,h:Math.min(h,(maxY+1)*step)-minY*step});
  }
- return out.filter(r=>r.w/w>.12&&r.h/h>.025).slice(0,12);
+ components.sort((a,b)=>b.w*b.h-a.w*a.h);const chosen=[];
+ for(const r of components){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.25||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.25)){chosen.push({x:Math.max(0,r.x-step),y:Math.max(0,r.y-step),w:Math.min(w,r.x+r.w+step)-Math.max(0,r.x-step),h:Math.min(h,r.y+r.h+step)-Math.max(0,r.y-step)});}}
+ return chosen.sort((a,b)=>a.x-b.x||a.y-b.y).slice(0,12);
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function addDetectedSources(name,canvas){
