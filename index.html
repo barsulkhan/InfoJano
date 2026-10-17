@@ -165,6 +165,35 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 @media(max-width:1000px){.tool .icon{width:66px;height:66px;flex-basis:66px;font-size:38px;border-radius:18px}.tool .icon svg{width:42px;height:42px}}
 @media(max-width:420px){.tool .icon{width:60px;height:60px;flex-basis:60px;font-size:35px}}
 
+
+/* Semantic mini-animations: each tool icon demonstrates its own purpose */
+.tool .icon-calendar{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:10px 9px 7px;gap:4px;color:#2563eb}
+.icon-calendar .cal-top{display:block;width:100%;height:10px;border-radius:4px 4px 2px 2px;background:#2563eb;position:relative}
+.icon-calendar .cal-top:before,.icon-calendar .cal-top:after{content:"";position:absolute;top:-3px;width:3px;height:7px;border-radius:3px;background:#f8fbff}
+.icon-calendar .cal-top:before{left:23%}.icon-calendar .cal-top:after{right:23%}
+.icon-calendar .cal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;width:100%;flex:1}
+.icon-calendar .cal-grid i{display:grid;place-items:center;border-radius:2px;background:#fff;color:#2563eb;font-size:9px;font-style:normal;font-weight:800;animation:ij-date-flip 2.4s ease-in-out infinite;transform-origin:center}
+.icon-calendar .cal-grid i:nth-child(2){animation-delay:.3s}.icon-calendar .cal-grid i:nth-child(3){animation-delay:.6s}.icon-calendar .cal-grid i:nth-child(4){animation-delay:.9s}.icon-calendar .cal-grid i:nth-child(5){animation-delay:1.2s}.icon-calendar .cal-grid i:nth-child(6){animation-delay:1.5s}
+@keyframes ij-date-flip{0%,72%,100%{transform:rotateX(0);opacity:1}82%{transform:rotateX(85deg);opacity:.3}90%{transform:rotateX(0);opacity:1}}
+.tool .icon-clock{display:grid;place-items:center}
+.icon-clock .clock-face{position:relative;width:43px;height:43px;border:4px solid #0e7490;border-radius:50%;background:radial-gradient(circle,#fff 0 3px,transparent 4px),repeating-conic-gradient(from 0deg,#0e7490 0deg 3deg,transparent 3deg 30deg);box-shadow:inset 0 0 0 4px #e0f7fa}
+.icon-clock .clock-face:before{content:"";position:absolute;inset:5px;border-radius:50%;background:#e0f7fa}
+.icon-clock .clock-face b{position:absolute;width:6px;height:6px;border-radius:50%;background:#0e7490;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
+.icon-clock .clock-face i{position:absolute;left:calc(50% - 1.5px);bottom:50%;width:3px;border-radius:3px;background:#0e7490;transform-origin:50% 100%;z-index:2}
+.icon-clock .clock-hour{height:12px;animation:ij-clock-hour 36s linear infinite}
+.icon-clock .clock-minute{height:17px;background:#0891b2!important;animation:ij-clock-minute 6s linear infinite}
+@keyframes ij-clock-hour{to{transform:rotate(360deg)}}@keyframes ij-clock-minute{to{transform:rotate(360deg)}}
+.tool .icon-growth{position:relative;overflow:hidden;display:flex;align-items:flex-start;justify-content:flex-start;padding:5px 7px}
+.icon-growth .growth-percent{font-size:20px;font-weight:900;line-height:1;color:#047857;z-index:2;animation:ij-percent-rise 1.8s ease-in-out infinite}
+.icon-growth .growth-bars{position:absolute;left:8px;right:8px;bottom:7px;height:27px;display:flex;align-items:flex-end;gap:3px}
+.icon-growth .growth-bars i{display:block;flex:1;border-radius:3px 3px 0 0;background:linear-gradient(#34d399,#059669);height:35%;animation:ij-bar-grow 1.8s ease-in-out infinite}
+.icon-growth .growth-bars i:nth-child(2){height:58%;animation-delay:.2s}.icon-growth .growth-bars i:nth-child(3){height:82%;animation-delay:.4s}
+.icon-growth .growth-arrow{position:absolute;right:4px;top:3px;font-size:23px;line-height:1;color:#047857;animation:ij-arrow-rise 1.8s ease-in-out infinite}
+@keyframes ij-bar-grow{0%,100%{transform:scaleY(.5);transform-origin:bottom}55%{transform:scaleY(1);transform-origin:bottom}}
+@keyframes ij-percent-rise{0%,100%{transform:translateY(5px) scale(.8);opacity:.65}55%{transform:translateY(-1px) scale(1.08);opacity:1}}
+@keyframes ij-arrow-rise{0%,100%{transform:translate(2px,3px);opacity:.55}55%{transform:translate(-2px,-2px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.icon-calendar .cal-grid i,.icon-clock .clock-hour,.icon-clock .clock-minute,.icon-growth .growth-percent,.icon-growth .growth-bars i,.icon-growth .growth-arrow{animation:none!important}}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
@@ -209,15 +238,15 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
     <div class="card tool" data-name="emi loan calculator" onclick="window.location.href='emi.html'"><div class="icon">💳</div><h3>EMI</h3><p>Monthly loan payment.</p></div>
     <div class="card tool" data-name="bmi calculator" onclick="window.location.href='bmi.html'"><div class="icon">⚖️</div><h3>BMI</h3><p>Check BMI from height and weight.</p></div>
     <div class="card tool" data-name="discount calculator" onclick="window.location.href='discount.html'"><div class="icon">🏷️</div><h3>Discount</h3><p>Find sale price and savings.</p></div>
-    <div class="card tool" data-name="date difference calculator" onclick="window.location.href='date-difference.html'"><div class="icon">📅</div><h3>Date Difference</h3><p>Days between two dates.</p></div>
+    <div class="card tool" data-name="date difference calculator" onclick="window.location.href='date-difference.html'"><div class="icon icon-calendar" aria-hidden="true"><span class="cal-top"></span><span class="cal-grid"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i></span></div><h3>Date Difference</h3><p>Days between two dates.</p></div>
     <div class="card tool" data-name="unit converter more converters length weight mass" onclick="window.location.href='unit-converter.html'"><div class="icon">📏</div><h3>Unit Converter</h3><p>Convert length and weight units.</p></div>
     <div class="card tool" data-name="bill split tip calculator" onclick="window.location.href='tip-calculator.html'"><div class="icon">🧾</div><h3>Bill Split</h3><p>Split bill plus tip.</p></div>
     <div class="card tool" data-name="text counter words characters" onclick="window.location.href='text-counter.html'"><div class="icon">🔤</div><h3>Text Counter</h3><p>Count words and characters.</p></div>
     <div class="card tool" data-name="qr maker generator" onclick="window.location.href='qr-maker.html'"><div class="icon">▣</div><h3>QR Maker</h3><p>Create a QR code.</p></div>
     <div class="card tool" data-name="loan calculator interest principal" onclick="window.location.href='emi.html'"><div class="icon">🏦</div><h3>Loan Calculator</h3><p>Estimate monthly payments.</p></div>
     <div class="card tool" data-name="savings calculator saving future" onclick="window.location.href='savings.html'"><div class="icon">💰</div><h3>Savings</h3><p>Estimate future savings.</p></div>
-    <div class="card tool" data-name="percentage change increase decrease" onclick="window.location.href='percentage-change.html'"><div class="icon">📈</div><h3>% Change</h3><p>Find percentage increase or decrease.</p></div>
-    <div class="card tool" data-name="time calculator duration hours minutes" onclick="window.location.href='time-calculator.html'"><div class="icon">🕐</div><h3>Time Calculator</h3><p>Calculate time duration.</p></div>
+    <div class="card tool" data-name="percentage change increase decrease" onclick="window.location.href='percentage-change.html'"><div class="icon icon-growth" aria-hidden="true"><span class="growth-percent">%</span><span class="growth-bars"><i></i><i></i><i></i></span><span class="growth-arrow">↗</span></div><h3>% Change</h3><p>Find percentage increase or decrease.</p></div>
+    <div class="card tool" data-name="time calculator duration hours minutes" onclick="window.location.href='time-calculator.html'"><div class="icon icon-clock" aria-hidden="true"><span class="clock-face"><i class="clock-hour"></i><i class="clock-minute"></i><b></b></span></div><h3>Time Calculator</h3><p>Calculate time duration.</p></div>
     <div class="card tool" data-name="number to words converter" onclick="window.location.href='number-to-words.html'"><div class="icon">🔢</div><h3>Number to Words</h3><p>Convert numbers into words.</p></div>
     <div class="card tool" data-name="more converters unit length weight mass" onclick="window.location.href='unit-converter.html'"><div class="icon">🔄</div><h3>More Converters</h3><p>Length, distance and weight.</p></div>
   </div>
