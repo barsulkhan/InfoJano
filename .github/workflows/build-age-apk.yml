@@ -1,0 +1,47 @@
+name: Build Age Calculator APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'android/**'
+      - '.github/workflows/build-age-apk.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Build debug APK
+        working-directory: android
+        run: gradle --no-daemon assembleDebug
+
+      - name: Publish APK release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: age-calculator-v1.0.0
+          name: InfoJano Age Calculator v1.0.0
+          body: |
+            First installable Android app for InfoJano.
+            Opens the Age Calculator tool directly.
+            This initial APK is a debug-signed test build.
+          draft: false
+          prerelease: true
+          files: android/app/build/outputs/apk/debug/app-debug.apk
