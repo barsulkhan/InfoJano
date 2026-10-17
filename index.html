@@ -240,6 +240,18 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   .card.tool p{font-size:13px}
 }
 
+
+/* Make the third line (tool description) much easier to read */
+.card.tool p{font-size:16px;line-height:1.5;font-weight:550;color:#536174;margin-top:4px}
+@media(max-width:1000px){
+  .card.tool{min-height:198px}
+  .card.tool p{font-size:16px;line-height:1.45}
+}
+@media(max-width:420px){
+  .card.tool{min-height:192px}
+  .card.tool p{font-size:15px;line-height:1.45}
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
