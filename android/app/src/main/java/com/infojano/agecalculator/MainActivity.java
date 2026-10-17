@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
         setContentView(webView);
 
         if (savedInstanceState == null) {
-            webView.loadUrl("https://barsulkhan.github.io/InfoJano/age.html");
+            webView.loadUrl(getString(com.infojano.agecalculator.R.string.tool_url));
         } else {
             webView.restoreState(savedInstanceState);
         }
