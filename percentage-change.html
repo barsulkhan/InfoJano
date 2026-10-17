@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percentage Change Calculator - Increase or Decrease | InfoJano</title>
+<meta name="description" content="Calculate percentage increase or decrease between an old value and a new value with InfoJano's free calculator.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/percentage-change.html">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
+header{background:#10458e;color:white;text-align:center;padding:24px 15px}
+main{max-width:650px;margin:24px auto;padding:16px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
+label{display:block;margin-top:15px;font-weight:600}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
+.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.8;overflow-wrap:anywhere}
+a{color:#1458c8}
+footer{text-align:center;padding:24px}
+</style>
+</head>
+<body>
+<header><h1>Percentage Change Calculator</h1><p>Find percentage increase or decrease</p></header>
+<main>
+<div class="card">
+<h2>Calculate Percentage Change</h2>
+<label for="old">Old value</label><input id="old" type="number" step="any" placeholder="Example: 80">
+<label for="new">New value</label><input id="new" type="number" step="any" placeholder="Example: 100">
+<button onclick="calculate()">Calculate Change</button>
+<div id="result" class="result" aria-live="polite">Enter the old and new values.</div>
+</div>
+<section><h2>Formula</h2><p>Percentage change = ((new value − old value) ÷ |old value|) × 100. A positive result is an increase; a negative result is a decrease.</p></section>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main>
+<footer>© InfoJano</footer>
+<script>
+function calculate(){
+ const oldValue=Number(document.getElementById('old').value);
+ const newValue=Number(document.getElementById('new').value);
+ const out=document.getElementById('result');
+ if(document.getElementById('old').value.trim()===''||document.getElementById('new').value.trim()===''||!Number.isFinite(oldValue)||!Number.isFinite(newValue)){out.textContent='Please enter valid numbers for both values.';return;}
+ if(oldValue===0){out.textContent=newValue===0?'Both values are zero, so percentage change is undefined.':'Percentage change cannot be calculated from an old value of zero.';return;}
+ const change=((newValue-oldValue)/Math.abs(oldValue))*100;
+ const label=change>0?'Increase':change<0?'Decrease':'No change';
+ out.innerHTML='<strong>'+label+':</strong> '+Math.abs(change).toFixed(2)+'%<br><strong>Difference:</strong> '+(newValue-oldValue).toLocaleString('en-IN',{maximumFractionDigits:6});
+}
+</script>
+</body>
+</html>
