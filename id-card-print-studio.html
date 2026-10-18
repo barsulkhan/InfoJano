@@ -162,7 +162,7 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  const pageName=file.name+' — page '+p;
  const full=makeImageSource(pageName+' — full PDF page (manual crop)',canvas);
  sources.push(full);addOption(full,sources.length-1);
- const rect={x:Math.round(canvas.width*.045),y:Math.round(canvas.height*.095),w:Math.round(canvas.width*.91),h:Math.round(canvas.height*.315)};
+ const rect={x:Math.round(canvas.width*.045),y:Math.round(canvas.height*.085),w:Math.round(canvas.width*.91),h:Math.round(canvas.height*.405)};
  const front=makeImageSource(pageName+' — Ayushman full card Front',cropRegion({canvas},rect));
  sources.push(front);addOption(front,sources.length-1);
  }else{addDetectedSources(file.name+' — page '+p,canvas,false)}}if(enteredPassword)status('Protected PDF opened in this browser. Choose the correct front and back previews.','ok')}
