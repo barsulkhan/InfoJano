@@ -92,6 +92,7 @@ jobs:
           timecalculator|Time Calculator|time-calculator.html|TIME
           tipcalculator|Tip Calculator|tip-calculator.html|TIP
           unitconverter|Unit Converter|unit-converter.html|UNIT
+          ayushmancardstudio|Ayushman Bharat Card Studio|id-card-print-studio.html|AYUSH
           TOOLS
 
       - name: Upload APK files as workflow artifact
