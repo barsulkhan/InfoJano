@@ -123,6 +123,40 @@ function detectCardRegions(canvas){
  for(const r of components){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.25||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.25)){const x=Math.max(0,r.x),y=Math.max(0,r.y),right=Math.min(w,r.x+r.w),bottom=Math.min(h,r.y+r.h);chosen.push({x,y,w:right-x,h:bottom-y});}}
  return chosen.sort((a,b)=>a.x-b.x||a.y-b.y).slice(0,12);
 }
+function detectAadhaarCardRegions(canvas){
+ // Aadhaar face detection: look for full landscape card-shaped regions, not isolated text/QR blocks.
+ const w=canvas.width,h=canvas.height,ctx=canvas.getContext('2d',{willReadFrequently:true});
+ if(w<120||h<100)return [];
+ const step=Math.max(1,Math.ceil(Math.max(w,h)/220)),gw=Math.ceil(w/step),gh=Math.ceil(h/step),stride=gw+1;
+ const d=ctx.getImageData(0,0,w,h).data,integral=new Uint32Array((gw+1)*(gh+1));
+ for(let y=0;y<gh;y++)for(let x=0;x<gw;x++){
+  const i=(Math.min(h-1,y*step)*w+Math.min(w-1,x*step))*4;
+  const r=d[i],g=d[i+1],b=d[i+2],ink=(Math.min(r,g,b)<185||Math.max(r,g,b)-Math.min(r,g,b)>55)?1:0;
+  integral[(y+1)*stride+x+1]=ink+integral[y*stride+x+1]+integral[(y+1)*stride+x]-integral[y*stride+x];
+ }
+ const candidates=[];
+ for(let wf=.28;wf<=.82;wf+=.06){
+  const rw=Math.round(gw*wf),rh=Math.round(rw*54/86);
+  if(rw<12||rh<8||rh>gh*.7)continue;
+  const sx=Math.max(2,Math.floor(gw*.025)),sy=Math.max(2,Math.floor(gh*.025));
+  for(let y=0;y+rh<=gh;y+=sy)for(let x=0;x+rw<=gw;x+=sx){
+   const n=integral[(y+rh)*stride+x+rw]-integral[y*stride+x+rw]-integral[(y+rh)*stride+x]+integral[y*stride+x];
+   const density=n/(rw*rh);
+   if(density>=.055)candidates.push({x,y,w:rw,h:rh,score:density*(1-.2*rw*rh/(gw*gh))});
+  }
+ }
+ candidates.sort((a,b)=>b.score-a.score);
+ const result=[];
+ for(const r of candidates){
+  const overlap=result.some(q=>{const ix=Math.max(0,Math.min(q.x+q.w,r.x+r.w)-Math.max(q.x,r.x)),iy=Math.max(0,Math.min(q.y+q.h,r.y+r.h)-Math.max(q.y,r.y));return ix*iy>Math.min(q.w*q.h,r.w*r.h)*.35;});
+  if(overlap)continue;
+  const px=Math.round(r.w*.025),py=Math.round(r.h*.04),x=Math.max(0,(r.x-px)*step),y=Math.max(0,(r.y-py)*step),right=Math.min(w,(r.x+r.w+px)*step),bottom=Math.min(h,(r.y+r.h+py)*step);
+  const box={x,y,w:right-x,h:bottom-y};
+  if(box.w/box.h>=1.35&&box.w/box.h<=1.9&&box.w/w>=.2&&box.h/h>=.04)result.push(box);
+  if(result.length===2)break;
+ }
+ return result.sort((a,b)=>a.y-b.y||a.x-b.x);
+}
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function addDetectedSources(name,canvas,allowAutoDetect=true){
  const isAadhaar=$('cardType').value==='Aadhaar Card';
@@ -131,7 +165,7 @@ function addDetectedSources(name,canvas,allowAutoDetect=true){
   const full=makeImageSource(name+(/\.pdf\b/i.test(name)?' — full PDF page (manual crop)':' — original photo (manual crop fallback)'),canvas);
   sources.push(full);addOption(full,sources.length-1);
   if(allowAutoDetect){
-   let regions=detectCardRegions(canvas).filter(r=>{const ratio=r.w/r.h,area=(r.w*r.h)/(canvas.width*canvas.height);return ratio>=1.25&&ratio<=2.15&&area>=.035&&r.w>=canvas.width*.18&&r.h>=canvas.height*.045;});
+   let regions=detectAadhaarCardRegions(canvas);
    regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h));
    const chosen=[];
    for(const r of regions){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.35||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.35))chosen.push(r);if(chosen.length>=2)break;}
