@@ -133,22 +133,29 @@ qualityInput.addEventListener('input',()=>{
 fileInput.addEventListener('change',()=>{
  downloadLink.hidden=true;
  statusBox.textContent='';
- if(objectUrl)URL.revokeObjectURL(objectUrl);
  image=null;
+ preview.hidden=true;
+ preview.removeAttribute('src');
  const file=fileInput.files&&fileInput.files[0];
- if(!file){preview.hidden=true;originalInfo.textContent='No image selected.';return;}
- if(!file.type.startsWith('image/')){preview.hidden=true;originalInfo.textContent='Please choose an image file.';return;}
- objectUrl=URL.createObjectURL(file);
- const img=new Image();
- img.onload=()=>{
-  image=img;
-  originalName=file.name.replace(/\.[^.]+$/,'')||'image';
-  preview.src=objectUrl;
-  preview.hidden=false;
-  originalInfo.textContent=`Original size: ${(file.size/1024).toFixed(1)} KB | Dimensions: ${img.naturalWidth} × ${img.naturalHeight} px`;
+ if(!file){originalInfo.textContent='No image selected.';return;}
+ if(!file.type.startsWith('image/')){originalInfo.textContent='Please choose an image file.';return;}
+ originalInfo.textContent='Loading image preview…';
+ const reader=new FileReader();
+ reader.onerror=()=>{preview.hidden=true;originalInfo.textContent='Could not read this image. Please choose it again.';};
+ reader.onload=()=>{
+  const dataUrl=reader.result;
+  const img=new Image();
+  img.onload=()=>{
+   image=img;
+   originalName=file.name.replace(/\.[^.]+$/,'')||'image';
+   preview.src=dataUrl;
+   preview.hidden=false;
+   originalInfo.textContent=`Original size: ${(file.size/1024).toFixed(1)} KB | Dimensions: ${img.naturalWidth} × ${img.naturalHeight} px`;
+  };
+  img.onerror=()=>{preview.hidden=true;originalInfo.textContent='Could not open this image. Please try another file.';};
+  img.src=dataUrl;
  };
- img.onerror=()=>{preview.hidden=true;originalInfo.textContent='Could not open this image. Please try another file.';};
- img.src=objectUrl;
+ reader.readAsDataURL(file);
 });
 
 function canvasBlob(canvas,mime,quality){
