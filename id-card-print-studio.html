@@ -87,6 +87,25 @@ const status=(msg,kind='')=>{$('status').className='status'+(kind?' '+kind:'');$
 const dstatus=(msg,kind='')=>{$('downloadStatus').className='status'+(kind?' '+kind:'');$('downloadStatus').textContent=msg};
 function makeImageSource(name,canvas){return {name,canvas};}
 function addOption(source,index){const opt=new Option(source.name,String(index));$('frontSelect').add(opt.cloneNode(true));$('backSelect').add(opt.cloneNode(true));/* Crop selector must include original PDF pages labelled 'full PDF page (manual crop)'; exclude only already-created manual crops to prevent recropping outputs. */if(!/— manual crop /i.test(source.name))$('cropSourceSelect').add(opt.cloneNode(true));}
+function detectAyushmanPrintedBounds(canvas,side){
+ const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;
+ const d=ctx.getImageData(0,0,w,h).data,step=Math.max(1,Math.floor(Math.min(w,h)/1000)),gw=Math.ceil(w/step),gh=Math.ceil(h/step);
+ const rows=new Uint32Array(gh),cols=new Uint32Array(gw);
+ for(let gy=0;gy<gh;gy++)for(let gx=0;gx<gw;gx++){
+  const i=(Math.min(h-1,gy*step)*w+Math.min(w-1,gx*step))*4,r=d[i],g=d[i+1],b=d[i+2];
+  const ink=side==='Front'?(r>130&&r>g*1.18&&g>35&&g<190&&b<150)||(r<130&&g<130&&b<130):(r<185&&g<185&&b<185);
+  if(ink){rows[gy]++;cols[gx]++;}
+ }
+ const minRow=side==='Front'?gw*.025:gw*.012,minCol=gh*.012;
+ let ys=[],xs=[];for(let y=0;y<gh;y++)if(rows[y]>minRow)ys.push(y);for(let x=0;x<gw;x++)if(cols[x]>minCol)xs.push(x);
+ if(ys.length<8||xs.length<8)return null;
+ let x0=xs[0],x1=xs[xs.length-1],y0=ys[0],y1=ys[ys.length-1];
+ const px=Math.round((x1-x0+1)*.018),py=Math.round((y1-y0+1)*.025);
+ x0=Math.max(0,x0-px);x1=Math.min(gw-1,x1+px);y0=Math.max(0,y0-py);y1=Math.min(gh-1,y1+py);
+ const rect={x:x0*step,y:y0*step,w:Math.min(w-x0*step,(x1-x0+1)*step),h:Math.min(h-y0*step,(y1-y0+1)*step)};
+ if(rect.w/rect.h<1.1||rect.w/rect.h>2.2||rect.w/w<.25||rect.h/h<.08)return null;
+ return rect;
+}
 function detectCardRegions(canvas){
  const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;
  if(w<80||h<60)return [];
@@ -157,15 +176,11 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
   sources.push(item);addOption(item,sources.length-1);
  });
  }else if($('cardType').value==='Ayushman Bharat Card'){
- // Automatically find the printed card rectangle on each PDF page.
- const pageName=file.name+' — page '+p;
- const regions=detectCardRegions(canvas).filter(r=>r.w>canvas.width*.25&&r.h>canvas.height*.08&&r.w/r.h>=1.15&&r.w/r.h<=1.95&&(r.w*r.h)>(canvas.width*canvas.height*.035)).sort((a,b)=>(b.w*b.h)-(a.w*a.h));
- if(regions.length){
-  const r=regions[0],padX=Math.round(r.w*.008),padY=Math.round(r.h*.008),x=Math.max(0,r.x-padX),y=Math.max(0,r.y-padY);
-  const rect={x,y,w:Math.min(canvas.width-x,r.w+padX*2),h:Math.min(canvas.height-y,r.h+padY*2)};
-  const side=p===1?'Front':'Back',item=makeImageSource(pageName+' — Ayushman auto crop '+side,cropRegion({canvas},rect));
-  sources.push(item);addOption(item,sources.length-1);
- }else{const full=makeImageSource(pageName+' — full PDF page (auto-detection fallback)',canvas);sources.push(full);addOption(full,sources.length-1);}
+ // Detect the printed face, not the larger PDF page border. The white back is cropped from its text/QR content with a safety margin.
+ const pageName=file.name+' — page '+p,side=p===1?'Front':'Back';
+ const rect=detectAyushmanPrintedBounds(canvas,side);
+ if(rect){const item=makeImageSource(pageName+' — Ayushman auto crop '+side,cropRegion({canvas},rect));sources.push(item);addOption(item,sources.length-1);}
+ else{const full=makeImageSource(pageName+' — full PDF page (auto-detection fallback)',canvas);sources.push(full);addOption(full,sources.length-1);}
  }else{addDetectedSources(file.name+' — page '+p,canvas,false)}}if(enteredPassword)status('Protected PDF opened in this browser. Choose the correct front and back previews.','ok')}
 $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.target.files||[]);if(!files.length)return;sources.length=0;$('frontSelect').replaceChildren();$('backSelect').replaceChildren();$('cropSourceSelect').replaceChildren(new Option('Upload files first',''));$('frontSelect').disabled=true;$('backSelect').disabled=true;$('cropSourceSelect').disabled=true;status('Loading files…');try{const rules=activeDocumentRules();for(const file of files){if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf'))await loadPdfFile(file);else if(file.type==='image/jpeg'||file.type==='image/png'||/\\.(jpe?g|png)$/i.test(file.name))await loadImageFile(file,rules.imageAutoSplit);else throw new Error('Unsupported file: '+file.name+'. Please choose JPG, PNG, or PDF.')}if(!sources.length)throw new Error('No readable pages or images were found.');$('frontSelect').disabled=false;$('backSelect').disabled=false;$('cropSourceSelect').disabled=false;if(activeDocumentRules().workflow==='pan-manual-crop-v1'){
  const panFront=sources.findIndex(s=>/PAN auto crop Front/.test(s.name));
