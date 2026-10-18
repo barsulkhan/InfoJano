@@ -36,8 +36,8 @@
     link.classList.remove('ij-dl-finished');
     link.innerHTML='<span class="ij-dl-icon" aria-hidden="true"><span class="ij-dl-spinner"></span></span><span>Downloading… Please wait</span>';
     timer=setTimeout(function(){
-      link.classList.add('ij-dl-finished');
-      link.innerHTML='<span class="ij-dl-icon" aria-hidden="true">✓</span><span>Download started — check your Downloads folder</span>';
+      link.classList.remove('ij-dl-finished');
+      link.innerHTML='<span class="ij-dl-icon" aria-hidden="true">ℹ</span><span>Your browser handles the download now — check Downloads for its actual status.</span>';
     },2600);
   },true);
 })();
