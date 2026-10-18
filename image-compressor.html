@@ -24,6 +24,7 @@ button:disabled{opacity:.6}
 #preview{display:block;max-width:100%;max-height:360px;object-fit:contain;margin:12px auto}
 #status{white-space:pre-line;overflow-wrap:anywhere;margin-top:12px}
 #download{display:inline-block;margin-top:6px;font-weight:700}
+.download-wait{display:inline-flex;align-items:center;gap:9px;color:#334155}.download-wait:before{content:'';width:17px;height:17px;border:3px solid #dbeafe;border-top-color:#2563eb;border-radius:50%;animation:downloadspin .7s linear infinite;flex:0 0 17px}@keyframes downloadspin{to{transform:rotate(360deg)}}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:420px){body{padding:10px}.panel{padding:14px}.grid{grid-template-columns:1fr}}
 
@@ -166,7 +167,7 @@ async function encodeAtSize(w,h,mime,q){
  ctx.drawImage(image,0,0,w,h);
  return await canvasBlob(canvas,mime,q);
 }
-compressButton.addEventListener('click',async()=>{
+downloadLink.addEventListener('click',()=>{\n statusBox.innerHTML='<span class="download-wait" role="status">Starting download…</span>';\n setTimeout(()=>{statusBox.textContent='Download started. Your browser does not report when the file has fully finished downloading. Check Downloads to confirm completion.';},1200);\n});\n\ncompressButton.addEventListener('click',async()=>{
  if(!image){statusBox.textContent='Please choose an image first.';return;}
  compressButton.disabled=true;
  downloadLink.hidden=true;
