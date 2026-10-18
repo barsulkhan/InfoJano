@@ -167,7 +167,7 @@ function addDetectedSources(name,canvas,allowAutoDetect=true){
   // PDF/scanned pages can contain whole Aadhaar letters, not card-sized faces.
   // Never guess a crop from text density: that produced clipped colour bands in previews.
   // Keep photo auto-suggestions only; PDF pages use the explicit Front/Back crop buttons.
-  if(allowAutoDetect && !/\\.pdf\\b/i.test(name)){
+  if(allowAutoDetect && !/\.pdf\b/i.test(name)){
    let regions=detectAadhaarCardRegions(canvas);
    regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h));
    const chosen=[];
@@ -243,7 +243,7 @@ $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.tar
   }else if(activeDocumentRules().workflow==='aadhaar-pdf-scan-photo-v2'){
    const suggested=sources.map((s,i)=>({s,i})).filter(x=>/Aadhaar suggested crop/.test(x.s.name));
    const original=sources.findIndex(s=>/full PDF page \(manual crop\)|original photo \(manual crop fallback\)/.test(s.name));
-   const isPdfPage=original>=0 && /\\.pdf\\b/i.test(sources[original].name);
+   const isPdfPage=original>=0 && /\.pdf\b/i.test(sources[original].name);
    // For PDFs, leave Front and Back empty until the user crops each complete face.
    $('frontSelect').value=String(!isPdfPage&&suggested.length?suggested[0].i:'');
    $('backSelect').value=!isPdfPage&&suggested.length>1?String(suggested[1].i):'none';
