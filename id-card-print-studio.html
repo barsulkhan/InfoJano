@@ -164,7 +164,10 @@ function addDetectedSources(name,canvas,allowAutoDetect=true){
   // Always retain the original photo/page so imperfect detection never removes the manual-crop fallback.
   const full=makeImageSource(name+(/\.pdf\b/i.test(name)?' — full PDF page (manual crop)':' — original photo (manual crop fallback)'),canvas);
   sources.push(full);addOption(full,sources.length-1);
-  if(allowAutoDetect){
+  // PDF/scanned pages can contain whole Aadhaar letters, not card-sized faces.
+  // Never guess a crop from text density: that produced clipped colour bands in previews.
+  // Keep photo auto-suggestions only; PDF pages use the explicit Front/Back crop buttons.
+  if(allowAutoDetect && !/\\.pdf\\b/i.test(name)){
    let regions=detectAadhaarCardRegions(canvas);
    regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h));
    const chosen=[];
@@ -240,9 +243,12 @@ $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.tar
   }else if(activeDocumentRules().workflow==='aadhaar-pdf-scan-photo-v2'){
    const suggested=sources.map((s,i)=>({s,i})).filter(x=>/Aadhaar suggested crop/.test(x.s.name));
    const original=sources.findIndex(s=>/full PDF page \(manual crop\)|original photo \(manual crop fallback\)/.test(s.name));
-   $('frontSelect').value=String(suggested.length?suggested[0].i:(original>=0?original:0));
-   $('backSelect').value=suggested.length>1?String(suggested[1].i):'none';
+   const isPdfPage=original>=0 && /\\.pdf\\b/i.test(sources[original].name);
+   // For PDFs, leave Front and Back empty until the user crops each complete face.
+   $('frontSelect').value=String(!isPdfPage&&suggested.length?suggested[0].i:'');
+   $('backSelect').value=!isPdfPage&&suggested.length>1?String(suggested[1].i):'none';
    $('cropSourceSelect').value=String(original>=0?original:0);
+   if(isPdfPage)status('Aadhaar PDF loaded. Crop the complete Front, press “Use crop as Front”, then crop the complete Back and press “Use crop as Back”. No guessed PDF crops are selected.','ok');
   }else{$('frontSelect').value='0';$('backSelect').value=sources.length>1?'1':'none';$('cropSourceSelect').value='0';}status('Loaded '+sources.length+' candidate(s) using '+activeDocumentRules().workflow+'. Verify front/back previews before exporting.','ok');updateSidePreviews();dstatus('Ready. Confirm sides and layout before downloading.')}catch(err){console.error('InfoJano document processing error:',err);status('ফাইল প্রসেস করা যায়নি: '+(err.message||'Unknown error')+'। PDF হলে আবার চেষ্টা করুন; সমস্যা থাকলে PDF-এর পাতা/স্ক্যান কপি JPG বা PNG করে আপলোড করুন।','error')}});
 $('frontSelect').addEventListener('change',()=>{updateSidePreviews()});$('backSelect').addEventListener('change',()=>{updateSidePreviews()});$('cropSourceSelect').addEventListener('change',()=>{cropRect=null;cropDrag=null;drawCropCanvas()});
  $('cardType').addEventListener('change',()=>{if($('cardType').value==='Ayushman Bharat Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Ayushman print settings selected: 85 × 55 mm at 300 DPI. JPG/PNG auto-split remains unchanged.','ok');}else if($('cardType').value==='Aadhaar Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Aadhaar selected. Crop the complete front/back card manually before exporting; text and QR code should remain fully inside the crop.','ok');}renderLayoutPreview()});
