@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         public boolean saveFile(String base64Data, String fileName, String mimeType) {
             try {
                 byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
-                String safeName = (fileName == null || fileName.trim().isEmpty()) ? "infojano-download.bin" : fileName.replaceAll("[\\\\/:*?\\"<>|]", "_");
+                String safeName = (fileName == null || fileName.trim().isEmpty()) ? "infojano-download.bin" : fileName.replace("/", "_").replace("\\", "_").replace(":", "_");
                 String safeMime = (mimeType == null || mimeType.trim().isEmpty()) ? "application/octet-stream" : mimeType;
                 ContentValues values = new ContentValues();
                 values.put(MediaStore.Downloads.DISPLAY_NAME, safeName);
