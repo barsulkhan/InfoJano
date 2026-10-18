@@ -195,37 +195,44 @@ function detectAadhaarPdfCardRegions(canvas){
  return boxes;
 }
 function detectAadhaarScannedPhotoRegions(canvas){
- // IMAGE-ONLY Aadhaar scan detector. Does not participate in the PDF detector/workflow.
+ // IMAGE-ONLY Aadhaar stand-copy detector. PDF detector intentionally separate and unchanged.
  const w=canvas.width,h=canvas.height,ctx=canvas.getContext('2d',{willReadFrequently:true});
  if(w<300||h<300)return [];
- const data=ctx.getImageData(0,0,w,h).data,sample=Math.max(1,Math.floor(Math.max(w,h)/1000));
+ const data=ctx.getImageData(0,0,w,h).data,sample=Math.max(1,Math.floor(Math.max(w,h)/1200));
  const rgb=(x,y)=>{const i=(Math.max(0,Math.min(h-1,y))*w+Math.max(0,Math.min(w-1,x)))*4;return [data[i],data[i+1],data[i+2]]};
- const dark=(x,y)=>{const [r,g,b]=rgb(x,y);return Math.max(r,g,b)<145};
- const red=(x,y)=>{const [r,g,b]=rgb(x,y);return r>105&&r>g*1.28&&r>b*1.2&&g<175};
+ const dark=(x,y)=>{const [r,g,b]=rgb(x,y);return Math.max(r,g,b)<155};
+ const red=(x,y)=>{const [r,g,b]=rgb(x,y);return r>100&&r>g*1.18&&r>b*1.12&&g<190};
  function rowScore(y,x1,x2,test){let n=0,total=0;for(let x=x1;x<x2;x+=sample){total++;if(test(x,y))n++}return n/Math.max(1,total)}
- const xa=Math.round(w*.05),xb=Math.round(w*.96);
+ // The scissors line in the supplied stand-copy sits around the middle of the page.
+ // Restrict search so text above it cannot become a false "top edge".
+ const xa=Math.round(w*.045),xb=Math.round(w*.965);
  let topY=-1,topScore=0;
- for(let y=Math.round(h*.50);y<Math.round(h*.68);y+=sample){const s=rowScore(y,xa,xb,dark);if(s>topScore){topScore=s;topY=y}}
- if(topY<0||topScore<.045)return [];
+ for(let y=Math.round(h*.545);y<Math.round(h*.615);y+=sample){const s=rowScore(y,xa,xb,dark);if(s>topScore){topScore=s;topY=y}}
+ if(topY<0||topScore<.035)return [];
+ // Red card-bottom rule appears roughly 12–19% of page height below the scissors line.
  let redY=-1,redScore=0;
- for(let y=topY+Math.round(h*.07);y<Math.min(h-1,topY+Math.round(h*.30));y+=sample){const s=rowScore(y,xa,xb,red);if(s>redScore){redScore=s;redY=y}}
- if(redY<0||redScore<.035)return [];
+ for(let y=topY+Math.round(h*.105);y<Math.min(h-1,topY+Math.round(h*.205));y+=sample){const s=rowScore(y,xa,xb,red);if(s>redScore){redScore=s;redY=y}}
+ if(redY<0||redScore<.025)return [];
+ // Find the two separate red horizontal spans (left/front and right/back).
  const hits=[];
- for(let x=xa;x<xb;x+=sample){if(rowScore(redY,x,Math.min(xb,x+sample*3),red)>.25)hits.push(x)}
+ for(let x=xa;x<xb;x+=sample){if(rowScore(redY,x,Math.min(xb,x+sample*4),red)>.22)hits.push(x)}
  const groups=[];
- for(const x of hits){const last=groups[groups.length-1];if(last&&x-last.end<=sample*5)last.end=x;else groups.push({start:x,end:x})}
- const spans=groups.filter(g=>g.end-g.start>w*.12).sort((a,b)=>a.start-b.start);
+ for(const x of hits){const last=groups[groups.length-1];if(last&&x-last.end<=sample*7)last.end=x;else groups.push({start:x,end:x})}
+ const spans=groups.filter(g=>g.end-g.start>w*.13).sort((a,b)=>a.start-b.start);
  if(spans.length<2)return [];
  const boxes=[];
  for(const span of [spans[0],spans[spans.length-1]]){
   const x1=Math.max(0,span.start-sample*3),x2=Math.min(w-1,span.end+sample*3);
-  let lastInk=redY;const scanBottom=Math.min(h-1,redY+Math.round(w*.14));
-  for(let y=redY;y<=scanBottom;y+=sample){let ink=0,total=0;for(let x=x1;x<=x2;x+=sample){total++;if(dark(x,y)||red(x,y))ink++}if(ink/Math.max(1,total)>.012)lastInk=y}
-  const pad=Math.max(sample*2,Math.round(w*.018)),y0=Math.max(0,topY-sample),box={x:x1,y:y0,w:x2-x1+1,h:Math.min(h,lastInk+pad)-y0};
-  const ratio=box.w/box.h;if(ratio<1.15||ratio>2.05||box.w<w*.22||box.h<h*.07)return [];
+  // Include the lower text/footer and leave about 3–4 mm beyond the last printed mark.
+  let lastInk=redY;const scanBottom=Math.min(h-1,redY+Math.round(w*.12));
+  for(let y=redY;y<=scanBottom;y+=sample){let ink=0,total=0;for(let x=x1;x<=x2;x+=sample){total++;if(dark(x,y)||red(x,y))ink++}if(ink/Math.max(1,total)>.006)lastInk=y}
+  const pad=Math.max(sample*2,Math.round(w*.012)),y0=Math.max(0,topY-sample*2);
+  const box={x:x1,y:y0,w:x2-x1+1,h:Math.min(h,lastInk+pad)-y0};
+  const ratio=box.w/box.h;
+  if(ratio<1.05||ratio>2.35||box.w<w*.2||box.h<h*.07)return [];
   boxes.push(box)
  }
- return boxes
+ return boxes;
 }
 function addDetectedSources(name,canvas,allowAutoDetect=true){
  const isAadhaar=$('cardType').value==='Aadhaar Card';
@@ -245,11 +252,8 @@ function addDetectedSources(name,canvas,allowAutoDetect=true){
    if(regions.length===2){
     ['Front','Back'].forEach((side,i)=>{const item=makeImageSource(name+' — Aadhaar scan auto crop '+side,cropRegion({canvas},regions[i]));sources.push(item);addOption(item,sources.length-1)});
    }else{
-    regions=detectAadhaarCardRegions(canvas);
-    regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h));
-    const chosen=[];
-    for(const r of regions){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.35||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.35))chosen.push(r);if(chosen.length>=2)break;}
-    chosen.sort((a,b)=>a.y-b.y||a.x-b.x).forEach((r,i)=>{const item=makeImageSource(name+' — Aadhaar suggested crop '+(i+1),cropRegion({canvas},r));sources.push(item);addOption(item,sources.length-1)});
+    // Do not use colour/text-density guesses for scanned stand-copies: they can crop only the header.
+    // Keep the original image available for precise manual crop instead.
    }
   }
   return;
