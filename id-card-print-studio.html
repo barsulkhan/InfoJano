@@ -203,6 +203,12 @@ $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.tar
    const fallback=sources.findIndex(s=>/full PDF page \(auto-detection fallback\)/.test(s.name));
    $('frontSelect').value=fallback>=0?String(fallback):'';
    $('backSelect').value='none';$('cropSourceSelect').value=String(fallback>=0?fallback:0);
+  }else if(activeDocumentRules().workflow==='aadhaar-pdf-scan-photo-v2'){
+   const suggested=sources.map((s,i)=>({s,i})).filter(x=>/Aadhaar suggested crop/.test(x.s.name));
+   const original=sources.findIndex(s=>/full PDF page \(manual crop\)|original photo \(manual crop fallback\)/.test(s.name));
+   $('frontSelect').value=String(suggested.length?suggested[0].i:(original>=0?original:0));
+   $('backSelect').value=suggested.length>1?String(suggested[1].i):'none';
+   $('cropSourceSelect').value=String(original>=0?original:0);
   }else{$('frontSelect').value='0';$('backSelect').value=sources.length>1?'1':'none';$('cropSourceSelect').value='0';}status('Loaded '+sources.length+' candidate(s) using '+activeDocumentRules().workflow+'. Verify front/back previews before exporting.','ok');updateSidePreviews();dstatus('Ready. Confirm sides and layout before downloading.')}catch(err){status(err.message||'Could not read the file.','error')}});
 $('frontSelect').addEventListener('change',()=>{updateSidePreviews()});$('backSelect').addEventListener('change',()=>{updateSidePreviews()});$('cropSourceSelect').addEventListener('change',()=>{cropRect=null;cropDrag=null;drawCropCanvas()});
  $('cardType').addEventListener('change',()=>{if($('cardType').value==='Ayushman Bharat Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Ayushman print settings selected: 85 × 55 mm at 300 DPI. JPG/PNG auto-split remains unchanged.','ok');}else if($('cardType').value==='Aadhaar Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Aadhaar selected. Crop the complete front/back card manually before exporting; text and QR code should remain fully inside the crop.','ok');}renderLayoutPreview()});
