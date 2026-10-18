@@ -104,6 +104,38 @@ function detectCardRegions(canvas){
  for(const r of components){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.25||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.25)){const x=Math.max(0,r.x),y=Math.max(0,r.y),right=Math.min(w,r.x+r.w),bottom=Math.min(h,r.y+r.h);chosen.push({x,y,w:right-x,h:bottom-y});}}
  return chosen.sort((a,b)=>a.x-b.x||a.y-b.y).slice(0,12);
 }
+function detectAyushmanCardByBands(canvas){
+ const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;
+ if(w<100||h<80)return [];
+ const step=Math.max(1,Math.floor(Math.min(w,h)/700)),gw=Math.ceil(w/step),gh=Math.ceil(h/step);
+ const d=ctx.getImageData(0,0,w,h).data,rows=[];
+ for(let gy=0;gy<gh;gy++){
+  let count=0,minX=gw,maxX=-1;
+  for(let gx=0;gx<gw;gx++){
+   const i=(Math.min(h-1,gy*step)*w+Math.min(w-1,gx*step))*4,r=d[i],g=d[i+1],b=d[i+2];
+   if(r>165&&g>55&&g<195&&b<105&&r>g*1.22){count++;minX=Math.min(minX,gx);maxX=Math.max(maxX,gx);}
+  }
+  if(count>gw*.16&&maxX-minX>gw*.35)rows.push({y:gy,minX,maxX,count});
+ }
+ const bands=[];
+ for(const row of rows){const last=bands[bands.length-1];if(last&&row.y<=last.end+2){last.end=row.y;last.minX=Math.min(last.minX,row.minX);last.maxX=Math.max(last.maxX,row.maxX);last.count+=row.count;last.n++;}else bands.push({start:row.y,end:row.y,minX:row.minX,maxX:row.maxX,count:row.count,n:1});}
+ const good=bands.filter(b=>b.end-b.start>=Math.max(1,gh*.002));
+ if(good.length<2)return [];
+ const pairs=[];
+ for(let a=0;a<good.length;a++)for(let b=a+1;b<good.length;b++){
+  const top=good[a],bottom=good[b],gap=bottom.start-top.end,ratio=(bottom.maxX-bottom.minX+1)/(top.maxX-top.minX+1);
+  if(gap>gh*.07&&gap<gh*.78&&ratio>.65&&ratio<1.5){
+   const x0=Math.min(top.minX,bottom.minX),x1=Math.max(top.maxX,bottom.maxX);
+   const y0=top.start,y1=bottom.end;
+   const area=(x1-x0+1)*(y1-y0+1);
+   pairs.push({x:x0*step,y:Math.max(0,Math.floor(y0*step-step*2)),w:Math.min(w,(x1+1)*step)-x0*step,h:Math.min(h,Math.ceil((y1+1)*step+step*2)-Math.max(0,Math.floor(y0*step-step*2))),area});
+  }
+ }
+ pairs.sort((a,b)=>b.area-a.area);
+ const out=[];
+ for(const p of pairs){if(out.every(q=>Math.abs(q.x-p.x)>Math.min(q.w,p.w)*.15||Math.abs(q.y-p.y)>Math.min(q.h,p.h)*.15))out.push({x:Math.max(0,p.x),y:Math.max(0,p.y),w:p.w,h:p.h});}
+ return out.slice(0,2);
+}
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function addDetectedSources(name,canvas,allowAutoDetect=true){
  // Keep PDF pages intact for manual cropping; retain automatic splitting only for document profiles that enable it.
@@ -162,7 +194,9 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  // If a page contains two card faces, use the two largest detected regions. If pages contain one face each,
  // page 1 becomes Front and page 2 becomes Back. The approved JPG/PNG split path remains unchanged.
  const pageName=file.name+' — page '+p;
- const regions=detectCardRegions(canvas).filter(r=>r.w>canvas.width*.18&&r.h>canvas.height*.035&&r.w/r.h>.95&&r.w/r.h<2.6)
+ // Prefer the paired orange-band geometry of the actual Ayushman card; this avoids treating a portrait photo as the card.
+ let regions=detectAyushmanCardByBands(canvas);
+ if(!regions.length)regions=detectCardRegions(canvas).filter(r=>r.w>canvas.width*.18&&r.h>canvas.height*.035&&r.w/r.h>.95&&r.w/r.h<2.6)
    .sort((a,b)=>(b.w*b.h)-(a.w*a.h)).slice(0,2).sort((a,b)=>a.y-b.y||a.x-b.x)
    .map(r=>({r,score:ayushmanColourScore(cropRegion({canvas},r))})).filter(x=>x.score>=.12).map(x=>x.r);
  if(regions.length){
