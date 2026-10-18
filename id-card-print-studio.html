@@ -205,7 +205,7 @@ function detectAadhaarScannedPhotoRegions(canvas){
  function rowScore(y,x1,x2,test){let n=0,total=0;for(let x=x1;x<x2;x+=sample){total++;if(test(x,y))n++}return n/Math.max(1,total)}
  const xa=Math.round(w*.05),xb=Math.round(w*.96);
  let topY=-1,topScore=0;
- for(let y=Math.round(h*.43);y<Math.round(h*.72);y+=sample){const s=rowScore(y,xa,xb,dark);if(s>topScore){topScore=s;topY=y}}
+ for(let y=Math.round(h*.50);y<Math.round(h*.68);y+=sample){const s=rowScore(y,xa,xb,dark);if(s>topScore){topScore=s;topY=y}}
  if(topY<0||topScore<.045)return [];
  let redY=-1,redScore=0;
  for(let y=topY+Math.round(h*.07);y<Math.min(h-1,topY+Math.round(h*.30));y+=sample){const s=rowScore(y,xa,xb,red);if(s>redScore){redScore=s;redY=y}}
