@@ -251,6 +251,7 @@ function addDetectedSources(name,canvas,allowAutoDetect=true){
     for(const r of regions){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.35||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.35))chosen.push(r);if(chosen.length>=2)break;}
     chosen.sort((a,b)=>a.y-b.y||a.x-b.x).forEach((r,i)=>{const item=makeImageSource(name+' — Aadhaar suggested crop '+(i+1),cropRegion({canvas},r));sources.push(item);addOption(item,sources.length-1)});
    }
+  }
   return;
  }
  // Existing behavior for other documents is preserved; do not change the approved Ayushman workflow.
