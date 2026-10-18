@@ -195,7 +195,7 @@ function detectAadhaarPdfCardRegions(canvas){
  return boxes;
 }
 function detectAadhaarScannedPhotoRegions(canvas){
- // IMAGE-ONLY detector for stand-copy Aadhaar scans. PDF detection is a separate unchanged function.
+ // IMAGE-ONLY stand-copy detector. PDF detector remains separate and unchanged.
  const w=canvas.width,h=canvas.height,ctx=canvas.getContext('2d',{willReadFrequently:true});
  if(w<300||h<300)return [];
  const data=ctx.getImageData(0,0,w,h).data,sample=Math.max(1,Math.floor(Math.max(w,h)/1200));
@@ -203,38 +203,37 @@ function detectAadhaarScannedPhotoRegions(canvas){
  const dark=(x,y)=>{const [r,g,b]=rgb(x,y);return Math.max(r,g,b)<155};
  const red=(x,y)=>{const [r,g,b]=rgb(x,y);return r>100&&r>g*1.18&&r>b*1.12&&g<190};
  function rowScore(y,x1,x2,test){let n=0,total=0;for(let x=x1;x<x2;x+=sample){total++;if(test(x,y))n++}return n/Math.max(1,total)}
- // Locate the scissors line in the middle/lower area; do not mistake the letter text above it for a cut line.
  const xa=Math.round(w*.045),xb=Math.round(w*.965);
- let topY=-1,topScore=0;
- for(let y=Math.round(h*.535);y<Math.round(h*.625);y+=sample){const s=rowScore(y,xa,xb,dark);if(s>topScore){topScore=s;topY=y}}
- if(topY<0||topScore<.035)return [];
- // Front and back red footer lines can be vertically offset by several pixels in a scanned image.
- // Detect them independently in left/right halves, not on one shared row.
+ // Detect the scissors line by repeated dark/light transitions, not by choosing the darkest row.
+ let topY=-1,topQuality=0,topDarkScore=0;
+ for(let y=Math.round(h*.535);y<Math.round(h*.625);y+=sample){
+  let hits=0,total=0,transitions=0,prev=false;
+  for(let x=xa;x<xb;x+=sample){const hit=dark(x,y);total++;if(hit)hits++;if(total>1&&hit!==prev)transitions++;prev=hit}
+  const fraction=hits/Math.max(1,total),transitionRate=transitions/Math.max(1,total);
+  const quality=fraction*.45+transitionRate*.75-(fraction>.42?.4:0);
+  if(quality>topQuality){topQuality=quality;topY=y;topDarkScore=fraction}
+ }
+ if(topY<0||topDarkScore<.025||topQuality<.055)return [];
+ // Red rule under Aadhaar number is lower reference; include the slogan below it.
  const split=Math.round(w*.5),searchStart=topY+Math.round(h*.10),searchEnd=Math.min(h-1,topY+Math.round(h*.23));
  function findSide(xaSide,xbSide){
   let lineY=-1,lineScore=0;
   for(let y=searchStart;y<searchEnd;y+=sample){const s=rowScore(y,xaSide,xbSide,red);if(s>lineScore){lineScore=s;lineY=y}}
-  if(lineY<0||lineScore<.12)return null;
+  if(lineY<0||lineScore<.025)return null;
   let first=w,last=-1;
   for(let x=xaSide;x<xbSide;x+=sample){if(red(x,lineY)){if(x<first)first=x;if(x>last)last=x}}
   if(last<=first)return null;
-  // Extend beyond the coloured rule so the full side margins are retained.
   const x1=Math.max(0,first-Math.round(w*.025)),x2=Math.min(w-1,last+Math.round(w*.02));
-  let lastInk=lineY;
-  const scanBottom=Math.min(h-1,lineY+Math.round(w*.14));
-  for(let y=lineY;y<=scanBottom;y+=sample){
-   let ink=0,total=0;
-   for(let x=x1;x<=x2;x+=sample){total++;if(dark(x,y)||red(x,y))ink++}
-   if(ink/Math.max(1,total)>.004)lastInk=y;
-  }
-  const y0=Math.max(0,topY-sample*2),padY=Math.max(sample*2,Math.round(w*.012));
+  let lastInk=lineY;const scanBottom=Math.min(h-1,lineY+Math.round(w*.16));
+  for(let y=lineY;y<=scanBottom;y+=sample){let ink=0,total=0;for(let x=x1;x<=x2;x+=sample){total++;if(dark(x,y)||red(x,y))ink++}if(ink/Math.max(1,total)>.003)lastInk=y}
+  // Start at the scissors line, end 3–4 mm after all slogan/footer text.
+  const y0=Math.max(0,topY),padY=Math.max(sample*2,Math.round(w*.012));
   const box={x:x1,y:y0,w:x2-x1+1,h:Math.min(h,lastInk+padY)-y0};
-  const ratio=box.w/box.h;
-  if(ratio<1.05||ratio>2.35||box.w<w*.2||box.h<h*.07)return null;
+  const ratio=box.w/box.h;if(ratio<1.05||ratio>2.35||box.w<w*.2||box.h<h*.07)return null;
   return box;
  }
  const front=findSide(Math.round(w*.04),split),back=findSide(split,Math.round(w*.98));
- if(!front||!back||back.x<=front.x||front.x+front.w>back.x+back.w)return [];
+ if(!front||!back||back.x<=front.x)return [];
  return [front,back];
 }
 function addDetectedSources(name,canvas,allowAutoDetect=true){
