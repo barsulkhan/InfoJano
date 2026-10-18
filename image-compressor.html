@@ -174,7 +174,12 @@ async function encodeAtSize(w,h,mime,q){
  ctx.drawImage(image,0,0,w,h);
  return await canvasBlob(canvas,mime,q);
 }
-downloadLink.addEventListener('click',()=>{\n statusBox.innerHTML='<span class="download-wait" role="status">Starting download…</span>';\n setTimeout(()=>{statusBox.textContent='Download started. Your browser does not report when the file has fully finished downloading. Check Downloads to confirm completion.';},1200);\n});\n\ncompressButton.addEventListener('click',async()=>{
+downloadLink.addEventListener('click',()=>{
+ statusBox.innerHTML='<span class="download-wait" role="status">Starting download…</span>';
+ setTimeout(()=>{statusBox.textContent='Download started. Your browser does not report when the file has fully finished downloading. Check Downloads to confirm completion.';},1200);
+});
+
+compressButton.addEventListener('click',async()=>{
  if(!image){statusBox.textContent='Please choose an image first.';return;}
  compressButton.disabled=true;
  downloadLink.hidden=true;
