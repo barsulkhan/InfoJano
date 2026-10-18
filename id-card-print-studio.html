@@ -74,7 +74,7 @@ const $=id=>document.getElementById(id), sources=[], objectUrls=[];
  */
 const DOCUMENT_RULES=Object.freeze({
  'Ayushman Bharat Card':Object.freeze({imageAutoSplit:true,maxImageCandidates:2,pdfAutoSplit:false,workflow:'ayushman-jpg-split-v2'}),
- 'Aadhaar Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'aadhaar-manual-crop-v1'}),
+ 'Aadhaar Card':Object.freeze({imageAutoSplit:true,maxImageCandidates:2,pdfAutoSplit:true,workflow:'aadhaar-pdf-scan-photo-v2'}),
  'Voter ID':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'voter-manual-crop-pending'}),
  'PAN Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'pan-manual-crop-v1',physicalWidthMM:85,physicalHeightMM:55}),
  'Driving Licence':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'dl-manual-crop-pending'}),
@@ -125,31 +125,35 @@ function detectCardRegions(canvas){
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function addDetectedSources(name,canvas,allowAutoDetect=true){
- // Keep PDF pages intact for manual cropping; retain automatic splitting only for document profiles that enable it.
+ const isAadhaar=$('cardType').value==='Aadhaar Card';
+ if(isAadhaar){
+  // Always retain the original photo/page so imperfect detection never removes the manual-crop fallback.
+  const full=makeImageSource(name+(/\.pdf\b/i.test(name)?' — full PDF page (manual crop)':' — original photo (manual crop fallback)'),canvas);
+  sources.push(full);addOption(full,sources.length-1);
+  if(allowAutoDetect){
+   let regions=detectCardRegions(canvas).filter(r=>{const ratio=r.w/r.h,area=(r.w*r.h)/(canvas.width*canvas.height);return ratio>=1.25&&ratio<=2.15&&area>=.035&&r.w>=canvas.width*.18&&r.h>=canvas.height*.045;});
+   regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h));
+   const chosen=[];
+   for(const r of regions){if(chosen.every(q=>Math.abs(q.x-r.x)>Math.min(q.w,r.w)*.35||Math.abs(q.y-r.y)>Math.min(q.h,r.h)*.35))chosen.push(r);if(chosen.length>=2)break;}
+   chosen.sort((a,b)=>a.y-b.y||a.x-b.x).forEach((r,i)=>{const item=makeImageSource(name+' — Aadhaar suggested crop '+(i+1),cropRegion({canvas},r));sources.push(item);addOption(item,sources.length-1)});
+  }
+  return;
+ }
+ // Existing behavior for other documents is preserved; do not change the approved Ayushman workflow.
  if(allowAutoDetect){
   let regions=detectCardRegions(canvas);
   const rules=activeDocumentRules();
-  // Ayushman uploads can contain a card plus a separate portrait; keep the two largest detected regions only.
-  if(rules.maxImageCandidates&&regions.length>rules.maxImageCandidates){
-   regions=regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h)).slice(0,rules.maxImageCandidates);
-  }
-  if(regions.length>1){
-   regions.sort((a,b)=>a.y-b.y||a.x-b.x);
-   regions.forEach((r,i)=>{const item=makeImageSource(name+' — detected card '+(i+1),cropRegion({canvas},r));sources.push(item);addOption(item,sources.length-1)});
-   return regions.length;
-  }
-  if(regions.length===1){
-   const item=makeImageSource(name+' — detected card',cropRegion({canvas},regions[0]));sources.push(item);addOption(item,sources.length-1);return 1;
-  }
+  if(rules.maxImageCandidates&&regions.length>rules.maxImageCandidates)regions=regions.sort((a,b)=>(b.w*b.h)-(a.w*a.h)).slice(0,rules.maxImageCandidates);
+  if(regions.length>1){regions.sort((a,b)=>a.y-b.y||a.x-b.x);regions.forEach((r,i)=>{const item=makeImageSource(name+' — detected card '+(i+1),cropRegion({canvas},r));sources.push(item);addOption(item,sources.length-1)});return regions.length;}
+  if(regions.length===1){const item=makeImageSource(name+' — detected card',cropRegion({canvas},regions[0]));sources.push(item);addOption(item,sources.length-1);return 1;}
  }
  sources.push(makeImageSource(name+(allowAutoDetect?' — image (manual crop available)':(/\.pdf\b/i.test(name)?' — full PDF page (manual crop)':' — image (manual crop required)'),canvas));
- addOption(sources[sources.length-1],sources.length-1);
- return 1;
+ addOption(sources[sources.length-1],sources.length-1);return 1;
 }
 function showCanvas(id,source){const host=$(id);host.replaceChildren();if(!source){host.className='placeholder';host.textContent='Not selected';return}host.className='';const c=document.createElement('canvas');c.width=source.canvas.width;c.height=source.canvas.height;const ctx=c.getContext('2d');ctx.drawImage(source.canvas,0,0);c.style.width='100%';c.style.maxHeight='220px';c.style.objectFit='contain';host.appendChild(c);}
 let cropRect=null,cropDrag=null,cropSource=null;
 let cropSourceSide='frontSelect';
-function drawCropCanvas(){const host=$('cropCanvas'),src=selected('cropSourceSelect');if(!src){host.width=1;host.height=1;$('cropHint').textContent='Select a source above to crop it.';return}cropSource=src;const maxW=1000,maxH=700,scale=Math.min(maxW/src.canvas.width,maxH/src.canvas.height,1);host.width=Math.max(1,Math.round(src.canvas.width*scale));host.height=Math.max(1,Math.round(src.canvas.height*scale));host.style.aspectRatio=host.width+'/'+host.height;const ctx=host.getContext('2d');ctx.clearRect(0,0,host.width,host.height);ctx.drawImage(src.canvas,0,0,host.width,host.height);if(cropRect){ctx.strokeStyle='#ff2020';ctx.lineWidth=Math.max(2,host.width/400);ctx.strokeRect(cropRect.x,cropRect.y,cropRect.w,cropRect.h);ctx.fillStyle='#ff202033';ctx.fillRect(cropRect.x,cropRect.y,cropRect.w,cropRect.h)}$('cropHint').textContent=$('cardType').value==='Aadhaar Card'?'আধার: শুধু একটি সম্পূর্ণ ছোট কার্ডের বাইরের ধার ঘিরে Crop করুন। Front-এর জন্য Front বোতাম, Back-এর জন্য Back বোতাম চাপুন। লেখা, ছবি ও QR কোড যেন বাদ না যায়। Source: '+src.name:'Source: '+src.name+' — drag around the complete card.'}
+function drawCropCanvas(){const host=$('cropCanvas'),src=selected('cropSourceSelect');if(!src){host.width=1;host.height=1;$('cropHint').textContent='Select a source above to crop it.';return}cropSource=src;const maxW=1000,maxH=700,scale=Math.min(maxW/src.canvas.width,maxH/src.canvas.height,1);host.width=Math.max(1,Math.round(src.canvas.width*scale));host.height=Math.max(1,Math.round(src.canvas.height*scale));host.style.aspectRatio=host.width+'/'+host.height;const ctx=host.getContext('2d');ctx.clearRect(0,0,host.width,host.height);ctx.drawImage(src.canvas,0,0,host.width,host.height);if(cropRect){ctx.strokeStyle='#ff2020';ctx.lineWidth=Math.max(2,host.width/400);ctx.strokeRect(cropRect.x,cropRect.y,cropRect.w,cropRect.h);ctx.fillStyle='#ff202033';ctx.fillRect(cropRect.x,cropRect.y,cropRect.w,cropRect.h)} $('cropHint').textContent=$('cardType').value==='Aadhaar Card'?'আধার: PDF, স্ক্যান কপি বা মোবাইলের ছবিতে Suggested crop ঠিক হলে সেটি নিন। ভুল হলে Original page/photo বেছে নিজে সম্পূর্ণ কার্ড ঘিরে Crop করুন। Front ও Back আলাদা করুন; লেখা, ছবি ও QR কোড যেন না কাটে। Source: '+src.name:'Source: '+src.name+' — drag around the complete card.'}
 function cropPoint(e){const r=$('cropCanvas').getBoundingClientRect();return {x:Math.max(0,Math.min($('cropCanvas').width,(e.clientX-r.left)*$('cropCanvas').width/r.width)),y:Math.max(0,Math.min($('cropCanvas').height,(e.clientY-r.top)*$('cropCanvas').height/r.height))}}
 $('cropCanvas').addEventListener('pointerdown',e=>{if(!cropSource)drawCropCanvas();cropDrag=cropPoint(e);cropRect={x:cropDrag.x,y:cropDrag.y,w:1,h:1};$('cropCanvas').setPointerCapture(e.pointerId);drawCropCanvas()});
 $('cropCanvas').addEventListener('pointermove',e=>{if(!cropDrag)return;const p=cropPoint(e);cropRect={x:Math.min(cropDrag.x,p.x),y:Math.min(cropDrag.y,p.y),w:Math.abs(p.x-cropDrag.x),h:Math.abs(p.y-cropDrag.y)};drawCropCanvas()});
@@ -182,7 +186,7 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  const rect=detectAyushmanPrintedBounds(canvas,side);
  if(rect){const item=makeImageSource(pageName+' — Ayushman auto crop '+side,cropRegion({canvas},rect));sources.push(item);addOption(item,sources.length-1);}
  else{const full=makeImageSource(pageName+' — full PDF page (auto-detection fallback)',canvas);sources.push(full);addOption(full,sources.length-1);}
- }else{addDetectedSources(file.name+' — page '+p,canvas,false)}}if(enteredPassword)status('Protected PDF opened in this browser. Choose the correct front and back previews.','ok')}
+ }else if($('cardType').value==='Aadhaar Card'){addDetectedSources(file.name+' — page '+p,canvas,true);}else{addDetectedSources(file.name+' — page '+p,canvas,false)}}if(enteredPassword)status('Protected PDF opened in this browser. Choose the correct front and back previews.','ok')}
 $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.target.files||[]);if(!files.length)return;sources.length=0;$('frontSelect').replaceChildren();$('backSelect').replaceChildren();$('cropSourceSelect').replaceChildren(new Option('Upload files first',''));$('frontSelect').disabled=true;$('backSelect').disabled=true;$('cropSourceSelect').disabled=true;status('Loading files…');try{const rules=activeDocumentRules();for(const file of files){if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf'))await loadPdfFile(file);else if(file.type==='image/jpeg'||file.type==='image/png'||/\\.(jpe?g|png)$/i.test(file.name))await loadImageFile(file,rules.imageAutoSplit);else throw new Error('Unsupported file: '+file.name+'. Please choose JPG, PNG, or PDF.')}if(!sources.length)throw new Error('No readable pages or images were found.');$('frontSelect').disabled=false;$('backSelect').disabled=false;$('cropSourceSelect').disabled=false;if(activeDocumentRules().workflow==='pan-manual-crop-v1'){
  const panFront=sources.findIndex(s=>/PAN auto crop Front/.test(s.name));
  const panBack=sources.findIndex(s=>/PAN auto crop Back/.test(s.name));
