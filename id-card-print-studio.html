@@ -181,7 +181,7 @@ function addDetectedSources(name,canvas,allowAutoDetect=true){
   if(regions.length>1){regions.sort((a,b)=>a.y-b.y||a.x-b.x);regions.forEach((r,i)=>{const item=makeImageSource(name+' — detected card '+(i+1),cropRegion({canvas},r));sources.push(item);addOption(item,sources.length-1)});return regions.length;}
   if(regions.length===1){const item=makeImageSource(name+' — detected card',cropRegion({canvas},regions[0]));sources.push(item);addOption(item,sources.length-1);return 1;}
  }
- sources.push(makeImageSource(name+(allowAutoDetect?' — image (manual crop available)':(/\.pdf\b/i.test(name)?' — full PDF page (manual crop)':' — image (manual crop required)'),canvas));
+ sources.push(makeImageSource(name+(allowAutoDetect?' — image (manual crop available)':(/\.pdf\b/i.test(name)?' — full PDF page (manual crop)':' — image (manual crop required)')),canvas));
  addOption(sources[sources.length-1],sources.length-1);return 1;
 }
 function showCanvas(id,source){const host=$(id);host.replaceChildren();if(!source){host.className='placeholder';host.textContent='Not selected';return}host.className='';const c=document.createElement('canvas');c.width=source.canvas.width;c.height=source.canvas.height;const ctx=c.getContext('2d');ctx.drawImage(source.canvas,0,0);c.style.width='100%';c.style.maxHeight='220px';c.style.objectFit='contain';host.appendChild(c);}
