@@ -75,6 +75,31 @@ public class MainActivity extends Activity {
 
     private class PdfDownloadBridge {
         @JavascriptInterface
+        public boolean saveFile(String base64Data, String fileName, String mimeType) {
+            try {
+                byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+                String safeName = (fileName == null || fileName.trim().isEmpty()) ? "infojano-download.bin" : fileName.replaceAll("[\\\\/:*?\\"<>|]", "_");
+                String safeMime = (mimeType == null || mimeType.trim().isEmpty()) ? "application/octet-stream" : mimeType;
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Downloads.DISPLAY_NAME, safeName);
+                values.put(MediaStore.Downloads.MIME_TYPE, safeMime);
+                values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+                Uri uri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+                if (uri == null) throw new Exception("Could not create download file");
+                try (OutputStream stream = getContentResolver().openOutputStream(uri)) {
+                    if (stream == null) throw new Exception("Could not open download file");
+                    stream.write(bytes);
+                    stream.flush();
+                }
+                runOnUiThread(() -> Toast.makeText(MainActivity.this, "File saved to Downloads", Toast.LENGTH_LONG).show());
+                return true;
+            } catch (Exception e) {
+                runOnUiThread(() -> Toast.makeText(MainActivity.this, "Could not save file. Please try again.", Toast.LENGTH_LONG).show());
+                return false;
+            }
+        }
+
+        @JavascriptInterface
         public boolean savePdf(String base64Data, String fileName) {
             try {
                 byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
