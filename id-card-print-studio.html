@@ -21,23 +21,24 @@
 </div><p class="hint">PDF pages and photos are supported. You can upload two separate photos, or one PDF/scan containing the front and back. Files are processed in this browser; they are not intentionally uploaded to an InfoJano server.</p>
 <div id="status" class="status" role="status" aria-live="polite">Choose a PDF or one or more photos to begin.</div>
 </section>
-<section class="card"><h2><span class="step">2</span>Assign front and back</h2>
+<section class="card"><h2><span class="step">2</span>Crop and review card sides</h2>
+<p class="hint">Ayushman workflow: select the complete front card in the source preview and press “Use crop as Front”. If your file contains a real back side, select its source page, crop the complete back including the QR code, and press “Use crop as Back”. Instruction pages are not card backs. The next step resizes each selected crop, adds a cut border, and shows the print review.</p>
 <div class="grid">
-<div class="field"><label for="frontSelect">Front side source</label><select id="frontSelect" disabled><option value="">Upload files first</option></select></div>
-<div class="field"><label for="backSelect">Back side source</label><select id="backSelect" disabled><option value="">Upload files first</option><option value="none">No back side</option></select></div>
-</div><p class="hint">The app lists uploaded images and PDF pages. Choose the correct front and back yourself if automatic identification is uncertain.</p>
+<div class="field"><label for="frontSelect">Front card preview</label><select id="frontSelect" disabled><option value="">Upload files first</option></select></div>
+<div class="field"><label for="backSelect">Back card preview (optional)</label><select id="backSelect" disabled><option value="">Upload files first</option><option value="none">No back side</option></select></div>
+</div>
 <div class="previewgrid" style="margin-top:12px">
 <div class="preview"><strong>Front preview</strong><div id="frontPreview" class="placeholder">Front not selected</div></div>
 <div class="preview"><strong>Back preview</strong><div id="backPreview" class="placeholder">Back not selected</div></div>
 </div>
 <div class="card" style="margin-top:12px;background:#f8fafc;box-shadow:none">
-<strong>Manual card crop (recommended for Aadhaar PDF)</strong>
-<p class="hint">Aadhaar PDF: choose the PDF page in the Front source list and drag around ONLY the front PVC-card rectangle. Press “Use crop as Front”. Then choose the same PDF page in the Back source list; the crop view will switch to that source. Drag around ONLY the back PVC-card rectangle (including the full QR code) and press “Use crop as Back”. Do not select the whole page or both cards together.</p>
+<strong>Step 1 — Crop the complete card</strong>
+<p class="hint">Choose the original PDF page below. Drag around only the full card rectangle, including every edge, all text, both colour bands, the portrait and the complete QR code. Press “Use crop as Front”. For a genuine back side, choose its source page and repeat with “Use crop as Back”. Do not select the instruction panel or the whole PDF page.</p>
 <div class="field" style="margin:10px 0"><label for="cropSourceSelect">Original source to crop (choose the PDF page here)</label><select id="cropSourceSelect" disabled><option value="">Upload files first</option></select></div><div class="preview"><canvas id="cropCanvas" style="width:100%;max-height:420px;touch-action:none;object-fit:contain"></canvas><div id="cropHint" class="placeholder">Select a source above to crop it.</div></div>
 <div class="actions"><button class="btn alt" id="cropFrontBtn" type="button">Use crop as Front</button><button class="btn alt" id="cropBackBtn" type="button">Use crop as Back</button><button class="btn alt" id="cropResetBtn" type="button">Reset selection</button></div>
 </div>
 </section>
-<section class="card"><h2><span class="step">3</span>Card size and print layout</h2>
+<section class="card"><h2><span class="step">3</span>Set card size, add border and review</h2>
 <div class="grid">
 <div class="field"><label for="sizePreset">Card size preset</label><select id="sizePreset"><option value="85,55">85 × 55 mm (standard ID card)</option><option value="86,54">86 × 54 mm (credit-card size)</option><option value="custom">Custom size</option></select></div>
 <div class="field"><label for="dpi">Resolution</label><select id="dpi"><option value="300" selected>300 DPI</option><option value="200">200 DPI</option><option value="150">150 DPI</option></select></div>
