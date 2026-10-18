@@ -27,6 +27,7 @@
   document.addEventListener('click',function(event){
     const link=event.target.closest&&event.target.closest('a[download],a[href*=".apk" i],a[href*="/releases/download/"]');
     if(!link||link.hidden||!link.href)return;
+    if(window.AndroidBridge)return;
     prepare(link);
     link.classList.add('ij-dl-notice');
     link.innerHTML='<span class="ij-dl-icon" aria-hidden="true">ℹ</span><span>Your browser handles the download. Check Downloads for its actual progress and completion.</span>';
