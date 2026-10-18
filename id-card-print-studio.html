@@ -206,7 +206,7 @@ function detectAadhaarScannedPhotoRegions(canvas){
  const xa=Math.round(w*.045),xb=Math.round(w*.965);
  // Detect the scissors line by repeated dark/light transitions, not by choosing the darkest row.
  let topY=-1,topQuality=0,topDarkScore=0;
- for(let y=Math.round(h*.535);y<Math.round(h*.625);y+=sample){
+ for(let y=Math.round(h*.535);y<Math.round(h*.565);y+=sample){
   let hits=0,total=0,transitions=0,prev=false;
   for(let x=xa;x<xb;x+=sample){const hit=dark(x,y);total++;if(hit)hits++;if(total>1&&hit!==prev)transitions++;prev=hit}
   const fraction=hits/Math.max(1,total),transitionRate=transitions/Math.max(1,total);
@@ -357,7 +357,7 @@ function cropToCard(source,targetW,targetH){const out=document.createElement('ca
   }
  }
  ctx.putImageData(image,0,0);
- }else if($('cardType').value==='Aadhaar Card'){/* Aadhaar-only print enhancement: deepen faint neutral text/line pixels while leaving coloured UIDAI headers, portrait colours and QR contrast largely intact. Ayushman rules above remain untouched. */ctx.drawImage(source.canvas,0,0,out.width,out.height);const image=ctx.getImageData(0,0,out.width,out.height),px=image.data;for(let i=0;i<px.length;i+=4){const r=px[i],g=px[i+1],b=px[i+2],hi=Math.max(r,g,b),lo=Math.min(r,g,b),lum=.299*r+.587*g+.114*b;if(hi-lo<=30&&lum>=52&&lum<=205){const darker=Math.round(lum*.58),delta=lum-darker;px[i]=Math.max(0,r-delta);px[i+1]=Math.max(0,g-delta);px[i+2]=Math.max(0,b-delta);}}ctx.putImageData(image,0,0);}else{/* Other documents, including PAN, are manually cropped first and then fitted to exact physical dimensions. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}return out}
+ }else if($('cardType').value==='Aadhaar Card'){/* Preserve original Aadhaar photo, skin tones, text and QR pixels. Avoid whole-image darkening which damages portrait detail. Use high-quality resizing only; Ayushman branch above remains unchanged. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}else{/* Other documents, including PAN, are manually cropped first and then fitted to exact physical dimensions. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}return out}
 function hasExistingCutBorder(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;function dark(x,y){const i=(y*w+x)*4;return d[i]<95&&d[i+1]<95&&d[i+2]<95}let top=0,bottom=0,left=0,right=0,n=Math.max(20,Math.floor(Math.min(w,h)*.35));for(let k=0;k<n;k++){const x=Math.round((w-1)*(.15+.7*k/Math.max(1,n-1))),y=Math.round((h-1)*(.15+.7*k/Math.max(1,n-1)));if(dark(x,Math.max(0,Math.round(h*.015))))top++;if(dark(x,Math.min(h-1,Math.round(h*.985))))bottom++;if(dark(Math.max(0,Math.round(w*.015)),y))left++;if(dark(Math.min(w-1,Math.round(w*.985)),y))right++;}return top/n>.48&&bottom/n>.48&&left/n>.48&&right/n>.48}
 function hasFullColorBackground(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;let colorful=0,total=0;for(let gy=0;gy<5;gy++){for(let gx=0;gx<5;gx++){const x=Math.round(w*(.04+gx*.23)),y=Math.round(h*(.04+gy*.23)),i=(y*w+x)*4,r=d[i],g=d[i+1],b=d[i+2];total++;if(Math.max(r,g,b)-Math.min(r,g,b)>28&&Math.min(r,g,b)<235)colorful++;}}return colorful/total>.42}
 function drawCard(doc,canvas,x,y,w,h){doc.addImage(canvas.toDataURL('image/jpeg',.99),'JPEG',x,y,w,h,undefined,'SLOW');if($('cardType').value!=='PAN Card'){doc.setDrawColor(0,0,0);doc.setLineWidth(.25);doc.rect(x,y,w,h,'S')}}
