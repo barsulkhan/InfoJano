@@ -171,12 +171,12 @@ function detectAadhaarPdfCardRegions(canvas){
  // Top scissors line is dotted; bottom edge is solid. Search only the lower card zone.
  const x1=Math.round(w*.055),x2=Math.round(w*.945);
  let topY=-1,topScore=0;
- for(let y=Math.round(h*.62);y<Math.round(h*.84);y+=sample){
+ for(let y=Math.round(h*.66);y<Math.round(h*.78);y+=sample){
   const s=rowScore(y,x1,x2);
   if(s>topScore){topScore=s;topY=y;}
  }
  let bottomY=-1,bottomScore=0;
- for(let y=Math.round(h*.84);y<Math.round(h*.98);y+=sample){
+ for(let y=Math.round(h*.87);y<Math.round(h*.98);y+=sample){
   const s=rowScore(y,x1,x2);
   if(s>bottomScore){bottomScore=s;bottomY=y;}
  }
