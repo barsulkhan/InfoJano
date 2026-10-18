@@ -173,6 +173,24 @@ function selected(id){const n=$(id).value;return n===''||n==='none'?null:sources
 function updateSidePreviews(){showCanvas('frontPreview',selected('frontSelect'));showCanvas('backPreview',selected('backSelect'));renderLayoutPreview();drawCropCanvas()}
 function renderLayoutPreview(){const host=$('printPreview');host.replaceChildren();const c=document.createElement('canvas');c.width=420;c.height=297;c.style.width='100%';c.style.maxHeight='300px';const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='#cbd5e1';ctx.strokeRect(1,1,c.width-2,c.height-2);const f=selected('frontSelect'),b=selected('backSelect'),layout=$('layout').value;const w=Number($('widthMM').value)||85,h=Number($('heightMM').value)||55;const stacked=layout==='stacked';let scale=Math.min(3.2,390/(w*(layout==='paired'?2:1)+10),260/((stacked?h*2+8:h)+10));const cw=w*scale,ch=h*scale;let x=layout==='paired'?12:Math.max(12,(c.width-(layout==='paired'?cw*2+8:cw))/2),y=stacked?Math.max(28,(c.height-(ch*2+8))/2):28;if(f&&layout!=='backonly'){ctx.drawImage(f.canvas,x,y,cw,ch);ctx.strokeStyle='#000';ctx.lineWidth=1;ctx.strokeRect(x,y,cw,ch)}if(b&&layout!=='frontonly'){const bx=layout==='paired'?x+cw+8:x,by=stacked?y+ch+8:y;if(stacked){ctx.save();ctx.strokeStyle='#64748b';ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(x,by-4);ctx.lineTo(x+cw,by-4);ctx.stroke();ctx.restore()}ctx.drawImage(b.canvas,bx,by,cw,ch);ctx.strokeStyle='#000';ctx.lineWidth=1;ctx.strokeRect(bx,by,cw,ch)}ctx.fillStyle='#475569';ctx.font='12px sans-serif';ctx.fillText(($('paper').value==='a4'?'A4':$('paper').value==='photo'?'4 × 6 inch':'Custom paper')+' • preview only',12,18);host.appendChild(c)}
 async function loadImageFile(file,allowAutoSplit){const url=URL.createObjectURL(file);objectUrls.push(url);const img=new Image();img.src=url;await img.decode();const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext('2d').drawImage(img,0,0);addDetectedSources(file.name,canvas,!!allowAutoSplit)}
+function detectAyushmanWhiteTextFace(canvas){
+ const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;
+ const d=ctx.getImageData(0,0,w,h).data,step=Math.max(1,Math.floor(Math.min(w,h)/1000)),gw=Math.ceil(w/step),gh=Math.ceil(h/step);
+ const rowInk=new Float32Array(gh),colInk=new Float32Array(gw);
+ for(let gy=0;gy<gh;gy++)for(let gx=0;gx<gw;gx++){
+  const x=Math.min(w-1,gx*step),y=Math.min(h-1,gy*step),i=(y*w+x)*4,r=d[i],g=d[i+1],b=d[i+2];
+  if(r<155&&g<155&&b<155){rowInk[gy]++;colInk[gx]++;}
+ }
+ const rows=[],cols=[];
+ for(let y=0;y<gh;y++)if(rowInk[y]>gw*.008)rows.push(y);
+ for(let x=0;x<gw;x++)if(colInk[x]>gh*.008)cols.push(x);
+ if(rows.length<10||cols.length<10)return null;
+ const y0=Math.max(0,rows[0]-Math.ceil(gh*.012)),y1=Math.min(gh-1,rows[rows.length-1]+Math.ceil(gh*.012));
+ const x0=Math.max(0,cols[0]-Math.ceil(gw*.012)),x1=Math.min(gw-1,cols[cols.length-1]+Math.ceil(gw*.012));
+ const rect={x:x0*step,y:y0*step,w:Math.min(w-x0*step,(x1-x0+1)*step),h:Math.min(h-y0*step,(y1-y0+1)*step)};
+ if(rect.w/w<.38||rect.h/h<.15||rect.w/rect.h<.65||rect.w/rect.h>2.8)return null;
+ return rect;
+}
 function ayushmanColourScore(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height,d=ctx.getImageData(0,0,w,h).data;let hits=0,total=0;for(let gy=0;gy<9;gy++)for(let gx=0;gx<9;gx++){const x=Math.min(w-1,Math.floor((gx+.5)*w/9)),y=Math.min(h-1,Math.floor((gy+.5)*h/9)),i=(y*w+x)*4,r=d[i],g=d[i+1],b=d[i+2];if(Math.max(r,g,b)-Math.min(r,g,b)>35&&Math.min(r,g,b)<245)hits++;total++;}return hits/total}
 async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader library did not load. Check internet and try again.');const bytes=await file.arrayBuffer();let enteredPassword=false;const task=pdfjsLib.getDocument({data:bytes,password:'',});task.onPassword=(updatePassword,reason)=>{const retry=reason===pdfjsLib.PasswordResponses.INCORRECT_PASSWORD;const message=retry?'Incorrect password. Try again.':'This PDF is password-protected. Enter its PDF password to open it. The password is used only in this browser.';const password=window.prompt(message,'');if(password===null){task.destroy();throw new Error('PDF opening cancelled because no password was entered.');}enteredPassword=true;updatePassword(password)};let pdf;try{pdf=await task.promise}catch(err){if(err&&err.name==='PasswordException')throw new Error('Could not open the protected PDF. Check the password and try again.');throw err}let ayushmanFacesFound=0;for(let p=1;p<=pdf.numPages;p++){const page=await pdf.getPage(p);const isAyushman=$('cardType').value==='Ayushman Bharat Card';const vp=page.getViewport({scale:isAyushman?3.5:2});const canvas=document.createElement('canvas');canvas.width=Math.ceil(vp.width);canvas.height=Math.ceil(vp.height);await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;if(isAyushman){/* Render Ayushman PDF pages at higher resolution, then apply a restrained contrast/saturation boost without changing geometry or the established split workflow. */const enhanced=document.createElement('canvas');enhanced.width=canvas.width;enhanced.height=canvas.height;const ectx=enhanced.getContext('2d');ectx.filter='contrast(1.07) saturate(1.06)';ectx.drawImage(canvas,0,0);ectx.filter='none';canvas.width=enhanced.width;canvas.height=enhanced.height;canvas.getContext('2d').drawImage(enhanced,0,0);}if($('cardType').value==='PAN Card'){
  // PAN e-PAN PDFs place the two printable card faces side-by-side near the bottom.
@@ -194,8 +212,9 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  // If a page contains two card faces, use the two largest detected regions. If pages contain one face each,
  // page 1 becomes Front and page 2 becomes Back. The approved JPG/PNG split path remains unchanged.
  const pageName=file.name+' — page '+p;
- // Prefer the paired orange-band geometry of the actual Ayushman card; this avoids treating a portrait photo as the card.
+ // Front: orange bands locate the card. Back: on the white page, target the text block and leave a small safety margin around it.
  let regions=detectAyushmanCardByBands(canvas);
+ if(!regions.length){const textFace=detectAyushmanWhiteTextFace(canvas);if(textFace)regions=[textFace];}
  if(!regions.length)regions=detectCardRegions(canvas).filter(r=>r.w>canvas.width*.18&&r.h>canvas.height*.035&&r.w/r.h>.95&&r.w/r.h<2.6)
    .sort((a,b)=>(b.w*b.h)-(a.w*a.h)).slice(0,2).sort((a,b)=>a.y-b.y||a.x-b.x)
    .map(r=>({r,score:ayushmanColourScore(cropRegion({canvas},r))})).filter(x=>x.score>=.12).map(x=>x.r);
