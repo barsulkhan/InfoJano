@@ -201,8 +201,18 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
    .map(r=>({r,score:ayushmanColourScore(cropRegion({canvas},r))})).filter(x=>x.score>=.12).map(x=>x.r);
  if(regions.length){
   regions.forEach(r=>{
+   // Use the coloured bands to locate the card, then expand to the expected card rectangle.
+   // This includes text above/below the bands and a small safety margin so no letters are clipped.
+   const targetRatio=85/55, cx=r.x+r.w/2, cy=r.y+r.h/2;
+   let cw=Math.max(r.w,r.h*targetRatio), ch=cw/targetRatio;
+   if(ch<r.h){ch=r.h;cw=ch*targetRatio;}
+   cw*=1.045;ch*=1.045;
+   cw=Math.min(canvas.width,cw);ch=Math.min(canvas.height,ch);
+   let x=Math.max(0,Math.min(canvas.width-cw,cx-cw/2));
+   let y=Math.max(0,Math.min(canvas.height-ch,cy-ch/2));
+   const safeRect={x:Math.round(x),y:Math.round(y),w:Math.max(1,Math.min(canvas.width-Math.round(x),Math.round(cw))),h:Math.max(1,Math.min(canvas.height-Math.round(y),Math.round(ch)))};
    const faceLabel=ayushmanFacesFound===0?'Front':'Back';ayushmanFacesFound++;
-   const item=makeImageSource(pageName+' — Ayushman auto crop '+faceLabel,cropRegion({canvas},r));
+   const item=makeImageSource(pageName+' — Ayushman auto crop '+faceLabel,cropRegion({canvas},safeRect));
    sources.push(item);addOption(item,sources.length-1);
   });
  }else{
@@ -238,7 +248,7 @@ $('paper').addEventListener('change',()=>{const custom=$('paper').value==='custo
 $('previewBtn').addEventListener('click',renderLayoutPreview);
 function pageSize(){if($('paper').value==='photo')return [101.6,152.4];if($('paper').value==='custom')return [Number($('customW').value),Number($('customH').value)];return [210,297]}
 $('customW').closest('.field').classList.add('hide');$('customH').closest('.field').classList.add('hide');
-function cropToCard(source,targetW,targetH){const out=document.createElement('canvas');const dpi=Number($('dpi').value)||300;out.width=Math.round(targetW/25.4*dpi);out.height=Math.round(targetH/25.4*dpi);const ctx=out.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,out.width,out.height);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';if($('cardType').value==='Ayushman Bharat Card'){/* Preserve the finalized Ayushman image workflow's prior contain-fit behavior. */const scale=Math.min(out.width/source.canvas.width,out.height/source.canvas.height),dw=source.canvas.width*scale,dh=source.canvas.height*scale;ctx.drawImage(source.canvas,(out.width-dw)/2,(out.height-dh)/2,dw,dh);}else{/* Other documents, including PAN, are manually cropped first and then fitted to exact physical dimensions. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}return out}
+function cropToCard(source,targetW,targetH){const out=document.createElement('canvas');const dpi=Number($('dpi').value)||300;out.width=Math.round(targetW/25.4*dpi);out.height=Math.round(targetH/25.4*dpi);const ctx=out.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,out.width,out.height);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';if($('cardType').value==='Ayushman Bharat Card'){/* Crop first, then fit the complete crop edge-to-edge to the exact card dimensions; no white strips between image and cut border. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}else{/* Other documents, including PAN, are manually cropped first and then fitted to exact physical dimensions. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}return out}
 function hasExistingCutBorder(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;function dark(x,y){const i=(y*w+x)*4;return d[i]<95&&d[i+1]<95&&d[i+2]<95}let top=0,bottom=0,left=0,right=0,n=Math.max(20,Math.floor(Math.min(w,h)*.35));for(let k=0;k<n;k++){const x=Math.round((w-1)*(.15+.7*k/Math.max(1,n-1))),y=Math.round((h-1)*(.15+.7*k/Math.max(1,n-1)));if(dark(x,Math.max(0,Math.round(h*.015))))top++;if(dark(x,Math.min(h-1,Math.round(h*.985))))bottom++;if(dark(Math.max(0,Math.round(w*.015)),y))left++;if(dark(Math.min(w-1,Math.round(w*.985)),y))right++;}return top/n>.48&&bottom/n>.48&&left/n>.48&&right/n>.48}
 function hasFullColorBackground(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;let colorful=0,total=0;for(let gy=0;gy<5;gy++){for(let gx=0;gx<5;gx++){const x=Math.round(w*(.04+gx*.23)),y=Math.round(h*(.04+gy*.23)),i=(y*w+x)*4,r=d[i],g=d[i+1],b=d[i+2];total++;if(Math.max(r,g,b)-Math.min(r,g,b)>28&&Math.min(r,g,b)<235)colorful++;}}return colorful/total>.42}
 function drawCard(doc,canvas,x,y,w,h){doc.addImage(canvas.toDataURL('image/jpeg',.99),'JPEG',x,y,w,h,undefined,'SLOW');if($('cardType').value!=='PAN Card'){doc.setDrawColor(0,0,0);doc.setLineWidth(.25);doc.rect(x,y,w,h,'S')}}
