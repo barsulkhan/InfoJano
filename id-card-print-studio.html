@@ -206,7 +206,7 @@ function detectAadhaarScannedPhotoRegions(canvas){
  const xa=Math.round(w*.045),xb=Math.round(w*.965);
  // Detect the scissors line by repeated dark/light transitions, not by choosing the darkest row.
  let topY=-1,topQuality=0,topDarkScore=0;
- for(let y=Math.round(h*.535);y<Math.round(h*.565);y+=sample){
+ for(let y=Math.round(h*.545);y<Math.round(h*.558);y+=sample){
   let hits=0,total=0,transitions=0,prev=false;
   for(let x=xa;x<xb;x+=sample){const hit=dark(x,y);total++;if(hit)hits++;if(total>1&&hit!==prev)transitions++;prev=hit}
   const fraction=hits/Math.max(1,total),transitionRate=transitions/Math.max(1,total);
