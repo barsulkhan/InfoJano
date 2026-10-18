@@ -321,7 +321,7 @@ $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.tar
   }else if(activeDocumentRules().workflow==='aadhaar-pdf-scan-photo-v2'){
    const pdfFront=sources.findIndex(s=>/Aadhaar PDF auto crop Front/.test(s.name));
    const pdfBack=sources.findIndex(s=>/Aadhaar PDF auto crop Back/.test(s.name));
-   const suggested=sources.map((s,i)=>({s,i})).filter(x=>/Aadhaar suggested crop/.test(x.s.name));
+   const suggested=sources.map((s,i)=>({s,i})).filter(x=>/Aadhaar (?:suggested crop|scan auto crop)/.test(x.s.name));
    const original=sources.findIndex(s=>/full PDF page \(manual crop\)|original photo \(manual crop fallback\)/.test(s.name));
    const isPdfPage=original>=0 && /\.pdf\b/i.test(sources[original].name);
    $('frontSelect').value=pdfFront>=0?String(pdfFront):(!isPdfPage&&suggested.length?String(suggested[0].i):'');
