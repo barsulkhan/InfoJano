@@ -354,7 +354,8 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  for(const side of sides){
   const rx0=Math.round(w*side.x0),rx1=Math.round(w*side.x1);
   const top=bestRow(Math.round(h*.105),Math.round(h*.135),rx0,rx1);
-  const bottom=bestRow(Math.round(h*.275),Math.round(h*.305),rx0,rx1);
+  // Back-side bottom border sits slightly above the previous scan/fallback edge; tighten only the Back crop to remove the visible gap.
+  const bottom=bestRow(Math.round(h*(side.label==='Back'?.270:.275)),Math.round(h*(side.label==='Back'?.298:.305)),rx0,rx1);
   let rect;
   if(top.score>=.32&&bottom.score>=.32&&bottom.pos>top.pos){
    const left=bestCol(Math.round(w*side.left0),Math.round(w*side.left1),top.pos+step,bottom.pos-step);
@@ -362,9 +363,9 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
    if(left.score>=.24&&right.score>=.24&&right.pos>left.pos)rect={x:left.pos,y:top.pos,w:right.pos-left.pos+1,h:bottom.pos-top.pos+1};
   }
   // Fallback uses the known card positions from the supplied e-EPIC page, never the lower voter-roll section.
-  if(!rect)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
+  if(!rect)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*(side.label==='Back'?.186:.19))};
   const ratio=rect.w/rect.h;
-  if(ratio<1.35||ratio>1.85)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
+  if(ratio<1.35||ratio>1.85)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*(side.label==='Back'?.186:.19))};
   const item=makeImageSource(pageName+' — Voter ID auto crop '+side.label,cropRegion({canvas},rect));
   sources.push(item);addOption(item,sources.length-1);
  }
