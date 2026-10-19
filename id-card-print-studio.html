@@ -335,6 +335,22 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
   const item=makeImageSource(pageName+' — '+box.label,cropRegion({canvas},rect));
   sources.push(item);addOption(item,sources.length-1);
  });
+ }else if($('cardType').value==='Voter ID'){
+ // ECI e-EPIC PDF page: two printed card rectangles are side-by-side near the top.
+ // Crop the card faces only; exclude the QR/details and instruction panel below.
+ const pageName=file.name+' — page '+p;
+ sources.push(makeImageSource(pageName+' — full PDF page (manual crop)',canvas));
+ addOption(sources[sources.length-1],sources.length-1);
+ const boxes=[
+  {label:'Voter ID auto crop Front',x:.052,y:.112,w:.417,h:.188},
+  {label:'Voter ID auto crop Back',x:.546,y:.112,w:.417,h:.188}
+ ];
+ boxes.forEach(box=>{
+  const x=Math.round(canvas.width*box.x),y=Math.round(canvas.height*box.y);
+  const rect={x:Math.max(0,x),y:Math.max(0,y),w:Math.min(canvas.width-x,Math.round(canvas.width*box.w)),h:Math.min(canvas.height-y,Math.round(canvas.height*box.h))};
+  const item=makeImageSource(pageName+' — '+box.label,cropRegion({canvas},rect));
+  sources.push(item);addOption(item,sources.length-1);
+ });
  }else if($('cardType').value==='Ayushman Bharat Card'){
  // Detect the printed face, not the larger PDF page border. The white back is cropped from its text/QR content with a safety margin.
  const pageName=file.name+' — page '+p,side=p===1?'Front':'Back';
@@ -342,7 +358,15 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  if(rect){const item=makeImageSource(pageName+' — Ayushman auto crop '+side,cropRegion({canvas},rect));sources.push(item);addOption(item,sources.length-1);}
  else{const full=makeImageSource(pageName+' — full PDF page (auto-detection fallback)',canvas);sources.push(full);addOption(full,sources.length-1);}
  }else if($('cardType').value==='Aadhaar Card'){addDetectedSources(file.name+' — page '+p+(/\.pdf\b/i.test(file.name)?' [PDF]':''),canvas,true);}else{addDetectedSources(file.name+' — page '+p,canvas,false)}}if(enteredPassword)status('Protected PDF opened in this browser. Choose the correct front and back previews.','ok')}
-$('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.target.files||[]);if(!files.length){status('কোনো ফাইল নির্বাচন করা হয়নি। আবার PDF/JPG/PNG নির্বাচন করুন।','error');return;}status('নির্বাচিত ফাইল: '+files.map(file=>file.name).join(', ')+' — এখন পড়া হচ্ছে…');sources.length=0;$('frontSelect').replaceChildren();$('backSelect').replaceChildren();$('cropSourceSelect').replaceChildren(new Option('Upload files first',''));$('frontSelect').disabled=true;$('backSelect').disabled=true;$('cropSourceSelect').disabled=true;status('Loading files…');try{const rules=activeDocumentRules();for(const file of files){if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf'))await loadPdfFile(file);else if(file.type==='image/jpeg'||file.type==='image/png'||/\.(jpe?g|png)$/i.test(file.name))await loadImageFile(file,rules.imageAutoSplit);else throw new Error('Unsupported file: '+file.name+'. Please choose JPG, PNG, or PDF.')}if(!sources.length)throw new Error('No readable pages or images were found.');$('frontSelect').disabled=false;$('backSelect').disabled=false;$('cropSourceSelect').disabled=false;if(activeDocumentRules().workflow==='pan-manual-crop-v1'){
+$('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.target.files||[]);if(!files.length){status('কোনো ফাইল নির্বাচন করা হয়নি। আবার PDF/JPG/PNG নির্বাচন করুন।','error');return;}status('নির্বাচিত ফাইল: '+files.map(file=>file.name).join(', ')+' — এখন পড়া হচ্ছে…');sources.length=0;$('frontSelect').replaceChildren();$('backSelect').replaceChildren();$('cropSourceSelect').replaceChildren(new Option('Upload files first',''));$('frontSelect').disabled=true;$('backSelect').disabled=true;$('cropSourceSelect').disabled=true;status('Loading files…');try{const rules=activeDocumentRules();for(const file of files){if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf'))await loadPdfFile(file);else if(file.type==='image/jpeg'||file.type==='image/png'||/\.(jpe?g|png)$/i.test(file.name))await loadImageFile(file,rules.imageAutoSplit);else throw new Error('Unsupported file: '+file.name+'. Please choose JPG, PNG, or PDF.')}if(!sources.length)throw new Error('No readable pages or images were found.');$('frontSelect').disabled=false;$('backSelect').disabled=false;$('cropSourceSelect').disabled=false;if(activeDocumentRules().workflow==='voter-manual-crop-v1'&&sources.some(s=>/Voter ID auto crop Front/.test(s.name))){
+ const front=sources.findIndex(s=>/Voter ID auto crop Front/.test(s.name));
+ const back=sources.findIndex(s=>/Voter ID auto crop Back/.test(s.name));
+ const original=sources.findIndex(s=>/full PDF page \\(manual crop\\)/.test(s.name));
+ $('frontSelect').value=String(front);
+ $('backSelect').value=String(back);
+ $('cropSourceSelect').value=String(original>=0?original:0);
+ status('Voter ID PDF: উপরের কার্ড বর্ডার ধরে Front ও Back আলাদা করা হয়েছে। দুটো preview পরীক্ষা করুন।','ok');
+ }else if(activeDocumentRules().workflow==='pan-manual-crop-v1'){
  const panFront=sources.findIndex(s=>/PAN auto crop Front/.test(s.name));
  const panBack=sources.findIndex(s=>/PAN auto crop Back/.test(s.name));
  $('frontSelect').value=String(panFront>=0?panFront:0);
