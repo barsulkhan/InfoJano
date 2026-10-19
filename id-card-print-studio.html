@@ -349,22 +349,28 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  // Shared Voter ID rule: detect the outer black border on BOTH card faces. Front (photo) is left; Back (QR/address) is right. Lower voter-roll QR/details and notice are excluded.
  const sides=[
   {label:'Front',x0:.045,x1:.475,left0:.035,left1:.075,right0:.445,right1:.49},
-  {label:'Back',x0:.535,x1:.965,left0:.525,left1:.565,right0:.935,right1:.98}
+  // Back crop is intentionally tighter: the earlier broad fallback left visible white gaps around the printed card border.
+  {label:'Back',x0:.548,x1:.952,left0:.542,left1:.558,right0:.942,right1:.958}
  ];
  for(const side of sides){
   const rx0=Math.round(w*side.x0),rx1=Math.round(w*side.x1);
-  const top=bestRow(Math.round(h*.105),Math.round(h*.135),rx0,rx1);
-  const bottom=bestRow(Math.round(h*.275),Math.round(h*.305),rx0,rx1);
+  const isBack=side.label==='Back';
+  const top=bestRow(Math.round(h*(isBack?.112:.105)),Math.round(h*(isBack?.132:.135)),rx0,rx1);
+  const bottom=bestRow(Math.round(h*(isBack?.282:.275)),Math.round(h*(isBack?.302:.305)),rx0,rx1);
   let rect;
   if(top.score>=.32&&bottom.score>=.32&&bottom.pos>top.pos){
    const left=bestCol(Math.round(w*side.left0),Math.round(w*side.left1),top.pos+step,bottom.pos-step);
    const right=bestCol(Math.round(w*side.right0),Math.round(w*side.right1),top.pos+step,bottom.pos-step);
    if(left.score>=.24&&right.score>=.24&&right.pos>left.pos)rect={x:left.pos,y:top.pos,w:right.pos-left.pos+1,h:bottom.pos-top.pos+1};
   }
-  // Identical fallback size for both faces; never use the different lower-page voter-roll content.
-  if(!rect)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
+  // Back fallback hugs the actual card more closely; Front logic and its fallback remain unchanged.
+  if(!rect)rect=isBack
+   ?{x:Math.round(w*.548),y:Math.round(h*.114),w:Math.round(w*.404),h:Math.round(h*.188)}
+   :{x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
   const ratio=rect.w/rect.h;
-  if(ratio<1.35||ratio>1.85)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
+  if(ratio<1.35||ratio>1.85)rect=isBack
+   ?{x:Math.round(w*.548),y:Math.round(h*.114),w:Math.round(w*.404),h:Math.round(h*.188)}
+   :{x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
   const item=makeImageSource(pageName+' — Voter ID auto crop '+side.label,cropRegion({canvas},rect));
   sources.push(item);addOption(item,sources.length-1);
  }
