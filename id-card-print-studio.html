@@ -186,10 +186,12 @@ function detectAadhaarPdfCardRegions(canvas){
  function bestX(a,b){let best=-1,score=0;for(let x=Math.round(w*a);x<Math.round(w*b);x+=sample){const s=colScore(x,yA,yB);if(s>score){score=s;best=x;}}return {x:best,score};}
  const left=bestX(.035,.18),centreL=bestX(.40,.50),centreR=bestX(.50,.60),right=bestX(.82,.965);
  if([left,centreL,centreR,right].some(v=>v.x<0||v.score<.22)||centreL.x>=centreR.x)return [];
- const pad=Math.max(1,sample);
+ // Keep a generous safety margin around detected card edges. The prior 1-pixel pad
+ // could clip the top header on some Aadhaar PDF layouts.
+ const cardH=bottomY-topY, padX=Math.max(sample*2,Math.round((centreL.x-left.x)*.012)), padY=Math.max(sample*2,Math.round(cardH*.055));
  const boxes=[
-  {x:Math.max(0,left.x-pad),y:Math.max(0,topY-pad),w:centreL.x-left.x+pad*2,h:bottomY-topY+pad*2},
-  {x:Math.max(0,centreR.x-pad),y:Math.max(0,topY-pad),w:right.x-centreR.x+pad*2,h:bottomY-topY+pad*2}
+  {x:Math.max(0,left.x-padX),y:Math.max(0,topY-padY),w:centreL.x-left.x+padX*2,h:cardH+padY*2},
+  {x:Math.max(0,centreR.x-padX),y:Math.max(0,topY-padY),w:right.x-centreR.x+padX*2,h:cardH+padY*2}
  ];
  if(boxes.some(r=>r.w/r.h<1.25||r.w/r.h>1.9||r.w<w*.2||r.h<h*.08))return [];
  return boxes;
