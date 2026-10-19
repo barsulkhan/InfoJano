@@ -361,11 +361,11 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
   if(top.score>=.32&&bottom.score>=.32&&bottom.pos>top.pos){
    const left=bestCol(Math.round(w*side.left0),Math.round(w*side.left1),top.pos+step,bottom.pos-step);
    const right=bestCol(Math.round(w*side.right0),Math.round(w*side.right1),top.pos+step,bottom.pos-step);
-   if(left.score>=.24&&right.score>=.24&&right.pos>left.pos){const bottomY=isBack?Math.max(top.pos+1,bottom.pos-Math.round(h*.0055)):bottom.pos;rect={x:left.pos,y:top.pos,w:right.pos-left.pos+1,h:bottomY-top.pos+1};}
+   if(left.score>=.24&&right.score>=.24&&right.pos>left.pos){const bottomY=isBack?Math.max(top.pos+1,bottom.pos-Math.round(h*.0065)):bottom.pos;rect={x:left.pos,y:top.pos,w:right.pos-left.pos+1,h:bottomY-top.pos+1};}
   }
   // Back fallback hugs the actual card more closely; Front logic and its fallback remain unchanged.
   if(!rect)rect=isBack
-   ?{x:Math.round(w*.548),y:Math.round(h*.114),w:Math.round(w*.404),h:Math.round(h*.1825)}
+   ?{x:Math.round(w*.548),y:Math.round(h*.114),w:Math.round(w*.404),h:Math.round(h*.1815)}
    :{x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
   const ratio=rect.w/rect.h;
   if(ratio<1.35||ratio>1.85)rect=isBack
