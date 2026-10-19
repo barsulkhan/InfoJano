@@ -1,7 +1,7 @@
 # InfoJano — Smart Master Project Archive
-Version: V5
-Updated: 19 October 2026
-Status: ACTIVE — paused by user; resume from this checkpoint.
+Version: V6
+Updated: 20 October 2026
+Status: ACTIVE — SEO/Sitemap review is next; Aadhaar print-preview issue is on hold.
 This is a continuity archive, not a verbatim export of every chat. Git history in the repository is the source of truth for committed code. Do not claim a commit is deployed or tested without evidence.
 
 ## 1. Project identity and purpose
@@ -150,3 +150,23 @@ First task when user says resume:
 
 ## 9. Current stop status
 As of 19 October 2026: user said they are not working further now and asked for all project files/history to be saved into a master file. This V5 archive is the continuation checkpoint. No claim that the latest Aadhaar build is correct or deployed.
+
+## 10. Continuation update — 20 October 2026 (current checkpoint)
+- Latest known studio commit: `0ca117b612c791d9d38d19ddafa107c7efe87dbf` — “Show JPG download button in ID Card Print Studio”.
+- Current live-source file SHA reported by GitHub Contents API: `bcae1b858af16ffc770f2495b92d1f40726b1294`.
+- The JPG button had been present in the HTML but hidden by `style="display:none"`. It was made visible and the section heading now says “Download print-ready PDF or JPG”. The visible label is “Download JPG (600 DPI)”. User confirmed the button appeared on their device.
+- JPG handler currently uses a 600-DPI output canvas, high-quality image smoothing and JPEG quality 1.0. This increases output dimensions/file size; it does not restore detail missing from the source. Keep PDF settings unchanged.
+- Manual crop: user explicitly decided to KEEP it. Do not remove or hide it. The user does not want to reply to further questions; continue with safe work without asking unnecessary confirmations.
+- Background/shadow marks in the child's photo: deferred. Do not alter the photo/background processing until the user returns to it.
+- Aadhaar small print-preview issue: explicitly deferred by user on 20 Oct. Do NOT test or modify this issue now. Revisit only when user asks.
+- Language preference for technical project work: write code labels, code comments, technical reports and project notes in English. Give brief step-by-step user guidance in Bengali when needed.
+- Current request: user wants to work on point 3 from the prior plan — SEO / Sitemap review — but first save this Smart Master Project archive. After saving, continue by inspecting GitHub Pages deployment and Search Console/sitemap status before editing any sitemap. Preserve `sitemap.xml`, `sitemap.txt`, and `robots.txt`; do not blindly edit or repeatedly submit.
+- Code review checks completed for current studio source:
+  - JPG download button is visible in source.
+  - Manual crop controls/functions are still present.
+  - 600-DPI JPG export is present.
+  - Aadhaar PDF card detection function matches the locked backup byte-for-byte.
+  - `cropToCard` function (including approved Ayushman behavior) matches the locked backup byte-for-byte.
+  - Live source and backup HTML SHA differ because the live source includes the visible JPG button and the backup predates that UI visibility update. Do not overwrite the live source with the older backup.
+- Do not claim the current site was browser-tested or that the GitHub Pages deployment succeeded unless independently confirmed. Code checks are not the same as user/device testing.
+- Preserve the locked workflows for Ayushman Bharat, Aadhaar and Voter ID. No changes to crop, dimensions, borders, layout or PDF settings without explicit approval.
