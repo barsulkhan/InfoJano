@@ -40,10 +40,10 @@
 </section>
 <section class="card"><h2><span class="step">3</span>Set card size, add border and review</h2>
 <div class="grid">
-<div class="field"><label for="sizePreset">Card size preset</label><select id="sizePreset" disabled><option value="85,55" selected>85 × 55 mm (fixed standard size)</option></select></div>
-<div class="field"><label for="dpi">Resolution</label><select id="dpi" disabled><option value="300" selected>300 DPI (fixed)</option></select></div>
-<div class="field"><label for="widthMM">Width (mm)</label><input id="widthMM" type="number" min="85" max="85" step="1" value="85" readonly></div>
-<div class="field"><label for="heightMM">Height (mm)</label><input id="heightMM" type="number" min="55" max="55" step="1" value="55" readonly></div>
+<div class="field"><label for="sizePreset">Card size preset</label><select id="sizePreset"><option value="85,55">85 × 55 mm (standard ID card)</option><option value="86,54">86 × 54 mm (credit-card size)</option><option value="custom">Custom size</option></select></div>
+<div class="field"><label for="dpi">Resolution</label><select id="dpi"><option value="300" selected>300 DPI</option><option value="200">200 DPI</option><option value="150">150 DPI</option></select></div>
+<div class="field"><label for="widthMM">Width (mm)</label><input id="widthMM" type="number" min="10" max="300" step="0.1" value="85"></div>
+<div class="field"><label for="heightMM">Height (mm)</label><input id="heightMM" type="number" min="10" max="300" step="0.1" value="55"></div>
 <div class="field"><label for="paper">Paper size</label><select id="paper"><option value="a4">A4 (210 × 297 mm)</option><option value="photo">4 × 6 inch (101.6 × 152.4 mm)</option><option value="custom">Custom paper</option></select></div>
 <div class="field"><label for="layout">Front / back placement</label><select id="layout"><option value="paired" selected>Same page: Front left, Back right near top (cutting gap)</option><option value="stacked">Same page: Front on top, Back below (cutting gap)</option><option value="separate">Separate pages</option><option value="frontonly">Front only</option><option value="backonly">Back only</option></select></div>
 <div class="field"><label for="customW">Custom paper width (mm)</label><input id="customW" type="number" min="40" max="500" value="210"></div>
@@ -55,7 +55,7 @@
 </section>
 <section class="card"><h2><span class="step">4</span>Download print-ready PDF</h2>
 <div class="warning">Print at “Actual size” / 100% scale. Turn off “Fit to page” if exact physical dimensions are important. This first version uses a manual front/back selection to avoid silently printing the wrong side.</div>
-<div class="actions"><button class="btn" id="downloadBtn" type="button">Create &amp; Download PDF</button><button class="btn alt" id="downloadJpgBtn" type="button" style="display:none">Download JPG</button><a href="index.html" class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center">← Back to InfoJano</a></div>
+<div class="actions"><button class="btn" id="downloadBtn" type="button">Create &amp; Download PDF</button><button class="btn alt" id="downloadJpgBtn" type="button">Download JPG</button><a href="index.html" class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center">← Back to InfoJano</a></div>
 <div id="downloadStatus" class="status" role="status" aria-live="polite">Upload a file and select the sides to create your print PDF.</div>
 </section>
 </main><footer>InfoJano • ID Card Print Studio</footer>
@@ -159,58 +159,39 @@ function detectAadhaarCardRegions(canvas){
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function detectAadhaarPdfCardRegions(canvas){
- // Aadhaar PDF: use the dotted scissors line as the top reference.
- // Keep 1.5 mm above that line inside the crop, include the dotted line,
- // and use the printed outer side/bottom borders for the remaining edges.
+ // UIDAI e-Aadhaar letter: the printable front/back panels sit below the dotted scissors line.
+ // Detect the printed horizontal/vertical black borders; use page-relative guardrails to avoid letter text.
  const w=canvas.width,h=canvas.height,ctx=canvas.getContext('2d',{willReadFrequently:true});
  if(w<300||h<300)return [];
  const data=ctx.getImageData(0,0,w,h).data;
- const dark=(x,y)=>{const i=(y*w+x)*4;return Math.max(data[i],data[i+1],data[i+2])<120;};
- const step=Math.max(1,Math.floor(Math.max(w,h)/1600));
- function rowStats(y,x1,x2){
-  let hits=0,segments=0,inSeg=false,total=0;
-  for(let x=x1;x<x2;x+=step){const yes=dark(x,y);total++;if(yes)hits++;if(yes&&!inSeg)segments++;inSeg=yes;}
-  return {density:hits/Math.max(1,total),segments};
+ const dark=(x,y)=>{const i=(y*w+x)*4;return Math.max(data[i],data[i+1],data[i+2])<105;};
+ const sample=Math.max(1,Math.floor(Math.max(w,h)/900));
+ function rowScore(y,x1,x2){let n=0,total=0;for(let x=x1;x<x2;x+=sample){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
+ function colScore(x,y1,y2){let n=0,total=0;for(let y=y1;y<y2;y+=sample){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
+ // Top scissors line is dotted; bottom edge is solid. Search only the lower card zone.
+ const x1=Math.round(w*.055),x2=Math.round(w*.945);
+ let topY=-1,topScore=0;
+ for(let y=Math.round(h*.66);y<Math.round(h*.78);y+=sample){
+  const s=rowScore(y,x1,x2);
+  if(s>topScore){topScore=s;topY=y;}
  }
- function bestDottedRow(y0,y1,x1,x2){
-  let best={y:-1,score:-1};
-  for(let y=y0;y<y1;y+=step){
-   const q=rowStats(y,x1,x2);
-   // Dotted line: multiple short dark segments, but much less coverage than a solid border.
-   const score=q.segments*0.012-Math.abs(q.density-0.12);
-   if(q.segments>=5&&q.density>=0.025&&q.density<=0.38&&score>best.score)best={y,score,density:q.density,segments:q.segments};
-  }
-  return best;
+ let bottomY=-1,bottomScore=0;
+ for(let y=Math.round(h*.87);y<Math.round(h*.98);y+=sample){
+  const s=rowScore(y,x1,x2);
+  if(s>bottomScore){bottomScore=s;bottomY=y;}
  }
- function bestSolidRow(y0,y1,x1,x2){
-  let best={y:-1,score:0};
-  for(let y=y0;y<y1;y+=step){const q=rowStats(y,x1,x2);if(q.density>best.score)best={y,score:q.density};}
-  return best;
- }
- function bestCol(x0,x1,y0,y1){
-  let best={x:-1,score:0};
-  for(let x=x0;x<x1;x+=step){let n=0,t=0;for(let y=y0;y<y1;y+=step){t++;if(dark(x,y))n++;}const score=n/Math.max(1,t);if(score>best.score)best={x,score};}
-  return best;
- }
- // e-Aadhaar card pair is typically printed in the upper half of the letter.
- const searchX1=Math.round(w*.08),searchX2=Math.round(w*.92);
- const top=bestDottedRow(Math.round(h*.04),Math.round(h*.42),searchX1,searchX2);
- if(top.y<0)return [];
- const mmPx=w/210, padY=Math.max(step,Math.round(mmPx*1.5)); // 1.5 mm above dotted line on A4
- const yTop=Math.max(0,top.y-padY);
- // Find solid bottom card border below the dotted line.
- const bottom=bestSolidRow(Math.round(top.y+h*.12),Math.min(h-1,Math.round(top.y+h*.32)),searchX1,searchX2);
- if(bottom.y<0||bottom.score<.35||bottom.y<=top.y)return [];
- const yBottom=bottom.y+step;
- const yMid=(yTop+yBottom)/2;
- function bestX(a,b){return bestCol(Math.round(w*a),Math.round(w*b),Math.round(yMid-h*.12),Math.round(yBottom));}
- const left=bestX(.03,.20),centreL=bestX(.38,.50),centreR=bestX(.50,.62),right=bestX(.80,.97);
- if([left,centreL,centreR,right].some(v=>v.x<0||v.score<.20)||centreL.x<=left.x||right.x<=centreR.x)return [];
+ if(topY<0||bottomY<0||topScore<.075||bottomScore<.45||bottomY-topY<h*.09)return [];
+ // Find long vertical black borders within the panel height, constrained to expected left/centre/right zones.
+ const yA=Math.max(0,topY-sample*2),yB=Math.min(h-1,bottomY+sample*2);
+ function bestX(a,b){let best=-1,score=0;for(let x=Math.round(w*a);x<Math.round(w*b);x+=sample){const s=colScore(x,yA,yB);if(s>score){score=s;best=x;}}return {x:best,score};}
+ const left=bestX(.035,.18),centreL=bestX(.40,.50),centreR=bestX(.50,.60),right=bestX(.82,.965);
+ if([left,centreL,centreR,right].some(v=>v.x<0||v.score<.22)||centreL.x>=centreR.x)return [];
+ const pad=Math.max(1,sample);
  const boxes=[
-  {x:left.x,y:yTop,w:centreL.x-left.x+1,h:yBottom-yTop+1},
-  {x:centreR.x,y:yTop,w:right.x-centreR.x+1,h:yBottom-yTop+1}
+  {x:Math.max(0,left.x-pad),y:Math.max(0,topY-pad),w:centreL.x-left.x+pad*2,h:bottomY-topY+pad*2},
+  {x:Math.max(0,centreR.x-pad),y:Math.max(0,topY-pad),w:right.x-centreR.x+pad*2,h:bottomY-topY+pad*2}
  ];
- if(boxes.some(r=>r.w/r.h<1.25||r.w/r.h>2.05))return [];
+ if(boxes.some(r=>r.w/r.h<1.25||r.w/r.h>1.9||r.w<w*.2||r.h<h*.08))return [];
  return boxes;
 }
 function detectAadhaarScannedPhotoRegions(canvas){
@@ -432,7 +413,7 @@ $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.tar
    else if(isPdfPage)status('Aadhaar PDF loaded, but the printed borders could not be confidently detected. Use the original page and crop the complete Front and Back manually.','ok');
   }else{$('frontSelect').value='0';$('backSelect').value=sources.length>1?'1':'none';$('cropSourceSelect').value='0';}status('Loaded '+sources.length+' candidate(s) using '+activeDocumentRules().workflow+'. Verify front/back previews before exporting.','ok');updateSidePreviews();dstatus('Ready. Confirm sides and layout before downloading.')}catch(err){console.error('InfoJano document processing error:',err);status('ফাইল প্রসেস করা যায়নি: '+(err.message||'Unknown error')+'। PDF হলে আবার চেষ্টা করুন; সমস্যা থাকলে PDF-এর পাতা/স্ক্যান কপি JPG বা PNG করে আপলোড করুন।','error')}});
 $('frontSelect').addEventListener('change',()=>{updateSidePreviews()});$('backSelect').addEventListener('change',()=>{updateSidePreviews()});$('cropSourceSelect').addEventListener('change',()=>{cropRect=null;cropDrag=null;drawCropCanvas()});
- $('cardType').addEventListener('change',()=>{if($('cardType').value==='Ayushman Bharat Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Ayushman print settings selected: 85 × 55 mm at 300 DPI. JPG/PNG auto-split remains unchanged.','ok');}else if($('cardType').value==='Aadhaar Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Aadhaar selected. Crop the complete front/back card manually before exporting; text and QR code should remain fully inside the crop.','ok');}else if($('cardType').value==='Voter ID'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Voter ID selected. Upload PDF/JPG/PNG, select the original page/photo, then crop the complete Front and Back manually. Keep the full coloured border and all text/QR code inside the crop. Output: 85 × 55 mm at 300 DPI.','ok');}renderLayoutPreview()});
+ $('cardType').addEventListener('change',()=>{if($('cardType').value==='Ayushman Bharat Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Ayushman print settings selected: 85 × 55 mm at 300 DPI. JPG/PNG auto-split remains unchanged.','ok');}else if($('cardType').value==='Aadhaar Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Aadhaar selected. Crop the complete front/back card manually before exporting; text and QR code should remain fully inside the crop.','ok');}else if($('cardType').value==='Voter ID'){$('sizePreset').value='86,54';$('widthMM').value='86';$('heightMM').value='54';$('dpi').value='300';status('Voter ID selected. Upload PDF/JPG/PNG, select the original page/photo, then crop the complete Front and Back manually. Keep the full coloured border and all text/QR code inside the crop. Output: 86 × 54 mm at 300 DPI.','ok');}renderLayoutPreview()});
 $('sizePreset').addEventListener('change',()=>{if($('sizePreset').value!=='custom'){const [w,h]=$('sizePreset').value.split(',');$('widthMM').value=w;$('heightMM').value=h}renderLayoutPreview()});
 ['widthMM','heightMM','paper','layout','customW','customH'].forEach(id=>$(id).addEventListener('change',renderLayoutPreview));
 $('paper').addEventListener('change',()=>{if($('paper').value==='photo'&&$('layout').value==='paired')$('layout').value='stacked';else if($('paper').value==='a4'&&$('layout').value==='stacked')$('layout').value='paired';renderLayoutPreview()});
@@ -440,7 +421,18 @@ $('paper').addEventListener('change',()=>{const custom=$('paper').value==='custo
 $('previewBtn').addEventListener('click',renderLayoutPreview);
 function pageSize(){if($('paper').value==='photo')return [101.6,152.4];if($('paper').value==='custom')return [Number($('customW').value),Number($('customH').value)];return [210,297]}
 $('customW').closest('.field').classList.add('hide');$('customH').closest('.field').classList.add('hide');
-function cropToCard(source,targetW,targetH){const out=document.createElement('canvas');const dpi=Number($('dpi').value)||300;out.width=Math.round(targetW/25.4*dpi);out.height=Math.round(targetH/25.4*dpi);const ctx=out.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,out.width,out.height);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';if($('cardType').value==='Ayushman Bharat Card'){/* Preserve original card pixels, including the portrait and skin tones. Use high-quality resizing only; PNG embedding prevents extra JPEG compression. */ctx.drawImage(source.canvas,0,0,out.width,out.height);
+function cropToCard(source,targetW,targetH){const out=document.createElement('canvas');const dpi=Number($('dpi').value)||300;out.width=Math.round(targetW/25.4*dpi);out.height=Math.round(targetH/25.4*dpi);const ctx=out.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,out.width,out.height);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';if($('cardType').value==='Ayushman Bharat Card'){/* Fill the exact physical card rectangle edge-to-edge; no white strips between image and cut border. */ctx.drawImage(source.canvas,0,0,out.width,out.height);
+ // Darken neutral mid-tone pixels to strengthen the edges of black printed text.
+ // Coloured pixels and already-black pixels are left unchanged.
+ const image=ctx.getImageData(0,0,out.width,out.height),px=image.data;
+ for(let i=0;i<px.length;i+=4){
+  const r=px[i],g=px[i+1],b=px[i+2],hi=Math.max(r,g,b),lo=Math.min(r,g,b),lum=.299*r+.587*g+.114*b;
+  if(hi-lo<=24 && lum>=58 && lum<=185){
+   const darker=Math.round(lum*.58),delta=lum-darker;
+   px[i]=Math.max(0,r-delta);px[i+1]=Math.max(0,g-delta);px[i+2]=Math.max(0,b-delta);
+  }
+ }
+ ctx.putImageData(image,0,0);
  }else if($('cardType').value==='Aadhaar Card'){/* Preserve original Aadhaar photo, skin tones, text and QR pixels. Avoid whole-image darkening which damages portrait detail. Use high-quality resizing only; Ayushman branch above remains unchanged. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}else{/* Other documents, including PAN, are manually cropped first and then fitted to exact physical dimensions. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}return out}
 function hasExistingCutBorder(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;function dark(x,y){const i=(y*w+x)*4;return d[i]<95&&d[i+1]<95&&d[i+2]<95}let top=0,bottom=0,left=0,right=0,n=Math.max(20,Math.floor(Math.min(w,h)*.35));for(let k=0;k<n;k++){const x=Math.round((w-1)*(.15+.7*k/Math.max(1,n-1))),y=Math.round((h-1)*(.15+.7*k/Math.max(1,n-1)));if(dark(x,Math.max(0,Math.round(h*.015))))top++;if(dark(x,Math.min(h-1,Math.round(h*.985))))bottom++;if(dark(Math.max(0,Math.round(w*.015)),y))left++;if(dark(Math.min(w-1,Math.round(w*.985)),y))right++;}return top/n>.48&&bottom/n>.48&&left/n>.48&&right/n>.48}
 function hasFullColorBackground(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;let colorful=0,total=0;for(let gy=0;gy<5;gy++){for(let gx=0;gx<5;gx++){const x=Math.round(w*(.04+gx*.23)),y=Math.round(h*(.04+gy*.23)),i=(y*w+x)*4,r=d[i],g=d[i+1],b=d[i+2];total++;if(Math.max(r,g,b)-Math.min(r,g,b)>28&&Math.min(r,g,b)<235)colorful++;}}return colorful/total>.42}
