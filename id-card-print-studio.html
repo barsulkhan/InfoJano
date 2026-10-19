@@ -346,11 +346,12 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  const step=Math.max(1,Math.floor(Math.min(w,h)/900));
  function bestRow(y0,y1,x0,x1){let best={pos:-1,score:-1};for(let y=y0;y<=y1;y+=step){let n=0,t=0;for(let x=x0;x<=x1;x+=step){t++;if(isBlack(x,y))n++}const score=n/Math.max(1,t);if(score>best.score)best={pos:y,score}}return best}
  function bestCol(x0,x1,y0,y1){let best={pos:-1,score:-1};for(let x=x0;x<=x1;x+=step){let n=0,t=0;for(let y=y0;y<=y1;y+=step){t++;if(isBlack(x,y))n++}const score=n/Math.max(1,t);if(score>best.score)best={pos:x,score}}return best}
- const sides=[{label:'Front',lx:.30,rx:.505,left0:.30,left1:.355,right0:.445,right1:.505},{label:'Back',lx:.495,rx:.70,left0:.495,left1:.55,right0:.64,right1:.70}];
+ // e-EPIC PDF places the two black-bordered card faces side-by-side in the middle of the page.
+ const sides=[{label:'Front',lx:.28,rx:.50,left0:.28,left1:.36,right0:.43,right1:.50},{label:'Back',lx:.50,rx:.72,left0:.50,left1:.57,right0:.64,right1:.72}];
  for(const side of sides){
   const x0=Math.round(w*side.lx),x1=Math.round(w*side.rx);
-  const top=bestRow(Math.round(h*.09),Math.round(h*.16),x0,x1);
-  const bottom=bestRow(Math.round(h*.25),Math.round(h*.34),x0,x1);
+  const top=bestRow(Math.round(h*.11),Math.round(h*.20),x0,x1);
+  const bottom=bestRow(Math.round(h*.20),Math.round(h*.31),x0,x1);
   if(top.score<.48||bottom.score<.48||bottom.pos<=top.pos)continue;
   const left=bestCol(Math.round(w*side.left0),Math.round(w*side.left1),top.pos+step,bottom.pos-step);
   const right=bestCol(Math.round(w*side.right0),Math.round(w*side.right1),top.pos+step,bottom.pos-step);
