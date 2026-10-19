@@ -391,6 +391,15 @@ $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.tar
    const fallback=sources.findIndex(s=>/full PDF page \(auto-detection fallback\)/.test(s.name));
    $('frontSelect').value=fallback>=0?String(fallback):'';
    $('backSelect').value='none';$('cropSourceSelect').value=String(fallback>=0?fallback:0);
+  }else if(activeDocumentRules().workflow==='voter-manual-crop-v1'){
+   const voterFront=sources.findIndex(s=>/Voter ID auto crop Front/.test(s.name));
+   const voterBack=sources.findIndex(s=>/Voter ID auto crop Back/.test(s.name));
+   const original=sources.findIndex(s=>/full PDF page \\(manual crop\\)/.test(s.name));
+   $('frontSelect').value=voterFront>=0?String(voterFront):'';
+   $('backSelect').value=voterBack>=0?String(voterBack):'none';
+   $('cropSourceSelect').value=String(original>=0?original:0);
+   if(voterFront>=0&&voterBack>=0)status('Voter ID PDF: চারটি কালো বর্ডার ধরে Front ও Back আলাদা করা হয়েছে। দুই preview পরীক্ষা করুন।','ok');
+   else status('Voter ID PDF loaded, but border detection did not find both cards. Use the original page and crop each card manually.','ok');
   }else if(activeDocumentRules().workflow==='aadhaar-pdf-scan-photo-v2'){
    const pdfFront=sources.findIndex(s=>/Aadhaar PDF auto crop Front/.test(s.name));
    const pdfBack=sources.findIndex(s=>/Aadhaar PDF auto crop Back/.test(s.name));
