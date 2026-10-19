@@ -226,7 +226,8 @@ function detectAadhaarScannedPhotoRegions(canvas){
   // Pad around the detected print so dotted/scissor marks and complete footer content are retained.
   const cardW=right-left+1,cardH=bottom-top+1;
   const padX=Math.max(2,Math.round(cardW*.025));
-  const padTop=Math.max(2,Math.round(cardW*.018));
+  // Keep the Aadhaar front's dotted/scissor guide and top artwork fully inside the crop; add about 3 mm of extra top clearance.
+  const padTop=Math.max(2,Math.round(cardW*.053));
   const padBottom=Math.max(2,Math.round(cardW*.045));
   const bx=Math.max(x1,x1+left-padX),by=Math.max(0,y1+top-padTop);
   const ex=Math.min(x2,x1+right+padX+1),ey=Math.min(h,y1+bottom+padBottom+1);
