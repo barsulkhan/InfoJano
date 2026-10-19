@@ -336,21 +336,30 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
   sources.push(item);addOption(item,sources.length-1);
  });
  }else if($('cardType').value==='Voter ID'){
- // Restore stable position-based crops for the user's e-EPIC PDF template.
- // Crop exactly to the printed card's outer border; do not use the full page as a side.
+ // Detect each card's printed black border lines on the rendered e-EPIC PDF page.
  const pageName=file.name+' — page '+p;
  sources.push(makeImageSource(pageName+' — full PDF page (manual crop)',canvas));
  addOption(sources[sources.length-1],sources.length-1);
- const boxes=[
-  {label:'Voter ID auto crop Front',x:.054,y:.114,w:.413,h:.178},
-  {label:'Voter ID auto crop Back',x:.549,y:.114,w:.413,h:.178}
- ];
- boxes.forEach(box=>{
-  const x=Math.round(canvas.width*box.x),y=Math.round(canvas.height*box.y);
-  const rect={x:Math.max(0,x),y:Math.max(0,y),w:Math.min(canvas.width-x,Math.round(canvas.width*box.w)),h:Math.min(canvas.height-y,Math.round(canvas.height*box.h))};
-  const item=makeImageSource(pageName+' — '+box.label,cropRegion({canvas},rect));
+ const w=canvas.width,h=canvas.height,ctx=canvas.getContext('2d',{willReadFrequently:true}),pix=ctx.getImageData(0,0,w,h).data;
+ const isBlack=(x,y)=>{const i=(y*w+x)*4;return pix[i]<100&&pix[i+1]<100&&pix[i+2]<100};
+ const step=Math.max(1,Math.floor(Math.min(w,h)/900));
+ function bestRow(y0,y1,x0,x1){let best={pos:-1,score:-1};for(let y=y0;y<=y1;y+=step){let n=0,t=0;for(let x=x0;x<=x1;x+=step){t++;if(isBlack(x,y))n++}const score=n/Math.max(1,t);if(score>best.score)best={pos:y,score}}return best}
+ function bestCol(x0,x1,y0,y1){let best={pos:-1,score:-1};for(let x=x0;x<=x1;x+=step){let n=0,t=0;for(let y=y0;y<=y1;y+=step){t++;if(isBlack(x,y))n++}const score=n/Math.max(1,t);if(score>best.score)best={pos:x,score}}return best}
+ const sides=[{label:'Front',lx:.035,rx:.49,left0:.035,left1:.09,right0:.43,right1:.49},{label:'Back',lx:.51,rx:.975,left0:.51,left1:.57,right0:.91,right1:.975}];
+ for(const side of sides){
+  const x0=Math.round(w*side.lx),x1=Math.round(w*side.rx);
+  const top=bestRow(Math.round(h*.09),Math.round(h*.16),x0,x1);
+  const bottom=bestRow(Math.round(h*.25),Math.round(h*.34),x0,x1);
+  if(top.score<.48||bottom.score<.48||bottom.pos<=top.pos)continue;
+  const left=bestCol(Math.round(w*side.left0),Math.round(w*side.left1),top.pos+step,bottom.pos-step);
+  const right=bestCol(Math.round(w*side.right0),Math.round(w*side.right1),top.pos+step,bottom.pos-step);
+  if(left.score<.35||right.score<.35||right.pos<=left.pos)continue;
+  const rect={x:left.pos,y:top.pos,w:right.pos-left.pos+1,h:bottom.pos-top.pos+1};
+  const ratio=rect.w/rect.h;
+  if(ratio<1.35||ratio>1.9)continue;
+  const item=makeImageSource(pageName+' — Voter ID auto crop '+side.label,cropRegion({canvas},rect));
   sources.push(item);addOption(item,sources.length-1);
- });
+ }
  }else if($('cardType').value==='Ayushman Bharat Card'){
  // Detect the printed face, not the larger PDF page border. The white back is cropped from its text/QR content with a safety margin.
  const pageName=file.name+' — page '+p,side=p===1?'Front':'Back';
