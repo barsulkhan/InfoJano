@@ -342,8 +342,8 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  sources.push(makeImageSource(pageName+' — full PDF page (manual crop)',canvas));
  addOption(sources[sources.length-1],sources.length-1);
  const boxes=[
-  {label:'Voter ID auto crop Front',x:.054,y:.114,w:.413,h:.186},
-  {label:'Voter ID auto crop Back',x:.549,y:.114,w:.413,h:.186}
+  {label:'Voter ID auto crop Front',x:.054,y:.114,w:.413,h:.176},
+  {label:'Voter ID auto crop Back',x:.549,y:.114,w:.413,h:.176}
  ];
  boxes.forEach(box=>{
   const x=Math.round(canvas.width*box.x),y=Math.round(canvas.height*box.y);
