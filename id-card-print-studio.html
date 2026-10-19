@@ -159,41 +159,58 @@ function detectAadhaarCardRegions(canvas){
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function detectAadhaarPdfCardRegions(canvas){
- // UIDAI e-Aadhaar letter: the printable front/back panels sit below the dotted scissors line.
- // Detect the printed horizontal/vertical black borders; use page-relative guardrails to avoid letter text.
+ // Aadhaar PDF: use the dotted scissors line as the top reference.
+ // Keep 1.5 mm above that line inside the crop, include the dotted line,
+ // and use the printed outer side/bottom borders for the remaining edges.
  const w=canvas.width,h=canvas.height,ctx=canvas.getContext('2d',{willReadFrequently:true});
  if(w<300||h<300)return [];
  const data=ctx.getImageData(0,0,w,h).data;
- const dark=(x,y)=>{const i=(y*w+x)*4;return Math.max(data[i],data[i+1],data[i+2])<105;};
- const sample=Math.max(1,Math.floor(Math.max(w,h)/900));
- function rowScore(y,x1,x2){let n=0,total=0;for(let x=x1;x<x2;x+=sample){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
- function colScore(x,y1,y2){let n=0,total=0;for(let y=y1;y<y2;y+=sample){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
- // Top scissors line is dotted; bottom edge is solid. Search only the lower card zone.
- const x1=Math.round(w*.055),x2=Math.round(w*.945);
- let topY=-1,topScore=0;
- for(let y=Math.round(h*.66);y<Math.round(h*.78);y+=sample){
-  const s=rowScore(y,x1,x2);
-  if(s>topScore){topScore=s;topY=y;}
+ const dark=(x,y)=>{const i=(y*w+x)*4;return Math.max(data[i],data[i+1],data[i+2])<120;};
+ const step=Math.max(1,Math.floor(Math.max(w,h)/1600));
+ function rowStats(y,x1,x2){
+  let hits=0,segments=0,inSeg=false,total=0;
+  for(let x=x1;x<x2;x+=step){const yes=dark(x,y);total++;if(yes)hits++;if(yes&&!inSeg)segments++;inSeg=yes;}
+  return {density:hits/Math.max(1,total),segments};
  }
- let bottomY=-1,bottomScore=0;
- for(let y=Math.round(h*.87);y<Math.round(h*.98);y+=sample){
-  const s=rowScore(y,x1,x2);
-  if(s>bottomScore){bottomScore=s;bottomY=y;}
+ function bestDottedRow(y0,y1,x1,x2){
+  let best={y:-1,score:-1};
+  for(let y=y0;y<y1;y+=step){
+   const q=rowStats(y,x1,x2);
+   // Dotted line: multiple short dark segments, but much less coverage than a solid border.
+   const score=q.segments*0.012-Math.abs(q.density-0.12);
+   if(q.segments>=5&&q.density>=0.025&&q.density<=0.38&&score>best.score)best={y,score,density:q.density,segments:q.segments};
+  }
+  return best;
  }
- if(topY<0||bottomY<0||topScore<.075||bottomScore<.45||bottomY-topY<h*.09)return [];
- // Find long vertical black borders within the panel height, constrained to expected left/centre/right zones.
- const yA=Math.max(0,topY-sample*2),yB=Math.min(h-1,bottomY+sample*2);
- function bestX(a,b){let best=-1,score=0;for(let x=Math.round(w*a);x<Math.round(w*b);x+=sample){const s=colScore(x,yA,yB);if(s>score){score=s;best=x;}}return {x:best,score};}
- const left=bestX(.035,.18),centreL=bestX(.40,.50),centreR=bestX(.50,.60),right=bestX(.82,.965);
- if([left,centreL,centreR,right].some(v=>v.x<0||v.score<.22)||centreL.x>=centreR.x)return [];
- // Keep a generous safety margin around detected card edges. The prior 1-pixel pad
- // could clip the top header on some Aadhaar PDF layouts.
- const cardH=bottomY-topY, padX=Math.max(sample*2,Math.round((centreL.x-left.x)*.012)), padY=Math.max(sample*2,Math.round(cardH*.055));
+ function bestSolidRow(y0,y1,x1,x2){
+  let best={y:-1,score:0};
+  for(let y=y0;y<y1;y+=step){const q=rowStats(y,x1,x2);if(q.density>best.score)best={y,score:q.density};}
+  return best;
+ }
+ function bestCol(x0,x1,y0,y1){
+  let best={x:-1,score:0};
+  for(let x=x0;x<x1;x+=step){let n=0,t=0;for(let y=y0;y<y1;y+=step){t++;if(dark(x,y))n++;}const score=n/Math.max(1,t);if(score>best.score)best={x,score};}
+  return best;
+ }
+ // e-Aadhaar card pair is typically printed in the upper half of the letter.
+ const searchX1=Math.round(w*.08),searchX2=Math.round(w*.92);
+ const top=bestDottedRow(Math.round(h*.04),Math.round(h*.42),searchX1,searchX2);
+ if(top.y<0)return [];
+ const mmPx=w/210, padY=Math.max(step,Math.round(mmPx*1.5)); // 1.5 mm above dotted line on A4
+ const yTop=Math.max(0,top.y-padY);
+ // Find solid bottom card border below the dotted line.
+ const bottom=bestSolidRow(Math.round(top.y+h*.12),Math.min(h-1,Math.round(top.y+h*.32)),searchX1,searchX2);
+ if(bottom.y<0||bottom.score<.35||bottom.y<=top.y)return [];
+ const yBottom=bottom.y+step;
+ const yMid=(yTop+yBottom)/2;
+ function bestX(a,b){return bestCol(Math.round(w*a),Math.round(w*b),Math.round(yMid-h*.12),Math.round(yBottom));}
+ const left=bestX(.03,.20),centreL=bestX(.38,.50),centreR=bestX(.50,.62),right=bestX(.80,.97);
+ if([left,centreL,centreR,right].some(v=>v.x<0||v.score<.20)||centreL.x<=left.x||right.x<=centreR.x)return [];
  const boxes=[
-  {x:Math.max(0,left.x-padX),y:Math.max(0,topY-padY),w:centreL.x-left.x+padX*2,h:cardH+padY*2},
-  {x:Math.max(0,centreR.x-padX),y:Math.max(0,topY-padY),w:right.x-centreR.x+padX*2,h:cardH+padY*2}
+  {x:left.x,y:yTop,w:centreL.x-left.x+1,h:yBottom-yTop+1},
+  {x:centreR.x,y:yTop,w:right.x-centreR.x+1,h:yBottom-yTop+1}
  ];
- if(boxes.some(r=>r.w/r.h<1.25||r.w/r.h>1.9||r.w<w*.2||r.h<h*.08))return [];
+ if(boxes.some(r=>r.w/r.h<1.25||r.w/r.h>2.05))return [];
  return boxes;
 }
 function detectAadhaarScannedPhotoRegions(canvas){
