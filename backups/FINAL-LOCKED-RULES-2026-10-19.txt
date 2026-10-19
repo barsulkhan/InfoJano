@@ -16,3 +16,9 @@ LOCKED RULES — DO NOT MODIFY THESE THREE CARD WORKFLOWS WITHOUT THE USER'S EXP
 Repository: https://github.com/barsulkhan/InfoJano
 Live studio: https://barsulkhan.github.io/InfoJano/id-card-print-studio.html
 Direct HTML backup: https://raw.githubusercontent.com/barsulkhan/InfoJano/main/backups/InfoJano-Ayushman-VoterID-FINAL-LOCKED-2026-10-19.html
+
+
+JPG QUALITY UPDATE (2026-10-20)
+- JPG export canvas is rendered at 600 DPI with JPEG quality 1.0 and high-quality image smoothing.
+- This update changes JPG output pixel density/encoding quality only. Do not change physical dimensions, crop, borders, layout, or PDF export settings without explicit user permission.
+- Note: increasing export resolution cannot recover detail absent from the original source image.
