@@ -1,0 +1,15 @@
+InfoJano — FINAL LOCKED BACKUP
+Date saved: 2026-10-19
+
+Files:
+- backups/InfoJano-Ayushman-VoterID-FINAL-LOCKED-2026-10-19.html
+- Live studio source remains: id-card-print-studio.html
+
+LOCKED RULES — DO NOT MODIFY WITHOUT EXPLICIT USER REQUEST
+1. Ayushman Bharat: preserve the finalized workflow and all approved layout/crop/output behavior exactly as in the saved source. Do not alter crop, borders, color, dimensions, front/back, or layout.
+2. Voter ID: preserve the approved front crop and the latest back crop, including the small bottom-edge adjustment. Front side must remain unchanged. Keep output at 85 × 55 mm, 300 DPI, PDF only. The back crop fix must not alter Ayushman Bharat.
+3. Do not make code edits to either finalized workflow unless the user explicitly requests a change.
+4. This backup is a byte-for-byte copy of id-card-print-studio.html as fetched from GitHub on 2026-10-19. Future work should copy this file first rather than overwrite it.
+
+Repository: https://github.com/barsulkhan/InfoJano
+Live studio: https://barsulkhan.github.io/InfoJano/id-card-print-studio.html
