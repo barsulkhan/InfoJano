@@ -203,7 +203,7 @@ function detectAadhaarScannedPhotoRegions(canvas){
  const rgb=(x,y)=>{const i=(Math.max(0,Math.min(h-1,y))*w+Math.max(0,Math.min(w-1,x)))*4;return [data[i],data[i+1],data[i+2]]};
  const dark=(x,y)=>{const [r,g,b]=rgb(x,y);return Math.max(r,g,b)<155};
  const red=(x,y)=>{const [r,g,b]=rgb(x,y);return r>100&&r>g*1.18&&r>b*1.12&&g<190};
- const rowDark=(y,x1,x2)=>{let n=0,t=0,trans=0,prev=false;for(let x=x1;x<x2;x+=step){const v=dark(x,y);t++;if(v)n++;if(t>1&&v!==prev)trans++;prev=v}return {frac:n/Math.max(1,t,tr:trans/Math.max(1,t)}};
+ const rowDark=(y,x1,x2)=>{let n=0,t=0,trans=0,prev=false;for(let x=x1;x<x2;x+=step){const v=dark(x,y);t++;if(v)n++;if(t>1&&v!==prev)trans++;prev=v}return {frac:n/Math.max(1,t),tr:trans/Math.max(1,t)};
  const xMin=Math.round(w*.015),xMax=Math.round(w*.985),lineCandidates=[];
  for(let y=Math.round(h*.02);y<Math.round(h*.9);y+=step){
   const q=rowDark(y,xMin,xMax);
