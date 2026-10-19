@@ -40,10 +40,10 @@
 </section>
 <section class="card"><h2><span class="step">3</span>Set card size, add border and review</h2>
 <div class="grid">
-<div class="field"><label for="sizePreset">Card size preset</label><select id="sizePreset"><option value="85,55">85 × 55 mm (standard ID card)</option><option value="86,54">86 × 54 mm (credit-card size)</option><option value="custom">Custom size</option></select></div>
-<div class="field"><label for="dpi">Resolution</label><select id="dpi"><option value="300" selected>300 DPI</option><option value="200">200 DPI</option><option value="150">150 DPI</option></select></div>
-<div class="field"><label for="widthMM">Width (mm)</label><input id="widthMM" type="number" min="10" max="300" step="0.1" value="85"></div>
-<div class="field"><label for="heightMM">Height (mm)</label><input id="heightMM" type="number" min="10" max="300" step="0.1" value="55"></div>
+<div class="field"><label for="sizePreset">Card size preset</label><select id="sizePreset" disabled><option value="85,55" selected>85 × 55 mm (fixed standard size)</option></select></div>
+<div class="field"><label for="dpi">Resolution</label><select id="dpi" disabled><option value="300" selected>300 DPI (fixed)</option></select></div>
+<div class="field"><label for="widthMM">Width (mm)</label><input id="widthMM" type="number" min="85" max="85" step="1" value="85" readonly></div>
+<div class="field"><label for="heightMM">Height (mm)</label><input id="heightMM" type="number" min="55" max="55" step="1" value="55" readonly></div>
 <div class="field"><label for="paper">Paper size</label><select id="paper"><option value="a4">A4 (210 × 297 mm)</option><option value="photo">4 × 6 inch (101.6 × 152.4 mm)</option><option value="custom">Custom paper</option></select></div>
 <div class="field"><label for="layout">Front / back placement</label><select id="layout"><option value="paired" selected>Same page: Front left, Back right near top (cutting gap)</option><option value="stacked">Same page: Front on top, Back below (cutting gap)</option><option value="separate">Separate pages</option><option value="frontonly">Front only</option><option value="backonly">Back only</option></select></div>
 <div class="field"><label for="customW">Custom paper width (mm)</label><input id="customW" type="number" min="40" max="500" value="210"></div>
@@ -55,7 +55,7 @@
 </section>
 <section class="card"><h2><span class="step">4</span>Download print-ready PDF</h2>
 <div class="warning">Print at “Actual size” / 100% scale. Turn off “Fit to page” if exact physical dimensions are important. This first version uses a manual front/back selection to avoid silently printing the wrong side.</div>
-<div class="actions"><button class="btn" id="downloadBtn" type="button">Create &amp; Download PDF</button><button class="btn alt" id="downloadJpgBtn" type="button">Download JPG</button><a href="index.html" class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center">← Back to InfoJano</a></div>
+<div class="actions"><button class="btn" id="downloadBtn" type="button">Create &amp; Download PDF</button><button class="btn alt" id="downloadJpgBtn" type="button" style="display:none">Download JPG</button><a href="index.html" class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center">← Back to InfoJano</a></div>
 <div id="downloadStatus" class="status" role="status" aria-live="polite">Upload a file and select the sides to create your print PDF.</div>
 </section>
 </main><footer>InfoJano • ID Card Print Studio</footer>
