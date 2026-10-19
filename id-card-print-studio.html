@@ -346,7 +346,7 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  const step=Math.max(1,Math.floor(Math.min(w,h)/900));
  function bestRow(y0,y1,x0,x1){let best={pos:-1,score:-1};for(let y=y0;y<=y1;y+=step){let n=0,t=0;for(let x=x0;x<=x1;x+=step){t++;if(isBlack(x,y))n++}const score=n/Math.max(1,t);if(score>best.score)best={pos:y,score}}return best}
  function bestCol(x0,x1,y0,y1){let best={pos:-1,score:-1};for(let x=x0;x<=x1;x+=step){let n=0,t=0;for(let y=y0;y<=y1;y+=step){t++;if(isBlack(x,y))n++}const score=n/Math.max(1,t);if(score>best.score)best={pos:x,score}}return best}
- // e-EPIC PDF layout seen in the user's actual file: two black-bordered cards side-by-side near the top of a portrait page. Ignore the voter-roll QR/details and notice panel below.
+ // Shared Voter ID rule: detect the outer black border on BOTH card faces. Front (photo) is left; Back (QR/address) is right. Lower voter-roll QR/details and notice are excluded.
  const sides=[
   {label:'Front',x0:.045,x1:.475,left0:.035,left1:.075,right0:.445,right1:.49},
   {label:'Back',x0:.535,x1:.965,left0:.525,left1:.565,right0:.935,right1:.98}
@@ -354,18 +354,17 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
  for(const side of sides){
   const rx0=Math.round(w*side.x0),rx1=Math.round(w*side.x1);
   const top=bestRow(Math.round(h*.105),Math.round(h*.135),rx0,rx1);
-  // Back-side bottom border sits slightly above the previous scan/fallback edge; tighten only the Back crop to remove the visible gap.
-  const bottom=bestRow(Math.round(h*(side.label==='Back'?.270:.275)),Math.round(h*(side.label==='Back'?.298:.305)),rx0,rx1);
+  const bottom=bestRow(Math.round(h*.275),Math.round(h*.305),rx0,rx1);
   let rect;
   if(top.score>=.32&&bottom.score>=.32&&bottom.pos>top.pos){
    const left=bestCol(Math.round(w*side.left0),Math.round(w*side.left1),top.pos+step,bottom.pos-step);
    const right=bestCol(Math.round(w*side.right0),Math.round(w*side.right1),top.pos+step,bottom.pos-step);
    if(left.score>=.24&&right.score>=.24&&right.pos>left.pos)rect={x:left.pos,y:top.pos,w:right.pos-left.pos+1,h:bottom.pos-top.pos+1};
   }
-  // Fallback uses the known card positions from the supplied e-EPIC page, never the lower voter-roll section.
-  if(!rect)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*(side.label==='Back'?.186:.19))};
+  // Identical fallback size for both faces; never use the different lower-page voter-roll content.
+  if(!rect)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
   const ratio=rect.w/rect.h;
-  if(ratio<1.35||ratio>1.85)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*(side.label==='Back'?.186:.19))};
+  if(ratio<1.35||ratio>1.85)rect={x:Math.round(w*side.x0),y:Math.round(h*.108),w:Math.round(w*(side.x1-side.x0)),h:Math.round(h*.19)};
   const item=makeImageSource(pageName+' — Voter ID auto crop '+side.label,cropRegion({canvas},rect));
   sources.push(item);addOption(item,sources.length-1);
  }
