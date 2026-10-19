@@ -187,9 +187,10 @@ function detectAadhaarPdfCardRegions(canvas){
  const left=bestX(.035,.18),centreL=bestX(.40,.50),centreR=bestX(.50,.60),right=bestX(.82,.965);
  if([left,centreL,centreR,right].some(v=>v.x<0||v.score<.22)||centreL.x>=centreR.x)return [];
  const pad=Math.max(1,sample);
+ const topClearance=Math.max(sample*2,Math.round(h*.008)); // Aadhaar PDF: include a little more of the upper artwork so it is not clipped in print preview.
  const boxes=[
-  {x:Math.max(0,left.x-pad),y:Math.max(0,topY-pad),w:centreL.x-left.x+pad*2,h:bottomY-topY+pad*2},
-  {x:Math.max(0,centreR.x-pad),y:Math.max(0,topY-pad),w:right.x-centreR.x+pad*2,h:bottomY-topY+pad*2}
+  {x:Math.max(0,left.x-pad),y:Math.max(0,topY-topClearance),w:centreL.x-left.x+pad*2,h:bottomY-topY+topClearance+pad},
+  {x:Math.max(0,centreR.x-pad),y:Math.max(0,topY-topClearance),w:right.x-centreR.x+pad*2,h:bottomY-topY+topClearance+pad}
  ];
  if(boxes.some(r=>r.w/r.h<1.25||r.w/r.h>1.9||r.w<w*.2||r.h<h*.08))return [];
  return boxes;
