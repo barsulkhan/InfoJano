@@ -196,23 +196,30 @@ function detectRationCardFaces(pageCanvas){
  return result;
 }
 function trimRationDottedCutline(input){
- // Digital Ration Card print sheets use dotted/scissor cut guides. Detect only near the four crop edges,
- // then remove the guide itself while preserving the card content inside it. If confidence is low, keep the crop unchanged.
+ // Digital Ration Card only. The cut guides are dotted horizontal lines; the vertical/outer frame is not the card edge.
+ // Detect and remove only clear dotted horizontal guides near the top/bottom of the selected crop.
+ // Never trim left/right or guess when the evidence is weak, so barcode, QR and edge text remain safe.
  const w=input.width,h=input.height;if(w<120||h<60)return input;
  const ctx=input.getContext('2d',{willReadFrequently:true}),data=ctx.getImageData(0,0,w,h).data;
- const dark=(x,y)=>{const i=(y*w+x)*4;return data[i]<105&&data[i+1]<105&&data[i+2]<105;};
- const rowScore=y=>{let n=0;const step=Math.max(1,Math.floor(w/1200));for(let x=Math.floor(w*.04);x<w*.96;x+=step)if(dark(x,y))n++;return n/Math.max(1,Math.ceil(w*.92/step));};
- const colScore=x=>{let n=0;const step=Math.max(1,Math.floor(h/900));for(let y=Math.floor(h*.04);y<h*.96;y+=step)if(dark(x,y))n++;return n/Math.max(1,Math.ceil(h*.92/step));};
- const bandY=Math.max(8,Math.floor(h*.12)),bandX=Math.max(8,Math.floor(w*.08));
- function bestRow(start,end){let pos=-1,score=0;for(let y=start;y<end;y++){const v=rowScore(y);if(v>score){score=v;pos=y;}}return {pos,score};}
- function bestCol(start,end){let pos=-1,score=0;for(let x=start;x<end;x++){const v=colScore(x);if(v>score){score=v;pos=x;}}return {pos,score};}
- const top=bestRow(0,bandY),bottom=bestRow(h-bandY,h),left=bestCol(0,bandX),right=bestCol(w-bandX,w);
- // Dashed rules score lower than solid rules; require clear evidence on all four sides to avoid trimming card text.
- if(top.score<.09||bottom.score<.09||left.score<.09||right.score<.09)return input;
- if(bottom.pos-top.pos<h*.65||right.pos-left.pos<w*.65)return input;
- const pad=2,x=Math.max(0,left.pos+pad),y=Math.max(0,top.pos+pad),r=Math.min(w,right.pos-pad),b=Math.min(h,bottom.pos-pad);
- if(r-x<w*.65||b-y<h*.65)return input;
- return cropRegion({canvas:input},{x,y,w:r-x,h:b-y});
+ const dark=(x,y)=>{const i=(y*w+x)*4;return data[i]<115&&data[i+1]<115&&data[i+2]<115;};
+ const rowScore=y=>{let n=0,transitions=0,prev=false;const step=Math.max(1,Math.floor(w/1200));let count=0;for(let x=Math.floor(w*.04);x<w*.96;x+=step){const v=dark(x,y);if(v)n++;if(v!==prev)transitions++;prev=v;count++;}return {coverage:n/Math.max(1,count),transitions};};
+ function findGuide(from,to){
+  let best=null;
+  for(let y=from;y<to;y++){
+   const s=rowScore(y);
+   // A dotted cut guide has multiple dark segments across the page, but does not look like solid text.
+   if(s.coverage>=.045&&s.coverage<=.48&&s.transitions>=8&&(!best||s.transitions>best.s.transitions))best={y,s};
+  }
+  return best;
+ }
+ const band=Math.max(10,Math.floor(h*.18));
+ const top=findGuide(0,band),bottom=findGuide(h-band,h);
+ if(!top||!bottom||bottom.y-top.y<h*.55)return input;
+ // Keep a small safety margin inside each detected guide; leave horizontal edges alone if too close to actual content.
+ const pad=Math.max(2,Math.round(h*.008));
+ const y=Math.min(h-1,top.y+pad),b=Math.max(y+1,bottom.y-pad);
+ if(y>h*.12||h-b>h*.12||b-y<h*.55)return input;
+ return cropRegion({canvas:input},{x:0,y,w,h:b-y});
 }
 /* Voter ID only: trim extra paper around a manually selected card when its continuous outer frame is clearly detectable. If detection is uncertain, preserve the user's crop unchanged. */
 function trimVoterCropToOuterFrame(canvas){
