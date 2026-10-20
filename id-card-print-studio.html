@@ -159,52 +159,39 @@ function detectAadhaarCardRegions(canvas){
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function detectRationCardFaces(pageCanvas){
- // Digital Ration Card PDF only: its printed front/back are side-by-side in the lower card strip.
- // Detect the long outer cut-guide rows first, then the middle divider; never touch other card types.
+ // Digital Ration Card PDF template: use the known lower card-strip position on the page.
+ // Do NOT search the instruction text for lines; it contains many false horizontal/vertical edges.
+ // Normalized coordinates are based on the supplied official e-Ration PDF page.
  const canvas=pageCanvas,w=canvas.width,h=canvas.height;
- if(w<200||h<200)return [];
- const ctx=canvas.getContext('2d',{willReadFrequently:true}),pix=ctx.getImageData(0,0,w,h).data;
- const dark=(x,y)=>{const i=(y*w+x)*4;return pix[i]<115&&pix[i+1]<115&&pix[i+2]<115;};
- const step=Math.max(1,Math.floor(Math.min(w,h)/1000));
- function rowScore(y,x0,x1){let n=0,t=0;for(let x=x0;x<x1;x+=step){t++;if(dark(x,y))n++;}return n/Math.max(1,t);}
- function colScore(x,y0,y1){let n=0,t=0;for(let y=y0;y<y1;y+=step){t++;if(dark(x,y))n++;}return n/Math.max(1,t);}
- // Search only the lower 70%: the upper part is instructions, not either card face.
- const yStart=Math.floor(h*.28),yEnd=Math.floor(h*.96),x0=Math.floor(w*.055),x1=Math.floor(w*.95);
- const rows=[];
- for(let y=yStart;y<yEnd;y+=step){
-   let score=rowScore(y,x0,x1);
-   // Dotted cut guides are discontinuous; a lower threshold allows their repeated dashes to register.
-   if(score>.19)rows.push({y,score});
+ if(w<300||h<400||w/h<.68||w/h>.73)return [];
+ const ctx=canvas.getContext('2d',{willReadFrequently:true}),data=ctx.getImageData(0,0,w,h).data;
+ const greenAt=(x,y)=>{const i=(y*w+x)*4,r=data[i],g=data[i+1],b=data[i+2];return g>105&&g>r*1.12&&g>b*1.03&&r>35&&b<220;};
+ // Sample the expected green side panels in both cards. If this is not the known card-strip
+ // layout, return no result rather than cropping some unrelated section of a PDF.
+ function greenCoverage(x0,x1,y0,y1){
+  let hit=0,n=0;const sx=Math.max(1,Math.floor(w/500)),sy=Math.max(1,Math.floor(h/700));
+  for(let y=Math.floor(h*y0);y<Math.floor(h*y1);y+=sy)
+   for(let x=Math.floor(w*x0);x<Math.floor(w*x1);x+=sx){n++;if(greenAt(x,y))hit++;}
+  return hit/Math.max(1,n);
  }
- // Merge adjacent detections and keep the strongest row in each band.
- const bands=[];
- for(const r of rows){const last=bands[bands.length-1];if(last&&r.y-last.end<=step*3){last.end=r.y;if(r.score>last.score){last.y=r.y;last.score=r.score;}}else bands.push({y:r.y,end:r.y,score:r.score});}
- if(bands.length<2)return [];
- let pair=null,best=-1;
- for(let i=0;i<bands.length;i++)for(let j=i+1;j<bands.length;j++){
-   const gap=bands[j].y-bands[i].y;
-   if(gap<h*.10||gap>h*.48)continue;
-   const mid=(bands[i].y+bands[j].y)/2;
-   if(mid<h*.42)continue;
-   const score=bands[i].score+bands[j].score-Math.abs(gap-h*.29)/h;
-   if(score>best){best=score;pair=[bands[i].y,bands[j].y];}
- }
- if(!pair)return [];
- const top=pair[0],bottom=pair[1],stripH=bottom-top;
- // The two faces are separated by a vertical cut line near the page centre.
- const mid0=Math.floor(w*.46),mid1=Math.floor(w*.56);
- let divider=-1,divScore=0;
- for(let x=mid0;x<mid1;x+=step){const q=colScore(x,top+Math.round(stripH*.04),bottom-Math.round(stripH*.04));if(q>divScore){divScore=q;divider=x;}}
- if(divider<0||divScore<.16)return [];
- // Tight margins start on the inner edge of the dotted guide so the guide itself is excluded.
- const padY=Math.max(1,Math.round(stripH*.008)),padX=Math.max(1,Math.round(w*.004));
- const left={x:Math.max(0,x0+padX),y:top+padY,w:divider-(x0+padX)-padX,h:stripH-padY*2};
- const right={x:divider+padX,y:top+padY,w:Math.min(w*.95, w*.95)-(divider+padX),h:stripH-padY*2};
- if(left.w<100||right.w<100||left.h<50||right.h<50)return [];
- return [
-  {label:'Front',canvas:trimRationDottedCutline(cropRegion({canvas},left))},
-  {label:'Back',canvas:trimRationDottedCutline(cropRegion({canvas},right))}
+ const y0=.742,y1=.905;
+ const frontGreen=Math.max(greenCoverage(.09,.17,.755,.89),greenCoverage(.40,.48,.755,.89));
+ const backGreen=Math.max(greenCoverage(.52,.60,.755,.89),greenCoverage(.83,.91,.755,.89));
+ if(frontGreen<.16||backGreen<.16)return [];
+ // Crop just inside the dotted/scissor guide, excluding the guide itself while preserving the card edges.
+ const boxes=[
+  {label:'Front',x:.087,y:y0,r:.493,b:y1},
+  {label:'Back',x:.512,y:y0,r:.918,b:y1}
  ];
+ const result=[];
+ for(const q of boxes){
+  const x=Math.round(w*q.x),y=Math.round(h*q.y),right=Math.round(w*q.r),bottom=Math.round(h*q.b);
+  if(right-x<100||bottom-y<60)return [];
+  result.push({label:q.label,canvas:cropRegion({canvas},{x,y,w:right-x,h:bottom-y})});
+ }
+ // Both faces must have the expected landscape ratio; otherwise do not guess.
+ if(result.some(q=>q.canvas.width/q.canvas.height<1.45||q.canvas.width/q.canvas.height>2.15))return [];
+ return result;
 }
 function trimRationDottedCutline(input){
  // Digital Ration Card print sheets use dotted/scissor cut guides. Detect only near the four crop edges,
