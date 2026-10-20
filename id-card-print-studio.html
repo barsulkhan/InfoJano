@@ -167,14 +167,14 @@ function detectRationCardFaces(pageCanvas){
  const inset=Math.max(3,Math.round(Math.min(w,h)*.004));
  let boxes=[];
  if(w/h<.9){
-   // Portrait sample: first card panel is above the middle separator, second panel below it.
-   // Start at the top card's own guide, not at the PDF page top.
-   const xL=Math.round(w*.125),xR=Math.round(w*.905);
-   const yTop=Math.round(h*.105),ySplitTop=Math.round(h*.515);
-   const ySplitBottom=Math.round(h*.565),yBottom=Math.round(h*.905);
+   // Portrait official PDF page: the instructions occupy the upper area; the two actual
+   // landscape card faces are side-by-side in a narrow strip near the bottom of the page.
+   // Crop only that strip, then split it at the center dotted divider.
+   const xL=Math.round(w*.355),xM=Math.round(w*.502),xR=Math.round(w*.652);
+   const yT=Math.round(h*.705),yB=Math.round(h*.885);
    boxes=[
-    {label:'Front',x:xL+inset,y:yTop+inset,w:xR-xL-2*inset,h:ySplitTop-yTop-2*inset},
-    {label:'Back',x:xL+inset,y:ySplitBottom+inset,w:xR-xL-2*inset,h:yBottom-ySplitBottom-2*inset}
+    {label:'Front',x:xL+inset,y:yT+inset,w:xM-xL-2*inset,h:yB-yT-2*inset},
+    {label:'Back',x:xM+inset,y:yT+inset,w:xR-xM-2*inset,h:yB-yT-2*inset}
    ];
  }else{
    // Landscape sample: the upper instruction block is outside the card strip.
