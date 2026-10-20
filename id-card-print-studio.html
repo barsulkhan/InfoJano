@@ -174,18 +174,15 @@ function detectRationCardFaces(pageCanvas){
    for(let x=Math.floor(w*x0);x<Math.floor(w*x1);x+=sx){n++;if(greenAt(x,y))hit++;}
   return hit/Math.max(1,n);
  }
- const y0=.785,y1=.965;
- const frontGreen=Math.max(greenCoverage(.09,.17,.795,.955),greenCoverage(.40,.48,.795,.955));
- const backGreen=Math.max(greenCoverage(.52,.60,.795,.955),greenCoverage(.83,.91,.795,.955));
+ const frontGreen=Math.max(greenCoverage(.09,.17,.785,.945),greenCoverage(.40,.48,.785,.945));
+ const backGreen=Math.max(greenCoverage(.52,.60,.785,.945),greenCoverage(.83,.91,.785,.945));
  if(frontGreen<.16||backGreen<.16)return [];
- // Digital Ration Card: crop the two actual coloured card panels, not the surrounding
- // scissors/cut marks. The small white margin is added at print-layout time around the fitted card.
- // Keep these bounds inside the outer guide so scissors and guide lines cannot enter the card image.
+ // Digital Ration Card only: crop the card-face area between the dotted cut guides.
+ // Keep the top/bottom guide lines OUT of the crop while retaining all card content.
+ // Four-millimetre white inset is applied later inside the fixed 85 × 55 mm output.
  const boxes=[
-   // Ration-only bounds: exclude the dotted cut guide above each card, while retaining
-   // bottom text, Not Transferable, full QR and the barcode/address on the reverse.
-   {label:'Front',x:.075,y:.795,r:.490,b:.975},
-   {label:'Back',x:.510,y:.795,r:.925,b:.975}
+   {label:'Front',x:.065,y:.780,r:.495,b:.945},
+   {label:'Back',x:.505,y:.780,r:.935,b:.945}
   ];
  const result=[];
  for(const q of boxes){
