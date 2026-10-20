@@ -174,9 +174,9 @@ function detectRationCardFaces(pageCanvas){
    for(let x=Math.floor(w*x0);x<Math.floor(w*x1);x+=sx){n++;if(greenAt(x,y))hit++;}
   return hit/Math.max(1,n);
  }
- const y0=.791,y1=.961;
- const frontGreen=Math.max(greenCoverage(.09,.17,.805,.945),greenCoverage(.40,.48,.805,.945));
- const backGreen=Math.max(greenCoverage(.52,.60,.805,.945),greenCoverage(.83,.91,.805,.945));
+ const y0=.785,y1=.965;
+ const frontGreen=Math.max(greenCoverage(.09,.17,.795,.955),greenCoverage(.40,.48,.795,.955));
+ const backGreen=Math.max(greenCoverage(.52,.60,.795,.955),greenCoverage(.83,.91,.795,.955));
  if(frontGreen<.16||backGreen<.16)return [];
  // Crop just inside the dotted/scissor guide, excluding the guide itself while preserving the card edges.
  const boxes=[
