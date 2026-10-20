@@ -178,14 +178,18 @@ function detectRationCardFaces(pageCanvas){
  const frontGreen=Math.max(greenCoverage(.09,.17,.795,.955),greenCoverage(.40,.48,.795,.955));
  const backGreen=Math.max(greenCoverage(.52,.60,.795,.955),greenCoverage(.83,.91,.795,.955));
  if(frontGreen<.16||backGreen<.16)return [];
- // Crop just inside the dotted/scissor guide, excluding the guide itself while preserving the card edges.
+ // Target only the lower two-card strip. Previous x-coordinates began too far inside each card,
+ // clipping the left side of the Front and the right side of the Back. Keep the entire card faces,
+ // and add a small page-relative safety margin so the dotted/scissor guide itself is not used as card content.
+ const padX=Math.max(2,Math.round(w*.006)),padY=Math.max(2,Math.round(h*.006));
  const boxes=[
-  {label:'Front',x:.087,y:y0,r:.493,b:y1},
-  {label:'Back',x:.512,y:y0,r:.918,b:y1}
+  {label:'Front',x:.006,y:.785,r:.493,b:.965},
+  {label:'Back',x:.507,y:.785,r:.994,b:.965}
  ];
  const result=[];
  for(const q of boxes){
-  const x=Math.round(w*q.x),y=Math.round(h*q.y),right=Math.round(w*q.r),bottom=Math.round(h*q.b);
+  const x=Math.max(0,Math.round(w*q.x)-padX),y=Math.max(0,Math.round(h*q.y)-padY);
+  const right=Math.min(w,Math.round(w*q.r)+padX),bottom=Math.min(h,Math.round(h*q.b)+padY);
   if(right-x<100||bottom-y<60)return [];
   result.push({label:q.label,canvas:cropRegion({canvas},{x,y,w:right-x,h:bottom-y})});
  }
