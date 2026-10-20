@@ -159,16 +159,16 @@ function detectAadhaarCardRegions(canvas){
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
 function detectRationCardFaces(pageCanvas){
- // Detect the two individual landscape card panels. Some official PDF downloads place them
- // side-by-side; others place the front above the back on a portrait page. Use page aspect
- // ratio to select the layout, and crop inside the printed cut guides.
+ // Crop away the upper instructions/status area by using the scissor/cut-line layout:
+ // on portrait pages, only keep the two card panels below the upper cut guide; split at
+ // the dashed separator. The PDF's top section before the first scissor line is excluded.
  const w=pageCanvas.width,h=pageCanvas.height;
  if(w<300||h<400)return [];
  const inset=Math.max(3,Math.round(Math.min(w,h)*.004));
  let boxes=[];
  if(w/h<.9){
-   // Portrait PDF layout in the user's latest screenshot: card 1 on top, card 2 below,
-   // both inside the same outer guide; a horizontal dashed guide separates the panels.
+   // Portrait sample: first card panel is above the middle separator, second panel below it.
+   // Start at the top card's own guide, not at the PDF page top.
    const xL=Math.round(w*.125),xR=Math.round(w*.905);
    const yTop=Math.round(h*.105),ySplitTop=Math.round(h*.515);
    const ySplitBottom=Math.round(h*.565),yBottom=Math.round(h*.905);
@@ -177,7 +177,8 @@ function detectRationCardFaces(pageCanvas){
     {label:'Back',x:xL+inset,y:ySplitBottom+inset,w:xR-xL-2*inset,h:yBottom-ySplitBottom-2*inset}
    ];
  }else{
-   // Landscape PDF layout: front and back side-by-side inside the dotted outer guides.
+   // Landscape sample: the upper instruction block is outside the card strip.
+   // Use only the two card panels enclosed by the dotted cut guides.
    const xL=Math.round(w*.068),xM=Math.round(w*.503),xR=Math.round(w*.932);
    const yT=Math.round(h*.12),yB=Math.round(h*.92);
    boxes=[
@@ -187,7 +188,7 @@ function detectRationCardFaces(pageCanvas){
  }
  const out=[];
  for(const b of boxes){
-   if(b.w<100||b.h<60) return [];
+   if(b.w<100||b.h<60)return [];
    const ratio=b.w/b.h;
    if(ratio<.75||ratio>3.5)return [];
    out.push({label:b.label,canvas:cropRegion({canvas:pageCanvas},b)});
