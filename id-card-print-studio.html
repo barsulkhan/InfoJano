@@ -180,9 +180,13 @@ function detectRationCardFaces(pageCanvas){
  // Digital Ration Card only: crop the card-face area between the dotted cut guides.
  // Keep the top/bottom guide lines OUT of the crop while retaining all card content.
  // Four-millimetre white inset is applied later inside the fixed 85 × 55 mm output.
+ // Bounds measured against the supplied original e-Ration PDF render:
+ // front coloured face x≈0.09–0.49, back x≈0.515–0.94,
+ // both faces y≈0.79–0.96. Keep the complete card content; the output
+ // stage adds the requested exact 5 mm white inset inside the fixed box.
  const boxes=[
-   {label:'Front',x:.065,y:.780,r:.495,b:.945},
-   {label:'Back',x:.505,y:.780,r:.935,b:.945}
+   {label:'Front',x:.085,y:.785,r:.495,b:.965},
+   {label:'Back',x:.510,y:.785,r:.940,b:.965}
   ];
  const result=[];
  for(const q of boxes){
