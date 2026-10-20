@@ -79,7 +79,7 @@ const DOCUMENT_RULES=Object.freeze({
  'PAN Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'pan-manual-crop-v1',physicalWidthMM:85,physicalHeightMM:55}),
  'Driving Licence':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'dl-manual-crop-pending'}),
  'Vehicle RC':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'rc-manual-crop-pending'}),
- 'Digital Ration Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'ration-pdf-manual-crop-v1',physicalWidthMM:85,physicalHeightMM:'auto'}),
+ 'Digital Ration Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:true,workflow:'ration-pdf-auto-crop-v2',physicalWidthMM:85,physicalHeightMM:'auto'}),
  'Other ID / Government Card':Object.freeze({imageAutoSplit:false,pdfAutoSplit:false,workflow:'other-manual-crop-pending'})
 });
 function activeDocumentRules(){return DOCUMENT_RULES[$('cardType').value]||DOCUMENT_RULES['Other ID / Government Card'];}
@@ -158,6 +158,34 @@ function detectAadhaarCardRegions(canvas){
  return result.sort((a,b)=>a.y-b.y||a.x-b.x);
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
+function detectRationCardFaces(pageCanvas){
+ // Auto-detect two printed ration-card panels from the lower part of the official PDF page.
+ // Score dotted/dashed horizontal and vertical cut guides; if the geometry is ambiguous, return no crops.
+ const w=pageCanvas.width,h=pageCanvas.height,ctx=pageCanvas.getContext('2d',{willReadFrequently:true}),d=ctx.getImageData(0,0,w,h).data;
+ const dark=(x,y)=>{const i=(y*w+x)*4;return d[i]<125&&d[i+1]<125&&d[i+2]<125;};
+ const y0=Math.floor(h*.48),y1=Math.floor(h*.99),x0=Math.floor(w*.01),x1=Math.floor(w*.99);
+ const rowScore=y=>{let n=0;const step=Math.max(1,Math.floor(w/1000));for(let x=x0;x<x1;x+=step)if(dark(x,y))n++;return n/Math.max(1,Math.ceil((x1-x0)/step));};
+ const colScore=(x,top,bottom)=>{let n=0;const step=Math.max(1,Math.floor(h/900));for(let y=top;y<bottom;y+=step)if(dark(x,y))n++;return n/Math.max(1,Math.ceil((bottom-top)/step));};
+ function peaks(vals,min,max,threshold,dist){const arr=[];for(let i=min;i<max;i++){if(vals[i]>=threshold&&(!arr.length||i-arr[arr.length-1]>=dist))arr.push(i);else if(arr.length&&vals[i]>vals[arr[arr.length-1]])arr[arr.length-1]=i;}return arr;}
+ const rows=Array(h).fill(0);for(let y=y0;y<y1;y++)rows[y]=rowScore(y);
+ const rowCandidates=[];for(let y=y0;y<y1;y++)if(rows[y]>.045)rowCandidates.push({p:y,v:rows[y]});
+ rowCandidates.sort((a,b)=>b.v-a.v);const rowLines=[];for(const q of rowCandidates){if(rowLines.every(z=>Math.abs(z.p-q.p)>Math.max(5,h*.008)))rowLines.push(q);if(rowLines.length>=8)break;}rowLines.sort((a,b)=>a.p-b.p);
+ if(rowLines.length<2)return [];
+ // choose the broadest plausible card panel band from horizontal cut lines in lower page
+ let top=null,bottom=null,best=0;for(let i=0;i<rowLines.length;i++)for(let j=i+1;j<rowLines.length;j++){const span=rowLines[j].p-rowLines[i].p;if(span>h*.07&&span<h*.43&&span>best){best=span;top=rowLines[i].p;bottom=rowLines[j].p;}}
+ if(top===null||bottom===null)return [];
+ const cols=[];for(let x=x0;x<x1;x++){cols[x]=colScore(x,top,bottom);}
+ const colCandidates=[];for(let x=x0;x<x1;x++)if(cols[x]>.045)colCandidates.push({p:x,v:cols[x]});
+ colCandidates.sort((a,b)=>b.v-a.v);const colLines=[];for(const q of colCandidates){if(colLines.every(z=>Math.abs(z.p-q.p)>Math.max(5,w*.008)))colLines.push(q);if(colLines.length>=10)break;}colLines.sort((a,b)=>a.p-b.p);
+ if(colLines.length<3)return [];
+ // Pair strong vertical dotted guides to find two side-by-side faces.
+ const pairs=[];for(let i=0;i<colLines.length;i++)for(let j=i+1;j<colLines.length;j++){const span=colLines[j].p-colLines[i].p;if(span>w*.16&&span<w*.62)pairs.push({l:colLines[i].p,r:colLines[j].p,score:colLines[i].v+colLines[j].v});}
+ pairs.sort((a,b)=>b.score-a.score);
+ const found=[];for(const p of pairs){const box={x:p.l+2,y:top+2,w:p.r-p.l-4,h:bottom-top-4};if(box.w<100||box.h<60)continue;if(found.every(q=>Math.abs(q.x-box.x)>w*.12)){found.push(box);if(found.length===2)break;}}
+ if(found.length<2)return [];
+ found.sort((a,b)=>a.x-b.x);
+ return found.map((r,i)=>({label:i===0?'Front':'Back',canvas:cropRegion({canvas:pageCanvas},r)}));
+}
 function trimRationDottedCutline(input){
  // Digital Ration Card print sheets use dotted/scissor cut guides. Detect only near the four crop edges,
  // then remove the guide itself while preserving the card content inside it. If confidence is low, keep the crop unchanged.
@@ -378,8 +406,10 @@ async function loadPdfFile(file){if(!window.pdfjsLib)throw new Error('PDF reader
   sources.push(item);addOption(item,sources.length-1);
  });
  }else if($('cardType').value==='Digital Ration Card'){
- // Keep the official PDF page intact until the user manually crops the actual printed card boundary.
- const pageName=file.name+' — page '+p+' [Digital Ration Card PDF]';const original=makeImageSource(pageName+' — full PDF page (manual crop)',canvas);sources.push(original);addOption(original,sources.length-1);
+ const pageName=file.name+' — page '+p+' [Digital Ration Card PDF]';
+ const original=makeImageSource(pageName+' — original PDF page (auto-detect fallback)',canvas);sources.push(original);addOption(original,sources.length-1);
+ const faces=detectRationCardFaces(canvas);
+ faces.forEach(face=>{const trimmed=trimRationDottedCutline(face.canvas);const item=makeImageSource(pageName+' — Ration auto crop '+face.label,trimmed);sources.push(item);addOption(item,sources.length-1);});
  }else if($('cardType').value==='Voter ID'){
  // Detect each card's printed black border lines on the rendered e-EPIC PDF page.
  const pageName=file.name+' — page '+p;
@@ -469,7 +499,12 @@ $('sourceFile').addEventListener('change',async e=>{const files=Array.from(e.tar
    $('cropSourceSelect').value=String(original>=0?original:0);
    if(isPdfPage&&pdfFront>=0&&pdfBack>=0)status('Aadhaar PDF: Front ও Back বর্ডার ধরে আলাদা করা হয়েছে। দুটো preview দেখে নিশ্চিত হয়ে নিন।','ok');
    else if(isPdfPage)status('Aadhaar PDF loaded, but the printed borders could not be confidently detected. Use the original page and crop the complete Front and Back manually.','ok');
-  }else{$('frontSelect').value='0';$('backSelect').value=sources.length>1?'1':'none';$('cropSourceSelect').value='0';}status('Loaded '+sources.length+' candidate(s) using '+activeDocumentRules().workflow+'. Verify front/back previews before exporting.','ok');updateSidePreviews();dstatus('Ready. Confirm sides and layout before downloading.')}catch(err){console.error('InfoJano document processing error:',err);status('ফাইল প্রসেস করা যায়নি: '+(err.message||'Unknown error')+'। PDF হলে আবার চেষ্টা করুন; সমস্যা থাকলে PDF-এর পাতা/স্ক্যান কপি JPG বা PNG করে আপলোড করুন।','error')}});
+  }else if(activeDocumentRules().workflow==='ration-pdf-auto-crop-v2'){
+ const rf=sources.findIndex(s=>/Ration auto crop Front/.test(s.name)),rb=sources.findIndex(s=>/Ration auto crop Back/.test(s.name));
+ const original=sources.findIndex(s=>/original PDF page \(auto-detect fallback\)/.test(s.name));
+ if(rf>=0&&rb>=0){$('frontSelect').value=String(rf);$('backSelect').value=String(rb);$('cropSourceSelect').value=String(original>=0?original:rf);$('widthMM').value='85';$('heightMM').value=String(Math.max(10,Math.round(85*sources[rf].canvas.height/sources[rf].canvas.width*100)/100));status('Digital Ration Card: PDF থেকে Front ও Back স্বয়ংক্রিয়ভাবে আলাদা করা হয়েছে। Preview দেখে export করা যাবে।','ok');}
+ else{$('frontSelect').value=String(original>=0?original:0);$('backSelect').value='none';$('cropSourceSelect').value=String(original>=0?original:0);status('Digital Ration Card: কাটিং বর্ডার নির্ভরযোগ্যভাবে শনাক্ত হয়নি; ভুল crop এড়াতে মূল PDF পেজ দেখানো হয়েছে।','error');}
+ }else{$('frontSelect').value='0';$('backSelect').value=sources.length>1?'1':'none';$('cropSourceSelect').value='0';}status('Loaded '+sources.length+' candidate(s) using '+activeDocumentRules().workflow+'. Verify front/back previews before exporting.','ok');updateSidePreviews();dstatus('Ready. Confirm sides and layout before downloading.')}catch(err){console.error('InfoJano document processing error:',err);status('ফাইল প্রসেস করা যায়নি: '+(err.message||'Unknown error')+'। PDF হলে আবার চেষ্টা করুন; সমস্যা থাকলে PDF-এর পাতা/স্ক্যান কপি JPG বা PNG করে আপলোড করুন।','error')}});
 $('frontSelect').addEventListener('change',()=>{updateSidePreviews()});$('backSelect').addEventListener('change',()=>{updateSidePreviews()});$('cropSourceSelect').addEventListener('change',()=>{cropRect=null;cropDrag=null;drawCropCanvas()});
  $('cardType').addEventListener('change',()=>{if($('cardType').value==='Ayushman Bharat Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Ayushman print settings selected: 85 × 55 mm at 300 DPI. JPG/PNG auto-split remains unchanged.','ok');}else if($('cardType').value==='Aadhaar Card'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Aadhaar selected. Crop the complete front/back card manually before exporting; text and QR code should remain fully inside the crop.','ok');}else if($('cardType').value==='Voter ID'){$('sizePreset').value='85,55';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';status('Voter ID selected. Upload PDF/JPG/PNG, select the original page/photo, then crop the complete Front and Back manually. Keep the full coloured border and all text/QR code inside the crop. Output: 85 × 55 mm at 300 DPI.','ok');}else if($('cardType').value==='Digital Ration Card'){$('sizePreset').value='custom';$('widthMM').value='85';$('heightMM').value='55';$('dpi').value='300';$('paper').value='a4';$('layout').value='paired';$('layout').disabled=true;$('downloadJpgBtn').classList.add('hide');status('Digital Ration Card selected. Upload only the government e-Ration Card PDF. Crop the actual outer boundary of each card face; output PDF places Front left and Back right, with height calculated from the Front crop aspect ratio.','ok');}else{$('layout').disabled=false;$('downloadJpgBtn').classList.remove('hide');}renderLayoutPreview()});
 $('sizePreset').addEventListener('change',()=>{if($('sizePreset').value!=='custom'){const [w,h]=$('sizePreset').value.split(',');$('widthMM').value=w;$('heightMM').value=h}renderLayoutPreview()});
