@@ -165,7 +165,9 @@ function detectRationCardFaces(pageCanvas){
  const w=pageCanvas.width,h=pageCanvas.height;
  if(w<300||h<400||w/h<.35||w/h>.95)return [];
  const xOuterL=Math.round(w*.068),xMid=Math.round(w*.503),xOuterR=Math.round(w*.932);
- const yTop=Math.round(h*.675),yBottom=Math.round(h*.978);
+ // On the supplied PDF, the horizontal dotted cut guide is below the status/QR information strip.
+ // Start at the card-strip guide rather than the upper status block.
+ const yTop=Math.round(h*.765),yBottom=Math.round(h*.978);
  const inset=Math.max(2,Math.round(Math.min(w,h)*.004));
  const y=yTop+inset,hh=yBottom-yTop-inset*2;
  const left=cropRegion({canvas:pageCanvas},{x:xOuterL+inset,y,w:xMid-xOuterL-inset*2,h:hh});
