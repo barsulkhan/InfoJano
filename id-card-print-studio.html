@@ -172,7 +172,7 @@ function detectRationCardFaces(pageCanvas){
  const right=cropRegion({canvas:pageCanvas},{x:xMid+inset,y,w:xOuterR-xMid-inset*2,h:hh});
  // Expected panel shape is roughly landscape. Refuse to auto-select if the PDF page geometry differs.
  const ratioL=left.width/left.height,ratioR=right.width/right.height;
- if(hh<100||ratioL<1.1||ratioL>2.5||ratioR<1.1||ratioR>2.5)return [];
+ if(hh<100||ratioL<.45||ratioL>2.5||ratioR<.45||ratioR>2.5)return [];
  return [{label:'Front',canvas:left},{label:'Back',canvas:right}];
 }
 function trimRationDottedCutline(input){
