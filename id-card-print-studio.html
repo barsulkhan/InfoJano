@@ -196,30 +196,10 @@ function detectRationCardFaces(pageCanvas){
  return result;
 }
 function trimRationDottedCutline(input){
- // Digital Ration Card only. The cut guides are dotted horizontal lines; the vertical/outer frame is not the card edge.
- // Detect and remove only clear dotted horizontal guides near the top/bottom of the selected crop.
- // Never trim left/right or guess when the evidence is weak, so barcode, QR and edge text remain safe.
- const w=input.width,h=input.height;if(w<120||h<60)return input;
- const ctx=input.getContext('2d',{willReadFrequently:true}),data=ctx.getImageData(0,0,w,h).data;
- const dark=(x,y)=>{const i=(y*w+x)*4;return data[i]<115&&data[i+1]<115&&data[i+2]<115;};
- const rowScore=y=>{let n=0,transitions=0,prev=false;const step=Math.max(1,Math.floor(w/1200));let count=0;for(let x=Math.floor(w*.04);x<w*.96;x+=step){const v=dark(x,y);if(v)n++;if(v!==prev)transitions++;prev=v;count++;}return {coverage:n/Math.max(1,count),transitions};};
- function findGuide(from,to){
-  let best=null;
-  for(let y=from;y<to;y++){
-   const s=rowScore(y);
-   // A dotted cut guide has multiple dark segments across the page, but does not look like solid text.
-   if(s.coverage>=.045&&s.coverage<=.48&&s.transitions>=8&&(!best||s.transitions>best.s.transitions))best={y,s};
-  }
-  return best;
- }
- const band=Math.max(10,Math.floor(h*.18));
- const top=findGuide(0,band),bottom=findGuide(h-band,h);
- if(!top||!bottom||bottom.y-top.y<h*.55)return input;
- // Keep a small safety margin inside each detected guide; leave horizontal edges alone if too close to actual content.
- const pad=Math.max(2,Math.round(h*.008));
- const y=Math.min(h-1,top.y+pad),b=Math.max(y+1,bottom.y-pad);
- if(y>h*.12||h-b>h*.12||b-y<h*.55)return input;
- return cropRegion({canvas:input},{x:0,y,w,h:b-y});
+ // Safety-first for Digital Ration Card: do not auto-trim the selected crop.
+ // Dotted guides can be close to real content (Not Transferable, QR, barcode, address and issue details).
+ // Automatic trimming previously clipped the lower card content. Preserve the full manual selection.
+ return input;
 }
 /* Voter ID only: trim extra paper around a manually selected card when its continuous outer frame is clearly detectable. If detection is uncertain, preserve the user's crop unchanged. */
 function trimVoterCropToOuterFrame(canvas){
@@ -542,7 +522,7 @@ function cropToCard(source,targetW,targetH){const out=document.createElement('ca
   }
  }
  ctx.putImageData(image,0,0);
- }else if($('cardType').value==='Aadhaar Card'){/* Preserve original Aadhaar photo and QR pixels. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}else if($('cardType').value==='Digital Ration Card'){/* Ration-only: fit the complete card inside fixed 85 × 55 mm with 4 mm white margins; never stretch/crop content. */const marginPx=Math.round(4/25.4*dpi),maxW=out.width-2*marginPx,maxH=out.height-2*marginPx,scale=Math.min(maxW/source.canvas.width,maxH/source.canvas.height),dw=Math.round(source.canvas.width*scale),dh=Math.round(source.canvas.height*scale);ctx.drawImage(source.canvas,Math.round((out.width-dw)/2),Math.round((out.height-dh)/2),dw,dh);}else{/* Other documents, including PAN, are manually cropped first and then fitted to exact physical dimensions. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}return out}
+ }else if($('cardType').value==='Aadhaar Card'){/* Preserve original Aadhaar photo and QR pixels. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}else if($('cardType').value==='Digital Ration Card'){/* Ration-only: fit the complete card inside fixed 85 × 55 mm with 4 mm white margins; never stretch/crop content. */const marginPx=Math.round(5/25.4*dpi),maxW=out.width-2*marginPx,maxH=out.height-2*marginPx,scale=Math.min(maxW/source.canvas.width,maxH/source.canvas.height),dw=Math.round(source.canvas.width*scale),dh=Math.round(source.canvas.height*scale);ctx.drawImage(source.canvas,Math.round((out.width-dw)/2),Math.round((out.height-dh)/2),dw,dh);}else{/* Other documents, including PAN, are manually cropped first and then fitted to exact physical dimensions. */ctx.drawImage(source.canvas,0,0,out.width,out.height);}return out}
 function hasExistingCutBorder(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;function dark(x,y){const i=(y*w+x)*4;return d[i]<95&&d[i+1]<95&&d[i+2]<95}let top=0,bottom=0,left=0,right=0,n=Math.max(20,Math.floor(Math.min(w,h)*.35));for(let k=0;k<n;k++){const x=Math.round((w-1)*(.15+.7*k/Math.max(1,n-1))),y=Math.round((h-1)*(.15+.7*k/Math.max(1,n-1)));if(dark(x,Math.max(0,Math.round(h*.015))))top++;if(dark(x,Math.min(h-1,Math.round(h*.985))))bottom++;if(dark(Math.max(0,Math.round(w*.015)),y))left++;if(dark(Math.min(w-1,Math.round(w*.985)),y))right++;}return top/n>.48&&bottom/n>.48&&left/n>.48&&right/n>.48}
 function hasFullColorBackground(canvas){const ctx=canvas.getContext('2d',{willReadFrequently:true}),w=canvas.width,h=canvas.height;if(w<20||h<20)return false;const d=ctx.getImageData(0,0,w,h).data;let colorful=0,total=0;for(let gy=0;gy<5;gy++){for(let gx=0;gx<5;gx++){const x=Math.round(w*(.04+gx*.23)),y=Math.round(h*(.04+gy*.23)),i=(y*w+x)*4,r=d[i],g=d[i+1],b=d[i+2];total++;if(Math.max(r,g,b)-Math.min(r,g,b)>28&&Math.min(r,g,b)<235)colorful++;}}return colorful/total>.42}
 function drawCard(doc,canvas,x,y,w,h){const lossless=['Ayushman Bharat Card','Aadhaar Card','Voter ID'].includes($('cardType').value);doc.addImage(lossless?canvas.toDataURL('image/png'):canvas.toDataURL('image/jpeg',.99),lossless?'PNG':'JPEG',x,y,w,h,undefined,'SLOW');if($('cardType').value==='Voter ID'){/* Draw the cut border over the source card's bottom printed border to eliminate the visible white strip. Keep other edges unchanged. */doc.setDrawColor(0,0,0);doc.setLineWidth(.25);doc.line(x,y,x+w,y);doc.line(x,y,x,y+h);doc.line(x+w,y,x+w,y+h);doc.line(x,y+h,x+w,y+h);}else if($('cardType').value!=='PAN Card'){doc.setDrawColor(0,0,0);doc.setLineWidth(.25);doc.rect(x,y,w,h,'S')}}
