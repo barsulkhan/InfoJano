@@ -158,6 +158,27 @@ function detectAadhaarCardRegions(canvas){
  return result.sort((a,b)=>a.y-b.y||a.x-b.x);
 }
 function cropRegion(source,rect){const canvas=document.createElement('canvas');canvas.width=rect.w;canvas.height=rect.h;canvas.getContext('2d').drawImage(source.canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);return canvas;}
+/* Voter ID only: trim extra paper around a manually selected card when its continuous outer frame is clearly detectable. If detection is uncertain, preserve the user's crop unchanged. */
+function trimVoterCropToOuterFrame(canvas){
+ const w=canvas.width,h=canvas.height;
+ if(w<100||h<70)return canvas;
+ const ctx=canvas.getContext('2d',{willReadFrequently:true}),data=ctx.getImageData(0,0,w,h).data;
+ const step=Math.max(1,Math.floor(Math.min(w,h)/900));
+ function dark(x,y){const i=(y*w+x)*4;return Math.max(data[i],data[i+1],data[i+2])<155;}
+ function rowScore(y){let n=0,total=0;for(let x=Math.round(w*.06);x<Math.round(w*.94);x+=step){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
+ function colScore(x){let n=0,total=0;for(let y=Math.round(h*.06);y<Math.round(h*.94);y+=step){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
+ function bestLine(start,end,scoreFn,threshold){let best=-1,bestScore=0;for(let p=start;p<end;p+=step){const s=scoreFn(p);if(s>bestScore){bestScore=s;best=p;}}return bestScore>=threshold?best:-1;}
+ const top=bestLine(Math.round(h*.02),Math.round(h*.28),rowScore,.48);
+ const bottom=bestLine(Math.round(h*.72),Math.round(h*.98),rowScore,.48);
+ const left=bestLine(Math.round(w*.02),Math.round(w*.28),colScore,.42);
+ const right=bestLine(Math.round(w*.72),Math.round(w*.98),colScore,.42);
+ if(top<0||bottom<0||left<0||right<0||bottom<=top||right<=left)return canvas;
+ const rect={x:left,y:top,w:right-left+1,h:bottom-top+1},ratio=rect.w/rect.h;
+ if(ratio<1.25||ratio>2.0||rect.w<w*.55||rect.h<h*.45)return canvas;
+ const out=document.createElement('canvas');out.width=rect.w;out.height=rect.h;
+ out.getContext('2d').drawImage(canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);
+ return out;
+}
 function detectAadhaarPdfCardRegions(canvas){
  // UIDAI e-Aadhaar letter: the printable front/back panels sit below the dotted scissors line.
  // Detect the printed horizontal/vertical black borders; use page-relative guardrails to avoid letter text.
@@ -282,7 +303,7 @@ function cropPoint(e){const r=$('cropCanvas').getBoundingClientRect();return {x:
 $('cropCanvas').addEventListener('pointerdown',e=>{if(!cropSource)drawCropCanvas();cropDrag=cropPoint(e);cropRect={x:cropDrag.x,y:cropDrag.y,w:1,h:1};$('cropCanvas').setPointerCapture(e.pointerId);drawCropCanvas()});
 $('cropCanvas').addEventListener('pointermove',e=>{if(!cropDrag)return;const p=cropPoint(e);cropRect={x:Math.min(cropDrag.x,p.x),y:Math.min(cropDrag.y,p.y),w:Math.abs(p.x-cropDrag.x),h:Math.abs(p.y-cropDrag.y)};drawCropCanvas()});
 $('cropCanvas').addEventListener('pointerup',()=>{cropDrag=null});
-function useManualCrop(side){const src=cropSource;if(!src||!cropRect||cropRect.w<20||cropRect.h<20){status('আগে কার্ডের চারপাশে টেনে Crop নির্বাচন করুন।','error');return}const scaleX=src.canvas.width/$('cropCanvas').width,scaleY=src.canvas.height/$('cropCanvas').height;const rect={x:Math.max(0,Math.floor(cropRect.x*scaleX)),y:Math.max(0,Math.floor(cropRect.y*scaleY)),w:Math.min(src.canvas.width-Math.floor(cropRect.x*scaleX),Math.ceil(cropRect.w*scaleX)),h:Math.min(src.canvas.height-Math.floor(cropRect.y*scaleY),Math.ceil(cropRect.h*scaleY))};const cropped=cropRegion(src,rect);sources.push(makeImageSource(src.name+' — manual crop '+side,cropped));const index=sources.length-1;addOption(sources[index],index);$(side==='Front'?'frontSelect':'backSelect').value=String(index);updateSidePreviews();status($('cardType').value==='Aadhaar Card'?'Aadhaar '+side+' crop selected. Confirm the entire card edge, all text, portrait and QR code are visible in preview.':side+' crop selected. Check the preview, including every text line and the QR code.','ok');drawCropCanvas()}
+function useManualCrop(side){const src=cropSource;if(!src||!cropRect||cropRect.w<20||cropRect.h<20){status('আগে কার্ডের চারপাশে টেনে Crop নির্বাচন করুন।','error');return}const scaleX=src.canvas.width/$('cropCanvas').width,scaleY=src.canvas.height/$('cropCanvas').height;const rect={x:Math.max(0,Math.floor(cropRect.x*scaleX)),y:Math.max(0,Math.floor(cropRect.y*scaleY)),w:Math.min(src.canvas.width-Math.floor(cropRect.x*scaleX),Math.ceil(cropRect.w*scaleX)),h:Math.min(src.canvas.height-Math.floor(cropRect.y*scaleY),Math.ceil(cropRect.h*scaleY))};let cropped=cropRegion(src,rect);if($('cardType').value==='Voter ID')cropped=trimVoterCropToOuterFrame(cropped);sources.push(makeImageSource(src.name+' — manual crop '+side,cropped));const index=sources.length-1;addOption(sources[index],index);$(side==='Front'?'frontSelect':'backSelect').value=String(index);updateSidePreviews();status($('cardType').value==='Aadhaar Card'?'Aadhaar '+side+' crop selected. Confirm the entire card edge, all text, portrait and QR code are visible in preview.':side+' crop selected. Check the preview, including every text line and the QR code.','ok');drawCropCanvas()}
 $('cropFrontBtn').addEventListener('click',()=>useManualCrop('Front'));$('cropBackBtn').addEventListener('click',()=>useManualCrop('Back'));$('cropResetBtn').addEventListener('click',()=>{cropRect=null;cropDrag=null;drawCropCanvas()});
 function selected(id){const n=$(id).value;return n===''||n==='none'?null:sources[Number(n)]||null}
 function aadhaarSourceNeedsCrop(src){return $('cardType').value==='Aadhaar Card'&&!!src&&/(full PDF page \(manual crop\)|image \(manual crop required\))/i.test(src.name)}
