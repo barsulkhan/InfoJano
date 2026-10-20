@@ -21,3 +21,4 @@ https://barsulkhan.github.io/InfoJano/tip-calculator.html
 https://barsulkhan.github.io/InfoJano/unit-converter.html
 https://barsulkhan.github.io/InfoJano/percentage-change.html
 https://barsulkhan.github.io/InfoJano/savings.html
+https://barsulkhan.github.io/InfoJano/id-card-print-studio.html
