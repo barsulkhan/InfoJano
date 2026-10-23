@@ -129,7 +129,7 @@
       const d = String(date.getDate()).padStart(2, "0");
       return `${y}-${m}-${d}`;
     }
-    function parseManualDate(value) {
+    function formatDateInput(input) {\n      const digits = input.value.replace(/\\D/g, "").slice(0, 8);\n      let formatted = digits.slice(0, 2);\n      if (digits.length > 2) formatted += "/" + digits.slice(2, 4);\n      if (digits.length > 4) formatted += "/" + digits.slice(4, 8);\n      input.value = formatted;\n    }\n    dobManual.addEventListener("input", () => formatDateInput(dobManual));\n    dobManual.addEventListener("paste", () => setTimeout(() => formatDateInput(dobManual), 0));\n    function parseManualDate(value) {
       const raw = value.trim();
       const match = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
       if (!match) return null;
