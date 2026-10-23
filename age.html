@@ -116,6 +116,13 @@
   <script>
     const dobManual = document.getElementById("dobManual");
     const result = document.getElementById("result");
+    dobManual.addEventListener("input", () => {
+      const digits = dobManual.value.replace(/\D/g, "").slice(0, 8);
+      const formatted = digits.length > 4 ? digits.slice(0, 2) + "/" + digits.slice(2, 4) + "/" + digits.slice(4)
+        : digits.length > 2 ? digits.slice(0, 2) + "/" + digits.slice(2)
+        : digits;
+      dobManual.value = formatted;
+    });
     function localDateString(date) {
       const y = date.getFullYear();
       const m = String(date.getMonth() + 1).padStart(2, "0");
@@ -124,7 +131,7 @@
     }
     function parseManualDate(value) {
       const raw = value.trim();
-      const match = raw.match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})$/);
+      const match = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
       if (!match) return null;
       const day = Number(match[1]);
       const month = Number(match[2]);
