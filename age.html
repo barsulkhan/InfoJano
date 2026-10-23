@@ -140,7 +140,7 @@
         const parsed = parseManualDate(typed);
         if (!parsed) {
           result.classList.remove("hidden");
-          result.textContent = "Enter a valid date as DD/MM/YYYY (15/08/1947) or DDMMYYYY (15081947).";
+          result.textContent = "Enter a valid date as DD/MM/YYYY, for example 15/08/1947.";
           return;
         }
         day = parsed.day; month = parsed.month; year = parsed.year;
