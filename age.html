@@ -143,6 +143,23 @@
       if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
       return { day, month, year, iso: `${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}` };
     }
+    // Add DD-MM-YYYY separators automatically while typing; also accept pasted 8-digit dates.
+    dobManual.addEventListener("input", () => {
+      const digits = dobManual.value.replace(/\D/g, "").slice(0, 8);
+      let formatted = digits.slice(0, 2);
+      if (digits.length > 2) formatted += "-" + digits.slice(2, 4);
+      if (digits.length > 4) formatted += "-" + digits.slice(4, 8);
+      dobManual.value = formatted;
+    });
+    dobManual.addEventListener("paste", () => {
+      setTimeout(() => {
+        const digits = dobManual.value.replace(/\D/g, "").slice(0, 8);
+        let formatted = digits.slice(0, 2);
+        if (digits.length > 2) formatted += "-" + digits.slice(2, 4);
+        if (digits.length > 4) formatted += "-" + digits.slice(4, 8);
+        dobManual.value = formatted;
+      }, 0);
+    });
     document.getElementById("calculate").addEventListener("click", () => {
       let year, month, day;
       const typed = dobManual.value.trim();
