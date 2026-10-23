@@ -57,8 +57,12 @@
       <h1>Free Age Calculator</h1>
       <p>Enter your date of birth to calculate your exact age in years, months and days.</p>
 
-      <label for="dob">Date of birth</label>
-      <input id="dob" type="date" required>
+      <label for="dobManual">Date of birth (manual entry)</label>
+      <p style="margin:0 0 8px;font-size:14px;color:#536176"><strong>Enter as DD/MM/YYYY</strong> — DD = day, MM = month, YYYY = 4-digit year. Example: <strong>15/01/1995</strong> means 15 January 1995. Write the day first, then month, then year.</p>
+      <input id="dobManual" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="DD/MM/YYYY (e.g. 15/01/1995)" aria-describedby="dobFormatHelp">
+      <p id="dobFormatHelp" style="margin:6px 0 0;font-size:13px;color:#64748b">You can type the date above, or select it below.</p>
+      <label for="dob">Or select date of birth</label>
+      <input id="dob" type="date" aria-label="Select date of birth">
 
       <button id="calculate" type="button">Calculate My Age</button>
       <div id="result" class="hidden" aria-live="polite"></div>
@@ -107,14 +111,8 @@
 <section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
 <h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Age Calculator FAQs</h2>
 <details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How is exact age calculated?</summary><p style="margin:8px 0 0;color:#536174">Enter your date of birth. The calculator compares it with today’s date and reports years, months and days.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Can I calculate age on a past or future date?</summary><p style="margin:8px 0 0;color:#536174">Use a date-specific age option if provided on this page; otherwise the current result is based on today’s date.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Why can age differ by one day?</summary><p style="margin:8px 0 0;color:#536174">Date format, time zone, and whether the current day is counted can affect manual comparisons.</p></details>
-<p style="margin:12px 0 0;font-size:14px">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="emi.html">EMI Calculator</a></p>
-</section>
-</main>
-
-  <script>
-    const dobInput = document.getElementById("dob");
+<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Can I calculate age on a past or future date?</summary><p style="margin:8px 0 0;color:#536174">Use a da    const dobInput = document.getElementById("dob");
+    const dobManual = document.getElementById("dobManual");
     const result = document.getElementById("result");
 
     function localDateString(date) {
@@ -126,18 +124,48 @@
 
     dobInput.max = localDateString(new Date());
 
+    dobManual.addEventListener("input", () => {
+      const match = dobManual.value.trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      if (match) dobInput.value = `${match[3]}-${match[2]}-${match[1]}`;
+    });
+    dobInput.addEventListener("change", () => {
+      if (dobInput.value) {
+        const [y, m, d] = dobInput.value.split("-");
+        dobManual.value = `${d}/${m}/${y}`;
+      }
+    });
+
     document.getElementById("calculate").addEventListener("click", () => {
-      if (!dobInput.value) {
+      let year, month, day;
+      const typed = dobManual.value.trim();
+
+      if (typed) {
+        const match = typed.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (!match) {
+          result.classList.remove("hidden");
+          result.textContent = "Use DD/MM/YYYY format, for example 15/01/1995 (day/month/4-digit year).";
+          return;
+        }
+        day = Number(match[1]);
+        month = Number(match[2]);
+        year = Number(match[3]);
+      } else if (dobInput.value) {
+        [year, month, day] = dobInput.value.split("-").map(Number);
+      } else {
         result.classList.remove("hidden");
-        result.textContent = "Please select your date of birth.";
+        result.textContent = "Enter your date of birth as DD/MM/YYYY, or select it using the date picker.";
         return;
       }
 
-      const [year, month, day] = dobInput.value.split("-").map(Number);
       const birth = new Date(year, month - 1, day);
+      if (birth.getFullYear() !== year || birth.getMonth() !== month - 1 || birth.getDate() !== day) {
+        result.classList.remove("hidden");
+        result.textContent = "Please enter a valid date. Use DD/MM/YYYY, such as 15/01/1995.";
+        return;
+      }
+
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-
       if (birth > today) {
         result.classList.remove("hidden");
         result.textContent = "Date of birth cannot be in the future.";
@@ -147,10 +175,27 @@
       let years = today.getFullYear() - year;
       let months = today.getMonth() + 1 - month;
       let days = today.getDate() - day;
-
       if (days < 0) {
         months--;
-        const previousMonthDays = new Date(
+        const previousMonthDays = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+        days += previousMonthDays;
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      result.classList.remove("hidden");
+      result.replaceChildren();
+      const heading = document.createElement("strong");
+      heading.textContent = "Your exact age";
+      const details = document.createElement("p");
+      details.textContent = `${years} years, ${months} months and ${days} days`;
+      details.style.color = "#172033";
+      details.style.fontWeight = "bold";
+      result.append(heading, details);
+    });
+nst previousMonthDays = new Date(
           today.getFullYear(), today.getMonth(), 0
         ).getDate();
         days += previousMonthDays;
