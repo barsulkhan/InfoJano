@@ -49,9 +49,15 @@ a{color:#1458c8}
 <h1 style="max-width:900px;margin:20px auto 12px;padding:0 16px;font-size:28px;line-height:1.2">Date Difference Calculator</h1>
 <div class="card">
 <h2>Calculate Date Difference</h2>
-<label for="start">Start Date</label>
+<label for="startText">Start Date (manual entry)</label>
+<p style="margin:4px 0 8px;color:#536174;font-size:14px">Enter as DD/MM/YYYY (day/month/year). Example: 15/08/1947 means 15 August 1947.</p>
+<input id="startText" type="text" inputmode="numeric" autocomplete="off" placeholder="DD/MM/YYYY" aria-describedby="date-format-help">
+<label for="start">Or select start date</label>
 <input id="start" type="date">
-<label for="end">End Date</label>
+<label for="endText">End Date (manual entry)</label>
+<p style="margin:4px 0 8px;color:#536174;font-size:14px">Use the same DD/MM/YYYY format, for example 24/10/2026.</p>
+<input id="endText" type="text" inputmode="numeric" autocomplete="off" placeholder="DD/MM/YYYY">
+<label for="end">Or select end date</label>
 <input id="end" type="date">
 <button onclick="calculateDifference()">Calculate Difference</button>
 <div id="result" class="result" aria-live="polite">Choose two dates to calculate the difference.</div>
@@ -102,17 +108,43 @@ a{color:#1458c8}
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script>
+function parseManualDate(text){
+const value=text.trim();
+const match=value.match(/^(\\d{1,2})[\\/.-](\\d{1,2})[\\/.-](\\d{4})$/);
+if(!match)return null;
+const day=Number(match[1]), month=Number(match[2]), year=Number(match[3]);
+const date=new Date(Date.UTC(year,month-1,day));
+if(date.getUTCFullYear()!==year||date.getUTCMonth()!==month-1||date.getUTCDate()!==day)return null;
+return {iso:year+'-'+String(month).padStart(2,'0')+'-'+String(day).padStart(2,'0'),date};
+}
+function isoToManual(value){
+if(!value)return '';
+const parts=value.split('-');
+return parts.length===3?parts[2]+'/'+parts[1]+'/'+parts[0]:'';
+}
+function getDateValue(textId,pickerId){
+const text=document.getElementById(textId).value.trim();
+if(text){
+const parsed=parseManualDate(text);
+return parsed?{iso:parsed.iso,date:parsed.date,manual:true}:null;
+}
+const value=document.getElementById(pickerId).value;
+if(!value)return null;
+return {iso:value,date:new Date(value+'T00:00:00Z'),manual:false};
+}
+document.getElementById('start').addEventListener('change',function(){if(this.value)document.getElementById('startText').value=isoToManual(this.value);});
+document.getElementById('end').addEventListener('change',function(){if(this.value)document.getElementById('endText').value=isoToManual(this.value);});
+document.getElementById('startText').addEventListener('change',function(){const p=parseManualDate(this.value);if(p)document.getElementById('start').value=p.iso;});
+document.getElementById('endText').addEventListener('change',function(){const p=parseManualDate(this.value);if(p)document.getElementById('end').value=p.iso;});
 function calculateDifference(){
-const a=document.getElementById('start').value;
-const b=document.getElementById('end').value;
+const a=getDateValue('startText','start');
+const b=getDateValue('endText','end');
 const out=document.getElementById('result');
 if(!a||!b){
-out.textContent='Please select both dates.';
+out.textContent='Enter both dates as DD/MM/YYYY (day/month/year), or select both dates using the date pickers. Check that each date is valid.';
 return;
 }
-const start=new Date(a+'T00:00:00Z');
-const end=new Date(b+'T00:00:00Z');
-const days=Math.abs(Math.round((end-start)/86400000));
+const days=Math.abs(Math.round((b.date-a.date)/86400000));
 const weeks=Math.floor(days/7);
 const years=Math.floor(days/365.2425);
 const months=Math.floor(days/30.4369);
