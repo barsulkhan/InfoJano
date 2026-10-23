@@ -51,10 +51,10 @@ a{color:#1458c8}
 <h2>Calculate Date Difference</h2>
 <label for="startText">Start Date (manual entry)</label>
 <p style="margin:4px 0 8px;color:#536174;font-size:14px">Enter as DD/MM/YYYY (day/month/year). Example: 15/08/1947 means 15 August 1947.</p>
-<input id="startText" type="text" inputmode="numeric" autocomplete="off" placeholder="DD/MM/YYYY" aria-describedby="date-format-help">
+<input id="startText" type="text" inputmode="numeric" autocomplete="off" placeholder="DD/MM/YYYY" maxlength="10" aria-describedby="date-format-help">
 <label for="endText">End Date (manual entry)</label>
 <p style="margin:4px 0 8px;color:#536174;font-size:14px">Use the same DD/MM/YYYY format, for example 24/10/2026.</p>
-<input id="endText" type="text" inputmode="numeric" autocomplete="off" placeholder="DD/MM/YYYY">
+<input id="endText" type="text" inputmode="numeric" autocomplete="off" placeholder="DD/MM/YYYY" maxlength="10">
 <button onclick="calculateDifference()">Calculate Difference</button>
 <div id="result" class="result" aria-live="polite">Choose two dates to calculate the difference.</div>
 </div>
@@ -114,7 +114,7 @@ input.value=digits.length>4?digits.slice(0,2)+'/'+digits.slice(2,4)+'/'+digits.s
 }
 attachDateAutoFormat('startText');
 attachDateAutoFormat('endText');
-function parseManualDate(text){
+function formatDateInput(input){\nconst digits=input.value.replace(/\\D/g,"").slice(0,8);\nlet formatted=digits.slice(0,2);\nif(digits.length>2)formatted+="/"+digits.slice(2,4);\nif(digits.length>4)formatted+="/"+digits.slice(4,8);\ninput.value=formatted;\n}\n["startText","endText"].forEach(id=>{const input=document.getElementById(id);input.addEventListener("input",()=>formatDateInput(input));input.addEventListener("paste",()=>setTimeout(()=>formatDateInput(input),0));});\nfunction parseManualDate(text){
 const value=text.trim();
 const match=value.match(/^(\d{1,2})[\\/.-](\d{1,2})[\\/.-](\d{4})$/);
 if(!match)return null;
