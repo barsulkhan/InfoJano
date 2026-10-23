@@ -116,13 +116,6 @@
   <script>
     const dobManual = document.getElementById("dobManual");
     const result = document.getElementById("result");
-    dobManual.addEventListener("input", () => {
-      const digits = dobManual.value.replace(/\D/g, "").slice(0, 8);
-      const formatted = digits.length > 4 ? digits.slice(0, 2) + "/" + digits.slice(2, 4) + "/" + digits.slice(4)
-        : digits.length > 2 ? digits.slice(0, 2) + "/" + digits.slice(2)
-        : digits;
-      dobManual.value = formatted;
-    });
     function localDateString(date) {
       const y = date.getFullYear();
       const m = String(date.getMonth() + 1).padStart(2, "0");
@@ -136,6 +129,7 @@
       if (digits.length > 4) formatted += "/" + digits.slice(4, 8);
       input.value = formatted;
     }
+    // Use one formatter only so typed and pasted dates consistently show DD/MM/YYYY.
     dobManual.addEventListener("input", () => formatDateInput(dobManual));
     dobManual.addEventListener("paste", () => setTimeout(() => formatDateInput(dobManual), 0));
     function parseManualDate(value) {
