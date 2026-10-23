@@ -44,6 +44,16 @@ a{color:#1458c8}
 <textarea id="content" placeholder="Enter text or paste a website link"></textarea>
 <button id="generate-button" type="button" onclick="makeQR()">Generate QR Code</button>
 <div id="qr" aria-live="polite"></div>
+
+<hr style="margin:24px 0;border:0;border-top:1px solid #e2e8f0">
+<h2>Read and Edit an Existing QR Code / Barcode</h2>
+<p class="note">Upload a clear image of an existing QR code or supported barcode. We’ll try to read its contents and place the text or link in the box above so you can edit it and generate a new QR code.</p>
+<label for="code-image">Upload QR / barcode image</label>
+<input id="code-image" type="file" accept="image/*" style="display:block;width:100%;margin-top:8px;padding:12px;border:1px solid #cbd5e1;border-radius:8px;background:#fff">
+<img id="code-preview" alt="Uploaded QR or barcode preview" hidden style="display:block;max-width:100%;max-height:260px;object-fit:contain;margin-top:12px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;padding:8px">
+<button id="read-code-button" type="button">Read Uploaded Code</button>
+<p id="read-code-status" class="note" aria-live="polite">After the code is read, edit its contents in the Text or Website URL box above, then tap Generate QR Code.</p>
+<p class="note">Note: the new output is a QR code, even if the uploaded image is a traditional barcode. Some blurry, damaged or unsupported barcode images may not be readable.</p>
 <p class="note">An internet connection is required to generate the QR code. Do not enter passwords or sensitive personal information.</p>
 </div>
 <section>
@@ -72,6 +82,79 @@ a{color:#1458c8}
 </section>
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
+<script src="https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js"></script>
+<script>
+let selectedCodeImage = null;
+let codePreviewUrl = null;
+const codeImageInput = document.getElementById('code-image');
+const codePreview = document.getElementById('code-preview');
+const readCodeButton = document.getElementById('read-code-button');
+const readCodeStatus = document.getElementById('read-code-status');
+
+codeImageInput.addEventListener('change', function () {
+  const file = codeImageInput.files && codeImageInput.files[0];
+  selectedCodeImage = file || null;
+  if (codePreviewUrl) URL.revokeObjectURL(codePreviewUrl);
+  codePreviewUrl = null;
+  if (!file) {
+    codePreview.hidden = true;
+    codePreview.removeAttribute('src');
+    readCodeStatus.textContent = 'Choose an image of a QR code or barcode first.';
+    return;
+  }
+  if (!file.type.startsWith('image/')) {
+    selectedCodeImage = null;
+    codePreview.hidden = true;
+    readCodeStatus.textContent = 'Please choose an image file.';
+    return;
+  }
+  codePreviewUrl = URL.createObjectURL(file);
+  codePreview.src = codePreviewUrl;
+  codePreview.hidden = false;
+  readCodeStatus.textContent = 'Image ready. Tap “Read Uploaded Code”.';
+});
+
+readCodeButton.addEventListener('click', async function () {
+  if (!selectedCodeImage || !codePreview.src) {
+    readCodeStatus.textContent = 'Please upload an image first.';
+    return;
+  }
+  readCodeButton.disabled = true;
+  readCodeButton.textContent = 'Reading image…';
+  readCodeStatus.textContent = 'Trying to read the uploaded code…';
+  try {
+    let decodedText = '';
+    if ('BarcodeDetector' in window) {
+      try {
+        const formats = await BarcodeDetector.getSupportedFormats();
+        const wanted = ['qr_code','code_128','code_39','ean_13','ean_8','upc_a','upc_e','codabar','itf','data_matrix','pdf417','aztec'];
+        const detector = new BarcodeDetector({formats: wanted.filter(format => formats.includes(format))});
+        const bitmap = await createImageBitmap(selectedCodeImage);
+        const results = await detector.detect(bitmap);
+        bitmap.close && bitmap.close();
+        if (results.length) decodedText = results[0].rawValue || '';
+      } catch (nativeError) {
+        // Try the fallback decoder below if the native detector is unavailable for this image.
+      }
+    }
+    if (!decodedText && window.ZXing && window.ZXing.BrowserMultiFormatReader) {
+      const reader = new ZXing.BrowserMultiFormatReader();
+      const results = await reader.decodeFromImageElement(codePreview);
+      if (results) decodedText = results.getText ? results.getText() : String(results.text || '');
+      if (reader.reset) reader.reset();
+    }
+    if (!decodedText) throw new Error('No readable code found');
+    document.getElementById('content').value = decodedText;
+    readCodeStatus.textContent = 'Code read successfully. Its contents are now in the text box above. Edit the text if needed, then tap Generate QR Code.';
+    document.getElementById('content').focus();
+  } catch (error) {
+    readCodeStatus.textContent = 'Could not read this image. Try a sharper, well-lit image with the entire code visible. The decoder may not support this code type.';
+  } finally {
+    readCodeButton.disabled = false;
+    readCodeButton.textContent = 'Read Uploaded Code';
+  }
+});
+</script>
 <script>
 let qrObjectUrl = null;
 function makeQR(){
