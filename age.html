@@ -58,8 +58,8 @@
       <p>Enter your date of birth to calculate your exact age in years, months and days.</p>
 
       <label for="dobManual">Date of birth (manual entry)</label>
-      <p style="margin:0 0 8px;font-size:14px;color:#536176"><strong>Enter as DD/MM/YYYY</strong> — DD = day, MM = month, YYYY = 4-digit year. Example: <strong>15/01/1995</strong> means 15 January 1995. Write the day first, then month, then year.</p>
-      <input id="dobManual" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="DD/MM/YYYY (e.g. 15/01/1995)" aria-describedby="dobFormatHelp">
+      <p style="margin:0 0 8px;font-size:14px;color:#536176"><strong>Enter as DD/MM/YYYY</strong> — DD = day, MM = month, YYYY = 4-digit year. Examples: <strong>15/01/1995</strong> or <strong>15011995</strong> both mean 15 January 1995. Enter day first, then month, then the 4-digit year.</p>
+      <input id="dobManual" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="DD/MM/YYYY or DDMMYYYY (e.g. 15031995)" aria-describedby="dobFormatHelp">
       <p id="dobFormatHelp" style="margin:6px 0 0;font-size:13px;color:#64748b">You can type the date above, or select it below.</p>
       <label for="dob">Or select date of birth</label>
       <input id="dob" type="date" aria-label="Select date of birth">
@@ -126,9 +126,23 @@
       return `${y}-${m}-${d}`;
     }
     dobInput.max = localDateString(new Date());
+    function parseManualDate(value) {
+      const raw = value.trim();
+      let match = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      if (!match && /^\d{8}$/.test(raw)) {
+        match = [raw, raw.slice(0, 2), raw.slice(2, 4), raw.slice(4)];
+      }
+      if (!match) return null;
+      const day = Number(match[1]);
+      const month = Number(match[2]);
+      const year = Number(match[3]);
+      const date = new Date(year, month - 1, day);
+      if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
+      return { day, month, year, iso: `${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}` };
+    }
     dobManual.addEventListener("input", () => {
-      const match = dobManual.value.trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-      if (match) dobInput.value = `${match[3]}-${match[2]}-${match[1]}`;
+      const parsed = parseManualDate(dobManual.value);
+      if (parsed) dobInput.value = parsed.iso;
     });
     dobInput.addEventListener("change", () => {
       if (dobInput.value) {
@@ -140,13 +154,13 @@
       let year, month, day;
       const typed = dobManual.value.trim();
       if (typed) {
-        const match = typed.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-        if (!match) {
+        const parsed = parseManualDate(typed);
+        if (!parsed) {
           result.classList.remove("hidden");
-          result.textContent = "Use DD/MM/YYYY format, for example 15/01/1995 (day/month/year).";
+          result.textContent = "Enter a valid date as DD/MM/YYYY (15/01/1995) or DDMMYYYY (15011995).";
           return;
         }
-        day = Number(match[1]); month = Number(match[2]); year = Number(match[3]);
+        day = parsed.day; month = parsed.month; year = parsed.year;
       } else if (dobInput.value) {
         [year, month, day] = dobInput.value.split("-").map(Number);
       } else {
