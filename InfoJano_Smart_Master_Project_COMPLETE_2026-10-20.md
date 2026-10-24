@@ -595,3 +595,9 @@ Use the current repository as source of truth if the inventory changes.
 - Corrected `.github/workflows/build-tool-apks.yml` to include Age Calculator and use the accurate ID Card Print Studio name/ID, bringing the APK build matrix into alignment with the 23 tool icons. The ID Card Print Studio page source remains unchanged.
 - Bumped the prerelease tag to `infojano-tool-apps-v1.1.1` so the corrected package set is published as a distinct release. The next workflow run must finish successfully and its ZIP contents must be inspected before calling all APKs complete.
 - The prior APKs were debug builds. They are test/installable packages rather than Play Store-ready production-signed releases; installation and runtime behavior still need real-device verification.
+
+
+## 2026-10-24 — Repeatable pre-release validation added
+- Added CI validation to the APK workflow: parse all SVGs as XML, validate the 22 web manifests as JSON, check matching tool pages/start URLs/scopes/icon paths and installer-script links, and ensure the APK matrix covers all 23 HTML tool pages exactly once.
+- Added a post-build assertion that exactly 23 APKs exist, including Age Calculator and the correctly named ID Card Print Studio APK. Future icon/manifest/APK-list drift should fail before publication rather than silently shipping an incomplete set.
+- The workflow will need to finish successfully and its resulting ZIP be inspected before the corrected release is considered complete.
