@@ -623,3 +623,11 @@ Use the current repository as source of truth if the inventory changes.
 - Confirmed GitHub prerelease `infojano-tool-apps-v1.1.1` exists and lists all 23 individual APK assets: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1.
 - The newly added CI validation step passed on workflow run #14 (`40089519289`): 23 SVG icons, 22 manifests, 23 tool pages, and 23 APK targets are checked; it also checks service-worker precache coverage. The APK rebuild/publish stage of that latest run was still in progress at the time of this note. The existing v1.1.1 release was already manually checked for 23 APK assets.
 - APKs are debug-signed test builds requiring internet, not Play Store production-signed apps. Real device installation/runtime verification remains outstanding.
+
+
+## 2026-10-24 — 23 APK release verified
+- APK workflow run #15 succeeded: https://github.com/barsulkhan/InfoJano/actions/runs/40089519289.
+- Verified release `infojano-tool-apps-v1.1.1` has exactly 23 APK assets, one for each tool page, including Age Calculator and ID Card Print Studio: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1.
+- Automated validation passed for 23 SVGs, 22 per-tool web manifests, matching page/start_url/scope/icon references, install.js links, service-worker cache entries, and APK matrix; the post-build check verified exactly 23 APK files.
+- GitHub Pages deployment for the corrected source succeeded: https://github.com/barsulkhan/InfoJano/actions/runs/40089647274.
+- Remaining caveat: these are APKs for Android testing/installing, not Play Store production-signed releases. The web installer button offers browser-based PWA installation; it explicitly does not claim to download native APK/EXE. Windows .exe/.msi and iOS App Store packages are not produced. Real device installation and runtime tests are still needed.
