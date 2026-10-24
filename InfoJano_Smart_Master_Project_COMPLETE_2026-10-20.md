@@ -434,3 +434,10 @@ Use the current repository as source of truth if the inventory changes.
 - Homepage also has a title, description, canonical URL, and `index,follow` robots directive.
 - No repository-level mismatch was found between the 24 sitemap URLs and the current user-facing page set. Google Search Console account data is not directly accessible from repository tooling; sitemap acceptance/discovered-page counts must be confirmed inside Search Console, so no claim of Google-side success is made.
 - Next actions: keep working features stable; continue technical SEO review (internal linking, mobile usability, structured metadata where appropriate) and revisit Google indexing evidence when Search Console data is available.
+
+## 2026-10-24 — Internal links and mobile SEO audit
+- Checked the homepage and 23 public tool pages for essential mobile/SEO structure: viewport metadata, meta description, canonical URL, and a single H1. All 24 pages passed these checks.
+- Scanned local href/src references across the sampled tool pages and homepage. No confirmed broken internal links were found; two relative `./index.html` links are valid homepage references.
+- The homepage has navigation, a footer, tool search, and JSON-LD structured data.
+- This is a source-code audit, not a full device/browser accessibility test. Real mobile behavior and Google Search Console sitemap acceptance still need live/account-side confirmation.
+- Current state remains stable; avoid unnecessary changes to the working Image-to-PDF touch drag implementation.
