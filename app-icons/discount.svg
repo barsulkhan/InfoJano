@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Discount Calculator app icon">
-<title>Discount Calculator</title>
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#db2777"/><stop offset="1" stop-color="#0b1220"/></linearGradient></defs>
-<rect width="512" height="512" rx="112" fill="url(#g)"/>
-<circle cx="256" cy="236" r="156" fill="#ffffff" fill-opacity=".96"/>
-<circle cx="256" cy="236" r="132" fill="none" stroke="#db2777" stroke-opacity=".16" stroke-width="10"/>
-<text x="256" y="270" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="800" fill="#db2777">%</text>
-<path d="M168 356h176" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".92"/>
-<circle cx="354" cy="355" r="22" fill="#f59e0b" stroke="#fff" stroke-width="6"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc"><title id="title">Discount Calculator</title><desc id="desc">InfoJano Discount Calculator app icon</desc><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff426b"/><stop offset="1" stop-color="#122c65"/></linearGradient><linearGradient id="shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#071b43" flood-opacity=".22"/></filter></defs><rect x="24" y="24" width="464" height="464" rx="94" fill="url(#bg)"/><path d="M118 24h276a94 94 0 0 1 94 94v55Q256 230 24 173v-55a94 94 0 0 1 94-94z" fill="url(#shine)"/><g filter="url(#shadow)"><path d='M170 145h180l48 48v158H170z' fill='#fff' transform='rotate(-8 280 250)'/><path d='M180 150h175l38 40v150H180z' fill='#ffdaea' transform='rotate(-8 280 250)'/><circle cx='340' cy='180' r='13' fill='#ff426b'/><text x='270' y='275' font-size='112' font-weight='900' text-anchor='middle' fill='#f32d62'>%</text></g><rect x="75" y="410" width="362" height="48" rx="24" fill="#071b43" fill-opacity=".42"/><text x="256" y="442" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="800" letter-spacing=".2" text-anchor="middle" fill="#fff">Discount Calculator</text><circle cx="440" cy="72" r="12" fill="#ffcf48"/><circle cx="440" cy="72" r="5" fill="#fff"/></svg>

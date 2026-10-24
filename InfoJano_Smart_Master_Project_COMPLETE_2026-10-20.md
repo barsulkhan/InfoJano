@@ -573,3 +573,10 @@ Use the current repository as source of truth if the inventory changes.
 - Bumped service-worker cache from `infojano-v5` to `infojano-v6` so existing installed visitors can receive updated assets.
 - Important scope: this is per-tool web-app/PWA installation, not a native Android APK, iOS App Store app, or Windows EXE/MSI download. Browser support and HTTPS/PWA requirements affect whether the native install prompt appears. Manual instructions are provided as fallback.
 - Deployment status must be checked after commit; do not claim all devices tested or that installation succeeds on every browser without device testing.
+
+
+## 2026-10-24 — Tool icon refresh, first implementation
+- User approved the new colorful, cohesive app-icon concept and asked to begin implementation.
+- Rebuilt the 23 tool SVG icons as individual 512×512 vector app icons with a consistent InfoJano visual system, distinct accent colors, clear tool-specific symbols, and readable labels.
+- The homepage brand logo was left unchanged. The ID Card Print Studio page and its app logic were not edited; its icon asset was included only in the icon family for visual consistency.
+- This commit updates icon assets only plus this project archive. Verify GitHub Pages deployment and inspect actual icon rendering on the live pages before considering the icon rollout complete. Per-tool manifests already reference matching SVG asset paths for the 22 configured tools.
