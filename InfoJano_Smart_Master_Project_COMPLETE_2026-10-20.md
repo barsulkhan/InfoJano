@@ -1,7 +1,7 @@
 # InfoJano — Smart Master Project Archive (Complete Consolidated Edition)
-Version: V7
-Updated through: 20 October 2026
-Status: ACTIVE — consolidated historical archive; SEO/Sitemap review is next; Aadhaar print-preview issue is on hold.
+Version: V8
+Updated through: 24 October 2026
+Status: ACTIVE — consolidated historical archive; SEO/Sitemap review remains unresolved; Aadhaar print-preview issue is on hold.
 This is a continuity archive, not a verbatim export of every chat. Git history in the repository is the source of truth for committed code. Do not claim a commit is deployed or tested without evidence.
 
 ## 1. Project identity and purpose
@@ -484,3 +484,12 @@ Use the current repository as source of truth if the inventory changes.
 - A recent Google Search Central community thread about a different GitHub Pages sitemap reports the same status despite the owner checking HTTP 200, XML validity, and robots.txt; a Google product expert replied that the status may mean Google has not processed/accessed the sitemap yet and that a specific parsing error may appear if Google processes it. This is contextual evidence only, not proof of InfoJano's exact cause: https://support.google.com/webmasters/thread/473533778/google-search-console-cannot-read-a-valid-sitemap-on-github-pages?hl=en
 - The assistant's direct web open attempt could not access the public GitHub Pages sitemap/robots URLs, so response headers and status code remain independently unverified here. This tool limitation is not evidence of public downtime.
 - Decision: no edits to `sitemap.xml`, `sitemap.txt`, or `robots.txt` without a concrete error. Keep the sitemap submitted and check again after Google's retry/processing interval. If a specific message later appears, diagnose that message first. Avoid repeated indexing requests for the sitemap URL.
+
+
+## 2026-10-24 — Independent repository-tree sitemap consistency check
+- Re-read the current `main` branch sitemap and recursive Git tree using the GitHub API.
+- The recursive tree was complete (not truncated) and contains 25 root-level HTML files: 24 public user-facing pages plus the Google Search Console verification HTML.
+- Parsed the current `sitemap.xml` source: 24 `<loc>` entries, the expected XML declaration, the standard sitemap namespace `http://www.sitemaps.org/schemas/sitemap/0.9`, and a closing `</urlset>` element.
+- Exact set comparison: all 24 public user-facing HTML pages are included; the Google verification HTML is correctly excluded; no missing URLs, extra URLs, or duplicate URLs were found. This validates repository-side structure and coverage, not the HTTP response headers or Google Search Console's ability to fetch/parse the live file.
+- Current latest GitHub Pages workflow was checked through the GitHub API: run #552 completed with conclusion `success` for commit `8d60ecfea7803d400587448ddbfa3b9ca9ca2f8c`. Run: https://github.com/barsulkhan/InfoJano/actions/runs/40082633724
+- No website code, sitemap, or robots file was changed during this audit. Keep the Google-side `Couldn't fetch` issue marked unresolved. Next useful step remains an external HTTP status/`Content-Type` check or a new Search Console report check after Google's retry interval; do not edit sitemap files without a concrete failure.
