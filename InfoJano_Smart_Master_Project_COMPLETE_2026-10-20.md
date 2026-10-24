@@ -564,3 +564,12 @@ Use the current repository as source of truth if the inventory changes.
 - Sitemap XML and robots.txt were reviewed in the repository: sitemap currently lists 24 URLs, and robots.txt points to the XML sitemap. The earlier Search Console “Couldn't fetch” report remains unresolved; do not change these files blindly because the XML is syntactically present and live browser inspection had shown it opens.
 - The homepage uses an existing SVG logo in its visible header and a square `icon-512.png` for social previews; no new logo image was created. No calculator logic or ID Card Studio code was changed.
 - Deployment, external HTTP headers, indexing and ranking are distinct statuses; verify each separately and do not infer Google indexing from a successful GitHub Pages build.
+
+
+## 2026-10-24 — Cross-device install/download options
+- User clarified the intended feature: a visitor using any InfoJano tool should be able to install that specific tool on their phone or computer, whether Android, iPhone/iPad, Windows, or Mac.
+- Updated the shared `install.js` behavior to offer install instructions based on device/browser, trigger the native PWA install prompt when available, show a clear fallback when not available, and automatically create an install panel on tool pages missing one.
+- Added the shared install script to Age Calculator and BMI Calculator, which already had per-tool web manifests but did not previously load the install script.
+- Bumped service-worker cache from `infojano-v5` to `infojano-v6` so existing installed visitors can receive updated assets.
+- Important scope: this is per-tool web-app/PWA installation, not a native Android APK, iOS App Store app, or Windows EXE/MSI download. Browser support and HTTPS/PWA requirements affect whether the native install prompt appears. Manual instructions are provided as fallback.
+- Deployment status must be checked after commit; do not claim all devices tested or that installation succeeds on every browser without device testing.
