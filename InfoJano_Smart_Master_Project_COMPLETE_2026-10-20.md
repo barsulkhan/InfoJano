@@ -402,3 +402,12 @@ Use the current repository as source of truth if the inventory changes.
 - Commit: `23f67ddc0aa9ffe7d50aead0e7252a8a8549e02e`.
 - Pages deployment: https://github.com/barsulkhan/InfoJano/actions/runs/40064116988 (in progress at note time).
 - Must verify live by moving a card from left to right and right to left, then moving last card to first, and checking the generated PDF order. Do not claim fully fixed until tested.
+
+
+### Latest continuation — 2026-10-24
+- User asked to resume InfoJano work. Checked the GitHub Pages Actions history: the drag reorder deployment at commit `7fe98531783d22cd47c1a0c61ed490787ef4eb01` completed successfully.
+- Reviewed the latest reorder script and found that it was using the horizontal midpoint only for the final drop. Updated the final drop decision to choose the nearest edge of the target card (left/right or top/bottom) based on the release point. Importantly, the preview no longer reshuffles cards continuously during drag; the move commits only when released.
+- Latest commit: `17e4b0db9158e118809237b718f228a86a4fee42`.
+- Deployment run for the latest commit: https://github.com/barsulkhan/InfoJano/actions/runs/40064493491 (queued at the time of this note).
+- Sitemap audit: 25 root HTML files exist including the Google Search Console verification HTML; sitemap.xml lists 24 user-facing URLs and excludes the verification token page, as intended. All user-facing HTML pages are represented.
+- Next: verify latest Pages deployment success, then test image reorder on the live site: left-to-right, right-to-left, last-to-first, and PDF output order. After that resume Search Console sitemap fetch troubleshooting. Preserve all existing files and user-approved design.
