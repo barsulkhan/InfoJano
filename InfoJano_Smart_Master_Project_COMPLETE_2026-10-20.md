@@ -501,3 +501,13 @@ Use the current repository as source of truth if the inventory changes.
 - Found 23 standalone SVG app/tool icons and 22 individual web manifests. The only icon without a corresponding per-tool manifest is `app-icons/id-card-print-studio.svg`. Do not add a manifest or alter that page in this pass because the ID Card Studio workflows are explicitly on hold; the SVG itself exists and is included in the service-worker cache.
 - The PWA source-level path/cache audit passed. This does not replace a real Android install/offline test. No app code was changed during this check.
 - User instruction on 2026-10-24: continue other InfoJano work and defer the Google Search Console sitemap issue for two days. A follow-up check is scheduled for 2026-10-26; do not change sitemap files before concrete evidence.
+
+
+## 2026-10-24 — Continued PWA and internal-navigation audit
+- Checked the homepage's direct standalone-tool links against the repository root. All 23 linked tool-page filenames exist in the current repository.
+- Checked the Service Worker `sw.js` cache list against the complete current GitHub repository tree: 74 entries, all unique, and no missing paths. Current cache version is `infojano-v5`.
+- Confirmed the homepage points to `/InfoJano/manifest.json` and registers `/InfoJano/sw.js`; the main manifest's ID, start URL and scope consistently use the GitHub Pages `/InfoJano/` base path.
+- Spot-checked the individual tool manifests for Age, BMI, Currency Converter, Date Difference and Discount. Each parses as valid JSON, uses the matching standalone HTML page for `id`/`start_url`, has `/InfoJano/` scope, and references its own named SVG icon.
+- Spot-checked Age, BMI, Image to PDF, Image Resizer and QR Maker page metadata: each has a page-specific title, meta description, canonical URL and an individual web app manifest link.
+- GitHub Pages deployment #554 for commit `e8611185853058fbbd311cbf208fe17f8b4e6486` completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/40082932818
+- No website code was changed during this audit. These are repository/source checks; they do not replace a real Android install/offline test or an external live HTTP response check. Preserve the user's confirmed mobile image-to-PDF reorder behavior and keep the Aadhaar print-preview issue on hold.
