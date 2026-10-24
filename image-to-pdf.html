@@ -196,9 +196,12 @@ function buildPdf(pages){const enc=new TextEncoder(),out=[];let len=0,offs=[0];c
      const target=under&&under.closest('#preview .ij-image-preview-card');
      if(target&&target!==card){
        const r=target.getBoundingClientRect();
-       // Drop at the actual release point: before/after the target based on
-       // the nearest half of the target card, including left/right moves.
-       const after=e.clientX >= r.left+r.width/2;
+       // Choose the nearest edge of the card at release time. The grid stays
+       // still during dragging, so the item is inserted exactly relative to
+       // the card edge where the user drops it (left/right or top/bottom).
+       const dx=Math.abs(e.clientX-(r.left+r.width/2));
+       const dy=Math.abs(e.clientY-(r.top+r.height/2));
+       const after=dx>dy ? e.clientX>r.left+r.width/2 : e.clientY>r.top+r.height/2;
        const parent=target.parentNode;
        const reference=after?target.nextElementSibling:target;
        const isSamePosition=after ? reference===card : target===card.nextElementSibling;
