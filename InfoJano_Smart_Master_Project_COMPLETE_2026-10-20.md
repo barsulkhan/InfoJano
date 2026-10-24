@@ -460,3 +460,11 @@ Use the current repository as source of truth if the inventory changes.
 - A recent GitHub Community discussion also reports sitemap fetch problems across GitHub Pages sites, but it is community anecdote, not proof of the cause for InfoJano: https://github.com/orgs/community/discussions/199426
 - This assistant's own external HTTP request attempt could not resolve the public host from its runtime (DNS/network restriction), so HTTP status and `Content-Type` headers could not be independently verified here. Do not treat that environment limitation as evidence that the public site is down.
 - Conclusion: do not edit `sitemap.xml`, `sitemap.txt`, or `robots.txt` without a concrete error. The single most useful remaining account-side check is to paste `https://barsulkhan.github.io/InfoJano/sitemap.xml` into Search Console's top URL Inspection field, press Enter, choose **Test live URL** if available, and expand **Page availability**. Capture the result showing **Crawl allowed?** and **Page fetch**. If the interface refuses to test the sitemap as a page or gives no availability details, report that exact result; do not infer failure.
+
+
+## 2026-10-24 — Sitemap URL Inspection live test
+- User-provided Search Console screenshot for `https://barsulkhan.github.io/InfoJano/sitemap.xml` shows the **Live Test** result “URL is available to Google”.
+- The expanded summary shows **Page availability: Page can be indexed**.
+- The user clicked **Request Indexing**; Google displayed “Indexing requested” and said the URL was added to a priority crawl queue.
+- Interpretation: this is positive evidence that Google's live URL inspection can access the sitemap URL as a URL. It is **not** proof that the Sitemaps report has parsed the XML, discovered its 24 URLs, or indexed all pages. Keep the separate Sitemaps report status (“Couldn't fetch” / 0 discovered pages) marked unresolved until that report changes or provides a specific error.
+- Do not repeatedly request indexing for the sitemap URL; repeated submissions do not change queue position or priority. Next step: return to Search Console → Sitemaps and check whether the report updates after Google processes the request. If it remains “Couldn't fetch”, capture the detailed sitemap error text; avoid editing `sitemap.xml`, `sitemap.txt`, or `robots.txt` without a concrete diagnostic.
