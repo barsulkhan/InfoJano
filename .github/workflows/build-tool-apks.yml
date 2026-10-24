@@ -77,6 +77,7 @@ jobs:
             echo "Built $filename"
             echo "::endgroup::"
           done <<'TOOLS'
+          agecalculator|Age Calculator|age.html|AGE|age.svg
           bmi|BMI Calculator|bmi.html|BMI|bmi.svg
           currencyconverter|Currency Converter|currency-converter.html|FX|currency-converter.svg
           datedifference|Date Difference Calculator|date-difference.html|DATE|date-difference.svg
@@ -98,7 +99,7 @@ jobs:
           timecalculator|Time Calculator|time-calculator.html|TIME|time-calculator.svg
           tipcalculator|Tip Calculator|tip-calculator.html|TIP|tip-calculator.svg
           unitconverter|Unit Converter|unit-converter.html|UNIT|unit-converter.svg
-          ayushmancardstudio|Ayushman Bharat Card Studio|id-card-print-studio.html|AYUSH|id-card-print-studio.svg
+          idcardprintstudio|ID Card Print Studio|id-card-print-studio.html|ID|id-card-print-studio.svg
           TOOLS
 
       - name: Upload APK files as workflow artifact
@@ -112,10 +113,10 @@ jobs:
       - name: Publish tool APK release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: infojano-tool-apps-v1.1.0
-          name: InfoJano Tool Apps v1.1.0
+          tag_name: infojano-tool-apps-v1.1.1
+          name: InfoJano Tool Apps v1.1.1
           body: |
-            InfoJano individual tool apps v1.1.0.
+            InfoJano individual tool apps v1.1.1.
             Each app uses its matching dedicated InfoJano icon and opens its matching tool page directly.
             These debug-signed builds require internet access.
           draft: false

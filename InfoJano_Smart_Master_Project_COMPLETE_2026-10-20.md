@@ -588,3 +588,10 @@ Use the current repository as source of truth if the inventory changes.
 - Confirmed representative tool pages link to their matching manifest and load the shared install.js installer.
 - ID Card Print Studio remains excluded from the per-tool manifest audit and its page code was not changed; only its SVG asset was restyled to match the icon family.
 - Limitation: successful Pages deployment and source-level manifest checks do not equal hands-on testing on every Android/iOS/Windows/Mac browser. Next verification is to check live icon display and install behavior on representative devices/browsers.
+
+
+## 2026-10-24 — APK package completeness correction
+- Inspected the downloaded ZIP from successful APK build run #13, not just its status. It contained 22 APKs, but the Age Calculator APK was missing and the ID Card Print Studio APK was incorrectly labelled “Ayushman Bharat Card Studio.”
+- Corrected `.github/workflows/build-tool-apks.yml` to include Age Calculator and use the accurate ID Card Print Studio name/ID, bringing the APK build matrix into alignment with the 23 tool icons. The ID Card Print Studio page source remains unchanged.
+- Bumped the prerelease tag to `infojano-tool-apps-v1.1.1` so the corrected package set is published as a distinct release. The next workflow run must finish successfully and its ZIP contents must be inspected before calling all APKs complete.
+- The prior APKs were debug builds. They are test/installable packages rather than Play Store-ready production-signed releases; installation and runtime behavior still need real-device verification.
