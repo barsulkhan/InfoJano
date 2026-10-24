@@ -366,3 +366,14 @@ Use the current repository as source of truth if the inventory changes.
 
 ## E. Resume prompt
 “Continue InfoJano from the consolidated Smart Master Project V7. Read the full archive before making changes. Work in English for code labels/comments/technical reports and Bengali for user guidance. User is Android-only and wants one clear step at a time. Preserve all original 16 tools and locked card workflows. Manual crop remains. Do not work on the Aadhaar small print-preview issue or photo background cleanup until requested. Next: inspect GitHub Pages deployment and Google Search Console sitemap status before editing any sitemap. Do not claim success without evidence.”
+
+
+## 22. 2026-10-24 — Dedicated icons for individual tools
+
+- Added 22 separate SVG app icons under `app-icons/` for Age, BMI, Currency Converter, Date Difference, Discount, EMI, GST, Image Compressor, Image Resizer, Image to PDF, Loan Eligibility, Loan Interest, Number to Words, Password Generator, Percentage, Percentage Change, QR Maker, Savings, Text Counter, Time Calculator, Tip Calculator, and Unit Converter.
+- Updated all 22 corresponding `app-manifests/*.webmanifest` files to use the tool-specific icon rather than the generic InfoJano home icon.
+- Updated `sw.js` cache version to `infojano-v4` and added all 22 SVG icons to the offline precache list.
+- Repository source audit confirmed 22 icon files, 22 manifests, and no tool icon missing from the service-worker asset list.
+- Latest commit: `dc5d12dca9fbcfafa841ccd1cf2237fcd8920abc`.
+- GitHub Pages deployment was still in progress at the time of this note: https://github.com/barsulkhan/InfoJano/actions/runs/40061953069
+- Important limitation: the icons are custom branded SVG letter/symbol marks, not a full illustrated icon set. The home page already has its own InfoJano logo SVG. Actual Android installation/airplane-mode behavior must still be tested on a phone; installed apps may need reinstalling or clearing site data to refresh previously cached manifest icons.
