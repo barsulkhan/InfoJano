@@ -531,3 +531,8 @@ Use the current repository as source of truth if the inventory changes.
 - Added `og:image`, `og:image:alt`, and `twitter:image` plus `summary_large_image` cards to `currency-converter.html`, `gst-calculator.html`, `image-compressor.html`, `image-resizer.html`, `loan-eligibility.html`, `loan-interest.html`, and `number-to-words.html`.
 - Reused existing `icon-512.png`; no calculator/tool logic, layout, sitemap, or robots files changed.
 - Additional pages remain in the social metadata audit; Aadhaar/ID Card Studio remains excluded/on hold.
+
+
+## 2026-10-24 — Social metadata rollout batch 4
+- Added `og:image`, `og:image:alt`, and `twitter:image` plus `summary_large_image` cards to `password-generator.html`, `percentage-change.html`, `qr-maker.html`, `savings.html`, `text-counter.html`, `time-calculator.html`, `tip-calculator.html`, and `unit-converter.html`.
+- Reused existing `icon-512.png`; no tool logic or layout changed. Sitemap/robots remain untouched; ID Card Studio stays on hold.
