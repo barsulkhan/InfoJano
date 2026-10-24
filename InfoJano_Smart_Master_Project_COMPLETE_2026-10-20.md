@@ -377,3 +377,13 @@ Use the current repository as source of truth if the inventory changes.
 - Latest commit: `dc5d12dca9fbcfafa841ccd1cf2237fcd8920abc`.
 - GitHub Pages deployment was still in progress at the time of this note: https://github.com/barsulkhan/InfoJano/actions/runs/40061953069
 - Important limitation: the icons are custom branded SVG letter/symbol marks, not a full illustrated icon set. The home page already has its own InfoJano logo SVG. Actual Android installation/airplane-mode behavior must still be tested on a phone; installed apps may need reinstalling or clearing site data to refresh previously cached manifest icons.
+
+
+## 23. 2026-10-24 — Image to PDF reorderable preview
+
+- User showed the Image to PDF Converter preview with three selected Employment Bank card images and requested an easy way to rearrange their PDF page order by dragging an image to the desired position.
+- Updated `image-to-pdf.html` with an animated instructional hint explaining hold-and-drag ordering, numbered page badges, grab labels, visual drag/drop states, desktop mouse drag-and-drop, and touch/pen long-press dragging.
+- The preview order is synchronized back into the `selected` image array, so PDF pages should be generated in the new displayed order. Selecting new files resets the preview as before.
+- Commit: `5bf1ce86df452ea740ba2e6f678b318b47fb9984`.
+- GitHub Pages deployment triggered: https://github.com/barsulkhan/InfoJano/actions/runs/40063098118
+- Verification pending: wait for the deployment workflow to finish, then test the live page with multiple images on desktop (mouse click-hold-drag) and Android (long-press-drag), and confirm the downloaded PDF page order. Do not claim live functionality until tested.
