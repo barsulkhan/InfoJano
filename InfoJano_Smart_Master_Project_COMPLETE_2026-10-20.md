@@ -611,3 +611,8 @@ Use the current repository as source of truth if the inventory changes.
 ## 2026-10-24 — APK validation parser correction
 - The validation check exposed a parser issue in the checker itself: the YAML indentation around the heredoc terminator meant the parser counted later workflow lines as APK targets. Corrected target extraction to select only five-field tool matrix rows (four pipe separators), rather than assuming a particular closing-marker indentation.
 - No tool page or calculator behavior was changed by this checker fix. Re-run the workflow to verify the corrected check and produce the complete 23-APK package.
+
+
+## 2026-10-24 — APK matrix checker parser fix applied
+- Applied the matrix parser fix directly to the workflow file after verifying the previous commit had only updated the archive note and had not matched the YAML line as intended.
+- The checker now counts only five-field tool matrix rows and ignores other workflow lines. The next APK run must validate all assets and build/publish 23 APKs before the package can be considered complete.
