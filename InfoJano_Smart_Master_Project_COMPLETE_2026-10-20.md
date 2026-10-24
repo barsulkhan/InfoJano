@@ -536,3 +536,10 @@ Use the current repository as source of truth if the inventory changes.
 ## 2026-10-24 — Social metadata rollout batch 4
 - Added `og:image`, `og:image:alt`, and `twitter:image` plus `summary_large_image` cards to `password-generator.html`, `percentage-change.html`, `qr-maker.html`, `savings.html`, `text-counter.html`, `time-calculator.html`, `tip-calculator.html`, and `unit-converter.html`.
 - Reused existing `icon-512.png`; no tool logic or layout changed. Sitemap/robots remain untouched; ID Card Studio stays on hold.
+
+
+## 2026-10-24 — SEO audit batch 5
+- Audited the public standalone tool pages for page titles, meta descriptions, canonical URLs, H1 headings, and social preview metadata.
+- Found `date-difference.html` missing Open Graph/Twitter image metadata; added the existing `icon-512.png`, descriptive alt text, and `summary_large_image` card.
+- Refined its meta and Open Graph description to describe the actual date-difference use case. Existing title, canonical URL, H1, tool behavior, sitemap and robots files remain unchanged.
+- Deployment and live-page status must be checked after commit; SEO metadata does not guarantee indexing or rankings.
