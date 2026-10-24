@@ -201,7 +201,8 @@ function buildPdf(pages){const enc=new TextEncoder(),out=[];let len=0,offs=[0];c
        const after=e.clientX >= r.left+r.width/2;
        const parent=target.parentNode;
        const reference=after?target.nextElementSibling:target;
-       if(reference!==card && target!==card.previousElementSibling){
+       const isSamePosition=after ? reference===card : target===card.nextElementSibling;
+       if(!isSamePosition){
          if(after)parent.insertBefore(card,reference);
          else parent.insertBefore(card,target);
        }
