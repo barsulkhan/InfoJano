@@ -543,3 +543,9 @@ Use the current repository as source of truth if the inventory changes.
 - Found `date-difference.html` missing Open Graph/Twitter image metadata; added the existing `icon-512.png`, descriptive alt text, and `summary_large_image` card.
 - Refined its meta and Open Graph description to describe the actual date-difference use case. Existing title, canonical URL, H1, tool behavior, sitemap and robots files remain unchanged.
 - Deployment and live-page status must be checked after commit; SEO metadata does not guarantee indexing or rankings.
+
+
+## 2026-10-24 — Social preview consistency audit
+- Verified deployment #563 succeeded for commit `99fa409de9387222fa3b1bd87da0bdcedb511d02` (date-difference page description and social metadata update).
+- A follow-up source audit found `age.html` and `image-to-pdf.html` had Open Graph images but were still using the small Twitter summary card without `twitter:image`. Added the existing site icon as `twitter:image` and switched both to `summary_large_image` for consistent sharing previews.
+- No tool logic, visible layout, sitemap, robots, or ID Card Studio code changed.
