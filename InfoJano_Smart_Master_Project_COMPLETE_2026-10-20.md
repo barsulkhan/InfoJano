@@ -580,3 +580,11 @@ Use the current repository as source of truth if the inventory changes.
 - Rebuilt the 23 tool SVG icons as individual 512×512 vector app icons with a consistent InfoJano visual system, distinct accent colors, clear tool-specific symbols, and readable labels.
 - The homepage brand logo was left unchanged. The ID Card Print Studio page and its app logic were not edited; its icon asset was included only in the icon family for visual consistency.
 - This commit updates icon assets only plus this project archive. Verify GitHub Pages deployment and inspect actual icon rendering on the live pages before considering the icon rollout complete. Per-tool manifests already reference matching SVG asset paths for the 22 configured tools.
+
+
+## 2026-10-24 — Icon rollout and manifest audit
+- GitHub Pages deployment for the 23-icon refresh completed successfully: run https://github.com/barsulkhan/InfoJano/actions/runs/40087528868.
+- Confirmed the repository contains 23 separate SVG tool icons and 22 per-tool web manifests. The inspected manifests (including Age, BMI, Currency Converter, Date Difference, Discount, Percentage, EMI, GST, Image Compressor, Image Resizer, and Image to PDF) reference the matching /InfoJano/app-icons/<tool>.svg path and use sizes:any / image/svg+xml.
+- Confirmed representative tool pages link to their matching manifest and load the shared install.js installer.
+- ID Card Print Studio remains excluded from the per-tool manifest audit and its page code was not changed; only its SVG asset was restyled to match the icon family.
+- Limitation: successful Pages deployment and source-level manifest checks do not equal hands-on testing on every Android/iOS/Windows/Mac browser. Next verification is to check live icon display and install behavior on representative devices/browsers.
