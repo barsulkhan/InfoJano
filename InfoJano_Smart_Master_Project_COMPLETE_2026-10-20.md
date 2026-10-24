@@ -556,3 +556,11 @@ Use the current repository as source of truth if the inventory changes.
 - Rewrote meta descriptions and aligned Open Graph/Twitter descriptions for `age.html`, `currency-converter.html`, `discount.html`, `emi.html`, `gst-calculator.html`, `image-resizer.html`, `loan-eligibility.html`, `loan-interest.html`, `number-to-words.html`, `password-generator.html`, and `percentage.html`.
 - Wording is specific to each tool and avoids claiming live exchange-rate feeds; currency conversion is described as using a rate the user enters. Password-generator wording is limited to browser-side generation based on the page’s intended local behavior.
 - No calculator logic, visible layout, canonical URLs, sitemap, robots.txt, or ID Card Studio code changed. Deployment and Google indexing/ranking are not guaranteed by metadata edits.
+
+
+## 2026-10-24 — SEO consistency batch
+- Confirmed deployment #565 succeeded for commit `d7d72a85c02e50df7cf6c5804ad0721b79b93bac`.
+- Added the missing homepage Twitter image and Open Graph canonical URL so the homepage social preview metadata is more complete.
+- Sitemap XML and robots.txt were reviewed in the repository: sitemap currently lists 24 URLs, and robots.txt points to the XML sitemap. The earlier Search Console “Couldn't fetch” report remains unresolved; do not change these files blindly because the XML is syntactically present and live browser inspection had shown it opens.
+- The homepage uses an existing SVG logo in its visible header and a square `icon-512.png` for social previews; no new logo image was created. No calculator logic or ID Card Studio code was changed.
+- Deployment, external HTTP headers, indexing and ranking are distinct statuses; verify each separately and do not infer Google indexing from a successful GitHub Pages build.
