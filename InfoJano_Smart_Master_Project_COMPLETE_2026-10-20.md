@@ -420,3 +420,10 @@ Use the current repository as source of truth if the inventory changes.
 - Sitemap audit: `robots.txt` allows crawling and points to `https://barsulkhan.github.io/InfoJano/sitemap.xml`. Both `sitemap.xml` and `sitemap.txt` currently list the 24 public site URLs (homepage plus 23 tool pages). The Google Search Console verification HTML file is intentionally excluded.
 - Remaining SEO follow-up: Search Console previously showed sitemap fetch errors / zero discovered pages. The repository files are structurally populated and `robots.txt` points to the XML sitemap, but this audit did not access the Search Console account and therefore does not establish that Google has accepted or processed the sitemap. Recheck Search Console after recrawl; do not claim indexing until verified.
 - Current priority: preserve the confirmed mobile drag fix; next review homepage links/SEO coverage and continue investigating Search Console sitemap status without changing working features unnecessarily.
+
+## 2026-10-24 — Search Console screenshot review
+- User-provided Google Search Console overview screenshot shows **18 indexed pages** and **0 not-indexed pages** in the displayed Indexing summary.
+- The displayed Performance card shows **0 total web search clicks** for its visible date range. This is a baseline observation, not evidence of a technical failure.
+- User-provided browser screenshot confirms `https://barsulkhan.github.io/InfoJano/sitemap.xml` opens and displays a well-formed-looking XML sitemap containing **24 URL entries**.
+- Interpretation: sitemap is publicly accessible in the user's browser and Google Search Console reports 18 indexed pages; sitemap entry count (24) is not the same as indexed page count. Do not claim all 24 are indexed. Recheck Search Console's Sitemaps report and individual URL inspection to understand the remaining difference.
+- Master archive update commit for the prior continuation completed and GitHub Pages workflow #544 succeeded: https://github.com/barsulkhan/InfoJano/actions/runs/40080313584
