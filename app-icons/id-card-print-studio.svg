@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="ID Card Print Studio app icon">
+<title>ID Card Print Studio</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#0b1220"/></linearGradient></defs>
+<rect width="512" height="512" rx="112" fill="url(#g)"/>
+<rect x="82" y="126" width="348" height="260" rx="28" fill="#fff"/>
+<rect x="104" y="148" width="108" height="132" rx="14" fill="#dbeafe"/>
+<circle cx="158" cy="190" r="27" fill="#2563eb"/>
+<path d="M119 260c5-27 22-41 39-41s34 14 39 41" fill="#2563eb"/>
+<path d="M244 176h148M244 216h120M244 256h138" stroke="#0f766e" stroke-width="15" stroke-linecap="round"/>
+<rect x="106" y="310" width="300" height="44" rx="12" fill="#ccfbf1"/>
+<path d="M130 332h252" stroke="#0f766e" stroke-width="9" stroke-linecap="round"/>
+<circle cx="382" cy="365" r="28" fill="#f59e0b" stroke="#fff" stroke-width="7"/>
+</svg>
