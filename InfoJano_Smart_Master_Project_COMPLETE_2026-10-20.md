@@ -631,3 +631,31 @@ Use the current repository as source of truth if the inventory changes.
 - Automated validation passed for 23 SVGs, 22 per-tool web manifests, matching page/start_url/scope/icon references, install.js links, service-worker cache entries, and APK matrix; the post-build check verified exactly 23 APK files.
 - GitHub Pages deployment for the corrected source succeeded: https://github.com/barsulkhan/InfoJano/actions/runs/40089647274.
 - Remaining caveat: these are APKs for Android testing/installing, not Play Store production-signed releases. The web installer button offers browser-based PWA installation; it explicitly does not claim to download native APK/EXE. Windows .exe/.msi and iOS App Store packages are not produced. Real device installation and runtime tests are still needed.
+
+
+## 12. Work queued on 24 October 2026 — Related Apps and APK download investigation
+User requested that the next work session implement contextual related-app recommendations and investigate an Android APK download that stalls in the mobile browser.
+
+### Required Related Apps behavior
+- On every tool page, show exactly four related tool-app references beneath the active tool.
+- Exclude the current tool from its own related-app list.
+- Each card should show the app name, app icon, short useful description, and a direct download link to the matching APK in GitHub Release tag `infojano-tool-apps-v1.1.1`.
+- Select recommendations contextually, not the same fixed four on every page.
+- Do not modify `id-card-print-studio.html` or its Aadhaar/ID-card print-preview functionality while doing this; that page's code issue remains explicitly on hold. Related-app links may be added only if this does not alter the held functionality.
+
+### APK download issue — verified findings
+- Release exists: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1
+- GitHub API confirmed the release currently contains 23 uploaded APK assets.
+- The ID Card Print Studio APK asset exists at:
+  https://github.com/barsulkhan/InfoJano/releases/download/infojano-tool-apps-v1.1.1/InfoJano-ID-Card-Print-Studio.apk
+- Asset size is 46,135 bytes; GitHub reported download_count 6 at time of inspection. This confirms the asset exists and downloads have been initiated by users, but does NOT prove a complete successful download on this user's phone.
+- Other APK assets are approximately 47–63 KB. These are very small wrapper builds; investigate the Android build output and WebView/app package expectations before claiming they are fully production-ready.
+- The user previously saw Chrome's in-app/custom-tab screen stuck on “Downloading…” after the progress showed 46.13 KB / 46.13 KB. Possible client-side completion/UI handoff issue remains unproven; real Android device download/install testing is required.
+- Do not claim APK download is fixed until tested. If GitHub asset is healthy but Android download remains stalled, test opening the release page in Chrome proper, Chrome Downloads, and a second direct download path; verify MIME/content disposition and APK file integrity from a successful download if tooling allows.
+- Current release remains a prerelease/debug-signed build; no real-device installation verification is recorded.
+
+### Status at archive update
+- Verified release metadata and exact ID Card Print Studio asset URL.
+- Related-app cards have NOT yet been implemented or deployed.
+- APK download issue has NOT yet been reproduced and resolved on a real Android device.
+- Next session should implement shared contextual related-app rendering for all applicable tool pages, validate four distinct recommendations and correct APK links per page, then test/diagnose download handling. Update this archive again after actual code changes and commits.
