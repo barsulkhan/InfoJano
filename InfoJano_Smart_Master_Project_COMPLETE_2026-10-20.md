@@ -616,3 +616,10 @@ Use the current repository as source of truth if the inventory changes.
 ## 2026-10-24 — APK matrix checker parser fix applied
 - Applied the matrix parser fix directly to the workflow file after verifying the previous commit had only updated the archive note and had not matched the YAML line as intended.
 - The checker now counts only five-field tool matrix rows and ignores other workflow lines. The next APK run must validate all assets and build/publish 23 APKs before the package can be considered complete.
+
+
+## 2026-10-24 — Verified APK release and CI checks
+- Downloaded and inspected the APK artifact from successful workflow run #12 (`40088991697`). The ZIP contains exactly 23 APK files, including `InfoJano-Age-Calculator.apk` and the correctly named `InfoJano-ID-Card-Print-Studio.apk`; no wrongly named Ayushman Bharat APK remains.
+- Confirmed GitHub prerelease `infojano-tool-apps-v1.1.1` exists and lists all 23 individual APK assets: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1.
+- The newly added CI validation step passed on workflow run #14 (`40089519289`): 23 SVG icons, 22 manifests, 23 tool pages, and 23 APK targets are checked; it also checks service-worker precache coverage. The APK rebuild/publish stage of that latest run was still in progress at the time of this note. The existing v1.1.1 release was already manually checked for 23 APK assets.
+- APKs are debug-signed test builds requiring internet, not Play Store production-signed apps. Real device installation/runtime verification remains outstanding.
