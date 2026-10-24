@@ -394,3 +394,11 @@ Use the current repository as source of truth if the inventory changes.
 - Reworked the interaction to use unified pointer dragging: mouse drag starts on movement/hold; touch and pen use deliberate long-press then drag. Disabled native browser image drag, added pointer capture, and set touch-action to none on preview cards so vertical reordering can work.
 - Fix commits: `884169bc6ed830de46985c662aa0a2e77e00fbf4` and `9a0579b79c3e708c3084e1a9358918153c51c7e4`.
 - Deployment and live drag/drop behavior still need verification after the newest commit deploys. Test mouse and touch separately, then create a PDF and verify page order.
+
+
+### Follow-up — arbitrary horizontal/vertical reorder request (2026-10-24)
+- User clarified that they want to place any photo wherever they choose in the two-column preview, including left/right moves, not only vertical moves.
+- Updated `image-to-pdf.html` reorder insertion logic to use the horizontal drop position within a target card (left half inserts before, right half inserts after), supporting moves across both columns and rows.
+- Commit: `23f67ddc0aa9ffe7d50aead0e7252a8a8549e02e`.
+- Pages deployment: https://github.com/barsulkhan/InfoJano/actions/runs/40064116988 (in progress at note time).
+- Must verify live by moving a card from left to right and right to left, then moving last card to first, and checking the generated PDF order. Do not claim fully fixed until tested.
