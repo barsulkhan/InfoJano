@@ -387,3 +387,10 @@ Use the current repository as source of truth if the inventory changes.
 - Commit: `5bf1ce86df452ea740ba2e6f678b318b47fb9984`.
 - GitHub Pages deployment triggered: https://github.com/barsulkhan/InfoJano/actions/runs/40063098118
 - Verification pending: wait for the deployment workflow to finish, then test the live page with multiple images on desktop (mouse click-hold-drag) and Android (long-press-drag), and confirm the downloaded PDF page order. Do not claim live functionality until tested.
+
+
+### Follow-up fix — 2026-10-24
+- User reported that order numbers appeared in the Image to PDF preview but dragging did not move the images.
+- Reworked the interaction to use unified pointer dragging: mouse drag starts on movement/hold; touch and pen use deliberate long-press then drag. Disabled native browser image drag, added pointer capture, and set touch-action to none on preview cards so vertical reordering can work.
+- Fix commits: `884169bc6ed830de46985c662aa0a2e77e00fbf4` and `9a0579b79c3e708c3084e1a9358918153c51c7e4`.
+- Deployment and live drag/drop behavior still need verification after the newest commit deploys. Test mouse and touch separately, then create a PDF and verify page order.
