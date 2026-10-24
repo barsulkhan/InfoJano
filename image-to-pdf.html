@@ -140,9 +140,16 @@ function buildPdf(pages){const enc=new TextEncoder(),out=[];let len=0,offs=[0];c
  function moveRelative(card,target,x,y){
    if(!card||!target||card===target)return;
    const r=target.getBoundingClientRect();
-   const horizontal=Math.abs(x-(r.left+r.width/2)) > Math.abs(y-(r.top+r.height/2));
-   const after=horizontal ? x>(r.left+r.width/2) : y>(r.top+r.height/2);
-   if(after)target.after(card);else target.before(card);
+   // In this two-column grid, use the actual drop position within the target:
+   // left half = insert before, right half = insert after. This supports
+   // horizontal moves as well as moving between rows/columns.
+   const after=x >= r.left + r.width/2;
+   const parent=target.parentNode;
+   const reference=after?target.nextElementSibling:target;
+   if((after && reference===card) || (!after && target===card.previousElementSibling))return;
+   if(reference===card || target===card)return;
+   if(after)parent.insertBefore(card,reference);
+   else parent.insertBefore(card,target);
    syncOrder();
  }
  grid.addEventListener('dragstart',e=>e.preventDefault());
