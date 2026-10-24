@@ -1,10 +1,32 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v3";
+const CACHE_NAME = "infojano-v4";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
   "/InfoJano/index.html",
   "/InfoJano/manifest.json",
+  "/InfoJano/app-icons/age.svg",
+  "/InfoJano/app-icons/bmi.svg",
+  "/InfoJano/app-icons/currency-converter.svg",
+  "/InfoJano/app-icons/date-difference.svg",
+  "/InfoJano/app-icons/discount.svg",
+  "/InfoJano/app-icons/emi.svg",
+  "/InfoJano/app-icons/gst-calculator.svg",
+  "/InfoJano/app-icons/image-compressor.svg",
+  "/InfoJano/app-icons/image-resizer.svg",
+  "/InfoJano/app-icons/image-to-pdf.svg",
+  "/InfoJano/app-icons/loan-eligibility.svg",
+  "/InfoJano/app-icons/loan-interest.svg",
+  "/InfoJano/app-icons/number-to-words.svg",
+  "/InfoJano/app-icons/password-generator.svg",
+  "/InfoJano/app-icons/percentage.svg",
+  "/InfoJano/app-icons/percentage-change.svg",
+  "/InfoJano/app-icons/qr-maker.svg",
+  "/InfoJano/app-icons/savings.svg",
+  "/InfoJano/app-icons/text-counter.svg",
+  "/InfoJano/app-icons/time-calculator.svg",
+  "/InfoJano/app-icons/tip-calculator.svg",
+  "/InfoJano/app-icons/unit-converter.svg",
   "/InfoJano/icon-192.png",
   "/InfoJano/icon-512.png",
   "/InfoJano/age.html",
