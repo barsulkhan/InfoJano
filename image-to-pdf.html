@@ -29,7 +29,7 @@
 #reorderHint .ij-drag-demo{display:flex;align-items:center;gap:5px;flex:0 0 auto;font-size:22px}
 #reorderHint .ij-drag-hand{display:inline-block;animation:ijDragMove 1.5s ease-in-out infinite}
 #reorderHint .ij-drag-arrow{display:inline-block;color:#0f766e;font-weight:900;animation:ijArrowMove 1.5s ease-in-out infinite}
-.ij-image-preview-card{position:relative;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.ij-image-preview-card{position:relative;cursor:grab;touch-action:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
 .ij-image-preview-card:active{cursor:grabbing}
 .ij-image-preview-card.ij-dragging{opacity:.45;border:2px dashed #2563eb;transform:scale(.97);pointer-events:none;z-index:5}
 .ij-image-preview-card.ij-drop-target{border:2px solid #0f766e;box-shadow:0 0 0 3px #99f6e4}
@@ -153,25 +153,40 @@ function buildPdf(pages){const enc=new TextEncoder(),out=[];let len=0,offs=[0];c
    syncOrder();
  }
  grid.addEventListener('dragstart',e=>e.preventDefault());
+ // Android Chrome otherwise opens its image/page context menu on a long press.
+ grid.addEventListener('contextmenu',e=>{
+   if(e.target.closest('.ij-image-preview-card'))e.preventDefault();
+ });
  grid.addEventListener('pointerdown',e=>{
    const card=e.target.closest('.ij-image-preview-card');
-   if(!card || e.button!==0)return;
+   if(!card || (e.pointerType==='mouse' && e.button!==0))return;
    if(e.target.closest('a,button,input,select,textarea'))return;
-   pointerId=e.pointerId;startX=e.clientX;startY=e.clientY;pointerDragging=false;dragged=card;
-   longPressTimer=setTimeout(()=>{
-     if(pointerId!==e.pointerId)return;
-     pointerDragging=true;
+   clearTimeout(longPressTimer);
+   pointerId=e.pointerId;startX=e.clientX;startY=e.clientY;dragged=card;lastTarget=null;
+   // Touch starts dragging immediately, like dragging a file with a mouse.
+   // This avoids Android's long-press menu and the old delay that cancelled touch moves.
+   pointerDragging=e.pointerType!=='mouse';
+   if(pointerDragging){
+     e.preventDefault();
      dragged.classList.add('ij-dragging');
      try{grid.setPointerCapture(pointerId)}catch(_){}
      status.textContent='Dragging image to change PDF page order…';
-   },e.pointerType==='mouse'?120:260);
+   }else{
+     pointerDragging=false;
+     longPressTimer=setTimeout(()=>{
+       if(pointerId!==e.pointerId)return;
+       pointerDragging=true;
+       dragged.classList.add('ij-dragging');
+       try{grid.setPointerCapture(pointerId)}catch(_){}
+       status.textContent='Dragging image to change PDF page order…';
+     },120);
+   }
  });
  grid.addEventListener('pointermove',e=>{
    if(pointerId!==e.pointerId||!dragged)return;
    if(!pointerDragging){
      if(Math.abs(e.clientX-startX)>10||Math.abs(e.clientY-startY)>10){
        clearTimeout(longPressTimer);
-       // For mouse, start drag as soon as the user moves; touch requires a deliberate long press.
        if(e.pointerType==='mouse'){
          pointerDragging=true;dragged.classList.add('ij-dragging');
          try{grid.setPointerCapture(pointerId)}catch(_){}
