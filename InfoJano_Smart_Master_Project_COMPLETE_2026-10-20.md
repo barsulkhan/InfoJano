@@ -524,3 +524,10 @@ Use the current repository as source of truth if the inventory changes.
 - Added Open Graph image, Open Graph image alt text, and Twitter image metadata to `bmi.html`, `percentage.html`, and `discount.html`; switched their Twitter card to `summary_large_image`.
 - Reused existing `icon-512.png` to avoid adding unapproved new assets. This is a basic square preview, not a custom 1200×630 social banner.
 - No calculator logic or page layout changed. Sitemap/robots left untouched pending the scheduled Search Console review.
+
+
+## 2026-10-24 — Social metadata rollout batch 3
+- Verified deployment #560 succeeded for commit `417e95b3e2d7dd5c103250724e0e6cdbb5646261`.
+- Added `og:image`, `og:image:alt`, and `twitter:image` plus `summary_large_image` cards to `currency-converter.html`, `gst-calculator.html`, `image-compressor.html`, `image-resizer.html`, `loan-eligibility.html`, `loan-interest.html`, and `number-to-words.html`.
+- Reused existing `icon-512.png`; no calculator/tool logic, layout, sitemap, or robots files changed.
+- Additional pages remain in the social metadata audit; Aadhaar/ID Card Studio remains excluded/on hold.
