@@ -511,3 +511,9 @@ Use the current repository as source of truth if the inventory changes.
 - Spot-checked Age, BMI, Image to PDF, Image Resizer and QR Maker page metadata: each has a page-specific title, meta description, canonical URL and an individual web app manifest link.
 - GitHub Pages deployment #554 for commit `e8611185853058fbbd311cbf208fe17f8b4e6486` completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/40082932818
 - No website code was changed during this audit. These are repository/source checks; they do not replace a real Android install/offline test or an external live HTTP response check. Preserve the user's confirmed mobile image-to-PDF reorder behavior and keep the Aadhaar print-preview issue on hold.
+
+
+## 2026-10-24 — Social sharing metadata improvement
+- Found that the homepage and sampled standalone tool pages had Open Graph title/description metadata but no `og:image`, reducing the chance of a branded preview when links are shared.
+- Added the existing site icon at `https://barsulkhan.github.io/InfoJano/icon-512.png` as `og:image` plus descriptive `og:image:alt` on `index.html`, `age.html`, and `image-to-pdf.html`. Set the homepage Twitter card to `summary_large_image`.
+- This is a targeted improvement only; other standalone pages still need the same social-preview audit. No sitemap or robots files changed. Verify the resulting Pages deployment before treating changes as live.
