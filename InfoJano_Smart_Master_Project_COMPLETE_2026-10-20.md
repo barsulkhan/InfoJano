@@ -606,3 +606,8 @@ Use the current repository as source of truth if the inventory changes.
 ## 2026-10-24 — CI validation refinement
 - The first new validation run caught a counting assumption rather than a product defect: the repository also contains a Google Search Console verification HTML file. Adjusted the checker to exclude that non-tool file from the 23 tool-page count.
 - Expanded checks to confirm the service worker precaches every tool page, all 23 SVG icons, and all 22 per-tool manifests. This helps catch offline-install regressions before an APK release.
+
+
+## 2026-10-24 — APK validation parser correction
+- The validation check exposed a parser issue in the checker itself: the YAML indentation around the heredoc terminator meant the parser counted later workflow lines as APK targets. Corrected target extraction to select only five-field tool matrix rows (four pipe separators), rather than assuming a particular closing-marker indentation.
+- No tool page or calculator behavior was changed by this checker fix. Re-run the workflow to verify the corrected check and produce the complete 23-APK package.
