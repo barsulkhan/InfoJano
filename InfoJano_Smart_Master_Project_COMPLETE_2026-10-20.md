@@ -601,3 +601,8 @@ Use the current repository as source of truth if the inventory changes.
 - Added CI validation to the APK workflow: parse all SVGs as XML, validate the 22 web manifests as JSON, check matching tool pages/start URLs/scopes/icon paths and installer-script links, and ensure the APK matrix covers all 23 HTML tool pages exactly once.
 - Added a post-build assertion that exactly 23 APKs exist, including Age Calculator and the correctly named ID Card Print Studio APK. Future icon/manifest/APK-list drift should fail before publication rather than silently shipping an incomplete set.
 - The workflow will need to finish successfully and its resulting ZIP be inspected before the corrected release is considered complete.
+
+
+## 2026-10-24 — CI validation refinement
+- The first new validation run caught a counting assumption rather than a product defect: the repository also contains a Google Search Console verification HTML file. Adjusted the checker to exclude that non-tool file from the 23 tool-page count.
+- Expanded checks to confirm the service worker precaches every tool page, all 23 SVG icons, and all 22 per-tool manifests. This helps catch offline-install regressions before an APK release.
