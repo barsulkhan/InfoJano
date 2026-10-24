@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'android/**'
+      - 'app-icons/**'
       - '.github/workflows/build-tool-apks.yml'
 
 permissions:
@@ -29,8 +30,8 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Install icon generator
-        run: python -m pip install --user pillow
+      - name: Install icon tools
+        run: python -m pip install --user pillow cairosvg
 
       - name: Build one APK for each remaining tool
         working-directory: android
@@ -38,29 +39,34 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist app/src/main/res/drawable-nodpi
-          while IFS='|' read -r tool_id tool_name page icon_text; do
+          while IFS='|' read -r tool_id tool_name page icon_text icon_file; do
             [ -z "$tool_id" ] && continue
             echo "::group::Building $tool_name"
-            python - "$tool_name" "$icon_text" <<'PY'
+            python - "$tool_name" "$icon_text" "$icon_file" <<'PY'
           from PIL import Image, ImageDraw, ImageFont
-          import hashlib, sys
-          name, letters = sys.argv[1], sys.argv[2]
-          digest = hashlib.sha256(name.encode()).digest()
-          palette = [(37,99,235),(2,132,199),(13,148,136),(124,58,237),(217,119,6),(219,39,119),(22,163,74),(79,70,229)]
-          bg = palette[digest[0] % len(palette)]
-          im = Image.new("RGBA", (512,512), (0,0,0,0))
-          d = ImageDraw.Draw(im)
-          d.rounded_rectangle((18,18,494,494), radius=112, fill=bg)
-          d.ellipse((90,90,422,422), fill=(255,255,255,245))
-          try:
-              font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 112 if len(letters)<=3 else 88)
-          except OSError:
-              font = ImageFont.load_default()
-          box = d.textbbox((0,0), letters, font=font)
-          x=(512-(box[2]-box[0]))/2-box[0]
-          y=(512-(box[3]-box[1]))/2-box[1]-8
-          d.text((x,y), letters, font=font, fill=bg)
-          im.save("app/src/main/res/drawable-nodpi/tool_icon.png")
+          import cairosvg, hashlib, os, sys
+          name, letters, icon_file = sys.argv[1], sys.argv[2], sys.argv[3]
+          target = "app/src/main/res/drawable-nodpi/tool_icon.png"
+          svg_path = os.path.join("..", "app-icons", icon_file) if icon_file else ""
+          if svg_path and os.path.isfile(svg_path):
+              cairosvg.svg2png(url=svg_path, write_to=target, output_width=512, output_height=512)
+          else:
+              digest = hashlib.sha256(name.encode()).digest()
+              palette = [(37,99,235),(2,132,199),(13,148,136),(124,58,237),(217,119,6),(219,39,119),(22,163,74),(79,70,229)]
+              bg = palette[digest[0] % len(palette)]
+              im = Image.new("RGBA", (512,512), (0,0,0,0))
+              d = ImageDraw.Draw(im)
+              d.rounded_rectangle((18,18,494,494), radius=112, fill=bg)
+              d.ellipse((90,90,422,422), fill=(255,255,255,245))
+              try:
+                  font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 112 if len(letters)<=3 else 88)
+              except OSError:
+                  font = ImageFont.load_default()
+              box = d.textbbox((0,0), letters, font=font)
+              x=(512-(box[2]-box[0]))/2-box[0]
+              y=(512-(box[3]-box[1]))/2-box[1]-8
+              d.text((x,y), letters, font=font, fill=bg)
+              im.save(target)
           PY
             gradle --no-daemon assembleDebug \
               -PtoolId="$tool_id" \
@@ -71,28 +77,28 @@ jobs:
             echo "Built $filename"
             echo "::endgroup::"
           done <<'TOOLS'
-          bmi|BMI Calculator|bmi.html|BMI
-          currencyconverter|Currency Converter|currency-converter.html|FX
-          datedifference|Date Difference Calculator|date-difference.html|DATE
-          discount|Discount Calculator|discount.html|DISC
-          emi|EMI Calculator|emi.html|EMI
-          gstcalculator|GST Calculator|gst-calculator.html|GST
-          imagecompressor|Image Compressor|image-compressor.html|IMG
-          imageresizer|Image Resizer|image-resizer.html|SIZE
-          imagetopdf|Image to PDF|image-to-pdf.html|PDF
-          loaneligibility|Loan Eligibility Calculator|loan-eligibility.html|LOAN
-          loaninterest|Loan Interest Calculator|loan-interest.html|INT
-          numbertowords|Number to Words|number-to-words.html|123
-          passwordgenerator|Password Generator|password-generator.html|PASS
-          percentage|Percentage Calculator|percentage.html|PCT
-          percentagechange|Percentage Change Calculator|percentage-change.html|CHG
-          qrmaker|QR Code Maker|qr-maker.html|QR
-          savings|Savings Calculator|savings.html|SAVE
-          textcounter|Text Counter|text-counter.html|TXT
-          timecalculator|Time Calculator|time-calculator.html|TIME
-          tipcalculator|Tip Calculator|tip-calculator.html|TIP
-          unitconverter|Unit Converter|unit-converter.html|UNIT
-          ayushmancardstudio|Ayushman Bharat Card Studio|id-card-print-studio.html|AYUSH
+          bmi|BMI Calculator|bmi.html|BMI|bmi.svg
+          currencyconverter|Currency Converter|currency-converter.html|FX|currency-converter.svg
+          datedifference|Date Difference Calculator|date-difference.html|DATE|date-difference.svg
+          discount|Discount Calculator|discount.html|DISC|discount.svg
+          emi|EMI Calculator|emi.html|EMI|emi.svg
+          gstcalculator|GST Calculator|gst-calculator.html|GST|gst-calculator.svg
+          imagecompressor|Image Compressor|image-compressor.html|IMG|image-compressor.svg
+          imageresizer|Image Resizer|image-resizer.html|SIZE|image-resizer.svg
+          imagetopdf|Image to PDF|image-to-pdf.html|PDF|image-to-pdf.svg
+          loaneligibility|Loan Eligibility Calculator|loan-eligibility.html|LOAN|loan-eligibility.svg
+          loaninterest|Loan Interest Calculator|loan-interest.html|INT|loan-interest.svg
+          numbertowords|Number to Words|number-to-words.html|123|number-to-words.svg
+          passwordgenerator|Password Generator|password-generator.html|PASS|password-generator.svg
+          percentage|Percentage Calculator|percentage.html|PCT|percentage.svg
+          percentagechange|Percentage Change Calculator|percentage-change.html|CHG|percentage-change.svg
+          qrmaker|QR Code Maker|qr-maker.html|QR|qr-maker.svg
+          savings|Savings Calculator|savings.html|SAVE|savings.svg
+          textcounter|Text Counter|text-counter.html|TXT|text-counter.svg
+          timecalculator|Time Calculator|time-calculator.html|TIME|time-calculator.svg
+          tipcalculator|Tip Calculator|tip-calculator.html|TIP|tip-calculator.svg
+          unitconverter|Unit Converter|unit-converter.html|UNIT|unit-converter.svg
+          ayushmancardstudio|Ayushman Bharat Card Studio|id-card-print-studio.html|AYUSH|id-card-print-studio.svg
           TOOLS
 
       - name: Upload APK files as workflow artifact
@@ -110,8 +116,8 @@ jobs:
           name: InfoJano Tool Apps v1.1.0
           body: |
             InfoJano individual tool apps v1.1.0.
-            Updated app identity to avoid conflicts with earlier test installs.
-            Each app opens its matching tool page directly. These debug-signed builds require internet access.
+            Each app uses its matching dedicated InfoJano icon and opens its matching tool page directly.
+            These debug-signed builds require internet access.
           draft: false
           prerelease: true
           overwrite_files: true
