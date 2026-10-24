@@ -120,82 +120,82 @@ function buildPdf(pages){const enc=new TextEncoder(),out=[];let len=0,offs=[0];c
 </script>
 
 <script>
-/* InfoJano image-to-PDF preview ordering: mouse drag + touch/pen long-press drag. */
+/* InfoJano image-to-PDF preview ordering: unified pointer drag for mouse, touch and pen. */
 (function(){
  const grid=document.getElementById('preview');
  if(!grid)return;
- let dragged=null,pointerId=null,startX=0,startY=0,longPressTimer=null,pointerDragging=false;
+ let dragged=null,pointerId=null,startX=0,startY=0,longPressTimer=null,pointerDragging=false,lastTarget=null;
  function cards(){return Array.from(grid.querySelectorAll('.ij-image-preview-card'))}
  function syncOrder(){
    const nodes=cards();
-   nodes.forEach((card,index)=>{card._ijFile=card._ijFile||selected[Number(card.dataset.fileIndex)];card.dataset.fileIndex=String(index);const badge=card.querySelector('.ij-order-badge');if(badge)badge.textContent=String(index+1);});
+   nodes.forEach((card,index)=>{
+     const badge=card.querySelector('.ij-order-badge');
+     if(badge)badge.textContent=String(index+1);
+     card.dataset.fileIndex=String(index);
+   });
    selected=nodes.map(card=>card._ijFile).filter(Boolean);
    status.textContent=selected.length+' image(s) selected. PDF page order updated.';
    download.hidden=true;
  }
- function moveBefore(card,target,after){
+ function moveRelative(card,target,x,y){
    if(!card||!target||card===target)return;
+   const r=target.getBoundingClientRect();
+   const horizontal=Math.abs(x-(r.left+r.width/2)) > Math.abs(y-(r.top+r.height/2));
+   const after=horizontal ? x>(r.left+r.width/2) : y>(r.top+r.height/2);
    if(after)target.after(card);else target.before(card);
-   cards().forEach(c=>c.classList.remove('ij-drop-target'));
    syncOrder();
  }
- grid.addEventListener('dragstart',e=>{
-   const card=e.target.closest('.ij-image-preview-card');if(!card)return;
-   dragged=card;card.classList.add('ij-dragging');
-   if(e.dataTransfer){e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',card.dataset.fileIndex||'0');}
- });
- grid.addEventListener('dragover',e=>{
-   if(!dragged)return;e.preventDefault();
-   const target=e.target.closest('.ij-image-preview-card');if(!target||target===dragged)return;
-   cards().forEach(c=>c.classList.toggle('ij-drop-target',c===target));
- });
- grid.addEventListener('drop',e=>{
-   if(!dragged)return;e.preventDefault();
-   const target=e.target.closest('.ij-image-preview-card');
-   if(target&&target!==dragged){
-     const r=target.getBoundingClientRect();
-     const after=(e.clientY-r.top)>r.height/2;
-     moveBefore(dragged,target,after);
-   }
- });
- grid.addEventListener('dragend',()=>{
-   if(dragged)dragged.classList.remove('ij-dragging');
-   dragged=null;cards().forEach(c=>c.classList.remove('ij-drop-target'));
- });
+ grid.addEventListener('dragstart',e=>e.preventDefault());
  grid.addEventListener('pointerdown',e=>{
-   const card=e.target.closest('.ij-image-preview-card');if(!card||e.pointerType==='mouse')return;
-   pointerId=e.pointerId;startX=e.clientX;startY=e.clientY;pointerDragging=false;
+   const card=e.target.closest('.ij-image-preview-card');
+   if(!card || e.button!==0)return;
+   if(e.target.closest('a,button,input,select,textarea'))return;
+   pointerId=e.pointerId;startX=e.clientX;startY=e.clientY;pointerDragging=false;dragged=card;
    longPressTimer=setTimeout(()=>{
-     pointerDragging=true;dragged=card;card.classList.add('ij-dragging');
-     try{card.setPointerCapture(pointerId)}catch(_){}
-   },280);
+     if(pointerId!==e.pointerId)return;
+     pointerDragging=true;
+     dragged.classList.add('ij-dragging');
+     try{grid.setPointerCapture(pointerId)}catch(_){}
+     status.textContent='Dragging image to change PDF page order…';
+   },e.pointerType==='mouse'?120:260);
  });
  grid.addEventListener('pointermove',e=>{
-   if(pointerId!==e.pointerId)return;
-   if(!pointerDragging&&(Math.abs(e.clientX-startX)>12||Math.abs(e.clientY-startY)>12)){clearTimeout(longPressTimer);return;}
-   if(!pointerDragging)return;
+   if(pointerId!==e.pointerId||!dragged)return;
+   if(!pointerDragging){
+     if(Math.abs(e.clientX-startX)>10||Math.abs(e.clientY-startY)>10){
+       clearTimeout(longPressTimer);
+       // For mouse, start drag as soon as the user moves; touch requires a deliberate long press.
+       if(e.pointerType==='mouse'){
+         pointerDragging=true;dragged.classList.add('ij-dragging');
+         try{grid.setPointerCapture(pointerId)}catch(_){}
+       }else return;
+     }else return;
+   }
    e.preventDefault();
    const under=document.elementFromPoint(e.clientX,e.clientY);
-   const target=under&&under.closest('.ij-image-preview-card');
-   if(target&&target!==dragged){
-     const r=target.getBoundingClientRect();
-     const after=(e.clientY-r.top)>r.height/2;
-     moveBefore(dragged,target,after);
-   }
+   const target=under&&under.closest('#preview .ij-image-preview-card');
+   cards().forEach(c=>c.classList.toggle('ij-drop-target',c===target&&c!==dragged));
+   if(target&&target!==dragged&&target!==lastTarget){
+     moveRelative(dragged,target,e.clientX,e.clientY);
+     lastTarget=target;
+   }else if(target!==lastTarget){lastTarget=target;}
  });
- function endPointer(e){
-   if(pointerId!==null&&e.pointerId!==pointerId)return;
+ function finish(e){
+   if(pointerId===null||(e&&e.pointerId!==pointerId))return;
    clearTimeout(longPressTimer);
    if(dragged)dragged.classList.remove('ij-dragging');
-   dragged=null;pointerId=null;pointerDragging=false;
    cards().forEach(c=>c.classList.remove('ij-drop-target'));
+   const didDrag=pointerDragging;
+   dragged=null;pointerId=null;pointerDragging=false;lastTarget=null;
+   if(didDrag)syncOrder();
  }
- grid.addEventListener('pointerup',endPointer);
- grid.addEventListener('pointercancel',endPointer);
+ grid.addEventListener('pointerup',finish);
+ grid.addEventListener('pointercancel',finish);
  const observer=new MutationObserver(()=>{
    cards().forEach((card,index)=>{
-     card.draggable=true;
-     card._ijFile=selected[index]||card._ijFile;
+     // Keep each file attached to its card, even after the DOM order changes.
+     if(!card._ijFile && selected[index])card._ijFile=selected[index];
+     card.draggable=false;
      if(!card.querySelector('.ij-order-badge')){
        const badge=document.createElement('span');badge.className='ij-order-badge';badge.setAttribute('aria-hidden','true');card.appendChild(badge);
        const grab=document.createElement('div');grab.className='ij-grab-label';grab.textContent='↕ Hold & drag to reorder';card.appendChild(grab);
