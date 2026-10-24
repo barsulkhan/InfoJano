@@ -441,3 +441,13 @@ Use the current repository as source of truth if the inventory changes.
 - The homepage has navigation, a footer, tool search, and JSON-LD structured data.
 - This is a source-code audit, not a full device/browser accessibility test. Real mobile behavior and Google Search Console sitemap acceptance still need live/account-side confirmation.
 - Current state remains stable; avoid unnecessary changes to the working Image-to-PDF touch drag implementation.
+
+
+## 2026-10-24 — Follow-up: Search Console screenshots
+- User resubmitted `https://barsulkhan.github.io/InfoJano/sitemap.xml`; Search Console displayed the green “Sitemap submitted successfully” toast, but the sitemap row still showed `Couldn't fetch` and the detail page showed “Sitemap could not be read”, with 0 discovered pages and 0 videos. The `sitemap.txt` row also still showed `Couldn't fetch`.
+- User-provided Chrome screenshot again confirms the XML sitemap renders in the browser and contains 24 `<loc>` entries (homepage plus 23 tool URLs). The browser's “This XML file does not appear to have any style information associated with it” notice is normal XML display text, not a sitemap error.
+- User-provided Search Console HTTPS report (last updated 23 Oct 2026) shows 21 HTTPS URLs and 0 non-HTTPS URLs, with no critical issues in that report.
+- User-provided Page indexing report (last updated 16 Oct 2026) shows 18 indexed pages and 0 in the summary's Not indexed card; below it, one `Crawled - currently not indexed` row appears with validation “Started”. Preserve this exact distinction; the screenshot does not establish that every sitemap URL is indexed.
+- GitHub source recheck confirms `sitemap.xml` has 24 URLs and is well-formed-looking, `robots.txt` allows crawling and references the XML sitemap, and the latest Pages deployment workflow #547 completed successfully (run: https://github.com/barsulkhan/InfoJano/actions/runs/40081117146).
+- Diagnosis remains unresolved: public browser rendering and successful Pages deployment do not prove Google's fetcher receives/parses the sitemap. No sitemap files were changed in this review. Do not repeatedly resubmit or edit blindly.
+- Next diagnostic step: inspect any detailed error available in Search Console's sitemap report and check URL Inspection for the sitemap URL if useful; URL Inspection may not provide a meaningful sitemap-fetch diagnostic. If no detailed message is exposed, investigate the public response/headers and Google fetchability using independent checks before changing files. Do not claim that URL Inspection can definitively diagnose sitemap parsing.
