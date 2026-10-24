@@ -493,3 +493,11 @@ Use the current repository as source of truth if the inventory changes.
 - Exact set comparison: all 24 public user-facing HTML pages are included; the Google verification HTML is correctly excluded; no missing URLs, extra URLs, or duplicate URLs were found. This validates repository-side structure and coverage, not the HTTP response headers or Google Search Console's ability to fetch/parse the live file.
 - Current latest GitHub Pages workflow was checked through the GitHub API: run #552 completed with conclusion `success` for commit `8d60ecfea7803d400587448ddbfa3b9ca9ca2f8c`. Run: https://github.com/barsulkhan/InfoJano/actions/runs/40082633724
 - No website code, sitemap, or robots file was changed during this audit. Keep the Google-side `Couldn't fetch` issue marked unresolved. Next useful step remains an external HTTP status/`Content-Type` check or a new Search Console report check after Google's retry interval; do not edit sitemap files without a concrete failure.
+
+
+## 2026-10-24 — PWA offline-cache integrity review
+- Checked the current root `manifest.json`: the app ID, start URL, and scope consistently use the GitHub Pages base path `/InfoJano/`; root PNG icon paths are present in the repository.
+- Checked the current `sw.js`: cache version is `infojano-v5`; the precache list contains 74 paths. Compared the list with the complete GitHub repository tree and found **zero missing precache assets**.
+- Found 23 standalone SVG app/tool icons and 22 individual web manifests. The only icon without a corresponding per-tool manifest is `app-icons/id-card-print-studio.svg`. Do not add a manifest or alter that page in this pass because the ID Card Studio workflows are explicitly on hold; the SVG itself exists and is included in the service-worker cache.
+- The PWA source-level path/cache audit passed. This does not replace a real Android install/offline test. No app code was changed during this check.
+- User instruction on 2026-10-24: continue other InfoJano work and defer the Google Search Console sitemap issue for two days. A follow-up check is scheduled for 2026-10-26; do not change sitemap files before concrete evidence.
