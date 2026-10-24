@@ -517,3 +517,10 @@ Use the current repository as source of truth if the inventory changes.
 - Found that the homepage and sampled standalone tool pages had Open Graph title/description metadata but no `og:image`, reducing the chance of a branded preview when links are shared.
 - Added the existing site icon at `https://barsulkhan.github.io/InfoJano/icon-512.png` as `og:image` plus descriptive `og:image:alt` on `index.html`, `age.html`, and `image-to-pdf.html`. Set the homepage Twitter card to `summary_large_image`.
 - This is a targeted improvement only; other standalone pages still need the same social-preview audit. No sitemap or robots files changed. Verify the resulting Pages deployment before treating changes as live.
+
+
+## 2026-10-24 — Social metadata rollout batch 2
+- Confirmed Pages deployment run #559 for commit `099001fb7ba1dae3a416923307f0772164aa53c2` completed successfully.
+- Added Open Graph image, Open Graph image alt text, and Twitter image metadata to `bmi.html`, `percentage.html`, and `discount.html`; switched their Twitter card to `summary_large_image`.
+- Reused existing `icon-512.png` to avoid adding unapproved new assets. This is a basic square preview, not a custom 1200×630 social banner.
+- No calculator logic or page layout changed. Sitemap/robots left untouched pending the scheduled Search Console review.
