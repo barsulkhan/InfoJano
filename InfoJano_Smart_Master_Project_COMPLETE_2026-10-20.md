@@ -411,3 +411,12 @@ Use the current repository as source of truth if the inventory changes.
 - Deployment run for the latest commit: https://github.com/barsulkhan/InfoJano/actions/runs/40064493491 (queued at the time of this note).
 - Sitemap audit: 25 root HTML files exist including the Google Search Console verification HTML; sitemap.xml lists 24 user-facing URLs and excludes the verification token page, as intended. All user-facing HTML pages are represented.
 - Next: verify latest Pages deployment success, then test image reorder on the live site: left-to-right, right-to-left, last-to-first, and PDF output order. After that resume Search Console sitemap fetch troubleshooting. Preserve all existing files and user-approved design.
+
+## 2026-10-24 continuation — mobile Image-to-PDF drag and sitemap audit
+- User confirmed the mobile Image to PDF drag-and-drop interaction now works well.
+- Commit `fe5dffd6fb1deb146f95c3af0741a1230a3e2d0f` updates `image-to-pdf.html`: touch drag starts immediately on touch devices, preview-card context menus are prevented, and `-webkit-touch-callout:none` is applied to preview cards. Desktop mouse dragging remains supported.
+- GitHub Pages workflow run #543 completed with conclusion `success`: https://github.com/barsulkhan/InfoJano/actions/runs/40080073320
+- Live tool URL: https://barsulkhan.github.io/InfoJano/image-to-pdf.html
+- Sitemap audit: `robots.txt` allows crawling and points to `https://barsulkhan.github.io/InfoJano/sitemap.xml`. Both `sitemap.xml` and `sitemap.txt` currently list the 24 public site URLs (homepage plus 23 tool pages). The Google Search Console verification HTML file is intentionally excluded.
+- Remaining SEO follow-up: Search Console previously showed sitemap fetch errors / zero discovered pages. The repository files are structurally populated and `robots.txt` points to the XML sitemap, but this audit did not access the Search Console account and therefore does not establish that Google has accepted or processed the sitemap. Recheck Search Console after recrawl; do not claim indexing until verified.
+- Current priority: preserve the confirmed mobile drag fix; next review homepage links/SEO coverage and continue investigating Search Console sitemap status without changing working features unnecessarily.
