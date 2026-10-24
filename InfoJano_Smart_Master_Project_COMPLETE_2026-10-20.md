@@ -549,3 +549,10 @@ Use the current repository as source of truth if the inventory changes.
 - Verified deployment #563 succeeded for commit `99fa409de9387222fa3b1bd87da0bdcedb511d02` (date-difference page description and social metadata update).
 - A follow-up source audit found `age.html` and `image-to-pdf.html` had Open Graph images but were still using the small Twitter summary card without `twitter:image`. Added the existing site icon as `twitter:image` and switched both to `summary_large_image` for consistent sharing previews.
 - No tool logic, visible layout, sitemap, robots, or ID Card Studio code changed.
+
+
+## 2026-10-24 — SEO description refinement batch
+- Reviewed titles, meta descriptions, canonical URLs, H1 headings, and social preview tags across the 24 public HTML pages. Existing titles and canonical URLs were generally present; several tool descriptions were too short or did not explain the tool’s purpose clearly.
+- Rewrote meta descriptions and aligned Open Graph/Twitter descriptions for `age.html`, `currency-converter.html`, `discount.html`, `emi.html`, `gst-calculator.html`, `image-resizer.html`, `loan-eligibility.html`, `loan-interest.html`, `number-to-words.html`, `password-generator.html`, and `percentage.html`.
+- Wording is specific to each tool and avoids claiming live exchange-rate feeds; currency conversion is described as using a rate the user enters. Password-generator wording is limited to browser-side generation based on the page’s intended local behavior.
+- No calculator logic, visible layout, canonical URLs, sitemap, robots.txt, or ID Card Studio code changed. Deployment and Google indexing/ranking are not guaranteed by metadata edits.
