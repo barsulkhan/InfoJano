@@ -181,18 +181,34 @@ function buildPdf(pages){const enc=new TextEncoder(),out=[];let len=0,offs=[0];c
    e.preventDefault();
    const under=document.elementFromPoint(e.clientX,e.clientY);
    const target=under&&under.closest('#preview .ij-image-preview-card');
+   // Do not reshuffle cards while the pointer moves. Keep the original layout
+   // stable and show the intended drop target; commit the move only on pointerup.
    cards().forEach(c=>c.classList.toggle('ij-drop-target',c===target&&c!==dragged));
-   if(target&&target!==dragged){
-     moveRelative(dragged,target,e.clientX,e.clientY);
-     lastTarget=target;
-   }else if(target!==lastTarget){lastTarget=target;}
+   lastTarget=target&&target!==dragged?target:null;
  });
  function finish(e){
    if(pointerId===null||(e&&e.pointerId!==pointerId))return;
    clearTimeout(longPressTimer);
-   if(dragged)dragged.classList.remove('ij-dragging');
-   cards().forEach(c=>c.classList.remove('ij-drop-target'));
    const didDrag=pointerDragging;
+   const card=dragged;
+   if(didDrag&&card){
+     const under=document.elementFromPoint(e.clientX,e.clientY);
+     const target=under&&under.closest('#preview .ij-image-preview-card');
+     if(target&&target!==card){
+       const r=target.getBoundingClientRect();
+       // Drop at the actual release point: before/after the target based on
+       // the nearest half of the target card, including left/right moves.
+       const after=e.clientX >= r.left+r.width/2;
+       const parent=target.parentNode;
+       const reference=after?target.nextElementSibling:target;
+       if(reference!==card && target!==card.previousElementSibling){
+         if(after)parent.insertBefore(card,reference);
+         else parent.insertBefore(card,target);
+       }
+     }
+   }
+   if(card)card.classList.remove('ij-dragging');
+   cards().forEach(c=>c.classList.remove('ij-drop-target'));
    dragged=null;pointerId=null;pointerDragging=false;lastTarget=null;
    if(didDrag)syncOrder();
  }
