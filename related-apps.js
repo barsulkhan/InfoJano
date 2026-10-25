@@ -73,9 +73,19 @@
       @media(max-width:360px){#ij-related-apps{padding:16px 12px}#ij-related-apps .ij-related-grid{gap:8px}#ij-related-apps .ij-related-card{padding:11px 9px}}
     `;document.head.appendChild(style);
   }
+  function addHomeReturn(){
+    if(location.pathname.endsWith("/index.html")||location.pathname==="/InfoJano/"||location.pathname==="/InfoJano")return;
+    if(document.getElementById("ij-home-return"))return;
+    const a=document.createElement("a");
+    a.id="ij-home-return";a.href=base+"index.html";a.textContent="← Home";
+    a.setAttribute("aria-label","Back to InfoJano homepage");
+    a.addEventListener("click",e=>{e.preventDefault();location.href=base+"index.html";});
+    document.body.appendChild(a);
+  }
   function render(){
     if(!document.body)return;
     addStyles();
+    addHomeReturn();
     let section=document.getElementById("ij-related-apps");
     if(!section){
       const old=document.querySelector('[aria-labelledby="related-tools-title"]');

@@ -735,3 +735,9 @@ User requested that the next work session implement contextual related-app recom
 - Added stronger desktop-only selectors and !important rules for the main wrapper, hero and tool grid; desktop wrapper is explicitly width calc(100% - 64px), max-width 1600px (1720px on very wide displays), with larger card typography/icons and 5–6 columns.
 - Mobile rules are not changed by this desktop-only hotfix.
 - Committed; wait for Pages deployment and retest. If it remains narrow, investigate browser zoom/old cached HTML and actual viewport rather than applying further blind CSS changes.
+
+## 21. Consistent return-to-home button — 25 October 2026
+- User reported that opening a calculator from the desktop InfoJano app/site lacked a clear way to return to the homepage.
+- Updated shared Related Apps script to inject a fixed, prominent “← Home” button on tool pages (not on the homepage), linking directly to /InfoJano/index.html.
+- Button is styled for desktop and mobile and remains visible while scrolling. Since it is injected by shared install.js -> related-apps.js, pages loading the shared script receive the same behavior.
+- Needs live verification on a representative desktop calculator page after Pages deploys.
