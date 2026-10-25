@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v23";
+const CACHE_NAME = "infojano-v24";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -40,8 +40,6 @@ const ASSETS = [
   "/InfoJano/image-compressor.html",
   "/InfoJano/image-resizer.html",
   "/InfoJano/image-to-pdf.html",
-  "/InfoJano/passport-photo-maker.html",
-  "/InfoJano/pdf-to-jpg.html",
   "/InfoJano/loan-eligibility.html",
   "/InfoJano/loan-interest.html",
   "/InfoJano/number-to-words.html",
