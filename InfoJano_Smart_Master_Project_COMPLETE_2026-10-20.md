@@ -714,3 +714,10 @@ User requested that the next work session implement contextual related-app recom
 - Updated Related Apps to use each tool's dedicated SVG icon rather than emoji glyphs. Desktop visitors are directed to Windows installer assets; Android visitors retain APK links.
 - Workflow is triggered by desktop packaging changes and can also be manually run. Its first build/release must succeed before Windows download links are confirmed live.
 - Actual Windows installer testing is pending; do not claim that all installers are built or tested until the GitHub Actions run completes successfully.
+
+## 18. Windows desktop app build — 25 October 2026
+- User correctly pointed out that desktop visitors should not be offered Android APK downloads. The Related Apps area should show a Windows desktop download on desktop browsers and Android APK download on Android/mobile browsers.
+- Added `desktop-app/` Electron wrapper that opens the live InfoJano portal in a dedicated Windows window, with context isolation, Node integration disabled, sandboxing, and external links sent to the default browser.
+- Added GitHub Actions workflow `.github/workflows/build-desktop-app.yml` to build and verify a Windows Setup EXE and portable EXE, then publish them to release tag `infojano-desktop-apps-v1.0.0`.
+- Updated `related-apps.js` so desktop browsers request `InfoJano-Setup-1.0.0.exe` and mobile browsers continue to request the corresponding APK.
+- Critical release gate: do not claim Windows app exists or is tested until the workflow succeeds and both release assets are verified. The app is a web wrapper and requires internet; it is not an offline/native rewrite of all tools.

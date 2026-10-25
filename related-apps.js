@@ -90,7 +90,7 @@
     apps.filter(a=>a.id!==current.id&&!order.includes(a.id)).forEach(a=>order.push(a.id));
     const selected=order.map(id=>apps.find(a=>a.id===id)).filter(Boolean).filter(a=>a.id!==current.id).slice(0,4);
     selected.forEach(a=>{
-      const link=document.createElement("a");link.className="ij-related-card";link.href=base+a.page;link.setAttribute("aria-label",a.name+" details and APK download");
+      const link=document.createElement("a");link.className="ij-related-card";link.href=base+a.page;link.setAttribute("aria-label",a.name+" details and device app download");
       const icon=document.createElement("span");icon.className="ij-related-icon";icon.setAttribute("aria-hidden","true");const iconImg=document.createElement("img");iconImg.src=base+"app-icons/"+a.icon;iconImg.alt="";iconImg.width=36;iconImg.height=36;iconImg.loading="eager";icon.appendChild(iconImg);
       const name=document.createElement("span");name.className="ij-related-name";name.textContent=a.name;
       const desc=document.createElement("span");desc.className="ij-related-desc";desc.textContent=a.desc;
