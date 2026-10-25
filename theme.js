@@ -54,12 +54,6 @@
     main h1,main h2,main h3{white-space:normal!important}
     main section,main article,main .card,main .result,main form{width:100%;min-width:0;box-sizing:border-box;overflow-wrap:anywhere}
     main input,main select,main textarea,main button{max-width:100%;box-sizing:border-box}
-    /* Homepage search row: keep input and Go button side-by-side. */
-    main .search{display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:8px!important;width:100%!important;max-width:100%!important}
-    main .search input{display:block!important;flex:1 1 0!important;width:1px!important;min-width:0!important;max-width:none!important}
-    main .search button{display:block!important;flex:0 0 auto!important;width:auto!important;min-width:64px!important;max-width:120px!important}
-    @media(max-width:520px){main .search button{min-width:58px!important;padding-left:14px!important;padding-right:14px!important}}
-
     main table{display:block;max-width:100%;overflow-x:auto}
     #ij-related-apps{width:100%;max-width:100%;box-sizing:border-box;overflow:hidden}
 

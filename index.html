@@ -293,6 +293,13 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   #toolGrid h3 { font-size: 20px !important; }
   #toolGrid p { font-size: 15px !important; }
 }
+
+/* Desktop and mobile homepage search layout correction */
+.search{display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:8px!important;width:100%!important;min-width:0!important}
+.search input{display:block!important;flex:1 1 0%!important;width:0!important;min-width:0!important;max-width:none!important;box-sizing:border-box!important;background:#fff!important;color:#172033!important;padding:13px 14px!important;border:1px solid #dce3ed!important;border-radius:13px!important}
+.search input::placeholder{color:#687386!important;opacity:1}
+.search button,.search .primary{display:block!important;flex:0 0 auto!important;width:auto!important;min-width:76px!important;max-width:120px!important;white-space:nowrap!important}
+@media(max-width:700px){.search input{flex:1 1 0%!important;width:0!important}.search button,.search .primary{min-width:62px!important}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}

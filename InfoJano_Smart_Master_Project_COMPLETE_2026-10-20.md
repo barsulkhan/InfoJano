@@ -759,9 +759,3 @@ User requested that the next work session implement contextual related-app recom
 - Corrected the shared theme insertion point directly: the prior attempted containment rule had not landed in the active style template.
 - Shared theme now sets a centered desktop content width up to 1120px with 28px side margins, constrained descendants and wrapping; mobile uses full available width with smaller padding.
 - Requires live deployment and Windows app visual verification. Do not claim user-side visual validation until confirmed.
-
-## 25. Homepage search row regression — 25 October 2026
-- Reviewed user screenshot: homepage loaded, but the search input collapsed to a narrow sliver and the Go button stretched across the row.
-- Cause: broad shared theme rules forced all inputs and buttons inside main to width:100%, overriding the homepage search flex row.
-- Added a targeted exception for `.search`: input flexes to available width and Go button stays compact. Desktop/mobile CSS both covered.
-- Needs live refresh verification after GitHub Pages deploy. Do not claim visual confirmation until user checks or live inspection confirms.
