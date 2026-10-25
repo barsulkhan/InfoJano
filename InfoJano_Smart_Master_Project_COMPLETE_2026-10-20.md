@@ -701,3 +701,9 @@ User requested that the next work session implement contextual related-app recom
 - Adjusted hero, cards, icons, guides and page-link grids at breakpoints to prevent narrow centered content on desktop and excess side gaps on mobile.
 - Existing dedicated SVG icons and tool destinations are preserved; only layout/style rules were changed.
 - Code committed; GitHub Pages deployment and actual-device visual verification are pending.
+
+## 18. Desktop app links must not offer Android APKs — 25 October 2026
+- User correctly noted that desktop visitors should not be offered Android APK downloads in the Related Apps section.
+- Updated `related-apps.js` to detect desktop-sized non-mobile devices. Desktop visitors now see a clearly labeled “Windows app is being prepared” status rather than an Android APK download button. Mobile visitors retain Android APK links.
+- No Windows installer links are shown until the Windows desktop packages are actually built and released; do not invent or expose unverified release URLs.
+- Current repository has no Windows/Electron desktop packaging workflow or Windows installer assets yet. The next required step is to build/test the desktop wrappers and publish verified Windows installers, then replace the temporary desktop status with the real Windows download links.

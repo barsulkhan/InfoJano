@@ -2,6 +2,7 @@
 (()=> {
   const base="/InfoJano/";
   const release="https://github.com/barsulkhan/InfoJano/releases/download/infojano-tool-apps-v1.1.1/";
+  const desktopRelease="https://github.com/barsulkhan/InfoJano/releases/download/infojano-desktop-apps-v1.0.0/";
   const apps=[
     {id:"age",name:"Age Calculator",page:"age.html",apk:"InfoJano-Age-Calculator.apk",icon:"age.svg",desc:"Calculate exact age in years, months and days.",group:"everyday",emoji:"🎂"},
     {id:"bmi",name:"BMI Calculator",page:"bmi.html",apk:"InfoJano-BMI-Calculator.apk",icon:"bmi.svg",desc:"Estimate body mass index from height and weight.",group:"health",emoji:"⚖️"},
@@ -55,6 +56,7 @@
   const path=location.pathname.split("/").pop()||"";
   const current=apps.find(a=>a.page===path);
   if(!current)return;
+  const isDesktop=window.matchMedia("(min-width: 900px)").matches && !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   function addStyles(){
     if(document.getElementById("ij-related-apps-style"))return;
     const style=document.createElement("style");style.id="ij-related-apps-style";
@@ -67,7 +69,7 @@
       #ij-related-apps .ij-related-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#eff6ff;font-size:24px}
       #ij-related-apps .ij-related-name{font-size:14px;line-height:1.35;font-weight:750}
       #ij-related-apps .ij-related-desc{font-size:12px;line-height:1.45;color:#64748b}
-      #ij-related-apps .ij-related-download{display:block;margin-top:auto;padding:9px 8px;border-radius:9px;background:#1458c8;color:#fff;text-align:center;font-size:12px;font-weight:750}
+      #ij-related-apps .ij-related-download{display:block;margin-top:auto;padding:9px 8px;border-radius:9px;background:#1458c8;color:#fff;text-align:center;font-size:12px;font-weight:750}\n      #ij-related-apps .ij-desktop-pending{display:block;margin-top:auto;padding:9px 8px;border-radius:9px;background:#edf2fa;color:#475569;text-align:center;font-size:12px;font-weight:700}
       @media(max-width:360px){#ij-related-apps{padding:16px 12px}#ij-related-apps .ij-related-grid{gap:8px}#ij-related-apps .ij-related-card{padding:11px 9px}}
     `;document.head.appendChild(style);
   }
