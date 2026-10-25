@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de Desconto Online Grátis: Preço Final e Economia | InfoJano</title>
+<meta name="description" content="Calcule a porcentagem de desconto, quanto você economiza e o preço final de uma compra com esta calculadora de desconto online grátis.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/discount-pt-br.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Calculadora de Desconto Online Grátis | InfoJano">
+<meta property="og:description" content="Descubra o valor do desconto, a economia e o preço final de uma compra em segundos.">
+<meta property="og:url" content="https://barsulkhan.github.io/InfoJano/discount-pt-br.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de Desconto Online Grátis | InfoJano">
+<meta name="twitter:description" content="Calcule o desconto e o preço final de uma compra gratuitamente.">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172033;font:16px/1.65 system-ui,-apple-system,Segoe UI,Arial,sans-serif}header{background:#102a56;color:white;padding:26px 18px;text-align:center}header p{color:#d9e5f7;margin:8px auto 0;max-width:650px}main{width:min(100% - 28px,760px);margin:22px auto 40px}.card,section{background:#fff;border:1px solid #e0e7f0;border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 5px 20px #17203308}h1{font-size:clamp(25px,5vw,34px);line-height:1.2;margin:0}h2{font-size:22px;line-height:1.3;margin-top:0}label{display:block;font-weight:650;margin:14px 0 6px}input{width:100%;min-width:0;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font:inherit}button{width:100%;padding:14px;margin-top:18px;border:0;border-radius:10px;background:#1d4ed8;color:white;font:inherit;font-weight:750;cursor:pointer}.result{margin-top:16px;padding:15px;background:#eef4ff;border-radius:12px;overflow-wrap:anywhere}.muted{color:#64748b;font-size:14px}a{color:#1d4ed8}footer{text-align:center;padding:20px;color:#64748b;font-size:14px}@media(max-width:480px){.card,section{padding:20px 18px}}
+</style>
+</head>
+<body>
+<header><h1>Calculadora de Desconto</h1><p>Calcule o desconto, a economia e o preço final da sua compra gratuitamente.</p></header>
+<main>
+<div class="card">
+<h2>Calcular preço com desconto</h2>
+<label for="price">Preço original (R$ ou outra moeda)</label><input id="price" type="number" min="0" step="any" inputmode="decimal" placeholder="Ex.: 100">
+<label for="discount">Desconto (%)</label><input id="discount" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="Ex.: 20">
+<button id="calculate" type="button">Calcular desconto</button>
+<div class="result" id="result" aria-live="polite">Digite o preço e a porcentagem de desconto para ver o resultado.</div>
+<p class="muted">O cálculo é feito neste navegador; os valores não são enviados a um servidor.</p>
+</div>
+<section><h2>Como calcular um desconto?</h2><p>Multiplique o preço original pela porcentagem de desconto e divida por 100. Depois, subtraia o valor economizado do preço original.</p><p><strong>Fórmula:</strong> desconto = preço × porcentagem ÷ 100. Preço final = preço − desconto.</p><p><strong>Exemplo:</strong> um produto de 100 com 20% de desconto tem economia de 20 e preço final de 80.</p></section>
+<section><h2>Perguntas frequentes</h2><h3>Como descubro quanto vou economizar?</h3><p>Informe o preço original e a porcentagem de desconto. A calculadora mostra o valor economizado e o preço final.</p><h3>Posso calcular qualquer porcentagem?</h3><p>Sim, use um desconto de 0 a 100 por cento e informe o preço original.</p><p>Também disponível: <a href="discount.html" lang="en">Discount Calculator in English</a> e <a href="percentage.html" lang="en">Percentage Calculator in English</a>.</p></section>
+</main>
+<footer><a href="./">InfoJano — ferramentas online gratuitas</a></footer>
+<script>
+(function(){const p=document.getElementById('price'),d=document.getElementById('discount'),r=document.getElementById('result');function calc(){const price=Number(p.value),pct=Number(d.value);if(p.value===''||d.value===''||!Number.isFinite(price)||!Number.isFinite(pct)||price<0||pct<0||pct>100){r.textContent='Informe um preço válido e um desconto entre 0 e 100%.';return}const saved=price*pct/100,final=price-saved;const fmt=n=>n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});r.innerHTML='<strong>Você economiza: '+fmt(saved)+'</strong><br>Preço final: <strong>'+fmt(final)+'</strong>'}document.getElementById('calculate').addEventListener('click',calc);[p,d].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calc()}));})();
+</script>
+</body>
+</html>
