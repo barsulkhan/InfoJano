@@ -677,3 +677,11 @@ User requested that the next work session implement contextual related-app recom
 - Release and real-device download/install still require verification. The new recommendation links need browser testing after GitHub Pages deployment. Do not claim phone-tested.
 
 - Follow-up cache correctness: bumped the service-worker cache from `infojano-v6` to `infojano-v7` and added `related-apps.js` to precached assets, so installed PWA clients can pick up the new shared script after the service worker updates.
+
+## 15. Professional UI theme added — 25 October 2026
+- User asked for a more professional, polished appearance across the tool pages: typography, backgrounds, colors, spacing and cards, instead of the plain-paper/simple look.
+- Added a shared `theme.js` visual layer with a dark blue gradient header, soft blue/mint page background, rounded white tool cards, improved typography, clearer form controls, consistent blue action buttons and mobile-responsive spacing.
+- Updated `install.js` to load the theme and Related Apps helper while continuing to remove the unwanted top install banner.
+- Updated service-worker cache to `infojano-v8` and precached `theme.js` so PWA clients can receive the updated styles after refresh/service-worker activation.
+- These changes are website-side visual changes. The individual Android APKs are wrappers that load the hosted tool pages, so a theme change should not normally require reinstalling all 23 APKs; however, users may need to close/reopen the app or refresh its page. If a future change modifies native Android code, then a new APK build/reinstall may be needed.
+- Code committed; deployment and visual verification on an actual Android phone are pending. Do not claim the final visual has been phone-tested.
