@@ -268,26 +268,30 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 @media(max-width:420px){.tool .icon img{width:44px;height:44px}}
 
 
-/* Desktop-first sizing: prevent the homepage from looking like a narrow mobile app on monitors. */
-@media(min-width:1001px){
-  .wrap{width:100%;max-width:1540px;margin-inline:auto;padding:26px clamp(36px,4vw,64px)}
-  .hero{width:100%;max-width:none;padding:42px 46px;margin:12px 0 28px}
-  .hero h1{font-size:clamp(34px,2.8vw,46px)}
-  .grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
-  .card.tool{min-height:185px;padding:24px 20px}
-  .tool .icon{height:62px}
-  .tool .icon img{width:54px;height:54px}
-  .tool h3{font-size:19px;line-height:1.35}
-  .tool p{font-size:15px;line-height:1.55}
-  .section-title{font-size:clamp(24px,2vw,30px);margin:30px 0 18px}
+
+/* HARD FIX: desktop homepage must occupy the monitor, not a phone-width column. */
+@media screen and (min-width: 1001px) {
+  .header .top, header .top, .top { width: 100% !important; max-width: 1600px !important; margin-left: auto !important; margin-right: auto !important; }
+  main.wrap, body > main.wrap, .wrap { display: block !important; width: calc(100% - 64px) !important; max-width: 1600px !important; margin-left: auto !important; margin-right: auto !important; padding: 28px 24px !important; }
+  #home { display: block !important; width: 100% !important; max-width: none !important; }
+  #home > .hero { width: 100% !important; max-width: none !important; min-height: 220px; padding: 42px 46px !important; margin: 12px 0 28px !important; }
+  #home > .hero h1 { font-size: 42px !important; }
+  #home > .hero p { font-size: 17px !important; }
+  #home > .section-title { width: 100% !important; font-size: 28px !important; margin: 30px 0 18px !important; }
+  #toolGrid.grid, #home > .grid { width: 100% !important; max-width: none !important; grid-template-columns: repeat(5, minmax(0, 1fr)) !important; gap: 20px !important; }
+  #toolGrid .card.tool, #home .card.tool { width: 100% !important; min-width: 0 !important; min-height: 190px !important; padding: 24px 22px !important; }
+  #toolGrid .icon { height: 62px !important; }
+  #toolGrid .icon img { width: 56px !important; height: 56px !important; }
+  #toolGrid h3 { font-size: 19px !important; line-height: 1.35 !important; }
+  #toolGrid p { font-size: 15px !important; line-height: 1.5 !important; }
 }
-@media(min-width:1500px){
-  .wrap{max-width:1680px;padding-inline:72px}
-  .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
-  .card.tool{min-height:195px;padding:26px 22px}
-  .tool .icon img{width:58px;height:58px}
-  .tool h3{font-size:20px}
-  .tool p{font-size:15px}
+@media screen and (min-width: 1500px) {
+  main.wrap, body > main.wrap, .wrap { width: calc(100% - 80px) !important; max-width: 1720px !important; padding: 32px !important; }
+  #toolGrid.grid, #home > .grid { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; gap: 22px !important; }
+  #toolGrid .card.tool, #home .card.tool { min-height: 200px !important; padding: 26px 24px !important; }
+  #toolGrid .icon img { width: 60px !important; height: 60px !important; }
+  #toolGrid h3 { font-size: 20px !important; }
+  #toolGrid p { font-size: 15px !important; }
 }
 </style>
 <script type="application/ld+json">

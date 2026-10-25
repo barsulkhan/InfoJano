@@ -729,3 +729,9 @@ User requested that the next work session implement contextual related-app recom
 - Increased desktop content width to 1540px (1680px on extra-wide displays), enlarged hero/search area, tool cards, icons and typography; uses 5 columns on standard desktop and 6 on wide displays.
 - Mobile/tablet breakpoints are preserved; these overrides target desktop widths only.
 - Committed to main. Live deployment and visual check on the user's monitor remain pending.
+
+## 20. Desktop sizing regression hotfix — 25 October 2026
+- User provided a new monitor photo showing the homepage still constrained to a narrow central strip; the prior desktop CSS adjustment did not produce the intended visible result on their machine.
+- Added stronger desktop-only selectors and !important rules for the main wrapper, hero and tool grid; desktop wrapper is explicitly width calc(100% - 64px), max-width 1600px (1720px on very wide displays), with larger card typography/icons and 5–6 columns.
+- Mobile rules are not changed by this desktop-only hotfix.
+- Committed; wait for Pages deployment and retest. If it remains narrow, investigate browser zoom/old cached HTML and actual viewport rather than applying further blind CSS changes.
