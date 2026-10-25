@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v24";
+const CACHE_NAME = "infojano-v25";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -35,6 +35,7 @@ const ASSETS = [
   "/InfoJano/currency-converter.html",
   "/InfoJano/date-difference.html",
   "/InfoJano/discount.html",
+  "/InfoJano/discount-pt-br.html",
   "/InfoJano/emi.html",
   "/InfoJano/gst-calculator.html",
   "/InfoJano/image-compressor.html",
@@ -46,6 +47,7 @@ const ASSETS = [
   "/InfoJano/password-generator.html",
   "/InfoJano/percentage-change.html",
   "/InfoJano/percentage.html",
+  "/InfoJano/percentage-pt-br.html",
   "/InfoJano/qr-maker.html",
   "/InfoJano/savings.html",
   "/InfoJano/text-counter.html",
