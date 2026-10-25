@@ -766,3 +766,12 @@ User requested that the next work session implement contextual related-app recom
 - Commit: https://github.com/barsulkhan/InfoJano/commit/b2b57c1f334909c23a19637cebe424b58f3dfca1
 - Current next action: open the live site and verify the deployed appearance. User should hard-refresh with Ctrl+F5 on desktop if old cached CSS is shown. This fix is committed; visual verification is still pending.
 - Keep the existing hold on `id-card-print-studio.html`; do not edit it.
+
+
+## 27. New tools: Passport Photo Maker and PDF to JPG — 25 October 2026
+- User selected these two tools for the next development phase.
+- Created `passport-photo-maker.html`: client-side image selection, 29×36 mm preset, 35×45 mm and 2×2-inch presets, custom mm dimensions, DPI selection (150/200/300), vertical crop position, JPG quality slider, preview and JPG download. It does not remove/replace backgrounds or guarantee official compliance; page explains requirements vary by authority.
+- Created `pdf-to-jpg.html`: browser-side PDF page rendering through PDF.js CDN, per-page JPG downloads, standard/high/very-high render scale and JPG quality options, with 60-page safety limit and user-facing handling for load/password/large-file errors. PDF.js CDN requires internet access.
+- Added both tools to homepage search cards and footer links, sitemap.xml, sitemap.txt, and service-worker cache list; cache version incremented to v9.
+- Files created on GitHub main: `passport-photo-maker.html`, `pdf-to-jpg.html`. Code committed; live deployment and device testing remain unverified until deployment status and live pages are checked.
+- Preserve `id-card-print-studio.html` without any changes.
