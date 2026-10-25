@@ -694,3 +694,10 @@ User requested that the next work session implement contextual related-app recom
 - Code has been committed to GitHub. Wait for GitHub Pages deployment and then verify the desktop homepage at different widths; no physical desktop browser test has yet been performed.
 
 - Follow-up check found three homepage cards still using custom HTML icons (Date Difference, Percentage Change and Time Calculator); replaced these too with their dedicated SVG files so all 17 visible homepage cards use the same SVG icon system.
+
+## 17. Desktop/tablet/mobile responsive layout correction — 25 October 2026
+- User shared desktop-monitor and mobile screenshots showing excessive empty side margins and a layout that did not feel device-native.
+- Updated homepage responsive CSS: desktop now uses a wider 1360px content area (up to 1480px on very wide screens) and a 5–6 column tool grid; standard laptops use 4 columns; tablet widths use 3 columns; phones use 2 columns with full-width container and reduced gutters.
+- Adjusted hero, cards, icons, guides and page-link grids at breakpoints to prevent narrow centered content on desktop and excess side gaps on mobile.
+- Existing dedicated SVG icons and tool destinations are preserved; only layout/style rules were changed.
+- Code committed; GitHub Pages deployment and actual-device visual verification are pending.
