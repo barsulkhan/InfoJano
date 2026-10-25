@@ -309,6 +309,45 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   #home > .hero .chips button{padding:8px 10px!important;font-size:11.5px!important}
 }
 
+/* True full-viewport mobile content: align hero and tool section to brand-banner edges */
+@media screen and (max-width:700px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  main.wrap,body>main.wrap{
+    display:block!important;position:relative!important;
+    width:100vw!important;max-width:100vw!important;
+    left:50%!important;right:auto!important;
+    margin-left:-50vw!important;margin-right:0!important;
+    padding:8px 0 100px!important;
+    transform:none!important;
+  }
+  main.wrap>#home,#home{
+    display:block!important;position:relative!important;
+    width:100%!important;max-width:100%!important;
+    margin:0!important;padding:0!important;
+  }
+  #home>.hero{
+    display:block!important;width:100%!important;max-width:100%!important;
+    margin:0 0 16px!important;
+    border-radius:0 0 22px 22px!important;
+  }
+  #home>.section-title{
+    width:auto!important;margin:18px 12px 10px!important;
+  }
+  #home>#toolGrid.grid,#toolGrid.grid{
+    display:grid!important;width:100%!important;max-width:100%!important;
+    margin:0!important;padding:0 8px!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;
+  }
+  #toolGrid .card.tool{
+    display:block!important;width:100%!important;max-width:100%!important;
+    min-width:0!important;margin:0!important;
+  }
+}
+@media screen and (max-width:390px){
+  #home>#toolGrid.grid,#toolGrid.grid{padding-left:6px!important;padding-right:6px!important;gap:6px!important}
+  #home>.section-title{margin-left:9px!important;margin-right:9px!important}
+}
+
 /* Remove unwanted side gutters around the mobile tool cards */
 @media screen and (max-width:700px){
   main.wrap,body>main.wrap,.wrap{
