@@ -743,3 +743,8 @@ User requested that the next work session implement contextual related-app recom
 - Needs live verification on a representative desktop calculator page after Pages deploys.
 
 - Follow-up: added the actual fixed-button CSS (high contrast, 44px minimum height on desktop and mobile-adjusted placement) to the shared stylesheet after confirming the first commit only inserted the button element.
+
+## 22. Windows desktop text-overflow correction — 25 October 2026
+- User shared a Windows desktop screenshot showing long headings and explanatory text touching/clipping at the right border of content cards.
+- Updated shared theme.js with viewport-safe sizing, main width constraints, wrapping for headings/body text, min-width:0 and overflow-safe card/form/table styles.
+- This is shared across tool pages, not only Date Difference Calculator; verify in the Windows desktop wrapper after GitHub Pages deployment.

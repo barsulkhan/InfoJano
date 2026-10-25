@@ -21,6 +21,19 @@
     button,.button,input[type=button],input[type=submit],a.button{border:0!important;border-radius:13px!important;background:linear-gradient(115deg,#2164ec,#1749c4)!important;color:#fff!important;font-weight:750!important;min-height:48px;padding:12px 18px!important;box-shadow:0 7px 16px rgba(36,91,232,.18)!important;transition:transform .16s,filter .16s}
     button:hover,.button:hover,input[type=submit]:hover{filter:brightness(1.04);transform:translateY(-1px)}
     button:active,.button:active,input[type=submit]:active{transform:translateY(0)}
+
+    /* Desktop/Windows WebView overflow fix: keep all text and cards inside the viewport. */
+    html,body{width:100%;max-width:100%;overflow-x:hidden}
+    body{min-width:0!important}
+    main{width:calc(100% - 32px)!important;max-width:1100px!important;min-width:0!important;padding:16px!important;box-sizing:border-box!important}
+    main>*{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+    main h1,main h2,main h3,main h4,main p,main li,main label,main small,main strong,main span{max-width:100%;overflow-wrap:anywhere;word-break:normal}
+    main h1,main h2,main h3{white-space:normal!important}
+    main section,main article,main .card,main .result,main form{width:100%;min-width:0;box-sizing:border-box;overflow-wrap:anywhere}
+    main input,main select,main textarea,main button{max-width:100%;box-sizing:border-box}
+    main table{display:block;max-width:100%;overflow-x:auto}
+    #ij-related-apps{width:100%;max-width:100%;box-sizing:border-box;overflow:hidden}
+
     a{overflow-wrap:anywhere}
     hr{border:0;border-top:1px solid var(--ij-line);margin:24px 0}
     table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:12px}
