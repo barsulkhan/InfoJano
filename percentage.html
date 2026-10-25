@@ -37,6 +37,14 @@ main{width:100%;box-sizing:border-box;min-width:0}
 .ij-practical-guide h2,.ij-practical-guide h3,#ij-seo-faq h2{line-height:1.35;margin-top:0}
 @media(max-width:480px){.ij-practical-guide,#ij-seo-faq{padding:22px 20px!important;margin-top:20px!important;margin-bottom:20px!important}}
 
+
+/* Fix the actual how-to text section: comfortable space on both sides */
+.ij-howto-guide{display:block;width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:24px!important;margin:24px 0!important;border:1px solid #e5eaf2;border-radius:22px;background:#fff;overflow-wrap:anywhere;word-break:normal}
+.ij-howto-guide h2{margin:0 0 18px;line-height:1.3;overflow-wrap:anywhere}
+.ij-howto-guide p{margin:0 0 18px;line-height:1.65;overflow-wrap:anywhere}
+.ij-howto-guide p:last-child{margin-bottom:0}
+@media(max-width:480px){.ij-howto-guide{padding:22px 20px!important;margin:20px 0!important}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/percentage.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -91,8 +99,7 @@ main{width:100%;box-sizing:border-box;min-width:0}
 <button onclick="calculate()">Calculate</button>
 <div id="result" aria-live="polite"></div>
 </div>
-<section>
-<h2>How to calculate a percentage</h2>
+<section class="ij-howto-guide"><h2>How to calculate a percentage</h2>
 <p>To find a percentage of a number, multiply the number by the percentage and divide by 100.</p>
 <p><strong>Formula:</strong> Percentage × Number ÷ 100</p>
 <p>Example: 20% of 150 = 30.</p>
