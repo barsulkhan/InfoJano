@@ -267,62 +267,28 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 @media(max-width:1000px){.tool .icon img{width:48px;height:48px}}
 @media(max-width:420px){.tool .icon img{width:44px;height:44px}}
 
-/* InfoJano responsive layout correction — desktop fills desktop; mobile fills phone. */
-:root{--ij-page-max:1360px}
-.header .top{max-width:var(--ij-page-max)}
-.wrap{width:100%;max-width:var(--ij-page-max);margin-inline:auto;padding:22px clamp(18px,3vw,44px)}
-.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
-.hero{padding:clamp(28px,3vw,44px);margin-bottom:22px}
-.hero h1{font-size:clamp(30px,3vw,42px)}
-.section-title{margin-top:28px}
-.card.tool{min-height:154px;padding:20px}
-.tool .icon{height:54px}
-.tool .icon img{width:48px;height:48px;object-fit:contain}
-.tool h3{font-size:17px}
-.tool p{font-size:13px;line-height:1.5}
-.info-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.guides-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.page-links-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media(min-width:1500px){
-  :root{--ij-page-max:1480px}
-  .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
-  .card.tool{min-height:165px;padding:22px}
-}
-@media(min-width:1001px) and (max-width:1250px){
-  .wrap{padding-inline:24px}
-  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-}
-@media(min-width:701px) and (max-width:1000px){
-  .wrap{width:100%;max-width:none;padding:18px 22px}
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .card.tool{min-height:145px;padding:16px}
-  .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .guides-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .page-links-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@media(max-width:700px){
-  .header{width:100%;padding:12px 14px}
-  .header .top{width:100%;max-width:none;padding:0;gap:8px}
-  .wrap{width:100%;max-width:none;margin:0;padding:14px 14px 90px}
-  .hero{width:100%;margin:10px 0 18px;padding:22px 18px;border-radius:20px}
-  .grid{width:100%;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .section{width:100%;padding:0}
-  .card.tool{width:100%;min-width:0;min-height:132px;padding:14px 12px}
-  .tool .icon{height:44px}
-  .tool .icon img{width:42px;height:42px}
-  .tool h3{font-size:16px;overflow-wrap:anywhere}
-  .tool p{font-size:12px;overflow-wrap:anywhere}
-  .info-grid,.guides-grid{grid-template-columns:1fr}
-  .page-links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:380px){
-  .wrap{padding-inline:10px}
-  .hero{padding:19px 14px}
-  .grid{gap:8px}
-  .card.tool{padding:12px 10px}
-  .tool h3{font-size:15px}
-}
 
+/* Desktop-first sizing: prevent the homepage from looking like a narrow mobile app on monitors. */
+@media(min-width:1001px){
+  .wrap{width:100%;max-width:1540px;margin-inline:auto;padding:26px clamp(36px,4vw,64px)}
+  .hero{width:100%;max-width:none;padding:42px 46px;margin:12px 0 28px}
+  .hero h1{font-size:clamp(34px,2.8vw,46px)}
+  .grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+  .card.tool{min-height:185px;padding:24px 20px}
+  .tool .icon{height:62px}
+  .tool .icon img{width:54px;height:54px}
+  .tool h3{font-size:19px;line-height:1.35}
+  .tool p{font-size:15px;line-height:1.55}
+  .section-title{font-size:clamp(24px,2vw,30px);margin:30px 0 18px}
+}
+@media(min-width:1500px){
+  .wrap{max-width:1680px;padding-inline:72px}
+  .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
+  .card.tool{min-height:195px;padding:26px 22px}
+  .tool .icon img{width:58px;height:58px}
+  .tool h3{font-size:20px}
+  .tool p{font-size:15px}
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}

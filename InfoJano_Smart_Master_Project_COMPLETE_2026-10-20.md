@@ -723,3 +723,9 @@ User requested that the next work session implement contextual related-app recom
 - Critical release gate: do not claim Windows app exists or is tested until the workflow succeeds and both release assets are verified. The app is a web wrapper and requires internet; it is not an offline/native rewrite of all tools.
 
 - Release-gate correction: keep the Windows download disabled on the website until a successful Windows build publishes and verifies both EXE assets. Desktop visitors see “Windows app is being prepared” until then; Android APK links remain mobile-only.
+
+## 19. Desktop homepage made larger — 25 October 2026
+- User reviewed the desktop monitor screenshot and said the website still felt too small/narrow, like a mobile layout.
+- Increased desktop content width to 1540px (1680px on extra-wide displays), enlarged hero/search area, tool cards, icons and typography; uses 5 columns on standard desktop and 6 on wide displays.
+- Mobile/tablet breakpoints are preserved; these overrides target desktop widths only.
+- Committed to main. Live deployment and visual check on the user's monitor remain pending.
