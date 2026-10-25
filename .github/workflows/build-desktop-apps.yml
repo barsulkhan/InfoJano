@@ -1,0 +1,119 @@
+name: Build InfoJano Windows Desktop Apps
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'desktop/**'
+      - 'app-icons/**'
+      - '.github/workflows/build-desktop-apps.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build 23 Windows installers
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $out = Join-Path $PWD 'desktop-dist'
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $tools = @'
+          age|Age Calculator|age.html
+          bmi|BMI Calculator|bmi.html
+          currency-converter|Currency Converter|currency-converter.html
+          date-difference|Date Difference Calculator|date-difference.html
+          discount|Discount Calculator|discount.html
+          emi|EMI Calculator|emi.html
+          gst-calculator|GST Calculator|gst-calculator.html
+          id-card-print-studio|ID Card Print Studio|id-card-print-studio.html
+          image-compressor|Image Compressor|image-compressor.html
+          image-resizer|Image Resizer|image-resizer.html
+          image-to-pdf|Image to PDF|image-to-pdf.html
+          loan-eligibility|Loan Eligibility Calculator|loan-eligibility.html
+          loan-interest|Loan Interest Calculator|loan-interest.html
+          number-to-words|Number to Words|number-to-words.html
+          password-generator|Password Generator|password-generator.html
+          percentage|Percentage Calculator|percentage.html
+          percentage-change|Percentage Change Calculator|percentage-change.html
+          qr-maker|QR Code Maker|qr-maker.html
+          savings|Savings Calculator|savings.html
+          text-counter|Text Counter|text-counter.html
+          time-calculator|Time Calculator|time-calculator.html
+          tip-calculator|Tip Calculator|tip-calculator.html
+          unit-converter|Unit Converter|unit-converter.html
+          '@
+          foreach ($line in ($tools -split "`n")) {
+            $line = $line.Trim()
+            if (-not $line) { continue }
+            $parts = $line -split '\|'
+            $id = $parts[0].Trim(); $name = $parts[1].Trim(); $page = $parts[2].Trim()
+            $slug = ($name -replace '[^A-Za-z0-9]+','-').Trim('-')
+            $dir = Join-Path $PWD ("desktop/build-" + $id)
+            New-Item -ItemType Directory -Force -Path $dir | Out-Null
+            $url = "https://barsulkhan.github.io/InfoJano/" + $page
+            $main = @"
+          const { app, BrowserWindow, shell } = require('electron');
+          const { URL } = require('url');
+          function createWindow() {
+            const win = new BrowserWindow({
+              width: 1180, height: 820, minWidth: 760, minHeight: 560,
+              autoHideMenuBar: true, backgroundColor: '#f2f6fd',
+              title: '$name',
+              webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true }
+            });
+            win.loadURL('$url');
+            win.webContents.setWindowOpenHandler(({ url }) => {
+              if (url.startsWith('https://') || url.startsWith('http://')) shell.openExternal(url);
+              return { action: 'deny' };
+            });
+          }
+          app.whenReady().then(() => { createWindow(); app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); }); });
+          app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
+          "@
+            $package = @{
+              name = "infojano-$id"; version = "1.0.0"; description = "InfoJano $name desktop app"
+              main = "main.cjs"; author = "InfoJano"; license = "MIT"
+              build = @{
+                appId = "com.infojano.desktop.$($id -replace '[^a-zA-Z0-9.-]','')"
+                productName = "InfoJano $name"
+                directories = @{ output = "release" }
+                files = @("main.cjs")
+                win = @{ target = @("nsis"); artifactName = "InfoJano-$slug-Setup.exe" }
+                nsis = @{ oneClick = $false; allowToChangeInstallationDirectory = $true; createDesktopShortcut = $true; createStartMenuShortcut = $true }
+              }
+              devDependencies = @{ electron = "31.7.7"; "electron-builder" = "24.13.3" }
+            } | ConvertTo-Json -Depth 8
+            Set-Content -Path (Join-Path $dir 'main.cjs') -Value $main -Encoding utf8
+            Set-Content -Path (Join-Path $dir 'package.json') -Value $package -Encoding utf8
+            Push-Location $dir
+            try {
+              npm install --no-audit --no-fund
+              npx electron-builder --win nsis --x64 --publish never
+              Get-ChildItem (Join-Path $dir 'release') -Filter '*.exe' | ForEach-Object { Copy-Item $_.FullName $out -Force }
+            } finally { Pop-Location }
+          }
+          $built = @(Get-ChildItem $out -Filter '*.exe')
+          if ($built.Count -ne 23) { throw "Expected 23 Windows installers, got $($built.Count)" }
+      - name: Publish Windows installers
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: infojano-desktop-apps-v1.0.0
+          name: InfoJano Windows Desktop Apps v1.0.0
+          prerelease: true
+          generate_release_notes: false
+          body: |
+            Individual Windows installers for InfoJano tools.
+            Each installer opens its matching hosted tool in a dedicated desktop window. Internet access is required.
+            These are unsigned Windows installers; Windows SmartScreen may show a warning.
+          files: desktop-dist/*.exe

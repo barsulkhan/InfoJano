@@ -707,3 +707,10 @@ User requested that the next work session implement contextual related-app recom
 - Updated `related-apps.js` to detect desktop-sized non-mobile devices. Desktop visitors now see a clearly labeled “Windows app is being prepared” status rather than an Android APK download button. Mobile visitors retain Android APK links.
 - No Windows installer links are shown until the Windows desktop packages are actually built and released; do not invent or expose unverified release URLs.
 - Current repository has no Windows/Electron desktop packaging workflow or Windows installer assets yet. The next required step is to build/test the desktop wrappers and publish verified Windows installers, then replace the temporary desktop status with the real Windows download links.
+
+## 18. Windows desktop app packaging and Related Apps correction — 25 October 2026
+- User identified that desktop visitors were incorrectly offered Android APK downloads in Related Apps.
+- Added a Windows desktop build workflow that packages 23 separate per-tool Windows installers (.exe) using Electron, each opening its matching InfoJano hosted tool in a dedicated desktop window. Internet access is required; these are not fully offline apps and are unsigned, so SmartScreen may warn.
+- Updated Related Apps to use each tool's dedicated SVG icon rather than emoji glyphs. Desktop visitors are directed to Windows installer assets; Android visitors retain APK links.
+- Workflow is triggered by desktop packaging changes and can also be manually run. Its first build/release must succeed before Windows download links are confirmed live.
+- Actual Windows installer testing is pending; do not claim that all installers are built or tested until the GitHub Actions run completes successfully.
