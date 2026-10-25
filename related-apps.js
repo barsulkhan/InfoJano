@@ -94,8 +94,9 @@
       const icon=document.createElement("span");icon.className="ij-related-icon";icon.setAttribute("aria-hidden","true");icon.textContent=a.emoji;
       const name=document.createElement("span");name.className="ij-related-name";name.textContent=a.name;
       const desc=document.createElement("span");desc.className="ij-related-desc";desc.textContent=a.desc;
-      const download=document.createElement("span");download.className="ij-related-download";download.textContent="Download Android App ↓";
-      download.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();window.location.href=release+a.apk;});
+      const download=document.createElement("span");
+      if(isDesktop){download.className="ij-desktop-pending";download.textContent="Windows app is being prepared";}
+      else {download.className="ij-related-download";download.textContent="Download Android App ↓";download.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();window.location.href=release+a.apk;});}
       link.append(icon,name,desc,download);grid.appendChild(link);
     });
     section.replaceChildren(h2,p,grid);
