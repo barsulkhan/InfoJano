@@ -721,3 +721,5 @@ User requested that the next work session implement contextual related-app recom
 - Added GitHub Actions workflow `.github/workflows/build-desktop-app.yml` to build and verify a Windows Setup EXE and portable EXE, then publish them to release tag `infojano-desktop-apps-v1.0.0`.
 - Updated `related-apps.js` so desktop browsers request `InfoJano-Setup-1.0.0.exe` and mobile browsers continue to request the corresponding APK.
 - Critical release gate: do not claim Windows app exists or is tested until the workflow succeeds and both release assets are verified. The app is a web wrapper and requires internet; it is not an offline/native rewrite of all tools.
+
+- Release-gate correction: keep the Windows download disabled on the website until a successful Windows build publishes and verifies both EXE assets. Desktop visitors see “Windows app is being prepared” until then; Android APK links remain mobile-only.

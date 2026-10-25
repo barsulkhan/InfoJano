@@ -7,7 +7,6 @@ on:
     paths:
       - 'desktop-app/**'
       - '.github/workflows/build-desktop-app.yml'
-      - 'related-apps.js'
 
 permissions:
   contents: write
