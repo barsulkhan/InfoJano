@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de Porcentagem Online Grátis | InfoJano</title>
+<meta name="description" content="Calcule a porcentagem de um número ou descubra que porcentagem um valor representa de outro com esta calculadora de porcentagem online grátis.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/percentage-pt-br.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Calculadora de Porcentagem Online Grátis | InfoJano">
+<meta property="og:description" content="Calcule porcentagens de forma rápida, gratuita e simples com exemplos práticos.">
+<meta property="og:url" content="https://barsulkhan.github.io/InfoJano/percentage-pt-br.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de Porcentagem Online Grátis | InfoJano">
+<meta name="twitter:description" content="Descubra a porcentagem de um valor em segundos, gratuitamente.">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172033;font:16px/1.65 system-ui,-apple-system,Segoe UI,Arial,sans-serif}header{background:#102a56;color:white;padding:26px 18px;text-align:center}header p{color:#d9e5f7;margin:8px auto 0;max-width:650px}main{width:min(100% - 28px,760px);margin:22px auto 40px}.card,section{background:#fff;border:1px solid #e0e7f0;border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 5px 20px #17203308}h1{font-size:clamp(25px,5vw,34px);line-height:1.2;margin:0}h2{font-size:22px;line-height:1.3;margin-top:0}label{display:block;font-weight:650;margin:14px 0 6px}input{width:100%;min-width:0;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font:inherit}button{width:100%;padding:14px;margin-top:18px;border:0;border-radius:10px;background:#1d4ed8;color:white;font:inherit;font-weight:750;cursor:pointer}.result{margin-top:16px;padding:15px;background:#eef4ff;border-radius:12px;overflow-wrap:anywhere}.muted{color:#64748b;font-size:14px}a{color:#1d4ed8}footer{text-align:center;padding:20px;color:#64748b;font-size:14px}@media(max-width:480px){.card,section{padding:20px 18px}}
+</style>
+</head>
+<body>
+<header><h1>Calculadora de Porcentagem</h1><p>Descubra quanto é uma porcentagem de um valor ou qual porcentagem um valor representa.</p></header>
+<main>
+<div class="card">
+<h2>Calcular porcentagem de um valor</h2>
+<label for="pct">Porcentagem (%)</label><input id="pct" type="number" step="any" inputmode="decimal" placeholder="Ex.: 28">
+<label for="amount">Valor</label><input id="amount" type="number" step="any" inputmode="decimal" placeholder="Ex.: 170">
+<button id="calculate" type="button">Calcular</button>
+<div class="result" id="result" aria-live="polite">Digite uma porcentagem e um valor para ver o resultado.</div>
+</div>
+<section><h2>Como calcular uma porcentagem?</h2><p>Multiplique o valor pela porcentagem e divida por 100.</p><p><strong>Fórmula:</strong> resultado = valor × porcentagem ÷ 100.</p><p><strong>Exemplo:</strong> 28% de 170 = 170 × 28 ÷ 100 = 47,6.</p></section>
+<section><h2>Perguntas frequentes</h2><h3>Como calcular 10% de um valor?</h3><p>Multiplique o valor por 10 e divida por 100; isso equivale a dividir o valor por 10.</p><h3>Como descubro que porcentagem um número representa?</h3><p>Divida a parte pelo total e multiplique por 100.</p><p>Veja também: <a href="percentage.html" lang="en">Percentage Calculator in English</a> e <a href="discount-pt-br.html">Calculadora de Desconto</a>.</p></section>
+</main>
+<footer><a href="./">InfoJano — ferramentas online gratuitas</a></footer>
+<script>
+(function(){const p=document.getElementById('pct'),a=document.getElementById('amount'),r=document.getElementById('result');function calc(){if(p.value===''||a.value===''||!Number.isFinite(Number(p.value))||!Number.isFinite(Number(a.value))){r.textContent='Informe uma porcentagem e um valor válidos.';return}const v=Number(p.value)*Number(a.value)/100;r.textContent=Number(p.value).toLocaleString('pt-BR')+'% de '+Number(a.value).toLocaleString('pt-BR')+' = '+v.toLocaleString('pt-BR',{maximumFractionDigits:8})}document.getElementById('calculate').addEventListener('click',calc);[p,a].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calc()}));})();
+</script>
+</body>
+</html>
