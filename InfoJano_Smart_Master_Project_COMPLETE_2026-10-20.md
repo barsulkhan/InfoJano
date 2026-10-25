@@ -685,3 +685,10 @@ User requested that the next work session implement contextual related-app recom
 - Updated service-worker cache to `infojano-v8` and precached `theme.js` so PWA clients can receive the updated styles after refresh/service-worker activation.
 - These changes are website-side visual changes. The individual Android APKs are wrappers that load the hosted tool pages, so a theme change should not normally require reinstalling all 23 APKs; however, users may need to close/reopen the app or refresh its page. If a future change modifies native Android code, then a new APK build/reinstall may be needed.
 - Code committed; deployment and visual verification on an actual Android phone are pending. Do not claim the final visual has been phone-tested.
+
+## 16. Desktop homepage icon consistency fix — 25 October 2026
+- User reported that the tool icons on the desktop website were not displaying correctly/consistently.
+- Updated all 17 tool cards currently shown in the homepage Popular Tools grid to use the dedicated SVG assets in `app-icons/` instead of a mix of emoji and hand-built animated HTML icons.
+- Added responsive icon sizing for desktop, tablet and mobile; images use async decoding and are marked decorative for assistive technology.
+- This changes the homepage card visuals only; individual tool functionality and the held ID Card Print Studio page code are not modified.
+- Code has been committed to GitHub. Wait for GitHub Pages deployment and then verify the desktop homepage at different widths; no physical desktop browser test has yet been performed.
