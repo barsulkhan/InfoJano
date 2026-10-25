@@ -759,3 +759,10 @@ User requested that the next work session implement contextual related-app recom
 - Corrected the shared theme insertion point directly: the prior attempted containment rule had not landed in the active style template.
 - Shared theme now sets a centered desktop content width up to 1120px with 28px side margins, constrained descendants and wrapping; mobile uses full available width with smaller padding.
 - Requires live deployment and Windows app visual verification. Do not claim user-side visual validation until confirmed.
+
+## 26. Homepage search layout follow-up — 25 October 2026
+- User supplied a Windows/desktop screenshot after the previous theme-level fix. The search input remained visually collapsed/absent while the blue Go button occupied almost the entire row.
+- Updated `index.html` directly with targeted CSS for the homepage `.search` row: input flexes to available width, Go button retains a compact fixed-basis width, and mobile sizing is explicitly covered.
+- Commit: https://github.com/barsulkhan/InfoJano/commit/b2b57c1f334909c23a19637cebe424b58f3dfca1
+- Current next action: open the live site and verify the deployed appearance. User should hard-refresh with Ctrl+F5 on desktop if old cached CSS is shown. This fix is committed; visual verification is still pending.
+- Keep the existing hold on `id-card-print-studio.html`; do not edit it.
