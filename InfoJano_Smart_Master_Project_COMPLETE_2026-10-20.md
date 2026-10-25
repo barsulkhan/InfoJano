@@ -692,3 +692,5 @@ User requested that the next work session implement contextual related-app recom
 - Added responsive icon sizing for desktop, tablet and mobile; images use async decoding and are marked decorative for assistive technology.
 - This changes the homepage card visuals only; individual tool functionality and the held ID Card Print Studio page code are not modified.
 - Code has been committed to GitHub. Wait for GitHub Pages deployment and then verify the desktop homepage at different widths; no physical desktop browser test has yet been performed.
+
+- Follow-up check found three homepage cards still using custom HTML icons (Date Difference, Percentage Change and Time Calculator); replaced these too with their dedicated SVG files so all 17 visible homepage cards use the same SVG icon system.
