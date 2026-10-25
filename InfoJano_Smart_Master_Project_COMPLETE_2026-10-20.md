@@ -748,3 +748,8 @@ User requested that the next work session implement contextual related-app recom
 - User shared a Windows desktop screenshot showing long headings and explanatory text touching/clipping at the right border of content cards.
 - Updated shared theme.js with viewport-safe sizing, main width constraints, wrapping for headings/body text, min-width:0 and overflow-safe card/form/table styles.
 - This is shared across tool pages, not only Date Difference Calculator; verify in the Windows desktop wrapper after GitHub Pages deployment.
+
+## 23. Follow-up stronger Windows WebView layout reset — 25 October 2026
+- User sent another BMI Calculator screenshot confirming content still overflows despite the previous shared-theme fix.
+- Added a more forceful shared-theme reset for all descendants in main: reset intrinsic/fixed widths, min-width, white-space, block sizing, box-sizing, wrapping, lists, and form controls. This applies to all tool pages.
+- Earlier change was insufficient; do not claim fixed until Windows desktop app is relaunched after deployment and the BMI page is visually confirmed.

@@ -22,6 +22,18 @@
     button:hover,.button:hover,input[type=submit]:hover{filter:brightness(1.04);transform:translateY(-1px)}
     button:active,.button:active,input[type=submit]:active{transform:translateY(0)}
 
+
+    /* Strong Windows WebView containment: reset fixed/intrinsic widths inside tool content. */
+    *,*::before,*::after{box-sizing:border-box}
+    html{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+    body{width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;overflow-x:hidden!important}
+    body>main,main{display:block!important;width:100%!important;max-width:1100px!important;min-width:0!important;margin:20px auto!important;padding:16px!important;overflow:visible!important}
+    main>*{width:100%!important;max-width:100%!important;min-width:0!important;margin-left:0!important;margin-right:0!important}
+    main section,main article,main .card,main form,main .result{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow-wrap:break-word!important;word-wrap:break-word!important;box-sizing:border-box!important}
+    main h1,main h2,main h3,main h4,main p,main li,main label,main small,main strong,main span,main div{max-width:100%!important;min-width:0!important;white-space:normal!important;overflow-wrap:break-word!important;word-wrap:break-word!important;box-sizing:border-box!important}
+    main ul,main ol{padding-left:24px!important}
+    main input,main select,main textarea,main button{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+
     /* Desktop/Windows WebView overflow fix: keep all text and cards inside the viewport. */
     html,body{width:100%;max-width:100%;overflow-x:hidden}
     body{min-width:0!important}
