@@ -667,3 +667,11 @@ User requested that the next work session implement contextual related-app recom
 - The shared `install.js` script was changed to remove any existing `.ij-install-card` and `#ij-install-button` elements and prevent the banner from being inserted by that script.
 - Important: this change only removes the in-page banner. It does not disable browser-native PWA installation and does not change the calculator tool logic.
 - Deployment and live-page verification status must be checked after commit; do not claim the banner is already gone from the live site until the GitHub Pages deployment completes and the page is refreshed.
+
+## 14. Related Apps implementation started — 25 October 2026
+- Added a shared `related-apps.js` implementation intended to replace each tool page's old “Explore More Free Tools” section with four contextual Android-app recommendations.
+- Recommendation cards exclude the active tool, use per-tool curated recommendations, show app name/emoji icon/description, and link to the exact APK asset in release `infojano-tool-apps-v1.1.1`.
+- Updated `install.js` so the old top install banner stays removed and the shared Related Apps script loads on pages that already include `install.js`.
+- The held ID Card Print Studio page HTML was not edited. The shared script supports recommendations for that route without modifying its calculator/print-preview logic.
+- APK investigation: the GitHub release API confirms the ID Card Print Studio APK exists (46,135 bytes, download_count was 6 at the last check). This shows the release asset exists, but does not prove that the user's phone completed the download. A screenshot showed 46.13 KB / 46.13 KB with “Downloading…” in a GitHub custom tab; likely a browser handoff/UI issue remains a hypothesis, not a confirmed root cause.
+- Release and real-device download/install still require verification. The new recommendation links need browser testing after GitHub Pages deployment. Do not claim phone-tested.
