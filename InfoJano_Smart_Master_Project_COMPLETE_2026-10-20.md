@@ -741,3 +741,5 @@ User requested that the next work session implement contextual related-app recom
 - Updated shared Related Apps script to inject a fixed, prominent “← Home” button on tool pages (not on the homepage), linking directly to /InfoJano/index.html.
 - Button is styled for desktop and mobile and remains visible while scrolling. Since it is injected by shared install.js -> related-apps.js, pages loading the shared script receive the same behavior.
 - Needs live verification on a representative desktop calculator page after Pages deploys.
+
+- Follow-up: added the actual fixed-button CSS (high contrast, 44px minimum height on desktop and mobile-adjusted placement) to the shared stylesheet after confirming the first commit only inserted the button element.

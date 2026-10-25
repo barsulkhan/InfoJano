@@ -61,6 +61,9 @@
     if(document.getElementById("ij-related-apps-style"))return;
     const style=document.createElement("style");style.id="ij-related-apps-style";
     style.textContent=`
+      #ij-home-return{position:fixed;left:18px;top:18px;z-index:99990;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:999px;background:#10458e;color:#fff;text-decoration:none;font:700 15px/1.2 Arial,sans-serif;box-shadow:0 5px 18px #102a5040;border:1px solid #ffffff55}
+      #ij-home-return:hover{background:#0b3472;transform:translateY(-1px)}
+      @media(max-width:700px){#ij-home-return{top:10px;left:10px;min-height:40px;padding:9px 14px;font-size:14px}}
       #ij-related-apps{margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#fff);color:#172033}
       #ij-related-apps h2{margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a}
       #ij-related-apps .ij-related-intro{margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5}
