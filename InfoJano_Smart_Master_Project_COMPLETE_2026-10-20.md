@@ -659,3 +659,11 @@ User requested that the next work session implement contextual related-app recom
 - Related-app cards have NOT yet been implemented or deployed.
 - APK download issue has NOT yet been reproduced and resolved on a real Android device.
 - Next session should implement shared contextual related-app rendering for all applicable tool pages, validate four distinct recommendations and correct APK links per page, then test/diagnose download handling. Update this archive again after actual code changes and commits.
+
+
+## 13. User correction — remove the top install banner (25 October 2026)
+- User pointed out the top "Install this tool on your device / Install this tool" banner visible above the Age Calculator and reiterated that it had already been requested to be removed.
+- Required change: remove the in-page install banner from tool pages. Users can still install the PWA using the browser's own menu if they choose; the page must not display the banner.
+- The shared `install.js` script was changed to remove any existing `.ij-install-card` and `#ij-install-button` elements and prevent the banner from being inserted by that script.
+- Important: this change only removes the in-page banner. It does not disable browser-native PWA installation and does not change the calculator tool logic.
+- Deployment and live-page verification status must be checked after commit; do not claim the banner is already gone from the live site until the GitHub Pages deployment completes and the page is refreshed.
