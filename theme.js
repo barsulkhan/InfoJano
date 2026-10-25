@@ -3,6 +3,17 @@
   if(document.getElementById("ij-pro-theme"))return;
   const style=document.createElement("style");style.id="ij-pro-theme";
   style.textContent=`
+    /* Desktop-first responsive containment: readable width on Windows, fluid on phones. */
+    html,body{width:100%;max-width:100%;overflow-x:hidden}
+    body{min-width:0!important}
+    main{display:block!important;width:calc(100% - 56px)!important;max-width:1120px!important;min-width:0!important;margin:24px auto!important;padding:20px!important;box-sizing:border-box!important}
+    main>*{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+    main section,main article,main form,main .card,main .result,main .output{width:100%;max-width:100%;min-width:0;box-sizing:border-box;overflow-wrap:break-word}
+    main h1,main h2,main h3,main h4,main p,main li,main label,main small,main strong,main span,main div{min-width:0;max-width:100%;white-space:normal!important;overflow-wrap:break-word;word-wrap:break-word}
+    main input,main select,main textarea,main button{max-width:100%;min-width:0;box-sizing:border-box}
+    main ul,main ol{padding-left:24px}
+    @media(max-width:700px){main{width:100%!important;margin:12px auto!important;padding:14px!important}}
+
     :root{color-scheme:light;--ij-ink:#15223b;--ij-muted:#61718a;--ij-blue:#245be8;--ij-blue-dark:#1746bd;--ij-line:#dfe7f4;--ij-surface:#fff;--ij-soft:#f4f7ff;--ij-mint:#e8fbf5;--ij-shadow:0 14px 38px rgba(31,65,125,.09)}
     html{background:#eef3fb;scroll-behavior:smooth}
     body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;color:var(--ij-ink)!important;background:radial-gradient(ellipse at 12% 0%,rgba(91,143,255,.13),transparent 34%),radial-gradient(ellipse at 95% 10%,rgba(85,219,183,.12),transparent 30%),#f2f6fd!important;line-height:1.65!important;-webkit-font-smoothing:antialiased}

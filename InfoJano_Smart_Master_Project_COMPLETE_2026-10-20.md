@@ -753,3 +753,9 @@ User requested that the next work session implement contextual related-app recom
 - User sent another BMI Calculator screenshot confirming content still overflows despite the previous shared-theme fix.
 - Added a more forceful shared-theme reset for all descendants in main: reset intrinsic/fixed widths, min-width, white-space, block sizing, box-sizing, wrapping, lists, and form controls. This applies to all tool pages.
 - Earlier change was insufficient; do not claim fixed until Windows desktop app is relaunched after deployment and the BMI page is visually confirmed.
+
+## 24. Desktop layout width and wrapping — 25 October 2026
+- Percentage Calculator screenshot still showed a stretched layout and weak desktop proportions.
+- Corrected the shared theme insertion point directly: the prior attempted containment rule had not landed in the active style template.
+- Shared theme now sets a centered desktop content width up to 1120px with 28px side margins, constrained descendants and wrapping; mobile uses full available width with smaller padding.
+- Requires live deployment and Windows app visual verification. Do not claim user-side visual validation until confirmed.
