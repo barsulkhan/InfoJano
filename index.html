@@ -484,7 +484,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   <div class="hero">
     <h1>What do you want to do?</h1>
     <p>Simple everyday tools for everyone — fast, clear and mobile-friendly.</p>
-    <div class="search"><input id="search" aria-label="Search tools" placeholder="Search by tool name or task..." oninput="filterTools()"><button class="primary" onclick="searchFocus()">Go</button></div><div class="chips"><button onclick="quickFilter('calculator')">🧮 Calculators</button><button onclick="quickFilter('converter')">📏 Converters</button><button onclick="quickFilter('text')">🔤 Text</button><button onclick="quickFilter('qr')">▣ QR</button><button onclick="clearFilter()">✕ All</button></div>
+    <div class="search"><input id="search" aria-label="Search tools" placeholder="Search by tool name or task..." oninput="filterTools()"><button class="primary" onclick="searchFocus()">Go</button></div><div class="chips"><button onclick="quickFilter('calculator')">Calculators</button><button onclick="quickFilter('converter')">Converters</button><button onclick="quickFilter('text')">Text</button><button onclick="quickFilter('qr')">QR</button><button onclick="clearFilter()">✕ All</button></div>
   </div>
 
   <div class="section-title"><h2><span class="section-mark mark-tools" aria-hidden="true">T</span> Popular Tools</h2><span id="toolCount"></span></div>
@@ -515,11 +515,11 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
     <div id="toolContent"></div>
   </div>
 
-  <div class="section-title"><h2><span class="section-mark mark-how" aria-hidden="true">1</span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1️⃣ Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2️⃣ Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3️⃣ Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true">i</span> Why InfoJano?</h2></div>
+  <div class="section-title"><h2><span class="section-mark mark-how" aria-hidden="true">1</span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1. Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2. Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3. Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true">i</span> Why InfoJano?</h2></div>
   <div class="info-grid">
-    <div class="card info"><h3>👆 Very Easy</h3><p>Big buttons, clear icons and simple steps.</p></div>
-    <div class="card info"><h3>📱 Mobile First</h3><p>Designed to work comfortably on phones.</p></div>
-    <div class="card info"><h3>🔒 Privacy Minded</h3><p>Tools are designed to collect as little personal data as possible.</p></div>
+    <div class="card info"><h3>Very Easy</h3><p>Big buttons, clear icons and simple steps.</p></div>
+    <div class="card info"><h3>Mobile First</h3><p>Designed to work comfortably on phones.</p></div>
+    <div class="card info"><h3>Privacy Minded</h3><p>Tools are designed to collect as little personal data as possible.</p></div>
   </div>
 </section>
 
@@ -529,7 +529,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   <p class="note">More useful tools, guides and information will be added over time.</p>
 </section>
 
-<nav class="bottom-nav"><button onclick="goHome()">🏠 Home</button><button onclick="$('search').focus();window.scrollTo({top:0,behavior:'smooth'})">🔎 Search</button><button onclick="$('toolGrid').scrollIntoView({behavior:'smooth'})">🧮 Tools</button><button onclick="showSection('about')">ℹ️ About</button></nav>
+<nav class="bottom-nav"><button onclick="goHome()">Home</button><button onclick="$('search').focus();window.scrollTo({top:0,behavior:'smooth'})">Search</button><button onclick="$('toolGrid').scrollIntoView({behavior:'smooth'})">Tools</button><button onclick="showSection('about')">About</button></nav>
 <section class="section guides" id="guides">
   <div class="section-head">
     <h2><span class="section-mark mark-guides" aria-hidden="true">G</span> Useful Guides</h2>
@@ -636,14 +636,14 @@ discount:()=>`<h2>🏷️ Discount Calculator</h2><div class="formgrid">${field(
 date:()=>`<h2>📅 Date Difference</h2><div class="formgrid">${field('Start date','ds','date')} ${field('End date','de','date')}</div><div class="actions"><button class="btn" onclick="calcDate()">Calculate</button></div><div id="dateR" class="result">Select both dates.</div>`,
 unit:()=>`<h2>📏 Unit Converter</h2><div class="formgrid"><div class="field"><label>Value</label><input id="uv" type="number"></div><div class="field"><label>From</label><select id="uf"><option>mm</option><option>cm</option><option>m</option><option>km</option><option>inch</option><option>ft</option><option>yd</option><option>mi</option><option>g</option><option>kg</option><option>oz</option><option>lb</option></select></div><div class="field"><label>To</label><select id="ut"><option>mm</option><option>cm</option><option>m</option><option>km</option><option>inch</option><option>ft</option><option>yd</option><option>mi</option><option>g</option><option>kg</option><option>oz</option><option>lb</option></select></div></div><div class="actions"><button class="btn" onclick="convertUnit()">Convert</button></div><div id="unitR" class="result">Choose units and enter a value.</div>`, 
 bill:()=>`<h2>🧾 Bill Split + Tip</h2><div class="formgrid">${field('Bill amount','bill')} ${field('Tip %','tip')} ${field('People','people')}</div><div class="actions"><button class="btn" onclick="calcBill()">Calculate</button></div><div id="billR" class="result">Split a bill in seconds.</div>`,
-text:()=>`<h2>🔤 Text Counter</h2><div class="field"><label>Write or paste text</label><textarea id="txt" oninput="countText()"></textarea></div><div class="actions"><button class="btn" onclick="countText()">Count</button><button class="btn alt" onclick="copyText()">Copy</button></div><div id="textR" class="result">0 words • 0 characters</div>`,
+text:()=>`<h2>Text Counter</h2><div class="field"><label>Write or paste text</label><textarea id="txt" oninput="countText()"></textarea></div><div class="actions"><button class="btn" onclick="countText()">Count</button><button class="btn alt" onclick="copyText()">Copy</button></div><div id="textR" class="result">0 words • 0 characters</div>`,
 
 loanCalc:()=>`<h2>🏦 Loan Calculator</h2><div class="formgrid">${field('Loan amount','lcAmount')} ${field('Annual interest %','lcRate')} ${field('Months','lcMonths')}</div><div class="actions"><button class="btn" onclick="calcLoan()">Calculate</button></div><div id="lcR" class="result">Enter loan details.</div>`,
 savings:()=>`<h2>💰 Savings Calculator</h2><div class="formgrid">${field('Starting savings','svStart')} ${field('Monthly contribution','svMonthly')} ${field('Annual return %','svRate')} ${field('Months','svMonths')}</div><div class="actions"><button class="btn" onclick="calcSavings()">Calculate</button></div><div id="svR" class="result">Estimate your future savings.</div>`,
 pctChange:()=>`<h2>📈 Percentage Change</h2><div class="formgrid">${field('Old value','pcOld')} ${field('New value','pcNew')}</div><div class="actions"><button class="btn" onclick="calcPctChange()">Calculate</button></div><div id="pcR" class="result">Find the increase or decrease.</div>`,
 timeCalc:()=>`<h2>🕐 Time Calculator</h2><div class="formgrid">${field('Start time','tmStart','time')} ${field('End time','tmEnd','time')}</div><div class="actions"><button class="btn" onclick="calcTime()">Calculate</button></div><div id="tmR" class="result">Find the duration between two times.</div>`,
 numWords:()=>`<h2>🔢 Number to Words</h2><div class="formgrid">${field('Number','nwNumber')}</div><div class="actions"><button class="btn" onclick="numberToWordsTool()">Convert</button></div><div id="nwR" class="result">Enter a whole number up to 999,999,999,999.</div>`,
-qr:()=>`<h2>▣ QR Maker</h2><div class="field"><label>Text or URL</label><input id="qrText" placeholder="https://example.com"></div><div class="actions"><button class="btn" onclick="makeQR()">Make QR</button></div><div id="qrR" class="result" style="text-align:center">Enter text or a link.</div>`
+qr:()=>`<h2>QR Maker</h2><div class="field"><label>Text or URL</label><input id="qrText" placeholder="https://example.com"></div><div class="actions"><button class="btn" onclick="makeQR()">Make QR</button></div><div id="qrR" class="result" style="text-align:center">Enter text or a link.</div>`
 };
 
 function v(id){return parseFloat($(id).value)}
