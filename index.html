@@ -444,6 +444,10 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 .search input::placeholder{color:#687386!important;opacity:1}
 .search button,.search .primary{display:block!important;flex:0 0 auto!important;width:auto!important;min-width:76px!important;max-width:120px!important;white-space:nowrap!important}
 @media(max-width:700px){.search input{flex:1 1 0%!important;width:0!important}.search button,.search .primary{min-width:62px!important}}
+
+/* Cross-platform section marks: avoid missing emoji glyphs on older desktop systems */
+.section-mark{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:5px;border-radius:8px;background:#eaf1ff;color:#1d4ed8;font-size:13px;font-weight:850;vertical-align:middle;box-shadow:inset 0 0 0 1px #dbe7ff}
+.mark-how{background:#e0f2fe;color:#0369a1}.mark-why{background:#dcfce7;color:#047857}.mark-about{background:#f1f5f9;color:#334155}.mark-guides{background:#fef3c7;color:#92400e}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
@@ -480,10 +484,10 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   <div class="hero">
     <h1>What do you want to do?</h1>
     <p>Simple everyday tools for everyone — fast, clear and mobile-friendly.</p>
-    <div class="search"><input id="search" aria-label="Search tools" placeholder="🔎 Search a tool..." oninput="filterTools()"><button class="primary" onclick="searchFocus()">Go</button></div><div class="chips"><button onclick="quickFilter('calculator')">🧮 Calculators</button><button onclick="quickFilter('converter')">📏 Converters</button><button onclick="quickFilter('text')">🔤 Text</button><button onclick="quickFilter('qr')">▣ QR</button><button onclick="clearFilter()">✕ All</button></div>
+    <div class="search"><input id="search" aria-label="Search tools" placeholder="Search by tool name or task..." oninput="filterTools()"><button class="primary" onclick="searchFocus()">Go</button></div><div class="chips"><button onclick="quickFilter('calculator')">🧮 Calculators</button><button onclick="quickFilter('converter')">📏 Converters</button><button onclick="quickFilter('text')">🔤 Text</button><button onclick="quickFilter('qr')">▣ QR</button><button onclick="clearFilter()">✕ All</button></div>
   </div>
 
-  <div class="section-title"><h2>⭐ Popular Tools</h2><span id="toolCount"></span></div>
+  <div class="section-title"><h2><span class="section-mark mark-tools" aria-hidden="true">T</span> Popular Tools</h2><span id="toolCount"></span></div>
   <div id="toolGrid" class="grid">
     <div class="card tool" data-name="age calculator" onclick="window.location.href='age.html'"><div class="icon"><img src="app-icons/age.svg" alt="" aria-hidden="true" loading="eager" decoding="async"></div><h3>Age</h3><p>Find your exact age.</p></div>
     <div class="card tool" data-name="percentage calculator" onclick="window.location.href='percentage.html'"><div class="icon"><img src="app-icons/percentage.svg" alt="" aria-hidden="true" loading="eager" decoding="async"></div><h3>Percentage</h3><p>Calculate percentage quickly.</p></div>
@@ -504,14 +508,14 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
     <div class="card tool" data-name="id card print studio aadhaar voter pan driving licence ration card ayushman pdf photo scan print" onclick="window.location.href='id-card-print-studio.html'"><div class="icon"><img src="app-icons/id-card-print-studio.svg" alt="" aria-hidden="true" loading="eager" decoding="async"></div><h3>ID Card Print Studio</h3><p>Prepare ID cards for printing.</p></div>
   </div>
 
-  <div id="noResults" class="card hide" style="margin-top:10px;text-align:center">No tool found. Try another word.</div>
+  <div id="noResults" class="card hide" style="margin-top:10px;text-align:center">No matching tool found. Try a shorter word such as age, percentage, discount, text, QR, or converter.</div>
 
   <div id="toolPanel" class="card panel hide">
     <button class="back" onclick="closeTool()">← Back to tools</button>
     <div id="toolContent"></div>
   </div>
 
-  <div class="section-title"><h2>🚀 How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1️⃣ Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2️⃣ Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3️⃣ Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2>💡 Why InfoJano?</h2></div>
+  <div class="section-title"><h2><span class="section-mark mark-how" aria-hidden="true">1</span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1️⃣ Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2️⃣ Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3️⃣ Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true">i</span> Why InfoJano?</h2></div>
   <div class="info-grid">
     <div class="card info"><h3>👆 Very Easy</h3><p>Big buttons, clear icons and simple steps.</p></div>
     <div class="card info"><h3>📱 Mobile First</h3><p>Designed to work comfortably on phones.</p></div>
@@ -520,7 +524,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 </section>
 
 <section id="about" class="card panel hide" style="margin-top:16px">
-  <h2>ℹ️ About InfoJano</h2>
+  <h2><span class="section-mark mark-about" aria-hidden="true">i</span> About InfoJano</h2>
   <p>InfoJano is a global everyday utility platform designed around one simple idea: <b>see it, tap it, get it done.</b></p>
   <p class="note">More useful tools, guides and information will be added over time.</p>
 </section>
@@ -528,7 +532,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 <nav class="bottom-nav"><button onclick="goHome()">🏠 Home</button><button onclick="$('search').focus();window.scrollTo({top:0,behavior:'smooth'})">🔎 Search</button><button onclick="$('toolGrid').scrollIntoView({behavior:'smooth'})">🧮 Tools</button><button onclick="showSection('about')">ℹ️ About</button></nav>
 <section class="section guides" id="guides">
   <div class="section-head">
-    <h2>📚 Useful Guides</h2>
+    <h2><span class="section-mark mark-guides" aria-hidden="true">G</span> Useful Guides</h2>
     <span>Simple answers</span>
   </div>
   <div class="guides-grid">
@@ -616,7 +620,9 @@ const $=id=>document.getElementById(id);
 function showSection(id){$('about').classList.toggle('hide',id!=='about'); if(id==='about') window.scrollTo({top:$('about').offsetTop-70,behavior:'smooth'}); else goHome();}
 function goHome(){$('about').classList.add('hide');$('toolPanel').classList.add('hide');window.scrollTo({top:0,behavior:'smooth'});}
 function searchFocus(){$('search').focus();filterTools();}
-function filterTools(){const q=$('search').value.trim().toLowerCase();let n=0;document.querySelectorAll('.tool').forEach(x=>{const ok=!q||x.dataset.name.includes(q);x.classList.toggle('hide',!ok);if(ok)n++});$('toolCount').textContent=n+' tools';$('noResults').classList.toggle('hide',n>0);} function quickFilter(type){$('search').value=type;filterTools();$('toolGrid').scrollIntoView({behavior:'smooth'});} function clearFilter(){$('search').value='';filterTools();}
+function normalizeToolText(value){return (value||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();}
+function filterTools(){const q=normalizeToolText($("search").value);const terms=q?q.split(/\s+/).filter(Boolean):[];let n=0;document.querySelectorAll(".tool").forEach(x=>{const label=x.querySelector("h3")?.textContent||"";const description=x.querySelector("p")?.textContent||"";const haystack=normalizeToolText((x.dataset.name||"")+" "+label+" "+description);const ok=!terms.length||terms.every(term=>haystack.includes(term));x.classList.toggle("hide",!ok);if(ok)n++;});$("toolCount").textContent=n+" tools";$("noResults").classList.toggle("hide",n>0);}
+function quickFilter(type){$("search").value=type;filterTools();$("toolGrid").scrollIntoView({behavior:"smooth"});} function clearFilter(){$("search").value="";filterTools();}
 function openTool(name){$('toolPanel').classList.remove('hide');$('about').classList.add('hide');$('toolContent').innerHTML=tools[name]();$('toolPanel').scrollIntoView({behavior:'smooth',block:'start'});}
 function closeTool(){$('toolPanel').classList.add('hide');window.scrollTo({top:document.querySelector('.section-title').offsetTop-80,behavior:'smooth'});}
 
