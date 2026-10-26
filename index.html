@@ -479,6 +479,42 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 .section-mark{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 40px!important}
 .section-mark svg{display:block!important;width:22px!important;height:22px!important}
 .section-heading-icon{display:inline-block!important;width:25px!important;height:25px!important;vertical-align:-4px!important;margin-right:8px!important}
+
+/* V2.2 — consistent left breathing room for section icons and cards */
+.section-title h2,
+.section-head h2,
+#about > h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-mark {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+  flex: 0 0 40px;
+}
+.info-grid .card.info {
+  padding-left: 22px !important;
+  padding-right: 18px !important;
+}
+.guide-card {
+  padding-left: 22px !important;
+  padding-right: 20px !important;
+}
+#about.card {
+  padding-left: 22px !important;
+  padding-right: 20px !important;
+}
+@media (max-width: 700px) {
+  .section-title h2,
+  .section-head h2,
+  #about > h2 { gap: 10px; }
+  .section-mark { margin-left: 6px !important; }
+  .info-grid .card.info,
+  .guide-card,
+  #about.card { padding-left: 18px !important; padding-right: 16px !important; }
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
