@@ -474,6 +474,11 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 /* Crisp inline category icons; independent of emoji fonts */
 .chips button{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important}
 .chips .chip-icon{display:inline-block!important;width:16px!important;height:16px!important;flex:0 0 16px!important;vertical-align:middle!important}
+
+/* Consistent vector icons for homepage section headings */
+.section-mark{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 40px!important}
+.section-mark svg{display:block!important;width:22px!important;height:22px!important}
+.section-heading-icon{display:inline-block!important;width:25px!important;height:25px!important;vertical-align:-4px!important;margin-right:8px!important}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
@@ -547,7 +552,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
     <div id="toolContent"></div>
   </div>
 
-  <div class="section-title"><h2><span class="section-mark mark-how" aria-hidden="true">1</span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1. Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2. Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3. Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true">i</span> Why InfoJano?</h2></div>
+  <div class="section-title"><h2><span class="section-mark mark-how" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h3m2 0h3M8 16h3m2 0h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1. Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2. Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3. Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5m0-8h.01" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span> Why InfoJano?</h2></div>
   <div class="info-grid">
     <div class="card info"><h3>Very Easy</h3><p>Big buttons, clear icons and simple steps.</p></div>
     <div class="card info"><h3>Mobile First</h3><p>Designed to work comfortably on phones.</p></div>
@@ -556,7 +561,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 </section>
 
 <section id="about" class="card panel hide" style="margin-top:16px">
-  <h2><span class="section-mark mark-about" aria-hidden="true">i</span> About InfoJano</h2>
+  <h2><span class="section-mark mark-about" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5m0-8h.01" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span> About InfoJano</h2>
   <p>InfoJano is a global everyday utility platform designed around one simple idea: <b>see it, tap it, get it done.</b></p>
   <p class="note">More useful tools, guides and information will be added over time.</p>
 </section>
@@ -564,7 +569,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 <nav class="bottom-nav"><button onclick="goHome()">Home</button><button onclick="$('search').focus();window.scrollTo({top:0,behavior:'smooth'})">Search</button><button onclick="$('toolGrid').scrollIntoView({behavior:'smooth'})">Tools</button><button onclick="showSection('about')">About</button></nav>
 <section class="section guides" id="guides">
   <div class="section-head">
-    <h2><span class="section-mark mark-guides" aria-hidden="true">G</span> Useful Guides</h2>
+    <h2><span class="section-mark mark-guides" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v17H7.5A2.5 2.5 0 0 0 5 21zM5 4.5v16.5M9 7h7m-7 4h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Useful Guides</h2>
     <span>Simple answers</span>
   </div>
   <div class="guides-grid">
@@ -608,7 +613,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 
 
 <section id="seo-tool-links" class="page-links" aria-labelledby="seo-tool-links-title">
-  <h2 id="seo-tool-links-title">Explore All Tools</h2>
+  <h2 id="seo-tool-links-title"><svg class="section-heading-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Explore All Tools</h2>
   <p>Open a dedicated page for each InfoJano tool.</p>
   <nav class="page-links-grid" aria-label="All standalone tools">
     <a href="age.html">Age Calculator</a>
