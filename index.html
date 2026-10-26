@@ -448,6 +448,28 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 /* Cross-platform section marks: avoid missing emoji glyphs on older desktop systems */
 .section-mark{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:5px;border-radius:8px;background:#eaf1ff;color:#1d4ed8;font-size:13px;font-weight:850;vertical-align:middle;box-shadow:inset 0 0 0 1px #dbe7ff}
 .mark-how{background:#e0f2fe;color:#0369a1}.mark-why{background:#dcfce7;color:#047857}.mark-about{background:#f1f5f9;color:#334155}.mark-guides{background:#fef3c7;color:#92400e}
+
+/* Final layout correction: give tool cards breathing room on every side */
+#toolGrid.grid{
+  box-sizing:border-box!important;
+  padding:12px 14px 18px!important;
+  column-gap:14px!important;
+  row-gap:14px!important;
+}
+#toolGrid .card.tool{
+  box-sizing:border-box!important;
+  margin:0!important;
+  padding:20px 18px!important;
+  border:1px solid var(--line)!important;
+  border-radius:18px!important;
+}
+@media(min-width:700px){
+  #toolGrid.grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;padding:14px 18px 22px!important}
+}
+@media(min-width:1100px){
+  #toolGrid.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:20px!important;padding:16px 20px 24px!important}
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
