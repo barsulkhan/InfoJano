@@ -470,6 +470,10 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   #toolGrid.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:20px!important;padding:16px 20px 24px!important}
 }
 
+
+/* Crisp inline category icons; independent of emoji fonts */
+.chips button{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important}
+.chips .chip-icon{display:inline-block!important;width:16px!important;height:16px!important;flex:0 0 16px!important;vertical-align:middle!important}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
@@ -506,7 +510,13 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   <div class="hero">
     <h1>What do you want to do?</h1>
     <p>Simple everyday tools for everyone — fast, clear and mobile-friendly.</p>
-    <div class="search"><input id="search" aria-label="Search tools" placeholder="Search by tool name or task..." oninput="filterTools()"><button class="primary" onclick="searchFocus()">Go</button></div><div class="chips"><button onclick="quickFilter('calculator')">Calculators</button><button onclick="quickFilter('converter')">Converters</button><button onclick="quickFilter('text')">Text</button><button onclick="quickFilter('qr')">QR</button><button onclick="clearFilter()">✕ All</button></div>
+    <div class="search"><input id="search" aria-label="Search tools" placeholder="Search by tool name or task..." oninput="filterTools()"><button class="primary" onclick="searchFocus()">Go</button></div><div class="chips">
+<button onclick="quickFilter('calculator')"><svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="6" width="8" height="4" rx="1" fill="currentColor"/><path d="M8 14h2m4 0h2M8 17h2m4 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Calculators</button>
+<button onclick="quickFilter('converter')"><svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h14m-3-3 3 3-3 3M20 17H6m3-3-3 3 3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Converters</button>
+<button onclick="quickFilter('text')"><svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M12 6v13M8 19h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 6 5 11m12-5 2 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Text</button>
+<button onclick="quickFilter('qr')"><svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 14h3v3h-3zm4 4h3v3h-3zm0-4h3" fill="currentColor"/></svg>QR</button>
+<button onclick="clearFilter()"><svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>All</button>
+</div>
   </div>
 
   <div class="section-title"><h2><span class="section-mark mark-tools" aria-hidden="true">T</span> Popular Tools</h2><span id="toolCount"></span></div>
