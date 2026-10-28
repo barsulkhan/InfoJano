@@ -83,3 +83,12 @@ Date: 28 October 2026
 - Fit validation was updated to account for the larger gap, so export should warn if cards no longer fit the selected paper.
 - Updated service worker cache from `infojano-v30` to `infojano-v31` in commit `7e86fd3f65d8816ae929959ca477aff292e3c7b9`.
 - Live test/physical print not yet verified. After GitHub Pages deploy, user should refresh/reopen the tool and inspect preview before printing at Actual size / 100%.
+
+## Checkpoint update — 28 October 2026 (Sitemap alignment and Ayushman crop paused)
+- User asked to pause the Ayushman card crop/print-size issue and continue other InfoJano work. Do not modify that crop workflow further until revisited.
+- Current service-worker cache in `sw.js`: `infojano-v32`. The latest crop-related commit `333659471dac6e88a1fcc8c84e39c1822fe3686f` adds `trimAyushmanOuterWhitespace(canvas)` to trim blank margins accidentally included in a manual Ayushman crop; cache bump commit `2fc17654b3991f77a34e4ac08cd6790031314932`. This change has NOT been tested with the user's original PDF or physical print.
+- Sitemap audit found `sitemap.xml` was missing `passport-photo-maker.html` and `pdf-to-jpg.html`, while `sitemap.txt` was missing `discount-pt-br.html` and `percentage-pt-br.html`.
+- Fixed `sitemap.xml` in commit `3971ff4681f927480604ca8cbb1e5c5b5d833722` and `sitemap.txt` in commit `8a74342f2b6a25361dd4559288a226b7db4fcedd`. Both now list the same 28 page URLs.
+- This is a repository content check only; live GitHub Pages deployment and Google Search Console sitemap status still need a follow-up check. Do not claim Google has fetched/indexed these pages. Recheck after deployment settles.
+- Next non-Ayushman priorities: (1) verify the live sitemap URLs after deployment, (2) use Google Search Console Performance > Search results > Queries and Countries to guide SEO updates for Discount and Percentage calculators, (3) continue checking remaining SEO pages and homepage tool links without speculative redesign.
+
