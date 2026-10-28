@@ -251,3 +251,12 @@ Date: 28 October 2026
 - Age page commit: `9ea5d6b461688251a6b53ee3a5ac744981046f6d`.
 - Service-worker cache bumped from `infojano-v48` to `infojano-v49` in commit `f3917e11f9bf058db7a507c95548e832fa96cd86`.
 - Source committed; mobile live rendering and expand/collapse behavior still need testing after deployment.
+
+
+## Exact-date history correction — 29 October 2026
+- User clarified that the main history story must be from the exact entered date, including the year, not just the same month/day from another year. The prior screenshot showed a 2023 event for DOB 15 January 1995, which was misleading.
+- Updated `age.html`: heading now says “What Happened on Your Date?” and the subtitle includes the entered full date. The primary card now only displays an event whose year matches the entered birth year from the On This Day feed. If no exact-year event is present in the feed, the highlighted birthday-style card transparently says that no event could be verified for that exact date, rather than presenting a different-year event as if it happened then. Other years remain behind the optional “Explore other years” button.
+- Added birthday-style highlighted card styling and preserved the age calculator.
+- Commits: main UI/logic `92e8a43c6ea6729be2e7f53b8f7944d0911a4241`, variable fix `e44ad98f7502be0d5fa6523851570a24cb19e605`.
+- Service-worker cache bumped from `infojano-v49` to `infojano-v50` in commit `c02838ceaf88f7d4004db1a7bfd890f75d451ceb`.
+- Source edits committed; live deployment and mobile behavior still need verification. Note: this version filters the On This Day feed for an exact year; it does not yet query a broader historical source if the feed lacks that year.
