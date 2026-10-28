@@ -73,3 +73,13 @@ Search Console state as of 28 Oct 2026:
 2. User tests the Ayushman PDF using manual crop and checks full header/text and portrait in the preview/export.
 3. If any clipping remains, inspect crop selection and source page screenshot first; avoid blind coordinate tweaks.
 4. Continue Sitemap/Search Console follow-up separately; don't mix SEO changes into ID-card crop fixes.
+
+
+## Update after master checkpoint: wider card cutting gap
+Date: 28 October 2026
+- User asked to increase the physical cutting gap between Front and Back card faces because the previous 5 mm gap was too narrow to cut comfortably.
+- Updated `id-card-print-studio.html` commit: `816d4a0147ff955627b564bafb0c1743d0bc911e`.
+- Gap is now 10 mm in the layout preview, PDF export and JPG export for side-by-side and stacked layouts.
+- Fit validation was updated to account for the larger gap, so export should warn if cards no longer fit the selected paper.
+- Updated service worker cache from `infojano-v30` to `infojano-v31` in commit `7e86fd3f65d8816ae929959ca477aff292e3c7b9`.
+- Live test/physical print not yet verified. After GitHub Pages deploy, user should refresh/reopen the tool and inspect preview before printing at Actual size / 100%.
