@@ -100,3 +100,10 @@ Date: 28 October 2026
 - Updated service-worker cache to `infojano-v33` in commit `7664e075a0f9e944a5f6b742fffee70347eda4bd`.
 - These are repository edits verified by fetching the updated file content; not yet confirmed deployed on GitHub Pages or measured for ranking/traffic impact. Recheck live page source after deployment and compare Search Console performance after several weeks.
 
+## Search Console page-filter follow-up — 29 October 2026
+- User shared a 3-month Search Console report filtered to the Discount Calculator URL.
+- Report cards: 0 clicks, 42 impressions, 0% CTR, average position 18.
+- Visible query row: “discount calculator online” with 1 impression and 0 clicks. Query table does not show all page impressions, likely because only some queries are visible; do not assume the other impressions are from this exact query.
+- Interpretation: early low-volume data; average position 18 is not the same as fixed rank for every search. Do not make another title/description edit immediately because the title/description were just updated in repo on 29 Oct and Search Console data may include pre-update dates. Wait for new data after deployment; recheck over the next few weeks.
+- Next step when user returns to GSC: inspect the Percentage Calculator page filter similarly, then compare both pages. Do not make speculative edits without enough query data.
+
