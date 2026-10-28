@@ -121,7 +121,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       <button id="calculate" type="button">Calculate My Age</button>
       <div id="result" class="hidden" aria-live="polite"></div>
       <section id="historyCard" class="history-card hidden" aria-labelledby="historyTitle">
-        <div class="history-heading"><span class="history-icon" aria-hidden="true">🌍</span><div><h2 id="historyTitle">On This Day in World History</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
+        <div class="history-heading"><span class="history-icon" aria-hidden="true">🌍</span><div><h2 id="historyTitle">This Day in History</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
         <p id="historyStatus" class="history-status" role="status">Loading historical events…</p>
         <div id="historyEvents" class="history-events"></div>
         <p class="history-source">Historical data from <a href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipedia / Wikimedia</a>. Event descriptions may be available only in English.</p>
@@ -257,30 +257,29 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           status.textContent = "No historical events were returned for this date. Please try again later.";
           return;
         }
-        // Prefer a small, readable selection and avoid claiming these happened in the birth year.
-        const sorted = events.slice().sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
-        const chosen = sorted.slice(0, 6);
-        chosen.forEach((event) => {
-          const item = document.createElement("article");
-          item.className = "history-event";
-          const yearBadge = document.createElement("span");
-          yearBadge.className = "history-event-year";
-          yearBadge.textContent = event.year ? String(event.year) : "Historical event";
-          const description = document.createElement("p");
-          description.textContent = event.text || "A historical event is recorded for this date.";
-          item.append(yearBadge, description);
-          const page = Array.isArray(event.pages) ? event.pages.find((p) => p && p.content_urls && p.content_urls.desktop && p.content_urls.desktop.page) : null;
-          if (page) {
-            const link = document.createElement("a");
-            link.href = page.content_urls.desktop.page;
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-            link.textContent = "Read more on Wikipedia ↗";
-            item.append(link);
-          }
-          eventsBox.append(item);
-        });
-        status.textContent = "Here are selected events that happened on this day in different years. They are not necessarily from your birth year.";
+        // Show just one highlighted event. Prefer the exact birth year if the feed has one.
+        const event = events.find((entry) => Number(entry.year) === Number(birthYear)) || events[0];
+        const item = document.createElement("article");
+        item.className = "history-event history-event-featured";
+        const yearBadge = document.createElement("span");
+        yearBadge.className = "history-event-year";
+        yearBadge.textContent = event.year ? String(event.year) : "Historical event";
+        const description = document.createElement("p");
+        description.textContent = event.text || "A historical event is recorded for this date.";
+        item.append(yearBadge, description);
+        const page = Array.isArray(event.pages) ? event.pages.find((p) => p && p.content_urls && p.content_urls.desktop && p.content_urls.desktop.page) : null;
+        if (page) {
+          const link = document.createElement("a");
+          link.href = page.content_urls.desktop.page;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "Discover this event ↗";
+          item.append(link);
+        }
+        eventsBox.append(item);
+        status.textContent = Number(event.year) === Number(birthYear)
+          ? "A historical event from your birth year on this date."
+          : "One highlighted event from this day in history. It happened in a different year than your birth year.";
       } catch (_) {
         status.textContent = "Global history could not load right now. Check your internet connection or try again later. Your age calculation is still available.";
       }
