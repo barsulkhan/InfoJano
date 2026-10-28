@@ -129,3 +129,10 @@ Date: 28 October 2026
 - Bumped service-worker cache to `infojano-v35` in commit `b35892046916070868c7086f5d0f1d79818d09fa`.
 - Repository source was fetched and exact changes were checked; live interactive testing not yet confirmed. Test examples after deployment: original 1000 with 20% discount => save 200, sale price 800; original 1000 and sale price 800 => discount 200 / 20%.
 
+## GST calculator improvement — 29 October 2026
+- Inspected `gst-calculator.html` before editing. Existing calculator supported price before GST only.
+- Added a mode selector for price before GST or final price including GST. Both modes show the pre-tax price, GST amount, and total price. Existing rates (0%, 3%, 5%, 12%, 18%, 28%) and canonical URL retained.
+- Commit: `eaf66aad279b01b195c952b4bdb9d13cfd0f13c9`.
+- Bumped service-worker cache to `infojano-v36` in commit `93dbd0f0aa1a74fa4bae69049f61bbe036db8c7c`.
+- Source changes were committed and inspected; live interactive testing is not confirmed. Test examples after deployment: 1000 before GST at 18% => GST 180, total 1180; 1180 including 18% GST => pre-tax 1000, GST 180.
+
