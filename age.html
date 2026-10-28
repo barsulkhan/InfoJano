@@ -253,13 +253,15 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       totals.style.color = "#536176";
       info.append(weekdayHeading, document.createElement("br"), heading, details, totals);
       if (isBirthdayToday) {
-        const greeting = document.createElement("p");
-        greeting.textContent = "Happy Birthday from InfoJano! 🎉";
-        greeting.style.cssText = "margin:10px 0 0;font-weight:800;color:#be185d;font-size:18px";
+        const greeting = document.createElement("div");
+        greeting.setAttribute("role", "status");
+        greeting.style.cssText = "margin:14px 0 0;padding:14px 16px;border-radius:16px;text-align:center;background:linear-gradient(120deg,#fff1f2,#fdf2f8,#fff7ed);border:1px solid #f9a8d4;box-shadow:0 5px 18px #ec489922";
+        greeting.innerHTML = '<div style="font-size:25px;line-height:1.3">🎂 🎉 🎁</div><div style="font-size:19px;font-weight:900;color:#9d174d;margin-top:5px">Wishing You a Very Happy Birthday!</div><div style="font-size:14px;font-weight:600;color:#7c2d12;margin-top:5px">May your day be filled with happiness, love, laughter and wonderful surprises.</div><div style="font-size:13px;font-weight:800;color:#be185d;margin-top:7px">With warm wishes from InfoJano ❤️</div>';
         info.append(greeting);
       }
       layout.append(info);
       result.append(layout);
+      if (window.__ijBirthdayFireworksStop) window.__ijBirthdayFireworksStop();
       if (isBirthdayToday && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         const canvas = document.createElement("canvas");
         canvas.className = "birthday-fireworks-canvas";
@@ -267,38 +269,71 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
         result.append(canvas);
         const ctx = canvas.getContext("2d");
         if (ctx) {
+          let stopped = false, rafId = 0, timerId = 0;
           const dpr = Math.min(window.devicePixelRatio || 1, 2);
-          const w = result.clientWidth, h = result.clientHeight;
-          canvas.width = Math.max(1, w * dpr);
-          canvas.height = Math.max(1, h * dpr);
-          ctx.scale(dpr, dpr);
-          const colors = ["#f59e0b", "#ec4899", "#3b82f6", "#10b981", "#a855f7", "#ffffff"];
-          const particles = [];
-          for (let burst = 0; burst < 4; burst++) {
-            const cx = w * (0.18 + Math.random() * 0.64);
-            const cy = h * (0.12 + Math.random() * 0.48);
-            for (let i = 0; i < 28; i++) {
-              const angle = Math.PI * 2 * i / 28;
-              const speed = 1.1 + Math.random() * 2.4;
-              particles.push({x:cx,y:cy,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:45+Math.random()*25,size:1.5+Math.random()*2.2,color:colors[Math.floor(Math.random()*colors.length)]});
-            }
+          let w = 0, h = 0;
+          function resizeCanvas() {
+            w = result.clientWidth; h = result.clientHeight;
+            canvas.width = Math.max(1, w * dpr); canvas.height = Math.max(1, h * dpr);
+            canvas.style.width = w + "px"; canvas.style.height = h + "px";
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
           }
-          let frame = 0;
-          function drawFireworks() {
-            ctx.clearRect(0,0,w,h);
-            for (const p of particles) {
-              if (p.life <= 0) continue;
-              p.x += p.vx; p.y += p.vy; p.vy += 0.025; p.vx *= 0.99; p.life--;
-              ctx.globalAlpha = Math.min(1, p.life / 18);
-              ctx.fillStyle = p.color;
-              ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+          resizeCanvas();
+          const colors = ["#fbbf24", "#fb7185", "#38bdf8", "#34d399", "#c084fc", "#ffffff", "#f97316"];
+          function launchShow() {
+            if (stopped || !canvas.isConnected) return;
+            resizeCanvas();
+            const particles = [];
+            const rocketCount = 5;
+            for (let r = 0; r < rocketCount; r++) {
+              const x = w * (0.12 + Math.random() * 0.76);
+              const targetY = h * (0.12 + Math.random() * 0.52);
+              const startY = h + 8;
+              const color = colors[Math.floor(Math.random() * colors.length)];
+              particles.push({type:"rocket",x,y:startY,vx:(Math.random()-.5)*1.2,vy:-(3.8+Math.random()*1.8),targetY,color,trail:[]});
             }
-            ctx.globalAlpha = 1;
-            frame++;
-            if (frame < 72) window.requestAnimationFrame(drawFireworks);
-            else canvas.remove();
+            let frame = 0;
+            function animate() {
+              if (stopped || !canvas.isConnected) return;
+              ctx.clearRect(0,0,w,h);
+              for (const p of particles) {
+                if (p.type === "rocket" && !p.exploded) {
+                  p.trail.push({x:p.x,y:p.y,alpha:1});
+                  if (p.trail.length > 7) p.trail.shift();
+                  p.x += p.vx; p.y += p.vy;
+                  p.vy *= .985;
+                  if (p.y <= p.targetY) {
+                    p.exploded = true;
+                    for (let i=0;i<64;i++) {
+                      const angle = Math.PI*2*i/64 + Math.random()*.08;
+                      const speed = 1+Math.random()*3.1;
+                      particles.push({type:"spark",x:p.x,y:p.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:48+Math.random()*28,maxLife:76,size:1.2+Math.random()*2.2,color:Math.random()<.22?"#ffffff":p.color,twinkle:Math.random()});
+                    }
+                  }
+                  ctx.strokeStyle=p.color;ctx.lineWidth=2;ctx.beginPath();
+                  p.trail.forEach((t,i)=>{ctx.globalAlpha=(i+1)/p.trail.length*.55;if(i===0)ctx.moveTo(t.x,t.y);else ctx.lineTo(t.x,t.y)});
+                  ctx.stroke();ctx.globalAlpha=1;
+                  ctx.fillStyle="#fff7ed";ctx.beginPath();ctx.arc(p.x,p.y,2.1,0,Math.PI*2);ctx.fill();
+                } else if (p.type === "spark" && p.life > 0) {
+                  p.x+=p.vx;p.y+=p.vy;p.vx*=.985;p.vy=p.vy*.985+.035;p.life--;
+                  ctx.globalAlpha=Math.max(0,p.life/p.maxLife)*(Math.sin(frame*.5+p.twinkle*8)*.25+.75);
+                  ctx.fillStyle=p.color;ctx.shadowBlur=7;ctx.shadowColor=p.color;
+                  ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
+                  ctx.shadowBlur=0;ctx.globalAlpha=1;
+                }
+              }
+              frame++;
+              if (frame < 105) rafId=window.requestAnimationFrame(animate);
+              else { ctx.clearRect(0,0,w,h); timerId=window.setTimeout(launchShow,450); }
+            }
+            rafId=window.requestAnimationFrame(animate);
           }
-          window.requestAnimationFrame(drawFireworks);
+          window.__ijBirthdayFireworksStop = function() {
+            stopped=true; window.cancelAnimationFrame(rafId); window.clearTimeout(timerId);
+            canvas.remove(); window.removeEventListener("resize",resizeCanvas);
+          };
+          window.addEventListener("resize",resizeCanvas);
+          launchShow();
         } else canvas.remove();
       }
     });
