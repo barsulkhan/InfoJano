@@ -136,3 +136,11 @@ Date: 28 October 2026
 - Bumped service-worker cache to `infojano-v36` in commit `93dbd0f0aa1a74fa4bae69049f61bbe036db8c7c`.
 - Source changes were committed and inspected; live interactive testing is not confirmed. Test examples after deployment: 1000 before GST at 18% => GST 180, total 1180; 1180 including 18% GST => pre-tax 1000, GST 180.
 
+## Age calculator improvement — 29 October 2026
+- Inspected `age.html`: it calculated exact years, months and days, while the page title/description also promised weeks and days.
+- Added total elapsed calendar days and total full weeks plus remaining days to the result, using UTC date arithmetic for the elapsed-day count to avoid daylight-saving hour differences.
+- Existing manual DD-MM-YYYY input, future-date validation, canonical URL, and age calculation remain unchanged.
+- Commit: `b6d94d70891f11e85e407dc9db1a77d487de1a10`.
+- Bumped service-worker cache to `infojano-v37` in commit `929d1527cb22103ab2320220a018583111ec0dc8`.
+- Source change committed and checked by re-fetching; interactive live testing not confirmed. After deployment, test a known date and verify the total-day count against a calendar/date calculator.
+
