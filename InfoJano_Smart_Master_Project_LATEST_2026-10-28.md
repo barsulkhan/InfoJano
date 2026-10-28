@@ -159,3 +159,11 @@ Date: 28 October 2026
 2. Only after that works, review Search Console query data over several weeks; avoid creating a separate weekday page until there is evidence of demand.
 3. Continue one calculator at a time: test real examples, preserve existing behavior, update service-worker cache, and record every change in this master file.
 4. Keep the Ayushman card print/crop workflow paused until the user is ready to test it with the original PDF; do not print more cards before checking the preview and physical dimensions.
+
+
+## Birthday celebration visual beside Age Calculator result — 29 October 2026
+- User clarified the design should be implemented on the actual InfoJano website, not as a standalone mockup.
+- Updated `age.html` to use the previously empty right side of the result card for a responsive birthday celebration panel with cake, balloons, confetti-style colors, and a “BIRTHDAY JOY” caption. Result text remains on the left; on narrow mobile screens the illustration scales down.
+- Age page commit: `4ffce898b086f4824a6c2dfaac7e37f2470745bf`.
+- Bumped service-worker cache from `infojano-v38` to `infojano-v39` in commit `df91892e6589914cfa3a761ce2398c07cc24155e`.
+- Repository updates committed. Visual rendering on the live GitHub Pages site has not yet been tested. After deployment, open https://barsulkhan.github.io/InfoJano/age.html, calculate an age, and inspect both desktop/mobile layout before further visual adjustments.
