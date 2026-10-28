@@ -243,3 +243,11 @@ Date: 28 October 2026
 - Age page commit: `111d715a63a59dad94fcdc1b53531ce45c0c7ade`.
 - Service-worker cache bumped from `infojano-v47` to `infojano-v48` in commit `73d0fe4de7204123580de6ec2d3e051e2d71792d`.
 - Source committed and verified by re-fetching; live visual testing after deployment still needed.
+
+
+## Birthday-style history highlight and optional expansion — 29 October 2026
+- User asked for the main history event to be highlighted in a card similar to the existing birthday greeting, with an optional way to explore additional events.
+- Updated `age.html`: the first event now uses a warm pink/peach highlighted card; only one event appears initially. Added an “Explore more events” button that expands up to five additional events and changes to “Show fewer events” when expanded. If the feed includes an event in the user's birth year on the same month/day, it is selected as the main highlight; otherwise the feed's first event is used and labeled as a different-year history item.
+- Age page commit: `9ea5d6b461688251a6b53ee3a5ac744981046f6d`.
+- Service-worker cache bumped from `infojano-v48` to `infojano-v49` in commit `f3917e11f9bf058db7a507c95548e832fa96cd86`.
+- Source committed; mobile live rendering and expand/collapse behavior still need testing after deployment.
