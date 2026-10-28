@@ -285,7 +285,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           return item;
         }
         const exactEvents = events.filter((entry) => Number(entry.year) === Number(birthYear));
-        const otherEvents = events.filter((entry) => Number(entry.year) !== Number(birthYear)).slice(0, 5);
+        let otherEvents = events.filter((entry) => Number(entry.year) !== Number(birthYear)).slice(0, 5);
         const moreBox = document.getElementById("moreHistoryEvents");
         const moreButton = document.getElementById("moreHistoryButton");
         moreBox.replaceChildren();
