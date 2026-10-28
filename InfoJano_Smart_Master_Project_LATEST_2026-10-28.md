@@ -225,3 +225,13 @@ Date: 28 October 2026
 - Age page commit: `3560787ff2320873b9badd45c6bf5b2db7a0cac5`.
 - Service-worker cache bumped from `infojano-v45` to `infojano-v46` in commit `4370bd5655e11313d42a2397b0ac21352fb4f896`.
 - Code committed; live animation has not been visually tested in a browser. Preview using a DOB whose day/month matches today's local date. If the browser shows old code, close and reopen the page to refresh the service-worker cache.
+
+
+## Age & History Calculator — 29 October 2026
+- User approved developing the Age Calculator into an Age & History Calculator.
+- Updated `age.html` to add an “On This Day in World History” card after a successful age calculation. It requests date-based events from Wikimedia/Wikipedia's public On This Day REST feed, shows up to six event descriptions with years and Wikipedia article links, and clearly explains that events are from different years rather than necessarily the user's birth year.
+- The page makes an optional approximate country lookup via ipapi.co, only to display an approximate location label. Country detection failure or network/privacy restrictions do not block the global-history feature. Country-specific event filtering is not yet implemented; global history is the fallback and first working release.
+- If the history API fails, a clear fallback message appears and age calculation remains available. The history panel is only shown after a valid date is calculated.
+- Age page commit: `82c82cc80d59ba769067747b2c1609ea0e59b2ce`.
+- Service-worker cache bumped from `infojano-v46` to `infojano-v47` in commit `c08aa0da2f1a83a5e29ebe279faed619ec98294e`.
+- Source changes are committed. The live GitHub Pages rendering, API CORS response, and mobile behavior have not yet been browser-tested. Verify after deployment using DOB `15-01-1995`; check that age result still works, history card loads, links open, and offline/API failure does not break age calculation.
