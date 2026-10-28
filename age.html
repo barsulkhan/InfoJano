@@ -305,10 +305,45 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
             sourceLabel: "See the match record"
           });
         }
-        const exactEvents = [
+        let exactEvents = [
           ...curatedEvents,
           ...events.filter((entry) => Number(entry.year) === Number(birthYear))
         ];
+        // Secondary structured-data lookup for exact-date events omitted by Wikipedia's day/month feed.
+        if (!exactEvents.length) {
+          try {
+            const sparql = `SELECT ?item ?itemLabel ?itemDescription ?date WHERE {
+              { ?item wdt:P585 ?date } UNION { ?item wdt:P580 ?date } UNION { ?item wdt:P582 ?date }
+              FILTER(YEAR(?date) = ${Number(birthYear)} && MONTH(?date) = ${Number(month)} && DAY(?date) = ${Number(day)})
+              ?item wdt:P31/wdt:P279* wd:Q1190554.
+              SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+            } LIMIT 8`;
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 3500);
+            const wdResponse = await fetch("https://query.wikidata.org/sparql?format=json&query=" + encodeURIComponent(sparql), {
+              headers: { "Accept": "application/sparql-results+json" },
+              signal: controller.signal
+            });
+            clearTimeout(timer);
+            if (wdResponse.ok) {
+              const wdData = await wdResponse.json();
+              const rows = wdData && wdData.results && Array.isArray(wdData.results.bindings) ? wdData.results.bindings : [];
+              exactEvents = rows.map((row) => {
+                const itemUrl = row.item && row.item.value ? row.item.value : "";
+                const label = row.itemLabel && row.itemLabel.value ? row.itemLabel.value : "Historical event";
+                const descriptionText = row.itemDescription && row.itemDescription.value ? row.itemDescription.value : "";
+                return {
+                  year: Number(birthYear),
+                  text: descriptionText ? label + " — " + descriptionText : label + " is recorded in Wikidata for this exact date.",
+                  sourceUrl: itemUrl,
+                  sourceLabel: "View Wikidata record"
+                };
+              }).filter((entry) => entry.sourceUrl);
+            }
+          } catch (_) {
+            // A failed secondary lookup must not block age results or Wikipedia events.
+          }
+        }
         let otherEvents = events.filter((entry) => Number(entry.year) !== Number(birthYear)).slice(0, 5);
         const moreBox = document.getElementById("moreHistoryEvents");
         const moreButton = document.getElementById("moreHistoryButton");
