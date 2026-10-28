@@ -72,7 +72,7 @@
     .history-event-year{display:inline-block;margin-bottom:5px;padding:3px 8px;border-radius:999px;background:#eaf2ff;color:#1d4ed8;font-size:12px;font-weight:800}
     .history-event p{margin:0;color:#334155;font-size:14px;line-height:1.55}
     .history-event a{display:inline-block;margin-top:7px;color:#1d4ed8;font-size:13px;font-weight:700;text-decoration:none}
-    .history-event-featured{padding:18px;border-color:#f9a8d4;background:linear-gradient(125deg,#fff1f2,#fdf2f8,#fff7ed);box-shadow:0 5px 18px #ec489915}
+    .history-event-featured{padding:18px;border:1px solid #f9a8d4;border-radius:16px;background:linear-gradient(125deg,#fff1f2,#fdf2f8,#fff7ed);box-shadow:0 5px 18px #ec489922;text-align:left}
     .history-event-featured .history-event-year{background:#fce7f3;color:#9d174d}
     .more-history-button{width:auto;display:block;margin:12px auto 0;padding:10px 16px;border:1px solid #bfdbfe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:13px;font-weight:800}
     .more-history-button:hover{background:#dbeafe}
@@ -125,7 +125,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       <button id="calculate" type="button">Calculate My Age</button>
       <div id="result" class="hidden" aria-live="polite"></div>
       <section id="historyCard" class="history-card hidden" aria-labelledby="historyTitle">
-        <div class="history-heading"><span class="history-icon" aria-hidden="true">🌍</span><div><h2 id="historyTitle">This Day in History</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
+        <div class="history-heading"><span class="history-icon" aria-hidden="true">🌍</span><div><h2 id="historyTitle">What Happened on Your Date?</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
         <p id="historyStatus" class="history-status" role="status">Loading historical events…</p>
         <div id="historyEvents" class="history-events"></div>
         <button id="moreHistoryButton" class="more-history-button hidden" type="button" aria-expanded="false">Explore more events</button>
@@ -238,7 +238,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       eventsBox.replaceChildren();
       status.textContent = "Finding historical events for this date…";
       const monthDay = String(month).padStart(2, "0") + "/" + String(day).padStart(2, "0");
-      subtitle.textContent = new Date(2000, month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric" }) + " · Global history";
+      subtitle.textContent = new Date(2000, month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric" }) + ", " + birthYear + " · Your date in history";
       // Country detection is optional and approximate. It never blocks the global-history fallback.
       try {
         const controller = new AbortController();
@@ -248,7 +248,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
         if (locationResponse.ok) {
           const locationData = await locationResponse.json();
           if (locationData && locationData.country_name) {
-            subtitle.textContent = new Date(2000, month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric" }) + " · Global history · Approx. location: " + locationData.country_name;
+            subtitle.textContent = new Date(2000, month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric" }) + ", " + birthYear + " · Your date in history";
           }
         }
       } catch (_) {
@@ -263,10 +263,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           status.textContent = "No historical events were returned for this date. Please try again later.";
           return;
         }
-        // Highlight one event first, preferring the birth year if present; keep the rest behind an optional button.
-        const preferredIndex = events.findIndex((entry) => Number(entry.year) === Number(birthYear));
-        const primaryIndex = preferredIndex >= 0 ? preferredIndex : 0;
-        const event = events[primaryIndex];
+        // The main highlight must match the exact day, month and birth year.
         function makeHistoryItem(entry, featured) {
           const item = document.createElement("article");
           item.className = featured ? "history-event history-event-featured" : "history-event";
@@ -287,24 +284,41 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           }
           return item;
         }
-        eventsBox.append(makeHistoryItem(event, true));
-        const extraEvents = events.filter((_, index) => index !== primaryIndex).slice(0, 5);
+        const exactEvents = events.filter((entry) => Number(entry.year) === Number(birthYear));
+        const otherEvents = events.filter((entry) => Number(entry.year) !== Number(birthYear)).slice(0, 5);
         const moreBox = document.getElementById("moreHistoryEvents");
         const moreButton = document.getElementById("moreHistoryButton");
         moreBox.replaceChildren();
-        extraEvents.forEach((entry) => moreBox.append(makeHistoryItem(entry, false)));
-        moreButton.classList.toggle("hidden", extraEvents.length === 0);
-        moreButton.textContent = "Explore more events";
+        if (exactEvents.length) {
+          eventsBox.append(makeHistoryItem(exactEvents[0], true));
+          status.textContent = "This event happened on your exact birth date.";
+          if (exactEvents.length > 1) otherEvents.unshift(...exactEvents.slice(1));
+        } else {
+          const note = document.createElement("article");
+          note.className = "history-event history-event-featured";
+          const icon = document.createElement("div");
+          icon.textContent = "📅 ✨";
+          icon.style.cssText = "font-size:25px;margin-bottom:7px";
+          const heading = document.createElement("p");
+          heading.style.cssText = "font-weight:900;font-size:17px;color:#9d174d;margin-bottom:6px";
+          heading.textContent = "Your date deserves its own story";
+          const message = document.createElement("p");
+          message.textContent = "We couldn't verify a historical event specifically from " + new Date(Number(birthYear), month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) + " in the available source. We won't show an event from another year as if it happened on your date.";
+          note.append(icon, heading, message);
+          eventsBox.append(note);
+          status.textContent = "Showing your exact date first. Other-year events are optional below.";
+        }
+        otherEvents = otherEvents.slice(0, 5);
+        otherEvents.forEach((entry) => moreBox.append(makeHistoryItem(entry, false)));
+        moreButton.classList.toggle("hidden", otherEvents.length === 0);
+        moreButton.textContent = "Explore other years";
         moreButton.setAttribute("aria-expanded", "false");
         moreButton.onclick = () => {
           const opening = moreBox.classList.contains("hidden");
           moreBox.classList.toggle("hidden", !opening);
           moreButton.setAttribute("aria-expanded", String(opening));
-          moreButton.textContent = opening ? "Show fewer events" : "Explore more events";
+          moreButton.textContent = opening ? "Hide other years" : "Explore other years";
         };
-        status.textContent = Number(event.year) === Number(birthYear)
-          ? "A highlighted event from your birth year on this date."
-          : "One highlighted event from this day in history.";
       } catch (_) {
         status.textContent = "Global history could not load right now. Check your internet connection or try again later. Your age calculation is still available.";
       }
