@@ -191,3 +191,11 @@ Date: 28 October 2026
 - Age page commit: `e48874cae6fd37c383655f934547a0c43c2283dd`.
 - Service-worker cache bumped from `infojano-v41` to `infojano-v42` in commit `bf71ec3472a9ec956f09d1d981f0c13965bce7d1`.
 - Code committed. Live browser behavior not yet tested. Verify two cases after deployment: DOB with today's month/day should show greeting and poster; a different DOB should not show them.
+
+
+## Birthday celebration moved to date-of-birth input box — 29 October 2026
+- User clarified they do not want a child sitting with a cake in a separate panel beside the result. They want the date-of-birth input's rounded rectangular box to become festive, with party/confetti popping around it, only when the entered date is the user's birthday today.
+- Updated `age.html`: removed the large birthday SVG illustration from the result area; added a birthday frame around the date input with animated party/confetti decorations, pink highlight and glow only when the entered day/month matches today's day/month. The result still says “Happy Birthday from InfoJano!” only on that day; non-birthday dates show ordinary age/weekday results without the greeting or decoration.
+- Age page commit: `4792190808c970da41ee01588d4fee6fc0f60723`.
+- Service worker cache bumped from `infojano-v42` to `infojano-v43` in commit `8bac7256ff8d79e6274d7c02d3cddcb2b03effd4`.
+- Source committed; live browser rendering not yet visually tested. Verify with today's month/day and a different date after deployment.
