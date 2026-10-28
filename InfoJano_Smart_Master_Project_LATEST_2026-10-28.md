@@ -260,3 +260,11 @@ Date: 28 October 2026
 - Commits: main UI/logic `92e8a43c6ea6729be2e7f53b8f7944d0911a4241`, variable fix `e44ad98f7502be0d5fa6523851570a24cb19e605`.
 - Service-worker cache bumped from `infojano-v49` to `infojano-v50` in commit `c02838ceaf88f7d4004db1a7bfd890f75d451ceb`.
 - Source edits committed; live deployment and mobile behavior still need verification. Note: this version filters the On This Day feed for an exact year; it does not yet query a broader historical source if the feed lacks that year.
+
+
+## Full date labels for history events — 29 October 2026
+- User asked that when a historical event is shown, its full calendar date should be visible rather than only the year (e.g. November 26, 2023), so it can be compared with the entered date of birth.
+- Updated `age.html` event badges to show full month, day, and year for each event. Exact birth-year matching remains the main highlight; other-year events stay optional and are explicitly dated.
+- Age page commit: `4e4d7c181657f7d90aa204a2aca1205e081f5a6c`.
+- Cache bumped from `infojano-v50` to `infojano-v51` in commit `4eee5b37156cf92d3c929bb6bf4bb30b57cddc28`.
+- Live visual behavior still needs verification after GitHub Pages deployment.
