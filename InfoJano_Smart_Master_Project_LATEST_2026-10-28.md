@@ -175,3 +175,11 @@ Date: 28 October 2026
 - Age page commit: `37805e48c6449596c61f3befa51db8baf4ce4a84`.
 - Service worker cache bumped from `infojano-v39` to `infojano-v40` in commit `5ae5d036f3859e332cc57d0b97e5aa7f6557ac25`.
 - Repository source updates are committed. Live visual appearance and animation on GitHub Pages have not yet been tested. Check https://barsulkhan.github.io/InfoJano/age.html after deployment on mobile; if the old view remains, close and reopen the page.
+
+
+## Poster-style birthday illustration in Age Calculator result — 29 October 2026
+- User clarified that the right-side visual should resemble the earlier birthday poster, appearing only after a valid date is submitted, while age/weekday results remain on the left.
+- Replaced the simple child/cake emojis with an inline SVG illustration: smiling child, birthday cake with candle flames, balloons, confetti and gift boxes. Added gentle CSS animation to the child, balloons and cake; responsive layout and reduced-motion support remain.
+- Age page commit: `2d725220857fa9ccf10a6a37696d954f0ce929da`.
+- Service worker cache bumped from `infojano-v40` to `infojano-v41` in commit `052b3e7a5b18fb5891fff4b9db23b182d1264ba2`.
+- Source code committed. Live GitHub Pages rendering/animation has not yet been visually tested; check https://barsulkhan.github.io/InfoJano/age.html after deployment and send a screenshot if layout needs adjustment.
