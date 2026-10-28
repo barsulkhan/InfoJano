@@ -121,3 +121,11 @@ Date: 28 October 2026
 - Bumped service worker cache to `infojano-v34` in commit `5ee3d7bace28adf4df4be3edf8dbe04496f0f1e1`.
 - Code changes were committed and source re-fetched for inspection. Interactive browser testing/live deployment not yet confirmed; test both modes with examples after GitHub Pages deploy: 20% of 150 should be 30; 25 is 12.5% of 200.
 
+## Discount calculator improvement — 29 October 2026
+- Search Console screenshot showed 42 impressions and 0 clicks for `discount.html`, average position 18; visible query “discount calculator online” had only one impression, so the sample remains small.
+- Added a second calculation mode to `discount.html`: calculate the discount amount and percentage from original price plus sale price. Existing mode for sale price from a discount percentage remains available.
+- Validation handles missing/invalid values, original price zero, and sale price greater than original price.
+- Commit: `fcecb0785719f08ce21eaca9b01692182b6d3e40`.
+- Bumped service-worker cache to `infojano-v35` in commit `b35892046916070868c7086f5d0f1d79818d09fa`.
+- Repository source was fetched and exact changes were checked; live interactive testing not yet confirmed. Test examples after deployment: original 1000 with 20% discount => save 200, sale price 800; original 1000 and sale price 800 => discount 200 / 20%.
+
