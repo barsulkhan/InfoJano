@@ -268,3 +268,12 @@ Date: 28 October 2026
 - Age page commit: `4e4d7c181657f7d90aa204a2aca1205e081f5a6c`.
 - Cache bumped from `infojano-v50` to `infojano-v51` in commit `4eee5b37156cf92d3c929bb6bf4bb30b57cddc28`.
 - Live visual behavior still needs verification after GitHub Pages deployment.
+
+
+## Latest update: exact-date history coverage
+Updated: 29 October 2026
+- Improved the Age Calculator history card with source-verified exact-date highlights for 15 January 1995.
+- For DOB 15-01-1995, the featured event is the closing day of the 10th World Youth Day in Manila; the card links directly to the Vatican's record. A second exact-date event, the 49ers' 38–28 NFC Championship win over the Cowboys, is available as another exact-year item.
+- This avoids implying that no event happened merely because the Wikipedia day/month feed omitted it. It does not claim exhaustive global coverage: dates without a verified curated record still depend on the public history feed.
+- Cache version bumped from v51 to v52.
+- Relevant links: https://barsulkhan.github.io/InfoJano/age.html and https://www.vatican.va/content/john-paul-ii/en/angelus/1995/documents/hf_jp-ii_ang_19950115.html
