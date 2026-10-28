@@ -233,7 +233,12 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       const totalWeeks = Math.floor(totalDays / 7);
       const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       const birthWeekday = weekdays[new Date(year, month - 1, day).getDay()];
+      const isBirthdayToday = today.getMonth() + 1 === month && today.getDate() === day;
+      const dobFrame = document.getElementById("dobBirthdayFrame");
+      dobFrame.classList.toggle("is-birthday", isBirthdayToday);
       result.classList.remove("hidden"); result.replaceChildren();
+      const layout = document.createElement("div"); layout.className = "age-result-layout";
+      const info = document.createElement("div"); info.className = "age-result-info";
       const weekdayHeading = document.createElement("strong"); weekdayHeading.textContent = `You were born on a ${birthWeekday}`;
       weekdayHeading.style.fontSize = "20px"; weekdayHeading.style.color = "#1458c8";
       const heading = document.createElement("strong"); heading.textContent = "Your exact age";
@@ -241,28 +246,14 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       details.style.color = "#172033"; details.style.fontWeight = "bold";
       const totals = document.createElement("p"); totals.textContent = `Total: ${totalDays.toLocaleString("en-IN")} days (${totalWeeks.toLocaleString("en-IN")} full weeks and ${totalDays % 7} days)`;
       totals.style.color = "#536176";
-      const layout = document.createElement("div"); layout.className = "age-result-layout";
-      const info = document.createElement("div"); info.className = "age-result-info";
       info.append(weekdayHeading, document.createElement("br"), heading, details, totals);
-      layout.append(info);
-      const isBirthdayToday = today.getMonth() + 1 === month && today.getDate() === day;
       if (isBirthdayToday) {
         const greeting = document.createElement("p");
         greeting.textContent = "Happy Birthday from InfoJano! 🎉";
         greeting.style.cssText = "margin:10px 0 0;font-weight:800;color:#be185d;font-size:18px";
         info.append(greeting);
-        const art = document.createElement("div"); art.className = "birthday-art"; art.setAttribute("aria-label", "Birthday cake and balloons celebration");
-      const poster = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      poster.setAttribute("viewBox","0 0 220 250"); poster.setAttribute("role","img"); poster.setAttribute("aria-label","Birthday child holding a cake with candles, balloons and gifts"); poster.classList.add("birthday-poster");
-      poster.innerHTML = `<defs><linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs>
-      <g class="poster-balloons"><path d="M25 70Q8 43 28 25Q48 25 45 48L34 70Z" fill="#38bdf8"/><path d="M53 64Q38 39 56 25Q77 29 70 49L61 66Z" fill="#fb7185"/><path d="M184 68Q167 42 187 25Q208 30 201 51L193 70Z" fill="#fbbf24"/><path d="M33 69l4 16m25-19-3 18m134-16-2 17" stroke="#64748b" fill="none"/></g>
-      <g fill="#f472b6"><path d="M18 100l5-9 5 9-5 8Z"/><path d="M194 104l5-9 5 9-5 8Z"/></g>
-      <g class="poster-child"><path d="M70 94Q52 109 56 158L67 180H150L163 143Q158 108 138 94Z" fill="url(#shirt)" stroke="#1e40af" stroke-width="2"/><path d="M72 120L51 150L69 160L88 133M139 120L168 148L151 161L131 133" fill="#f3a683" stroke="#d97757" stroke-width="3" stroke-linejoin="round"/><ellipse cx="105" cy="62" rx="40" ry="43" fill="#f7bd94"/><path d="M65 61Q50 29 80 18Q113 0 140 22Q160 40 145 68L136 47Q113 39 92 27Q80 45 65 48Z" fill="#4b2e24"/><path d="M79 62q8-9 16 0m21 0q8-9 16 0" stroke="#3b241f" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M91 77q14 17 29 0" stroke="#b91c1c" stroke-width="3" fill="#fff" stroke-linecap="round"/><circle cx="75" cy="73" r="7" fill="#fb7185" opacity=".6"/><circle cx="136" cy="73" r="7" fill="#fb7185" opacity=".6"/><path d="M78 25L88 6L100 27Z" fill="#fbbf24"/></g>
-      <g class="poster-cake"><path d="M54 177Q104 162 155 177L149 203Q105 216 60 203Z" fill="#7c2d12"/><ellipse cx="105" cy="177" rx="51" ry="15" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/><path d="M62 181q10 8 20 0t21 0t21 0t21 0" fill="none" stroke="#fb7185" stroke-width="4"/><path d="M73 164v-14m19 12v-16m19 16v-14m19 16v-16" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/><g fill="#fbbf24"><path d="M73 148q-8-9 0-14q8 5 0 14Z"/><path d="M92 145q-8-9 0-14q8 5 0 14Z"/><path d="M111 148q-8-9 0-14q8 5 0 14Z"/><path d="M130 145q-8-9 0-14q8 5 0 14Z"/></g><path d="M62 203q43 13 87 0v8q-44 13-87 0Z" fill="#f9a8d4"/></g>
-      <g><rect x="20" y="215" width="40" height="28" rx="4" fill="#2563eb"/><path d="M40 215v28M20 225h40" stroke="#fbbf24" stroke-width="5"/><rect x="157" y="215" width="42" height="28" rx="4" fill="#ec4899"/><path d="M178 215v28M157 225h42" stroke="#fbbf24" stroke-width="5"/></g>`;
-      const caption = document.createElement("div"); caption.className = "birthday-caption"; caption.textContent = "HAPPY BIRTHDAY!";
-      art.append(poster, caption); layout.append(art);
       }
+      layout.append(info);
       result.append(layout);
     });
   </script>
