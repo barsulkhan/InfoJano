@@ -216,3 +216,12 @@ Date: 28 October 2026
 - Age page commit: `bb00c0974a8de6aba8844c08b00235b9e3cec681`.
 - Service-worker cache bumped from `infojano-v44` to `infojano-v45` in commit `2740098e3a537fd7de6587ab5e2147a8aa222f5c`.
 - Live animation not yet visually tested. To preview the effect, use a DOB whose day/month matches the current local date; otherwise no fireworks should appear.
+
+
+## Enhanced repeating birthday fireworks and greeting — 29 October 2026
+- User asked for a better animation that repeats for as long as the birthday result is open, plus a warmer birthday greeting.
+- Updated `age.html`: replaced the brief one-time burst with repeated colorful rocket launches, trails, star-like particle bursts and twinkling/fading sparks, with a short pause between shows. It runs only when the entered day/month matches today's date and stops/replaces the previous animation when another calculation is made. It respects the device's reduced-motion preference.
+- Replaced the simple greeting with a birthday message: “Wishing You a Very Happy Birthday!”, a warm wish for happiness/love/laughter/surprises, and “With warm wishes from InfoJano”.
+- Age page commit: `3560787ff2320873b9badd45c6bf5b2db7a0cac5`.
+- Service-worker cache bumped from `infojano-v45` to `infojano-v46` in commit `4370bd5655e11313d42a2397b0ac21352fb4f896`.
+- Code committed; live animation has not been visually tested in a browser. Preview using a DOB whose day/month matches today's local date. If the browser shows old code, close and reopen the page to refresh the service-worker cache.
