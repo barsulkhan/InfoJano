@@ -107,3 +107,9 @@ Date: 28 October 2026
 - Interpretation: early low-volume data; average position 18 is not the same as fixed rank for every search. Do not make another title/description edit immediately because the title/description were just updated in repo on 29 Oct and Search Console data may include pre-update dates. Wait for new data after deployment; recheck over the next few weeks.
 - Next step when user returns to GSC: inspect the Percentage Calculator page filter similarly, then compare both pages. Do not make speculative edits without enough query data.
 
+## Search Console follow-up — 29 October 2026
+- User shared page-filtered Search Console screenshots (last 3 months).
+- Discount page report: 42 impressions, 0 clicks, 0% CTR, average position 18. The visible Queries table shows “discount calculator online” with 1 impression and 0 clicks. This is too little query-level data to conclude the title is poor.
+- Percentage page report: 24 impressions, 0 clicks, 0% CTR, average position 55.5. Visible queries include “percentage calculator online” (2 impressions), “count percentage online”, “percentage calculator”, “percentage calculate”, “count percentage”, “28 percent of 170”, and “calculate percentage”, each with very low impressions.
+- Interpretation: the pages are receiving early Google exposure, but the Percentage page's average position is low; improve usefulness/relevance and monitor after enough data accumulates rather than repeatedly changing title tags. No code changes were made based solely on these screenshots.
+
