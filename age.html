@@ -101,22 +101,6 @@ main > section:not([style]) p{line-height:1.7;margin:14px 0}
 main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
 
-/* Mobile overflow repair: let content reflow instead of clipping at the viewport edge. */
-html{width:100%;max-width:100%;overflow-x:clip}
-body{width:100%;max-width:100%;min-width:0;padding:clamp(10px,3vw,20px)}
-main{width:100%;max-width:650px;min-width:0}
-main *,#historyCard,#historyEvents,#moreHistoryEvents,.history-event,.history-heading{min-width:0;max-width:100%}
-h1,h2,h3,p,label,.history-event p,.history-heading p{overflow-wrap:anywhere;word-break:normal}
-input,button{max-width:100%;min-width:0;white-space:normal}
-.history-card,.history-event{box-sizing:border-box;width:100%}
-@media(max-width:480px){
-  .card,.history-card{padding:16px}
-  .history-heading{align-items:flex-start;gap:9px}
-  .history-heading h2{font-size:19px}
-  .history-event{padding:12px}
-  .history-event-featured{padding:14px}
-}
-
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
 </head>
