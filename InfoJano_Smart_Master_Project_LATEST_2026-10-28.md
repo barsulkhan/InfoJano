@@ -144,3 +144,18 @@ Date: 28 October 2026
 - Bumped service-worker cache to `infojano-v37` in commit `929d1527cb22103ab2320220a018583111ec0dc8`.
 - Source change committed and checked by re-fetching; interactive live testing not confirmed. After deployment, test a known date and verify the total-day count against a calendar/date calculator.
 
+
+
+## Birthday weekday feature — 29 October 2026
+- User asked whether people search for the weekday on which they were born. Search results show this is a real search intent, although monthly search volume has not been verified.
+- Added birthday weekday to the existing Age Calculator rather than creating a separate page. After a valid date is entered, the result now prominently shows “You were born on a [weekday]” alongside exact age and total days/weeks.
+- Updated page title, meta description, social title/description, and added a focused FAQ explaining how to find the birth weekday. Existing DD-MM-YYYY entry and age calculation were retained.
+- Age page commit: `5a00d2661e8c3e15e9376f19c56ad0190f86db4c`.
+- Service worker cache bumped from `infojano-v37` to `infojano-v38` in commit `51d2faaeb33c0d4751d18df5e52fcfd52ea29f01`.
+- Source edits are committed; live deployment and interactive browser testing have not been confirmed. After deployment, test DOB `15-01-1995` and verify it reports Sunday. Live tool: https://barsulkhan.github.io/InfoJano/age.html
+
+## Next practical plan
+1. Check the live Age Calculator after GitHub Pages deploy and verify birthday weekday, exact age, total days, and full weeks.
+2. Only after that works, review Search Console query data over several weeks; avoid creating a separate weekday page until there is evidence of demand.
+3. Continue one calculator at a time: test real examples, preserve existing behavior, update service-worker cache, and record every change in this master file.
+4. Keep the Ayushman card print/crop workflow paused until the user is ready to test it with the original PDF; do not print more cards before checking the preview and physical dimensions.
