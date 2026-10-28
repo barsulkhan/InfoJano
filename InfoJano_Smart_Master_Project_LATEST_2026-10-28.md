@@ -183,3 +183,11 @@ Date: 28 October 2026
 - Age page commit: `2d725220857fa9ccf10a6a37696d954f0ce929da`.
 - Service worker cache bumped from `infojano-v40` to `infojano-v41` in commit `052b3e7a5b18fb5891fff4b9db23b182d1264ba2`.
 - Source code committed. Live GitHub Pages rendering/animation has not yet been visually tested; check https://barsulkhan.github.io/InfoJano/age.html after deployment and send a screenshot if layout needs adjustment.
+
+
+## Birthday greeting only on the user's actual birthday — 29 October 2026
+- User clarified that InfoJano should not display “Happy Birthday” to every visitor who checks their age. It should greet them only when the entered birth month/day matches today's local month/day.
+- Updated `age.html`: the poster-style animated birthday illustration and “Happy Birthday from InfoJano!” greeting are now conditional on the actual birthday. On other dates, the age result and birth weekday display without the celebration poster/greeting.
+- Age page commit: `e48874cae6fd37c383655f934547a0c43c2283dd`.
+- Service-worker cache bumped from `infojano-v41` to `infojano-v42` in commit `bf71ec3472a9ec956f09d1d981f0c13965bce7d1`.
+- Code committed. Live browser behavior not yet tested. Verify two cases after deployment: DOB with today's month/day should show greeting and poster; a different DOB should not show them.
