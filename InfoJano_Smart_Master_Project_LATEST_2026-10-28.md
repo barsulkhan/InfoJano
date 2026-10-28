@@ -277,3 +277,12 @@ Updated: 29 October 2026
 - This avoids implying that no event happened merely because the Wikipedia day/month feed omitted it. It does not claim exhaustive global coverage: dates without a verified curated record still depend on the public history feed.
 - Cache version bumped from v51 to v52.
 - Relevant links: https://barsulkhan.github.io/InfoJano/age.html and https://www.vatican.va/content/john-paul-ii/en/angelus/1995/documents/hf_jp-ii_ang_19950115.html
+
+## Latest update: Age Calculator mobile overflow
+Updated: 29 October 2026
+- Added responsive width and text-wrapping rules to Age Calculator so the page, history card, and event text can fit narrow mobile screens.
+- Kept age calculations and history behavior unchanged.
+- Avoided using page-wide overflow hiding as the only fix; constrained the layout and allowed text to wrap.
+- Service worker cache bumped from v52 to v53.
+- Verify on phone: https://barsulkhan.github.io/InfoJano/age.html
+- Code was committed, but a live-device visual retest has not been performed from this environment.
