@@ -37,7 +37,15 @@
     input,button{width:100%;padding:14px;border-radius:10px;font-size:16px}
     input{border:1px solid #cbd5e1;background:white}
     button{margin-top:18px;border:0;background:#1673f9;color:white;font-weight:bold;cursor:pointer}
-    #result{margin-top:20px;padding:18px;background:#eff6ff;border-radius:12px;line-height:1.8}
+#result{display:none;margin-top:20px;padding:18px;background:linear-gradient(120deg,#eff6ff,#f0fdf4);border-radius:12px;line-height:1.8}
+    #result:not(.hidden){display:block}
+    .age-result-layout{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .age-result-info{flex:1;min-width:0}
+    .birthday-art{flex:0 0 150px;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:18px;background:radial-gradient(circle at 50% 40%,#fff7ed,#ffedd5 72%,#dbeafe);position:relative;overflow:hidden}
+    .birthday-art .birthday-cake{font-size:76px;line-height:1.2;filter:drop-shadow(0 5px 3px #00000012)}
+    .birthday-art .birthday-balloons{font-size:28px;letter-spacing:5px;line-height:1.3}
+    .birthday-art .birthday-caption{font-size:12px;font-weight:800;color:#9a3412;letter-spacing:.3px}
+    @media(max-width:480px){.age-result-layout{gap:8px}.birthday-art{flex-basis:94px;min-height:120px;padding:8px}.birthday-art .birthday-cake{font-size:48px}.birthday-art .birthday-balloons{font-size:20px;letter-spacing:1px}.birthday-art .birthday-caption{font-size:10px;text-align:center}}
     footer{text-align:center;font-size:13px;color:#64748b;margin:24px 0}
     .hidden{display:none}
   
@@ -222,7 +230,14 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       details.style.color = "#172033"; details.style.fontWeight = "bold";
       const totals = document.createElement("p"); totals.textContent = `Total: ${totalDays.toLocaleString("en-IN")} days (${totalWeeks.toLocaleString("en-IN")} full weeks and ${totalDays % 7} days)`;
       totals.style.color = "#536176";
-      result.append(weekdayHeading, document.createElement("br"), heading, details, totals);
+      const layout = document.createElement("div"); layout.className = "age-result-layout";
+      const info = document.createElement("div"); info.className = "age-result-info";
+      info.append(weekdayHeading, document.createElement("br"), heading, details, totals);
+      const art = document.createElement("div"); art.className = "birthday-art"; art.setAttribute("aria-label", "Birthday cake and balloons celebration");
+      const balloons = document.createElement("div"); balloons.className = "birthday-balloons"; balloons.textContent = "🎈🎉";
+      const cake = document.createElement("div"); cake.className = "birthday-cake"; cake.textContent = "🎂";
+      const caption = document.createElement("div"); caption.className = "birthday-caption"; caption.textContent = "BIRTHDAY JOY";
+      art.append(balloons, cake, caption); layout.append(info, art); result.append(layout);
     });
   </script>
 
