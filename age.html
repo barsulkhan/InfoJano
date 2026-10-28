@@ -207,11 +207,17 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       let days = today.getDate() - day;
       if (days < 0) { months--; days += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); }
       if (months < 0) { years--; months += 12; }
+      const birthUTC = Date.UTC(year, month - 1, day);
+      const todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      const totalDays = Math.floor((todayUTC - birthUTC) / 86400000);
+      const totalWeeks = Math.floor(totalDays / 7);
       result.classList.remove("hidden"); result.replaceChildren();
       const heading = document.createElement("strong"); heading.textContent = "Your exact age";
       const details = document.createElement("p"); details.textContent = `${years} years, ${months} months and ${days} days`;
       details.style.color = "#172033"; details.style.fontWeight = "bold";
-      result.append(heading, details);
+      const totals = document.createElement("p"); totals.textContent = `Total: ${totalDays.toLocaleString("en-IN")} days (${totalWeeks.toLocaleString("en-IN")} full weeks and ${totalDays % 7} days)`;
+      totals.style.color = "#536176";
+      result.append(heading, details, totals);
     });
   </script>
 
