@@ -269,7 +269,9 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           item.className = featured ? "history-event history-event-featured" : "history-event";
           const yearBadge = document.createElement("span");
           yearBadge.className = "history-event-year";
-          yearBadge.textContent = entry.year ? String(entry.year) : "Historical event";
+          yearBadge.textContent = entry.year
+            ? new Date(Number(entry.year), month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+            : new Date(Number(birthYear), month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
           const description = document.createElement("p");
           description.textContent = entry.text || "A historical event is recorded for this date.";
           item.append(yearBadge, description);
