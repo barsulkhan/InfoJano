@@ -92,3 +92,11 @@ Date: 28 October 2026
 - This is a repository content check only; live GitHub Pages deployment and Google Search Console sitemap status still need a follow-up check. Do not claim Google has fetched/indexed these pages. Recheck after deployment settles.
 - Next non-Ayushman priorities: (1) verify the live sitemap URLs after deployment, (2) use Google Search Console Performance > Search results > Queries and Countries to guide SEO updates for Discount and Percentage calculators, (3) continue checking remaining SEO pages and homepage tool links without speculative redesign.
 
+## SEO update — 29 October 2026
+- User shared a Google Search Console Performance screenshot for the last 3 months: 2 clicks, 83 impressions, 2.4% average CTR, average position 30.4. Visible queries included “percentage calculator online” (2 impressions), “count percentage online”, “percentage calculator”, “percentage calculate”, “discount calculator online”, “count percentage”, “28 percent of 170”, and “sentence counter”. The screenshot shows only part of the query list; these are early, low-volume signals, not enough to infer long-term performance.
+- Updated only SEO title and meta description on `discount.html` and `percentage.html` to align naturally with the visible queries. Existing calculator functionality, layout, canonical URLs, and on-page guides were not changed.
+- Discount page commit: `8ffc49bcb96d7e1f1f1e9504b4ac8f80f81fc2d0`. New title: “Discount Calculator Online: Sale Price & Savings | InfoJano”.
+- Percentage page commit: `178c9a8f58f9bda16bf072aa681acd57df153a00`. New title: “Free Online Percentage Calculator | InfoJano”.
+- Updated service-worker cache to `infojano-v33` in commit `7664e075a0f9e944a5f6b742fffee70347eda4bd`.
+- These are repository edits verified by fetching the updated file content; not yet confirmed deployed on GitHub Pages or measured for ranking/traffic impact. Recheck live page source after deployment and compare Search Console performance after several weeks.
+
