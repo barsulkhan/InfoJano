@@ -121,9 +121,14 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <h1>Discount Calculator: Calculate Sale Price and Savings</h1>
 <p>Enter an item’s original price and discount percentage to see exactly how much you save and what you will pay. This calculator works for shopping discounts, sale offers, and quick price comparisons.</p>
 <h2>Calculate Discount</h2>
-<label for="price">Original Price</label>
+<label for="discountMode">What do you want to calculate?</label>
+<select id="discountMode" onchange="updateDiscountMode()" style="width:100%;box-sizing:border-box;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:#fff">
+<option value="discount">Sale price from discount percentage</option>
+<option value="rate">Discount percentage from sale price</option>
+</select>
+<label for="price" id="priceLabel">Original Price</label>
 <input id="price" type="number" min="0" step="any" placeholder="Example: 1000">
-<label for="discount">Discount (%)</label>
+<label for="discount" id="discountLabel">Discount (%)</label>
 <input id="discount" type="number" min="0" max="100" step="any" placeholder="Example: 20">
 <button onclick="calculateDiscount()">Calculate Discount</button>
 <div id="result" class="result" aria-live="polite">Enter the original price and discount.</div>
@@ -175,19 +180,35 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script>
-function calculateDiscount(){
-const priceInput=document.getElementById('price').value;
-const discountInput=document.getElementById('discount').value;
+function updateDiscountMode(){
+const mode=document.getElementById('discountMode').value;
+const label=document.getElementById('discountLabel');
+const input=document.getElementById('discount');
 const out=document.getElementById('result');
-const price=Number(priceInput);
-const discount=Number(discountInput);
-if(priceInput===''||discountInput===''||!Number.isFinite(price)||!Number.isFinite(discount)||price<0||discount<0||discount>100){
-out.textContent='Please enter a valid price and a discount from 0 to 100.';
+label.textContent=mode==='rate'?'Sale Price':'Discount (%)';
+input.max=mode==='rate'?'':'100';
+input.placeholder=mode==='rate'?'Example: 800':'Example: 20';
+out.textContent='';
+}
+function calculateDiscount(){
+const mode=document.getElementById('discountMode').value;
+const priceInput=document.getElementById('price').value;
+const valueInput=document.getElementById('discount').value;
+const out=document.getElementById('result');
+const price=Number(priceInput),value=Number(valueInput);
+if(priceInput===''||valueInput===''||!Number.isFinite(price)||!Number.isFinite(value)||price<0||value<0||(mode==='discount'&&value>100)){
+out.textContent=mode==='rate'?'Enter a valid original price and sale price.':'Please enter a valid price and a discount from 0 to 100.';
 return;
 }
-const saved=price*discount/100;
-const finalPrice=price-saved;
 const money=n=>n.toLocaleString('en-IN',{maximumFractionDigits:2});
+if(mode==='rate'){
+if(price===0){out.textContent='Original price must be greater than zero.';return;}
+if(value>price){out.textContent='Sale price cannot be higher than the original price for a discount calculation.';return;}
+const saved=price-value,rate=saved/price*100;
+out.innerHTML='Discount: <strong>'+money(saved)+'</strong><br>Discount percentage: <strong>'+Number(rate.toFixed(6))+'%</strong><br>Sale price: '+money(value);
+return;
+}
+const saved=price*value/100,finalPrice=price-saved;
 out.innerHTML='You save: <strong>'+money(saved)+'</strong><br>Final price: <strong>'+money(finalPrice)+'</strong><br>Original price: '+money(price);
 }
 </script>
