@@ -8,21 +8,21 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Calculate your exact age in years, months, weeks and days between a date of birth and any chosen date with this free online age calculator.">
+  <meta name="description" content="Calculate your exact age and find the day of the week you were born. Free birthday weekday calculator with years, months, weeks and days.">
   <meta name="robots" content="index,follow">
-  <title>Age Calculator: Exact Age in Years, Months & Days | InfoJano</title>
+  <title>Age Calculator & Birthday Weekday Finder | InfoJano</title>
   <link rel="canonical" href="https://barsulkhan.github.io/InfoJano/age.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Age Calculator: Exact Age in Years, Months & Days | InfoJano">
-<meta property="og:description" content="Calculate your exact age in years, months, weeks and days between a date of birth and any chosen date with this free online age calculator.">
+<meta property="og:title" content="Age Calculator & Birthday Weekday Finder | InfoJano">
+<meta property="og:description" content="Calculate your exact age and find the day of the week you were born. Free birthday weekday calculator with years, months, weeks and days.">
 
 <meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
 <meta property="og:image:alt" content="InfoJano — free everyday online tools">
 <meta property="og:url" content="https://barsulkhan.github.io/InfoJano/age.html">
 <meta name="twitter:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Age Calculator: Exact Age in Years, Months & Days | InfoJano">
-<meta name="twitter:description" content="Calculate your exact age in years, months, weeks and days between a date of birth and any chosen date with this free online age calculator.">
+<meta name="twitter:title" content="Age Calculator & Birthday Weekday Finder | InfoJano">
+<meta name="twitter:description" content="Calculate your exact age and find the day of the week you were born. Free birthday weekday calculator with years, months, weeks and days.">
   <meta name="theme-color" content="#0b1220">
   <style>
     *{box-sizing:border-box}
@@ -71,7 +71,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 
     <section class="card">
       <h1>Free Age Calculator</h1>
-      <p>Enter your date of birth to calculate your exact age in years, months and days.</p>
+      <p>Enter your date of birth to calculate your exact age and discover which day of the week you were born, such as Sunday or Monday.</p>
 
       <label for="dobManual">Date of birth (manual entry)</label>
       <p style="margin:0 0 8px;font-size:14px;color:#536176"><strong>Enter as DD-MM-YYYY</strong> — DD = day, MM = month, YYYY = 4-digit year. Examples: <strong>15-08-1947</strong> or <strong>15081947</strong> both mean 15 August 1947. Enter day first, then month, then the 4-digit year.</p>
@@ -119,7 +119,8 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
     <section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">Example: Calculate an Exact Age</h2><p>If a person was born on 15 January 2000, compare that birth date with the date you want to calculate against. The result changes each day, so use the calculator’s displayed reference date when checking an official form.</p><h3>Before using the result</h3><ul><li>Enter the date of birth carefully in DD-MM-YYYY format.</li><li>Check day, month and year against the original document.</li><li>For legal or official eligibility, follow the authority’s stated age-counting rules.</li></ul><p>Related tools: <a href="date-difference.html">Date Difference Calculator</a> and <a href="percentage.html">Percentage Calculator</a>.</p></section>
 
 <section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
-<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Age Calculator FAQs</h2>
+<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Age and Birthday Weekday Calculator FAQs</h2>
+<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How can I find the day of the week I was born?</summary><p style="margin:8px 0 0;color:#536174">Enter your date of birth in DD-MM-YYYY format and tap Calculate My Age. The result shows whether you were born on Sunday, Monday, Tuesday, or another day of the week.</p></details>
 <details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How is exact age calculated?</summary><p style="margin:8px 0 0;color:#536174">Enter your date of birth. The calculator compares it with today’s date and reports years, months and days.</p></details>
 <details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Can I calculate age on a past or future date?</summary><p style="margin:8px 0 0;color:#536174">This calculator currently calculates your age as of today.</p></details>
 <details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">What does DD-MM-YYYY mean?</summary><p style="margin:8px 0 0;color:#536174">DD means day, MM means month, and YYYY means the four-digit year. For example, 15-08-1947 means 15 August 1947.</p></details>
@@ -211,13 +212,17 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       const todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
       const totalDays = Math.floor((todayUTC - birthUTC) / 86400000);
       const totalWeeks = Math.floor(totalDays / 7);
+      const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const birthWeekday = weekdays[new Date(year, month - 1, day).getDay()];
       result.classList.remove("hidden"); result.replaceChildren();
+      const weekdayHeading = document.createElement("strong"); weekdayHeading.textContent = `You were born on a ${birthWeekday}`;
+      weekdayHeading.style.fontSize = "20px"; weekdayHeading.style.color = "#1458c8";
       const heading = document.createElement("strong"); heading.textContent = "Your exact age";
       const details = document.createElement("p"); details.textContent = `${years} years, ${months} months and ${days} days`;
       details.style.color = "#172033"; details.style.fontWeight = "bold";
       const totals = document.createElement("p"); totals.textContent = `Total: ${totalDays.toLocaleString("en-IN")} days (${totalWeeks.toLocaleString("en-IN")} full weeks and ${totalDays % 7} days)`;
       totals.style.color = "#536176";
-      result.append(heading, details, totals);
+      result.append(weekdayHeading, document.createElement("br"), heading, details, totals);
     });
   </script>
 
