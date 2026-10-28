@@ -286,3 +286,10 @@ Updated: 29 October 2026
 - Service worker cache bumped from v52 to v53.
 - Verify on phone: https://barsulkhan.github.io/InfoJano/age.html
 - Code was committed, but a live-device visual retest has not been performed from this environment.
+
+## Correction: mobile screenshot was zoomed
+Updated: 29 October 2026
+- User clarified that the Age Calculator screenshot was zoomed in. Reverted the additional mobile overflow CSS because the screenshot alone did not establish a responsive-layout bug.
+- Age calculator's history and age logic remain unchanged.
+- Service worker cache bumped to v54 after the revert.
+- Next project task: improve exact-date history coverage for arbitrary birth dates without presenting events from other years as if they happened on the entered date. Current curated exact-date additions only cover 15 January 1995; do not imply the solution is comprehensive.
