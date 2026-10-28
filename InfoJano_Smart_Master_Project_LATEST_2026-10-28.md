@@ -208,3 +208,11 @@ Date: 28 October 2026
 - Age page fix commit: `87f3cd0b66eb04c0caeddf7711ece72c8b55a889`.
 - Service worker cache bumped from `infojano-v43` to `infojano-v44` in commit `175b2a73963419f74cd014373098e4c6b08e30a5`.
 - Fix committed. Live page not yet browser-tested; verify after deployment with DOB 15-01-1995 and today's date to confirm the result renders and no JavaScript error remains.
+
+
+## Birthday-only fireworks demo — 29 October 2026
+- User asked to prepare a fireworks effect on the actual website so they can see it.
+- Added a lightweight Canvas fireworks burst over the Age Calculator result card, only when the entered birth month/day matches today's date. Uses colored spark particles that burst and fade over about 1.2 seconds; respects the device's reduced-motion preference. It does not run for ordinary date checks.
+- Age page commit: `bb00c0974a8de6aba8844c08b00235b9e3cec681`.
+- Service-worker cache bumped from `infojano-v44` to `infojano-v45` in commit `2740098e3a537fd7de6587ab5e2147a8aa222f5c`.
+- Live animation not yet visually tested. To preview the effect, use a DOB whose day/month matches the current local date; otherwise no fireworks should appear.
