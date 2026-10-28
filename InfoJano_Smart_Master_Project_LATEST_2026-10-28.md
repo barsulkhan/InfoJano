@@ -199,3 +199,12 @@ Date: 28 October 2026
 - Age page commit: `4792190808c970da41ee01588d4fee6fc0f60723`.
 - Service worker cache bumped from `infojano-v42` to `infojano-v43` in commit `8bac7256ff8d79e6274d7c02d3cddcb2b03effd4`.
 - Source committed; live browser rendering not yet visually tested. Verify with today's month/day and a different date after deployment.
+
+
+## Age Calculator bug fix — 29 October 2026
+- User reported that entering a date and pressing Calculate My Age did not work.
+- Found the cause: the script tried to call `classList.toggle` on `dobBirthdayFrame`, but the input wrapper had not been committed into the HTML. This caused a JavaScript error and stopped result rendering.
+- Added the missing `dobBirthdayFrame` wrapper and confetti element around the DOB input. Age result logic is unchanged.
+- Age page fix commit: `87f3cd0b66eb04c0caeddf7711ece72c8b55a889`.
+- Service worker cache bumped from `infojano-v43` to `infojano-v44` in commit `175b2a73963419f74cd014373098e4c6b08e30a5`.
+- Fix committed. Live page not yet browser-tested; verify after deployment with DOB 15-01-1995 and today's date to confirm the result renders and no JavaScript error remains.
