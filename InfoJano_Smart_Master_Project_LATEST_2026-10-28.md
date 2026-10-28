@@ -310,3 +310,13 @@ Updated: 29 October 2026
 - Kept the canonical URL unchanged and did not create per-birth-date URLs or keyword-stuffed pages.
 - Cache version bumped from v55 to v56.
 - This is an on-page SEO improvement, not a guarantee of higher ranking. Verify the live title/snippet and indexing through Search Console after deployment.
+
+
+## SEO maintenance — structured data and visible FAQ alignment
+Updated: 29 October 2026
+- Audited the Discount Calculator's FAQ structured data against the visible FAQ content.
+- Added the visible 20% discount savings question so the answer is available to users as well as in the structured data, and added the existing discount-comparison FAQ to the structured data. This keeps markup aligned with content shown on the page.
+- Updated the Percentage Calculator's WebApplication structured description to explain both supported modes: calculating a percentage of a number and finding what percentage a part is of a whole.
+- No calculator logic, layout, canonical URLs, or page titles were changed.
+- Bumped service-worker cache from v56 to v57 so returning visitors can receive updated page assets.
+- Source changes need live deployment and browser/schema validation; this does not guarantee search ranking or rich-result display.
