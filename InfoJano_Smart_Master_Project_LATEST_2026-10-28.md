@@ -167,3 +167,11 @@ Date: 28 October 2026
 - Age page commit: `4ffce898b086f4824a6c2dfaac7e37f2470745bf`.
 - Bumped service-worker cache from `infojano-v38` to `infojano-v39` in commit `df91892e6589914cfa3a761ce2398c07cc24155e`.
 - Repository updates committed. Visual rendering on the live GitHub Pages site has not yet been tested. After deployment, open https://barsulkhan.github.io/InfoJano/age.html, calculate an age, and inspect both desktop/mobile layout before further visual adjustments.
+
+
+## Animated birthday child in Age Calculator — 29 October 2026
+- User asked for a closer match to the birthday celebration reference design, specifically a child illustration on the right with animation.
+- Updated `age.html` result card: the right-side celebration panel now includes a child emoji, cake, balloons, a Happy Birthday caption, animated child bounce, floating balloons, gentle cake wiggle, and sparkle motion. Responsive sizing and reduced-motion accessibility support are included.
+- Age page commit: `37805e48c6449596c61f3befa51db8baf4ce4a84`.
+- Service worker cache bumped from `infojano-v39` to `infojano-v40` in commit `5ae5d036f3859e332cc57d0b97e5aa7f6557ac25`.
+- Repository source updates are committed. Live visual appearance and animation on GitHub Pages have not yet been tested. Check https://barsulkhan.github.io/InfoJano/age.html after deployment on mobile; if the old view remains, close and reopen the page.
