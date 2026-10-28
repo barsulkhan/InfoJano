@@ -293,3 +293,11 @@ Updated: 29 October 2026
 - Age calculator's history and age logic remain unchanged.
 - Service worker cache bumped to v54 after the revert.
 - Next project task: improve exact-date history coverage for arbitrary birth dates without presenting events from other years as if they happened on the entered date. Current curated exact-date additions only cover 15 January 1995; do not imply the solution is comprehensive.
+
+## Follow-up: broader exact-date history lookup
+Updated: 29 October 2026
+- Reverted the extra mobile overflow CSS after the user clarified the screenshot was zoomed; no layout defect was confirmed from that screenshot.
+- Added a secondary Wikidata SPARQL lookup for exact-date event records when the Wikipedia On This Day feed has no event matching the entered year. It times out after 3.5 seconds and fails gracefully.
+- This is an additional source, not a guarantee of exhaustive results: structured date data can be incomplete, and the query may return no exact-date event.
+- Cache version bumped to v55.
+- Verify Age Calculator: https://barsulkhan.github.io/InfoJano/age.html
