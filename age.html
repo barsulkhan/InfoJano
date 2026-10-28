@@ -60,6 +60,22 @@
     @media(prefers-reduced-motion:reduce){.birthday-art *,.birthday-art:before,.birthday-art:after{animation:none!important}}
     @media(max-width:480px){.age-result-layout{gap:8px}.birthday-art{flex-basis:100px;min-height:160px;padding:6px}.birthday-art .birthday-poster{max-width:120px}.birthday-art .birthday-caption{font-size:9px;text-align:center;padding:4px 5px}}
     footer{text-align:center;font-size:13px;color:#64748b;margin:24px 0}
+
+    .history-card{margin-top:18px;padding:20px;background:linear-gradient(145deg,#ffffff,#f7fbff);border:1px solid #cfe2ff;border-radius:16px;box-shadow:0 5px 18px #1d4ed80b}
+    .history-heading{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .history-icon{display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;border-radius:14px;background:#dbeafe;font-size:24px}
+    .history-heading h2{margin:0;color:#12346b;font-size:20px;line-height:1.3}
+    .history-heading p{margin:4px 0 0;font-size:13px;color:#64748b}
+    .history-status{font-size:14px;margin:12px 0;color:#536176}
+    .history-events{display:grid;gap:10px}
+    .history-event{padding:13px;border:1px solid #e2e8f0;background:#fff;border-radius:12px}
+    .history-event-year{display:inline-block;margin-bottom:5px;padding:3px 8px;border-radius:999px;background:#eaf2ff;color:#1d4ed8;font-size:12px;font-weight:800}
+    .history-event p{margin:0;color:#334155;font-size:14px;line-height:1.55}
+    .history-event a{display:inline-block;margin-top:7px;color:#1d4ed8;font-size:13px;font-weight:700;text-decoration:none}
+    .history-source{margin:14px 0 0;font-size:11px!important;color:#64748b!important;line-height:1.5}
+    .history-source a{color:#1d4ed8}
+    @media(max-width:480px){.history-card{padding:16px}.history-heading h2{font-size:18px}}
+
     .hidden{display:none}
   
 /* InfoJano page-entry animation: animated loader while each tool page opens */
@@ -104,6 +120,12 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 
       <button id="calculate" type="button">Calculate My Age</button>
       <div id="result" class="hidden" aria-live="polite"></div>
+      <section id="historyCard" class="history-card hidden" aria-labelledby="historyTitle">
+        <div class="history-heading"><span class="history-icon" aria-hidden="true">🌍</span><div><h2 id="historyTitle">On This Day in World History</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
+        <p id="historyStatus" class="history-status" role="status">Loading historical events…</p>
+        <div id="historyEvents" class="history-events"></div>
+        <p class="history-source">Historical data from <a href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipedia / Wikimedia</a>. Event descriptions may be available only in English.</p>
+      </section>
     </section>
 
     <section class="card">
@@ -201,6 +223,68 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
         dobManual.value = formatted;
       }, 0);
     });
+    async function loadOnThisDayHistory(month, day, birthYear) {
+      const card = document.getElementById("historyCard");
+      const status = document.getElementById("historyStatus");
+      const eventsBox = document.getElementById("historyEvents");
+      const subtitle = document.getElementById("historySubtitle");
+      card.classList.remove("hidden");
+      eventsBox.replaceChildren();
+      status.textContent = "Finding historical events for this date…";
+      const monthDay = String(month).padStart(2, "0") + "/" + String(day).padStart(2, "0");
+      subtitle.textContent = new Date(2000, month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric" }) + " · Global history";
+      // Country detection is optional and approximate. It never blocks the global-history fallback.
+      try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 2200);
+        const locationResponse = await fetch("https://ipapi.co/json/", { signal: controller.signal, cache: "no-store" });
+        clearTimeout(timer);
+        if (locationResponse.ok) {
+          const locationData = await locationResponse.json();
+          if (locationData && locationData.country_name) {
+            subtitle.textContent = new Date(2000, month - 1, day).toLocaleDateString("en-US", { month: "long", day: "numeric" }) + " · Global history · Approx. location: " + locationData.country_name;
+          }
+        }
+      } catch (_) {
+        // Privacy/network/VPN/API failures simply leave the global-history label.
+      }
+      try {
+        const response = await fetch("https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/" + monthDay, { headers: { "Accept": "application/json" } });
+        if (!response.ok) throw new Error("History service unavailable");
+        const data = await response.json();
+        const events = Array.isArray(data.events) ? data.events : [];
+        if (!events.length) {
+          status.textContent = "No historical events were returned for this date. Please try again later.";
+          return;
+        }
+        // Prefer a small, readable selection and avoid claiming these happened in the birth year.
+        const sorted = events.slice().sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
+        const chosen = sorted.slice(0, 6);
+        chosen.forEach((event) => {
+          const item = document.createElement("article");
+          item.className = "history-event";
+          const yearBadge = document.createElement("span");
+          yearBadge.className = "history-event-year";
+          yearBadge.textContent = event.year ? String(event.year) : "Historical event";
+          const description = document.createElement("p");
+          description.textContent = event.text || "A historical event is recorded for this date.";
+          item.append(yearBadge, description);
+          const page = Array.isArray(event.pages) ? event.pages.find((p) => p && p.content_urls && p.content_urls.desktop && p.content_urls.desktop.page) : null;
+          if (page) {
+            const link = document.createElement("a");
+            link.href = page.content_urls.desktop.page;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "Read more on Wikipedia ↗";
+            item.append(link);
+          }
+          eventsBox.append(item);
+        });
+        status.textContent = "Here are selected events that happened on this day in different years. They are not necessarily from your birth year.";
+      } catch (_) {
+        status.textContent = "Global history could not load right now. Check your internet connection or try again later. Your age calculation is still available.";
+      }
+    }
     document.getElementById("calculate").addEventListener("click", () => {
       let year, month, day;
       const typed = dobManual.value.trim();
@@ -261,6 +345,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       }
       layout.append(info);
       result.append(layout);
+      loadOnThisDayHistory(month, day, year);
       if (window.__ijBirthdayFireworksStop) window.__ijBirthdayFireworksStop();
       if (isBirthdayToday && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         const canvas = document.createElement("canvas");
