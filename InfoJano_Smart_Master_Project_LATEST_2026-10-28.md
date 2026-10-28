@@ -113,3 +113,11 @@ Date: 28 October 2026
 - Percentage page report: 24 impressions, 0 clicks, 0% CTR, average position 55.5. Visible queries include “percentage calculator online” (2 impressions), “count percentage online”, “percentage calculator”, “percentage calculate”, “count percentage”, “28 percent of 170”, and “calculate percentage”, each with very low impressions.
 - Interpretation: the pages are receiving early Google exposure, but the Percentage page's average position is low; improve usefulness/relevance and monitor after enough data accumulates rather than repeatedly changing title tags. No code changes were made based solely on these screenshots.
 
+## Percentage calculator functionality improvement — 29 October 2026
+- Based on the Search Console report (24 impressions, 0 clicks, average position 55.5) and visible queries such as “percentage calculator online”, “count percentage”, and “28 percent of 170”, inspected `percentage.html`.
+- Found a mismatch: page copy described both “X% of Y” and “X is what percent of Y?” but the calculator only supported the first operation.
+- Added a two-mode selector so users can calculate (1) a percentage of a number and (2) what percentage a part is of a whole. Added validation preventing division by zero; existing canonical URL, layout, FAQ, and other page sections retained.
+- Commit: `22be50d691a3713abbb4b1b69cc3aac02b8ae23f`.
+- Bumped service worker cache to `infojano-v34` in commit `5ee3d7bace28adf4df4be3edf8dbe04496f0f1e1`.
+- Code changes were committed and source re-fetched for inspection. Interactive browser testing/live deployment not yet confirmed; test both modes with examples after GitHub Pages deploy: 20% of 150 should be 30; 25 is 12.5% of 200.
+
