@@ -301,3 +301,12 @@ Updated: 29 October 2026
 - This is an additional source, not a guarantee of exhaustive results: structured date data can be incomplete, and the query may return no exact-date event.
 - Cache version bumped to v55.
 - Verify Age Calculator: https://barsulkhan.github.io/InfoJano/age.html
+
+## Latest update: Age Calculator SEO alignment
+Updated: 29 October 2026
+- Updated the title and meta/social descriptions to emphasize the main intent: free age calculator, exact age in years/months/days, and birth weekday.
+- Expanded the visible static explanation to describe the birth-weekday and historical-date feature, including a clear caveat that source coverage is incomplete and absence of a result does not mean nothing happened.
+- Added an FAQ explaining how the historical-date feature works and its limitations.
+- Kept the canonical URL unchanged and did not create per-birth-date URLs or keyword-stuffed pages.
+- Cache version bumped from v55 to v56.
+- This is an on-page SEO improvement, not a guarantee of higher ranking. Verify the live title/snippet and indexing through Search Console after deployment.
