@@ -72,6 +72,10 @@
     .history-event-year{display:inline-block;margin-bottom:5px;padding:3px 8px;border-radius:999px;background:#eaf2ff;color:#1d4ed8;font-size:12px;font-weight:800}
     .history-event p{margin:0;color:#334155;font-size:14px;line-height:1.55}
     .history-event a{display:inline-block;margin-top:7px;color:#1d4ed8;font-size:13px;font-weight:700;text-decoration:none}
+    .history-event-featured{padding:18px;border-color:#f9a8d4;background:linear-gradient(125deg,#fff1f2,#fdf2f8,#fff7ed);box-shadow:0 5px 18px #ec489915}
+    .history-event-featured .history-event-year{background:#fce7f3;color:#9d174d}
+    .more-history-button{width:auto;display:block;margin:12px auto 0;padding:10px 16px;border:1px solid #bfdbfe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:13px;font-weight:800}
+    .more-history-button:hover{background:#dbeafe}
     .history-source{margin:14px 0 0;font-size:11px!important;color:#64748b!important;line-height:1.5}
     .history-source a{color:#1d4ed8}
     @media(max-width:480px){.history-card{padding:16px}.history-heading h2{font-size:18px}}
@@ -124,6 +128,8 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
         <div class="history-heading"><span class="history-icon" aria-hidden="true">🌍</span><div><h2 id="historyTitle">This Day in History</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
         <p id="historyStatus" class="history-status" role="status">Loading historical events…</p>
         <div id="historyEvents" class="history-events"></div>
+        <button id="moreHistoryButton" class="more-history-button hidden" type="button" aria-expanded="false">Explore more events</button>
+        <div id="moreHistoryEvents" class="history-events hidden"></div>
         <p class="history-source">Historical data from <a href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipedia / Wikimedia</a>. Event descriptions may be available only in English.</p>
       </section>
     </section>
@@ -257,29 +263,48 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           status.textContent = "No historical events were returned for this date. Please try again later.";
           return;
         }
-        // Show just one highlighted event. Prefer the exact birth year if the feed has one.
-        const event = events.find((entry) => Number(entry.year) === Number(birthYear)) || events[0];
-        const item = document.createElement("article");
-        item.className = "history-event history-event-featured";
-        const yearBadge = document.createElement("span");
-        yearBadge.className = "history-event-year";
-        yearBadge.textContent = event.year ? String(event.year) : "Historical event";
-        const description = document.createElement("p");
-        description.textContent = event.text || "A historical event is recorded for this date.";
-        item.append(yearBadge, description);
-        const page = Array.isArray(event.pages) ? event.pages.find((p) => p && p.content_urls && p.content_urls.desktop && p.content_urls.desktop.page) : null;
-        if (page) {
-          const link = document.createElement("a");
-          link.href = page.content_urls.desktop.page;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.textContent = "Discover this event ↗";
-          item.append(link);
+        // Highlight one event first, preferring the birth year if present; keep the rest behind an optional button.
+        const preferredIndex = events.findIndex((entry) => Number(entry.year) === Number(birthYear));
+        const primaryIndex = preferredIndex >= 0 ? preferredIndex : 0;
+        const event = events[primaryIndex];
+        function makeHistoryItem(entry, featured) {
+          const item = document.createElement("article");
+          item.className = featured ? "history-event history-event-featured" : "history-event";
+          const yearBadge = document.createElement("span");
+          yearBadge.className = "history-event-year";
+          yearBadge.textContent = entry.year ? String(entry.year) : "Historical event";
+          const description = document.createElement("p");
+          description.textContent = entry.text || "A historical event is recorded for this date.";
+          item.append(yearBadge, description);
+          const page = Array.isArray(entry.pages) ? entry.pages.find((p) => p && p.content_urls && p.content_urls.desktop && p.content_urls.desktop.page) : null;
+          if (page) {
+            const link = document.createElement("a");
+            link.href = page.content_urls.desktop.page;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "Discover this event ↗";
+            item.append(link);
+          }
+          return item;
         }
-        eventsBox.append(item);
+        eventsBox.append(makeHistoryItem(event, true));
+        const extraEvents = events.filter((_, index) => index !== primaryIndex).slice(0, 5);
+        const moreBox = document.getElementById("moreHistoryEvents");
+        const moreButton = document.getElementById("moreHistoryButton");
+        moreBox.replaceChildren();
+        extraEvents.forEach((entry) => moreBox.append(makeHistoryItem(entry, false)));
+        moreButton.classList.toggle("hidden", extraEvents.length === 0);
+        moreButton.textContent = "Explore more events";
+        moreButton.setAttribute("aria-expanded", "false");
+        moreButton.onclick = () => {
+          const opening = moreBox.classList.contains("hidden");
+          moreBox.classList.toggle("hidden", !opening);
+          moreButton.setAttribute("aria-expanded", String(opening));
+          moreButton.textContent = opening ? "Show fewer events" : "Explore more events";
+        };
         status.textContent = Number(event.year) === Number(birthYear)
-          ? "A historical event from your birth year on this date."
-          : "One highlighted event from this day in history. It happened in a different year than your birth year.";
+          ? "A highlighted event from your birth year on this date."
+          : "One highlighted event from this day in history.";
       } catch (_) {
         status.textContent = "Global history could not load right now. Check your internet connection or try again later. Your age calculation is still available.";
       }
