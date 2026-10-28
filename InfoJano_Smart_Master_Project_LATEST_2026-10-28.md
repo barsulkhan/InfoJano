@@ -235,3 +235,11 @@ Date: 28 October 2026
 - Age page commit: `82c82cc80d59ba769067747b2c1609ea0e59b2ce`.
 - Service-worker cache bumped from `infojano-v46` to `infojano-v47` in commit `c08aa0da2f1a83a5e29ebe279faed619ec98294e`.
 - Source changes are committed. The live GitHub Pages rendering, API CORS response, and mobile behavior have not yet been browser-tested. Verify after deployment using DOB `15-01-1995`; check that age result still works, history card loads, links open, and offline/API failure does not break age calculation.
+
+
+## History card simplification — 29 October 2026
+- User reviewed the first live screenshot and said six history cards are too much to read. The intended experience is one highlighted story in a compact card for the entered date.
+- Updated `age.html` to show exactly one historical event instead of up to six. If the Wikimedia On This Day feed includes an event from the user's birth year for that month/day, it is preferred; otherwise the first event returned by the feed is shown with a clear note that it happened in a different year. Changed heading to “This Day in History” and the link label to “Discover this event”.
+- Age page commit: `111d715a63a59dad94fcdc1b53531ce45c0c7ade`.
+- Service-worker cache bumped from `infojano-v47` to `infojano-v48` in commit `73d0fe4de7204123580de6ec2d3e051e2d71792d`.
+- Source committed and verified by re-fetching; live visual testing after deployment still needed.
