@@ -39,13 +39,21 @@
     button{margin-top:18px;border:0;background:#1673f9;color:white;font-weight:bold;cursor:pointer}
 #result{display:none;margin-top:20px;padding:18px;background:linear-gradient(120deg,#eff6ff,#f0fdf4);border-radius:12px;line-height:1.8}
     #result:not(.hidden){display:block}
-    .age-result-layout{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .age-result-layout{display:flex;align-items:stretch;justify-content:space-between;gap:14px}
     .age-result-info{flex:1;min-width:0}
-    .birthday-art{flex:0 0 150px;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:18px;background:radial-gradient(circle at 50% 40%,#fff7ed,#ffedd5 72%,#dbeafe);position:relative;overflow:hidden}
-    .birthday-art .birthday-cake{font-size:76px;line-height:1.2;filter:drop-shadow(0 5px 3px #00000012)}
-    .birthday-art .birthday-balloons{font-size:28px;letter-spacing:5px;line-height:1.3}
-    .birthday-art .birthday-caption{font-size:12px;font-weight:800;color:#9a3412;letter-spacing:.3px}
-    @media(max-width:480px){.age-result-layout{gap:8px}.birthday-art{flex-basis:94px;min-height:120px;padding:8px}.birthday-art .birthday-cake{font-size:48px}.birthday-art .birthday-balloons{font-size:20px;letter-spacing:1px}.birthday-art .birthday-caption{font-size:10px;text-align:center}}
+    .birthday-art{flex:0 0 190px;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid #fed7aa;border-radius:20px;background:radial-gradient(circle at 50% 32%,#fff 0,#fff7ed 40%,#ffedd5 76%,#dbeafe 100%);position:relative;overflow:hidden;isolation:isolate}
+    .birthday-art:before,.birthday-art:after{content:"✨";position:absolute;font-size:22px;animation:birthday-sparkle 2s ease-in-out infinite alternate;z-index:-0}
+    .birthday-art:before{top:12px;left:13px}.birthday-art:after{right:13px;top:40px;animation-delay:.7s}
+    .birthday-art .birthday-balloons{font-size:30px;letter-spacing:5px;line-height:1.3;animation:balloons-float 2.5s ease-in-out infinite}
+    .birthday-art .birthday-child{font-size:76px;line-height:1.05;filter:drop-shadow(0 5px 3px #00000012);animation:birthday-bounce 1.8s ease-in-out infinite;transform-origin:bottom center}
+    .birthday-art .birthday-cake{font-size:54px;line-height:1.05;filter:drop-shadow(0 5px 3px #00000012);animation:cake-wiggle 3s ease-in-out infinite}
+    .birthday-art .birthday-caption{font-size:12px;font-weight:800;color:#9a3412;letter-spacing:.3px;background:#ffffffc9;padding:5px 10px;border-radius:999px}
+    @keyframes birthday-bounce{0%,100%{transform:translateY(0) rotate(0)}45%{transform:translateY(-7px) rotate(-2deg)}65%{transform:translateY(-3px) rotate(2deg)}}
+    @keyframes balloons-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+    @keyframes cake-wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
+    @keyframes birthday-sparkle{from{transform:scale(.8) rotate(-8deg);opacity:.55}to{transform:scale(1.2) rotate(12deg);opacity:1}}
+    @media(prefers-reduced-motion:reduce){.birthday-art *,.birthday-art:before,.birthday-art:after{animation:none!important}}
+    @media(max-width:480px){.age-result-layout{gap:8px}.birthday-art{flex-basis:100px;min-height:160px;padding:6px}.birthday-art .birthday-child{font-size:42px}.birthday-art .birthday-cake{font-size:34px}.birthday-art .birthday-balloons{font-size:18px;letter-spacing:0}.birthday-art .birthday-caption{font-size:9px;text-align:center;padding:4px 5px}}
     footer{text-align:center;font-size:13px;color:#64748b;margin:24px 0}
     .hidden{display:none}
   
@@ -235,9 +243,10 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       info.append(weekdayHeading, document.createElement("br"), heading, details, totals);
       const art = document.createElement("div"); art.className = "birthday-art"; art.setAttribute("aria-label", "Birthday cake and balloons celebration");
       const balloons = document.createElement("div"); balloons.className = "birthday-balloons"; balloons.textContent = "🎈🎉";
+      const child = document.createElement("div"); child.className = "birthday-child"; child.textContent = "🧒🏻"; child.setAttribute("aria-hidden", "true");
       const cake = document.createElement("div"); cake.className = "birthday-cake"; cake.textContent = "🎂";
-      const caption = document.createElement("div"); caption.className = "birthday-caption"; caption.textContent = "BIRTHDAY JOY";
-      art.append(balloons, cake, caption); layout.append(info, art); result.append(layout);
+      const caption = document.createElement("div"); caption.className = "birthday-caption"; caption.textContent = "HAPPY BIRTHDAY!";
+      art.append(balloons, child, cake, caption); layout.append(info, art); result.append(layout);
     });
   </script>
 
