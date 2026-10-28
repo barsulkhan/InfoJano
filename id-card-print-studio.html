@@ -107,8 +107,11 @@ function detectAyushmanPrintedBounds(canvas,side){
  let ys=[],xs=[];for(let y=0;y<gh;y++)if(rows[y]>minRow)ys.push(y);for(let x=0;x<gw;x++)if(cols[x]>minCol)xs.push(x);
  if(ys.length<8||xs.length<8)return null;
  let x0=xs[0],x1=xs[xs.length-1],y0=ys[0],y1=ys[ys.length-1];
- const px=Math.round((x1-x0+1)*.018),py=Math.round((y1-y0+1)*.025);
- x0=Math.max(0,x0-px);x1=Math.min(gw-1,x1+px);y0=Math.max(0,y0-py);y1=Math.min(gh-1,y1+py);
+ const boundsH=y1-y0+1,px=Math.round((x1-x0+1)*.025);
+ // Ayushman PDF Back side has a multi-line heading at the top; dark-pixel detection can miss its lighter orange/red text.
+ // Add extra top clearance only for Back so the heading is retained, while keeping the Front crop unchanged in principle.
+ const topPad=Math.round(boundsH*(side==='Back'?.065:.025)),bottomPad=Math.round(boundsH*.025);
+ x0=Math.max(0,x0-px);x1=Math.min(gw-1,x1+px);y0=Math.max(0,y0-topPad);y1=Math.min(gh-1,y1+bottomPad);
  const rect={x:x0*step,y:y0*step,w:Math.min(w-x0*step,(x1-x0+1)*step),h:Math.min(h-y0*step,(y1-y0+1)*step)};
  if(rect.w/rect.h<1.1||rect.w/rect.h>2.2||rect.w/w<.25||rect.h/h<.08)return null;
  return rect;
