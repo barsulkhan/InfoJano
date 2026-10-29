@@ -421,3 +421,10 @@ Updated: 29 October 2026
 - Studio commit: `ae9bcac88e718da8da78b2f0d1fdad026a57446d`.
 - Service worker cache bumped to v69: `dd7032e245a819c0727c23ddb9cb862c9e0f3c00`.
 - Verify live Pages and download once: expected exactly one JPG with Front above Back. Physical output size still requires checking on the downloaded file/printer with Actual Size / 100%.
+
+
+## Ayushman one-page layout made visible — 29 October 2026
+- The Ayushman card-type selection now automatically sets paper to 4 × 6 inch and placement to Front on top, Back below. This makes the layout preview match the one-JPG export behavior instead of leaving the UI on side-by-side placement while the JPG silently stacked the cards.
+- Card dimensions remain 85 × 55 mm each; one JPG contains both sides.
+- Studio commit: `6afcacec1eef6f25abc33ccf1ad0f2fd038c284e`.
+- Service worker cache bumped to v70: `ad6e5bc1d0648e54253327cf0a4957ee7223f1f1`.
