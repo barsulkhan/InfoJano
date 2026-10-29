@@ -436,3 +436,11 @@ Updated: 29 October 2026
 - Studio commit: `2d2c88f6d63cb206664acc81c0439bba4f176578`.
 - Service worker cache bumped to v71: `c8f7cd101835fd4f1c583af62325adedea02e465`.
 - Live deployment and ruler/print validation remain outstanding; do not claim physical output has been verified until tested on a newly downloaded JPG.
+
+
+## Sitemap audit follow-up — 29 October 2026
+- Compared the repository root's actual HTML files with both sitemap files. Both sitemaps listed 28 URLs, but `passport-photo-maker.html` and `pdf-to-jpg.html` do not currently exist in the repository root, so those URLs could lead to 404 pages.
+- Removed only those two missing-page URLs from `sitemap.xml` and `sitemap.txt`; all other URLs were retained. The two sitemap files now contain the same 26 URLs and cover every HTML page present in the root directory.
+- Sitemap XML commit: `e3613e44f059492c174d105469e2baf9c97d6d3b`. Sitemap TXT commit: `7a479e292104a42fdd49237e67ebe02ba6c4c69e`.
+- This validates repository consistency only. GitHub Pages live response and Google Search Console's fetch status still need to be checked; do not claim Google has reprocessed the sitemap.
+- Ayushman card JPG/crop workflow remains paused and was not modified.
