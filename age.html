@@ -103,6 +103,72 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "InfoJano Age Calculator",
+      "url": "https://barsulkhan.github.io/InfoJano/age.html",
+      "description": "Calculate exact age in years, months and days, find the birth weekday, and explore historical events associated with a birth date.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I find the day of the week I was born?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter your date of birth in DD-MM-YYYY format and tap Calculate My Age. The result shows whether you were born on Sunday, Monday, Tuesday, or another day of the week."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is exact age calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter your date of birth. The calculator compares it with today’s date and reports years, months and days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate age on a past or future date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator currently calculates your age as of today."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does DD-MM-YYYY mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DD means day, MM means month, and YYYY means the four-digit year. For example, 15-08-1947 means 15 August 1947."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see historical events from my birth date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After calculating your age, check “What Happened on Your Date?” The feature tries to show events recorded for the exact day, month and birth year, using available public history sources. Coverage varies by date, so a missing result does not prove that no event occurred. Events from other years are shown separately."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
