@@ -373,3 +373,14 @@ Updated: 29 October 2026
 - Date Difference page commit: `d9a651a1d5204eb98179bdf0d82d596a5a3df3cd` (3 FAQ entries).
 - Service worker cache bumped sequentially from v62 to v63: `c85d4d4d660052d6d04b5f263a2d341167ef0541`.
 - Next: validate JSON-LD and wait for the latest GitHub Pages deployment before claiming live publication. Structured data does not guarantee rich results or ranking gains.
+
+
+## Additional tool-page SEO structured data — 29 October 2026
+- Added WebApplication JSON-LD to `currency-converter.html`, `unit-converter.html`, `text-counter.html`, and `savings.html`.
+- Added FAQPage JSON-LD to `currency-converter.html` using its three existing visible FAQ questions and answers. Other pages received WebApplication schema only because they do not have matching user-facing FAQ content suitable for structured data.
+- Currency Converter commit: `b0fc13d4a52060e4507cdce1b334f5b8bde34b9f`.
+- Unit Converter commit: `e72965b2468adccd1adb195db79812391ae6f553`.
+- Text Counter commit: `9533e0671235debc3382cc9c763573ba92aeee2c`.
+- Savings Calculator commit: `cf569ec758548d03d3e87ffff5c70c1adf0cd55c`.
+- Service worker cache bumped from v63 to v64: `c337539aabbd429660889008f6f8e9006f473620`.
+- Next: validate the new JSON-LD across all modified pages and verify the final Pages deployment. Structured data is not a guarantee of search ranking or rich results.
