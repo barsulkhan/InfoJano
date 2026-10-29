@@ -478,3 +478,11 @@ Updated: 29 October 2026
 - Verified all five inserted JSON-LD blocks parse as JSON and each page retains its canonical tag. Source commits: `ee305110863f0a2b2dbd7df0bbf74650e66eb65f`, `01818d190c0cfea1485d5b40f8e16f1e9b7493d2`, `7b6029c2cfa70dd91a5f49e4e563f950f9263c0c`, `1ebfa08d306f7f0f345ee2e0a5af27de0d7c4b6f`, `e479ce8c21dffd1d0be94573c49ca59624ba3a23`.
 - Service worker cache bumped from `infojano-v75` to `infojano-v76` in commit `aeb92beba628ceefc66a933ecbf42ff99c1f616e`.
 - This is a source-level SEO improvement, not a ranking guarantee. Live Pages deployment, Rich Results/Test validation, and Lighthouse checks remain outstanding. Aadhaar top-border visual test is still pending separately.
+
+
+## SEO structured data audit — 29 October 2026
+- GitHub Actions deployment for commit 0889f1021f527e1b185f8fb2feea5b332f710267 completed successfully before this batch of updates.
+- Audited the 26 sitemap HTML pages. All 26 had a title, meta description, canonical URL, and exactly one H1. Found eight pages without JSON-LD structured data: discount-pt-br.html, id-card-print-studio.html, number-to-words.html, password-generator.html, percentage-change.html, percentage-pt-br.html, time-calculator.html, and tip-calculator.html.
+- Added one WebApplication JSON-LD block to each of those eight pages, using the existing page title, canonical URL and description, free-use offer, and UtilitiesApplication category. Kept English/Portuguese page language and hreflang metadata unchanged. This is a source-code structured-data coverage improvement, not a claim of enhanced Google search appearance.
+- Updated service worker cache from infojano-v76 to infojano-v77 so returning visitors can receive the updated files after deployment.
+- Next: verify deployment success; then check the structured-data blocks parse and continue a cautious performance/asset/link audit. Real-user Core Web Vitals and Lighthouse scores have not yet been measured.
