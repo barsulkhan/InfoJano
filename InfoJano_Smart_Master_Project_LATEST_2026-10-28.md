@@ -392,3 +392,11 @@ Updated: 29 October 2026
 - Homepage optimization commit: `91c874c1b6c3001eb8a8a4343c919061e1d6813a`.
 - Service worker cache bumped from v64 to v65: `90df7f4f56804e9414d70b428d133946b5d89e3b`.
 - Next: test the homepage QR feature after deployment and rerun Lighthouse. This should remove the QR library from the initial homepage request chain; the actual score/LCP change must be measured rather than assumed.
+
+
+## Ayushman Bharat JPG size fix — 29 October 2026
+- Fixed the JPG export in `id-card-print-studio.html` so Ayushman Bharat cards download as individual card-only JPG images instead of being placed on a full A4/photo sheet. This prevents the card from appearing small when opening the downloaded JPG.
+- Front and Back are saved as separate files when both are selected; each card canvas is rendered at 85 × 55 mm at 600 DPI, with a thin black border. Other document types retain their existing JPG export behavior.
+- Studio code commit: `b520b67fe568a684812c344fab41e3c2581785de`.
+- Service worker cache bumped to v66: `303a300880ad92883945c9414028661a42e3c52c`.
+- After GitHub Pages updates, reload the studio and test a downloaded JPG. When printing, choose Actual size / 100%; image-printing apps may otherwise apply their own scaling.
