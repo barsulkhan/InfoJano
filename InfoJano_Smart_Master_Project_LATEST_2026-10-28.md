@@ -354,3 +354,12 @@ Updated: 29 October 2026
 - BMI page commit: `4f5b4e0757287ae85a5838f9fea873d4b9e819a1` (verify the latest commit list for the exact content commit).
 - Service worker cache bumped from v60 to v61: `063f31a2e8f4f1a43dca52ce4ab5b8fc93434164`.
 - Next: confirm GitHub Pages deployment and live page source. Do not claim ranking improvement or Google rich-result display.
+
+
+## Homepage CLS investigation and install-banner fix — 29 October 2026
+- User shared Lighthouse mobile report: Performance 81, Accessibility 100, Best Practices 100, SEO 100; FCP 0.9 s, LCP 2.6 s, TBT 190 ms, CLS 0.262.
+- Source inspection found the homepage HTML included an `.ij-install-card` immediately before `<main class="wrap">`, while `install.js` explicitly removes `.ij-install-card` on page startup. This means the browser could lay out the banner and then remove it, shifting the main content.
+- Removed that redundant install-card HTML from `index.html`. The existing install.js behavior and PWA install capability remain unchanged; install.js already removes the card and provides other shared page helpers.
+- Homepage fix commit: `c8e7d3cecf4e71dc7086d4e208b31d75dd740ae0`.
+- Bumped service-worker cache from v61 to v62 in `4b3d8613fba6eec7dfa21b80656fe803ede4a8df`.
+- Next: check that the latest GitHub Pages Actions deployment succeeds, then rerun Lighthouse mobile. CLS improvement is a hypothesis based on the source pattern and must be confirmed by a new measurement; other sources of layout shift may remain. Do not claim the score improved until measured.
