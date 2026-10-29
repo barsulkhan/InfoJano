@@ -54,6 +54,56 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/currency-converter.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "InfoJano Currency Converter",
+      "url": "https://barsulkhan.github.io/InfoJano/currency-converter.html",
+      "description": "Convert one currency to another using an entered exchange rate. Results are estimates; banks and payment providers may apply their own rates and fees.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert one currency to another?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose the source and target currencies, enter an amount, and calculate the converted value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are exchange rates always live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rates may change frequently. Check the rate source and timestamp before using a conversion for a payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my bank give exactly this amount?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Banks and payment providers may apply their own rates, fees, or spreads."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
