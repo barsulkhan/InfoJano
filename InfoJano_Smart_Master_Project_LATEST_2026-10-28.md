@@ -486,3 +486,12 @@ Updated: 29 October 2026
 - Added one WebApplication JSON-LD block to each of those eight pages, using the existing page title, canonical URL and description, free-use offer, and UtilitiesApplication category. Kept English/Portuguese page language and hreflang metadata unchanged. This is a source-code structured-data coverage improvement, not a claim of enhanced Google search appearance.
 - Updated service worker cache from infojano-v76 to infojano-v77 so returning visitors can receive the updated files after deployment.
 - Next: verify deployment success; then check the structured-data blocks parse and continue a cautious performance/asset/link audit. Real-user Core Web Vitals and Lighthouse scores have not yet been measured.
+
+
+## Deployment and technical SEO verification — 29 October 2026
+- GitHub Pages deployment completed successfully for master-project commit 41c566828363aebdbe81031506268e3d26498c5d. Run: https://github.com/barsulkhan/InfoJano/actions/runs/40928911430
+- Service worker cache version is infojano-v77.
+- Audited the 26 sitemap URLs: each corresponding page now has a valid JSON-LD block (JSON parse verified), a canonical URL, and exactly one H1. The homepage uses WebSite structured data; tool pages use WebApplication, and several existing calculators also have FAQPage in their graph. This is a code-level validation only; no claim that Google has accepted rich results.
+- Sitemap XML has 26 URLs and matches the expected homepage plus 25 tool pages. Sitemap text and robots.txt exist; robots.txt points to sitemap.xml. The repository contains a Google Search Console verification HTML file that is intentionally not included in the sitemap.
+- Internal relative links checked across the homepage and tool-page groups against the repository tree: no missing local targets were found in the sampled/checked links. The service worker precache list contains 78 local paths and all listed file paths exist in the repository.
+- Static performance review: homepage loads Google Analytics asynchronously and includes local install/download-progress scripts; the ID Card Studio loads pdf.js and jsPDF from cdnjs. No source edits were made for performance because a real Lighthouse run or field Core Web Vitals data was not available in this audit. Next: run Lighthouse/PageSpeed Insights on the deployed site before making performance optimizations, then address only measured bottlenecks.
