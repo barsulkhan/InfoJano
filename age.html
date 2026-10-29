@@ -44,7 +44,7 @@
     .age-result-layout{display:flex;align-items:stretch;justify-content:space-between;gap:14px}
     .age-result-info{flex:1;min-width:0}
     .birthday-art{flex:0 0 190px;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid #fed7aa;border-radius:20px;background:radial-gradient(circle at 50% 32%,#fff 0,#fff7ed 40%,#ffedd5 76%,#dbeafe 100%);position:relative;overflow:hidden;isolation:isolate}
-    .birthday-art:before,.birthday-art:after{content:"✨";position:absolute;font-size:22px;animation:birthday-sparkle 2s ease-in-out infinite alternate;z-index:-0}
+    .birthday-art:before,.birthday-art:after{content:"✦";position:absolute;font-size:22px;animation:birthday-sparkle 2s ease-in-out infinite alternate;z-index:-0}
     .birthday-art:before{top:12px;left:13px}.birthday-art:after{right:13px;top:40px;animation-delay:.7s}
     
     .birthday-art .birthday-poster{width:100%;max-width:230px;height:auto;filter:drop-shadow(0 6px 5px #00000012)}
@@ -118,7 +118,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       <label for="dobManual">Date of birth (manual entry)</label>
       <p style="margin:0 0 8px;font-size:14px;color:#536176"><strong>Enter as DD-MM-YYYY</strong> — DD = day, MM = month, YYYY = 4-digit year. Examples: <strong>15-08-1947</strong> or <strong>15081947</strong> both mean 15 August 1947. Enter day first, then month, then the 4-digit year.</p>
       <div id="dobBirthdayFrame" class="dob-birthday-frame">
-        <span class="dob-confetti" aria-hidden="true">🎉 ✨ 🎊</span>
+        <span class="dob-confetti" aria-hidden="true"></span>
         <input id="dobManual" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="DD-MM-YYYY (e.g. 15-08-1947)" aria-describedby="dobFormatHelp">
       </div>
       <p id="dobFormatHelp" style="margin:6px 0 0;font-size:13px;color:#64748b">Manual entry only: DD-MM-YYYY (day/month/year), for example 15-08-1947.</p>
@@ -126,7 +126,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
       <button id="calculate" type="button">Calculate My Age</button>
       <div id="result" class="hidden" aria-live="polite"></div>
       <section id="historyCard" class="history-card hidden" aria-labelledby="historyTitle">
-        <div class="history-heading"><span class="history-icon" aria-hidden="true">🌍</span><div><h2 id="historyTitle">What Happened on Your Date?</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
+        <div class="history-heading"><span class="history-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span><div><h2 id="historyTitle">What Happened on Your Date?</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
         <p id="historyStatus" class="history-status" role="status">Loading historical events…</p>
         <div id="historyEvents" class="history-events"></div>
         <button id="moreHistoryButton" class="more-history-button hidden" type="button" aria-expanded="false">Explore more events</button>
@@ -359,7 +359,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           const note = document.createElement("article");
           note.className = "history-event history-event-featured";
           const icon = document.createElement("div");
-          icon.textContent = "📅 ✨";
+          icon.innerHTML = '<svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3"/></svg>';
           icon.style.cssText = "font-size:25px;margin-bottom:7px";
           const heading = document.createElement("p");
           heading.style.cssText = "font-weight:900;font-size:17px;color:#9d174d;margin-bottom:6px";
@@ -440,7 +440,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
         const greeting = document.createElement("div");
         greeting.setAttribute("role", "status");
         greeting.style.cssText = "margin:14px 0 0;padding:14px 16px;border-radius:16px;text-align:center;background:linear-gradient(120deg,#fff1f2,#fdf2f8,#fff7ed);border:1px solid #f9a8d4;box-shadow:0 5px 18px #ec489922";
-        greeting.innerHTML = '<div style="font-size:25px;line-height:1.3">🎂 🎉 🎁</div><div style="font-size:19px;font-weight:900;color:#9d174d;margin-top:5px">Wishing You a Very Happy Birthday!</div><div style="font-size:14px;font-weight:600;color:#7c2d12;margin-top:5px">May your day be filled with happiness, love, laughter and wonderful surprises.</div><div style="font-size:13px;font-weight:800;color:#be185d;margin-top:7px">With warm wishes from InfoJano ❤️</div>';
+        greeting.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;gap:12px;line-height:1.3;color:#be185d" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15h18v13H7zM5 11h22v4H5zM16 11v17M16 11c-7 0-9-7-4-7 4 0 4 7 4 7zm0 0c0-7 7-9 7-4 0 4-7 4-7 4z"/></svg><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-3 7 7 0 0 1 13 3c0 9-13 17-13 17z"/><path d="m16 3 1.4 3.2L21 7l-3 2.2.7 3.6-2.7-1.9-2.7 1.9.7-3.6L11 7l3.6-.8z"/></svg><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3v5M16 24v5M3 16h5M24 16h5M6.8 6.8l3.5 3.5m11.4 11.4 3.5 3.5m0-18.4-3.5 3.5M10.3 21.7l-3.5 3.5"/><circle cx="16" cy="16" r="5"/></svg></div><div style="font-size:19px;font-weight:900;color:#9d174d;margin-top:5px">Wishing You a Very Happy Birthday!</div><div style="font-size:14px;font-weight:600;color:#7c2d12;margin-top:5px">May your day be filled with happiness, love, laughter and wonderful surprises.</div><div style="font-size:13px;font-weight:800;color:#be185d;margin-top:7px">With warm wishes from InfoJano <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true" style="vertical-align:-2px"><path d="M8 14S1 9.7 1 5.2A3.4 3.4 0 0 1 8 3.7a3.4 3.4 0 0 1 7 1.5C15 9.7 8 14 8 14z"/></svg></div>';
         info.append(greeting);
       }
       layout.append(info);
