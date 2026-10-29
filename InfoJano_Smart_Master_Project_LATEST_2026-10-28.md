@@ -444,3 +444,11 @@ Updated: 29 October 2026
 - Sitemap XML commit: `e3613e44f059492c174d105469e2baf9c97d6d3b`. Sitemap TXT commit: `7a479e292104a42fdd49237e67ebe02ba6c4c69e`.
 - This validates repository consistency only. GitHub Pages live response and Google Search Console's fetch status still need to be checked; do not claim Google has reprocessed the sitemap.
 - Ayushman card JPG/crop workflow remains paused and was not modified.
+
+
+## Aadhaar manual-crop validation fix — 29 October 2026
+- During the next Aadhaar workflow audit, found that the original-photo fallback is named `original photo (manual crop fallback)`, but the export guard only blocked full PDF pages and `image (manual crop required)` sources. This could let a user select an uncropped original Aadhaar photo and export the whole photo fitted to card dimensions.
+- Updated `aadhaarSourceNeedsCrop()` to also block `original photo (manual crop fallback)` until the user uses the manual crop controls. This is limited to Aadhaar validation; Ayushman rules and export behavior were not changed.
+- Studio validation commit: `faf4de2f8524e83acb70a2bf82264cdc4e84a231`. Service worker cache bumped from v71 to v72 in commit `dd7b2c6e9ed0f251de77ddc2a88a4b32a4f6580e`.
+- Repository source is updated; interactive browser testing and live deployment verification remain pending. Test Aadhaar with a single photo: select the original fallback and try PDF/JPG export (it should ask for crop); then crop the complete card and confirm export is allowed. Also test PDF manual crop. Do not change the manual-crop workflow or test the small print-preview visual until that separately paused check is resumed.
+- Sitemap cleanup in the preceding entry is also committed; Pages deployment for those updates was still pending at the last status check.
