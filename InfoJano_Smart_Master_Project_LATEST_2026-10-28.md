@@ -320,3 +320,12 @@ Updated: 29 October 2026
 - No calculator logic, layout, canonical URLs, or page titles were changed.
 - Bumped service-worker cache from v56 to v57 so returning visitors can receive updated page assets.
 - Source changes need live deployment and browser/schema validation; this does not guarantee search ranking or rich-result display.
+
+## SEO maintenance — GST Calculator structured data
+Updated: 29 October 2026
+- Re-fetched the current GitHub versions of the GST Calculator, Discount Calculator, Percentage Calculator, homepage, sitemap.xml, robots.txt, service worker, and current master file before editing.
+- GST Calculator already had a matching page title, meta description, canonical URL, visible calculation guide, worked example, FAQ, and internal links to related tools. Its source had no JSON-LD structured data.
+- Added WebApplication structured data for the free GST calculator and FAQPage structured data matching the three existing visible FAQ questions and answers. No calculator logic, visible layout, title, description, canonical URL, sitemap, or robots.txt was changed.
+- Updated the service-worker cache from infojano-v57 to infojano-v58.
+- GitHub commits: GST structured data `167fb6e9ae27c2be4a69f8eb3f4fcd6f8a070021`; service-worker cache update `affc59acecbfa1df62d39b7919c8bde242a3b048`.
+- Next: verify the latest GitHub Pages deployment and fetch the live GST page to confirm the schema and cache version are published. Validate JSON-LD syntax and recheck Search Console only when accessible. Do not claim Google has recrawled the page or that rankings improved. FAQ structured data is for semantic consistency and does not guarantee a Google FAQ rich result.
