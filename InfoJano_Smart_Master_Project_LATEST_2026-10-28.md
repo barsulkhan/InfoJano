@@ -414,3 +414,10 @@ Updated: 29 October 2026
 - Studio commit: `31349138515ced2d13072e326589e84fa9e17949`.
 - Service worker cache bumped to v68: `0eb642b6c2bc0f863802b9001a59ece83b2a0f96`.
 - Verify after deployment by downloading once; expected result is a single JPG containing both sides. Print at Actual Size / 100%.
+
+
+## Follow-up: single combined JPG layout correction — 29 October 2026
+- Corrected the JPG handler itself to force Ayushman Front and Back into one JPG page in stacked layout. An earlier edit accidentally forced the PDF handler instead; this is now corrected so the PDF handler again respects the user's selected layout and only the Ayushman JPG export uses the combined stacked page.
+- Studio commit: `ae9bcac88e718da8da78b2f0d1fdad026a57446d`.
+- Service worker cache bumped to v69: `dd7032e245a819c0727c23ddb9cb862c9e0f3c00`.
+- Verify live Pages and download once: expected exactly one JPG with Front above Back. Physical output size still requires checking on the downloaded file/printer with Actual Size / 100%.
