@@ -819,10 +819,32 @@ function numberToWordsTool(){
   const negative=n<0?'minus ':'';
   $('nwR').textContent=negative+whole(Math.abs(n));
 }
-function makeQR(){const s=$('qrText').value.trim();if(!s)return $('qrR').textContent='Enter text or a URL.';$('qrR').innerHTML='<div id="qrcode"></div><div class="note">QR generated below.</div>';if(!window.QRCode){$('qrR').insertAdjacentHTML('afterbegin','QR library loading…');return}new QRCode($('qrcode'),{text:s,width:180,height:180});}
+function makeQR(){
+  const s=$('qrText').value.trim();
+  if(!s){$('qrR').textContent='Enter text or a URL.';return;}
+  function renderQR(){
+    $('qrR').innerHTML='<div id="qrcode"></div><div class="note">QR generated below.</div>';
+    new QRCode($('qrcode'),{text:s,width:180,height:180});
+  }
+  if(window.QRCode){renderQR();return;}
+  $('qrR').textContent='Loading QR generator…';
+  if(window.__ijQrLibraryPromise){
+    window.__ijQrLibraryPromise.then(renderQR).catch(()=>{$('qrR').textContent='QR generator could not load. Check your internet connection and try again.';});
+    return;
+  }
+  window.__ijQrLibraryPromise=new Promise((resolve,reject)=>{
+    const script=document.createElement('script');
+    script.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+    script.async=true;
+    script.onload=()=>window.QRCode?resolve():reject(new Error('QR library unavailable'));
+    script.onerror=()=>reject(new Error('QR library failed to load'));
+    document.head.appendChild(script);
+  });
+  window.__ijQrLibraryPromise.then(renderQR).catch(()=>{$('qrR').textContent='QR generator could not load. Check your internet connection and try again.';});
+}
 filterTools();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
   
 <script>
 if ("serviceWorker" in navigator) {
