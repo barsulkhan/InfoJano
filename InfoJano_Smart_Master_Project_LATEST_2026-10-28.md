@@ -329,3 +329,12 @@ Updated: 29 October 2026
 - Updated the service-worker cache from infojano-v57 to infojano-v58.
 - GitHub commits: GST structured data `167fb6e9ae27c2be4a69f8eb3f4fcd6f8a070021`; service-worker cache update `affc59acecbfa1df62d39b7919c8bde242a3b048`.
 - Next: verify the latest GitHub Pages deployment and fetch the live GST page to confirm the schema and cache version are published. Validate JSON-LD syntax and recheck Search Console only when accessible. Do not claim Google has recrawled the page or that rankings improved. FAQ structured data is for semantic consistency and does not guarantee a Google FAQ rich result.
+
+## SEO maintenance — EMI Calculator structured data
+Updated: 29 October 2026
+- Audited the current EMI Calculator source before editing. Its title, description, canonical URL, visible loan-calculation purpose, three FAQs, and related-tool links were already present; no JSON-LD structured data was present.
+- Added WebApplication structured data for the free EMI calculator and FAQPage structured data matching all three visible FAQ questions and answers.
+- Did not change EMI calculation logic, visual layout, title, meta description, canonical URL, or visible FAQ text.
+- Bumped service-worker cache sequentially from v58 to v59.
+- GitHub commits: EMI structured data `c747d4c819ca77a16ee333c7814685f72c23a9d6`; service-worker cache update `ba5453225cc7a58dd22c401d8d61c5feb5fa10a5`.
+- Next: verify the latest Pages deployment and live HTML after the final commit. Continue auditing high-value calculator pages, checking title, description, canonical, visible content, internal links, and structured data alignment. SEO changes do not guarantee rankings or Google rich results.
