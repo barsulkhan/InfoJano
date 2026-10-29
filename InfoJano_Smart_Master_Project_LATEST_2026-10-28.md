@@ -407,3 +407,10 @@ Updated: 29 October 2026
 - Studio commit: `7d57a2ca00490a42c8cd92c1f826a3484b37c13f`.
 - Service worker cache bumped to v67: `b318b39164c711797e491c16e3a7c7b1aa558cf3`.
 - Must verify with a newly downloaded JPG and a ruler/print dialog after GitHub Pages deployment. Select Actual Size / 100% when printing; some mobile print apps override image density.
+
+
+## Ayushman JPG single-page export correction — 29 October 2026
+- Corrected the Ayushman JPG action to export one JPG page containing both Front and Back, stacked vertically, instead of triggering separate Front and Back JPG downloads. This keeps the chosen 4 × 6 inch sheet layout and embeds 600 DPI JFIF density metadata for physical-size printing.
+- Studio commit: `31349138515ced2d13072e326589e84fa9e17949`.
+- Service worker cache bumped to v68: `0eb642b6c2bc0f863802b9001a59ece83b2a0f96`.
+- Verify after deployment by downloading once; expected result is a single JPG containing both sides. Print at Actual Size / 100%.
