@@ -452,3 +452,10 @@ Updated: 29 October 2026
 - Studio validation commit: `faf4de2f8524e83acb70a2bf82264cdc4e84a231`. Service worker cache bumped from v71 to v72 in commit `dd7b2c6e9ed0f251de77ddc2a88a4b32a4f6580e`.
 - Repository source is updated; interactive browser testing and live deployment verification remain pending. Test Aadhaar with a single photo: select the original fallback and try PDF/JPG export (it should ask for crop); then crop the complete card and confirm export is allowed. Also test PDF manual crop. Do not change the manual-crop workflow or test the small print-preview visual until that separately paused check is resumed.
 - Sitemap cleanup in the preceding entry is also committed; Pages deployment for those updates was still pending at the last status check.
+
+
+## Aadhaar card border inconsistency — export fix started 29 October 2026
+- User supplied a sample showing uneven outer border thickness on both Aadhaar faces and requested the top border line slightly higher. Code inspection found the Studio was adding a second outer black rectangle to the Aadhaar source image in both PDF (`drawCard`) and JPG (`place`), which can overlap the original printed border and make the edge thickness look inconsistent.
+- Changed PDF and JPG export so Aadhaar does not receive an extra app-drawn border. Other card types retain their existing border behavior. Service worker cache bumped to `infojano-v73`.
+- PDF border change commit: `d0edcbaa8076c046a1be84548caeb9088cb3e425`. JPG border change commit: `476bee2d9b7aac3d7381c4884c23c83522def6da`. Cache commit: `ed58bffbe53d0497b388b6e265f331d50a5940c2`.
+- This removes the extra border drawn by the Studio; it does not rewrite or shift the original border embedded in the uploaded Aadhaar image. The requested slight upward shift of the original top line still needs a safe crop/visual test to avoid damaging the logo or printed content. Live deployment and output visual validation remain pending.
