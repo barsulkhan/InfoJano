@@ -338,3 +338,12 @@ Updated: 29 October 2026
 - Bumped service-worker cache sequentially from v58 to v59.
 - GitHub commits: EMI structured data `c747d4c819ca77a16ee333c7814685f72c23a9d6`; service-worker cache update `ba5453225cc7a58dd22c401d8d61c5feb5fa10a5`.
 - Next: verify the latest Pages deployment and live HTML after the final commit. Continue auditing high-value calculator pages, checking title, description, canonical, visible content, internal links, and structured data alignment. SEO changes do not guarantee rankings or Google rich results.
+
+## Desktop icon compatibility fix — Age Calculator
+Updated: 29 October 2026
+- User screenshot showed missing-glyph boxes where birthday and history icons should appear on desktop.
+- Root cause identified in the current source: several icons were rendered as emoji characters, which can appear as square boxes when the desktop browser/OS has no compatible emoji font.
+- Replaced the history globe, birthday greeting icons, and dynamic date icon with inline SVG/CSS/text-safe artwork. Removed emoji characters from the confetti row; retained the birthday message and animations.
+- Age page commit: `7b356b356a0de0639aff74909c2d2a10d4c3ce64`.
+- Service worker cache bumped from v59 to v60 in commit `539cc4a225d488d0bc503d45b947c7ef0f4797c8`.
+- Live desktop visual verification is pending GitHub Pages deployment. After deployment, reload the page; if old icons remain, hard refresh or close/reopen the tab.
