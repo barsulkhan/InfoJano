@@ -465,3 +465,9 @@ Updated: 29 October 2026
 - User clarified that the Aadhaar face has solid left/right/bottom edges while the top edge is a dotted cut-guide that may be clipped out of the crop. Added a single thin black line across the top edge only for Aadhaar in PDF export and JPG export, leaving the source image and its original three edges untouched. Other document workflows retain their previous border rules.
 - PDF top-line commit: `016e61b1173b37046502d10a8332e10fc35f3307`. JPG top-line commit: `b5e9dc4250390d0f0a59c82f11b57a340dd7671b`. Cache bump to `infojano-v74`: `67a417bd2f14fb974ff3c5af23021075830e8662`.
 - This is a code-level adjustment; live deployment and visual output verification are still pending. After deployment, test one Aadhaar front and back PDF and JPG, ensuring the top line sits on the card edge and does not cover the header/logo or other text. If the dotted guide is still inside the source crop, compare whether the added line overlaps it before making further changes.
+
+
+## Aadhaar top border thickness/position refinement — 29 October 2026
+- User requested a thicker top border and the Front-side top line to sit slightly above the Ashoka emblem. Updated Aadhaar PDF export so the top edge is 0.4 mm thick; Front top line is raised 0.4 mm above the cropped card box, while Back remains aligned to its crop edge. JPG export uses the equivalent 0.4 mm line width at 600 DPI and the same Front-only 0.4 mm upward offset. The side and bottom borders from the original source remain unchanged.
+- Studio commit: `f226635184b0679ea543d3cbc0a75118cdf65879`. Cache bumped to `infojano-v75` in commit `95591cc9e37d5f8116c53a610116214e067f7eff`.
+- This is a source-code update. Check that the Front line does not extend into the page margin or cross the Ashoka emblem after actual cropping; the live site and exported PDF/JPG still require visual verification after Pages deployment.
