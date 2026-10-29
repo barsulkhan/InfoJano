@@ -459,3 +459,9 @@ Updated: 29 October 2026
 - Changed PDF and JPG export so Aadhaar does not receive an extra app-drawn border. Other card types retain their existing border behavior. Service worker cache bumped to `infojano-v73`.
 - PDF border change commit: `d0edcbaa8076c046a1be84548caeb9088cb3e425`. JPG border change commit: `476bee2d9b7aac3d7381c4884c23c83522def6da`. Cache commit: `ed58bffbe53d0497b388b6e265f331d50a5940c2`.
 - This removes the extra border drawn by the Studio; it does not rewrite or shift the original border embedded in the uploaded Aadhaar image. The requested slight upward shift of the original top line still needs a safe crop/visual test to avoid damaging the logo or printed content. Live deployment and output visual validation remain pending.
+
+
+## Aadhaar top-border restoration — 29 October 2026
+- User clarified that the Aadhaar face has solid left/right/bottom edges while the top edge is a dotted cut-guide that may be clipped out of the crop. Added a single thin black line across the top edge only for Aadhaar in PDF export and JPG export, leaving the source image and its original three edges untouched. Other document workflows retain their previous border rules.
+- PDF top-line commit: `016e61b1173b37046502d10a8332e10fc35f3307`. JPG top-line commit: `b5e9dc4250390d0f0a59c82f11b57a340dd7671b`. Cache bump to `infojano-v74`: `67a417bd2f14fb974ff3c5af23021075830e8662`.
+- This is a code-level adjustment; live deployment and visual output verification are still pending. After deployment, test one Aadhaar front and back PDF and JPG, ensuring the top line sits on the card edge and does not cover the header/logo or other text. If the dotted guide is still inside the source crop, compare whether the added line overlaps it before making further changes.
