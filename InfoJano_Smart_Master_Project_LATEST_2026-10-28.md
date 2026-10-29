@@ -347,3 +347,10 @@ Updated: 29 October 2026
 - Age page commit: `7b356b356a0de0639aff74909c2d2a10d4c3ce64`.
 - Service worker cache bumped from v59 to v60 in commit `539cc4a225d488d0bc503d45b947c7ef0f4797c8`.
 - Live desktop visual verification is pending GitHub Pages deployment. After deployment, reload the page; if old icons remain, hard refresh or close/reopen the tab.
+
+## BMI Calculator SEO structured data — 29 October 2026
+- Audited current `bmi.html`: title, meta description, canonical URL, three visible FAQs and related-tool links were present; no JSON-LD structured data existed.
+- Added WebApplication and FAQPage JSON-LD. FAQ answers match the visible page text. Preserved calculator logic, layout, title, description, canonical URL, and FAQ copy.
+- BMI page commit: `4f5b4e0757287ae85a5838f9fea873d4b9e819a1` (verify the latest commit list for the exact content commit).
+- Service worker cache bumped from v60 to v61: `063f31a2e8f4f1a43dca52ce4ab5b8fc93434164`.
+- Next: confirm GitHub Pages deployment and live page source. Do not claim ranking improvement or Google rich-result display.
