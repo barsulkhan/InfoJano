@@ -400,3 +400,10 @@ Updated: 29 October 2026
 - Studio code commit: `b520b67fe568a684812c344fab41e3c2581785de`.
 - Service worker cache bumped to v66: `303a300880ad92883945c9414028661a42e3c52c`.
 - After GitHub Pages updates, reload the studio and test a downloaded JPG. When printing, choose Actual size / 100%; image-printing apps may otherwise apply their own scaling.
+
+
+## Ayushman JPG physical-size metadata follow-up — 29 October 2026
+- Follow-up fix: Ayushman standalone Front/Back JPGs now embed JPEG JFIF density metadata at 600 DPI. The output canvas remains 2008 × 1299 pixels, corresponding to approximately 85 × 55 mm at 600 DPI. This addresses image viewers/print apps that otherwise infer a default DPI and print the card at the wrong physical size.
+- Studio commit: `7d57a2ca00490a42c8cd92c1f826a3484b37c13f`.
+- Service worker cache bumped to v67: `b318b39164c711797e491c16e3a7c7b1aa558cf3`.
+- Must verify with a newly downloaded JPG and a ruler/print dialog after GitHub Pages deployment. Select Actual Size / 100% when printing; some mobile print apps override image density.
