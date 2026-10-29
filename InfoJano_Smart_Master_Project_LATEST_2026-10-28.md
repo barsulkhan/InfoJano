@@ -384,3 +384,11 @@ Updated: 29 October 2026
 - Savings Calculator commit: `cf569ec758548d03d3e87ffff5c70c1adf0cd55c`.
 - Service worker cache bumped from v63 to v64: `c337539aabbd429660889008f6f8e9006f473620`.
 - Next: validate the new JSON-LD across all modified pages and verify the final Pages deployment. Structured data is not a guarantee of search ranking or rich results.
+
+
+## Homepage QR script loading optimization — 29 October 2026
+- Lighthouse's homepage network dependency tree showed `qrcode.min.js` from cdnjs in the initial critical request chain, even though the homepage QR feature is used only when a visitor opens/uses the QR tool.
+- Removed the eager external QR script tag from `index.html`. Updated `makeQR()` to load the same QRCode library asynchronously on first use, show a loading message, generate the QR when the library is ready, and show an error if the library cannot load. The dedicated `qr-maker.html` page was not changed.
+- Homepage optimization commit: `91c874c1b6c3001eb8a8a4343c919061e1d6813a`.
+- Service worker cache bumped from v64 to v65: `90df7f4f56804e9414d70b428d133946b5d89e3b`.
+- Next: test the homepage QR feature after deployment and rerun Lighthouse. This should remove the QR library from the initial homepage request chain; the actual score/LCP change must be measured rather than assumed.
