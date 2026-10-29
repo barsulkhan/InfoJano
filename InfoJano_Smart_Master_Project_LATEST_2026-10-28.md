@@ -471,3 +471,10 @@ Updated: 29 October 2026
 - User requested a thicker top border and the Front-side top line to sit slightly above the Ashoka emblem. Updated Aadhaar PDF export so the top edge is 0.4 mm thick; Front top line is raised 0.4 mm above the cropped card box, while Back remains aligned to its crop edge. JPG export uses the equivalent 0.4 mm line width at 600 DPI and the same Front-only 0.4 mm upward offset. The side and bottom borders from the original source remain unchanged.
 - Studio commit: `f226635184b0679ea543d3cbc0a75118cdf65879`. Cache bumped to `infojano-v75` in commit `95591cc9e37d5f8116c53a610116214e067f7eff`.
 - This is a source-code update. Check that the Front line does not extend into the page margin or cross the Ashoka emblem after actual cropping; the live site and exported PDF/JPG still require visual verification after Pages deployment.
+
+
+## SEO structured-data coverage — 29 October 2026
+- Added a JSON-LD WebApplication schema to `image-compressor.html`, `image-resizer.html`, `image-to-pdf.html`, `loan-eligibility.html`, and `loan-interest.html`. Used each page's existing title, description, and canonical URL; marked the tools as UtilitiesApplication and free offers.
+- Verified all five inserted JSON-LD blocks parse as JSON and each page retains its canonical tag. Source commits: `ee305110863f0a2b2dbd7df0bbf74650e66eb65f`, `01818d190c0cfea1485d5b40f8e16f1e9b7493d2`, `7b6029c2cfa70dd91a5f49e4e563f950f9263c0c`, `1ebfa08d306f7f0f345ee2e0a5af27de0d7c4b6f`, `e479ce8c21dffd1d0be94573c49ca59624ba3a23`.
+- Service worker cache bumped from `infojano-v75` to `infojano-v76` in commit `aeb92beba628ceefc66a933ecbf42ff99c1f616e`.
+- This is a source-level SEO improvement, not a ranking guarantee. Live Pages deployment, Rich Results/Test validation, and Lighthouse checks remain outstanding. Aadhaar top-border visual test is still pending separately.
