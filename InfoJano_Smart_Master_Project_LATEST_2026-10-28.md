@@ -428,3 +428,11 @@ Updated: 29 October 2026
 - Card dimensions remain 85 × 55 mm each; one JPG contains both sides.
 - Studio commit: `6afcacec1eef6f25abc33ccf1ad0f2fd038c284e`.
 - Service worker cache bumped to v70: `ad6e5bc1d0648e54253327cf0a4957ee7223f1f1`.
+
+
+## Root-cause fix: Ayushman JPG page size on initial load — 29 October 2026
+- Audit found the JPG handler forced the stacked layout but did not force the paper preset. Because Ayushman is preselected when the page loads and the card-type change event does not run automatically, the first JPG export could still use A4 rather than 4 × 6 inches, making the two cards appear too small on the exported page.
+- The Ayushman JPG handler now explicitly sets paper to 4 × 6 inches, card width to 85 mm, card height to 55 mm, and stacked layout before calculating the output canvas. This keeps both card faces in one JPG page and avoids relying on a UI change event.
+- Studio commit: `2d2c88f6d63cb206664acc81c0439bba4f176578`.
+- Service worker cache bumped to v71: `c8f7cd101835fd4f1c583af62325adedea02e465`.
+- Live deployment and ruler/print validation remain outstanding; do not claim physical output has been verified until tested on a newly downloaded JPG.
