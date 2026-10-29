@@ -363,3 +363,13 @@ Updated: 29 October 2026
 - Homepage fix commit: `c8e7d3cecf4e71dc7086d4e208b31d75dd740ae0`.
 - Bumped service-worker cache from v61 to v62 in `4b3d8613fba6eec7dfa21b80656fe803ede4a8df`.
 - Next: check that the latest GitHub Pages Actions deployment succeeds, then rerun Lighthouse mobile. CLS improvement is a hypothesis based on the source pattern and must be confirmed by a new measurement; other sources of layout shift may remain. Do not claim the score improved until measured.
+
+
+## Additional SEO structured data — Age, QR Maker, Date Difference — 29 October 2026
+- Added JSON-LD WebApplication and FAQPage structured data to `age.html`, `qr-maker.html`, and `date-difference.html`.
+- FAQ question and answer text was copied from each page's existing visible FAQ content to keep the schema aligned with the page. No calculator logic, visible copy, title, description, or canonical URL was changed.
+- Age page commit: `a6c19701103f83d5ba01ded8b2c79c56aad1abd8` (5 FAQ entries).
+- QR Maker page commit: `5a04394a968c0c6813b22390c7d78b2400acb067` (3 FAQ entries).
+- Date Difference page commit: `d9a651a1d5204eb98179bdf0d82d596a5a3df3cd` (3 FAQ entries).
+- Service worker cache bumped sequentially from v62 to v63: `c85d4d4d660052d6d04b5f263a2d341167ef0541`.
+- Next: validate JSON-LD and wait for the latest GitHub Pages deployment before claiming live publication. Structured data does not guarantee rich results or ranking gains.
