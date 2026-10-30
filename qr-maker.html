@@ -110,30 +110,6 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <button id="generate-button" type="button" onclick="makeQR()">Generate QR Code</button>
 <div id="qr" aria-live="polite"></div>
 
-<hr style="margin:28px 0;border:0;border-top:1px solid #e2e8f0">
-<section id="social-qr-studio" aria-labelledby="social-qr-title" style="margin:0;padding:18px;border:1px solid #dbeafe;border-radius:14px;background:#f8fbff">
-<h2 id="social-qr-title">Social Media QR Studio</h2>
-<p class="note">Create a QR for a social profile or WhatsApp chat. This add-on sends the prepared link to the original QR generator above. The existing QR generation method is unchanged.</p>
-<label for="social-platform">Choose a QR type</label>
-<select id="social-platform" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;font-size:16px">
-<option value="instagram">Instagram Profile</option><option value="facebook">Facebook Profile or Page</option><option value="youtube">YouTube Channel or Video</option><option value="tiktok">TikTok Profile</option><option value="telegram">Telegram Username</option><option value="whatsapp">WhatsApp Chat</option><option value="whatsapp-number">WhatsApp Phone Number</option><option value="website">Custom Social Profile URL</option><option value="bundle">All Social Links in One QR</option>
-</select>
-<div id="social-single-fields">
-<label for="social-value">Profile username or full profile link</label>
-<input id="social-value" type="text" placeholder="Enter username or profile URL" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px">
-<p class="note" id="social-hint">Example: yourname or https://instagram.com/yourname</p>
-</div>
-<div id="social-bundle-fields" hidden>
-<label for="bundle-name">Your name or business name</label><input id="bundle-name" type="text" placeholder="Name" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px">
-<label for="bundle-instagram">Instagram profile link</label><input id="bundle-instagram" type="url" placeholder="https://instagram.com/username" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px">
-<label for="bundle-facebook">Facebook profile or page link</label><input id="bundle-facebook" type="url" placeholder="https://facebook.com/username" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px">
-<label for="bundle-youtube">YouTube channel link</label><input id="bundle-youtube" type="url" placeholder="https://youtube.com/@channel" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px">
-<label for="bundle-whatsapp">WhatsApp number with country code</label><input id="bundle-whatsapp" type="tel" placeholder="91XXXXXXXXXX" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px">
-<label for="bundle-other">Other profile or website link (optional)</label><input id="bundle-other" type="url" placeholder="https://..." style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px">
-</div>
-<button id="social-build-button" type="button" style="background:#173f7a">Prepare Social QR</button>
-<p class="note" id="social-status" aria-live="polite">Choose a platform and enter its username or link. Your QR will be created by the original generator.</p>
-</section>
 <hr style="margin:24px 0;border:0;border-top:1px solid #e2e8f0">
 <h2>Read and Edit an Existing QR Code / Barcode</h2>
 <p class="note">Upload a clear image of an existing QR code or supported barcode. We’ll try to read its contents and place the text or link in the box above so you can edit it and generate a new QR code.</p>
@@ -307,15 +283,4 @@ const single=document.getElementById('social-single-fields'),bundle=document.get
 const examples={instagram:'Example: yourname or https://instagram.com/yourname',facebook:'Example: yourname or https://facebook.com/yourname',youtube:'Example: @channel or https://youtube.com/@channel',tiktok:'Example: yourname or https://tiktok.com/@yourname',telegram:'Example: yourname or https://t.me/yourname',whatsapp:'Enter a phone number with country code, e.g. 919876543210','whatsapp-number':'Enter a phone number with country code, e.g. 919876543210',website:'Paste the complete profile or website URL'};
 platform.addEventListener('change',function(){const isBundle=platform.value==='bundle';single.hidden=isBundle;bundle.hidden=!isBundle;hint.textContent=examples[platform.value]||'Enter a username or full link';status.textContent=isBundle?'Add the profile links you want to share.':'Enter the username or link for the selected platform.';});
 function profileUrl(type,raw){const input=raw.trim();if(!input)return '';if(type==='whatsapp'||type==='whatsapp-number'){const digits=input.replace(/[^0-9]/g,'');if(digits.length<8||digits.length>15)throw new Error('Enter a valid phone number with country code.');return 'https://wa.me/'+digits;}if(/^https?:\/\//i.test(input))return input;const name=input.replace(/^@/,'').replace(/^\//,'');const bases={instagram:'https://www.instagram.com/',facebook:'https://www.facebook.com/',youtube:'https://www.youtube.com/@',tiktok:'https://www.tiktok.com/@',telegram:'https://t.me/'};if(type==='website')throw new Error('Paste the complete URL starting with https://');return (bases[type]||'')+name;}
-document.getElementById('social-build-button').addEventListener('click',function(){try{let payload='';if(platform.value==='bundle'){const name=document.getElementById('bundle-name').value.trim();const entries=[['Instagram',document.getElementById('bundle-instagram').value],['Facebook',document.getElementById('bundle-facebook').value],['YouTube',document.getElementById('bundle-youtube').value],['WhatsApp',document.getElementById('bundle-whatsapp').value?profileUrl('whatsapp',document.getElementById('bundle-whatsapp').value):''],['Other',document.getElementById('bundle-other').value]].filter(item=>item[1].trim());if(!entries.length)throw new Error('Enter at least one social profile link.');payload=(name?name+'\n\n':'')+entries.map(item=>item[0]+': '+item[1]).join('\n');}else{const raw=value.value.trim();if(!raw)throw new Error('Enter a username, phone number or profile link.');payload=profileUrl(platform.value,raw);}document.getElementById('content').value=payload;document.getElementById('content').focus();document.getElementById('generate-button').scrollIntoView({behavior:'smooth',block:'center'});status.textContent='Ready. The information is now in the original QR text box. Tap Generate QR Code to create it.';}catch(error){status.textContent=error.message||'Please check the information and try again.';}});
-})();
-</script>
-<script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
-<script src="/InfoJano/download-progress.js" defer></script>
-<script src="/InfoJano/install.js" defer></script>
-
-
-
-
-</body>
-</html>
+document.getElementById('social-build-button').addEventListener('click',function(){try{let payload='';if(platform.value==='bundle'){const name=document.getElementById('bundle-name').value.trim();const entries=[['Instagram',document.getElementById('bundle-instagram').value],['Facebook',document.getElementById('bundle-facebook').value],['YouTube',document.getElementById('bundle-youtube').value],['WhatsApp',document.getElementById('bundle-whatsapp').value?profileUrl('whatsapp',document.getElementById('bundle-whatsapp').value):''],['Other',document.getElementById('bundle-other').value]].filter(item=>item[1].trim());if(!entries.length)throw new Error('Enter at least one social profile link.');payload=(name?name+'\n\n':'')+entries.map(item=>item[0]+': '+item[1]).join('\n');}else{const raw=value.value.trim();if(!raw)throw new Error('Enter a username, phone number or profile link.');payload=profileUrl(platform.value,raw);}document.getElementById('content').value=payload;document.getElementById('content').focus();document.getElementById('generate-button').scrollIntoView({behavior:'smooth',block:'center'});status.textContent='Ready. The information is now in the original QR text box. Tap Generate QR Code to create it.';}catch(error){status.textContent=error.message||'Please check the information and tr
