@@ -691,3 +691,10 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Ran nine validator regression cases in Node.js: valid HTTPS domains, empty input, unsupported javascript scheme, malformed double-dot hostname, leading-hyphen hostname, embedded credentials, localhost with port, and IPv4 literal. All nine expected outcomes passed.
 - Service Worker cache advanced to infojano-v94 after the final page-source correction.
 - The QR download contrast fix and input validation changes are committed in source. User should reload the live page after GitHub Pages updates to verify the visible button and repeat a quick live check.
+
+
+### QR PNG download contrast follow-up — 31 October 2026
+- User's latest Android screenshot confirmed the Download PNG label still rendered dark blue despite the earlier stylesheet rule.
+- Added explicit inline high-priority white text and blue background styles directly to the generated download anchor, so link-state and stylesheet cascade rules cannot override the label.
+- Advanced Service Worker cache from infojano-v94 to infojano-v95.
+- QR generation, image dimensions, quiet-zone margin and download filename remain unchanged. Awaiting user-side live refresh verification.
