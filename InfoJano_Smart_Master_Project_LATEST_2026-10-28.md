@@ -545,3 +545,12 @@ Next technical work:
 5. Re-test on Android with Airplane Mode after first loading the updated app online, including QR generation/download, PDF import, PDF export, and JPG export. A cold offline test after clearing site data is separate from a warm-cache test.
 
 No code changes to QR generation or PDF libraries were made in this checkpoint; this entry records actual user-device observations and the verified external dependencies so the next change can be deliberate and safe.
+
+
+## QR Generator made offline-capable — 31 October 2026
+
+- Replaced the QR generation dependency on the external api.qrserver.com service with the locally hosted qrcodejs encoder at /InfoJano/qr-code-generator.min.js. QR creation now builds a PNG in the browser and provides a direct PNG download link without a network request.
+- Added the upstream MIT license as QR-CODE-GENERATOR-LICENSE.txt; the bundled library is from davidshimjs/qrcodejs.
+- Added the local encoder to the Service Worker precache list and bumped the cache from infojano-v79 to infojano-v80.
+- The QR/barcode image-reading feature still uses native BarcodeDetector where supported and the ZXing fallback from unpkg; that separate read-existing-code path is not yet guaranteed offline. The QR creation path is the part made local.
+- Source changes are committed. The library has not yet been exercised in a real browser or scanned from a second device in this session. After Pages deploys, first open the QR page online once so the new script is cached, then enable Airplane Mode, create a QR, download it, and scan it with another phone.
