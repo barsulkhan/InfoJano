@@ -600,3 +600,12 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Added both new pages to the Service Worker precache and bumped cache from `infojano-v84` to `infojano-v85`.
 - Updated homepage QR navigation and its direct tool link to the choice screen.
 - Repository source updates are being committed; deployment and real mobile scan testing remain to be verified.
+
+
+## Platform-branded Social Media QR cards — 31 October 2026
+
+- Updated only the standalone `social-qr-maker.html` page. The Normal QR Maker and its original QR generation method were not changed.
+- Social QR output now uses a platform-specific branded card with matching colours, a platform mark, a scan instruction, and InfoJano attribution. The downloaded PNG is the complete designed card rather than a plain QR square.
+- Full profile URLs are inspected to identify Facebook, Instagram, YouTube, TikTok, Telegram, and WhatsApp domains; when recognized, the visual theme follows the actual URL domain even if a different platform was selected in the dropdown. The encoded URL itself remains unchanged.
+- QR rendering uses high error correction, a four-module white quiet zone, and a small central platform mark. A real phone scan test is still required before relying on the center mark or printing the card.
+- Bumped Service Worker cache from `infojano-v85` to `infojano-v86`. Source is committed; deployment and device scanning are not yet verified.
