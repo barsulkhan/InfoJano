@@ -580,3 +580,13 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Kept local generation, direct PNG download, existing text/URL input, and the bundled qrcodejs encoder. No external QR API was reintroduced.
 - Bumped Service Worker cache from infojano-v82 to infojano-v83.
 - This is a code-level correction based on the supplied failed scans. The resulting QR still needs a real device scan test after Pages deployment; do not claim the fix is confirmed until the user scans a newly generated code.
+
+
+## Social Media QR Studio add-on — 31 October 2026
+
+- Added a separate Social Media QR Studio section to qr-maker.html without changing the original makeQR() function, qrcodejs library, quiet-zone rendering, QR PNG download flow, or existing upload/read QR workflow.
+- Added prepared-link options for Instagram, Facebook, YouTube, TikTok, Telegram, WhatsApp chat/number, and a custom profile URL.
+- Added an all-social-links-in-one-QR option that places the entered name and selected profile URLs into a single QR payload as readable text. This does not create a hosted profile landing page; scanners display the included text and links.
+- Social Studio prepares the payload in the existing Text or Website URL field and then the user taps the original Generate QR Code button. This keeps the core generator untouched.
+- Bumped Service Worker cache from infojano-v83 to infojano-v84 and updated the master project record.
+- Source change is committed; deployment and mobile behavior are not yet verified. Test all link formats and scan the generated QR after Pages deployment. A single QR containing multiple links is a text payload, not a custom branded landing page.
