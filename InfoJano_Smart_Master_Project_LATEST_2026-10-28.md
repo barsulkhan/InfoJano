@@ -628,3 +628,12 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Updated only `social-qr-maker.html`: social QR patterns now use the selected platform accent colour on white, with a clean minimal layout closer to the reference; added optional profile-photo upload for a circular centre image, otherwise the platform mark is used.
 - QR uses high error correction and retains a clear white margin. The QR is still a standard URL payload; the centre photo/logo is only visual branding and is not part of the encoded destination.
 - Bumped Service Worker cache from `infojano-v88` to `infojano-v89`. Needs live deployment and physical-device scan verification, especially with the centre photo/logo.
+
+
+## Social QR card alignment and visual polish — 31 October 2026
+
+- Corrected the QR positioning bug: the previous renderer added the calculated quiet-zone offset to the QR's x/y position without reducing its drawn width and height. This pushed the visible QR pattern right/down and made the QR panel asymmetric.
+- The QR is now drawn inside a fixed, centred 360 × 360 white panel. The four-module quiet zone is included within that panel, so the symbol remains centred and the clear margin is preserved on all four sides.
+- Refined the card with a soft platform-tinted header, rounded outer card and QR panel, consistent centred title/subtitle, smaller centre photo/logo overlay, and more balanced scan/footer spacing. Facebook profile photo remains optional and is used only for Facebook.
+- Normal QR Maker and QR choice/homepage navigation were not changed. Service Worker cache advanced from infojano-v89 to infojano-v90.
+- Source commits were made. Actual GitHub Pages deployment, visual rendering on Android, and scan reliability with/without a profile photo still need device verification; no scan test is claimed.
