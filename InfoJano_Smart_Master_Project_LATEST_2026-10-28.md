@@ -618,3 +618,5 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - QR modules are now standard black on white, with the platform mark kept outside the QR pattern. This prioritizes scan reliability and avoids obscuring QR modules. Platform identity remains in the frame rather than colouring the code itself.
 - Normal QR Maker remains untouched. Bumped Service Worker cache from `infojano-v86` to `infojano-v87`.
 - Source is committed; real-device scan testing and Pages deployment verification remain pending.
+
+- Follow-up QR layout correction: reduced the QR symbol to 340 × 340 and restored a calculated four-module quiet zone within the white QR panel. Service Worker cache advanced to `infojano-v88` so the corrected page is refreshed. Device scan test remains required.
