@@ -698,3 +698,11 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Added explicit inline high-priority white text and blue background styles directly to the generated download anchor, so link-state and stylesheet cascade rules cannot override the label.
 - Advanced Service Worker cache from infojano-v94 to infojano-v95.
 - QR generation, image dimensions, quiet-zone margin and download filename remain unchanged. Awaiting user-side live refresh verification.
+
+
+### QR download control rebuilt as a native button — 31 October 2026
+- User's follow-up Android screenshot showed that even explicit inline link styles still rendered the Download PNG label dark blue.
+- Replaced the generated download anchor with a native button using the existing shared button styling (white text on blue). The button invokes a dedicated downloadQR() function that creates a temporary download anchor only when tapped.
+- QR image generation, 320px QR source, 40px white quiet zone, and PNG filename are unchanged.
+- Advanced Service Worker cache from infojano-v95 to infojano-v96.
+- Awaiting user-side refresh to verify the button's rendered contrast and actual PNG download.
