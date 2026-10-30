@@ -515,3 +515,33 @@ A repository-wide audit checked the 25 main HTML pages plus the homepage. The 22
 The existing site-wide manifest is intentionally reused for these pages rather than creating unnecessary separate app identities. The offline cache version was bumped from infojano-v78 to infojano-v79. The two Portuguese pages and ID Card Studio were already listed in the service worker's precache assets.
 
 Deployment and live browser behavior must still be verified after GitHub Pages completes. Android installability and offline behavior should be checked on a real device; no device-level test is claimed here.
+
+
+## Real Android PWA offline test — 31 October 2026
+
+The user installed/opened the InfoJano PWA on Android and tested it with Airplane Mode enabled. The screenshots show these pages opened and their calculator interactions/results rendered offline:
+
+- Homepage / app shell and navigation.
+- Age Calculator, BMI Calculator, EMI Calculator.
+- Percentage Calculator and Percentage Change Calculator.
+- Date Difference Calculator and Time Calculator.
+- Discount Calculator, GST Calculator, Tip Calculator.
+- Number to Words, Word Counter, Unit Converter, Savings Calculator.
+- ID Card Print Studio was open at its export section; the user showed the generated JPG success message and an image preview. This is evidence that this particular JPG workflow reached a success state on the device, but does not independently prove PDF export or every input format works offline.
+
+Offline limitations observed:
+- QR Code Generator displayed an internet-connection error. Inspection confirms QR creation currently calls the external api.qrserver.com service, so QR generation is online-dependent by design.
+- Currency Converter displayed a result using the manually entered exchange rate (96); this is offline arithmetic, not a live exchange-rate lookup.
+- The ID Card Studio loads PDF.js and jsPDF from cdnjs CDN, and the PDF.js worker from cdnjs. PDF import and PDF export therefore may fail on a fresh offline session unless those CDN assets were previously cached by the browser. The screenshots do not establish a successful offline PDF import/export.
+- QR/barcode image reading uses native BarcodeDetector where supported, with ZXing loaded from unpkg as fallback; the fallback is not guaranteed offline.
+
+Conclusion: the user has demonstrated useful offline operation for many cached pages and browser-native calculations. Do not claim complete offline support. Treat online QR generation, live currency rates, and PDF library availability as known limitations.
+
+Next technical work:
+1. Make QR creation fully local by bundling a small QR encoder library in the repository; preserve the existing download PNG flow and test output by scanning it on a second device.
+2. Bundle the exact PDF.js main script, PDF.js worker, and jsPDF library locally, then update id-card-print-studio.html to use same-origin assets. Verify file integrity/version compatibility before switching CDN URLs.
+3. Add local ZXing fallback only if needed and license/size are checked; native BarcodeDetector may continue to work without the network on supported Android browsers.
+4. Add new local library assets to sw.js precache list and bump cache version once the code/assets are committed.
+5. Re-test on Android with Airplane Mode after first loading the updated app online, including QR generation/download, PDF import, PDF export, and JPG export. A cold offline test after clearing site data is separate from a warm-cache test.
+
+No code changes to QR generation or PDF libraries were made in this checkpoint; this entry records actual user-device observations and the verified external dependencies so the next change can be deliberate and safe.
