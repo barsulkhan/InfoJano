@@ -495,3 +495,10 @@ Updated: 29 October 2026
 - Sitemap XML has 26 URLs and matches the expected homepage plus 25 tool pages. Sitemap text and robots.txt exist; robots.txt points to sitemap.xml. The repository contains a Google Search Console verification HTML file that is intentionally not included in the sitemap.
 - Internal relative links checked across the homepage and tool-page groups against the repository tree: no missing local targets were found in the sampled/checked links. The service worker precache list contains 78 local paths and all listed file paths exist in the repository.
 - Static performance review: homepage loads Google Analytics asynchronously and includes local install/download-progress scripts; the ID Card Studio loads pdf.js and jsPDF from cdnjs. No source edits were made for performance because a real Lighthouse run or field Core Web Vitals data was not available in this audit. Next: run Lighthouse/PageSpeed Insights on the deployed site before making performance optimizations, then address only measured bottlenecks.
+
+
+## PWA service worker registration coverage — 30 October 2026
+- Found that service worker registration existed only in index.html, even though the site has multiple standalone tool pages and per-tool manifests. This meant direct entry to a tool page could miss registering the offline worker until the homepage was visited.
+- Moved registration into the shared install.js helper, which is loaded by the homepage and tool pages, and explicitly set scope to /InfoJano/. Removed the duplicate homepage-only registration block.
+- Bumped the cache name from infojano-v77 to infojano-v78 so returning clients refresh the shared helper and worker assets.
+- This is a source-level PWA registration fix. Deployment and on-device offline behavior still require verification after GitHub Pages publishes the commit.
