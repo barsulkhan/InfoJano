@@ -684,3 +684,10 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 2. Re-test Decode success and invalid percent sequence.
 3. Test Download PNG and scan it from another device.
 4. Choose domain/backend budget and approve deployment architecture before provisioning the real Short Link service.
+
+
+### Validation regex correction and regression results — 31 October 2026
+- Corrected escaped digit/dot patterns in the hostname validation regular expressions after source-level review.
+- Ran nine validator regression cases in Node.js: valid HTTPS domains, empty input, unsupported javascript scheme, malformed double-dot hostname, leading-hyphen hostname, embedded credentials, localhost with port, and IPv4 literal. All nine expected outcomes passed.
+- Service Worker cache advanced to infojano-v94 after the final page-source correction.
+- The QR download contrast fix and input validation changes are committed in source. User should reload the live page after GitHub Pages updates to verify the visible button and repeat a quick live check.
