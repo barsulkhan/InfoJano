@@ -148,6 +148,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script src="https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js"></script>
+<script src="/InfoJano/qr-code-generator.min.js" defer></script>
 <script>
 let selectedCodeImage = null;
 let codePreviewUrl = null;
@@ -221,70 +222,48 @@ readCodeButton.addEventListener('click', async function () {
 });
 </script>
 <script>
-let qrObjectUrl = null;
 function makeQR(){
 const value=document.getElementById('content').value.trim();
 const box=document.getElementById('qr');
 const button=document.getElementById('generate-button');
 box.replaceChildren();
-if(qrObjectUrl){URL.revokeObjectURL(qrObjectUrl);qrObjectUrl=null;}
 if(!value){box.textContent='Please enter text or a website URL first.';return;}
+if(!window.QRCode){box.textContent='The offline QR library did not load. Refresh the page and try again.';return;}
 button.disabled=true;
 button.textContent='Generating QR Code… Please wait';
-const status=document.createElement('p');
-status.className='qr-status';
-status.textContent='Generating your QR code…';
-box.appendChild(status);
-const source='https://api.qrserver.com/v1/create-qr-code/?size=520x520&data='+encodeURIComponent(value);
+try{
+const holder=document.createElement('div');
+holder.style.cssText='position:absolute;left:-10000px;top:0;width:520px;height:520px;overflow:hidden';
+document.body.appendChild(holder);
+new QRCode(holder,{text:value,width:520,height:520,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
+const canvas=holder.querySelector('canvas');
+const generatedImage=holder.querySelector('img');
+let dataUrl='';
+if(canvas)dataUrl=canvas.toDataURL('image/png');
+else if(generatedImage&&generatedImage.src)dataUrl=generatedImage.src;
+holder.remove();
+if(!dataUrl)throw new Error('QR image could not be created');
 const img=document.createElement('img');
 img.alt='Generated QR code';
-img.width=260;
-img.height=260;
-img.onload=async function(){
-button.disabled=false;
-button.textContent='Generate QR Code';
-box.replaceChildren(img);
+img.width=260;img.height=260;
+img.src=dataUrl;
+box.appendChild(img);
 const download=document.createElement('a');
 download.className='qr-download';
-download.href='#';
+download.href=dataUrl;
+download.download='InfoJano-QR-'+new Date().toISOString().replace(/[-:]/g,'').replace(/\\.\\d{3}Z$/,'Z')+'.png';
 download.textContent='Download QR Code (PNG)';
-download.setAttribute('role','button');
-download.addEventListener('click',async function(event){
-event.preventDefault();
-download.textContent='Downloading… Please wait';
-download.style.pointerEvents='none';
-try{
-const response=await fetch(source,{mode:'cors',cache:'no-store'});
-if(!response.ok)throw new Error('QR image download failed');
-const blob=await response.blob();
-if(!blob.type.includes('image'))throw new Error('Invalid QR image');
-if(qrObjectUrl)URL.revokeObjectURL(qrObjectUrl);
-qrObjectUrl=URL.createObjectURL(blob);
-const now=new Date();
-const stamp=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'-'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0')+String(now.getSeconds()).padStart(2,'0')+'-'+String(now.getMilliseconds()).padStart(3,'0');
-const file=document.createElement('a');
-file.href=qrObjectUrl;
-file.download='InfoJano-QR-'+stamp+'.png';
-file.style.display='none';
-document.body.appendChild(file);
-file.click();
-file.remove();
-download.textContent='✓ Download started — check your Downloads folder';
-download.style.background='#15803d';
-}catch(error){
-download.textContent='Download failed — tap to retry';
-download.style.pointerEvents='auto';
-download.style.background='#b91c1c';
-}
-});
 box.appendChild(download);
-};
-img.onerror=function(){
+const status=document.createElement('p');
+status.className='qr-status';
+status.textContent='QR code created on this device. No internet connection is needed.';
+box.appendChild(status);
+}catch(error){
+box.textContent='Could not create this QR code. Try a shorter text or website link.';
+}finally{
 button.disabled=false;
 button.textContent='Generate QR Code';
-box.textContent='Could not generate the QR code. Check your internet connection and try again.';
-};
-img.src=source;
+}
 }
 </script>
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
