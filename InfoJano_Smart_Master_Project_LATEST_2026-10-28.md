@@ -657,3 +657,30 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Refined URL Cleaner to preserve the URL fragment/hash because it may point to a useful section of the destination page. Common tracking query parameters are still removed.
 - Advanced Service Worker cache from infojano-v91 to infojano-v92.
 - Repository source verified; live deployment and real Android/QR tests remain pending.
+
+
+## URL Toolkit quality and backend architecture — 31 October 2026
+
+### Front-end quality pass
+- Improved QR Download PNG button contrast: white bold text on a strong blue background, explicit border and keyboard focus visibility. This addresses the Android screenshot where the result link rule overrode the download button's intended white text.
+- Improved shared URL validation: empty input and very long URLs receive clear messages; only HTTP/HTTPS schemes are accepted; embedded credentials are rejected; hostname labels are checked; malformed IPv4 octets are rejected; localhost and IPv6 syntax remain supported.
+- Improved Encoder/Decoder empty-input and 10,000-character handling. Invalid percent-encoded input now receives a clearer decode error. URL input limit is 4,096 characters.
+- Bumped Service Worker cache from infojano-v92 to infojano-v93.
+- The eight tools had initial user-device functional checks; remaining regression checks include invalid hostnames, invalid percent encoding, empty input, file download and scanning a downloaded QR on a second device.
+
+### Proposed real Short Link backend (architecture only; not deployed)
+- Recommended first implementation: Cloudflare Workers for HTTPS redirect/API endpoints, Cloudflare D1 for durable link/account records, and Cloudflare Turnstile or equivalent risk controls on public creation forms. KV may be used for hot redirect lookups/cache only after consistency and deletion behaviour are designed.
+- Public URL shape: `https://ijano.in/s/{code}` after a custom domain is registered and connected. Until then, do not advertise this as live.
+- Create API: validate HTTP/HTTPS destination, reject credentials and unsafe/private-network targets, normalize input, generate a cryptographically random short code, enforce uniqueness, apply per-IP/user rate limits, and store owner, destination, created_at, optional expiry, status and privacy settings.
+- Redirect: look up code, reject disabled/expired/deleted records, increment analytics asynchronously or via queue/batched writes, then issue an HTTP 302 by default. Keep 301/308 opt-in only because they can be cached by browsers.
+- Analytics: store event aggregates rather than unnecessary personal data; initial metrics should include total clicks, daily clicks, referrer domain, country at coarse level, device category and time. Publish a clear privacy notice and retention period. Avoid storing full IP addresses; truncate/hash only if justified and documented.
+- Dashboard: user authentication, link edit/disable/delete, expiry, custom aliases, QR export, folders/tags and CSV export. Custom domains and team seats are later tiers.
+- Abuse/security: block localhost, loopback, RFC1918/private IPv4, link-local, IPv6 local/private ranges, cloud metadata endpoints and known dangerous schemes; protect against DNS rebinding/redirect-to-private targets; use abuse reports, rate limits, CAPTCHA/risk scoring, denylist updates and an emergency kill switch.
+- Cost and launch gates: check current Cloudflare plan limits/pricing before selecting production configuration; verify domain ownership, HTTPS, backup/restore, rate limits, analytics cost, data deletion and incident response. Do not create paid services or change DNS without the user's explicit approval.
+- This is a design recommendation only. No Worker, D1 database, domain, authentication or short-link endpoint has been provisioned.
+
+### Next sequence
+1. Re-test URL validation for valid HTTPS, invalid scheme, malformed hostname, blank input and credential-bearing URL.
+2. Re-test Decode success and invalid percent sequence.
+3. Test Download PNG and scan it from another device.
+4. Choose domain/backend budget and approve deployment architecture before provisioning the real Short Link service.
