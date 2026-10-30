@@ -502,3 +502,16 @@ Updated: 29 October 2026
 - Moved registration into the shared install.js helper, which is loaded by the homepage and tool pages, and explicitly set scope to /InfoJano/. Removed the duplicate homepage-only registration block.
 - Bumped the cache name from infojano-v77 to infojano-v78 so returning clients refresh the shared helper and worker assets.
 - This is a source-level PWA registration fix. Deployment and on-device offline behavior still require verification after GitHub Pages publishes the commit.
+
+
+## PWA page coverage audit and fixes — 30 October 2026
+
+A repository-wide audit checked the 25 main HTML pages plus the homepage. The 22 standard tool pages already linked their individual manifests and loaded the shared install.js helper. Three gaps were found and fixed:
+
+- discount-pt-br.html now links the site manifest and loads /InfoJano/install.js so direct visits register the site-wide service worker.
+- percentage-pt-br.html now links the site manifest and loads /InfoJano/install.js for the same reason.
+- id-card-print-studio.html now links /InfoJano/manifest.json; it already loaded the shared install.js helper.
+
+The existing site-wide manifest is intentionally reused for these pages rather than creating unnecessary separate app identities. The offline cache version was bumped from infojano-v78 to infojano-v79. The two Portuguese pages and ID Card Studio were already listed in the service worker's precache assets.
+
+Deployment and live browser behavior must still be verified after GitHub Pages completes. Android installability and offline behavior should be checked on a real device; no device-level test is claimed here.
