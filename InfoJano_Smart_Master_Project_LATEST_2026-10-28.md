@@ -620,3 +620,11 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Source is committed; real-device scan testing and Pages deployment verification remain pending.
 
 - Follow-up QR layout correction: reduced the QR symbol to 340 × 340 and restored a calculated four-module quiet zone within the white QR panel. Service Worker cache advanced to `infojano-v88` so the corrected page is refreshed. Device scan test remains required.
+
+
+## Facebook-native-inspired social QR style — 31 October 2026
+
+- Researched Meta's official historical announcement and sample of Facebook's profile QR feature. Meta described a profile-photo QR and an option to switch to a version without the photo. This is a historical Facebook feature, not confirmation of the current app UI.
+- Updated only `social-qr-maker.html`: social QR patterns now use the selected platform accent colour on white, with a clean minimal layout closer to the reference; added optional profile-photo upload for a circular centre image, otherwise the platform mark is used.
+- QR uses high error correction and retains a clear white margin. The QR is still a standard URL payload; the centre photo/logo is only visual branding and is not part of the encoded destination.
+- Bumped Service Worker cache from `infojano-v88` to `infojano-v89`. Needs live deployment and physical-device scan verification, especially with the centre photo/logo.
