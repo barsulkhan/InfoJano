@@ -70,7 +70,7 @@ ctx.fillStyle=theme.accent;ctx.font='bold 16px Arial';ctx.fillText(theme.tag,260
 ctx.fillStyle='#ffffff';roundRect(ctx,48,122,424,424,22);ctx.fill();
 ctx.fillStyle='#ffffff';ctx.fillRect(48,122,424,424);
 ctx.imageSmoothingEnabled=false;
-ctx.drawImage(sourceCanvas,70,144,380,380);
+ctx.drawImage(sourceCanvas,70+quietZone,144+quietZone,380,380);
 ctx.fillStyle='#ffffff';roundRect(ctx,220,294,80,80,18);ctx.fill();
 ctx.strokeStyle=theme.accent;ctx.lineWidth=4;roundRect(ctx,220,294,80,80,18);ctx.stroke();
 ctx.fillStyle=theme.dark;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 48px Arial';ctx.fillText(theme.glyph,260,334);
