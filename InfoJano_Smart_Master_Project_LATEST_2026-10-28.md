@@ -571,3 +571,12 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Corrected the visible QR Maker note so it no longer incorrectly says internet is required for QR creation. It now distinguishes local QR creation from reading uploaded QR/barcode images, where the ZXing fallback may still require internet when native BarcodeDetector is unavailable.
 - Bumped the Service Worker cache from infojano-v81 to infojano-v82 so the corrected page is refreshed on supported installs.
 - The preceding QR generation and local jsPDF changes are deployed in GitHub Pages run 41109093453 (success). This new correction is a separate pending deployment and still requires a device test.
+
+
+## QR Generator scan reliability correction — 31 October 2026
+
+- Investigated the QR images supplied by the user. The generated images had virtually no standards-compliant quiet zone (white margin) around the QR symbol; the finder patterns were too close to the image edges, which can prevent camera and decoder detection.
+- Updated the local QR generation path to render the symbol at 400 × 400 and add a white quiet zone of at least four QR modules on every side before exporting the PNG. The output size is calculated from the QR module count so the margin scales with symbol density.
+- Kept local generation, direct PNG download, existing text/URL input, and the bundled qrcodejs encoder. No external QR API was reintroduced.
+- Bumped Service Worker cache from infojano-v82 to infojano-v83.
+- This is a code-level correction based on the supplied failed scans. The resulting QR still needs a real device scan test after Pages deployment; do not claim the fix is confirmed until the user scans a newly generated code.
