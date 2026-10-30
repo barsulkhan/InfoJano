@@ -44,43 +44,43 @@ box.replaceChildren();
 if(!value){box.textContent='Please enter a profile link or social information first.';return;}
 if(!window.QRCode){box.textContent='The offline QR library did not load. Refresh the page and try again.';return;}
 button.disabled=true;
-button.textContent='Creating branded QR Code…';
+button.textContent='Creating your QR design…';
 try{
 const platform=document.getElementById('social-platform').value;
 const isBundle=platform==='bundle';
 const detected=detectPlatform(value,platform);
-const theme=isBundle?{name:'Social Links',short:'LINKS',dark:'#173f7a',light:'#eef4ff',accent:'#2563eb',tag:'All your social links in one place'}:getBrandTheme(detected);
+const theme=isBundle?{name:'Social Links',dark:'#173f7a',light:'#f4f7fc',accent:'#2457a7',glyph:'↗',tag:'All your social links in one place',cta:'SCAN TO CONNECT',file:'Social-Links'}:getBrandTheme(detected);
 const holder=document.createElement('div');
 holder.style.cssText='position:absolute;left:-10000px;top:0;width:380px;height:380px;overflow:hidden';
 document.body.appendChild(holder);
-const qrInstance=new QRCode(holder,{text:value,width:380,height:380,colorDark:theme.dark,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+new QRCode(holder,{text:value,width:380,height:380,colorDark:'#111827',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
 const sourceCanvas=holder.querySelector('canvas');
 if(!sourceCanvas)throw new Error('QR canvas is unavailable');
-const moduleCount=qrInstance._oQRCode&&qrInstance._oQRCode.getModuleCount?qrInstance._oQRCode.getModuleCount():33;
-const quietZone=Math.ceil((380/moduleCount)*4);
-const qrSize=380+quietZone*2;
-const canvas=document.createElement('canvas');
-canvas.width=520;canvas.height=650;
-const ctx=canvas.getContext('2d');
-if(!ctx)throw new Error('Canvas is unavailable');
-ctx.fillStyle=theme.light;ctx.fillRect(0,0,520,650);
-ctx.strokeStyle=theme.accent;ctx.lineWidth=5;roundRect(ctx,8,8,504,634,30);ctx.stroke();
-ctx.fillStyle=theme.dark;ctx.font='bold 31px Arial';ctx.textAlign='center';ctx.fillText(theme.name,260,65);
-ctx.fillStyle=theme.accent;ctx.font='bold 16px Arial';ctx.fillText(theme.tag,260,96);
-ctx.fillStyle='#ffffff';roundRect(ctx,48,122,424,424,22);ctx.fill();
-ctx.fillStyle='#ffffff';ctx.fillRect(48,122,424,424);
+const qrSize=380;
+const moduleCount=33;
+const qrInstance=holder.querySelector('canvas').width;
+const quietZone=48;
+const canvas=document.createElement('canvas');canvas.width=520;canvas.height=700;
+const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas is unavailable');
+ctx.fillStyle='#f4f6fa';ctx.fillRect(0,0,520,700);
+ctx.fillStyle='#ffffff';roundRect(ctx,14,14,492,672,28);ctx.fill();
+ctx.strokeStyle='#e5eaf2';ctx.lineWidth=2;roundRect(ctx,14,14,492,672,28);ctx.stroke();
+ctx.fillStyle=theme.accent;roundRect(ctx,14,14,492,10,5);ctx.fill();
+ctx.fillStyle=theme.light;roundRect(ctx,40,48,72,72,22);ctx.fill();
+ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 48px Arial';ctx.fillText(theme.glyph,76,84);
+ctx.textAlign='left';ctx.fillStyle='#111827';ctx.font='bold 31px Arial';ctx.fillText(theme.name,132,78);
+ctx.fillStyle='#667085';ctx.font='16px Arial';ctx.fillText(theme.tag,132,105);
+ctx.fillStyle='#ffffff';roundRect(ctx,40,150,440,440,22);ctx.fill();
+ctx.strokeStyle='#e8edf4';ctx.lineWidth=1;roundRect(ctx,40,150,440,440,22);ctx.stroke();
 ctx.imageSmoothingEnabled=false;
-ctx.drawImage(sourceCanvas,70+quietZone,144+quietZone,380,380);
-ctx.fillStyle='#ffffff';roundRect(ctx,220,294,80,80,18);ctx.fill();
-ctx.strokeStyle=theme.accent;ctx.lineWidth=4;roundRect(ctx,220,294,80,80,18);ctx.stroke();
-ctx.fillStyle=theme.dark;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 48px Arial';ctx.fillText(theme.glyph,260,334);
-ctx.textBaseline='alphabetic';ctx.fillStyle=theme.dark;ctx.font='bold 20px Arial';ctx.fillText(theme.cta,260,590);
-ctx.fillStyle='#64748b';ctx.font='13px Arial';ctx.fillText('Created with InfoJano Social QR Studio',260,618);
+ctx.drawImage(sourceCanvas,70,180,380,380);
+ctx.textAlign='center';ctx.fillStyle=theme.accent;ctx.font='bold 22px Arial';ctx.fillText(theme.cta,260,632);
+ctx.fillStyle='#98a2b3';ctx.font='13px Arial';ctx.fillText('Made with InfoJano',260,660);
 holder.remove();
 const dataUrl=canvas.toDataURL('image/png');
-const img=document.createElement('img');img.alt=theme.name+' branded QR code';img.src=dataUrl;box.appendChild(img);
-const download=document.createElement('a');download.className='qr-download';download.href=dataUrl;download.download='InfoJano-'+theme.file+'-Social-QR.png';download.textContent='Download Branded QR Code (PNG)';box.appendChild(download);
-const note=document.createElement('p');note.className='brand-preview';note.textContent='The QR design uses '+theme.name+' brand colours and a matching logo mark. Always scan-test the downloaded image before printing or sharing.';box.appendChild(note);
+const img=document.createElement('img');img.alt=theme.name+' QR code design';img.src=dataUrl;box.appendChild(img);
+const download=document.createElement('a');download.className='qr-download';download.href=dataUrl;download.download='InfoJano-'+theme.file+'-QR.png';download.textContent='Download QR Code (PNG)';box.appendChild(download);
+const note=document.createElement('p');note.className='brand-preview';note.textContent='Clean brand-colour frame with a standard black-and-white QR for reliable scanning. The platform mark stays outside the QR pattern.';box.appendChild(note);
 }catch(error){box.textContent='Could not create this QR code. Check the link and try again.';}
 finally{button.disabled=false;button.textContent='Create Social Media QR Code';}
 }
