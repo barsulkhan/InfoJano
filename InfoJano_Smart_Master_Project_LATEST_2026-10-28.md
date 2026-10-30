@@ -649,3 +649,11 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Short URL redirects, click analytics, custom domains, redirect checking and URL expansion are deferred. They require real backend / redirect infrastructure and abuse controls; this static GitHub Pages page does not pretend to create live short links.
 - Source edits committed; GitHub Pages deployment, mobile visual testing, QR scan test, SEO indexing and user testing remain pending.
 - Next: verify the new page and navigation after deployment; test each tool with representative inputs; then plan a backend architecture for real short links before implementing redirect functionality.
+
+
+## URL Toolkit refinement — 31 October 2026
+
+- Ran a JavaScript syntax parse on the URL Toolkit page source; the inline application script parsed successfully.
+- Refined URL Cleaner to preserve the URL fragment/hash because it may point to a useful section of the destination page. Common tracking query parameters are still removed.
+- Advanced Service Worker cache from infojano-v91 to infojano-v92.
+- Repository source verified; live deployment and real Android/QR tests remain pending.
