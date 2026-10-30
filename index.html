@@ -846,14 +846,7 @@ filterTools();
 </script>
 
   
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/InfoJano/sw.js")
-      .catch((error) => console.error("Service Worker registration failed:", error));
-  });
-}
-</script>
+<!-- Service Worker registration is shared through install.js on every tool page. -->
   
 <script src="/InfoJano/download-progress.js" defer></script>
 <script src="/InfoJano/install.js" defer></script>
