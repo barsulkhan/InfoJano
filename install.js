@@ -1,5 +1,13 @@
 /* InfoJano shared page helpers: no top install banner; apply theme and contextual related apps. */
 (()=> {
+/* Register the site-wide worker from every page that loads this shared helper. */
+  function registerServiceWorker(){
+    if(!("serviceWorker" in navigator))return;
+    navigator.serviceWorker.register("/InfoJano/sw.js",{scope:"/InfoJano/"})
+      .catch(error=>console.error("Service Worker registration failed:",error));
+  }
+  if(document.readyState==="complete")registerServiceWorker();
+  else window.addEventListener("load",registerServiceWorker,{once:true});
   function removeInstallBanner(){
     document.querySelectorAll(".ij-install-card, #ij-install-button").forEach(el=>{
       const card=el.matches(".ij-install-card")?el:el.closest(".ij-install-card");
