@@ -563,3 +563,11 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Added the local jsPDF file to the Service Worker precache and bumped cache version from infojano-v80 to infojano-v81.
 - PDF.js import/rendering is still loaded from cdnjs (main script and worker), so importing PDF documents is not yet guaranteed offline. This change only localizes PDF export; it does not establish full offline PDF support.
 - Source changes committed; no live browser PDF export test was run in this session. After deployment, load the Studio online once, then test an image-based card export in Airplane Mode. Separately test PDF import while offline; it may still fail until the PDF.js main script and worker are also localized.
+
+
+## QR Generator offline instructions corrected — 31 October 2026
+
+- The QR creation path uses the local qrcodejs library and does not need an internet connection after the page and library have been cached.
+- Corrected the visible QR Maker note so it no longer incorrectly says internet is required for QR creation. It now distinguishes local QR creation from reading uploaded QR/barcode images, where the ZXing fallback may still require internet when native BarcodeDetector is unavailable.
+- Bumped the Service Worker cache from infojano-v81 to infojano-v82 so the corrected page is refreshed on supported installs.
+- The preceding QR generation and local jsPDF changes are deployed in GitHub Pages run 41109093453 (success). This new correction is a separate pending deployment and still requires a device test.
