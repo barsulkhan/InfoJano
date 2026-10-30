@@ -51,17 +51,26 @@ const qrInstance=new QRCode(holder,{text:value,width:360,height:360,colorDark:th
 const sourceCanvas=holder.querySelector('canvas');if(!sourceCanvas)throw new Error('QR canvas is unavailable');
 const moduleCount=qrInstance._oQRCode&&qrInstance._oQRCode.getModuleCount?qrInstance._oQRCode.getModuleCount():33,quietZone=Math.ceil((360/moduleCount)*4);
 const canvas=document.createElement('canvas');canvas.width=520;canvas.height=650;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas is unavailable');
-ctx.fillStyle='#ffffff';ctx.fillRect(0,0,520,650);ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.font='bold 29px Arial';ctx.fillText(theme.name,260,55);ctx.fillStyle='#667085';ctx.font='16px Arial';ctx.fillText(theme.tag,260,84);
-ctx.imageSmoothingEnabled=false;ctx.drawImage(sourceCanvas,80+quietZone,112+quietZone,360,360);
-const photoFile=document.getElementById('profile-photo')?.files?.[0];let photo=null;
+// Draw a balanced, centred card with the quiet zone INSIDE the QR panel.
+ctx.fillStyle='#f3f7ff';ctx.fillRect(0,0,520,650);
+ctx.save();roundRect(ctx,18,16,484,618,28);ctx.fillStyle='#ffffff';ctx.fill();ctx.strokeStyle='#e3ecfb';ctx.lineWidth=1.5;ctx.stroke();ctx.restore();
+ctx.save();roundRect(ctx,18,16,484,112,28);ctx.clip();const headerGradient=ctx.createLinearGradient(18,16,502,128);headerGradient.addColorStop(0,'#f4f8ff');headerGradient.addColorStop(1,theme.light||'#eaf2ff');ctx.fillStyle=headerGradient;ctx.fillRect(18,16,484,112);ctx.restore();
+ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.font='bold 30px Arial';ctx.fillText(theme.name,260,65);
+ctx.fillStyle='#64748b';ctx.font='16px Arial';ctx.fillText(theme.tag,260,94);
+const panelX=80,panelY=132,panelSize=360;
+ctx.save();roundRect(ctx,panelX,panelY,panelSize,panelSize,22);ctx.fillStyle='#ffffff';ctx.fill();ctx.strokeStyle='#e5edf8';ctx.lineWidth=1.5;ctx.stroke();ctx.restore();
+ctx.imageSmoothingEnabled=false;
+const symbolSize=panelSize-2*quietZone;
+ctx.drawImage(sourceCanvas,panelX+quietZone,panelY+quietZone,symbolSize,symbolSize);
+const photoFile=detected==='facebook'?document.getElementById('profile-photo')?.files?.[0]:null;let photo=null;
 if(photoFile){photo=await new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=URL.createObjectURL(photoFile);});}
-const cx=260,cy=292,r=43;ctx.save();ctx.beginPath();ctx.arc(cx,cy,r+8,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.fill();ctx.lineWidth=5;ctx.strokeStyle=theme.accent;ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
+const cx=260,cy=panelY+panelSize/2,r=31;ctx.save();ctx.beginPath();ctx.arc(cx,cy,r+7,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=theme.accent;ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
 if(photo){const side=Math.min(photo.width,photo.height),sx=(photo.width-side)/2,sy=(photo.height-side)/2;ctx.drawImage(photo,sx,sy,side,side,cx-r,cy-r,r*2,r*2);}else{ctx.fillStyle='#ffffff';ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 56px Arial';ctx.fillText(theme.glyph,cx,cy);}
 ctx.restore();holder.remove();
-ctx.textAlign='center';ctx.fillStyle=theme.accent;ctx.font='bold 21px Arial';ctx.fillText(theme.cta,260,555);ctx.fillStyle='#98a2b3';ctx.font='13px Arial';ctx.fillText('Made with InfoJano',260,584);
+ctx.textAlign='center';ctx.fillStyle=theme.accent;ctx.font='bold 21px Arial';ctx.fillText(theme.cta,260,535);ctx.fillStyle='#94a3b8';ctx.font='13px Arial';ctx.fillText('Made with InfoJano',260,565);
 const dataUrl=canvas.toDataURL('image/png'),img=document.createElement('img');img.alt=theme.name+' QR code';img.src=dataUrl;box.appendChild(img);
 const download=document.createElement('a');download.className='qr-download';download.href=dataUrl;download.download='InfoJano-'+theme.file+'-QR.png';download.textContent='Download QR Code (PNG)';box.appendChild(download);
-const note=document.createElement('p');note.className='brand-preview';note.textContent='Facebook-inspired profile QR: platform-coloured code, centre profile photo or logo, and a clean white background. Scan-test before printing.';box.appendChild(note);
+const note=document.createElement('p');note.className='brand-preview';note.textContent='A centred QR design with a clear white quiet zone. The Facebook profile photo is optional; always scan-test before printing.';box.appendChild(note);
 }catch(error){box.textContent='Could not create this QR code. Check the link and try again.';}
 finally{button.disabled=false;button.textContent='Create Social Media QR Code';}
 }
