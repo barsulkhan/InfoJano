@@ -554,3 +554,12 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Added the local encoder to the Service Worker precache list and bumped the cache from infojano-v79 to infojano-v80.
 - The QR/barcode image-reading feature still uses native BarcodeDetector where supported and the ZXing fallback from unpkg; that separate read-existing-code path is not yet guaranteed offline. The QR creation path is the part made local.
 - Source changes are committed. The library has not yet been exercised in a real browser or scanned from a second device in this session. After Pages deploys, first open the QR page online once so the new script is cached, then enable Airplane Mode, create a QR, download it, and scan it with another phone.
+
+
+## ID Card Studio PDF export dependency localized — 31 October 2026
+
+- Replaced the jsPDF 2.5.1 CDN script with the same-version local asset /InfoJano/jspdf.umd.min.js. This removes the external CDN requirement for the PDF creation library itself once the page and asset have been cached.
+- Added the upstream jsPDF license as JSPDF-LICENSE.txt.
+- Added the local jsPDF file to the Service Worker precache and bumped cache version from infojano-v80 to infojano-v81.
+- PDF.js import/rendering is still loaded from cdnjs (main script and worker), so importing PDF documents is not yet guaranteed offline. This change only localizes PDF export; it does not establish full offline PDF support.
+- Source changes committed; no live browser PDF export test was run in this session. After deployment, load the Studio online once, then test an image-based card export in Airplane Mode. Separately test PDF import while offline; it may still fail until the PDF.js main script and worker are also localized.
