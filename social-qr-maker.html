@@ -21,6 +21,7 @@
 <div id="social-single-fields">
 <label for="social-value">Profile username or full profile link</label><input id="social-value" type="text" placeholder="Enter username or profile URL">
 <p class="note" id="social-hint">Example: yourname or https://instagram.com/yourname</p>
+<label for="profile-photo">Profile photo for the centre of the QR (optional)</label><input id="profile-photo" type="file" accept="image/*"><p class="note">A profile photo gives a look closer to Facebook’s original profile QR. If you skip it, the platform mark is used.</p>
 </div>
 <div id="social-bundle-fields" hidden>
 <label for="bundle-name">Your name or business name</label><input id="bundle-name" type="text" placeholder="Name">
@@ -36,49 +37,31 @@
 <textarea id="content" hidden></textarea><button id="generate-button" type="button" hidden>Generate QR Code</button>
 </section><a class="back" href="qr-choice.html">← Back to QR Code Options</a></main>
 <script>
-function makeQR(){
-const value=document.getElementById('content').value.trim();
-const box=document.getElementById('qr');
-const button=document.getElementById('generate-button');
+async function makeQR(){
+const value=document.getElementById('content').value.trim(),box=document.getElementById('qr'),button=document.getElementById('generate-button');
 box.replaceChildren();
 if(!value){box.textContent='Please enter a profile link or social information first.';return;}
 if(!window.QRCode){box.textContent='The offline QR library did not load. Refresh the page and try again.';return;}
-button.disabled=true;
-button.textContent='Creating your QR design…';
+button.disabled=true;button.textContent='Creating your QR design…';
 try{
-const platform=document.getElementById('social-platform').value;
-const isBundle=platform==='bundle';
-const detected=detectPlatform(value,platform);
-const theme=isBundle?{name:'Social Links',dark:'#173f7a',light:'#f4f7fc',accent:'#2457a7',glyph:'↗',tag:'All your social links in one place',cta:'SCAN TO CONNECT',file:'Social-Links'}:getBrandTheme(detected);
-const holder=document.createElement('div');
-holder.style.cssText='position:absolute;left:-10000px;top:0;width:340px;height:340px;overflow:hidden';
-document.body.appendChild(holder);
-const qrInstance=new QRCode(holder,{text:value,width:340,height:340,colorDark:'#111827',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
-const sourceCanvas=holder.querySelector('canvas');
-if(!sourceCanvas)throw new Error('QR canvas is unavailable');
-const moduleCount=qrInstance._oQRCode&&qrInstance._oQRCode.getModuleCount?qrInstance._oQRCode.getModuleCount():33;
-const quietZone=Math.ceil((340/moduleCount)*4);
-const canvas=document.createElement('canvas');canvas.width=520;canvas.height=700;
-const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas is unavailable');
-ctx.fillStyle='#f4f6fa';ctx.fillRect(0,0,520,700);
-ctx.fillStyle='#ffffff';roundRect(ctx,14,14,492,672,28);ctx.fill();
-ctx.strokeStyle='#e5eaf2';ctx.lineWidth=2;roundRect(ctx,14,14,492,672,28);ctx.stroke();
-ctx.fillStyle=theme.accent;roundRect(ctx,14,14,492,10,5);ctx.fill();
-ctx.fillStyle=theme.light;roundRect(ctx,40,48,72,72,22);ctx.fill();
-ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 48px Arial';ctx.fillText(theme.glyph,76,84);
-ctx.textAlign='left';ctx.fillStyle='#111827';ctx.font='bold 31px Arial';ctx.fillText(theme.name,132,78);
-ctx.fillStyle='#667085';ctx.font='16px Arial';ctx.fillText(theme.tag,132,105);
-ctx.fillStyle='#ffffff';roundRect(ctx,40,150,440,440,22);ctx.fill();
-ctx.strokeStyle='#e8edf4';ctx.lineWidth=1;roundRect(ctx,40,150,440,440,22);ctx.stroke();
-ctx.imageSmoothingEnabled=false;
-ctx.drawImage(sourceCanvas,90+quietZone,200+quietZone,340,340);
-ctx.textAlign='center';ctx.fillStyle=theme.accent;ctx.font='bold 22px Arial';ctx.fillText(theme.cta,260,632);
-ctx.fillStyle='#98a2b3';ctx.font='13px Arial';ctx.fillText('Made with InfoJano',260,660);
-holder.remove();
-const dataUrl=canvas.toDataURL('image/png');
-const img=document.createElement('img');img.alt=theme.name+' QR code design';img.src=dataUrl;box.appendChild(img);
+const platform=document.getElementById('social-platform').value,isBundle=platform==='bundle',detected=detectPlatform(value,platform);
+const theme=isBundle?{name:'Social Links',accent:'#2457a7',glyph:'↗',tag:'All your social links in one place',cta:'SCAN TO CONNECT',file:'Social-Links'}:getBrandTheme(detected);
+const holder=document.createElement('div');holder.style.cssText='position:absolute;left:-10000px;top:0;width:360px;height:360px;overflow:hidden';document.body.appendChild(holder);
+const qrInstance=new QRCode(holder,{text:value,width:360,height:360,colorDark:theme.accent,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+const sourceCanvas=holder.querySelector('canvas');if(!sourceCanvas)throw new Error('QR canvas is unavailable');
+const moduleCount=qrInstance._oQRCode&&qrInstance._oQRCode.getModuleCount?qrInstance._oQRCode.getModuleCount():33,quietZone=Math.ceil((360/moduleCount)*4);
+const canvas=document.createElement('canvas');canvas.width=520;canvas.height=650;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas is unavailable');
+ctx.fillStyle='#ffffff';ctx.fillRect(0,0,520,650);ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.font='bold 29px Arial';ctx.fillText(theme.name,260,55);ctx.fillStyle='#667085';ctx.font='16px Arial';ctx.fillText(theme.tag,260,84);
+ctx.imageSmoothingEnabled=false;ctx.drawImage(sourceCanvas,80+quietZone,112+quietZone,360,360);
+const photoFile=document.getElementById('profile-photo')?.files?.[0];let photo=null;
+if(photoFile){photo=await new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=URL.createObjectURL(photoFile);});}
+const cx=260,cy=292,r=43;ctx.save();ctx.beginPath();ctx.arc(cx,cy,r+8,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.fill();ctx.lineWidth=5;ctx.strokeStyle=theme.accent;ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
+if(photo){const side=Math.min(photo.width,photo.height),sx=(photo.width-side)/2,sy=(photo.height-side)/2;ctx.drawImage(photo,sx,sy,side,side,cx-r,cy-r,r*2,r*2);}else{ctx.fillStyle='#ffffff';ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 56px Arial';ctx.fillText(theme.glyph,cx,cy);}
+ctx.restore();holder.remove();
+ctx.textAlign='center';ctx.fillStyle=theme.accent;ctx.font='bold 21px Arial';ctx.fillText(theme.cta,260,555);ctx.fillStyle='#98a2b3';ctx.font='13px Arial';ctx.fillText('Made with InfoJano',260,584);
+const dataUrl=canvas.toDataURL('image/png'),img=document.createElement('img');img.alt=theme.name+' QR code';img.src=dataUrl;box.appendChild(img);
 const download=document.createElement('a');download.className='qr-download';download.href=dataUrl;download.download='InfoJano-'+theme.file+'-QR.png';download.textContent='Download QR Code (PNG)';box.appendChild(download);
-const note=document.createElement('p');note.className='brand-preview';note.textContent='Clean brand-colour frame with a standard black-and-white QR for reliable scanning. The platform mark stays outside the QR pattern.';box.appendChild(note);
+const note=document.createElement('p');note.className='brand-preview';note.textContent='Facebook-inspired profile QR: platform-coloured code, centre profile photo or logo, and a clean white background. Scan-test before printing.';box.appendChild(note);
 }catch(error){box.textContent='Could not create this QR code. Check the link and try again.';}
 finally{button.disabled=false;button.textContent='Create Social Media QR Code';}
 }
