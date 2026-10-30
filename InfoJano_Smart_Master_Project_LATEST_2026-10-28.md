@@ -637,3 +637,15 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Refined the card with a soft platform-tinted header, rounded outer card and QR panel, consistent centred title/subtitle, smaller centre photo/logo overlay, and more balanced scan/footer spacing. Facebook profile photo remains optional and is used only for Facebook.
 - Normal QR Maker and QR choice/homepage navigation were not changed. Service Worker cache advanced from infojano-v89 to infojano-v90.
 - Source commits were made. Actual GitHub Pages deployment, visual rendering on Android, and scan reliability with/without a profile photo still need device verification; no scan test is claimed.
+
+ 
+## URL Toolkit launch — 31 October 2026
+
+- Started the InfoJano URL Toolkit as a distinct product area intended to compete on simplicity and breadth, not by copying Bitly's branding.
+- Added a mobile-first standalone page at `url-toolkit.html` with browser-side UTM Campaign URL Builder, URL Cleaner, URL Encoder/Decoder, URL Validator, URL Parser, URL Slug Generator, URL Query Builder and URL-to-QR generator.
+- URL inputs are restricted to HTTP/HTTPS for URL-specific tools; validator explicitly states it is not a malware/phishing scan. URL cleaning removes common tracking tags and strips fragments; users should review results because some query parameters can be functional.
+- The QR generator reuses the repository's locally bundled qrcodejs library and adds a white margin around the code. Actual Android browser rendering and physical scan reliability still require device testing.
+- Added URL Toolkit entry to homepage tool cards and Explore All Tools links; added its URL to sitemap.xml; added the page to the Service Worker precache and bumped cache from infojano-v90 to infojano-v91.
+- Short URL redirects, click analytics, custom domains, redirect checking and URL expansion are deferred. They require real backend / redirect infrastructure and abuse controls; this static GitHub Pages page does not pretend to create live short links.
+- Source edits committed; GitHub Pages deployment, mobile visual testing, QR scan test, SEO indexing and user testing remain pending.
+- Next: verify the new page and navigation after deployment; test each tool with representative inputs; then plan a backend architecture for real short links before implementing redirect functionality.
