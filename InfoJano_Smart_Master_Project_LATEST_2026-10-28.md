@@ -590,3 +590,13 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Social Studio prepares the payload in the existing Text or Website URL field and then the user taps the original Generate QR Code button. This keeps the core generator untouched.
 - Bumped Service Worker cache from infojano-v83 to infojano-v84 and updated the master project record.
 - Source change is committed; deployment and mobile behavior are not yet verified. Test all link formats and scan the generated QR after Pages deployment. A single QR containing multiple links is a text payload, not a custom branded landing page.
+
+
+## QR Code choice screen and separate Social Media QR page — 31 October 2026
+
+- Changed the homepage QR Maker entry point to open a new QR choice screen with two independent options: Normal QR Code and Social Media QR Code.
+- Normal QR Code opens the existing `qr-maker.html` page. The original QR generator page has had the previously added Social Media Studio block removed so the normal page is focused on its original workflow; the existing `makeQR()` generation function, local qrcodejs library, quiet-zone rendering, PNG download, and QR/barcode reader code were retained unchanged.
+- Social Media QR Code opens a new standalone `social-qr-maker.html` page with its own platform selector and separate QR generation/output. It supports Instagram, Facebook, YouTube, TikTok, Telegram, WhatsApp, custom URL, and an all-links text QR.
+- Added both new pages to the Service Worker precache and bumped cache from `infojano-v84` to `infojano-v85`.
+- Updated homepage QR navigation and its direct tool link to the choice screen.
+- Repository source updates are being committed; deployment and real mobile scan testing remain to be verified.
