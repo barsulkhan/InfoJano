@@ -706,3 +706,14 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - QR image generation, 320px QR source, 40px white quiet zone, and PNG filename are unchanged.
 - Advanced Service Worker cache from infojano-v95 to infojano-v96.
 - Awaiting user-side refresh to verify the button's rendered contrast and actual PNG download.
+
+
+## Short Link backend starter implementation — 31 October 2026
+
+- Added an undeployed Cloudflare Workers + D1 starter under `backend/shortlinks/`: Worker API, D1 schema migration, Wrangler example config and setup/security README.
+- Routes: health check, token-protected link creation, public 302 redirect, token-protected aggregate stats, and token-protected disable action.
+- Safety baseline: anonymous creation disabled; only HTTP/HTTPS destinations; reject embedded credentials and common local/private/reserved address literals; cryptographically random short codes; prepared SQL statements; no raw IP or full referrer URL stored; 302 redirects.
+- D1 daily analytics aggregate click count by date, referrer hostname and coarse device class.
+- No Cloudflare Worker, D1 database, DNS record, domain, API token or paid resource has been created. The code is a staging scaffold pending user-side Cloudflare setup and security review.
+- Current source uses Cloudflare D1 prepared statement bindings and SQL migrations as documented by Cloudflare. See official docs: https://developers.cloudflare.com/d1/worker-api/ and https://developers.cloudflare.com/d1/reference/migrations/.
+- Next work: static tests, refine URL/IP validation and CORS behaviour, add automated tests, then user-assisted Cloudflare staging deployment only after account and cost review.
