@@ -747,3 +747,43 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Next step in the new chat: continue from the unsaved-settings checkpoint. Ask the user to tap the visible Save button and share the result. Then inspect the first build log before relying on the API. If build fails, diagnose the exact log; do not guess or ask the user to overwrite Worker code manually.
 - Deployment is not yet verified. No custom domain has been attached; current workers.dev hostname only. Do not claim link creation, redirects, analytics, or health endpoint are live until the deployed Worker is tested.
 - Keep all secrets private and do not use the user's personal name/address/date of birth in secret names or passwords. A memorable secret is not a substitute for a strong random token; password/token values should not be based on personal details.
+
+
+## Cloudflare Short Link staging verification update — 1 November 2026
+
+This section supersedes the earlier pending-save / not-deployed notes above where they conflict with the latest user verification.
+
+### Confirmed by user in Cloudflare and browser
+- Git Builds configuration was saved; user later saw the deployment status as **Ready**.
+- Worker production URL: `https://infojano-shortlink-api.barik8420.workers.dev`.
+- Health endpoint returned exactly:
+  `{"ok":true,"service":"InfoJano Short Link API","mode":"staging-scaffold"}`
+  This confirms the expected Worker route/code is responding, not the default Hello World response.
+- Cloudflare Settings showed Production secret `ADMIN_API_TOKEN`, Production variable `ALLOWED_ORIGIN`, and D1 database binding `DB`. Secret value is private and must never be requested or copied into chat, GitHub, or frontend code.
+- Cloudflare Domains & Routes showed the workers.dev Production URL available and **No custom domains**. This is expected at staging; no custom domain or DNS change has been approved.
+- User executed the repository D1 schema SQL successfully in the `infojano-shortlinks` D1 Console (reported query successful, 671 ms response / 0.10 ms query time).
+- `/tables` listed `links`, `daily_clicks`, `click_events`, and `sqlite_sequence`. The first two are the schema tables used by the current Worker; `click_events` appears to be an additional/pre-existing table and is not referenced by the current Worker source.
+- Opening `https://infojano-shortlink-api.barik8420.workers.dev/TEST1234` returned exactly `This short link is unavailable or has expired.`. This is consistent with the Worker successfully querying D1 for a code that does not exist. It is a useful read-path check, but not a complete write/redirect/analytics test.
+- Opening `/api/links` in a browser returned `{"error":"Not found."}`; this is expected for a GET request because link creation is implemented as POST `/api/links`.
+
+### Current status and limitations
+- Worker health route is verified.
+- D1 schema creation is verified by successful SQL execution and table listing.
+- Worker-to-D1 read path is verified by the unknown-code redirect response.
+- Link creation (POST with ADMIN_API_TOKEN), successful 302 redirect, click aggregation, stats retrieval, and disable action have NOT yet been end-to-end tested.
+- Build logs have NOT yet been inspected. Deployment status **Ready** plus the successful health response is encouraging, but the build log/config should still be reviewed before treating the build pipeline as fully audited.
+- The Worker remains a **staging scaffold**, not a public production shortener. Do not advertise public link creation or analytics as ready. The current source uses a placeholder default short-link base `https://short.example.invalid` unless `SHORT_BASE_URL` is configured; do not create links until this is corrected to an approved hostname.
+- No custom domain is connected. No paid plan, domain purchase, DNS change, or public launch has been approved.
+- The current deployment command is `npx wrangler deploy --config wrangler.example.toml`. D1 migration was manually applied through the D1 Console; the Git Builds deploy command does not itself run the migration command. Keep schema and migration files aligned.
+
+### Next steps (continue one at a time)
+1. Return to Worker **Deployments**, open the latest Ready deployment, and inspect **Build Logs / View details**. Record the final build lines and any warnings/errors. Do not change settings unless the log shows a problem.
+2. Test unauthenticated POST safely using a request body such as `{"url":"https://example.com"}` but with NO Authorization header. Expected result: HTTP 401 Unauthorized. Never reveal or ask the user for ADMIN_API_TOKEN.
+3. Before any authenticated create test, decide and approve the final short-link hostname/base URL. Do not use the placeholder `short.example.invalid`.
+4. Only after hostname and security review, perform a controlled create → redirect → stats → disable test. Keep creation restricted; do not publish an anonymous creation endpoint.
+5. Add rate limiting/abuse controls and review URL validation (including DNS rebinding/redirect-to-private protections) before any public launch.
+
+### Relevant live endpoints
+- Health: `https://infojano-shortlink-api.barik8420.workers.dev/health`
+- Worker root: `https://infojano-shortlink-api.barik8420.workers.dev/`
+- Do not expect `GET /api/links` to create a link; creation requires POST and authorization.
