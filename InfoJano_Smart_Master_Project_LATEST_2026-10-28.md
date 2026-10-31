@@ -787,3 +787,53 @@ This section supersedes the earlier pending-save / not-deployed notes above wher
 - Health: `https://infojano-shortlink-api.barik8420.workers.dev/health`
 - Worker root: `https://infojano-shortlink-api.barik8420.workers.dev/`
 - Do not expect `GET /api/links` to create a link; creation requires POST and authorization.
+
+
+## Cloudflare Build Logs and pre-auth security-test handoff — 1 November 2026
+
+This checkpoint supersedes earlier notes that said Build Logs were pending.
+
+### Latest verified Git Builds deployment
+- User opened Rollout History; all listed rollouts showed **Ready**.
+- Latest build: `ec33c4d5`, branch `main`, commit `6e4f3c8` (master checkpoint update), elapsed build time shown as 23 seconds.
+- Build settings confirmed:
+  - Repository: `barsulkhan/InfoJano`
+  - Root directory: `backend/shortlinks`
+  - Build command: None
+  - Deploy command: `npx wrangler deploy --config wrangler.example.toml`
+  - Build token label: `Workers Builds - 2026-11-01 01:47`
+  - Build variables: None
+- User shared complete Build Logs. They show successful environment initialization, repository clone, dependency installation (`wrangler@4.156.0`), Worker upload, D1 binding and ALLOWED_ORIGIN binding, deployment trigger, and final `Success: Deploy command completed` / `Success! Build completed.`
+- Build log bindings:
+  - `env.DB` → D1 database `infojano-shortlinks`
+  - `env.ALLOWED_ORIGIN` → `https://barsulkhan.github.io`
+- Worker URL: `https://infojano-shortlink-api.barik8420.workers.dev`
+- Exact deployed Version ID: `47c96bfc-ac68-4340-8c4a-b39a2d6fb130`
+- User opened the health URL again after reviewing logs. Exact response:
+  `{"ok":true,"service":"InfoJano Short Link API","mode":"staging-scaffold"}`
+- Therefore Git Builds deployment, Worker health route, and the configured D1 + allowed-origin bindings are confirmed. Do not overstate this as end-to-end short-link creation/redirect/analytics validation.
+
+### Current stopping point — Hoppscotch pre-auth POST test not yet sent
+- User opened Hoppscotch successfully: `https://hoppscotch.io/`.
+- Assistant provided these request settings:
+  - Method: `POST`
+  - URL: `https://infojano-shortlink-api.barik8420.workers.dev/api/links`
+  - Header: `Content-Type: application/json`
+  - Body type: JSON
+  - Body:
+    ```json
+    {
+      "url": "https://example.com"
+    }
+    ```
+  - **Do not add an Authorization header or token.**
+- User was asked to set these fields and report when ready BEFORE pressing Send. No confirmation that fields were entered; no request has been sent yet.
+- Expected result after sending without Authorization: HTTP `401 Unauthorized`. If another status appears, capture exact status and response body. Do not ask user to share any secret/token.
+- Next chat must resume from this exact step: ask whether the Hoppscotch POST request fields are set. If yes, tell them to press Send and report status/body. If not, guide one field at a time.
+- Do not create an authenticated link yet. First select/approve a real short-link hostname; no custom domain/DNS/paid upgrade/public launch approved. Never use the placeholder `https://short.example.invalid`.
+- Worker remains a staging scaffold. Public anonymous creation stays disabled. End-to-end create, 302 redirect, stats, and disable are still untested. Rate limiting, abuse protections, and DNS rebinding review remain launch gates.
+
+### Safety reminders
+- Never ask user to paste `ADMIN_API_TOKEN` into chat, Hoppscotch messages, GitHub, or frontend code.
+- The unauthenticated POST test intentionally contains no Authorization header.
+- Keep the current master file as the single source of truth; append future checkpoints here instead of creating duplicate Master Files.
