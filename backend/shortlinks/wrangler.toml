@@ -1,0 +1,13 @@
+name = "infojano-shortlink-api"
+main = "src/worker.js"
+compatibility_date = "2026-10-31"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGIN = "https://barsulkhan.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "infojano-shortlinks"
+database_id = "228c4591-207c-4064-bd25-b6045c1d1b27"
+migrations_dir = "migrations"
