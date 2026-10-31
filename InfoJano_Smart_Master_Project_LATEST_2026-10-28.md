@@ -725,3 +725,12 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - Daily click aggregate UPSERT test passed: two same-day events correctly aggregate to a count of 2.
 - Runtime integration tests against an actual Cloudflare Worker/D1 binding are not yet possible because no Cloudflare resources or secrets have been provisioned.
 - The backend remains a staging scaffold only; no live short links are active.
+
+
+### Cloudflare D1 staging setup checkpoint — 1 November 2026
+- User created the Cloudflare D1 database named `infojano-shortlinks` in their Cloudflare account.
+- User supplied database UUID: `228c4591-207c-4064-bd25-b6045c1d1b27`.
+- Updated `backend/shortlinks/wrangler.example.toml` to replace the D1 database ID placeholder with this UUID. GitHub commit: `e1053531666705706de314579e936401ba1f2e38`.
+- This is configuration-only. The Worker currently deployed at `infojano-shortlink-api.barik8420.workers.dev` is still the default Hello World Worker; the real short-link API source has not been deployed or bound to D1 yet.
+- No ADMIN_API_TOKEN has been created or shared. Next: create/verify the staging Worker project and D1 binding, apply the migration, set ADMIN_API_TOKEN as a Worker secret, and test health/create/redirect/stats routes. Do not expose the token in GitHub Pages or source control.
+- Before proceeding, confirm the user is ready to replace the default Hello World Worker code with the repository's short-link API and deploy it. No custom domain or paid upgrade is approved.
