@@ -1,0 +1,19 @@
+name = "infojano-shortlink-api"
+main = "src/worker.js"
+compatibility_date = "2026-10-31"
+workers_dev = true
+
+[vars]
+# Comma-separated exact origins allowed to call the API from browsers.
+ALLOWED_ORIGIN = "https://barsulkhan.github.io"
+# Set SHORT_BASE_URL only after a domain is connected and verified.
+# SHORT_BASE_URL = "https://go.example.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "infojano-shortlinks"
+database_id = "REPLACE_WITH_CLOUDFLARE_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+# Set ADMIN_API_TOKEN as a Worker secret, never in this file:
+# npx wrangler secret put ADMIN_API_TOKEN
