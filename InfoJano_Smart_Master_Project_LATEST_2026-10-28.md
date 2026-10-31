@@ -717,3 +717,11 @@ No code changes to QR generation or PDF libraries were made in this checkpoint; 
 - No Cloudflare Worker, D1 database, DNS record, domain, API token or paid resource has been created. The code is a staging scaffold pending user-side Cloudflare setup and security review.
 - Current source uses Cloudflare D1 prepared statement bindings and SQL migrations as documented by Cloudflare. See official docs: https://developers.cloudflare.com/d1/worker-api/ and https://developers.cloudflare.com/d1/reference/migrations/.
 - Next work: static tests, refine URL/IP validation and CORS behaviour, add automated tests, then user-assisted Cloudflare staging deployment only after account and cost review.
+
+
+### Backend scaffold static validation — 31 October 2026
+- Worker source passed JavaScript syntax parsing after adapting its module export for the parser.
+- D1 SQL schema executed successfully in an in-memory SQLite test; primary keys, indexes and foreign-key declarations parsed correctly.
+- Daily click aggregate UPSERT test passed: two same-day events correctly aggregate to a count of 2.
+- Runtime integration tests against an actual Cloudflare Worker/D1 binding are not yet possible because no Cloudflare resources or secrets have been provisioned.
+- The backend remains a staging scaffold only; no live short links are active.
