@@ -1,0 +1,12 @@
+{
+  "name": "infojano-shortlink-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "InfoJano short link Worker",
+  "scripts": {
+    "deploy": "wrangler d1 migrations apply infojano-shortlinks --remote && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
