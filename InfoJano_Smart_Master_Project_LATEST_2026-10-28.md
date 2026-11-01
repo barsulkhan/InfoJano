@@ -837,3 +837,22 @@ This checkpoint supersedes earlier notes that said Build Logs were pending.
 - Never ask user to paste `ADMIN_API_TOKEN` into chat, Hoppscotch messages, GitHub, or frontend code.
 - The unauthenticated POST test intentionally contains no Authorization header.
 - Keep the current master file as the single source of truth; append future checkpoints here instead of creating duplicate Master Files.
+
+
+## Hoppscotch unauthenticated POST security test — 1 November 2026
+
+This update supersedes the earlier “pre-auth POST test not yet sent” stopping point above.
+
+- User configured Hoppscotch REST request:
+  - Method: POST
+  - URL: https://infojano-shortlink-api.barik8420.workers.dev/api/links
+  - Header: Content-Type: application/json
+  - Body: {"url":"https://example.com"}
+  - Authorization Type: None; no Authorization header or token was supplied.
+- Initial Hoppscotch Browser interceptor returned a Network Error. User selected Proxy interceptor and repeated the request.
+- Confirmed response: HTTP 401 Unauthorized.
+- Response body: {"error":"Unauthorized. Link creation is restricted during the staging phase."}
+- Result: the staging restriction is confirmed to reject unauthenticated link creation. This is a successful negative security test only; it does not prove authenticated creation, redirect, analytics, or disable flows.
+- Do not request or expose ADMIN_API_TOKEN. Do not perform authenticated create tests yet.
+- Next step: do not change Worker code or send another POST yet. First decide and explicitly approve a real short-link hostname/base URL; no custom domain, DNS change, paid upgrade, or public launch is approved. Never use https://short.example.invalid.
+- After hostname approval, review the URL validation, rate limiting, abuse protections and DNS-rebinding/private-network protections before any authenticated test.
