@@ -1189,3 +1189,13 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Bumped service worker cache to `infojano-v108`.
 - Commits: `2f23dfadb844963f6fe531f90ca657758b8e05c8`, `ebe73c6bbc60345bb28b4ed1fc22bb1d315579a7`, `ab3377e11336fd490acfc446af2cc2226d59af63`, `b6ab1cec0aecafb3b14faa5e15afd44191e591b2`, `2422affc1babd5fb8ee2cc95d05efb1b79da475e`.
 - Validation: GitHub file updates committed. Live rendering and Android installed-PWA icon appearance still require device-side refresh/verification. Existing PNG icon fallbacks remain in repository but are no longer listed in the root manifest.
+
+
+## Image Resizer preview placeholder fix — 2026-11-02
+- Android screenshot showed a broken-image icon and alt text before the user selected an image.
+- Root cause: the CSS rule `#preview{display:block}` overrode the browser's default hidden rendering for the image element carrying the `hidden` attribute.
+- Added explicit `#preview[hidden]{display:none!important}` so the empty preview remains hidden until a valid image is loaded.
+- No resizing logic or output behavior changed.
+- Page commit: `f82e56f94aa16a55f078289b5d6eb6317bc2a983`.
+- Service worker cache bumped from `infojano-v108` to `infojano-v109`; commit: `7099e3da05b2288d19cd9dd607fecd1adc712ed3`.
+- Live Android verification remains pending after GitHub Pages deployment and refresh.
