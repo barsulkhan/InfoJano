@@ -1087,3 +1087,18 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `dbf575c0ccee3827c197444a4fb1630ed64e2737`; verified source SHA: `0cb31b75f9948814c974ec5b41c0d866a614554c`.
 - Service worker cache bumped from `infojano-v99` to `infojano-v100`; commit: `36e56a5ec091aa9854b8788b24aef9ee33c2355f`.
 - Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+
+## Smart + Advanced Image Compressor implementation — 2026-11-02
+
+- User approved adding the latest visual concept to the live page: Smart Mode and Advanced Mode tabs, plus an actual post-compression before/after result panel.
+- Smart Mode retains target-size presets and the current automatic target algorithm.
+- Advanced Mode implements manual image quality, compression presets (Best Quality/Balanced/Smallest), JPG/WebP/PNG output selection, keep-original/custom-pixel/percentage resize, keep-aspect-ratio fit, optional center crop ratios (1:1, 4:3, 3:4), and actual before/after preview with source/output sizes, output dimensions and reduction percentage.
+- Advanced mode's DPI metadata selector is intentionally disabled with an explanation: browser canvas export cannot reliably write DPI metadata. Users can set exact pixel dimensions instead. Do not describe DPI metadata as supported.
+- When switching into Advanced Mode, any previously selected Smart target is cleared so a hidden target cannot override manual settings.
+- Result panel is populated from the user's actual selected image and generated output; the separate landscape illustration remains labelled sample/illustrative.
+- Download button spinner and Android save bridge remain in place. Result-panel download delegates to the same download action.
+- Page commits: `7d3fb1f6ec7fed9151b9a70c2af71497a0d2d8b6`, `ae0a390fdcbcd7f0298855dcd5a917b9bd84776f`, `994b43bb89e15cf374f736baf32250aa924767b2`.
+- Service worker cache bumped from `infojano-v100` to `infojano-v101`; commit: `c60ba07518f4419c16064fc31f3d65000cd4d6ce`.
+- Source verification confirmed all expected UI IDs and implementation markers. Full rendered browser QA and image-by-image device testing remain pending.
+- Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
