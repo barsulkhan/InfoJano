@@ -1209,3 +1209,16 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Inline JavaScript blocks passed parser validation before commit. Actual image processing, download, mobile layout, and installed-PWA visual behavior still require device-side testing.
 - Page commit: `2f442f3082286fcce4dee2d4d75dbf7f7d38c8ce`.
 - Service worker cache bumped to `infojano-v110`; commit: `5125b1b82d438bfb9f742eeb6a3abcb78802a602`.
+
+
+## Image Resizer mobile fixes and processing spinner — 2026-11-02
+- Adjusted Width/Height field row sizing and minimum input heights for narrow screens; made the aspect-ratio checkbox a full-width aligned control with a light background.
+- Rebuilt Preview header into a balanced title + compact Clear button row.
+- Made resize tabs visually distinct: inactive tabs are light, active tab is blue.
+- Increased Popular Sizes card readability and switched mobile grid to two columns with larger icons/text.
+- Added a dedicated processing/download state below Resize: while canvas resizing is running, a circular spinner rotates beside “Resizing image… please wait”; on completion it becomes a checkmark ready message, followed by the separate Download button.
+- Kept resize canvas logic and local-only image processing unchanged.
+- Inline JavaScript parser validation passed (2 inline scripts).
+- Page commit: `d1c6073b4e05f5009bd9588d49c09ebcf2487759`.
+- Service worker cache bumped to `infojano-v111`; commit: `65b4fd62d57a198532cc0c1ea6514de790c39c8d`.
+- Device-side mobile validation still required for actual visual layout and spinner timing.
