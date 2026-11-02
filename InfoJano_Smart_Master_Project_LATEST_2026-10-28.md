@@ -1199,3 +1199,13 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `f82e56f94aa16a55f078289b5d6eb6317bc2a983`.
 - Service worker cache bumped from `infojano-v108` to `infojano-v109`; commit: `7099e3da05b2288d19cd9dd607fecd1adc712ed3`.
 - Live Android verification remains pending after GitHub Pages deployment and refresh.
+
+
+## Image Resizer visual redesign — 2026-11-02
+- Rebuilt `image-resizer.html` using the approved Image Compressor-inspired InfoJano visual language: blue gradient hero, clear numbered steps, large icon-led controls, image upload/preview card, resize settings, responsive layout, and help/tips panels.
+- Added all combined Popular Sizes in one grid: Passport Photo, Profile Photo, Social Media Post, YouTube Thumbnail, Full HD, Web Large/Medium/Small, Document Image, A4, A5, A6, 3.5×4.5 cm ID Photo, 2.9×3.6 cm Passport Photo, and Custom Size.
+- Added working Custom / Preset / Percentage tabs, aspect-ratio lock, JPG/PNG/WebP output selection, quality slider, drag-and-drop upload, clear image, resize and download actions.
+- Image handling remains client-side; accepts JPG/PNG/WebP up to 10 MB and limits output dimensions to 10,000 px / 40 MP for safer mobile processing.
+- Inline JavaScript blocks passed parser validation before commit. Actual image processing, download, mobile layout, and installed-PWA visual behavior still require device-side testing.
+- Page commit: `2f442f3082286fcce4dee2d4d75dbf7f7d38c8ce`.
+- Service worker cache bumped to `infojano-v110`; commit: `5125b1b82d438bfb9f742eeb6a3abcb78802a602`.
