@@ -44,12 +44,7 @@
     header.innerHTML=`
       <div class="ij-global-header-inner">
         <a class="ij-global-brand" href="${ROOT}index.html" aria-label="InfoJano home">
-          <svg class="ij-global-logo" viewBox="0 0 72 72" role="img" aria-label="InfoJano logo">
-            <defs><linearGradient id="ijGlobalLogoGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#18c5f4"/><stop offset="1" stop-color="#155eef"/></linearGradient></defs>
-            <rect x="3" y="3" width="66" height="66" rx="21" fill="url(#ijGlobalLogoGrad)"/>
-            <path d="M21 17h10v24h22v10H21z" fill="#fff"/>
-            <circle cx="25" cy="25" r="4" fill="#fff"/>
-          </svg>
+          <img class="ij-global-logo" src="${ROOT}infojano-mark.svg" alt="InfoJano logo">
           <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span><span class="ij-global-tagline">Smart Tools for Everyday Life</span></span>
         </a>
         <span class="ij-global-divider" aria-hidden="true"></span>
