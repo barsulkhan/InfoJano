@@ -348,7 +348,7 @@ if(targetPreset){
  });
 }
 
-async function findBestTargetBlob(targetBytes,preferredMime,manualQuality){
+async function findBestTargetBlob(targetBytes,preferredMime){
  const formats=preferredMime==='auto'?['image/webp','image/jpeg']: [preferredMime];
  let bestOverall=null;
  for(const mime of formats){
@@ -383,7 +383,6 @@ async function findBestTargetBlob(targetBytes,preferredMime,manualQuality){
    const ratio=nextW/w;
    w=nextW;h=Math.max(1,Math.round(h*ratio));
   }
-  if(bestOverall)break;
  }
  return bestOverall;
 }
