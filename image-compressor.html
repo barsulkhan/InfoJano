@@ -446,6 +446,11 @@ const smartPanel=document.getElementById('smartModePanel');
 const advancedPanel=document.getElementById('advancedModePanel');
 function setCompressionMode(mode){
  activeCompressionMode=mode;
+ if(mode==='advanced'){
+  targetInput.value='';
+  if(targetPreset)targetPreset.value='';
+  document.querySelectorAll('[data-target-size]').forEach(button=>button.setAttribute('aria-pressed','false'));
+ }
  const smart=mode==='smart';
  smartTab.setAttribute('aria-selected',String(smart));
  advancedTab.setAttribute('aria-selected',String(!smart));
