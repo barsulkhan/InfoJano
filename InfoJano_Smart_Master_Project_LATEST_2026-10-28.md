@@ -1317,3 +1317,12 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Inline JavaScript syntax validation passed (7 non-JSON-LD inline scripts).
 - Page commit: `553c41e5e07d35d0d3b6064b258cf87b7b47fedc`; service worker cache bumped to `infojano-v119`, commit: `d05835bec7f6a5626169d1dd5a76ca47a6859d52`.
 - Live Android visual and calculator behavior tests remain pending; verify both calculation modes after deployment.
+
+
+## Discount Calculator animation trial — 2026-11-03
+- Added a CSS-only animation layer for trial: gentle floating hero illustration, subtle benefit-icon pulse, soft moving shine on Calculate button, result-card entrance, related-tool hover lift/icon response, and light section entrance.
+- Preserved the calculator's existing HTML inputs, event handlers, validation and arithmetic; no calculation JavaScript was modified.
+- Added `prefers-reduced-motion` handling and disabled hover lift on touch-only devices; animation uses CSS only.
+- Inline JavaScript syntax validation passed (7 non-JSON-LD scripts).
+- Page commit: `5b03373c89011f373e4188eb82ff619a99d98308`; service worker cache bumped to `infojano-v120`, commit: `385ce62841cbd07cc36799acf133a123394224d6`.
+- User should test original price 1000 with 20% discount (expected discount 200, sale price 800) and also the reverse calculation mode. Android motion smoothness is pending device verification.
