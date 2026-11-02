@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ayushman & Aadhaar Card Studio | InfoJano</title>
-<meta name="description" content="Prepare Ayushman Bharat and Aadhaar cards for printing. Upload PDF scans or front and back photos, crop, set dimensions and DPI, and export print-ready PDF or JPG.">
+<title>ID Card Print Studio: Prepare Cards for Printing | InfoJano</title>
+<meta name="description" content="Prepare supported ID cards for printing with crop, front and back layout, custom dimensions and DPI. Export print-ready PDF or JPG with InfoJano ID Card Print Studio.">
 <link rel="canonical" href="https://barsulkhan.github.io/InfoJano/id-card-print-studio.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Ayushman &amp; Aadhaar Card Studio | InfoJano">
-<meta property="og:description" content="Prepare Ayushman Bharat and Aadhaar cards for printing. Upload PDF scans or front and back photos, crop, set dimensions and DPI, and export print-ready PDF or JPG.">
+<meta property="og:title" content="ID Card Print Studio: Prepare Cards for Printing | InfoJano">
+<meta property="og:description" content="Prepare supported ID cards for printing with crop, front and back layout, custom dimensions and DPI. Export print-ready PDF or JPG with InfoJano ID Card Print Studio.">
 <meta property="og:url" content="https://barsulkhan.github.io/InfoJano/id-card-print-studio.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ayushman &amp; Aadhaar Card Studio | InfoJano">
-<meta name="twitter:description" content="Prepare Ayushman Bharat and Aadhaar cards for printing. Upload PDF scans or front and back photos, crop, set dimensions and DPI, and export print-ready PDF or JPG.">
+<meta name="twitter:title" content="ID Card Print Studio: Prepare Cards for Printing | InfoJano">
+<meta name="twitter:description" content="Prepare supported ID cards for printing with crop, front and back layout, custom dimensions and DPI. Export print-ready PDF or JPG with InfoJano ID Card Print Studio.">
 <meta name="theme-color" content="#0b1220">
 <style>
 :root{--ink:#172033;--muted:#64748b;--line:#dbe3ef;--blue:#1458c8;--soft:#eff6ff;--bg:#f3f6fb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{background:#0b1220;color:#fff;padding:20px 16px}header .top{max-width:960px;margin:auto;display:flex;align-items:center;gap:12px}header .mark{font-size:32px}header h1{font-size:22px;line-height:1.2;margin:0}header p{margin:5px 0 0;color:#cbd5e1;font-size:13px}main{max-width:960px;margin:18px auto;padding:0 14px 36px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:14px;box-shadow:0 3px 14px #0f172a08}h2{font-size:18px;margin:0 0 12px}.step{display:inline-grid;place-items:center;width:28px;height:28px;background:#dbeafe;color:#1d4ed8;border-radius:9px;font-weight:800;margin-right:7px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field select{width:100%;min-width:0;border:1px solid #cbd5e1;border-radius:10px;padding:11px;background:white;color:var(--ink);font:inherit}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin:8px 0 0}.btn{border:0;border-radius:11px;background:var(--blue);color:white;padding:12px 15px;font-weight:750;font-size:15px;cursor:pointer}.btn:disabled{opacity:.6;cursor:wait}.btn.alt{background:#e8effb;color:#1746a2}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.previewgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.preview{border:1px dashed #b8c7da;border-radius:13px;padding:10px;text-align:center;min-width:0;background:#f8fafc}.preview canvas,.preview img{max-width:100%;height:auto;background:white;border:1px solid #e2e8f0}.preview .placeholder{color:#64748b;font-size:13px;padding:28px 8px}.status{padding:12px;border-radius:11px;background:#eff6ff;color:#1e40af;font-size:14px;margin-top:12px;overflow-wrap:anywhere}.status.error{background:#fef2f2;color:#991b1b}.status.ok{background:#ecfdf5;color:#166534}.warning{padding:12px;border-radius:11px;background:#fff7ed;color:#9a3412;font-size:13px;line-height:1.5}.hide{display:none!important}footer{text-align:center;color:#64748b;font-size:12px;padding:20px}a{color:#1d4ed8}@media(max-width:600px){.grid,.previewgrid{grid-template-columns:1fr}header h1{font-size:20px}.card{padding:14px}main{padding:0 10px 28px}}
@@ -33,7 +33,7 @@
   <link rel="manifest" href="/InfoJano/manifest.json">
 </head>
 <body>
-<header><div class="top"><div class="mark">🪪</div><div><h1>InfoJano Ayushman &amp; Aadhaar Card Studio</h1><p>Ayushman Bharat and Aadhaar cards • JPG, PNG, PDF • Front and Back print setup</p></div></div></header>
+<header><div class="top"><div class="mark">🪪</div><div><h1>InfoJano ID Card Print Studio</h1><p>Ayushman Bharat and Aadhaar cards • JPG, PNG, PDF • Front and Back print setup</p></div></div></header>
 <main>
 <section class="card"><h2><span class="step">1</span>Choose card type</h2>
 <div class="grid">
@@ -78,6 +78,12 @@
 <div class="warning">Print at “Actual size” / 100% scale. Turn off “Fit to page” if exact physical dimensions are important. This first version uses a manual front/back selection to avoid silently printing the wrong side.</div>
 <div class="actions"><button class="btn" id="downloadBtn" type="button">Create &amp; Download PDF</button><button class="btn alt" id="downloadJpgBtn" type="button">Download JPG (600 DPI)</button><a href="index.html" class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center">← Back to InfoJano</a></div>
 <div id="downloadStatus" class="status" role="status" aria-live="polite">Upload a file and select the sides to create your print PDF.</div>
+</section>
+
+<section class="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:32px auto;padding:24px;border:1px solid #e3e9f5;border-radius:18px;background:#fff;line-height:1.65"><h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">ID Card Print Studio FAQs</h2>
+<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How do I prepare an ID card image for printing?</summary><p style="margin:8px 0 0;color:#536174">Choose the supported card type, add the permitted image or PDF source, adjust the crop and layout, then review the output before downloading or printing.</p></details>
+<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Why do print dimensions and DPI matter?</summary><p style="margin:8px 0 0;color:#536174">Physical dimensions determine the printed card size, while DPI affects the pixel density used for printing. Follow the dimensions and resolution requested by the receiving organisation.</p></details>
+<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Should I upload sensitive identity documents to an online tool?</summary><p style="margin:8px 0 0;color:#536174">Only use documents you are authorised to process. Review the tool and your browser environment before handling sensitive identity information, and avoid using shared or public devices.</p></details>
 </section>
 </main><footer>InfoJano • ID Card Print Studio</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
