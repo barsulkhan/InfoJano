@@ -13,8 +13,8 @@
   .ij-global-divider{width:1px;height:38px;background:#ffffff50}
   .ij-global-tools{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid #ffffff65;border-radius:30px;color:#fff;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#ffffff12}
   .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#ffffff25;outline:2px solid #fff;outline-offset:2px}
-  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:122px;padding:11px 19px;border-radius:30px;background:#fff;color:#0647b7;text-decoration:none;font-weight:850;font-size:15px;white-space:nowrap;box-shadow:0 3px 12px #001b5b35}
-  .ij-global-home:hover,.ij-global-home:focus-visible{background:#eaf2ff;outline:2px solid #fff;outline-offset:2px}
+  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:122px;padding:11px 19px;border:1px solid #ffffff75;border-radius:30px;background:linear-gradient(135deg,#13a9f4 0%,#0870e9 55%,#3154e8 100%);color:#fff;text-decoration:none;font-weight:850;font-size:15px;white-space:nowrap;box-shadow:0 4px 14px #001b5b45,inset 0 1px 0 #ffffff45}
+  .ij-global-home:hover,.ij-global-home:focus-visible{background:linear-gradient(135deg,#31baff 0%,#126ff0 55%,#5267f4 100%);outline:2px solid #fff;outline-offset:2px}
   .ij-global-home svg,.ij-global-tools svg{width:19px;height:19px;flex:0 0 auto}
   .ij-global-header-spacer{height:0}
   .ij-site-brand{display:none!important}
