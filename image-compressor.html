@@ -253,6 +253,34 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 .ij-practical-guide{max-width:none!important;margin:22px 0!important}
 @media(max-width:850px){.ij-premium-hero{grid-template-columns:1fr;gap:14px}.ij-showcase{min-height:190px}.ij-compressor-card{grid-template-columns:1fr}.ij-upload-side{border-right:0;border-bottom:1px solid #e7edf7;padding:2px 2px 20px}.ij-settings-side{padding:20px 2px 2px}.ij-live-example{grid-template-columns:1fr 1fr}.ij-smart-callout{grid-column:1/-1}.ij-example-result{border-left:0;padding-left:0}}
 @media(max-width:560px){.wrap{width:calc(100% - 24px);padding-top:15px}.ij-premium-hero{padding:4px 2px 20px}.ij-hero h1{font-size:33px;letter-spacing:-1.2px}.ij-showcase{min-height:160px;padding:20px 8px}.ij-demo-size{font-size:10px}.ij-showcase-caption{font-size:9px}.ij-compressor-card{padding:15px!important;border-radius:18px!important}.ij-upload-zone{min-height:205px}.ij-preset-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}.ij-controls{grid-template-columns:1fr;gap:12px}.ij-live-example{grid-template-columns:1fr;padding:15px}.ij-example-result{border-top:1px solid #e2e8f3;padding:12px 0 0}.ij-smart-callout{grid-column:auto}.ij-benefits{grid-template-columns:1fr 1fr;row-gap:12px}.ij-benefit:nth-child(2){border-right:0}.ij-content-grid{grid-template-columns:1fr}.ij-site-brand>a{padding-left:12px!important;padding-right:12px!important}.ij-site-brand>a>span:last-child{font-size:11px!important}}
+
+/* Image Compressor hero motion — friendly guide, glowing photo previews */
+.ij-showcase{isolation:isolate;justify-content:flex-end;gap:10px;min-height:235px;padding:20px 18px 42px;background:linear-gradient(115deg,#32116f 0%,#263be9 48%,#111b91 100%);box-shadow:0 14px 34px rgba(66,44,190,.2)}
+.ij-showcase:before{width:90%;height:90%;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.14) 48%,transparent 65%);filter:none;animation:ijHeroSweep 4s ease-in-out infinite}
+.ij-showcase:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(125deg,transparent 35%,rgba(35,229,255,.0) 43%,rgba(35,229,255,.72) 50%,transparent 56%,transparent 70%,rgba(255,79,220,.55) 74%,transparent 80%);opacity:.7;animation:ijNeonTrail 3.8s linear infinite}
+.ij-mascot{position:absolute;left:3%;bottom:0;width:31%;height:96%;display:flex;align-items:flex-end;justify-content:center;z-index:3;transform-origin:50% 100%;animation:ijMascotBob 3.2s ease-in-out infinite}
+.ij-mascot svg{height:100%;width:100%;max-width:175px;overflow:visible;filter:drop-shadow(0 8px 12px rgba(0,0,0,.28))}
+.ij-mascot-spark{position:absolute;top:13%;left:9%;color:#ffe65c;font-size:24px;animation:ijSpark 1.7s ease-in-out infinite}
+.ij-demo-photo{z-index:2;width:30%;padding:5px;border:2px solid rgba(255,255,255,.95);box-shadow:0 0 0 3px rgba(79,226,255,.16),0 0 20px rgba(63,224,255,.62),0 12px 30px rgba(0,0,0,.25);animation:ijPhotoFloat 3.5s ease-in-out infinite}
+.ij-demo-photo.after{width:25%;animation-delay:-1.2s}
+.ij-demo-photo:after{content:"";position:absolute;inset:-3px;border-radius:18px;background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.85) 48%,transparent 62%);background-size:220% 100%;animation:ijPhotoFlash 2.8s linear infinite;pointer-events:none}
+.ij-demo-photo svg{position:relative;z-index:1}
+.ij-demo-size{z-index:2;font-size:11px}
+.ij-demo-arrow{color:#fff;text-shadow:0 0 12px #65eaff;animation:ijArrowPulse 1.5s ease-in-out infinite}
+.ij-showcase-caption{color:#1b2860}
+.ij-smart-callout{border:1px solid #c8b5ff!important;background:linear-gradient(100deg,#eee8ff,#e8f5ff)!important;box-shadow:0 5px 16px rgba(75,57,180,.1)}
+.ij-smart-callout strong{color:#4b20c8!important;font-size:15px}
+.ij-smart-callout p{color:#26385f!important;font-size:13px;font-weight:600}
+@keyframes ijHeroSweep{0%,100%{transform:translateX(-28%);opacity:.35}50%{transform:translateX(28%);opacity:.9}}
+@keyframes ijNeonTrail{0%{transform:translateX(-45%);opacity:.25}50%{opacity:.9}100%{transform:translateX(45%);opacity:.25}}
+@keyframes ijMascotBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+@keyframes ijSpark{0%,100%{transform:scale(.7) rotate(0);opacity:.45}50%{transform:scale(1.25) rotate(25deg);opacity:1}}
+@keyframes ijPhotoFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(-1deg)}}
+@keyframes ijPhotoFlash{0%{background-position:120% 0;opacity:0}20%{opacity:.9}55%,100%{background-position:-120% 0;opacity:0}}
+@keyframes ijArrowPulse{0%,100%{transform:scale(.9);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+@media(max-width:600px){.ij-showcase{min-height:175px;padding:14px 10px 38px;gap:6px}.ij-mascot{width:29%;height:92%;left:1%}.ij-demo-photo{width:31%;padding:4px}.ij-demo-photo.after{width:25%}.ij-demo-arrow{font-size:24px}.ij-showcase-caption{font-size:9px;padding:5px 9px}}
+@media(prefers-reduced-motion:reduce){.ij-showcase:before,.ij-showcase:after,.ij-mascot,.ij-mascot-spark,.ij-demo-photo,.ij-demo-photo:after,.ij-demo-arrow{animation:none!important}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -301,6 +329,20 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 <div class="ij-trust"><span>⚡ Fast</span><span>🛡️ Private</span><span>∞ No signup</span><span>✦ Free</span></div>
 </header>
 <div class="ij-showcase" aria-label="Illustrative before and after image compression example">
+<div class="ij-mascot" role="img" aria-label="Smiling guide pointing to the compressed images">
+<svg viewBox="0 0 170 210" aria-hidden="true">
+<path d="M26 190Q8 158 20 111Q17 58 49 25Q78 -2 111 20Q149 37 143 94L151 157 126 194Z" fill="#30205f"/>
+<path d="M45 74Q44 30 85 25Q128 25 131 76L123 119Q115 145 88 148Q58 144 48 116Z" fill="#f4bd91"/>
+<path d="M42 77Q25 30 65 13Q108 -7 134 31Q151 58 128 91L119 58Q95 67 74 48Q66 70 42 77Z" fill="#38204e"/>
+<path d="M44 93Q27 129 48 157L31 190 11 183Q25 144 19 112Z" fill="#38204e"/>
+<path d="M67 91q8-7 16 0M99 91q8-7 16 0" fill="none" stroke="#3b2634" stroke-width="4" stroke-linecap="round"/>
+<path d="M78 119q13 13 27-1" fill="none" stroke="#a43c4a" stroke-width="4" stroke-linecap="round"/>
+<circle cx="76" cy="99" r="3" fill="#30203a"/><circle cx="107" cy="99" r="3" fill="#30203a"/>
+<path d="M42 147Q77 128 116 149L147 205H20Z" fill="#ffbd27"/>
+<path d="M115 153Q132 134 143 119L158 105Q166 98 170 106Q172 114 160 123L146 141Q137 161 121 173" fill="#f4bd91"/>
+<path d="M152 108l13-9q5-2 5 3l-10 12" fill="#f4bd91"/>
+<path d="M45 154Q24 164 17 190" fill="none" stroke="#e79e21" stroke-width="10" stroke-linecap="round"/>
+</svg><span class="ij-mascot-spark">✦</span></div>
 <div class="ij-demo-photo"><span class="ij-demo-size">2.4 MB</span><svg viewBox="0 0 640 380" role="img" aria-label="Original copyright-free mountain lake landscape illustration" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="skysample1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#47bdf5"/><stop offset=".7" stop-color="#d7f4ff"/></linearGradient><linearGradient id="watersample1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#27b8d1"/><stop offset="1" stop-color="#075b9c"/></linearGradient><linearGradient id="hillsample1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#248c78"/><stop offset="1" stop-color="#075f60"/></linearGradient></defs><rect width="640" height="380" fill="url(#skysample1)"/><circle cx="520" cy="72" r="34" fill="#fff1b5"/><path d="M0 246 112 92l88 110L326 54l132 172 74-95 108 116v133H0z" fill="#688fa8"/><path d="m65 156 47-64 88 110-39-22-31 18-22-29-18 18zM245 151 326 54l132 172-68-55-34 18-31-39-34 30-26-30z" fill="#fff"/><path d="M0 240q92-39 183-5t181 0 276 4v141H0z" fill="url(#hillsample1)"/><path d="M0 275q105-24 205 0t220 0 215 0v105H0z" fill="url(#watersample1)"/><path d="M0 300q125-17 248 5t392-2" fill="none" stroke="#a9f2ef" stroke-width="7" opacity=".8"/><path d="M0 329q140-12 268 6t372-3" fill="none" stroke="#67d4e8" stroke-width="4" opacity=".8"/><path d="M0 240 112 92l88 110L326 54l132 172 74-95 108 116" fill="none" stroke="#e9faff" stroke-width="4" opacity=".65"/></svg></div><div class="ij-demo-arrow" aria-hidden="true">➜</div><div class="ij-demo-photo after"><span class="ij-demo-size">112 KB</span><svg viewBox="0 0 640 380" role="img" aria-label="Original copyright-free mountain lake landscape illustration" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="skysample2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#47bdf5"/><stop offset=".7" stop-color="#d7f4ff"/></linearGradient><linearGradient id="watersample2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#27b8d1"/><stop offset="1" stop-color="#075b9c"/></linearGradient><linearGradient id="hillsample2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#248c78"/><stop offset="1" stop-color="#075f60"/></linearGradient></defs><rect width="640" height="380" fill="url(#skysample2)"/><circle cx="520" cy="72" r="34" fill="#fff1b5"/><path d="M0 246 112 92l88 110L326 54l132 172 74-95 108 116v133H0z" fill="#688fa8"/><path d="m65 156 47-64 88 110-39-22-31 18-22-29-18 18zM245 151 326 54l132 172-68-55-34 18-31-39-34 30-26-30z" fill="#fff"/><path d="M0 240q92-39 183-5t181 0 276 4v141H0z" fill="url(#hillsample2)"/><path d="M0 275q105-24 205 0t220 0 215 0v105H0z" fill="url(#watersample2)"/><path d="M0 300q125-17 248 5t392-2" fill="none" stroke="#a9f2ef" stroke-width="7" opacity=".8"/><path d="M0 329q140-12 268 6t372-3" fill="none" stroke="#67d4e8" stroke-width="4" opacity=".8"/><path d="M0 240 112 92l88 110L326 54l132 172 74-95 108 116" fill="none" stroke="#e9faff" stroke-width="4" opacity=".65"/></svg></div>
 <div class="ij-showcase-caption">Illustrative example · Smaller file, clear image</div>
 </div>
