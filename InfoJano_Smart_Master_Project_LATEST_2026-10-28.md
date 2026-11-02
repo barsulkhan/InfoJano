@@ -1459,3 +1459,5 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Existing single-profile and multi-social QR workflows retained. All five inline scripts passed JavaScript syntax validation after the final change. Actual Android UI, link-in-bio destination, contact import, download and QR scanning remain pending user-side verification.
 - Social QR page commits: `a92f88b1e674871bec8018a7fdf83bb5e9ba411d`, `dffd08e8b6fab8fa7ce254fa9f5d9041e444294c`. Service worker cache bumped from `infojano-v129` to `infojano-v130`, commit: `cc9489b0211f6ceb5106769896ad3d5cbf0ae43e`.
 - Live page: https://barsulkhan.github.io/InfoJano/social-qr-maker.html
+
+- Follow-up correction: public Link-in-Bio mini pages now skip the shared site header so the landing page remains clean and focused. Inline script syntax rechecked successfully. Page commit: `09aff378c921d41ba7cdebf08a8df27c57b2796b`; cache bumped to `infojano-v131`, commit: `0d95ced4fd5785774b5b1ddeefa785bc5cf6205a`.
