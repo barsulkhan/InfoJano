@@ -69,7 +69,7 @@
       #ij-related-apps .ij-related-intro{margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5}
       #ij-related-apps .ij-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
       #ij-related-apps .ij-related-card{display:flex;flex-direction:column;gap:9px;min-width:0;padding:14px 12px;border:1px solid #dbeafe;border-radius:15px;background:#fff;color:#172554;text-decoration:none;min-height:178px;box-shadow:0 3px 12px #2563eb0b}
-      #ij-related-apps .ij-related-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#eff6ff;overflow:hidden} #ij-related-apps .ij-related-icon img{display:block;width:36px;height:36px;object-fit:contain}
+      #ij-related-apps .ij-related-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#eff6ff;overflow:hidden} #ij-related-apps .ij-related-icon img{display:block!important;visibility:visible!important;opacity:1!important;width:36px!important;height:36px!important;max-width:36px!important;max-height:36px!important;object-fit:contain!important}#ij-related-apps .ij-related-icon .ij-icon-fallback{display:grid;place-items:center;width:36px;height:36px;font-size:25px;line-height:1}
       #ij-related-apps .ij-related-name{font-size:14px;line-height:1.35;font-weight:750}
       #ij-related-apps .ij-related-desc{font-size:12px;line-height:1.45;color:#64748b}
       #ij-related-apps .ij-related-download{display:block;margin-top:auto;padding:9px 8px;border-radius:9px;background:#1458c8;color:#fff;text-align:center;font-size:12px;font-weight:750}\n      #ij-related-apps .ij-desktop-pending{display:block;margin-top:auto;padding:9px 8px;border-radius:9px;background:#edf2fa;color:#475569;text-align:center;font-size:12px;font-weight:700}
@@ -104,7 +104,7 @@
     const selected=order.map(id=>apps.find(a=>a.id===id)).filter(Boolean).filter(a=>a.id!==current.id).slice(0,4);
     selected.forEach(a=>{
       const link=document.createElement("a");link.className="ij-related-card";link.href=base+a.page;link.setAttribute("aria-label",a.name+" details and device app download");
-      const icon=document.createElement("span");icon.className="ij-related-icon";icon.setAttribute("aria-hidden","true");const iconImg=document.createElement("img");iconImg.src=base+"app-icons/"+a.icon;iconImg.alt="";iconImg.width=36;iconImg.height=36;iconImg.loading="eager";icon.appendChild(iconImg);
+      const icon=document.createElement("span");icon.className="ij-related-icon";icon.setAttribute("aria-hidden","true");const iconImg=document.createElement("img");iconImg.src=base+"app-icons/"+a.icon;iconImg.alt="";iconImg.width=36;iconImg.height=36;iconImg.loading="eager";iconImg.onerror=()=>{iconImg.remove();const fallback=document.createElement("span");fallback.className="ij-icon-fallback";fallback.textContent=a.emoji||"▦";icon.appendChild(fallback);};icon.appendChild(iconImg);
       const name=document.createElement("span");name.className="ij-related-name";name.textContent=a.name;
       const desc=document.createElement("span");desc.className="ij-related-desc";desc.textContent=a.desc;
       const download=document.createElement("span");
