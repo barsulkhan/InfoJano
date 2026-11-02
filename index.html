@@ -786,6 +786,27 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
 /* Slightly increase only the bottom gap after Useful Guides cards */
 #guides .guides-grid{padding-bottom:22px!important}
 #guides{margin-bottom:12px!important}
+
+/* Keep empty-search notice and tool panel comfortably inside page borders */
+#noResults,
+#toolPanel{
+ display:block;
+ width:auto!important;
+ max-width:none!important;
+ box-sizing:border-box!important;
+ margin-left:22px!important;
+ margin-right:22px!important;
+}
+#toolPanel .back{
+ max-width:100%!important;
+ box-sizing:border-box!important;
+}
+@media(max-width:700px){
+ #noResults,#toolPanel{
+  margin-left:12px!important;
+  margin-right:12px!important;
+ }
+}
 </style>
 
 </head>
