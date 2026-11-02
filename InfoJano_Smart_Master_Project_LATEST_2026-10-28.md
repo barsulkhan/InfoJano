@@ -935,3 +935,13 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Change commit: `1eccdb67a423d1766f3d568479cd39baaaa217e9`.
 - This change is on a separate branch only. It has not been merged or deployed. Next step: verify the diff and create a Draft PR for review; do not mark Ready or merge without user approval.
 - The live GitHub Pages URLs were not directly retrievable through the available fetch service. GitHub Pages Actions workflow for master checkpoint `ab46a3b` completed successfully, but direct live browser verification remains pending.
+
+
+### PR #3 opened for URL Toolkit Twitter metadata — 2 November 2026
+
+- Created Draft PR #3: https://github.com/barsulkhan/InfoJano/pull/3
+- Title: `SEO: add Twitter Card metadata to URL Toolkit`.
+- PR head at creation: `5ad2f604a1a2d221fd78410062add47040dca8e8`; base main SHA: `ab46a3b513e75aa6b1be28a3b180284b0d091140`.
+- PR is Open and Draft. Initial create response showed mergeable false while GitHub was calculating; subsequent PR fetch confirmed `mergeable=true`.
+- Diff audit confirmed only `url-toolkit.html` metadata and this master file checkpoint are changed. URL Toolkit change adds four Twitter fields; no page behavior or visual layout changes.
+- No Ready-for-Review transition or merge has been performed. Wait for user's review/approval before changing PR status or merging.
