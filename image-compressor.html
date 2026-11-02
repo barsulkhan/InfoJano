@@ -431,6 +431,8 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 </section>
 </main>
 <script>
+function setNodeText(node,value){if(node)node.textContent=value;}
+function setNodeHtml(node,value){if(node)node.innerHTML=value;}
 const fileInput=document.getElementById('file');
 const qualityInput=document.getElementById('quality');
 const formatInput=document.getElementById('format');
@@ -470,11 +472,11 @@ const compressionMode=document.getElementById('compressionMode');
 const resizeMode=document.getElementById('resizeMode');
 const advancedPixels=document.getElementById('advancedPixels');
 const advancedPercent=document.getElementById('advancedPercent');
-advancedQuality.addEventListener('input',()=>advancedQualityValue?.textContent=advancedQuality.value+'%');
+advancedQuality.addEventListener('input',()=>setNodeText(advancedQualityValue, advancedQuality.value+'%'));
 compressionMode.addEventListener('change',()=>{
  const presets={best:92,balanced:82,small:58};
  advancedQuality.value=presets[compressionMode.value]||82;
- advancedQualityValue?.textContent=advancedQuality.value+'%';
+ setNodeText(advancedQualityValue, advancedQuality.value+'%');
 });
 resizeMode.addEventListener('change',()=>{
  advancedPixels.hidden=resizeMode.value!=='pixels';
@@ -482,22 +484,22 @@ resizeMode.addEventListener('change',()=>{
 });
 
 qualityInput.addEventListener('input',()=>{
- document.getElementById('qualityValue')?.textContent=qualityInput.value+'%';
+ setNodeText(document.getElementById('qualityValue'), qualityInput.value+'%');
 });
 fileInput.addEventListener('change',()=>{
  downloadLink.hidden=true;
- statusBox?.textContent='';
+ setNodeText(statusBox, '');
  image=null;
  preview.hidden=true;
  preview.removeAttribute('src');
  const file=fileInput.files&&fileInput.files[0];
  originalDataUrl=null;originalFileSize=file?file.size:0;
  const resultBox=document.getElementById('ijActualResult');if(resultBox)resultBox.hidden=true;
- if(!file){originalInfo?.textContent='No image selected.';return;}
- if(!file.type.startsWith('image/')){originalInfo?.textContent='Please choose an image file.';return;}
- originalInfo?.textContent='Loading image preview…';
+ if(!file){setNodeText(originalInfo, 'No image selected.';return);}
+ if(!file.type.startsWith('image/')){setNodeText(originalInfo, 'Please choose an image file.';return);}
+ setNodeText(originalInfo, 'Loading image preview…');
  const reader=new FileReader();
- reader.onerror=()=>{preview.hidden=true;originalInfo?.textContent='Could not read this image. Please choose it again.';};
+ reader.onerror=()=>{preview.hidden=true;setNodeText(originalInfo, 'Could not read this image. Please choose it again.';});
  reader.onload=()=>{
   const dataUrl=reader.result;
   originalDataUrl=dataUrl;
@@ -507,9 +509,9 @@ fileInput.addEventListener('change',()=>{
    originalName=file.name.replace(/\.[^.]+$/,'')||'image';
    preview.src=dataUrl;
    preview.hidden=false;
-   originalInfo?.textContent=`Original size: ${(file.size/1024).toFixed(1)} KB | Dimensions: ${img.naturalWidth} × ${img.naturalHeight} px`;
+   setNodeText(originalInfo, `Original size: ${(file.size/1024).toFixed(1)} KB | Dimensions: ${img.naturalWidth} × ${img.naturalHeight} px`);
   };
-  img.onerror=()=>{preview.hidden=true;originalInfo?.textContent='Could not open this image. Please try another file.';};
+  img.onerror=()=>{preview.hidden=true;setNodeText(originalInfo, 'Could not open this image. Please try another file.';});
   img.src=dataUrl;
  };
  reader.readAsDataURL(file);
@@ -575,15 +577,15 @@ function setDownloadState(state,message){
  if(!icon||!label){console.warn('InfoJano: download indicator elements missing');return;}
  if(state==='downloading'){
   downloadLink.classList.add('ij-downloading');
-  icon?.textContent='';
-  label?.textContent='Preparing download…';
+  setNodeText(icon, '');
+  setNodeText(label, 'Preparing download…');
  }else if(state==='done'){
   downloadLink.classList.add('ij-downloaded');
-  icon?.textContent='✓';
-  label?.textContent=message||'Download started';
+  setNodeText(icon, '✓');
+  setNodeText(label, message||'Download started');
  }else if(state==='error'){
-  icon?.textContent='↓';
-  label?.textContent=message||'Try download again';
+  setNodeText(icon, '↓');
+  setNodeText(label, message||'Try download again');
  }
 }
 downloadLink.addEventListener('click',async(event)=>{
@@ -591,7 +593,7 @@ downloadLink.addEventListener('click',async(event)=>{
  if(window.AndroidBridge&&typeof window.AndroidBridge.saveFile==='function'){
   event.preventDefault();
   setDownloadState('downloading');
-  statusBox?.textContent='Saving compressed image to your phone…';
+  setNodeText(statusBox, 'Saving compressed image to your phone…');
   try{
    const response=await fetch(downloadLink.href);
    if(!response.ok)throw new Error('Could not prepare the image file.');
@@ -604,19 +606,19 @@ downloadLink.addEventListener('click',async(event)=>{
    });
    const base64=String(dataUrl).split(',')[1];
    const ok=window.AndroidBridge.saveFile(base64,downloadLink.download,blob.type||'application/octet-stream');
-   if(ok){setDownloadState('done','Saved to Downloads');statusBox?.textContent='Image saved to your phone’s Downloads folder.';}
-   else{setDownloadState('error','Try download again');statusBox?.textContent='Could not save the image. Please try again.';}
+   if(ok){setDownloadState('done','Saved to Downloads');setNodeText(statusBox, 'Image saved to your phone’s Downloads folder.');}
+   else{setDownloadState('error','Try download again');setNodeText(statusBox, 'Could not save the image. Please try again.');}
   }catch(error){
    setDownloadState('error','Try download again');
-   statusBox?.textContent='Download failed: '+(error&&error.message?error.message:'Please try again.');
+   setNodeText(statusBox, 'Download failed: '+(error&&error.message?error.message:'Please try again.'));
   }
   return;
  }
  setDownloadState('downloading');
- statusBox?.textContent='Your browser is starting the download…';
+ setNodeText(statusBox, 'Your browser is starting the download…');
  window.setTimeout(()=>{
   setDownloadState('done','Download started');
-  statusBox?.textContent='Download started. Check your browser’s Downloads.';
+  setNodeText(statusBox, 'Download started. Check your browser’s Downloads.');
  },1200);
 });
 
@@ -642,7 +644,7 @@ if(dropZone){
  dropZone.addEventListener('drop',event=>{
   const file=event.dataTransfer&&event.dataTransfer.files&&event.dataTransfer.files[0];
   if(!file)return;
-  if(!file.type.startsWith('image/')){statusBox?.textContent='Please drop an image file.';return;}
+  if(!file.type.startsWith('image/')){setNodeText(statusBox, 'Please drop an image file.';return);}
   const transfer=new DataTransfer();transfer.items.add(file);fileInput.files=transfer.files;
   fileInput.dispatchEvent(new Event('change',{bubbles:true}));
  });
@@ -699,14 +701,14 @@ async function findBestTargetBlob(targetBytes,preferredMime){
 }
 
 compressButton.addEventListener('click',async()=>{
- if(!image){statusBox?.textContent='Please choose an image first.';return;}
+ if(!image){setNodeText(statusBox, 'Please choose an image first.';return);}
  compressButton.disabled=true;
  compressButton.classList.add('ij-processing');
- document.getElementById('compressIcon')?.innerHTML='<span class="ij-processing-spinner"></span>';
- document.getElementById('compressLabel')?.textContent='Compressing image…';
+ setNodeHtml(document.getElementById('compressIcon'), '<span class="ij-processing-spinner"></span>');
+ setNodeText(document.getElementById('compressLabel'), 'Compressing image…');
  downloadLink.hidden=true;
  const resultBox=document.getElementById('ijActualResult');if(resultBox)resultBox.hidden=true;
- statusBox?.textContent='⏳ InfoJano is processing your image. Please wait…';
+ setNodeText(statusBox, '⏳ InfoJano is processing your image. Please wait…');
  try{
   const targetKB=Number(targetInput.value);
   if(targetInput.value.trim()&&(!Number.isFinite(targetKB)||targetKB<1||targetKB>20000))throw new Error('Enter a target size between 1 and 20,000 KB.');
@@ -736,46 +738,46 @@ compressButton.addEventListener('click',async()=>{
   lastOutputUrl=outUrl;
   downloadLink.href=outUrl;
   downloadLink.download=`${originalName}-compressed.${ext}`;
-  document.getElementById('downloadLabel')?.textContent=`Download compressed image (${(result.blob.size/1024).toFixed(1)} KB)`;
+  setNodeText(document.getElementById('downloadLabel'), `Download compressed image (${(result.blob.size/1024).toFixed(1)} KB)`);
   downloadLink.classList.remove('ij-downloading','ij-downloaded');
-  document.getElementById('downloadIcon')?.textContent='↓';
+  setNodeText(document.getElementById('downloadIcon'), '↓');
   downloadLink.hidden=false;
   let message=`Final size: ${(result.blob.size/1024).toFixed(1)} KB | Dimensions: ${result.w} × ${result.h} px | Format: ${ext.toUpperCase()}`;
   if(targetBytes)message+=result.blob.size<=targetBytes?' | Target reached':' | Target not reached';
   message+=`\\nQuality setting: ${Math.round(result.quality*100)}%`;
   message+=result.dimensionsChanged?'\\nImage dimensions were reduced only as needed to fit the target.':'\\nOriginal image dimensions were preserved.';
   if(targetBytes)message+='\\nSmart mode selected the best result it could fit within your KB limit.';
-  statusBox?.textContent=message;
+  setNodeText(statusBox, message);
   const resultPanel=document.getElementById('ijActualResult');
   if(!resultPanel)throw new Error('Result preview panel is missing. Please refresh the page.');
   const originalResultImage=document.getElementById('ijOriginalResult');
   if(originalResultImage)originalResultImage.src=originalDataUrl||preview.src;
   const compressedResultImage=document.getElementById('ijCompressedResult');
   if(compressedResultImage)compressedResultImage.src=outUrl;
-  document.getElementById('ijOriginalSize')?.textContent=(originalFileSize/1024).toFixed(1)+' KB';
-  document.getElementById('ijCompressedSize')?.textContent=(result.blob.size/1024).toFixed(1)+' KB';
-  document.getElementById('ijOriginalMeta')?.textContent='Original · '+(originalFileSize/1024).toFixed(1)+' KB';
-  document.getElementById('ijCompressedMeta')?.textContent='Compressed · '+(result.blob.size/1024).toFixed(1)+' KB';
-  document.getElementById('ijOutputDimensions')?.textContent=result.w+' × '+result.h+' px';
+  setNodeText(document.getElementById('ijOriginalSize'), (originalFileSize/1024).toFixed(1)+' KB');
+  setNodeText(document.getElementById('ijCompressedSize'), (result.blob.size/1024).toFixed(1)+' KB');
+  setNodeText(document.getElementById('ijOriginalMeta'), 'Original · '+(originalFileSize/1024).toFixed(1)+' KB');
+  setNodeText(document.getElementById('ijCompressedMeta'), 'Compressed · '+(result.blob.size/1024).toFixed(1)+' KB');
+  setNodeText(document.getElementById('ijOutputDimensions'), result.w+' × '+result.h+' px');
   const reduction=originalFileSize>0?Math.max(0,(1-result.blob.size/originalFileSize)*100):0;
-  document.getElementById('ijReduction')?.textContent=reduction.toFixed(1)+'%';
+  setNodeText(document.getElementById('ijReduction'), reduction.toFixed(1)+'%');
   const resultDownload=document.getElementById('ijResultDownload');
   resultDownload.href=outUrl;resultDownload.download=downloadLink.download;
   resultDownload.onclick=(event)=>{event.preventDefault();downloadLink.click();};
   document.getElementById('ijCompressAnother').onclick=()=>{
-   fileInput.value='';image=null;originalDataUrl=null;resultPanel.hidden=true;downloadLink.hidden=true;preview.hidden=true;originalInfo?.textContent='Choose another image to begin.';
+   fileInput.value='';image=null;originalDataUrl=null;resultPanel.hidden=true;downloadLink.hidden=true;preview.hidden=true;setNodeText(originalInfo, 'Choose another image to begin.');
    document.getElementById('ijDropZone').scrollIntoView({behavior:'smooth',block:'center'});
   };
   resultPanel.hidden=false;
   resultPanel.scrollIntoView({behavior:'smooth',block:'nearest'});
  }catch(error){
   console.error('InfoJano compression error:',error);
-  statusBox?.textContent='Compression failed: '+(error&&error.message?error.message:'Please try another image or a larger target size.');
+  setNodeText(statusBox, 'Compression failed: '+(error&&error.message?error.message:'Please try another image or a larger target size.'));
  }finally{
   compressButton.disabled=false;
   compressButton.classList.remove('ij-processing');
-  document.getElementById('compressIcon')?.textContent='⚙';
-  document.getElementById('compressLabel')?.textContent='Compress Image';
+  setNodeText(document.getElementById('compressIcon'), '⚙');
+  setNodeText(document.getElementById('compressLabel'), 'Compress Image');
  }
 });
 </script>
