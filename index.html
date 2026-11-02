@@ -691,6 +691,14 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
  .popular-tools-heading .section-mark{flex-basis:34px!important}
  .popular-tools-heading .tool-count-badge{font-size:13px!important;padding:7px 10px!important}
 }
+
+/* Match the tool-count label to the Popular Tools heading; keep it inset from the edge */
+.popular-tools-heading{padding-right:22px!important;box-sizing:border-box!important}
+.popular-tools-heading .tool-count-badge{font-size:clamp(25px,2.5vw,32px)!important;font-weight:850!important;line-height:1.15!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:#111d43!important;box-shadow:none!important;letter-spacing:-.45px!important}
+@media(max-width:700px){
+ .popular-tools-heading{padding-right:12px!important}
+ .popular-tools-heading .tool-count-badge{font-size:21px!important;line-height:1.15!important}
+}
 </style>
 
 </head>
