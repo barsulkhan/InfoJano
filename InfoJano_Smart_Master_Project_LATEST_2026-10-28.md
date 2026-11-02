@@ -1307,3 +1307,13 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Inline JS syntax validation passed (4 scripts).
 - Page commit: `0052010ab721c9bb86bf06baed27487efcd93e28`; service worker cache bumped to `infojano-v118`, commit: `ba99110640609be784d3115a28c50f1ad9a1016e`.
 - Requires Android visual confirmation after deployment/cache refresh.
+
+
+## Discount Calculator premium mobile redesign — 2026-11-03
+- Rebuilt the Discount Calculator presentation to match the approved preview: blue-white hero with custom inline SVG shopping/discount illustration, readable benefit chips, compact calculator form, clear result metrics, How It Works, Tips, Related Tools and FAQs.
+- Responsive mobile layout stacks fields and result metrics; dropdown and input controls use full-width touch-friendly sizing.
+- Preserved both calculation modes and their validation: sale price from discount percentage, and discount percentage from original/sale price. Reworked only result presentation and mode helper text.
+- Retained canonical, SEO metadata, JSON-LD, install flow and shared site header.
+- Inline JavaScript syntax validation passed (7 non-JSON-LD inline scripts).
+- Page commit: `553c41e5e07d35d0d3b6064b258cf87b7b47fedc`; service worker cache bumped to `infojano-v119`, commit: `d05835bec7f6a5626169d1dd5a76ca47a6859d52`.
+- Live Android visual and calculator behavior tests remain pending; verify both calculation modes after deployment.
