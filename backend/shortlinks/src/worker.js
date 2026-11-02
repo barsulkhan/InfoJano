@@ -43,7 +43,7 @@ function ipv4InCidr(ip, network, prefix) {
   const value = ip.reduce((n, octet) => (n * 256) + octet, 0);
   const base = network.split(".").map(Number).reduce((n, octet) => (n * 256) + octet, 0);
   const mask = prefix === 0 ? 0 : (0xffffffff << (32 - prefix)) >>> 0;
-  return (value & mask) >>> 0 === (base & mask) >>> 0;
+  return (((value & mask) >>> 0) === ((base & mask) >>> 0));
 }
 const NON_PUBLIC_IPV4 = [
   ["0.0.0.0",8],["10.0.0.0",8],["100.64.0.0",10],["127.0.0.0",8],
