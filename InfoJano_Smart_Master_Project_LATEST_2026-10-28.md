@@ -1162,3 +1162,7 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Service worker commit: `97e6bb8562a89582ef18910ca7c2e638efb26285`.
 - Header script is a shared include, so visual/header adjustments can be made once and propagate across all tool pages.
 - Pages may take a few minutes to publish. Users should refresh after the new deployment; old cached pages may retain the previous header until the service worker activates.
+
+
+### QR Maker validation clarification — 2026-11-02
+- Follow-up syntax parsing found the final inline script in `qr-maker.html` is still incomplete (unexpected end of input). The source file had already ended mid-handler before the shared header rollout; closing HTML tags were restored so the shared header include can load, but the QR Maker helper script itself is NOT yet syntax-valid. Do not mark QR Maker as QA-passed; repair its social QR helper in a separate focused task.
