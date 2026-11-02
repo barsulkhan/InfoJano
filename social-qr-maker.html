@@ -78,47 +78,55 @@ box.replaceChildren();
 if(!value){box.textContent='Please enter a profile link or social information first.';return;}
 if(!window.QRCode){box.textContent='The offline QR library did not load. Refresh the page and try again.';return;}
 button.disabled=true;button.textContent='Creating your QR design…';
+let holder=null,photoUrl=null;
 try{
 const platform=document.getElementById('social-platform').value,isBundle=platform==='bundle',detected=detectPlatform(value,platform);
-const theme=isBundle?{name:'Social Links',accent:'#2457a7',glyph:'↗',tag:'All your social links in one place',cta:'SCAN TO CONNECT',file:'Social-Links'}:getBrandTheme(detected);
-const holder=document.createElement('div');holder.style.cssText='position:absolute;left:-10000px;top:0;width:360px;height:360px;overflow:hidden';document.body.appendChild(holder);
-const qrInstance=new QRCode(holder,{text:value,width:360,height:360,colorDark:theme.accent,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+const theme=isBundle?{name:'Social Links',accent:'#2457a7',light:'#eaf2ff',glyph:'↗',tag:'All your social links in one place',cta:'SCAN ME',file:'Social-Links',gradient:['#2563eb','#0b45b5']}:getBrandTheme(detected);
+const holder=document.createElement('div');holder.style.cssText='position:absolute;left:-10000px;top:0;width:420px;height:420px;overflow:hidden';document.body.appendChild(holder);
+const qrInstance=new QRCode(holder,{text:value,width:420,height:420,colorDark:theme.accent,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
 const sourceCanvas=holder.querySelector('canvas');if(!sourceCanvas)throw new Error('QR canvas is unavailable');
-const moduleCount=qrInstance._oQRCode&&qrInstance._oQRCode.getModuleCount?qrInstance._oQRCode.getModuleCount():33,quietZone=Math.ceil((360/moduleCount)*4);
+const moduleCount=qrInstance._oQRCode&&qrInstance._oQRCode.getModuleCount?qrInstance._oQRCode.getModuleCount():33,quietZone=Math.ceil((420/moduleCount)*4);
 const canvas=document.createElement('canvas');canvas.width=520;canvas.height=650;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas is unavailable');
-// Draw a balanced, centred card with the quiet zone INSIDE the QR panel.
-ctx.fillStyle='#f3f7ff';ctx.fillRect(0,0,520,650);
-ctx.save();roundRect(ctx,18,16,484,618,28);ctx.fillStyle='#ffffff';ctx.fill();ctx.strokeStyle='#e3ecfb';ctx.lineWidth=1.5;ctx.stroke();ctx.restore();
-ctx.save();roundRect(ctx,18,16,484,112,28);ctx.clip();const headerGradient=ctx.createLinearGradient(18,16,502,128);headerGradient.addColorStop(0,'#f4f8ff');headerGradient.addColorStop(1,theme.light||'#eaf2ff');ctx.fillStyle=headerGradient;ctx.fillRect(18,16,484,112);ctx.restore();
-ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.font='bold 30px Arial';ctx.fillText(theme.name,260,65);
-ctx.fillStyle='#64748b';ctx.font='16px Arial';ctx.fillText(theme.tag,260,94);
-const panelX=80,panelY=132,panelSize=360;
-ctx.save();roundRect(ctx,panelX,panelY,panelSize,panelSize,22);ctx.fillStyle='#ffffff';ctx.fill();ctx.strokeStyle='#e5edf8';ctx.lineWidth=1.5;ctx.stroke();ctx.restore();
+ctx.fillStyle='#f4f7ff';ctx.fillRect(0,0,520,650);
+ctx.save();ctx.shadowColor=(theme.accent||'#2563eb')+'55';ctx.shadowBlur=22;roundRect(ctx,18,14,484,622,30);ctx.fillStyle='#fff';ctx.fill();ctx.restore();
+ctx.save();roundRect(ctx,18,14,484,622,30);ctx.strokeStyle=theme.accent;ctx.globalAlpha=.34;ctx.lineWidth=3;ctx.stroke();ctx.restore();
+const panelX=60,panelY=32,panelSize=400;
+ctx.save();roundRect(ctx,panelX,panelY,panelSize,panelSize,24);ctx.fillStyle='#fff';ctx.fill();ctx.strokeStyle='#edf1f8';ctx.lineWidth=2;ctx.stroke();ctx.restore();
 ctx.imageSmoothingEnabled=false;
 const symbolSize=panelSize-2*quietZone;
 ctx.drawImage(sourceCanvas,panelX+quietZone,panelY+quietZone,symbolSize,symbolSize);
-const photoFile=detected==='facebook'?document.getElementById('profile-photo')?.files?.[0]:null;let photo=null;
-if(photoFile){photo=await new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=URL.createObjectURL(photoFile);});}
-const cx=260,cy=panelY+panelSize/2,r=31;ctx.save();ctx.beginPath();ctx.arc(cx,cy,r+7,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=theme.accent;ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
-if(photo){const side=Math.min(photo.width,photo.height),sx=(photo.width-side)/2,sy=(photo.height-side)/2;ctx.drawImage(photo,sx,sy,side,side,cx-r,cy-r,r*2,r*2);}else{ctx.fillStyle='#ffffff';ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 56px Arial';ctx.fillText(theme.glyph,cx,cy);}
-ctx.restore();holder.remove();
-ctx.textAlign='center';ctx.fillStyle=theme.accent;ctx.font='bold 21px Arial';ctx.fillText(theme.cta,260,535);ctx.fillStyle='#94a3b8';ctx.font='13px Arial';ctx.fillText('Made with InfoJano',260,565);
-const dataUrl=canvas.toDataURL('image/png'),img=document.createElement('img');img.alt=theme.name+' QR code';img.src=dataUrl;box.appendChild(img);
-const download=document.createElement('a');download.className='qr-download';download.href=dataUrl;download.download='InfoJano-'+theme.file+'-QR.png';download.textContent='Download QR Code (PNG)';box.appendChild(download);
-const note=document.createElement('p');note.className='brand-preview';note.textContent='A centred QR design with a clear white quiet zone. The Facebook profile photo is optional; always scan-test before printing.';box.appendChild(note);
+const photoFile=document.getElementById('profile-photo')?.files?.[0];let photo=null;
+if(photoFile){photoUrl=URL.createObjectURL(photoFile);photo=await new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=photoUrl;});}
+const cx=260,cy=panelY+panelSize/2,r=32;
+ctx.save();ctx.beginPath();ctx.arc(cx,cy,r+8,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=theme.accent;ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
+if(photo){const side=Math.min(photo.width,photo.height),sx=(photo.width-side)/2,sy=(photo.height-side)/2;ctx.drawImage(photo,sx,sy,side,side,cx-r,cy-r,r*2,r*2);}else{ctx.fillStyle=theme.light||'#eff6ff';ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.fillStyle=theme.accent;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 54px Arial';ctx.fillText(theme.glyph,cx,cy+1);}
+ctx.restore();
+holder.remove();holder=null;
+const footerY=445;
+ctx.save();ctx.beginPath();ctx.moveTo(18,footerY+25);ctx.bezierCurveTo(115,footerY-12,160,footerY+58,260,footerY+20);ctx.bezierCurveTo(355,footerY-16,410,footerY+50,502,footerY+14);ctx.lineTo(502,606);ctx.quadraticCurveTo(502,636,472,636);ctx.lineTo(48,636);ctx.quadraticCurveTo(18,636,18,606);ctx.closePath();
+const grad=ctx.createLinearGradient(18,footerY,502,636);grad.addColorStop(0,theme.gradient?.[0]||theme.accent);grad.addColorStop(1,theme.gradient?.[1]||theme.dark||theme.accent);ctx.fillStyle=grad;ctx.fill();ctx.restore();
+ctx.save();ctx.globalAlpha=.28;ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(20,footerY+45);ctx.bezierCurveTo(120,footerY+4,160,footerY+75,260,footerY+39);ctx.bezierCurveTo(360,footerY+5,415,footerY+70,500,footerY+34);ctx.stroke();ctx.restore();
+ctx.fillStyle='#fff';ctx.textBaseline='middle';ctx.textAlign='left';ctx.font='bold 27px Arial';ctx.fillText(theme.glyph,54,555);
+ctx.font='bold 25px Arial';ctx.fillText(theme.name,96,555);
+ctx.save();ctx.strokeStyle='#ffffffaa';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(330,520);ctx.lineTo(330,590);ctx.stroke();ctx.restore();
+ctx.textAlign='center';ctx.font='bold 22px Arial';ctx.fillText('▣  SCAN ME',414,555);
+ctx.textAlign='center';ctx.font='13px Arial';ctx.globalAlpha=.9;ctx.fillText('Made with InfoJano',260,610);ctx.restore();
+const dataUrl=canvas.toDataURL('image/png'),img=document.createElement('img');img.alt=theme.name+' social QR code design';img.src=dataUrl;box.appendChild(img);
+const download=document.createElement('a');download.className='qr-download';download.href=dataUrl;download.download='InfoJano-'+theme.file+'-QR.png';download.textContent='⬇ Download Designed QR Code (PNG)';box.appendChild(download);
+const note=document.createElement('p');note.className='brand-preview';note.textContent='This downloaded PNG uses the selected platform colours, logo mark and wave footer. Scan-test the QR before printing or sharing.';box.appendChild(note);
 }catch(error){box.textContent='Could not create this QR code. Check the link and try again.';}
-finally{button.disabled=false;button.textContent='Create Social Media QR Code';}
+finally{if(holder)holder.remove();if(photoUrl)URL.revokeObjectURL(photoUrl);button.disabled=false;button.textContent='Create Social Media QR Code';}
 }
 function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 function getBrandTheme(platform){
 const themes={
-facebook:{name:'Facebook',short:'FACEBOOK',dark:'#1877F2',light:'#EAF2FF',accent:'#1877F2',glyph:'f',tag:'Connect with me on Facebook',cta:'SCAN TO OPEN FACEBOOK',file:'Facebook'},
-instagram:{name:'Instagram',short:'INSTAGRAM',dark:'#C13584',light:'#FFF0F7',accent:'#E1306C',glyph:'◎',tag:'Follow my Instagram profile',cta:'SCAN TO OPEN INSTAGRAM',file:'Instagram'},
-youtube:{name:'YouTube',short:'YOUTUBE',dark:'#E62117',light:'#FFF0F0',accent:'#E62117',glyph:'▶',tag:'Watch and subscribe on YouTube',cta:'SCAN TO OPEN YOUTUBE',file:'YouTube'},
-tiktok:{name:'TikTok',short:'TIKTOK',dark:'#111111',light:'#F2FBFB',accent:'#25F4EE',glyph:'♪',tag:'Find me on TikTok',cta:'SCAN TO OPEN TIKTOK',file:'TikTok'},
-telegram:{name:'Telegram',short:'TELEGRAM',dark:'#229ED9',light:'#EAF8FF',accent:'#229ED9',glyph:'➤',tag:'Message me on Telegram',cta:'SCAN TO OPEN TELEGRAM',file:'Telegram'},
-whatsapp:{name:'WhatsApp',short:'WHATSAPP',dark:'#128C7E',light:'#E9FBF1',accent:'#25D366',glyph:'☎',tag:'Chat with me on WhatsApp',cta:'SCAN TO CHAT ON WHATSAPP',file:'WhatsApp'},
-website:{name:'Website',short:'WEBSITE',dark:'#173F7A',light:'#EEF4FF',accent:'#2563EB',glyph:'↗',tag:'Open this website or profile',cta:'SCAN TO OPEN LINK',file:'Website'}
+facebook:{name:'Facebook',short:'FACEBOOK',dark:'#1877F2',light:'#EAF2FF',accent:'#1877F2',gradient:['#2685ff','#0645b5'],glyph:'f',tag:'Connect with me on Facebook',cta:'SCAN TO OPEN FACEBOOK',file:'Facebook'},
+instagram:{name:'Instagram',short:'INSTAGRAM',dark:'#C13584',light:'#FFF0F7',accent:'#E1306C',gradient:['#b517e9','#ef007d'],glyph:'◎',tag:'Follow my Instagram profile',cta:'SCAN TO OPEN INSTAGRAM',file:'Instagram'},
+youtube:{name:'YouTube',short:'YOUTUBE',dark:'#E62117',light:'#FFF0F0',accent:'#E62117',gradient:['#ff3434','#990000'],glyph:'▶',tag:'Watch and subscribe on YouTube',cta:'SCAN TO OPEN YOUTUBE',file:'YouTube'},
+tiktok:{name:'TikTok',short:'TIKTOK',dark:'#111111',light:'#F2FBFB',accent:'#111111',gradient:['#111827','#050505'],glyph:'♪',tag:'Find me on TikTok',cta:'SCAN TO OPEN TIKTOK',file:'TikTok'},
+telegram:{name:'Telegram',short:'TELEGRAM',dark:'#229ED9',light:'#EAF8FF',accent:'#229ED9',gradient:['#28b9f1','#0754bd'],glyph:'➤',tag:'Message me on Telegram',cta:'SCAN TO OPEN TELEGRAM',file:'Telegram'},
+whatsapp:{name:'WhatsApp',short:'WHATSAPP',dark:'#128C7E',light:'#E9FBF1',accent:'#128C7E',gradient:['#25d366','#087a38'],glyph:'☎',tag:'Chat with me on WhatsApp',cta:'SCAN TO CHAT ON WHATSAPP',file:'WhatsApp'},
+website:{name:'Website',short:'WEBSITE',dark:'#173F7A',light:'#EEF4FF',accent:'#2563EB',gradient:['#398bff','#173f9a'],glyph:'↗',tag:'Open this website or profile',cta:'SCAN TO OPEN LINK',file:'Website'}
 };
 return themes[platform]||themes.website;
 }
