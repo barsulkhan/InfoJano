@@ -1405,3 +1405,14 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - QR Maker page update commit: `c50032f993ffc32f6ea7135f5a7e7bc3dcf494ed`.
 - Service worker cache updated from `infojano-v124` to `infojano-v125`: commit `abbebe327a7dd8e505642877d5f32010718bdc90`.
 - Source check confirms no `ij-install-card` remains in `qr-maker.html`, and the home page still links to `qr-choice.html`. Verify after deployment in Android browser; if an old card persists, refresh once or clear the site's cached data.
+
+
+## QR pages visual correction from user screenshots — 3 November 2026
+- Inspected three user screenshots. Root causes: `theme.js` applies broad `main section { display:block!important; background:...!important }` and global heading colors, overriding the QR hero's grid/background/text styles; `qr-choice.html` had its own dark InfoJano header while the shared `site-header.js` injects the global header, causing a duplicate; choice page flex centering caused excessive blank vertical space.
+- Removed the duplicate local header from `qr-choice.html`, kept the shared InfoJano header, and moved the two choice cards to a compact mobile-first position near the top. The Normal and Social QR destinations remain unchanged.
+- Removed the duplicate mini InfoJano brand strip from `qr-maker.html`; the shared global header is now the only brand header.
+- Added high-specificity overrides for the QR hero to resist shared theme resets: force the full blue-purple gradient banner, white QR Code heading and subtitle, yellow Maker accent, two-column layout, QR tiles, neon glow and scanning beam. Also added a hard CSS hide for any injected `.ij-install-card` on this page.
+- QR Choice fix commit: `0b6f5155d4c4b3938888c9a1adddf4a3bbb8459b`.
+- QR Maker fix commit: `fa7df8a08210614bb2283a1f0cd830ed89b86632`.
+- Service worker cache bumped from `infojano-v125` to `infojano-v126`: commit `dc53d3b5698ed25ab11a9f145e3231adf3a4b567`.
+- These are source-level corrections based on screenshot diagnosis. The live deployment and Android visual appearance still need user verification after refresh.
