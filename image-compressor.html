@@ -121,6 +121,38 @@ body{padding:0;background:#f5f8ff;color:#172033;font-family:system-ui,-apple-sys
 @keyframes ijDownloadSpin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.ij-download-link.ij-downloading .ij-download-icon{animation:none;border-top-color:#155eef}}
 
+
+/* Smart/Advanced mode and actual compression result */
+.ij-mode-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:15px;padding:5px;border-radius:14px;background:#f0f4fc}
+.ij-mode-switch button{margin:0;min-height:42px;padding:9px;border:1px solid transparent;border-radius:10px;background:transparent;color:#3d4d6b;font-weight:800;font-size:13px;box-shadow:none}
+.ij-mode-switch button[aria-selected=true]{background:linear-gradient(105deg,#075df1,#6338e9);color:#fff;box-shadow:0 5px 14px #3156cf30}
+.ij-mode-panel[hidden]{display:none!important}
+.ij-advanced-panel{padding:14px;margin:0 0 13px;border:1px solid #dce6f7;border-radius:15px;background:linear-gradient(145deg,#fbfcff,#f5f8ff)}
+.ij-advanced-panel h3{margin:0 0 12px;font-size:14px;color:#17284b}
+.ij-advanced-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ij-advanced-grid .ij-field{min-width:0}
+.ij-inline-check{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;color:#4d5e7a}
+.ij-inline-check input{width:17px;min-height:17px;margin:0}
+.ij-dimension-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ij-dimension-pair input{min-width:0}
+.ij-result-panel{margin:20px 0;padding:20px;border:1px solid #dce7f7;border-radius:20px;background:#fff;box-shadow:0 12px 30px rgba(24,51,103,.08)}
+.ij-result-panel[hidden]{display:none!important}
+.ij-result-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.ij-result-head h2{font-size:19px;margin:0;color:#14264b}
+.ij-result-grid{display:grid;grid-template-columns:1fr 1fr .85fr;gap:14px;align-items:center}
+.ij-result-image{min-width:0}
+.ij-result-image img{display:block;width:100%;height:165px;object-fit:contain;border-radius:12px;background:#f1f5fb}
+.ij-result-image b{display:block;margin-top:7px;text-align:center;font-size:12px;color:#344563}
+.ij-result-stats{padding:12px;border-radius:14px;background:#f6f8ff}
+.ij-result-stats p{font-size:12px;color:#52617d;margin:7px 0}
+.ij-result-stats strong{color:#172b52}
+.ij-result-stats .ij-reduction{font-size:25px;font-weight:900;color:#15934f}
+.ij-result-actions{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.ij-result-actions a,.ij-result-actions button{display:flex;align-items:center;justify-content:center;min-height:42px;margin:0;border-radius:10px;text-decoration:none;font-size:13px;font-weight:800}
+.ij-secondary-action{background:#f2f6ff!important;color:#184eb3!important;border:1px solid #d8e3f7!important}
+.ij-advanced-help{font-size:11px;color:#72809a;line-height:1.45;margin:7px 0 0}
+@media(max-width:650px){.ij-advanced-grid{grid-template-columns:1fr}.ij-result-grid{grid-template-columns:1fr 1fr}.ij-result-stats{grid-column:1/-1}.ij-result-image img{height:125px}.ij-result-head{align-items:flex-start}}
+
 /* InfoJano premium visual system — Image Compressor */
 body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55}
 .ij-site-brand{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92)!important;color:#101a35!important;border-bottom:1px solid #e5eaf5;backdrop-filter:blur(16px);box-shadow:0 4px 24px rgba(27,48,90,.05)!important}
@@ -283,41 +315,55 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 <img id="preview" alt="Preview of the selected image" hidden>
 </div>
 <div class="ij-settings-side">
-<h2 class="ij-settings-title"><span>◎</span> Target File Size <small>(Smart Compress)</small></h2>
+<div class="ij-mode-switch" role="tablist" aria-label="Compression mode">
+<button type="button" id="smartModeTab" role="tab" aria-selected="true" aria-controls="smartModePanel">⚡ Smart Mode</button>
+<button type="button" id="advancedModeTab" role="tab" aria-selected="false" aria-controls="advancedModePanel">☷ Advanced Mode</button>
+</div>
+<div id="smartModePanel" class="ij-mode-panel" role="tabpanel" aria-labelledby="smartModeTab">
+<h2 class="ij-settings-title"><span>◎</span> Target File Size <small>(Easy & Automatic)</small></h2>
 <div class="ij-preset-buttons" role="group" aria-label="Quick target file size">
-<button type="button" data-target-size="20" aria-pressed="false">20 KB</button>
-<button type="button" data-target-size="50" aria-pressed="false">50 KB</button>
-<button type="button" data-target-size="100" aria-pressed="false">100 KB</button>
-<button type="button" data-target-size="200" aria-pressed="false">200 KB</button>
-<button type="button" data-target-size="500" aria-pressed="false">500 KB</button>
-<button type="button" data-target-size="1000" aria-pressed="false">1 MB</button>
+<button type="button" data-target-size="20" aria-pressed="false">20 KB</button><button type="button" data-target-size="50" aria-pressed="false">50 KB</button><button type="button" data-target-size="100" aria-pressed="false">100 KB</button><button type="button" data-target-size="200" aria-pressed="false">200 KB</button><button type="button" data-target-size="500" aria-pressed="false">500 KB</button><button type="button" data-target-size="1000" aria-pressed="false">1 MB</button>
 </div>
 <div class="ij-smart-target ij-field">
 <label for="targetPreset">Quick target size</label>
-<select id="targetPreset" class="ij-hidden-select" aria-label="Quick target size">
-<option value="">Choose a size</option><option value="20">20 KB</option><option value="50">50 KB</option><option value="100">100 KB</option><option value="200">200 KB</option><option value="500">500 KB</option><option value="1000">1 MB</option><option value="custom">Custom size</option>
-</select>
+<select id="targetPreset" class="ij-hidden-select" aria-label="Quick target size"><option value="">Choose a size</option><option value="20">20 KB</option><option value="50">50 KB</option><option value="100">100 KB</option><option value="200">200 KB</option><option value="500">500 KB</option><option value="1000">1 MB</option><option value="custom">Custom size</option></select>
 <p class="ij-custom-caption">Or enter your own target size</p>
 <div class="ij-target-row"><input id="target" type="number" min="1" max="20000" inputmode="numeric" placeholder="Example: 20" aria-label="Custom target size in KB"><span>KB</span></div>
 </div>
 <div class="ij-controls">
-<div class="ij-field">
-<label for="format">Output format</label>
-<select id="format"><option value="auto" selected>Auto (Recommended)</option><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
+<div class="ij-field"><label for="format">Output format</label><select id="format"><option value="auto" selected>Auto (Recommended)</option><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></div>
+<div class="ij-field"><label for="width">Maximum width (optional)</label><input id="width" type="number" min="1" max="12000" inputmode="numeric" placeholder="Keep original"></div>
+<div class="ij-field"><div class="ij-range-head"><label for="quality">Manual quality (no target)</label><output id="qualityValue" for="quality">80%</output></div><input id="quality" type="range" min="10" max="100" value="80"></div>
 </div>
-<div class="ij-field">
-<label for="width">Maximum width (optional)</label>
-<input id="width" type="number" min="1" max="12000" inputmode="numeric" placeholder="Keep original">
 </div>
-<div class="ij-field">
-<div class="ij-range-head"><label for="quality">Manual quality (no target)</label><output id="qualityValue" for="quality">80%</output></div>
-<input id="quality" type="range" min="10" max="100" value="80">
+<div id="advancedModePanel" class="ij-mode-panel" role="tabpanel" aria-labelledby="advancedModeTab" hidden>
+<div class="ij-advanced-panel">
+<h3>Image quality & compression</h3>
+<div class="ij-advanced-grid">
+<div class="ij-field"><div class="ij-range-head"><label for="advancedQuality">Image quality</label><output id="advancedQualityValue" for="advancedQuality">85%</output></div><input id="advancedQuality" type="range" min="10" max="100" value="85"></div>
+<div class="ij-field"><label for="compressionMode">Compression mode</label><select id="compressionMode"><option value="best">Best quality</option><option value="balanced" selected>Balanced</option><option value="small">Smallest file</option></select></div>
+<div class="ij-field"><label for="advancedFormat">Output format</label><select id="advancedFormat"><option value="image/jpeg">JPG</option><option value="image/webp" selected>WebP</option><option value="image/png">PNG</option></select></div>
+<div class="ij-field"><label for="resizeMode">Resize dimensions</label><select id="resizeMode"><option value="original">Keep original</option><option value="pixels">Custom pixels</option><option value="percent">Percentage</option></select></div>
+<div class="ij-field" id="advancedPixels" hidden><label>Custom width × height (px)</label><div class="ij-dimension-pair"><input id="advancedWidth" type="number" min="1" max="12000" placeholder="Width"><input id="advancedHeight" type="number" min="1" max="12000" placeholder="Height"></div><label class="ij-inline-check"><input id="keepRatio" type="checkbox" checked> Keep aspect ratio</label></div>
+<div class="ij-field" id="advancedPercent" hidden><label for="resizePercent">Resize percentage</label><select id="resizePercent"><option value="25">25%</option><option value="50">50%</option><option value="75" selected>75%</option><option value="90">90%</option><option value="100">100%</option></select></div>
+<div class="ij-field"><label for="advancedDpi">Print DPI (metadata)</label><select id="advancedDpi"><option value="keep">Keep original / browser default</option><option value="72">72 DPI</option><option value="150">150 DPI</option><option value="300">300 DPI</option></select><p class="ij-advanced-help">Canvas export may not preserve or write DPI metadata. Use pixel dimensions for reliable image sizing.</p></div>
+<div class="ij-field"><label for="advancedAspect">Aspect ratio</label><select id="advancedAspect"><option value="original">Original (no crop)</option><option value="square">Square 1:1 crop</option><option value="landscape">Landscape 4:3 crop</option><option value="portrait">Portrait 3:4 crop</option></select><p class="ij-advanced-help">Aspect-ratio crop is applied only when a crop ratio is selected.</p></div>
 </div>
+</div>
+<p class="ij-advanced-help">Advanced settings give you direct control. If you also enter a target KB above, Smart Target Size takes priority for reaching that limit.</p>
 </div>
 <div class="ij-smart-note"><span>✦</span><span><strong>Smart Compress</strong> automatically tests formats, quality and image dimensions to find the best result within your target size.</span></div>
 <button id="compress" class="ij-action" type="button">⚙ Compress Image</button>
 <div id="status" role="status" aria-live="polite"></div>
 <a id="download" class="ij-download-link" hidden download="infojano-compressed.jpg"><span class="ij-download-icon" aria-hidden="true">↓</span><span id="downloadLabel">Download compressed image</span></a>
+</div>
+</section>
+<section id="ijActualResult" class="ij-result-panel" aria-live="polite" hidden>
+<div class="ij-result-head"><h2>✓ Compression Result</h2><span class="ij-example-label">YOUR IMAGE</span></div>
+<div class="ij-result-grid">
+<div class="ij-result-image"><img id="ijOriginalResult" alt="Original uploaded image"><b id="ijOriginalMeta">Original image</b></div>
+<div class="ij-result-image"><img id="ijCompressedResult" alt="Compressed image preview"><b id="ijCompressedMeta">Compressed image</b></div>
+<div class="ij-result-stats"><div class="ij-reduction" id="ijReduction">—</div><p>Size reduction</p><p>Original size: <strong id="ijOriginalSize">—</strong></p><p>Compressed: <strong id="ijCompressedSize">—</strong></p><p>Dimensions: <strong id="ijOutputDimensions">—</strong></p><div class="ij-result-actions"><a id="ijResultDownload" class="ij-action" href="#" download>↓ Download Image</a><button type="button" class="ij-secondary-action" id="ijCompressAnother">↻ Compress another</button></div></div>
 </div>
 </section>
 <section class="ij-live-example" aria-label="Illustrative compression result">
