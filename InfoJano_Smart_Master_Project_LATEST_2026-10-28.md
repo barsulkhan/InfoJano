@@ -945,3 +945,15 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - PR is Open and Draft. Initial create response showed mergeable false while GitHub was calculating; subsequent PR fetch confirmed `mergeable=true`.
 - Diff audit confirmed only `url-toolkit.html` metadata and this master file checkpoint are changed. URL Toolkit change adds four Twitter fields; no page behavior or visual layout changes.
 - No Ready-for-Review transition or merge has been performed. Wait for user's review/approval before changing PR status or merging.
+
+
+## PR #3 merged — URL Toolkit Twitter Card metadata — 2 November 2026
+
+- User delegated the decision to take the actions judged best for the InfoJano project after reviewing the PR status and successful checks.
+- Rechecked PR #3 immediately before merge: Open, Ready for Review, mergeable true; head SHA `d517bfe99c11ba98bf439b413f08939b9911d755`; base main SHA `ab46a3b513e75aa6b1be28a3b180284b0d091140`.
+- GitHub check-runs endpoint showed one completed successful check: `Workers Builds: infojano-shortlink-api`. Cloudflare Preview build/deployment had succeeded; PR showed no conflicts.
+- Squash-merged PR #3 successfully into `main`.
+- Merge commit SHA: `aaf4e850eafe8d4a2eae1684edecf70676227773`.
+- Change adds Twitter Card metadata to `url-toolkit.html`: card type, title, description and image. No tool logic, page layout, canonical URL, Open Graph tags, structured data, or service-worker assets were changed.
+- This merge publishes the source change to main; it does not by itself prove GitHub Pages deployment or direct live-page metadata response. Next: verify the latest GitHub Pages Actions run and then check the live URL on the user's Android browser if practical.
+- Do not claim SEO ranking or traffic improvements from this metadata-only change. Measure later in Search Console after recrawl.
