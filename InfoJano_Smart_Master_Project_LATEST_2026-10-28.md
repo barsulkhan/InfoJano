@@ -1429,3 +1429,14 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service-worker cache bumped from `infojano-v126` to `infojano-v127`: commit `ccb007823511d4ede5b1639456af3498de11d0ae`.
 - All three inline scripts in the updated Social QR page passed JavaScript syntax checks. Actual Android appearance, icon loading, social QR scanning, and user interactions still require user-side smoke testing.
 - Live page: https://barsulkhan.github.io/InfoJano/social-qr-maker.html
+
+
+## Social QR downloaded-card design implementation — 3 November 2026
+- User approved the second QR card visual concept (white QR field, rounded card, platform-specific gradient frame/footer, platform mark, and “Scan Me” footer) and asked to implement it on the live website.
+- Updated the actual PNG generation canvas in `social-qr-maker.html`: downloaded QR cards now use the chosen platform's colours and gradient footer, white rounded QR panel, platform mark/photo at centre, wave accents, platform name, Scan Me label, and InfoJano credit. This is applied to the generated/downloaded PNG, not just the on-page preview.
+- Platform theme palettes were updated for Instagram, Facebook, YouTube, TikTok, Telegram, WhatsApp, and custom website links. Existing social URL handling and multi-link bundle input were retained.
+- QR Code error correction remains High and a quiet zone is preserved around the code. Center mark/photo is overlaid as a decorative element; user should scan-test each generated QR before printing or sharing. No generated sample QR is claimed to be scan-tested.
+- Social QR implementation commit: `b25ee6b7a5938b40193e7b9fb3958b066079d44f`.
+- Service worker cache bumped from `infojano-v127` to `infojano-v128`: commit `929e6d5129ec71403c186f29bf4dee3fbd52c3d6`.
+- All three inline JavaScript blocks passed syntax checks. Android rendering, QR scanning and download behavior still require user-side testing.
+- Live page: https://barsulkhan.github.io/InfoJano/social-qr-maker.html
