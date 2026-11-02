@@ -618,6 +618,67 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
  #toolGrid .tool[data-name*="qr code generator"] .icon,
  #toolGrid .tool[data-name*="qr code generator"] .icon:after{animation:none!important}
 }
+
+/* Clearer, more useful lower homepage sections */
+.section-title{margin:34px 2px 14px;gap:14px}
+.section-title h2,.section-head h2{display:flex;align-items:center;gap:11px;font-size:clamp(21px,2.4vw,27px);letter-spacing:-.45px}
+.section-title>span,.section-head>span{color:#64748b;font-size:13px;font-weight:650}
+.section-mark{width:38px;height:38px;flex:0 0 38px;display:inline-grid;place-items:center;border-radius:13px;background:#eaf0ff;color:#3158d9;box-shadow:inset 0 0 0 1px #dbe5ff}
+.section-mark svg{width:21px;height:21px}
+.mark-why{background:#e8f8f2;color:#07856c}
+.mark-guides{background:#fff2df;color:#b86a0b}
+.mark-how{background:#eaf0ff;color:#3158d9}
+.info-grid{gap:16px}
+.info-grid .info{position:relative;overflow:hidden;min-height:150px;padding:22px 20px;border:1px solid #e4eaf6;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#f7f9ff 100%);box-shadow:0 8px 24px rgba(27,48,100,.06);transition:transform .2s,box-shadow .2s,border-color .2s}
+.info-grid .info:hover{transform:translateY(-4px);border-color:#cbd8ff;box-shadow:0 14px 30px rgba(27,48,100,.11)}
+.info-grid .info h3{font-size:17px;margin:13px 0 7px;color:#152344}
+.info-grid .info p{font-size:13px;line-height:1.65;color:#64718a;max-width:34em}
+.why-grid .why-card{padding-top:21px}
+.why-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#e6edff,#f1eaff);color:#4d45cf;font-size:23px;font-weight:800}
+.why-card:nth-child(2) .why-icon{background:linear-gradient(145deg,#dff8ef,#eafaff);color:#07856c}
+.why-card:nth-child(3) .why-icon{background:linear-gradient(145deg,#fff0df,#fff6eb);color:#c47718}
+.why-card .why-tag{display:inline-flex;margin-top:13px;padding:6px 10px;border-radius:999px;background:#edf2ff;color:#4557ad;font-size:11px;font-weight:750}
+.about-panel{position:relative;overflow:hidden;margin-top:22px!important;padding:clamp(22px,4vw,38px)!important;border:1px solid #dfe7fb!important;border-radius:24px!important;background:radial-gradient(circle at 95% 5%,rgba(111,91,255,.13),transparent 32%),linear-gradient(135deg,#fff 0%,#f4f7ff 100%)!important;box-shadow:0 12px 34px rgba(26,48,100,.08)!important}
+.about-topline{font-size:11px;letter-spacing:1.8px;font-weight:850;color:#5b55cf;margin-bottom:9px}
+.about-panel h2{display:flex;align-items:center;gap:10px;font-size:25px;margin:0 0 12px;color:#142348}
+.about-lead{max-width:780px;color:#52617c;font-size:16px;line-height:1.8;margin:0}
+.about-promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+.about-promise>div{padding:16px;border:1px solid #e0e7f5;border-radius:15px;background:#ffffffc9}
+.about-promise b,.about-promise span{display:block}
+.about-promise b{font-size:15px;color:#243e92;margin-bottom:5px}
+.about-promise span{font-size:12px;line-height:1.5;color:#66738b}
+.about-footnote{margin:18px 0 0!important;padding-top:14px;border-top:1px solid #e2e8f4;color:#78849a;font-size:12px}
+.guides{margin-top:34px}
+.guides-grid{gap:15px}
+.guide-card{position:relative;overflow:hidden;padding:21px;border:1px solid #e3e9f5;border-radius:19px;background:linear-gradient(145deg,#fff 0%,#f8faff 100%);box-shadow:0 7px 22px rgba(25,48,100,.055);transition:transform .2s,box-shadow .2s,border-color .2s}
+.guide-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#4c65e8,#8b5cf6)}
+.guide-card:hover{transform:translateY(-3px);border-color:#cbd7fb;box-shadow:0 13px 28px rgba(25,48,100,.1)}
+.guide-card h3{font-size:16px;line-height:1.4;color:#1b2b50;margin:0 0 8px}
+.guide-card p{font-size:13px;line-height:1.65;color:#64718a}
+.guide-card details{margin-top:14px;padding-top:11px;border-top:1px solid #e8edf6}
+.guide-card summary{display:inline-flex;align-items:center;gap:7px;color:#4056c5;font-size:13px;font-weight:800;cursor:pointer;list-style:none}
+.guide-card summary::-webkit-details-marker{display:none}
+.guide-card summary:after{content:"＋";font-size:16px}
+.guide-card details[open] summary:after{content:"−"}
+.guide-card details>p{margin:10px 0 0;padding:11px 12px;border-radius:11px;background:#f0f4ff;color:#4d5d79}
+@media(max-width:700px){
+ .section-title{margin:27px 2px 12px;align-items:center}
+ .section-title h2,.section-head h2{font-size:21px}
+ .section-mark{width:34px;height:34px;flex-basis:34px;border-radius:11px}
+ .info-grid{gap:11px}
+ .info-grid .info{min-height:0;padding:17px;border-radius:17px}
+ .info-grid .info h3{font-size:16px;margin-top:10px}
+ .why-icon{width:38px;height:38px}
+ .about-panel{padding:21px!important;border-radius:19px!important}
+ .about-panel h2{font-size:22px}
+ .about-lead{font-size:14px;line-height:1.7}
+ .about-promise{grid-template-columns:1fr;gap:8px;margin-top:16px}
+ .about-promise>div{padding:12px 14px}
+ .guides{margin-top:27px}
+ .guides-grid{gap:11px}
+ .guide-card{padding:17px;border-radius:17px}
+}
+@media(prefers-reduced-motion:reduce){.info-grid .info,.guide-card{transition:none!important}}
 </style>
 
 </head>
@@ -693,17 +754,19 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
   </div>
 
   <div class="section-title"><h2><span class="section-mark mark-how" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5V21M8 7h8M8 11h8M8 15h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1. Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2. Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3. Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 6v5.5c0 4.6-3.1 7.8-8 9.5-4.9-1.7-8-4.9-8-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Why InfoJano?</h2></div>
-  <div class="info-grid">
-    <div class="card info"><h3>Very Easy</h3><p>Big buttons, clear icons and simple steps.</p></div>
-    <div class="card info"><h3>Mobile First</h3><p>Designed to work comfortably on phones.</p></div>
-    <div class="card info"><h3>Privacy Minded</h3><p>Tools are designed to collect as little personal data as possible.</p></div>
+  <div class="info-grid why-grid">
+    <div class="card info why-card"><span class="why-icon" aria-hidden="true">✦</span><h3>Easy to Use</h3><p>Clear labels, helpful icons and simple steps make everyday tasks easier.</p><span class="why-tag">Simple experience</span></div>
+    <div class="card info why-card"><span class="why-icon" aria-hidden="true">▣</span><h3>Works on Any Screen</h3><p>Use InfoJano comfortably on your mobile, tablet or desktop computer.</p><span class="why-tag">Mobile + Desktop</span></div>
+    <div class="card info why-card"><span class="why-icon" aria-hidden="true">♡</span><h3>Privacy Minded</h3><p>Our tools are designed to ask for as little personal information as practical.</p><span class="why-tag">Privacy conscious</span></div>
   </div>
 </section>
 
-<section id="about" class="card panel hide" style="margin-top:16px">
+<section id="about" class="card panel about-panel hide">
+  <div class="about-topline">ABOUT THE PLATFORM</div>
   <h2><span class="section-mark mark-about" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 9.5a4 4 0 0 1 8 0c0 2.5-4 2.5-4 5M12 18h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span> About InfoJano</h2>
-  <p>InfoJano is a global everyday utility platform designed around one simple idea: <b>see it, tap it, get it done.</b></p>
-  <p class="note">More useful tools, guides and information will be added over time.</p>
+  <p class="about-lead">Everyday tasks should be simple. InfoJano brings useful online tools, calculators, converters and practical guides together in one easy place.</p>
+  <div class="about-promise"><div><b>See it</b><span>Find the tool you need.</span></div><div><b>Tap it</b><span>Open it and enter your details.</span></div><div><b>Get it done</b><span>Finish your task without confusion.</span></div></div>
+  <p class="about-footnote">Built for people around the world, with a clean experience on phones and computers.</p>
 </section>
 
 <nav class="bottom-nav"><button onclick="goHome()">Home</button><button onclick="$('search').focus();window.scrollTo({top:0,behavior:'smooth'})">Search</button><button onclick="$('toolGrid').scrollIntoView({behavior:'smooth'})">Tools</button><button onclick="showSection('about')">About</button></nav>
