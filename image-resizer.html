@@ -60,6 +60,24 @@ main{max-width:1200px;margin:22px auto 40px;padding:0 16px}.hero{display:flex;al
 }
 @media(max-width:380px){.field-row{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);gap:5px}.lock-icon{font-size:18px}.preview-head h3{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.spin-icon{animation:none}}
+
+/* Final mobile readability and visibility overrides */
+.hero{background:linear-gradient(110deg,#08275d 0%,#075bd7 68%,#6429e8 100%)!important;color:#fff!important;min-height:150px!important;padding:24px!important}
+.hero h1,.hero p,.hero .benefits,.hero .benefits span{color:#fff!important;opacity:1!important}
+.hero p{font-size:16px!important;margin:9px 0 14px!important}
+.hero-icon{background:linear-gradient(135deg,#12c8ef,#6335ed)!important;color:#fff!important}
+.download-btn[hidden],.download-state[hidden]{display:none!important}
+#clearBtn:disabled{opacity:.45;cursor:not-allowed}
+.preview-head{display:flex!important;align-items:center!important;justify-content:space-between!important}
+.preview-head h3{flex:1!important}
+@media(max-width:900px){
+ .preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ .preset{min-height:100px!important;padding:12px 8px!important}
+ .preset strong{font-size:14px!important;color:#10234b!important}
+ .preset small{font-size:12px!important;color:#40577e!important}
+ .picon{font-size:27px!important}
+}
+@media(min-width:901px) and (max-width:1100px){.preset-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 </style></head><body>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
 <main>
@@ -111,7 +129,7 @@ function loadFile(file){
  if(!['image/jpeg','image/png','image/webp'].includes(file.type)){say('Please choose a JPG, PNG or WebP image.');return}
  if(file.size>10*1024*1024){say('This image is larger than 10 MB. Please choose a smaller image.');return}
  const url=URL.createObjectURL(file),img=new Image();
- img.onload=()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=url;sourceImage=img;originalWidth=img.naturalWidth;originalHeight=img.naturalHeight;preview.src=url;preview.hidden=false;empty.hidden=true;$('originalMeta').textContent='Original: '+originalWidth+' × '+originalHeight+' px';$('fileMeta').textContent='File size: '+(file.size/1024).toFixed(1)+' KB';width.value=originalWidth;height.value=originalHeight;resizeBtn.disabled=false;clearResult();say('Image ready. Choose a size and tap Resize Image.')};
+ img.onload=()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=url;sourceImage=img;originalWidth=img.naturalWidth;originalHeight=img.naturalHeight;preview.src=url;preview.hidden=false;empty.hidden=true;$('originalMeta').textContent='Original: '+originalWidth+' × '+originalHeight+' px';$('fileMeta').textContent='File size: '+(file.size/1024).toFixed(1)+' KB';width.value=originalWidth;height.value=originalHeight;resizeBtn.disabled=false;clearBtn.disabled=false;clearResult();say('Image ready. Choose a size and tap Resize Image.')};
  img.onerror=()=>{URL.revokeObjectURL(url);say('Could not open this image. Please try another file.')};img.src=url;
 }
 fileInput.addEventListener('change',()=>loadFile(fileInput.files&&fileInput.files[0]));
@@ -125,7 +143,7 @@ quality.addEventListener('input',()=> $('qualityValue').textContent=quality.valu
 document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>{let a=t===tab;t.classList.toggle('active',a);t.setAttribute('aria-selected',String(a))});['custom','preset','percent'].forEach(m=>$(m+'Panel').hidden=m!==tab.dataset.mode)}));
 document.querySelectorAll('.preset').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.custom){document.querySelector('[data-mode="custom"]').click();width.focus();say('Enter your own width and height.');return}width.value=btn.dataset.w;height.value=btn.dataset.h;document.querySelector('[data-mode="preset"]').click();ratio.checked=false;clearResult();say(btn.querySelector('strong').textContent+' selected: '+btn.dataset.w+' × '+btn.dataset.h+' pixels.')}));
 $('percent').addEventListener('input',()=>{if(!sourceImage)return;let p=Number($('percent').value);if(p>0&&p<=500){width.value=Math.max(1,Math.round(originalWidth*p/100));height.value=Math.max(1,Math.round(originalHeight*p/100));clearResult()}});
-$('clearBtn').addEventListener('click',()=>{sourceImage=null;fileInput.value='';preview.removeAttribute('src');preview.hidden=true;empty.hidden=false;$('originalMeta').textContent='Original: —';$('fileMeta').textContent='File size: —';resizeBtn.disabled=true;clearResult();say('Image cleared. Choose another image to begin.')});
+const clearBtn=$('clearBtn');clearBtn.disabled=true;$('clearBtn').addEventListener('click',()=>{sourceImage=null;fileInput.value='';preview.removeAttribute('src');preview.hidden=true;empty.hidden=false;$('originalMeta').textContent='Original: —';$('fileMeta').textContent='File size: —';resizeBtn.disabled=true;clearBtn.disabled=true;clearResult();say('Image cleared. Choose another image to begin.')});
 resizeBtn.addEventListener('click',()=>{
  if(!sourceImage){say('Please choose an image first.');return}
  const w=Number(width.value),h=Number(height.value);
