@@ -17,3 +17,7 @@ migrations_dir = "migrations"
 
 # Set ADMIN_API_TOKEN as a Worker secret, never in this file:
 # npx wrangler secret put ADMIN_API_TOKEN
+
+[[previews.d1_databases]]
+binding = "DB"
+database_id = "228c4591-207c-4064-bd25-b6045c1d1b27"

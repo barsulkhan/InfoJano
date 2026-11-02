@@ -856,3 +856,40 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Do not request or expose ADMIN_API_TOKEN. Do not perform authenticated create tests yet.
 - Next step: do not change Worker code or send another POST yet. First decide and explicitly approve a real short-link hostname/base URL; no custom domain, DNS change, paid upgrade, or public launch is approved. Never use https://short.example.invalid.
 - After hostname approval, review the URL validation, rate limiting, abuse protections and DNS-rebinding/private-network protections before any authenticated test.
+
+
+## Google Search Console SEO improvement checkpoint — 2 November 2026
+
+- User supplied Search Console screenshots for the last 3 months. Overview showed 8 clicks, 127 impressions, 6.3% CTR, average position 28.4. Query report showed percentage-related queries, date difference queries and loan interest queries. Top Pages screenshot (first 10 rows) showed ID Card Print Studio 6 clicks/8 impressions, homepage 2/6, GST Calculator 1/1, Age Calculator 1/1, Percentage Calculator 0/46, Discount Calculator 0/42, Date Difference 0/8, Loan Interest 0/6, Time Calculator 0/3, Loan Eligibility 0/3. Note the displayed rows' clicks sum to 10, which differs from the overview 8; report filters/date aggregation should be rechecked before treating these as perfectly reconciled.
+- Created branch `seo/gsc-impression-page-improvements` from main.
+- Updated only title, meta description, Open Graph title/description, and Twitter title/description on `percentage.html`, `discount.html`, and `date-difference.html`. No calculator logic, page layout, canonical URLs, structured data, internal links, PWA manifest, or service-worker assets were changed.
+- Created Draft PR #2: https://github.com/barsulkhan/InfoJano/pull/2
+- PR head commit: `334b735b5144c0dcd68dcea2779f2f8b6cdf8294`; base main at `9f77883354b2825736a39e80b5767c0338bd5c46`.
+- This is metadata/snippet optimization, not a guarantee of higher ranking or clicks. Review and merge only after preview/diff validation. No merge or deployment has been performed.
+
+
+## PR #2 final review and Cloudflare Preview smoke tests — 2 November 2026
+
+- User confirmed Cloudflare Preview health endpoint response:
+  `{"ok":true,"service":"InfoJano Short Link API","mode":"staging-scaffold"}`.
+- User tested the Preview Worker unknown short-code path `/TEST1234`; response was: `This short link is unavailable or has expired.`. This is consistent with the D1-backed lookup returning no matching code. No data was created or modified.
+- Preview deployment for PR #2 head commit `1f5376444f22f05fdb6e6e0d5eecf0b4879cd43d` succeeded. Cloudflare deployment ID: `3db7b439-4481-4081-bd81-985858c11c5a`. Preview URL: `https://3db7b439-infojano-shortlink-api.barik8420.workers.dev`.
+- PR #2: https://github.com/barsulkhan/InfoJano/pull/2 remains Open and Draft, mergeable true, not merged. Base `main`; head `seo/gsc-impression-page-improvements`; latest head SHA `1f5376444f22f05fdb6e6e0d5eecf0b4879cd43d`.
+- Final diff review: six changed files, 36 additions and 18 deletions. Scope is three HTML SEO metadata updates (`percentage.html`, `discount.html`, `date-difference.html`), two Wrangler config Preview D1 binding additions, and this master-file checkpoint. No calculator logic, page layout, canonical URLs, structured data, PWA manifest, or service-worker assets changed in this PR.
+- The Wrangler Preview D1 binding uses database UUID `228c4591-207c-4064-bd25-b6045c1d1b27` and binding name `DB`, matching the configured D1 database.
+- Safety/launch status: no authenticated link creation, link write, production merge, custom domain, DNS change, paid upgrade, or public launch was performed or approved. Short Link Worker remains staging scaffold.
+- Review conclusion: the visible diff matches the stated scope and the two user-run Preview smoke tests passed. This does not prove SEO performance, authenticated create/redirect/analytics flows, or production readiness. PR remains Draft pending user decision; do not mark Ready or merge without explicit user approval.
+- Next action: wait for user decision on whether to mark PR Ready for review and subsequently merge. If approved, confirm PR head SHA and checks again immediately before the action; merging will publish the SEO page changes through the GitHub Pages workflow.
+
+
+## Latest PR #2 Preview verification — 2 November 2026
+
+- User tested the latest Cloudflare Preview deployment for PR #2 head commit `a7929f346e5c7c5815fae13b10a2aa5823cc8e2d` (`a7929f3`).
+- Preview deployment ID: `96642eb9-5391-4f4f-a8d3-f17b9ebc62a1`.
+- Preview deployment URL: `https://96642eb9-infojano-shortlink-api.barik8420.workers.dev`.
+- User confirmed `/health` returned exactly: `{"ok":true,"service":"InfoJano Short Link API","mode":"staging-scaffold"}`.
+- User confirmed `/TEST1234` returned exactly: `This short link is unavailable or has expired.`.
+- Result: latest Preview health route and basic D1-backed unknown-code lookup path passed user-side smoke tests. No link was created and no database write was performed.
+- These checks do NOT verify authenticated link creation, successful 302 redirect, click analytics/stats, disable action, or production readiness.
+- PR #2 remains Open and Draft, not merged. Do not mark Ready or merge without explicit user approval. No production deployment, custom domain, DNS change, paid upgrade, or public launch was approved.
+- Next step: wait for the user's explicit decision on whether to mark PR #2 Ready for review. Before any later merge, recheck PR head SHA and required checks and obtain explicit approval.
