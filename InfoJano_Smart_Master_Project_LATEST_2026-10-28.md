@@ -1326,3 +1326,11 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Inline JavaScript syntax validation passed (7 non-JSON-LD scripts).
 - Page commit: `5b03373c89011f373e4188eb82ff619a99d98308`; service worker cache bumped to `infojano-v120`, commit: `385ce62841cbd07cc36799acf133a123394224d6`.
 - User should test original price 1000 with 20% discount (expected discount 200, sale price 800) and also the reverse calculation mode. Android motion smoothness is pending device verification.
+
+
+## Discount Calculator marked design-final — 2026-11-03
+- User approved the animation trial and asked to finalize the Discount Calculator page.
+- Final design state is the premium responsive redesign plus lightweight CSS motion layer; no additional changes to calculation logic.
+- Current page commit: `5b03373c89011f373e4188eb82ff619a99d98308`; current cache key: `infojano-v120`.
+- The three tool pages worked on in this design/fix pass are: Image Resizer, Image to PDF Converter, and Discount Calculator.
+- Important validation boundary: source and inline JavaScript syntax checks passed, but real Android PDF processing/download and both Discount Calculator calculation modes have not been independently exercised in a browser by the assistant. User-side smoke test remains recommended before treating all functions as production-verified.
