@@ -111,6 +111,16 @@ body{padding:0;background:#f5f8ff;color:#172033;font-family:system-ui,-apple-sys
 @media(min-width:760px){.ij-compressor-card{display:block}.ij-controls{column-gap:18px}}
 
 
+
+.ij-download-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;transition:background .2s ease,color .2s ease}
+.ij-download-icon{display:inline-grid;place-items:center;width:21px;height:21px;font-size:20px;font-weight:900;line-height:1}
+.ij-download-link.ij-downloading{background:#edf3ff;color:#2056c7;pointer-events:none}
+.ij-download-link.ij-downloading .ij-download-icon{width:17px;height:17px;border:2.5px solid #b8cdf8;border-top-color:#155eef;border-radius:50%;font-size:0;animation:ijDownloadSpin .75s linear infinite}
+.ij-download-link.ij-downloaded{background:#e8f8ef;color:#087b3d}
+.ij-download-link.ij-downloaded .ij-download-icon{width:21px;height:21px;border:0;border-radius:50%;background:#12a45a;color:#fff;font-size:14px}
+@keyframes ijDownloadSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.ij-download-link.ij-downloading .ij-download-icon{animation:none;border-top-color:#155eef}}
+
 /* InfoJano premium visual system — Image Compressor */
 body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55}
 .ij-site-brand{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92)!important;color:#101a35!important;border-bottom:1px solid #e5eaf5;backdrop-filter:blur(16px);box-shadow:0 4px 24px rgba(27,48,90,.05)!important}
@@ -307,7 +317,7 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 <div class="ij-smart-note"><span>✦</span><span><strong>Smart Compress</strong> automatically tests formats, quality and image dimensions to find the best result within your target size.</span></div>
 <button id="compress" class="ij-action" type="button">⚙ Compress Image</button>
 <div id="status" role="status" aria-live="polite"></div>
-<a id="download" hidden download="infojano-compressed.jpg">Download compressed image</a>
+<a id="download" class="ij-download-link" hidden download="infojano-compressed.jpg"><span class="ij-download-icon" aria-hidden="true">↓</span><span id="downloadLabel">Download compressed image</span></a>
 </div>
 </section>
 <section class="ij-live-example" aria-label="Illustrative compression result">
@@ -429,26 +439,55 @@ async function encodeAtSize(w,h,mime,q){
  ctx.drawImage(image,0,0,w,h);
  return await canvasBlob(canvas,mime,q);
 }
-downloadLink.addEventListener('click',async(event)=>{
- if(!window.AndroidBridge||typeof window.AndroidBridge.saveFile!=='function')return;
- event.preventDefault();
- statusBox.textContent='Saving compressed image to your phone…';
- try{
-  const response=await fetch(downloadLink.href);
-  if(!response.ok)throw new Error('Could not prepare the image file.');
-  const blob=await response.blob();
-  const reader=new FileReader();
-  const dataUrl=await new Promise((resolve,reject)=>{
-   reader.onload=()=>resolve(reader.result);
-   reader.onerror=()=>reject(new Error('Could not read the compressed image.'));
-   reader.readAsDataURL(blob);
-  });
-  const base64=String(dataUrl).split(',')[1];
-  const ok=window.AndroidBridge.saveFile(base64,downloadLink.download,blob.type||'application/octet-stream');
-  statusBox.textContent=ok?'Image saved to your phone’s Downloads folder.':'Could not save the image. Please try again.';
- }catch(error){
-  statusBox.textContent='Download failed: '+(error&&error.message?error.message:'Please try again.');
+function setDownloadState(state,message){
+ downloadLink.classList.remove('ij-downloading','ij-downloaded');
+ const icon=downloadLink.querySelector('.ij-download-icon');
+ const label=document.getElementById('downloadLabel');
+ if(state==='downloading'){
+  downloadLink.classList.add('ij-downloading');
+  icon.textContent='';
+  label.textContent='Preparing download…';
+ }else if(state==='done'){
+  downloadLink.classList.add('ij-downloaded');
+  icon.textContent='✓';
+  label.textContent=message||'Download started';
+ }else if(state==='error'){
+  icon.textContent='↓';
+  label.textContent=message||'Try download again';
  }
+}
+downloadLink.addEventListener('click',async(event)=>{
+ if(downloadLink.classList.contains('ij-downloading')){event.preventDefault();return;}
+ if(window.AndroidBridge&&typeof window.AndroidBridge.saveFile==='function'){
+  event.preventDefault();
+  setDownloadState('downloading');
+  statusBox.textContent='Saving compressed image to your phone…';
+  try{
+   const response=await fetch(downloadLink.href);
+   if(!response.ok)throw new Error('Could not prepare the image file.');
+   const blob=await response.blob();
+   const reader=new FileReader();
+   const dataUrl=await new Promise((resolve,reject)=>{
+    reader.onload=()=>resolve(reader.result);
+    reader.onerror=()=>reject(new Error('Could not read the compressed image.'));
+    reader.readAsDataURL(blob);
+   });
+   const base64=String(dataUrl).split(',')[1];
+   const ok=window.AndroidBridge.saveFile(base64,downloadLink.download,blob.type||'application/octet-stream');
+   if(ok){setDownloadState('done','Saved to Downloads');statusBox.textContent='Image saved to your phone’s Downloads folder.';}
+   else{setDownloadState('error','Try download again');statusBox.textContent='Could not save the image. Please try again.';}
+  }catch(error){
+   setDownloadState('error','Try download again');
+   statusBox.textContent='Download failed: '+(error&&error.message?error.message:'Please try again.');
+  }
+  return;
+ }
+ setDownloadState('downloading');
+ statusBox.textContent='Your browser is starting the download…';
+ window.setTimeout(()=>{
+  setDownloadState('done','Download started');
+  statusBox.textContent='Download started. Check your browser’s Downloads.';
+ },1200);
 });
 
 const targetPreset=document.getElementById('targetPreset');
@@ -558,7 +597,9 @@ compressButton.addEventListener('click',async()=>{
   lastOutputUrl=outUrl;
   downloadLink.href=outUrl;
   downloadLink.download=`${originalName}-compressed.${ext}`;
-  downloadLink.textContent=`Download compressed image (${(result.blob.size/1024).toFixed(1)} KB)`;
+  document.getElementById('downloadLabel').textContent=`Download compressed image (${(result.blob.size/1024).toFixed(1)} KB)`;
+  downloadLink.classList.remove('ij-downloading','ij-downloaded');
+  downloadLink.querySelector('.ij-download-icon').textContent='↓';
   downloadLink.hidden=false;
   let message=`Final size: ${(result.blob.size/1024).toFixed(1)} KB | Dimensions: ${result.w} × ${result.h} px | Format: ${ext.toUpperCase()}`;
   if(targetBytes)message+=result.blob.size<=targetBytes?' | Target reached':' | Target not reached';
