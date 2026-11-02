@@ -35,7 +35,7 @@ function isAuthorized(request, env) {
   return auth === "Bearer " + expected;
 }
 function ipv4Parts(host) {
-  if (!/^\\d{1,3}(\\.\\d{1,3}){3}$/.test(host)) return null;
+  if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) return null;
   const parts = host.split(".").map(Number);
   return parts.every(n => n >= 0 && n <= 255) ? parts : [];
 }
@@ -53,14 +53,14 @@ const NON_PUBLIC_IPV4 = [
   ["224.0.0.0",4],["240.0.0.0",4],
 ];
 function isPrivateDestination(url) {
-  const host = url.hostname.toLowerCase().replace(/^\\[|\\]$/g, "").replace(/\\.$/, "");
+  const host = url.hostname.toLowerCase().replace(/^\[|\]$/g, "").replace(/\.$/, "");
   if (host === "localhost" || host.endsWith(".localhost") || host.endsWith(".local") || host.endsWith(".internal")) return true;
   const ip = ipv4Parts(host);
   if (ip) return ip.length !== 4 || NON_PUBLIC_IPV4.some(([network, prefix]) => ipv4InCidr(ip, network, prefix));
   if (host.includes(":")) {
     // Only globally routable IPv6 unicast (2000::/3) is considered here.
     // Conservatively reject mapped, translation, 6to4, Teredo, documentation and local ranges.
-    const h = host.replace(/^\\[|\\]$/g, "");
+    const h = host.replace(/^\[|\]$/g, "");
     if (!/^[0-9a-f:]+$/.test(h)) return true;
     const first = parseInt(h.split(":")[0] || "0", 16);
     return (first & 0xe000) !== 0x2000 ||
