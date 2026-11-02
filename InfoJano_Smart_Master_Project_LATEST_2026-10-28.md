@@ -1075,3 +1075,15 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Source verification: expected controls and Smart Target Size IDs exist; FAQPage structured data remains present; drop handler exists.
 - Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
 - Visual browser/device QA remains to be performed after Pages publishes; source updates are confirmed in GitHub, but do not claim independent rendered-page verification.
+
+
+## Download progress feedback checkpoint — Image Compressor (2026-11-02)
+
+- User requested a rotating download icon while the download is being prepared, then a stop/check state.
+- Added an animated spinner state to the download link, a success check state, and an error/retry state.
+- For AndroidBridge.saveFile environments, spinner remains active through the save operation and stops when the bridge reports success/failure.
+- For normal browser downloads, the page cannot reliably observe the final file-write completion event. The spinner therefore shows during download initiation and then changes to “Download started”; browser Downloads remains the source of truth for completion.
+- Download label now preserves the actual output size while supporting spinner/status states.
+- Page commit: `dbf575c0ccee3827c197444a4fb1630ed64e2737`; verified source SHA: `0cb31b75f9948814c974ec5b41c0d866a614554c`.
+- Service worker cache bumped from `infojano-v99` to `infojano-v100`; commit: `36e56a5ec091aa9854b8788b24aef9ee33c2355f`.
+- Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
