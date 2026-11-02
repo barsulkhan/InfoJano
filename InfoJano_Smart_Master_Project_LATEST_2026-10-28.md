@@ -1166,3 +1166,15 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 
 ### QR Maker validation clarification — 2026-11-02
 - Follow-up syntax parsing found the final inline script in `qr-maker.html` is still incomplete (unexpected end of input). The source file had already ended mid-handler before the shared header rollout; closing HTML tags were restored so the shared header include can load, but the QR Maker helper script itself is NOT yet syntax-valid. Do not mark QR Maker as QA-passed; repair its social QR helper in a separate focused task.
+
+
+### Selected brand identity rollout — 2026-11-02
+- User selected concept 8 from the ten-logo concept sheet as the final InfoJano logo direction.
+- Added vector logo assets at repository root: `infojano-mark.svg` (compact brand/app mark) and `infojano-logo.svg` (full wordmark with tagline).
+- Updated shared `site-header.js` to use the selected concept-8 mark; this applies across all tool pages that load the shared header.
+- Updated homepage `index.html` brand mark and favicon to use `infojano-mark.svg`.
+- Updated main `manifest.json` to include the SVG mark as a PWA icon while retaining existing PNG fallback icons.
+- Updated `sw.js` precache list for both SVG assets and bumped cache to `infojano-v107`.
+- Key commits: logo mark `be4fe2103b82ccf9f1d666b2d9340d8bf83f46e0`; full logo `c39f0e7eede85de0c709e941ade7c4d6f3b76617`; shared header `fa599ac499a661f4a8d74161a756eaf2103746ed`; homepage `7a06c02c7889323bfd5ddc1d6761e819c8ee2a2f`; service worker `db957b6a3139246cb7dd96cc6b9ea740f8cbcc82`; manifest `4f52b649ce8439dede1bb6c3998f4362879eb400`; favicon `80d4eadad74d815c889002913f0ea0bbe1f23503`.
+- Deployment is committed to GitHub Pages but actual visual rendering on the user's phone has not yet been confirmed. After deployment, refresh the website; if an installed PWA shows the old icon, remove/reinstall the shortcut after the service worker update.
+- Existing QR Maker syntax issue remains a separate unresolved QA item; do not conflate it with the logo rollout.
