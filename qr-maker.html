@@ -69,6 +69,24 @@ main{max-width:1180px!important;margin:0 auto!important;padding:16px 12px 48px!i
 
 
 .ij-qr-output-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-top:9px}.ij-qr-output-actions button{margin:0;padding:11px 8px;border:1px solid #b8cbed;border-radius:11px;background:#f8fbff;color:#1458d4;font-size:13px;font-weight:800;box-shadow:none}.ij-qr-output-actions button:hover{background:#eaf2ff}
+
+/* Correct the shared theme's generic section reset and match the approved reference banner. */
+main section.ij-qr-hero{display:grid!important;grid-template-columns:54% 46%!important;align-items:center!important;position:relative!important;isolation:isolate!important;min-height:250px!important;padding:26px 34px!important;margin:12px 0 20px!important;border:0!important;border-radius:26px!important;overflow:hidden!important;background:linear-gradient(112deg,#090d83 0%,#1927d5 48%,#2510a6 100%)!important;box-shadow:0 14px 34px rgba(25,31,170,.28)!important;color:#fff!important}
+main section.ij-qr-hero:before{content:""!important;position:absolute!important;inset:-10%!important;z-index:0!important;background:radial-gradient(ellipse at 76% 46%,rgba(0,239,255,.48),transparent 34%),radial-gradient(ellipse at 45% 100%,rgba(255,40,220,.28),transparent 45%),linear-gradient(110deg,transparent 28%,rgba(255,255,255,.15) 48%,transparent 62%)!important;animation:qrBgDrift 5s ease-in-out infinite!important}
+main section.ij-qr-hero:after{content:""!important;position:absolute!important;left:-12%!important;right:-12%!important;bottom:24px!important;height:5px!important;z-index:1!important;background:linear-gradient(90deg,transparent,#ff36e8,#37f7ff,#fff,#ff36e8,transparent)!important;filter:blur(2px)!important;box-shadow:0 0 18px #42eaff!important;animation:qrLightSweep 3.6s linear infinite!important}
+main .ij-qr-hero .ij-qr-hero-copy{position:relative!important;z-index:4!important;display:block!important;max-width:100%!important}
+main .ij-qr-hero .ij-qr-kicker{display:block!important;color:#c8f7ff!important;font-size:11px!important;letter-spacing:2px!important;font-weight:900!important}
+main .ij-qr-hero h1{display:block!important;color:#fff!important;font-size:clamp(34px,5vw,58px)!important;line-height:1.04!important;letter-spacing:-1.8px!important;font-weight:950!important;margin:10px 0 13px!important;text-shadow:0 2px 14px rgba(0,0,0,.22)!important}
+main .ij-qr-hero h1 em{color:#ffdf27!important;font-style:normal!important}
+main .ij-qr-hero p{display:block!important;color:#f5fbff!important;font-size:clamp(14px,1.7vw,19px)!important;line-height:1.45!important;font-weight:650!important;text-shadow:0 1px 8px #00135b88!important}
+main .ij-qr-hero .ij-qr-chips span{color:#fff!important}
+main .ij-qr-hero .ij-qr-hero-art{display:block!important;position:relative!important;z-index:3!important;min-height:190px!important;width:100%!important}
+main .ij-qr-hero .ij-qr-tile{display:block!important}
+main .ij-qr-hero .ij-qr-scanline{z-index:5!important}
+main .ij-qr-brand{display:none!important}
+.ij-install-card,#ij-install-card{display:none!important;visibility:hidden!important;height:0!important;margin:0!important;padding:0!important}
+@media(max-width:760px){main section.ij-qr-hero{grid-template-columns:54% 46%!important;min-height:220px!important;padding:20px 17px!important}}
+@media(max-width:480px){main section.ij-qr-hero{grid-template-columns:54% 46%!important;min-height:190px!important;padding:17px 13px!important;border-radius:20px!important}.ij-qr-hero h1{font-size:clamp(26px,7vw,36px)!important}.ij-qr-hero p{font-size:11px!important}.ij-qr-hero-art{min-height:145px!important}}
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -126,7 +144,6 @@ main{max-width:1180px!important;margin:0 auto!important;padding:16px 12px 48px!i
 <body>
 
 <main>
-<div class="ij-qr-brand"><a href="index.html"><span class="ij-qr-logo">ij</span><span><b>InfoJano</b><small>Smart Tools for Everyday Life</small></span></a><nav><a href="index.html#tools">▦ All Tools</a><a href="index.html">⌂ Home</a></nav></div>
 <div class="ij-qr-breadcrumb"><a href="index.html">⌂ Home</a> › Image Tools › QR Code Maker</div>
 <section class="ij-qr-hero" aria-label="QR Code Maker banner">
 <div class="ij-qr-hero-copy"><span class="ij-qr-kicker">SMART QR GENERATOR</span><h1>QR Code <em>Maker</em></h1><p>Create a free QR code for links, text, WiFi, contact and more in seconds.</p><div class="ij-qr-chips"><span>⚡ Fast</span><span>✓ Free</span><span>▣ Easy to scan</span></div></div>
