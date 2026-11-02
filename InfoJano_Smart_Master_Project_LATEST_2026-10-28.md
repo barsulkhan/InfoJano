@@ -893,3 +893,16 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - These checks do NOT verify authenticated link creation, successful 302 redirect, click analytics/stats, disable action, or production readiness.
 - PR #2 remains Open and Draft, not merged. Do not mark Ready or merge without explicit user approval. No production deployment, custom domain, DNS change, paid upgrade, or public launch was approved.
 - Next step: wait for the user's explicit decision on whether to mark PR #2 Ready for review. Before any later merge, recheck PR head SHA and required checks and obtain explicit approval.
+
+
+## PR #2 merged — SEO metadata updates published to main — 2 November 2026
+
+- User explicitly approved merging PR #2 after reviewing the Ready for Review state.
+- PR #2, `SEO: improve snippets for high-impression calculator pages`, was successfully squash-merged into `main`.
+- Merge commit SHA: `65491d856c5f2d0b0f0643ccb9e737e663d98243`.
+- PR status: merged; merge operation returned `merged: true`.
+- Six files changed: SEO metadata in `percentage.html`, `discount.html`, and `date-difference.html`; Preview D1 binding in both Wrangler config files; and this master project checkpoint.
+- SEO metadata changes are now in the repository's `main` branch. This does not yet prove GitHub Pages deployment is complete or that Google has recrawled the pages.
+- Cloudflare Preview smoke tests for the PR head passed before merge: `/health` returned the staging-scaffold JSON and `/TEST1234` returned the expected unavailable/expired response. These tests are not proof of authenticated short-link creation, redirect, analytics, or production readiness.
+- No authenticated link creation, custom domain, DNS change, paid upgrade, or public launch was performed or approved.
+- Next: inspect the GitHub Pages deployment workflow for the merge commit `65491d8`; only after a successful deployment, verify the three live page metadata values. Do not claim SEO performance improvement until Search Console data later supports it.
