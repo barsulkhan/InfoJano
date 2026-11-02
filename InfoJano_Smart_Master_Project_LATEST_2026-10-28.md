@@ -1344,3 +1344,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Service-worker cache bumped from `infojano-v120` to `infojano-v121`: commit `27b2640bbd428a30fc2bf46b5fb8f15b7c0e8805`.
 - Source edits committed to `main`. Live GitHub Pages deployment and Android visual testing are not yet confirmed. After deployment, reopen the page or refresh to load the new cache.
 - Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+
+## Image Compressor animated hero update — 3 November 2026
+- User approved a more lively hero inspired by the Discount Calculator animation style: a smiling guide character pointing toward the content, animated neon light sweeps, and glowing/flash highlights on the landscape preview images.
+- Updated `image-compressor.html`: added a friendly smiling guide illustration in the hero, gentle floating motion, animated sparkle, moving neon light trails, and a third landscape preview thumbnail with a glowing sweep. The existing upload, compression, and result logic was not changed.
+- Improved visibility of the Smart Compress information callout with stronger text contrast and a clearer pale gradient surface.
+- First hero animation commit: `0a203e4db27b1dfdd8ef9f95a775000439126c9d`.
+- Added third photo preview commit: `9fdee839dde395c4db2e1ef7cbcc9c60028dddab`.
+- Service-worker cache bumped from `infojano-v121` to `infojano-v122`: commit `7c886ac44950f3ecfac9474c933629eb90253ad5`.
+- Source edits committed to `main`; actual Android rendering and deployed live appearance still require user verification. Animations respect `prefers-reduced-motion`.
+- Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
