@@ -1291,3 +1291,11 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `466f5c9c5dba533a0f049eff768e642c9dfeb2f5`; shared loader commit: `410b00784670ceb1f4a371d913cf0b0e9bdc4795`.
 - Service worker cache bumped to `infojano-v116`; commit: `52cc78a5f22b81fcb65cddee80f052d5bcf3d7a7`.
 - Requires a live Android refresh after deployment to confirm the old cached panel disappears.
+
+
+## Related Tools app logos restored — 2026-11-02
+- Replaced generic glyph placeholders in the four Image to PDF Related Tools cards with the repository's existing SVG app icons: image-compressor.svg, image-resizer.svg, id-card-print-studio.svg and qr-maker.svg.
+- Added responsive logo sizing and contained image rendering; no new artwork or external asset dependencies.
+- Inline JavaScript syntax validation passed (4 scripts).
+- Page commit: `e691783e813ec5b32d6901e1e5684ee04e2bb434`; Service Worker cache bumped to `infojano-v117`, commit: `0e82bd95616d35b9ad3612784be4f0602fc2670b`.
+- Android visual confirmation is pending after deployment/cache refresh.
