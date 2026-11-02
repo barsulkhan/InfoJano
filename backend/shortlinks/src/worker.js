@@ -76,7 +76,16 @@ function validateDestination(raw) {
   let url;
   try { url = new URL(raw.trim()); } catch { throw new Error("Enter a complete URL including https:// or http://."); }
   if (url.protocol !== "https:" && url.protocol !== "http:") throw new Error("Only HTTP and HTTPS destinations are allowed.");
-  if (!url.hostname || url.username || url.password) throw new Error("Destination URL has an invalid hostname or embedded credentials.");
+  const hostname = url.hostname.replace(/^\\[|\\]$/g, "");
+  const isIPv6 = hostname.includes(":");
+  const isIPv4 = ipv4Parts(hostname) !== null;
+  const validDnsName = hostname.length <= 253 && hostname.split(".").every(label =>
+    label.length >= 1 && label.length <= 63 &&
+    /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(label)
+  );
+  if (!hostname || url.username || url.password || (!isIPv6 && !isIPv4 && !validDnsName)) {
+    throw new Error("Destination URL has an invalid hostname or embedded credentials.");
+  }
   if (isPrivateDestination(url)) throw new Error("Private, local and reserved network destinations are not allowed.");
   return url.toString();
 }
