@@ -62,6 +62,12 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
 
 /* Image Compressor refresh: responsive layout, clearer hierarchy and accessible controls */
+.ij-preset-row{grid-template-columns:minmax(0,1fr) auto;align-items:center;margin-bottom:8px}
+.ij-preset-row span{font-size:12px;text-align:center}
+.ij-smart-target{padding:12px;border:1px solid #d8e7ff;border-radius:14px;background:#f7faff}
+.ij-smart-target>label{margin-top:0}
+.ij-smart-target .ij-note{margin-bottom:0}
+
 body{padding:0;background:#f5f8ff;color:#172033;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 .wrap{width:min(100% - 32px,900px);max-width:900px;margin:0 auto;padding:18px 0 40px}
 .ij-breadcrumb{font-size:13px;color:#64748b;margin:4px 0 18px}
@@ -165,25 +171,40 @@ body{padding:0;background:#f5f8ff;color:#172033;font-family:system-ui,-apple-sys
 <div class="ij-field">
 <label for="format">2. Output format</label>
 <select id="format">
+<option value="auto" selected>Auto – best format for target size</option>
 <option value="image/jpeg">JPG – smaller file size</option>
 <option value="image/png">PNG – supports transparency</option>
 <option value="image/webp">WebP – compact format</option>
 </select>
 </div>
 <div class="ij-field">
-<div class="ij-range-head"><label for="quality">3. Image quality</label><output id="qualityValue" for="quality">80%</output></div>
+<div class="ij-range-head"><label for="quality">3. Image quality (used without target KB)</label><output id="qualityValue" for="quality">80%</output></div>
 <input id="quality" type="range" min="10" max="100" value="80">
 </div>
 <div class="ij-field">
 <label for="width">Maximum width in pixels (optional)</label>
 <input id="width" type="number" min="1" max="12000" inputmode="numeric" placeholder="Keep original width">
 </div>
-<div class="ij-field">
-<label for="target">Target file size (optional)</label>
-<div class="ij-target-row"><input id="target" type="number" min="1" max="20000" inputmode="numeric" placeholder="Example: 100"><span>KB target</span></div>
+<div class="ij-field ij-smart-target">
+<label for="targetPreset">Target size – just choose what you need</label>
+<div class="ij-target-row ij-preset-row">
+<select id="targetPreset" aria-label="Quick target size">
+<option value="">Choose a size</option>
+<option value="20">20 KB</option>
+<option value="50">50 KB</option>
+<option value="100">100 KB</option>
+<option value="200">200 KB</option>
+<option value="500">500 KB</option>
+<option value="1000">1 MB</option>
+<option value="custom">Custom size</option>
+</select>
+<span>or</span>
+</div>
+<div class="ij-target-row"><input id="target" type="number" min="1" max="20000" inputmode="numeric" placeholder="Enter target KB (e.g. 20)" aria-label="Custom target size in KB"><span>KB</span></div>
+<p class="ij-note">Smart mode automatically finds the best quality and image dimensions that fit your target.</p>
 </div>
 </div>
-<p class="ij-note">Target size is best-effort, not guaranteed. PNG compression does not use the quality slider in the same way as JPG or WebP. The tool may reduce dimensions when trying to reach a target KB size.</p>
+<p class="ij-note">Smart Target Size automatically tests compression quality and dimensions. It aims for the highest visual quality that fits your chosen KB limit. Exact size can depend on image content and browser support.</p>
 <button id="compress" class="ij-action" type="button">Compress Image</button>
 <div id="status" role="status" aria-live="polite"></div>
 <a id="download" hidden download="infojano-compressed.jpg">Download compressed image</a>
@@ -315,65 +336,97 @@ downloadLink.addEventListener('click',async(event)=>{
  }
 });
 
+const targetPreset=document.getElementById('targetPreset');
+if(targetPreset){
+ targetPreset.addEventListener('change',()=>{
+  if(targetPreset.value && targetPreset.value!=='custom')targetInput.value=targetPreset.value;
+  if(targetPreset.value==='custom'){targetInput.focus();targetInput.select();}
+ });
+ targetInput.addEventListener('input',()=>{
+  const match=[...targetPreset.options].find(option=>option.value===targetInput.value);
+  targetPreset.value=match?match.value:(targetInput.value?'custom':'');
+ });
+}
+
+async function findBestTargetBlob(targetBytes,preferredMime,manualQuality){
+ const formats=preferredMime==='auto'?['image/webp','image/jpeg']: [preferredMime];
+ let bestOverall=null;
+ for(const mime of formats){
+  let w=image.naturalWidth,h=image.naturalHeight;
+  if(widthInput.value.trim()){
+   const maxw=Number(widthInput.value);
+   if(!Number.isFinite(maxw)||maxw<1)throw new Error('Enter a valid maximum width or leave it blank.');
+   if(maxw<w){const ratio=maxw/w;w=Math.max(1,Math.round(w*ratio));h=Math.max(1,Math.round(h*ratio));}
+  }
+  const startW=w,startH=h;
+  for(let dimensionTry=0;dimensionTry<26;dimensionTry++){
+   let low=0.10,high=0.96,chosen=null,chosenQ=0.10;
+   for(let i=0;i<10;i++){
+    const q=(low+high)/2;
+    const blob=await encodeAtSize(w,h,mime,q);
+    if(blob.size<=targetBytes){chosen=blob;chosenQ=q;low=q;}
+    else high=q;
+   }
+   if(chosen){
+    const result={blob:chosen,w,h,mime,quality:chosenQ,dimensionsChanged:w!==startW||h!==startH};
+    if(!bestOverall || result.w*result.h>bestOverall.w*bestOverall.h ||
+       (result.w*result.h===bestOverall.w*bestOverall.h && result.quality>bestOverall.quality)){
+     bestOverall=result;
+    }
+    break;
+   }
+   if(w<=96||h<=96)break;
+   const minQBlob=await encodeAtSize(w,h,mime,0.10);
+   const scale=Math.min(0.88,Math.sqrt(targetBytes/minQBlob.size)*0.92);
+   const nextW=Math.max(96,Math.floor(w*scale));
+   if(nextW>=w)break;
+   const ratio=nextW/w;
+   w=nextW;h=Math.max(1,Math.round(h*ratio));
+  }
+  if(bestOverall)break;
+ }
+ return bestOverall;
+}
+
 compressButton.addEventListener('click',async()=>{
  if(!image){statusBox.textContent='Please choose an image first.';return;}
  compressButton.disabled=true;
  downloadLink.hidden=true;
- statusBox.textContent='Compressing image...';
+ statusBox.textContent='Smart compression is finding the best result…';
  try{
-  const mime=formatInput.value;
-  const maxw=Number(widthInput.value);
-  if(widthInput.value.trim()&&(!Number.isFinite(maxw)||maxw<1))throw new Error('Enter a valid maximum width or leave it blank.');
   const targetKB=Number(targetInput.value);
-  if(targetInput.value.trim()&&(!Number.isFinite(targetKB)||targetKB<1))throw new Error('Enter a valid target size in KB or leave it blank.');
-  let w=image.naturalWidth,h=image.naturalHeight;
-  if(widthInput.value.trim()&&maxw<w){
-   const scale=maxw/w;
-   w=Math.max(1,Math.round(w*scale));
-   h=Math.max(1,Math.round(h*scale));
-  }
-  const initialW=w,initialH=h;
+  if(targetInput.value.trim()&&(!Number.isFinite(targetKB)||targetKB<1||targetKB>20000))throw new Error('Enter a target size between 1 and 20,000 KB.');
   const targetBytes=targetInput.value.trim()?targetKB*1024:0;
-  const requestedQ=Number(qualityInput.value)/100;
-  let best=null,bestW=w,bestH=h,usedQ=requestedQ;
-  for(let attempt=0;attempt<18;attempt++){
-   let low=0.10,high=requestedQ,chosen=null,chosenQ=0.10;
-   for(let i=0;i<8;i++){
-    const q=(low+high)/2;
-    const blob=await encodeAtSize(w,h,mime,q);
-    if(!targetBytes||blob.size<=targetBytes){
-     chosen=blob;chosenQ=q;low=q;
-    }else high=q;
-   }
-   if(!chosen){
-    chosen=await encodeAtSize(w,h,mime,0.10);
-    chosenQ=0.10;
-   }
-   best=chosen;bestW=w;bestH=h;usedQ=chosenQ;
-   if(!targetBytes||best.size<=targetBytes||mime==='image/png')break;
-   if(w<=160||h<=160)break;
-   const scale=Math.min(0.90,Math.sqrt(targetBytes/best.size)*0.94);
-   const nextW=Math.max(160,Math.floor(w*scale));
-   if(nextW>=w)break;
-   const ratio=nextW/w;
-   w=nextW;
-   h=Math.max(1,Math.round(h*ratio));
+  const selectedMime=formatInput.value;
+  let result;
+  if(targetBytes){
+   result=await findBestTargetBlob(targetBytes,selectedMime,Number(qualityInput.value)/100);
+   if(!result)throw new Error('This image could not be reduced to that size while keeping a usable result. Try a larger KB target.');
+  }else{
+   let w=image.naturalWidth,h=image.naturalHeight;
+   const maxw=Number(widthInput.value);
+   if(widthInput.value.trim()&&(!Number.isFinite(maxw)||maxw<1))throw new Error('Enter a valid maximum width or leave it blank.');
+   if(widthInput.value.trim()&&maxw<w){const ratio=maxw/w;w=Math.max(1,Math.round(w*ratio));h=Math.max(1,Math.round(h*ratio));}
+   const mime=selectedMime==='auto'?'image/webp':selectedMime;
+   const q=Number(qualityInput.value)/100;
+   result={blob:await encodeAtSize(w,h,mime,q),w,h,mime,quality:q,dimensionsChanged:w!==image.naturalWidth||h!==image.naturalHeight};
   }
-  const ext=mime==='image/jpeg'?'jpg':mime==='image/png'?'png':'webp';
-  const outUrl=URL.createObjectURL(best);
+  const ext=result.mime==='image/jpeg'?'jpg':result.mime==='image/png'?'png':'webp';
+  const outUrl=URL.createObjectURL(result.blob);
   if(lastOutputUrl)URL.revokeObjectURL(lastOutputUrl);
   lastOutputUrl=outUrl;
   downloadLink.href=outUrl;
   downloadLink.download=`${originalName}-compressed.${ext}`;
-  downloadLink.textContent=`Download compressed image (${(best.size/1024).toFixed(1)} KB)`;
+  downloadLink.textContent=`Download compressed image (${(result.blob.size/1024).toFixed(1)} KB)`;
   downloadLink.hidden=false;
-  let message=`Compressed size: ${(best.size/1024).toFixed(1)} KB | Dimensions: ${bestW} × ${bestH} px`;
-  if(targetBytes)message+=` | ${best.size<=targetBytes?'Target size reached':'Target size not reached. Try a smaller target or another format.'}`;
-  message+=`\nQuality used: ${Math.round(usedQ*100)}%`;
-  message+=(bestW!==initialW||bestH!==initialH)?'\nDimensions were reduced to help reach the target size.':'\nDimensions were kept at the selected size.';
+  let message=`Final size: ${(result.blob.size/1024).toFixed(1)} KB | Dimensions: ${result.w} × ${result.h} px | Format: ${ext.toUpperCase()}`;
+  if(targetBytes)message+=result.blob.size<=targetBytes?' | Target reached':' | Target not reached';
+  message+=`\\nQuality setting: ${Math.round(result.quality*100)}%`;
+  message+=result.dimensionsChanged?'\\nImage dimensions were reduced only as needed to fit the target.':'\\nOriginal image dimensions were preserved.';
+  if(targetBytes)message+='\\nSmart mode selected the best result it could fit within your KB limit.';
   statusBox.textContent=message;
  }catch(error){
-  statusBox.textContent='Compression failed: '+(error&&error.message?error.message:'Please try another image or format.');
+  statusBox.textContent='Compression failed: '+(error&&error.message?error.message:'Please try another image or a larger target size.');
  }finally{
   compressButton.disabled=false;
  }
