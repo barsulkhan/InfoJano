@@ -1244,3 +1244,15 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `d86743c885c9666a73845b70d6cb53005bcfa2ad`.
 - Service worker cache bumped to `infojano-v113`; commit: `1f0335e848a27a23c70c98e53cbff563e96f2ebe`.
 - Live mobile verification remains pending.
+
+
+## Premium Image to PDF redesign — 2026-11-02
+- Rebuilt `image-to-pdf.html` in a premium InfoJano visual style: gradient hero with image-to-PDF visual, breadcrumb, numbered workflow, upload dropzone, selected image list, PDF options, large Create PDF action, privacy note, feature strip, How it Works, Tips, related tools, and FAQs.
+- Kept the existing client-side PDF generation and touch/mouse image reordering logic; retained A4, Letter and Fit page options plus white margin.
+- Added a functional Clear All control and empty-state visibility synchronized with selected images.
+- Inline JavaScript parser validation passed (4 script blocks).
+- Page commits: `db827414d119fcd87f29cca219023d14eac5b02d`, `99207251c85630818ac30878e463aaef5442dc33`.
+- Updated shared header Home button across tool pages to a blue/cyan gradient glass style with white text, replacing the plain white button.
+- Header commit: `9b88528d42f50b283d0c3f53587ab74be9eec75c`.
+- Service worker cache bumped to `infojano-v114`; commit: `1d7876d7a4503667d312a0fe57526debfd92f50e`.
+- Actual PDF creation, download, image reorder and mobile rendering still require device-side testing.
