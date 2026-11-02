@@ -866,3 +866,17 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Created Draft PR #2: https://github.com/barsulkhan/InfoJano/pull/2
 - PR head commit: `334b735b5144c0dcd68dcea2779f2f8b6cdf8294`; base main at `9f77883354b2825736a39e80b5767c0338bd5c46`.
 - This is metadata/snippet optimization, not a guarantee of higher ranking or clicks. Review and merge only after preview/diff validation. No merge or deployment has been performed.
+
+
+## PR #2 final review and Cloudflare Preview smoke tests — 2 November 2026
+
+- User confirmed Cloudflare Preview health endpoint response:
+  `{"ok":true,"service":"InfoJano Short Link API","mode":"staging-scaffold"}`.
+- User tested the Preview Worker unknown short-code path `/TEST1234`; response was: `This short link is unavailable or has expired.`. This is consistent with the D1-backed lookup returning no matching code. No data was created or modified.
+- Preview deployment for PR #2 head commit `1f5376444f22f05fdb6e6e0d5eecf0b4879cd43d` succeeded. Cloudflare deployment ID: `3db7b439-4481-4081-bd81-985858c11c5a`. Preview URL: `https://3db7b439-infojano-shortlink-api.barik8420.workers.dev`.
+- PR #2: https://github.com/barsulkhan/InfoJano/pull/2 remains Open and Draft, mergeable true, not merged. Base `main`; head `seo/gsc-impression-page-improvements`; latest head SHA `1f5376444f22f05fdb6e6e0d5eecf0b4879cd43d`.
+- Final diff review: six changed files, 36 additions and 18 deletions. Scope is three HTML SEO metadata updates (`percentage.html`, `discount.html`, `date-difference.html`), two Wrangler config Preview D1 binding additions, and this master-file checkpoint. No calculator logic, page layout, canonical URLs, structured data, PWA manifest, or service-worker assets changed in this PR.
+- The Wrangler Preview D1 binding uses database UUID `228c4591-207c-4064-bd25-b6045c1d1b27` and binding name `DB`, matching the configured D1 database.
+- Safety/launch status: no authenticated link creation, link write, production merge, custom domain, DNS change, paid upgrade, or public launch was performed or approved. Short Link Worker remains staging scaffold.
+- Review conclusion: the visible diff matches the stated scope and the two user-run Preview smoke tests passed. This does not prove SEO performance, authenticated create/redirect/analytics flows, or production readiness. PR remains Draft pending user decision; do not mark Ready or merge without explicit user approval.
+- Next action: wait for user decision on whether to mark PR Ready for review and subsequently merge. If approved, confirm PR head SHA and checks again immediately before the action; merging will publish the SEO page changes through the GitHub Pages workflow.
