@@ -880,3 +880,16 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Safety/launch status: no authenticated link creation, link write, production merge, custom domain, DNS change, paid upgrade, or public launch was performed or approved. Short Link Worker remains staging scaffold.
 - Review conclusion: the visible diff matches the stated scope and the two user-run Preview smoke tests passed. This does not prove SEO performance, authenticated create/redirect/analytics flows, or production readiness. PR remains Draft pending user decision; do not mark Ready or merge without explicit user approval.
 - Next action: wait for user decision on whether to mark PR Ready for review and subsequently merge. If approved, confirm PR head SHA and checks again immediately before the action; merging will publish the SEO page changes through the GitHub Pages workflow.
+
+
+## Latest PR #2 Preview verification — 2 November 2026
+
+- User tested the latest Cloudflare Preview deployment for PR #2 head commit `a7929f346e5c7c5815fae13b10a2aa5823cc8e2d` (`a7929f3`).
+- Preview deployment ID: `96642eb9-5391-4f4f-a8d3-f17b9ebc62a1`.
+- Preview deployment URL: `https://96642eb9-infojano-shortlink-api.barik8420.workers.dev`.
+- User confirmed `/health` returned exactly: `{"ok":true,"service":"InfoJano Short Link API","mode":"staging-scaffold"}`.
+- User confirmed `/TEST1234` returned exactly: `This short link is unavailable or has expired.`.
+- Result: latest Preview health route and basic D1-backed unknown-code lookup path passed user-side smoke tests. No link was created and no database write was performed.
+- These checks do NOT verify authenticated link creation, successful 302 redirect, click analytics/stats, disable action, or production readiness.
+- PR #2 remains Open and Draft, not merged. Do not mark Ready or merge without explicit user approval. No production deployment, custom domain, DNS change, paid upgrade, or public launch was approved.
+- Next step: wait for the user's explicit decision on whether to mark PR #2 Ready for review. Before any later merge, recheck PR head SHA and required checks and obtain explicit approval.
