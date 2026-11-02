@@ -1178,3 +1178,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Key commits: logo mark `be4fe2103b82ccf9f1d666b2d9340d8bf83f46e0`; full logo `c39f0e7eede85de0c709e941ade7c4d6f3b76617`; shared header `fa599ac499a661f4a8d74161a756eaf2103746ed`; homepage `7a06c02c7889323bfd5ddc1d6761e819c8ee2a2f`; service worker `db957b6a3139246cb7dd96cc6b9ea740f8cbcc82`; manifest `4f52b649ce8439dede1bb6c3998f4362879eb400`; favicon `80d4eadad74d815c889002913f0ea0bbe1f23503`.
 - Deployment is committed to GitHub Pages but actual visual rendering on the user's phone has not yet been confirmed. After deployment, refresh the website; if an installed PWA shows the old icon, remove/reinstall the shortcut after the service worker update.
 - Existing QR Maker syntax issue remains a separate unresolved QA item; do not conflate it with the logo rollout.
+
+
+## 2026-11-02 — Final Logo Concept 8 Rollout
+- Replaced `infojano-mark.svg` with a custom vector recreation of selected concept 8: rounded play-button silhouette, layered blue/cyan and purple depth, white IJ monogram, orange lower swoosh.
+- Replaced `infojano-logo.svg` with matching full horizontal wordmark and tagline.
+- Existing homepage header, shared tool-page header, and favicon already referenced `infojano-mark.svg`, so the replacement updates those references without changing page business logic.
+- Updated homepage Open Graph and Twitter image references to `infojano-logo.svg`.
+- Updated PWA manifest to use the new SVG mark and changed theme color to brand blue.
+- Bumped service worker cache to `infojano-v108`.
+- Commits: `2f23dfadb844963f6fe531f90ca657758b8e05c8`, `ebe73c6bbc60345bb28b4ed1fc22bb1d315579a7`, `ab3377e11336fd490acfc446af2cc2226d59af63`, `b6ab1cec0aecafb3b14faa5e15afd44191e591b2`, `2422affc1babd5fb8ee2cc95d05efb1b79da475e`.
+- Validation: GitHub file updates committed. Live rendering and Android installed-PWA icon appearance still require device-side refresh/verification. Existing PNG icon fallbacks remain in repository but are no longer listed in the root manifest.
