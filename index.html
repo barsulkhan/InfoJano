@@ -725,6 +725,28 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
  #home .how-heading h2,#home .how-heading>span{font-size:21px!important;line-height:1.15!important}
  #home .how-grid{margin:0 12px!important;padding-right:8px!important;grid-template-columns:1fr!important;gap:11px!important}
 }
+
+/* Match Why InfoJano cards to the same safe right inset as How InfoJano works */
+#home .why-grid{
+ display:grid!important;
+ width:auto!important;
+ max-width:none!important;
+ box-sizing:border-box!important;
+ margin:0 22px!important;
+ padding:0 18px 0 0!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:16px!important;
+}
+#home .why-grid>.why-card{width:100%!important;min-width:0!important;box-sizing:border-box!important}
+@media(max-width:700px){
+ #home .why-grid{
+  width:auto!important;
+  margin:0 12px!important;
+  padding:0 8px 0 0!important;
+  grid-template-columns:1fr!important;
+  gap:11px!important;
+ }
+}
 </style>
 
 </head>
