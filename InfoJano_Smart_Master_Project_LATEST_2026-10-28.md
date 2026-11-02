@@ -1397,3 +1397,11 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service-worker cache bumped from `infojano-v123` to `infojano-v124`: commit `418365990ac97aefeb67d0038054a99073a82b20`.
 - Inline JavaScript syntax checked successfully after cleanup. Real QR scan, logo overlay, clipboard/share behavior, and Android rendering still need user-side testing; do not claim device-tested.
 - Live page: https://barsulkhan.github.io/InfoJano/qr-maker.html
+
+
+## QR navigation and install prompt correction — 3 November 2026
+- Confirmed the main QR Code entry points to `qr-choice.html`, which presents two separate choices: Normal QR Code and Social Media QR Code. Both links remain intact and lead to `qr-maker.html` and `social-qr-maker.html` respectively.
+- Removed only the standalone “Keep this tool on your phone / Install this tool” card from `qr-maker.html`, as requested. The global InfoJano header, QR maker hero, generator, and social QR workflow were not removed.
+- QR Maker page update commit: `c50032f993ffc32f6ea7135f5a7e7bc3dcf494ed`.
+- Service worker cache updated from `infojano-v124` to `infojano-v125`: commit `abbebe327a7dd8e505642877d5f32010718bdc90`.
+- Source check confirms no `ij-install-card` remains in `qr-maker.html`, and the home page still links to `qr-choice.html`. Verify after deployment in Android browser; if an old card persists, refresh once or clear the site's cached data.
