@@ -1282,3 +1282,12 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Service worker cache bumped from `infojano-v114` to `infojano-v115`; commit: `33b4f4e46d7bf355715a0acf7a0dfbd5efc05bec`.
 - Live URL: https://barsulkhan.github.io/InfoJano/image-to-pdf.html
 - GitHub source changes are committed. Actual Android upload, reorder, PDF output quality and download testing remain pending user-side verification.
+
+
+## Image to PDF bottom Related Apps panel removed — 2026-11-02
+- User shared an Android screenshot showing the shared contextual Related Apps panel appended below the page's own Related Tools and FAQ.
+- Disabled the shared Related Apps loader only on `image-to-pdf.html` using the page-level `data-ij-hide-related-apps` opt-out; shared `install.js` still loads Related Apps on other tool pages.
+- The page's own Related Tools section remains unchanged.
+- Page commit: `466f5c9c5dba533a0f049eff768e642c9dfeb2f5`; shared loader commit: `410b00784670ceb1f4a371d913cf0b0e9bdc4795`.
+- Service worker cache bumped to `infojano-v116`; commit: `52cc78a5f22b81fcb65cddee80f052d5bcf3d7a7`.
+- Requires a live Android refresh after deployment to confirm the old cached panel disappears.
