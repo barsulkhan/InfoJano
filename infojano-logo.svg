@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 340" role="img" aria-labelledby="title"><title id="title">InfoJano — Smart Tools for Everyday Life</title><defs><linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#20c8f5"/><stop offset="1" stop-color="#082e91"/></linearGradient><linearGradient id="purple" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#4c1d95"/></linearGradient><linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb21a"/><stop offset="1" stop-color="#f04a12"/></linearGradient></defs><g transform="translate(14 5) scale(.58)"><path d="M118 82Q70 93 69 151v218q0 63 64 63h231q-25 0-40-23L113 153q-25-37 5-71Z" fill="url(#purple)"/><path d="M145 49Q126 43 110 58L72 96q-17 17-17 42v226q0 75 75 75h227q39 0 60-32L463 333q24-36-11-61L188 65q-20-16-43-16Z" fill="url(#blue)"/><path d="M165 147h49v46h-49zM165 213h49v143h-49zM257 147h48v151q0 59-56 59h-45v-47h33q20 0 20-24Z" fill="#fff"/><path d="M228 362q73 24 139-5l48-22-35 54q-17 26-49 26H164q-35 0-54-24l-20-26q63 29 138-3Z" fill="url(#orange)"/></g><text x="330" y="155" font-family="Inter,Arial,sans-serif" font-size="120" font-weight="850" letter-spacing="-7" fill="#082f83">Info</text><text x="565" y="155" font-family="Inter,Arial,sans-serif" font-size="120" font-weight="850" letter-spacing="-7" fill="#f15a18">Jano</text><text x="333" y="222" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="650" fill="#19345f">Smart Tools for Everyday Life</text><path d="M332 250H780" stroke="url(#orange)" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title">
+<title id="title">InfoJano — Smart Tools for Everyday Life</title>
+<defs>
+ <linearGradient id="main" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19c8f5"/><stop offset=".48" stop-color="#0876e8"/><stop offset="1" stop-color="#06358f"/></linearGradient>
+ <linearGradient id="side" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9333ea"/><stop offset="1" stop-color="#5b21b6"/></linearGradient>
+ <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb21a"/><stop offset="1" stop-color="#f05a18"/></linearGradient>
+</defs>
+<g transform="translate(12 15) scale(.76)">
+ <path d="M144 52Q119 47 99 67L61 105Q42 124 42 153V354Q42 426 115 426H328Q365 426 386 396L452 304Q478 268 438 239L178 69Q162 58 144 52Z" fill="url(#side)"/>
+ <path d="M157 38Q132 31 111 51L70 91Q50 111 50 141V350Q50 430 130 430H332Q374 430 397 395L458 303Q483 265 443 237L187 56Q173 45 157 38Z" fill="url(#main)"/>
+ <path d="M164 145H222V199H164Z M164 222H222V353H164Z M276 145H334V294Q334 365 265 365H235V310H265Q276 310 276 294Z" fill="#fff"/>
+ <path d="M93 358Q169 397 254 367Q313 347 373 317L344 368Q331 391 303 391H151Q116 391 99 370Z" fill="url(#warm)"/>
+</g>
+<text x="390" y="205" font-family="Inter,Arial,sans-serif" font-size="145" font-weight="850" letter-spacing="-7" fill="#082f83">Info</text>
+<text x="660" y="205" font-family="Inter,Arial,sans-serif" font-size="145" font-weight="850" letter-spacing="-7" fill="#f15a18">Jano</text>
+<text x="398" y="278" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="650" fill="#19345f">Smart Tools for Everyday Life</text>
+<path d="M398 310H1040" stroke="url(#warm)" stroke-width="8" stroke-linecap="round"/>
+</svg>
