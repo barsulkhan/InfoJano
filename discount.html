@@ -132,6 +132,31 @@ body{background:linear-gradient(135deg,#edf5ff,#e9f7ff 52%,#f2f0ff)!important;co
 @media(max-width:800px){.ij-discount-hero{grid-template-columns:minmax(0,1fr) 220px;padding:24px}.ij-discount-fields{grid-template-columns:1fr 1fr}.ij-discount-mode{grid-column:1/-1}.ij-discount-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.ij-discount-main{padding:14px 12px 34px!important}.ij-discount-hero{grid-template-columns:1fr;padding:21px 18px;border-radius:22px;gap:8px}.ij-discount-hero h1{font-size:35px}.ij-discount-intro{font-size:15px;margin-bottom:12px}.ij-discount-art{max-height:175px}.ij-discount-art svg{width:240px;max-height:175px}.ij-discount-benefits{gap:7px}.ij-discount-benefits span{padding:6px 9px;font-size:11px}.ij-discount-calculator,.ij-discount-info-card,.ij-discount-related,.ij-discount-faq,.ij-discount-guide{padding:19px 16px;border-radius:20px}.ij-discount-result-panel{padding:14px}.ij-discount-fields{grid-template-columns:1fr;gap:13px}.ij-discount-mode{grid-column:auto}.ij-discount-field label{font-size:14px}.ij-discount-field input,.ij-discount-field select{height:54px;font-size:16px}.ij-discount-section-heading h2{font-size:23px}.ij-discount-calculate{min-height:58px;font-size:20px}.ij-discount-result-grid{grid-template-columns:1fr;gap:0;padding:8px 12px}.ij-discount-metric{padding:11px 5px;border-right:0;border-bottom:1px solid #b8dccc}.ij-discount-metric:last-child{border-bottom:0}.ij-discount-metric strong{font-size:27px}.ij-discount-info-grid{grid-template-columns:1fr;gap:13px}.ij-discount-related-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.ij-discount-related-grid a{min-height:150px;padding:12px}.ij-discount-faq h2,.ij-discount-related h2,.ij-discount-guide h2{font-size:21px}.ij-discount-breadcrumb{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.ij-discount-calculate{transition:none}}
+</style><style id="ij-discount-motion">
+/* Lightweight CSS-only motion: no changes to calculator inputs or arithmetic. */
+@keyframes ijDiscountFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@keyframes ijDiscountSparkle{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 #fbbf24)}50%{transform:scale(1.055);filter:drop-shadow(0 4px 9px #fbbf2480)}}
+@keyframes ijDiscountShine{0%{transform:translateX(-130%) skewX(-18deg)}55%,100%{transform:translateX(230%) skewX(-18deg)}}
+@keyframes ijDiscountEnter{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ijDiscountResult{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.ij-discount-hero{animation:ijDiscountEnter .55s ease-out both}
+.ij-discount-art svg{transform-origin:50% 70%;animation:ijDiscountFloat 4.5s ease-in-out infinite}
+.ij-discount-benefits b{display:inline-block;animation:ijDiscountSparkle 2.8s ease-in-out infinite}
+.ij-discount-benefits span:nth-child(2) b{animation-delay:.35s}.ij-discount-benefits span:nth-child(3) b{animation-delay:.7s}.ij-discount-benefits span:nth-child(4) b{animation-delay:1.05s}
+.ij-discount-calculate{position:relative;isolation:isolate;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.ij-discount-calculate::after{content:"";position:absolute;z-index:-1;top:-40%;left:0;width:34%;height:180%;background:linear-gradient(90deg,transparent,#ffffff55,transparent);transform:translateX(-130%) skewX(-18deg);animation:ijDiscountShine 4.8s ease-in-out infinite;pointer-events:none}
+.ij-discount-calculate:hover{transform:translateY(-2px);box-shadow:0 10px 22px #0759d550}
+.ij-discount-result-grid:not(:has(.ij-discount-empty)) .ij-discount-metric{animation:ijDiscountResult .42s ease-out both}
+.ij-discount-result-grid:not(:has(.ij-discount-empty)) .ij-discount-metric:nth-child(2){animation-delay:.08s}
+.ij-discount-result-grid:not(:has(.ij-discount-empty)) .ij-discount-metric:nth-child(3){animation-delay:.16s}
+.ij-discount-related-grid a{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.ij-discount-related-grid a:hover{transform:translateY(-4px);border-color:#9fc7f5;box-shadow:0 9px 20px #2563eb20}
+.ij-discount-related-grid a:hover .ij-discount-tool-icon{transform:rotate(-5deg) scale(1.06)}
+.ij-discount-tool-icon{transition:transform .22s ease}
+.ij-discount-info-grid,.ij-discount-related,.ij-discount-faq,.ij-discount-guide{animation:ijDiscountEnter .6s ease-out both}
+.ij-discount-info-grid{animation-delay:.06s}.ij-discount-related{animation-delay:.12s}.ij-discount-faq{animation-delay:.18s}.ij-discount-guide{animation-delay:.24s}
+@media(hover:none){.ij-discount-related-grid a:hover{transform:none;box-shadow:0 3px 12px #2563eb0d}}
+@media(prefers-reduced-motion:reduce){.ij-discount-hero,.ij-discount-art svg,.ij-discount-benefits b,.ij-discount-calculate::after,.ij-discount-result-grid .ij-discount-metric,.ij-discount-info-grid,.ij-discount-related,.ij-discount-faq,.ij-discount-guide{animation:none!important}.ij-discount-calculate,.ij-discount-related-grid a,.ij-discount-tool-icon{transition:none!important}}
 </style></head>
 <body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
