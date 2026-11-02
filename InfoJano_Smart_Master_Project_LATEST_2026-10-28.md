@@ -1102,3 +1102,17 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Service worker cache bumped from `infojano-v100` to `infojano-v101`; commit: `c60ba07518f4419c16064fc31f3d65000cd4d6ce`.
 - Source verification confirmed all expected UI IDs and implementation markers. Full rendered browser QA and image-by-image device testing remain pending.
 - Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+
+## Image Compressor processing spinner + preview bugfix — 2026-11-02
+
+- User screenshot reported that pressing Compress Image did not show a progress indicator, actual before/after preview was absent, and status displayed `Cannot set properties of null (setting 'textContent')`.
+- Added an animated spinner directly inside the Compress Image button with “Compressing image…” text while processing; it restores the normal button after success or failure.
+- Hardened download icon lookup by giving it a stable DOM ID instead of relying on a nested querySelector; this addresses the reported null textContent failure path.
+- Actual before/after result image assignments are guarded, and result panel is hidden before a new compression attempt, then populated and revealed on success.
+- Download icon now has a stable ID. Existing download spinner behavior is retained.
+- Page commit: `bee65240040f80dea3cc5dadc548775b445afc22`; verified current page SHA: `5907b93ca56e839c45b8d94c43c1d16c790ee2b2`.
+- Source audit confirmed all IDs referenced by getElementById exist and processing-spinner/result markers are present.
+- Service worker cache bumped from `infojano-v101` to `infojano-v102`; commit: `eebb7c6f77be7cbfb33bbbd97b632e6d35aaf5a5`.
+- Live browser execution on Android remains to be verified by user after GitHub Pages deployment/cache refresh.
+- Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
