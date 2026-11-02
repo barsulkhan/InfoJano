@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { validateDestination, randomCode } from "./worker.js";
+import { validateDestination, randomCode } from "./src/worker.js";
 
 test("accepts ordinary HTTP and HTTPS destinations", () => {
   assert.equal(validateDestination("https://example.com"), "https://example.com/");
