@@ -1334,3 +1334,13 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Current page commit: `5b03373c89011f373e4188eb82ff619a99d98308`; current cache key: `infojano-v120`.
 - The three tool pages worked on in this design/fix pass are: Image Resizer, Image to PDF Converter, and Discount Calculator.
 - Important validation boundary: source and inline JavaScript syntax checks passed, but real Android PDF processing/download and both Discount Calculator calculation modes have not been independently exercised in a browser by the assistant. User-side smoke test remains recommended before treating all functions as production-verified.
+
+
+## Image Compressor placeholder cleanup — 3 November 2026
+- User reviewed the Image Compressor page and said the large two-image LIVE EXAMPLE area looked empty/unhelpful; asked to either put a meaningful image there or remove the area.
+- Inspected `image-compressor.html`: the LIVE EXAMPLE was a decorative SVG illustration duplicated as Original and Compressed, with hard-coded example sizes and a claimed 95% reduction. It was not a real compression demonstration and could mislead users.
+- Removed the entire placeholder LIVE EXAMPLE section rather than leave a fake comparison. The actual upload/compression workflow and actual result panel remain unchanged. The separate top hero showcase was not modified.
+- Image Compressor page update commit: `15d88a8075e38d09ba5c09d2d018692e5b61504f`.
+- Service-worker cache bumped from `infojano-v120` to `infojano-v121`: commit `27b2640bbd428a30fc2bf46b5fb8f15b7c0e8805`.
+- Source edits committed to `main`. Live GitHub Pages deployment and Android visual testing are not yet confirmed. After deployment, reopen the page or refresh to load the new cache.
+- Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
