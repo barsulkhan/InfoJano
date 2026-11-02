@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "InfoJano short link Worker",
   "scripts": {
-    "deploy": "wrangler d1 migrations apply infojano-shortlinks --remote && wrangler deploy"
+    "deploy": "wrangler d1 migrations apply infojano-shortlinks --remote && wrangler deploy",
+    "test": "node --test security.test.js"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"
