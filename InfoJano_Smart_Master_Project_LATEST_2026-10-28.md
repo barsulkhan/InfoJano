@@ -1127,3 +1127,13 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commits: `f89d1941f4a5e4c4167e733a7d902c52544c2979` and `1dd2cae9c21eefe9dcafb8a31c2019d7148937ee`; latest page SHA: `45750ddfe1ac4615cec776941257af456e008a53`.
 - Service worker cache bumped from `infojano-v102` to `infojano-v103`; commit: `cf0a0641997ff9498928cb063217c7491d6eb070`.
 - Live Android execution still requires user verification after the updated Pages build and cache refresh.
+
+
+## Image Compressor final syntax repair — 2026-11-02
+
+- Follow-up source validation caught malformed JavaScript introduced while replacing direct DOM text writes with safe setters. This explains why the previous defensive patch could still fail at runtime.
+- Repaired the affected file-change, image-reader, drag-drop and compress-click handlers.
+- Compiled the entire main Image Compressor JavaScript block with the JavaScript Function parser; syntax now validates successfully.
+- Latest page SHA: `8c6d1e7ee4f8970617a29f2e1b3eff10390e4003`; final syntax check: valid.
+- Service worker cache bumped from `infojano-v103` to `infojano-v104`; commit: `abd1005973cbbd68d9e9aef79fe4ca0853edd782`.
+- User must reload the live page after Pages deploys; actual Android compression and preview still need device verification.
