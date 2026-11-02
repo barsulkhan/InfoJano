@@ -18,7 +18,7 @@
     if(document.querySelector('script['+attr+']'))return;
     const script=document.createElement("script");script.src="/InfoJano/"+name;script.defer=true;script.setAttribute(attr,"1");document.head.appendChild(script);
   }
-  function run(){removeInstallBanner();loadScript("theme.js","data-ij-theme");loadScript("related-apps.js","data-ij-related-apps");}
+  function run(){removeInstallBanner();loadScript("theme.js","data-ij-theme");if(!document.body.hasAttribute("data-ij-hide-related-apps"))loadScript("related-apps.js","data-ij-related-apps");}
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run,{once:true});else run();
   const observer=new MutationObserver(removeInstallBanner);
   observer.observe(document.documentElement,{childList:true,subtree:true});
