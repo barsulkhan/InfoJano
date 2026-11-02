@@ -1385,3 +1385,15 @@ Four distinct InfoJano tools have received work in the current premium design/fi
 3. Discount Calculator
 4. Image Compressor
 This is a count of distinct tools worked on, not a fresh inventory of every tool in the repository.
+
+
+## QR Code Maker premium redesign — 3 November 2026
+- User approved the QR Code Maker visual direction with no person/mascot artwork. Recreated the page around the approved image composition: branded InfoJano header, breadcrumb, full-width blue-purple neon hero, three QR tiles, animated flowing background lighting, orbit rings and a moving scanner beam above the QR tiles.
+- Rebuilt the QR workspace into a responsive two-column desktop / stacked mobile layout with content-type presets (Link/URL, Text, WiFi, Contact, Phone, More), input guidance, QR color/background/size controls, optional center logo upload, preview, PNG download, Copy Image and Share actions.
+- The existing QR library and core generation approach are retained; generation now reads selected color/background/size and can place an uploaded center logo. Existing uploaded QR/barcode reading workflow is retained.
+- Important capability note: the QR generator encodes the text supplied in the input. Type presets provide standard format examples (WIFI/MECARD/tel/mailto etc.); users should replace example values with their own data and scan-test before use. Advanced type-specific multi-field forms are not implemented.
+- Removed an unused malformed Social QR script block from this normal QR page; it referenced absent elements and was unrelated to this tool.
+- QR page commits: `393e41a177a167a5fcf552f4687b070bdfc8c904` (visual redesign), `4f086262f1122913a45500ca4deaefaef086bf62` (generation customization and actions), `b8d695a2a80b44fb965db411c37fb9acfa91e037` (unused script cleanup).
+- Service-worker cache bumped from `infojano-v123` to `infojano-v124`: commit `418365990ac97aefeb67d0038054a99073a82b20`.
+- Inline JavaScript syntax checked successfully after cleanup. Real QR scan, logo overlay, clipboard/share behavior, and Android rendering still need user-side testing; do not claim device-tested.
+- Live page: https://barsulkhan.github.io/InfoJano/qr-maker.html
