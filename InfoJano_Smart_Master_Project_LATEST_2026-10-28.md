@@ -1222,3 +1222,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `d1c6073b4e05f5009bd9588d49c09ebcf2487759`.
 - Service worker cache bumped to `infojano-v111`; commit: `65b4fd62d57a198532cc0c1ea6514de790c39c8d`.
 - Device-side mobile validation still required for actual visual layout and spinner timing.
+
+
+## Quick visual fixes after mobile screenshot — 2026-11-02
+- Forced high-contrast blue gradient hero and white title/description/benefit text to prevent the white-on-white appearance seen in the user's screenshot.
+- Forced the Popular Sizes grid to two columns up to 900px viewport width, with larger readable card labels.
+- Explicitly hid the Download link while it has the hidden attribute, overriding generic action-button display styles; it appears only after a successful resize.
+- Clear button is disabled until an image is loaded and disabled again after clearing.
+- Inline JavaScript parser validation passed (2 inline scripts).
+- Page commit: `a8cfd64907fbcaacddda773109d0268f55b8372f`.
+- Service worker cache bumped to `infojano-v112`; commit: `c050237ac11fc7e28930091949767a818dfcfafc`.
+- Requires a fresh browser refresh for live device visual verification.
