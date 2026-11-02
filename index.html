@@ -699,6 +699,20 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
  .popular-tools-heading{padding-right:12px!important}
  .popular-tools-heading .tool-count-badge{font-size:21px!important;line-height:1.15!important}
 }
+
+/* Align guide-section caption with the InfoJano section heading and keep cards inset */
+#guides{box-sizing:border-box!important;width:100%!important;max-width:100%!important;padding-left:22px!important;padding-right:22px!important}
+#guides .section-head{width:100%!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;padding:0 8px!important}
+#guides .section-head h2{font-size:clamp(25px,2.5vw,32px)!important;line-height:1.15!important;white-space:nowrap!important}
+#guides .section-head>span{font-size:clamp(25px,2.5vw,32px)!important;line-height:1.15!important;font-weight:850!important;letter-spacing:-.45px!important;color:#111d43!important;white-space:nowrap!important}
+#guides .guides-grid{width:100%!important;max-width:100%!important;box-sizing:border-box!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;padding:0 8px 4px!important}
+#guides .guide-card{box-sizing:border-box!important;min-width:0!important;width:100%!important}
+@media(max-width:700px){
+ #guides{padding-left:12px!important;padding-right:12px!important}
+ #guides .section-head{padding:0 4px!important;gap:10px!important}
+ #guides .section-head h2,#guides .section-head>span{font-size:21px!important;line-height:1.15!important}
+ #guides .guides-grid{grid-template-columns:1fr!important;gap:11px!important;padding:0 4px 4px!important}
+}
 </style>
 
 </head>
