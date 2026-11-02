@@ -1299,3 +1299,11 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Inline JavaScript syntax validation passed (4 scripts).
 - Page commit: `e691783e813ec5b32d6901e1e5684ee04e2bb434`; Service Worker cache bumped to `infojano-v117`, commit: `0e82bd95616d35b9ad3612784be4f0602fc2670b`.
 - Android visual confirmation is pending after deployment/cache refresh.
+
+
+## Image to PDF hero contrast correction — 2026-11-02
+- User screenshot showed the hero kicker, subtitle and benefit labels in very pale/white text against the light hero surface, and the decorative file artwork lacked separation.
+- Added a page-scoped contrast override: pale blue/lavender hero surface, dark navy heading/body, blue kicker/arrow, readable benefit chips, stronger artwork borders/shadows, and responsive mobile spacing.
+- Inline JS syntax validation passed (4 scripts).
+- Page commit: `0052010ab721c9bb86bf06baed27487efcd93e28`; service worker cache bumped to `infojano-v118`, commit: `ba99110640609be784d3115a28c50f1ad9a1016e`.
+- Requires Android visual confirmation after deployment/cache refresh.
