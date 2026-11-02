@@ -547,6 +547,66 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","description":"Simple everyday tools, calculators and useful guides for everyone.","url":"https://barsulkhan.github.io/InfoJano/"}
 </script>
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
+
+<style id="infojano-premium-home-v3">
+:root{--bg:#f7f8ff;--card:#fff;--ink:#101b3d;--muted:#65718b;--brand:#07183f;--accent:#5737f5;--soft:#eef1ff;--line:#e6e9f5;--good:#087f5b}
+body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
+.header{background:#07183f;padding:13px 16px;box-shadow:0 8px 28px #081b4b25}
+.brand{font-size:25px;letter-spacing:-.7px}.brand span{color:#18d4f4}.brand-logo{filter:drop-shadow(0 5px 9px #00cfff40)}
+.tag{color:#c6d7ff}
+.nav button{background:#ffffff18;border:1px solid #ffffff20;border-radius:999px;padding:9px 14px}
+.wrap{max-width:1120px;padding:18px}
+.hero{position:relative;overflow:hidden;isolation:isolate;border-radius:30px;padding:42px 34px 26px;margin:8px 0 24px;background:radial-gradient(circle at 85% 20%,#8a43ff 0,transparent 28%),radial-gradient(circle at 72% 80%,#253fff 0,transparent 36%),linear-gradient(125deg,#071a55 0%,#123cba 52%,#662be6 100%);box-shadow:0 18px 45px #2736a333}
+.hero:before{content:"";position:absolute;z-index:-1;width:310px;height:310px;right:5%;top:-90px;border:1px solid #ffffff30;border-radius:50%;box-shadow:0 0 0 30px #ffffff08,0 0 0 65px #ffffff06}
+.hero:after{content:"✦";position:absolute;right:10%;top:25px;color:#8ff5ff;font-size:42px;text-shadow:0 0 24px #5df5ff;opacity:.9}
+.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.06;letter-spacing:-1.5px;max-width:700px;margin:0 0 14px;font-weight:850}
+.hero p{font-size:17px;line-height:1.55;max-width:650px;color:#e0eaff}
+.search{max-width:900px;background:#fff;border-radius:999px;padding:7px;gap:8px;box-shadow:0 12px 30px #06164b45}
+.search input{border-radius:999px;padding:15px 20px;font-size:16px;color:#142044}
+.search .primary,.search button{border-radius:999px;padding:14px 24px;background:linear-gradient(135deg,#6945ff,#4726e8);font-size:15px}
+.chips{gap:9px;margin-top:16px}.chips button{border:1px solid #ffffff40;background:#ffffff16;padding:8px 13px;font-size:12px}
+.section-title{align-items:center;margin:28px 4px 14px}.section-title h2{font-size:25px;font-weight:850;letter-spacing:-.6px;color:#111d43}
+.section-title span{color:#4938df;font-weight:750}
+.grid{gap:14px}
+.card.tool{position:relative;overflow:hidden;min-height:154px;padding:18px;border:1px solid #e9eafd;border-radius:22px;background:linear-gradient(145deg,#fff,#f8f9ff);box-shadow:0 8px 22px #24366c0c;transition:transform .2s,box-shadow .2s,border-color .2s}
+.card.tool:hover{transform:translateY(-5px);box-shadow:0 16px 30px #263a7b1b;border-color:#c9d0ff}
+.card.tool:nth-child(6n+1){background:linear-gradient(145deg,#e4f1ff,#fff)}
+.card.tool:nth-child(6n+2){background:linear-gradient(145deg,#f4e9ff,#fff)}
+.card.tool:nth-child(6n+3){background:linear-gradient(145deg,#e2fbf1,#fff)}
+.card.tool:nth-child(6n+4){background:linear-gradient(145deg,#ffeaf1,#fff)}
+.card.tool:nth-child(6n+5){background:linear-gradient(145deg,#fff3dd,#fff)}
+.card.tool:nth-child(6n){background:linear-gradient(145deg,#e5f7ff,#fff)}
+.tool .icon{width:64px;height:64px;flex-basis:64px;border-radius:19px;box-shadow:0 8px 18px #24366c17}
+.tool h3{font-size:18px;font-weight:800;color:#111d43;margin:12px 0 5px}
+.tool p{font-size:13px;color:#5c6883;line-height:1.45}
+.info-grid{gap:14px}.info{border-radius:20px;border:1px solid #e8eafd;background:#fff;box-shadow:0 8px 22px #24366c0b}
+.guides{margin-top:34px}.guide-card{border-radius:20px;border:1px solid #e8eafd;box-shadow:0 8px 22px #24366c0b}
+.page-links{border-radius:22px;box-shadow:0 8px 22px #24366c0b}
+.footer{color:#71809c}
+.bottom-nav{background:#07183ff2;border:1px solid #ffffff20;border-radius:22px;box-shadow:0 12px 32px #07183f45}
+.bottom-nav button:first-child{background:linear-gradient(135deg,#6747ff,#3b25d9);border-radius:999px}
+@media(max-width:700px){
+ .wrap{padding:12px 13px 90px}
+ .hero{padding:27px 19px 19px;border-radius:25px;margin:8px 0 18px}
+ .hero h1{font-size:32px;line-height:1.1;letter-spacing:-.8px;max-width:95%}
+ .hero p{font-size:14px;line-height:1.5;max-width:95%}
+ .hero:before{width:190px;height:190px;right:-55px;top:-40px}
+ .hero:after{right:12%;top:12px;font-size:28px}
+ .search{border-radius:19px;padding:6px;display:flex;flex-wrap:nowrap}
+ .search input{padding:13px 11px;font-size:14px}
+ .search .primary,.search button{padding:12px 14px;font-size:13px;white-space:nowrap}
+ .chips{overflow-x:auto;flex-wrap:nowrap}.chips button{font-size:11px}
+ .section-title{margin:23px 3px 12px}.section-title h2{font-size:21px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card.tool{min-height:148px;padding:14px 12px;border-radius:18px}
+ .tool .icon{width:54px;height:54px;flex-basis:54px;border-radius:16px}
+ .tool h3{font-size:16px;margin-top:10px}.tool p{font-size:12px}
+ .bottom-nav{left:10px;right:10px;bottom:9px}
+}
+@media(min-width:701px){.hero{min-height:300px}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.card.tool,.tool .icon{animation:none!important;transition:none!important}}
+</style>
+
 </head>
 <body>
 <header class="header">
