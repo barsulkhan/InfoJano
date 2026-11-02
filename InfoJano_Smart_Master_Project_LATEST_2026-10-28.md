@@ -968,3 +968,42 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Direct live-page retrieval through the available web fetch service still returns inaccessible. Therefore GitHub Pages deployment and main-branch source are verified, but the live page should be opened in a normal mobile browser for final visual/network confirmation.
 - Live page URL: https://barsulkhan.github.io/InfoJano/url-toolkit.html
 - No Search Console ranking, click, impression, or CTR improvement is claimed. Re-measure after Google recrawl.
+
+
+
+
+## Homepage visual refinements and next SEO phase — 2 November 2026
+
+### Homepage changes committed directly to main
+
+- User approved publishing the premium homepage refresh. PR #6 was merged by the user on GitHub; the screenshot confirmed the merge commit entered `main` and the PR closed. The user then viewed the updated live GitHub Pages site on desktop.
+- Subsequent desktop visual fixes were committed directly to `main`:
+  - `9b36f0c`: replace three emoji icons (Image Compressor, Image to PDF, URL Toolkit) with SVG image assets to avoid desktop font/emoji fallback boxes.
+  - `bdf1c0e`: attach the QR scanning animation to the QR Code Generator tool rather than a fixed grid-child position, so tool reordering does not move the animation to another card.
+  - `7072a7a`: improve Why InfoJano, About InfoJano, and Useful Guides visual presentation.
+  - `9eb9eeb`: keep Popular Tools heading on one line and enlarge the tool-count label.
+  - `011b7c9`: remove the tool-count badge background/border and align its text size with Popular Tools; add right inset spacing.
+  - `d600cde`: adjust How InfoJano works heading and its cards to add right-side spacing; user later reported this did not fix the intended section at first.
+  - `c667260`: target the How InfoJano works section more precisely; set Simple by design to match heading typography and inset its cards.
+  - `d0489c9`: adjust Why InfoJano cards to match the inset width of How InfoJano works.
+  - `3a59ce2`: keep Why InfoJano heading on one line and add bottom spacing below its cards.
+  - `c1a33db`: slightly increase bottom spacing below Useful Guides cards only.
+- The user has been testing these changes on a desktop monitor and sending photos. Do not assume CSS fixes are visually correct merely because the GitHub commit succeeded. Ask for/inspect screenshots and correct the exact affected section. Avoid broad CSS overrides that alter unrelated sections.
+- Latest visual screenshot showed Useful Guides cards and Explore All Tools with apparent desktop horizontal overflow/edge spacing. The user then specifically reported that the “No matching tool found” message and “Back to tools” button touch the page border and asked to inset them slightly from the left/right. This specific request has NOT yet been implemented/verified. The prior tool inspection call was interrupted by a new user request.
+
+### SEO research and next phase — not yet implemented
+
+- User's latest request: conduct serious, detailed SEO research for every InfoJano app/tool, including understanding how people search on Google, then optimize all app pages comprehensively.
+- Scope includes the 24 standalone tool pages currently listed in the project: image-compressor.html, image-resizer.html, image-to-pdf.html, qr-choice.html, url-toolkit.html, currency-converter.html, unit-converter.html, text-counter.html, percentage.html, age.html, emi.html, discount.html, bmi.html, gst-calculator.html, date-difference.html, tip-calculator.html, savings.html, percentage-change.html, time-calculator.html, number-to-words.html, id-card-print-studio.html, loan-eligibility.html, loan-interest.html, password-generator.html. Also review the homepage and any QR sub-pages that materially support the main QR tool.
+- Do not simply stuff keywords into titles/descriptions. Research search intent and actual query language for each tool; map primary, secondary, and long-tail queries; identify user questions; review SERP competitors and useful content gaps; optimize unique title, meta description, H1/H2, introductory/helpful copy, examples, FAQs where useful, internal links, canonical, Open Graph/Twitter metadata, and appropriate JSON-LD. Ensure claims match actual tool functionality. Avoid fabricated statistics, unsupported claims, duplicate thin SEO pages, and keyword cannibalization.
+- Use Google Search Central documentation as the policy baseline, Google Trends / Keyword Planner / Search Console where available, and current search result/competitor research. Search volume figures from third parties are estimates, not guaranteed demand. Separate observed data from estimates.
+- Before editing, fetch and audit current main versions of all pages. Preserve tool functionality, calculation logic, analytics, PWA manifest, service worker, cache versioning, and short-link API. Keep changes page-specific and validate local links, sitemap and service-worker assets. Consider implementing SEO content incrementally with an auditable diff/PR rather than mass edits directly to production.
+- The previous attempt to fetch all 24 page metadata for audit was interrupted before results were returned. No comprehensive SEO edits have been made yet in this phase.
+
+### Resume instructions
+
+1. Resume from this master file; do not ask the user to repeat project history.
+2. First handle the still-pending desktop spacing fix for the “No matching tool found” message and “Back to tools” button if the user wants to continue visual work.
+3. Then begin the requested comprehensive 24-tool SEO audit and keyword/search-intent research. Return a clear page-by-page audit and recommended changes, then implement carefully with tests.
+4. User works from Android and prefers simple step-by-step instructions, but expects the assistant to take the technical lead and perform repository work directly where possible.
+5. Do not claim live deployment, browser verification, SEO ranking gains, or Google indexing unless each is independently verified.
