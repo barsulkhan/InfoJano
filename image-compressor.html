@@ -122,6 +122,11 @@ body{padding:0;background:#f5f8ff;color:#172033;font-family:system-ui,-apple-sys
 @media(prefers-reduced-motion:reduce){.ij-download-link.ij-downloading .ij-download-icon{animation:none;border-top-color:#155eef}}
 
 
+
+.ij-action.ij-processing{opacity:.94;cursor:wait;display:flex;align-items:center;justify-content:center;gap:10px}
+.ij-processing-spinner{display:inline-block;width:17px;height:17px;border:2.5px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;animation:ijDownloadSpin .7s linear infinite;vertical-align:middle}
+#ijActualResult{scroll-margin-top:18px}
+
 /* Smart/Advanced mode and actual compression result */
 .ij-mode-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:15px;padding:5px;border-radius:14px;background:#f0f4fc}
 .ij-mode-switch button{margin:0;min-height:42px;padding:9px;border:1px solid transparent;border-radius:10px;background:transparent;color:#3d4d6b;font-weight:800;font-size:13px;box-shadow:none}
@@ -353,9 +358,9 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 <p class="ij-advanced-help">Advanced settings give you direct control. If you also enter a target KB above, Smart Target Size takes priority for reaching that limit.</p>
 </div>
 <div class="ij-smart-note"><span>✦</span><span><strong>Smart Compress</strong> automatically tests formats, quality and image dimensions to find the best result within your target size.</span></div>
-<button id="compress" class="ij-action" type="button">⚙ Compress Image</button>
+<button id="compress" class="ij-action" type="button"><span id="compressIcon" aria-hidden="true">⚙</span> <span id="compressLabel">Compress Image</span></button>
 <div id="status" role="status" aria-live="polite"></div>
-<a id="download" class="ij-download-link" hidden download="infojano-compressed.jpg"><span class="ij-download-icon" aria-hidden="true">↓</span><span id="downloadLabel">Download compressed image</span></a>
+<a id="download" class="ij-download-link" hidden download="infojano-compressed.jpg"><span id="downloadIcon" class="ij-download-icon" aria-hidden="true">↓</span><span id="downloadLabel">Download compressed image</span></a>
 </div>
 </section>
 <section id="ijActualResult" class="ij-result-panel" aria-live="polite" hidden>
@@ -565,7 +570,7 @@ async function encodeAdvancedImage(mime,q){
 }
 function setDownloadState(state,message){
  downloadLink.classList.remove('ij-downloading','ij-downloaded');
- const icon=downloadLink.querySelector('.ij-download-icon');
+ const icon=document.getElementById('downloadIcon');
  const label=document.getElementById('downloadLabel');
  if(state==='downloading'){
   downloadLink.classList.add('ij-downloading');
@@ -695,8 +700,12 @@ async function findBestTargetBlob(targetBytes,preferredMime){
 compressButton.addEventListener('click',async()=>{
  if(!image){statusBox.textContent='Please choose an image first.';return;}
  compressButton.disabled=true;
+ compressButton.classList.add('ij-processing');
+ document.getElementById('compressIcon').innerHTML='<span class="ij-processing-spinner"></span>';
+ document.getElementById('compressLabel').textContent='Compressing image…';
  downloadLink.hidden=true;
- statusBox.textContent='Smart compression is finding the best result…';
+ document.getElementById('ijActualResult').hidden=true;
+ statusBox.textContent='⏳ InfoJano is processing your image. Please wait…';
  try{
   const targetKB=Number(targetInput.value);
   if(targetInput.value.trim()&&(!Number.isFinite(targetKB)||targetKB<1||targetKB>20000))throw new Error('Enter a target size between 1 and 20,000 KB.');
@@ -728,7 +737,7 @@ compressButton.addEventListener('click',async()=>{
   downloadLink.download=`${originalName}-compressed.${ext}`;
   document.getElementById('downloadLabel').textContent=`Download compressed image (${(result.blob.size/1024).toFixed(1)} KB)`;
   downloadLink.classList.remove('ij-downloading','ij-downloaded');
-  downloadLink.querySelector('.ij-download-icon').textContent='↓';
+  document.getElementById('downloadIcon').textContent='↓';
   downloadLink.hidden=false;
   let message=`Final size: ${(result.blob.size/1024).toFixed(1)} KB | Dimensions: ${result.w} × ${result.h} px | Format: ${ext.toUpperCase()}`;
   if(targetBytes)message+=result.blob.size<=targetBytes?' | Target reached':' | Target not reached';
@@ -737,8 +746,10 @@ compressButton.addEventListener('click',async()=>{
   if(targetBytes)message+='\\nSmart mode selected the best result it could fit within your KB limit.';
   statusBox.textContent=message;
   const resultPanel=document.getElementById('ijActualResult');
-  document.getElementById('ijOriginalResult').src=originalDataUrl||preview.src;
-  document.getElementById('ijCompressedResult').src=outUrl;
+  const originalResultImage=document.getElementById('ijOriginalResult');
+  if(originalResultImage)originalResultImage.src=originalDataUrl||preview.src;
+  const compressedResultImage=document.getElementById('ijCompressedResult');
+  if(compressedResultImage)compressedResultImage.src=outUrl;
   document.getElementById('ijOriginalSize').textContent=(originalFileSize/1024).toFixed(1)+' KB';
   document.getElementById('ijCompressedSize').textContent=(result.blob.size/1024).toFixed(1)+' KB';
   document.getElementById('ijOriginalMeta').textContent='Original · '+(originalFileSize/1024).toFixed(1)+' KB';
@@ -759,6 +770,9 @@ compressButton.addEventListener('click',async()=>{
   statusBox.textContent='Compression failed: '+(error&&error.message?error.message:'Please try another image or a larger target size.');
  }finally{
   compressButton.disabled=false;
+  compressButton.classList.remove('ij-processing');
+  document.getElementById('compressIcon').textContent='⚙';
+  document.getElementById('compressLabel').textContent='Compress Image';
  }
 });
 </script>
