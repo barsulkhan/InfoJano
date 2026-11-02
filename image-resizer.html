@@ -1,240 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- Google Analytics 4: InfoJano -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Image Resizer: Resize Images Online Free | InfoJano</title>
-<meta name="description" content="Resize images online for free by setting custom width and height. Prepare image dimensions in your browser and download the resized result.">
+<meta name="description" content="Resize images online free. Set exact pixel dimensions, use photo, social media and print presets, and download JPG, PNG or WebP images in your browser.">
 <link rel="canonical" href="https://barsulkhan.github.io/InfoJano/image-resizer.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Image Resizer: Resize Images Online Free | InfoJano">
-<meta property="og:description" content="Resize images online for free by setting custom width and height. Prepare image dimensions in your browser and download the resized result.">
-<meta property="og:url" content="https://barsulkhan.github.io/InfoJano/image-resizer.html">
-<meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
-<meta property="og:image:alt" content="InfoJano useful online tools">
-<meta name="twitter:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Image Resizer: Resize Images Online Free | InfoJano">
-<meta name="twitter:description" content="Resize images online for free by setting custom width and height. Prepare image dimensions in your browser and download the resized result.">
+<meta property="og:type" content="website"><meta property="og:title" content="Image Resizer | InfoJano"><meta property="og:description" content="Resize images to exact pixels with popular photo and print presets."><meta property="og:url" content="https://barsulkhan.github.io/InfoJano/image-resizer.html"><meta property="og:image" content="https://barsulkhan.github.io/InfoJano/infojano-logo.svg">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://barsulkhan.github.io/InfoJano/infojano-logo.svg">
+<link rel="icon" href="/InfoJano/infojano-mark.svg" type="image/svg+xml"><link rel="manifest" href="/InfoJano/app-manifests/image-resizer.webmanifest">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Resizer","url":"https://barsulkhan.github.io/InfoJano/image-resizer.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
-header{background:#10458e;color:white;text-align:center;padding:24px 15px}
-main{max-width:650px;margin:24px auto;padding:16px}
-.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
-label{display:block;margin-top:15px;font-weight:600}
-input,select{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:white}
-button,.download{display:block;width:100%;margin-top:16px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px;text-align:center;text-decoration:none}
-#preview{display:block;max-width:100%;max-height:320px;margin:18px auto}#preview[hidden]{display:none!important}
-#status{margin-top:14px;overflow-wrap:anywhere}
-.note{font-size:14px;color:#4b5563}
-a{color:#1458c8}
-
-/* InfoJano page-entry animation: animated loader while each tool page opens */
-.ij-page-loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#f2f6ff;color:#172033;transition:opacity .28s ease,visibility .28s ease}
-.ij-page-loader.ij-loaded{opacity:0;visibility:hidden;pointer-events:none}
-.ij-loader-card{width:min(82vw,300px);padding:28px 22px;border-radius:22px;background:#fff;box-shadow:0 12px 38px #102a5018;text-align:center}
-.ij-loader-mark{width:66px;height:66px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#dbeafe,#eff6ff);color:#1458c8;font-size:34px;font-weight:800;animation:ij-loader-bob .85s ease-in-out infinite alternate}
-.ij-loader-ring{width:34px;height:34px;margin:0 auto 13px;border:4px solid #dbeafe;border-top-color:#2563eb;border-right-color:#06b6d4;border-radius:50%;animation:ij-loader-spin .8s linear infinite}
-.ij-loader-title{font-size:18px;font-weight:800;margin:0 0 5px}.ij-loader-subtitle{font-size:13px;color:#64748b;margin:0}
-.ij-loader-dots{display:flex;justify-content:center;gap:5px;margin-top:14px}.ij-loader-dots span{width:7px;height:7px;border-radius:50%;background:#2563eb;animation:ij-loader-dot .8s ease-in-out infinite alternate}.ij-loader-dots span:nth-child(2){animation-delay:.18s}.ij-loader-dots span:nth-child(3){animation-delay:.36s}
-@keyframes ij-loader-spin{to{transform:rotate(360deg)}}@keyframes ij-loader-bob{to{transform:translateY(-6px) scale(1.04)}}@keyframes ij-loader-dot{to{opacity:.25;transform:translateY(-4px)}}
-@media(prefers-reduced-motion:reduce){.ij-loader-mark,.ij-loader-ring,.ij-loader-dots span{animation:none!important}.ij-page-loader{transition:none}}
-
-/* Consistent spacing for informational cards on every tool page */
-main > section:not([style]){margin:24px 0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04);box-sizing:border-box;overflow-wrap:anywhere}
-main > section:not([style]) > :first-child{margin-top:0}
-main > section:not([style]) > :last-child{margin-bottom:0}
-main > section:not([style]) p{line-height:1.7;margin:14px 0}
-main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
-@media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
-</style>
-  <link rel="manifest" href="/InfoJano/app-manifests/image-resizer.webmanifest">
-<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Image Resizer: Resize Images Online Free",
-  "url": "https://barsulkhan.github.io/InfoJano/image-resizer.html",
-  "description": "Resize images online for free by setting custom width and height. Prepare image dimensions in your browser and download the resized result.",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-</head>
-<body>
-<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
+:root{--blue:#0865ed;--ink:#10234b;--muted:#53688f;--line:#d8e5fb}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#edf5ff,#f7faff);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.5}button,input,select{font:inherit}
+.ij-install-card{max-width:1100px;margin:12px auto;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px}.ij-install-icon{width:40px;height:40px;display:grid;place-items:center;background:#e5f0ff;color:var(--blue);border-radius:12px;font-size:22px}.ij-install-copy{flex:1}.ij-install-copy strong{display:block}.ij-install-copy span{font-size:12px;color:var(--muted)}.ij-install-card button{border:0;border-radius:10px;background:var(--blue);color:white;padding:10px 14px;font-weight:700}
+main{max-width:1200px;margin:22px auto 40px;padding:0 16px}.hero{display:flex;align-items:center;gap:22px;padding:22px 28px;margin-bottom:16px;border-radius:24px;background:linear-gradient(110deg,#09295e,#075de1 70%,#6a25ed);color:white;box-shadow:0 12px 30px #124eb52a}.hero-icon{width:90px;height:90px;flex:0 0 90px;display:grid;place-items:center;border-radius:22px;background:linear-gradient(135deg,#17c7ef,#7138ed);font-size:48px}.hero h1{margin:0;font-size:clamp(26px,4vw,42px);line-height:1.1}.hero p{margin:8px 0 13px;color:#e1edff;font-size:17px}.benefits{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;font-weight:750}.workspace{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px;background:#ffffffdf;border:1px solid var(--line);border-radius:24px;box-shadow:0 8px 28px #16437c12}.panel{min-width:0;padding:4px}.panel+.panel{border-left:1px solid var(--line);padding-left:18px}
+.step-title{display:flex;align-items:center;gap:12px;margin:0 0 14px}.step-number{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#1598ff,#0752dc);color:#fff;font-size:21px;font-weight:850}.step-title h2{font-size:20px;margin:0;line-height:1.2}.step-title p{font-size:13px;color:var(--muted);margin:3px 0 0}
+.file-input{position:absolute;width:1px;height:1px;opacity:0}.dropzone{min-height:155px;border:2px dashed #8dbaff;border-radius:17px;background:linear-gradient(145deg,#f8fbff,#edf5ff);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;cursor:pointer}.dropzone.drag{background:#e2efff;border-color:var(--blue)}.upload-icon{font-size:42px;color:var(--blue);line-height:1}.dropzone strong{font-size:18px;margin-top:8px}.dropzone small{color:var(--muted);margin-top:3px}
+.preview-card{margin-top:14px;padding:10px;border:1px solid var(--line);border-radius:16px;background:#f7faff}.preview-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.preview-head h3{margin:0;font-size:17px}.small-btn{border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink);padding:7px 11px;font-weight:700}.preview-stage{min-height:140px;display:grid;place-items:center;overflow:hidden;border-radius:12px;background:repeating-conic-gradient(#eef3fb 0% 25%,#fff 0% 50%) 50%/20px 20px}#preview{display:block;max-width:100%;max-height:330px;object-fit:contain}#preview[hidden]{display:none!important}.preview-empty{padding:30px 10px;text-align:center;color:#8192af;font-size:13px}.preview-meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 4px 0;color:var(--muted);font-size:12px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;background:#edf3ff;border-radius:12px;margin-bottom:14px}.tab{border:0;border-radius:9px;background:transparent;color:#43577e;padding:10px 5px;font-size:13px;font-weight:750;cursor:pointer}.tab.active{background:linear-gradient(110deg,#0874f7,#143be0);color:#fff}.mode-panel[hidden]{display:none!important}.field-row{display:grid;grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr);gap:9px;align-items:end}.field label,.setting label{display:block;font-size:13px;font-weight:750;margin-bottom:6px}.field input,.setting select{width:100%;min-width:0;padding:12px;border:1px solid #cbdaf1;border-radius:12px;background:#fff;color:var(--ink);font-size:16px}.lock-icon{height:44px;display:grid;place-items:center;border-radius:12px;background:#edf4ff;color:var(--blue);font-size:21px}.checkline{display:flex;align-items:center;gap:9px;margin:12px 0 15px;font-size:14px;font-weight:650}.checkline input{width:20px;height:20px;accent-color:var(--blue)}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.setting select{font-size:14px;padding:11px}.quality-row{display:flex;align-items:center;gap:10px}.quality-row input{flex:1;min-width:0;accent-color:var(--blue)}.quality-value{min-width:52px;text-align:center;border:1px solid var(--line);border-radius:9px;padding:7px;background:#fff;font-weight:800}.info{display:flex;gap:10px;padding:11px 13px;margin:14px 0;background:#edf6ff;border:1px solid #d4e8ff;border-radius:13px;color:#35527d;font-size:13px}.action-btn{width:100%;display:block;border:0;border-radius:13px;padding:14px 16px;margin-top:10px;background:linear-gradient(100deg,#0879fa,#133fe4);color:white;font-size:17px;font-weight:850;cursor:pointer;text-align:center;text-decoration:none}.action-btn:disabled{opacity:.45;cursor:not-allowed}.download-btn{background:#e6f0ff;color:#12418f;border:1px solid #cbdfff}.status{min-height:24px;margin:10px 2px 0;font-size:13px;font-weight:650;color:#35527d;overflow-wrap:anywhere}
+.preset-section,.info-section{margin-top:16px;padding:18px;background:#ffffffdf;border:1px solid var(--line);border-radius:22px;box-shadow:0 7px 22px #16437c0c}.section-heading{display:flex;align-items:center;gap:11px;margin:0 0 13px}.section-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,#793cff,#4220d4);color:#fff;font-size:22px}.section-heading h2{font-size:21px;margin:0}.section-heading p{margin:0 0 0 auto;color:var(--muted);font-size:12px}.preset-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.preset{min-width:0;min-height:92px;padding:10px 6px;border:1px solid #d2e1fa;border-radius:13px;background:linear-gradient(145deg,#fff,#f3f8ff);color:var(--ink);cursor:pointer;text-align:center}.preset:hover,.preset:focus-visible{border-color:#3986ff;background:#eaf3ff;outline:2px solid #b7d5ff}.picon{display:block;font-size:24px;line-height:1.2;color:#0873ef;margin-bottom:4px}.preset strong{display:block;font-size:12px;line-height:1.3}.preset small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.info-card{padding:16px;border-radius:17px;background:linear-gradient(140deg,#eafff5,#f8fffc);border:1px solid #c6f0df}.info-card:nth-child(2){background:linear-gradient(140deg,#f5efff,#fffaff);border-color:#e3d5ff}.info-card h2{font-size:18px;margin:0 0 9px}.info-card p,.info-card li{font-size:13px;color:#405477}.info-card ul,.info-card ol{padding-left:20px;margin:8px 0 0}.seo-card{margin-top:16px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:18px}.seo-card h2{margin-top:0}.seo-card p{color:#53688f}footer{text-align:center;padding:22px;color:#71819c;font-size:13px}
+@media(max-width:760px){main{margin:14px auto 28px;padding:0 12px}.hero{padding:17px;gap:13px;border-radius:19px}.hero-icon{width:65px;height:65px;flex-basis:65px;font-size:35px}.hero p{font-size:14px}.benefits{gap:9px 13px;font-size:11px}.workspace{grid-template-columns:1fr;padding:12px;border-radius:19px}.panel{padding:3px}.panel+.panel{border-left:0;border-top:1px solid var(--line);padding:16px 3px 3px}.preset-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.preset{min-height:88px}.section-heading p{display:none}}
+@media(max-width:420px){.hero{align-items:flex-start}.hero-icon{width:54px;height:54px;flex-basis:54px;font-size:29px}.benefits{gap:7px 10px}.step-title h2{font-size:18px}.field-row{grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);gap:6px}.field input{padding:10px 8px;font-size:15px}.lock-icon{height:42px}.settings-grid{gap:9px}.setting select{font-size:13px;padding:10px 7px}.preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.preset-section,.info-section{padding:14px}.section-heading h2{font-size:19px}.ij-install-card{margin:10px 12px;flex-wrap:wrap}.ij-install-card button{width:100%}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body>
+<section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
 <main>
-<div class="card">
-<h1>Image Resizer - Resize Images Online</h1>
-<h2>Resize Your Image</h2>
-<label for="file">Choose an Image</label>
-<input id="file" type="file" accept="image/*">
-<img id="preview" alt="Image preview" hidden>
-<label for="width">Width (pixels)</label>
-<input id="width" type="number" min="1" max="10000" placeholder="Example: 600">
-<label for="height">Height (pixels)</label>
-<input id="height" type="number" min="1" max="10000" placeholder="Example: 400">
-<label for="format">Output Format</label>
-<select id="format">
-<option value="image/jpeg">JPG</option>
-<option value="image/png">PNG</option>
-</select>
-<label><input id="ratio" type="checkbox" checked style="width:auto"> Keep original aspect ratio</label>
-<button type="button" onclick="resizeImage()">Resize Image</button>
-<div id="status" aria-live="polite">Choose an image to begin.</div>
-<a id="download" class="download" hidden>Download Resized Image</a>
-<p class="note">Your image is processed in your browser and is not uploaded to InfoJano. Very large images may use substantial phone memory.</p>
-</div>
-<section>
-<h2>How to Resize an Image</h2>
-<p>Select an image, enter the desired width and height in pixels, choose an output format, and tap Resize Image.</p>
-<p>Keeping the aspect ratio helps prevent the image from looking stretched. JPG is suitable for photographs, while PNG can preserve transparency.</p>
-</section>
-<section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">Image Resizing Example</h2><p>If a website asks for a 600 × 600 pixel image, use those exact dimensions when the tool supports them. If the original photo has a different shape, decide whether to preserve proportions or crop it to fit.</p><h3>Before exporting</h3><ul><li>Check the required pixel dimensions and file format.</li><li>Preserve the aspect ratio when stretching would distort the subject.</li><li>For print, follow the destination’s physical-size and DPI requirements too.</li></ul><p>Related tools: <a href="image-compressor.html">Image Compressor</a> and <a href="image-to-pdf.html">Image to PDF Converter</a>.</p></section>
-
-<section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
-<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Image Resizer FAQs</h2>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How do I resize an image?</summary><p style="margin:8px 0 0;color:#536174">Choose an image, enter the required dimensions, and create the resized copy.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Will changing dimensions stretch the image?</summary><p style="margin:8px 0 0;color:#536174">If width and height do not match the original aspect ratio, the image may stretch unless aspect ratio is preserved.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">What dimensions should I use?</summary><p style="margin:8px 0 0;color:#536174">Use the pixel dimensions required by the website, form, or printer. Check its current instructions first.</p></details>
-<p style="margin:12px 0 0;font-size:14px">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="emi.html">EMI Calculator</a></p>
-</section>
-<p><a href="index.html">← Back to InfoJano Home</a></p>
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="image-compressor.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8 9 3 3-3 3m8-6-3 3 3 3"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Image Compressor</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">reduce image file size.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="image-to-pdf.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v6h5M9 13h6m-6 3h6"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Image to PDF Converter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">convert images into a PDF.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="qr-maker.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">QR Code Generator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">create QR codes for links and text.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="unit-converter.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Unit Converter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">convert common measurement units.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
-</section>
-</main>
-<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<section class="hero"><div class="hero-icon" aria-hidden="true">▧</div><div><h1>Image Resizer</h1><p>Resize images to exact pixels and dimensions</p><div class="benefits"><span>⚡ Fast &amp; Free</span><span>🛡️ Keep Quality</span><span>📶 Works Offline</span><span>🔒 No Upload</span></div></div></section>
+<section class="workspace" aria-label="Image resizing tool">
+<div class="panel"><div class="step-title"><span class="step-number">1</span><div><h2>Upload Image</h2><p>Choose an image from your device</p></div></div>
+<input class="file-input" id="file" type="file" accept="image/jpeg,image/png,image/webp">
+<label class="dropzone" id="dropzone" for="file"><span class="upload-icon">☁</span><strong>Click to choose an image</strong><span>or drag and drop here</span><small>JPG, PNG, WebP (Max 10 MB)</small></label>
+<div class="preview-card"><div class="preview-head"><h3>▣ Image Preview</h3><button class="small-btn" type="button" id="clearBtn">▤ Clear</button></div><div class="preview-stage"><img id="preview" alt="Selected image preview" hidden><div class="preview-empty" id="previewEmpty">Your selected photo will appear here.</div></div><div class="preview-meta"><span id="originalMeta">Original: —</span><span id="fileMeta">File size: —</span></div></div></div>
+<div class="panel"><div class="step-title"><span class="step-number">2</span><div><h2>Resize Settings</h2><p>Set new size, choose a preset or use percentage</p></div></div>
+<div class="tabs" role="tablist" aria-label="Resize mode"><button class="tab active" type="button" data-mode="custom" aria-selected="true">⛶ Custom Size</button><button class="tab" type="button" data-mode="preset" aria-selected="false">▰ Preset Size</button><button class="tab" type="button" data-mode="percent" aria-selected="false">% By Percentage</button></div>
+<div class="mode-panel" id="customPanel"><div class="field-row"><div class="field"><label for="width">↔ Width (pixels)</label><input id="width" type="number" min="1" max="10000" value="800" inputmode="numeric"></div><div class="lock-icon" aria-hidden="true">🔗</div><div class="field"><label for="height">↕ Height (pixels)</label><input id="height" type="number" min="1" max="10000" value="600" inputmode="numeric"></div></div></div>
+<div class="mode-panel" id="presetPanel" hidden><div class="info">⭐ Choose any Popular Size below. Its dimensions will be filled in automatically.</div></div>
+<div class="mode-panel" id="percentPanel" hidden><div class="field"><label for="percent">Resize percentage</label><input id="percent" type="number" min="1" max="500" value="50" inputmode="numeric"><small>Example: 50 makes the image half its original size.</small></div></div>
+<label class="checkline"><input id="ratio" type="checkbox" checked> Keep original aspect ratio (recommended)</label>
+<div class="settings-grid"><div class="setting"><label for="format">▣ Output Format</label><select id="format"><option value="image/jpeg">JPG (Best for photos)</option><option value="image/png">PNG (Transparency)</option><option value="image/webp">WebP (Smaller file)</option></select></div><div class="setting"><label for="quality">✦ Image Quality</label><div class="quality-row"><input id="quality" type="range" min="40" max="100" value="90"><output class="quality-value" id="qualityValue">90%</output></div></div></div>
+<div class="info"><span>ⓘ</span><span>Your image is processed in your browser. It is not uploaded to InfoJano. JPG, PNG and WebP are supported.</span></div>
+<button class="action-btn" id="resizeBtn" type="button" disabled>⛶ Resize Image</button><a class="action-btn download-btn" id="download" href="#" hidden>⬇ Download Resized Image</a><div class="status" id="status" role="status" aria-live="polite">Choose an image to begin.</div></div></section>
+<section class="preset-section" id="popularSizes"><div class="section-heading"><span class="section-icon">★</span><div><h2>Popular Sizes</h2><span style="font-size:12px;color:#53688f">Photo, Social Media, Web and Print</span></div><p>Tap once to set the size</p></div>
+<div class="preset-grid">
+<button class="preset" type="button" data-w="413" data-h="531"><span class="picon">👤</span><strong>Passport Photo</strong><small>413 × 531 px</small></button>
+<button class="preset" type="button" data-w="500" data-h="500"><span class="picon">👤</span><strong>Profile Photo</strong><small>500 × 500 px</small></button>
+<button class="preset" type="button" data-w="1080" data-h="1080"><span class="picon">📸</span><strong>Social Media Post</strong><small>1080 × 1080 px</small></button>
+<button class="preset" type="button" data-w="1280" data-h="720"><span class="picon">▶️</span><strong>YouTube Thumbnail</strong><small>1280 × 720 px</small></button>
+<button class="preset" type="button" data-w="1920" data-h="1080"><span class="picon">🖥️</span><strong>Full HD Image</strong><small>1920 × 1080 px</small></button>
+<button class="preset" type="button" data-w="1200" data-h="800"><span class="picon">▧</span><strong>Web Image Large</strong><small>1200 × 800 px</small></button>
+<button class="preset" type="button" data-w="800" data-h="600"><span class="picon">▧</span><strong>Web Image Medium</strong><small>800 × 600 px</small></button>
+<button class="preset" type="button" data-w="400" data-h="300"><span class="picon">▧</span><strong>Web Image Small</strong><small>400 × 300 px</small></button>
+<button class="preset" type="button" data-w="1024" data-h="1448"><span class="picon">📄</span><strong>Document Image</strong><small>1024 × 1448 px</small></button>
+<button class="preset" type="button" data-w="2480" data-h="3508"><span class="picon">📄</span><strong>A4 Print</strong><small>2480 × 3508 px</small></button>
+<button class="preset" type="button" data-w="1748" data-h="2480"><span class="picon">📄</span><strong>A5 Print</strong><small>1748 × 2480 px</small></button>
+<button class="preset" type="button" data-w="1240" data-h="1748"><span class="picon">📄</span><strong>A6 Print</strong><small>1240 × 1748 px</small></button>
+<button class="preset" type="button" data-w="413" data-h="531"><span class="picon">🪪</span><strong>3.5 × 4.5 cm ID Photo</strong><small>413 × 531 px at 300 DPI</small></button>
+<button class="preset" type="button" data-w="342" data-h="425"><span class="picon">🛂</span><strong>2.9 × 3.6 cm Passport</strong><small>342 × 425 px at 300 DPI</small></button>
+<button class="preset" type="button" data-w="800" data-h="600" data-custom="true"><span class="picon">▢</span><strong>Custom Size</strong><small>Set your own size</small></button>
+</div></section>
+<section class="info-section"><div class="info-grid"><div class="info-card"><h2>📗 How to Resize an Image</h2><ol><li>Upload your image.</li><li>Enter the size or choose a Popular Size.</li><li>Select JPG, PNG or WebP and image quality.</li><li>Tap Resize Image, then download your new image.</li></ol></div><div class="info-card"><h2>💡 Tips for Best Results</h2><ul><li>Keep aspect ratio to avoid distortion.</li><li>Use JPG for photos and PNG for transparency.</li><li>For website use, 800 to 1200 px width is often enough.</li><li>Higher quality usually means a larger file.</li><li>Print size also depends on DPI and printer settings.</li></ul></div></div></section>
+<section class="seo-card"><h2>Image Resizing Example</h2><p>If a website asks for a 600 × 600 pixel image, enter those exact dimensions. Keep the aspect ratio on to avoid stretching. For print, check both physical size and DPI.</p><h3>Frequently Asked Questions</h3><details><summary>How do I resize an image?</summary><p>Choose an image, enter the required dimensions or select a preset, then tap Resize Image.</p></details><details><summary>Will resizing reduce image quality?</summary><p>Changing dimensions or compressing an image can affect quality. Use a higher quality setting when image detail matters.</p></details><details><summary>Are my images uploaded?</summary><p>No. The image is processed locally in your browser and is not sent to InfoJano.</p></details><p>Related tools: <a href="image-compressor.html">Image Compressor</a> · <a href="image-to-pdf.html">Image to PDF Converter</a> · <a href="index.html">All InfoJano Tools</a>.</p></section>
+</main><footer>© InfoJano · Smart Tools for Everyday Life</footer>
 <script>
-let sourceImage=null;
-let originalWidth=0;
-let originalHeight=0;
-let currentUrl=null;
-const fileInput=document.getElementById('file');
-const widthInput=document.getElementById('width');
-const heightInput=document.getElementById('height');
-const preview=document.getElementById('preview');
-const status=document.getElementById('status');
-const download=document.getElementById('download');
-fileInput.addEventListener('change',()=>{
-const file=fileInput.files&&fileInput.files[0];
-sourceImage=null;
-download.hidden=true;
-preview.hidden=true;
-if(currentUrl){URL.revokeObjectURL(currentUrl);currentUrl=null;}
-if(!file){status.textContent='Choose an image to begin.';return;}
-if(!file.type.startsWith('image/')){status.textContent='Please choose a valid image file.';return;}
-const url=URL.createObjectURL(file);
-const img=new Image();
-img.onload=()=>{
-sourceImage=img;
-originalWidth=img.naturalWidth;
-originalHeight=img.naturalHeight;
-widthInput.value=originalWidth;
-heightInput.value=originalHeight;
-preview.src=url;
-preview.hidden=false;
-status.textContent='Original size: '+originalWidth+' × '+originalHeight+' pixels.';
-};
-img.onerror=()=>{
-URL.revokeObjectURL(url);
-status.textContent='Could not open this image. Please try another file.';
-};
-img.src=url;
+(function(){
+'use strict';
+let sourceImage=null,originalWidth=0,originalHeight=0,previewUrl=null,resultUrl=null;
+const $=id=>document.getElementById(id),fileInput=$('file'),dropzone=$('dropzone'),preview=$('preview'),empty=$('previewEmpty'),width=$('width'),height=$('height'),ratio=$('ratio'),status=$('status'),download=$('download'),resizeBtn=$('resizeBtn'),format=$('format'),quality=$('quality');
+function say(t){status.textContent=t}
+function clearResult(){if(resultUrl){URL.revokeObjectURL(resultUrl);resultUrl=null}download.hidden=true;download.removeAttribute('href')}
+function loadFile(file){
+ if(!file)return;
+ if(!['image/jpeg','image/png','image/webp'].includes(file.type)){say('Please choose a JPG, PNG or WebP image.');return}
+ if(file.size>10*1024*1024){say('This image is larger than 10 MB. Please choose a smaller image.');return}
+ const url=URL.createObjectURL(file),img=new Image();
+ img.onload=()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=url;sourceImage=img;originalWidth=img.naturalWidth;originalHeight=img.naturalHeight;preview.src=url;preview.hidden=false;empty.hidden=true;$('originalMeta').textContent='Original: '+originalWidth+' × '+originalHeight+' px';$('fileMeta').textContent='File size: '+(file.size/1024).toFixed(1)+' KB';width.value=originalWidth;height.value=originalHeight;resizeBtn.disabled=false;clearResult();say('Image ready. Choose a size and tap Resize Image.')};
+ img.onerror=()=>{URL.revokeObjectURL(url);say('Could not open this image. Please try another file.')};img.src=url;
+}
+fileInput.addEventListener('change',()=>loadFile(fileInput.files&&fileInput.files[0]));
+['dragenter','dragover'].forEach(t=>dropzone.addEventListener(t,e=>{e.preventDefault();dropzone.classList.add('drag')}));
+['dragleave','drop'].forEach(t=>dropzone.addEventListener(t,e=>{e.preventDefault();dropzone.classList.remove('drag')}));
+dropzone.addEventListener('drop',e=>loadFile(e.dataTransfer.files&&e.dataTransfer.files[0]));
+function fromWidth(){if(sourceImage&&ratio.checked&&Number(width.value)>0)height.value=Math.max(1,Math.round(Number(width.value)*originalHeight/originalWidth))}
+function fromHeight(){if(sourceImage&&ratio.checked&&Number(height.value)>0)width.value=Math.max(1,Math.round(Number(height.value)*originalWidth/originalHeight))}
+width.addEventListener('input',()=>{fromWidth();clearResult()});height.addEventListener('input',()=>{fromHeight();clearResult()});ratio.addEventListener('change',()=>{if(ratio.checked)fromWidth()});
+quality.addEventListener('input',()=> $('qualityValue').textContent=quality.value+'%');
+document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>{let a=t===tab;t.classList.toggle('active',a);t.setAttribute('aria-selected',String(a))});['custom','preset','percent'].forEach(m=>$(m+'Panel').hidden=m!==tab.dataset.mode)}));
+document.querySelectorAll('.preset').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.custom){document.querySelector('[data-mode="custom"]').click();width.focus();say('Enter your own width and height.');return}width.value=btn.dataset.w;height.value=btn.dataset.h;document.querySelector('[data-mode="preset"]').click();ratio.checked=false;clearResult();say(btn.querySelector('strong').textContent+' selected: '+btn.dataset.w+' × '+btn.dataset.h+' pixels.')}));
+$('percent').addEventListener('input',()=>{if(!sourceImage)return;let p=Number($('percent').value);if(p>0&&p<=500){width.value=Math.max(1,Math.round(originalWidth*p/100));height.value=Math.max(1,Math.round(originalHeight*p/100));clearResult()}});
+$('clearBtn').addEventListener('click',()=>{sourceImage=null;fileInput.value='';preview.removeAttribute('src');preview.hidden=true;empty.hidden=false;$('originalMeta').textContent='Original: —';$('fileMeta').textContent='File size: —';resizeBtn.disabled=true;clearResult();say('Image cleared. Choose another image to begin.')});
+resizeBtn.addEventListener('click',()=>{
+ if(!sourceImage){say('Please choose an image first.');return}
+ const w=Number(width.value),h=Number(height.value);
+ if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000){say('Enter width and height between 1 and 10000 pixels.');return}
+ if(w*h>40000000){say('This output is too large for safe processing on many phones. Try smaller dimensions.');return}
+ resizeBtn.disabled=true;say('Resizing your image…');
+ try{const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');if(format.value==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h)}ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(sourceImage,0,0,w,h);canvas.toBlob(blob=>{resizeBtn.disabled=false;if(!blob){say('Could not resize this image. Try a smaller size.');return}clearResult();resultUrl=URL.createObjectURL(blob);download.href=resultUrl;download.download='infojano-resized.'+(format.value==='image/jpeg'?'jpg':format.value==='image/png'?'png':'webp');download.hidden=false;$('fileMeta').textContent='New file: '+(blob.size/1024).toFixed(1)+' KB';say('Done! Your resized image is ready to download.')},format.value,Number(quality.value)/100)}catch(e){resizeBtn.disabled=false;say('Unable to resize this image. Try a smaller image.')}
 });
-widthInput.addEventListener('input',()=>{
-if(!sourceImage||!document.getElementById('ratio').checked)return;
-const w=Number(widthInput.value);
-if(w>0)heightInput.value=Math.max(1,Math.round(w*originalHeight/originalWidth));
-});
-heightInput.addEventListener('input',()=>{
-if(!sourceImage||!document.getElementById('ratio').checked)return;
-const h=Number(heightInput.value);
-if(h>0)widthInput.value=Math.max(1,Math.round(h*originalWidth/originalHeight));
-});
-document.getElementById('ratio').addEventListener('change',()=>{
-if(document.getElementById('ratio').checked&&sourceImage){
-heightInput.value=Math.max(1,Math.round(Number(widthInput.value)*originalHeight/originalWidth));
-}
-});
-function resizeImage(){
-if(!sourceImage){status.textContent='Please choose an image first.';return;}
-const w=Number(widthInput.value),h=Number(heightInput.value);
-if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000){
-status.textContent='Enter width and height between 1 and 10000 pixels.';
-return;
-}
-try{
-const canvas=document.createElement('canvas');
-canvas.width=w;
-canvas.height=h;
-const ctx=canvas.getContext('2d');
-if(!ctx){status.textContent='Image processing is not supported in this browser.';return;}
-if(document.getElementById('format').value==='image/jpeg'){
-ctx.fillStyle='#ffffff';
-ctx.fillRect(0,0,w,h);
-}
-ctx.drawImage(sourceImage,0,0,w,h);
-canvas.toBlob(blob=>{
-if(!blob){status.textContent='Could not resize this image. Try a smaller size.';return;}
-if(currentUrl)URL.revokeObjectURL(currentUrl);
-currentUrl=URL.createObjectURL(blob);
-download.href=currentUrl;
-download.download='infojano-resized.'+(document.getElementById('format').value==='image/png'?'png':'jpg');
-download.hidden=false;
-status.textContent='Done! New size: '+w+' × '+h+' pixels. File size: '+(blob.size/1024).toFixed(1)+' KB.';
-},document.getElementById('format').value,0.92);
-}catch(e){
-status.textContent='Unable to resize this image. Try a smaller image or dimensions.';
-}
-}
+window.addEventListener('beforeunload',()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);if(resultUrl)URL.revokeObjectURL(resultUrl)});
+})();
 </script>
-
-<script>
-(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();
-</script>
-<script src="/InfoJano/download-progress.js" defer></script>
-<script src="/InfoJano/install.js" defer></script>
-
-
-
-
-<script src="/InfoJano/site-header.js" defer></script>
-</body>
-</html>
+<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
+</body></html>
