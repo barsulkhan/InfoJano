@@ -1116,3 +1116,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Service worker cache bumped from `infojano-v101` to `infojano-v102`; commit: `eebb7c6f77be7cbfb33bbbd97b632e6d35aaf5a5`.
 - Live browser execution on Android remains to be verified by user after GitHub Pages deployment/cache refresh.
 - Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+
+## Image Compressor null textContent defensive fix — 2026-11-02
+
+- User supplied another Android screenshot showing the same `Cannot set properties of null (setting 'textContent')` error and no actual before/after result.
+- Added safe DOM text/HTML helper functions and replaced direct text updates in the compressor UI with null-guarded setters. Missing download indicator nodes now fail gracefully with a console warning rather than aborting the compression flow.
+- Added an explicit result-preview panel presence check and console error logging to help identify any remaining failure.
+- Source audit verified every literal `getElementById(...)` reference maps to an ID present in the HTML; no optional-chain assignment syntax remains.
+- Page commits: `f89d1941f4a5e4c4167e733a7d902c52544c2979` and `1dd2cae9c21eefe9dcafb8a31c2019d7148937ee`; latest page SHA: `45750ddfe1ac4615cec776941257af456e008a53`.
+- Service worker cache bumped from `infojano-v102` to `infojano-v103`; commit: `cf0a0641997ff9498928cb063217c7491d6eb070`.
+- Live Android execution still requires user verification after the updated Pages build and cache refresh.
