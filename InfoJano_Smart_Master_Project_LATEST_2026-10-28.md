@@ -906,3 +906,20 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Cloudflare Preview smoke tests for the PR head passed before merge: `/health` returned the staging-scaffold JSON and `/TEST1234` returned the expected unavailable/expired response. These tests are not proof of authenticated short-link creation, redirect, analytics, or production readiness.
 - No authenticated link creation, custom domain, DNS change, paid upgrade, or public launch was performed or approved.
 - Next: inspect the GitHub Pages deployment workflow for the merge commit `65491d8`; only after a successful deployment, verify the three live page metadata values. Do not claim SEO performance improvement until Search Console data later supports it.
+
+
+## GitHub Pages deployment success after PR #2 merge — 2 November 2026
+
+- GitHub Pages workflow run `41405622303` for master checkpoint commit `7b9009c229ddde90521758741b80079082a3a1ca` completed with conclusion `success`.
+- Workflow URL: `https://github.com/barsulkhan/InfoJano/actions/runs/41405622303`.
+- The run for the direct PR merge commit `65491d8` was cancelled because the subsequent master-file checkpoint commit triggered a newer Pages build. The newer build succeeded.
+- Retrieved the three calculator HTML source files from the `main` branch and verified their SEO title, meta description, Open Graph title, and Twitter title values match the approved PR #2 copy:
+  - `percentage.html`: Percentage Calculator Online – Find Any Percentage | InfoJano.
+  - `discount.html`: Discount Calculator – Find Sale Price & Savings | InfoJano.
+  - `date-difference.html`: Date Difference Calculator – Days Between Two Dates | InfoJano.
+- Attempted direct live-page retrieval through the available web fetch path, but the GitHub Pages URLs were not accessible to that fetch service. Therefore the successful Pages workflow and main-branch source are verified; direct browser-level confirmation of the live HTML response remains pending.
+- User can open the three live URLs on Android to confirm pages load:
+  - `https://barsulkhan.github.io/InfoJano/percentage.html`
+  - `https://barsulkhan.github.io/InfoJano/discount.html`
+  - `https://barsulkhan.github.io/InfoJano/date-difference.html`
+- Do not claim ranking, impressions, clicks, or CTR improvements yet. Recheck Google Search Console after sufficient recrawl/measurement time.
