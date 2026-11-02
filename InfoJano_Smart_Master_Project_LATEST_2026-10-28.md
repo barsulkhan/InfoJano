@@ -1148,3 +1148,17 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `1a1538647d542c27a2490bf0503e2a5eb3f2d7f8`; latest page SHA: `b80b7d57db427ebb18d119cb9bdbe3bbb5f4eb20`.
 - Service worker cache bumped from `infojano-v104` to `infojano-v105`; commit: `1a8f3df4c53bb8cc10544d70dd82647986eec3ec`.
 - Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+
+## Universal sticky InfoJano header rollout — 2026-11-02
+
+- User approved a persistent shared header on all tool pages: InfoJano logo/name/tagline at left, All Tools navigation, and one Home button at right. Header remains sticky while scrolling so branding/navigation stay visible.
+- Created reusable `site-header.js` with responsive desktop/mobile styling, inline brand mark, All Tools link to `index.html#tools`, and Home link to `index.html`.
+- Added the shared header loader to all 26 tool pages, including ID Card Print Studio, without changing its card-processing logic. Removed/hidden the previous duplicate top brand bar on pages using `.ij-site-brand`.
+- QR Maker source was found ending abruptly mid-string and without closing script/body/html tags. Restored a basic valid ending for its final social QR helper error handler and added the shared header loader; this repair should receive a functional QR Maker test before treating that tool as fully QA-passed.
+- Updated service worker precache to include `site-header.js`; cache bumped from `infojano-v105` to `infojano-v106`.
+- Shared header file commit: `ad5aa0625c940f2c3f24d056e3e2713fa43896c4`.
+- QR Maker repair/header commit: `aaad5dd8aff0cd0b5408f3c1de40d8e2a87bd542`.
+- Service worker commit: `97e6bb8562a89582ef18910ca7c2e638efb26285`.
+- Header script is a shared include, so visual/header adjustments can be made once and propagate across all tool pages.
+- Pages may take a few minutes to publish. Users should refresh after the new deployment; old cached pages may retain the previous header until the service worker activates.
