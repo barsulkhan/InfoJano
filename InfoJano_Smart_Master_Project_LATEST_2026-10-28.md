@@ -856,3 +856,13 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Do not request or expose ADMIN_API_TOKEN. Do not perform authenticated create tests yet.
 - Next step: do not change Worker code or send another POST yet. First decide and explicitly approve a real short-link hostname/base URL; no custom domain, DNS change, paid upgrade, or public launch is approved. Never use https://short.example.invalid.
 - After hostname approval, review the URL validation, rate limiting, abuse protections and DNS-rebinding/private-network protections before any authenticated test.
+
+
+## Google Search Console SEO improvement checkpoint — 2 November 2026
+
+- User supplied Search Console screenshots for the last 3 months. Overview showed 8 clicks, 127 impressions, 6.3% CTR, average position 28.4. Query report showed percentage-related queries, date difference queries and loan interest queries. Top Pages screenshot (first 10 rows) showed ID Card Print Studio 6 clicks/8 impressions, homepage 2/6, GST Calculator 1/1, Age Calculator 1/1, Percentage Calculator 0/46, Discount Calculator 0/42, Date Difference 0/8, Loan Interest 0/6, Time Calculator 0/3, Loan Eligibility 0/3. Note the displayed rows' clicks sum to 10, which differs from the overview 8; report filters/date aggregation should be rechecked before treating these as perfectly reconciled.
+- Created branch `seo/gsc-impression-page-improvements` from main.
+- Updated only title, meta description, Open Graph title/description, and Twitter title/description on `percentage.html`, `discount.html`, and `date-difference.html`. No calculator logic, page layout, canonical URLs, structured data, internal links, PWA manifest, or service-worker assets were changed.
+- Created Draft PR #2: https://github.com/barsulkhan/InfoJano/pull/2
+- PR head commit: `334b735b5144c0dcd68dcea2779f2f8b6cdf8294`; base main at `9f77883354b2825736a39e80b5767c0338bd5c46`.
+- This is metadata/snippet optimization, not a guarantee of higher ranking or clicks. Review and merge only after preview/diff validation. No merge or deployment has been performed.
