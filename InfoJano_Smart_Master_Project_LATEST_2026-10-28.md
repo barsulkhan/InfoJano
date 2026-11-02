@@ -1440,3 +1440,12 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service worker cache bumped from `infojano-v127` to `infojano-v128`: commit `929e6d5129ec71403c186f29bf4dee3fbd52c3d6`.
 - All three inline JavaScript blocks passed syntax checks. Android rendering, QR scanning and download behavior still require user-side testing.
 - Live page: https://barsulkhan.github.io/InfoJano/social-qr-maker.html
+
+
+## Social Media QR generation error fix — 3 November 2026
+- User screenshot showed the new Social QR Maker form loaded correctly but QR creation returned a generic failure message.
+- Diagnosed a JavaScript runtime bug in `makeQR()`: the QR canvas holder was declared as a block-scoped `const` and later assigned `null` after removal, throwing an assignment-to-constant error after canvas generation.
+- Changed holder to use the outer cleanup variable, preserving cleanup in `finally`; catch now logs the actual error and shows its message instead of hiding all diagnostics.
+- Fix commit: `59742df9dd7c8addd5229abe92f23197b5cc8174`.
+- Cache bumped from `infojano-v128` to `infojano-v129`: commit `070c0820a346f796cf9720c367d532f27643f86e`.
+- All three inline scripts passed syntax checks. Need user to retry actual generation and scan-test downloaded QR; no live browser runtime test was available here.
