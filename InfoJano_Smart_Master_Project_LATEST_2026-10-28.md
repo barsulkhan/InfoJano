@@ -1031,3 +1031,20 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Competitor SERP patterns: India photo resizer tools promote exact KB, cm/mm, DPI, exam presets and local processing; JPG-to-PDF leaders compete on multi-image conversion, page size/orientation/margins and workflow; generic image compression competitors compete on formats, batch, previews and file size.
 - Keyword ownership: Compressor = compression/KB/quality/formats; Resizer = pixel dimensions/width/height/aspect ratio; Image-to-PDF = multi-image PDF/page size/margins. Internal links should preserve these distinctions.
 - No source code, metadata, calculator logic, PWA cache or production deployment changed. Candidate metadata is documented only; implementation requires a separate review/approval. Next: continue deep research across remaining 21 tools, then prepare implementation priorities.
+
+
+## Live implementation checkpoint — Image Compressor (2026-11-02)
+
+- User explicitly approved making the Image Compressor redesign live.
+- Updated `image-compressor.html` on `main` with a responsive mobile/desktop layout, clearer H1 and intro, local-processing/privacy messaging, more readable upload area and controls, compression instructions, and improved metadata.
+- Preserved the existing working single-image compression implementation and its original element IDs/event hooks. No unsupported batch-compression feature is advertised.
+- Updated WebApplication description/name and added FAQPage structured data matching the visible FAQ content.
+- Improved page styling and responsive spacing; kept the existing related-tools and practical guide sections.
+- Bumped service-worker cache from `infojano-v96` to `infojano-v97` so returning PWA users can fetch the updated page.
+- GitHub commits:
+  - Page: `02190db84060efcc9ae43bbc8c1dd7055cd66ec3`
+  - Service worker: `8b51a69d4fa9d886ec1b52ecfdc6b61d094a97a8`
+- Post-write source verification succeeded: page SHA `44624b2a1b94f818c729ac8c192e8f6e1e60e72e`; expected controls and FAQ schema present; cache name `infojano-v97`.
+- Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
+- Note: the web preview fetch did not load the GitHub Pages URL during this verification attempt, so the GitHub source commit is confirmed but the rendered public deployment was not independently confirmed in-browser. Recheck the live URL after Pages finishes publishing; if an old page appears, hard-refresh/clear site cache and allow the new service worker to activate.
+- Next workflow: continue one page at a time. Audit the next selected page, show a design preview before changing it, then implement and verify after explicit approval.
