@@ -1233,3 +1233,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `a8cfd64907fbcaacddda773109d0268f55b8372f`.
 - Service worker cache bumped to `infojano-v112`; commit: `c050237ac11fc7e28930091949767a818dfcfafc`.
 - Requires a fresh browser refresh for live device visual verification.
+
+
+## Popular Sizes contrast and preview alignment fix — 2026-11-02
+- Replaced low-contrast blue Popular Size cards with white cards, dark navy titles, readable grey-blue dimensions, and blue left-aligned icons/text.
+- Enforced two-column mobile layout and readable card typography.
+- Fixed Image Preview heading flex sizing and prevented single-letter vertical wrapping.
+- Added page-level max-width/min-width and horizontal overflow guards for narrow/zoomed mobile viewports; kept labels left aligned.
+- Inline JavaScript parser validation passed (2 scripts).
+- Page commit: `d86743c885c9666a73845b70d6cb53005bcfa2ad`.
+- Service worker cache bumped to `infojano-v113`; commit: `1f0335e848a27a23c70c98e53cbff563e96f2ebe`.
+- Live mobile verification remains pending.
