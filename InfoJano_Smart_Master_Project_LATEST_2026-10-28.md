@@ -1061,3 +1061,17 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page update commits: `e29ed09b5d0f85dbd60f5bcf751e0fdc9c0178a6` and refinement `3fa9d5bd1d2046a29203737cd80ee5ef6f7f7c96`.
 - Service worker cache bumped from `infojano-v97` to `infojano-v98`; commit `67d0823731a3aeca1c7dc4bcdea2f8d00e45789b`.
 - Latest page source SHA: `7c38ffddb5aef84ad6cda4566cc07262be84f857`. Verify on-device using a sample image and target sizes such as 20 KB and 100 KB. Very detailed images may require a larger target to remain visually clear; no browser tool can guarantee every image reaches every requested KB while preserving good quality.
+
+
+## Premium Image Compressor visual rebuild checkpoint — 2026-11-02
+
+- User asked for the actual page to closely match the premium visual mockup, including a visual feature moment beside the tool.
+- Rebuilt the Image Compressor page layout with a premium white/blue/purple visual system: redesigned brand header, breadcrumb, two-column hero, illustrative before/after image cards labelled 2.4 MB and 112 KB, premium upload and target-size workspace, quick-pick KB buttons, custom KB entry, format/width/quality controls, Smart Compress explainer, sample result panel, benefit row, how-to and FAQ sections.
+- The 2.4 MB → 112 KB showcase is explicitly labelled illustrative/sample, not a promise or an actual user result. The sample landscape is inline SVG, so it requires no external image request.
+- Kept the working image compression controls and element IDs. Added real drag-and-drop file selection to the upload zone and visual drag-over state.
+- Responsive layout includes desktop split panels and mobile stacked cards.
+- Page commit: `de093058ab79625a8039d443cc3e4d2fb1ed9e41`; upload drop-zone polish commit: `9523a1d1da1cdfae770b0a8fe2026be87934042f`.
+- Service worker cache bumped from `infojano-v98` to `infojano-v99`; commit: `2910a79ed97a902811837bb9374a64680ef9da20`.
+- Source verification: expected controls and Smart Target Size IDs exist; FAQPage structured data remains present; drop handler exists.
+- Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
+- Visual browser/device QA remains to be performed after Pages publishes; source updates are confirmed in GitHub, but do not claim independent rendered-page verification.
