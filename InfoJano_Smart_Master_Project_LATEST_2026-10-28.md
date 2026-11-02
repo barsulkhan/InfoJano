@@ -1416,3 +1416,16 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - QR Maker fix commit: `fa7df8a08210614bb2283a1f0cd830ed89b86632`.
 - Service worker cache bumped from `infojano-v125` to `infojano-v126`: commit `dc53d3b5698ed25ab11a9f145e3231adf3a4b567`.
 - These are source-level corrections based on screenshot diagnosis. The live deployment and Android visual appearance still need user verification after refresh.
+
+
+## Social Media QR Maker premium theme and Related Apps icon correction — 3 November 2026
+- User supplied an exact visual reference and explicitly requested the same neon blue/purple Social Media QR Maker look, with an animated scan beam over the QR and gentle movement on the six social platform badges. No mascot/person image is used.
+- Added a full-width animated Social Media QR hero with bright white/yellow headline, neon lighting, orbit ring, central QR illustration, moving scan beam, and floating Instagram/Facebook/YouTube/TikTok/Telegram/WhatsApp badges.
+- Added six selectable platform tiles above the existing platform selector; tapping a tile syncs the existing selector. Existing profile URL processing, multi-link bundle, QR generation, profile-photo option and download flow were preserved.
+- Added responsive mobile styling and reduced-motion accessibility handling.
+- Related Apps icons: forced SVG image visibility/sizing against global CSS and added an emoji fallback if an app icon asset fails to load.
+- Social page commit: `042b79490b4286a322b59355e6124530b2309573`.
+- Related Apps icon fix commit: `2818a1c2f4c8aff1f3b53ce6c1891a098ba1acb5`.
+- Service-worker cache bumped from `infojano-v126` to `infojano-v127`: commit `ccb007823511d4ede5b1639456af3498de11d0ae`.
+- All three inline scripts in the updated Social QR page passed JavaScript syntax checks. Actual Android appearance, icon loading, social QR scanning, and user interactions still require user-side smoke testing.
+- Live page: https://barsulkhan.github.io/InfoJano/social-qr-maker.html
