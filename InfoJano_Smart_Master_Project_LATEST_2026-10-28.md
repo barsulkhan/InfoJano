@@ -1449,3 +1449,13 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Fix commit: `59742df9dd7c8addd5229abe92f23197b5cc8174`.
 - Cache bumped from `infojano-v128` to `infojano-v129`: commit `070c0820a346f796cf9720c367d532f27643f86e`.
 - All three inline scripts passed syntax checks. Need user to retry actual generation and scan-test downloaded QR; no live browser runtime test was available here.
+
+
+## Social QR Studio feature expansion — 3 November 2026
+- Expanded `social-qr-maker.html` with a QR type selector for single social profile, all social links bundle, Link-in-Bio mini landing page, and digital business card using a MECARD contact payload.
+- Link-in-Bio creates a shareable InfoJano URL containing the entered profile links; scanning opens a responsive mini profile page with clickable social buttons. The URL is limited to 1,800 characters to avoid overly dense QR payloads.
+- Added card style presets: platform brand, Neon Holographic, Premium Profile and Glass-inspired blue palettes; added Scan Me, Follow Me, Subscribe, Let's Connect and Chat With Me CTA labels for downloaded PNG cards.
+- Dynamic QR destination editing and scan analytics are marked as future server-backed features; they are not claimed as active because GitHub Pages currently has no user account/database service.
+- Existing single-profile and multi-social QR workflows retained. All five inline scripts passed JavaScript syntax validation after the final change. Actual Android UI, link-in-bio destination, contact import, download and QR scanning remain pending user-side verification.
+- Social QR page commits: `a92f88b1e674871bec8018a7fdf83bb5e9ba411d`, `dffd08e8b6fab8fa7ce254fa9f5d9041e444294c`. Service worker cache bumped from `infojano-v129` to `infojano-v130`, commit: `cc9489b0211f6ceb5106769896ad3d5cbf0ae43e`.
+- Live page: https://barsulkhan.github.io/InfoJano/social-qr-maker.html
