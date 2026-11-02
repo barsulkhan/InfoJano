@@ -1268,3 +1268,17 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Page commit: `40c376486e38b9d1f5cbb45522fa53454da1b974`.
 - Service worker cache bumped to `infojano-v114`; commit: `f0091ff382f81c210593b195dbe0e9b882635c73`.
 - Actual phone-side image upload, reorder, PDF generation and download testing remains required.
+
+
+## Image to PDF mobile fixes and quality pass — 2026-11-02
+- Replaced the generic hero glyphs with clear inline SVG JPG/image and PDF document artwork, plus improved hero-description contrast.
+- Moved the live status/progress message above the main action buttons and gave it a readable status panel.
+- Wired the Page Order selector: Keep Selected Order now follows the selection sequence; drag reordering activates only when the user selects Arrange by dragging images.
+- Initialized the selected-image count and Clear All disabled state on page load.
+- Increased image processing cap from 1800 px to 2400 px maximum edge and JPEG quality from 0.70 to 0.88. This improves scan clarity while retaining a practical mobile-memory limit; large multi-image jobs can still use more RAM.
+- Existing animated Create PDF and download/save progress indicators and reorder-card styling were confirmed in source; retained them.
+- The page source contains exactly one Related Tools section. If an older Related Apps layout is still visible after deployment, it may be a stale cached page; recheck after the new service worker activates.
+- Page commit: `f6d832033d5201a5abbbc8308f4d36f283d6f124`; inline script parser validation passed (4 scripts).
+- Service worker cache bumped from `infojano-v114` to `infojano-v115`; commit: `33b4f4e46d7bf355715a0acf7a0dfbd5efc05bec`.
+- Live URL: https://barsulkhan.github.io/InfoJano/image-to-pdf.html
+- GitHub source changes are committed. Actual Android upload, reorder, PDF output quality and download testing remain pending user-side verification.
