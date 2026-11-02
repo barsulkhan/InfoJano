@@ -713,6 +713,18 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
  #guides .section-head h2,#guides .section-head>span{font-size:21px!important;line-height:1.15!important}
  #guides .guides-grid{grid-template-columns:1fr!important;gap:11px!important;padding:0 4px 4px!important}
 }
+
+/* Correct target: How InfoJano works heading and its three cards */
+#home .how-heading{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;width:auto!important;margin:34px 22px 14px!important;padding:0 18px 0 0!important;box-sizing:border-box!important}
+#home .how-heading h2{display:flex!important;align-items:center!important;flex-direction:row!important;white-space:nowrap!important;font-size:clamp(25px,2.5vw,32px)!important;line-height:1.15!important;gap:11px!important;margin:0!important}
+#home .how-heading>span{display:block!important;flex:0 0 auto!important;white-space:nowrap!important;font-size:clamp(25px,2.5vw,32px)!important;line-height:1.15!important;font-weight:850!important;letter-spacing:-.45px!important;color:#111d43!important}
+#home .how-grid{width:auto!important;max-width:none!important;box-sizing:border-box!important;margin:0 22px!important;padding:0 18px 0 0!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+#home .how-grid>.info{min-width:0!important;width:100%!important;box-sizing:border-box!important}
+@media(max-width:700px){
+ #home .how-heading{margin:27px 12px 12px!important;padding-right:8px!important;gap:10px!important}
+ #home .how-heading h2,#home .how-heading>span{font-size:21px!important;line-height:1.15!important}
+ #home .how-grid{margin:0 12px!important;padding-right:8px!important;grid-template-columns:1fr!important;gap:11px!important}
+}
 </style>
 
 </head>
@@ -787,7 +799,7 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
     <div id="toolContent"></div>
   </div>
 
-  <div class="section-title"><h2><span class="section-mark mark-how" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5V21M8 7h8M8 11h8M8 15h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid"><a href="#toolGrid" class="card info info-action"><h3>1. Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2. Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3. Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 6v5.5c0 4.6-3.1 7.8-8 9.5-4.9-1.7-8-4.9-8-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Why InfoJano?</h2></div>
+  <div class="section-title how-heading"><h2><span class="section-mark mark-how" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5V21M8 7h8M8 11h8M8 15h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span> How InfoJano works</h2><span>Simple by design</span></div><div class="info-grid how-grid"><a href="#toolGrid" class="card info info-action"><h3>1. Choose</h3><p>Tap to browse available tools.</p><span class="info-cta">Browse tools →</span></a><a href="#search" class="card info info-action" onclick="setTimeout(function(){document.getElementById('search').focus()},250)"><h3>2. Enter</h3><p>Find a tool by typing its name.</p><span class="info-cta">Search a tool →</span></a><a href="#toolGrid" class="card info info-action"><h3>3. Done</h3><p>Choose a tool to open it and get your answer.</p><span class="info-cta">Start now →</span></a></div><div class="section-title"><h2><span class="section-mark mark-why" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 6v5.5c0 4.6-3.1 7.8-8 9.5-4.9-1.7-8-4.9-8-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Why InfoJano?</h2></div>
   <div class="info-grid why-grid">
     <div class="card info why-card"><span class="why-icon" aria-hidden="true">✦</span><h3>Easy to Use</h3><p>Clear labels, helpful icons and simple steps make everyday tasks easier.</p><span class="why-tag">Simple experience</span></div>
     <div class="card info why-card"><span class="why-icon" aria-hidden="true">▣</span><h3>Works on Any Screen</h3><p>Use InfoJano comfortably on your mobile, tablet or desktop computer.</p><span class="why-tag">Mobile + Desktop</span></div>
