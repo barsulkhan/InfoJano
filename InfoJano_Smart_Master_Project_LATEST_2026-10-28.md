@@ -1355,3 +1355,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Service-worker cache bumped from `infojano-v121` to `infojano-v122`: commit `7c886ac44950f3ecfac9474c933629eb90253ad5`.
 - Source edits committed to `main`; actual Android rendering and deployed live appearance still require user verification. Animations respect `prefers-reduced-motion`.
 - Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+
+## Image Compressor full-width hero rebuild — 3 November 2026
+- User compared the live page against the approved visual mockup and clarified that the hero must be a full-width banner, not a small illustration placed in a corner of the old split hero.
+- Rebuilt the hero area in `image-compressor.html` to match the approved reference composition: full-width blue/purple gradient banner; larger 3D-style smiling girl pointing from the left; centered large Image Compressor headline and subtitle; three overlapping landscape preview cards on the right; green 93% smaller-size badge; animated light sweeps and floating cards.
+- Embedded an optimized 6.4 KB crop of the approved mascot artwork directly in the HTML so no separate image hosting is required.
+- Existing upload, compression, result, and download logic below the hero was left unchanged.
+- Hero rebuild commit: `86269756faa2fb6b575f1a90bf33bbfeb4425a62`.
+- Service-worker cache bumped from `infojano-v122` to `infojano-v123`: commit `f44afa9a0507bc5b51f11544b262f0d93022a089`.
+- Source changes committed to `main`. Actual deployed mobile appearance still needs user verification after GitHub Pages deployment and a fresh page reload.
+- Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
