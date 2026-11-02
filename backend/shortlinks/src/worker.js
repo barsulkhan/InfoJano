@@ -35,27 +35,38 @@ function isAuthorized(request, env) {
   return auth === "Bearer " + expected;
 }
 function ipv4Parts(host) {
-  if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) return null;
+  if (!/^\\d{1,3}(\\.\\d{1,3}){3}$/.test(host)) return null;
   const parts = host.split(".").map(Number);
   return parts.every(n => n >= 0 && n <= 255) ? parts : [];
 }
+function ipv4InCidr(ip, network, prefix) {
+  const value = ip.reduce((n, octet) => (n * 256) + octet, 0);
+  const base = network.split(".").map(Number).reduce((n, octet) => (n * 256) + octet, 0);
+  const mask = prefix === 0 ? 0 : (0xffffffff << (32 - prefix)) >>> 0;
+  return (value & mask) >>> 0 === (base & mask) >>> 0;
+}
+const NON_PUBLIC_IPV4 = [
+  ["0.0.0.0",8],["10.0.0.0",8],["100.64.0.0",10],["127.0.0.0",8],
+  ["169.254.0.0",16],["172.16.0.0",12],["192.0.0.0",24],
+  ["192.0.2.0",24],["192.88.99.0",24],["192.168.0.0",16],
+  ["198.18.0.0",15],["198.51.100.0",24],["203.0.113.0",24],
+  ["224.0.0.0",4],["240.0.0.0",4],
+];
 function isPrivateDestination(url) {
-  const host = url.hostname.toLowerCase().replace(/^\[|\]$/g, "").replace(/\.$/, "");
+  const host = url.hostname.toLowerCase().replace(/^\\[|\\]$/g, "").replace(/\\.$/, "");
   if (host === "localhost" || host.endsWith(".localhost") || host.endsWith(".local") || host.endsWith(".internal")) return true;
   const ip = ipv4Parts(host);
-  if (ip) {
-    if (ip.length !== 4) return true;
-    const [a,b] = ip;
-    return a === 0 || a === 10 || a === 127 || a >= 224 ||
-      (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) ||
-      (a === 192 && b === 168) || (a === 100 && b >= 64 && b <= 127) ||
-      (a === 198 && (b === 18 || b === 19));
-  }
+  if (ip) return ip.length !== 4 || NON_PUBLIC_IPV4.some(([network, prefix]) => ipv4InCidr(ip, network, prefix));
   if (host.includes(":")) {
-    return host === "::" || host === "::1" || host.startsWith("fc") ||
-      host.startsWith("fd") || host.startsWith("fe8") || host.startsWith("fe9") ||
-      host.startsWith("fea") || host.startsWith("feb") || host.startsWith("ff") ||
-      host.startsWith("::ffff:") || host.startsWith("2001:db8");
+    // Only globally routable IPv6 unicast (2000::/3) is considered here.
+    // Conservatively reject mapped, translation, 6to4, Teredo, documentation and local ranges.
+    const h = host.replace(/^\\[|\\]$/g, "");
+    if (!/^[0-9a-f:]+$/.test(h)) return true;
+    const first = parseInt(h.split(":")[0] || "0", 16);
+    return (first & 0xe000) !== 0x2000 ||
+      h.startsWith("2001:db8") || h.startsWith("2001:0") ||
+      h.startsWith("2002:") || h.startsWith("64:ff9b:") ||
+      h.startsWith("::ffff:") || h === "::" || h === "::1";
   }
   return false;
 }
@@ -70,9 +81,18 @@ function validateDestination(raw) {
   return url.toString();
 }
 function randomCode() {
-  const bytes = new Uint8Array(CODE_LENGTH);
-  crypto.getRandomValues(bytes);
-  return Array.from(bytes, b => CODE_ALPHABET[b % CODE_ALPHABET.length]).join("");
+  const limit = Math.floor(256 / CODE_ALPHABET.length) * CODE_ALPHABET.length;
+  let code = "";
+  while (code.length < CODE_LENGTH) {
+    const bytes = new Uint8Array(CODE_LENGTH - code.length + 4);
+    crypto.getRandomValues(bytes);
+    for (const byte of bytes) {
+      if (byte >= limit) continue;
+      code += CODE_ALPHABET[byte % CODE_ALPHABET.length];
+      if (code.length === CODE_LENGTH) break;
+    }
+  }
+  return code;
 }
 function getDevice(userAgent = "") {
   if (/tablet|ipad/i.test(userAgent)) return "tablet";
