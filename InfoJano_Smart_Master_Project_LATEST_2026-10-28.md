@@ -957,3 +957,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Change adds Twitter Card metadata to `url-toolkit.html`: card type, title, description and image. No tool logic, page layout, canonical URL, Open Graph tags, structured data, or service-worker assets were changed.
 - This merge publishes the source change to main; it does not by itself prove GitHub Pages deployment or direct live-page metadata response. Next: verify the latest GitHub Pages Actions run and then check the live URL on the user's Android browser if practical.
 - Do not claim SEO ranking or traffic improvements from this metadata-only change. Measure later in Search Console after recrawl.
+
+
+### GitHub Pages deployment verified after PR #3 merge — 2 November 2026
+
+- The workflow run directly associated with merge commit `aaf4e850eafe8d4a2eae1684edecf70676227773` (run `41406852963`) was cancelled because a newer master checkpoint commit triggered a subsequent Pages build.
+- The newer workflow run `41406869699`, for main checkpoint commit `004889a0b31936739473496564fcb4d066b2cdda`, completed successfully. Build, Deploy to GitHub Pages, and Report Build Status jobs all concluded success.
+- This later Pages deployment includes the merged URL Toolkit Twitter metadata because the source change was already present in main before the checkpoint commit.
+- Re-fetched `url-toolkit.html` from main and confirmed the four Twitter metadata tags are present, alongside the existing canonical URL and Open Graph title.
+- Direct live-page retrieval through the available web fetch service still returns inaccessible. Therefore GitHub Pages deployment and main-branch source are verified, but the live page should be opened in a normal mobile browser for final visual/network confirmation.
+- Live page URL: https://barsulkhan.github.io/InfoJano/url-toolkit.html
+- No Search Console ranking, click, impression, or CTR improvement is claimed. Re-measure after Google recrawl.
