@@ -495,8 +495,8 @@ fileInput.addEventListener('change',()=>{
  const file=fileInput.files&&fileInput.files[0];
  originalDataUrl=null;originalFileSize=file?file.size:0;
  const resultBox=document.getElementById('ijActualResult');if(resultBox)resultBox.hidden=true;
- if(!file){setNodeText(originalInfo, 'No image selected.';return);}
- if(!file.type.startsWith('image/')){setNodeText(originalInfo, 'Please choose an image file.';return);}
+ if(!file){setNodeText(originalInfo, 'No image selected.');return;}}
+ if(!file.type.startsWith('image/')){setNodeText(originalInfo, 'Please choose an image file.');return;}}
  setNodeText(originalInfo, 'Loading image preview…');
  const reader=new FileReader();
  reader.onerror=()=>{preview.hidden=true;setNodeText(originalInfo, 'Could not read this image. Please choose it again.';});
@@ -511,7 +511,7 @@ fileInput.addEventListener('change',()=>{
    preview.hidden=false;
    setNodeText(originalInfo, `Original size: ${(file.size/1024).toFixed(1)} KB | Dimensions: ${img.naturalWidth} × ${img.naturalHeight} px`);
   };
-  img.onerror=()=>{preview.hidden=true;setNodeText(originalInfo, 'Could not open this image. Please try another file.';});
+  img.onerror=()=>{preview.hidden=true;setNodeText(originalInfo, 'Could not open this image. Please try another file.');};
   img.src=dataUrl;
  };
  reader.readAsDataURL(file);
@@ -644,7 +644,7 @@ if(dropZone){
  dropZone.addEventListener('drop',event=>{
   const file=event.dataTransfer&&event.dataTransfer.files&&event.dataTransfer.files[0];
   if(!file)return;
-  if(!file.type.startsWith('image/')){setNodeText(statusBox, 'Please drop an image file.';return);}
+  if(!file.type.startsWith('image/')){setNodeText(statusBox, 'Please drop an image file.');return;}}
   const transfer=new DataTransfer();transfer.items.add(file);fileInput.files=transfer.files;
   fileInput.dispatchEvent(new Event('change',{bubbles:true}));
  });
@@ -701,7 +701,7 @@ async function findBestTargetBlob(targetBytes,preferredMime){
 }
 
 compressButton.addEventListener('click',async()=>{
- if(!image){setNodeText(statusBox, 'Please choose an image first.';return);}
+ if(!image){setNodeText(statusBox, 'Please choose an image first.');return;}}
  compressButton.disabled=true;
  compressButton.classList.add('ij-processing');
  setNodeHtml(document.getElementById('compressIcon'), '<span class="ij-processing-spinner"></span>');
