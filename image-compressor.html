@@ -8,19 +8,19 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Image Compressor: Reduce JPG, PNG & WebP Size | InfoJano</title>
-<meta name="description" content="Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust output quality and download the compressed image in your browser.">
+<title>Image Compressor Online - Reduce JPG, PNG & WebP Size | InfoJano</title>
+<meta name="description" content="Compress JPG, PNG and WebP images online for free. Reduce image size in KB, adjust quality and download smaller images securely in your browser.">
 <link rel="canonical" href="https://barsulkhan.github.io/InfoJano/image-compressor.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Image Compressor: Reduce JPG, PNG & WebP Size | InfoJano">
-<meta property="og:description" content="Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust output quality and download the compressed image in your browser.">
+<meta property="og:description" content="Compress JPG, PNG and WebP images online for free. Reduce image size in KB, adjust quality and download smaller images securely in your browser.">
 <meta property="og:url" content="https://barsulkhan.github.io/InfoJano/image-compressor.html">
 <meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
 <meta property="og:image:alt" content="InfoJano useful online tools">
 <meta name="twitter:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Image Compressor: Reduce JPG, PNG & WebP Size | InfoJano">
-<meta name="twitter:description" content="Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust output quality and download the compressed image in your browser.">
+<meta name="twitter:description" content="Compress JPG, PNG and WebP images online for free. Reduce image size in KB, adjust quality and download smaller images securely in your browser.">
 <style>
 *{box-sizing:border-box}
 body{margin:0;padding:16px;font-family:Arial,sans-serif;background:#f2f5fb;color:#172033;line-height:1.5}
@@ -60,6 +60,50 @@ main > section:not([style]) > :last-child{margin-bottom:0}
 main > section:not([style]) p{line-height:1.7;margin:14px 0}
 main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
+
+/* Image Compressor refresh: responsive layout, clearer hierarchy and accessible controls */
+body{padding:0;background:#f5f8ff;color:#172033;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{width:min(100% - 32px,900px);max-width:900px;margin:0 auto;padding:18px 0 40px}
+.ij-breadcrumb{font-size:13px;color:#64748b;margin:4px 0 18px}
+.ij-breadcrumb a{color:#1458c8;text-decoration:none}
+.ij-hero{padding:8px 0 18px}
+.ij-hero h1{font-size:clamp(28px,4vw,38px);line-height:1.15;letter-spacing:-.7px;margin:8px 0 10px;color:#101b32}
+.ij-hero p{max-width:720px;margin:0;color:#52627a;font-size:16px;line-height:1.65}
+.ij-trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.ij-trust span{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:#edf4ff;color:#174a9c;font-size:12px;font-weight:750}
+.panel.ij-compressor-card{padding:clamp(16px,3vw,26px);margin:14px 0 22px;border:1px solid #dbe6f5;border-radius:20px;box-shadow:0 12px 32px rgba(22,55,105,.07)}
+.ij-upload-label{display:block;margin:0 0 8px;font-weight:800;font-size:16px}
+.ij-upload-zone{position:relative;display:grid;place-items:center;gap:8px;min-height:180px;padding:22px;border:2px dashed #8bb4ff;border-radius:17px;background:linear-gradient(145deg,#f4f8ff,#fbfdff);text-align:center;cursor:pointer;transition:border-color .18s ease,background .18s ease}
+.ij-upload-zone:focus-within,.ij-upload-zone:hover{border-color:#1458d4;background:#eff6ff}
+.ij-upload-icon{font-size:34px;line-height:1}
+.ij-upload-zone strong{font-size:18px;color:#14213a}
+.ij-upload-zone small{font-size:13px;color:#64748b}
+#file{max-width:100%;border:0;background:transparent;padding:8px 0;font-size:14px;cursor:pointer}
+.ij-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ij-field label{margin:14px 0 7px;font-size:14px}
+.ij-field input,.ij-field select{min-height:46px;background:#fff}
+.ij-field input[type=range]{min-height:28px}
+.ij-field input:focus-visible,.ij-field select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}
+.ij-range-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ij-range-head label{margin-bottom:7px}
+.ij-range-head output{font-size:13px;font-weight:800;color:#1458c8}
+.ij-target-row{display:grid;grid-template-columns:minmax(0,1fr) 74px;gap:8px}
+.ij-target-row span{align-self:center;color:#64748b;font-size:13px}
+.ij-action{min-height:50px;margin-top:20px;border-radius:12px;font-size:16px;box-shadow:0 5px 14px rgba(37,99,235,.18)}
+.ij-note{margin:12px 0 0;font-size:13px;color:#64748b;line-height:1.55}
+#originalInfo{margin-top:10px}
+#preview{max-height:320px;border-radius:12px}
+#status{padding:10px 12px;border-radius:10px;background:#f4f7fc;color:#26364f;font-size:14px}
+#download{display:inline-flex;padding:10px 14px;border-radius:10px;background:#e8f2ff;color:#124ca8;text-decoration:none}
+.ij-howto{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 24px}
+.ij-howto article{padding:15px;border:1px solid #e1eaf6;border-radius:14px;background:#fff}
+.ij-howto b{display:block;margin-bottom:5px;color:#173f86}
+.ij-howto p{margin:0;font-size:13px;color:#64748b;line-height:1.5}
+.ij-seo-intro{padding:20px;background:#fff;border:1px solid #e1eaf6;border-radius:16px}
+.ij-seo-intro h2{margin-top:0}
+@media(max-width:600px){.wrap{width:calc(100% - 24px);padding-top:14px}.ij-controls{grid-template-columns:1fr;gap:0}.ij-upload-zone{min-height:160px;padding:16px}.ij-howto{grid-template-columns:1fr}.ij-trust span{font-size:11px}}
+@media(min-width:760px){.ij-compressor-card{display:block}.ij-controls{column-gap:18px}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -67,9 +111,9 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Image Compressor: Reduce JPG, PNG & WebP Size",
+  "name": "Image Compressor Online - Reduce JPG, PNG & WebP Size",
   "url": "https://barsulkhan.github.io/InfoJano/image-compressor.html",
-  "description": "Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust output quality and download the compressed image in your browser.",
+  "description": "Compress JPG, PNG and WebP images online for free. Reduce image size in KB, adjust quality and download smaller images securely in your browser.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "offers": {
@@ -79,6 +123,19 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
   }
 }
 </script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {"@type":"Question","name":"Why compress an image?","acceptedAnswer":{"@type":"Answer","text":"Image compression can reduce file size for online uploads, sharing and storage."}},
+  {"@type":"Question","name":"Will image compression reduce quality?","acceptedAnswer":{"@type":"Answer","text":"Lossy compression can reduce image quality. Preview the result and keep the original file when quality matters."}},
+  {"@type":"Question","name":"Can I compress an image to an exact KB size?","acceptedAnswer":{"@type":"Answer","text":"The target KB option is best-effort. Exact file size cannot be guaranteed for every image, format and browser."}}
+ ]
+}
+</script>
+
 </head>
 <body>
 <div class="ij-site-brand" style="background:#0b1220;color:#fff;padding:10px 16px;box-shadow:0 3px 12px #0002"><a href="index.html" aria-label="InfoJano home" style="max-width:650px;margin:0 auto;display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit"><svg viewBox="0 0 72 72" role="img" aria-label="InfoJano logo" style="width:44px;height:44px;flex:0 0 44px"><defs><linearGradient id="ijBlueBrand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#08b9f2"/><stop offset="1" stop-color="#1266e8"/></linearGradient><linearGradient id="ijOrangeBrand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb000"/><stop offset="1" stop-color="#ff6a00"/></linearGradient></defs><path d="M14 48C5 39 8 25 20 17c10-7 23-9 34-3" fill="none" stroke="url(#ijBlueBrand)" stroke-width="7" stroke-linecap="round"/><path d="M58 24c9 9 6 23-6 31-10 7-23 9-34 3" fill="none" stroke="url(#ijOrangeBrand)" stroke-width="7" stroke-linecap="round"/><circle cx="36" cy="15" r="7" fill="#fff"/><path d="M31 27h10l-2 26H29z" fill="#fff"/></svg><span style="display:block;min-width:0"><strong style="display:block;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:23px;font-weight:800;letter-spacing:-.4px;line-height:1.1">Info<span style="color:#08b9f2">Jano</span></strong><span style="display:block;margin-top:3px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:11px;line-height:1.3;color:#b9c5d8">See it • Tap it • Get it done</span></span><span style="margin-left:auto;white-space:nowrap;border:1px solid #ffffff30;border-radius:999px;padding:7px 10px;font:600 12px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#eaf3ff">⌂ Home</span></a></div>
@@ -87,42 +144,57 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 </div>
 
 <main class="wrap">
-<p><a href="./index.html">InfoJano Home</a></p>
-<h1>Image Compressor</h1>
-<p>Reduce your image file size for online forms, applications and sharing.</p>
-<section class="panel">
-<label for="file">1. Choose an image</label>
-<input id="file" type="file" accept="image/*">
+<nav class="ij-breadcrumb" aria-label="Breadcrumb"><a href="./index.html">Home</a> › <a href="./index.html#image-tools">Image Tools</a> › Image Compressor</nav>
+<header class="ij-hero">
+<h1>Image Compressor Online</h1>
+<p>Compress JPG, PNG and WebP images online. Reduce image file size in KB, adjust quality and download a smaller image without uploading it to a server.</p>
+<div class="ij-trust"><span>⚡ Fast in-browser processing</span><span>🛡️ Private by design</span><span>✓ Free to use</span></div>
+</header>
+<section class="panel ij-compressor-card" aria-label="Image compression tool">
+<label class="ij-upload-label" for="file">1. Choose an image</label>
+<div class="ij-upload-zone">
+<div class="ij-upload-icon" aria-hidden="true">☁️</div>
+<strong>Choose an image from your device</strong>
+<small>JPG, PNG, WebP and other browser-supported image files</small>
+<input id="file" type="file" accept="image/*" aria-describedby="upload-help">
+</div>
+<p id="upload-help" class="ij-note">Your image stays on this device and is processed locally in your browser.</p>
 <div id="originalInfo" class="note">No image selected.</div>
-<img id="preview" alt="Selected image preview" hidden>
-<div class="grid">
-<div>
+<img id="preview" alt="Preview of the selected image" hidden>
+<div class="ij-controls">
+<div class="ij-field">
 <label for="format">2. Output format</label>
 <select id="format">
-<option value="image/jpeg">JPG - smaller file size</option>
-<option value="image/png">PNG - lossless style</option>
-<option value="image/webp">WebP - compact size</option>
+<option value="image/jpeg">JPG – smaller file size</option>
+<option value="image/png">PNG – supports transparency</option>
+<option value="image/webp">WebP – compact format</option>
 </select>
 </div>
-<div>
-<label for="quality">3. Image quality: <span id="qualityValue">80</span>%</label>
+<div class="ij-field">
+<div class="ij-range-head"><label for="quality">3. Image quality</label><output id="qualityValue" for="quality">80%</output></div>
 <input id="quality" type="range" min="10" max="100" value="80">
 </div>
+<div class="ij-field">
+<label for="width">Maximum width in pixels (optional)</label>
+<input id="width" type="number" min="1" max="12000" inputmode="numeric" placeholder="Keep original width">
 </div>
-<label for="width">4. Maximum width in pixels (optional)</label>
-<input id="width" type="number" min="1" max="12000" placeholder="Leave blank to keep original width">
-<label for="target">Target file size in KB (optional)</label>
-<input id="target" type="number" min="1" max="20000" placeholder="Example: 200">
-<p class="note">Leave maximum width blank to keep the original dimensions. If a target size is entered, quality is adjusted first and dimensions are reduced only if needed.</p>
-<button id="compress" type="button">Compress Image</button>
-<div id="status" role="status"></div>
+<div class="ij-field">
+<label for="target">Target file size (optional)</label>
+<div class="ij-target-row"><input id="target" type="number" min="1" max="20000" inputmode="numeric" placeholder="Example: 100"><span>KB target</span></div>
+</div>
+</div>
+<p class="ij-note">Target size is best-effort, not guaranteed. PNG compression does not use the quality slider in the same way as JPG or WebP. The tool may reduce dimensions when trying to reach a target KB size.</p>
+<button id="compress" class="ij-action" type="button">Compress Image</button>
+<div id="status" role="status" aria-live="polite"></div>
 <a id="download" hidden download="infojano-compressed.jpg">Download compressed image</a>
-<p class="note">Your image is processed locally in your browser and is not uploaded to a server. Target KB is best-effort; exact size cannot be guaranteed for every image.</p>
+<p class="ij-note">No image upload is required. Processing happens in your browser. Keep your original image if you need to preserve its full quality.</p>
 </section>
-<section class="panel">
-<h2>How to use</h2>
-<p>Choose an image, select the format and quality, optionally enter a target size in KB, then tap Compress Image and download the result.</p>
-</section>
+<div class="ij-howto" aria-label="How to use the image compressor">
+<article><b>1. Choose an image</b><p>Select a JPG, PNG or WebP image from your phone or computer.</p></article>
+<article><b>2. Set compression</b><p>Choose an output format and quality. Add a target size in KB if needed.</p></article>
+<article><b>3. Download</b><p>Compress the image, check its new size and download the result.</p></article>
+</div>
+
 <section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
 <h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
 <p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
@@ -151,7 +223,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
 </a></div>
 </section>
-<section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">How to Reduce Image File Size</h2><p>Choose an image, adjust the available compression settings, and preview the result before saving it. The final file size depends on image format, dimensions, detail and compression level.</p><h3>Keep the image usable</h3><ul><li>Keep a copy of the original file.</li><li>Check text, faces and fine details after compression.</li><li>For a form upload, confirm the file-size and format limits on the destination website.</li></ul><p>Related tools: <a href="image-resizer.html">Image Resizer</a> and <a href="image-to-pdf.html">Image to PDF Converter</a>.</p></section>
+<section class="ij-practical-guide ij-seo-intro" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">How to Reduce Image File Size</h2><p>Choose an image, adjust the available compression settings, and preview the result before saving it. The final file size depends on image format, dimensions, detail and compression level.</p><h3>Keep the image usable</h3><ul><li>Keep a copy of the original file.</li><li>Check text, faces and fine details after compression.</li><li>For a form upload, confirm the file-size and format limits on the destination website.</li></ul><p>Related tools: <a href="image-resizer.html">Image Resizer</a> and <a href="image-to-pdf.html">Image to PDF Converter</a>.</p></section>
 
 <section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
 <h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Image Compressor FAQs</h2>
@@ -175,7 +247,7 @@ const compressButton=document.getElementById('compress');
 let image=null,originalName='image',objectUrl=null,lastOutputUrl=null;
 
 qualityInput.addEventListener('input',()=>{
- document.getElementById('qualityValue').textContent=qualityInput.value;
+ document.getElementById('qualityValue').textContent=qualityInput.value+'%';
 });
 fileInput.addEventListener('change',()=>{
  downloadLink.hidden=true;
