@@ -22,6 +22,44 @@ main{max-width:1200px;margin:22px auto 40px;padding:0 16px}.hero{display:flex;al
 @media(max-width:760px){main{margin:14px auto 28px;padding:0 12px}.hero{padding:17px;gap:13px;border-radius:19px}.hero-icon{width:65px;height:65px;flex-basis:65px;font-size:35px}.hero p{font-size:14px}.benefits{gap:9px 13px;font-size:11px}.workspace{grid-template-columns:1fr;padding:12px;border-radius:19px}.panel{padding:3px}.panel+.panel{border-left:0;border-top:1px solid var(--line);padding:16px 3px 3px}.preset-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.preset{min-height:88px}.section-heading p{display:none}}
 @media(max-width:420px){.hero{align-items:flex-start}.hero-icon{width:54px;height:54px;flex-basis:54px;font-size:29px}.benefits{gap:7px 10px}.step-title h2{font-size:18px}.field-row{grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);gap:6px}.field input{padding:10px 8px;font-size:15px}.lock-icon{height:42px}.settings-grid{gap:9px}.setting select{font-size:13px;padding:10px 7px}.preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.preset-section,.info-section{padding:14px}.section-heading h2{font-size:19px}.ij-install-card{margin:10px 12px;flex-wrap:wrap}.ij-install-card button{width:100%}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* Mobile layout corrections and clear processing/download states */
+.checkline{display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;padding:12px 14px;margin:14px 0 15px;background:#f1f6ff;border:1px solid #d8e5fb;border-radius:12px;text-align:left}
+.checkline input{flex:0 0 20px;margin:0}
+.field-row{align-items:end}
+.field{min-width:0}
+.field input{display:block;min-height:46px}
+.lock-icon{align-self:end}
+.preview-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px}
+.preview-head h3{font-size:16px;white-space:nowrap}
+.preview-head .small-btn{width:auto;min-width:88px;padding:9px 14px}
+.tabs{background:#edf3ff;border:1px solid #d9e6fb}
+.tab{background:#fff;color:#29456f;border:1px solid #d7e4f7}
+.tab.active{background:linear-gradient(110deg,#0874f7,#143be0);color:#fff;border-color:#1455df}
+.preset{background:#fff;border:1px solid #cbdcf5;box-shadow:0 2px 7px #153e7a0b}
+.preset strong{font-size:13px;color:#17315c}
+.preset small{font-size:11px;color:#53688f}
+.picon{font-size:26px}
+.download-state{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;margin-top:10px;padding:12px;border:1px solid #cbdfff;border-radius:13px;background:#edf5ff;color:#17468e;font-weight:800;text-align:center}
+.download-state[hidden]{display:none!important}
+.spin-icon{display:inline-block;width:20px;height:20px;border:3px solid #b8d4ff;border-top-color:#075ee5;border-right-color:#075ee5;border-radius:50%;animation:ij-spin .75s linear infinite;flex:0 0 20px}
+@keyframes ij-spin{to{transform:rotate(360deg)}}
+.action-btn:disabled{opacity:.65}
+.ij-global-header{position:sticky!important;top:0!important}
+@media(max-width:760px){
+ .preview-head{grid-template-columns:1fr auto}
+ .preview-head h3{font-size:15px}
+ .preview-head .small-btn{min-width:76px}
+ .field-row{grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr);gap:8px}
+ .field input{width:100%;min-height:46px;padding:10px 9px;font-size:16px}
+ .lock-icon{height:46px}
+ .checkline{font-size:14px}
+ .preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .preset{min-height:96px;padding:12px 8px}
+ .preset strong{font-size:14px}
+ .preset small{font-size:12px}
+}
+@media(max-width:380px){.field-row{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);gap:5px}.lock-icon{font-size:18px}.preview-head h3{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.spin-icon{animation:none}}
 </style></head><body>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
 <main>
@@ -39,7 +77,7 @@ main{max-width:1200px;margin:22px auto 40px;padding:0 16px}.hero{display:flex;al
 <label class="checkline"><input id="ratio" type="checkbox" checked> Keep original aspect ratio (recommended)</label>
 <div class="settings-grid"><div class="setting"><label for="format">▣ Output Format</label><select id="format"><option value="image/jpeg">JPG (Best for photos)</option><option value="image/png">PNG (Transparency)</option><option value="image/webp">WebP (Smaller file)</option></select></div><div class="setting"><label for="quality">✦ Image Quality</label><div class="quality-row"><input id="quality" type="range" min="40" max="100" value="90"><output class="quality-value" id="qualityValue">90%</output></div></div></div>
 <div class="info"><span>ⓘ</span><span>Your image is processed in your browser. It is not uploaded to InfoJano. JPG, PNG and WebP are supported.</span></div>
-<button class="action-btn" id="resizeBtn" type="button" disabled>⛶ Resize Image</button><a class="action-btn download-btn" id="download" href="#" hidden>⬇ Download Resized Image</a><div class="status" id="status" role="status" aria-live="polite">Choose an image to begin.</div></div></section>
+<button class="action-btn" id="resizeBtn" type="button" disabled><span class="btn-icon" aria-hidden="true">↔</span> Resize Image</button><div class="download-state" id="downloadState" hidden role="status" aria-live="polite"><span class="spin-icon" aria-hidden="true"></span><span id="downloadStateText">Preparing your resized image…</span></div><a class="action-btn download-btn" id="download" href="#" hidden><span aria-hidden="true">⬇</span> Download Resized Image</a><div class="status" id="status" role="status" aria-live="polite">Choose an image to begin.</div></div></section>
 <section class="preset-section" id="popularSizes"><div class="section-heading"><span class="section-icon">★</span><div><h2>Popular Sizes</h2><span style="font-size:12px;color:#53688f">Photo, Social Media, Web and Print</span></div><p>Tap once to set the size</p></div>
 <div class="preset-grid">
 <button class="preset" type="button" data-w="413" data-h="531"><span class="picon">👤</span><strong>Passport Photo</strong><small>413 × 531 px</small></button>
@@ -65,9 +103,9 @@ main{max-width:1200px;margin:22px auto 40px;padding:0 16px}.hero{display:flex;al
 (function(){
 'use strict';
 let sourceImage=null,originalWidth=0,originalHeight=0,previewUrl=null,resultUrl=null;
-const $=id=>document.getElementById(id),fileInput=$('file'),dropzone=$('dropzone'),preview=$('preview'),empty=$('previewEmpty'),width=$('width'),height=$('height'),ratio=$('ratio'),status=$('status'),download=$('download'),resizeBtn=$('resizeBtn'),format=$('format'),quality=$('quality');
+const $=id=>document.getElementById(id),fileInput=$('file'),dropzone=$('dropzone'),preview=$('preview'),empty=$('previewEmpty'),width=$('width'),height=$('height'),ratio=$('ratio'),status=$('status'),download=$('download'),downloadState=$('downloadState'),downloadStateText=$('downloadStateText'),resizeBtn=$('resizeBtn'),format=$('format'),quality=$('quality');
 function say(t){status.textContent=t}
-function clearResult(){if(resultUrl){URL.revokeObjectURL(resultUrl);resultUrl=null}download.hidden=true;download.removeAttribute('href')}
+function clearResult(){if(resultUrl){URL.revokeObjectURL(resultUrl);resultUrl=null}download.hidden=true;download.removeAttribute('href');downloadState.hidden=true;}
 function loadFile(file){
  if(!file)return;
  if(!['image/jpeg','image/png','image/webp'].includes(file.type)){say('Please choose a JPG, PNG or WebP image.');return}
@@ -93,8 +131,8 @@ resizeBtn.addEventListener('click',()=>{
  const w=Number(width.value),h=Number(height.value);
  if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000){say('Enter width and height between 1 and 10000 pixels.');return}
  if(w*h>40000000){say('This output is too large for safe processing on many phones. Try smaller dimensions.');return}
- resizeBtn.disabled=true;say('Resizing your image…');
- try{const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');if(format.value==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h)}ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(sourceImage,0,0,w,h);canvas.toBlob(blob=>{resizeBtn.disabled=false;if(!blob){say('Could not resize this image. Try a smaller size.');return}clearResult();resultUrl=URL.createObjectURL(blob);download.href=resultUrl;download.download='infojano-resized.'+(format.value==='image/jpeg'?'jpg':format.value==='image/png'?'png':'webp');download.hidden=false;$('fileMeta').textContent='New file: '+(blob.size/1024).toFixed(1)+' KB';say('Done! Your resized image is ready to download.')},format.value,Number(quality.value)/100)}catch(e){resizeBtn.disabled=false;say('Unable to resize this image. Try a smaller image.')}
+ resizeBtn.disabled=true;resizeBtn.innerHTML='<span class="spin-icon" aria-hidden="true"></span> Resizing Image…';download.hidden=true;downloadState.hidden=false;downloadStateText.textContent='Resizing image… please wait';say('Please wait while your image is resized.');
+ try{const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');if(format.value==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h)}ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(sourceImage,0,0,w,h);canvas.toBlob(blob=>{resizeBtn.disabled=false;resizeBtn.innerHTML='<span class="btn-icon" aria-hidden="true">↔</span> Resize Image';downloadState.hidden=true;if(!blob){say('Could not resize this image. Try a smaller size.');return}clearResult();resultUrl=URL.createObjectURL(blob);download.href=resultUrl;download.download='infojano-resized.'+(format.value==='image/jpeg'?'jpg':format.value==='image/png'?'png':'webp');download.hidden=false;downloadState.hidden=false;downloadState.innerHTML='<span aria-hidden="true">✓</span><span>Your resized image is ready. Tap Download below.</span>'; $('fileMeta').textContent='New file: '+(blob.size/1024).toFixed(1)+' KB';say('Done! Your resized image is ready to download.')},format.value,Number(quality.value)/100)}catch(e){resizeBtn.disabled=false;resizeBtn.innerHTML='<span class="btn-icon" aria-hidden="true">↔</span> Resize Image';downloadState.hidden=true;say('Unable to resize this image. Try a smaller image.')}
 });
 window.addEventListener('beforeunload',()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);if(resultUrl)URL.revokeObjectURL(resultUrl)});
 })();
