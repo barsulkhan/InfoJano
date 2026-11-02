@@ -90,3 +90,128 @@ The 28 October master records an earlier 3-month site view of 2 clicks, 83 impre
 - Desktop spacing: source CSS rule exists (22px desktop, 12px mobile); rendered desktop appearance remains unverified. No speculative CSS edit made.
 - No source code, page metadata, PWA cache, or production deployment was changed during this research phase.
 - Next: validate the exact desktop state with a current screenshot or real desktop browser, then deepen the 24-page quantitative keyword/competitor analysis and prepare a prioritized, page-by-page content/metadata plan before implementation.
+
+
+# Deep research — Image Tools cluster (2 November 2026)
+
+## Evidence and limitations
+This phase combines current InfoJano main-branch source inspection with live SERP/competitor observations and third-party keyword/traffic estimates. Third-party estimates are directional, not Google Search Console data and not a direct Keyword Planner export unless explicitly stated. Search volume, difficulty and competitor traffic vary by tool, country, device, time range and methodology. Do not present these as guaranteed Google demand or InfoJano traffic forecasts.
+
+### Market signals (directional)
+- Image Compressor: KWSTrends' report updated 1 Nov 2026 estimates about 660,000 global monthly searches for the broad phrase, with India about 270,000 (41%) and US about 55,000 (8.3%). Its report lists related estimates: jpeg image compressor 8,000, jpg image compressor 6,500, online image compressor 4,000, image compressor free 4,000, image size compressor 2,700, PNG image compressor 390, WebP image compressor 290, image compressor to 100KB 230, to 20KB 170, to 50KB 70. These are provider estimates; the page reports Google Ads/Keyword Planner figures for US but the global and India figures are the provider's estimates. Source: https://www.kwstrends.com/keywords/us/image-compressor
+- Image Resizer: AhrefsTop's current third-party site report for simpleimageresizer.com estimates India keyword volumes of 688K for “image resizer”, 719K for “resize image”, 45K for “resize image to 100kb”, and 50K for “resize image to 50kb”. These are competitor keyword estimates, not InfoJano opportunity forecasts. Source: https://ahrefstop.com/websites/simpleimageresizer.com
+- JPG to PDF: AhrefsTop's current competitor report estimates India volumes of 4.8M for “jpg to pdf”, 681K for “jpg to pdf converter”, 896K for “image to pdf” and 200K for “jpeg to pdf”. This demonstrates a large established query class but also an extremely competitive SERP dominated by specialist converters. Source: https://ahrefstop.com/websites/jpg2pdf.com
+- Search visibility reports for imageresizer.com list “image resizer” and “resize image” as high-traffic phrases, and identify iLoveIMG, simpleimageresizer and other utility sites among competitors. These are estimates, not first-party analytics. Source: https://analytics.explodingtopics.com/website/imageresizer.com
+
+## 1) Image Compressor — https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+### Verified current functionality
+- Accepts browser-supported image files via an image file picker.
+- Output formats: JPEG, PNG and WebP.
+- Quality slider from 10 to 100.
+- Optional maximum output width (blank retains original width).
+- Optional target size in KB (1–20,000); page explicitly says target KB is best-effort and cannot be guaranteed for every image.
+- Page explicitly states processing is local in the browser and images are not uploaded.
+- The page does not currently expose a direct exact-height field, physical cm/mm/DPI controls, a fixed 20/50/100KB preset bank, or a batch workflow in the visible controls inspected.
+
+### Keyword target and intent
+Primary: **image compressor online** (broad task intent; very competitive).
+Secondary: compress image online; JPG image compressor; JPEG image compressor; PNG image compressor; WebP image compressor; reduce image file size; image compressor to 100KB; compress image to target KB; compress image without uploading.
+Long-tail: compress JPG image online; reduce image size in KB; compress PNG without changing dimensions; convert and compress image to WebP; compress image in browser; reduce photo file size for online form (only as a broad use case, not an exact size promise).
+
+Dominant intent: immediate tool/task completion. User arrives with a file and wants a smaller downloadable file. Secondary informational intent concerns file size, visual quality, formats and privacy.
+
+### SERP/competitor pattern
+KWSTrends lists imagecompressor.com, Adobe Express, imageresizer.com, iLoveIMG, FreeConvert, TinyJPG and TinyPNG among organic results. Competitors typically foreground drag/drop, output formats, batch processing, compression level, target size, previews and limits. Squoosh differentiates around browser-side control and format/quality comparison. Competitor links: https://imagecompressor.com/ ; https://www.adobe.com/express/feature/image/compress ; https://www.iloveimg.com/compress-image ; https://www.freeconvert.com/image-compressor ; https://squoosh.app/ ; https://tinypng.com/
+
+### Opportunity and page recommendations
+1. Lead with the verified use case: “Compress JPG, PNG and WebP images online” rather than claiming exact-size guarantees.
+2. Place the privacy/local-processing explanation next to the upload control, not only in a paragraph below it.
+3. Explain the difference between quality, width and target KB. The current best-effort note is valuable and should remain visible.
+4. Add a compact before/after result summary if the current interface supports it; do not claim it until verified.
+5. Add examples around “reduce image size in KB” and “compress JPG/PNG/WebP” without keyword stuffing.
+6. Link prominently to Image Resizer for dimension changes and Image to PDF for document creation.
+7. Avoid “without losing quality”, “exact 20KB/50KB”, “unlimited batch” and “no file-size limit” claims unless product behaviour changes and is tested.
+
+Suggested title (candidate, not yet implemented): **Image Compressor Online – Compress JPG, PNG & WebP | InfoJano**
+Suggested description (candidate): **Compress JPG, PNG and WebP images online for free. Adjust image quality, set an optional width or target KB, and download the smaller file. Processing stays in your browser.**
+Suggested H1: **Compress JPG, PNG & WebP Images Online**
+Recommended visible content: How to compress an image; Quality vs file size; What target KB means (best-effort); Supported formats; Privacy and local processing; FAQs: how to reduce image size, does compression reduce quality, can I compress PNG, can I set a target KB, are images uploaded?
+
+## 2) Image Resizer — https://barsulkhan.github.io/InfoJano/image-resizer.html
+
+### Verified current functionality
+- Accepts an image file.
+- User enters width and height in pixels.
+- Output format choices are JPEG and PNG.
+- Keep-aspect-ratio checkbox is enabled by default.
+- Page states browser-local processing and no upload to InfoJano.
+- The inspected controls do not include cm/mm/inch, DPI, target KB, passport/exam presets, crop, batch processing or WebP output. Do not target those as existing capabilities.
+
+### Keyword target and intent
+Primary: **image resizer online** (very high competition, broad immediate task intent).
+Secondary: resize image online; resize photo; change image dimensions; resize image in pixels; image size changer; resize JPG; resize PNG; custom image dimensions.
+Long-tail: resize image to 600x400 pixels; change photo width and height; resize JPG image online; resize PNG image online; resize image without uploading; keep image aspect ratio while resizing.
+
+Indian market subcluster: photo resizer; resize photo to 50KB; resize image to 100KB; passport photo size; exam photo size; signature size; image resize in cm/mm/DPI. These are attractive query themes, but **they are not current tool features**. Do not use them as the primary promise until the functionality is implemented and tested. Consider a separate future “Photo & Signature Resizer” product/page if the owner approves the feature roadmap; avoid turning the current pixel-only page into a misleading exam-photo landing page.
+
+### SERP/competitor pattern
+India-focused competitors such as PhotoSizer.in, CropDesk, Toolkit360, PhotoResizer.in and Shivi Notes advertise exact KB targets, px/cm/mm, DPI, passport/exam presets and browser-side processing. Their visible controls directly match form-upload requirements, so they satisfy a more specific job than InfoJano's current pixel-only resizer. Examples: https://www.photosizer.in/ ; https://cropdesk.co.in/image-resizer/ ; https://toolkit360.in/tools/image-resizer ; https://www.photoresizer.in/ ; https://www.shivinotes.com/image-editor
+Broader competitors such as imageresizer.com and iLoveIMG compete for generic resize-image intent. Third-party traffic estimates show India can be a substantial audience for these utilities, but they are not reliable substitutes for InfoJano's Search Console data.
+
+### Opportunity and page recommendations
+1. Focus the current page on exact pixel width × height and aspect-ratio control; this is the honest product-market fit today.
+2. Put “pixels” in the H1 or opening copy and show a concrete 600 × 400 example.
+3. Explain aspect ratio clearly: preserve proportions vs allow stretching. The current page already warns about distortion.
+4. Explicitly state supported output formats (JPEG and PNG) and local processing.
+5. Add links to Image Compressor for target file-size reduction and Image to PDF for document output.
+6. Treat exact-KB, DPI, cm/mm and exam-photo keywords as roadmap opportunities, not metadata claims. Re-evaluate if those features ship.
+
+Suggested title (candidate): **Image Resizer Online – Resize JPG & PNG in Pixels | InfoJano**
+Suggested description (candidate): **Resize JPG and PNG images online by entering custom pixel width and height. Keep the original proportions, choose an output format and download your resized image.**
+Suggested H1: **Resize Images to Custom Pixel Dimensions**
+Recommended visible content: How to resize; width vs height; aspect ratio; JPG vs PNG; local processing; examples (600 × 400, 1080 × 1080 as user-entered examples, not preset promises); FAQs about stretching, pixels, supported formats and privacy.
+
+## 3) Image to PDF — https://barsulkhan.github.io/InfoJano/image-to-pdf.html
+
+### Verified current functionality
+- Accepts multiple image files in one file picker.
+- Page-size options: A4, Letter and Fit.
+- Margin checkbox is enabled by default.
+- The page states browser-side processing and no upload.
+- Source code inspection shows images are scaled down so the longest edge is at most 1800 pixels before PDF creation; the canvas is rendered with a white background and JPEG data. This is a meaningful output-quality constraint and should be documented accurately.
+- Do not promise arbitrary DPI, exact print resolution, OCR, password protection, compression target, page reordering or batch ZIP unless further code verification confirms it. The page's help text itself says “if the page supports reordering”; do not present reordering as guaranteed.
+
+### Keyword target and intent
+Primary: **JPG to PDF** (huge demand, extremely competitive, direct conversion intent).
+Secondary: image to PDF; JPG to PDF converter; JPEG to PDF; PNG to PDF; convert images to PDF; photos to PDF; multiple images to one PDF; image PDF maker; JPG PDF online.
+Long-tail: convert multiple JPG images into one PDF; combine photos into a single PDF; JPG to PDF A4; PNG images to PDF; create PDF from photos on phone; image to PDF without uploading.
+
+Dominant intent: immediate file conversion, with a strong document workflow component. Users often want a multi-page PDF that can be submitted, printed or shared.
+
+### SERP/competitor pattern
+JPG2PDF, iLovePDF, Smallpdf and FreePDFConvert occupy a highly competitive, mature query set. Competitors emphasise selecting multiple images, arranging order, page orientation/size, margins, image fit and download. Competitor examples: https://jpg2pdf.com/ ; https://www.ilovepdf.com/jpg_to_pdf ; https://smallpdf.com/image-to-pdf ; https://www.freepdfconvert.com/jpg-to-pdf
+Third-party competitor reports estimate very large India search demand for “jpg to pdf” and “image to pdf”; treat these figures as directional only, not a traffic forecast.
+
+### Opportunity and page recommendations
+1. Do not try to outrank the generic query with thin copy alone. Make the actual multi-image workflow fast and clear above the fold.
+2. Use “JPG to PDF” in the title and opening paragraph, while supporting PNG and other accepted image formats in the description.
+3. Make multi-image input, A4/Letter/Fit page size, margins and browser-local processing explicit.
+4. Add a plain explanation of the 1800px longest-edge processing limit and warn that this is not a high-resolution print-master workflow. Confirm the exact output impact on the generated PDF before final copy.
+5. Explain common workflow: choose several photos, select page size, create PDF, inspect the downloaded result.
+6. Add an A4 use-case section only as page-size support; do not claim guaranteed government-form compliance or exact image ordering until tested.
+7. Internal links: Image Compressor (reduce source file size), Image Resizer (set dimensions), ID Card Print Studio (specialised card layout) only if the destination is relevant and its permission/roadmap constraints are respected.
+
+Suggested title (candidate): **JPG to PDF Converter – Convert Multiple Images Free | InfoJano**
+Suggested description (candidate): **Convert multiple JPG, PNG and other supported images into one PDF online. Choose A4, Letter or Fit page size, keep margins, and create your PDF in your browser.**
+Suggested H1: **Convert JPG and Images to PDF**
+Recommended visible content: Supported formats; create a PDF from multiple photos; A4 vs Letter vs Fit; margins; image resolution/1800px processing note; privacy; FAQs about multiple images, page size, file upload/privacy and print quality.
+
+## Cross-page keyword ownership and cannibalisation
+- `image-compressor.html`: compression, file size, KB target, quality, format conversion.
+- `image-resizer.html`: pixel dimensions, width/height, aspect ratio, dimension changes.
+- `image-to-pdf.html`: multi-image PDF creation, page size and margins.
+Use internal links with descriptive anchors between these three pages, but do not repeat identical primary title/H1 phrases across them. If future features expand (KB/DPI/exam presets), decide whether to upgrade Image Resizer or create a dedicated Photo & Signature Resizer page only after a product decision.
+
+## Implementation gate
+No code or metadata was changed in this research phase. Before implementation, verify generated PDF quality, image ordering behaviour, all file size limits, mobile performance and local processing in real browsers. Prepare separate diffs for title/description/H1/content and test each page. Do not modify the Image Resizer functionality or add KB/DPI presets without explicit product approval. Keep the existing privacy and target-KB caveats accurate.
