@@ -1461,3 +1461,47 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Live page: https://barsulkhan.github.io/InfoJano/social-qr-maker.html
 
 - Follow-up correction: public Link-in-Bio mini pages now skip the shared site header so the landing page remains clean and focused. Inline script syntax rechecked successfully. Page commit: `09aff378c921d41ba7cdebf08a8df27c57b2796b`; cache bumped to `infojano-v131`, commit: `0d95ced4fd5785774b5b1ddeefa785bc5cf6205a`.
+
+
+## InfoJano app design inventory and next-day design queue — 3 November 2026
+
+### Verified tool inventory
+- Repository Service Worker currently lists 25 unique functional tool pages after counting the Portuguese locale pages `discount-pt-br.html` and `percentage-pt-br.html` as language variants of existing tools, not separate apps.
+- `qr-choice.html` is a navigation/selection page, not a separate tool. `index.html` is the home page.
+- Six tools have received a premium visual redesign in the recent sequence: Image Resizer, Image to PDF Converter, Discount Calculator, Image Compressor, Normal QR Code Maker, and Social Media QR Maker / Social QR Studio.
+- Therefore 19 unique tool pages remain in the visual redesign queue. This is a design-status count, not a claim that only six tools function; earlier project checks recorded a broader working tool set. Functional smoke tests and design completion are tracked separately.
+
+### Remaining 19 app-specific design blueprints (prepared; implementation pending)
+1. `url-toolkit.html` — **Link Control Center**: modern URL shortener dashboard, large paste-link field, short-link result card, copy/share controls, QR companion, recent links and clear safety/expiry indicators. Do not claim analytics or short-link API capabilities until the live API is connected and tested.
+2. `age.html` — **Age & Life Timeline**: clean date-of-birth panel, large age result, years/months/days breakdown, next birthday countdown, milestone timeline; preserve exact date math and existing inputs.
+3. `bmi.html` — **Body Metrics Studio**: height/weight input cards, prominent BMI dial, category explanation and healthy-range context; accessible, non-alarmist wording and preserve calculator math.
+4. `currency-converter.html` — **Global Currency Exchange**: two currency selector tiles with swap animation, large amount display, converted result, rate timestamp/source and compact recent conversions; clearly show rate freshness and API errors.
+5. `date-difference.html` — **Date Countdown Planner**: start/end date timeline, live difference in years/months/days, total days/weeks/hours tiles and inclusive/exclusive option if supported by existing logic.
+6. `emi.html` — **Loan EMI Planner**: principal/rate/tenure controls, monthly EMI hero, principal-vs-interest split chart, total payable and amortization summary; preserve formulas.
+7. `gst-calculator.html` — **GST Invoice Calculator**: amount and GST-rate selector, inclusive/exclusive mode, CGST/SGST/IGST breakdown, invoice-style result receipt and copy summary.
+8. `loan-eligibility.html` — **Loan Readiness Dashboard**: income, obligations and tenure input cards, estimated eligibility result, affordability meter and transparent assumptions; avoid presenting estimates as lender approval.
+9. `loan-interest.html` — **Interest & Repayment Lab**: principal, rate, duration and interest type controls, interest accumulation visual, total repayment and clear rate/period labels.
+10. `number-to-words.html` — **Number Words Converter**: oversized numeric input, live words output, Indian/International numbering selector if supported, copy button and currency wording toggle only if supported.
+11. `password-generator.html` — **Password Vault Studio**: length slider, character-set toggles, strength meter, entropy guidance, generated password reveal/copy/regenerate actions; never store passwords or send them to a server.
+12. `percentage-change.html` — **Change & Growth Analyzer**: before/after value cards, increase/decrease result, percentage-change arrow, absolute difference and clear negative/zero handling.
+13. `percentage.html` — **Percentage Quick Lab**: three task tabs (find percentage, find whole, percentage change only if existing logic supports them), large result card and worked formula explanation.
+14. `savings.html` — **Savings Goal Planner**: target amount, starting balance, monthly contribution and duration inputs; goal progress ring and projected total; do not imply guaranteed returns unless interest is explicitly modeled.
+15. `text-counter.html` — **Writing Metrics Studio**: distraction-free text editor, live words/characters/sentences/paragraphs, reading-time tiles and clear/reset controls.
+16. `time-calculator.html` — **Time & Duration Workbench**: add/subtract time panels, hours/minutes/seconds input, large result clock and day-overflow indicator.
+17. `tip-calculator.html` — **Tip & Split Table**: bill amount, tip percentage, people count, quick percentage chips, per-person total and rounded split summary.
+18. `unit-converter.html` — **Universal Unit Switchboard**: category chips, from/to unit selectors, swap control, live converted value and precision-aware result; keep supported unit categories from current logic.
+19. `id-card-print-studio.html` — **Photo & ID Print Studio**: professional print-workspace layout, photo upload/preview, paper and size presets, DPI/quality status, print-sheet preview and export actions. CRITICAL: visual-only work; do not modify core/business logic or printing calculations without explicit user permission.
+
+### Shared design system for the 19 pending tools
+- Each page gets its own hero illustration/metaphor, accent palette, motion treatment and result layout matched to the tool's purpose; do not reuse one generic banner for all.
+- Mobile-first Android layout, large touch targets, clear labels, high contrast, responsive desktop arrangement, and reduced-motion support.
+- Add subtle purposeful animations (hero artwork, progress/result entrance, button feedback, cards) without delaying or altering calculations. Respect `prefers-reduced-motion`.
+- Preserve existing working calculation, validation, SEO metadata, canonical URLs, structured data, shared header, related-app behavior and install/PWA wiring unless a specific bug is identified and approved.
+- For each page: prepare/show a visual preview first when the user asks to preview; after approval implement the same design, validate inline JavaScript syntax, bump service-worker cache, update this master file, and clearly separate source validation from Android runtime testing.
+- Locale variants `discount-pt-br.html` and `percentage-pt-br.html` should inherit the approved parent tool design and retain Portuguese text; do not count them as additional unique tools.
+
+### Tomorrow's implementation queue
+- Implement the 19 designs above one by one, starting with URL Toolkit, then the calculator group, text/time utilities, and finally ID Card Print Studio (visual-only unless separately authorized).
+- User requested that all 19 app designs be prepared now and implementation continue tomorrow. The blueprints are prepared in this checkpoint; the 19 HTML pages have NOT yet been redesigned or visually verified.
+- Current service-worker cache at this checkpoint: `infojano-v131`.
+- Social QR Studio implementation: page commits `a92f88b1e674871bec8018a7fdf83bb5e9ba411d`, `dffd08e8b6fab8fa7ce254fa9f5d9041e444294c`, follow-up header correction `09aff378c921d41ba7cdebf08a8df27c57b2796b`; cache commit `0d95ced4fd5785774b5b1ddeefa785bc5cf6205a`. Master checkpoint records the Link-in-Bio and business-card features; actual Android/QR tests remain pending.
