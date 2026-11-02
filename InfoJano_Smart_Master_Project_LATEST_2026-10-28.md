@@ -1048,3 +1048,16 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
 - Note: the web preview fetch did not load the GitHub Pages URL during this verification attempt, so the GitHub source commit is confirmed but the rendered public deployment was not independently confirmed in-browser. Recheck the live URL after Pages finishes publishing; if an old page appears, hard-refresh/clear site cache and allow the new service worker to activate.
 - Next workflow: continue one page at a time. Audit the next selected page, show a design preview before changing it, then implement and verify after explicit approval.
+
+
+## Smart Target Size feature checkpoint — Image Compressor (2026-11-02)
+
+- User requested an easier compression workflow: upload an image, choose or enter a target such as 20 KB, and let InfoJano automatically produce the best-quality result that fits the size.
+- Added quick target presets: 20 KB, 50 KB, 100 KB, 200 KB, 500 KB, and 1 MB, plus a custom KB field.
+- Added Auto output format as the default target-size mode. It tests WebP and JPEG candidates and compares results, selecting the best result that fits the target by retaining the largest pixel dimensions, then quality as a tie-breaker.
+- Target-size processing now searches quality from high to low and only reduces dimensions in steps when needed. It keeps the image local in the browser.
+- If the selected target cannot be achieved at a usable minimum dimension, the tool explains that and asks for a larger target rather than pretending the target was met.
+- Existing manual format, quality, max-width controls remain available. With no target size entered, the selected quality and dimensions are used.
+- Page update commits: `e29ed09b5d0f85dbd60f5bcf751e0fdc9c0178a6` and refinement `3fa9d5bd1d2046a29203737cd80ee5ef6f7f7c96`.
+- Service worker cache bumped from `infojano-v97` to `infojano-v98`; commit `67d0823731a3aeca1c7dc4bcdea2f8d00e45789b`.
+- Latest page source SHA: `7c38ffddb5aef84ad6cda4566cc07262be84f857`. Verify on-device using a sample image and target sizes such as 20 KB and 100 KB. Very detailed images may require a larger target to remain visually clear; no browser tool can guarantee every image reaches every requested KB while preserving good quality.
