@@ -1137,3 +1137,14 @@ This update supersedes the earlier “pre-auth POST test not yet sent” stoppin
 - Latest page SHA: `8c6d1e7ee4f8970617a29f2e1b3eff10390e4003`; final syntax check: valid.
 - Service worker cache bumped from `infojano-v103` to `infojano-v104`; commit: `abd1005973cbbd68d9e9aef79fe4ca0853edd782`.
 - User must reload the live page after Pages deploys; actual Android compression and preview still need device verification.
+
+
+## Copyright-free fixed image visuals — Image Compressor — 2026-11-02
+
+- User approved adding fixed illustrative images to both the upper hero showcase and lower LIVE EXAMPLE comparison area.
+- Replaced the prior generic small mountain SVG artwork in all four fixed image slots with a more detailed original landscape illustration (mountains, forested hills, lake, sky and sun).
+- Artwork is hand-authored inline SVG for InfoJano; no third-party image asset, stock license or external image request is used. It is original and safe to use as a fixed decorative sample.
+- User-uploaded actual before/after result panel remains separate and continues to show the user's own image after compression.
+- Page commit: `1a1538647d542c27a2490bf0503e2a5eb3f2d7f8`; latest page SHA: `b80b7d57db427ebb18d119cb9bdbe3bbb5f4eb20`.
+- Service worker cache bumped from `infojano-v104` to `infojano-v105`; commit: `1a8f3df4c53bb8cc10544d70dd82647986eec3ec`.
+- Live URL: https://barsulkhan.github.io/InfoJano/image-compressor.html
