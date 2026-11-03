@@ -1664,3 +1664,13 @@ User instruction: Treat desktop experience as the primary design target because 
 - Validation: JavaScript/compression logic unchanged; duplicate-ID scan passed (no duplicate IDs). Live deployment and user's Windows/Chrome visual verification are pending.
 - Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
 - Next: check deployment, then refine only against the user's actual desktop screenshot/feedback. After deployment test Smart Mode and Advanced Mode with real images.
+
+
+## Image Compressor — Icon consistency and broken glyph repair — 3 November 2026
+- Based on the user's desktop screenshots, replaced platform-dependent emoji/symbol glyphs with consistent inline SVG icons in the Image Compressor page: hero Fast/Private/Free pills; upload area; Smart/Advanced mode tabs; Target File Size heading; Smart Compress note; Compress Image button; Download compressed image link; Smart Target Size, Better Quality, Private by Design, and Fast & Free benefit cards; and the two information-card headings.
+- Updated dynamic JavaScript icon states too, so the download icon remains SVG when download is ready, completes, or errors, and the Compress Image gear returns as SVG after processing. Existing compression, target-size, format, resize and download logic was not changed.
+- Desktop-first layout and mobile styles were preserved. Icon set uses consistent 24px viewBox line icons, currentColor, rounded strokes and accessible aria-hidden SVGs.
+- Source commits: initial markup/style `265c1a9fd950b19587328bdfc6f0c753e44a5f32`; dynamic state icons `49ddb0c94d0578c0f100ab9263e88a28b963a614`.
+- Service worker cache bumped from infojano-v140 to infojano-v141; commit f5b753019d3515dcdec372d7b4da2de700d3236b.
+- Validation: all requested static and dynamic icon locations were checked in source; application logic was not edited. Live deployment status, browser runtime behavior and user's Windows/Chrome visual confirmation are pending. Do not mark complete until Actions deploy succeeds and user verifies the live page.
+- Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
