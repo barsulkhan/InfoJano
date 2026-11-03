@@ -1654,3 +1654,13 @@ User instruction: Treat desktop experience as the primary design target because 
 - Homepage inline JavaScript syntax checks: 2 PASS; JSON-LD excluded.
 - This is the first site-wide policy implementation, limited to homepage desktop styling. The 25 app pages still need individual desktop-first audits and updates; no claim that the entire website is finished.
 - Live GitHub Pages deployment and user's desktop visual confirmation remain pending.
+
+
+## Image Compressor — Desktop-first workspace refinement — 3 November 2026
+- User selected Image Compressor as the next app.
+- Inspected the existing page before editing. Preserved Smart Target Size presets/custom KB, Advanced Mode, format and quality controls, optional resize/crop, comparison panel, and all compression logic.
+- Added desktop-only CSS at min-width 851px: full-width layout, larger banner, spacious upload/settings columns, larger upload zone and controls, expanded result comparison, and improved information-card typography. Existing mobile/tablet styles, official InfoJano brand markup, and tool artwork are preserved.
+- Source commit: f6b0461b59403d5cfb17f306cb0322d3fa1da141. Service worker cache bumped from infojano-v139 to infojano-v140 in commit b0d7f883e7cb988c309621e4812490f80ede0f79.
+- Validation: JavaScript/compression logic unchanged; duplicate-ID scan passed (no duplicate IDs). Live deployment and user's Windows/Chrome visual verification are pending.
+- Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
+- Next: check deployment, then refine only against the user's actual desktop screenshot/feedback. After deployment test Smart Mode and Advanced Mode with real images.
