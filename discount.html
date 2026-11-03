@@ -228,6 +228,25 @@ body{background:linear-gradient(135deg,#edf5ff,#e9f7ff 52%,#f2f0ff)!important;co
  .ij-discount-hero:before,.ij-discount-art svg,.ij-discount-benefits b,.ij-discount-hero h1:after,.ij-discount-benefits span:after{animation:none!important;display:none!important}
 }
 </style>
+<style id="ij-smart-shopping-style">
+.ij-smart-shopping{margin-top:18px;padding:24px;border:1px solid #cbdfff;border-radius:24px;background:linear-gradient(145deg,#fff,#f0f7ff);box-shadow:0 8px 25px #174a9818;min-width:0}
+.ij-smart-heading{display:flex;align-items:center;gap:13px;margin-bottom:20px}.ij-smart-heading-icon{width:50px;height:50px;flex:0 0 50px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(140deg,#a42cf3,#4e31d9);color:#fff;font-size:26px;box-shadow:0 5px 14px #7444df35}
+.ij-smart-heading h2{margin:0;color:#10264a;font-size:25px;line-height:1.2}.ij-smart-heading p{margin:4px 0 0;color:#607594;font-size:13px;line-height:1.45}
+.ij-smart-input-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:end}.ij-smart-field{display:block;min-width:0;color:#183251;font-size:13px;font-weight:750}
+.ij-smart-field input{display:block;width:100%;height:52px;margin-top:7px;padding:0 12px;border:1.5px solid #cbdcf4;border-radius:13px;background:#fff;color:#142b4d;font:650 16px system-ui,Arial;outline:none;min-width:0}
+.ij-smart-field input:focus{border-color:#2681f4;box-shadow:0 0 0 3px #2681f426}
+.ij-smart-note{margin:13px 0;color:#657995;font-size:12px;line-height:1.55}
+.ij-smart-calculate{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:54px;border:0;border-radius:15px;background:linear-gradient(100deg,#087af3,#3348e8);color:#fff;font-size:18px;font-weight:850;box-shadow:0 6px 15px #0759d535;cursor:pointer}
+.ij-smart-results{margin-top:16px;min-width:0}.ij-smart-results>p{margin:0;padding:17px;border-radius:14px;background:#edf5ff;color:#657995;text-align:center;font-size:13px}
+.ij-smart-result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ij-smart-offer{padding:17px;border:1px solid #d6e4f8;border-radius:17px;background:#fff;min-width:0}.ij-smart-offer.winner{border:2px solid #13b981;background:linear-gradient(145deg,#f0fff8,#fff);box-shadow:0 5px 16px #10b9811a}
+.ij-smart-offer-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}.ij-smart-offer-top strong{color:#18345a;font-size:16px}.ij-smart-winner{padding:4px 8px;border-radius:30px;background:#d9fbea;color:#087b4b;font-size:10px;font-weight:850}
+.ij-smart-final-label{display:block;color:#71829c;font-size:12px}.ij-smart-final-price{display:block;margin:2px 0 10px;color:#0758d5;font-size:clamp(25px,3vw,34px);font-weight:900;line-height:1.2;overflow-wrap:anywhere}.ij-smart-breakdown{display:grid;gap:6px;padding-top:10px;border-top:1px solid #e5edf7}.ij-smart-breakdown div{display:flex;justify-content:space-between;gap:12px;color:#62748f;font-size:12px}.ij-smart-breakdown b{color:#243b5d;text-align:right}
+.ij-smart-verdict{margin-top:12px;padding:13px 15px;border-radius:13px;background:linear-gradient(100deg,#e1f9ed,#e7f3ff);color:#17436a;font-size:13px;font-weight:750;line-height:1.5}
+.ij-smart-actions{display:flex;gap:9px;margin-top:12px}.ij-smart-actions[hidden]{display:none}.ij-smart-actions button{flex:1;min-height:43px;border:1px solid #bfd5fa;border-radius:12px;background:#fff;color:#1458c8;font-size:13px;font-weight:800;cursor:pointer}
+@media(max-width:900px){.ij-smart-input-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.ij-smart-shopping{padding:19px 16px;border-radius:20px}.ij-smart-heading h2{font-size:21px}.ij-smart-heading-icon{width:44px;height:44px;flex-basis:44px}.ij-smart-input-grid{grid-template-columns:1fr 1fr;gap:10px}.ij-smart-field:first-child{grid-column:1/-1}.ij-smart-field{font-size:12px}.ij-smart-field input{height:48px;font-size:16px;padding:0 9px}.ij-smart-result-grid{grid-template-columns:1fr}.ij-smart-offer{padding:14px}.ij-smart-actions{flex-direction:column}}
+</style>
 </head>
 <body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
@@ -244,6 +263,20 @@ body{background:linear-gradient(135deg,#edf5ff,#e9f7ff 52%,#f2f0ff)!important;co
 <div class="ij-discount-fields"><div class="ij-discount-field ij-discount-mode"><label for="discountMode">What do you want to calculate?</label><select id="discountMode" onchange="updateDiscountMode()"><option value="discount">Sale price from discount percentage</option><option value="rate">Discount percentage from sale price</option></select></div><div class="ij-discount-field"><label for="price" id="priceLabel">Original Price</label><input id="price" type="number" min="0" step="any" inputmode="decimal" placeholder="Example: 1000"></div><div class="ij-discount-field"><label for="discount" id="discountLabel">Discount (%)</label><input id="discount" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="Example: 20"></div></div>
 <button class="ij-discount-calculate" type="button" onclick="calculateDiscount()"><span>▦</span> Calculate <span>➜</span></button><p class="ij-discount-privacy">🔒 Your calculations happen in your browser. No price data is uploaded.</p></section>
 <section class="ij-discount-result-panel" aria-labelledby="result-heading"><div class="ij-discount-result-heading"><span>✓</span><h2 id="result-heading">Your Result</h2></div><div id="result" class="ij-discount-result-grid" aria-live="polite" aria-atomic="true"><p class="ij-discount-empty">Enter your price and discount, then tap Calculate to see your savings.</p></div></section>
+<section class="ij-smart-shopping" id="ij-smart-shopping" aria-labelledby="ij-smart-shopping-title">
+ <div class="ij-smart-heading"><span class="ij-smart-heading-icon">✦</span><div><h2 id="ij-smart-shopping-title">Smart Shopping Comparison</h2><p>Compare two offers, apply an extra coupon and include tax to find the true final price.</p></div></div>
+ <div class="ij-smart-input-grid">
+  <label class="ij-smart-field">Original product price<input id="ijSmartOriginal" type="number" min="0.01" step="any" inputmode="decimal" placeholder="Example: 2000"></label>
+  <label class="ij-smart-field">Offer A discount (%)<input id="ijSmartOfferA" type="number" min="0" max="100" step="any" inputmode="decimal" value="20"></label>
+  <label class="ij-smart-field">Offer B discount (%)<input id="ijSmartOfferB" type="number" min="0" max="100" step="any" inputmode="decimal" value="15"></label>
+  <label class="ij-smart-field">Extra coupon discount (%)<input id="ijSmartCoupon" type="number" min="0" max="100" step="any" inputmode="decimal" value="5"></label>
+  <label class="ij-smart-field">GST / tax (%)<input id="ijSmartTax" type="number" min="0" max="100" step="any" inputmode="decimal" value="0"></label>
+ </div>
+ <p class="ij-smart-note">The coupon is applied after the store discount. GST or tax is then added to the discounted price. Enter 0 if no coupon or tax applies.</p>
+ <button class="ij-smart-calculate" type="button" id="ijSmartCalculate">Compare Offers <span>→</span></button>
+ <div class="ij-smart-results" id="ijSmartResults" aria-live="polite"><p>Enter the original price and compare both offers to see which one costs less.</p></div>
+ <div class="ij-smart-actions" id="ijSmartActions" hidden><button type="button" id="ijSmartCopy">Copy summary</button><button type="button" id="ijSmartShare">Share result</button></div>
+</section>
 <section class="ij-discount-info-grid"><div class="ij-discount-info-card"><h2>▤ How It Works</h2><ol><li>Select what you want to calculate.</li><li>Enter the original price and discount percentage or sale price.</li><li>Get the discount amount, sale price and savings instantly.</li></ol></div><div class="ij-discount-info-card"><h2>✦ Tips for Best Result</h2><ul><li>Check the original price before applying a discount.</li><li>Compare final prices, not only discount percentages.</li><li>Remember that taxes and delivery charges may be extra.</li></ul></div></section>
 <section class="ij-discount-related" aria-labelledby="related-tools-title"><h2 id="related-tools-title">▦ Related Tools</h2><div class="ij-discount-related-grid"><a href="percentage.html"><span class="ij-discount-tool-icon">％</span><strong>Percentage Calculator</strong><small>Calculate a percentage easily</small><b>Explore tool →</b></a><a href="percentage-change.html"><span class="ij-discount-tool-icon">↗</span><strong>Percentage Change</strong><small>Calculate increase or decrease</small><b>Explore tool →</b></a><a href="emi.html"><span class="ij-discount-tool-icon">▤</span><strong>EMI Calculator</strong><small>Estimate monthly loan payments</small><b>Explore tool →</b></a><a href="savings.html"><span class="ij-discount-tool-icon">◉</span><strong>Savings Calculator</strong><small>Estimate your future savings</small><b>Explore tool →</b></a></div></section>
 <section class="ij-discount-faq" id="ij-seo-faq" aria-labelledby="ij-seo-faq-title"><h2 id="ij-seo-faq-title">Frequently Asked Questions</h2><details><summary>How do I calculate a discount?</summary><p>Multiply the original price by the discount percentage and divide by 100.</p></details><details><summary>How do I find the sale price?</summary><p>Subtract the discount amount from the original price.</p></details><details><summary>How much do I save on a 20% discount?</summary><p>On an original price of 1000, you save 200 and pay 800 before extra taxes or charges.</p></details><details><summary>Can I compare two discounts?</summary><p>Calculate each final price using the same original price to compare the savings.</p></details></section>
@@ -293,5 +326,36 @@ out.innerHTML='<div class="ij-discount-metric"><small>Discount Amount</small><st
 
 
 <script src="/InfoJano/site-header.js" defer></script>
+<script id="ij-smart-shopping-script">
+(function(){
+ const $=id=>document.getElementById(id);
+ const money=n=>'₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+ let lastSummary='';
+ function compare(){
+  const original=Number($('ijSmartOriginal').value),a=Number($('ijSmartOfferA').value),b=Number($('ijSmartOfferB').value),coupon=Number($('ijSmartCoupon').value||0),tax=Number($('ijSmartTax').value||0);
+  const out=$('ijSmartResults');
+  const vals=[a,b,coupon,tax];
+  if($('ijSmartOriginal').value===''||!Number.isFinite(original)||original<=0||vals.some(v=>!Number.isFinite(v)||v<0||v>100)){
+   out.innerHTML='<p role="alert">Enter an original price above zero. Discount, coupon and tax values must be between 0 and 100.</p>'; $('ijSmartActions').hidden=true;return;
+  }
+  function calc(discount){
+   const storeSave=original*discount/100;
+   const afterStore=original-storeSave;
+   const couponSave=afterStore*coupon/100;
+   const taxable=afterStore-couponSave;
+   const taxAmount=taxable*tax/100;
+   return {storeSave,couponSave,taxAmount,final:taxable+taxAmount,totalSave:original-taxable};
+  }
+  const A=calc(a),B=calc(b),winner=A.final<=B.final?'A':'B',best=Math.min(A.final,B.final),diff=Math.abs(A.final-B.final);
+  const card=(name,discount,r,isWinner)=>'<article class="ij-smart-offer '+(isWinner?'winner':'')+'"><div class="ij-smart-offer-top"><strong>Offer '+name+' · '+discount+'% off</strong>'+(isWinner?'<span class="ij-smart-winner">BEST DEAL</span>':'')+'</div><span class="ij-smart-final-label">Final price including tax</span><strong class="ij-smart-final-price">'+money(r.final)+'</strong><div class="ij-smart-breakdown"><div><span>Store discount</span><b>−'+money(r.storeSave)+'</b></div><div><span>Extra coupon</span><b>−'+money(r.couponSave)+'</b></div><div><span>GST / tax</span><b>+'+money(r.taxAmount)+'</b></div><div><span>Total saved before tax</span><b>'+money(r.totalSave)+'</b></div></div></article>';
+  out.innerHTML='<div class="ij-smart-result-grid">'+card('A',a,A,winner==='A')+card('B',b,B,winner==='B')+'</div><div class="ij-smart-verdict">'+(A.final===B.final?'Both offers cost the same.': 'Offer '+winner+' is cheaper by '+money(diff)+'.')+' Best final price: '+money(best)+'.</div>';
+  lastSummary='InfoJano Smart Shopping Comparison\nOriginal price: '+money(original)+'\nOffer A discount: '+a+'% | Final price: '+money(A.final)+'\nOffer B discount: '+b+'% | Final price: '+money(B.final)+'\nCoupon discount: '+coupon+'%\nGST / tax: '+tax+'%\n'+(A.final===B.final?'Both offers cost the same.':'Offer '+winner+' is cheaper by '+money(diff)+'.');
+  $('ijSmartActions').hidden=false;
+ }
+ $('ijSmartCalculate').addEventListener('click',compare);
+ $('ijSmartCopy').addEventListener('click',async()=>{if(!lastSummary)return;try{await navigator.clipboard.writeText(lastSummary);$('ijSmartCopy').textContent='Copied!';}catch(e){const t=document.createElement('textarea');t.value=lastSummary;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();$('ijSmartCopy').textContent='Copied!';}});
+ $('ijSmartShare').addEventListener('click',async()=>{if(!lastSummary)return;if(navigator.share){try{await navigator.share({title:'InfoJano Smart Shopping Comparison',text:lastSummary});}catch(e){}}else{try{await navigator.clipboard.writeText(lastSummary);$('ijSmartShare').textContent='Copied to share';}catch(e){$('ijSmartShare').textContent='Use Copy summary';}}});
+})();
+</script>
 </body>
 </html>
