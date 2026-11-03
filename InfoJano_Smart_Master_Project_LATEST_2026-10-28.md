@@ -1584,3 +1584,15 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service worker commit: `b7cfd0bcb60f2331f6f59a4fd23bf8464ae247fd`.
 - JavaScript syntax checks: 2 inline JS blocks PASS; JSON-LD excluded from JS parsing.
 - Desktop visual verification on user's Windows/Chrome display is still pending; do not claim runtime-tested until user confirms.
+
+## Image Resizer — Text Contrast and Control Icon Fix — 3 November 2026
+- User screenshots revealed low-contrast/dark headings inside dark info cards, faded text/FAQ links on a light SEO panel, pale labels on form controls, and a link/ratio-lock emoji rendering as an unreadable square-like glyph.
+- Forced consistent high-contrast premium dark backgrounds and bright text for the How-to/Tips cards and SEO/FAQ section; increased readability of FAQ summaries, body text and related links.
+- Replaced the ratio-lock emoji with a dedicated inline SVG chain-link icon. Replaced emoji heading icons in the How-to and Tips cards with small CSS-styled numbered/sparkle marks.
+- Forced form labels, input text, select backgrounds, quality output and privacy notice to explicit high-contrast colors.
+- No image resize logic, preset dimensions, original site branding, or logo assets changed.
+- Source commit: `566f1ba2056d323d1716a34d0f31da005b9881dd`.
+- Service worker cache bumped from `infojano-v135` to `infojano-v136`.
+- Service worker commit: `eae07e9f7398f4420869074e4d0a42b2a2bbc842`.
+- JavaScript syntax: 2 inline JavaScript blocks PASS; JSON-LD excluded from JavaScript validation.
+- User's Windows/Chrome visual confirmation remains pending; deployment status must be checked before claiming the live page has updated.
