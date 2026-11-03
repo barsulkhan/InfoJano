@@ -1,202 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics 4: InfoJano -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EMI Calculator: Monthly Loan Payment & Interest | InfoJano</title>
-<meta name="description" content="Estimate monthly loan EMI, total interest and total repayment using your loan amount, annual interest rate and repayment period with this free calculator.">
+<meta name="description" content="Calculate monthly loan EMI, total interest, total repayment and view a complete repayment schedule for home, car, personal and other loans.">
 <link rel="canonical" href="https://barsulkhan.github.io/InfoJano/emi.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EMI Calculator: Monthly Loan Payment & Interest | InfoJano">
-<meta property="og:description" content="Estimate monthly loan EMI, total interest and total repayment using your loan amount, annual interest rate and repayment period with this free calculator.">
-<meta property="og:url" content="https://barsulkhan.github.io/InfoJano/emi.html">
-<meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
-<meta property="og:image:alt" content="InfoJano useful online tools">
-<meta name="twitter:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EMI Calculator: Monthly Loan Payment & Interest | InfoJano">
-<meta name="twitter:description" content="Estimate monthly loan EMI, total interest and total repayment using your loan amount, annual interest rate and repayment period with this free calculator.">
+<meta property="og:type" content="website"><meta property="og:title" content="EMI Calculator | InfoJano"><meta property="og:description" content="Calculate loan EMI, interest and repayment schedule."><meta property="og:url" content="https://barsulkhan.github.io/InfoJano/emi.html"><meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="EMI Calculator | InfoJano"><meta name="twitter:description" content="Calculate loan EMI, interest and repayment schedule.">
+<link rel="manifest" href="/InfoJano/app-manifests/emi.webmanifest">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"InfoJano EMI Calculator","url":"https://barsulkhan.github.io/InfoJano/emi.html","description":"Calculate monthly loan EMI, total interest and total repayment.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does EMI mean?","acceptedAnswer":{"@type":"Answer","text":"EMI means Equated Monthly Instalment, a regular monthly loan payment."}},{"@type":"Question","name":"Does a longer tenure reduce EMI?","acceptedAnswer":{"@type":"Answer","text":"A longer tenure usually reduces the monthly EMI but may increase total interest."}},{"@type":"Question","name":"Are the results a bank offer?","acceptedAnswer":{"@type":"Answer","text":"No. Results are estimates and actual lender fees and loan terms may differ."}}]}]}</script>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033}
-header{background:#10458e;color:#fff;text-align:center;padding:24px 15px}
-main{max-width:650px;margin:24px auto;padding:16px}
-.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
-label{display:block;margin-top:15px}
-input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
-button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
-.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.8;overflow-wrap:anywhere}
-a{color:#1458c8}
-
-/* InfoJano page-entry animation: animated loader while each tool page opens */
-.ij-page-loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#f2f6ff;color:#172033;transition:opacity .28s ease,visibility .28s ease}
-.ij-page-loader.ij-loaded{opacity:0;visibility:hidden;pointer-events:none}
-.ij-loader-card{width:min(82vw,300px);padding:28px 22px;border-radius:22px;background:#fff;box-shadow:0 12px 38px #102a5018;text-align:center}
-.ij-loader-mark{width:66px;height:66px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#dbeafe,#eff6ff);color:#1458c8;font-size:34px;font-weight:800;animation:ij-loader-bob .85s ease-in-out infinite alternate}
-.ij-loader-ring{width:34px;height:34px;margin:0 auto 13px;border:4px solid #dbeafe;border-top-color:#2563eb;border-right-color:#06b6d4;border-radius:50%;animation:ij-loader-spin .8s linear infinite}
-.ij-loader-title{font-size:18px;font-weight:800;margin:0 0 5px}.ij-loader-subtitle{font-size:13px;color:#64748b;margin:0}
-.ij-loader-dots{display:flex;justify-content:center;gap:5px;margin-top:14px}.ij-loader-dots span{width:7px;height:7px;border-radius:50%;background:#2563eb;animation:ij-loader-dot .8s ease-in-out infinite alternate}.ij-loader-dots span:nth-child(2){animation-delay:.18s}.ij-loader-dots span:nth-child(3){animation-delay:.36s}
-@keyframes ij-loader-spin{to{transform:rotate(360deg)}}@keyframes ij-loader-bob{to{transform:translateY(-6px) scale(1.04)}}@keyframes ij-loader-dot{to{opacity:.25;transform:translateY(-4px)}}
-@media(prefers-reduced-motion:reduce){.ij-loader-mark,.ij-loader-ring,.ij-loader-dots span{animation:none!important}.ij-page-loader{transition:none}}
-
-/* Consistent spacing for informational cards on every tool page */
-main > section:not([style]){margin:24px 0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04);box-sizing:border-box;overflow-wrap:anywhere}
-main > section:not([style]) > :first-child{margin-top:0}
-main > section:not([style]) > :last-child{margin-bottom:0}
-main > section:not([style]) p{line-height:1.7;margin:14px 0}
-main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
-@media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
+*{box-sizing:border-box} :root{--navy:#082c78;--blue:#075de0;--cyan:#14b8ff;--ink:#101d49;--muted:#637493;--line:#d7e5fb;--bg:#edf4ff}
+body{margin:0;background:linear-gradient(180deg,#eaf2ff 0%,#f5f8ff 45%,#eaf2ff 100%);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink)}
+.ij-page-loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#f2f6ff;transition:opacity .28s ease,visibility .28s ease}.ij-page-loader.ij-loaded{opacity:0;visibility:hidden;pointer-events:none}.ij-loader-card{width:min(82vw,300px);padding:28px 22px;border-radius:22px;background:#fff;box-shadow:0 12px 38px #102a5018;text-align:center}.ij-loader-mark{width:66px;height:66px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#dbeafe,#eff6ff);color:#1458c8;font-size:34px;font-weight:800;animation:ijbob .85s ease-in-out infinite alternate}.ij-loader-ring{width:34px;height:34px;margin:0 auto 13px;border:4px solid #dbeafe;border-top-color:#2563eb;border-right-color:#06b6d4;border-radius:50%;animation:ijspin .8s linear infinite}.ij-loader-title{font-size:18px;font-weight:800;margin:0 0 5px}.ij-loader-subtitle{font-size:13px;color:#64748b;margin:0}@keyframes ijspin{to{transform:rotate(360deg)}}@keyframes ijbob{to{transform:translateY(-5px)}}@media(prefers-reduced-motion:reduce){.ij-loader-mark,.ij-loader-ring{animation:none!important}}
+.ij-install-card{max-width:1440px;margin:12px auto;padding:12px 16px;display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px}.ij-install-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:#e5efff;color:#1458c8;font-size:20px}.ij-install-copy strong{display:block;font-size:14px}.ij-install-copy span{font-size:12px;color:var(--muted)}.ij-install-card button{border:0;border-radius:10px;background:#1458c8;color:white;padding:10px 14px;font-weight:800;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:var(--muted)}
+main{width:min(100% - 52px,1680px);margin:0 auto 44px}.ij-breadcrumb{display:flex;gap:10px;align-items:center;margin:14px 0 12px;color:#24569d;font-size:13px;font-weight:700}.ij-breadcrumb a{color:#24569d;text-decoration:none}
+.emi-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:28% 1fr 25%;align-items:center;min-height:190px;padding:16px 25px;overflow:hidden;border-radius:25px;color:#fff;background:radial-gradient(ellipse at 20% 5%,#098bff 0%,transparent 38%),linear-gradient(110deg,#063fbd 0%,#061f87 48%,#5410d4 100%);border:2px solid #c5f2ff;box-shadow:0 10px 30px #1552a52b,inset 0 0 25px #ffffff18}
+.emi-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 75% 20%,#ec22f355 0 2px,transparent 3px),radial-gradient(circle at 42% 75%,#34d7ff55 0 2px,transparent 3px);background-size:70px 70px;animation:heroDrift 18s linear infinite}
+.emi-hero:after{content:"";position:absolute;inset:0;z-index:-1;border:2px solid transparent;border-radius:24px;background:linear-gradient(120deg,#00e5ff,#fff,#a855f7,#ff3bd4,#00e5ff) border-box;-webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:heroBorder 9s linear infinite}
+@keyframes heroDrift{to{background-position:140px 70px}}@keyframes heroBorder{to{filter:hue-rotate(360deg)}} 
+.hero-art{width:100%;height:158px;display:block;filter:drop-shadow(0 8px 9px #00164d88)}.hero-copy{text-align:center;min-width:0}.hero-kicker{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid #ffffff70;border-radius:99px;background:#ffffff20;font-size:11px;font-weight:900;letter-spacing:.7px}.hero-copy h1{margin:7px 0 2px;font-size:clamp(32px,3.5vw,54px);line-height:1.04;letter-spacing:-1.7px;font-weight:950;text-shadow:0 3px 12px #00174c88}.hero-copy h1 span{color:#ffdf39}.hero-copy p{margin:5px 0 12px;font-size:15px;font-weight:600;color:#f1f6ff}.hero-chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.hero-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid #ffffff70;border-radius:99px;color:#fff;font-size:12px;font-weight:850;box-shadow:0 4px 12px #00174c55;white-space:nowrap}.hero-chip:nth-child(1){background:linear-gradient(120deg,#079b4b,#20d36d)}.hero-chip:nth-child(2){background:linear-gradient(120deg,#0876d8,#14b9ff)}.hero-chip:nth-child(3){background:linear-gradient(120deg,#7927df,#bc52ff)}.hero-chip:nth-child(4){background:linear-gradient(120deg,#067bca,#16c5d8)}.hero-chip:nth-child(5){background:linear-gradient(120deg,#d91b82,#ff4c9c)}.hero-chip:nth-child(6){background:linear-gradient(120deg,#e58a00,#ffc02d)}
+.emi-layout{display:grid;grid-template-columns:minmax(330px, .34fr) minmax(0,.66fr);gap:12px;margin-top:12px;align-items:stretch}.panel{background:#fff;border:1px solid #d8e7fb;border-radius:20px;box-shadow:0 8px 24px #0e397711;min-width:0}.loan-panel{padding:20px 22px}.panel-title{display:flex;align-items:center;gap:12px;margin:0 0 16px}.title-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,#b92eff,#572bfa);color:white;box-shadow:0 5px 14px #7932d944}.title-icon svg{width:25px;height:25px}.panel-title h2{margin:0;font-size:23px;letter-spacing:-.6px}.panel-title p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.field{margin:13px 0}.field label,.field-label{display:block;margin-bottom:6px;font-size:14px;font-weight:850;color:#14234f}.input-wrap{display:flex;align-items:center;min-width:0;height:44px;border:1.5px solid #a9c6fa;border-radius:11px;background:#fff;overflow:hidden;box-shadow:inset 0 1px 2px #16458b0b}.input-prefix{height:100%;min-width:45px;display:grid;place-items:center;background:#edf4ff;border-right:1px solid #c9dbf9;color:#124fae;font-weight:900;font-size:17px}.input-wrap input,.input-wrap select{width:100%;height:100%;min-width:0;border:0;outline:0;background:transparent;padding:0 12px;font-size:16px;font-weight:800;color:#17264f}.tenure-row{display:grid;grid-template-columns:1fr 120px;gap:10px}.tenure-row .input-wrap input{width:100%}.tenure-row select{cursor:pointer}.range-meta{display:flex;justify-content:space-between;gap:10px;margin:9px 0 4px;font-size:12px;font-weight:800;color:#52698f}.range{width:100%;accent-color:#155de3;cursor:pointer}.range-labels{display:flex;justify-content:space-between;color:#627798;font-size:10px;font-weight:800}.loan-type-note{margin-top:8px;color:#6a7c9a;font-size:11px}
+.advanced{margin-top:15px;border-radius:13px;background:#f0f5ff;border:1px solid #e0eafe;overflow:hidden}.advanced summary{padding:11px 13px;cursor:pointer;font-weight:900;color:#1c3977;list-style:none}.advanced summary:after{content:"⌄";float:right;font-size:19px}.advanced[open] summary:after{content:"⌃"}.advanced-body{padding:0 13px 13px}.check-row{display:flex;align-items:center;gap:9px;margin:9px 0;font-size:12px;font-weight:750;color:#263c69}.check-row input{width:17px;height:17px;accent-color:#1458d5}.fee-fields{display:none;grid-template-columns:1fr 110px;gap:8px;align-items:center;margin:8px 0}.fee-fields.visible{display:grid}.fee-fields input{width:100%;min-width:0;padding:9px;border:1px solid #c6d8f4;border-radius:8px}.form-actions{display:grid;grid-template-columns:1fr 112px;gap:10px;margin-top:16px}.btn{border:0;border-radius:12px;min-height:47px;padding:10px 14px;font-weight:900;cursor:pointer;transition:transform .16s,filter .16s}.btn:hover{transform:translateY(-1px);filter:brightness(1.04)}.btn-primary{background:linear-gradient(100deg,#0758ed,#0642c5);color:#fff;box-shadow:0 6px 14px #0758ed35}.btn-secondary{background:#edf3ff;color:#173b87;border:1px solid #c3d7fb}.btn svg{width:18px;height:18px;vertical-align:middle;margin-right:6px}
+.results-panel{padding:15px;background:linear-gradient(145deg,#fbfffd,#f7fbff);border-color:#aee9d0}.result-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}.result-badge{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:99px;background:linear-gradient(100deg,#0a9b47,#03c15a);color:#fff;font-weight:900;font-size:18px;box-shadow:0 4px 12px #079d4c30}.result-badge span{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#0aaf52;font-size:17px}.action-group{display:flex;gap:8px}.action-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:78px;padding:9px 12px;border:1px solid #c8ddfa;border-radius:99px;background:#fff;color:#183b83;font-size:12px;font-weight:850;cursor:pointer;box-shadow:0 3px 8px #164b9c12}.action-btn svg{width:15px;height:15px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.metric{display:flex;align-items:center;gap:10px;min-width:0;padding:15px 12px;border-radius:16px;border:1px solid transparent;box-shadow:0 5px 12px #153b7610}.metric-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center}.metric-icon svg{width:38px;height:38px}.metric small{display:block;font-size:12px;font-weight:850;color:#28365e}.metric strong{display:block;margin-top:5px;font-size:clamp(16px,1.55vw,23px);font-weight:950;color:#101c43;white-space:nowrap;letter-spacing:-.5px}.metric em{display:block;margin-top:2px;font-size:10px;font-style:normal;color:#596b8c;font-weight:750}.metric-blue{background:linear-gradient(130deg,#e0f4ff,#c9eaff);border-color:#b4e4ff}.metric-pink{background:linear-gradient(130deg,#ffe8f4,#ffd4ec);border-color:#ffc4e3}.metric-green{background:linear-gradient(130deg,#e0ffeb,#c9f9d8);border-color:#b5efc8}.metric-purple{background:linear-gradient(130deg,#f1e8ff,#e4d6ff);border-color:#d9c6ff}
+.analysis-grid{display:grid;grid-template-columns:minmax(240px,.9fr) minmax(0,1.1fr);gap:12px;margin-top:13px}.analysis-card{padding:13px;border:1px solid #dbe8fa;border-radius:15px;background:#fff;min-width:0}.analysis-card h3{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:16px}.analysis-card h3 svg{width:20px;height:20px;color:#1558d2}.chart-layout{display:flex;align-items:center;justify-content:center;gap:15px;min-height:215px}.donut{width:190px;height:190px;flex:0 0 190px;border-radius:50%;position:relative;background:conic-gradient(#0787ef 0 var(--principal),#ed2d92 var(--principal) 100%);display:grid;place-items:center}.donut:before{content:"";position:absolute;inset:28px;border-radius:50%;background:#fff}.donut-center{position:relative;z-index:1;text-align:center;padding:0 8px}.donut-center strong{display:block;font-size:16px;font-weight:950}.donut-center span{font-size:11px;color:#667795;font-weight:750}.legend{display:grid;gap:14px;min-width:120px}.legend-item{display:grid;grid-template-columns:12px 1fr;gap:8px;align-items:start}.legend-dot{width:12px;height:12px;border-radius:4px;margin-top:3px}.legend-item small{display:block;color:#687a98;font-size:11px;font-weight:750}.legend-item strong{display:block;margin-top:3px;font-size:14px;color:#15264f}.table-wrap{max-height:220px;overflow:auto;border:1px solid #d9e5f7;border-radius:10px}.schedule{width:100%;border-collapse:collapse;min-width:490px;font-size:12px;text-align:right}.schedule th{position:sticky;top:0;background:#0758df;color:#fff;padding:9px 8px;white-space:nowrap}.schedule td{padding:8px;border-bottom:1px solid #e5edf9;white-space:nowrap}.schedule td:first-child,.schedule th:first-child{text-align:center}.schedule tr:nth-child(even){background:#f4f8ff}.full-schedule{display:block;width:100%;margin-top:9px;padding:9px;border:1px solid #b7cff7;border-radius:9px;background:#e8f1ff;color:#124bb5;font-size:12px;font-weight:850;cursor:pointer}
+.insights{display:grid;grid-template-columns:1.05fr repeat(4,1fr);gap:8px;align-items:stretch;margin-top:10px;padding:10px;border:1px solid #dbe8fa;border-radius:15px;background:#f5f9ff}.insight-title{display:flex;align-items:center;gap:8px;font-weight:950;font-size:15px}.insight-title svg{width:32px;height:32px;color:#0b9a55}.insight{display:flex;align-items:center;gap:8px;padding:9px;border-radius:12px;font-size:11px;font-weight:800}.insight svg{width:25px;height:25px;flex:0 0 25px}.insight span{display:block;color:#60718f;font-weight:650;margin-top:3px}.insight-green{background:#dcfce7;color:#087c39}.insight-blue{background:#e0f2fe;color:#075eaa}.insight-orange{background:#fff0d9;color:#c35a0a}.insight-purple{background:#f0e7ff;color:#7635c6}
+.related{margin-top:13px;padding:17px 18px;background:#f8fbff;border:1px solid #d7e7fc;border-radius:19px;box-shadow:0 7px 20px #174b9410}.related-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.related-head h2{margin:0;font-size:21px}.related-head a{font-size:12px;font-weight:850;color:#064fc9;text-decoration:none}.related-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.related-card{display:flex;align-items:center;gap:11px;min-width:0;padding:13px;border:1px solid #dfebfb;border-radius:15px;background:#fff;text-decoration:none;color:#17244d;box-shadow:0 4px 12px #1b4a8c0b}.related-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:13px;color:#fff}.related-icon svg{width:28px;height:28px}.related-card strong{display:block;font-size:13px}.related-card small{display:block;margin-top:4px;color:#627493;font-size:11px;line-height:1.35}.related-arrow{margin-left:auto;color:#1649b3;font-size:24px}
+.info-section{margin-top:14px;padding:23px 25px;border:1px solid #dbe7f7;border-radius:18px;background:#fff;box-shadow:0 5px 17px #123b7710;line-height:1.7}.info-section h2{margin:0 0 8px;font-size:21px}.info-section p,.info-section li{color:#536684;font-size:14px}.info-section details{padding:12px 0;border-top:1px solid #e7eef9}.info-section summary{cursor:pointer;font-weight:800}
+#emi-error{display:none;margin-top:10px;padding:10px 12px;border-radius:9px;background:#fff1f2;color:#be123c;font-size:12px;font-weight:750}
+@media(max-width:1120px){main{width:min(100% - 32px,1100px)}.emi-hero{grid-template-columns:22% 1fr 21%;padding:13px 16px}.hero-art{height:135px}.emi-layout{grid-template-columns:340px minmax(0,1fr)}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.insights{grid-template-columns:repeat(2,minmax(0,1fr))}.insight-title{grid-column:1/-1}.related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){main{width:calc(100% - 22px)}.emi-hero{grid-template-columns:1fr;min-height:unset;padding:17px 13px}.hero-art{display:none}.hero-copy h1{font-size:36px}.hero-copy p{font-size:13px}.hero-chip{padding:7px 9px;font-size:10px}.emi-layout{grid-template-columns:1fr}.loan-panel{padding:17px}.results-panel{padding:11px}.result-head{align-items:flex-start;flex-direction:column}.result-badge{font-size:15px}.action-group{width:100%}.action-btn{flex:1}.analysis-grid{grid-template-columns:1fr}.chart-layout{min-height:190px}.donut{width:165px;height:165px;flex-basis:165px}.donut:before{inset:25px}.metrics{gap:7px}.metric{padding:10px 8px;gap:6px}.metric-icon{width:30px;height:30px;flex-basis:30px}.metric-icon svg{width:29px;height:29px}.metric small{font-size:10px}.metric strong{font-size:clamp(13px,4vw,18px)}.metric em{font-size:9px}.insights{grid-template-columns:repeat(2,minmax(0,1fr))}.related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.related-card{padding:10px;gap:8px}.related-icon{width:39px;height:39px;flex-basis:39px}.related-card strong{font-size:11px}.related-card small{font-size:10px}.info-section{padding:18px}.ij-install-card{margin:10px 11px;grid-template-columns:36px 1fr}.ij-install-card button{grid-column:1/-1}.ij-install-help{grid-column:1/-1}}
+@media(max-width:390px){.tenure-row{grid-template-columns:1fr 94px}.chart-layout{gap:9px}.donut{width:145px;height:145px;flex-basis:145px}.donut:before{inset:22px}.donut-center strong{font-size:13px}.legend-item strong{font-size:12px}.related-head h2{font-size:18px}.related-grid{gap:7px}.related-card{align-items:flex-start;flex-direction:column}.related-arrow{display:none}}
+@media print{body{background:#fff}.ij-page-loader,.ij-install-card,.emi-hero,.loan-panel,.related,.info-section,.insights,.action-group,.full-schedule,.ij-global-header{display:none!important}main{width:100%;margin:0}.emi-layout{display:block}.results-panel{box-shadow:none;border:0}.analysis-grid{grid-template-columns:1fr 1fr}.table-wrap{max-height:none;overflow:visible}.schedule{min-width:0;font-size:9px}.schedule th,.schedule td{padding:4px}}
 </style>
-  <link rel="manifest" href="/InfoJano/app-manifests/emi.webmanifest">
-<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "InfoJano EMI Calculator",
-      "url": "https://barsulkhan.github.io/InfoJano/emi.html",
-      "description": "Estimate monthly loan EMI, total interest and total repayment using the loan amount, annual interest rate and repayment period.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does EMI mean?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "EMI means Equated Monthly Instalment: a regular monthly loan payment."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What affects my EMI?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Loan principal, interest rate, and repayment tenure affect the calculated EMI."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is the result a bank offer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. It is an estimate; lender fees, rate changes, and loan terms may change the actual payment."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
 </head>
-<body>
-<div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
- <div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">ℹ️</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">InfoJano</p><p class="ij-loader-subtitle">Getting your tool ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div>
-</div>
-
-<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
+<body data-ij-hide-related-apps="true">
+<div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite"><div class="ij-loader-card"><div class="ij-loader-mark">iJ</div><div class="ij-loader-ring"></div><p class="ij-loader-title">InfoJano</p><p class="ij-loader-subtitle">Preparing your EMI calculator…</p></div></div>
+<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose Add to Home screen or Install app.</p></details></section>
 <main>
-<div class="card">
-<h1>EMI Calculator - Free Online Loan Calculator</h1>
-<h2>Calculate Loan EMI</h2>
-<label for="amount">Loan Amount</label>
-<input id="amount" type="number" min="1" placeholder="Example: 500000">
-<label for="rate">Annual Interest Rate (%)</label>
-<input id="rate" type="number" min="0" step="any" placeholder="Example: 8.5">
-<label for="years">Loan Tenure (Years)</label>
-<input id="years" type="number" min="0.01" step="any" placeholder="Example: 5">
-<button onclick="calculate()">Calculate EMI</button>
-<div id="result" class="result" aria-live="polite">Enter your loan details to calculate.</div>
+<nav class="ij-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a><span>›</span><span>EMI Calculator</span></nav>
+<section class="emi-hero" aria-label="EMI Calculator banner">
+<svg class="hero-art" viewBox="0 0 360 170" role="img" aria-label="Illustrations of a home, car, motorcycle, mobile phone and coins">
+<defs><linearGradient id="house" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#b9d8ff"/></linearGradient><linearGradient id="car" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#9ebbe8"/></linearGradient></defs>
+<circle cx="72" cy="77" r="65" fill="#ffffff18"/><path d="M20 84 82 25l64 59v64H20z" fill="url(#house)" stroke="#b9d9ff" stroke-width="4"/><path d="M10 85 82 18l75 67" fill="none" stroke="#ffcf69" stroke-width="11" stroke-linecap="round"/><rect x="69" y="98" width="31" height="50" rx="3" fill="#89552e"/><rect x="35" y="95" width="22" height="22" rx="3" fill="#52bfff"/><rect x="113" y="95" width="22" height="22" rx="3" fill="#52bfff"/>
+<rect x="158" y="26" width="47" height="92" rx="11" fill="#101b3e" stroke="#d4f6ff" stroke-width="3" transform="rotate(8 158 26)"/><rect x="164" y="36" width="35" height="72" rx="5" fill="#20c6ff" transform="rotate(8 164 36)"/><circle cx="183" cy="112" r="3" fill="#fff"/>
+<g transform="translate(205 89)"><ellipse cx="22" cy="54" rx="31" ry="8" fill="#00144a" opacity=".5"/><path d="M-6 29 5 5h48l20 24-8 20H-2z" fill="url(#car)" stroke="#d9f5ff" stroke-width="3"/><path d="M12 9h35l14 18H4z" fill="#38bfff"/><circle cx="10" cy="49" r="12" fill="#101b37" stroke="#b5d8ff" stroke-width="4"/><circle cx="54" cy="49" r="12" fill="#101b37" stroke="#b5d8ff" stroke-width="4"/></g>
+<g transform="translate(286 109)" stroke="#ffe08a" stroke-width="3"><path d="M0 0h35v47H0z" fill="#f5a623"/><ellipse cx="17" cy="0" rx="17" ry="6" fill="#ffd66b"/><path d="M0 13h35M0 27h35" fill="none"/></g>
+</svg>
+<div class="hero-copy"><span class="hero-kicker">★ FREE ONLINE FINANCE TOOL</span><h1>EMI <span>Calculator</span></h1><p>Calculate your Equated Monthly Instalment for any type of loan.</p><div class="hero-chips"><span class="hero-chip">⌂ Home Loan</span><span class="hero-chip">▰ Car Loan</span><span class="hero-chip">♙ Personal Loan</span><span class="hero-chip">♧ Bike Loan</span><span class="hero-chip">▣ Mobile Loan</span><span class="hero-chip">₹ Any Loan</span></div></div>
+<svg class="hero-art" viewBox="0 0 300 170" role="img" aria-label="EMI calculator and rising repayment chart"><circle cx="140" cy="80" r="68" fill="#ffffff15"/><g transform="translate(38 14) rotate(8 75 70)"><rect x="14" y="8" width="115" height="142" rx="18" fill="#dceaff" stroke="#fff" stroke-width="4"/><rect x="24" y="20" width="95" height="31" rx="7" fill="#0754c6"/><text x="71" y="42" text-anchor="middle" font-size="20" font-weight="900" fill="#fff">EMI</text><g fill="#1559bd"><rect x="25" y="61" width="25" height="18" rx="4"/><rect x="57" y="61" width="25" height="18" rx="4"/><rect x="89" y="61" width="25" height="18" rx="4"/><rect x="25" y="86" width="25" height="18" rx="4"/><rect x="57" y="86" width="25" height="18" rx="4"/><rect x="89" y="86" width="25" height="18" rx="4"/><rect x="25" y="111" width="25" height="18" rx="4"/><rect x="57" y="111" width="25" height="18" rx="4"/><rect x="89" y="111" width="25" height="18" rx="4"/></g><g fill="#fff" font-size="9" text-anchor="middle" font-weight="900"><text x="37" y="74">7</text><text x="69" y="74">8</text><text x="101" y="74">9</text><text x="37" y="99">4</text><text x="69" y="99">5</text><text x="101" y="99">6</text><text x="37" y="124">1</text><text x="69" y="124">2</text><text x="101" y="124">3</text></g></g><path d="M166 127 191 98l22 8 25-39 24-20" fill="none" stroke="#ffd53d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="m248 45 15 1-5 15" fill="none" stroke="#ffd53d" stroke-width="6" stroke-linecap="round"/><g fill="#19c7ff"><rect x="177" y="131" width="17" height="25" rx="3"/><rect x="202" y="116" width="17" height="40" rx="3"/><rect x="227" y="93" width="17" height="63" rx="3"/><rect x="252" y="70" width="17" height="86" rx="3"/></g><g fill="#ffcb4c"><ellipse cx="280" cy="141" rx="15" ry="5"/><rect x="265" y="130" width="30" height="11"/><ellipse cx="280" cy="130" rx="15" ry="5"/></g></svg>
+</section>
+<div class="emi-layout">
+<section class="panel loan-panel" aria-labelledby="loan-title">
+<div class="panel-title"><span class="title-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2m4 0h2M8 15h2m4 0h2"/></svg></span><div><h2 id="loan-title">Loan Details</h2><p>Enter your loan information to calculate EMI.</p></div></div>
+<div class="field"><label for="amount">Loan Amount</label><div class="input-wrap"><span class="input-prefix">₹</span><input id="amount" type="number" min="1" max="100000000000" step="1000" value="1000000" inputmode="decimal"></div></div>
+<div class="field"><label for="rate">Interest Rate (Annual)</label><div class="input-wrap"><span class="input-prefix">%</span><input id="rate" type="number" min="0" max="100" step="0.01" value="9" inputmode="decimal"></div></div>
+<div class="field"><span class="field-label">Loan Tenure</span><div class="tenure-row"><div class="input-wrap"><input id="tenure" type="number" min="1" max="600" step="1" value="5" inputmode="numeric"></div><div class="input-wrap"><select id="tenureUnit" aria-label="Tenure unit"><option value="years">Years</option><option value="months">Months</option></select></div></div><div class="range-meta"><span id="tenureLabel">Loan Tenure: 5 Years (60 Months)</span></div><input class="range" id="tenureRange" type="range" min="1" max="30" value="5"><div class="range-labels"><span>1Y</span><span>2Y</span><span>3Y</span><span>4Y</span><span>5Y</span><span>10Y</span><span>15Y</span><span>20Y</span><span>30Y</span></div></div>
+<details class="advanced" open><summary>⚙ Advanced Options</summary><div class="advanced-body"><label class="check-row"><input type="checkbox" id="showSchedule" checked> Show repayment schedule (EMI table)</label><label class="check-row"><input type="checkbox" id="includeFee"> Include processing fee</label><div class="fee-fields" id="feeFields"><input id="feePercent" type="number" min="0" max="20" step="0.1" value="1" aria-label="Processing fee percentage"><span style="font-size:12px;color:#60718e;font-weight:800">% of loan amount</span></div></div></details>
+<div id="emi-error" role="alert"></div>
+<div class="form-actions"><button class="btn btn-primary" id="calculateBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2m4 0h2M8 16h2m4 0h2"/></svg>Calculate EMI</button><button class="btn btn-secondary" id="resetBtn" type="button">↻ Reset</button></div>
+<p class="loan-type-note">Use this calculator for home, car, personal, bike, mobile and other reducing-balance loans.</p>
+</section>
+<section class="panel results-panel" aria-labelledby="result-title">
+<div class="result-head"><div class="result-badge" id="result-title"><span>✓</span> EMI Calculation Result</div><div class="action-group"><button class="action-btn" id="copyBtn" type="button">▣ Copy</button><button class="action-btn" id="shareBtn" type="button">↗ Share</button><button class="action-btn" id="pdfBtn" type="button">▤ PDF</button></div></div>
+<div class="metrics">
+<div class="metric metric-blue"><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0874dc" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4m10-4v4M3 9h18M7 13h3m4 0h3m-10 4h3"/></svg></span><div><small>Monthly EMI</small><strong id="emiValue">₹20,754</strong></div></div>
+<div class="metric metric-pink"><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#df1674" stroke-width="1.8"><ellipse cx="9" cy="6" rx="6" ry="3"/><path d="M3 6v5c0 1.7 2.7 3 6 3s6-1.3 6-3V6M3 11v5c0 1.7 2.7 3 6 3 1.2 0 2.4-.2 3.4-.6M15 10c3.3 0 6 1.3 6 3v5c0 1.7-2.7 3-6 3s-6-1.3-6-3v-2"/></svg></span><div><small>Total Interest</small><strong id="interestValue">₹2,45,240</strong></div></div>
+<div class="metric metric-green"><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#078c40" stroke-width="1.8"><path d="M3 12h4l3-5 4 10 3-5h4"/><circle cx="12" cy="12" r="10"/></svg></span><div><small>Total Payment</small><strong id="totalValue">₹12,45,240</strong></div></div>
+<div class="metric metric-purple"><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8035d9" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4m10-4v4M3 9h18"/></svg></span><div><small>Total Tenure</small><strong id="tenureValue">5 Years</strong><em id="monthsValue">(60 Months)</em></div></div>
 </div>
-<section>
-<h2>What is EMI?</h2>
-<p>EMI means Equated Monthly Instalment. It is the fixed monthly payment made towards a loan, including principal and interest.</p>
-<h2>EMI Formula</h2>
-<p>EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</p>
-<p>P is the loan amount, r is the monthly interest rate and n is the total number of monthly payments.</p>
+<div class="analysis-grid">
+<div class="analysis-card"><h3>◉ Principal vs Interest</h3><div class="chart-layout"><div class="donut" id="donut" style="--principal:80.3%"><div class="donut-center"><strong id="chartTotal">₹12,45,240</strong><span>Total Payment</span></div></div><div class="legend"><div class="legend-item"><span class="legend-dot" style="background:#0787ef"></span><div><small>Principal Amount</small><strong id="principalLegend">₹10,00,000</strong><small id="principalPercent">80.3%</small></div></div><div class="legend-item"><span class="legend-dot" style="background:#ed2d92"></span><div><small>Total Interest</small><strong id="interestLegend">₹2,45,240</strong><small id="interestPercent">19.7%</small></div></div></div></div></div>
+<div class="analysis-card"><h3>▤ Repayment Schedule (EMI Table)</h3><div class="table-wrap"><table class="schedule"><thead><tr><th>Month</th><th>EMI (₹)</th><th>Principal (₹)</th><th>Interest (₹)</th><th>Balance (₹)</th></tr></thead><tbody id="scheduleBody"></tbody></table></div><button class="full-schedule" id="fullScheduleBtn" type="button">▤ View Full Repayment Schedule　›</button></div>
+</div>
+<div class="insights"><div class="insight-title">▥ Loan Insights</div><div class="insight insight-green">↓ <div>Lower Interest<span>reduces your EMI</span></div></div><div class="insight insight-blue">▦ <div>Longer Tenure<span>means lower EMI</span></div></div><div class="insight insight-orange">↗ <div>Shorter Tenure<span>saves more interest</span></div></div><div class="insight insight-purple">▣ <div>Compare Loans<span>try other rates</span></div></div></div>
 </section>
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="loan-eligibility.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18L12 3zM5 10v9m4-9v9m6-9v9m4-9v9M3 21h18"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Loan Affordability Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate a manageable monthly loan payment.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="loan-interest.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Loan Interest Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate simple loan interest.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="savings.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Savings Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate how savings may grow.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="discount.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13 11 22 2 13V4h9z"/><circle cx="7" cy="9" r="1"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Discount Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate sale prices and savings.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
-</section>
-<section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">EMI Example: What Changes the Monthly Payment?</h2><p>An EMI estimate depends on the loan principal, annual interest rate and number of monthly instalments. Increasing the tenure often lowers the monthly instalment but may increase total interest paid.</p><h3>Use the estimate carefully</h3><ul><li>Enter the annual interest rate as a percentage.</li><li>Enter tenure in years, as requested by the Loan Tenure (Years) field.</li><li>Compare total repayment as well as monthly EMI; lender fees and actual terms may differ.</li></ul><p>Related tools: <a href="loan-eligibility.html">Loan Affordability Calculator</a> and <a href="loan-interest.html">Loan Interest Calculator</a>.</p></section>
-
-<section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
-<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">EMI Calculator FAQs</h2>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">What does EMI mean?</summary><p style="margin:8px 0 0;color:#536174">EMI means Equated Monthly Instalment: a regular monthly loan payment.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">What affects my EMI?</summary><p style="margin:8px 0 0;color:#536174">Loan principal, interest rate, and repayment tenure affect the calculated EMI.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Is the result a bank offer?</summary><p style="margin:8px 0 0;color:#536174">No. It is an estimate; lender fees, rate changes, and loan terms may change the actual payment.</p></details>
-<p style="margin:12px 0 0;font-size:14px">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="discount.html">Discount Calculator</a></p>
-</section>
-<p><a href="index.html">← Back to InfoJano Home</a></p>
+</div>
+<section class="related" aria-labelledby="related-tools-title"><div class="related-head"><h2 id="related-tools-title">↗ Related Tools</h2><a href="index.html#calculators">Explore more useful calculators　→</a></div><div class="related-grid">
+<a class="related-card" href="loan-eligibility.html"><span class="related-icon" style="background:linear-gradient(135deg,#0787ee,#1252ce)">▦</span><span><strong>Loan Eligibility</strong><small>Estimate your possible loan amount.</small></span><b class="related-arrow">›</b></a>
+<a class="related-card" href="savings.html"><span class="related-icon" style="background:linear-gradient(135deg,#b42df3,#6b20c8)">↗</span><span><strong>Savings Calculator</strong><small>See how your savings may grow.</small></span><b class="related-arrow">›</b></a>
+<a class="related-card" href="loan-interest.html"><span class="related-icon" style="background:linear-gradient(135deg,#ffb51d,#ed7800)">₹</span><span><strong>Loan Interest</strong><small>Calculate loan interest cost.</small></span><b class="related-arrow">›</b></a>
+<a class="related-card" href="discount.html"><span class="related-icon" style="background:linear-gradient(135deg,#9b38f2,#6519c7)">%</span><span><strong>Discount Calculator</strong><small>Find sale price and savings.</small></span><b class="related-arrow">›</b></a>
+</div></section>
+<section class="info-section"><h2>What is an EMI?</h2><p>EMI means Equated Monthly Instalment. It is the regular payment made towards a loan, usually combining principal and interest. This calculator uses the reducing-balance method and gives an estimate based on the details you enter.</p><h2>EMI Formula</h2><p><strong>EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</strong></p><p>P is the principal loan amount, r is the monthly interest rate and n is the total number of monthly instalments. At zero interest, EMI is simply the principal divided by the number of months.</p></section>
+<section class="info-section"><h2>EMI Calculator FAQs</h2><details><summary>What affects my monthly EMI?</summary><p>Loan amount, annual interest rate and repayment tenure determine your EMI.</p></details><details><summary>Does a longer tenure reduce EMI?</summary><p>Usually yes, but a longer tenure can increase the total interest you pay.</p></details><details><summary>Can I include a processing fee?</summary><p>Yes. Enable the processing fee option to see it added to the estimated total payment. The fee is shown separately from the monthly EMI.</p></details><details><summary>Is this the exact amount my bank will charge?</summary><p>No. This is an estimate. Actual lender terms, fees, rate changes, insurance and payment dates may affect your final repayment.</p></details></section>
 </main>
+<footer style="text-align:center;padding:18px;color:#687a98;font-size:12px">© InfoJano · Smart Tools for Everyday Life</footer>
 <script>
-function calculate(){
-const P=Number(document.getElementById('amount').value);
-const annual=Number(document.getElementById('rate').value);
-const years=Number(document.getElementById('years').value);
-const out=document.getElementById('result');
-if(!document.getElementById('amount').value||!document.getElementById('rate').value||!document.getElementById('years').value||P<=0||annual<0||years<=0){
-out.textContent='Please enter a valid loan amount, interest rate and loan tenure.';
-return;
+(()=> {
+const $=id=>document.getElementById(id);
+const fmt=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(n);
+let current=null;
+function months(){const v=Math.max(1,Number($('tenure').value)||1);return $('tenureUnit').value==='years'?Math.round(v*12):Math.round(v)}
+function syncTenure(fromRange=false){let m;if(fromRange){m=Number($('tenureRange').value)*12;$('tenureUnit').value='years';$('tenure').value=String(m/12)}else{m=months();$('tenureRange').value=String(Math.max(1,Math.min(30,Math.round(m/12))))}const years=Math.floor(m/12),rem=m%12;$('tenureLabel').textContent='Loan Tenure: '+(years?years+' Year'+(years===1?'':'s'):'')+(years&&rem?' ':'')+(rem?rem+' Months':'')+' ('+m+' Months)';}
+function calc(){
+const P=Number($('amount').value),annual=Number($('rate').value),n=months(),feeOn=$('includeFee').checked,feePct=Number($('feePercent').value)||0;
+const err=$('emi-error');err.style.display='none';
+if(!Number.isFinite(P)||P<=0||!Number.isFinite(annual)||annual<0||annual>100||!Number.isFinite(n)||n<1||n>600||feePct<0||feePct>20){err.textContent='Please enter a loan amount above zero, an annual rate from 0 to 100%, and a tenure between 1 and 600 months.';err.style.display='block';return}
+const r=annual/1200,emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1),total=emi*n,interest=Math.max(0,total-P),fee=feeOn?P*feePct/100:0,grand=total+fee;
+let balance=P,rows=[];
+for(let i=1;i<=n;i++){const intr=balance*r,principal=Math.min(balance,Math.max(0,emi-intr));balance=Math.max(0,balance-principal);if(i===n)balance=0;rows.push({month:i,emi:emi,principal:principal,interest:intr,balance:balance})}
+current={P,annual,n,emi,total,interest,fee,grand,rows};
+$('emiValue').textContent=fmt(emi);$('interestValue').textContent=fmt(interest);$('totalValue').textContent=fmt(grand);$('tenureValue').textContent=Math.floor(n/12)?Math.floor(n/12)+' Years':n+' Months';$('monthsValue').textContent='('+n+' Months)';
+$('chartTotal').textContent=fmt(total);$('principalLegend').textContent=fmt(P);$('interestLegend').textContent=fmt(interest);
+const pp=total?P/total*100:100,ip=total?interest/total*100:0;$('donut').style.setProperty('--principal',pp+'%');$('principalPercent').textContent=pp.toFixed(1)+'%';$('interestPercent').textContent=ip.toFixed(1)+'%';
+$('interestLegend').textContent=fmt(interest);
+const shown=rows.slice(0,5);$('scheduleBody').innerHTML=shown.map(x=>'<tr><td>'+x.month+'</td><td>'+fmt(x.emi)+'</td><td>'+fmt(x.principal)+'</td><td>'+fmt(x.interest)+'</td><td>'+fmt(x.balance)+'</td></tr>').join('');
+$('fullScheduleBtn').textContent='View Full Repayment Schedule ('+n+' Months)　›';
+if(feeOn){$('totalValue').textContent=fmt(grand);$('totalValue').title='Includes '+fmt(fee)+' processing fee'}else $('totalValue').title='Principal plus total interest';
 }
-const n=Math.round(years*12);
-const r=annual/1200;
-const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
-const total=emi*n;
-const money=x=>x.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
-out.innerHTML='Monthly EMI: <strong>'+money(emi)+'</strong><br>Total Interest: <strong>'+money(total-P)+'</strong><br>Total Repayment: <strong>'+money(total)+'</strong>';
-}
+function scheduleAll(){if(!current)calc();if(!current)return;const rows=current.rows;$('scheduleBody').innerHTML=rows.map(x=>'<tr><td>'+x.month+'</td><td>'+fmt(x.emi)+'</td><td>'+fmt(x.principal)+'</td><td>'+fmt(x.interest)+'</td><td>'+fmt(x.balance)+'</td></tr>').join('');$('fullScheduleBtn').textContent='Showing all '+rows.length+' monthly instalments';}
+function summary(){if(!current)calc();if(!current)return '';return 'InfoJano EMI Calculator\nLoan Amount: '+fmt(current.P)+'\nAnnual Interest Rate: '+current.annual+'%\nTenure: '+current.n+' months\nMonthly EMI: '+fmt(current.emi)+'\nTotal Interest: '+fmt(current.interest)+'\nProcessing Fee: '+fmt(current.fee)+'\nTotal Payment: '+fmt(current.grand)}
+$('calculateBtn').addEventListener('click',calc);$('resetBtn').addEventListener('click',()=>{$('amount').value=1000000;$('rate').value=9;$('tenure').value=5;$('tenureUnit').value='years';$('tenureRange').value=5;$('includeFee').checked=false;$('feeFields').classList.remove('visible');$('feePercent').value=1;$('showSchedule').checked=true;syncTenure();calc()});
+$('tenure').addEventListener('input',()=>{syncTenure();calc()});$('tenureUnit').addEventListener('change',()=>{syncTenure();calc()});$('tenureRange').addEventListener('input',()=>{syncTenure(true);calc()});
+['amount','rate','feePercent'].forEach(id=>$(id).addEventListener('input',calc));$('includeFee').addEventListener('change',()=>{$('feeFields').classList.toggle('visible',$('includeFee').checked);calc()});
+$('showSchedule').addEventListener('change',()=>{$('scheduleBody').parentElement.parentElement.style.display=$('showSchedule').checked?'block':'none';$('fullScheduleBtn').style.display=$('showSchedule').checked?'block':'none'});
+$('fullScheduleBtn').addEventListener('click',scheduleAll);
+$('copyBtn').addEventListener('click',async()=>{const t=summary();if(!t)return;try{await navigator.clipboard.writeText(t);$('copyBtn').textContent='✓ Copied';setTimeout(()=>$('copyBtn').textContent='▣ Copy',1500)}catch(e){window.prompt('Copy your EMI summary',t)}});
+$('shareBtn').addEventListener('click',async()=>{const t=summary();if(!t)return;if(navigator.share){try{await navigator.share({title:'EMI Calculator – InfoJano',text:t})}catch(e){}}else{try{await navigator.clipboard.writeText(t);$('shareBtn').textContent='✓ Copied';setTimeout(()=>$('shareBtn').textContent='↗ Share',1500)}catch(e){window.prompt('Copy your EMI summary',t)}}});
+$('pdfBtn').addEventListener('click',()=>{if(!current)calc();if(current)window.print()});
+$('feeFields').classList.remove('visible');syncTenure();calc();
+})();
 </script>
-<footer style="text-align:center;padding:20px">© InfoJano</footer>
-
-<script>
-(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();
-</script>
-<script src="/InfoJano/download-progress.js" defer></script>
-<script src="/InfoJano/install.js" defer></script>
-
-
-
-
-<script src="/InfoJano/site-header.js" defer></script>
-</body>
-</html>
+<script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hide(){setTimeout(()=>loader.classList.add('ij-loaded'),350)}if(document.readyState==='complete')hide();else{window.addEventListener('load',hide,{once:true});setTimeout(hide,5000)}})();</script>
+<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
+</body></html>
