@@ -142,6 +142,28 @@ body{
   body,.url-hero,.url-hero:before,.url-hero:after{animation:none!important}
 }
 
+
+/* Color-coded URL Toolkit navigation icons */
+.tool-tab .tab-icon{
+  width:29px;height:29px;flex:0 0 29px;
+  display:inline-grid;place-items:center;
+  border-radius:9px;font-size:16px;line-height:1;
+  transition:background .2s,color .2s,transform .2s;
+}
+.tool-tab:nth-child(1) .tab-icon{color:#245bff;background:linear-gradient(145deg,#e1ebff,#c9d9ff)}
+.tool-tab:nth-child(2) .tab-icon{color:#0b9c82;background:linear-gradient(145deg,#d9fff3,#b9f2e3)}
+.tool-tab:nth-child(3) .tab-icon{color:#8a42dc;background:linear-gradient(145deg,#f1e2ff,#dfc8ff)}
+.tool-tab:nth-child(4) .tab-icon{color:#1685c7;background:linear-gradient(145deg,#def5ff,#c2eaff)}
+.tool-tab:nth-child(5) .tab-icon{color:#d17a16;background:linear-gradient(145deg,#fff0d9,#ffe0b0)}
+.tool-tab:nth-child(6) .tab-icon{color:#d34e8b;background:linear-gradient(145deg,#ffe2ef,#ffc9e0)}
+.tool-tab:nth-child(7) .tab-icon{color:#6472d9;background:linear-gradient(145deg,#e5e8ff,#cfd5ff)}
+.tool-tab:nth-child(8) .tab-icon{color:#159b64;background:linear-gradient(145deg,#dcffeb,#bff4d4)}
+.tool-tab[aria-selected=true] .tab-icon{
+  color:#fff!important;background:#ffffff27!important;
+  box-shadow:inset 0 0 0 1px #ffffff35;
+}
+.tool-tab:hover .tab-icon{transform:scale(1.08)}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"InfoJano Free URL Toolkit","url":"https://barsulkhan.github.io/InfoJano/url-toolkit.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free browser-based URL tools for UTM links, URL cleaning, encoding, validation, parsing, slugs and QR codes."}</script></head><body>
 <section class="url-hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow"><i></i> Smart URL Tools for Everyone</span><h1>URL Toolkit <span>Link Control Center</span></h1><p class="lead">Build campaign links, clean tracking clutter, inspect URLs and create QR codes — with clear, browser-based tools that keep your input on this device.</p><div class="hero-pills"><span>✦ 8 useful link tools</span><span>✓ No account needed</span><span>◈ Mobile-ready</span></div></div><div class="hero-art" aria-hidden="true"><span class="art-spark one">✦</span><span class="art-spark two">✧</span><div class="browser-card"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-address"><b>https://</b> your-next-link.com</div><div class="art-bottom"><span class="art-link">🔗</span><span class="art-qr"></span></div></div></div></div></section>
