@@ -1607,3 +1607,11 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service worker commit: `329c08236979de3f04ccb22547cacaff6e45cd25`.
 - JavaScript syntax validation: 2 inline JS blocks PASS; JSON-LD excluded correctly.
 - Desktop visual/runtime test in user's browser remains pending; do not claim runtime-tested.
+
+## Image Resizer — Compact Header and Full-Width Horizontal Desktop Hero — 3 November 2026
+- User asked to make the approved banner fit the website without an excessively tall/stacked presentation. Applied final CSS overrides in `image-resizer.html`: full available viewport width for page content, compact shared InfoJano header layout retained (official logo/name and Home/All Tools buttons), horizontal two-column hero on desktop with custom resize icon/title on left and image-conversion illustration on right, compact vertical stacking only on narrow mobile screens.
+- Workspace and Popular Sizes sections remain full available width; responsive mobile behavior retained. No image processing or calculation logic changed.
+- Source commit: `57832f8e5fc73a9f2e74c6618f538c8a920b4f45`.
+- Service worker cache updated from `infojano-v137` to `infojano-v138`; commit `48517b120b0ab5a6f4967e732d3efb5b5242e130`.
+- JavaScript syntax validation: 2 inline JS blocks PASS; JSON-LD excluded.
+- The user's Windows/Chrome visual result and live deployment are not yet verified. Do not claim runtime tested.
