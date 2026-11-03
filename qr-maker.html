@@ -89,7 +89,22 @@ main .ij-qr-brand{display:none!important}
 @media(max-width:480px){main section.ij-qr-hero{grid-template-columns:54% 46%!important;min-height:190px!important;padding:17px 13px!important;border-radius:20px!important}.ij-qr-hero h1{font-size:clamp(26px,7vw,36px)!important}.ij-qr-hero p{font-size:11px!important}.ij-qr-hero-art{min-height:145px!important}}
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
-<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
+<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
+/* Colorful, high-contrast icon system for QR Maker */
+.ij-qr-types button{background:linear-gradient(145deg,#f7fbff,#eaf3ff)!important;border:1px solid #cbdcf5!important;color:#1559b8!important}
+.ij-qr-types button:nth-child(1){--qricon:#087cf0}.ij-qr-types button:nth-child(2){--qricon:#8b5cf6}.ij-qr-types button:nth-child(3){--qricon:#0d9488}.ij-qr-types button:nth-child(4){--qricon:#ec4899}.ij-qr-types button:nth-child(5){--qricon:#f97316}.ij-qr-types button:nth-child(6){--qricon:#2563eb}
+.ij-qr-types button{box-shadow:inset 0 3px 0 var(--qricon),0 3px 10px #173b7710!important}
+.ij-qr-types button.active{background:linear-gradient(145deg,#e7f2ff,#dceaff)!important;border:2px solid var(--qricon,#087cf0)!important;color:#123b7a!important;box-shadow:0 0 0 3px #1684ff1c,inset 0 3px 0 var(--qricon)!important}
+.ij-qr-types button small{display:block;color:#253f68!important;font-weight:800!important}
+.ij-qr-builder h2>span,.ij-qr-preview h2{color:#087cf0!important}
+.ij-qr-options label:before{color:#087cf0}
+.ij-qr-features>div{color:#087cf0!important}
+.ij-qr-features>div:nth-child(2){color:#16a36a!important}.ij-qr-features>div:nth-child(3){color:#8b5cf6!important}.ij-qr-features>div:nth-child(4){color:#f97316!important}
+.ij-qr-features b{display:block;color:#172b50!important}.ij-qr-features small{color:#5b6f91!important}
+.ij-qr-privacy{color:#27634b!important}
+.ij-qr-hero .ij-qr-tile{background:linear-gradient(145deg,#fff,#dff5ff)!important;color:#087cf0!important;border:2px solid #8deaff!important;box-shadow:0 8px 22px #00dfff44!important}
+.ij-qr-hero .ij-qr-tile svg{color:#087cf0!important}
+</style>
 
 <script type="application/ld+json">
 {
