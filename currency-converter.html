@@ -191,6 +191,32 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 @keyframes ijHeroAura{0%,100%{opacity:.25;transform:scale(.86)}50%{opacity:.95;transform:scale(1.18)}}
 @keyframes ijHeroTextFloat{0%,100%{transform:translateY(0);text-shadow:0 0 4px #ffffff20}50%{transform:translateY(-2px);text-shadow:0 0 8px #8feaff85,0 0 16px #713cff55}}
 @media(prefers-reduced-motion:reduce){.hero-side-item,.hero-side-icon,.hero-side-icon:before{animation:none!important}}
+
+/* Sequential left-to-right light sweep across hero title and feature labels.
+   Keep the existing neon perimeter and hero layout untouched. */
+.hero-copy h1{position:relative;isolation:isolate;overflow:hidden}
+.hero-copy h1:after{content:"";position:absolute;top:-12%;bottom:-12%;left:-55%;width:34%;pointer-events:none;z-index:2;background:linear-gradient(105deg,transparent 0%,#ffffff18 28%,#ffffffc9 49%,#b8f7ff72 58%,transparent 100%);filter:blur(2px);transform:skewX(-18deg);animation:ijHeroTextSweep 4.8s ease-in-out infinite}
+.hero-copy .perks .perk{position:relative;isolation:isolate;overflow:hidden}
+.hero-copy .perks .perk:after{content:"";position:absolute;top:-35%;bottom:-35%;left:-75%;width:42%;pointer-events:none;background:linear-gradient(105deg,transparent 0%,#ffffff20 28%,#ffffffd9 50%,#ffffff35 63%,transparent 100%);filter:blur(1px);transform:skewX(-18deg);animation:ijHeroPillSweep 4.8s ease-in-out infinite}
+.hero-copy .perks .perk:nth-child(1):after{animation-delay:.9s}
+.hero-copy .perks .perk:nth-child(2):after{animation-delay:1.65s}
+.hero-copy .perks .perk:nth-child(3):after{animation-delay:2.4s}
+.hero-copy .perks .perk:nth-child(4):after{animation-delay:3.15s}
+@keyframes ijHeroTextSweep{
+  0%,8%{left:-55%;opacity:0}
+  14%{opacity:1}
+  39%{left:125%;opacity:0}
+  100%{left:125%;opacity:0}
+}
+@keyframes ijHeroPillSweep{
+  0%,8%{left:-75%;opacity:0}
+  14%{opacity:1}
+  39%{left:135%;opacity:0}
+  100%{left:135%;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-copy h1:after,.hero-copy .perks .perk:after{animation:none!important;display:none!important}
+}
 </style>
 </head>
 <body>
