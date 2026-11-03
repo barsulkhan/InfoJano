@@ -1714,3 +1714,12 @@ User instruction: Treat desktop experience as the primary design target because 
 - Master checkpoint recorded. Deployment and user's visual confirmation pending; no claim of browser-tested result.
 - Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
 - Actions: https://github.com/barsulkhan/InfoJano/actions
+
+
+## Image Resize & Converter — exact desktop width alignment with Image Compressor — 3 November 2026
+- Compared the actual desktop CSS in both pages. Image Compressor uses `.wrap{width:calc(100% - 64px);max-width:none}` on desktop. Replaced the resizer's viewport-based width and fixed 32px margins with the same centered `width:calc(100% - 64px); margin:18px auto 48px;` rule. All direct content sections are explicitly full width; hero remains horizontal and upload/settings remain a two-column workspace. Mobile breakpoint remains independent.
+- Source commit: `aef4f501faafedd02e7949b9af02613ecc7a51d8`.
+- Service worker cache bumped from infojano-v145 to infojano-v146; commit 425a29e1108f134cbb335114b905d3ab812564a8.
+- This is source-level CSS alignment; actual rendered equality must still be verified in user's browser after successful deployment. No claim of visual test.
+- Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
+- Actions: https://github.com/barsulkhan/InfoJano/actions
