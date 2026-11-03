@@ -807,6 +807,43 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
   margin-right:12px!important;
  }
 }
+
+/* InfoJano desktop-first homepage layout — full available viewport */
+@media(min-width:701px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .header{width:100%;padding:14px clamp(18px,2.2vw,36px)}
+  .top{width:100%;max-width:none;margin:0;gap:22px}
+  .brand-wrap{gap:13px}
+  .brand-logo{width:48px;height:48px;flex-basis:48px}
+  .brand{font-size:26px}
+  .tag{font-size:12px}
+  .nav{gap:10px}
+  .nav button{padding:10px 16px;font-size:14px;border-radius:12px}
+  .wrap{width:100%;max-width:none;margin:0;padding:clamp(20px,2.1vw,34px) clamp(18px,2.2vw,36px)}
+  .hero{width:100%;margin:4px 0 24px;padding:clamp(34px,4vw,60px);border-radius:26px;min-height:230px}
+  .hero h1{font-size:clamp(36px,3.2vw,54px);line-height:1.08}
+  .hero p{font-size:17px;max-width:850px;line-height:1.55}
+  .search{max-width:1050px;margin-top:24px}
+  .search input{font-size:16px;padding:16px 18px}
+  .search button{padding:15px 24px;font-size:15px}
+  .section-title{margin:30px 2px 16px}
+  .section-title h2{font-size:25px}
+  .section-title span{font-size:14px}
+  .grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+  .card.tool{min-height:170px;padding:21px;border-radius:20px}
+  .tool h3{font-size:18px;margin:12px 0 6px}
+  .tool p{font-size:13px;line-height:1.5}
+  .icon{height:46px}
+  .icon svg{width:44px;height:44px}
+  .panel{width:100%;padding:24px;border-radius:22px}
+  .formgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .info-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .info{padding:24px;border-radius:20px}
+  .info h3{font-size:18px}
+  .info p{font-size:14px;line-height:1.55}
+  .guides{width:100%}
+  .footer{font-size:13px;padding:36px 20px 48px}
+}
 </style>
 
 </head>
