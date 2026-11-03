@@ -391,6 +391,26 @@ footer{color:#8fa6ca!important}
 @keyframes resizerSectionPulse{0%,100%{box-shadow:0 0 14px #477dff33}50%{box-shadow:0 0 25px #55cfff77}}
 @media(prefers-reduced-motion:reduce){.ij-loader-mark,.ij-loader-ring,.ij-loader-dots span,.hero-icon,.hero:after,.section-icon{animation:none!important}.ij-page-loader{transition:none}.picon svg{transition:none}}
 
+
+/* FINAL DESKTOP WIDTH FIX — match Image Compressor's full-viewport workspace */
+@media(min-width:851px){
+ html,body{width:100%!important;max-width:100%!important}
+ body{overflow-x:hidden!important}
+ body>main,main{display:block!important;box-sizing:border-box!important;width:calc(100vw - 64px)!important;max-width:none!important;margin:18px 32px 48px!important;padding:0!important}
+ main>.resize-breadcrumb{width:100%!important;max-width:none!important;margin:5px 0 16px!important}
+ main>.hero,main>.workspace,main>.preset-section,main>.info-section,main>.seo-card{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+ main>.hero{min-height:250px!important;padding:30px 38px!important;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr)!important}
+ main>.workspace{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:26px!important;padding:28px!important;margin-top:18px!important}
+ main>.workspace>.panel{min-width:0!important;width:100%!important;box-sizing:border-box!important}
+ main>.workspace>.panel+.panel{border-left:1px solid #29436d!important;border-top:0!important;padding:8px 4px 8px 26px!important}
+ main>.preset-section,main>.info-section,main>.seo-card{margin-top:24px!important;padding:28px!important}
+ main>.preset-section .preset-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+}
+@media(max-width:850px){
+ main{width:calc(100% - 24px)!important;max-width:none!important;margin:14px 12px 30px!important;padding:0!important}
+ main>.hero,main>.workspace,main>.preset-section,main>.info-section,main>.seo-card{width:100%!important;max-width:none!important;box-sizing:border-box!important}
+}
+
 </style></head><body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading Image Resize and Converter"><div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">↔</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">Image Resize &amp; Converter</p><p class="ij-loader-subtitle">Getting your image tools ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div></div>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
