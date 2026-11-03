@@ -176,6 +176,21 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
  .result-value{font-size:clamp(25px,7vw,34px)!important}
 }
 @media(prefers-reduced-motion:reduce){.hero:before{animation:none!important}}
+
+/* Animated hero-side icons, text and soft light aura */
+.hero-side-item{position:relative;animation:ijHeroTextFloat 3.8s ease-in-out infinite; text-shadow:0 0 0 transparent;transition:text-shadow .3s ease}
+.hero-side-item:nth-child(2){animation-delay:.35s}
+.hero-side-item:nth-child(3){animation-delay:.7s}
+.hero-side-icon{position:relative;isolation:isolate;animation:ijHeroIconFloat 3.2s ease-in-out infinite,ijHeroIconGlow 2.8s ease-in-out infinite;transform-origin:center}
+.hero-side-item:nth-child(2) .hero-side-icon{animation-delay:.3s,.3s}
+.hero-side-item:nth-child(3) .hero-side-icon{animation-delay:.6s,.6s}
+.hero-side-icon:before{content:"";position:absolute;inset:-10px;border-radius:22px;background:radial-gradient(circle,#00eaff8c 0%,#7c3dff45 42%,transparent 72%);filter:blur(8px);opacity:.35;z-index:-1;animation:ijHeroAura 2.8s ease-in-out infinite}
+.hero-side-item:hover{ text-shadow:0 0 8px #74eaff,0 0 18px #765cff}
+@keyframes ijHeroIconFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.045)}}
+@keyframes ijHeroIconGlow{0%,100%{box-shadow:0 4px 12px #00bfff35,0 0 0 1px #ffffff20}50%{box-shadow:0 5px 20px #00eaff8a,0 0 24px #9c48ff65,0 0 0 1px #ffffff65}}
+@keyframes ijHeroAura{0%,100%{opacity:.25;transform:scale(.86)}50%{opacity:.95;transform:scale(1.18)}}
+@keyframes ijHeroTextFloat{0%,100%{transform:translateY(0);text-shadow:0 0 4px #ffffff20}50%{transform:translateY(-2px);text-shadow:0 0 8px #8feaff85,0 0 16px #713cff55}}
+@media(prefers-reduced-motion:reduce){.hero-side-item,.hero-side-icon,.hero-side-icon:before{animation:none!important}}
 </style>
 </head>
 <body>
