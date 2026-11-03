@@ -1682,3 +1682,14 @@ User instruction: Treat desktop experience as the primary design target because 
 - Source commit: `be95e341328da8838ec40fd8136516256ebd76ac`.
 - Service worker cache bumped from infojano-v141 to infojano-v142; commit c7dec995db0307f2a50d6afbeef69d89a85d5956.
 - Pending: GitHub Pages deployment completion and user's visual check in Windows/Chrome. No browser visual test claimed.
+
+
+## Image Resize & Converter — next app work started — 3 November 2026
+- User confirmed Image Compressor as final and asked to move to Image Resize & Converter.
+- Rechecked current master file, `image-resizer.html`, and service worker before editing. Existing page has 15 Popular Sizes entries including Custom Size; preserved all 15 and the existing upload/preview, resize, percentage, aspect-ratio, output-format, quality and download behavior in this first pass.
+- Audited current capability: existing UI/logic supports pixel dimensions and percentage, JPG/PNG/WebP output, quality, presets and preview; full cm/mm input, configurable DPI conversion, and target file-size-in-KB control are not yet implemented. These remain required next functional work, not claimed complete.
+- Applied the accepted premium visual direction: dark navy surface, electric blue/purple gradients, high-contrast controls, premium cards, neon-accent buttons and a wider desktop-first two-column workspace; mobile layout overrides retained. Official InfoJano brand/header untouched.
+- Source commit: `857f233f59aed369f1b430948fdfd0503fba1ca5`.
+- Service worker cache bumped from infojano-v142 to infojano-v143; commit 223d6dbd6f3ad8e894e4f32d7f5cd033e12a0bdb.
+- Validation still required: inspect actual page in browser, verify CSS cascade and responsive desktop/mobile layout; functional implementation of cm/mm, DPI and target KB is pending. Deployment status pending.
+- Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
