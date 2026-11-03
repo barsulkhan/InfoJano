@@ -101,6 +101,30 @@ main > section:not([style]) p{line-height:1.7;margin:14px 0}
 main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
 
+
+body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55%,#e9eaff)!important;background-attachment:fixed!important}
+.ij-age-main{max-width:1450px!important;width:100%;margin:0 auto!important}
+.ij-age-breadcrumb{display:flex;gap:12px;align-items:center;margin:6px 4px 16px;color:#263b73;font-size:14px;font-weight:700}.ij-age-breadcrumb a{color:#075ce5;text-decoration:none}
+.ij-age-hero{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:25% minmax(0,1fr) 22%;align-items:center;gap:18px;min-height:258px;padding:24px 30px;border:1px solid #7edcff;border-radius:30px;color:#fff;background:radial-gradient(ellipse at 8% 45%,#00dcff61,transparent 32%),radial-gradient(ellipse at 94% 18%,#cf4fff8c,transparent 35%),linear-gradient(112deg,#062b9d,#0646d8 50%,#4b16bd);box-shadow:0 16px 40px #2359d73d,inset 0 1px #ffffff70;animation:ijAgeHeroGlow 13s ease-in-out infinite alternate}
+.ij-age-hero:before,.ij-age-hero:after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(22px)}
+.ij-age-hero:before{width:330px;height:330px;left:-130px;top:-170px;background:radial-gradient(circle,#28e6ffb8,transparent 70%);animation:ijAgeOrb 9s ease-in-out infinite alternate}
+.ij-age-hero:after{width:380px;height:380px;right:-110px;bottom:-250px;background:radial-gradient(circle,#ef75ff9c,transparent 70%);animation:ijAgeOrb 11s ease-in-out infinite alternate-reverse}
+.ij-age-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:205px}
+.ij-calendar-art{width:70%;max-width:175px;filter:drop-shadow(0 12px 15px #00104d70);animation:ijAgeFloat 5s ease-in-out infinite}
+.ij-cake-art{position:absolute;width:58%;max-width:142px;right:-2px;bottom:0;filter:drop-shadow(0 10px 12px #00104d70);animation:ijAgeCake 4s ease-in-out infinite}
+.ij-age-hero-copy{position:relative;z-index:1}.ij-age-kicker{display:inline-block;padding:7px 14px;border:1px solid #58eaff99;border-radius:999px;background:#ffffff20;color:#d8faff;font-size:12px;font-weight:900;letter-spacing:1px}
+.ij-age-hero-copy h1{margin:10px 0 4px;color:#fff;font-size:clamp(38px,4.5vw,66px);font-weight:900;letter-spacing:-2px;line-height:1.04}.ij-age-hero-copy h1 em{font-style:normal;color:#ffd52f;text-shadow:0 3px 16px #ffb80038}
+.ij-age-hero-copy p{margin:10px 0 18px;color:#eff7ff;font-size:clamp(15px,1.6vw,21px);font-weight:600}
+.ij-age-pills{display:flex;flex-wrap:wrap;gap:9px}.ij-age-pills span{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid #ffffff60;border-radius:999px;color:#fff;font-size:12px;font-weight:850;box-shadow:0 5px 16px #06134c35,inset 0 1px #ffffff30;backdrop-filter:blur(8px)}
+.ij-age-pills .fast{background:linear-gradient(110deg,#087cf4,#0750d8);border-color:#61dfff}.ij-age-pills .accurate{background:linear-gradient(110deg,#16bd65,#07894f);border-color:#7af0ad}.ij-age-pills .mobile{background:linear-gradient(110deg,#ff9a21,#e94b45);border-color:#ffd27a}.ij-age-pills .private{background:linear-gradient(110deg,#a22df1,#6418d1);border-color:#e3a4ff}
+.ij-age-preview{position:relative;justify-self:center;width:100%;max-width:205px;padding:22px 12px 20px;border:2px solid #ffffffc9;border-radius:24px;background:linear-gradient(145deg,#ffffffef,#dceaffef);color:#0b2c88;text-align:center;box-shadow:0 12px 30px #06104c55,0 0 28px #9ceaff80;transform:rotate(5deg);animation:ijAgePreview 5s ease-in-out infinite}
+.ij-age-people{display:grid;place-items:center;width:64px;height:54px;margin:-42px auto 9px;border:2px solid #fff;border-radius:16px;background:linear-gradient(135deg,#66d8ff,#6547fa);color:#fff;font-size:38px;box-shadow:0 8px 20px #06104c55}.ij-age-preview small{display:block;font-size:13px;font-weight:900}.ij-age-preview strong{display:block;margin-top:4px;font-size:clamp(21px,2.1vw,29px);font-weight:950}.ij-age-preview i{position:absolute;right:12px;top:10px;color:#8c40ff;font-style:normal;font-size:22px}
+.ij-age-main>.card{max-width:none!important;width:100%;margin:22px 0!important;padding:28px!important;border:1px solid #d8e6ff!important;border-radius:25px!important;box-shadow:0 12px 34px #1749a014!important}
+@keyframes ijAgeHeroGlow{0%{background-position:0% 50%,100% 0%,center}100%{background-position:100% 50%,0% 100%,center}}@keyframes ijAgeOrb{from{transform:translate(0,0) scale(.85);opacity:.55}to{transform:translate(65px,45px) scale(1.2);opacity:1}}@keyframes ijAgeFloat{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-9px) rotate(-3deg)}}@keyframes ijAgeCake{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-7px) rotate(-2deg)}}@keyframes ijAgePreview{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(2deg) translateY(-7px)}}
+@media(max-width:850px){.ij-age-hero{grid-template-columns:22% minmax(0,1fr) 20%;padding:20px;gap:12px}.ij-age-pills span{padding:7px 9px;font-size:11px}}
+@media(max-width:600px){body{padding:10px!important}.ij-age-breadcrumb{font-size:12px;margin:4px 2px 12px}.ij-age-hero{grid-template-columns:1fr 105px;gap:8px;padding:18px 14px;min-height:0;border-radius:22px}.ij-age-art{grid-column:2;grid-row:1;min-height:135px}.ij-calendar-art{width:90%;max-width:105px}.ij-cake-art{width:72%;max-width:85px;right:-5px;bottom:-2px}.ij-age-hero-copy{grid-column:1;grid-row:1}.ij-age-hero-copy h1{font-size:34px;letter-spacing:-1.3px}.ij-age-hero-copy p{font-size:13px;margin:8px 0 12px}.ij-age-kicker{font-size:9px;padding:6px 9px}.ij-age-pills{gap:6px}.ij-age-pills span{font-size:9px;padding:6px 7px;gap:4px}.ij-age-preview{grid-column:1/-1;grid-row:2;justify-self:center;max-width:190px;margin:10px auto 0;padding:14px}.ij-age-people{width:48px;height:40px;font-size:27px;margin:-28px auto 6px}.ij-age-main>.card{padding:18px!important}}
+@media(prefers-reduced-motion:reduce){.ij-age-hero,.ij-age-hero:before,.ij-age-hero:after,.ij-calendar-art,.ij-cake-art,.ij-age-preview{animation:none!important}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
 
@@ -175,9 +199,17 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
  <div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">ℹ️</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">InfoJano</p><p class="ij-loader-subtitle">Getting your tool ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div>
 </div>
 
-  <main>
-
-    <section class="card">
+  <main class="ij-age-main">
+<nav class="ij-age-breadcrumb"><a href="index.html">⌂ InfoJano Home</a><span>›</span><span>Age Calculator</span></nav>
+<section class="ij-age-hero" aria-labelledby="ij-age-title">
+<div class="ij-age-art" aria-hidden="true">
+<svg class="ij-calendar-art" viewBox="0 0 190 210"><defs><linearGradient id="calBody" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient><linearGradient id="calTop" x2="1" y2="1"><stop stop-color="#ff4f9a"/><stop offset="1" stop-color="#d71972"/></linearGradient></defs><g transform="rotate(-8 92 108)"><rect x="17" y="30" width="150" height="162" rx="23" fill="#061c6d" opacity=".22"/><rect x="12" y="22" width="150" height="162" rx="22" fill="url(#calBody)" stroke="#fff" stroke-width="5"/><path d="M12 44a22 22 0 0 1 22-22h106a22 22 0 0 1 22 22v25H12Z" fill="url(#calTop)"/><path d="M48 8v30M126 8v30" stroke="#fff" stroke-width="12" stroke-linecap="round"/><g fill="#a78bfa"><rect x="29" y="82" width="24" height="20" rx="6"/><rect x="64" y="82" width="24" height="20" rx="6"/><rect x="99" y="82" width="24" height="20" rx="6"/><rect x="29" y="113" width="24" height="20" rx="6"/><rect x="64" y="113" width="24" height="20" rx="6"/><rect x="99" y="113" width="24" height="20" rx="6"/><rect x="29" y="144" width="24" height="20" rx="6"/><rect x="64" y="144" width="24" height="20" rx="6"/></g><rect x="99" y="144" width="24" height="20" rx="6" fill="#22c5ff"/></g></svg>
+<svg class="ij-cake-art" viewBox="0 0 150 125"><ellipse cx="75" cy="105" rx="61" ry="10" fill="#071d70" opacity=".22"/><path d="M22 65h106v31a14 14 0 0 1-14 14H36a14 14 0 0 1-14-14Z" fill="#ff75ad" stroke="#fff" stroke-width="4"/><path d="M22 68c12-14 21 5 31-6s19 7 30-2 19 7 29-1 11 4 16 8v14H22Z" fill="#fff" stroke="#ffd7ea" stroke-width="3"/><path d="M69 25h12v37H69Z" fill="#fff" stroke="#f7b4cf" stroke-width="2"/><path d="M75 7c-15 14-4 19 0 22 8-9 12-16 0-22Z" fill="#ffb21d"/><path d="M75 13c-7 8-2 11 0 13 4-5 6-9 0-13Z" fill="#fff06a"/><g fill="#ffcf4a"><circle cx="42" cy="72" r="3"/><circle cx="57" cy="79" r="3"/><circle cx="94" cy="72" r="3"/><circle cx="110" cy="79" r="3"/></g></svg>
+</div>
+<div class="ij-age-hero-copy"><span class="ij-age-kicker">✦ FREE ONLINE TOOL</span><h1 id="ij-age-title">Age <em>Calculator</em></h1><p>Calculate your exact age from your date of birth.</p><div class="ij-age-pills"><span class="fast">⚡ Fast &amp; Free</span><span class="accurate">✓ 100% Accurate</span><span class="mobile">▣ Mobile Ready</span><span class="private">♙ No Signup</span></div></div>
+<div class="ij-age-preview" aria-hidden="true"><div class="ij-age-people">♧</div><small>Your Age</small><strong>28 Years</strong><i>✦</i></div>
+</section>
+<section class="card">
       <h1>Free Age Calculator</h1>
       <p>Enter your date of birth to calculate your exact age and discover which day of the week you were born, such as Sunday or Monday.</p>
 
