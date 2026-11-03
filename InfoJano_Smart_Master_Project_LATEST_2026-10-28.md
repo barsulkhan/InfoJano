@@ -1615,3 +1615,32 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service worker cache updated from `infojano-v137` to `infojano-v138`; commit `48517b120b0ab5a6f4967e732d3efb5b5242e130`.
 - JavaScript syntax validation: 2 inline JS blocks PASS; JSON-LD excluded.
 - The user's Windows/Chrome visual result and live deployment are not yet verified. Do not claim runtime tested.
+
+## Permanent Design Policy — Desktop-First, Zero Desktop Compromise — 3 November 2026
+
+User instruction: Treat desktop experience as the primary design target because the user's planning assumption is that approximately 9 out of 10 visitors may use desktop. This 90/10 split is a design-priority assumption, not verified analytics.
+
+### Mandatory rules for every InfoJano app and page
+1. Design desktop first. Desktop must receive the full premium design effort; do not simplify, shrink, or compromise desktop quality to make mobile easier.
+2. Use the full available desktop viewport width for the main application content. Do not constrain the app to a narrow centered column or leave unnecessary large gutters. Keep sensible internal padding and readable content widths where the content itself requires them.
+3. Use deliberate desktop compositions: horizontal sections, balanced multi-column workspaces, appropriately sized cards, readable typography, clear labels, strong contrast, and polished spacing.
+4. Build a separate responsive mobile adaptation after the desktop layout is complete. Mobile may stack columns and reduce spacing as needed, without changing the desktop composition.
+5. Preserve the official InfoJano logo, logo artwork, brand colors and shared header. Never replace, redraw, recolor, resize disproportionately, or move the official brand assets unless the user explicitly approves. App-specific illustrations and icons must be distinct from the site logo.
+6. Use reliable inline SVG or CSS icons rather than emoji/font glyphs that may render as missing squares on Windows/Chrome. Maintain consistent icon dimensions and visual weight.
+7. Keep text readable against its background; verify headings, labels, helper text, FAQ, links, form controls and buttons for sufficient contrast.
+8. Do not alter existing calculation, conversion, upload, download, print or other core application logic as part of a visual redesign. ID Card Print Studio's printing logic is strictly protected and requires explicit user permission before any change.
+9. For every code change, run JavaScript syntax validation, check for duplicate IDs where relevant, and update the service-worker cache version when the change affects cached assets/pages.
+10. Record source commit IDs, cache commit IDs, validation results, pending deployment checks and the user's real-device verification status in this Master File. Never claim runtime-tested unless actually tested in the user's browser/device.
+
+### Design workflow
+- First create and review the complete desktop design.
+- Then implement the desktop version in the actual app source.
+- Then adapt it for mobile.
+- Compare the deployed result against the approved reference/screenshots before marking the app complete.
+- The user's approved reference design takes precedence over assistant-invented alternatives. Do not change the design direction or branding without approval.
+
+### Project planning context
+- Total planned separate apps: 25.
+- User-reported completed premium designs: 6.
+- Remaining design queue: 19.
+- Next app in the recorded queue: Age & Life Timeline (`age.html`), unless the user explicitly changes priority.
