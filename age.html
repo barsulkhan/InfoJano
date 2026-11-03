@@ -157,6 +157,28 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
 @keyframes ijAgeChipShine{0%,65%{left:-65%;opacity:0}75%{opacity:.8}100%{left:135%;opacity:0}}
 @media(prefers-reduced-motion:reduce){.ij-age-art:before,.ij-age-art:after,.ij-age-hero-copy:before,.ij-age-pills span:after{animation:none!important}}
 
+
+/* Live age-result dashboard: dynamic years/months/days and birthday panels */
+.ij-age-results-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:14px!important;width:100%}
+.ij-age-result-main{padding:22px;border-radius:22px;color:#fff;background:radial-gradient(ellipse at 10% 100%,#5ce5ff55,transparent 40%),linear-gradient(115deg,#3511c7,#6122ed 55%,#9b20e8);box-shadow:0 10px 26px #6026d53b;position:relative;overflow:hidden}
+.ij-age-result-main:after{content:"";position:absolute;left:-20%;right:-20%;top:-55%;height:110%;background:linear-gradient(110deg,transparent 35%,#ffffff20 50%,transparent 65%);transform:rotate(-8deg);animation:ijAgeResultShine 8s ease-in-out infinite;pointer-events:none}
+.ij-age-result-top{display:flex;align-items:center;gap:10px;font-size:18px;position:relative;z-index:1}.ij-age-result-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:#ffffff25;font-size:22px}
+.ij-age-asof{margin-left:auto;padding:8px 13px;border-radius:999px;background:#ffffffed;color:#241078;font-size:12px;font-weight:800;box-shadow:0 4px 12px #160b5238}
+.ij-age-result-big{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;gap:7px;margin:13px 0 18px;font-size:clamp(20px,3vw,34px);font-weight:900;position:relative;z-index:1}
+.ij-age-result-big span{color:#ffdf35;font-size:clamp(32px,4vw,49px);text-shadow:0 3px 12px #15085a60}
+.ij-age-result-units{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative;z-index:1}
+.ij-age-unit{min-height:92px;padding:12px 8px;border:1px solid #ffffffb0;border-radius:17px;display:grid;grid-template-columns:auto auto;grid-template-rows:1fr 1fr;align-items:center;justify-content:center;column-gap:10px;color:#111b49;box-shadow:0 7px 16px #120a5638}
+.ij-age-unit b{grid-row:1/3;font-size:29px}.ij-age-unit strong{font-size:27px;line-height:1}.ij-age-unit small{font-size:12px;font-weight:800}
+.ij-years{background:linear-gradient(140deg,#d8f5ff,#b5e8ff)}.ij-years b{color:#078be8}.ij-months{background:linear-gradient(140deg,#d7ffe8,#b7f4d3)}.ij-months b{color:#0bae60}.ij-days{background:linear-gradient(140deg,#fff0d5,#ffdfae)}.ij-days b{color:#ed8510}
+.ij-age-result-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ij-age-next,.ij-age-total{min-width:0;display:flex;align-items:center;gap:12px;padding:16px;border-radius:19px;border:1px solid #e5d7ff;background:linear-gradient(140deg,#fff8e9,#ffe8c8);box-shadow:0 6px 16px #ad6a2520}
+.ij-age-total{background:linear-gradient(140deg,#f5edff,#e8dcff);border-color:#d8c4ff}
+.ij-age-bottom-art{font-size:36px;flex:0 0 auto}.ij-age-next div,.ij-age-total div{display:flex;flex-direction:column;gap:3px}.ij-age-next strong,.ij-age-total strong{font-size:14px;color:#17143c}.ij-age-next b,.ij-age-total b{font-size:clamp(16px,2vw,24px);font-weight:950;color:#2913b9;line-height:1.2}.ij-age-next small{align-self:flex-start;padding:4px 10px;border-radius:999px;background:#ffd36b;color:#633c00;font-size:11px;font-weight:900}
+.ij-age-weekday{padding:11px 14px;border-radius:13px;background:#eef5ff;color:#25416f;font-size:13px;text-align:center}
+@keyframes ijAgeResultShine{0%,70%{transform:translateX(-28%) rotate(-8deg);opacity:0}82%{opacity:.8}100%{transform:translateX(28%) rotate(-8deg);opacity:0}}
+@media(max-width:600px){.ij-age-result-main{padding:15px}.ij-age-result-top{font-size:15px;gap:7px}.ij-age-asof{font-size:10px;padding:6px 8px}.ij-age-result-big{gap:4px;font-size:16px;margin:12px 0}.ij-age-result-big span{font-size:27px}.ij-age-result-units{gap:6px}.ij-age-unit{min-height:76px;padding:8px 4px;column-gap:5px;border-radius:13px}.ij-age-unit b{font-size:21px}.ij-age-unit strong{font-size:22px}.ij-age-unit small{font-size:10px}.ij-age-result-bottom{gap:7px}.ij-age-next,.ij-age-total{padding:10px;gap:7px;border-radius:14px}.ij-age-bottom-art{font-size:25px}.ij-age-next strong,.ij-age-total strong{font-size:11px}.ij-age-next b,.ij-age-total b{font-size:14px}.ij-age-next small{font-size:9px;padding:3px 7px}.ij-age-weekday{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.ij-age-result-main:after{animation:none!important}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
 
@@ -556,16 +578,29 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
       const dobFrame = document.getElementById("dobBirthdayFrame");
       dobFrame.classList.toggle("is-birthday", isBirthdayToday);
       result.classList.remove("hidden"); result.replaceChildren();
-      const layout = document.createElement("div"); layout.className = "age-result-layout";
+      const layout = document.createElement("div"); layout.className = "ij-age-results-layout";
+      const nextBirthday = new Date(today.getFullYear(), month - 1, day);
+      if (nextBirthday <= today) nextBirthday.setFullYear(today.getFullYear() + 1);
+      const daysToBirthday = Math.ceil((Date.UTC(nextBirthday.getFullYear(),nextBirthday.getMonth(),nextBirthday.getDate()) - todayUTC) / 86400000);
+      const dateLabel = today.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"});
+      const birthdayLabel = nextBirthday.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"});
+      layout.innerHTML = `
+        <div class="ij-age-result-main">
+          <div class="ij-age-result-top"><span class="ij-age-result-icon">♟</span><strong>Your Age</strong><span class="ij-age-asof">▣ As of ${dateLabel}</span></div>
+          <div class="ij-age-result-big"><span>${years}</span> Years <span>${months}</span> Months <span>${days}</span> Days</div>
+          <div class="ij-age-result-units">
+            <div class="ij-age-unit ij-years"><b>▦</b><strong>${years}</strong><small>Years</small></div>
+            <div class="ij-age-unit ij-months"><b>▦</b><strong>${months}</strong><small>Months</small></div>
+            <div class="ij-age-unit ij-days"><b>▦</b><strong>${days}</strong><small>Days</small></div>
+          </div>
+        </div>
+        <div class="ij-age-result-bottom">
+          <div class="ij-age-next"><span class="ij-age-bottom-art">🎂</span><div><strong>Next Birthday</strong><b>${birthdayLabel}</b><small>In ${daysToBirthday} Days</small></div></div>
+          <div class="ij-age-total"><span class="ij-age-bottom-art">▣</span><div><strong>Total Age in Days</strong><b>${totalDays.toLocaleString("en-IN")} Days</b></div></div>
+        </div>
+        <div class="ij-age-weekday">You were born on a <strong>${birthWeekday}</strong> · ${totalWeeks.toLocaleString("en-IN")} full weeks and ${totalDays % 7} days</div>
+      `;
       const info = document.createElement("div"); info.className = "age-result-info";
-      const weekdayHeading = document.createElement("strong"); weekdayHeading.textContent = `You were born on a ${birthWeekday}`;
-      weekdayHeading.style.fontSize = "20px"; weekdayHeading.style.color = "#1458c8";
-      const heading = document.createElement("strong"); heading.textContent = "Your exact age";
-      const details = document.createElement("p"); details.textContent = `${years} years, ${months} months and ${days} days`;
-      details.style.color = "#172033"; details.style.fontWeight = "bold";
-      const totals = document.createElement("p"); totals.textContent = `Total: ${totalDays.toLocaleString("en-IN")} days (${totalWeeks.toLocaleString("en-IN")} full weeks and ${totalDays % 7} days)`;
-      totals.style.color = "#536176";
-      info.append(weekdayHeading, document.createElement("br"), heading, details, totals);
       if (isBirthdayToday) {
         const greeting = document.createElement("div");
         greeting.setAttribute("role", "status");
