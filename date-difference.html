@@ -101,6 +101,34 @@ body{margin:0;background:#edf5ff;color:#10234b;font-family:Inter,Arial,sans-seri
 @media(max-width:560px){.dd-shell{width:calc(100% - 20px);margin:10px auto 30px}.dd-crumb{font-size:12px;margin-bottom:12px}.dd-hero{grid-template-columns:1fr 1fr;gap:5px;padding:18px 14px;min-height:210px;border-radius:20px}.dd-hero-copy{grid-column:2;grid-row:1}.dd-hero h1{font-size:30px;letter-spacing:-.8px}.dd-hero-sub{font-size:13px;margin:6px 0 10px}.dd-hero-perks{gap:5px}.dd-hero-perks span{font-size:10px;padding:6px 8px}.dd-calendar-art{grid-column:1;grid-row:1;height:140px;transform:scale(.85)}.dd-clock-art{display:none}.dd-card{padding:17px 14px;border-radius:18px;margin-top:13px}.dd-form-head{gap:11px;margin-bottom:16px}.dd-head-icon{width:48px;height:48px;flex-basis:48px;font-size:24px}.dd-form-head h2{font-size:22px}.dd-form-head p{font-size:12px;line-height:1.4}.dd-fields{grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);gap:7px}.dd-field label{font-size:14px}.dd-field input{height:48px;font-size:13px;padding:0 7px}.dd-swap{width:38px;height:40px;font-size:23px}.dd-buttons{grid-template-columns:1.7fr .8fr;gap:8px;margin-top:13px}.dd-buttons button{height:49px;font-size:13px}.dd-result-panel{padding:14px 12px}.dd-result-title{font-size:14px;padding:8px 12px}.dd-share{width:40px;height:40px}.dd-result-row{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:13px}.dd-stat{min-height:78px;padding:5px 2px;border-radius:11px}.dd-stat strong{font-size:23px}.dd-stat span{font-size:10px;margin-top:4px}.dd-quick-panel{padding:14px 12px}.dd-quick-head h2{font-size:17px}.dd-quick-head p{font-size:10px}.dd-quick-list{grid-template-columns:repeat(2,1fr);gap:8px}.dd-quick-list button{font-size:11px;padding:11px 5px}.dd-about{gap:10px}.dd-about h2,.dd-related-title h2{font-size:18px}.dd-about p{font-size:13px}.dd-related-title span{font-size:11px}.dd-related-grid{gap:8px}.dd-related{padding:11px;min-height:128px}.dd-related-icon{width:39px;height:39px;font-size:20px}.dd-related strong{font-size:13px}.dd-related small{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.dd-hero:before,.dd-hero:after,.dd-hero h1:after,.dd-hero-perks span:after,.dd-cal,.dd-clock-art,.dd-arrow{animation:none!important}}
 
+
+/* Hero correction: enforce saturated artwork background and balanced 3-part composition */
+.dd-hero{background:linear-gradient(112deg,#0759d7 0%,#173be0 47%,#7700e9 100%)!important;color:#fff!important}
+.dd-hero-copy{min-width:0;position:relative;z-index:2}
+.dd-calendar-art{min-width:0;gap:0}
+.dd-clock-art{background:linear-gradient(145deg,#ffffff48,#b6c8ff24)!important}
+@media(max-width:800px){
+ .dd-hero{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) minmax(0,.75fr)!important;grid-template-rows:1fr!important;align-items:center!important;min-height:205px!important;padding:16px 12px!important;gap:5px!important}
+ .dd-calendar-art{grid-column:1!important;grid-row:1!important;height:135px!important;transform:scale(.78)!important;transform-origin:center!important}
+ .dd-hero-copy{grid-column:2!important;grid-row:1!important}
+ .dd-hero h1{font-size:clamp(22px,4.1vw,34px)!important;letter-spacing:-.7px!important}
+ .dd-hero-sub{font-size:clamp(10px,1.8vw,14px)!important;line-height:1.35!important}
+ .dd-hero-perks{gap:5px!important}
+ .dd-hero-perks span{font-size:clamp(8px,1.5vw,11px)!important;padding:6px 7px!important}
+ .dd-clock-art{display:block!important;grid-column:3!important;grid-row:1!important;width:clamp(65px,14vw,105px)!important;height:clamp(72px,15vw,110px)!important;justify-self:center!important}
+ .dd-clock-face{width:42px!important;height:42px!important;font-size:24px!important}
+}
+@media(max-width:430px){
+ .dd-hero{min-height:180px!important;padding:12px 7px!important}
+ .dd-calendar-art{transform:scale(.62)!important;margin:0 -18px!important}
+ .dd-hero h1{font-size:21px!important}
+ .dd-hero-sub{font-size:10px!important}
+ .dd-hero-perks span{font-size:8px!important;padding:5px 6px!important}
+ .dd-clock-art{width:62px!important;height:68px!important}
+ .dd-clock-art:before{inset:9px!important}
+ .dd-clock-face{width:32px!important;height:32px!important;right:-7px!important;bottom:-6px!important;font-size:19px!important}
+}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/date-difference.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
