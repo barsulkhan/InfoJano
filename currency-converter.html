@@ -365,17 +365,17 @@ async function loadRates(force=false){
   const date=lastUpdated?new Date(lastUpdated):null;
   updated.textContent=date&&!isNaN(date)?'Updated: '+date.toLocaleString('en-US',{month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}):'Latest available';
   status.textContent='Rates loaded successfully · Source: ExchangeRate-API · '+(lastUpdated||'Timestamp not provided');
-  renderRates();renderResult();
+  renderRates();renderResult();renderCompare();renderFee();
  }catch(err){
-  status.textContent='Could not load live rates. Check your internet connection and try Refresh Rates.';status.classList.add('error');updated.textContent='Rate unavailable';renderRates();renderResult();
+  status.textContent='Could not load live rates. Check your internet connection and try Refresh Rates.';status.classList.add('error');updated.textContent='Rate unavailable';renderRates();renderResult();renderCompare();renderFee();
  }
 }
-fromEl.addEventListener('change',()=>{updateFlags();loadRates(true)});
+fromEl.addEventListener('change',()=>{updateFlags();loadRates(true);loadHistory()});
 toEl.addEventListener('change',()=>{updateFlags();renderResult();renderFee()});
-amountEl.addEventListener('input',()=>{document.querySelectorAll('.preset').forEach(b=>b.classList.toggle('active',Number(b.dataset.amount)===Number(amountEl.value)));renderResult()});
+amountEl.addEventListener('input',()=>{document.querySelectorAll('.preset').forEach(b=>b.classList.toggle('active',Number(b.dataset.amount)===Number(amountEl.value)));renderResult();renderCompare();renderFee()});
 document.getElementById('swap').addEventListener('click',()=>{const old=fromEl.value;fromEl.value=toEl.value;toEl.value=old;updateFlags();loadRates(true)});
 document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{amountEl.value=b.dataset.amount;document.querySelectorAll('.preset').forEach(x=>x.classList.toggle('active',x===b));renderResult();renderCompare();renderFee()}));
-document.getElementById('convert').addEventListener('click',renderResult);
+document.getElementById('convert').addEventListener('click',()=>{renderResult();renderCompare();renderFee()});
 document.getElementById('refresh').addEventListener('click',()=>loadRates(true));
 document.getElementById('copy').addEventListener('click',async()=>{if(!lastResultText)return;const btn=document.getElementById('copy');try{await navigator.clipboard.writeText(lastResultText);btn.textContent='✓ Copied';setTimeout(()=>btn.textContent='▣ Copy Result',1500)}catch(e){btn.textContent='Copy not available';setTimeout(()=>btn.textContent='▣ Copy Result',1500)}});
 updateFlags();loadRates(true);
@@ -432,6 +432,7 @@ document.getElementById('fee-percent').addEventListener('input',renderFee);
 document.getElementById('fee-fixed').addEventListener('input',renderFee);
 historyQuote.addEventListener('change',loadHistory);
 document.querySelectorAll('.history-period').forEach(btn=>btn.addEventListener('click',()=>{historyPeriod=Number(btn.dataset.days);document.querySelectorAll('.history-period').forEach(b=>b.classList.toggle('active',b===btn));loadHistory()}));
+renderCompare();renderFee();loadHistory();
 
 
 </script>
