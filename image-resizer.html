@@ -285,6 +285,35 @@ main{width:100%;max-width:none!important;margin:20px 0 42px!important;padding-le
 .preset-section,.info-section,.seo-card{width:100%;max-width:none!important}
 @media(max-width:1050px){.hero{grid-template-columns:minmax(0,1fr) minmax(280px,.75fr)}.hero-icon{width:112px;height:112px;flex-basis:112px}.hero-copy{gap:18px}.hero .benefits span{font-size:12px!important;padding:8px 11px}}
 @media(max-width:760px){.resize-breadcrumb{font-size:13px;gap:8px;flex-wrap:wrap}.hero{grid-template-columns:1fr;min-height:0;padding:22px!important}.hero-copy{gap:14px;align-items:flex-start}.hero-icon{width:70px;height:70px;flex-basis:70px;border-radius:18px!important}.hero h1{font-size:clamp(27px,7vw,38px)!important}.hero p{font-size:15px!important}.hero-art{max-width:420px;margin:0 auto}.hero-art svg{max-height:210px}.workspace{grid-template-columns:minmax(0,1fr)!important;padding:10px!important;gap:13px!important}.workspace .panel{padding:15px!important}.workspace .panel+.panel{border-left:1px solid #087edb!important;padding:15px!important}}
+
+/* Final desktop composition: compact shared brand header, full-width content, horizontal hero */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+main{display:block!important;width:100%!important;max-width:none!important;margin:16px 0 38px!important;padding-left:clamp(12px,1.8vw,28px)!important;padding-right:clamp(12px,1.8vw,28px)!important}
+.resize-breadcrumb{width:100%;margin:5px 0 14px!important;padding:0 4px!important}
+.hero{display:grid!important;width:100%!important;max-width:none!important;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr)!important;align-items:center!important;min-height:260px!important;gap:clamp(14px,2vw,30px)!important;padding:clamp(20px,2.4vw,34px)!important}
+.hero-copy{display:flex!important;flex-direction:row!important;align-items:center!important;gap:clamp(14px,2vw,26px)!important;min-width:0}
+.hero-icon{width:clamp(82px,10vw,145px)!important;height:clamp(82px,10vw,145px)!important;flex:0 0 clamp(82px,10vw,145px)!important}
+.hero-text{min-width:0}
+.hero h1{font-size:clamp(30px,3.2vw,54px)!important}
+.hero p{font-size:clamp(14px,1.25vw,20px)!important}
+.hero-art{display:grid!important;width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;place-items:center}
+.hero-art svg{width:100%!important;max-width:590px!important;max-height:285px!important;height:auto!important}
+.workspace{width:100%!important;max-width:none!important}
+.preset-section,.info-section,.seo-card{width:100%!important;max-width:none!important}
+.ij-global-header-inner{width:100%!important;max-width:none!important;padding-left:clamp(14px,2vw,30px)!important;padding-right:clamp(14px,2vw,30px)!important}
+@media(min-width:621px){
+ .hero{grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr)!important}
+ .hero-art{display:grid!important}
+}
+@media(max-width:620px){
+ main{margin:12px 0 28px!important;padding-left:12px!important;padding-right:12px!important}
+ .hero{grid-template-columns:minmax(0,1fr)!important;min-height:0!important;padding:18px!important}
+ .hero-copy{align-items:flex-start!important;gap:12px!important}
+ .hero-icon{width:64px!important;height:64px!important;flex-basis:64px!important}
+ .hero-art{max-width:420px!important;margin:0 auto!important}
+ .hero-art svg{max-height:210px!important}
+ .ij-global-header-inner{padding-left:10px!important;padding-right:10px!important}
+}
 </style></head><body>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
 <main>
