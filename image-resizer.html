@@ -396,10 +396,10 @@ footer{color:#8fa6ca!important}
 @media(min-width:851px){
  html,body{width:100%!important;max-width:100%!important}
  body{overflow-x:hidden!important}
- body>main,main{display:block!important;box-sizing:border-box!important;width:calc(100vw - 64px)!important;max-width:none!important;margin:18px 32px 48px!important;padding:0!important}
+ main{display:block!important;box-sizing:border-box!important;width:calc(100% - 64px)!important;max-width:none!important;margin:18px auto 48px!important;padding:0!important}
  main>.resize-breadcrumb{width:100%!important;max-width:none!important;margin:5px 0 16px!important}
- main>.hero,main>.workspace,main>.preset-section,main>.info-section,main>.seo-card{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
- main>.hero{min-height:250px!important;padding:30px 38px!important;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr)!important}
+ main>.hero,main>.workspace,main>.preset-section,main>.info-section,main>.seo-card{display:block;box-sizing:border-box!important;width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+ main>.hero{display:grid!important;min-height:250px!important;padding:30px 38px!important;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr)!important}
  main>.workspace{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:26px!important;padding:28px!important;margin-top:18px!important}
  main>.workspace>.panel{min-width:0!important;width:100%!important;box-sizing:border-box!important}
  main>.workspace>.panel+.panel{border-left:1px solid #29436d!important;border-top:0!important;padding:8px 4px 8px 26px!important}
