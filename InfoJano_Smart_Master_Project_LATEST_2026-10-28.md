@@ -1674,3 +1674,11 @@ User instruction: Treat desktop experience as the primary design target because 
 - Service worker cache bumped from infojano-v140 to infojano-v141; commit f5b753019d3515dcdec372d7b4da2de700d3236b.
 - Validation: all requested static and dynamic icon locations were checked in source; application logic was not edited. Live deployment status, browser runtime behavior and user's Windows/Chrome visual confirmation are pending. Do not mark complete until Actions deploy succeeds and user verifies the live page.
 - Live page: https://barsulkhan.github.io/InfoJano/image-compressor.html
+
+
+## Image Compressor — Colored SVG icon accents — 3 November 2026
+- User requested colors inside the icons rather than plain monochrome strokes. Added a coordinated, semantic accent palette to the inline SVG icon family: Fast/electric bolt yellow, Private/lock cyan, Free/check green; target/upload blue, quality purple, privacy shield teal, speed/spark warm yellow, and settings orange. Added soft icon glow and lightly tinted benefit-icon tiles for clear visual hierarchy.
+- Kept existing icon shapes, labels, responsive layout, compression logic and official site branding unchanged.
+- Source commit: `be95e341328da8838ec40fd8136516256ebd76ac`.
+- Service worker cache bumped from infojano-v141 to infojano-v142; commit c7dec995db0307f2a50d6afbeef69d89a85d5956.
+- Pending: GitHub Pages deployment completion and user's visual check in Windows/Chrome. No browser visual test claimed.
