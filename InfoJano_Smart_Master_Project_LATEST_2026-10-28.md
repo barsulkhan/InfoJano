@@ -1563,3 +1563,12 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Image Resizer premium visual refresh source: `c2b25585ff9c41bb604e64acb8ec3222458dea97`; cache update `72881bb77ba1b59b03a11b60d1e29105bbfe1c5a`.
 - Current cache: `infojano-v133`.
 - Current next unique app in the remaining design queue: `age.html` — Age & Life Timeline.
+
+## Image Resizer Full-Width Desktop Layout — 3 November 2026
+- User explicitly confirmed that desktop pages should occupy 100% of the available display width; users may zoom manually if they want.
+- Updated `image-resizer.html`: removed restrictive centered max-width from main content, made hero/workspace/preset/info/SEO sections full width, expanded desktop workspace into a wider two-column upload/settings layout, and retained single-column mobile layout with responsive side padding.
+- Existing resize logic, controls, IDs, official InfoJano logo and SEO metadata remain unchanged.
+- Page commit: `45c8d8d3f89845524322d76f1a8b79f55ff5ecd7`.
+- Service worker cache bumped sequentially from `infojano-v133` to `infojano-v134`.
+- Service worker commit: `bc0d2b8586713e6452a053e4090b4a194b6b6168`.
+- JavaScript syntax validation: 2 inline JS blocks PASS; JSON-LD excluded correctly. Runtime visual test on user's desktop remains pending.
