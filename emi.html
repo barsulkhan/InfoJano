@@ -114,6 +114,31 @@ main{width:min(100% - 52px,1680px);margin:0 auto 44px}.ij-breadcrumb{display:fle
 @media(max-width:760px){main{width:calc(100% - 22px)}.emi-hero{grid-template-columns:1fr;min-height:unset;padding:17px 13px}.hero-art{display:none}.hero-copy h1{font-size:36px}.hero-copy p{font-size:13px}.hero-chip{padding:7px 9px;font-size:10px}.emi-layout{grid-template-columns:1fr}.loan-panel{padding:17px}.results-panel{padding:11px}.result-head{align-items:flex-start;flex-direction:column}.result-badge{font-size:15px}.action-group{width:100%}.action-btn{flex:1}.analysis-grid{grid-template-columns:1fr}.chart-layout{min-height:190px}.donut{width:165px;height:165px;flex-basis:165px}.donut:before{inset:25px}.metrics{gap:7px}.metric{padding:10px 8px;gap:6px}.metric-icon{width:30px;height:30px;flex-basis:30px}.metric-icon svg{width:29px;height:29px}.metric small{font-size:10px}.metric strong{font-size:clamp(13px,4vw,18px)}.metric em{font-size:9px}.insights{grid-template-columns:repeat(2,minmax(0,1fr))}.related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.related-card{padding:10px;gap:8px}.related-icon{width:39px;height:39px;flex-basis:39px}.related-card strong{font-size:11px}.related-card small{font-size:10px}.info-section{padding:18px}.ij-install-card{margin:10px 11px;grid-template-columns:36px 1fr}.ij-install-card button{grid-column:1/-1}.ij-install-help{grid-column:1/-1}}
 @media(max-width:390px){.tenure-row{grid-template-columns:1fr 94px}.chart-layout{gap:9px}.donut{width:145px;height:145px;flex-basis:145px}.donut:before{inset:22px}.donut-center strong{font-size:13px}.legend-item strong{font-size:12px}.related-head h2{font-size:18px}.related-grid{gap:7px}.related-card{align-items:flex-start;flex-direction:column}.related-arrow{display:none}}
 @media print{body{background:#fff}.ij-page-loader,.ij-install-card,.emi-hero,.loan-panel,.related,.info-section,.insights,.action-group,.full-schedule,.ij-global-header{display:none!important}main{width:100%;margin:0}.emi-layout{display:block}.results-panel{box-shadow:none;border:0}.analysis-grid{grid-template-columns:1fr 1fr}.table-wrap{max-height:none;overflow:visible}.schedule{min-width:0;font-size:9px}.schedule th,.schedule td{padding:4px}}
+
+/* Icon colour pass: give every small and large interface icon a clear accent */
+.ij-breadcrumb span:first-child{color:#0879d9}
+.ij-install-icon{background:linear-gradient(135deg,#dbeafe,#cffafe);color:#0879d9;box-shadow:0 4px 12px #0ea5e933}
+.panel-title .title-icon{background:linear-gradient(135deg,#9333ea,#2563eb 58%,#06b6d4);color:#fff}
+.panel-title .title-icon svg{stroke:#fff;filter:drop-shadow(0 1px 2px #1115)}
+.advanced summary{color:#7137c8}
+.advanced summary:after{color:#0e9bd8}
+.form-actions .btn-primary svg{stroke:#fff}
+.form-actions .btn-secondary{color:#0b63bd}
+.result-badge span{color:#059669;background:#fff}
+.action-btn:nth-child(1){color:#0877c9}.action-btn:nth-child(2){color:#8b36d8}.action-btn:nth-child(3){color:#e07813}
+.action-btn svg{stroke:currentColor}
+.metric-blue .metric-icon{color:#0874dc}.metric-pink .metric-icon{color:#df1674}.metric-green .metric-icon{color:#078c40}.metric-purple .metric-icon{color:#8035d9}
+.analysis-card h3{color:#19356f}
+.analysis-card h3 svg{color:#1558d2;stroke:currentColor}
+.insight-title{color:#078c50}.insight-title svg{color:#078c50}
+.insight-green>svg,.insight-green{color:#078c40}.insight-blue>svg,.insight-blue{color:#0878c9}.insight-orange>svg,.insight-orange{color:#d97706}.insight-purple>svg,.insight-purple{color:#8236d2}
+.related-head h2{color:#173f88}.related-head h2:first-letter{color:#0b9bd8}
+.related-icon{box-shadow:0 5px 13px #183b7626}
+.related-arrow{color:#0b75c9}
+.emi-hero-kicker{color:#fff}
+.emi-hero-pills span{color:#fff}
+@media(prefers-reduced-motion:reduce){.related-icon,.title-icon{filter:none}}
+
 </style>
 </head>
 <body data-ij-hide-related-apps="true">
