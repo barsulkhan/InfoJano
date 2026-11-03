@@ -125,6 +125,53 @@ body{background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55%,#e9eaff)!important;ba
   ]
 }
 </script>
+<style>
+
+/* Final responsive hero sizing fix — isolated overrides, hero only */
+.ij-bmi-main{width:calc(100% - 32px)!important;max-width:1600px!important;margin:0 auto!important;padding:0!important}
+.ij-bmi-main>.ij-bmi-hero{display:grid!important;position:relative!important;isolation:isolate!important;overflow:hidden!important;grid-template-columns:minmax(170px,25%) minmax(0,1fr) minmax(145px,21%)!important;grid-template-rows:1fr!important;align-items:center!important;gap:clamp(12px,1.8vw,26px)!important;width:100%!important;min-height:clamp(245px,18vw,290px)!important;height:auto!important;margin:0 0 20px!important;padding:clamp(18px,2vw,32px)!important;border:2px solid transparent!important;border-radius:30px!important;color:#fff!important;background:radial-gradient(ellipse at 8% 45%,rgba(0,220,255,.32),transparent 32%),radial-gradient(ellipse at 94% 18%,rgba(207,79,255,.48),transparent 35%),linear-gradient(112deg,#062b9d 0%,#0646d8 50%,#4b16bd 100%) padding-box,conic-gradient(from var(--ij-bmi-neon-angle,0deg),#00eaff,#174dff,#bd35ff,#ff39d2,#ffe94a,#00eaff) border-box!important;box-shadow:0 0 8px #00d9ffb0,0 0 18px #5a35ff85,0 0 30px #ed36ff55,0 16px 40px rgba(35,89,215,.24)!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-art{display:flex!important;position:relative!important;grid-column:1!important;grid-row:1!important;align-items:center!important;justify-content:center!important;min-width:0!important;min-height:190px!important;height:100%!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-hero-copy{display:block!important;position:relative!important;z-index:2!important;grid-column:2!important;grid-row:1!important;min-width:0!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-persons{display:flex!important;position:relative!important;grid-column:3!important;grid-row:1!important;align-items:center!important;justify-content:center!important;min-width:0!important;min-height:170px!important}
+.ij-bmi-main .ij-bmi-meter{display:block!important;width:82%!important;max-width:185px!important;height:auto!important}
+.ij-bmi-main .ij-bmi-apple{display:block!important;position:absolute!important;width:55%!important;max-width:112px!important;right:-3px!important;bottom:0!important;height:auto!important}
+.ij-bmi-main .ij-bmi-tape{display:block!important;position:absolute!important;width:100%!important;max-width:185px!important;left:-5px!important;bottom:0!important;height:auto!important}
+.ij-bmi-main .ij-bmi-persons svg{display:block!important;width:100%!important;max-width:175px!important;height:auto!important}
+.ij-bmi-main .ij-bmi-hero-copy h1{color:#fff!important;font-size:clamp(36px,4.3vw,64px)!important;line-height:1.05!important;white-space:normal!important}
+.ij-bmi-main .ij-bmi-hero-copy p{color:#eff7ff!important}
+@media(min-width:851px){.ij-bmi-main>.ij-bmi-hero{min-height:clamp(250px,18vw,290px)!important}}
+@media(max-width:850px) and (min-width:601px){
+.ij-bmi-main{width:calc(100% - 24px)!important}
+.ij-bmi-main>.ij-bmi-hero{grid-template-columns:minmax(105px,22%) minmax(0,1fr) minmax(85px,17%)!important;min-height:245px!important;padding:17px!important;gap:9px!important;border-radius:24px!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-art{min-height:165px!important}
+.ij-bmi-main .ij-bmi-meter{max-width:135px!important}
+.ij-bmi-main .ij-bmi-apple{max-width:75px!important}
+.ij-bmi-main .ij-bmi-tape{max-width:135px!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-persons{min-height:145px!important}
+.ij-bmi-main .ij-bmi-persons svg{max-width:115px!important}
+.ij-bmi-main .ij-bmi-hero-copy h1{font-size:clamp(28px,4.7vw,40px)!important;letter-spacing:-1.2px!important}
+.ij-bmi-main .ij-bmi-hero-copy p{font-size:12px!important;margin:8px 0 12px!important}
+.ij-bmi-main .ij-bmi-pills{gap:5px!important}
+.ij-bmi-main .ij-bmi-pills span{font-size:9px!important;padding:6px 7px!important}
+}
+@media(max-width:600px){
+.ij-bmi-main{width:calc(100% - 20px)!important}
+.ij-bmi-main>.ij-bmi-hero{grid-template-columns:minmax(0,1fr) 105px!important;grid-template-rows:auto!important;min-height:205px!important;padding:15px 12px!important;gap:5px!important;border-radius:22px!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-art{grid-column:2!important;grid-row:1!important;min-height:145px!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-hero-copy{grid-column:1!important;grid-row:1!important}
+.ij-bmi-main>.ij-bmi-hero>.ij-bmi-persons{display:none!important}
+.ij-bmi-main .ij-bmi-meter{max-width:105px!important;width:95%!important}
+.ij-bmi-main .ij-bmi-apple{max-width:65px!important;width:62%!important}
+.ij-bmi-main .ij-bmi-tape{max-width:105px!important;width:100%!important}
+.ij-bmi-main .ij-bmi-hero-copy h1{font-size:clamp(27px,7vw,34px)!important;letter-spacing:-1.2px!important}
+.ij-bmi-main .ij-bmi-hero-copy p{font-size:11px!important;line-height:1.35!important;margin:7px 0 10px!important}
+.ij-bmi-main .ij-bmi-kicker{font-size:9px!important;padding:5px 8px!important}
+.ij-bmi-main .ij-bmi-pills{gap:5px!important}
+.ij-bmi-main .ij-bmi-pills span{font-size:9px!important;padding:6px 7px!important}
+}
+@media(prefers-reduced-motion:reduce){.ij-bmi-main>.ij-bmi-hero{animation:none!important}}
+
+</style>
 </head>
 <body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
