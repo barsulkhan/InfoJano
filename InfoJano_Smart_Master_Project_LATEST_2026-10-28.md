@@ -1693,3 +1693,14 @@ User instruction: Treat desktop experience as the primary design target because 
 - Service worker cache bumped from infojano-v142 to infojano-v143; commit 223d6dbd6f3ad8e894e4f32d7f5cd033e12a0bdb.
 - Validation still required: inspect actual page in browser, verify CSS cascade and responsive desktop/mobile layout; functional implementation of cm/mm, DPI and target KB is pending. Deployment status pending.
 - Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
+
+
+## Image Resize & Converter — matching color accents and page-entry animation — 3 November 2026
+- User requested the Image Resizer to match the Image Compressor color direction and pointed out the page-entry animation was still missing/not working.
+- Added an actual full-screen animated entry loader with a dark navy/electric-blue/purple theme, animated mark, rotating neon ring and pulsing dots. Added markup and a load-event/5-second safety fallback that fades and removes the overlay after page load.
+- Added matching motion details to the resizer hero icon, a moving light sweep across the hero, subtle pulse on the Popular Sizes icon tile, and hover motion/glow on preset SVGs. Respects prefers-reduced-motion.
+- Existing page dark palette and functional logic preserved; this change focuses on colors and animation. Desktop-first and mobile responsive layout retained.
+- Source commit: `d5004a7e811fbae5746927cedfb9a65b80f53cfd`.
+- Service worker cache bumped from infojano-v143 to infojano-v144; commit 06fead449655953f6501c46244b6f0e91b856a51.
+- Deployment and actual browser animation verification pending. Note: OS/browser reduced-motion accessibility preference intentionally disables decorative animations.
+- Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
