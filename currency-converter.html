@@ -129,15 +129,65 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
  .perks{gap:6px!important}
  .perk{font-size:10px!important;padding:7px 9px!important}
 }
+
+/* Final currency result, selector and hero polish */
+.hero{display:grid!important;grid-template-columns:minmax(190px,.72fr) minmax(0,2fr)!important;gap:24px!important;align-items:center!important;isolation:isolate!important;overflow:hidden!important}
+.hero:before{content:"";position:absolute;inset:-55%!important;padding:0!important;border-radius:50%!important;background:conic-gradient(from 0deg,#00eaff,#672dff,#ff2bb8,#ffe32c,#00eaff)!important;z-index:0!important;filter:blur(1px) drop-shadow(0 0 12px #16dfff)!important;animation:ijHeroSpin 7s linear infinite!important;-webkit-mask:none!important;mask:none!important}
+.hero:after{content:"";position:absolute;inset:4px!important;border-radius:26px!important;background:radial-gradient(ellipse at 50% 0%,#173fba 0%,#071b72 48%,#090a50 100%)!important;z-index:0!important}
+@keyframes ijHeroSpin{to{transform:rotate(360deg)}}
+.hero-side,.hero-copy{position:relative!important;z-index:1!important}
+.hero-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.hero-side-item{display:flex;align-items:center;gap:12px;color:#fff;font-weight:850;font-size:clamp(13px,1.3vw,17px);white-space:nowrap}
+.hero-side-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(140deg,#087af3,#7926ed);border:1px solid #ffffff55;box-shadow:0 5px 15px #00bfff45;font-size:26px}
+.hero-copy:before{display:none!important}
+.hero h1{font-size:clamp(34px,4.2vw,58px)!important}
+.perks{margin-top:15px!important}
+.perk{display:inline-flex;align-items:center;gap:7px}
+.currency-select{gap:8px!important;padding-left:13px!important;padding-right:10px!important}
+.currency-select .flag{display:flex;align-items:center;justify-content:center;width:28px;height:28px;flex:0 0 28px;line-height:1}
+.currency-select select{height:100%;padding:0 5px!important;line-height:1.2}
+.result-value{font-variant-numeric:tabular-nums}
+@media(max-width:1100px){
+ .hero{grid-template-columns:minmax(155px,.65fr) minmax(0,1.6fr)!important;text-align:left!important;padding:23px 22px!important;gap:18px!important}
+ .hero-side{gap:10px!important}
+ .hero-side-item{font-size:13px!important;white-space:normal!important}
+ .hero-side-icon{width:42px!important;height:42px!important;flex-basis:42px!important;font-size:23px!important}
+ .hero-copy{max-width:none!important;margin:0!important}
+ .hero-copy:before{display:none!important}
+ .hero h1{font-size:clamp(32px,5vw,46px)!important}
+ .hero p{margin-left:0!important;margin-right:0!important}
+ .perks{justify-content:flex-start!important}
+}
+@media(max-width:620px){
+ .hero{grid-template-columns:116px minmax(0,1fr)!important;gap:10px!important;padding:18px 12px!important;text-align:left!important;border-radius:22px!important}
+ .hero:after{border-radius:18px!important}
+ .hero-side{gap:12px!important}
+ .hero-side-item{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;text-align:center!important;font-size:9px!important;line-height:1.15!important}
+ .hero-side-icon{width:38px!important;height:38px!important;flex-basis:38px!important;border-radius:12px!important;font-size:21px!important}
+ .hero-copy{min-width:0!important}
+ .eyebrow{font-size:9px!important;padding:5px 8px!important}
+ .hero h1{font-size:clamp(24px,6.5vw,34px)!important;line-height:1.08!important;letter-spacing:-.8px!important;margin:8px 0!important}
+ .hero p{font-size:10px!important;line-height:1.35!important;margin:0 0 9px!important}
+ .perks{display:grid!important;grid-template-columns:1fr 1fr!important;gap:5px!important;margin-top:8px!important}
+ .perk{justify-content:center!important;font-size:8px!important;padding:6px 5px!important;white-space:nowrap!important}
+ .currency-select{padding-left:7px!important;gap:5px!important}
+ .currency-select .flag{width:23px;height:23px;flex-basis:23px;font-size:18px!important}
+ .currency-select select{padding:0 2px!important;font-size:10px!important}
+ .result-value{font-size:clamp(25px,7vw,34px)!important}
+}
+@media(prefers-reduced-motion:reduce){.hero:before{animation:none!important}}
 </style>
 </head>
 <body>
 <main>
 <div class="crumb"><a href="index.html">⌂ InfoJano Home</a>　›　Currency Converter</div>
 <section class="hero" aria-labelledby="hero-title">
-<div class="hero-art" aria-hidden="true">🌍 💱</div>
+<div class="hero-side">
+<div class="hero-side-item"><span class="hero-side-icon">🌍</span><span>170+ Currencies</span></div>
+<div class="hero-side-item"><span class="hero-side-icon">💱</span><span>Live Exchange Rates</span></div>
+<div class="hero-side-item"><span class="hero-side-icon">📊</span><span>Quick Conversion</span></div>
+</div>
 <div class="hero-copy"><span class="eyebrow">FREE ONLINE TOOL</span><h1 id="hero-title">Currency <span>Converter</span></h1><p>Convert between 170+ world currencies with the latest available exchange rates.</p><div class="perks"><span class="perk p1">⚡ Latest Rates</span><span class="perk p2">✓ Reliable Data</span><span class="perk p3">▣ Mobile Ready</span><span class="perk p4">♧ No Signup</span></div></div>
-<div class="hero-art right" aria-hidden="true">💹 💵</div>
 </section>
 <div class="workspace">
 <section class="panel" aria-labelledby="convert-heading">
@@ -179,7 +229,7 @@ const currencyData=[
 ["USD","US Dollar","🇺🇸"],["INR","Indian Rupee","🇮🇳"],["EUR","Euro","🇪🇺"],["GBP","British Pound","🇬🇧"],["BDT","Bangladeshi Taka","🇧🇩"],["AED","UAE Dirham","🇦🇪"],["JPY","Japanese Yen","🇯🇵"],["CAD","Canadian Dollar","🇨🇦"],["AUD","Australian Dollar","🇦🇺"],["SGD","Singapore Dollar","🇸🇬"],["CHF","Swiss Franc","🇨🇭"],["CNY","Chinese Yuan","🇨🇳"],["SAR","Saudi Riyal","🇸🇦"],["QAR","Qatari Riyal","🇶🇦"],["KWD","Kuwaiti Dinar","🇰🇼"],["OMR","Omani Rial","🇴🇲"],["MYR","Malaysian Ringgit","🇲🇾"],["THB","Thai Baht","🇹🇭"],["IDR","Indonesian Rupiah","🇮🇩"],["PKR","Pakistani Rupee","🇵🇰"],["NPR","Nepalese Rupee","🇳🇵"],["LKR","Sri Lankan Rupee","🇱🇰"],["NZD","New Zealand Dollar","🇳🇿"],["ZAR","South African Rand","🇿🇦"],["TRY","Turkish Lira","🇹🇷"],["RUB","Russian Ruble","🇷🇺"],["KRW","South Korean Won","🇰🇷"],["HKD","Hong Kong Dollar","🇭🇰"],["MXN","Mexican Peso","🇲🇽"],["BRL","Brazilian Real","🇧🇷"],["SEK","Swedish Krona","🇸🇪"],["NOK","Norwegian Krone","🇳🇴"],["DKK","Danish Krone","🇩🇰"],["EGP","Egyptian Pound","🇪🇬"],["ILS","Israeli New Shekel","🇮🇱"],["PHP","Philippine Peso","🇵🇭"],["VND","Vietnamese Dong","🇻🇳"],["NGN","Nigerian Naira","🇳🇬"],["KES","Kenyan Shilling","🇰🇪"],["GHS","Ghanaian Cedi","🇬🇭"],["PLN","Polish Zloty","🇵🇱"],["CZK","Czech Koruna","🇨🇿"],["HUF","Hungarian Forint","🇭🇺"],["ARS","Argentine Peso","🇦🇷"],["CLP","Chilean Peso","🇨🇱"]];
 const byCode=Object.fromEntries(currencyData.map(x=>[x[0],x]));
 const fromEl=document.getElementById('from'),toEl=document.getElementById('to'),amountEl=document.getElementById('amount');
-function fillSelect(el,selected){el.innerHTML=currencyData.map(([c,n,f])=>'<option value="'+c+'" '+(c===selected?'selected':'')+'>'+f+'　'+c+' – '+n+'</option>').join('')}
+function fillSelect(el,selected){el.innerHTML=currencyData.map(([c,n])=>'<option value="'+c+'" '+(c===selected?'selected':'')+'>'+c+' – '+n+'</option>').join('')}
 fillSelect(fromEl,'USD');fillSelect(toEl,'INR');
 let rates={},lastUpdated='',currentBase='',lastResultText='';
 const popular=['INR','EUR','GBP','JPY','BDT'];
@@ -190,13 +240,13 @@ function renderResult(){
  document.getElementById('result-caption').textContent=(amountEl.value===''?'0':fmt(amount,2))+' '+from+' =';
  if(!rates[to]||!Number.isFinite(amount)||amount<0){document.getElementById('result-value').textContent='Rate unavailable';document.getElementById('result-rate').textContent='Check your connection and refresh rates.';lastResultText='';return}
  const value=amount*rates[to],rate=rates[to];
- document.getElementById('result-value').textContent=(byCode[to]?.[2]||'')+' '+fmt(value,6)+' '+to;
- document.getElementById('result-rate').textContent='Exchange Rate: 1 '+from+' = '+fmt(rate,6)+' '+to;
- lastResultText=fmt(amount,2)+' '+from+' = '+fmt(value,6)+' '+to+' | 1 '+from+' = '+fmt(rate,8)+' '+to;
+ document.getElementById('result-value').textContent=(byCode[to]?.[2]||'')+' '+fmt(value,2)+' '+to;
+ document.getElementById('result-rate').textContent='Exchange Rate: 1 '+from+' = '+fmt(rate,4)+' '+to;
+ lastResultText=fmt(amount,2)+' '+from+' = '+fmt(value,2)+' '+to+' | 1 '+from+' = '+fmt(rate,4)+' '+to;
 }
 function renderRates(){
  const grid=document.getElementById('rate-grid');document.getElementById('base-label').textContent='1 '+fromEl.value;
- grid.innerHTML=popular.map(code=>{const c=byCode[code],rate=rates[code];return '<div class="rate-card"><div class="rate-flag">'+c[2]+'</div><div class="rate-code">'+code+'</div><div class="rate-number">'+(rate?fmt(rate,5):'—')+'</div><div class="rate-name">'+c[1]+'</div></div>'}).join('');
+ grid.innerHTML=popular.map(code=>{const c=byCode[code],rate=rates[code];return '<div class="rate-card"><div class="rate-flag">'+c[2]+'</div><div class="rate-code">'+code+'</div><div class="rate-number">'+(rate?fmt(rate,4):'—')+'</div><div class="rate-name">'+c[1]+'</div></div>'}).join('');
 }
 async function loadRates(force=false){
  const base=fromEl.value,status=document.getElementById('status'),updated=document.getElementById('updated');
