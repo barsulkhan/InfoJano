@@ -191,6 +191,21 @@ footer{color:#91a9ce}
  .preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 @media(prefers-reduced-motion:reduce){.dropzone,.action-btn,.preset{transition:none!important}}
+
+/* Full-display desktop layout: content uses the available viewport width. */
+main{width:100%;max-width:none!important;margin:20px 0 42px!important;padding-left:clamp(14px,2vw,32px)!important;padding-right:clamp(14px,2vw,32px)!important}
+.hero,.workspace,.preset-section,.info-section,.seo-card{width:100%;max-width:none!important}
+.workspace{width:100%;grid-template-columns:minmax(0,.88fr) minmax(0,1.42fr);gap:clamp(16px,2vw,28px);padding:clamp(16px,2vw,28px)}
+.panel{min-width:0}
+@media(min-width:761px){
+ .panel+.panel{border-left:1px solid #2b4776;border-top:0;padding:8px 0 8px clamp(16px,2vw,28px)}
+ .hero{padding:clamp(24px,3vw,42px)}
+}
+@media(max-width:760px){
+ main{margin:14px 0 30px!important;padding-left:12px!important;padding-right:12px!important}
+ .workspace{grid-template-columns:minmax(0,1fr);padding:12px;gap:14px}
+ .panel+.panel{border-left:0;border-top:1px solid #2b4776;padding:18px 5px 5px}
+}
 </style></head><body>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
 <main>
