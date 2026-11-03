@@ -198,7 +198,7 @@ body{background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55%,#e9eaff)!important;ba
 <label for="weight">Weight (kg)</label><div class="ij-bmi-input-wrap"><span>▣</span><input id="weight" type="number" min="1" step="any" placeholder="e.g. 70"></div>
 <div class="ij-bmi-label-row"><label for="height">Height (cm)</label><span class="ij-bmi-unit">cm</span></div><div class="ij-bmi-input-wrap"><span>↕</span><input id="height" type="number" min="1" step="any" placeholder="e.g. 170"></div>
 <details class="ij-bmi-personalize"><summary>Personalize your health tips <small>(optional)</small></summary><div class="ij-bmi-personalize-grid"><label for="bmi-age">Age <span>years</span><input id="bmi-age" type="number" min="2" max="120" placeholder="e.g. 30"></label><label for="bmi-activity">Daily activity level<select id="bmi-activity"><option value="unspecified">Choose activity level</option><option value="low">Mostly sitting / low activity</option><option value="moderate">Some walking / moderately active</option><option value="high">Very active / regular exercise</option></select></label></div><p>Age helps us show the right BMI guidance. Adult BMI categories are for ages 20 and over.</p></details>
-<div class="ij-bmi-actions"><button type="button" onclick="calculateBMI()">▦ &nbsp; Calculate BMI</button><button type="button" class="ij-bmi-reset" onclick="document.getElementById('weight').value='';document.getElementById('height').value='';resetBMIResult()">⟳ &nbsp; Reset</button></div><div id="result" class="ij-bmi-result" aria-live="polite">Enter your weight and height to calculate your BMI.</div></div>
+<div class="ij-bmi-actions"><button type="button" onclick="calculateBMI()">▦ &nbsp; Calculate BMI</button><button type="button" class="ij-bmi-reset" onclick="document.getElementById('weight').value='';document.getElementById('height').value='';document.getElementById('bmi-age').value='';document.getElementById('bmi-activity').value='unspecified';resetBMIResult()">⟳ &nbsp; Reset</button></div><div id="result" class="ij-bmi-result" aria-live="polite">Enter your weight and height to calculate your BMI.</div></div>
 <div class="ij-bmi-result-panel" id="ij-bmi-result-panel"><div class="ij-bmi-result-heading"><span>✪</span><strong>Your BMI Result</strong></div><div class="ij-bmi-score">BMI <b>—</b><span class="ij-bmi-status">Enter your details</span></div><div class="ij-bmi-scale"><div class="under"><b>&lt; 18.5</b><small>Underweight</small></div><div class="healthy"><b>18.5–24.9</b><small>Healthy</small></div><div class="over"><b>25.0–29.9</b><small>Overweight</small></div><div class="obese"><b>≥ 30.0</b><small>Obesity</small></div></div><div class="ij-bmi-summary"><div><span>▣</span><small>Your Weight</small><b>— kg</b></div><div><span>↕</span><small>Your Height</small><b>— cm</b></div><div><span>◉</span><small>Your BMI</small><b>—</b></div></div><p class="ij-bmi-disclaimer">BMI is a general screening measure, not a medical diagnosis.</p></div>
 </section>
 <section class="ij-bmi-health-guide" id="ij-bmi-health-guide" hidden aria-live="polite">
@@ -294,7 +294,7 @@ if(ageValue&&(!Number.isFinite(age)||age<2||age>120)){result.textContent='Please
 const bmi=weight/((height/100)*(height/100));
 let category='',status='',active=0,food='',move='',sleep='',next='',summary='';
 if(age!==null&&age<20){
-category='Adult BMI guidance not applicable';status='Use a child / teen BMI tool';summary='For people under 20, BMI must be interpreted using age- and sex-specific growth percentiles. This adult calculator cannot classify your result.';
+category='Age-specific BMI assessment needed';status='Use a child / teen BMI tool';summary='For people under 20, BMI must be interpreted using age- and sex-specific growth percentiles. This adult calculator cannot classify your result.';
 food='Aim for regular, balanced meals with a variety of foods. Avoid restrictive diets or weight-loss plans without guidance from a qualified health professional.';
 move='Choose enjoyable, age-appropriate activity and spend time moving each day. A healthcare professional can help tailor advice to growth and development.';
 sleep='Keep a consistent sleep routine and balance screen time with movement, rest and social activities.';
@@ -346,7 +346,7 @@ if(activity==='low')document.getElementById('ij-health-move').textContent+=' Sin
 if(activity==='high')document.getElementById('ij-health-move').textContent+=' Since you selected a very active routine, include recovery and rest days as needed.';
 if(age!==null&&age>=20)document.getElementById('ij-health-summary').textContent+=' Your age is recorded as '+age+'; standard adult categories apply from age 20.';
 if(age!==null&&age<20)document.getElementById('ij-healthy-range').textContent='Not calculated for under-20s';
-if(age!==null&&age<20)document.getElementById('ij-bmi-result-panel .ij-bmi-status')?.textContent;
+if(age!==null&&age<20){panel.querySelectorAll('.ij-bmi-scale>div').forEach(el=>el.classList.remove('selected'));panel.querySelector('.ij-bmi-status').textContent='Age-specific assessment needed';}
 guide.scrollIntoView({behavior:'smooth',block:'start'});
 }
 </script>
