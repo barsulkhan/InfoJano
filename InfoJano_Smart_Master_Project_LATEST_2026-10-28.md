@@ -1644,3 +1644,13 @@ User instruction: Treat desktop experience as the primary design target because 
 - User-reported completed premium designs: 6.
 - Remaining design queue: 19.
 - Next app in the recorded queue: Age & Life Timeline (`age.html`), unless the user explicitly changes priority.
+
+## Homepage Desktop-First Layout Implementation — 3 November 2026
+- User said "Website redy kor" after confirming the permanent desktop-first policy. Started applying the policy to the actual website, beginning with the InfoJano homepage.
+- Updated `index.html` desktop styles (min-width 701px): header and content wrapper now span the available viewport width; preserved existing official logo/brand markup; enlarged desktop hero, search, navigation, tool cards, icons, form panels, info cards and typography; tool grid now uses five responsive desktop columns; mobile breakpoints and mobile layout are not changed by this desktop-only override.
+- No homepage application JavaScript, tool functionality, metadata, SEO markup, or official brand assets changed.
+- Homepage source commit: `34334e880da2f364b23f2863ac3c7a713efac3f3`.
+- Service worker cache bumped sequentially from `infojano-v138` to `infojano-v139`; commit `e63ba521bc59084189aae562121cd859392fa3e8`.
+- Homepage inline JavaScript syntax checks: 2 PASS; JSON-LD excluded.
+- This is the first site-wide policy implementation, limited to homepage desktop styling. The 25 app pages still need individual desktop-first audits and updates; no claim that the entire website is finished.
+- Live GitHub Pages deployment and user's desktop visual confirmation remain pending.
