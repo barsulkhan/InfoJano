@@ -221,26 +221,26 @@ let current=null;
 function months(){const v=Math.max(1,Number($('tenure').value)||1);return $('tenureUnit').value==='years'?Math.round(v*12):Math.round(v)}
 function syncTenure(fromRange=false){let m;if(fromRange){m=Number($('tenureRange').value)*12;$('tenureUnit').value='years';$('tenure').value=String(m/12)}else{m=months();$('tenureRange').value=String(Math.max(1,Math.min(30,Math.round(m/12))))}const years=Math.floor(m/12),rem=m%12;$('tenureLabel').textContent='Loan Tenure: '+(years?years+' Year'+(years===1?'':'s'):'')+(years&&rem?' ':'')+(rem?rem+' Months':'')+' ('+m+' Months)';}
 function calc(){
-const P=Number($('amount').value),annual=Number($('rate').value),n=months(),feeOn=$('includeFee').checked,feePct=Number($('feePercent').value)||0;
-const err=$('emi-error');err.style.display='none';
-if(!Number.isFinite(P)||P<=0||!Number.isFinite(annual)||annual<0||annual>100||!Number.isFinite(n)||n<1||n>600||feePct<0||feePct>20){err.textContent='Please enter a loan amount above zero, an annual rate from 0 to 100%, and a tenure between 1 and 600 months.';err.style.display='block';return}
-const r=annual/1200,emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1),total=emi*n,interest=Math.max(0,total-P),fee=feeOn?P*feePct/100:0,grand=total+fee;
-let balance=P,rows=[];
-for(let i=1;i<=n;i++){const intr=balance*r,principal=Math.min(balance,Math.max(0,emi-intr));balance=Math.max(0,balance-principal);if(i===n)balance=0;rows.push({month:i,emi:emi,principal:principal,interest:intr,balance:balance})}
-current={P,annual,n,emi,total,interest,fee,grand,rows};
+const P=Number($('amount').value),annual=Number($('rate').value),n=months(),method=$('interestMethod').value,rateMode=$('rateMode').value,feeOn=$('includeFee').checked,feePct=Number($('feePercent').value)||0,err=$('emi-error');
+err.style.display='none';
+if(!(P>0)||annual<0||annual>100||n<1||n>600||feePct<0||feePct>20){err.textContent='Enter a valid loan amount, interest rate and tenure.';err.style.display='block';return}
+const r=annual/1200,flatInt=method==='flat'?P*r*n:0,emi=method==='flat'?(P+flatInt)/n:(r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1));
+let balance=P,interest=0,total=0,rows=[];
+for(let m=1;m<=n;m++){const it=method==='flat'?flatInt/n:balance*r,pr=method==='flat'?P/n:Math.min(balance,Math.max(0,emi-it));balance=Math.max(0,balance-pr);if(m===n)balance=0;interest+=it;total+=emi;rows.push({month:m,emi,principal:pr,interest:it,balance})}
+const fee=feeOn?P*feePct/100:0,grand=total+fee;
+current={P,annual,n,emi,total,interest,fee,grand,rows,method,rateMode};
 $('emiValue').textContent=fmt(emi);$('interestValue').textContent=fmt(interest);$('totalValue').textContent=fmt(grand);$('tenureValue').textContent=Math.floor(n/12)?Math.floor(n/12)+' Years':n+' Months';$('monthsValue').textContent='('+n+' Months)';
 $('chartTotal').textContent=fmt(total);$('principalLegend').textContent=fmt(P);$('interestLegend').textContent=fmt(interest);
 const pp=total?P/total*100:100,ip=total?interest/total*100:0;$('donut').style.setProperty('--principal',pp+'%');$('principalPercent').textContent=pp.toFixed(1)+'%';$('interestPercent').textContent=ip.toFixed(1)+'%';
-$('interestLegend').textContent=fmt(interest);
-const shown=rows.slice(0,5);$('scheduleBody').innerHTML=shown.map(x=>'<tr><td>'+x.month+'</td><td>'+fmt(x.emi)+'</td><td>'+fmt(x.principal)+'</td><td>'+fmt(x.interest)+'</td><td>'+fmt(x.balance)+'</td></tr>').join('');
+$('scheduleBody').innerHTML=rows.slice(0,5).map(x=>'<tr><td>'+x.month+'</td><td>'+fmt(x.emi)+'</td><td>'+fmt(x.principal)+'</td><td>'+fmt(x.interest)+'</td><td>'+fmt(x.balance)+'</td></tr>').join('');
 $('fullScheduleBtn').textContent='View Full Repayment Schedule ('+n+' Months)　›';
-if(feeOn){$('totalValue').textContent=fmt(grand);$('totalValue').title='Includes '+fmt(fee)+' processing fee'}else $('totalValue').title='Principal plus total interest';
+$('totalValue').title=feeOn?'Includes '+fmt(fee)+' processing fee':'Principal plus total interest';
 }
 function scheduleAll(){if(!current)calc();if(!current)return;const rows=current.rows;$('scheduleBody').innerHTML=rows.map(x=>'<tr><td>'+x.month+'</td><td>'+fmt(x.emi)+'</td><td>'+fmt(x.principal)+'</td><td>'+fmt(x.interest)+'</td><td>'+fmt(x.balance)+'</td></tr>').join('');$('fullScheduleBtn').textContent='Showing all '+rows.length+' monthly instalments';}
-function summary(){if(!current)calc();if(!current)return '';return 'InfoJano EMI Calculator\nLoan Amount: '+fmt(current.P)+'\nAnnual Interest Rate: '+current.annual+'%\nTenure: '+current.n+' months\nMonthly EMI: '+fmt(current.emi)+'\nTotal Interest: '+fmt(current.interest)+'\nProcessing Fee: '+fmt(current.fee)+'\nTotal Payment: '+fmt(current.grand)}
+function summary(){if(!current)calc();if(!current)return '';return 'InfoJano EMI Calculator\nLoan Amount: '+fmt(current.P)+'\nMethod: '+(current.method==='flat'?'Flat Rate':'Reducing Balance')+'\nRate Type: '+(current.rateMode==='fixed'?'Fixed':'Floating')+'\nAnnual Interest Rate: '+current.annual+'%\nTenure: '+current.n+' months\nMonthly EMI: '+fmt(current.emi)+'\nTotal Interest: '+fmt(current.interest)+'\nProcessing Fee: '+fmt(current.fee)+'\nTotal Payment: '+fmt(current.grand)}
 $('calculateBtn').addEventListener('click',calc);$('resetBtn').addEventListener('click',()=>{$('amount').value=1000000;$('rate').value=9;$('tenure').value=5;$('tenureUnit').value='years';$('tenureRange').value=5;$('includeFee').checked=false;$('feeFields').classList.remove('visible');$('feePercent').value=1;$('showSchedule').checked=true;syncTenure();calc()});
 $('tenure').addEventListener('input',()=>{syncTenure();calc()});$('tenureUnit').addEventListener('change',()=>{syncTenure();calc()});$('tenureRange').addEventListener('input',()=>{syncTenure(true);calc()});
-['amount','rate','feePercent'].forEach(id=>$(id).addEventListener('input',calc));$('includeFee').addEventListener('change',()=>{$('feeFields').classList.toggle('visible',$('includeFee').checked);calc()});
+['amount','rate','feePercent'].forEach(id=>$(id).addEventListener('input',calc));$('interestMethod').addEventListener('change',calc);$('rateMode').addEventListener('change',calc);$('includeFee').addEventListener('change',()=>{$('feeFields').classList.toggle('visible',$('includeFee').checked);calc()});
 $('showSchedule').addEventListener('change',()=>{$('scheduleBody').parentElement.parentElement.style.display=$('showSchedule').checked?'block':'none';$('fullScheduleBtn').style.display=$('showSchedule').checked?'block':'none'});
 $('fullScheduleBtn').addEventListener('click',scheduleAll);
 $('copyBtn').addEventListener('click',async()=>{const t=summary();if(!t)return;try{await navigator.clipboard.writeText(t);$('copyBtn').textContent='✓ Copied';setTimeout(()=>$('copyBtn').textContent='▣ Copy',1500)}catch(e){window.prompt('Copy your EMI summary',t)}});
