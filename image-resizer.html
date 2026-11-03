@@ -678,6 +678,15 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 .ij-rz-copy h1 em{color:#66eaff!important}
 .ij-rz-copy h1:after,.ij-rz-pills span:after{filter:blur(.7px)!important;opacity:.65}
 @media(prefers-reduced-motion:reduce){.ij-resizer-hero:before{animation:none!important}}
+
+/* Match the proven Currency Converter perimeter-ring implementation exactly */
+@property --ij-rz-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+.ij-full-hero.ij-resizer-hero{position:relative!important;isolation:isolate!important;overflow:hidden!important;border:0!important;background:radial-gradient(ellipse at 50% 0%,#173fba 0%,#071b72 48%,#090a50 100%)!important;box-shadow:0 12px 30px #1c50bd35!important}
+.ij-full-hero.ij-resizer-hero:before{content:""!important;position:absolute!important;inset:0!important;padding:4px!important;border-radius:27px!important;background:conic-gradient(from var(--ij-rz-angle),#00eaff,#8a2cff,#ff31d2,#ffdf27,#00eaff)!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;mask-composite:exclude!important;z-index:0!important;filter:drop-shadow(0 0 9px #16dfff)!important;animation:ijRzPerimeter 8s linear infinite!important}
+.ij-full-hero.ij-resizer-hero:after{content:""!important;position:absolute!important;inset:4px!important;border-radius:23px!important;background:radial-gradient(ellipse at 12% 45%,#00cfff18,transparent 34%),radial-gradient(ellipse at 90% 15%,#b72fff18,transparent 35%),linear-gradient(112deg,#06163d,#09265f 48%,#171044)!important;z-index:0!important;pointer-events:none!important}
+@keyframes ijRzPerimeter{to{--ij-rz-angle:360deg}}
+.ij-rz-art,.ij-rz-copy,.ij-rz-side{z-index:1!important}
+@media(prefers-reduced-motion:reduce){.ij-full-hero.ij-resizer-hero:before{animation:none!important}}
 </style></head><body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading Image Resize and Converter"><div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">↔</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">Image Resize &amp; Converter</p><p class="ij-loader-subtitle">Getting your image tools ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div></div>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
