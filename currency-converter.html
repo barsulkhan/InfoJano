@@ -216,6 +216,39 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 @media(prefers-reduced-motion:reduce){
  .hero-copy h1:after,.hero-copy .perks .perk:after{animation:none!important;display:none!important}
 }
+
+.currency-extra-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+.extra-panel{min-width:0}
+.extra-heading{display:flex;align-items:center;gap:12px;margin-bottom:17px}
+.extra-heading h2{font-size:21px;line-height:1.2;margin:0;color:#101c58}
+.extra-icon{width:48px;height:48px;flex:0 0 48px;border-radius:15px;display:grid;place-items:center;color:#fff;font-size:25px;font-weight:900;background:linear-gradient(140deg,#05bafa,#1944ed);box-shadow:0 5px 14px #1769ed35}
+.fee-icon{background:linear-gradient(140deg,#ff9b16,#ef4772)}
+.history-icon{background:linear-gradient(140deg,#a42cf3,#4e31d9)}
+.compare-amount{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:13px;background:#e8f2ff;border:1px solid #c8dcff;margin-bottom:12px}
+.compare-amount strong{font-size:18px;color:#123a9a}.compare-amount span{font-size:11px;color:#607397;text-align:right}
+.compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.compare-item{display:flex;align-items:center;gap:9px;min-width:0;padding:11px;border:1px solid #d0e0fb;border-radius:13px;background:linear-gradient(145deg,#fff,#eef6ff)}
+.compare-flag{font-size:24px}.compare-item-info{min-width:0;flex:1}.compare-item-info strong{display:block;font-size:12px;color:#243a79}.compare-item-info b{display:block;font-size:16px;color:#111d61;overflow-wrap:anywhere}.compare-item-info small{font-size:10px;color:#6b7c9d}
+.fee-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fee-fields label,.history-controls label{display:block;font-size:13px;font-weight:800;color:#23376e}
+.fee-fields input,.history-controls select{width:100%;height:45px;margin-top:6px;border:1px solid #c4d8fa;border-radius:11px;padding:0 11px;background:#fff;color:#14265f;font-size:15px;font-weight:750;outline:none}
+.fee-result{margin-top:14px;padding:15px;border-radius:15px;color:#fff;background:linear-gradient(110deg,#0a9b70,#0875c8)}
+.fee-result span,.fee-result small{display:block;color:#e4fff6;font-size:12px}
+.fee-result strong{display:block;font-size:clamp(23px,3vw,32px);margin:3px 0;font-weight:950;overflow-wrap:anywhere}
+.history-panel{margin-top:18px}
+.history-controls{display:flex;align-items:end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.history-controls label{min-width:180px;flex:1;max-width:320px}
+.history-periods{display:flex;gap:7px;flex-wrap:wrap}
+.history-period{border:1px solid #bfd2ff;border-radius:22px;background:#fff;color:#234080;padding:9px 15px;font-size:12px;font-weight:850;cursor:pointer}
+.history-period.active{background:linear-gradient(100deg,#087af3,#3348e8);border-color:transparent;color:#fff}
+.history-summary{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:16px 0 8px;padding:12px 14px;border-radius:13px;background:#edf5ff}
+.history-summary div{display:flex;flex-direction:column}.history-summary small{font-size:11px;color:#65769b}.history-summary strong{font-size:18px;color:#172f79}
+.history-dates{margin-left:auto;font-size:11px;color:#687b9f}
+.history-chart{width:100%;min-height:210px;padding:8px 2px;overflow:hidden}
+.history-chart svg{display:block;width:100%;height:auto;max-height:260px}
+.history-chart .chart-grid{stroke:#dbe7f8;stroke-width:1}.history-chart .chart-line{fill:none;stroke:#1767e8;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.history-chart .chart-area{fill:url(#historyFill)}.history-chart text{font-family:inherit;fill:#7181a0;font-size:11px}
+@media(max-width:760px){.currency-extra-grid{grid-template-columns:1fr;gap:12px}.extra-panel{padding:15px!important}.extra-heading h2{font-size:19px}.history-panel{padding:15px!important}.history-summary{gap:14px}.history-dates{width:100%;margin-left:0}}
+@media(max-width:390px){.compare-grid{grid-template-columns:1fr}.compare-amount{align-items:flex-start;flex-direction:column}.compare-amount span{text-align:left}.history-period{padding:8px 11px}}
 </style>
 </head>
 <body>
@@ -249,6 +282,38 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 <p class="status" id="rate-note">Rates are indicative mid-market reference rates and may differ from bank or card provider rates.</p>
 </section>
 </div>
+
+<section class="currency-extra-grid" aria-label="Advanced currency tools">
+<section class="panel extra-panel" aria-labelledby="compare-title">
+ <div class="extra-heading"><span class="extra-icon compare-icon">⇄</span><div><h2 id="compare-title">Compare Multiple Currencies</h2><p class="sub">See what your amount is worth in popular currencies.</p></div></div>
+ <div class="compare-amount"><strong id="compare-amount-label">1,000 USD</strong><span>Converted at the latest available rates</span></div>
+ <div id="compare-grid" class="compare-grid"><p class="status">Loading comparison…</p></div>
+</section>
+<section class="panel extra-panel" aria-labelledby="fee-title">
+ <div class="extra-heading"><span class="extra-icon fee-icon">％</span><div><h2 id="fee-title">Exchange Fee Calculator</h2><p class="sub">Estimate what you may receive after provider fees.</p></div></div>
+ <div class="fee-fields">
+  <label>Provider fee (%)<input id="fee-percent" type="number" min="0" max="100" step="0.1" value="1.5"></label>
+  <label>Fixed fee (<span id="fee-currency-label">INR</span>)<input id="fee-fixed" type="number" min="0" step="0.01" value="0"></label>
+ </div>
+ <div class="fee-result"><span>Estimated amount after fees</span><strong id="fee-net">—</strong><small id="fee-breakdown">Enter your provider's fees to estimate the payout.</small></div>
+ <p class="status">Illustrative estimate only. Actual charges and payout depend on your bank or transfer provider.</p>
+</section>
+</section>
+<section class="panel history-panel" aria-labelledby="history-title">
+ <div class="extra-heading"><span class="extra-icon history-icon">▥</span><div><h2 id="history-title">Historical Exchange Rate</h2><p class="sub">Explore how this currency pair has changed over time.</p></div></div>
+ <div class="history-controls">
+  <label for="history-quote">Compare against<select id="history-quote"></select></label>
+  <div class="history-periods" role="group" aria-label="Historical period">
+   <button type="button" class="history-period active" data-days="7">7D</button>
+   <button type="button" class="history-period" data-days="30">30D</button>
+   <button type="button" class="history-period" data-days="90">90D</button>
+   <button type="button" class="history-period" data-days="365">1Y</button>
+  </div>
+ </div>
+ <div class="history-summary"><div><small>Latest available historical rate</small><strong id="history-latest">—</strong></div><div><small>Period change</small><strong id="history-change">—</strong></div><span id="history-dates" class="history-dates">Select a period to load history</span></div>
+ <div id="history-chart" class="history-chart" role="img" aria-label="Historical exchange rate chart"><p class="status">Choose a currency pair to load historical data.</p></div>
+ <p id="history-source" class="status">Historical reference data is provided by Frankfurter and may not include every currency pair.</p>
+</section>
 <section class="feature-strip" aria-label="Currency converter features">
 <div class="feature"><span class="feature-icon">↔</span><div><strong>170+ Currencies</strong><small>Convert currencies worldwide.</small></div></div>
 <div class="feature"><span class="feature-icon">ϟ</span><div><strong>Latest Exchange Rates</strong><small>Updated from rate provider.</small></div></div>
@@ -306,14 +371,69 @@ async function loadRates(force=false){
  }
 }
 fromEl.addEventListener('change',()=>{updateFlags();loadRates(true)});
-toEl.addEventListener('change',()=>{updateFlags();renderResult()});
+toEl.addEventListener('change',()=>{updateFlags();renderResult();renderFee()});
 amountEl.addEventListener('input',()=>{document.querySelectorAll('.preset').forEach(b=>b.classList.toggle('active',Number(b.dataset.amount)===Number(amountEl.value)));renderResult()});
 document.getElementById('swap').addEventListener('click',()=>{const old=fromEl.value;fromEl.value=toEl.value;toEl.value=old;updateFlags();loadRates(true)});
-document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{amountEl.value=b.dataset.amount;document.querySelectorAll('.preset').forEach(x=>x.classList.toggle('active',x===b));renderResult()}));
+document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{amountEl.value=b.dataset.amount;document.querySelectorAll('.preset').forEach(x=>x.classList.toggle('active',x===b));renderResult();renderCompare();renderFee()}));
 document.getElementById('convert').addEventListener('click',renderResult);
 document.getElementById('refresh').addEventListener('click',()=>loadRates(true));
 document.getElementById('copy').addEventListener('click',async()=>{if(!lastResultText)return;const btn=document.getElementById('copy');try{await navigator.clipboard.writeText(lastResultText);btn.textContent='✓ Copied';setTimeout(()=>btn.textContent='▣ Copy Result',1500)}catch(e){btn.textContent='Copy not available';setTimeout(()=>btn.textContent='▣ Copy Result',1500)}});
 updateFlags();loadRates(true);
+
+const compareCodes=['INR','EUR','GBP','BDT','AED','JPY'];
+const historyQuote=document.getElementById('history-quote');
+historyQuote.innerHTML=currencyData.filter(([code])=>code!=='USD').map(([code,name])=>'<option value="'+code+'" '+(code==='INR'?'selected':'')+'>'+code+' – '+name+'</option>').join('');
+function renderCompare(){
+ const amount=Number(amountEl.value)||0,base=fromEl.value,grid=document.getElementById('compare-grid');
+ document.getElementById('compare-amount-label').textContent=fmt(amount,2)+' '+base;
+ grid.innerHTML=compareCodes.filter(code=>code!==base).map(code=>{
+  const cur=byCode[code],rate=rates[code],value=rate?fmt(amount*rate,2):'—';
+  return '<div class="compare-item"><span class="compare-flag">'+cur[2]+'</span><div class="compare-item-info"><strong>'+code+' · '+cur[1]+'</strong><b>'+value+' '+code+'</b><small>1 '+base+' = '+(rate?fmt(rate,4):'—')+' '+code+'</small></div></div>';
+ }).join('');
+}
+function renderFee(){
+ const amount=Number(amountEl.value)||0,rate=rates[toEl.value],pct=Math.max(0,Math.min(100,Number(document.getElementById('fee-percent').value)||0)),fixed=Math.max(0,Number(document.getElementById('fee-fixed').value)||0);
+ document.getElementById('fee-currency-label').textContent=toEl.value;
+ if(!rate){document.getElementById('fee-net').textContent='Rate unavailable';document.getElementById('fee-breakdown').textContent='Load exchange rates first.';return}
+ const gross=amount*rate,percentFee=gross*pct/100,totalFee=percentFee+fixed,net=Math.max(0,gross-totalFee);
+ document.getElementById('fee-net').textContent=fmt(net,2)+' '+toEl.value;
+ document.getElementById('fee-breakdown').textContent='Converted amount '+fmt(gross,2)+' − estimated fees '+fmt(totalFee,2)+' '+toEl.value;
+}
+let historyPeriod=7;
+async function loadHistory(){
+ const base=fromEl.value,quote=historyQuote.value,days=historyPeriod;
+ const chart=document.getElementById('history-chart'),source=document.getElementById('history-source');
+ chart.innerHTML='<p class="status">Loading historical rates…</p>';
+ document.getElementById('history-latest').textContent='—';document.getElementById('history-change').textContent='—';
+ const end=new Date(),start=new Date();start.setDate(end.getDate()-days);
+ const iso=d=>d.toISOString().slice(0,10);
+ const url='https://api.frankfurter.dev/v2/rates?base='+encodeURIComponent(base)+'&quotes='+encodeURIComponent(quote)+'&from='+iso(start)+'&to='+iso(end)+(days===365?'&group=month':days===90?'&group=week':'');
+ try{
+  const response=await fetch(url);if(!response.ok)throw new Error('No historical data for this pair');
+  const rows=await response.json();if(!Array.isArray(rows)||!rows.length)throw new Error('Historical data is not available for this currency pair');
+  const values=rows.filter(x=>x.quote===quote&&Number.isFinite(Number(x.rate))).sort((a,b)=>a.date.localeCompare(b.date));
+  if(!values.length)throw new Error('No matching historical rates were returned');
+  const ratesOnly=values.map(x=>Number(x.rate)),min=Math.min(...ratesOnly),max=Math.max(...ratesOnly),span=max-min||max*.01||1;
+  const w=760,h=220,left=48,right=18,top=16,bottom=34,plotW=w-left-right,plotH=h-top-bottom;
+  const pts=values.map((x,i)=>({x:left+(values.length===1?plotW/2:i/(values.length-1)*plotW),y:top+(max-Number(x.rate))/span*plotH,rate:Number(x.rate),date:x.date}));
+  const path=pts.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+  const area=path+' L '+pts[pts.length-1].x+' '+(top+plotH)+' L '+pts[0].x+' '+(top+plotH)+' Z';
+  const gridLines=[0,1,2,3].map(i=>{const y=top+i*plotH/3,val=max-i*span/3;return '<line class="chart-grid" x1="'+left+'" y1="'+y+'" x2="'+(w-right)+'" y2="'+y+'"/><text x="2" y="'+(y+4)+'">'+fmt(val,4)+'</text>'}).join('');
+  chart.innerHTML='<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Historical rate of 1 '+base+' in '+quote+'"><defs><linearGradient id="historyFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#2380ff" stop-opacity=".28"/><stop offset="100%" stop-color="#2380ff" stop-opacity="0"/></linearGradient></defs>'+gridLines+'<path class="chart-area" d="'+area+'"/><path class="chart-line" d="'+path+'"/><circle cx="'+pts[pts.length-1].x+'" cy="'+pts[pts.length-1].y+'" r="5" fill="#fff" stroke="#1767e8" stroke-width="3"/><text x="'+left+'" y="'+(h-8)+'">'+values[0].date+'</text><text x="'+(w-right)+'" y="'+(h-8)+'" text-anchor="end">'+values[values.length-1].date+'</text></svg>';
+  const first=ratesOnly[0],last=ratesOnly[ratesOnly.length-1],change=(last-first)/first*100;
+  document.getElementById('history-latest').textContent=fmt(last,4)+' '+quote;
+  document.getElementById('history-change').textContent=(change>=0?'+':'')+change.toFixed(2)+'%';
+  document.getElementById('history-change').style.color=change>=0?'#07835b':'#c03952';
+  document.getElementById('history-dates').textContent=values[0].date+' to '+values[values.length-1].date+' · '+values.length+' observations';
+  source.textContent='Historical reference data: Frankfurter · '+base+'/'+quote+'. Some currencies have shorter history or no coverage.';
+ }catch(err){chart.innerHTML='<p class="status error">'+err.message+'. Try another currency pair or period.</p>';source.textContent='Historical data availability varies by currency pair and provider.'}
+}
+document.getElementById('fee-percent').addEventListener('input',renderFee);
+document.getElementById('fee-fixed').addEventListener('input',renderFee);
+historyQuote.addEventListener('change',loadHistory);
+document.querySelectorAll('.history-period').forEach(btn=>btn.addEventListener('click',()=>{historyPeriod=Number(btn.dataset.days);document.querySelectorAll('.history-period').forEach(b=>b.classList.toggle('active',b===btn));loadHistory()}));
+
+
 </script>
 <script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
 </body></html>
