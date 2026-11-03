@@ -179,6 +179,23 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
 @media(max-width:600px){.ij-age-result-main{padding:15px}.ij-age-result-top{font-size:15px;gap:7px}.ij-age-asof{font-size:10px;padding:6px 8px}.ij-age-result-big{gap:4px;font-size:16px;margin:12px 0}.ij-age-result-big span{font-size:27px}.ij-age-result-units{gap:6px}.ij-age-unit{min-height:76px;padding:8px 4px;column-gap:5px;border-radius:13px}.ij-age-unit b{font-size:21px}.ij-age-unit strong{font-size:22px}.ij-age-unit small{font-size:10px}.ij-age-result-bottom{gap:7px}.ij-age-next,.ij-age-total{padding:10px;gap:7px;border-radius:14px}.ij-age-bottom-art{font-size:25px}.ij-age-next strong,.ij-age-total strong{font-size:11px}.ij-age-next b,.ij-age-total b{font-size:14px}.ij-age-next small{font-size:9px;padding:3px 7px}.ij-age-weekday{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.ij-age-result-main:after{animation:none!important}}
 
+
+/* Neon perimeter light — hero banner only; keep the rest of the page unchanged */
+@property --ij-age-neon-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+.ij-age-main > section.ij-age-hero{
+  --ij-age-neon-angle:0deg;
+  border:2px solid transparent!important;
+  background:
+    radial-gradient(ellipse at 8% 45%,rgba(0,220,255,.38),transparent 32%),
+    radial-gradient(ellipse at 94% 18%,rgba(207,79,255,.55),transparent 35%),
+    linear-gradient(112deg,#062b9d 0%,#0646d8 50%,#4b16bd 100%) padding-box,
+    conic-gradient(from var(--ij-age-neon-angle),#00eaff,#174dff,#bd35ff,#ff39d2,#ffe94a,#00eaff) border-box!important;
+  box-shadow:0 0 8px #00d9ffb0,0 0 18px #5a35ff85,0 0 30px #ed36ff55,0 16px 40px rgba(35,89,215,.24),inset 0 1px 0 #ffffff70!important;
+  animation:ijAgeNeonOrbit 5.5s linear infinite!important;
+}
+@keyframes ijAgeNeonOrbit{to{--ij-age-neon-angle:360deg}}
+@media(prefers-reduced-motion:reduce){.ij-age-main > section.ij-age-hero{animation:none!important}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
 
