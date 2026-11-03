@@ -215,6 +215,71 @@ body{margin:0;background:#edf5ff;color:#10234b;font-family:Inter,Arial,sans-seri
  .dd-clock-face{width:25px!important;height:25px!important;right:-5px!important;bottom:-4px!important;font-size:15px!important}
 }
 
+
+/* Desktop-first composition matching the approved wide reference */
+.dd-shell{width:calc(100% - 64px)!important;max-width:1800px!important;margin:18px auto 52px!important}
+.dd-crumb{font-size:16px!important;margin-bottom:16px!important}
+.dd-hero{display:grid!important;grid-template-columns:minmax(260px,27%) minmax(0,1fr) minmax(190px,22%)!important;min-height:245px!important;padding:22px 30px!important;gap:22px!important;border-radius:27px!important;background:linear-gradient(112deg,#0759d7 0%,#173be0 48%,#7700e9 100%)!important}
+.dd-calendar-art{height:195px!important}.dd-cal{width:145px!important;height:136px!important}.dd-cal strong{font-size:31px!important;top:47px!important}.dd-cal small{font-size:18px!important}.dd-arrow{font-size:48px!important}
+.dd-clock-art{width:160px!important;height:160px!important}
+.dd-hero-copy{text-align:center!important;max-width:none!important}
+.dd-hero h1{font-size:clamp(40px,3.4vw,58px)!important;line-height:1.04!important;letter-spacing:-1.7px!important;margin:9px 0!important;white-space:nowrap!important;color:#fff!important}
+.dd-hero h1 span{display:inline!important;color:#ffe52f!important}
+.dd-hero-sub{font-size:20px!important;margin:8px 0 15px!important;color:#fff!important}
+.dd-hero-perks{justify-content:center!important;gap:12px!important}.dd-hero-perks span{padding:10px 20px!important;font-size:16px!important}
+.dd-main-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr)!important;gap:16px!important;align-items:stretch!important;margin-top:18px!important}
+.dd-main-grid>.dd-card{margin-top:0!important;min-width:0!important}
+.dd-form-panel{padding:22px 24px!important}.dd-form-head{gap:16px!important;margin-bottom:16px!important}
+.dd-head-icon{width:60px!important;height:60px!important;flex-basis:60px!important;font-size:30px!important}
+.dd-form-head h2{font-size:29px!important}.dd-form-head p{font-size:15px!important}
+.dd-fields{grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr)!important;gap:12px!important}
+.dd-field label{font-size:17px!important}.dd-field input{height:52px!important;font-size:18px!important}
+.dd-swap{width:50px!important;height:48px!important;font-size:28px!important}
+.dd-buttons{grid-template-columns:2.1fr .9fr!important;gap:12px!important;margin-top:15px!important}.dd-buttons button{height:54px!important;font-size:18px!important}
+.dd-result-panel{padding:20px 22px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.dd-result-title{font-size:19px!important;padding:9px 17px!important}
+.dd-share{width:44px!important;height:44px!important;flex:0 0 44px!important}
+.dd-result-row{grid-template-columns:70px repeat(5,minmax(0,1fr))!important;gap:9px!important;margin-top:15px!important}
+.dd-result-calendar{font-size:54px!important}.dd-stat{min-height:104px!important;padding:6px 3px!important}
+.dd-stat strong{font-size:clamp(28px,2.5vw,40px)!important}.dd-stat span{font-size:15px!important}
+.dd-quick-panel{display:grid!important;grid-template-columns:minmax(250px,300px) 1fr!important;align-items:center!important;gap:20px!important;padding:16px 20px!important}
+.dd-quick-head{display:block!important;margin:0!important;border-right:1px solid #c9d8f0!important;padding-right:18px!important}
+.dd-quick-head h2{font-size:26px!important}.dd-quick-head p{font-size:15px!important;margin-top:4px!important}
+.dd-quick-list{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important}.dd-quick-list button{font-size:16px!important;min-height:52px!important}
+.dd-about{min-height:110px!important;padding:18px 24px!important}.dd-about h2{font-size:25px!important}.dd-about p{font-size:17px!important}
+.dd-related-title h2{font-size:27px!important}.dd-related-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important}
+.dd-related{display:grid!important;grid-template-columns:64px minmax(0,1fr) 18px!important;grid-template-rows:auto auto!important;column-gap:14px!important;align-content:center!important;align-items:center!important;min-height:100px!important;padding:16px!important}
+.dd-related-icon{grid-column:1!important;grid-row:1/3!important;width:62px!important;height:62px!important;margin:0!important;font-size:30px!important}
+.dd-related strong{grid-column:2!important;grid-row:1!important;font-size:18px!important;align-self:end!important}
+.dd-related small{grid-column:2!important;grid-row:2!important;font-size:14px!important;align-self:start!important}
+@media(max-width:1100px) and (min-width:801px){
+ .dd-shell{width:calc(100% - 36px)!important}.dd-hero{grid-template-columns:23% 1fr 17%!important;padding:18px!important}
+ .dd-hero h1{font-size:36px!important}.dd-cal{width:115px!important;height:115px!important}.dd-clock-art{width:125px!important;height:125px!important}
+ .dd-main-grid{grid-template-columns:1fr!important}.dd-quick-panel{grid-template-columns:220px 1fr!important}
+ .dd-related{grid-template-columns:48px minmax(0,1fr)!important}.dd-related-icon{width:46px!important;height:46px!important}
+}
+@media(max-width:800px){
+ .dd-shell{width:calc(100% - 24px)!important}
+ .dd-hero{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;grid-template-columns:none!important;min-height:210px!important;padding:14px 10px!important;gap:5px!important}
+ .dd-calendar-art{flex:0 0 25%!important;width:25%!important;min-width:0!important;height:132px!important;transform:scale(.68)!important;margin:0!important}
+ .dd-hero-copy{flex:1 1 auto!important;min-width:0!important;text-align:left!important}
+ .dd-hero h1{font-size:clamp(20px,4.2vw,32px)!important;white-space:normal!important}.dd-hero h1 span{display:block!important}
+ .dd-hero-sub{font-size:clamp(10px,1.8vw,14px)!important}.dd-hero-perks{justify-content:flex-start!important;gap:4px!important}
+ .dd-hero-perks span{font-size:clamp(8px,1.45vw,11px)!important;padding:6px 7px!important}
+ .dd-clock-art{display:block!important;flex:0 0 14%!important;width:14%!important;min-width:0!important;height:clamp(64px,13vw,100px)!important}
+ .dd-main-grid{display:grid!important;grid-template-columns:1fr!important;gap:13px!important}.dd-main-grid>.dd-card{margin-top:0!important}
+ .dd-quick-panel{display:block!important}.dd-quick-head{display:flex!important;border:0!important;padding:0!important;margin-bottom:12px!important}
+ .dd-quick-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}.dd-result-row{grid-template-columns:repeat(5,minmax(0,1fr))!important}.dd-result-calendar{display:none!important}
+ .dd-related{display:flex!important}.dd-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:430px){
+ .dd-hero{min-height:185px!important;padding:12px 7px!important;gap:3px!important}
+ .dd-calendar-art{flex-basis:24%!important;width:24%!important;height:118px!important;transform:scale(.55)!important}
+ .dd-hero h1{font-size:19px!important}.dd-hero-sub{font-size:9px!important}.dd-hero-perks span{font-size:7px!important;padding:5px!important}
+ .dd-clock-art{flex-basis:13%!important;width:13%!important;height:57px!important}
+ .dd-result-row{gap:5px!important}.dd-stat{min-height:78px!important}.dd-stat strong{font-size:23px!important}.dd-stat span{font-size:10px!important}
+}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/date-difference.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -282,7 +347,8 @@ body{margin:0;background:#edf5ff;color:#10234b;font-family:Inter,Arial,sans-seri
  <div class="dd-hero-copy"><span class="dd-eyebrow">★ FREE ONLINE TOOL</span><h1>Date Difference <span>Calculator</span></h1><p class="dd-hero-sub">Find the exact difference between two dates.</p><div class="dd-hero-perks"><span>▦ Days</span><span>▣ Weeks</span><span>▧ Months</span><span>♧ Years</span></div></div>
  <div class="dd-clock-art" aria-hidden="true"><div class="dd-clock-face">◷</div></div>
 </section>
-<section class="dd-card">
+<div class="dd-main-grid">
+<section class="dd-card dd-form-panel">
  <div class="dd-form-head"><div class="dd-head-icon">▦</div><div><h2>Calculate Date Difference</h2><p>Select two dates to find the exact difference in years, months, weeks and days.</p></div></div>
  <div class="dd-fields">
   <div class="dd-field"><label for="startText">From Date</label><input id="startText" type="text" inputmode="numeric" autocomplete="off" placeholder="DD-MM-YYYY" maxlength="10" aria-describedby="date-format-help"></div>
@@ -296,6 +362,7 @@ body{margin:0;background:#edf5ff;color:#10234b;font-family:Inter,Arial,sans-seri
  <div class="dd-result-row"><div class="dd-result-calendar">▦</div><div class="dd-stat"><strong id="dd-years">—</strong><span>Years</span></div><div class="dd-stat"><strong id="dd-months">—</strong><span>Months</span></div><div class="dd-stat"><strong id="dd-days">—</strong><span>Days</span></div><div class="dd-stat"><strong id="dd-weeks">—</strong><span>Weeks</span></div><div class="dd-stat"><strong id="dd-total">—</strong><span>Total Days</span></div></div>
  <div id="result" class="result" style="display:none">Choose two dates to calculate the difference.</div>
 </section>
+</div>
 <section class="dd-card dd-quick-panel"><div class="dd-quick-head"><h2>⚡ Quick Calculate</h2><p>Try these common date differences</p></div><div class="dd-quick-list"><button onclick="quickBirthday()">▦ &nbsp; Today to My Birthday</button><button onclick="quickAgeDays()">♟ &nbsp; My Age in Days</button><button onclick="setQuickRange(0)">☆ &nbsp; This Year So Far</button><button onclick="setQuickRange(30)">▦ &nbsp; Last 30 Days</button></div></section>
 <section class="dd-card dd-about"><div class="dd-about-icon">i</div><div><h2>About Date Difference Calculator</h2><p>This tool helps you find the exact difference between two dates. It shows the result in years, months, weeks and days, along with the total number of days.</p></div></section>
 <section class="dd-card"><div class="dd-related-title"><h2>♧ Related Tools</h2><span>Explore more useful calculators</span></div><div class="dd-related-grid">
