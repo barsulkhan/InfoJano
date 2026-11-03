@@ -247,10 +247,66 @@ main{width:100%;max-width:none!important;margin:20px 0 42px!important;padding-le
 .info span{color:inherit!important;opacity:1!important}
 .section-heading h2,.section-heading p,.section-heading div span{opacity:1!important}
 @media(prefers-contrast:more){.info-card p,.info-card li,.seo-card p,.seo-card details,.seo-card summary{color:#fff!important}}
+
+/* Match the approved Image Resize & Convert reference composition */
+.resize-breadcrumb{display:flex;align-items:center;gap:13px;margin:6px 0 20px;padding:0 8px;color:#dceaff;font-size:15px;font-weight:650}
+.resize-breadcrumb a{color:#8deaff;text-decoration:none}.resize-breadcrumb a:hover{color:#fff}.resize-breadcrumb span{color:#5a9eff;font-size:22px}.resize-breadcrumb strong{color:#fff}
+.hero{width:100%;max-width:none!important;min-height:330px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);align-items:center;gap:20px;padding:30px 34px!important;overflow:hidden;border:1px solid #3756ff!important;border-radius:27px!important;background:radial-gradient(ellipse at 77% 50%,#6a0dba77 0,transparent 42%),linear-gradient(112deg,#06183d 0%,#10145c 53%,#251079 100%)!important;box-shadow:0 18px 55px #02072088,inset 0 1px #65cfff66!important}
+.hero-copy{display:flex;align-items:center;gap:26px;min-width:0}
+.hero-icon{width:150px;height:150px;flex:0 0 150px;padding:0;border:0!important;border-radius:27px!important;background:transparent!important;box-shadow:0 0 35px #9b26ff88!important}
+.hero-icon svg{width:100%;height:100%;display:block;filter:drop-shadow(0 8px 18px #5b2dff88)}
+.hero-text{min-width:0}.hero h1{margin:0 0 12px!important;font-size:clamp(34px,3.3vw,57px)!important;line-height:1.08!important;letter-spacing:-.04em;color:#fff!important;font-weight:900!important}
+.hero h1 span{background:linear-gradient(90deg,#b9baff,#00dfff 55%,#ed9bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:0 0 20px!important;color:#f1f4ff!important;font-size:clamp(16px,1.4vw,22px)!important;line-height:1.42!important}
+.hero .benefits{display:flex;flex-wrap:wrap;gap:10px}
+.hero .benefits span{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid #a24fffaa;border-radius:99px;background:#11194f99;color:#fff!important;font-size:14px!important;font-weight:750;white-space:nowrap}
+.hero .benefits span:nth-child(2){border-color:#20cfffaa}.hero .benefits span:nth-child(3){border-color:#b04fffaa}
+.hero .benefits b{font-size:19px;color:#ffd52d}
+.hero-art{min-width:0;width:100%;display:grid;place-items:center}
+.hero-art svg{display:block;width:100%;max-width:570px;height:auto;overflow:visible}
+.workspace{width:100%;max-width:none!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr)!important;gap:20px!important;padding:20px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.workspace .panel{padding:23px!important;border:1px solid #087edb!important;border-radius:24px!important;background:radial-gradient(ellipse at 100% 0,#4c1b9a55,transparent 45%),linear-gradient(145deg,#0b2856,#07183c 70%,#10134c)!important;box-shadow:0 12px 35px #02091e88,inset 0 1px #5ce8ff55!important}
+.workspace .panel+.panel{border-left:1px solid #087edb!important;padding-left:23px!important}
+.workspace .step-title h2{color:#fff!important}.workspace .step-title p{color:#c5d7f7!important}
+.workspace .tabs{background:#071a46!important;border:1px solid #1555a1!important;border-radius:18px!important}
+.workspace .tab{color:#eaf2ff!important}
+.workspace .tab.active{background:linear-gradient(105deg,#00bde9,#354fff 60%,#c52cff)!important;color:#fff!important}
+.workspace .field label,.workspace .setting label{color:#f2f6ff!important}
+.workspace .field input,.workspace .setting select{background:#071b42!important;color:#fff!important;border:1px solid #1763b4!important}
+.workspace .checkline{background:#102c58!important;color:#eef6ff!important;border-color:#235c9a!important}
+.workspace .info{background:#102c58!important;color:#d8edff!important;border-color:#167fbd!important}
+.workspace .dropzone{background:linear-gradient(145deg,#0a214d,#10164c)!important;border-color:#8b9fff!important;color:#fff!important}
+.workspace .dropzone strong,.workspace .dropzone span,.workspace .dropzone small{color:#fff!important}
+.workspace .preview-card{background:#0b2149!important;border-color:#1d5e9f!important}
+.workspace .preview-head h3{color:#fff!important}.workspace .preview-meta{color:#d2e2ff!important}
+.workspace .preview-stage{background:repeating-conic-gradient(#1a3560 0 25%,#10264c 0 50%) 50%/20px 20px!important}
+.workspace .quality-value{background:#102c58!important;color:#fff!important}
+.workspace .action-btn{background:linear-gradient(105deg,#00bde9,#4051ff 58%,#cf22f3)!important;color:#fff!important;border:1px solid #54dfff!important}
+.preset-section,.info-section,.seo-card{width:100%;max-width:none!important}
+@media(max-width:1050px){.hero{grid-template-columns:minmax(0,1fr) minmax(280px,.75fr)}.hero-icon{width:112px;height:112px;flex-basis:112px}.hero-copy{gap:18px}.hero .benefits span{font-size:12px!important;padding:8px 11px}}
+@media(max-width:760px){.resize-breadcrumb{font-size:13px;gap:8px;flex-wrap:wrap}.hero{grid-template-columns:1fr;min-height:0;padding:22px!important}.hero-copy{gap:14px;align-items:flex-start}.hero-icon{width:70px;height:70px;flex-basis:70px;border-radius:18px!important}.hero h1{font-size:clamp(27px,7vw,38px)!important}.hero p{font-size:15px!important}.hero-art{max-width:420px;margin:0 auto}.hero-art svg{max-height:210px}.workspace{grid-template-columns:minmax(0,1fr)!important;padding:10px!important;gap:13px!important}.workspace .panel{padding:15px!important}.workspace .panel+.panel{border-left:1px solid #087edb!important;padding:15px!important}}
 </style></head><body>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
 <main>
-<section class="hero"><div class="hero-icon" aria-hidden="true"><svg viewBox="0 0 64 64" role="img" aria-label="Image resize icon"><defs><linearGradient id="resizeGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#72efff"/><stop offset="1" stop-color="#c7a2ff"/></linearGradient></defs><rect x="10" y="8" width="34" height="42" rx="6" fill="none" stroke="url(#resizeGlow)" stroke-width="3.5"/><path d="M20 39l8-10 6 7 5-6 7 9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 17h21v29H31" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M43 12l9 5-9 5M39 51l-8-5 8-5" fill="none" stroke="#75e7ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h1>Image Resize <span style="background:linear-gradient(90deg,#45dcff,#c69aff);-webkit-background-clip:text;background-clip:text;color:transparent">Studio</span></h1><p>Resize your photos for print, web and official documents with precision.</p><div class="benefits"><span>Fast &amp; Free</span><span>Keep Quality</span><span>Works Offline</span><span>No Upload</span></div></div></section>
+<nav class="resize-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ Home</a><span>›</span><a href="index.html#image-tools">Image Tools</a><span>›</span><strong>Image Resize</strong></nav>
+<section class="hero">
+ <div class="hero-copy">
+  <div class="hero-icon" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false"><defs><linearGradient id="resizeIconGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#11d9ff"/><stop offset=".55" stop-color="#4267ff"/><stop offset="1" stop-color="#d02aff"/></linearGradient></defs><rect x="3" y="3" width="94" height="94" rx="23" fill="url(#resizeIconGrad)"/><rect x="22" y="29" width="53" height="48" rx="5" fill="none" stroke="white" stroke-width="5"/><path d="m27 68 15-17 12 12 9-10 12 15" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 18h20v20M80 18 61 37M40 82H20V62M20 82l18-18" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="hero-text"><h1>Image Resize <span>&amp; Convert</span></h1><p>Resize, crop, convert and optimize your images<br class="desktop-break"> for print, online form or official use.</p>
+   <div class="benefits"><span><b>⚡</b> Fast &amp; Easy</span><span><b>♢</b> High Quality</span><span><b>▱</b> Multiple Formats</span></div>
+  </div>
+ </div>
+ <div class="hero-art" aria-hidden="true">
+  <svg viewBox="0 0 560 300" role="presentation" focusable="false">
+   <defs><linearGradient id="artFrame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d92bff"/><stop offset=".48" stop-color="#4b65ff"/><stop offset="1" stop-color="#00dfff"/></linearGradient><linearGradient id="artSky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#12baff"/><stop offset="1" stop-color="#1674dc"/></linearGradient><linearGradient id="artHill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#24e4a0"/><stop offset="1" stop-color="#078b73"/></linearGradient><filter id="artGlow"><feGaussianBlur stdDeviation="9"/></filter></defs>
+   <ellipse cx="285" cy="260" rx="245" ry="20" fill="#00cfff" opacity=".28" filter="url(#artGlow)"/><ellipse cx="285" cy="255" rx="245" ry="22" fill="none" stroke="#11cfff" stroke-width="3"/><ellipse cx="285" cy="250" rx="210" ry="15" fill="none" stroke="#b33bff" stroke-width="2" opacity=".9"/>
+   <g transform="translate(92 22) rotate(-10 135 110)" style="filter:drop-shadow(0 12px 14px #02082b99)"><rect x="0" y="0" width="250" height="205" rx="20" fill="url(#artFrame)"/><rect x="12" y="12" width="226" height="181" rx="13" fill="#fff"/><rect x="23" y="23" width="204" height="159" rx="8" fill="url(#artSky)"/><circle cx="180" cy="57" r="22" fill="#ffcf23"/><path d="M24 139 83 80l42 45 27-27 75 84H24z" fill="url(#artHill)"/><path d="m72 91 12-11 13 14-12-4-9 8zM133 105l18-18 15 17-15-5-10 12z" fill="#efffff"/></g>
+   <path d="M385 68q55-44 104 5" fill="none" stroke="#ffd32b" stroke-width="11" stroke-linecap="round"/><path d="m476 45 22 27-34 4" fill="none" stroke="#ffd32b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+   <g transform="translate(360 115) rotate(7 80 70)" style="filter:drop-shadow(0 10px 12px #02082b99)"><rect x="0" y="0" width="155" height="132" rx="16" fill="url(#artFrame)"/><rect x="9" y="9" width="137" height="114" rx="10" fill="#fff"/><rect x="17" y="17" width="121" height="98" rx="6" fill="url(#artSky)"/><circle cx="110" cy="42" r="13" fill="#ffcf23"/><path d="m17 91 37-40 29 30 18-17 37 40H17z" fill="url(#artHill)"/></g>
+   <g font-family="Arial,sans-serif" font-weight="800" text-anchor="middle"><rect x="145" y="218" width="115" height="34" rx="17" fill="#eafaff"/><text x="202" y="241" font-size="19" fill="#071b50">5.0 MB</text><rect x="402" y="237" width="105" height="34" rx="17" fill="#eafaff"/><text x="454" y="260" font-size="18" fill="#071b50">300 KB</text></g>
+  </svg>
+ </div>
+</section>
 <section class="workspace" aria-label="Image resizing tool">
 <div class="panel"><div class="step-title"><span class="step-number">1</span><div><h2>Upload Image</h2><p>Choose an image from your device</p></div></div>
 <input class="file-input" id="file" type="file" accept="image/jpeg,image/png,image/webp">
