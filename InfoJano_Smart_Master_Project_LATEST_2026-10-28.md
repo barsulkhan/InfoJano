@@ -1505,3 +1505,40 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - User requested that all 19 app designs be prepared now and implementation continue tomorrow. The blueprints are prepared in this checkpoint; the 19 HTML pages have NOT yet been redesigned or visually verified.
 - Current service-worker cache at this checkpoint: `infojano-v131`.
 - Social QR Studio implementation: page commits `a92f88b1e674871bec8018a7fdf83bb5e9ba411d`, `dffd08e8b6fab8fa7ce254fa9f5d9041e444294c`, follow-up header correction `09aff378c921d41ba7cdebf08a8df27c57b2796b`; cache commit `0d95ced4fd5785774b5b1ddeefa785bc5cf6205a`. Master checkpoint records the Link-in-Bio and business-card features; actual Android/QR tests remain pending.
+
+## URL Toolkit Premium Design — 3 November 2026
+
+### Implementation completed in repository
+- Started the 19-app premium design queue with `url-toolkit.html` as the first page.
+- Implemented a dedicated “URL Toolkit — Link Control Center” visual identity: deep navy/purple gradient hero, URL/browser illustration, floating accents, glass-style navigation, eight utility tabs, premium tool panels, responsive spacing and button/result states.
+- Added accessible tab behavior (ARIA tab roles, keyboard Left/Right/Home/End navigation) and subtle entrance/hover animations. Respects `prefers-reduced-motion`.
+- Preserved all eight existing tools and their original element IDs and calculation/processing functions: UTM Campaign URL Builder, URL Cleaner, Encoder/Decoder, Validator, Parser, Slug Generator, Query Builder and QR Generator.
+- Preserved existing page title, meta description, canonical URL, Open Graph/Twitter metadata, WebApplication JSON-LD, FAQ copy, QR library dependency and shared site header.
+- Did not add fake short-link generation or fake analytics. A real short-link backend is still a separate future integration and must be connected/tested before those capabilities are advertised.
+- URL Toolkit page commit: `b1ea3dab7fca9f99ed6e3b0063f113d4a10b95d4`.
+- Inline application JavaScript syntax validation: PASS (7,736-character inline script compiled successfully). The JSON-LD script was excluded from JavaScript parsing because it is JSON, not JavaScript.
+- Service worker cache bumped sequentially from `infojano-v131` to `infojano-v132`.
+- Service worker commit: `03c855e93debb17e3df93d640c25e3fecb0c8ec6`.
+- Repository source was re-fetched after each commit and checked. Android visual/interaction testing has NOT yet been performed; do not call this runtime-tested.
+- GitHub Pages deployment for the new URL Toolkit/cache commits is pending verification after this checkpoint.
+
+### Current design queue status
+- Total unique functional tool pages: 25.
+- Premium redesigns already completed before this session: 6.
+- URL Toolkit redesign now implemented in source: 1 additional page.
+- Remaining redesigns after URL Toolkit: 18.
+- The six previously completed tools remain: Image Resizer, Image to PDF Converter, Discount Calculator, Image Compressor, Normal QR Code Maker, and Social Media QR Maker / Social QR Studio.
+- Next page in the agreed queue: `age.html` — Age & Life Timeline. Inspect its current HTML and preserve its exact date math, birthday weekday, next-birthday behavior, existing input/validation, SEO and birthday celebration result panel before redesigning.
+
+### Android verification checklist for URL Toolkit
+1. Open `https://barsulkhan.github.io/InfoJano/url-toolkit.html` after the Pages deployment succeeds; close/reopen or refresh the browser tab to clear stale service-worker content.
+2. Test all eight tabs, including horizontal tab scrolling and keyboard accessibility where available.
+3. Verify UTM creation, tracking-parameter cleaning, encode/decode, URL validation, URL parsing, slug generation, query building, QR generation and PNG download.
+4. Confirm existing results copy correctly and QR image renders; report any issue with a screenshot.
+5. These user-side checks are still pending; no Android runtime success is claimed.
+
+### Current checkpoint — 3 November 2026
+- Service worker cache: `infojano-v132`.
+- URL Toolkit source commit: `b1ea3dab7fca9f99ed6e3b0063f113d4a10b95d4`.
+- Service worker commit: `03c855e93debb17e3df93d640c25e3fecb0c8ec6`.
+- Remaining design queue: 18 apps, starting with Age Calculator.
