@@ -1542,3 +1542,24 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - URL Toolkit source commit: `b1ea3dab7fca9f99ed6e3b0063f113d4a10b95d4`.
 - Service worker commit: `03c855e93debb17e3df93d640c25e3fecb0c8ec6`.
 - Remaining design queue: 18 apps, starting with Age Calculator.
+
+## Image Resizer Premium Visual Refresh — 3 November 2026
+
+- User approved applying the second dark navy / electric blue / purple neon Image Resizer mockup to the live website source.
+- Updated `image-resizer.html` with a premium midnight-neon visual system: dark gradient background, illuminated hero, glass-like upload/preview and settings panels, vivid active tabs, dark high-contrast fields, neon action buttons, premium preset cards, responsive mobile layout and reduced-motion handling.
+- Preserved the official InfoJano brand assets. The hero icon now uses the existing `/InfoJano/infojano-mark.svg`; shared site header and existing `infojano-logo.svg` references remain. No new logo artwork or logo recoloring was introduced.
+- Preserved existing resize functionality and processing flow: JPG/PNG/WebP upload, 10 MB file guard, drag-and-drop, preview, original dimensions and file size, custom pixel dimensions, aspect-ratio lock, percentage mode, preset selection, quality control, canvas resizing, download output and clear/reset behavior.
+- Preserved existing SEO title/description/canonical/Open Graph/Twitter/JSON-LD, install card, manifest, analytics, related links, FAQ, download-progress, install and shared-header scripts.
+- Image Resizer source commit: `c2b25585ff9c41bb604e64acb8ec3222458dea97`.
+- Service worker cache bumped sequentially from `infojano-v132` to `infojano-v133`.
+- Service worker commit: `72881bb77ba1b59b03a11b60d1e29105bbfe1c5a`.
+- Syntax validation: all inline JavaScript blocks PASS; JSON-LD correctly excluded from JavaScript parsing. Duplicate HTML IDs: none. Core resize functions and canvas export flow remain present.
+- This is a visual refresh of the already-counted Image Resizer app; it does not increase the unique-app completion count.
+- Android runtime / visual / download testing has NOT been performed by the assistant. Do not label this runtime-tested.
+- Deployment of the Image Resizer and cache commits must be checked in GitHub Actions before confirming the updated live page.
+
+### Current checkpoint update — 3 November 2026
+- URL Toolkit premium redesign source: `b1ea3dab7fca9f99ed6e3b0063f113d4a10b95d4`; cache update `03c855e93debb17e3df93d640c25e3fecb0c8ec6`.
+- Image Resizer premium visual refresh source: `c2b25585ff9c41bb604e64acb8ec3222458dea97`; cache update `72881bb77ba1b59b03a11b60d1e29105bbfe1c5a`.
+- Current cache: `infojano-v133`.
+- Current next unique app in the remaining design queue: `age.html` — Age & Life Timeline.
