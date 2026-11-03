@@ -107,6 +107,28 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
  .presets .preset{padding:6px 8px!important}
 }
 
+
+/* Currency hero refinement for tablet and phone widths */
+@media(max-width:1100px){
+ .hero{grid-template-columns:1fr!important;min-height:0!important;padding:25px 24px!important;text-align:center!important;gap:0!important}
+ .hero-art{display:none!important}
+ .hero-copy{width:100%;max-width:900px;margin:0 auto!important}
+ .hero-copy:before{content:"🌍　💱　💹";display:block;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:0 auto 10px;filter:drop-shadow(0 4px 8px #00dfff88)}
+ .eyebrow{font-size:12px!important;padding:6px 14px!important}
+ .hero h1{font-size:clamp(38px,6vw,54px)!important;line-height:1.08!important;margin:12px 0 9px!important;letter-spacing:-1.1px!important}
+ .hero p{font-size:clamp(14px,2vw,17px)!important;line-height:1.4!important;max-width:760px;margin:0 auto 16px!important}
+ .perks{justify-content:center!important;gap:9px!important}
+ .perk{font-size:12px!important;padding:8px 13px!important}
+}
+@media(max-width:620px){
+ .hero{padding:21px 13px!important;min-height:0!important;border-radius:22px!important}
+ .hero:before{border-radius:22px!important}
+ .hero-copy:before{font-size:34px!important;margin-bottom:9px!important}
+ .hero h1{font-size:clamp(34px,9vw,43px)!important;margin:9px 0 8px!important}
+ .hero p{font-size:13px!important;margin-bottom:13px!important}
+ .perks{gap:6px!important}
+ .perk{font-size:10px!important;padding:7px 9px!important}
+}
 </style>
 </head>
 <body>
@@ -157,7 +179,7 @@ const currencyData=[
 ["USD","US Dollar","🇺🇸"],["INR","Indian Rupee","🇮🇳"],["EUR","Euro","🇪🇺"],["GBP","British Pound","🇬🇧"],["BDT","Bangladeshi Taka","🇧🇩"],["AED","UAE Dirham","🇦🇪"],["JPY","Japanese Yen","🇯🇵"],["CAD","Canadian Dollar","🇨🇦"],["AUD","Australian Dollar","🇦🇺"],["SGD","Singapore Dollar","🇸🇬"],["CHF","Swiss Franc","🇨🇭"],["CNY","Chinese Yuan","🇨🇳"],["SAR","Saudi Riyal","🇸🇦"],["QAR","Qatari Riyal","🇶🇦"],["KWD","Kuwaiti Dinar","🇰🇼"],["OMR","Omani Rial","🇴🇲"],["MYR","Malaysian Ringgit","🇲🇾"],["THB","Thai Baht","🇹🇭"],["IDR","Indonesian Rupiah","🇮🇩"],["PKR","Pakistani Rupee","🇵🇰"],["NPR","Nepalese Rupee","🇳🇵"],["LKR","Sri Lankan Rupee","🇱🇰"],["NZD","New Zealand Dollar","🇳🇿"],["ZAR","South African Rand","🇿🇦"],["TRY","Turkish Lira","🇹🇷"],["RUB","Russian Ruble","🇷🇺"],["KRW","South Korean Won","🇰🇷"],["HKD","Hong Kong Dollar","🇭🇰"],["MXN","Mexican Peso","🇲🇽"],["BRL","Brazilian Real","🇧🇷"],["SEK","Swedish Krona","🇸🇪"],["NOK","Norwegian Krone","🇳🇴"],["DKK","Danish Krone","🇩🇰"],["EGP","Egyptian Pound","🇪🇬"],["ILS","Israeli New Shekel","🇮🇱"],["PHP","Philippine Peso","🇵🇭"],["VND","Vietnamese Dong","🇻🇳"],["NGN","Nigerian Naira","🇳🇬"],["KES","Kenyan Shilling","🇰🇪"],["GHS","Ghanaian Cedi","🇬🇭"],["PLN","Polish Zloty","🇵🇱"],["CZK","Czech Koruna","🇨🇿"],["HUF","Hungarian Forint","🇭🇺"],["ARS","Argentine Peso","🇦🇷"],["CLP","Chilean Peso","🇨🇱"]];
 const byCode=Object.fromEntries(currencyData.map(x=>[x[0],x]));
 const fromEl=document.getElementById('from'),toEl=document.getElementById('to'),amountEl=document.getElementById('amount');
-function fillSelect(el,selected){el.innerHTML=currencyData.map(([c,n,f])=>'<option value="'+c+'" '+(c===selected?'selected':'')+''+c+' – '+n+'</option>').join('')}
+function fillSelect(el,selected){el.innerHTML=currencyData.map(([c,n,f])=>'<option value="'+c+'" '+(c===selected?'selected':'')+'>'+f+'　'+c+' – '+n+'</option>').join('')}
 fillSelect(fromEl,'USD');fillSelect(toEl,'INR');
 let rates={},lastUpdated='',currentBase='',lastResultText='';
 const popular=['INR','EUR','GBP','JPY','BDT'];
