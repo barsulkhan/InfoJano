@@ -389,6 +389,19 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
   .ij-result-stats{grid-column:1/-1}
 }
 
+.ij-icon{width:1.12em;height:1.12em;display:inline-block;vertical-align:-.18em;flex:0 0 auto;stroke:currentColor;}
+.ij-hero-pills span{display:inline-flex;align-items:center;gap:8px;}
+.ij-hero-pills .ij-icon{width:17px;height:17px;}
+.ij-benefit i{display:flex;align-items:center;justify-content:center;font-style:normal;}
+.ij-benefit .ij-icon{width:25px;height:25px;}
+.ij-settings-title>span{display:inline-flex;align-items:center;vertical-align:middle;}
+.ij-settings-title .ij-icon{width:24px;height:24px;}
+.ij-mode-switch button{display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+.ij-mode-switch .ij-icon{width:18px;height:18px;}
+.ij-action,.ij-download-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;}
+.ij-action .ij-icon,.ij-download-link .ij-icon{width:20px;height:20px;}
+.ij-smart-note>span:first-child{display:inline-flex;align-items:center;}
+.ij-smart-note .ij-icon{width:20px;height:20px;}
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -437,7 +450,7 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
     <div class="ij-hero-kicker">SMART IMAGE OPTIMIZER</div>
     <h1>Image <span>Compressor</span></h1>
     <p>Reduce image size, keep good quality</p>
-    <div class="ij-hero-pills"><span>⚡ Fast</span><span>🔒 Private</span><span>✓ Free</span></div>
+    <div class="ij-hero-pills"><span><svg class="ij-icon ij-icon-speed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17a9 9 0 1 1 16 0"/><path d="m12 13 4-4"/><path d="M7 17h10"/></svg> Fast</span><span><svg class="ij-icon ij-icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/><path d="M12 14v3"/></svg> Private</span><span><svg class="ij-icon ij-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg> Free</span></div>
   </div>
   <div class="ij-hero-visuals" aria-hidden="true">
     <div class="ij-hero-photo photo-one"><svg viewBox="0 0 160 100"><rect width="160" height="100" rx="12" fill="#69c9ff"/><circle cx="125" cy="20" r="11" fill="#ffe38c"/><path d="M0 68 38 25l26 34 28-42 68 55v28H0" fill="#477eaa"/><path d="m20 47 18-22 26 34-18-9-10 6zM70 53 92 17l32 42-25-15-12 8z" fill="#fff"/><path d="M0 72q40-14 80 0t80 0v28H0" fill="#087f8b"/><path d="M0 82q40-8 80 0t80 0v18H0" fill="#0876b5"/></svg></div>
@@ -451,7 +464,7 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 <div class="ij-upload-side">
 <label class="ij-upload-label" for="file">Upload your image</label>
 <div class="ij-upload-zone" id="ijDropZone">
-<div class="ij-upload-icon" aria-hidden="true">⇧</div>
+<div class="ij-upload-icon" aria-hidden="true"><svg class="ij-icon ij-icon-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 20h14"/></svg></div>
 <strong>Choose your image</strong>
 <small>Drag and drop or select a file from your device</small>
 <input id="file" type="file" accept="image/*" aria-describedby="upload-help">
@@ -463,11 +476,11 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 </div>
 <div class="ij-settings-side">
 <div class="ij-mode-switch" role="tablist" aria-label="Compression mode">
-<button type="button" id="smartModeTab" role="tab" aria-selected="true" aria-controls="smartModePanel">⚡ Smart Mode</button>
-<button type="button" id="advancedModeTab" role="tab" aria-selected="false" aria-controls="advancedModePanel">☷ Advanced Mode</button>
+<button type="button" id="smartModeTab" role="tab" aria-selected="true" aria-controls="smartModePanel"><svg class="ij-icon ij-icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13h6l-.5 9L19.5 10h-6z"/></svg> Smart Mode</button>
+<button type="button" id="advancedModeTab" role="tab" aria-selected="false" aria-controls="advancedModePanel"><svg class="ij-icon ij-icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.5.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.5-.9l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.8l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.5-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.5.9l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8z"/></svg> Advanced Mode</button>
 </div>
 <div id="smartModePanel" class="ij-mode-panel" role="tabpanel" aria-labelledby="smartModeTab">
-<h2 class="ij-settings-title"><span>◎</span> Target File Size <small>(Easy & Automatic)</small></h2>
+<h2 class="ij-settings-title"><span><svg class="ij-icon ij-icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span> Target File Size <small>(Easy & Automatic)</small></h2>
 <div class="ij-preset-buttons" role="group" aria-label="Quick target file size">
 <button type="button" data-target-size="20" aria-pressed="false">20 KB</button><button type="button" data-target-size="50" aria-pressed="false">50 KB</button><button type="button" data-target-size="100" aria-pressed="false">100 KB</button><button type="button" data-target-size="200" aria-pressed="false">200 KB</button><button type="button" data-target-size="500" aria-pressed="false">500 KB</button><button type="button" data-target-size="1000" aria-pressed="false">1 MB</button>
 </div>
@@ -499,10 +512,10 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 </div>
 <p class="ij-advanced-help">Advanced settings give you direct control. If you also enter a target KB above, Smart Target Size takes priority for reaching that limit.</p>
 </div>
-<div class="ij-smart-note"><span>✦</span><span><strong>Smart Compress</strong> automatically tests formats, quality and image dimensions to find the best result within your target size.</span></div>
-<button id="compress" class="ij-action" type="button"><span id="compressIcon" aria-hidden="true">⚙</span> <span id="compressLabel">Compress Image</span></button>
+<div class="ij-smart-note"><span><svg class="ij-icon ij-icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg></span><span><strong>Smart Compress</strong> automatically tests formats, quality and image dimensions to find the best result within your target size.</span></div>
+<button id="compress" class="ij-action" type="button"><span id="compressIcon" aria-hidden="true"><svg class="ij-icon ij-icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.5.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.5-.9l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.8l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.5-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.5.9l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8z"/></svg></span> <span id="compressLabel">Compress Image</span></button>
 <div id="status" role="status" aria-live="polite"></div>
-<a id="download" class="ij-download-link" hidden download="infojano-compressed.jpg"><span id="downloadIcon" class="ij-download-icon" aria-hidden="true">↓</span><span id="downloadLabel">Download compressed image</span></a>
+<a id="download" class="ij-download-link" hidden download="infojano-compressed.jpg"><span id="downloadIcon" class="ij-download-icon" aria-hidden="true"><svg class="ij-icon ij-icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></span><span id="downloadLabel">Download compressed image</span></a>
 </div>
 </section>
 <section id="ijActualResult" class="ij-result-panel" aria-live="polite" hidden>
@@ -515,14 +528,14 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 </section>
 
 <div class="ij-benefits">
-<div class="ij-benefit"><i>▧</i><b>Smart Target Size</b><p>Choose 20 KB, 50 KB or 100 KB. We handle the rest.</p></div>
-<div class="ij-benefit"><i>◇</i><b>Better Quality</b><p>Finds a high-quality result within your size limit.</p></div>
-<div class="ij-benefit"><i>♙</i><b>Private by Design</b><p>Your images are processed in your browser.</p></div>
-<div class="ij-benefit"><i>⚡</i><b>Fast & Free</b><p>No signup or registration required.</p></div>
+<div class="ij-benefit"><i><svg class="ij-icon ij-icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></i><b>Smart Target Size</b><p>Choose 20 KB, 50 KB or 100 KB. We handle the rest.</p></div>
+<div class="ij-benefit"><i><svg class="ij-icon ij-icon-quality" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.2 4.5L19 9l-3.5 3.5.8 5-4.3-2.3-4.3 2.3.8-5L5 9l4.8-1.5z"/><path d="m9 12 2 2 4-4"/></svg></i><b>Better Quality</b><p>Finds a high-quality result within your size limit.</p></div>
+<div class="ij-benefit"><i><svg class="ij-icon ij-icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></i><b>Private by Design</b><p>Your images are processed in your browser.</p></div>
+<div class="ij-benefit"><i><svg class="ij-icon ij-icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13h6l-.5 9L19.5 10h-6z"/></svg></i><b>Fast & Free</b><p>No signup or registration required.</p></div>
 </div>
 <div class="ij-content-grid">
-<section class="ij-info-card"><h2>▶ How to Compress an Image</h2><ol><li>Upload your image from your phone or computer.</li><li>Choose a target size such as 20 KB or 100 KB.</li><li>Click Compress Image and let Smart Compress work.</li><li>Download your optimized image.</li></ol></section>
-<section class="ij-info-card"><h2>✦ Why Use InfoJano?</h2><ul><li>Reach a target file size automatically when possible.</li><li>Preserve the best practical quality for the selected limit.</li><li>Works on mobile and desktop browsers.</li><li>No account or registration required.</li><li>Your image stays on your device.</li></ul></section>
+<section class="ij-info-card"><h2><svg class="ij-icon ij-icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg> How to Compress an Image</h2><ol><li>Upload your image from your phone or computer.</li><li>Choose a target size such as 20 KB or 100 KB.</li><li>Click Compress Image and let Smart Compress work.</li><li>Download your optimized image.</li></ol></section>
+<section class="ij-info-card"><h2><svg class="ij-icon ij-icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg> Why Use InfoJano?</h2><ul><li>Reach a target file size automatically when possible.</li><li>Preserve the best practical quality for the selected limit.</li><li>Works on mobile and desktop browsers.</li><li>No account or registration required.</li><li>Your image stays on your device.</li></ul></section>
 </div>
 
 <section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
