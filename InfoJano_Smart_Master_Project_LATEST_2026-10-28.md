@@ -1572,3 +1572,15 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service worker cache bumped sequentially from `infojano-v133` to `infojano-v134`.
 - Service worker commit: `bc0d2b8586713e6452a053e4090b4a194b6b6168`.
 - JavaScript syntax validation: 2 inline JS blocks PASS; JSON-LD excluded correctly. Runtime visual test on user's desktop remains pending.
+
+## Image Resizer — Brand Icon and Popular Sizes Correction — 3 November 2026
+- Reviewed the user's desktop screenshots. Confirmed the previous implementation incorrectly placed the InfoJano brand mark inside the Image Resize Studio hero, and several preset icons relied on emoji/font glyphs that rendered as missing/tofu symbols on the user's Windows/Chrome display.
+- Removed the InfoJano brand logo from the Image Resize Studio hero. Replaced it with a dedicated inline SVG illustration showing an image frame and resize arrows; this is a tool-specific icon, not a new site logo.
+- Replaced all 15 Popular Sizes preset emoji/glyphs with explicit inline SVG line icons (profile, social image, video, display, web, document, print, ID/passport and custom dimensions), independent of installed emoji fonts.
+- Restyled the Popular Sizes area and preset tiles to match the dark navy / blue / purple premium design shown in the visual reference, with consistent icon size, readable labels, and responsive 5/3/2-column grids.
+- Existing preset labels, dimensions, `data-w`, `data-h`, and click behavior preserved; no resize calculations or processing logic changed.
+- Source commit: `3940395020998f6fa6a64d97cbbe30c0d5afb5f2`.
+- Service worker cache bumped from `infojano-v134` to `infojano-v135`.
+- Service worker commit: `b7cfd0bcb60f2331f6f59a4fd23bf8464ae247fd`.
+- JavaScript syntax checks: 2 inline JS blocks PASS; JSON-LD excluded from JS parsing.
+- Desktop visual verification on user's Windows/Chrome display is still pending; do not claim runtime-tested until user confirms.
