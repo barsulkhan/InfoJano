@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v173";
+const CACHE_NAME = "infojano-v174";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -121,7 +121,7 @@ self.addEventListener("fetch", (event) => {
   // For page navigation, prefer fresh content but show the exact cached page offline.
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
+      fetch(request, { cache: "no-store" })
         .then((response) => {
           if (response.ok) {
             const copy = response.clone();
