@@ -1596,3 +1596,14 @@ This is a count of distinct tools worked on, not a fresh inventory of every tool
 - Service worker commit: `eae07e9f7398f4420869074e4d0a42b2a2bbc842`.
 - JavaScript syntax: 2 inline JavaScript blocks PASS; JSON-LD excluded from JavaScript validation.
 - User's Windows/Chrome visual confirmation remains pending; deployment status must be checked before claiming the live page has updated.
+
+## Image Resize & Convert — Approved Reference Design Applied — 3 November 2026
+- User supplied a specific reference banner and explicitly requested the website be built to match it. Implemented the approved composition directly in `image-resizer.html`; did not merely generate/show another mockup.
+- Added breadcrumb navigation, custom inline-SVG Image Resize tool icon (not the InfoJano brand logo), large “Image Resize & Convert” hero title, benefit pills, and a right-side original-to-smaller image conversion illustration with file-size labels.
+- Applied the matching deep navy / electric blue / purple neon palette to the upload and settings workspace, including high-contrast text and controls. Preserved the existing full-width desktop layout and responsive single-column mobile behavior.
+- Existing image upload, preview, dimension fields, aspect-ratio lock, custom/preset/percentage modes, output formats, quality slider, canvas resize/download logic and Popular Sizes presets are retained. No image processing logic intentionally changed.
+- Page source commit: `036f1cbb306f6b9fc1275d76c3cff131f85a265e`.
+- Service worker cache bumped from `infojano-v136` to `infojano-v137`.
+- Service worker commit: `329c08236979de3f04ccb22547cacaff6e45cd25`.
+- JavaScript syntax validation: 2 inline JS blocks PASS; JSON-LD excluded correctly.
+- Desktop visual/runtime test in user's browser remains pending; do not claim runtime-tested.
