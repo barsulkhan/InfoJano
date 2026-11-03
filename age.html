@@ -196,6 +196,34 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
 @keyframes ijAgeNeonOrbit{to{--ij-age-neon-angle:360deg}}
 @media(prefers-reduced-motion:reduce){.ij-age-main > section.ij-age-hero{animation:none!important}}
 
+
+/* Age Calculator lower content polish: vivid icons, readable guidance and related-tool tiles */
+.ij-age-main .card{border:1px solid #dce8fb!important;box-shadow:0 9px 26px rgba(28,66,130,.08)!important}
+.ij-age-main .card>h1,.ij-age-main .card>h2{color:#142b50!important;letter-spacing:-.45px}
+.ij-age-main .card>h2{display:flex!important;align-items:center!important;gap:11px!important;margin-bottom:14px!important}
+.ij-age-main .card>h2:before{content:"✦";display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#087cf0,#6155e8);color:#fff;font-size:17px;box-shadow:0 5px 13px #2563eb35}
+.ij-age-main .card h3{display:flex!important;align-items:center!important;gap:9px!important;color:#1e477b!important;margin-top:18px!important}
+.ij-age-main .card h3:before{content:"◈";display:grid;place-items:center;flex:0 0 27px;width:27px;height:27px;border-radius:9px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;font-size:15px}
+.ij-age-main .card>p{color:#536783!important;line-height:1.75!important}
+.ij-age-main .card>p strong{color:#264b7d!important}
+.ij-age-main .history-heading{display:flex!important;align-items:center!important;gap:12px!important}
+.ij-age-main .history-icon{display:grid!important;place-items:center!important;flex:0 0 44px!important;width:44px!important;height:44px!important;border-radius:14px!important;background:linear-gradient(135deg,#0ea5e9,#2563eb)!important;color:#fff!important;box-shadow:0 6px 15px #0284c733!important}
+.ij-age-main .history-heading h2{color:#17345e!important;font-weight:900!important}
+.ij-age-main .history-heading p,.ij-age-main .history-status{color:#5c7090!important}
+.ij-age-main .history-events{color:#304969!important}
+.ij-age-main .history-source{color:#64748b!important}
+.ij-age-main #related-tools-title>span:first-child{background:linear-gradient(135deg,#f59e0b,#f97316)!important;color:#fff!important;box-shadow:0 5px 14px #f9731638!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a{border-color:#d6e4f8!important;box-shadow:0 5px 16px #1e4b8310!important;transition:transform .2s ease,box-shadow .2s ease!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a:hover{transform:translateY(-3px)!important;box-shadow:0 10px 22px #1e4b8320!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a>span:first-child{color:#fff!important;border:1px solid #ffffffa0!important;box-shadow:0 5px 12px #173b7720!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a:nth-child(1)>span:first-child{background:linear-gradient(135deg,#0ea5e9,#2563eb)!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a:nth-child(2)>span:first-child{background:linear-gradient(135deg,#22c55e,#0d9488)!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a:nth-child(3)>span:first-child{background:linear-gradient(135deg,#f59e0b,#ea580c)!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a:nth-child(4)>span:first-child{background:linear-gradient(135deg,#a855f7,#6366f1)!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a>strong{color:#18365f!important;font-weight:850!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a>span:nth-of-type(2){color:#5c7090!important}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a>span:last-child{color:#1765c7!important}
+@media(prefers-reduced-motion:reduce){.ij-age-main section[aria-labelledby="related-tools-title"]>div>a{transition:none!important}}
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
 
