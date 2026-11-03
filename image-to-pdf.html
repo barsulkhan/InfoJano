@@ -240,6 +240,27 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 }
 </style>
 
+<style id="ij-benefit-svg-fix">
+/* Real inline SVG icons for every hero benefit chip */
+.ij-pdf-hero .ij-hero-benefits .ij-benefit{
+ display:inline-flex!important;align-items:center!important;gap:8px!important;
+ min-height:38px;padding:7px 12px!important;border-radius:999px!important;
+ font-size:12px!important;font-weight:850!important;line-height:1.2!important;
+}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit svg{
+ display:block!important;width:19px!important;height:19px!important;
+ min-width:19px!important;flex:0 0 19px!important;overflow:visible!important;
+}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-fast{color:#e7f8ff!important;border-color:#4bdcff!important;background:linear-gradient(110deg,rgba(0,190,255,.34),rgba(39,102,255,.24))!important}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-fast svg{color:#43dcff!important;filter:drop-shadow(0 0 5px #31d7ff99)}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-quality{color:#eafff5!important;border-color:#58edaa!important;background:linear-gradient(110deg,rgba(20,205,125,.34),rgba(0,150,120,.22))!important}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-quality svg{color:#4af0a5!important;filter:drop-shadow(0 0 5px #36e9a088)}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-offline{color:#fff7e9!important;border-color:#ffc46d!important;background:linear-gradient(110deg,rgba(255,153,36,.34),rgba(242,85,122,.22))!important}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-offline svg{color:#ffc15c!important;filter:drop-shadow(0 0 5px #ffb84c99)}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-private{color:#f8efff!important;border-color:#d39aff!important;background:linear-gradient(110deg,rgba(156,76,255,.36),rgba(85,71,225,.24))!important}
+.ij-pdf-hero .ij-hero-benefits .ij-benefit-private svg{color:#d7a0ff!important;filter:drop-shadow(0 0 5px #c47cff99)}
+@media(max-width:520px){.ij-pdf-hero .ij-hero-benefits .ij-benefit{min-height:34px;padding:6px 8px!important;gap:6px!important}.ij-pdf-hero .ij-hero-benefits .ij-benefit svg{width:16px!important;height:16px!important;min-width:16px!important;flex-basis:16px!important}}
+</style>
 </head>
 <body data-ij-hide-related-apps="true">
 <div class="ij-page-shell">
@@ -250,7 +271,12 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <div class="ij-art-photo"><svg viewBox="0 0 64 64" role="img" aria-label="JPG image file"><rect x="9" y="5" width="46" height="54" rx="8" fill="#fff" stroke="#1675e8" stroke-width="2.5"/><rect x="15" y="12" width="34" height="27" rx="4" fill="#dbeafe"/><circle cx="39" cy="20" r="4" fill="#fbbf24"/><path d="M17 35l10-11 7 7 5-5 10 9" fill="none" stroke="#0b82c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="15" y="44" width="34" height="10" rx="4" fill="#0873df"/><text x="32" y="52" text-anchor="middle" font-size="8" font-weight="900" fill="#fff">JPG</text></svg></div>
 <span class="ij-art-arrow" aria-hidden="true">➜</span>
 <div class="ij-art-file"><svg viewBox="0 0 64 64" role="img" aria-label="PDF document"><path d="M14 4h25l13 13v42H14z" fill="#fff" stroke="#e33462" stroke-width="2.5" stroke-linejoin="round"/><path d="M39 4v14h13" fill="#ffe2eb" stroke="#e33462" stroke-width="2.5" stroke-linejoin="round"/><rect x="9" y="27" width="46" height="19" rx="5" fill="#e52e67"/><text x="32" y="40" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">PDF</text><path d="M21 52h22" stroke="#f3a2b7" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
-<div class="ij-hero-copy"><span class="ij-kicker">FREE ONLINE TOOL</span><h1>Image to PDF Converter</h1><p>Convert JPG, PNG and other images into one PDF file in seconds.</p><div class="ij-hero-benefits"><span>⚡ Fast &amp; Free</span><span>🛡️ Keep Quality</span><span>📶 Works Offline</span><span>🔒 No Upload</span></div></div>
+<div class="ij-hero-copy"><span class="ij-kicker">FREE ONLINE TOOL</span><h1>Image to PDF Converter</h1><p>Convert JPG, PNG and other images into one PDF file in seconds.</p><div class="ij-hero-benefits">
+<span class="ij-benefit ij-benefit-fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 2.5 5.8 13h5l-.8 8.5L18.5 10h-5.2l-.1-7.5Z" fill="currentColor" stroke="currentColor" stroke-linejoin="round"/></svg>Fast &amp; Free</span>
+<span class="ij-benefit ij-benefit-quality"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 19.5 5v6.1c0 5-3.2 8.3-7.5 10.4-4.3-2.1-7.5-5.4-7.5-10.4V5L12 2.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.3 11.8 2.4 2.4 5-5.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Keep Quality</span>
+<span class="ij-benefit ij-benefit-offline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.8 9.2a14 14 0 0 1 18.4 0M6.3 12.8a8.7 8.7 0 0 1 11.4 0M9.8 16.3a3.6 3.6 0 0 1 4.4 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="20" r="1.4" fill="currentColor"/></svg>Works Offline</span>
+<span class="ij-benefit ij-benefit-private"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="15" r="1.3" fill="currentColor"/></svg>No Upload</span>
+</div></div>
 </section>
 <section class="ij-builder" aria-label="Image to PDF converter">
 <div class="ij-step-head"><span class="ij-step-no">1</span><div><h2>Select Images</h2><p>Choose one or more images from your device</p></div></div>
