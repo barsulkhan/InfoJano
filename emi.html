@@ -9,6 +9,10 @@
 <meta property="og:type" content="website"><meta property="og:title" content="EMI Calculator | InfoJano"><meta property="og:description" content="Calculate loan EMI, interest and repayment schedule."><meta property="og:url" content="https://barsulkhan.github.io/InfoJano/emi.html"><meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="EMI Calculator | InfoJano"><meta name="twitter:description" content="Calculate loan EMI, interest and repayment schedule.">
 <link rel="manifest" href="/InfoJano/app-manifests/emi.webmanifest">
+<script>/* Ensure installed browsers promptly pick up the current EMI hero design. */
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.getRegistration('/InfoJano/').then(reg=>reg&&reg.update()).catch(()=>{}));}
+</script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"InfoJano EMI Calculator","url":"https://barsulkhan.github.io/InfoJano/emi.html","description":"Calculate monthly loan EMI, total interest and total repayment.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does EMI mean?","acceptedAnswer":{"@type":"Answer","text":"EMI means Equated Monthly Instalment, a regular monthly loan payment."}},{"@type":"Question","name":"Does a longer tenure reduce EMI?","acceptedAnswer":{"@type":"Answer","text":"A longer tenure usually reduces the monthly EMI but may increase total interest."}},{"@type":"Question","name":"Are the results a bank offer?","acceptedAnswer":{"@type":"Answer","text":"No. Results are estimates and actual lender fees and loan terms may differ."}}]}]}</script>
 <style>
@@ -28,7 +32,7 @@ main{width:min(100% - 52px,1680px);margin:0 auto 44px}.ij-breadcrumb{display:fle
 .emi-scene-art{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 0 0 48%);filter:drop-shadow(0 7px 10px #0008);animation:emiSceneFloat 6s ease-in-out infinite}
 .emi-orbit{position:absolute;width:220px;height:220px;border:1px solid #73eaff38;border-radius:50%;top:50%;transform:translateY(-50%);box-shadow:0 0 20px #1cecff24}
 .emi-orbit-one{left:55%}.emi-orbit-two{right:3%}
-.emi-hero-copy{position:relative;z-index:5;width:53%;margin-left:8.5%;text-align:left;padding:15px 0;text-shadow:0 2px 10px #06113c}
+.emi-hero-copy{position:relative;z-index:5;width:53%;margin-left:8.5%;text-align:left;padding:15px 0;text-shadow:none}
 .emi-hero-kicker{display:inline-block;padding:7px 17px;border:1px solid #d7a5ff99;border-radius:30px;background:linear-gradient(90deg,#a000f5,#6514ca);color:#fff;font-size:12px;font-weight:900;letter-spacing:.5px;box-shadow:0 0 15px #c445ff80}
 .emi-hero-copy h1{margin:8px 0 4px;color:#fff;font-size:clamp(34px,4.7vw,70px);font-weight:950;letter-spacing:-2px;line-height:1.02}
 .emi-hero-copy h1 span{background:linear-gradient(90deg,#ffe34e,#ffb900,#fff07a);-webkit-background-clip:text;background-clip:text;color:transparent}
