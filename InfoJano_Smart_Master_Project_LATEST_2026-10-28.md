@@ -1704,3 +1704,13 @@ User instruction: Treat desktop experience as the primary design target because 
 - Service worker cache bumped from infojano-v143 to infojano-v144; commit 06fead449655953f6501c46244b6f0e91b856a51.
 - Deployment and actual browser animation verification pending. Note: OS/browser reduced-motion accessibility preference intentionally disables decorative animations.
 - Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
+
+
+## Image Resize & Converter — full-width desktop correction — 3 November 2026
+- User provided a Windows desktop screenshot and correctly identified that Image Resize & Converter was still rendering as a narrow centered column, unlike Image Compressor.
+- Root cause: later CSS overrides reintroduced a centered width calculation and constrained page content despite earlier broad-width rules. Added a final high-specificity desktop media-query override using viewport width minus 64px, 32px side margins, full-width hero/workspace/preset/info/SEO sections, and a wide two-column upload/settings workspace. Kept mobile layout fluid and single-column.
+- Source commit: `2b54977435c6a961f03200e543232bdef2054e6b`.
+- Service worker cache bumped from infojano-v144 to infojano-v145; commit eda72c9f372ee9e55874c14e6dfb8ac26c569888.
+- Master checkpoint recorded. Deployment and user's visual confirmation pending; no claim of browser-tested result.
+- Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
+- Actions: https://github.com/barsulkhan/InfoJano/actions
