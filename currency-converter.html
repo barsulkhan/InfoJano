@@ -1,225 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics 4: InfoJano -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Currency Converter: Calculate Exchange Rates Online | InfoJano</title>
-<meta name="description" content="Convert one currency to another with this free online currency converter. Enter the exchange rate you want to use to calculate an estimated conversion.">
+<title>Live Currency Converter - Exchange Rates for 170+ Currencies | InfoJano</title>
+<meta name="description" content="Convert currencies with latest available exchange rates. Compare 170+ currencies, view popular live rates and calculate conversions with InfoJano's free currency converter.">
 <link rel="canonical" href="https://barsulkhan.github.io/InfoJano/currency-converter.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Currency Converter: Calculate Exchange Rates Online | InfoJano">
-<meta property="og:description" content="Convert one currency to another with this free online currency converter. Enter the exchange rate you want to use to calculate an estimated conversion.">
-<meta property="og:url" content="https://barsulkhan.github.io/InfoJano/currency-converter.html">
-<meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
-<meta property="og:image:alt" content="InfoJano useful online tools">
-<meta name="twitter:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
+<meta property="og:type" content="website"><meta property="og:title" content="Live Currency Converter | InfoJano"><meta property="og:description" content="Convert 170+ currencies with the latest available exchange rates."><meta property="og:url" content="https://barsulkhan.github.io/InfoJano/currency-converter.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Currency Converter: Calculate Exchange Rates Online | InfoJano">
-<meta name="twitter:description" content="Convert one currency to another with this free online currency converter. Enter the exchange rate you want to use to calculate an estimated conversion.">
+<link rel="manifest" href="/InfoJano/app-manifests/currency-converter.webmanifest">
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
-header{background:#10458e;color:white;text-align:center;padding:24px 15px}
-main{max-width:650px;margin:24px auto;padding:16px}
-.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
-label{display:block;margin-top:15px;font-weight:600}
-input,select{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:white}
-button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
-.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;overflow-wrap:anywhere}
-a{color:#1458c8}
-.note{font-size:14px;color:#4b5563}
-
-/* InfoJano page-entry animation: animated loader while each tool page opens */
-.ij-page-loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#f2f6ff;color:#172033;transition:opacity .28s ease,visibility .28s ease}
-.ij-page-loader.ij-loaded{opacity:0;visibility:hidden;pointer-events:none}
-.ij-loader-card{width:min(82vw,300px);padding:28px 22px;border-radius:22px;background:#fff;box-shadow:0 12px 38px #102a5018;text-align:center}
-.ij-loader-mark{width:66px;height:66px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#dbeafe,#eff6ff);color:#1458c8;font-size:34px;font-weight:800;animation:ij-loader-bob .85s ease-in-out infinite alternate}
-.ij-loader-ring{width:34px;height:34px;margin:0 auto 13px;border:4px solid #dbeafe;border-top-color:#2563eb;border-right-color:#06b6d4;border-radius:50%;animation:ij-loader-spin .8s linear infinite}
-.ij-loader-title{font-size:18px;font-weight:800;margin:0 0 5px}.ij-loader-subtitle{font-size:13px;color:#64748b;margin:0}
-.ij-loader-dots{display:flex;justify-content:center;gap:5px;margin-top:14px}.ij-loader-dots span{width:7px;height:7px;border-radius:50%;background:#2563eb;animation:ij-loader-dot .8s ease-in-out infinite alternate}.ij-loader-dots span:nth-child(2){animation-delay:.18s}.ij-loader-dots span:nth-child(3){animation-delay:.36s}
-@keyframes ij-loader-spin{to{transform:rotate(360deg)}}@keyframes ij-loader-bob{to{transform:translateY(-6px) scale(1.04)}}@keyframes ij-loader-dot{to{opacity:.25;transform:translateY(-4px)}}
-@media(prefers-reduced-motion:reduce){.ij-loader-mark,.ij-loader-ring,.ij-loader-dots span{animation:none!important}.ij-page-loader{transition:none}}
-
-/* Consistent spacing for informational cards on every tool page */
-main > section:not([style]){margin:24px 0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04);box-sizing:border-box;overflow-wrap:anywhere}
-main > section:not([style]) > :first-child{margin-top:0}
-main > section:not([style]) > :last-child{margin-bottom:0}
-main > section:not([style]) p{line-height:1.7;margin:14px 0}
-main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
-@media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
+*{box-sizing:border-box} :root{--navy:#07145c;--blue:#1266ef;--line:#cfe0ff;--ink:#101d58}
+body{margin:0;background:linear-gradient(180deg,#eaf3ff 0%,#f7fbff 56%,#eaf3ff 100%);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.5}
+main{width:min(100% - 34px,1480px);margin:0 auto 34px}
+.crumb{padding:10px 4px;color:#24427d;font-size:14px;font-weight:700}.crumb a{color:#075be8;text-decoration:none}
+.hero{position:relative;isolation:isolate;display:grid;grid-template-columns: minmax(210px, .85fr) minmax(0,2fr) minmax(190px,.8fr);align-items:center;gap:18px;min-height:250px;padding:26px 34px;margin:0 0 22px;border-radius:30px;background:radial-gradient(ellipse at 50% 0%,#173fba 0%,#071b72 48%,#090a50 100%);color:white;box-shadow:0 12px 30px #1c50bd35;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;padding:4px;border-radius:30px;background:conic-gradient(from var(--angle,0deg),#00eaff,#8a2cff,#ff31d2,#ffdf27,#00eaff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:-1;filter:drop-shadow(0 0 9px #16dfff)}
+@keyframes spinGlow{to{--angle:360deg}}@property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}.hero:before{animation:spinGlow 8s linear infinite}
+.hero-art{font-size:clamp(64px,8vw,112px);text-align:center;filter:drop-shadow(0 8px 14px #00bfff70);line-height:1.2}.hero-art.right{font-size:clamp(62px,7vw,100px)}
+.hero-copy{min-width:0}.eyebrow{display:inline-flex;padding:6px 15px;border:1px solid #8bbcff;border-radius:30px;background:linear-gradient(90deg,#0876ee,#7028d9);font-size:13px;font-weight:850;letter-spacing:.5px}
+.hero h1{font-size:clamp(32px,4.2vw,58px);line-height:1.06;letter-spacing:-1.5px;margin:12px 0;color:#fff}.hero h1 span{color:#ffd72e}.hero p{font-size:clamp(15px,1.45vw,19px);font-weight:650;margin:0 0 17px;color:#edf4ff}
+.perks{display:flex;flex-wrap:wrap;gap:9px}.perk{padding:8px 14px;border-radius:24px;font-size:13px;font-weight:800;box-shadow:inset 0 1px 0 #ffffff55}.p1{background:linear-gradient(100deg,#05baf0,#1760ff)}.p2{background:linear-gradient(100deg,#00d88c,#079c64)}.p3{background:linear-gradient(100deg,#ff9b00,#f32366)}.p4{background:linear-gradient(100deg,#a900f5,#5a19d8)}
+.workspace{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.95fr);gap:18px;align-items:stretch}
+.panel{background:linear-gradient(145deg,#fff,#f0f7ff);border:1px solid #cbdfff;border-radius:25px;padding:23px;box-shadow:0 8px 25px #174a9818;min-width:0}
+.panel-head{display:flex;align-items:center;gap:13px;margin-bottom:18px}.head-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border-radius:18px;color:#fff;font-size:27px;background:linear-gradient(145deg,#05bafa,#1944ed);box-shadow:0 6px 13px #1c68ef44}
+.panel h2{font-size:25px;line-height:1.2;margin:0;color:#101c58;letter-spacing:-.5px}.sub{margin:4px 0 0;color:#53658d;font-size:14px}
+.currency-row{display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);gap:10px;align-items:end}
+.field label{display:block;font-size:14px;font-weight:850;margin:0 0 8px;color:#18265f}
+.currency-select{width:100%;height:62px;border:1.5px solid #b9d0ff;border-radius:14px;background:linear-gradient(120deg,#fff,#f5f9ff);padding:0 12px;display:flex;align-items:center;gap:9px;box-shadow:0 3px 9px #1b57ad12}
+.currency-select select{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#111d55;font-size:15px;font-weight:750}
+.flag{font-size:25px;line-height:1}.swap{width:46px;height:46px;border:0;border-radius:50%;background:linear-gradient(145deg,#05bafa,#124de9);color:#fff;font-size:25px;font-weight:900;cursor:pointer;box-shadow:0 5px 12px #1467e94a;margin-bottom:8px}
+.amount-wrap{margin-top:20px}.amount-wrap label{display:block;font-size:15px;font-weight:850;margin-bottom:8px}.amount-input{height:62px;width:100%;padding:0 17px;border:1.5px solid #b9d0ff;border-radius:14px;background:#fff;color:#10205d;font-size:23px;font-weight:800;outline:none;box-shadow:0 3px 9px #1b57ad12}.amount-input:focus,.currency-select:focus-within{border-color:#367cf6;box-shadow:0 0 0 3px #2674f51c}
+.presets{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.preset{border:1px solid #bfd2ff;border-radius:24px;background:#fff;color:#243b80;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer}.preset.active,.preset:hover{background:linear-gradient(100deg,#087af3,#3348e8);color:#fff;border-color:transparent}
+.action-row{display:flex;gap:11px;margin-top:18px}.convert-btn{flex:1;min-height:58px;border:0;border-radius:15px;color:white;font-size:18px;font-weight:900;background:linear-gradient(100deg,#05b9ed,#174ff0 58%,#c600ed);box-shadow:0 7px 15px #2167ed4a;cursor:pointer}.refresh-btn{padding:0 18px;border:1px solid #bfd2ff;border-radius:15px;background:#fff;color:#1854c9;font-weight:850;cursor:pointer}
+.result-panel{padding:21px;display:flex;flex-direction:column;gap:14px}.result-title{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:900}.spark{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:white;background:linear-gradient(135deg,#02bdf4,#6824ef);font-size:22px}
+.result-box{border-radius:20px;padding:21px 18px;text-align:center;color:#fff;background:linear-gradient(115deg,#3e19a9,#064bc7 60%,#04b6df);box-shadow:inset 0 1px 0 #ffffff50;position:relative;overflow:hidden}
+.result-box:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-44px;height:85px;border-radius:50%;background:#ffffff18;transform:rotate(-5deg)}
+.result-caption{font-size:14px;font-weight:750;color:#dceaff}.result-value{font-size:clamp(27px,3.5vw,43px);font-weight:950;line-height:1.2;margin:5px 0;color:#ffe52c;overflow-wrap:anywhere}.result-rate{font-size:14px;color:#edf5ff;font-weight:700}
+.result-tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:13px;position:relative;z-index:1}.mini-btn{border:1px solid #ffffff66;border-radius:20px;background:#ffffff1d;color:white;padding:7px 13px;font-size:12px;font-weight:800;cursor:pointer}
+.rate-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.rate-title{font-size:18px;font-weight:900;display:flex;gap:9px;align-items:center}.updated{font-size:11px;font-weight:750;color:#08764b;background:#d9ffe8;border:1px solid #9be8bd;border-radius:20px;padding:5px 9px;text-align:center}.rate-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.rate-card{border:1px solid #c5d8ff;border-radius:14px;background:linear-gradient(160deg,#fff,#e9f3ff);padding:12px 5px;text-align:center;box-shadow:0 3px 8px #1951a515;min-width:0}
+.rate-flag{font-size:26px;line-height:1.2}.rate-code{font-size:13px;font-weight:900;color:#1b3477;margin-top:5px}.rate-number{font-size:15px;font-weight:950;color:#111d61;overflow-wrap:anywhere}.rate-name{font-size:10px;color:#65769b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rate-status{font-size:12px;color:#5c6d90;min-height:18px}
+.feature-strip{margin-top:19px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;background:linear-gradient(120deg,#fff,#edf5ff);border:1px solid #cbdfff;border-radius:23px;padding:18px 12px;box-shadow:0 7px 20px #174a9815}
+.feature{display:flex;align-items:center;gap:11px;padding:4px 13px;border-right:1px solid #c6d9ff;min-width:0}.feature:last-child{border:0}.feature-icon{width:45px;height:45px;flex:0 0 45px;display:grid;place-items:center;border-radius:50%;font-size:22px;color:#fff;background:linear-gradient(140deg,#ff37a5,#9c23ed)}.feature:nth-child(2) .feature-icon{background:linear-gradient(140deg,#00df92,#00a86b)}.feature:nth-child(3) .feature-icon{background:linear-gradient(140deg,#08c7f3,#1761ed)}.feature:nth-child(4) .feature-icon{background:linear-gradient(140deg,#b73df8,#6516df)}.feature:nth-child(5) .feature-icon{background:linear-gradient(140deg,#ffbd14,#ff6b00)}.feature strong{display:block;font-size:14px;line-height:1.25}.feature small{display:block;color:#617295;font-size:11px;line-height:1.35;margin-top:4px}
+.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}.info-card{background:#fff;border:1px solid #d7e5fb;border-radius:18px;padding:17px;box-shadow:0 4px 14px #1d4e8c0b}.info-card h3{margin:0 0 7px;font-size:16px;color:#15286a}.info-card p{margin:0;color:#5c6c8e;font-size:13px}
+.status{font-size:12px;color:#53678f;margin-top:9px}.status.error{color:#b42318}
+@media(max-width:950px){.hero{grid-template-columns:150px 1fr 130px;padding:23px}.hero-art{font-size:75px}.workspace{grid-template-columns:1fr}.feature-strip{grid-template-columns:repeat(3,1fr)}.feature:nth-child(3){border-right:0}.feature:nth-child(4),.feature:nth-child(5){margin-top:12px}}
+@media(max-width:600px){main{width:calc(100% - 20px);margin-bottom:22px}.crumb{font-size:12px;padding:8px 3px}.hero{grid-template-columns:1fr;gap:5px;min-height:0;padding:21px 17px;text-align:center;border-radius:23px;margin-bottom:14px}.hero:before{border-radius:23px}.hero-art{display:none}.hero-copy{width:100%}.hero h1{font-size:34px;letter-spacing:-1px;margin:9px 0}.hero p{font-size:14px;margin-bottom:13px}.perks{justify-content:center;gap:6px}.perk{font-size:11px;padding:7px 10px}.panel{padding:16px;border-radius:20px}.panel-head{gap:10px;margin-bottom:16px}.head-icon{width:47px;height:47px;flex-basis:47px;font-size:23px;border-radius:15px}.panel h2{font-size:21px}.sub{font-size:12px}.currency-row{grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr);gap:6px}.currency-select{height:58px;padding:0 7px;gap:5px}.currency-select select{font-size:12px}.flag{font-size:21px}.swap{width:37px;height:37px;font-size:20px;margin-bottom:10px}.field label,.amount-wrap label{font-size:13px}.amount-input{height:57px;font-size:20px}.preset{padding:7px 12px;font-size:12px}.action-row{gap:8px}.convert-btn{font-size:16px;min-height:54px}.refresh-btn{padding:0 12px;font-size:12px}.result-panel{gap:12px}.result-title{font-size:17px}.rate-head{align-items:flex-start;flex-direction:column}.rate-title{font-size:16px}.updated{font-size:10px}.rate-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.rate-card{padding:10px 4px}.rate-number{font-size:14px}.feature-strip{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px 7px;gap:6px}.feature{padding:8px 6px;border-right:0;gap:8px}.feature:nth-child(odd){border-right:1px solid #c6d9ff}.feature:nth-child(n+3){margin-top:0}.feature-icon{width:37px;height:37px;flex-basis:37px;font-size:18px}.feature strong{font-size:12px}.feature small{font-size:10px}.info-grid{grid-template-columns:1fr;gap:10px}.info-card{padding:14px}}
+@media(prefers-reduced-motion:reduce){.hero:before{animation:none}}
 </style>
-  <link rel="manifest" href="/InfoJano/app-manifests/currency-converter.webmanifest">
-<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "InfoJano Currency Converter",
-      "url": "https://barsulkhan.github.io/InfoJano/currency-converter.html",
-      "description": "Convert one currency to another using an entered exchange rate. Results are estimates; banks and payment providers may apply their own rates and fees.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I convert one currency to another?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Choose the source and target currencies, enter an amount, and calculate the converted value."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are exchange rates always live?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Rates may change frequently. Check the rate source and timestamp before using a conversion for a payment."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will my bank give exactly this amount?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Not necessarily. Banks and payment providers may apply their own rates, fees, or spreads."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
 </head>
 <body>
-<div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
- <div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">ℹ️</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">InfoJano</p><p class="ij-loader-subtitle">Getting your tool ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div>
-</div>
-
-<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
 <main>
-<div class="card">
-<h1>Currency Converter - Free Online Exchange Calculator</h1>
-<h2>Convert Currency</h2>
-<label for="amount">Amount</label>
-<input id="amount" type="number" min="0" step="any" placeholder="Example: 100">
-<label for="from">From Currency</label>
-<select id="from">
-<option value="INR">INR - Indian Rupee</option>
-<option value="USD">USD - US Dollar</option>
-<option value="EUR">EUR - Euro</option>
-<option value="GBP">GBP - British Pound</option>
-<option value="BDT">BDT - Bangladeshi Taka</option>
-<option value="AED">AED - UAE Dirham</option>
-<option value="JPY">JPY - Japanese Yen</option>
-<option value="CAD">CAD - Canadian Dollar</option>
-</select>
-<label for="to">To Currency</label>
-<select id="to">
-<option value="USD">USD - US Dollar</option>
-<option value="INR">INR - Indian Rupee</option>
-<option value="EUR">EUR - Euro</option>
-<option value="GBP">GBP - British Pound</option>
-<option value="BDT">BDT - Bangladeshi Taka</option>
-<option value="AED">AED - UAE Dirham</option>
-<option value="JPY">JPY - Japanese Yen</option>
-<option value="CAD">CAD - Canadian Dollar</option>
-</select>
-<label for="rate">Exchange Rate (1 unit of From = how many To?)</label>
-<input id="rate" type="number" min="0" step="any" placeholder="Enter current exchange rate">
-<button onclick="convert()">Convert</button>
-<div id="result" class="result" aria-live="polite">Enter an amount and exchange rate.</div>
-<p class="note">This tool uses the rate you enter. It does not fetch live exchange rates. Check a trusted financial source for the latest rate.</p>
+<div class="crumb"><a href="index.html">⌂ InfoJano Home</a>　›　Currency Converter</div>
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-art" aria-hidden="true">🌍 💱</div>
+<div class="hero-copy"><span class="eyebrow">FREE ONLINE TOOL</span><h1 id="hero-title">Currency <span>Converter</span></h1><p>Convert between 170+ world currencies with the latest available exchange rates.</p><div class="perks"><span class="perk p1">⚡ Latest Rates</span><span class="perk p2">✓ Reliable Data</span><span class="perk p3">▣ Mobile Ready</span><span class="perk p4">♧ No Signup</span></div></div>
+<div class="hero-art right" aria-hidden="true">💹 💵</div>
+</section>
+<div class="workspace">
+<section class="panel" aria-labelledby="convert-heading">
+<div class="panel-head"><span class="head-icon" aria-hidden="true">⇄</span><div><h2 id="convert-heading">Convert Currency</h2><p class="sub">Choose currencies and convert your amount instantly.</p></div></div>
+<div class="currency-row">
+<div class="field"><label for="from">From (You have)</label><div class="currency-select"><span class="flag" id="fromFlag">🇺🇸</span><select id="from" aria-label="From currency"></select></div></div>
+<button class="swap" id="swap" type="button" aria-label="Swap currencies" title="Swap currencies">⇄</button>
+<div class="field"><label for="to">To (You get)</label><div class="currency-select"><span class="flag" id="toFlag">🇮🇳</span><select id="to" aria-label="To currency"></select></div></div>
 </div>
-<section>
-<h2>How Currency Conversion Works</h2>
-<p>Multiply the amount by the exchange rate to estimate its value in another currency.</p>
-<p><strong>Formula:</strong> Converted Amount = Original Amount × Exchange Rate.</p>
-<p>Actual bank or money-transfer amounts may differ because of fees and provider rates.</p>
+<div class="amount-wrap"><label for="amount">Amount</label><input class="amount-input" id="amount" type="number" min="0" step="any" value="1000" placeholder="Enter amount"><div class="presets"><button class="preset" data-amount="100" type="button">100</button><button class="preset" data-amount="500" type="button">500</button><button class="preset active" data-amount="1000" type="button">1,000</button><button class="preset" data-amount="5000" type="button">5,000</button><button class="preset" data-amount="10000" type="button">10,000</button></div></div>
+<div class="action-row"><button class="convert-btn" id="convert" type="button">⇄　Convert</button><button class="refresh-btn" id="refresh" type="button">↻ Refresh Rates</button></div>
+<p class="status" id="status" role="status" aria-live="polite">Fetching the latest available exchange rates…</p>
 </section>
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="unit-converter.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Unit Converter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">convert length, weight and temperature.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="emi.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 9h10M7 13h3m3 0h4m-10 4h10"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">EMI Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate monthly loan payments.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="discount.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13 11 22 2 13V4h9z"/><circle cx="7" cy="9" r="1"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Discount Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate discounts and sale prices.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="savings.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Savings Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate future savings.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
+<section class="panel result-panel" aria-labelledby="result-heading">
+<div class="result-title"><span class="spark" aria-hidden="true">✦</span><span id="result-heading">Conversion Result</span></div>
+<div class="result-box"><div class="result-caption" id="result-caption">1,000 USD =</div><div class="result-value" id="result-value">Loading rate…</div><div class="result-rate" id="result-rate">Please wait while we retrieve the latest rates.</div><div class="result-tools"><button class="mini-btn" id="copy" type="button">▣ Copy Result</button></div></div>
+<div class="rate-head"><div class="rate-title">▥　Live Exchange Rates (<span id="base-label">1 USD</span>)</div><span class="updated" id="updated">Updating…</span></div>
+<div class="rate-grid" id="rate-grid" aria-live="polite"><div class="rate-card">Loading rates…</div></div>
+<p class="status" id="rate-note">Rates are indicative mid-market reference rates and may differ from bank or card provider rates.</p>
 </section>
-
-
-
-<section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">Currency Conversion Example</h2><p>If the selected rate is 1 unit of currency A = 80 units of currency B, then 10 units of A convert to 800 units of B before fees. This is an illustration only, not a live exchange quote.</p><h3>Check before paying</h3><ul><li>Confirm which currency is the source and which is the target.</li><li>Check the rate source and its update time.</li><li>Allow for card, bank, transfer or cash-exchange fees and rate spreads.</li></ul><p>Related tools: <a href="percentage.html">Percentage Calculator</a> and <a href="discount.html">Discount Calculator</a>.</p></section>
-
-<section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
-<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Currency Converter FAQs</h2>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How do I convert one currency to another?</summary><p style="margin:8px 0 0;color:#536174">Choose the source and target currencies, enter an amount, and calculate the converted value.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Are exchange rates always live?</summary><p style="margin:8px 0 0;color:#536174">Rates may change frequently. Check the rate source and timestamp before using a conversion for a payment.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Will my bank give exactly this amount?</summary><p style="margin:8px 0 0;color:#536174">Not necessarily. Banks and payment providers may apply their own rates, fees, or spreads.</p></details>
-<p style="margin:12px 0 0;font-size:14px">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="emi.html">EMI Calculator</a></p>
+</div>
+<section class="feature-strip" aria-label="Currency converter features">
+<div class="feature"><span class="feature-icon">↔</span><div><strong>170+ Currencies</strong><small>Convert currencies worldwide.</small></div></div>
+<div class="feature"><span class="feature-icon">ϟ</span><div><strong>Latest Exchange Rates</strong><small>Updated from rate provider.</small></div></div>
+<div class="feature"><span class="feature-icon">✓</span><div><strong>Clear & Reliable</strong><small>See rate source and timestamp.</small></div></div>
+<div class="feature"><span class="feature-icon">▥</span><div><strong>Popular Rates</strong><small>Compare common currencies.</small></div></div>
+<div class="feature"><span class="feature-icon">▦</span><div><strong>Free Calculator</strong><small>No account required.</small></div></div>
 </section>
-<p><a href="index.html">← Back to InfoJano Home</a></p>
+<section class="info-grid" aria-label="Currency information">
+<article class="info-card"><h3>How currency conversion works</h3><p>Converted amount = original amount × exchange rate. The result updates when you change the amount or currency.</p></article>
+<article class="info-card"><h3>About exchange rates</h3><p>Rates move throughout the day. The displayed quote is the latest data returned by our rate provider, not a guaranteed transaction price.</p></article>
+<article class="info-card"><h3>Before you make a payment</h3><p>Banks, cards and transfer services may add fees or use their own exchange rates. Confirm the final amount with your provider.</p></article>
+</section>
+<section class="info-card" style="margin-top:16px"><h2 style="font-size:20px;margin:0 0 8px">Currency Converter FAQs</h2><details><summary>How often are exchange rates updated?</summary><p>The rate provider publishes periodic updates. The page displays the provider's latest available timestamp and refreshes when requested.</p></details><details><summary>Are these rates guaranteed by my bank?</summary><p>No. These are indicative reference rates. Banks, card networks and money-transfer services may use different rates and fees.</p></details><details><summary>Can I convert currencies other than USD and INR?</summary><p>Yes. Choose from the available currency list. The rate service supports a broad range of world currencies.</p></details></section>
 </main>
-<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<footer style="text-align:center;padding:20px;color:#60708f;font-size:13px">© InfoJano · Smart Tools for Everyday Life</footer>
 <script>
-function convert(){
-const amountInput=document.getElementById('amount').value;
-const rateInput=document.getElementById('rate').value;
-const from=document.getElementById('from').value;
-const to=document.getElementById('to').value;
-const out=document.getElementById('result');
-const amount=Number(amountInput),rate=Number(rateInput);
-if(amountInput===''||rateInput===''||!Number.isFinite(amount)||!Number.isFinite(rate)||amount<0||rate<=0){
-out.textContent='Please enter a valid amount and an exchange rate greater than zero.';
-return;
+const currencyData=[
+["USD","US Dollar","🇺🇸"],["INR","Indian Rupee","🇮🇳"],["EUR","Euro","🇪🇺"],["GBP","British Pound","🇬🇧"],["BDT","Bangladeshi Taka","🇧🇩"],["AED","UAE Dirham","🇦🇪"],["JPY","Japanese Yen","🇯🇵"],["CAD","Canadian Dollar","🇨🇦"],["AUD","Australian Dollar","🇦🇺"],["SGD","Singapore Dollar","🇸🇬"],["CHF","Swiss Franc","🇨🇭"],["CNY","Chinese Yuan","🇨🇳"],["SAR","Saudi Riyal","🇸🇦"],["QAR","Qatari Riyal","🇶🇦"],["KWD","Kuwaiti Dinar","🇰🇼"],["OMR","Omani Rial","🇴🇲"],["MYR","Malaysian Ringgit","🇲🇾"],["THB","Thai Baht","🇹🇭"],["IDR","Indonesian Rupiah","🇮🇩"],["PKR","Pakistani Rupee","🇵🇰"],["NPR","Nepalese Rupee","🇳🇵"],["LKR","Sri Lankan Rupee","🇱🇰"],["NZD","New Zealand Dollar","🇳🇿"],["ZAR","South African Rand","🇿🇦"],["TRY","Turkish Lira","🇹🇷"],["RUB","Russian Ruble","🇷🇺"],["KRW","South Korean Won","🇰🇷"],["HKD","Hong Kong Dollar","🇭🇰"],["MXN","Mexican Peso","🇲🇽"],["BRL","Brazilian Real","🇧🇷"],["SEK","Swedish Krona","🇸🇪"],["NOK","Norwegian Krone","🇳🇴"],["DKK","Danish Krone","🇩🇰"],["EGP","Egyptian Pound","🇪🇬"],["ILS","Israeli New Shekel","🇮🇱"],["PHP","Philippine Peso","🇵🇭"],["VND","Vietnamese Dong","🇻🇳"],["NGN","Nigerian Naira","🇳🇬"],["KES","Kenyan Shilling","🇰🇪"],["GHS","Ghanaian Cedi","🇬🇭"],["PLN","Polish Zloty","🇵🇱"],["CZK","Czech Koruna","🇨🇿"],["HUF","Hungarian Forint","🇭🇺"],["ARS","Argentine Peso","🇦🇷"],["CLP","Chilean Peso","🇨🇱"]];
+const byCode=Object.fromEntries(currencyData.map(x=>[x[0],x]));
+const fromEl=document.getElementById('from'),toEl=document.getElementById('to'),amountEl=document.getElementById('amount');
+function fillSelect(el,selected){el.innerHTML=currencyData.map(([c,n,f])=>'<option value="'+c+'" '+(c===selected?'selected':'')+'>'+f+'　'+c+' – '+n+'</option>').join('')}
+fillSelect(fromEl,'USD');fillSelect(toEl,'INR');
+let rates={},lastUpdated='',currentBase='',lastResultText='';
+const popular=['INR','EUR','GBP','JPY','BDT'];
+const fmt=(n,maximumFractionDigits=4)=>Number(n).toLocaleString('en-US',{maximumFractionDigits});
+function updateFlags(){document.getElementById('fromFlag').textContent=byCode[fromEl.value]?.[2]||'💱';document.getElementById('toFlag').textContent=byCode[toEl.value]?.[2]||'💱'}
+function renderResult(){
+ const amount=Number(amountEl.value),from=fromEl.value,to=toEl.value;
+ document.getElementById('result-caption').textContent=(amountEl.value===''?'0':fmt(amount,2))+' '+from+' =';
+ if(!rates[to]||!Number.isFinite(amount)||amount<0){document.getElementById('result-value').textContent='Rate unavailable';document.getElementById('result-rate').textContent='Check your connection and refresh rates.';lastResultText='';return}
+ const value=amount*rates[to],rate=rates[to];
+ document.getElementById('result-value').textContent=(byCode[to]?.[2]||'')+' '+fmt(value,6)+' '+to;
+ document.getElementById('result-rate').textContent='Exchange Rate: 1 '+from+' = '+fmt(rate,6)+' '+to;
+ lastResultText=fmt(amount,2)+' '+from+' = '+fmt(value,6)+' '+to+' | 1 '+from+' = '+fmt(rate,8)+' '+to;
 }
-const result=amount*rate;
-out.innerHTML='<strong>'+amount.toLocaleString('en-US')+' '+from+'</strong><br>equals<br><strong>'+result.toLocaleString('en-US',{maximumFractionDigits:6})+' '+to+'</strong>';
+function renderRates(){
+ const grid=document.getElementById('rate-grid');document.getElementById('base-label').textContent='1 '+fromEl.value;
+ grid.innerHTML=popular.map(code=>{const c=byCode[code],rate=rates[code];return '<div class="rate-card"><div class="rate-flag">'+c[2]+'</div><div class="rate-code">'+code+'</div><div class="rate-number">'+(rate?fmt(rate,5):'—')+'</div><div class="rate-name">'+c[1]+'</div></div>'}).join('');
 }
+async function loadRates(force=false){
+ const base=fromEl.value,status=document.getElementById('status'),updated=document.getElementById('updated');
+ if(!force&&currentBase===base&&rates[base]===1){renderResult();return}
+ status.textContent='Fetching latest available rates for '+base+'…';status.classList.remove('error');updated.textContent='Updating…';
+ try{
+  const response=await fetch('https://open.er-api.com/v6/latest/'+encodeURIComponent(base),{cache:'no-store'});
+  if(!response.ok)throw new Error('Rate service returned '+response.status);
+  const data=await response.json();if(data.result!=='success'||!data.rates)throw new Error('Rate data unavailable');
+  rates=data.rates;rates[base]=1;currentBase=base;lastUpdated=data.time_last_update_utc||'';
+  const date=lastUpdated?new Date(lastUpdated):null;
+  updated.textContent=date&&!isNaN(date)?'Updated: '+date.toLocaleString('en-US',{month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}):'Latest available';
+  status.textContent='Rates loaded successfully · Source: ExchangeRate-API · '+(lastUpdated||'Timestamp not provided');
+  renderRates();renderResult();
+ }catch(err){
+  status.textContent='Could not load live rates. Check your internet connection and try Refresh Rates.';status.classList.add('error');updated.textContent='Rate unavailable';renderRates();renderResult();
+ }
+}
+fromEl.addEventListener('change',()=>{updateFlags();loadRates(true)});
+toEl.addEventListener('change',()=>{updateFlags();renderResult()});
+amountEl.addEventListener('input',()=>{document.querySelectorAll('.preset').forEach(b=>b.classList.toggle('active',Number(b.dataset.amount)===Number(amountEl.value)));renderResult()});
+document.getElementById('swap').addEventListener('click',()=>{const old=fromEl.value;fromEl.value=toEl.value;toEl.value=old;updateFlags();loadRates(true)});
+document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{amountEl.value=b.dataset.amount;document.querySelectorAll('.preset').forEach(x=>x.classList.toggle('active',x===b));renderResult()}));
+document.getElementById('convert').addEventListener('click',renderResult);
+document.getElementById('refresh').addEventListener('click',()=>loadRates(true));
+document.getElementById('copy').addEventListener('click',async()=>{if(!lastResultText)return;const btn=document.getElementById('copy');try{await navigator.clipboard.writeText(lastResultText);btn.textContent='✓ Copied';setTimeout(()=>btn.textContent='▣ Copy Result',1500)}catch(e){btn.textContent='Copy not available';setTimeout(()=>btn.textContent='▣ Copy Result',1500)}});
+updateFlags();loadRates(true);
 </script>
-
-<script>
-(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();
-</script>
-<script src="/InfoJano/download-progress.js" defer></script>
-<script src="/InfoJano/install.js" defer></script>
-
-
-
-
-<script src="/InfoJano/site-header.js" defer></script>
-</body>
-</html>
+<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
+</body></html>
