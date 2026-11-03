@@ -324,6 +324,71 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 @media(max-width:380px){.ij-full-hero{min-height:122px;padding:8px 5px}.ij-hero-girl img{height:116px}.ij-hero-copy h1{font-size:16px}.ij-hero-copy p{font-size:9px}.ij-hero-visuals{min-height:96px}}
 @media(prefers-reduced-motion:reduce){.ij-full-hero:before,.ij-full-hero:after,.ij-hero-girl img,.ij-hero-photo,.ij-hero-photo:after,.ij-hero-save,.ij-hero-light{animation:none!important}}
 
+
+/* Desktop-first workspace refinement — Image Compressor */
+@media(min-width:851px){
+  .ij-site-brand>a{width:calc(100% - 64px)!important;max-width:none!important;margin:0 auto!important}
+  .wrap{width:calc(100% - 64px)!important;max-width:none!important;padding:24px 0 64px!important}
+  .ij-breadcrumb{font-size:14px;margin:4px 4px 22px}
+  .ij-premium-hero{padding:0 0 26px!important}
+  .ij-full-hero{grid-template-columns:22% 40% 38%;min-height:250px;padding:24px 34px;border-radius:28px}
+  .ij-hero-girl img{height:228px;max-width:230px}
+  .ij-hero-copy{padding:0 22px}
+  .ij-hero-kicker{font-size:12px;letter-spacing:2.4px;margin-bottom:10px}
+  .ij-hero-copy h1{font-size:clamp(42px,4.1vw,64px);letter-spacing:-2px;margin-bottom:13px}
+  .ij-hero-copy p{font-size:clamp(17px,1.45vw,21px)}
+  .ij-hero-pills{gap:9px;margin-top:18px}
+  .ij-hero-pills span{font-size:12px;padding:7px 13px}
+  .ij-hero-visuals{min-height:205px}
+  .ij-hero-photo{border-radius:17px;padding:6px}
+  .ij-hero-save{right:1%;bottom:4px;padding:10px 15px}
+  .ij-hero-save strong{font-size:24px}
+  .ij-hero-save small{font-size:11px}
+  .ij-compressor-card{grid-template-columns:minmax(330px,.82fr) minmax(0,1.18fr);padding:30px!important;margin:0 0 26px!important;border-radius:26px!important;gap:0}
+  .ij-upload-side{padding:10px 30px 10px 4px}
+  .ij-upload-label{font-size:18px;margin-bottom:14px}
+  .ij-upload-zone{min-height:350px;padding:30px;border-radius:22px}
+  .ij-upload-icon{font-size:54px}
+  .ij-upload-zone strong{font-size:23px}
+  .ij-upload-zone small{font-size:15px}
+  .ij-upload-foot{font-size:14px}
+  .ij-settings-side{min-width:0;padding:8px 4px 8px 30px}
+  .ij-mode-switch{max-width:560px;margin-bottom:22px}
+  .ij-mode-switch button{min-height:48px;font-size:14px}
+  .ij-settings-title{font-size:23px!important;margin:0 0 14px!important}
+  .ij-preset-buttons{gap:10px}
+  .ij-preset-buttons button{min-height:46px;font-size:14px}
+  .ij-smart-target{padding:17px;margin-top:15px}
+  .ij-controls{gap:18px 22px;margin-top:16px}
+  .ij-field label{font-size:15px}
+  .ij-field input:not([type=range]),.ij-field select{min-height:50px;font-size:15px}
+  .ij-action{min-height:56px;font-size:17px}
+  .ij-result-panel{padding:28px;margin:24px 0;border-radius:24px}
+  .ij-result-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(240px,.72fr);gap:22px}
+  .ij-result-image img{height:230px}
+  .ij-result-head h2{font-size:24px}
+  .ij-result-stats{padding:20px}
+  .ij-benefits{margin:18px 0 34px}
+  .ij-benefit{padding:12px 20px}
+  .ij-benefit b{font-size:16px}
+  .ij-benefit p{font-size:14px}
+  .ij-content-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:26px 0}
+  .ij-info-card{padding:24px 26px}
+  .ij-info-card h2{font-size:21px}
+  .ij-info-card li,.ij-info-card p{font-size:15px;line-height:1.7}
+  #ij-seo-faq,.ij-practical-guide{padding:28px!important}
+}
+@media(min-width:851px) and (max-width:1100px){
+  .ij-full-hero{grid-template-columns:20% 42% 38%;padding:18px 20px}
+  .ij-hero-girl img{height:190px}
+  .ij-compressor-card{grid-template-columns:minmax(270px,.8fr) minmax(0,1.2fr);padding:22px!important}
+  .ij-upload-side{padding-right:20px}
+  .ij-settings-side{padding-left:20px}
+  .ij-upload-zone{min-height:300px}
+  .ij-result-grid{grid-template-columns:1fr 1fr}
+  .ij-result-stats{grid-column:1/-1}
+}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
