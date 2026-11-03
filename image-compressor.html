@@ -727,10 +727,10 @@ function setDownloadState(state,message){
   setNodeText(label, 'Preparing download…');
  }else if(state==='done'){
   downloadLink.classList.add('ij-downloaded');
-  setNodeText(icon, '✓');
+  setNodeHtml(icon, '<svg class="ij-icon ij-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg>');
   setNodeText(label, message||'Download started');
  }else if(state==='error'){
-  setNodeText(icon, '↓');
+  setNodeHtml(icon, '<svg class="ij-icon ij-icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>');
   setNodeText(label, message||'Try download again');
  }
 }
@@ -886,7 +886,7 @@ compressButton.addEventListener('click',async()=>{
   downloadLink.download=`${originalName}-compressed.${ext}`;
   setNodeText(document.getElementById('downloadLabel'), `Download compressed image (${(result.blob.size/1024).toFixed(1)} KB)`);
   downloadLink.classList.remove('ij-downloading','ij-downloaded');
-  setNodeText(document.getElementById('downloadIcon'), '↓');
+  setNodeHtml(document.getElementById('downloadIcon'), '<svg class="ij-icon ij-icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>');
   downloadLink.hidden=false;
   let message=`Final size: ${(result.blob.size/1024).toFixed(1)} KB | Dimensions: ${result.w} × ${result.h} px | Format: ${ext.toUpperCase()}`;
   if(targetBytes)message+=result.blob.size<=targetBytes?' | Target reached':' | Target not reached';
@@ -922,7 +922,7 @@ compressButton.addEventListener('click',async()=>{
  }finally{
   compressButton.disabled=false;
   compressButton.classList.remove('ij-processing');
-  setNodeText(document.getElementById('compressIcon'), '⚙');
+  setNodeHtml(document.getElementById('compressIcon'), '<svg class="ij-icon ij-icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.5.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.5-.9l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.8l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.5-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.5.9l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8z"/></svg>');
   setNodeText(document.getElementById('compressLabel'), 'Compress Image');
  }
 });
