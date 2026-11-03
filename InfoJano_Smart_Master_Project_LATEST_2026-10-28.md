@@ -1723,3 +1723,113 @@ User instruction: Treat desktop experience as the primary design target because 
 - This is source-level CSS alignment; actual rendered equality must still be verified in user's browser after successful deployment. No claim of visual test.
 - Live page: https://barsulkhan.github.io/InfoJano/image-resizer.html
 - Actions: https://github.com/barsulkhan/InfoJano/actions
+
+
+---
+
+# MASTER ARCHIVE UPDATE — 4 November 2026
+This section extends the existing archive. All earlier history above is retained unchanged. This is the single continuation checkpoint for the full InfoJano project, not an EMI-only note.
+
+## Project identity and non-negotiable working rules
+- Project/brand: InfoJano — global-first everyday utility and information portal.
+- Repository: https://github.com/barsulkhan/InfoJano
+- GitHub Pages: https://barsulkhan.github.io/InfoJano/
+- Primary workflow: user works from Android mobile, with limited budget and beginner-friendly step-by-step guidance in Bengali.
+- Assistant should take the lead on technical decisions, but explain the action and ask only for genuinely necessary user input.
+- Preserve all existing pages, tools, working functionality, approved design decisions, files and history. Do not make broad or unrelated edits.
+- Work one page/tool at a time. Inspect the current source before edits; make minimal scoped changes; re-fetch/inspect changed source; verify GitHub Actions; distinguish source/commit verification from real browser/live testing.
+- Do not claim a visual, print, PDF or live test passed unless it was actually performed.
+- User dislikes repeated sizing/design mistakes. When asked to match an approved reference, compare actual dimensions/layout rather than guessing.
+- User previously insisted existing 16 tools must not be broken. Later the site expanded; a 24-tool SEO audit was completed. Do not assume the historic 16 count is the current total.
+- ID Card Print Studio has protected workflows and should not be modified unless explicitly requested. Earlier Ayushman crop/print work was paused; retain its detailed history above and check current source before any future work.
+- Do not create a separate reusable InfoJano Master Template; user explicitly asked not to change or disturb prior project files for that idea.
+
+## Project scope and product direction
+InfoJano is a mobile-first, accessible global utility portal with categories including Calculators, AI & Technology, Money & Finance, Documents/Online Services, Weather/Daily Info, Education, Jobs/Careers and Trending. The goal is useful, fast tools with SEO-friendly standalone pages, clear mobile UX, installable PWA and eventually sustainable monetisation. The user is building/maintaining it from Android and wants to keep costs low. A global audience is the overall direction, while some tools and search intent are India-specific.
+
+## Existing master archives and research files in GitHub
+- `InfoJano_Smart_Master_Project_COMPLETE_2026-10-20.md` — historical archive.
+- `InfoJano_Smart_Master_Project_LATEST_2026-10-28.md` — this file, now extended by this 4 Nov update; prior text retained.
+- `InfoJano_24_Tools_Google_SEO_Research_2026-11-02.md` — detailed audit/research of 24 pages, metadata, tool capabilities, search intent, competitor patterns and implementation priorities. Read this before SEO work.
+- Older V5 archive and earlier history files remain in repository; do not delete them.
+
+## Website, SEO and PWA baseline carried forward
+- Homepage and tool pages are published through GitHub Pages.
+- Sitemap endpoints: https://barsulkhan.github.io/InfoJano/sitemap.xml and https://barsulkhan.github.io/InfoJano/sitemap.txt
+- robots.txt: https://barsulkhan.github.io/InfoJano/robots.txt
+- Search Console: https://search.google.com/search-console/
+- Historical Search Console snapshots in prior archive are not current metrics. As of 28 Oct, sitemap.xml and sitemap.txt showed “Couldn't fetch”/0 discovered in Search Console despite opening in browser; do not repeatedly resubmit or change without fresh error evidence.
+- Sitemap alignment work in prior archive lists 28 URLs in both sitemap files; confirm current live/repo state before further sitemap edits.
+- Search Console historical early metrics: site 2 clicks, 83 impressions, 2.4% CTR, average position 30.4; Discount page 42 impressions, 0 clicks, avg position 18; Percentage page 24 impressions, 0 clicks, avg position 55.5. These are dated snapshots only.
+- PWA manifest and service worker exist. Prior 28 Oct archive recorded cache v32 and subsequent dated entries bumped cache through v40. The exact present cache version must be read from current `sw.js` before changing; do not rely on stale notes.
+- After changes to cached assets, bump cache version sequentially and record it. Metadata-only edits do not automatically require cache bump.
+- Service-worker stale-cache handling was previously improved (update on load, navigation no-store, skipWaiting/clients.claim and old-cache cleanup); verify current source before relying on exact implementation.
+- Google indexing and sitemap fetch status must be reported separately; live URL availability does not prove indexing.
+
+## Historical tool/page work preserved
+The 28 Oct archive above contains detailed commit-by-commit history for ID Card Print Studio, Ayushman card PDF crop, age/birthday visual design, Percentage, Discount, GST and other calculators, including cache bumps and testing caveats. Preserve that entire history; do not summarise it away.
+- Percentage calculator: two calculation modes (percentage of a number; what percentage a part is of a whole), with division-by-zero validation.
+- Discount calculator: calculate sale price from discount percentage and calculate discount amount/percentage from original and sale price.
+- GST calculator: before-GST and GST-inclusive modes, with supported Indian slabs.
+- Age calculator: exact age, total elapsed days, full weeks plus remaining days, weekday of birth, and birthday illustration/animation. Prior source commits and verification cautions remain in earlier archive.
+- ID Card Print Studio: detailed Aadhaar/Voter/PAN/Ayushman workflows, manual crop, front/back, physical print dimensions, PDF/JPG output, margins/gaps and Ayushman PDF handling. This workflow was explicitly paused in the earlier checkpoint; don't resume unprompted.
+- The 2 Nov SEO research file audited 24 pages. It records current verified features, query ownership, SERP patterns and candidate metadata. Read its exact page-level sections before changing any page. Do not claim features that the audited source did not support (for example image resizer cm/mm/DPI/KB presets, or image-to-PDF arbitrary DPI/reordering).
+- Important SEO principle from research: avoid cannibalisation between Percentage vs Percentage Change, EMI vs Loan Affordability, Image Compressor vs Image Resizer, QR chooser vs QR maker, and Age vs Date Difference. Only implement candidate metadata after validating current source and user intent.
+- The 2 Nov research phase itself made no source-code or metadata changes; it was a research checkpoint.
+
+## Work resumed 1–4 November 2026: recent design and tool-page tasks
+The user resumed hands-on UI work and expects careful matching to reference screenshots.
+1. **Image Compressor / page design sizing and hero work (2–3 Nov):** user compared tool-page designs and insisted that the larger hero/page presentation should match the approved reference. There was feedback that the hero image/content was wrong and that text weight/boldness and colours needed correction. User asked to remove inappropriate bold styling and tune colours. Do not guess which image/hero is approved; inspect the latest user-provided reference/screenshots and current repository page before editing. Verify that the rendered hero has the requested full size, not just a similar appearance.
+2. **URL Toolkit (3 Nov):** user requested its page/design be brought to the same sizing and visual standard as the previously improved Image Compressor page. User explicitly complained when the URL Toolkit was not as large/full-sized as the reference. Compare actual hero/content width, height, typography and spacing on mobile/desktop; don't mark complete based only on CSS assumptions. Latest known repository URL: `url-toolkit.html`; fetch current version before changing.
+3. **Other tool pages (2 Nov):** user rejected a proposal to put all redesigned tools on one page. Requirement: each tool/page should be prepared individually, with more thoughtful design and careful visual review. Do not combine several tool designs into a single page or bulk-change all pages.
+4. **EMI Calculator (4 Nov):** see dedicated detailed section below.
+
+## EMI Calculator — verified latest code checkpoint, 4 November 2026
+- Page: `emi.html`
+- Live: https://barsulkhan.github.io/InfoJano/emi.html
+- Repository file SHA after latest update: `760afaf55cdc388cab9108fb78becc4aeb06bbc1`
+- Latest commit: `85abc4cd9f52cedfcb14f23283804adeb1066b62`
+- GitHub Actions run: `41715311462`, completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/41715311462
+- Latest work added:
+  1. Coloured accents for small and large icons (CSS pass; visually inspect live page for any selectors that may have been missed).
+  2. Interest Calculation Method selector: Reducing Balance Rate and Flat Rate.
+  3. Interest Rate Type selector: Fixed Interest Rate and Floating Interest Rate.
+  4. EMI calculation supports both Flat and Reducing Balance methods.
+  5. Part Payment estimate for reducing-balance loans, with chosen month and estimated interest savings/earlier closure.
+  6. Early Loan Closure estimate with outstanding balance after selected month and foreclosure fee.
+  7. Loan Comparison against an alternate annual rate and method.
+  8. Loan Affordability Checker using monthly take-home income, existing EMI and EMI budget percentage.
+  9. Interest Rate Change Simulator; user manually enters revised rate (not fetched automatically).
+  10. PDF button expands full repayment schedule before browser print/save-to-PDF.
+  11. Existing processing-fee toggle and repayment schedule retained.
+- Important distinctions/caveats:
+  - Fixed/Floating describes whether the lender can revise the rate; Flat/Reducing describes the interest calculation method. They are different concepts.
+  - Floating rate changes are not automatically fetched; user enters a scenario rate in the simulator.
+  - Flat-rate part-payment/foreclosure terms vary by lender; request lender settlement statement. The estimate should not be presented as a guaranteed bank settlement amount.
+  - Affordability and loan comparison are estimates, not lender approval or financial advice.
+- User confirmed “All ok সব ঠিক আছে” and stopped work. Do not reopen/rework features without request.
+- Remaining verification checklist: open live page on Android Chrome and refresh; compare Flat vs Reducing with identical principal/rate/tenure; check Fixed/Floating summary; test Part Payment, Early Closure, Loan Comparison, Affordability, Rate Simulator; verify full repayment schedule and PDF on Android; inspect mobile layout, icon colours and hero against approved reference. This is a user-side/live visual verification checklist; the successful Actions run alone does not prove browser behaviour.
+
+## URL Toolkit / Short Link API and Cloudflare staging history
+- Earlier project goal: develop a URL toolkit and potentially a Bitly competitor with short links, audience retention/analytics and account signup.
+- Prior work included Cloudflare Workers, D1 database, staging scaffold, Worker deployment, Hoppscotch POST API security testing and Service Worker cache verification.
+- A previously returned staging health response was: `{"ok":true,"service":"InfoJano Short Link API","mode":"staging-scaffold"}`.
+- User previously paused InfoJano for about one month due to a credit-card/payment issue, saved a master file and resumed later. This pause is historical; current EMI work has since proceeded.
+- Do not infer production readiness from the staging scaffold response. Confirm the current Worker URL, source, D1 binding/schema, secrets configuration and security test results before making claims.
+- The 3 Nov URL Toolkit page-design request is separate from the Cloudflare Short Link API/backend project; keep frontend page and backend API work clearly distinguished.
+
+## Other project context not to mix into InfoJano
+- MobilePro is a separate reusable premium mobile-shop website demo project for Bismillah Mobile Service Point, Ranghat, Notun Bazar, Chanchal, Malda. It belongs to another shop owner and must not be presented as the official website or publicly launched without owner permission. Do not mix its files or brand into InfoJano.
+
+## Current next-session start instructions
+When the user starts a new chat and says “InfoJano-এর কাজ শুরু করো” or “InfoJano EMI Calculator-এর কাজ শুরু করো”:
+1. Read this complete master file and the 2 Nov SEO research file; do not ask the user to repeat prior project history.
+2. Fetch current GitHub repository files before acting. At minimum inspect `emi.html`, `url-toolkit.html`, `sw.js`, relevant homepage file and current GitHub Actions runs.
+3. Respect the user's specific requested page/task; do not switch to unrelated work.
+4. If continuing EMI, first verify current deployment/live mobile appearance and the outstanding checklist; do not reimplement already-completed features.
+5. If continuing URL Toolkit, compare against the user's approved Image Compressor reference and correct only the requested page after inspecting the current code.
+6. For other redesigns, handle one standalone page at a time. Never combine all tools on one page.
+7. Report exactly what is verified, what is committed, what is deployed, and what still needs the user's visual test.
+
+## Exact new-chat message (copy and send)
+“InfoJano-এর সম্পূর্ণ Master Archive দেখে শুরু থেকে এখন পর্যন্ত সব কাজের ধারাবাহিকতা বুঝে নাও। শুধু EMI Calculator নয়—পুরোনো সব tools, homepage/design, SEO, Sitemap, PWA, ID Card Print Studio, URL Toolkit, Cloudflare Short Link API এবং সাম্প্রতিক সব পরিবর্তন বিবেচনায় রাখবে। প্রথমে GitHub repository ও latest Actions যাচাই করবে। আমি যে পেজের কাজ বলব শুধু সেই পেজেই কাজ করবে। Android থেকে ধাপে ধাপে চালাবে, আগের কাজ নষ্ট করবে না, এবং কোনো live/visual test না করে সফল বলবে না।”
