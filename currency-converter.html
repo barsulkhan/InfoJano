@@ -49,6 +49,64 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 @media(max-width:950px){.hero{grid-template-columns:150px 1fr 130px;padding:23px}.hero-art{font-size:75px}.workspace{grid-template-columns:1fr}.feature-strip{grid-template-columns:repeat(3,1fr)}.feature:nth-child(3){border-right:0}.feature:nth-child(4),.feature:nth-child(5){margin-top:12px}}
 @media(max-width:600px){main{width:calc(100% - 20px);margin-bottom:22px}.crumb{font-size:12px;padding:8px 3px}.hero{grid-template-columns:1fr;gap:5px;min-height:0;padding:21px 17px;text-align:center;border-radius:23px;margin-bottom:14px}.hero:before{border-radius:23px}.hero-art{display:none}.hero-copy{width:100%}.hero h1{font-size:34px;letter-spacing:-1px;margin:9px 0}.hero p{font-size:14px;margin-bottom:13px}.perks{justify-content:center;gap:6px}.perk{font-size:11px;padding:7px 10px}.panel{padding:16px;border-radius:20px}.panel-head{gap:10px;margin-bottom:16px}.head-icon{width:47px;height:47px;flex-basis:47px;font-size:23px;border-radius:15px}.panel h2{font-size:21px}.sub{font-size:12px}.currency-row{grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr);gap:6px}.currency-select{height:58px;padding:0 7px;gap:5px}.currency-select select{font-size:12px}.flag{font-size:21px}.swap{width:37px;height:37px;font-size:20px;margin-bottom:10px}.field label,.amount-wrap label{font-size:13px}.amount-input{height:57px;font-size:20px}.preset{padding:7px 12px;font-size:12px}.action-row{gap:8px}.convert-btn{font-size:16px;min-height:54px}.refresh-btn{padding:0 12px;font-size:12px}.result-panel{gap:12px}.result-title{font-size:17px}.rate-head{align-items:flex-start;flex-direction:column}.rate-title{font-size:16px}.updated{font-size:10px}.rate-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.rate-card{padding:10px 4px}.rate-number{font-size:14px}.feature-strip{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px 7px;gap:6px}.feature{padding:8px 6px;border-right:0;gap:8px}.feature:nth-child(odd){border-right:1px solid #c6d9ff}.feature:nth-child(n+3){margin-top:0}.feature-icon{width:37px;height:37px;flex-basis:37px;font-size:18px}.feature strong{font-size:12px}.feature small{font-size:10px}.info-grid{grid-template-columns:1fr;gap:10px}.info-card{padding:14px}}
 @media(prefers-reduced-motion:reduce){.hero:before{animation:none}}
+
+/* Responsive layout correction: keep every control aligned on narrow screens and desktop-mode phones. */
+.hero{background:radial-gradient(ellipse at 50% 0%,#173fba 0%,#071b72 48%,#090a50 100%)!important;color:#fff!important}
+.hero h1{color:#fff!important}.hero p{color:#edf4ff!important}
+.presets{display:flex!important;flex-direction:row!important;align-items:center;justify-content:flex-start;flex-wrap:wrap!important;gap:9px!important}
+.presets .preset{display:inline-flex!important;align-items:center;justify-content:center;width:auto!important;min-width:64px;flex:0 0 auto!important;white-space:nowrap;min-height:40px}
+.action-row{display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:10px!important}
+.action-row .convert-btn{display:flex!important;align-items:center;justify-content:center;width:auto!important;min-width:0;flex:1 1 auto!important;white-space:nowrap}
+.action-row .refresh-btn{display:flex!important;align-items:center;justify-content:center;width:auto!important;flex:0 0 auto!important;min-height:54px;white-space:nowrap}
+.currency-select select{appearance:auto}
+@media(max-width:1100px){
+ main{width:calc(100% - 26px)}
+ .hero{grid-template-columns:1fr!important;min-height:0!important;text-align:center;padding:24px 22px!important;gap:6px!important}
+ .hero-art{display:none!important}
+ .hero-copy{width:100%;max-width:850px;margin:auto}
+ .hero h1{font-size:clamp(32px,5vw,48px)}
+ .workspace{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+ .feature-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ .feature{border-right:0!important;padding:9px 10px!important;margin:0!important}
+ .feature:nth-child(odd){border-right:1px solid #c6d9ff!important}
+ .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+ main{width:calc(100% - 18px)!important}
+ .hero{padding:20px 14px!important;border-radius:22px!important;margin-bottom:14px!important}
+ .hero:before{border-radius:22px!important}
+ .hero h1{font-size:clamp(29px,8vw,38px)!important;letter-spacing:-.8px!important}
+ .hero p{font-size:13px!important}
+ .perk{font-size:10px!important;padding:6px 9px!important}
+ .panel{padding:14px!important;border-radius:18px!important}
+ .panel h2{font-size:20px!important}
+ .currency-row{grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr)!important;gap:5px!important}
+ .currency-select{height:54px!important;padding:0 6px!important;gap:4px!important}
+ .currency-select select{font-size:11px!important}
+ .flag{font-size:19px!important}
+ .swap{width:35px!important;height:35px!important;font-size:19px!important}
+ .presets{gap:6px!important}
+ .presets .preset{min-width:0!important;min-height:36px!important;padding:6px 11px!important;font-size:11px!important}
+ .action-row{gap:7px!important}
+ .action-row .convert-btn{min-height:50px!important;font-size:14px!important;padding:0 10px!important}
+ .action-row .refresh-btn{min-height:50px!important;font-size:11px!important;padding:0 9px!important}
+ .rate-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .feature-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:8px!important}
+ .feature{gap:7px!important;padding:8px 5px!important}
+ .feature-icon{width:34px!important;height:34px!important;flex-basis:34px!important;font-size:17px!important}
+ .feature strong{font-size:11px!important}
+ .feature small{font-size:9px!important}
+ .info-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:370px){
+ .currency-row{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr)!important;gap:3px!important}
+ .currency-select select{font-size:10px!important}
+ .flag{font-size:17px!important}
+ .swap{width:29px!important;height:29px!important;font-size:16px!important}
+ .action-row .refresh-btn{font-size:10px!important;padding:0 6px!important}
+ .presets .preset{padding:6px 8px!important}
+}
+
 </style>
 </head>
 <body>
