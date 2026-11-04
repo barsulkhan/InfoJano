@@ -230,6 +230,83 @@ button,input,select{font:inherit}button{cursor:pointer}
 }
 @media(prefers-reduced-motion:reduce){.hero-neon h1:after{animation:none!important;display:none!important}.feature[role=button]:hover{transform:none!important}}
 
+
+
+/* Final visual polish: clean header edges, full desktop hero, subtle right-to-left light */
+.ij-head{
+ border-radius:0!important;overflow:hidden!important;
+ background:linear-gradient(100deg,#06358f 0%,#0758d7 58%,#073a9b 100%)!important;
+ border:0!important;border-bottom:2px solid rgba(84,229,255,.8)!important;
+ box-shadow:0 5px 20px rgba(3,31,91,.2)!important;
+}
+.head-inner{width:100%!important;max-width:none!important;min-height:88px!important;padding:13px clamp(18px,3vw,48px)!important}
+.brand img{display:block!important;flex:0 0 44px!important;filter:drop-shadow(0 0 8px rgba(83,229,255,.32))!important}
+.head-links a{border-radius:13px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22)!important;transition:background .2s ease,transform .2s ease!important}
+.head-links a:hover{background:rgba(255,255,255,.23)!important;transform:translateY(-2px)!important}
+.hero-neon{min-height:440px!important;padding:34px clamp(18px,4vw,64px) 42px!important;border-radius:0!important;box-shadow:0 15px 35px rgba(31,68,170,.2)!important}
+.hero-neon-inner{min-height:360px!important;max-width:1580px!important;grid-template-columns:minmax(150px,220px) minmax(360px,1fr) minmax(250px,390px)!important;gap:clamp(18px,2.2vw,36px)!important}
+.hero-art svg{max-height:300px!important}
+.hero-art-left svg{max-width:215px!important}
+.hero-art-right svg{max-width:390px!important}
+.hero-neon h1{overflow:hidden!important}
+.hero-neon h1:after{
+ left:auto!important;right:-58%!important;width:27%!important;
+ background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.08) 22%,rgba(255,255,255,.72) 48%,rgba(112,245,255,.38) 60%,transparent 100%)!important;
+ animation:ijTitleLightRightToLeft 12s ease-in-out infinite!important;
+}
+@keyframes ijTitleLightRightToLeft{
+ 0%,12%{right:-58%;opacity:0}
+ 18%{opacity:.82}
+ 40%{right:125%;opacity:.72}
+ 42%,100%{right:125%;opacity:0}
+}
+/* Fine light sweep across hero controls, format labels and illustrations */
+.hero-kicker,.hero-chip,.hero-format-row .format-badge,.hero-secure,.hero-art{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+}
+.hero-kicker:after,.hero-chip:after,.hero-format-row .format-badge:after,.hero-secure:after,.hero-art:after{
+ content:"";position:absolute;z-index:5;top:-35%;bottom:-35%;right:-80%;
+ width:24%;pointer-events:none;transform:skewX(-20deg);
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),rgba(255,255,255,.72),rgba(139,249,255,.24),transparent);
+ filter:blur(1.5px);mix-blend-mode:screen;
+ animation:ijControlLightSweep 12s ease-in-out infinite;
+}
+.hero-chip:after{width:30%;animation-delay:1.4s}
+.hero-format-row .format-badge:after{width:36%;animation-delay:2.8s}
+.hero-secure:after{animation-delay:4.2s}
+.hero-art:after{width:19%;animation-delay:5.6s}
+@keyframes ijControlLightSweep{
+ 0%,13%{right:-80%;opacity:0}
+ 19%{opacity:.68}
+ 43%{right:140%;opacity:.55}
+ 45%,100%{right:140%;opacity:0}
+}
+/* Give the small illustrated marks their own crisp coloured glow */
+.hero-art svg{filter:drop-shadow(0 0 5px rgba(104,230,255,.23)) drop-shadow(0 12px 18px rgba(0,14,73,.24))!important}
+.hero-art svg text{paint-order:stroke;stroke:rgba(255,255,255,.16);stroke-width:.7px}
+.hero-chip b{color:#fff17a!important;text-shadow:0 0 5px #fff17a,0 0 12px rgba(255,231,93,.7)!important}
+.hero-format-row .pdf{box-shadow:0 0 7px rgba(255,94,94,.35),0 5px 12px rgba(0,0,0,.14)!important}
+.hero-format-row .jpg{box-shadow:0 0 7px rgba(174,112,255,.38),0 5px 12px rgba(0,0,0,.14)!important}
+.hero-format-row .png{box-shadow:0 0 7px rgba(74,255,173,.35),0 5px 12px rgba(0,0,0,.14)!important}
+/* Ensure the Page Layout feature takes the visitor to the real settings */
+#settingsTitleAnchor{scroll-margin-top:100px}
+.feature{cursor:pointer!important;user-select:none}
+.feature:focus-visible{outline:3px solid #8dbaff!important;outline-offset:3px!important}
+@media(max-width:1050px){
+ .hero-neon{min-height:390px!important;padding:28px 20px 36px!important}
+ .hero-neon-inner{min-height:320px!important;grid-template-columns:minmax(115px,165px) minmax(280px,1fr) minmax(205px,290px)!important}
+ .hero-art svg{max-height:260px!important}
+}
+@media(max-width:760px){
+ .head-inner{min-height:68px!important;padding:9px 13px!important}
+ .hero-neon{min-height:0!important;padding:22px 15px 31px!important;border-radius:0!important}
+ .hero-neon-inner{min-height:0!important;grid-template-columns:minmax(0,1fr) 112px!important}
+ .hero-art-right svg{max-width:160px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-neon h1:after,.hero-kicker:after,.hero-chip:after,.hero-format-row .format-badge:after,.hero-secure:after,.hero-art:after{animation:none!important;display:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -269,7 +346,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 <section class="panel preview-panel">
 <div class="panel-head"><div><div class="panel-title"><i class="dot"></i>Live Page Preview</div><div class="panel-sub">Preview updates as you type</div></div><div class="preview-tools"><button class="small-btn" id="zoomOut">−</button><span id="zoomLabel" class="panel-sub">100%</span><button class="small-btn" id="zoomIn">+</button></div></div>
 <div class="preview-stage" id="previewStage"><div class="preview-stack" id="previewStack"></div></div>
-<div class="settings"><div class="settings-title">⚙ Page Settings</div><div class="setting-grid"><div class="field"><label for="pageSize">Page size</label><select id="pageSize"><option value="A4">A4 (210 × 297 mm)</option><option value="A5">A5 (148 × 210 mm)</option><option value="Letter">US Letter (8.5 × 11 in)</option></select></div><div class="field"><label for="orientation">Orientation</label><select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div class="field"><label for="margin">Margins</label><select id="margin"><option value="normal">Normal (20 mm)</option><option value="narrow">Narrow (12 mm)</option><option value="wide">Wide (28 mm)</option></select></div><div class="field"><label for="lineSpacing">Line spacing</label><select id="lineSpacing"><option value="1.5">1.5</option><option value="1.7" selected>1.7</option><option value="2">2.0</option></select></div></div></div>
+<div class="settings"><div class="settings-title" id="settingsTitleAnchor">⚙ Page Settings</div><div class="setting-grid"><div class="field"><label for="pageSize">Page size</label><select id="pageSize"><option value="A4">A4 (210 × 297 mm)</option><option value="A5">A5 (148 × 210 mm)</option><option value="Letter">US Letter (8.5 × 11 in)</option></select></div><div class="field"><label for="orientation">Orientation</label><select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div class="field"><label for="margin">Margins</label><select id="margin"><option value="normal">Normal (20 mm)</option><option value="narrow">Narrow (12 mm)</option><option value="wide">Wide (28 mm)</option></select></div><div class="field"><label for="lineSpacing">Line spacing</label><select id="lineSpacing"><option value="1.5">1.5</option><option value="1.7" selected>1.7</option><option value="2">2.0</option></select></div></div></div>
 <div class="export-grid"><button class="export-btn export-pdf" id="pdfBtn"><b>▤</b><span>Download PDF</span></button><button class="export-btn export-jpg" id="jpgBtn"><b>▧</b><span>JPG per page</span></button><button class="export-btn export-png" id="pngBtn"><b>▧</b><span>PNG per page</span></button></div>
 <div class="secondary-actions"><button id="addPageBtn">＋ Add Page</button><button id="pasteBtn">Paste Text</button><button id="downloadHtmlBtn">Save Editable HTML</button></div>
 <div class="status" id="status" role="status" aria-live="polite">Ready. Your document stays in this browser while you work.</div>
