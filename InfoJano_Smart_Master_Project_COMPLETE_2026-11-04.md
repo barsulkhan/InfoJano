@@ -2057,3 +2057,84 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - For multi-output files, place page/index details before `-InfoJano`.
 - Never append `-InfoJano` repeatedly when the suffix is already present.
 - This rule is a permanent product-wide standard and must be checked whenever new upload/download tools are created or modified.
+
+
+---
+
+# CONTINUATION CHECKPOINT — 5 NOVEMBER 2026
+
+## 1. Word document conversion tools — current checkpoint
+Three separate SEO landing/tool pages are present:
+- `word-to-pdf.html`
+- `word-to-jpg.html`
+- `word-to-png.html`
+
+Shared processing engine and assets:
+- `word-converter.js`
+- `app-icons/word-converter.svg`
+- `app-manifests/word-to-pdf.webmanifest`
+- `app-manifests/word-to-jpg.webmanifest`
+- `app-manifests/word-to-png.webmanifest`
+
+Current feature scope:
+- DOCX upload (legacy .doc is not supported yet), 30 MB limit.
+- Browser-side rendering using docx-preview and html2canvas; jsPDF for PDF output; JSZip for multiple image outputs.
+- Page previews, page selection/range, select all/clear.
+- JPG and PNG export; JPG quality and DPI controls (96, 150, 200, 300).
+- One PDF for selected pages; multiple JPG/PNG files packaged as ZIP.
+- Preserve original filename and append `-InfoJano` at the end before extension.
+- Processing is in the browser; DOCX is not uploaded to an InfoJano processing server. External rendering libraries are loaded from CDN.
+- DOCX layout may differ from desktop Microsoft Word for complex fonts, tables, images or page breaks. Do not claim exact Word fidelity.
+
+SEO / discovery:
+- Homepage cards, search aliases and sitemap entries were updated for the three Word converters.
+- Target phrases include Word to PDF, Word to JPG, Word to PNG, DOCX to PDF/JPG/PNG and convert Word online.
+- Competitor references reviewed include iLovePDF, Smallpdf, PDF24, Sejda and Adobe Acrobat. Do not invent keyword search volume or ranking difficulty.
+- A four-page DOCX test file (A/B/C/D) was generated for Android testing. Live end-to-end DOCX testing remains pending unless the user confirms it.
+
+## 2. PWA / APK validation fixes — 5 November 2026
+Issues found and fixed from GitHub Actions logs:
+1. APK validation detected missing manifest links on `pdf-to-jpg.html` and `qr-maker.html`.
+   - Added `app-manifests/pdf-to-jpg.webmanifest` link to `pdf-to-jpg.html`.
+   - Added `app-manifests/qr-maker.webmanifest` link and `install.js` wiring to `qr-maker.html`.
+   - PDF page commit: `6b3d5ea0703768b629adeb6d84125286b27fca5e`.
+   - QR page commit: `fd4c3b6353e9e5b873c884a797dc546b632c88a8`.
+2. APK validation then detected `app-icons/url-toolkit.svg` missing from Service Worker precache.
+   - Added the URL Toolkit SVG to `sw.js`.
+   - Bumped Service Worker cache from `infojano-v199` to `infojano-v200`.
+   - Commit: `32feca7f5bc8bde17fa0aae6a6640b85b7ccda10`.
+
+## 3. Final verified GitHub Actions status
+All following statuses were checked through GitHub Actions API:
+- Pages deployment run `41898055673`: completed / success, commit `32feca7f5bc8bde17fa0aae6a6640b85b7ccda10`.
+- APK workflow run `41898056941`: completed / success, same commit.
+- APK workflow steps confirmed successful:
+  - Validate tool icons, manifests and APK matrix.
+  - Build one APK for each remaining tool.
+  - Verify APK package count.
+  - Upload APK files as workflow artifact.
+  - Publish tool APK release.
+- Published GitHub Release tag: `infojano-tool-apps-v1.1.1`.
+- Release URL: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1
+- Release contains 23 individual APK assets. These are built and published; installation and real-device functional testing of all 23 are not yet confirmed.
+- Workflow artifact: `InfoJano-Tool-APKs`, run #50.
+- Pages deployment URL: https://github.com/barsulkhan/InfoJano/actions/runs/41898055673
+- APK build URL: https://github.com/barsulkhan/InfoJano/actions/runs/41898056941
+- Live website: https://barsulkhan.github.io/InfoJano/
+
+## 4. Important distinction / pending user testing
+- Source changes: committed to main.
+- GitHub Pages: deployed successfully for commit `32feca7`.
+- APKs: 23 built, count-checked, artifact-uploaded and published in release v1.1.1.
+- Not yet confirmed by user: Android installation of all APKs; live manual DOCX-to-PDF/JPG/PNG conversion tests; Bengali text, tables, images, page breaks, 300 DPI memory use, ZIP contents and output filenames.
+- Do not describe the above untested items as user-tested.
+- The Node.js 20 / setup-java deprecation warnings visible in Actions are warnings, not build failures. Avoid unrelated workflow changes unless required.
+
+## 5. Next session — resume instructions
+1. Continue from this checkpoint; do not ask the user to repeat InfoJano project history.
+2. First verify the live Word converter pages on Android Chrome using the supplied four-page DOCX test file.
+3. Check PDF page count, JPG/PNG output, ZIP contents, selected pages, Bengali text/layout, DPI and original filename suffix.
+4. If a test fails, fix only the relevant converter code and preserve all existing working tools.
+5. If user wants APK checks, install and test a small representative sample first, then expand; do not ask them to install all 23 at once.
+6. Keep the project ACTIVE / INCOMPLETE. At each meaningful session end, append a new dated checkpoint to this same complete master archive.
+7. User works from Android and prefers concise Bengali instructions, with technical work handled by the assistant wherever possible.
