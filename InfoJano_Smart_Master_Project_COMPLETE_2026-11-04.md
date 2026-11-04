@@ -1853,3 +1853,12 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Homepage correction commit: `a7fde598ebf0609939d2858b4a991b535f66c263`.
 - Service worker cache bumped sequentially from `infojano-v188` to `infojano-v189`; commit: `0358f83df4d85f42fe61882480f08e1075c5356e`.
 - Changes are saved to GitHub. Await deployment completion and a fresh browser screenshot before claiming the visual result is verified.
+
+## 4 November 2026 — Homepage About / How it works / Why InfoJano visual correction
+- User supplied two desktop screenshots and requested removal of the duplicate About InfoJano display, keeping the larger lower About section; they also identified duplicated step numbers and icons overlapping the text in How InfoJano Works and Why InfoJano.
+- Source inspection identified the duplicate: the homepage showed an About teaser card in the home feature links while the full About section was also visible. Removed only the small About teaser card; retained the full lower About section and the Useful Guides teaser.
+- Source inspection identified layered legacy CSS: How cards contained their own numbered headings while pseudo-elements added another numbered badge and an extra large icon; Why cards combined text glyphs with CSS-generated pseudo-icons. Replaced these with one inline SVG icon per card and a final scoped CSS correction that disables the duplicate pseudo-elements, aligns icon/title/body vertically, and keeps mobile sizing responsive.
+- Homepage file index.html commit: d140fe9a50706fd746c221bb7c1f8f9791fc5c6e.
+- Service worker cache bumped from infojano-v189 to infojano-v190; sw.js commit: 818f2395fa2b8a84086281c55333df0a34f59e5f.
+- Source re-fetch verification: duplicate About teaser absent; the full About section remains; 3 How SVG icons and 3 Why SVG icons are present; final scoped CSS block is present; cache reports infojano-v190.
+- GitHub Pages run for the homepage commit #1440 completed successfully. The subsequent cache-bump Pages run #1441 was queued at the last status check; final deployment of the cache-bump commit and actual browser visual confirmation remain pending. Do not claim the screenshot rendering has been visually tested.
