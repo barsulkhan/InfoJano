@@ -1035,6 +1035,13 @@ body{background:linear-gradient(180deg,#f5f8ff 0%,#edf3ff 100%);color:var(--ij-i
 @media(max-width:360px){#home #toolGrid{grid-template-columns:1fr!important}#home #toolGrid>.tool{min-height:100px!important;flex-direction:row!important;text-align:left!important;padding:13px 34px 13px 13px!important}#home #toolGrid>.tool .icon{width:49px!important;height:49px!important;min-width:49px!important;flex-basis:49px!important}}
 @media(prefers-reduced-motion:reduce){#home #toolGrid>.tool{transition:none!important}#home #toolGrid>.tool:hover{transform:none!important}}
 
+
+/* Restore original colourful app icon artwork in Popular Tools v181 */
+#home #toolGrid>.tool .icon{background:transparent!important;box-shadow:none!important}
+#home #toolGrid>.tool .icon img{filter:none!important;width:58px!important;height:58px!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important}
+@media(max-width:1000px){#home #toolGrid>.tool .icon img{width:51px!important;height:51px!important}}
+@media(max-width:700px){#home #toolGrid>.tool .icon img{width:48px!important;height:48px!important}}
+@media(max-width:360px){#home #toolGrid>.tool .icon img{width:46px!important;height:46px!important}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","alternateName":"InfoJano Global Online Tools","description":"A global everyday utility portal offering free online image tools, PDF tools, QR code tools, link utilities, calculators and converters.","url":"https://barsulkhan.github.io/InfoJano/"}
