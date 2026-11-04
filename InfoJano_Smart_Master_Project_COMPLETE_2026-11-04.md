@@ -1843,3 +1843,13 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Homepage commit: `e958a3a9ad9f7fd0b7be5d6ebd35af34214ca0d7` (index.html).
 - Service worker cache bumped sequentially from `infojano-v187` to `infojano-v188`; commit: `8b92d9e9e691a4dba6d194b2a6b53373b865f0ce` (sw.js).
 - Note: GitHub file updates succeeded. A live browser visual review and GitHub Pages deployment completion have not yet been verified; do not claim visual testing or deployment success until checked.
+
+
+## 4 November 2026 — Homepage correction after desktop screenshot review
+- User supplied a desktop screenshot and pointed out that the app icons had not changed and the hero/header/chips layout did not match the approved concept.
+- Confirmed by source inspection: homepage was still loading the previous 22 app-icon SVG assets. Replaced all 22 SVGs used by the homepage tool cards with a consistent glossy blue/teal/purple/red/orange gradient icon family; retained all existing asset filenames and tool destinations.
+- Identified conflicting legacy CSS: a more specific `header.header` rule forced a blue gradient header despite the newer lower-specificity white header rule; legacy hero chip sizing also overrode the intended inline chip layout. Added final high-specificity cascade corrections to restore the white header, inline pill-shaped chips, larger hero artwork and updated icon sizing.
+- Homepage icon assets refreshed: 22 files under `app-icons/` used by the 22 homepage cards.
+- Homepage correction commit: `a7fde598ebf0609939d2858b4a991b535f66c263`.
+- Service worker cache bumped sequentially from `infojano-v188` to `infojano-v189`; commit: `0358f83df4d85f42fe61882480f08e1075c5356e`.
+- Changes are saved to GitHub. Await deployment completion and a fresh browser screenshot before claiming the visual result is verified.
