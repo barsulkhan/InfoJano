@@ -68,12 +68,19 @@
       #ij-related-apps h2{margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a}
       #ij-related-apps .ij-related-intro{margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5}
       #ij-related-apps .ij-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-      #ij-related-apps .ij-related-card{display:flex;flex-direction:column;gap:9px;min-width:0;padding:14px 12px;border:1px solid #dbeafe;border-radius:15px;background:#fff;color:#172554;text-decoration:none;min-height:178px;box-shadow:0 3px 12px #2563eb0b}
+      #ij-related-apps .ij-related-card{display:grid;grid-template-columns:44px minmax(0,1fr) 18px;grid-template-rows:auto auto;align-items:center;column-gap:11px;row-gap:4px;min-width:0;min-height:94px;padding:13px 14px;border:1px solid #e0e8f7;border-radius:16px;background:linear-gradient(145deg,#fff,#f7f9ff);color:#172554;text-decoration:none;box-shadow:0 4px 14px rgba(37,75,145,.055);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+      #ij-related-apps .ij-related-card:hover,#ij-related-apps .ij-related-card:focus-visible{transform:translateY(-2px);border-color:#a8c4ff;box-shadow:0 9px 20px rgba(37,99,235,.12)}
+      #ij-related-apps .ij-related-icon{grid-column:1;grid-row:1/3;width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#e9f2ff,#f1edff);box-shadow:inset 0 1px 0 #fff}
+      #ij-related-apps .ij-related-name{grid-column:2;grid-row:1;align-self:end;font-size:13px;line-height:1.35;font-weight:800;color:#17264b}
+      #ij-related-apps .ij-related-desc{grid-column:2;grid-row:2;align-self:start;font-size:11px;line-height:1.45;color:#68758d}
+      #ij-related-apps .ij-related-arrow{grid-column:3;grid-row:1/3;display:grid;place-items:center;margin:0;color:#245bd4;font-size:23px;font-weight:800}
       #ij-related-apps .ij-related-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#eff6ff;overflow:hidden} #ij-related-apps .ij-related-icon img{display:block!important;visibility:visible!important;opacity:1!important;width:36px!important;height:36px!important;max-width:36px!important;max-height:36px!important;object-fit:contain!important}#ij-related-apps .ij-related-icon .ij-icon-fallback{display:grid;place-items:center;width:36px;height:36px;font-size:25px;line-height:1}
       #ij-related-apps .ij-related-name{font-size:14px;line-height:1.35;font-weight:750}
       #ij-related-apps .ij-related-desc{font-size:12px;line-height:1.45;color:#64748b}
       #ij-related-apps .ij-related-arrow{display:grid;place-items:center;margin-top:auto;color:#245bd4;font-size:22px;font-weight:800}\n      
-      @media(max-width:360px){#ij-related-apps{padding:16px 12px}#ij-related-apps .ij-related-grid{gap:8px}#ij-related-apps .ij-related-card{padding:11px 9px}}
+      @media(max-width:560px){#ij-related-apps{padding:16px 12px}#ij-related-apps .ij-related-grid{gap:9px}#ij-related-apps .ij-related-card{grid-template-columns:36px minmax(0,1fr) 13px;column-gap:8px;min-height:88px;padding:10px 9px}#ij-related-apps .ij-related-icon{width:36px;height:36px;border-radius:11px}#ij-related-apps .ij-related-icon img{width:31px!important;height:31px!important;max-width:31px!important;max-height:31px!important}#ij-related-apps .ij-related-name{font-size:11px}#ij-related-apps .ij-related-desc{font-size:10px}#ij-related-apps .ij-related-arrow{font-size:18px}}
+      @media(max-width:360px){#ij-related-apps .ij-related-grid{grid-template-columns:1fr}} 
+      @media(prefers-reduced-motion:reduce){#ij-related-apps .ij-related-card{transition:none}}
     `;document.head.appendChild(style);
   }
   function addHomeReturn(){
