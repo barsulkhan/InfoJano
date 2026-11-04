@@ -1907,5 +1907,21 @@ body header.header .nav button.nav-home,body header.header .nav button.nav-searc
 #about .about-promise>div>span:last-child{display:block!important;grid-column:2!important;grid-row:2!important;font-size:12px!important;line-height:1.4!important;color:#53647e!important}
 @media(max-width:700px){#about .about-promise{grid-template-columns:1fr!important;gap:9px!important}#about .about-promise>div{padding:12px!important}}
 </style>
+
+<style id="infojano-homepage-motion-refinement-v1">
+/* Replace busy, mixed icon animations with one calm and consistent motion system. */
+#home #toolGrid>.tool .icon{animation:ij-home-soft-float 4.8s ease-in-out infinite!important;transform-origin:50% 55%!important;will-change:transform}
+#home #toolGrid>.tool:nth-child(4n+2) .icon{animation-delay:.65s!important}
+#home #toolGrid>.tool:nth-child(4n+3) .icon{animation-delay:1.3s!important}
+#home #toolGrid>.tool:nth-child(4n+4) .icon{animation-delay:1.95s!important}
+#home #toolGrid>.tool .icon:before,#home #toolGrid>.tool .icon:after{animation:none!important;content:none!important;display:none!important}
+#home #toolGrid>.tool .icon img{transform:none!important;animation:none!important}
+#home #toolGrid>.tool:hover .icon,#home #toolGrid>.tool:focus-visible .icon{animation:ij-home-hover-lift .28s ease-out 1!important}
+#home #toolGrid>.tool:active .icon{animation:ij-home-press .16s ease-out 1!important}
+@keyframes ij-home-soft-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2.5px) scale(1.015)}}
+@keyframes ij-home-hover-lift{from{transform:translateY(0) scale(1)}to{transform:translateY(-3px) scale(1.045)}}
+@keyframes ij-home-press{from{transform:scale(1)}to{transform:scale(.96)}}
+@media(prefers-reduced-motion:reduce){#home #toolGrid>.tool .icon,#home #toolGrid>.tool:hover .icon,#home #toolGrid>.tool:focus-visible .icon,#home #toolGrid>.tool:active .icon{animation:none!important;transform:none!important;will-change:auto!important}}
+</style>
 </body>
 </html>
