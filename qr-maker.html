@@ -87,6 +87,104 @@ main .ij-qr-brand{display:none!important}
 .ij-install-card,#ij-install-card{display:none!important;visibility:hidden!important;height:0!important;margin:0!important;padding:0!important}
 @media(max-width:760px){main section.ij-qr-hero{grid-template-columns:54% 46%!important;min-height:220px!important;padding:20px 17px!important}}
 @media(max-width:480px){main section.ij-qr-hero{grid-template-columns:54% 46%!important;min-height:190px!important;padding:17px 13px!important;border-radius:20px!important}.ij-qr-hero h1{font-size:clamp(26px,7vw,36px)!important}.ij-qr-hero p{font-size:11px!important}.ij-qr-hero-art{min-height:145px!important}}
+
+/* QR Maker supporting sections: premium illustrated InfoJano system */
+.ij-qr-info-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:24px 0}
+.ij-qr-info-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 220px;align-items:center;min-height:190px;overflow:hidden;padding:22px 24px;border:1px solid #dbe7ff;border-radius:23px;background:linear-gradient(115deg,#f0f7ff 0%,#e9f2ff 62%,#e4edff 100%);box-shadow:0 10px 25px rgba(44,76,160,.09)}
+.ij-qr-info-card:after{content:"";position:absolute;width:220px;height:220px;right:28px;top:-90px;border-radius:50%;background:rgba(255,255,255,.35);pointer-events:none}
+.ij-qr-steps{background:linear-gradient(115deg,#f5f1ff 0%,#f4f1ff 58%,#e9eaff 100%);border-color:#e4dcff}
+.ij-qr-info-copy{position:relative;z-index:1;max-width:560px}
+.ij-qr-kicker{display:inline-flex;align-items:center;margin-bottom:8px;padding:5px 9px;border-radius:999px;background:#dcecff;color:#1a5dc5;font-size:10px;font-weight:850;letter-spacing:.08em}
+.ij-qr-steps .ij-qr-kicker{background:#e8ddff;color:#6940c8}
+.ij-qr-info-card h2{margin:0 0 9px;font-size:clamp(20px,3vw,25px);letter-spacing:-.35px;color:#142b63}
+.ij-qr-info-card p{margin:0;color:#455875;font-size:14px;line-height:1.65}
+.ij-qr-art{position:relative;z-index:1;display:grid;place-items:center;min-height:150px}
+.ij-qr-art svg{display:block;width:100%;max-width:230px;height:auto;filter:drop-shadow(0 8px 12px rgba(50,83,165,.10))}
+.ij-qr-steps-list{display:grid;gap:8px;margin:13px 0 0;padding:0;list-style:none}
+.ij-qr-steps-list li{display:flex;align-items:center;gap:10px;color:#283b65;font-size:13px;line-height:1.45}
+.ij-qr-steps-list li span{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:linear-gradient(145deg,#1b9bf5,#245be9);color:#fff;font-size:13px;font-weight:850;box-shadow:0 4px 9px #2368e833}
+.ij-qr-back{margin:16px 4px 22px;font-size:14px;font-weight:700}
+.ij-qr-back a{color:#1265dc;text-decoration:none}
+.ij-qr-back a:hover{text-decoration:underline}
+#ij-qr-explore{margin:22px 0 24px;padding:18px 16px 16px;border:1px solid #dcdcff;border-radius:23px;background:linear-gradient(135deg,#f0f2ff,#e8e9ff 50%,#f8f3ff);box-shadow:0 10px 26px rgba(69,68,160,.09)}
+.ij-qr-section-heading{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.ij-qr-heading-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#168df4,#673de6);color:#fff;box-shadow:0 5px 12px #5268d633}
+.ij-qr-heading-icon svg{width:23px;height:23px}
+.ij-qr-section-heading h2{margin:0;color:#17265b;font-size:21px;line-height:1.2}
+.ij-qr-section-heading p{margin:4px 0 0;color:#5d6a8a;font-size:12px}
+.ij-qr-more{display:inline-flex;align-items:center;gap:8px;margin-left:auto;padding:9px 12px;border-radius:999px;background:linear-gradient(100deg,#8049ec,#245fe8);color:#fff!important;text-decoration:none;font-size:11px;font-weight:800;white-space:nowrap;box-shadow:0 4px 12px #4f56d52e}
+.ij-qr-more span{font-size:19px;line-height:12px}
+.ij-qr-tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ij-qr-tool-card{display:grid;grid-template-columns:52px minmax(0,1fr) 26px;align-items:center;gap:10px;min-width:0;min-height:92px;padding:12px;border:1px solid #dbe5ff;border-radius:18px;background:linear-gradient(120deg,#fff,#eff7ff);text-decoration:none;box-shadow:0 4px 12px rgba(48,79,155,.06);transition:transform .18s ease,box-shadow .18s ease}
+.ij-qr-tool-card:hover,.ij-qr-tool-card:focus-visible{transform:translateY(-2px);box-shadow:0 9px 18px rgba(48,79,155,.13);outline:2px solid #a7c8ff;outline-offset:1px}
+.ij-qr-tool-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;background:linear-gradient(145deg,#159cf7,#1762e9);color:#fff;box-shadow:0 5px 12px #1767e533}
+.ij-qr-tool-icon svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.qr-purple{background:linear-gradient(120deg,#fff,#f7efff);border-color:#eadcff}.qr-purple .ij-qr-tool-icon{background:linear-gradient(145deg,#ad54f4,#7534d7)}
+.qr-pink{background:linear-gradient(120deg,#fff,#fff0f7);border-color:#f8d8eb}.qr-pink .ij-qr-tool-icon{background:linear-gradient(145deg,#fa70b4,#e73d91)}
+.qr-green{background:linear-gradient(120deg,#fff,#eafdfa);border-color:#ccefe9}.qr-green .ij-qr-tool-icon{background:linear-gradient(145deg,#24c89a,#079c83)}
+.ij-qr-tool-copy{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ij-qr-tool-copy strong{color:#17265b;font-size:13px;line-height:1.3}
+.ij-qr-tool-copy small{color:#65728d;font-size:11px;line-height:1.4}
+.ij-qr-tool-arrow{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#dceeff;color:#1765d8;font-size:22px;font-weight:800}
+.qr-purple .ij-qr-tool-arrow{background:#eedfff;color:#7439d8}.qr-pink .ij-qr-tool-arrow{background:#ffe0ef;color:#d83287}.qr-green .ij-qr-tool-arrow{background:#d7f7ef;color:#078c76}
+.ij-qr-print-guide{display:grid;grid-template-columns:minmax(0,1fr) 190px;align-items:center;gap:18px;margin:22px 0;padding:22px 20px;border:1px solid #d6e6ff;border-radius:23px;background:linear-gradient(125deg,#f8fbff,#fff 62%,#f2f5ff);box-shadow:0 9px 24px rgba(44,76,160,.07)}
+.ij-qr-print-copy h2{margin:0 0 10px;color:#17265b;font-size:21px;line-height:1.25}
+.ij-qr-print-copy>p{color:#4d5d78;font-size:13px;line-height:1.65}
+.ij-qr-print-art svg{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 12px rgba(37,99,235,.12))}
+.ij-qr-checklist{margin:12px 0;padding:13px 14px;border:1px solid #c9f0df;border-radius:16px;background:linear-gradient(120deg,#effff7,#f4fff9)}
+.ij-qr-checklist h3{display:flex;align-items:center;gap:8px;margin:0 0 7px;color:#164b3a;font-size:14px}
+.ij-qr-checklist h3 span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#12a66a;color:#fff}
+.ij-qr-checklist ul{margin:0;padding-left:22px;color:#315a4b}
+.ij-qr-checklist li{margin:5px 0;font-size:12px;line-height:1.5}
+.ij-qr-related-links{margin-bottom:0!important;font-size:12px!important}
+.ij-qr-related-links a{font-weight:750;color:#1265dc}
+#ij-seo-faq{margin:22px 0!important;padding:19px 17px!important;border:1px solid #e5dcff!important;border-radius:22px!important;background:linear-gradient(145deg,#f5f0ff,#fff 60%,#f4f6ff)!important;box-shadow:0 9px 24px rgba(88,57,160,.07)}
+#ij-seo-faq h2{display:flex;align-items:center;gap:10px;margin:0 0 13px!important;color:#2c246b;font-size:21px!important}
+#ij-seo-faq h2:before{content:"?";display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,#a35cf4,#6236d8);color:#fff;font-size:23px;box-shadow:0 4px 11px #7045d633}
+#ij-seo-faq details{margin:8px 0;padding:12px 13px!important;border:1px solid #e7e2f7!important;border-radius:14px!important;background:#fff!important;box-shadow:0 3px 9px rgba(69,55,130,.04)}
+#ij-seo-faq summary{color:#25315a;font-size:13px;font-weight:750;cursor:pointer;list-style:none}
+#ij-seo-faq summary::-webkit-details-marker{display:none}
+#ij-seo-faq summary:after{content:"⌄";float:right;color:#5941be;font-size:19px;line-height:13px}
+#ij-seo-faq details[open] summary:after{content:"⌃"}
+#ij-seo-faq details p{margin:9px 0 0!important;color:#596780;font-size:12px}
+#ij-seo-faq .ij-qr-faq-more{margin:12px 0 0!important;padding:11px 12px;border-radius:13px;background:#eeebff;color:#4c4283;font-size:12px}
+#ij-seo-faq .ij-qr-faq-more a{color:#245bd4;font-weight:750}
+@media(max-width:600px){
+ .ij-qr-info-card{grid-template-columns:minmax(0,1fr) 126px;min-height:180px;padding:17px 13px;border-radius:20px}
+ .ij-qr-info-card h2{font-size:18px}
+ .ij-qr-info-card p{font-size:11px;line-height:1.5}
+ .ij-qr-art{min-height:125px}
+ .ij-qr-art svg{max-width:145px}
+ .ij-qr-steps-list{gap:7px}
+ .ij-qr-steps-list li{gap:7px;font-size:10px}
+ .ij-qr-steps-list li span{width:24px;height:24px;flex-basis:24px;font-size:11px}
+ .ij-qr-kicker{font-size:8px;padding:4px 7px}
+ #ij-qr-explore{padding:14px 10px;border-radius:20px}
+ .ij-qr-section-heading{gap:8px}
+ .ij-qr-heading-icon{width:36px;height:36px;flex-basis:36px;border-radius:12px}
+ .ij-qr-section-heading h2{font-size:16px}
+ .ij-qr-section-heading p{font-size:10px}
+ .ij-qr-more{padding:8px 9px;font-size:9px;gap:4px}
+ .ij-qr-tool-card{grid-template-columns:38px minmax(0,1fr) 21px;gap:7px;min-height:83px;padding:9px 8px;border-radius:15px}
+ .ij-qr-tool-icon{width:38px;height:38px;border-radius:12px}
+ .ij-qr-tool-icon svg{width:22px;height:22px}
+ .ij-qr-tool-copy strong{font-size:10px}
+ .ij-qr-tool-copy small{font-size:9px}
+ .ij-qr-tool-arrow{width:21px;height:21px;font-size:18px}
+ .ij-qr-print-guide{grid-template-columns:minmax(0,1fr) 104px;gap:8px;padding:16px 13px;border-radius:20px}
+ .ij-qr-print-copy h2{font-size:17px}
+ .ij-qr-print-copy>p{font-size:11px;line-height:1.55}
+ .ij-qr-print-art svg{max-width:105px}
+ .ij-qr-checklist{padding:10px 9px}
+ .ij-qr-checklist h3{font-size:11px}
+ .ij-qr-checklist li{font-size:10px}
+ #ij-seo-faq{padding:15px 12px!important}
+ #ij-seo-faq h2{font-size:17px!important}
+ #ij-seo-faq details{padding:11px!important}
+}
+@media(max-width:380px){.ij-qr-info-card{grid-template-columns:minmax(0,1fr) 104px;padding:14px 10px}.ij-qr-info-card h2{font-size:16px}.ij-qr-art svg{max-width:115px}.ij-qr-more{font-size:0}.ij-qr-more span{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.ij-qr-tool-card{transition:none}}
+
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
@@ -192,29 +290,37 @@ main .ij-qr-brand{display:none!important}
 <aside class="ij-qr-preview"><h2>◉ Preview</h2><div id="qr" class="ij-qr-output"><div class="ij-qr-placeholder">▦<strong>Your QR code will appear here</strong><small>Enter your content and tap Generate QR Code.</small></div></div></aside>
 </section>
 <section class="ij-qr-features"><div>⚡<b>Fast & Easy</b><small>Create QR codes in seconds.</small></div><div>🛡️<b>Free to Use</b><small>No signup or registration.</small></div><div>▱<b>Fully Customizable</b><small>Change color, size and add a logo.</small></div><div>▣<b>Multiple Uses</b><small>Links, text, WiFi, contact and more.</small></div></section>
-<section class="ij-qr-reader"><h2>Read an Existing QR Code or Barcode</h2><p class="note">Upload an image to read its contents. If readable, the text or link will appear in the QR input above so you can edit it and create a new QR code.</p><label for="code-image">Upload QR / barcode image</label><input id="code-image" type="file" accept="image/*"><img id="code-preview" alt="Uploaded QR or barcode preview" hidden><button id="read-code-button" type="button">Read Uploaded Code</button><p id="read-code-status" class="note" aria-live="polite">Choose an image, then tap Read Uploaded Code.</p><p class="note">Some blurry, damaged or unsupported barcode images may not be readable. Do not enter passwords or sensitive personal information.</p></section><section>
-<h2>What Is a QR Code?</h2>
-<p>A QR code is a two-dimensional code that a phone camera can scan to open a link or read stored information.</p>
-<h2>How to Use This QR Maker</h2>
-<p>Enter a website link or text and tap Generate QR Code. Scan the resulting image with a phone camera to test it.</p>
+<section class="ij-qr-reader"><h2>Read an Existing QR Code or Barcode</h2><p class="note">Upload an image to read its contents. If readable, the text or link will appear in the QR input above so you can edit it and create a new QR code.</p><label for="code-image">Upload QR / barcode image</label><input id="code-image" type="file" accept="image/*"><img id="code-preview" alt="Uploaded QR or barcode preview" hidden><button id="read-code-button" type="button">Read Uploaded Code</button><p id="read-code-status" class="note" aria-live="polite">Choose an image, then tap Read Uploaded Code.</p><p class="note">Some blurry, damaged or unsupported barcode images may not be readable. Do not enter passwords or sensitive personal information.</p></section><section class="ij-qr-info-grid" aria-label="QR code information and instructions">
+<article class="ij-qr-info-card ij-qr-meaning">
+<div class="ij-qr-info-copy"><span class="ij-qr-kicker">UNDERSTAND QR CODES</span><h2>What Is a QR Code?</h2><p>A QR code is a two-dimensional code that a phone camera can scan to open a link or read stored information.</p></div>
+<div class="ij-qr-art ij-qr-phone-art" aria-hidden="true"><svg viewBox="0 0 250 190" role="img"><defs><linearGradient id="qrPhone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#356cff"/><stop offset="1" stop-color="#6338dc"/></linearGradient><linearGradient id="qrGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9eaff"/><stop offset="1" stop-color="#e9e0ff"/></linearGradient></defs><ellipse cx="130" cy="157" rx="100" ry="22" fill="#9db9ff" opacity=".18"/><circle cx="130" cy="91" r="75" fill="url(#qrGlow)" opacity=".8"/><g transform="rotate(-9 142 91)"><rect x="105" y="8" width="93" height="165" rx="18" fill="#182a68"/><rect x="111" y="15" width="81" height="148" rx="12" fill="#fff"/><rect x="137" y="21" width="29" height="4" rx="2" fill="#a7b8dc"/><rect x="122" y="43" width="59" height="59" rx="5" fill="#f5f8ff" stroke="#b9cdf5"/><g fill="#14234c"><path d="M128 49h17v17h-17zm4 4v9h9v-9zm25-4h17v17h-17zm4 4v9h9v-9zM128 74h17v17h-17zm4 4v9h9v-9zM151 71h5v5h-5zm9 5h5v5h-5zm-9 9h5v5h-5zm14-1h5v5h-5zm-13 17h22v4h-22z"/></g><path d="M120 49v-6h9M181 49v-6h-9M120 94v6h9M181 94v6h-9" fill="none" stroke="#11b981" stroke-width="3" stroke-linecap="round"/><rect x="125" y="116" width="53" height="7" rx="3.5" fill="#d9e4f7"/><rect x="125" y="129" width="39" height="5" rx="2.5" fill="#e6edf8"/></g><g transform="rotate(-12 74 107)"><rect x="28" y="61" width="70" height="90" rx="9" fill="#fff" stroke="#c8d8fa" stroke-width="2"/><g fill="#172b5d"><path d="M37 70h17v17H37zm4 4v9h9v-9zm32-4h17v17H73zm4 4v9h9v-9zM37 102h17v17H37zm4 4v9h9v-9zm22-15h6v6h-6zm10 12h6v6h-6zm-8 12h6v6h-6zm16 8h6v6h-6z"/></g></g><path d="m48 34 5 10 10 4-10 4-5 10-4-10-10-4 10-4z" fill="#ffbd35"/><circle cx="211" cy="51" r="7" fill="#10b981"/></svg></div>
+</article>
+<article class="ij-qr-info-card ij-qr-steps">
+<div class="ij-qr-info-copy"><span class="ij-qr-kicker">THREE SIMPLE STEPS</span><h2>How to Use This QR Maker</h2><ol class="ij-qr-steps-list"><li><span>1</span>Enter a website link or text in the input field.</li><li><span>2</span>Tap the Generate QR Code button.</li><li><span>3</span>Scan the result with a phone camera to test it.</li></ol></div>
+<div class="ij-qr-art ij-qr-window-art" aria-hidden="true"><svg viewBox="0 0 250 190"><defs><linearGradient id="qrWindow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7656f5"/><stop offset="1" stop-color="#087cf0"/></linearGradient></defs><ellipse cx="128" cy="158" rx="104" ry="18" fill="#a9b9f5" opacity=".2"/><circle cx="135" cy="91" r="77" fill="#e6e9ff"/><rect x="31" y="38" width="183" height="116" rx="13" fill="#fff" stroke="#b9cafa" stroke-width="2"/><path d="M31 51a13 13 0 0 1 13-13h157a13 13 0 0 1 13 13v13H31z" fill="url(#qrWindow)"/><circle cx="46" cy="49" r="3" fill="#fff"/><circle cx="57" cy="49" r="3" fill="#fff" opacity=".8"/><circle cx="68" cy="49" r="3" fill="#fff" opacity=".6"/><rect x="85" y="74" width="76" height="65" rx="6" fill="#f6f8ff" stroke="#d6e1fa"/><g fill="#1a2852"><path d="M93 82h18v18H93zm4 4v10h10V86zm46-4h14v14h-14zm4 4v6h6v-6zm-54 34h18v14H93zm4 4v6h10v-6zm26-23h7v7h-7zm14 10h7v7h-7zm-14 12h7v7h-7zm24-1h7v7h-7z"/></g><path d="M80 78v-7h12M166 78v-7h-12M80 139v7h12M166 139v7h-12" fill="none" stroke="#0ea879" stroke-width="3" stroke-linecap="round"/><circle cx="199" cy="145" r="23" fill="#12b981"/><path d="m188 145 7 7 14-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="m211 22 4 8 8 4-8 4-4 8-4-8-8-4 8-4z" fill="#ffc43d"/></svg></div>
+</article>
 </section>
+<p class="ij-qr-back"><a href="index.html">← Back to InfoJano Home</a></p>
 <p><a href="index.html">← Back to InfoJano Home</a></p>
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="password-generator.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg></span><strong style="font-size:15px;line-height:1.3">Password Generator</strong><span style="font-size:13px;line-height:1.45;color:#64748b">generate a random password.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a>
-<a href="text-counter.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14M12 5v14M8 19h8"/></svg></span><strong style="font-size:15px;line-height:1.3">Text Counter</strong><span style="font-size:13px;line-height:1.45;color:#64748b">count words and characters.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a>
-<a href="image-to-pdf.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v6h5M9 13h6m-6 3h6"/></svg></span><strong style="font-size:15px;line-height:1.3">Image to PDF Converter</strong><span style="font-size:13px;line-height:1.45;color:#64748b">combine images into a PDF.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a>
-<a href="image-compressor.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease"><span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8 9 3 3-3 3m8-6-3 3 3 3"/></svg></span><strong style="font-size:15px;line-height:1.3">Image Compressor</strong><span style="font-size:13px;line-height:1.45;color:#64748b">reduce image file size.</span><span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span></a></div>
+<section id="ij-qr-explore" aria-labelledby="related-tools-title">
+<div class="ij-qr-section-heading"><span class="ij-qr-heading-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8z"/></svg></span><div><h2 id="related-tools-title">Explore More Free Tools</h2><p>Keep exploring with these handy tools from InfoJano.</p></div><a class="ij-qr-more" href="index.html#tools">More Tools <span>›</span></a></div>
+<div class="ij-qr-tools-grid">
+<a class="ij-qr-tool-card qr-blue" href="password-generator.html"><span class="ij-qr-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg></span><span class="ij-qr-tool-copy"><strong>Password Generator</strong><small>Generate a strong and random password.</small></span><span class="ij-qr-tool-arrow">›</span></a>
+<a class="ij-qr-tool-card qr-purple" href="text-counter.html"><span class="ij-qr-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h14M12 5v14M8 19h8"/></svg></span><span class="ij-qr-tool-copy"><strong>Text Counter</strong><small>Count words and characters instantly.</small></span><span class="ij-qr-tool-arrow">›</span></a>
+<a class="ij-qr-tool-card qr-pink" href="image-to-pdf.html"><span class="ij-qr-tool-icon" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v6h5M9 13h6m-6 3h6"/></svg></span><span class="ij-qr-tool-copy"><strong>Image to PDF Converter</strong><small>Combine multiple images into a PDF file.</small></span><span class="ij-qr-tool-arrow">›</span></a>
+<a class="ij-qr-tool-card qr-green" href="image-compressor.html"><span class="ij-qr-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m4 16 5-5 4 4 3-3 4 5"/></svg></span><span class="ij-qr-tool-copy"><strong>Image Compressor</strong><small>Reduce image file size without losing quality.</small></span><span class="ij-qr-tool-arrow">›</span></a>
+</div></section>
+<section class="ij-qr-print-guide" aria-labelledby="ij-guide-title">
+<div class="ij-qr-print-art" aria-hidden="true"><svg viewBox="0 0 220 210"><defs><linearGradient id="printFrame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#087cf0"/><stop offset="1" stop-color="#7656f5"/></linearGradient></defs><rect x="31" y="22" width="158" height="166" rx="18" fill="#e8f2ff"/><rect x="42" y="34" width="136" height="142" rx="13" fill="#fff" stroke="#9bc8ff" stroke-width="3"/><path d="M52 55V44h14m88 0h14v14M52 155v10h14m88 0h14v-10" fill="none" stroke="url(#printFrame)" stroke-width="5" stroke-linecap="round"/><g fill="#101d3c"><path d="M65 62h34v34H65zm7 7v20h20V69zm49-7h34v34h-34zm7 7v20h20V69zM65 112h34v34H65zm7 7v20h20v-20zm47-4h9v9h-9zm18 0h9v9h-9zm-18 18h9v9h-9zm18 0h9v9h-9zm18-13h9v9h-9z"/></g><path d="M46 105h128" stroke="#16c784" stroke-width="5" stroke-linecap="round"/><circle cx="170" cy="165" r="23" fill="#12b981"/><path d="m159 165 7 7 14-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="ij-qr-print-copy"><span class="ij-qr-kicker">READY TO SHARE & PRINT</span><h2 id="ij-guide-title">QR Code Example and Print Checks</h2><p>You can use a QR code to share a website address or text supported by the generator. After creating it, scan it with a phone camera to confirm it opens the intended content.</p><div class="ij-qr-checklist"><h3><span>✓</span>Before publishing or printing</h3><ul><li>Check the encoded URL carefully and use a trusted destination.</li><li>Keep enough contrast between the QR code and its background.</li><li>Test the printed size and scan it from the expected distance.</li></ul></div><p class="ij-qr-related-links">Related tools: <a href="image-to-pdf.html">Image to PDF Converter</a> and <a href="text-counter.html">Text Counter</a>.</p></div>
 </section>
-<section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">QR Code Example and Print Checks</h2><p>You can use a QR code to share a website address or text supported by the generator. After creating it, scan it with a phone camera to confirm it opens the intended content.</p><h3>Before publishing or printing</h3><ul><li>Check the encoded URL carefully and use a trusted destination.</li><li>Keep enough contrast between the QR code and its background.</li><li>Test the printed size and scan it from the expected distance.</li></ul><p>Related tools: <a href="image-to-pdf.html">Image to PDF Converter</a> and <a href="text-counter.html">Text Counter</a>.</p></section>
 
 <section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
-<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">QR Code Generator FAQs</h2>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">What can I put in a QR code?</summary><p style="margin:8px 0 0;color:#536174">Depending on supported input, you can encode text or a web address.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How do I test a QR code?</summary><p style="margin:8px 0 0;color:#536174">Scan it with a phone camera before printing or sharing it.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Will every QR code remain scannable after printing?</summary><p style="margin:8px 0 0;color:#536174">Scan reliability depends on size, contrast, print quality, and the encoded content.</p></details>
-<p style="margin:12px 0 0;font-size:14px">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="emi.html">EMI Calculator</a></p>
+<h2 id="ij-seo-faq-title">QR Code Generator FAQs</h2>
+<details><summary>What can I put in a QR code?</summary><p>Depending on supported input, you can encode text or a web address.</p></details>
+<details><summary>How do I test a QR code?</summary><p>Scan it with a phone camera before printing or sharing it.</p></details>
+<details><summary>Will every QR code remain scannable after printing?</summary><p>Scan reliability depends on size, contrast, print quality, and the encoded content.</p></details>
+<p class="ij-qr-faq-more">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="emi.html">EMI Calculator</a></p>
 </section>
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
