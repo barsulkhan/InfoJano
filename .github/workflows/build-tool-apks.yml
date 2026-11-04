@@ -54,8 +54,8 @@ jobs:
               assert page.exists(), f'Missing tool page: {page}'
               assert data.get('start_url') == f'/InfoJano/{slug}.html', f'Wrong start_url: {manifest}'
               assert data.get('scope') == '/InfoJano/', f'Wrong scope: {manifest}'
-              expected = f'/InfoJano/app-icons/{slug}.svg'
-              assert any(item.get('src') == expected for item in data.get('icons', [])), f'Wrong icon: {manifest}'
+              icon_paths = [item.get('src', '').removeprefix('/InfoJano/') for item in data.get('icons', [])]
+              assert icon_paths and any((root / icon_path).is_file() for icon_path in icon_paths), f'Missing manifest icon file: {manifest}'
               html = page.read_text(encoding='utf-8')
               assert f'app-manifests/{slug}.webmanifest' in html, f'Missing manifest link: {page}'
               assert 'install.js' in html, f'Missing installer script: {page}'
