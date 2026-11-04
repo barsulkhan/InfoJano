@@ -331,6 +331,127 @@ header.ij-head .brand,header.ij-head .head-links{border-radius:0!important}
  header.ij-head .head-inner{width:100%!important;padding-left:13px!important;padding-right:13px!important}
 }
 
+
+
+/* Match the approved neon concept while keeping all editor controls live */
+html,body{margin:0!important;padding:0!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+header.ij-head{
+ width:100vw!important;max-width:none!important;min-width:100vw!important;
+ margin:0!important;padding:0!important;left:0!important;right:0!important;
+ border:0!important;border-radius:0!important;clip-path:none!important;overflow:hidden!important;
+ background:linear-gradient(100deg,#052c80 0%,#063fae 48%,#061f6d 100%)!important;
+ box-shadow:0 4px 18px rgba(0,25,100,.24)!important
+}
+header.ij-head:before,header.ij-head:after{display:none!important;content:none!important}
+header.ij-head .head-inner{
+ width:100%!important;max-width:none!important;min-height:88px!important;
+ margin:0!important;padding:12px clamp(18px,3vw,50px)!important;
+ border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important
+}
+header.ij-head .brand{color:#fff!important}
+header.ij-head .brand span{color:#fff!important}
+header.ij-head .head-links a{
+ border:1px solid rgba(120,206,255,.7)!important;border-radius:999px!important;
+ background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.04))!important;
+ color:#fff!important;box-shadow:0 0 12px rgba(35,177,255,.16),inset 0 1px 0 #ffffff44!important
+}
+.hero-neon{
+ position:relative!important;isolation:isolate!important;
+ width:100%!important;max-width:none!important;
+ margin:19px 0 0!important; /* 5 mm gap below the full-width InfoJano header */
+ border-radius:0!important;overflow:hidden!important;
+ min-height:490px!important;padding:36px clamp(18px,3.3vw,58px) 42px!important;
+ background:
+  radial-gradient(ellipse at 51% 48%,rgba(30,73,255,.42),transparent 48%),
+  linear-gradient(112deg,#001b75 0%,#0525a0 42%,#261080 76%,#080d64 100%)!important;
+ box-shadow:0 12px 35px rgba(4,25,100,.27)!important
+}
+.hero-neon:before{
+ content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+ background:
+  radial-gradient(circle at 15% 22%,rgba(0,221,255,.17),transparent 26%),
+  radial-gradient(circle at 83% 72%,rgba(245,0,255,.17),transparent 27%),
+  repeating-linear-gradient(135deg,transparent 0 82px,rgba(255,255,255,.025) 83px 85px)
+}
+.hero-neon:after{
+ content:"";position:absolute;z-index:4;inset:5px;border-radius:28px;
+ padding:3px;pointer-events:none;
+ background:conic-gradient(from 0deg,transparent 0deg,transparent 42deg,#05eaff 68deg,#fff 82deg,#a500ff 112deg,transparent 148deg,transparent 205deg,#ff19e6 238deg,#fff 253deg,#00dfff 282deg,transparent 318deg,transparent 360deg);
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+ -webkit-mask-composite:xor;mask-composite:exclude;
+ filter:drop-shadow(0 0 5px #00eaff) drop-shadow(0 0 12px #8d31ff);
+ animation:ijPerimeterOrbit 12s linear infinite
+}
+@keyframes ijPerimeterOrbit{to{transform:rotate(360deg)}}
+.hero-neon-inner{
+ max-width:1580px!important;min-height:405px!important;
+ grid-template-columns:minmax(170px,240px) minmax(380px,1fr) minmax(270px,405px)!important;
+ gap:clamp(16px,2.2vw,38px)!important
+}
+.hero-neon .hero-kicker{
+ color:#f1fbff!important;background:rgba(0,13,80,.52)!important;
+ border:1px solid rgba(83,235,255,.65)!important;
+ box-shadow:0 0 12px rgba(0,232,255,.34),inset 0 0 12px rgba(0,232,255,.12)!important
+}
+.hero-neon h1{
+ overflow:hidden!important;font-size:clamp(34px,4.1vw,61px)!important;
+ line-height:1.02!important;letter-spacing:-1.7px!important;
+ color:#fff!important;text-shadow:0 2px 2px rgba(0,0,0,.28),0 0 8px rgba(255,255,255,.28)!important;
+ animation:none!important
+}
+.hero-neon h1 strong{
+ color:#ffe22f!important;
+ text-shadow:0 1px 1px rgba(90,40,0,.35),0 0 5px rgba(255,227,47,.45)!important;
+ animation:none!important;filter:none!important
+}
+/* Crisp right-to-left white/cyan light pass every 12 seconds */
+.hero-neon h1:after{
+ content:"";position:absolute;top:-15%;bottom:-15%;left:auto!important;right:-48%!important;
+ width:24%!important;z-index:6;pointer-events:none;transform:skewX(-22deg);
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),rgba(255,255,255,.88),rgba(94,244,255,.5),transparent);
+ filter:blur(1px)!important;mix-blend-mode:screen;
+ animation:ijHeadlineSweep 12s ease-in-out infinite!important
+}
+@keyframes ijHeadlineSweep{
+ 0%,10%{right:-48%;opacity:0}
+ 17%{opacity:.92}
+ 43%{right:130%;opacity:.82}
+ 46%,100%{right:130%;opacity:0}
+}
+.hero-neon .hero-copy>p{color:#f2f7ff!important;text-shadow:0 1px 2px rgba(0,0,0,.28)!important}
+.hero-neon .hero-chip{
+ background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.06))!important;
+ border:1px solid rgba(120,215,255,.65)!important;
+ box-shadow:0 0 10px rgba(0,194,255,.18),inset 0 1px 0 #ffffff55!important;
+ color:#fff!important
+}
+.hero-neon .hero-chip b{color:#ffe45a!important;text-shadow:0 0 5px #ffe45a!important}
+.hero-neon .hero-format-row .format-badge{border:1px solid rgba(255,255,255,.65)!important;box-shadow:0 0 9px currentColor!important}
+.hero-neon .hero-art svg{filter:drop-shadow(0 0 8px rgba(63,220,255,.38)) drop-shadow(0 12px 18px rgba(0,0,0,.22))!important}
+.hero-neon .hero-art{overflow:visible!important}
+.hero-neon .hero-wave{opacity:.9!important}
+@media(max-width:1050px){
+ .hero-neon{min-height:410px!important;padding:28px 20px 36px!important}
+ .hero-neon-inner{min-height:340px!important;grid-template-columns:minmax(120px,165px) minmax(280px,1fr) minmax(210px,290px)!important}
+}
+@media(max-width:760px){
+ header.ij-head .head-inner{min-height:70px!important;padding:9px 14px!important}
+ .hero-neon{margin-top:19px!important;min-height:0!important;padding:22px 15px 30px!important}
+ .hero-neon-inner{min-height:0!important;grid-template-columns:minmax(0,1fr) 112px!important}
+ .hero-art-left{display:none!important}
+ .hero-art-right svg{max-width:160px!important}
+ .hero-neon h1{font-size:clamp(25px,6.3vw,37px)!important;letter-spacing:-.7px!important}
+ .hero-neon:after{inset:4px;border-radius:19px;padding:2px}
+}
+@media(max-width:390px){
+ .hero-neon-inner{grid-template-columns:minmax(0,1fr) 86px!important}
+ .hero-art-right svg{max-width:130px!important}
+ .hero-neon h1{font-size:23px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-neon:after,.hero-neon h1:after{animation:none!important}
+}
+
 </style>
 </head>
 <body>
