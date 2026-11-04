@@ -1,0 +1,19 @@
+{
+  "id": "/InfoJano/word-to-pdf.html",
+  "name": "InfoJano — Word to PDF Converter",
+  "short_name": "Word to PDF",
+  "description": "Install the InfoJano Word to PDF converter.",
+  "start_url": "/InfoJano/word-to-pdf.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/app-icons/word-converter.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
