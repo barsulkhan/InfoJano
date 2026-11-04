@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v197";
+const CACHE_NAME = "infojano-v198";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -44,6 +44,14 @@ const ASSETS = [
   "/InfoJano/image-to-pdf.html",
   "/InfoJano/pdf-to-jpg.html",
   "/InfoJano/extract-pdf-pages.html",
+  "/InfoJano/word-to-pdf.html",
+  "/InfoJano/word-to-jpg.html",
+  "/InfoJano/word-to-png.html",
+  "/InfoJano/word-converter.js",
+  "/InfoJano/app-icons/word-converter.svg",
+  "/InfoJano/app-manifests/word-to-pdf.webmanifest",
+  "/InfoJano/app-manifests/word-to-jpg.webmanifest",
+  "/InfoJano/app-manifests/word-to-png.webmanifest",
   "/InfoJano/app-icons/pdf-to-jpg.svg",
   "/InfoJano/app-icons/extract-pdf-pages.svg",
   "/InfoJano/app-manifests/pdf-to-jpg.webmanifest",
