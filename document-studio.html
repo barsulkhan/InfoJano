@@ -57,11 +57,138 @@ button,input,select{font:inherit}button{cursor:pointer}
 @media(max-width:420px){.head-links a{padding:8px 10px;font-size:11px}.hero h1{font-size:22px}.formats{margin-left:0}.doc-page{padding:28px 20px}.toolbar{gap:4px;padding:8px}.toolgroup{padding-right:4px;margin-right:1px}.toolbtn{min-width:30px;height:32px;padding:0 7px}.toolbar select{max-width:116px}.setting-grid{grid-template-columns:1fr 1fr}}
 @media print{html,body{background:#fff!important}.ij-head,.hero,.editor-panel,.preview-panel,.features,.info,.ij-foot{display:none!important}.workspace{display:block!important;padding:0!important;margin:0!important}.doc-page{display:block!important;width:auto!important;min-height:0!important;height:auto!important;margin:0!important;padding:var(--print-margin,20mm)!important;border:0!important;box-shadow:none!important;break-after:page;page-break-after:always;overflow:visible!important;font-size:12pt!important;line-height:1.6!important}.doc-page:last-child{break-after:auto;page-break-after:auto}.print-root{display:block!important}@page{size:A4 portrait;margin:0}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* Document Studio neon hero banner — exact blue/violet reference direction */
+.hero-neon{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ padding:26px clamp(16px,3vw,48px) 30px!important;
+ min-height:340px!important;border:0!important;border-radius:0 0 26px 26px!important;
+ background:linear-gradient(112deg,#078ce9 0%,#0756d9 42%,#4935e9 73%,#9b35ed 100%)!important;
+ box-shadow:0 15px 35px rgba(31,68,170,.23)!important;
+}
+.hero-neon:before{
+ content:"";position:absolute;inset:0;z-index:-2;opacity:.7;
+ background:radial-gradient(circle at 70% 28%,rgba(255,255,255,.19),transparent 28%),
+ radial-gradient(circle at 18% 90%,rgba(36,232,255,.25),transparent 30%),
+ repeating-linear-gradient(120deg,transparent 0 65px,rgba(255,255,255,.035) 66px 68px);
+}
+.hero-neon-inner{
+ position:relative!important;z-index:2!important;max-width:1500px!important;
+ min-height:280px!important;margin:0 auto!important;display:grid!important;
+ grid-template-columns:minmax(120px,205px) minmax(300px,1fr) minmax(230px,360px)!important;
+ align-items:center!important;gap:clamp(12px,2vw,28px)!important;
+}
+.hero-copy{min-width:0!important;position:relative!important;z-index:3!important}
+.hero-kicker{
+ display:inline-flex!important;align-items:center!important;gap:8px!important;
+ margin:0 0 13px!important;padding:7px 12px!important;border-radius:999px!important;
+ color:#e9fbff!important;background:rgba(5,31,104,.28)!important;
+ border:1px solid rgba(154,235,255,.45)!important;
+ font-size:10px!important;font-weight:900!important;letter-spacing:1.8px!important;
+ box-shadow:0 0 18px rgba(48,229,255,.16)!important;
+}
+.kicker-dot{width:7px;height:7px;border-radius:50%;background:#7ff7ff;box-shadow:0 0 7px #7ff7ff,0 0 16px #7ff7ff;animation:ijPulse 1.7s ease-in-out infinite}
+.hero-neon h1{
+ margin:0 0 12px!important;color:#fff!important;
+ font-size:clamp(29px,3.25vw,49px)!important;line-height:1.04!important;
+ letter-spacing:-1.5px!important;font-weight:900!important;
+ text-shadow:0 2px 3px rgba(0,15,75,.25),0 0 12px rgba(104,234,255,.55),0 0 28px rgba(70,220,255,.35)!important;
+ animation:ijNeonFlicker 5s ease-in-out infinite!important;
+}
+.hero-neon h1 span,.hero-neon h1 strong{display:block!important}
+.hero-neon h1 strong{
+ color:#ffe34f!important;font-weight:950!important;
+ text-shadow:0 0 5px #fff2a0,0 0 13px rgba(255,221,68,.9),0 0 28px rgba(255,190,40,.7)!important;
+ animation:ijGoldGlow 2.8s ease-in-out infinite alternate!important;
+}
+.hero-neon .hero-copy>p{
+ max-width:650px!important;margin:0 0 18px!important;
+ color:#f1f8ff!important;font-size:clamp(13px,1.2vw,16px)!important;
+ line-height:1.6!important;text-shadow:0 1px 7px rgba(0,22,83,.3)!important;
+}
+.hero-actions{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin:0 0 15px!important}
+.hero-chip{
+ display:inline-flex!important;align-items:center!important;gap:7px!important;
+ padding:9px 12px!important;border-radius:13px!important;
+ color:#fff!important;background:rgba(255,255,255,.13)!important;
+ border:1px solid rgba(255,255,255,.28)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 5px 15px rgba(0,19,90,.13)!important;
+ backdrop-filter:blur(8px)!important;font-size:11px!important;font-weight:800!important;
+}
+.hero-chip b{font-size:15px!important;color:#ffe45e!important;text-shadow:0 0 9px #ffe45e}
+.hero-format-row{display:flex!important;align-items:center!important;gap:7px!important;flex-wrap:wrap!important}
+.hero-neon .format-badge{padding:7px 11px!important;border-radius:9px!important;font-size:11px!important;box-shadow:0 0 14px rgba(255,255,255,.17)!important}
+.hero-secure{margin-left:4px!important;color:#d9f6ff!important;font-size:10px!important;font-weight:700!important;letter-spacing:.25px!important}
+.hero-art{display:grid!important;place-items:center!important;min-width:0!important;position:relative!important}
+.hero-art svg{width:100%!important;height:auto!important;max-height:255px!important;overflow:visible!important;filter:drop-shadow(0 13px 20px rgba(0,14,73,.26))!important}
+.hero-art-left svg{max-width:200px!important;animation:ijFloat 5s ease-in-out infinite!important}
+.hero-art-right svg{max-width:360px!important;animation:ijFloat 5.8s ease-in-out infinite reverse!important}
+.hero-glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(4px);pointer-events:none}
+.hero-glow-one{width:300px;height:300px;right:17%;top:-180px;background:#6ef5ff44;box-shadow:0 0 70px 35px #5cf2ff20}
+.hero-glow-two{width:280px;height:220px;right:-80px;bottom:-120px;background:#f16bff55;box-shadow:0 0 75px 35px #df61ff2b}
+.hero-wave{position:absolute;z-index:1;left:-3%;width:106%;height:55px;bottom:-2px;pointer-events:none;border-radius:50% 50% 0 0}
+.hero-wave-a{background:linear-gradient(90deg,#25d8f5aa,#a5faff66,#d4a2ff88);clip-path:polygon(0 52%,12% 10%,25% 57%,40% 30%,55% 70%,72% 22%,88% 63%,100% 10%,100% 100%,0 100%);opacity:.75}
+.hero-wave-b{height:30px;background:linear-gradient(90deg,#7befff88,#fff7ff88,#c6a3ff99);clip-path:polygon(0 65%,18% 20%,34% 70%,52% 30%,70% 75%,86% 24%,100% 60%,100% 100%,0 100%);opacity:.7}
+@keyframes ijPulse{0%,100%{opacity:.75;transform:scale(.88);box-shadow:0 0 5px #7ff7ff}50%{opacity:1;transform:scale(1.2);box-shadow:0 0 9px #7ff7ff,0 0 22px #7ff7ff}}
+@keyframes ijGoldGlow{from{filter:brightness(1);text-shadow:0 0 5px #fff2a0,0 0 12px #ffd84d,0 0 22px #ffb52e}to{filter:brightness(1.18);text-shadow:0 0 8px #fff8c7,0 0 19px #ffe34f,0 0 36px #ff9f25}}
+@keyframes ijNeonFlicker{0%,94%,100%{opacity:1}95%{opacity:.9}97%{opacity:1}98%{opacity:.94}}
+@keyframes ijFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:900px){
+ .hero-neon{padding:22px 18px 28px!important;min-height:300px!important}
+ .hero-neon-inner{grid-template-columns:110px minmax(0,1fr) 210px!important;gap:10px!important;min-height:245px!important}
+ .hero-art-left svg{max-width:115px!important}.hero-art-right svg{max-width:220px!important}
+ .hero-neon h1{font-size:clamp(26px,4vw,37px)!important}
+}
+@media(max-width:650px){
+ .hero-neon{padding:21px 15px 27px!important;min-height:0!important;border-radius:0 0 20px 20px!important}
+ .hero-neon-inner{grid-template-columns:1fr 112px!important;gap:8px!important;min-height:0!important;align-items:center!important}
+ .hero-art-left{display:none!important}
+ .hero-copy{grid-column:1;grid-row:1}
+ .hero-art-right{grid-column:2;grid-row:1;align-self:center!important}
+ .hero-art-right svg{width:132%!important;max-width:160px!important;margin-left:-18px!important}
+ .hero-kicker{font-size:8px!important;letter-spacing:1.2px!important;margin-bottom:10px!important;padding:6px 9px!important}
+ .hero-neon h1{font-size:clamp(24px,6.2vw,34px)!important;letter-spacing:-.8px!important;margin-bottom:9px!important}
+ .hero-neon .hero-copy>p{font-size:11px!important;line-height:1.45!important;margin-bottom:12px!important}
+ .hero-actions{gap:6px!important;margin-bottom:11px!important}
+ .hero-chip{font-size:9px!important;padding:7px 8px!important;border-radius:10px!important}
+ .hero-chip b{font-size:12px!important}
+ .hero-neon .format-badge{font-size:9px!important;padding:6px 8px!important}
+ .hero-secure{font-size:8px!important}
+}
+@media(max-width:390px){
+ .hero-neon-inner{grid-template-columns:minmax(0,1fr) 86px!important}
+ .hero-art-right svg{max-width:130px!important}
+ .hero-neon h1{font-size:23px!important}
+ .hero-chip{font-size:8px!important;padding:6px 7px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-neon h1,.hero-neon h1 strong,.kicker-dot,.hero-art-left svg,.hero-art-right svg{animation:none!important}
+}
+
 </style>
 </head>
 <body>
 <header class="ij-head"><div class="head-inner"><a class="brand" href="/InfoJano/"><img src="/InfoJano/infojano-mark.svg" alt=""><span>Info<span>Jano</span></span></a><nav class="head-links"><a href="/InfoJano/index.html#tools">All Tools</a><a href="/InfoJano/index.html">Home</a></nav></div></header>
-<section class="hero"><div class="hero-inner"><div class="word-mark" aria-hidden="true">W</div><div><h1>Document to PDF &amp; Image Studio</h1><p>Write, paste from Microsoft Word, format your pages and export PDF, JPG or PNG.</p></div><div class="formats"><span class="format-badge pdf">PDF</span><span class="format-badge jpg">JPG</span><span class="format-badge png">PNG</span></div></div></section>
+<section class="hero hero-neon" aria-labelledby="studio-hero-title">
+ <div class="hero-glow hero-glow-one" aria-hidden="true"></div><div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+ <div class="hero-inner hero-neon-inner">
+  <div class="hero-art hero-art-left" aria-hidden="true">
+   <svg viewBox="0 0 220 220" role="img"><defs><linearGradient id="docg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#cfe6ff"/></linearGradient><filter id="neonGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M72 24h66l35 35v119H72z" fill="url(#docg)" stroke="#fff" stroke-width="4" rx="10"/><path d="M138 24v36h35" fill="#a9d6ff" stroke="#fff" stroke-width="3"/><path d="M91 82h59M91 99h59M91 116h43" stroke="#8bb9ed" stroke-width="8" stroke-linecap="round"/><rect x="87" y="130" width="77" height="37" rx="8" fill="#f23f52" stroke="#fff" stroke-width="3" filter="url(#neonGlow)"/><text x="125" y="155" text-anchor="middle" font-size="21" font-weight="900" fill="#fff">PDF</text><rect x="17" y="119" width="72" height="59" rx="9" fill="#fff" stroke="#6beaff" stroke-width="4"/><path d="M25 164l19-22 12 12 9-9 16 19z" fill="#22c98b"/><circle cx="43" cy="137" r="7" fill="#ffd33d"/><path d="M37 87l20-18m-20 18 2-18m-2 18 18-2" stroke="#fff" stroke-width="5" stroke-linecap="round"/><rect x="151" y="157" width="54" height="50" rx="10" fill="#1768dc" stroke="#9ceeff" stroke-width="2"/><text x="178" y="192" text-anchor="middle" font-size="29" font-weight="900" fill="#fff">W</text></svg>
+  </div>
+  <div class="hero-copy">
+   <div class="hero-kicker"><span class="kicker-dot"></span> INFOJANO DOCUMENT STUDIO</div>
+   <h1 id="studio-hero-title"><span>Document to PDF &amp;</span><strong>Image Studio</strong></h1>
+   <p>Write, paste from Microsoft Word, format your pages and export PDF, JPG or PNG.</p>
+   <div class="hero-actions"><span class="hero-chip"><b>✎</b> Edit Document</span><span class="hero-chip"><b>▧</b> Add Images</span><span class="hero-chip"><b>⇩</b> Export PDF / JPG / PNG</span></div>
+   <div class="hero-format-row"><span class="format-badge pdf">PDF</span><span class="format-badge jpg">JPG</span><span class="format-badge png">PNG</span><span class="hero-secure">✦ Fast · Free · In your browser</span></div>
+  </div>
+  <div class="hero-art hero-art-right" aria-hidden="true">
+   <svg viewBox="0 0 360 250" role="img"><defs><linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dceeff"/></linearGradient><linearGradient id="lap" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7f4ff"/><stop offset="1" stop-color="#536eaa"/></linearGradient><filter id="screenGlow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M73 31Q75 22 88 22h190q13 0 12 13l-16 151H54z" fill="#12284e" stroke="#9bdfff" stroke-width="5"/><path d="M86 37h185l-13 130H72z" fill="url(#screen)" stroke="#6db7ff" stroke-width="3"/><path d="M98 62h137M98 80h151M98 98h106M98 116h92" stroke="#80bdf0" stroke-width="8" stroke-linecap="round"/><rect x="191" y="124" width="48" height="34" rx="5" fill="#dbf7ff" stroke="#22bde4" stroke-width="2"/><circle cx="205" cy="135" r="5" fill="#ffd34c"/><path d="M195 153l13-12 8 8 8-7 11 11z" fill="#24c98a"/><path d="M43 189h255l25 17q3 6-10 7H27q-14-2-7-9z" fill="url(#lap)" stroke="#b8eaff" stroke-width="3"/><rect x="297" y="39" width="58" height="43" rx="10" fill="#f03d53" stroke="#fff" stroke-width="3" filter="url(#screenGlow)"/><text x="326" y="67" text-anchor="middle" font-size="19" font-weight="900" fill="#fff">PDF</text><rect x="297" y="91" width="58" height="43" rx="10" fill="#7545df" stroke="#fff" stroke-width="3"/><text x="326" y="119" text-anchor="middle" font-size="19" font-weight="900" fill="#fff">JPG</text><rect x="297" y="143" width="58" height="43" rx="10" fill="#0ca66a" stroke="#fff" stroke-width="3"/><text x="326" y="171" text-anchor="middle" font-size="19" font-weight="900" fill="#fff">PNG</text><path d="M276 191l18-20m-18 20 18-3m-18 3 4-17" stroke="#ffd34c" stroke-width="5" stroke-linecap="round"/></svg>
+  </div>
+ </div>
+ <div class="hero-wave hero-wave-a" aria-hidden="true"></div><div class="hero-wave hero-wave-b" aria-hidden="true"></div>
+</section>
 <main class="workspace">
 <section class="panel editor-panel">
 <div class="panel-head"><div><div class="panel-title"><i class="dot"></i>Document Editor</div><div class="panel-sub">Paste from Microsoft Word or type here</div></div><button class="small-btn" id="clearBtn" type="button">Clear</button></div>
@@ -124,5 +251,5 @@ button,input,select{font:inherit}button{cursor:pointer}
 })();
 </script>
 <script src="/InfoJano/install.js" defer></script>
-<script src="/InfoJano/site-header.js" defer></script>
+
 </body></html>
