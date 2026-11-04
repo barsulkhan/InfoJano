@@ -1,0 +1,19 @@
+{
+  "id": "/InfoJano/word-to-png.html",
+  "name": "InfoJano — Word to PNG Converter",
+  "short_name": "Word to PNG",
+  "description": "Install the InfoJano Word to PNG converter.",
+  "start_url": "/InfoJano/word-to-png.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/app-icons/word-converter.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
