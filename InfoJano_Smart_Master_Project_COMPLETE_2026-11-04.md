@@ -1862,3 +1862,10 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Service worker cache bumped from infojano-v189 to infojano-v190; sw.js commit: 818f2395fa2b8a84086281c55333df0a34f59e5f.
 - Source re-fetch verification: duplicate About teaser absent; the full About section remains; 3 How SVG icons and 3 Why SVG icons are present; final scoped CSS block is present; cache reports infojano-v190.
 - GitHub Pages run for the homepage commit #1440 completed successfully. The subsequent cache-bump Pages run #1441 was queued at the last status check; final deployment of the cache-bump commit and actual browser visual confirmation remain pending. Do not claim the screenshot rendering has been visually tested.
+
+## 4 November 2026 — Remove duplicate Useful Guides teaser and repair About promise icons
+- User's latest desktop screenshot showed two Useful Guides entries: a top feature teaser and the full Useful Guides section below. Removed the upper teaser block; the full Guides section and its guide cards remain unchanged.
+- The three small icons beside See it / Tap it / Get it done in the About section were rendering as unclear fallback glyphs and overlapping legacy pseudo-elements. Replaced the emoji with clear inline SVG icons (guide/list, tap/hand, completed/check) and added scoped layout rules so each icon sits in a visible colored tile beside its heading and description.
+- Homepage index.html commit: a653e3289bb70c208a31e2ef3c650e5b6f3dae42.
+- Service worker cache bumped from infojano-v190 to infojano-v191; sw.js commit: 7b258090703020b727741eae1011544d8e589a31.
+- Source changes saved and will require successful Pages deployment plus a fresh browser screenshot for visual confirmation.
