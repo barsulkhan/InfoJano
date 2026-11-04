@@ -1895,3 +1895,12 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Related Apps script commit: `48404a8faa15934abd5dfdd4ec61daccad442ee9`.
 - Service worker cache bumped from `infojano-v193` to `infojano-v194`; commit: `530769102a1b812ec4bf9f7281409ae8ab4cae2b`.
 - Await GitHub Pages deployment and ask user to refresh/recheck the Related Apps area. The supplied screenshot may reflect a cached older Related Apps script; verify after the new deployment before concluding.
+
+
+## 4 November 2026 — Root cause and direct static fix for Image Compressor Related Apps
+- User supplied a fresh mobile screenshot after the earlier Related Apps script/CSS fix; the visible cards still showed the old stacked layout and “Download Windows App” buttons.
+- Investigation found the root cause: `image-compressor.html` contains its own static Related Apps section with the obsolete download button text, and this page does not load `related-apps.js`. Therefore changing the shared script could not update this page's static markup.
+- Replaced the static Related Apps block directly in `image-compressor.html` with four compact horizontal cards. Existing individual app SVG icons and correct local page links are retained. Each card now has a left icon, title/description in the center, and a right arrow; all app download buttons are removed. Added responsive styling directly to the page, independent of external JS.
+- Page commit: `77d380df8cbf5cf4aba11d5f493af6d472052e5d`.
+- Service worker cache bumped from `infojano-v194` to `infojano-v195`; commit: `9d081646e2c5e2e0ff80ba5de7d8aa8991bfd5ab`.
+- GitHub Pages deployment and Android live-page verification are pending. The user should hard-refresh/reopen the page after deployment; verify no Windows download buttons remain.
