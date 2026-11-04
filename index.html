@@ -788,6 +788,97 @@ body{background:linear-gradient(180deg,#f5f8ff 0%,#edf3ff 100%);color:var(--ij-i
  #home .how-grid>.info,#home .why-grid>.why-card,#guides .guide-card{transition:none!important}
 }
 
+
+
+/* InfoJano About section refinement v178 */
+#about.about-panel{
+ display:block!important;position:relative!important;overflow:hidden!important;
+ padding:24px 26px 18px!important;margin:20px 0 24px!important;
+ border-radius:24px!important;
+ background:linear-gradient(118deg,#ffffff 0%,#f8fbff 66%,#eaf4ff 100%)!important;
+ border:1px solid #dce8fa!important;
+ box-shadow:0 12px 30px rgba(38,75,145,.12)!important;
+}
+#about .about-main{display:grid!important;grid-template-columns:minmax(0,1fr) 245px!important;align-items:center!important;gap:16px!important}
+#about .about-copy{min-width:0!important}
+#about .about-topline{
+ display:inline-flex!important;align-items:center!important;
+ padding:6px 12px!important;margin:0 0 10px!important;
+ border-radius:999px!important;background:linear-gradient(90deg,#e8eaff,#f1eaff)!important;
+ color:#263fae!important;font-size:10px!important;font-weight:900!important;letter-spacing:.45px!important
+}
+#about h2{display:flex!important;align-items:center!important;gap:12px!important;margin:0 0 12px!important;
+ font-size:clamp(25px,3vw,32px)!important;line-height:1.15!important;font-weight:850!important;
+ letter-spacing:-.7px!important;color:#10215a!important}
+#about h2 .section-mark{width:43px!important;height:43px!important;flex:0 0 43px!important;
+ border-radius:14px!important;background:linear-gradient(145deg,#176cf0,#3c4de2)!important;
+ color:#fff!important;box-shadow:0 6px 15px rgba(33,91,220,.22)!important}
+#about .about-lead{max-width:660px!important;margin:0!important;font-size:14px!important;
+ line-height:1.65!important;color:#293b60!important}
+#about .about-visual{width:100%!important;max-width:245px!important;justify-self:end!important}
+#about .about-visual svg{display:block!important;width:100%!important;height:auto!important;overflow:visible!important}
+#about .about-promise{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:0!important;margin:15px 0 0!important;padding-top:12px!important;border-top:1px solid #e3eaf6!important}
+#about .about-promise>div{display:grid!important;grid-template-columns:34px 1fr!important;
+ grid-template-rows:auto auto!important;column-gap:8px!important;align-items:center!important;
+ padding:5px 12px!important;background:transparent!important;border:0!important;
+ border-right:1px solid #e0e7f3!important;border-radius:0!important;box-shadow:none!important}
+#about .about-promise>div:last-child{border-right:0!important}
+#about .promise-icon{grid-column:1!important;grid-row:1 / span 2!important;
+ display:grid!important;place-items:center!important;width:32px!important;height:32px!important;
+ border-radius:50%!important;background:#eaf3ff!important;font-size:19px!important}
+#about .about-promise>div:nth-child(2) .promise-icon{background:#f1eaff!important}
+#about .about-promise>div:nth-child(3) .promise-icon{background:#e9f9ee!important}
+#about .about-promise b{grid-column:2!important;grid-row:1!important;margin:0 0 2px!important;
+ color:#142553!important;font-size:13px!important;font-weight:850!important}
+#about .about-promise div>span:last-child{grid-column:2!important;grid-row:2!important;
+ color:#465674!important;font-size:11px!important;line-height:1.35!important}
+#about .about-footnote{margin:10px 0 0!important;padding-top:8px!important;
+ border-top:1px solid #e8eef7!important;color:#8490a5!important;font-size:10px!important}
+#seo-tool-links{
+ margin:18px 0 18px!important;padding:20px!important;border-radius:23px!important;
+ background:linear-gradient(145deg,#fff 0%,#f8fbff 100%)!important;
+ border:1px solid #e0e9f8!important;box-shadow:0 10px 26px rgba(37,72,132,.09)!important
+}
+#seo-tool-links .page-links-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+#seo-tool-links .page-links-grid a{
+ display:flex!important;align-items:center!important;min-height:42px!important;
+ padding:10px 13px!important;border-radius:13px!important;
+ border:1px solid #e0e9fb!important;
+ background:linear-gradient(110deg,#f2f7ff,#fbfaff)!important;
+ color:#2454b9!important;font-size:12px!important;font-weight:750!important;
+ box-shadow:0 3px 10px rgba(35,72,145,.045)!important
+}
+#seo-tool-links .page-links-grid a:nth-child(4n+2){background:linear-gradient(110deg,#f8f3ff,#fff)!important;border-color:#e9ddfb!important;color:#6940c5!important}
+#seo-tool-links .page-links-grid a:nth-child(4n+3){background:linear-gradient(110deg,#effbf5,#fff)!important;border-color:#d8f0e2!important;color:#168252!important}
+.footer-languages{margin-top:7px!important;font-size:10px!important;color:#8b96aa!important}
+.footer-languages a{color:#5976bb!important;text-decoration:underline!important}
+@media(max-width:559px){
+ #about.about-panel{padding:19px 16px 15px!important}
+ #about .about-main{grid-template-columns:minmax(0,1fr) 112px!important;gap:7px!important}
+ #about .about-topline{font-size:9px!important;padding:5px 9px!important;margin-bottom:8px!important}
+ #about h2{font-size:21px!important;gap:8px!important;margin-bottom:9px!important}
+ #about h2 .section-mark{width:34px!important;height:34px!important;flex-basis:34px!important}
+ #about .about-lead{font-size:11px!important;line-height:1.48!important}
+ #about .about-visual{max-width:112px!important;align-self:center!important}
+ #about .about-promise{margin-top:10px!important;padding-top:8px!important}
+ #about .about-promise>div{grid-template-columns:27px 1fr!important;column-gap:6px!important;padding:4px 5px!important}
+ #about .promise-icon{width:25px!important;height:25px!important;font-size:15px!important}
+ #about .about-promise b{font-size:11px!important}
+ #about .about-promise div>span:last-child{font-size:9px!important}
+ #about .about-footnote{font-size:9px!important;margin-top:8px!important}
+ #seo-tool-links{padding:16px 12px!important}
+ #seo-tool-links .page-links-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ #seo-tool-links .page-links-grid a{font-size:10px!important;min-height:38px!important;padding:8px!important}
+}
+@media(max-width:360px){
+ #about .about-main{grid-template-columns:minmax(0,1fr) 88px!important}
+ #about .about-visual{max-width:88px!important}
+ #about .about-promise>div{grid-template-columns:1fr!important;text-align:center!important}
+ #about .promise-icon{margin:0 auto 4px!important}
+ #about .about-promise b,#about .about-promise div>span:last-child{grid-column:1!important}
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","alternateName":"InfoJano Global Online Tools","description":"A global everyday utility portal offering free online image tools, PDF tools, QR code tools, link utilities, calculators and converters.","url":"https://barsulkhan.github.io/InfoJano/"}
@@ -1161,10 +1252,38 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
 </section>
 
 <section id="about" class="card panel about-panel hide">
-  <div class="about-topline">ABOUT THE PLATFORM</div>
-  <h2><span class="section-mark mark-about" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 9.5a4 4 0 0 1 8 0c0 2.5-4 2.5-4 5M12 18h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span> About InfoJano</h2>
-  <p class="about-lead">Everyday tasks should be simple. InfoJano brings useful online tools, calculators, converters and practical guides together in one easy place.</p>
-  <div class="about-promise"><div><b>See it</b><span>Find the tool you need.</span></div><div><b>Tap it</b><span>Open it and enter your details.</span></div><div><b>Get it done</b><span>Finish your task without confusion.</span></div></div>
+  <div class="about-main">
+    <div class="about-copy">
+      <div class="about-topline">ABOUT THE PLATFORM</div>
+      <h2><span class="section-mark mark-about" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 9.5a4 4 0 0 1 8 0c0 2.5-4 2.5-4 5M12 18h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span> About InfoJano</h2>
+      <p class="about-lead">Everyday tasks should be simple. InfoJano brings useful online tools, calculators, converters and practical guides together in one easy place.</p>
+    </div>
+    <div class="about-visual" aria-hidden="true">
+      <svg viewBox="0 0 320 190" role="img">
+        <defs>
+          <linearGradient id="ijGlobe" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a8d7ff"/><stop offset="1" stop-color="#5a8df0"/></linearGradient>
+          <linearGradient id="ijScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#e8f0ff"/></linearGradient>
+          <linearGradient id="ijBase" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8bb8f7"/><stop offset="1" stop-color="#5d83dc"/></linearGradient>
+        </defs>
+        <circle cx="82" cy="78" r="63" fill="url(#ijGlobe)" opacity=".22"/>
+        <circle cx="82" cy="78" r="48" fill="none" stroke="#68a4ec" stroke-width="2" opacity=".8"/>
+        <path d="M34 78h96M82 30c-20 19-20 77 0 96M82 30c20 19 20 77 0 96M45 51c22 12 52 12 74 0M45 105c22-12 52-12 74 0" fill="none" stroke="#68a4ec" stroke-width="2" opacity=".65"/>
+        <path d="M177 34h105q8 0 8 8v83H169V42q0-8 8-8z" fill="#233b91"/>
+        <rect x="177" y="42" width="105" height="73" rx="5" fill="url(#ijScreen)"/>
+        <rect x="187" y="52" width="84" height="13" rx="4" fill="#fff"/>
+        <text x="229" y="62" text-anchor="middle" font-size="10" font-weight="800" fill="#18316d">Info<tspan fill="#e93469">Jano</tspan></text>
+        <rect x="188" y="72" width="18" height="18" rx="4" fill="#1b6be8"/><rect x="211" y="72" width="18" height="18" rx="4" fill="#f0ad36"/><rect x="234" y="72" width="18" height="18" rx="4" fill="#e84b83"/><rect x="257" y="72" width="14" height="18" rx="4" fill="#23b77a"/>
+        <path d="M158 126h151l-14 12H171z" fill="url(#ijBase)"/>
+        <path d="M171 138h124q-6 8-15 8h-94q-10 0-15-8z" fill="#456cc1"/>
+        <ellipse cx="231" cy="151" rx="83" ry="9" fill="#8bb5f2" opacity=".18"/>
+      </svg>
+    </div>
+  </div>
+  <div class="about-promise">
+    <div><span class="promise-icon" aria-hidden="true">🎯</span><b>See it</b><span>Find the tool you need.</span></div>
+    <div><span class="promise-icon" aria-hidden="true">👆</span><b>Tap it</b><span>Open it and enter your details.</span></div>
+    <div><span class="promise-icon" aria-hidden="true">✅</span><b>Get it done</b><span>Finish your task without confusion.</span></div>
+  </div>
   <p class="about-footnote">Built for people around the world, with a clean experience on phones and computers.</p>
 </section>
 
@@ -1246,13 +1365,11 @@ body{background:linear-gradient(180deg,#f5f7ff 0%,#fff 70%);color:#101b3d}
   </nav>
 </section>
 
-<section class="language-links" aria-label="Language versions" style="max-width:980px;margin:18px auto;padding:18px 20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;box-sizing:border-box">
-  <h2 style="font-size:16px;margin:0 0 8px">Calculators in Portuguese / Calculadoras em português</h2>
-  <p style="font-size:14px;line-height:1.6;margin:0;color:#536174">For visitors in Brazil: <a href="discount-pt-br.html">Calculadora de Desconto</a> · <a href="percentage-pt-br.html">Calculadora de Porcentagem</a></p>
-</section>
+
 <footer class="footer">
   <div>InfoJano • Global Everyday Utility Portal</div>
   <div>Privacy-minded • Mobile-first • Built for everyone</div>
+  <div class="footer-languages">Português: <a href="discount-pt-br.html">Calculadora de Desconto</a> · <a href="percentage-pt-br.html">Calculadora de Porcentagem</a></div>
 </footer>
 </main>
 
