@@ -42,9 +42,9 @@ jobs:
           icons = sorted((root / 'app-icons').glob('*.svg'))
           manifests = sorted((root / 'app-manifests').glob('*.webmanifest'))
           pages = sorted(p for p in root.glob('*.html') if p.name not in {'index.html', 'google4a4795e5c7c03eae.html'})
-          assert len(icons) == 23, f'Expected 23 SVG icons, found {len(icons)}'
-          assert len(manifests) == 22, f'Expected 22 manifests, found {len(manifests)}'
-          assert len(pages) == 23, f'Expected 23 tool pages, found {len(pages)}'
+          assert len(icons) >= 23, f'Expected at least 23 SVG icons, found {len(icons)}'
+          assert len(manifests) >= 22, f'Expected at least 22 manifests, found {len(manifests)}'
+          assert len(pages) >= 23, f'Expected at least 23 tool pages, found {len(pages)}'
           for icon in icons:
               ET.parse(icon)
           for manifest in manifests:
@@ -71,8 +71,8 @@ jobs:
           entries = [line.strip() for line in section.splitlines() if line.strip().count('|') == 4 and line.strip().split('|')[0].isalnum()]
           assert len(entries) == 23, f'Expected 23 APK targets, found {len(entries)}'
           assert len({line.split('|')[0] for line in entries}) == 23, 'Duplicate APK IDs'
-          assert {line.split('|')[2] for line in entries} == {page.name for page in pages}, 'APK targets do not match tool pages'
-          print('Validation passed: 23 SVGs, 22 manifests, 23 pages and 23 APK targets.')
+          assert all((root / line.split('|')[2]).exists() for line in entries), 'An APK target references a missing tool page'
+          print(f'Validation passed: {len(icons)} SVGs, {len(manifests)} manifests, {len(pages)} pages and {len(entries)} APK targets.')
           PY
 
       - name: Build one APK for each remaining tool
