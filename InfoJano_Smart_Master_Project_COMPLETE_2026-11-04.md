@@ -1904,3 +1904,12 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Page commit: `77d380df8cbf5cf4aba11d5f493af6d472052e5d`.
 - Service worker cache bumped from `infojano-v194` to `infojano-v195`; commit: `9d081646e2c5e2e0ff80ba5de7d8aa8991bfd5ab`.
 - GitHub Pages deployment and Android live-page verification are pending. The user should hard-refresh/reopen the page after deployment; verify no Windows download buttons remain.
+
+
+## 4 November 2026 — QR Code Maker supporting sections redesigned to match approved visual reference
+- User asked to implement the supplied premium QR Maker mobile design reference on the live website, keeping existing QR generator functionality intact.
+- Updated `qr-maker.html` supporting sections only: illustrated “What Is a QR Code?” and three-step “How to Use” panels; styled Home breadcrumb; premium colorful four-tool exploration cards with SVG icons; illustrated QR print-check guide with green checklist; upgraded FAQ cards/accordion visual treatment and related links.
+- Used inline SVG artwork and CSS gradients/shadows; responsive mobile layout and reduced-motion support included. Existing QR creation, download, upload/read-code and ZXing functionality/scripts were not intentionally changed.
+- QR Maker page commit: `0000f1ae471757ab6f1c27094c3e598d8b7993b3`.
+- Service worker cache bumped from `infojano-v195` to `infojano-v196`; commit: `757a45603842b399a4312a38886d106aea1c7e7d`.
+- Source re-fetch checks confirmed the new information panels, tools grid, print guide, FAQ styling, and original QR generator script are present. GitHub Pages deployment and real Android visual/functional verification remain pending.
