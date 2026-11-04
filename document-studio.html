@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Document to PDF & Image Studio | Free Online Document Maker - InfoJano</title>
+<meta name="description" content="Create and format documents online. Paste text from Microsoft Word, edit pages, preview A4 layouts and export selectable-text PDFs or page images as JPG and PNG.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/document-studio.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Document to PDF & Image Studio | InfoJano">
+<meta property="og:description" content="Format documents and export PDF, JPG or PNG pages in your browser.">
+<meta property="og:url" content="https://barsulkhan.github.io/InfoJano/document-studio.html">
+<meta property="og:image" content="https://barsulkhan.github.io/InfoJano/icon-512.png">
+<meta name="theme-color" content="#0b55cf">
+<link rel="icon" href="/InfoJano/infojano-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1765e9;--blue2:#0d4ec4;--ink:#14213d;--muted:#65748e;--line:#dce5f3;--surface:#fff;--bg:#eef4fc;--soft:#eaf2ff;--purple:#7545df;--green:#079b66;--shadow:0 12px 32px rgba(23,55,110,.09)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;font-family:Inter,"Noto Sans Bengali",system-ui,sans-serif;color:var(--ink);background:radial-gradient(ellipse at 8% 0%,#dceeff 0,transparent 34%),radial-gradient(ellipse at 95% 12%,#e9e3ff 0,transparent 30%),var(--bg)}
+button,input,select{font:inherit}button{cursor:pointer}
+.ij-head{position:sticky;top:0;z-index:50;background:linear-gradient(105deg,#073b9c,#0759d8 60%,#063b9a);color:#fff;box-shadow:0 5px 20px #062c6b30}
+.head-inner{width:100%;padding:11px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;font-weight:850;font-size:23px}.brand img{width:44px;height:44px}.brand span span{color:#9be8ff}
+.head-links{display:flex;align-items:center;gap:10px}.head-links a{color:#fff;text-decoration:none;padding:10px 15px;border:1px solid #ffffff55;border-radius:12px;font-weight:700;font-size:13px;background:#ffffff12}
+.hero{padding:25px 3vw;background:linear-gradient(110deg,#e4f1ff,#f1edff 60%,#e4f9f6);border-bottom:1px solid #dce7f8}
+.hero-inner{width:100%;display:flex;align-items:center;gap:24px}.word-mark{width:94px;height:94px;flex:0 0 94px;border-radius:23px;display:grid;place-items:center;background:linear-gradient(145deg,#1474ee,#0646bd);color:white;font-size:48px;font-weight:800;box-shadow:0 12px 24px #1765e933}
+.hero h1{font-size:clamp(26px,3vw,42px);line-height:1.1;letter-spacing:-1.2px;margin:0 0 8px;color:#10285a}.hero p{margin:0;color:#425675;font-size:15px;line-height:1.55}.formats{display:flex;gap:8px;margin-left:auto;flex:0 0 auto}.format-badge{padding:13px 15px;border-radius:14px;color:white;font-weight:850;box-shadow:0 6px 16px #19345c20}.pdf{background:#ef4444}.jpg{background:#7545df}.png{background:#079b66}
+.workspace{width:100%;padding:18px 18px 34px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(440px,.88fr);gap:16px;align-items:start}
+.panel{background:#ffffffed;border:1px solid #dce6f5;border-radius:20px;box-shadow:var(--shadow);min-width:0;overflow:hidden}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #e5ebf5;background:linear-gradient(110deg,#fff,#f7faff)}
+.panel-title{font-weight:850;font-size:17px;display:flex;align-items:center;gap:9px}.panel-title .dot{width:9px;height:25px;border-radius:8px;background:linear-gradient(#26b8ef,#245ce7)}
+.panel-sub{font-size:12px;color:var(--muted)}
+.toolbar{display:flex;flex-wrap:wrap;gap:5px;padding:10px 12px;border-bottom:1px solid #e4eaf4;background:#f8faff}
+.toolgroup{display:flex;align-items:center;gap:4px;padding-right:7px;margin-right:3px;border-right:1px solid #dce4f0}.toolgroup:last-child{border:0}
+.toolbtn{min-width:34px;height:34px;padding:0 9px;border:1px solid #dce5f2;border-radius:8px;background:white;color:#243653;font-weight:750}.toolbtn:hover,.toolbtn.active{background:#e7f0ff;border-color:#9bbdf5;color:#1555c5}
+.toolbar select{height:34px;max-width:145px;border:1px solid #dce5f2;border-radius:8px;background:#fff;padding:0 8px;color:#273954;font-size:12px}
+.edit-area{padding:20px;background:#edf2f9;min-height:660px;max-height:calc(100vh - 275px);overflow:auto}
+.doc-page{width:min(100%,794px);min-height:1123px;margin:0 auto 20px;padding:76px 74px;background:#fff;box-shadow:0 3px 18px #14213d1a;border:1px solid #e2e8f0;outline:none;color:#171717;font-family:"Noto Sans Bengali",Arial,sans-serif;font-size:16px;line-height:1.8;overflow-wrap:anywhere}
+.doc-page:focus{outline:2px solid #9dc1ff;outline-offset:2px}.doc-page h1,.doc-page h2,.doc-page h3{line-height:1.35}.doc-page p{margin:0 0 14px}.doc-page table{width:100%;border-collapse:collapse}.doc-page td,.doc-page th{border:1px solid #777;padding:6px}
+.editor-foot{display:flex;justify-content:space-between;gap:10px;padding:10px 15px;color:#5b6980;background:#f8faff;border-top:1px solid #e4eaf4;font-size:12px}
+.preview-panel{position:sticky;top:84px}.preview-tools{display:flex;gap:7px;align-items:center}.small-btn{border:1px solid #dce5f2;background:white;border-radius:9px;padding:7px 10px;color:#25436f;font-weight:700;font-size:12px}
+.preview-stage{padding:18px;background:#edf2f9;min-height:550px;max-height:calc(100vh - 245px);overflow:auto;display:flex;align-items:flex-start;justify-content:center}
+.preview-stack{width:100%;display:grid;gap:16px;justify-items:center}.preview-page{width:min(100%,560px);aspect-ratio:210/297;background:white;box-shadow:0 3px 16px #17243b22;padding:8.5%;overflow:hidden;color:#171717;font-family:"Noto Sans Bengali",Arial,sans-serif;font-size:clamp(7px,.85vw,11px);line-height:1.7;overflow-wrap:anywhere}.preview-page h1,.preview-page h2,.preview-page h3{line-height:1.3}.preview-page p{margin:0 0 8px}.preview-page table{width:100%;border-collapse:collapse}.preview-page td,.preview-page th{border:1px solid #777;padding:3px}
+.settings{padding:15px 17px;border-top:1px solid #e5ebf5;background:#fff}.settings-title{font-weight:850;margin-bottom:11px;display:flex;gap:8px;align-items:center}.setting-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field label{display:block;font-size:12px;color:#63718a;font-weight:700;margin-bottom:5px}.field select{width:100%;height:40px;border:1px solid #d9e2ef;border-radius:9px;background:#fff;padding:0 10px;color:#263954}
+.export-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:13px 15px 16px}.export-btn{border:0;border-radius:13px;padding:13px 8px;color:#fff;font-weight:850;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:0 7px 16px #18345b20}.export-btn b{font-size:22px}.export-btn span{font-size:12px}.export-pdf{background:linear-gradient(145deg,#fb5555,#dc2626)}.export-jpg{background:linear-gradient(145deg,#9455f1,#6731c9)}.export-png{background:linear-gradient(145deg,#18b77c,#078554)}
+.secondary-actions{display:flex;flex-wrap:wrap;gap:8px;padding:0 15px 15px}.secondary-actions button{border:1px solid #dce5f2;background:#f6f9ff;color:#315078;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:750}
+.status{padding:10px 15px;color:#566782;font-size:12px;background:#f8faff;border-top:1px solid #e6edf6;min-height:38px}
+.features{width:100%;padding:0 18px 28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.feature{background:#fff;border:1px solid #dce6f5;border-radius:15px;padding:16px;box-shadow:0 5px 18px #18345b0a}.feature b{display:block;margin:0 0 5px;font-size:14px}.feature span{font-size:12px;line-height:1.5;color:#65748e}
+.info{width:100%;padding:0 18px 36px}.info-inner{background:#fff;border:1px solid #dce6f5;border-radius:18px;padding:20px}.info h2{margin:0 0 8px;font-size:20px}.info p,.info li{color:#5d6b82;line-height:1.7;font-size:14px}
+.ij-foot{text-align:center;color:#71809a;font-size:12px;padding:20px}
+@media(min-width:1500px){.workspace{grid-template-columns:minmax(0,1.15fr) minmax(520px,.85fr);gap:20px;padding:22px 24px}.doc-page{min-height:1180px}.preview-page{max-width:680px}.edit-area{min-height:740px}}
+@media(max-width:1050px){.workspace{grid-template-columns:minmax(0,1fr) minmax(340px,.8fr)}.doc-page{padding:54px 48px;min-height:900px}.preview-panel{top:78px}}
+@media(max-width:760px){.head-inner{padding:9px 13px}.brand{font-size:20px}.brand img{width:38px;height:38px}.head-links a:first-child{display:none}.hero{padding:20px 15px}.hero-inner{gap:13px;flex-wrap:wrap}.word-mark{width:65px;height:65px;flex-basis:65px;border-radius:17px;font-size:34px}.hero h1{font-size:25px}.hero p{font-size:13px}.formats{margin-left:78px}.format-badge{padding:8px 10px;font-size:12px}.workspace{grid-template-columns:1fr;padding:12px;gap:12px}.preview-panel{position:static}.edit-area{min-height:480px;max-height:none;padding:12px}.doc-page{width:100%;min-height:700px;padding:38px 28px;font-size:15px}.preview-stage{min-height:350px;max-height:650px}.preview-page{max-width:420px;font-size:9px}.features{padding:0 12px 18px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.feature{padding:13px}.info{padding:0 12px 24px}.panel-title{font-size:15px}}
+@media(max-width:420px){.head-links a{padding:8px 10px;font-size:11px}.hero h1{font-size:22px}.formats{margin-left:0}.doc-page{padding:28px 20px}.toolbar{gap:4px;padding:8px}.toolgroup{padding-right:4px;margin-right:1px}.toolbtn{min-width:30px;height:32px;padding:0 7px}.toolbar select{max-width:116px}.setting-grid{grid-template-columns:1fr 1fr}}
+@media print{html,body{background:#fff!important}.ij-head,.hero,.editor-panel,.preview-panel,.features,.info,.ij-foot{display:none!important}.workspace{display:block!important;padding:0!important;margin:0!important}.doc-page{display:block!important;width:auto!important;min-height:0!important;height:auto!important;margin:0!important;padding:var(--print-margin,20mm)!important;border:0!important;box-shadow:none!important;break-after:page;page-break-after:always;overflow:visible!important;font-size:12pt!important;line-height:1.6!important}.doc-page:last-child{break-after:auto;page-break-after:auto}.print-root{display:block!important}@page{size:A4 portrait;margin:0}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="ij-head"><div class="head-inner"><a class="brand" href="/InfoJano/"><img src="/InfoJano/infojano-mark.svg" alt=""><span>Info<span>Jano</span></span></a><nav class="head-links"><a href="/InfoJano/index.html#tools">All Tools</a><a href="/InfoJano/index.html">Home</a></nav></div></header>
+<section class="hero"><div class="hero-inner"><div class="word-mark" aria-hidden="true">W</div><div><h1>Document to PDF &amp; Image Studio</h1><p>Write, paste from Microsoft Word, format your pages and export PDF, JPG or PNG.</p></div><div class="formats"><span class="format-badge pdf">PDF</span><span class="format-badge jpg">JPG</span><span class="format-badge png">PNG</span></div></div></section>
+<main class="workspace">
+<section class="panel editor-panel">
+<div class="panel-head"><div><div class="panel-title"><i class="dot"></i>Document Editor</div><div class="panel-sub">Paste from Microsoft Word or type here</div></div><button class="small-btn" id="clearBtn" type="button">Clear</button></div>
+<div class="toolbar" role="toolbar" aria-label="Text formatting">
+<div class="toolgroup"><button class="toolbtn" data-cmd="undo" title="Undo">↶</button><button class="toolbtn" data-cmd="redo" title="Redo">↷</button></div>
+<div class="toolgroup"><select id="blockStyle" aria-label="Paragraph style"><option value="p">Paragraph</option><option value="h1">Heading 1</option><option value="h2">Heading 2</option><option value="h3">Heading 3</option></select><select id="fontFamily" aria-label="Font"><option value="'Noto Sans Bengali',Arial,sans-serif">Noto Sans Bengali</option><option value="Arial,sans-serif">Arial</option><option value="Georgia,serif">Georgia</option><option value="Verdana,sans-serif">Verdana</option></select><select id="fontSize" aria-label="Font size"><option value="3">12</option><option value="4" selected>16</option><option value="5">18</option><option value="6">24</option><option value="7">32</option></select></div>
+<div class="toolgroup"><button class="toolbtn" data-cmd="bold" title="Bold"><b>B</b></button><button class="toolbtn" data-cmd="italic" title="Italic"><i>I</i></button><button class="toolbtn" data-cmd="underline" title="Underline"><u>U</u></button><input id="textColor" type="color" value="#171717" title="Text color" style="width:34px;height:34px;padding:2px;border:1px solid #dce5f2;border-radius:8px;background:#fff"></div>
+<div class="toolgroup"><button class="toolbtn" data-cmd="justifyLeft" title="Align left">☰</button><button class="toolbtn" data-cmd="justifyCenter" title="Center">≡</button><button class="toolbtn" data-cmd="justifyRight" title="Align right">☷</button><button class="toolbtn" data-cmd="insertUnorderedList" title="Bulleted list">• List</button></div>
+<div class="toolgroup"><button class="toolbtn" id="linkBtn" title="Insert link">↗</button><button class="toolbtn" id="tableBtn" title="Insert table">▦</button></div>
+</div>
+<div class="edit-area" id="editArea"><div class="doc-page" contenteditable="true" spellcheck="true" data-page="1" aria-label="Document page 1"><h2 style="text-align:center;text-decoration:underline">আবেদনপত্র</h2><p>বরাবর,<br>প্রধান শিক্ষক,<br>আদর্শ উচ্চ বিদ্যালয়,<br>ঢাকা।</p><p><b>বিষয়: শিক্ষা সহায়তা প্রদানের জন্য আবেদন।</b></p><p>জনাব,</p><p>বিনীত নিবেদন এই যে, আমি আপনার বিদ্যালয়ের দশম শ্রেণির একজন নিয়মিত ছাত্র। আর্থিক অসচ্ছলতার কারণে আমার পড়াশোনার খরচ বহন করা কঠিন হয়ে পড়েছে। তাই আমি আপনার নিকট শিক্ষা সহায়তা প্রদানের জন্য আবেদন করছি।</p><p>আপনার সদয় বিবেচনা ও সহায়তা কামনা করছি।</p><p>বিনীত,<br>রহিম উদ্দিন<br>দশম শ্রেণি, রোল: ১২</p></div></div>
+<div class="editor-foot"><span id="wordCount">শব্দ: ০</span><span id="pageCount">পৃষ্ঠা: ১</span></div>
+</section>
+<section class="panel preview-panel">
+<div class="panel-head"><div><div class="panel-title"><i class="dot"></i>Live Page Preview</div><div class="panel-sub">Preview updates as you type</div></div><div class="preview-tools"><button class="small-btn" id="zoomOut">−</button><span id="zoomLabel" class="panel-sub">100%</span><button class="small-btn" id="zoomIn">+</button></div></div>
+<div class="preview-stage" id="previewStage"><div class="preview-stack" id="previewStack"></div></div>
+<div class="settings"><div class="settings-title">⚙ Page Settings</div><div class="setting-grid"><div class="field"><label for="pageSize">Page size</label><select id="pageSize"><option value="A4">A4 (210 × 297 mm)</option><option value="A5">A5 (148 × 210 mm)</option><option value="Letter">US Letter (8.5 × 11 in)</option></select></div><div class="field"><label for="orientation">Orientation</label><select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div class="field"><label for="margin">Margins</label><select id="margin"><option value="normal">Normal (20 mm)</option><option value="narrow">Narrow (12 mm)</option><option value="wide">Wide (28 mm)</option></select></div><div class="field"><label for="lineSpacing">Line spacing</label><select id="lineSpacing"><option value="1.5">1.5</option><option value="1.7" selected>1.7</option><option value="2">2.0</option></select></div></div></div>
+<div class="export-grid"><button class="export-btn export-pdf" id="pdfBtn"><b>▤</b><span>Download PDF</span></button><button class="export-btn export-jpg" id="jpgBtn"><b>▧</b><span>JPG per page</span></button><button class="export-btn export-png" id="pngBtn"><b>▧</b><span>PNG per page</span></button></div>
+<div class="secondary-actions"><button id="addPageBtn">＋ Add Page</button><button id="pasteBtn">Paste Text</button><button id="downloadHtmlBtn">Save Editable HTML</button></div>
+<div class="status" id="status" role="status" aria-live="polite">Ready. Your document stays in this browser while you work.</div>
+</section>
+</main>
+<section class="features"><div class="feature"><b>✍️ Word-style Editor</b><span>Type or paste your content and format headings, paragraphs, lists and tables.</span></div><div class="feature"><b>📄 Multiple Pages</b><span>Add pages, arrange content and preview the document before exporting.</span></div><div class="feature"><b>📐 Page Layout</b><span>Choose A4, A5 or Letter with portrait or landscape orientation.</span></div><div class="feature"><b>🔒 Browser Processing</b><span>Your document content is processed locally in your browser.</span></div></section>
+<section class="info"><div class="info-inner"><h2>How to use Document to PDF &amp; Image Studio</h2><ol><li>Type in the editor or paste content copied from Microsoft Word.</li><li>Use the toolbar to format headings, text, alignment, lists and tables.</li><li>Choose page size, orientation and margins. Add another page when needed.</li><li>Preview your pages, then export a selectable-text PDF or page images.</li></ol><p><b>PDF note:</b> PDF export opens your browser's print dialog. Choose “Save as PDF” to save a searchable, selectable-text document. JPG and PNG exports are rendered as page images.</p></div></section>
+<footer class="ij-foot">InfoJano · Smart Tools for Everyday Life · <a href="/InfoJano/">Home</a></footer>
+<script>
+(()=> {
+ const $=id=>document.getElementById(id), area=$('editArea'), stack=$('previewStack');
+ let zoom=100;
+ const pages=()=>Array.from(area.querySelectorAll('.doc-page'));
+ const safe=(v)=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function setStatus(msg){$('status').textContent=msg}
+ function pageStyles(){const s=$('pageSize').value,o=$('orientation').value;let w=s==='A5'?148:s==='Letter'?216:210,h=s==='A5'?210:s==='Letter'?279:297;if(o==='landscape')[w,h]=[h,w];return {w,h}}
+ function renderPreview(){stack.innerHTML='';const {w,h}=pageStyles();pages().forEach((p,i)=>{const el=document.createElement('article');el.className='preview-page';el.style.aspectRatio=w+'/'+h;el.style.lineHeight=$('lineSpacing').value;el.innerHTML=p.innerHTML;stack.appendChild(el)});$('pageCount').textContent='পৃষ্ঠা: '+pages().length;$('wordCount').textContent='শব্দ: '+(area.innerText.trim().match(/\S+/g)||[]).length}
+ function applyPageSettings(){const {w,h}=pageStyles();const margin=$('margin').value;const m=margin==='narrow'?'12mm':margin==='wide'?'28mm':'20mm';pages().forEach(p=>{p.style.width='min(100%,'+(w/210*794)+'px)';p.style.minHeight=(h/297*1123)+'px';p.style.padding=m;p.style.lineHeight=$('lineSpacing').value});renderPreview()}
+ function selectionCommand(cmd,val=null){const p=document.activeElement?.closest('.doc-page')||pages()[0];p.focus();document.execCommand(cmd,false,val);renderPreview()}
+ document.querySelectorAll('[data-cmd]').forEach(b=>b.addEventListener('click',()=>selectionCommand(b.dataset.cmd)));
+ $('blockStyle').addEventListener('change',e=>selectionCommand('formatBlock',e.target.value));
+ $('fontFamily').addEventListener('change',e=>selectionCommand('fontName',e.target.value));
+ $('fontSize').addEventListener('change',e=>selectionCommand('fontSize',e.target.value));
+ $('textColor').addEventListener('input',e=>selectionCommand('foreColor',e.target.value));
+ $('linkBtn').addEventListener('click',()=>{const u=prompt('Enter link URL');if(u)selectionCommand('createLink',u)});
+ $('tableBtn').addEventListener('click',()=>{const r=Math.min(10,Math.max(1,Number(prompt('Number of rows?', '3'))||0));const c=Math.min(8,Math.max(1,Number(prompt('Number of columns?', '2'))||0));if(!r||!c)return;let h='<table><tbody>';for(let i=0;i<r;i++){h+='<tr>';for(let j=0;j<c;j++)h+='<td>Cell</td>';h+='</tr>'}h+='</tbody></table><p><br></p>';selectionCommand('insertHTML',h)});
+ pages().forEach(p=>p.addEventListener('input',renderPreview));
+ area.addEventListener('input',renderPreview);
+ $('addPageBtn').addEventListener('click',()=>{const n=document.createElement('div');n.className='doc-page';n.contentEditable='true';n.spellcheck=true;n.dataset.page=pages().length+1;n.setAttribute('aria-label','Document page '+n.dataset.page);n.innerHTML='<p><br></p>';area.appendChild(n);n.focus();renderPreview();setStatus('New page added.')});
+ $('clearBtn').addEventListener('click',()=>{if(!confirm('Clear all document pages?'))return;area.innerHTML='<div class="doc-page" contenteditable="true" spellcheck="true"><p><br></p></div>';pages()[0].addEventListener('input',renderPreview);renderPreview();setStatus('Document cleared.')});
+ ['pageSize','orientation','margin','lineSpacing'].forEach(id=>$(id).addEventListener('change',applyPageSettings));
+ $('zoomOut').addEventListener('click',()=>{zoom=Math.max(50,zoom-10);stack.style.transform='scale('+(zoom/100)+')';stack.style.transformOrigin='top center';$('zoomLabel').textContent=zoom+'%'});
+ $('zoomIn').addEventListener('click',()=>{zoom=Math.min(150,zoom+10);stack.style.transform='scale('+(zoom/100)+')';stack.style.transformOrigin='top center';$('zoomLabel').textContent=zoom+'%'});
+ $('pdfBtn').addEventListener('click',()=>{applyPageSettings();setStatus('Print dialog opened. Select Save as PDF to download a selectable-text PDF.');window.print()});
+ async function loadCanvas(){if(window.html2canvas)return;setStatus('Loading image export engine…');await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';s.onload=resolve;s.onerror=()=>reject(new Error('Could not load image export engine. Check your internet connection.'));document.head.appendChild(s)})}
+ async function exportImages(type){const btn=type==='jpeg'?'jpgBtn':'pngBtn';$(btn).disabled=true;try{await loadCanvas();const old=area.style.background;setStatus('Rendering '+pages().length+' page(s)…');for(let i=0;i<pages().length;i++){const p=pages()[i],canvas=await window.html2canvas(p,{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false});const a=document.createElement('a');a.download='infojano-document-page-'+(i+1)+'.'+(type==='jpeg'?'jpg':'png');a.href=canvas.toDataURL(type==='jpeg'?'image/jpeg':'image/png',.94);a.click();await new Promise(r=>setTimeout(r,250))}setStatus('Image export complete. '+pages().length+' page image(s) prepared for download.')}catch(e){setStatus(e.message||'Image export failed.')}finally{$(btn).disabled=false}}
+ $('jpgBtn').addEventListener('click',()=>exportImages('jpeg'));$('pngBtn').addEventListener('click',()=>exportImages('png'));
+ $('pasteBtn').addEventListener('click',async()=>{try{const t=await navigator.clipboard.readText();const p=pages()[pages().length-1];p.focus();document.execCommand('insertText',false,t);renderPreview();setStatus('Text pasted from clipboard.')}catch(e){setStatus('Clipboard access was blocked. Tap inside the document and use Paste from your keyboard.') }});
+ $('downloadHtmlBtn').addEventListener('click',()=>{const html='<!doctype html><html><head><meta charset="utf-8"><title>My InfoJano Document</title></head><body>'+pages().map(p=>'<section style="page-break-after:always">'+p.innerHTML+'</section>').join('')+'</body></html>';const blob=new Blob([html],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='infojano-document.html';a.click();URL.revokeObjectURL(url);setStatus('Editable HTML document saved.')});
+ $('pageSize').addEventListener('change',()=>{const s=$('pageSize').value;document.documentElement.style.setProperty('--print-size',s)});
+ renderPreview();applyPageSettings();
+})();
+</script>
+<script src="/InfoJano/install.js" defer></script>
+<script src="/InfoJano/site-header.js" defer></script>
+</body></html>
