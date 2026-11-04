@@ -452,6 +452,45 @@ header.ij-head .head-links a{
  .hero-neon:after,.hero-neon h1:after{animation:none!important}
 }
 
+
+/* Compact desktop hero + precise SVG perimeter orbit (no diagonal overlays) */
+header.ij-head .head-inner{min-height:66px!important;padding:7px clamp(16px,2.5vw,38px)!important}
+header.ij-head .brand img{width:36px!important;height:36px!important;object-fit:contain!important}
+header.ij-head .head-links a{padding:8px 16px!important;font-size:13px!important}
+.hero-neon{min-height:0!important;height:auto!important;margin:19px 0 0!important;padding:17px clamp(18px,2.6vw,42px) 22px!important;border-radius:0!important;overflow:hidden!important}
+.hero-neon-inner{min-height:250px!important;height:auto!important;grid-template-columns:minmax(125px,185px) minmax(300px,1fr) minmax(205px,315px)!important;gap:clamp(12px,1.7vw,24px)!important}
+.hero-neon .hero-art svg{max-height:190px!important;width:100%!important}
+.hero-neon .hero-art-left svg{max-width:180px!important}
+.hero-neon .hero-art-right svg{max-width:310px!important}
+.hero-neon h1{font-size:clamp(30px,3.25vw,44px)!important;line-height:1.02!important;margin-bottom:9px!important}
+.hero-neon .hero-kicker{margin-bottom:9px!important;padding:6px 11px!important}
+.hero-neon .hero-copy>p{font-size:14px!important;line-height:1.4!important;margin-bottom:12px!important}
+.hero-neon .hero-chip{padding:8px 11px!important;font-size:12px!important}
+.hero-neon .hero-format-row{margin-top:9px!important}
+.hero-neon:after{content:none!important;display:none!important;animation:none!important}
+.ij-orbit-border{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:5!important;display:block!important;pointer-events:none!important;overflow:visible!important}
+.ij-orbit-border rect{filter:drop-shadow(0 0 3px #43efff) drop-shadow(0 0 7px rgba(167,52,255,.85))}
+@media(max-width:1050px){
+ header.ij-head .head-inner{min-height:62px!important}
+ .hero-neon{padding:16px 18px 20px!important}
+ .hero-neon-inner{min-height:225px!important;grid-template-columns:minmax(105px,145px) minmax(250px,1fr) minmax(180px,245px)!important}
+ .hero-neon .hero-art svg{max-height:165px!important}
+ .hero-neon h1{font-size:clamp(27px,3.5vw,38px)!important}
+}
+@media(max-width:760px){
+ header.ij-head .head-inner{min-height:60px!important;padding:7px 13px!important}
+ header.ij-head .brand img{width:32px!important;height:32px!important}
+ .hero-neon{margin-top:19px!important;padding:17px 14px 22px!important}
+ .hero-neon-inner{min-height:0!important;grid-template-columns:minmax(0,1fr) 94px!important;gap:8px!important}
+ .hero-art-left{display:none!important}
+ .hero-neon .hero-art-right svg{max-height:125px!important;max-width:145px!important}
+ .hero-neon h1{font-size:clamp(23px,5.7vw,32px)!important;letter-spacing:-.6px!important}
+ .hero-neon .hero-copy>p{font-size:12px!important}
+ .hero-neon .hero-chip{padding:6px 8px!important;font-size:10px!important}
+ .ij-orbit-border rect{stroke-width:2.5}
+}
+@media(prefers-reduced-motion:reduce){.ij-orbit-border animate{display:none}}
+
 </style>
 </head>
 <body>
@@ -474,6 +513,11 @@ header.ij-head .head-links a{
   </div>
  </div>
  <div class="hero-wave hero-wave-a" aria-hidden="true"></div><div class="hero-wave hero-wave-b" aria-hidden="true"></div>
+ <svg class="ij-orbit-border" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+  <defs><linearGradient id="ijOrbitGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#35f5ff"/><stop offset=".48" stop-color="#ffffff"/><stop offset="1" stop-color="#ff55f5"/></linearGradient></defs>
+  <rect x="3" y="3" width="994" height="394" rx="24" ry="24" pathLength="1000" fill="none" stroke="url(#ijOrbitGlow)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="245 755"><animate attributeName="stroke-dashoffset" from="0" to="-1000" dur="12s" repeatCount="indefinite"/></rect>
+  <rect x="3" y="3" width="994" height="394" rx="24" ry="24" pathLength="1000" fill="none" stroke="#55edff" stroke-opacity=".55" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="85 915"><animate attributeName="stroke-dashoffset" from="-500" to="-1500" dur="12s" repeatCount="indefinite"/></rect>
+ </svg>
 </section>
 <main class="workspace">
 <section class="panel editor-panel">
