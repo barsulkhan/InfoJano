@@ -506,6 +506,25 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 @media(max-width:360px){.ij-content-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#ij-related-apps .ij-related-card{transition:none}}
 
+
+/* Static Related Apps layout: no external script dependency */
+#ij-related-apps{margin:24px 0;padding:19px 16px;border:1px solid #e3dcff;border-radius:21px;background:linear-gradient(145deg,#fbfaff,#f5f8ff 60%,#fff);box-shadow:0 10px 28px rgba(70,55,145,.075);color:#172033}
+#ij-related-apps h2{display:flex;align-items:center;gap:10px;margin:0 0 5px;color:#17234a;font-size:21px;line-height:1.25}
+#ij-related-apps .ij-related-heading-icon{display:grid;place-items:center;width:36px;height:36px;flex:0 0 36px;border-radius:12px;background:linear-gradient(135deg,#e8d9ff,#f2eaff);color:#7044d6}
+#ij-related-apps .ij-related-intro{margin:0 0 14px;font-size:12px;color:#66738c;line-height:1.5}
+#ij-related-apps .ij-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#ij-related-apps .ij-related-card{display:grid;grid-template-columns:44px minmax(0,1fr) 16px;align-items:center;gap:10px;min-width:0;min-height:88px;padding:12px;border:1px solid #e0e8f7;border-radius:16px;background:linear-gradient(145deg,#fff,#f7f9ff);color:#172554;text-decoration:none;box-shadow:0 4px 14px rgba(37,75,145,.055);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+#ij-related-apps .ij-related-card:hover,#ij-related-apps .ij-related-card:focus-visible{transform:translateY(-2px);border-color:#a8c4ff;box-shadow:0 9px 20px rgba(37,99,235,.12);outline:none}
+#ij-related-apps .ij-related-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#e9f2ff,#f1edff);box-shadow:inset 0 1px 0 #fff}
+#ij-related-apps .ij-related-icon img{display:block;width:36px;height:36px;max-width:36px;max-height:36px;object-fit:contain}
+#ij-related-apps .ij-related-copy{display:flex;flex-direction:column;gap:4px;min-width:0}
+#ij-related-apps .ij-related-name{display:block;font-size:13px;line-height:1.35;font-weight:800;color:#17264b}
+#ij-related-apps .ij-related-desc{display:block;font-size:11px;line-height:1.45;color:#68758d}
+#ij-related-apps .ij-related-arrow{display:grid;place-items:center;color:#245bd4;font-size:24px;font-weight:800}
+@media(max-width:560px){#ij-related-apps{padding:16px 12px}#ij-related-apps .ij-related-grid{gap:8px}#ij-related-apps .ij-related-card{grid-template-columns:36px minmax(0,1fr) 12px;gap:8px;min-height:82px;padding:10px 9px}#ij-related-apps .ij-related-icon{width:36px;height:36px;border-radius:11px}#ij-related-apps .ij-related-icon img{width:30px;height:30px;max-width:30px;max-height:30px}#ij-related-apps .ij-related-name{font-size:11px}#ij-related-apps .ij-related-desc{font-size:10px}#ij-related-apps .ij-related-arrow{font-size:19px}}
+@media(max-width:360px){#ij-related-apps .ij-related-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#ij-related-apps .ij-related-card{transition:none}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -642,34 +661,15 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 <section class="ij-info-card"><h2><svg class="ij-icon ij-icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg> Why Use InfoJano?</h2><ul><li>Reach a target file size automatically when possible.</li><li>Preserve the best practical quality for the selected limit.</li><li>Works on mobile and desktop browsers.</li><li>No account or registration required.</li><li>Your image stays on your device.</li></ul></section>
 </div>
 
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="image-resizer.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><path d="M9 9h6v6H9z"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Image Resizer</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">resize images to custom dimensions.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="image-to-pdf.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v6h5M9 13h6m-6 3h6"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Image to PDF Converter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">combine images into a PDF.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="qr-maker.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">QR Code Generator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">make QR codes for text and links.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="text-counter.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Text Counter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">count words and characters.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
-</section>
+<section id="ij-related-apps" aria-labelledby="related-tools-title">
+<h2 id="related-tools-title"><span class="ij-related-heading-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span>Related Apps</h2>
+<p class="ij-related-intro">Explore more useful InfoJano tools.</p>
+<div class="ij-related-grid">
+<a class="ij-related-card" href="image-resizer.html"><span class="ij-related-icon"><img src="app-icons/image-resizer.svg" alt="" width="38" height="38"></span><span class="ij-related-copy"><strong class="ij-related-name">Image Resizer</strong><span class="ij-related-desc">Resize images to your required dimensions.</span></span><span class="ij-related-arrow" aria-hidden="true">›</span></a>
+<a class="ij-related-card" href="image-to-pdf.html"><span class="ij-related-icon"><img src="app-icons/image-to-pdf.svg" alt="" width="38" height="38"></span><span class="ij-related-copy"><strong class="ij-related-name">Image to PDF</strong><span class="ij-related-desc">Turn images into a PDF document.</span></span><span class="ij-related-arrow" aria-hidden="true">›</span></a>
+<a class="ij-related-card" href="id-card-print-studio.html"><span class="ij-related-icon"><img src="app-icons/id-card-print-studio.svg" alt="" width="38" height="38"></span><span class="ij-related-copy"><strong class="ij-related-name">ID Card Print Studio</strong><span class="ij-related-desc">Prepare ID-card layouts for printing.</span></span><span class="ij-related-arrow" aria-hidden="true">›</span></a>
+<a class="ij-related-card" href="qr-maker.html"><span class="ij-related-icon"><img src="app-icons/qr-maker.svg" alt="" width="38" height="38"></span><span class="ij-related-copy"><strong class="ij-related-name">QR Code Maker</strong><span class="ij-related-desc">Create QR codes for text and links.</span></span><span class="ij-related-arrow" aria-hidden="true">›</span></a>
+</div></section>
 <section class="ij-practical-guide ij-seo-intro" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">How to Reduce Image File Size</h2><p>Choose an image, adjust the available compression settings, and preview the result before saving it. The final file size depends on image format, dimensions, detail and compression level.</p><h3>Keep the image usable</h3><ul><li>Keep a copy of the original file.</li><li>Check text, faces and fine details after compression.</li><li>For a form upload, confirm the file-size and format limits on the destination website.</li></ul><p>Related tools: <a href="image-resizer.html">Image Resizer</a> and <a href="image-to-pdf.html">Image to PDF Converter</a>.</p></section>
 
 <section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
