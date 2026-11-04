@@ -1876,3 +1876,14 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Homepage index.html commit: e6841c818805b8677a1350cc2276439a46a1d59f.
 - Service worker cache bumped from infojano-v191 to infojano-v192; sw.js commit: f27e80ad48c59ca15b89cb4917b85c3eb66aeeee.
 - Source updated; wait for Pages deployment and inspect the user's refreshed screenshot before claiming final visual confirmation.
+
+
+## 4 November 2026 — Image Compressor lower-page visual refresh (user-approved)
+- User reviewed the Image Compressor mobile screenshot and approved a redesign of the lower informational sections, explicitly asking that existing emojis/logos/icons remain clear and not be damaged.
+- Updated only presentation styling for the lower-page sections in `image-compressor.html`: four benefit tiles, the two How-to/Why InfoJano cards, practical image-size guide, and FAQ. Added soft colored icon tiles, improved card hierarchy, rounded surfaces, clearer spacing, and mobile-responsive sizing. Existing inline SVG icon artwork and all compression/upload/result functionality were preserved.
+- Updated contextual Related Apps cards in `related-apps.js`: retained the existing tool-specific SVG icons and four related tool destinations, removed misleading Android/Windows app download buttons, and made each whole card a direct link to its corresponding InfoJano tool with a simple arrow indicator.
+- Image Compressor page commit: `3aaf23267e087bf6a7503dbf63a4dbeb459c2f42`.
+- Related Apps script commit: `e81f49155c114750ebe227ee7202b3db3a99bbc0`.
+- Service worker cache bumped sequentially from `infojano-v192` to `infojano-v193`; commit: `016eef3f168df3bacbd0e2ba683178fe90363784`.
+- Source re-fetch checks passed: visual refresh CSS is present; Related Apps cards now navigate to tools; the misleading “Download Windows App” CTA is removed; service worker reports `infojano-v193`.
+- Latest GitHub Pages workflow for cache commit `016eef3...` was queued at the time of this note. Deployment completion and fresh Android browser screenshot/visual verification are still pending. Do not claim the live page has been visually verified until the deployment succeeds and the user checks the refreshed page.
