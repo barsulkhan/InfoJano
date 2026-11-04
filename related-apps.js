@@ -72,7 +72,7 @@
       #ij-related-apps .ij-related-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#eff6ff;overflow:hidden} #ij-related-apps .ij-related-icon img{display:block!important;visibility:visible!important;opacity:1!important;width:36px!important;height:36px!important;max-width:36px!important;max-height:36px!important;object-fit:contain!important}#ij-related-apps .ij-related-icon .ij-icon-fallback{display:grid;place-items:center;width:36px;height:36px;font-size:25px;line-height:1}
       #ij-related-apps .ij-related-name{font-size:14px;line-height:1.35;font-weight:750}
       #ij-related-apps .ij-related-desc{font-size:12px;line-height:1.45;color:#64748b}
-      #ij-related-apps .ij-related-download{display:block;margin-top:auto;padding:9px 8px;border-radius:9px;background:#1458c8;color:#fff;text-align:center;font-size:12px;font-weight:750}\n      #ij-related-apps .ij-desktop-pending{display:block;margin-top:auto;padding:9px 8px;border-radius:9px;background:#edf2fa;color:#475569;text-align:center;font-size:12px;font-weight:700}
+      #ij-related-apps .ij-related-arrow{display:grid;place-items:center;margin-top:auto;color:#245bd4;font-size:22px;font-weight:800}\n      
       @media(max-width:360px){#ij-related-apps{padding:16px 12px}#ij-related-apps .ij-related-grid{gap:8px}#ij-related-apps .ij-related-card{padding:11px 9px}}
     `;document.head.appendChild(style);
   }
@@ -107,10 +107,9 @@
       const icon=document.createElement("span");icon.className="ij-related-icon";icon.setAttribute("aria-hidden","true");const iconImg=document.createElement("img");iconImg.src=base+"app-icons/"+a.icon;iconImg.alt="";iconImg.width=36;iconImg.height=36;iconImg.loading="eager";iconImg.onerror=()=>{iconImg.remove();const fallback=document.createElement("span");fallback.className="ij-icon-fallback";fallback.textContent=a.emoji||"▦";icon.appendChild(fallback);};icon.appendChild(iconImg);
       const name=document.createElement("span");name.className="ij-related-name";name.textContent=a.name;
       const desc=document.createElement("span");desc.className="ij-related-desc";desc.textContent=a.desc;
-      const download=document.createElement("span");
-      if(isDesktop){download.className="ij-related-download";download.textContent="Download Windows App ↓";download.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();window.location.href=desktopRelease+"InfoJano-"+a.name.replace(/[^A-Za-z0-9]+/g,"-").replace(/-$/,"")+"-Setup.exe";});}
-      else {download.className="ij-related-download";download.textContent="Download Android App ↓";download.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();window.location.href=release+a.apk;});}
-      link.append(icon,name,desc,download);grid.appendChild(link);
+      const arrow=document.createElement("span");arrow.className="ij-related-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent="›";
+      link.setAttribute("aria-label","Open "+a.name);
+      link.append(icon,name,desc,arrow);grid.appendChild(link);
     });
     section.replaceChildren(h2,p,grid);
   }
