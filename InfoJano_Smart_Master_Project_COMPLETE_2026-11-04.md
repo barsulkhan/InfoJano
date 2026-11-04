@@ -1979,3 +1979,81 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Check browser console for CDN / worker / CORS issues and verify downloaded files open correctly.
 - Important known follow-up: PDF Page Extractor currently provides a single combined output PDF, not one-PDF-per-page ZIP output. Consider only after user feedback and testing.
 - Do not claim deployment, full functionality, visual review or Google ranking improvement until separately verified.
+
+
+---
+
+## 5 November 2026 — Word DOCX Conversion tools (initial implementation)
+
+### User-approved product scope
+- User approved starting work on a Word conversion feature after Google search-intent and competitor research.
+- Build three separate SEO landing/tool pages:
+  1. `word-to-pdf.html` — Word to PDF Converter.
+  2. `word-to-jpg.html` — Word to JPG Converter.
+  3. `word-to-png.html` — Word to PNG Converter.
+- Existing `document-studio.html` already creates/export documents as PDF/JPG/PNG, but it does not provide a dedicated DOCX upload-and-convert workflow. Do not duplicate or replace Document Studio; these new pages import a Word DOCX file.
+- First implementation supports modern `.docx` only. Legacy binary `.doc` is explicitly not supported yet; user is instructed to save it as DOCX first.
+- Maximum DOCX upload size in the first version: 30 MB soft guard for browser memory protection.
+
+### Competitor and technical research
+- Competitors reviewed in the preceding conversation: Smallpdf, Adobe Acrobat, iLovePDF, Convertio, CloudConvert and LeadCanal.
+- Search-intent clusters researched (keyword volumes not independently verified): Word to PDF, DOCX to PDF, DOC to PDF, Word to JPG, DOCX to JPG, Word to image, Word to PNG, Word pages to JPG/PNG, Word to PDF without losing formatting, Word to JPG on Android, selected pages, multiple-page ZIP downloads.
+- Browser-side DOCX rendering library selected: `docx-preview` 0.4.1 (Apache-2.0); API supports rendering DOCX into browser DOM and page-break options. References: `turn500646search0`, `turn500646search5`, `turn500646search7`, `turn890838search1`, `turn890838search5`.
+- Rendering limitations are documented in the UI: browser rendering is not pixel-identical to desktop Microsoft Word, especially for unusual fonts, floating objects, complex layout and page settings. DOCX preview uses stored/manual page-break data; it does not fully reproduce Word's layout engine.
+- Google Search Central guidance: create people-first content, make titles descriptive and concise, use words people search for in titles/headings/link text, and do not mass-produce thin pages. References: `turn150877search0`, `turn150877search5`, `turn150877search6`, `turn150877search7`.
+- Do not claim keyword volumes or ranking gains without Search Console / Keyword Planner evidence.
+
+### Implemented files
+- `word-converter.js`: shared browser-side DOCX parser/render/export workflow. User file bytes stay in the browser; no InfoJano file-processing endpoint is used. External libraries are loaded from public CDNs.
+- `word-to-pdf.html`, `word-to-jpg.html`, `word-to-png.html`: separate canonical SEO pages with upload UI, page selection, FAQ, how-to, and related-tool links.
+- `app-icons/word-converter.svg`.
+- PWA manifests:
+  - `app-manifests/word-to-pdf.webmanifest`
+  - `app-manifests/word-to-jpg.webmanifest`
+  - `app-manifests/word-to-png.webmanifest`
+- Homepage `index.html`: three separate Word tool cards and keyword aliases added; displayed tool count changed from 22 to 25.
+- `sitemap.xml` and `sitemap.txt`: three Word tool URLs added.
+- `sw.js`: cache bumped from `infojano-v197` to `infojano-v198`; Word pages, shared JS, icon and manifests added to precache.
+
+### Initial functionality
+- DOCX upload and page rendering in the browser.
+- Actual page thumbnail previews generated from the rendered DOCX pages.
+- Select all / clear selection / custom page ranges (e.g. 1-3, 6, 9-11).
+- Word to PDF: selected pages exported as one PDF.
+- Word to JPG / PNG: selected pages exported individually; multiple pages packaged into a ZIP.
+- JPG resolution selector: 96, 150, 200, 300 DPI; JPG quality selector: 75%, 85%, 94%, 100%.
+- PNG uses lossless PNG output.
+- File naming rule (Global File Naming Standard): preserve the uploaded original base filename; never prefix with InfoJano; add `-InfoJano` only at the end before the extension. Multi-page image naming uses `OriginalName-page-001-InfoJano.jpg`; a multi-page ZIP uses `OriginalName-InfoJano.zip`. Do not duplicate the suffix if already present.
+- Example: `My Letter.docx` → `My Letter-InfoJano.pdf`; `My Letter-page-001-InfoJano.jpg`.
+
+### GitHub commits
+- Shared engine initial: `02d5f5d6f04aee3a91e3e1dd42d79e27d4f4686b`
+- Word to PDF page: `75d4d32eecad5dab91c242235ed1530f05d17798`
+- Word to JPG page: `e2e4d2f5160df9d46a0405253026a0fc3ad29ca3`
+- Word to PNG page: `30d275b89a7f42d3b16cb3d7cf019fd77c2623e6`
+- Word converter icon: `63155b9b98c42591466a0233c074500a26ecd483`
+- Manifests: PDF `a18a82ae494e152cb8406607dc76bf428534e060`; JPG `8268b6a464b649745b3ca5c1e31a415e8e2135fe`; PNG `5f425437d0a55fbc844b7cea6902b875ed07225a`
+- Homepage cards: `10e2892b21054998dc5ad917ce91ab328e81ce47`
+- XML sitemap: `ec20a9ee446b47a64503fcb173b2158f40f7c751`
+- Text sitemap: `2d98d8cefa2e897a766741c6e5ae11c5f7cec350`
+- Service worker v198: `067ca48f32fff6cc1ed554130caf017842214b43`
+- Filename / page-range regex correction: `3d165df7737bf12cd6114a970472c47e866e8c41`
+- Actual DOCX page thumbnails: `5720bc7ad36f1b9dea2e5d5ea4d87182830aceb6`
+- Image DPI / JPG quality controls in shared engine: `94c89aefa41ca535df80b8bb151e68a388d97f9f`
+- Manifest links and image controls on three pages: PDF `0488a4853c19934e41105214c4e8c2983ab4eedf`; JPG `439131edf52ad3747c918aa03653021063f71034`; PNG `a9e94bd606e54bef8b063f98f91ce1527473c94b`
+
+### Verification and deployment state
+- Source-level re-fetch confirms the three pages, homepage cards, sitemap entries and service worker v198 exist in GitHub.
+- Latest Pages workflow at checkpoint: run `41892951303`, status `in_progress`, head commit `a9e94bd606e54bef8b063f98f91ce1527473c94b`. Deployment is NOT confirmed successful yet.
+- A four-page sample Word document was generated for user testing: `InfoJano_Word_Converter_Test_4_Pages.docx` (A, B, C, D, one large letter per page).
+- Still required after deployment: open all three live pages in Android Chrome; test DOCX upload; confirm rendered page count and page thumbnails; test custom page selection; verify PDF opens and page count is correct; verify JPG/PNG images open; verify ZIP contents; verify original filename preservation and suffix placement; test 300 DPI memory use; check console/CDN errors and mobile layout.
+- If tests reveal DOCX page breaks or formatting problems, do not claim exact Word compatibility. Inspect sample files and improve the renderer/page capture carefully before broadening support.
+- Do not claim deployment or end-to-end conversion tests passed until verified on the live site.
+
+### Standing Global File Naming Standard — 5 November 2026
+- Applies to every InfoJano tool that accepts an uploaded file and produces a downloadable file, regardless of file type or task (PDF, image compression, PDF-to-image, Word conversion, etc.).
+- Preserve the original uploaded filename/base name; do not replace it with an InfoJano-prefixed name.
+- Add `-InfoJano` only at the very end of the output filename, immediately before the new extension.
+- For multi-output files, place page/index details before `-InfoJano`.
+- Never append `-InfoJano` repeatedly when the suffix is already present.
+- This rule is a permanent product-wide standard and must be checked whenever new upload/download tools are created or modified.
