@@ -1,0 +1,19 @@
+{
+  "id": "/InfoJano/pdf-to-jpg.html",
+  "name": "InfoJano — PDF to JPG Converter",
+  "short_name": "PDF to JPG",
+  "description": "Install the InfoJano PDF to JPG converter.",
+  "start_url": "/InfoJano/pdf-to-jpg.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/app-icons/pdf-to-jpg.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
