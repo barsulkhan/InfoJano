@@ -1869,3 +1869,10 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Homepage index.html commit: a653e3289bb70c208a31e2ef3c650e5b6f3dae42.
 - Service worker cache bumped from infojano-v190 to infojano-v191; sw.js commit: 7b258090703020b727741eae1011544d8e589a31.
 - Source changes saved and will require successful Pages deployment plus a fresh browser screenshot for visual confirmation.
+
+## 4 November 2026 — Homepage tool icon animation refinement
+- User asked to replace some homepage tool icon animations they dislike. Since no exact animation number was selected and the previews were not visible on their screen, applied a conservative premium motion style across homepage Popular Tools icons: slow subtle vertical float (2.5px, 4.8s), slight hover/focus lift, and a gentle press response.
+- Removed legacy bounce, rotation, scan-line/pseudo-element effects from the homepage tool icon wrappers so the new uniform animation overrides the previous mixed animations. Added reduced-motion support for accessibility. Tool artwork, names, links, and functionality remain unchanged.
+- Homepage index.html commit: e6841c818805b8677a1350cc2276439a46a1d59f.
+- Service worker cache bumped from infojano-v191 to infojano-v192; sw.js commit: f27e80ad48c59ca15b89cb4917b85c3eb66aeeee.
+- Source updated; wait for Pages deployment and inspect the user's refreshed screenshot before claiming final visual confirmation.
