@@ -1913,3 +1913,69 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - QR Maker page commit: `0000f1ae471757ab6f1c27094c3e598d8b7993b3`.
 - Service worker cache bumped from `infojano-v195` to `infojano-v196`; commit: `757a45603842b399a4312a38886d106aea1c7e7d`.
 - Source re-fetch checks confirmed the new information panels, tools grid, print guide, FAQ styling, and original QR generator script are present. GitHub Pages deployment and real Android visual/functional verification remain pending.
+
+
+---
+
+## 4 November 2026 — Added two standalone PDF tools (PDF to JPG + PDF Page Extractor)
+
+### Product / SEO decision
+- User approved adding **two separate tools**, not a combined PDF suite page:
+  1. `pdf-to-jpg.html` — PDF to JPG Converter.
+  2. `extract-pdf-pages.html` — PDF Page Extractor.
+- This work follows the user's ongoing requirement: before adding features, research search intent and competitor page features/keyword language; use relevant keywords naturally in each tool's title, meta description, H1/H2, page copy, FAQs, homepage search terms and internal links. Never invent search-volume figures or keyword difficulty.
+- Qualitative target clusters (not verified monthly volume):
+  - PDF to JPG: PDF to JPG, PDF to JPEG, convert PDF to JPG online, PDF pages to images, PDF to JPG converter free, PDF to PNG, PDF to JPG 300 DPI, convert PDF pages to JPG, PDF to JPG without losing quality, selected PDF pages to JPG, PDF to JPG ZIP download.
+  - PDF Page Extractor: extract PDF pages, PDF page extractor, extract pages from PDF, select pages from PDF, save selected pages as PDF, extract specific PDF pages, PDF page range extractor, split PDF pages, extract odd pages / even pages.
+- Competitor research already completed in the conversation:
+  - iLovePDF: page/range extraction, merge extracted pages or separate output.
+  - Smallpdf: thumbnail selection, combined PDF or separate PDFs, mobile flow.
+  - PDF24: PDF-to-image format and DPI controls, ZIP download; page extraction and visual selection.
+  - Sejda: image format/resolution/quality controls, page selection, ZIP; free usage caps and deletion policy.
+  - Adobe Acrobat: online PDF-to-image conversion and page extraction workflow.
+- Research refs from the preceding web research: `turn840966search0`, `turn840966search6`, `turn840966search7`, `turn840966search14`, `turn887569search0`, `turn840966search2`, `turn887569search1`, `turn887569search3`, `turn887569search12`, `turn887569search6`, `turn253048search3`; keyword-volume caution and Google Keyword Planner/Trends refs: `turn253048search4`, `turn840966search1`, `turn840966search8`, `turn840966search12`, `turn840966search9`.
+- The third-party claim of 9.14M monthly searches for “pdf to jpg” is unverified and must not be repeated as a verified volume. Use Google Keyword Planner and Trends for a future country/date-scoped validation.
+
+### Implemented files and features
+- `pdf-to-jpg.html`:
+  - Separate responsive tool page with canonical, SEO title/description, social metadata, how-to section, FAQs, related PDF-tool links.
+  - Browser-side PDF.js rendering; user PDF is not sent to an InfoJano processing server (PDF.js module is loaded from cdnjs).
+  - JPG and PNG output, all pages or custom page ranges, page thumbnails, 72/150/200/300 DPI, JPG quality presets, colour/grayscale/black-and-white modes, individual downloads and ZIP download.
+  - 100 MB soft guard to reduce browser memory risk; not an unlimited-file-size promise.
+  - Fixed the Clear range control to support an explicit no-pages state; empty range means all pages.
+- `extract-pdf-pages.html`:
+  - Separate responsive page with canonical, SEO title/description, social metadata, how-to section, FAQs and related links.
+  - Uses PDF.js for actual rendered page previews and pdf-lib to copy selected original pages into a new PDF.
+  - Thumbnail selection, page ranges, select all, invert selection, odd/even quick selection, output filename.
+  - The output is a single combined PDF; this version does not yet provide separate one-page PDFs or ZIP export.
+  - PDF encryption/unsupported features may prevent extraction; no promise of universal compatibility.
+- Added icons:
+  - `app-icons/pdf-to-jpg.svg`
+  - `app-icons/extract-pdf-pages.svg`
+- Added install manifests:
+  - `app-manifests/pdf-to-jpg.webmanifest`
+  - `app-manifests/extract-pdf-pages.webmanifest`
+- Added both cards to homepage `index.html`, including keyword-oriented search aliases and direct navigation.
+- Added both URLs to `sitemap.xml` and `sitemap.txt`.
+- Updated `sw.js` from `infojano-v196` to `infojano-v197` and added both pages, icons and manifests to the offline asset list.
+
+### GitHub commits
+- `pdf-to-jpg.html` initial: `d1444d79211d783e33b175ec53fc139520e6caf7`
+- `extract-pdf-pages.html` initial: `66f855a5590acd1c6789ccf17b8ca2af92d097bd`
+- Extractor real PDF.js thumbnails correction: `220c72370213eb28ba5631d6ab81a196cae6b0f6`
+- `app-icons/pdf-to-jpg.svg`: `5e9b3c3b803f2018045831082255e50d4385c0e8`
+- `app-icons/extract-pdf-pages.svg`: `1d90bedebd77602d1b705086501fda126347cd04`
+- `app-manifests/pdf-to-jpg.webmanifest`: `cd1a6c02b5d61fa3c5ee7a70b30f0fc9e6654af8`
+- `app-manifests/extract-pdf-pages.webmanifest`: `e46ef72e6d4a3032c3b67837537bf62210c08f78`
+- Homepage cards: `859beaae19bada93a8040cccae7477dc310751c6`
+- `sitemap.xml`: `c950589fc60d9d9dee0d8a4df5a705c38e6ca43b`
+- `sitemap.txt`: `a614b680058a3bcf0d146a5a7e6f98af55eceff4`
+- Service worker v197: `8508f5f99e468a7660f8e4454c7d955ea4d45f22`
+- PDF to JPG clear-selection fix: `16b01c071ddf92dbde75c5befa3f5c22180ac822`
+
+### Verification status / next tasks
+- GitHub source writes succeeded. This does not by itself confirm GitHub Pages deployment or runtime behaviour.
+- Still required: inspect current GitHub Actions / Pages workflow for the latest commit; wait for successful deploy; open both pages on Android Chrome; test actual multi-page PDFs, custom page ranges, page toggles, 300 DPI output, JPG/PNG, ZIP, odd/even extraction, output page count and selectable text; inspect memory/performance on a realistic phone PDF.
+- Check browser console for CDN / worker / CORS issues and verify downloaded files open correctly.
+- Important known follow-up: PDF Page Extractor currently provides a single combined output PDF, not one-PDF-per-page ZIP output. Consider only after user feedback and testing.
+- Do not claim deployment, full functionality, visual review or Google ranking improvement until separately verified.
