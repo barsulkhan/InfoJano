@@ -1566,11 +1566,7 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
     <div class="card info why-card"><span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8m-4-4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><h3>Works on Any Screen</h3><p>Use InfoJano comfortably on your mobile, tablet or desktop computer.</p><span class="why-tag">Mobile + Desktop</span></div>
     <div class="card info why-card"><span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 6v5.5c0 4.6-3.1 7.8-8 9.5-4.9-1.7-8-4.9-8-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Privacy Minded</h3><p>Our tools are designed to ask for as little personal information as practical.</p><span class="why-tag">Privacy conscious</span></div>
   </div>
-  <div class="home-feature-links">
-    
-    <a class="home-feature-card" href="#guides" onclick="$('guides').scrollIntoView({behavior:'smooth'})"><span class="feature-round feature-guides" aria-hidden="true">▤</span><span><strong>Useful Guides</strong><small>Step-by-step guides and tips to get the best from our tools.</small></span><b class="feature-arrow" aria-hidden="true">›</b></a>
-  </div>
-</section>
+  </section>
 
 <section id="about" class="card panel about-panel hide">
   <div class="about-main">
@@ -1601,9 +1597,9 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
     </div>
   </div>
   <div class="about-promise">
-    <div><span class="promise-icon" aria-hidden="true">🎯</span><b>See it</b><span>Find the tool you need.</span></div>
-    <div><span class="promise-icon" aria-hidden="true">👆</span><b>Tap it</b><span>Open it and enter your details.</span></div>
-    <div><span class="promise-icon" aria-hidden="true">✅</span><b>Get it done</b><span>Finish your task without confusion.</span></div>
+    <div><span class="promise-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H20v16H5.5A2.5 2.5 0 0 0 3 21zM3 5.5V21M7 7h9M7 11h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>See it</b><span>Find the tool you need.</span></div>
+    <div><span class="promise-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 11V5.5a1.7 1.7 0 0 1 3.4 0V10 4.8a1.7 1.7 0 0 1 3.4 0V10 6a1.7 1.7 0 0 1 3.4 0v7.2c0 4.1-2.5 7.3-6.4 7.3h-1.1c-1.6 0-2.7-.6-3.7-1.8l-3-3.7a1.8 1.8 0 0 1 2.8-2.2L8 15z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Tap it</b><span>Open it and enter your details.</span></div>
+    <div><span class="promise-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5L20 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><b>Get it done</b><span>Finish your task without confusion.</span></div>
   </div>
   <p class="about-footnote">Built for people around the world, with a clean experience on phones and computers.</p>
 </section>
@@ -1896,6 +1892,20 @@ body header.header .nav button.nav-home,body header.header .nav button.nav-searc
 #home .why-grid>.why-card h3{position:static!important;margin:0 0 6px!important;font-size:16px!important;line-height:1.3!important;font-weight:800!important;color:#14264b!important}
 #home .why-grid>.why-card p{margin:0!important;font-size:13px!important;line-height:1.5!important;color:#52647e!important}
 @media(max-width:700px){#home .how-grid>.info{min-height:0!important;padding:17px 14px!important}#home .how-grid>.info .how-icon,#home .why-grid>.why-card .why-icon{width:44px!important;height:44px!important;flex-basis:44px!important}#home .how-grid>.info .how-icon svg,#home .why-grid>.why-card .why-icon svg{width:24px!important;height:24px!important}#home .how-grid>.info h3,#home .why-grid>.why-card h3{font-size:15px!important}#home .how-grid>.info p,#home .why-grid>.why-card p{font-size:12px!important}}
+</style>
+
+<style id="infojano-about-promise-icons-final">
+/* The main Guides section is the only Guides entry point on the homepage. */
+#home .home-feature-links{display:none!important}
+#about .about-promise>div:before{content:none!important;display:none!important}
+#about .about-promise>div{display:grid!important;grid-template-columns:44px minmax(0,1fr)!important;grid-template-rows:auto auto!important;column-gap:11px!important;row-gap:3px!important;align-items:center!important;text-align:left!important;padding:12px 14px!important;min-width:0!important;border:1px solid #e1eaf6!important;border-radius:15px!important;background:#fff!important}
+#about .about-promise .promise-icon{display:grid!important;place-items:center!important;grid-column:1!important;grid-row:1 / span 2!important;width:42px!important;height:42px!important;margin:0!important;border-radius:13px!important;background:#eaf3ff!important;color:#176bd1!important;font-size:0!important}
+#about .about-promise>div:nth-child(2) .promise-icon{background:#f1eaff!important;color:#7544c7!important}
+#about .about-promise>div:nth-child(3) .promise-icon{background:#e9f9ee!important;color:#16834a!important}
+#about .about-promise .promise-icon svg{display:block!important;width:25px!important;height:25px!important}
+#about .about-promise b{display:block!important;grid-column:2!important;grid-row:1!important;margin:0!important;font-size:14px!important;line-height:1.25!important;color:#142553!important}
+#about .about-promise>div>span:last-child{display:block!important;grid-column:2!important;grid-row:2!important;font-size:12px!important;line-height:1.4!important;color:#53647e!important}
+@media(max-width:700px){#about .about-promise{grid-template-columns:1fr!important;gap:9px!important}#about .about-promise>div{padding:12px!important}}
 </style>
 </body>
 </html>
