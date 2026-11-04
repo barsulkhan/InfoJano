@@ -542,6 +542,100 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   #about.card { padding-left: 18px !important; padding-right: 16px !important; }
 }
 
+
+/* InfoJano homepage visual refresh — polished responsive section system */
+:root{
+ --ij-ink:#101b45;--ij-muted:#63718b;--ij-blue:#155eef;--ij-violet:#6d45e8;
+ --ij-line:#e5ebf6;--ij-shadow:0 12px 34px rgba(37,72,132,.09);
+}
+body{background:linear-gradient(180deg,#f5f8ff 0%,#edf3ff 100%);color:var(--ij-ink)}
+.header{background:rgba(255,255,255,.96)!important;color:var(--ij-ink)!important;border-bottom:1px solid #e8edf7;box-shadow:0 4px 18px rgba(30,55,100,.07)!important;backdrop-filter:blur(14px)}
+.brand{color:#10265d!important}.brand span{color:#ed3261!important}.tag{color:#71809a!important}
+.nav button{background:#f0f4ff!important;color:#193b80!important;border:1px solid #e1e9fb!important}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(112deg,#1674f8 0%,#174eea 56%,#7650ed 100%)!important;border:1px solid #5e9bff;box-shadow:0 16px 34px rgba(33,93,220,.2);padding:clamp(26px,4vw,48px)!important}
+.hero:after{content:"";position:absolute;z-index:-1;width:390px;height:260px;right:-85px;bottom:-150px;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,.02));box-shadow:0 0 0 28px rgba(255,255,255,.07),0 0 0 58px rgba(255,255,255,.045)}
+.hero h1{font-weight:850;letter-spacing:-1.2px;text-shadow:0 2px 10px rgba(0,0,0,.08)}
+.hero p{color:#e8f1ff!important;max-width:760px}
+.search input{box-shadow:0 5px 18px rgba(10,35,100,.13);border:1px solid rgba(255,255,255,.5)!important}
+.search .primary{background:#fff!important;color:#174fca!important;box-shadow:0 5px 16px rgba(10,35,100,.15)}
+.chips button{background:rgba(255,255,255,.16)!important;border:1px solid rgba(255,255,255,.38)!important}
+.section-title h2,#guides .section-head h2{color:#101f50;letter-spacing:-.5px;font-weight:850}
+.section-mark{box-shadow:0 5px 14px rgba(35,80,170,.1)}
+#home .how-heading,#home .why-heading{margin-top:36px!important}
+#home .how-grid,#home .why-grid{gap:16px!important}
+#home .how-grid>.info,#home .why-grid>.why-card{
+ background:linear-gradient(145deg,#fff 0%,#f8fbff 100%)!important;
+ border:1px solid #e3eafa!important;border-radius:22px!important;
+ box-shadow:var(--ij-shadow)!important;min-height:150px;padding:22px!important;
+ transition:transform .18s ease,box-shadow .18s ease;
+}
+#home .how-grid>.info:hover,#home .why-grid>.why-card:hover{transform:translateY(-3px);box-shadow:0 17px 36px rgba(37,72,132,.14)!important}
+#home .how-grid .info-cta{color:#155eef}
+#home .why-card:nth-child(1){border-top:3px solid #35a5ff!important}
+#home .why-card:nth-child(2){border-top:3px solid #8c63f3!important}
+#home .why-card:nth-child(3){border-top:3px solid #39c78b!important}
+#home .why-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:#edf4ff;color:#245fe0;font-size:25px;margin-bottom:10px}
+#home .why-card:nth-child(2) .why-icon{background:#f1eaff;color:#7146dd}
+#home .why-card:nth-child(3) .why-icon{background:#e9fbf1;color:#15965f}
+#home .why-card h3,#home .how-grid h3{font-size:18px!important;font-weight:800!important;color:#16234d}
+#home .why-card p,#home .how-grid p{font-size:14px!important;line-height:1.55!important;color:#62718b}
+.why-tag{display:inline-flex;margin-top:13px;padding:7px 11px;border-radius:999px;background:#edf3ff;color:#3159b7;font-size:11px;font-weight:750}
+#about.about-panel{display:block!important;max-width:none!important;width:100%!important;margin:28px 0!important;padding:clamp(22px,3vw,34px)!important;border:1px solid #e3eafa!important;border-radius:24px!important;background:linear-gradient(120deg,#fff 0%,#fbfdff 70%,#eff6ff 100%)!important;box-shadow:var(--ij-shadow)!important}
+.about-topline{font-size:11px;font-weight:850;letter-spacing:1.6px;color:#6578ba;margin-bottom:9px}
+#about h2{display:flex;align-items:center;gap:12px;font-size:clamp(24px,3vw,32px);letter-spacing:-.7px;color:#14234f;margin:0 0 12px}
+.about-lead{max-width:980px;color:#53627c;font-size:15px;line-height:1.7;margin:0 0 20px}
+.about-promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.about-promise>div{background:#fff;border:1px solid #e4eaf5;border-radius:16px;padding:16px;box-shadow:0 5px 16px rgba(35,65,120,.045)}
+.about-promise b{display:block;color:#192d60;font-size:15px;margin-bottom:5px}
+.about-promise span{display:block;color:#728099;font-size:12px;line-height:1.45}
+.about-footnote{border-top:1px solid #e9eef7;padding-top:14px;margin:16px 0 0;color:#7b879b;font-size:12px}
+#guides{margin-top:28px!important;margin-bottom:22px!important;padding:24px!important;background:linear-gradient(145deg,#fff 0%,#fbfdff 100%);border:1px solid #e4ebf7;border-radius:24px;box-shadow:var(--ij-shadow)}
+#guides .section-head{padding:0 4px!important;margin:0 0 18px!important}
+#guides .section-head h2{display:flex;align-items:center;gap:10px}
+#guides .section-head>span{font-weight:800!important;color:#4f5f87!important}
+#guides .guides-grid{gap:14px!important;padding:0 4px 8px!important}
+#guides .guide-card{position:relative;overflow:hidden;min-height:155px;padding:19px!important;border:1px solid #e3eaf6!important;border-left:4px solid #6578ed!important;border-radius:18px!important;background:#fff!important;box-shadow:0 7px 20px rgba(28,58,115,.06)!important;transition:transform .18s ease,box-shadow .18s ease}
+#guides .guide-card:nth-child(3n+2){border-left-color:#9a62e9!important}
+#guides .guide-card:nth-child(3n){border-left-color:#29a8bd!important}
+#guides .guide-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(28,58,115,.11)!important}
+#guides .guide-card h3{font-size:16px!important;line-height:1.35;color:#172650;margin:0 0 8px!important}
+#guides .guide-card>p{font-size:13px!important;line-height:1.55!important;color:#64728a!important}
+#guides .guide-card details{border-top:1px solid #edf0f6;padding-top:10px}
+#guides .guide-card summary{font-size:12px;color:#315bd1}
+#guides .guide-card details p{font-size:12px;line-height:1.55;color:#66748c}
+#seo-tool-links{margin-top:26px!important;padding:24px!important;border-radius:24px!important;border:1px solid #e2eaf7!important;box-shadow:var(--ij-shadow)!important}
+#seo-tool-links h2{display:flex;align-items:center;gap:10px;color:#14234f;font-size:clamp(22px,2.5vw,30px)!important}
+#seo-tool-links p{color:#6b7890!important}
+#seo-tool-links .page-links-grid a{background:#f7f9ff!important;border-color:#e2e9f7!important;border-radius:12px!important;padding:12px 14px!important;color:#2455bd!important;transition:background .15s,transform .15s}
+#seo-tool-links .page-links-grid a:hover{background:#edf3ff!important;transform:translateY(-2px)}
+.footer{color:#78859c}
+@media(min-width:701px){
+ #home .how-grid,#home .why-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #guides .guides-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(min-width:520px) and (max-width:700px){
+ #home .how-grid,#home .why-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #home .how-grid>.info,#home .why-grid>.why-card{padding:16px!important;min-height:165px}
+ #home .how-grid h3,#home .why-card h3{font-size:15px!important}
+ #home .how-grid p,#home .why-card p{font-size:12px!important}
+ #guides .guides-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #guides .guide-card{padding:16px!important}
+}
+@media(max-width:519px){
+ #home .how-grid,#home .why-grid{grid-template-columns:1fr!important}
+ #home .how-grid>.info,#home .why-grid>.why-card{min-height:0;padding:19px!important}
+ .about-promise{grid-template-columns:1fr!important}
+ #guides{padding:17px 12px!important}
+ #guides .guides-grid{grid-template-columns:1fr!important;gap:11px!important;padding:0 2px 8px!important}
+ #guides .guide-card{min-height:0;padding:17px!important}
+ #guides .section-head h2,#guides .section-head>span{font-size:19px!important}
+ #home .how-heading,#home .why-heading{margin-top:27px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #home .how-grid>.info,#home .why-grid>.why-card,#guides .guide-card{transition:none!important}
+ #home .how-grid>.info:hover,#home .why-grid>.why-card:hover,#guides .guide-card:hover{transform:none}
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","alternateName":"InfoJano Global Online Tools","description":"A global everyday utility portal offering free online image tools, PDF tools, QR code tools, link utilities, calculators and converters.","url":"https://barsulkhan.github.io/InfoJano/"}
