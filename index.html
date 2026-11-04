@@ -1829,5 +1829,53 @@ filterTools();
   
 <script src="/InfoJano/download-progress.js" defer></script>
 <script src="/InfoJano/install.js" defer></script>
+
+<style id="infojano-homepage-cascade-fix-2026">
+/* Final cascade corrections: override legacy header and hero-chip rules */
+body header.header,html body header.header{
+ position:sticky!important;top:0!important;left:auto!important;right:auto!important;
+ width:100%!important;margin:0!important;
+ background:rgba(255,255,255,.98)!important;
+ background-image:none!important;color:#10254a!important;
+ border-bottom:1px solid #d8e9fa!important;
+ box-shadow:0 3px 14px rgba(34,88,145,.10)!important;
+}
+body header.header .top{justify-content:space-between!important;max-width:1500px!important;margin:0 auto!important}
+body header.header .brand,body header.header .tag{color:#10254a!important}
+body header.header .brand span{color:#e33d50!important}
+body header.header .nav button{color:#14264b!important}
+body header.header .nav button.nav-home,body header.header .nav button.nav-search{color:#fff!important}
+#home .hero .chips{
+ display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;
+ align-items:center!important;justify-content:center!important;
+ width:auto!important;max-width:100%!important;overflow:visible!important;
+ gap:8px!important;margin:10px auto 0!important;padding:0!important;
+}
+#home .hero .chips button{
+ display:inline-flex!important;flex:0 0 auto!important;
+ width:auto!important;min-width:0!important;max-width:none!important;
+ grid-column:auto!important;white-space:nowrap!important;
+ border:1px solid #cfe3f6!important;border-radius:999px!important;
+ background:#ffffffd9!important;color:#31577d!important;
+ padding:7px 13px!important;font-size:12px!important;line-height:1.2!important;
+}
+#home .hero{min-height:300px!important;grid-template-columns:minmax(190px,.85fr) minmax(0,2.5fr) minmax(190px,.85fr)!important}
+#home .hero-art svg{width:100%!important;max-width:260px!important;height:auto!important}
+#home .hero-art-left,#home .hero-art-right{align-self:center!important;opacity:1!important;visibility:visible!important}
+#home #toolGrid>.tool .icon{width:76px!important;height:76px!important;flex-basis:76px!important}
+#home #toolGrid>.tool .icon img{width:68px!important;height:68px!important;filter:drop-shadow(0 4px 4px rgba(30,83,130,.14))!important}
+@media(max-width:1100px){
+ #home .hero{grid-template-columns:minmax(130px,.6fr) minmax(0,2.5fr) minmax(130px,.6fr)!important}
+ #home .hero-art svg{max-width:190px!important}
+}
+@media(max-width:760px){
+ #home .hero{grid-template-columns:1fr!important;min-height:0!important}
+ #home .hero-art{display:none!important}
+ #home .hero .chips{justify-content:center!important;flex-wrap:wrap!important}
+ #home .hero .chips button{width:auto!important;flex:0 0 auto!important}
+ #home #toolGrid>.tool .icon{width:55px!important;height:55px!important;flex-basis:55px!important}
+ #home #toolGrid>.tool .icon img{width:50px!important;height:50px!important}
+}
+</style>
 </body>
 </html>
