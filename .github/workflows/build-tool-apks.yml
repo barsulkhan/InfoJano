@@ -7,6 +7,9 @@ on:
     paths:
       - 'android/**'
       - 'app-icons/**'
+      - 'app-manifests/**'
+      - '*.html'
+      - 'sw.js'
       - '.github/workflows/build-tool-apks.yml'
 
 permissions:
