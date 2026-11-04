@@ -1887,3 +1887,11 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 - Service worker cache bumped sequentially from `infojano-v192` to `infojano-v193`; commit: `016eef3f168df3bacbd0e2ba683178fe90363784`.
 - Source re-fetch checks passed: visual refresh CSS is present; Related Apps cards now navigate to tools; the misleading “Download Windows App” CTA is removed; service worker reports `infojano-v193`.
 - Latest GitHub Pages workflow for cache commit `016eef3...` was queued at the time of this note. Deployment completion and fresh Android browser screenshot/visual verification are still pending. Do not claim the live page has been visually verified until the deployment succeeds and the user checks the refreshed page.
+
+
+## 4 November 2026 — Related Apps card layout correction from Android screenshot
+- User shared the refreshed Image Compressor mobile screenshot and said the Related Apps area still looked wrong. Screenshot showed oversized vertically stacked cards, poor alignment, and obsolete “Download Windows App” buttons.
+- Confirmed current source script already removed the misleading download buttons, but its card CSS still used a tall vertical layout. Reworked Related Apps cards into compact horizontal rows: consistent left icon tile, app title and description aligned in the middle, and a small right arrow. Added responsive compact sizing, hover/focus feedback, and reduced-motion support. Kept four contextually related apps and their direct page links.
+- Related Apps script commit: `48404a8faa15934abd5dfdd4ec61daccad442ee9`.
+- Service worker cache bumped from `infojano-v193` to `infojano-v194`; commit: `530769102a1b812ec4bf9f7281409ae8ab4cae2b`.
+- Await GitHub Pages deployment and ask user to refresh/recheck the Related Apps area. The supplied screenshot may reflect a cached older Related Apps script; verify after the new deployment before concluding.
