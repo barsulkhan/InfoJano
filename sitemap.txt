@@ -9,6 +9,8 @@ https://barsulkhan.github.io/InfoJano/gst-calculator.html
 https://barsulkhan.github.io/InfoJano/image-compressor.html
 https://barsulkhan.github.io/InfoJano/image-resizer.html
 https://barsulkhan.github.io/InfoJano/image-to-pdf.html
+https://barsulkhan.github.io/InfoJano/pdf-to-jpg.html
+https://barsulkhan.github.io/InfoJano/extract-pdf-pages.html
 https://barsulkhan.github.io/InfoJano/loan-eligibility.html
 https://barsulkhan.github.io/InfoJano/loan-interest.html
 https://barsulkhan.github.io/InfoJano/number-to-words.html
