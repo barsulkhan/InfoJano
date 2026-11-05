@@ -2317,3 +2317,11 @@ All following statuses were checked through GitHub Actions API:
 - Service-worker cache bumped from `infojano-v207` to `infojano-v208`.
 - Commits: `bc8d57827f6a22aa0ab099a3dce8d3ee69d4e51f` (JPG/PNG A4), `23c501c2888caacc754117cb74e5eaa7fec11a39` (cache).
 - PDF A4 portrait correction is in the previous entry. Both formats still require user-side live retesting; do not mark as browser-verified until screenshots confirm.
+
+
+## 2026-11-05 — Universal Word Converter: visible output-format selection
+- User reported that the PDF/JPG/PNG chooser did not make it clear which option was selected.
+- Updated the chooser UI: unselected formats remain white with a neutral border; the selected format turns solid green with a strong green border, a prominent white checkmark badge at top-right, and a visible “✓ SELECTED” label. Other choices display “Tap to select”. The selected state remains tied to the existing aria-pressed and active state logic.
+- Updated service-worker cache to `infojano-v209`.
+- Commits: HTML/UI `f744dbcf7d2061270705084280fa11a342bbf4b4`; selection logic `f37b1550b993e90dec65c478f41331ec94d73fc8`; cache `823fda0cda2cf7e8bfe546a801bae8dac44a3b5b`.
+- Live browser appearance still needs user confirmation after deployment/cache refresh.
