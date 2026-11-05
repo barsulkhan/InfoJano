@@ -51,7 +51,7 @@ const loadApp=src=>new Promise((resolve,reject)=>{const el=document.createElemen
 (async()=>{try{
 await window.__ijLoadLibrary("Word document ZIP",["https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js","https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"],()=>typeof window.JSZip==="function"&&typeof window.JSZip.loadAsync==="function");
 await window.__ijLoadLibrary("Word preview",["https://cdn.jsdelivr.net/npm/docx-preview@0.4.1/dist/docx-preview.min.js","https://unpkg.com/docx-preview@0.4.1/dist/docx-preview.min.js"],()=>!!window.docx?.renderAsync);
-await loadApp("/InfoJano/word-converter.js");
+await loadApp("/InfoJano/word-converter.js?v=228");
 await loadApp("/InfoJano/install.js");
 await loadApp("/InfoJano/site-header.js");
 }catch(e){const st=document.getElementById("status");if(st){st.textContent=e.message||"A required converter library could not load. Reload and try again.";st.className="status error"}}})();
