@@ -1718,7 +1718,10 @@ const searchAliases={
 };
 function filterTools(){
   const raw=normalizeToolText($("search").value);
-  const terms=raw?raw.split(/\s+/).filter(Boolean):[];
+  const stopWords=new Set(["a","an","the","to","for","from","of","and","or","please","how","do","does","can","i","me","my","need","want","free","online","tool","tools","করে","করো","করুন","দাও","দেখাও","চাই","কীভাবে","কিভাবে","কত","আমার","একটা","থেকে","জন্য","অনলাইন","ফ্রি","টুল","করতে","বানাও","হবে","হয়","হয়","কোন","কোনটা","এর","টা","টি","আর","ও"]);
+  const rawTerms=raw?raw.split(/\s+/).filter(Boolean):[];
+  const hasWord=rawTerms.some(term=>!/^\d+(?:kb|mb|gb|px|cm|mm)?$/i.test(term)&&!stopWords.has(term));
+  const terms=rawTerms.filter(term=>!stopWords.has(term)&&(!hasWord||!/^\d+(?:kb|mb|gb|px|cm|mm)?$/i.test(term)));
   let n=0;
   document.querySelectorAll("#toolGrid .tool").forEach(x=>{
     const label=x.querySelector("h3")?.textContent||"";
