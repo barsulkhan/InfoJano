@@ -2342,3 +2342,14 @@ All following statuses were checked through GitHub Actions API:
 - Likely export-capture issue found: `#renderArea` was positioned at `left:-100000px` while html2canvas captured its pages. Moved the hidden render layer to viewport origin (`opacity:0`, no pointer events) and reveal it only in html2canvas's cloned DOM using `onclone`. Applied to PDF and JPG/PNG capture paths.
 - Commits: JS `adc2551e5ddfd9ec8a1927ae8637c165de4f8f70`; HTML `abd1e334075119406820072109da0869eb4c5c26`; service worker `060e70329571c3d9214f5716ffd77f9b72365ed3`, cache `infojano-v211`.
 - Source updates are committed and re-fetched for inspection. Real browser conversion with `Memo No bdo.docx` and `BHOM.docx` is still required; do not claim the issue is fully fixed until PDF/JPG/PNG outputs are compared with Word.
+
+
+## 2026-11-05 — Homepage search accessibility and multilingual matching
+- User requested that all tools and SEO be improved so people of different ages and backgrounds can find tools easily.
+- Audited the homepage search implementation. It previously normalized only ASCII letters/numbers, so Bengali/Hindi-script queries were stripped and could not match; it also depended mainly on English card names/descriptions.
+- Updated homepage search to preserve Unicode letters/numbers and added search aliases for common Bengali terms, Bengali transliterations, Hindi/English spelling variants, common misspellings, and everyday intents (photos, PDF/Word, age/birthday, percentage, loan/interest/EMI, discount, GST, time/date, text/word count, QR, links, password, ID cards/printing, unit/currency, BMI, resize/compress).
+- Search now filters only the homepage tool cards, preserving existing tool destinations and homepage visual design.
+- Homepage commit: `30f898858c41f46be12d6674b12e7729b641d857`.
+- Service-worker cache is now `infojano-v212`; cache bump commit: `3084de9a4a6be5ae38066acaa35f4907cf7e2836`.
+- Source-level change only. Must test the live search in browser using English, Bengali script, transliterated Bengali, and typo examples after GitHub Pages deployment/cache refresh.
+- SEO phase remains in progress: next audit all standalone tool pages for search intent, unique titles/descriptions/H1s, structured data, useful content, internal links, canonical/social metadata, sitemap consistency, and functionality accuracy. Preserve existing homepage design and tool workflows; no Google ranking or indexing result is guaranteed.
