@@ -66,7 +66,7 @@ export default {
           method: "POST",
           body: JSON.stringify({
             tasks: {
-              "upload-docx": { operation: "import/upload", filename, max_file_size: MAX_FILE_BYTES },
+              "upload-docx": { operation: "import/upload" },
               "convert-pdf": { operation: "convert", input: "upload-docx", input_format: "docx", output_format: "pdf", engine: "office" },
               "export-pdf": { operation: "export/url", input: "convert-pdf" }
             }
