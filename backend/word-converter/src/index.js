@@ -62,7 +62,7 @@ export default {
 
       const startResponse = await apiRequest(API + "/start/officepdf/in", token, { method: "GET" });
       const start = await startResponse.json();
-      if (!start.server || !start.task) throw new Error("iLoveAPI did not return a processing server and task ID.");
+      if (!start.server || !/^[a-z0-9.-]+\.ilovepdf\.com$/i.test(start.server) || !start.task) throw new Error("iLoveAPI returned an invalid processing server or task ID.");
 
       const uploadForm = new FormData();
       uploadForm.set("task", start.task);
@@ -85,8 +85,8 @@ export default {
       });
       const processed = await processResponse.json();
       const taskStatus = processed?.status || processed?.task?.status;
-      if (taskStatus && !["TaskSuccess", "TaskSuccessWithWarnings"].includes(taskStatus)) {
-        throw new Error("iLoveAPI conversion did not finish successfully (" + taskStatus + ").");
+      if (!["TaskSuccess", "TaskSuccessWithWarnings"].includes(taskStatus)) {
+        throw new Error("iLoveAPI did not confirm a successful conversion" + (taskStatus ? " (" + taskStatus + ")" : "") + ".");
       }
 
       const downloadResponse = await apiRequest("https://" + start.server + "/v1/download/" + encodeURIComponent(start.task), token);
