@@ -2470,3 +2470,12 @@ Deploy the Worker and set `CLOUDCONVERT_API_KEY` as a Cloudflare Secret. Then en
 - Service Worker cache bumped to `infojano-v221`.
 - Commits: JS `6a93fc0dc8ae9b493698fce74b9b766d6ec5419c`; HTML `8f45737e3c2645aeee898dbd36f725fc10ecbb82`; cache `0ab049f7b3378c3439a577ffa0d74997fa2c48c0`.
 - Pending Pages deployment and live Android retest. Verify file input event, filename status, page count and preview generation before declaring fixed.
+
+### Visual comparison: iLovePDF vs InfoJano output (2026-11-05)
+- User supplied side-by-side mobile PDF screenshots of the same BDO DOCX.
+- iLovePDF output preserves rectangular page border, strong full-page watermark, correct table scale and bottom-right signature.
+- InfoJano browser-rendered output has an unwanted blue rounded horizontal bar at the top, rounded page outline, reduced watermark/table, shifted memo/date and body positions, and signature moved to lower-left. It is not yet acceptable.
+- Inspected the exact DOCX in the workspace. Its `word/document.xml` contains a VML straight-line shape with `width:564.45pt;height:.7pt` and shape type `o:spt=32`. The existing normalizer's numeric regex did not recognize a leading-decimal value such as `.7pt`; therefore the intended removal of the line shape did not happen. This is a confirmed cause of the blue-bar artifact.
+- Updated the width/height regex to accept leading-decimal measurements (e.g. `.7pt`) in commit `5ae5ec01ff3451b7745f713668a407731ed7ec8b`; cache bumped to `infojano-v222` in `7ed8f096c7e122cb3f4a37ff3ad89ca6e7971a1d`.
+- A local LibreOffice conversion of the exact DOCX preserved the rectangular border, watermark, table scale and right-aligned signature, confirming that an Office-compatible rendering engine can reproduce the intended layout much more faithfully. This was a local diagnostic only, not the deployed CloudConvert service.
+- Remaining layout differences (page rounding, scale, signature position) are not fixed by the fractional VML regex alone. The CloudConvert Worker has not yet been deployed/configured; high-fidelity mode must be tested against this exact DOCX before claiming parity with iLovePDF.
