@@ -19,6 +19,7 @@ const normalizeLegacyLines=async file=>{
     if(!/^word\/(?:document|header\d*|footer\d*)\.xml$/.test(name))continue;
     const entry=zip.file(name);if(!entry)continue;
     const source=await entry.async("text");
+    let changedThisPart=0;
     if(!source.includes("<w:pict")||!source.includes("<v:shape"))continue;
     const doc=new DOMParser().parseFromString(source,"application/xml");
     if(doc.querySelector("parsererror"))continue;
@@ -26,8 +27,8 @@ const normalizeLegacyLines=async file=>{
     for(const shape of shapes){
       const style=shape.getAttribute("style")||"";
       const type=(shape.getAttribute("type")||"").replace(/^#/,"");
-      const width=Number((style.match(/(?:^|;)\\s*width\\s*:\\s*([\\d.]+)pt/i)||[])[1]||0);
-      const height=Number((style.match(/(?:^|;)\\s*height\\s*:\\s*([\\d.]+)pt/i)||[])[1]||0);
+      const width=Number((style.match(/(?:^|;)\s*width\s*:\s*([\d.]+)pt/i)||[])[1]||0);
+      const height=Number((style.match(/(?:^|;)\s*height\s*:\s*([\d.]+)pt/i)||[])[1]||0);
       const shapeType=[...doc.getElementsByTagNameNS(V,"shapetype")].find(x=>x.getAttribute("id")===type);
       const isLine=shapeType&&shapeType.getAttributeNS(O,"spt")==="32"&&width>=50&&height>0&&height<=2;
       if(!isLine)continue;
@@ -49,9 +50,9 @@ const normalizeLegacyLines=async file=>{
       bottom.setAttributeNS(W,"w:color","000000");
       const prior=[...pBdr.childNodes].find(n=>n.nodeType===1&&n.namespaceURI===W&&n.localName==="bottom");
       if(prior)pBdr.replaceChild(bottom,prior);else pBdr.appendChild(bottom);
-      changed++;
+      changed++;changedThisPart++;
     }
-    if(changed)zip.file(name,new XMLSerializer().serializeToString(doc));
+    if(changedThisPart)zip.file(name,new XMLSerializer().serializeToString(doc));
   }
   return changed?await zip.generateAsync({type:"blob"}):file;
 };
