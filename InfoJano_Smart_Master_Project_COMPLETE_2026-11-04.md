@@ -2409,3 +2409,13 @@ All following statuses were checked through GitHub Actions API:
 - Service Worker cache advanced from `infojano-v216` to `infojano-v217`.
 - Commits: VML normalizer `0fb0f7509a3d3875b8be575b2e45a6be684d4570`; cache `10fd2739ef4afe9e4599e7604089d591390990e2.
 - Verification boundary: the VML shape diagnosis is confirmed from the user's DOCX XML and matches the blue bar symptom. The browser converter still needs a live Android retest using the exact same four-name source DOCX. Do not claim pixel-perfect compatibility with every DOCX drawing or floating object.
+
+
+## 2026-11-05 — Word Converter A4 PDF output (v218)
+- User reported the converter output shows a colored horizontal bar absent from the original DOCX and requested A4 PDF pages.
+- The blue bar is consistent with the legacy VML horizontal connector previously identified in the DOCX header. The targeted VML normalization was deployed in v217; the user's screenshot may predate that deployment or may be a cached result. Live visual confirmation is still required.
+- The source DOCX declares US Letter page dimensions (12240 × 15840 twips), not A4. Earlier PDF code intentionally preserved the source dimensions, so it correctly produced Letter rather than A4.
+- Updated PDF export in `word-converter.js` to always create A4 pages (portrait or landscape based on source orientation). The original page image is fitted proportionally inside the A4 page and centered, avoiding stretching or cropping. The DOCX content itself is not rewritten; only PDF page size changes.
+- Service Worker cache advanced from `infojano-v217` to `infojano-v218`.
+- Commits: A4 PDF export `9ed42d030e89e2f8ba54852dd93b1084158f88f8`; cache `9ec3ec28fc5d7e30b777f11540cbde243ebecd03`.
+- Verification boundary: deployment and exact visual output still need to be checked after the latest commits. Do not claim the bar is gone or layout is pixel-identical until the same four-name DOCX is reprocessed and inspected in the live browser.
