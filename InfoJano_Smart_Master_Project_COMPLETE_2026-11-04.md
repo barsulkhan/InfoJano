@@ -2335,3 +2335,10 @@ All following statuses were checked through GitHub Actions API:
 - Cache bumped to `infojano-v210`.
 - Commits: converter `a845ddcea32c43254c32ce46aa9feadccfdb7fda`; cache `5f02d76266753b3160529ac24fd0b7e25bb70b04`.
 - This is a source-level correction. Must still be retested against the user's actual DOCX in the live browser; verify page dimensions and content scale before declaring complete.
+
+
+## Word Converter diagnosis — 5 Nov 2026
+- User uploaded six DOCX files. Two `~$` files are Word lock files, not valid DOCX documents. The four valid files all declare US Letter portrait page size (12240 × 15840 twips = 8.5 × 11 inches), not A4. Preserve each source document's geometry; do not force A4.
+- Likely export-capture issue found: `#renderArea` was positioned at `left:-100000px` while html2canvas captured its pages. Moved the hidden render layer to viewport origin (`opacity:0`, no pointer events) and reveal it only in html2canvas's cloned DOM using `onclone`. Applied to PDF and JPG/PNG capture paths.
+- Commits: JS `adc2551e5ddfd9ec8a1927ae8637c165de4f8f70`; HTML `abd1e334075119406820072109da0869eb4c5c26`; service worker `060e70329571c3d9214f5716ffd77f9b72365ed3`, cache `infojano-v211`.
+- Source updates are committed and re-fetched for inspection. Real browser conversion with `Memo No bdo.docx` and `BHOM.docx` is still required; do not claim the issue is fully fixed until PDF/JPG/PNG outputs are compared with Word.
