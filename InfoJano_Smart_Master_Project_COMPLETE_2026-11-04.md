@@ -2419,3 +2419,35 @@ All following statuses were checked through GitHub Actions API:
 - Service Worker cache advanced from `infojano-v217` to `infojano-v218`.
 - Commits: A4 PDF export `9ed42d030e89e2f8ba54852dd93b1084158f88f8`; cache `9ec3ec28fc5d7e30b777f11540cbde243ebecd03`.
 - Verification boundary: deployment and exact visual output still need to be checked after the latest commits. Do not claim the bar is gone or layout is pixel-identical until the same four-name DOCX is reprocessed and inspected in the live browser.
+
+
+---
+
+## Word Converter — CloudConvert High-Fidelity Engine (2026-11-05)
+
+### Goal
+Improve DOCX-to-PDF fidelity for complex Word documents that the browser renderer does not reproduce reliably. Existing browser conversion remains the default fallback and JPG/PNG conversion remains local.
+
+### Implemented in repository
+- Added Cloudflare Worker source: `backend/word-converter/src/index.js`.
+- Added Worker deployment configuration: `backend/word-converter/wrangler.toml`.
+- Added setup, security and privacy guide: `backend/word-converter/README.md`.
+- Added an optional High-Fidelity PDF panel to `word-converter.html`.
+- Added opt-in CloudConvert upload and PDF polling flow to `word-converter.js`.
+- Added an explicit unchecked consent checkbox: user must agree before DOCX is sent to CloudConvert.
+- Added validation: HTTPS Worker URL, DOCX size up to 30 MB, and all pages must be selected because high-fidelity mode converts the complete document.
+- CloudConvert API key is read only from Cloudflare Worker secret `CLOUDCONVERT_API_KEY`; it is never placed in browser code.
+- Service Worker cache bumped to `infojano-v219`.
+
+### Deployment status — important
+The source files are committed to GitHub, but the Cloudflare Worker has **not** been deployed and no CloudConvert API key has been configured. Therefore the new High-Fidelity mode is not operational yet. The user must create the CloudConvert API key, deploy the Worker named `infojano-word-converter`, and add the secret in Cloudflare. The resulting `.workers.dev` URL must then be entered in the Word Converter panel.
+
+### Privacy and cost
+- High-Fidelity conversion is third-party processing by CloudConvert and is strictly opt-in.
+- Standard browser conversion remains available without uploading the DOCX to CloudConvert.
+- CloudConvert's current public pricing page describes 10 free credits/day for the Free plan and a 2-credit base cost for Office-to-PDF, with additional usage based on processing time. Verify current terms before production use.
+- CloudConvert tasks are automatically deleted after 24 hours per API documentation; Worker also attempts job deletion after retrieving the PDF.
+- The Worker restricts CORS to `https://barsulkhan.github.io`. CORS is not authentication; before public launch, configure Cloudflare rate limiting on `/start` to reduce API-credit abuse.
+
+### Current next step
+Deploy the Worker and set `CLOUDCONVERT_API_KEY` as a Cloudflare Secret. Then enter the Worker URL in the website and test with the user's sample DOCX. Do not claim iLovePDF-level or pixel-identical output until the exact sample is converted and visually compared.
