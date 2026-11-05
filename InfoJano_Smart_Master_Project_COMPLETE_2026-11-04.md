@@ -2451,3 +2451,12 @@ The source files are committed to GitHub, but the Cloudflare Worker has **not** 
 
 ### Current next step
 Deploy the Worker and set `CLOUDCONVERT_API_KEY` as a Cloudflare Secret. Then enter the Worker URL in the website and test with the user's sample DOCX. Do not claim iLovePDF-level or pixel-identical output until the exact sample is converted and visually compared.
+
+
+### Mobile layout correction — High-Fidelity panel (2026-11-05)
+- User screenshot exposed broken consent text wrapping and checkbox alignment on Android.
+- Replaced inline flex label with a dedicated two-column grid: checkbox + full-width readable consent text.
+- Added scoped mobile-safe sizing and wrapping rules for the Worker URL field.
+- Bumped Service Worker cache to `infojano-v220`.
+- Commit: `45d474509a8f2479f419cfc8dd18b1e95a3d27cd` (HTML) and `e35afe361fb0b93c0631cfb21ef8b216b6df17d4` (cache).
+- Pending live visual verification on Android after Pages deployment.
