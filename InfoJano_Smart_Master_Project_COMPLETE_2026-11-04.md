@@ -2369,3 +2369,20 @@ All following statuses were checked through GitHub Actions API:
 - Homepage search commit: `0e9446094539807a4ef856f00e5b03008aa1aac1`.
 - Service Worker cache is now `infojano-v214`; cache commit: `3e33e14585cb4d61341888771e45bbc74881cb5a`.
 - These are source-level search improvements; real-user query testing remains required after deployment.
+
+
+## 2026-11-05 — Standalone tool SEO audit and structured-data improvements
+- Audited 30 standalone tool pages for unique page titles, meta descriptions, canonical URLs, H1 headings, Open Graph metadata and existing JSON-LD structured data.
+- Most audited pages already had unique titles, descriptions, canonical URLs and Open Graph metadata. Search accessibility work for Bengali, Hindi, Romanized queries and everyday wording was already present in the homepage source; the prior search commits and v214 cache record remain part of this project history.
+- Added missing structured data without changing tool UI or workflows:
+  - currency-converter.html: WebApplication schema.
+  - pdf-to-jpg.html: WebApplication schema.
+  - extract-pdf-pages.html: WebApplication schema.
+  - word-converter.html: WebApplication schema.
+  - document-studio.html: WebApplication schema.
+  - social-qr-maker.html: WebApplication schema.
+  - qr-choice.html: WebPage schema (choice/landing page, not a standalone app).
+- Existing schema was left untouched on pages that already had it. Homepage design, search behavior and individual tool interfaces were not changed in this SEO pass.
+- Service Worker cache advanced sequentially from infojano-v214 to infojano-v215 so updated metadata is refreshed.
+- Commits: currency converter 4d38c416da099d91e6f2df95b8f28a163102e12c; PDF to JPG d97b84b22796b8b176662a9f815890cf51a1203d; PDF page extractor 11a7ba0fbb06448c6140dee34ad9da4a9dda8620; Word converter 0f1e656bb1cce83576a7ec6685c80656202499dd; Document Studio 3651f7defebe6245b1e516a4f42f5192b0c2787e; Social QR Maker bfe70b50abf95935a92d263d5ef966e767e87697; QR choice page 512296183d9b7553f5ebe0c38d1318fae67ee0e5; Service Worker 777f19454fccd3359f74d91611f8cc70848aefd6.
+- Verification boundary: source commits were created. Next checks are to validate the seven JSON-LD blocks, confirm GitHub Pages deployment and test multilingual search plus the individual tool workflows in a live Android browser. Structured data does not guarantee rich results or search ranking.
