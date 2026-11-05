@@ -138,50 +138,56 @@ $("convert").addEventListener("click",async()=>{
   $("downloads").innerHTML="";
   const chosen=[...state.selected].sort((a,b)=>a-b);
   try{
+    if(!$("remoteConsent")?.checked)throw Error("To preserve the real Word layout, agree to send the DOCX to the Office-compatible conversion service first.");
+    const rawBase=$("workerUrl")?.value.trim();
+    const base=rawBase?.endsWith("/")?rawBase.slice(0,-1):rawBase;
+    if(!base)throw Error("Open Layout-Preserving Conversion and enter your deployed Worker URL first.");
+    let parsed;
+    try{parsed=new URL(base)}catch(_){throw Error("Enter a valid Worker URL.")}
+    if(parsed.protocol!=="https:")throw Error("The Worker URL must use HTTPS.");
+    if(mode==="pdf"&&chosen.length!==state.pages.length)throw Error("Layout-preserving PDF converts the complete document. Select all pages first.");
+    status("Converting the original DOCX with the Office-compatible service…");
+    const formData=new FormData();
+    formData.append("file",state.file,state.file.name);
+    const response=await fetch(base+"/convert",{method:"POST",body:formData});
+    if(!response.ok){
+      const err=await response.json().catch(()=>({}));
+      throw Error(err.error||"Office-compatible conversion failed. Please retry.");
+    }
+    const pdfBlob=await response.blob();
+    if(pdfBlob.type!=="application/pdf"||pdfBlob.size<5)throw Error("The conversion service returned an invalid PDF.");
     if(mode==="pdf"){
-      if(!$("remoteConsent")?.checked)throw Error("For a layout-preserving PDF, open Layout-Preserving PDF, enter the deployed Worker URL and agree to the third-party transfer. Browser preview rendering can change the original Word layout, so it is not used for PDF output.");
-      if(chosen.length!==state.pages.length)throw Error("Layout-preserving PDF converts the complete document. Select all pages first.");
-      const rawBase=$("workerUrl")?.value.trim();
-      const base=rawBase?.endsWith("/")?rawBase.slice(0,-1):rawBase;
-      if(!base)throw Error("Paste your deployed InfoJano Worker URL first.");
-      let parsed;
-      try{parsed=new URL(base)}catch(_){throw Error("Enter a valid Worker URL.")}
-      if(parsed.protocol!=="https:")throw Error("The Worker URL must use HTTPS.");
-      status("Sending the original DOCX to the Office-compatible conversion service…");
-      const formData=new FormData();
-      formData.append("file",state.file,state.file.name);
-      const response=await fetch(base+"/convert",{method:"POST",body:formData});
-      if(!response.ok){
-        const err=await response.json().catch(()=>({}));
-        throw Error(err.error||"Layout-preserving conversion failed. Please retry.");
-      }
-      const pdfBlob=await response.blob();
-      if(pdfBlob.type!=="application/pdf"||pdfBlob.size<5)throw Error("The conversion service returned an invalid PDF.");
       addDownload(pdfBlob,outputName("pdf"),"Download Layout-Preserving PDF");
     }else{
-      await ensureLibrary("ZIP export",["https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js","https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"],()=>typeof window.JSZip==="function");
-      if(!window.JSZip)throw Error("ZIP library did not load. Tap Retry or reload and try again.");
+      status("Opening the Office-rendered PDF for "+labels[mode]+" export…");
+      await ensureLibrary("PDF page renderer",["https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js","https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js","https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"],()=>!!window.pdfjsLib?.getDocument);
+      const pdfjs=window.pdfjsLib;
+      pdfjs.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      const data=await pdfBlob.arrayBuffer();
+      const pdf=await pdfjs.getDocument({data}).promise;
+      if(pdf.numPages!==state.pages.length)throw Error("The Office-converted PDF has "+pdf.numPages+" pages, but the Word preview has "+state.pages.length+". Page selection is paused to avoid exporting the wrong pages.");
       const zip=new JSZip(),ext=mode==="jpg"?"jpg":"png",mime=mode==="jpg"?"image/jpeg":"image/png";
+      const dpi=Number($("dpi")?.value||192),quality=Number($("quality")?.value||.94);
       for(let i=0;i<chosen.length;i++){
-        const p=state.pages[chosen[i]-1];
-        status("Creating "+labels[mode]+" page "+(i+1)+" of "+chosen.length+"…");
-        const dpi=Number($("dpi")?.value||192),quality=Number($("quality")?.value||.94);
-        await ensureLibrary("Image rendering",["https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js","https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js","https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"],()=>typeof window.html2canvas==="function");
-        const rect=p.getBoundingClientRect();
-        if(!(rect.width>0&&rect.height>0))throw Error("Could not read the original Word page size.");
-        const source=await captureWordPage(p,dpi/96);
-        const blob=await new Promise(resolve=>source.toBlob(resolve,mime,mode==="jpg"?quality:undefined));
-        if(!blob)throw Error("Could not create image for page "+chosen[i]);
+        status("Rendering Office PDF page "+chosen[i]+" of "+pdf.numPages+" as "+labels[mode]+"…");
+        const page=await pdf.getPage(chosen[i]);
+        const viewport=page.getViewport({scale:dpi/72});
+        const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d",{alpha:false});
+        canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);
+        await page.render({canvasContext:ctx,viewport,background:"#ffffff"}).promise;
+        const blob=await new Promise(resolve=>canvas.toBlob(resolve,mime,mode==="jpg"?quality:undefined));
+        canvas.width=1;canvas.height=1;
+        if(!blob)throw Error("Could not create "+labels[mode]+" for page "+chosen[i]);
         zip.file(outputName(ext,chosen[i]),blob);
-        source.width=1;source.height=1;
       }
       if(chosen.length===1){
         const blob=await zip.file(outputName(ext,chosen[0])).async("blob");
         addDownload(blob,outputName(ext,chosen[0]),"Download "+labels[mode]);
       }else{
-        status("Packing "+chosen.length+" images into a ZIP…");
+        status("Packing "+chosen.length+" "+labels[mode]+" pages into a ZIP…");
         addDownload(await zip.generateAsync({type:"blob"}),outputName("zip"),"Download all "+labels[mode]+" images (ZIP)");
       }
+      await pdf.destroy();
     }
     status("Conversion complete. Your original Word file was not changed.","success");
   }catch(e){
