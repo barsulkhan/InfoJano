@@ -2227,3 +2227,10 @@ All following statuses were checked through GitHub Actions API:
 - Test all three old URLs redirect to the unified app with correct format selected.
 - If upload works but export fails, inspect the exact status/error and address the export rendering issue; do not describe the conversion as complete until tested.
 
+
+
+### APK workflow compatibility follow-up — 5 November 2026
+- Audited `.github/workflows/build-tool-apks.yml` after the consolidation. Its validation requires every manifest to have a matching HTML page, manifest link and `install.js` reference, and requires every tool page/manifest/icon to remain in the Service Worker precache.
+- Preserved those conditions on all three legacy URL alias pages by retaining each legacy manifest link and the installer script. The old manifest files and Service Worker cache entries remain in place, while each alias still redirects to the unified app.
+- The 23-entry APK target matrix remains unchanged because the Word converter was a web/PWA tool, not one of the 23 individually wrapped APK targets.
+- Static compatibility review completed from repository source. GitHub Actions validation/deployment outcome still needs to be checked separately.
