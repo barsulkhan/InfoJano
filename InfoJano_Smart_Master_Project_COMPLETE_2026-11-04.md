@@ -2353,3 +2353,11 @@ All following statuses were checked through GitHub Actions API:
 - Service-worker cache is now `infojano-v212`; cache bump commit: `3084de9a4a6be5ae38066acaa35f4907cf7e2836`.
 - Source-level change only. Must test the live search in browser using English, Bengali script, transliterated Bengali, and typo examples after GitHub Pages deployment/cache refresh.
 - SEO phase remains in progress: next audit all standalone tool pages for search intent, unique titles/descriptions/H1s, structured data, useful content, internal links, canonical/social metadata, sitemap consistency, and functionality accuracy. Preserve existing homepage design and tool workflows; no Google ranking or indexing result is guaranteed.
+
+
+### Homepage search refinement — natural-language queries
+- Added common Bengali/English conversational filler-word handling so phrases such as “ছবি ছোট করো”, “আমার বয়স কত”, and “free online tool” do not fail merely because of extra words.
+- When a search includes a task term, size-only tokens such as 20KB or 2MB are ignored so they do not block the relevant tool match; number-only searches remain available for the Number to Words tool.
+- Homepage search refinement commit: `0c980be8bfc69070b594b62d11b8f6d860b5126e`.
+- Service Worker cache updated to `infojano-v213` in commit `d35c5e4cb6bfd5878df483422481d9ee3817bdbe`.
+- Still requires live browser checks with natural Bengali phrases, Romanized Bengali, English, Hindi and numeric size examples.
