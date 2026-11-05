@@ -27,8 +27,8 @@ const normalizeLegacyLines=async file=>{
     for(const shape of shapes){
       const style=shape.getAttribute("style")||"";
       const type=(shape.getAttribute("type")||"").replace(/^#/,"");
-      const width=Number((style.match(/(?:^|;)\s*width\s*:\s*([\d.]+)pt/i)||[])[1]||0);
-      const height=Number((style.match(/(?:^|;)\s*height\s*:\s*([\d.]+)pt/i)||[])[1]||0);
+      const width=Number((style.match(/(?:^|;)\s*width\s*:\s*((?:\d+(?:\.\d*)?|\.\d+))pt/i)||[])[1]||0);
+      const height=Number((style.match(/(?:^|;)\s*height\s*:\s*((?:\d+(?:\.\d*)?|\.\d+))pt/i)||[])[1]||0);
       const shapeType=[...doc.getElementsByTagNameNS(V,"shapetype")].find(x=>x.getAttribute("id")===type);
       const isLine=shapeType&&shapeType.getAttributeNS(O,"spt")==="32"&&width>=50&&height>0&&height<=2;
       if(!isLine)continue;
