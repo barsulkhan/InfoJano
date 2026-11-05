@@ -2361,3 +2361,11 @@ All following statuses were checked through GitHub Actions API:
 - Homepage search refinement commit: `0c980be8bfc69070b594b62d11b8f6d860b5126e`.
 - Service Worker cache updated to `infojano-v213` in commit `d35c5e4cb6bfd5878df483422481d9ee3817bdbe`.
 - Still requires live browser checks with natural Bengali phrases, Romanized Bengali, English, Hindi and numeric size examples.
+
+
+### Multilingual search coverage expansion
+- Expanded the homepage search aliases to include Hindi-script terms and common Romanized Hindi phrases as well as Bengali and Romanized Bengali.
+- Search examples now intended to match include Hindi “फोटो छोटा”, “पीडीएफ”, “उम्र”, “प्रतिशत”, “ब्याज”, “कर्ज”, “छूट”, “समय”, “शब्द”, “पासवर्ड”, “प्रिंट”, and Romanized forms such as “umar”, “byaj”, “karz”, “chhoot”.
+- Homepage search commit: `0e9446094539807a4ef856f00e5b03008aa1aac1`.
+- Service Worker cache is now `infojano-v214`; cache commit: `3e33e14585cb4d61341888771e45bbc74881cb5a`.
+- These are source-level search improvements; real-user query testing remains required after deployment.
