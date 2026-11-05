@@ -11,7 +11,7 @@ const parsePages=(s,n)=>{if(!s.trim())return Array.from({length:n},(_,i)=>i+1);c
 const sync=()=>{const a=[...state.selected].sort((x,y)=>x-y);$("range").value=a.join(", ");document.querySelectorAll(".page-card").forEach(c=>{const yes=state.selected.has(+c.dataset.page);c.classList.toggle("selected",yes);c.querySelector("input").checked=yes});$("convert").disabled=!a.length||state.busy;$("selectionInfo").textContent=a.length+" of "+state.pages.length+" page(s) selected"};
 const busy=v=>{state.busy=v;$("convert").disabled=v||!state.selected.size;$("file").disabled=v};
 const modal=$("formatModal");
-const chooseFormat=next=>{state.formatChoice=next;document.querySelectorAll(".format-option").forEach(b=>{const active=b.dataset.format===next;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});$("formatContinue").disabled=!labels[next]};
+const chooseFormat=next=>{state.formatChoice=next;document.querySelectorAll(".format-option").forEach(b=>{const active=b.dataset.format===next;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));const hint=b.querySelector(".select-state");if(hint)hint.textContent=active?"✓ SELECTED":"Tap to select"});$("formatContinue").disabled=!labels[next]};
 const openFormatPicker=()=>{chooseFormat(mode);modal.hidden=false};
 document.querySelectorAll(".format-option").forEach(b=>b.addEventListener("click",()=>chooseFormat(b.dataset.format)));
 $("formatCancel").addEventListener("click",()=>{modal.hidden=true;setMode(state.formatChoice||mode);$("previewPanel").hidden=false;$("downloadPanel").hidden=false;status("Default format selected. You can change PDF, JPG or PNG above.","success")});
