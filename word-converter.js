@@ -160,9 +160,10 @@ $("convert").addEventListener("click",async()=>{
       addDownload(pdfBlob,outputName("pdf"),"Download Layout-Preserving PDF");
     }else{
       status("Opening the Office-rendered PDF for "+labels[mode]+" export…");
-      await ensureLibrary("PDF page renderer",["https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js","https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js","https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"],()=>!!window.pdfjsLib?.getDocument);
+      await ensureLibrary("PDF page renderer",["https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js","https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"],()=>!!window.pdfjsLib?.getDocument);
+      await ensureLibrary("ZIP export",["https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js","https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"],()=>typeof window.JSZip==="function"&&typeof window.JSZip.loadAsync==="function");
       const pdfjs=window.pdfjsLib;
-      pdfjs.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      pdfjs.GlobalWorkerOptions.workerSrc="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
       const data=await pdfBlob.arrayBuffer();
       const pdf=await pdfjs.getDocument({data}).promise;
       if(pdf.numPages!==state.pages.length)throw Error("The Office-converted PDF has "+pdf.numPages+" pages, but the Word preview has "+state.pages.length+". Page selection is paused to avoid exporting the wrong pages.");
