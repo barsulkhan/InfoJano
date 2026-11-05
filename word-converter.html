@@ -50,7 +50,7 @@ window.__ijLoadLibrary=(key,urls,ready)=>{if(ready())return Promise.resolve();if
 const loadApp=src=>new Promise((resolve,reject)=>{const el=document.createElement("script");el.src=src;el.onload=resolve;el.onerror=()=>reject(new Error("Could not load "+src));document.body.appendChild(el)});
 (async()=>{try{
 const st=document.getElementById("status");if(st){st.textContent="Starting Word Converter…";st.className="status";}
-await loadApp("/InfoJano/word-converter.js?v=229");
+await loadApp("/InfoJano/word-converter.js?v=230");
 await window.__ijLoadLibrary("Word document ZIP",["https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js","https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"],()=>typeof window.JSZip==="function"&&typeof window.JSZip.loadAsync==="function");
 await window.__ijLoadLibrary("Word preview",["https://cdn.jsdelivr.net/npm/docx-preview@0.4.1/dist/docx-preview.min.js","https://unpkg.com/docx-preview@0.4.1/dist/docx-preview.min.js"],()=>!!window.docx?.renderAsync);
 await loadApp("/InfoJano/install.js");
