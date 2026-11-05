@@ -2460,3 +2460,13 @@ Deploy the Worker and set `CLOUDCONVERT_API_KEY` as a Cloudflare Secret. Then en
 - Bumped Service Worker cache to `infojano-v220`.
 - Commit: `45d474509a8f2479f419cfc8dd18b1e95a3d27cd` (HTML) and `e35afe361fb0b93c0631cfb21ef8b216b6df17d4` (cache).
 - Pending live visual verification on Android after Pages deployment.
+
+
+### DOCX upload regression fix — 2026-11-05
+- User screenshot showed file input displaying a selected filename while application status remained "No Word document selected yet"; no page preview was generated.
+- Root cause identified in the newly added CloudConvert branch: malformed JavaScript regular-expression literal in Worker URL trailing-slash normalization prevented the entire `word-converter.js` script from parsing, so the DOCX change handler never attached.
+- Fixed the regex to `/\\/$/` in source (remove one trailing slash), restoring script parsing.
+- Moved High-Fidelity/CloudConvert settings into a collapsed Advanced details section so the ordinary converter upload flow is the primary interface and the Worker URL is not mistaken for the public website URL.
+- Service Worker cache bumped to `infojano-v221`.
+- Commits: JS `6a93fc0dc8ae9b493698fce74b9b766d6ec5419c`; HTML `8f45737e3c2645aeee898dbd36f725fc10ecbb82`; cache `0ab049f7b3378c3439a577ffa0d74997fa2c48c0`.
+- Pending Pages deployment and live Android retest. Verify file input event, filename status, page count and preview generation before declaring fixed.
