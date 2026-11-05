@@ -2400,3 +2400,12 @@ All following statuses were checked through GitHub Actions API:
 - Service Worker cache advanced from `infojano-v215` to `infojano-v216`.
 - Commits: Word converter core `214ad64a76e9df82da272525e569bdd1e813c125`; retain DPI `6ca5c130ee18d020774f753516c4ccbf3d363e50`; page-bound clone alignment `350c1b2ed11e3c47d6371a420db37b30681321c2`; cache `f6a846e2e50d689fe947290dfeed9120fc1bc66d.
 - Important verification limit: source changes are committed, but the exact DOCX has not yet been run through the live GitHub Pages browser converter in this session. The provided screenshot and uploaded DOCX also appear to contain different content: screenshot shows four people and a 2025 memo date, whereas uploaded DOCX has one person and a 2022 date. Use the same source file for a valid visual-only comparison. This patch improves rendering fidelity; docx-preview/html2canvas is still not a full Microsoft Word/LibreOffice layout engine and cannot guarantee pixel-identical results for every advanced DOCX feature.
+
+
+## 2026-11-05 — Word Converter VML horizontal-rule correction (v217)
+- Re-examined the exact four-name BDO DOCX and its LibreOffice reference PDF. The DOCX contains a legacy VML connector (`v:shape`, shapetype `o:spt=32`) anchored in the header paragraph; it is 564.45 pt wide and 0.7 pt high. This is the source of the blue filled bar seen in InfoJano's DOCX preview/export: docx-preview does not faithfully render this legacy VML line shape.
+- Added a targeted DOCX pre-processing step in `word-converter.js`: only very thin (<=2 pt), wide (>=50 pt) legacy VML line shapes with VML line shapetype 32 are normalized to a native Word paragraph bottom border (single black 0.75 pt line). Watermark VML picture shapes, logos, tables and other shapes are not removed or altered. The original uploaded file remains unchanged; the normalized copy is only used for preview/export.
+- Existing source page geometry, font/image wait, canvas export and page selection changes remain in place.
+- Service Worker cache advanced from `infojano-v216` to `infojano-v217`.
+- Commits: VML normalizer `0fb0f7509a3d3875b8be575b2e45a6be684d4570`; cache `10fd2739ef4afe9e4599e7604089d591390990e2.
+- Verification boundary: the VML shape diagnosis is confirmed from the user's DOCX XML and matches the blue bar symptom. The browser converter still needs a live Android retest using the exact same four-name source DOCX. Do not claim pixel-perfect compatibility with every DOCX drawing or floating object.
