@@ -24,7 +24,7 @@ The resulting address will look like:
 - Browser uploads the file to the returned CloudConvert form URL and parameters.
 - Website polls `GET /result?jobId=...` until it receives a PDF.
 
-Only the exact GitHub Pages origin `https://barsulkhan.github.io` is allowed by CORS. If the site moves to a custom domain, update `ALLOWED_ORIGIN` before deployment.
+Only the exact GitHub Pages origin `https://barsulkhan.github.io` is allowed by CORS. If the site moves to a custom domain, update `ALLOWED_ORIGIN` before deployment. CORS alone does not stop scripts or command-line clients from calling the public Worker. Before public launch, add a Cloudflare Rate Limiting rule for this Worker (especially `POST /start`), for example a low per-IP request limit, and monitor CloudConvert credit usage.
 
 ## Privacy and limits
 - High-fidelity conversion is an explicit opt-in because the DOCX is processed by CloudConvert, a third party.
