@@ -2325,3 +2325,13 @@ All following statuses were checked through GitHub Actions API:
 - Updated service-worker cache to `infojano-v209`.
 - Commits: HTML/UI `f744dbcf7d2061270705084280fa11a342bbf4b4`; selection logic `f37b1550b993e90dec65c478f41331ec94d73fc8`; cache `823fda0cda2cf7e8bfe546a801bae8dac44a3b5b`.
 - Live browser appearance still needs user confirmation after deployment/cache refresh.
+
+
+## 2026-11-05 — Corrected Word export to preserve the uploaded document's own page geometry
+- User's test screenshot showed that forcing every export into a newly-created A4 canvas/page shrank the document content into a small block. This was the wrong approach: output must retain the page dimensions/layout already present in the DOCX, which will remain A4 when the source DOCX is A4.
+- Research: docx-preview renders page width/height from the document unless ignoreWidth/ignoreHeight are enabled; html2canvas capture scale controls raster output resolution, not the physical page layout. References reviewed: docx-preview API README and html2canvas configuration/performance docs.
+- Reworked PDF export: read each rendered Word page's actual DOM bounding dimensions, convert CSS px to mm, create a PDF page with those exact dimensions, and place the capture edge-to-edge. No forced A4, no artificial 10 mm margin, no fit-to-A4 shrink.
+- Reworked JPG/PNG export: capture the rendered page at the requested DPI and export that original-proportion canvas directly. No new A4 canvas and no scaling-to-fit. Removed a stale canvas cleanup reference from the image-export path.
+- Cache bumped to `infojano-v210`.
+- Commits: converter `a845ddcea32c43254c32ce46aa9feadccfdb7fda`; cache `5f02d76266753b3160529ac24fd0b7e25bb70b04`.
+- This is a source-level correction. Must still be retested against the user's actual DOCX in the live browser; verify page dimensions and content scale before declaring complete.
