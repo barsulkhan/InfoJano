@@ -2193,3 +2193,37 @@ All following statuses were checked through GitHub Actions API:
 3. If a test fails, inspect the exact screenshot/error and fix only the relevant shared-engine behavior; preserve existing working tools and the global filename standard.
 4. Do not modify the paused Ayushman crop workflow or purchase/configure `infojano.com` without the user's explicit next instruction.
 5. Keep this complete archive as the single source of truth and append future dated checkpoints here.
+
+
+---
+
+## 5 November 2026 — Universal Word Converter consolidation (in progress / source changes)
+
+### User-approved direction
+- User approved the assistant's recommended approach: replace the three separate Word conversion applications with one Universal Word Converter containing three output modes: PDF, JPG and PNG.
+- Keep the old public entry URLs working as compatibility routes; do not break existing links. They will open the unified app with the corresponding format preselected.
+- Homepage should show one Word converter card rather than three separate cards.
+- Maintain the single complete Master Archive; this entry is appended here, not in a competing file.
+
+### Root-cause mitigation for missing Convert button
+- Re-inspected the current shared engine. The Convert button is intentionally disabled until DOCX page rendering succeeds and pages are detected.
+- Found that the optional thumbnail-generation step used html2canvas inside the same critical try block as DOCX parsing. If thumbnail capture fails, the whole upload is marked as failed, state.file is cleared, and the Convert button remains disabled even if the DOCX page DOM was already rendered.
+- Changed page cards to lightweight page-number placeholders. The optional thumbnail capture no longer blocks file readiness or conversion availability. The actual export capture still uses html2canvas at conversion time; if that fails, a visible error is shown after Convert is pressed.
+- This is a source-level robustness fix. Android end-to-end DOCX conversion is still pending and must not be claimed as passed.
+
+### Files updated / created
+- New unified application: `word-converter.html`.
+- Shared engine: `word-converter.js` now supports changing output format in-app via PDF/JPG/PNG tabs and URL query parameter `?format=pdf|jpg|png`.
+- Old URLs `word-to-pdf.html`, `word-to-jpg.html`, `word-to-png.html` retained as compatibility redirect pages that open the unified app with the relevant format selected.
+- Homepage Word cards consolidated into one Universal Word Converter card; visible count changed from 25 to 23.
+- `sitemap.xml` and `sitemap.txt` now list the unified URL instead of three duplicate tool URLs.
+- New install manifest: `app-manifests/word-converter.webmanifest`.
+- Service Worker cache bumped from `infojano-v202` to `infojano-v203`; unified page and manifest added to precache. Old redirect URLs remain precached for compatibility.
+
+### Testing still required
+- Confirm Pages deployment for the new commit.
+- On Android Chrome, upload the supplied four-page A/B/C/D DOCX sample and confirm page count appears, page selection works, and Convert becomes enabled.
+- Test PDF, one-page JPG, multi-page JPG ZIP, one-page PNG, multi-page PNG ZIP, page ranges, image DPI/quality controls, Bengali text, filename suffix, and downloads opening correctly.
+- Test all three old URLs redirect to the unified app with correct format selected.
+- If upload works but export fails, inspect the exact status/error and address the export rendering issue; do not describe the conversion as complete until tested.
+
