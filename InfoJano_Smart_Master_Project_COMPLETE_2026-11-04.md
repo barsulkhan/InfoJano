@@ -2283,3 +2283,12 @@ All following statuses were checked through GitHub Actions API:
   - Service Worker cache v204: `76884648604b437cf64b15aa4559db60515f500c`
 - Source verification confirmed one format modal, preview/download hidden before selection, loader present, PDF/ZIP/image fallback handlers present, and retry UI present.
 - Android live upload/export testing is still pending. Do not claim end-to-end conversion is verified until the user tests PDF, JPG and PNG.
+
+
+### DOCX JSZip dependency correction — 5 November 2026
+- Screenshot error: `Cannot read properties of undefined (reading 'loadAsync')` after selecting a DOCX file.
+- Root cause: JSZip was no longer loaded before docx-preview attempted to open the DOCX ZIP package.
+- Fixed word-converter.js to load JSZip before docx.renderAsync, with jsDelivr, cdnjs and unpkg fallback URLs. Kept the PDF/JPG/PNG format picker and export fallback flow.
+- Bumped Service Worker cache to infojano-v205.
+- Fix commits: 2b72d78f5402b52b7fc4c46b236f899b601db423 and 719315ee7e062dec3c54013bacf2fd27c512ee57.
+- Source checks passed: JSZip is awaited before DOCX rendering; modal remains present; cache version is v205. Live browser upload and conversion retest is still required.
