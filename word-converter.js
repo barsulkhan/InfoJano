@@ -6,6 +6,55 @@ const state={file:null,pages:[],selected:new Set(),busy:false,formatChoice:mode}
 const ensureLibrary=(key,urls,ready)=>{if(ready())return Promise.resolve();if(typeof window.__ijLoadLibrary!=="function")return Promise.reject(Error("Library loader is unavailable. Reload and try again."));return window.__ijLoadLibrary(key,urls,ready)};
 const status=(m,t="")=>{$("status").textContent=m;$("status").className="status "+t};
 /* Read original Word page size (DOCX twips), rather than trusting preview CSS. */
+/* Normalize Word's legacy floating horizontal-rule VML before preview.
+   docx-preview can mispaint this VML connector as a filled blue block. Convert
+   only very thin, wide VML line shapes to a native paragraph bottom border. */
+const normalizeLegacyLines=async file=>{
+  const zip=await window.JSZip.loadAsync(file);
+  const W="http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+  const V="urn:schemas-microsoft-com:vml";
+  const O="urn:schemas-microsoft-com:office:office";
+  let changed=0;
+  for(const name of Object.keys(zip.files)){
+    if(!/^word\/(?:document|header\d*|footer\d*)\.xml$/.test(name))continue;
+    const entry=zip.file(name);if(!entry)continue;
+    const source=await entry.async("text");
+    if(!source.includes("<w:pict")||!source.includes("<v:shape"))continue;
+    const doc=new DOMParser().parseFromString(source,"application/xml");
+    if(doc.querySelector("parsererror"))continue;
+    const shapes=[...doc.getElementsByTagNameNS(V,"shape")];
+    for(const shape of shapes){
+      const style=shape.getAttribute("style")||"";
+      const type=(shape.getAttribute("type")||"").replace(/^#/,"");
+      const width=Number((style.match(/(?:^|;)\\s*width\\s*:\\s*([\\d.]+)pt/i)||[])[1]||0);
+      const height=Number((style.match(/(?:^|;)\\s*height\\s*:\\s*([\\d.]+)pt/i)||[])[1]||0);
+      const shapeType=[...doc.getElementsByTagNameNS(V,"shapetype")].find(x=>x.getAttribute("id")===type);
+      const isLine=shapeType&&shapeType.getAttributeNS(O,"spt")==="32"&&width>=50&&height>0&&height<=2;
+      if(!isLine)continue;
+      let pict=shape.parentNode;
+      while(pict&&pict.localName!=="pict")pict=pict.parentNode;
+      const paragraph=shape.parentNode;
+      let p=shape;
+      while(p&&p.localName!=="p")p=p.parentNode;
+      if(!pict||!p)continue;
+      pict.parentNode.removeChild(pict);
+      let pPr=[...p.childNodes].find(n=>n.nodeType===1&&n.namespaceURI===W&&n.localName==="pPr");
+      if(!pPr){pPr=doc.createElementNS(W,"w:pPr");p.insertBefore(pPr,p.firstChild)}
+      let pBdr=[...pPr.childNodes].find(n=>n.nodeType===1&&n.namespaceURI===W&&n.localName==="pBdr");
+      if(!pBdr){pBdr=doc.createElementNS(W,"w:pBdr");const first=[...pPr.childNodes].find(n=>n.nodeType===1&&n.namespaceURI===W&&n.localName!=="pStyle");pPr.insertBefore(pBdr,first||null)}
+      const bottom=doc.createElementNS(W,"w:bottom");
+      bottom.setAttributeNS(W,"w:val","single");
+      bottom.setAttributeNS(W,"w:sz","6");
+      bottom.setAttributeNS(W,"w:space","0");
+      bottom.setAttributeNS(W,"w:color","000000");
+      const prior=[...pBdr.childNodes].find(n=>n.nodeType===1&&n.namespaceURI===W&&n.localName==="bottom");
+      if(prior)pBdr.replaceChild(bottom,prior);else pBdr.appendChild(bottom);
+      changed++;
+    }
+    if(changed)zip.file(name,new XMLSerializer().serializeToString(doc));
+  }
+  return changed?await zip.generateAsync({type:"blob"}):file;
+};
 const readDocxPageSize=async file=>{
   try{
     const zip=await window.JSZip.loadAsync(file),xml=await zip.file("word/document.xml")?.async("text");
@@ -53,7 +102,7 @@ const openFormatPicker=()=>{chooseFormat(mode);modal.hidden=false};
 document.querySelectorAll(".format-option").forEach(b=>b.addEventListener("click",()=>chooseFormat(b.dataset.format)));
 $("formatCancel").addEventListener("click",()=>{modal.hidden=true;setMode(state.formatChoice||mode);$("previewPanel").hidden=false;$("downloadPanel").hidden=false;status("Default format selected. You can change PDF, JPG or PNG above.","success")});
 $("formatContinue").addEventListener("click",()=>{if(!labels[state.formatChoice])return;setMode(state.formatChoice);modal.hidden=true;$("previewPanel").hidden=false;$("downloadPanel").hidden=false;status("Format selected. Review your pages, then convert.","success");$("previewPanel").scrollIntoView({behavior:"smooth",block:"start"})});
-$("file").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;state.file=null;state.pages=[];state.selected.clear();$("preview").innerHTML="";$("downloads").innerHTML="";$("convert").disabled=true;const ext=f.name.split(".").pop().toLowerCase();if(ext!=="docx"){status("Please choose a .docx file. Older .doc files are not supported yet; save a copy as .docx first.","error");e.target.value="";return}if(f.size>30*1024*1024){status("This file is over 30 MB. Try a smaller DOCX to avoid phone memory problems.","error");e.target.value="";return}state.file=f;try{if(!window.docx?.renderAsync)throw Error("Word preview library did not load. Check your internet connection and reload.");status("Loading Word document support…");await ensureLibrary("Word document ZIP",["https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js","https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"],()=>typeof window.JSZip==="function"&&typeof window.JSZip.loadAsync==="function");status("Reading Word document and preparing page previews…");$("renderArea").innerHTML="";$("renderStyles").innerHTML="";await window.docx.renderAsync(f,$("renderArea"),$("renderStyles"),{className:"docx",inWrapper:true,breakPages:true,ignoreLastRenderedPageBreak:false,renderHeaders:true,renderFooters:true,renderFootnotes:true,renderEndnotes:true,ignoreFonts:false,useBase64URL:true});await document.fonts.ready;let nodes=[...$("renderArea").querySelectorAll("section.docx")];if(!nodes.length){const w=$("renderArea").querySelector(".docx-wrapper");if(w)nodes=[...w.children].filter(x=>x.nodeType===1)}if(!nodes.length)throw Error("Could not identify the Word pages. Try saving the document again from Microsoft Word.");state.pages=nodes;state.selected=new Set(nodes.map((_,i)=>i+1));$("pageCount").textContent=nodes.length+" page(s)";$("fileInfo").textContent=f.name+" · "+(f.size/1048576).toFixed(2)+" MB · "+nodes.length+" page(s)";$("preview").innerHTML="";for (const [i,p] of nodes.entries()) {const c=document.createElement("label");c.className="page-card selected";c.dataset.page=i+1;const cb=document.createElement("input");cb.type="checkbox";cb.checked=true;cb.setAttribute("aria-label","Select page "+(i+1));cb.addEventListener("change",()=>{cb.checked?state.selected.add(i+1):state.selected.delete(i+1);sync()});const thumb=document.createElement("div");thumb.className="page-thumb";thumb.textContent="PAGE "+(i+1);c.append(cb,thumb);$("preview").append(c)}sync();status("Word document ready. Choose PDF, JPG or PNG to continue.","success");openFormatPicker()}catch(err){state.file=null;status(err.message||"Could not read this Word document.","error")}});
+$("file").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;state.file=null;state.pages=[];state.selected.clear();$("preview").innerHTML="";$("downloads").innerHTML="";$("convert").disabled=true;const ext=f.name.split(".").pop().toLowerCase();if(ext!=="docx"){status("Please choose a .docx file. Older .doc files are not supported yet; save a copy as .docx first.","error");e.target.value="";return}if(f.size>30*1024*1024){status("This file is over 30 MB. Try a smaller DOCX to avoid phone memory problems.","error");e.target.value="";return}state.file=f;try{if(!window.docx?.renderAsync)throw Error("Word preview library did not load. Check your internet connection and reload.");status("Loading Word document support…");await ensureLibrary("Word document ZIP",["https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js","https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"],()=>typeof window.JSZip==="function"&&typeof window.JSZip.loadAsync==="function");status("Checking Word layout and preparing page previews…");$("renderArea").innerHTML="";$("renderStyles").innerHTML="";const previewFile=await normalizeLegacyLines(f);await window.docx.renderAsync(previewFile,$("renderArea"),$("renderStyles"),{className:"docx",inWrapper:true,breakPages:true,ignoreLastRenderedPageBreak:false,renderHeaders:true,renderFooters:true,renderFootnotes:true,renderEndnotes:true,ignoreFonts:false,useBase64URL:true});await document.fonts.ready;let nodes=[...$("renderArea").querySelectorAll("section.docx")];if(!nodes.length){const w=$("renderArea").querySelector(".docx-wrapper");if(w)nodes=[...w.children].filter(x=>x.nodeType===1)}if(!nodes.length)throw Error("Could not identify the Word pages. Try saving the document again from Microsoft Word.");state.pages=nodes;state.selected=new Set(nodes.map((_,i)=>i+1));$("pageCount").textContent=nodes.length+" page(s)";$("fileInfo").textContent=f.name+" · "+(f.size/1048576).toFixed(2)+" MB · "+nodes.length+" page(s)";$("preview").innerHTML="";for (const [i,p] of nodes.entries()) {const c=document.createElement("label");c.className="page-card selected";c.dataset.page=i+1;const cb=document.createElement("input");cb.type="checkbox";cb.checked=true;cb.setAttribute("aria-label","Select page "+(i+1));cb.addEventListener("change",()=>{cb.checked?state.selected.add(i+1):state.selected.delete(i+1);sync()});const thumb=document.createElement("div");thumb.className="page-thumb";thumb.textContent="PAGE "+(i+1);c.append(cb,thumb);$("preview").append(c)}sync();status("Word document ready. Choose PDF, JPG or PNG to continue.","success");openFormatPicker()}catch(err){state.file=null;status(err.message||"Could not read this Word document.","error")}});
 $("range").addEventListener("change",()=>{if(!state.pages.length)return;try{state.selected=new Set(parsePages($("range").value,state.pages.length));sync();status(state.selected.size+" page(s) selected")}catch(e){status(e.message,"error")}});
 $("all").onclick=()=>{state.selected=new Set(state.pages.map((_,i)=>i+1));sync();status("All pages selected")};
 $("none").onclick=()=>{state.selected.clear();sync();status("Selection cleared. Choose at least one page.")};
