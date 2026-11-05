@@ -2265,3 +2265,21 @@ All following statuses were checked through GitHub Actions API:
 - A separate APK workflow run `41966952497` completed successfully, including validation, 23 APK builds, package-count verification, artifact upload and release publication. Existing release `infojano-tool-apps-v1.1.1` currently has 23 assets. This successful run is distinct from the still-running later attempt.
 - Confirmed current repository source contains the unified app page with PDF/JPG/PNG tabs, canonical URL and universal manifest; shared engine supports `?format=` and page-number placeholders; the three old URLs retain redirects plus their legacy PWA manifest/install metadata; homepage has one Universal Word Converter card; XML/TXT sitemaps point to the unified page; Service Worker cache is `infojano-v203` and includes the unified page and manifest.
 - User-side Android browser testing remains the next functional checkpoint. Ask the user to open the unified app, upload the supplied four-page DOCX test sample, confirm the page count and Convert button, then test PDF/JPG/PNG output. Do not claim conversion output passed until that test is actually performed.
+
+
+
+### Universal Word Converter — post-upload format chooser and export library recovery — 5 November 2026
+- User requested that after a DOCX upload, the app should show a modal asking which output to create: PDF, JPG or PNG. This was implemented in the unified Word Converter.
+- New flow: upload DOCX → browser reads document and detects pages → format-choice modal (PDF/JPG/PNG) → page preview and page selection → Convert → download.
+- Preview and download panels stay hidden until the user chooses a format. The initial selection respects the current format, including legacy URLs with `?format=pdf|jpg|png`. User can still change the mode using the format tabs before converting. Dismissing the modal opens the preview using the currently selected format.
+- The red error in the user's screenshot was: “PDF export library did not load. Reload and try again.” It means the DOCX had loaded and one page was detected, but the jsPDF export library was unavailable when conversion started.
+- Added on-demand export library loading with multiple CDN fallbacks for jsPDF, html2canvas and JSZip. Added a Retry conversion button after export errors.
+- Updated Service Worker cache version from `infojano-v203` to `infojano-v204` so browsers request the new converter code.
+- Commits:
+  - HTML modal and panel gating: `060156f1afdfbddc463acc42cf65c1ee2c3c2ad1`
+  - Removed duplicate modal markup: `d6945ff9f9a0db8560a626ce28b91ce9702b817f`
+  - JS format chooser and CDN fallbacks: `ebda4568cb237174a78528fc4a68cd6e25c8cd0c`
+  - Cancel/dismiss behavior: `281507c60f1e433d06b45e962144ed2d2d1857ff`
+  - Service Worker cache v204: `76884648604b437cf64b15aa4559db60515f500c`
+- Source verification confirmed one format modal, preview/download hidden before selection, loader present, PDF/ZIP/image fallback handlers present, and retry UI present.
+- Android live upload/export testing is still pending. Do not claim end-to-end conversion is verified until the user tests PDF, JPG and PNG.
