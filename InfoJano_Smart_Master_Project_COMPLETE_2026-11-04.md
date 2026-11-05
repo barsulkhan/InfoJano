@@ -2309,3 +2309,11 @@ All following statuses were checked through GitHub Actions API:
 - Updated service-worker cache from `infojano-v206` to `infojano-v207` so browsers fetch the corrected converter.
 - Code commits: `4bc927869016a0010f50b740145243047d2bb024` (converter), `a96ed9509657c99e6b42fabbdd71afe3558f606a` (cache).
 - Important: source change is committed; live GitHub Pages deployment and real DOCX-to-PDF output still require user retest. This is not yet marked as browser-verified.
+
+
+## 2026-11-05 — JPG/PNG export also standardized to A4 portrait
+- User reported downloaded JPG output also had incorrect page proportions/layout, in addition to the PDF issue.
+- Updated the JPG/PNG image-export path in `word-converter.js`: each selected Word page is now rendered onto a white A4 portrait canvas (210 × 297 mm) at the selected DPI, with 10 mm safe margins, proportional fit, and centered placement. This avoids stretching and keeps JPG/PNG dimensions consistent with the A4 PDF output.
+- Service-worker cache bumped from `infojano-v207` to `infojano-v208`.
+- Commits: `bc8d57827f6a22aa0ab099a3dce8d3ee69d4e51f` (JPG/PNG A4), `23c501c2888caacc754117cb74e5eaa7fec11a39` (cache).
+- PDF A4 portrait correction is in the previous entry. Both formats still require user-side live retesting; do not mark as browser-verified until screenshots confirm.
