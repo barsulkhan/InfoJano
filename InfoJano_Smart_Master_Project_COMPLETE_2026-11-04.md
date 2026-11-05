@@ -2386,3 +2386,17 @@ All following statuses were checked through GitHub Actions API:
 - Service Worker cache advanced sequentially from infojano-v214 to infojano-v215 so updated metadata is refreshed.
 - Commits: currency converter 4d38c416da099d91e6f2df95b8f28a163102e12c; PDF to JPG d97b84b22796b8b176662a9f815890cf51a1203d; PDF page extractor 11a7ba0fbb06448c6140dee34ad9da4a9dda8620; Word converter 0f1e656bb1cce83576a7ec6685c80656202499dd; Document Studio 3651f7defebe6245b1e516a4f42f5192b0c2787e; Social QR Maker bfe70b50abf95935a92d263d5ef966e767e87697; QR choice page 512296183d9b7553f5ebe0c38d1318fae67ee0e5; Service Worker 777f19454fccd3359f74d91611f8cc70848aefd6.
 - Verification boundary: source commits were created. Next checks are to validate the seven JSON-LD blocks, confirm GitHub Pages deployment and test multilingual search plus the individual tool workflows in a live Android browser. Structured data does not guarantee rich results or search ranking.
+
+
+## 2026-11-05 — Word Converter layout-fidelity correction (v216)
+- User supplied a real DOCX file to test InfoJano Word to PDF behavior. This is a converter QA case, not a request to edit or recreate the BDO letter.
+- Root cause confirmed in source: PDF/JPG/PNG exports rasterize the docx-preview HTML page with html2canvas; the render clone previously retained a fixed 900px render area, and PDF export derived paper size only from browser-rendered CSS dimensions. This can introduce layout/scale differences compared with the source Word page.
+- Updated `word-converter.js`:
+  - Read the first original DOCX section page size from `word/document.xml` in twips and use that size for PDF pages, with CSS-size fallback.
+  - Wait for document fonts and embedded images before raster capture.
+  - Align the cloned render area and wrapper to the actual selected Word page bounds before capture, and select the corresponding page rather than always targeting the first page.
+  - Export PDF page captures as PNG rather than JPEG to avoid lossy text/line/watermark artifacts.
+  - Keep JPG/PNG export resolution controls active while sharing the improved capture path.
+- Service Worker cache advanced from `infojano-v215` to `infojano-v216`.
+- Commits: Word converter core `214ad64a76e9df82da272525e569bdd1e813c125`; retain DPI `6ca5c130ee18d020774f753516c4ccbf3d363e50`; page-bound clone alignment `350c1b2ed11e3c47d6371a420db37b30681321c2`; cache `f6a846e2e50d689fe947290dfeed9120fc1bc66d.
+- Important verification limit: source changes are committed, but the exact DOCX has not yet been run through the live GitHub Pages browser converter in this session. The provided screenshot and uploaded DOCX also appear to contain different content: screenshot shows four people and a 2025 memo date, whereas uploaded DOCX has one person and a 2022 date. Use the same source file for a valid visual-only comparison. This patch improves rendering fidelity; docx-preview/html2canvas is still not a full Microsoft Word/LibreOffice layout engine and cannot guarantee pixel-identical results for every advanced DOCX feature.
