@@ -3,6 +3,31 @@
 "use strict";
 const $=id=>document.getElementById(id),labels={pdf:"PDF",jpg:"JPG",png:"PNG"};let mode=new URLSearchParams(location.search).get("format")||document.body.dataset.output||"pdf";
 const state={file:null,pages:[],selected:new Set(),busy:false,formatChoice:mode};
+/* Remember the user's Worker endpoint on this browser only.
+   Consent is deliberately never persisted; it must be confirmed for each upload. */
+const WORKER_URL_STORAGE_KEY="infojano-word-converter-worker-url-v1";
+const workerUrlField=$("workerUrl");
+if(workerUrlField){
+  try{
+    const savedWorkerUrl=window.localStorage.getItem(WORKER_URL_STORAGE_KEY);
+    if(savedWorkerUrl){
+      const savedUrl=new URL(savedWorkerUrl);
+      if(savedUrl.protocol==="https:")workerUrlField.value=savedWorkerUrl;
+      else window.localStorage.removeItem(WORKER_URL_STORAGE_KEY);
+    }
+  }catch(_){}
+  workerUrlField.addEventListener("input",()=>{
+    const value=workerUrlField.value.trim();
+    try{
+      if(!value){window.localStorage.removeItem(WORKER_URL_STORAGE_KEY);return}
+      const parsed=new URL(value);
+      if(parsed.protocol==="https:")window.localStorage.setItem(WORKER_URL_STORAGE_KEY,parsed.href.replace(/\\/$/,""));
+      else window.localStorage.removeItem(WORKER_URL_STORAGE_KEY);
+    }catch(_){
+      try{window.localStorage.removeItem(WORKER_URL_STORAGE_KEY)}catch(__){}
+    }
+  });
+}
 const ensureLibrary=(key,urls,ready)=>{if(ready())return Promise.resolve();if(typeof window.__ijLoadLibrary!=="function")return Promise.reject(Error("Library loader is unavailable. Reload and try again."));return window.__ijLoadLibrary(key,urls,ready)};
 const status=(m,t="")=>{$("status").textContent=m;$("status").className="status "+t};
 /* Read original Word page size (DOCX twips), rather than trusting preview CSS. */
