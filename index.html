@@ -1698,8 +1698,42 @@ const $=id=>document.getElementById(id);
 function showSection(id){$('about').classList.toggle('hide',id!=='about'); if(id==='about') window.scrollTo({top:$('about').offsetTop-70,behavior:'smooth'}); else goHome();}
 function goHome(){$('about').classList.add('hide');$('toolPanel').classList.add('hide');window.scrollTo({top:0,behavior:'smooth'});}
 function searchFocus(){$('search').focus();filterTools();}
-function normalizeToolText(value){return (value||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();}
-function filterTools(){const q=normalizeToolText($("search").value);const terms=q?q.split(/\s+/).filter(Boolean):[];let n=0;document.querySelectorAll(".tool").forEach(x=>{const label=x.querySelector("h3")?.textContent||"";const description=x.querySelector("p")?.textContent||"";const haystack=normalizeToolText((x.dataset.name||"")+" "+label+" "+description);const ok=!terms.length||terms.every(term=>haystack.includes(term));x.classList.toggle("hide",!ok);if(ok)n++;});$("toolCount").textContent=n+" tools";$("noResults").classList.toggle("hide",n>0);}
+function normalizeToolText(value){return (value||"").toLocaleLowerCase().normalize("NFC").replace(/[^\p{L}\p{N}]+/gu," ").trim();}
+const searchAliases={
+  "ছবি":["image","photo","picture"],"ছবির":["image","photo","picture"],"ফটো":["image","photo","picture"],"ফটোর":["image","photo","picture"],"chobi":["image","photo","picture"],"chhobi":["image","photo","picture"],
+  "পিডিএফ":["pdf"],"পিডিফ":["pdf"],"pdf":["pdf"],"ডকুমেন্ট":["document","word"],"ওয়ার্ড":["word","docx"],"ওয়ার্ড":["word","docx"],"word":["word","docx"],"লেখা":["text","document","word"],
+  "বয়স":["age","birthday"],"বয়স":["age","birthday"],"জন্ম":["age","birthday"],"boyos":["age","birthday"],"boyosh":["age","birthday"],
+  "শতাংশ":["percentage","percent"],"পার্সেন্ট":["percentage","percent"],"shotangsho":["percentage","percent"],"percent":["percentage","percent"],
+  "সুদ":["interest","loan"],"শুদ":["interest","loan"],"ঋণ":["loan","emi"],"লোন":["loan","emi"],"কিস্তি":["emi","loan"],"rin":["loan","emi"],"sud":["interest","loan"],"shud":["interest","loan"],"kisti":["emi","loan"],
+  "ছাড়":["discount"],"ছাড়":["discount"],"ডিসকাউন্ট":["discount"],"chhar":["discount"],"char":["discount"],
+  "জিএসটি":["gst"],"gst":["gst"],"কর":["gst","tax"],
+  "সময়":["time","date"],"সময়":["time","date"],"তারিখ":["date","time"],"somoy":["time","date"],"shomoy":["time","date"],"tarikh":["date","time"],
+  "শব্দ":["word","text"],"গণনা":["counter","calculator"],"শব্দগণনা":["word counter","text counter"],"shobdo":["word","text"],"lekha":["text","word"],"hisab":["calculator"],
+  "কিউআর":["qr"],"কিউআরকোড":["qr code"],"qr":["qr"],"লিংক":["url","link"],"লিঙ্ক":["url","link"],"link":["url","link"],
+  "পাসওয়ার্ড":["password"],"পাসওয়ার্ড":["password"],"password":["password"],"গোপন":["password"],
+  "আইডি":["id card"],"কার্ড":["id card","card"],"প্রিন্ট":["print","id card"],"পরিচয়":["id card"],"পরিচয়":["id card"],
+  "একক":["unit","converter"],"রূপান্তর":["converter"],"মুদ্রা":["currency"],"ডলার":["currency"],"টাকা":["currency","loan","savings"],"currency":["currency"],"unit":["unit"],
+  "ওজন":["bmi"],"উচ্চতা":["bmi"],"bmi":["bmi"],"ছোট":["compress","reduce","resize"],"কমাও":["compress","reduce"],"সাইজ":["size","resize"],"আকার":["size","resize"],
+  "calclator":["calculator"],"calculater":["calculator"],"convertion":["converter"],"compresser":["compressor"],"imge":["image"],"pfd":["pdf"],"wrod":["word"]
+};
+function filterTools(){
+  const raw=normalizeToolText($("search").value);
+  const terms=raw?raw.split(/\s+/).filter(Boolean):[];
+  let n=0;
+  document.querySelectorAll("#toolGrid .tool").forEach(x=>{
+    const label=x.querySelector("h3")?.textContent||"";
+    const description=x.querySelector("p")?.textContent||"";
+    const haystack=normalizeToolText((x.dataset.name||"")+" "+label+" "+description);
+    const ok=!terms.length||terms.every(term=>{
+      const variants=searchAliases[term]||[term];
+      return variants.some(variant=>haystack.includes(normalizeToolText(variant)));
+    });
+    x.classList.toggle("hide",!ok);
+    if(ok)n++;
+  });
+  $("toolCount").textContent=n+" tools";
+  $("noResults").classList.toggle("hide",n>0);
+}
 function quickFilter(type){$("search").value=type;filterTools();$("toolGrid").scrollIntoView({behavior:"smooth"});} function clearFilter(){$("search").value="";filterTools();}
 function openTool(name){$('toolPanel').classList.remove('hide');$('about').classList.add('hide');$('toolContent').innerHTML=tools[name]();$('toolPanel').scrollIntoView({behavior:'smooth',block:'start'});}
 function closeTool(){$('toolPanel').classList.add('hide');window.scrollTo({top:document.querySelector('.section-title').offsetTop-80,behavior:'smooth'});}
