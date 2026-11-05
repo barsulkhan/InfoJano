@@ -2234,3 +2234,15 @@ All following statuses were checked through GitHub Actions API:
 - Preserved those conditions on all three legacy URL alias pages by retaining each legacy manifest link and the installer script. The old manifest files and Service Worker cache entries remain in place, while each alias still redirects to the unified app.
 - The 23-entry APK target matrix remains unchanged because the Word converter was a web/PWA tool, not one of the 23 individually wrapped APK targets.
 - Static compatibility review completed from repository source. GitHub Actions validation/deployment outcome still needs to be checked separately.
+
+
+### Consolidation commit ledger and static checks — 5 November 2026
+- Shared engine / Convert readiness and in-app modes: `e6cefd8dc6713c8238517bd296052abbef08a84d`.
+- Unified app page: `cae46e7580a86804d6289c1b9753fe854bf807a9`; universal PWA manifest: `3fc2bda2b7112f0f1fd52f43a6d47abff1240b0b`.
+- Legacy URL aliases: PDF `b850e2f30dd60cf8bc866ea7a23117be375e42d7`, JPG `d7d1a95345a1cc851c5d2f32537d72893f11c29c`, PNG `e80387d7be5a6883649b2b6b08c4544e9c998647`; PWA compatibility metadata follow-up commits: PDF `5a8a3d84e7dbaf39dcec7f873c2a538d1c8fb04b`, JPG `7bc510c289f5a320dc898597023ccc9e930ac4ee`, PNG `af665e2af810df81c810cf6c90db94ace9676f36`.
+- Homepage card consolidation: `b124365a483124f8fa97316825e478397aca96ac`.
+- Sitemap updates: XML `33fa7ad6e7155607b0c8d0c930143d050dfb085c`; TXT `4856cf700d81f9da2d5672f27caf58bb86c5e7f1`.
+- Service Worker cache v203: `98ac5a826e00e69b86da7a2c04a79bc7b367bf2e`.
+- Universal format FAQs: `1aa1e50d132aebdbfd9c28385b516601ec2c7a53`.
+- Repository re-fetch confirmed the new app has all three mode tabs, canonical URL and unified manifest; shared engine has query-string mode selection and no longer runs thumbnail html2canvas before enabling conversion; all three legacy pages contain redirects, their original manifest links and `install.js`; homepage contains one Universal Word Converter card; both sitemaps list the unified URL; Service Worker is v203 and precaches the unified page/manifest; this checkpoint exists in the same master archive.
+- The APK workflow's static requirements were reviewed and the three legacy pages were kept compatible. Actual GitHub Actions workflow result and GitHub Pages deployment status have not yet been verified in this checkpoint. User-side live browser conversion remains pending.
