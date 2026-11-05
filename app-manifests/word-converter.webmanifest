@@ -1,0 +1,19 @@
+{
+  "id": "/InfoJano/word-converter.html",
+  "name": "InfoJano — Universal Word Converter",
+  "short_name": "Word Converter",
+  "description": "Convert Word DOCX documents to PDF, JPG or PNG.",
+  "start_url": "/InfoJano/word-converter.html",
+  "scope": "/InfoJano/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/InfoJano/app-icons/word-converter.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
