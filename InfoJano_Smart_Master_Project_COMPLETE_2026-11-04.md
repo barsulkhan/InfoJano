@@ -2301,3 +2301,11 @@ All following statuses were checked through GitHub Actions API:
 - Bumped Service Worker cache to `infojano-v206`.
 - Commits: script-order bootstrap `afd84a3d76950a67a6f36739739d2fed22efbc61`; cache v206 `7717d7833cfdcc49ecc18b6ea2c8a901b6cff205`.
 - The official package documentation confirms the required JSZip-before-docx-preview order. Live browser upload and conversion still need user retest; do not claim success until verified.
+
+
+## 2026-11-05 — Universal Word Converter: A4 Portrait PDF correction
+- User test screenshot showed the exported PDF page was wide/landscape, content appeared too small, and excessive blank space remained.
+- Updated `word-converter.js`: PDF export now always creates standard A4 portrait pages (210 × 297 mm), uses 10 mm safe margins, scales each rendered page proportionally to fit within the printable area, and centers it. Rendering scale increased to 2 for sharper output. Multi-page output adds additional A4 portrait pages.
+- Updated service-worker cache from `infojano-v206` to `infojano-v207` so browsers fetch the corrected converter.
+- Code commits: `4bc927869016a0010f50b740145243047d2bb024` (converter), `a96ed9509657c99e6b42fabbdd71afe3558f606a` (cache).
+- Important: source change is committed; live GitHub Pages deployment and real DOCX-to-PDF output still require user retest. This is not yet marked as browser-verified.
