@@ -2138,3 +2138,58 @@ All following statuses were checked through GitHub Actions API:
 5. If user wants APK checks, install and test a small representative sample first, then expand; do not ask them to install all 23 at once.
 6. Keep the project ACTIVE / INCOMPLETE. At each meaningful session end, append a new dated checkpoint to this same complete master archive.
 7. User works from Android and prefers concise Bengali instructions, with technical work handled by the assistant wherever possible.
+
+
+---
+
+## CONTINUATION CHECKPOINT — 5 NOVEMBER 2026 (RESUMPTION AUDIT AND FIXES)
+
+### 1. Master archive and restart
+- Read the full existing complete archive and the 1 November Pause Checkpoint before resuming.
+- User explicitly requested an early restart on 5 November 2026; the original 1 December planned restart date was therefore superseded by the user's instruction.
+- The single source of truth remains this complete archive: `InfoJano_Smart_Master_Project_COMPLETE_2026-11-04.md`. Do not create a competing master file.
+- Project repository: https://github.com/barsulkhan/InfoJano
+- Live website: https://barsulkhan.github.io/InfoJano/
+
+### 2. Service Worker precache defect fixed
+- During source inspection, found the Unit Converter and URL Toolkit icon paths accidentally combined into one malformed string in `sw.js`.
+- Both icon files exist in the repository, but the combined precache URL could make `cache.addAll(ASSETS)` fail and prevent the new Service Worker from installing.
+- Corrected the list into two independent entries:
+  - `/InfoJano/app-icons/unit-converter.svg`
+  - `/InfoJano/app-icons/url-toolkit.svg`
+- Cache version changed sequentially from `infojano-v200` to `infojano-v201`.
+- Commit: `9f6e494c4ce1d6daf5aae7676775b76212e862d2`.
+- Re-fetched `sw.js`; confirmed both separate paths and absence of the malformed combined entry.
+
+### 3. Word Converter shared-engine defect fixed
+- Inspected `word-converter.js` and the three landing pages: `word-to-pdf.html`, `word-to-jpg.html`, and `word-to-png.html`.
+- Found an `await html2canvas(...)` inside a non-async `nodes.forEach` callback in the DOCX page-preview generation code. This is an invalid JavaScript syntax pattern and can prevent the shared converter script from loading.
+- Replaced that callback with a sequential `for (const [i,p] of nodes.entries())` loop so the awaited page-thumbnail rendering runs inside the async file-change handler.
+- Shared engine commit: `3202d76e7ff7199dda5a4f701983278047b08152`.
+- Bumped Service Worker cache sequentially from `infojano-v201` to `infojano-v202` so clients request the corrected engine.
+- Cache commit: `80a96c1a93b196b570e1e9d147bf52bda93d528d`.
+- Re-fetched both files; confirmed cache v202, corrected loop present, old `nodes.forEach` callback absent, and separate icon paths retained.
+
+### 4. GitHub Actions status at checkpoint
+- GitHub Pages deployment run `41965939016`: completed / success for commit `80a96c1a93b196b570e1e9d147bf52bda93d528d`.
+  - Source changes are deployed through GitHub Pages workflow. Direct live browser execution was not independently inspected by this assistant.
+- APK build run `41965938816`: in progress at the time this checkpoint was written. Icon/manifest/APK-matrix validation step completed successfully; building the APK matrix was still running. Do not claim the new APK run succeeded until its final conclusion is checked.
+- Earlier APK release `infojano-tool-apps-v1.1.1` with 23 APK assets remains published from the previous successful run. This does not verify installation or real-device functionality.
+
+### 5. Pending user-side DOCX tests
+- Existing test file: `InfoJano_Word_Converter_Test_4_Pages.docx` (four pages marked A/B/C/D).
+- Test file is available in the project Library; its extracted paragraphs confirm four distinct page labels. It has been materialized to the current working container at `/mnt/data/files/InfoJano_Word_Converter_Test_4_Pages.docx` for this session.
+- Android Chrome end-to-end testing is still required for all three pages:
+  - Word to PDF: confirm four-page output and open the resulting PDF.
+  - Word to JPG / PNG: test one selected page and all four pages; confirm individual image or ZIP behavior and that every image opens.
+  - Test page-range selection, clear/select-all controls, Bengali text/layout with a suitable DOCX, and 96/150/200/300 DPI options for image export.
+  - Confirm output names preserve the original base name and place `-InfoJano` once immediately before the extension; for multi-page images, page number comes before the suffix.
+  - Watch for phone memory limits, CDN loading errors and mobile layout issues. DOCX rendering is browser-based and may differ from Microsoft Word for complex formatting; do not promise exact fidelity.
+- Do not claim the above tests passed until the user completes them on Android.
+
+### 6. Next actions
+1. Check final status of APK build run `41965938816` and record the conclusion.
+2. Ask the user to run the four-page DOCX test in Android Chrome using the sample file and the three live Word converter pages.
+3. If a test fails, inspect the exact screenshot/error and fix only the relevant shared-engine behavior; preserve existing working tools and the global filename standard.
+4. Do not modify the paused Ayushman crop workflow or purchase/configure `infojano.com` without the user's explicit next instruction.
+5. Keep this complete archive as the single source of truth and append future dated checkpoints here.
