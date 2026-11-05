@@ -2292,3 +2292,12 @@ All following statuses were checked through GitHub Actions API:
 - Bumped Service Worker cache to infojano-v205.
 - Fix commits: 2b72d78f5402b52b7fc4c46b236f899b601db423 and 719315ee7e062dec3c54013bacf2fd27c512ee57.
 - Source checks passed: JSZip is awaited before DOCX rendering; modal remains present; cache version is v205. Live browser upload and conversion retest is still required.
+
+
+### DOCX reader script-order correction — 5 November 2026
+- User retested and the same `Cannot read properties of undefined (reading 'loadAsync')` error remained after the prior fix.
+- Rechecked the official docx-preview 0.4.1 usage documentation: JSZip must be loaded before docx-preview. The prior lazy-load attempt loaded JSZip only after docx-preview had already initialized, so it could not resolve the library dependency captured during initialization.
+- Replaced the static script order with a sequential bootstrap: load JSZip first (jsDelivr, cdnjs, unpkg fallbacks), then load docx-preview (jsDelivr/unpkg fallbacks), then load the converter, installer and site-header scripts. The existing format modal and PDF/JPG/PNG export fallbacks remain in place.
+- Bumped Service Worker cache to `infojano-v206`.
+- Commits: script-order bootstrap `afd84a3d76950a67a6f36739739d2fed22efbc61`; cache v206 `7717d7833cfdcc49ecc18b6ea2c8a901b6cff205`.
+- The official package documentation confirms the required JSZip-before-docx-preview order. Live browser upload and conversion still need user retest; do not claim success until verified.
