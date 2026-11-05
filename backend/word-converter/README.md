@@ -1,41 +1,37 @@
 # InfoJano High-Fidelity Word Converter Worker
 
-This separate Cloudflare Worker securely proxies CloudConvert. It does not store uploaded files in InfoJano. DOCX files are uploaded directly from the browser to CloudConvert using a short-lived upload form; the API key never reaches the browser.
+This Cloudflare Worker proxies iLoveAPI's Office-to-PDF service. The browser uploads the DOCX to this Worker; the Worker handles authentication, upload, processing and download. API credentials are never exposed in website JavaScript.
 
-## 1. Create the CloudConvert API key
-1. Create/sign in to a CloudConvert account.
-2. Create an API key with only `task.read` and `task.write` scopes.
-3. Do not paste the key into GitHub, website JavaScript, or this chat.
+## 1. Create an iLoveAPI developer project
+1. Register/sign in at https://www.iloveapi.com/
+2. Open API Keys and copy the Project Public Key.
+3. Do not paste API keys into GitHub, website JavaScript, or this chat.
 
-## 2. Deploy from Android / Cloudflare dashboard
+## 2. Deploy the Worker
 1. Open Cloudflare Dashboard → Workers & Pages → Create → Worker.
 2. Name it exactly `infojano-word-converter`.
-3. Open Edit code and paste the complete contents of `src/index.js`.
+3. Open Edit code and paste the complete contents of `src/index.js` from this repository.
 4. Deploy.
 5. Open Worker Settings → Variables and Secrets → Add → Secret.
-6. Name: `CLOUDCONVERT_API_KEY`; value: your CloudConvert API key. Save and redeploy if requested.
+6. Name: `ILOVEPDF_PUBLIC_KEY`; value: your iLoveAPI Project Public Key. Save and deploy if requested.
 
-The resulting address will look like:
+Worker URL example:
 `https://infojano-word-converter.<your-account-subdomain>.workers.dev`
 
-## 3. Test
-- `GET /` intentionally returns Not found.
-- The website calls `POST /start` with JSON containing `filename` and `size`.
-- Browser uploads the file to the returned CloudConvert form URL and parameters.
-- Website polls `GET /result?jobId=...` until it receives a PDF.
+## 3. Use it on InfoJano
+1. Open https://barsulkhan.github.io/InfoJano/word-converter.html
+2. Expand “Optional: High-Fidelity PDF”.
+3. Paste the Worker URL.
+4. Tick the third-party upload consent box.
+5. Upload a DOCX, select all pages and choose PDF.
+6. Press Convert.
 
-Only the exact GitHub Pages origin `https://barsulkhan.github.io` is allowed by CORS. If the site moves to a custom domain, update `ALLOWED_ORIGIN` before deployment. CORS alone does not stop scripts or command-line clients from calling the public Worker. Before public launch, add a Cloudflare Rate Limiting rule for this Worker (especially `POST /start`), for example a low per-IP request limit, and monitor CloudConvert credit usage.
+## API workflow
+The Worker obtains a short-lived JWT from `POST /v1/auth`, starts `officepdf` in the `in` region, uploads the DOCX, processes it and downloads the resulting PDF. It does not persist document files. iLoveAPI documents temporary task/file retention and automatic deletion; check the current provider policy and account terms.
 
-## Privacy and limits
-- High-fidelity conversion is an explicit opt-in because the DOCX is processed by CloudConvert, a third party.
-- CloudConvert stores imported files temporarily; completed tasks are automatically deleted after 24 hours according to its API documentation. The Worker also makes a best-effort job deletion after the PDF is retrieved.
-- The Worker does not log document contents or persist files.
-- The free CloudConvert plan is intended for personal use, testing and hobby projects and provides 10 credits/day. Office-to-PDF has a 2-credit base cost, plus processing-time usage. Check the current CloudConvert pricing before public/commercial use.
-- Do not use this service for confidential documents unless the user has reviewed and accepts CloudConvert's privacy and retention terms.
-
-## Local deployment
-From this directory:
-```sh
-npx wrangler secret put CLOUDCONVERT_API_KEY
-npx wrangler deploy
-```
+## Important
+- The high-fidelity route converts the complete document; page selection is available only in the local browser route.
+- The optional service requires a working iLoveAPI developer project and available credits.
+- Third-party processing is opt-in. Do not upload confidential or sensitive documents unless the user has reviewed and accepted the provider's privacy and retention terms.
+- Before public launch, configure Cloudflare rate limiting for POST requests to this Worker and monitor API usage.
+- The Worker accepts only the exact GitHub Pages origin `https://barsulkhan.github.io`. Update `ALLOWED_ORIGIN` if the site domain changes.
