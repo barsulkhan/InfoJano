@@ -26,15 +26,18 @@ const captureWordPage=async(page,scale=3)=>{
   await waitForPageAssets(page);
   const rect=page.getBoundingClientRect();
   if(!(rect.width>0&&rect.height>0))throw Error("Could not read the original Word page layout.");
+  const pageIndex=[...document.querySelectorAll("#renderArea section.docx")].indexOf(page);
   return html2canvas(page,{
     scale:Math.max(1,Math.min(4,scale)),useCORS:true,allowTaint:false,backgroundColor:"#fff",logging:false,
     width:Math.ceil(rect.width),height:Math.ceil(rect.height),
-    x:0,y:0,scrollX:0,scrollY:0,
+    scrollX:0,scrollY:0,
     windowWidth:Math.ceil(rect.width),windowHeight:Math.ceil(rect.height),
     onclone:clonedDoc=>{
       const area=clonedDoc.getElementById("renderArea");
-      if(area)area.style.cssText+=";position:static!important;left:0!important;top:0!important;width:auto!important;height:auto!important;opacity:1!important;z-index:auto!important;overflow:visible!important;pointer-events:auto!important";
-      const clonedPage=clonedDoc.querySelector("section.docx");
+      if(area){area.style.position="static";area.style.left="0";area.style.top="0";area.style.width=Math.ceil(rect.width)+"px";area.style.height="auto";area.style.opacity="1";area.style.zIndex="auto";area.style.overflow="visible";area.style.pointerEvents="auto"}
+      const wrapper=clonedDoc.querySelector("#renderArea .docx-wrapper");
+      if(wrapper){wrapper.style.width=Math.ceil(rect.width)+"px";wrapper.style.padding="0";wrapper.style.margin="0"}
+      const clonedPage=clonedDoc.querySelectorAll("#renderArea section.docx")[pageIndex]||clonedDoc.querySelector("#renderArea section.docx");
       if(clonedPage){clonedPage.style.margin="0";clonedPage.style.transform="none";clonedPage.style.boxShadow="none"}
     }
   });
