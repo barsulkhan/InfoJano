@@ -1977,3 +1977,7 @@ Current Worker source is `backend/shortlinks/src/worker.js` (not `src/index.js`)
 
 ## Short Link API test checkpoint — 6 Nov 2026
 Hoppscotch confirmed `GET /api/links/TEST123/stats` with Authorization None returns HTTP 401 `{"error":"Unauthorized."}`. Focused API security checks confirmed so far: 2 unauthenticated negative tests (POST create and GET stats); health endpoint returned staging scaffold JSON. Next: test unauthenticated DELETE `/api/links/TEST123`, expecting 401 and no deletion. No code/deploy change. Full details in COMPLETE archive.
+
+
+## Short Link API DELETE test — 6 Nov 2026
+Hoppscotch confirmed `DELETE /api/links/TEST123` with Authorization None returns HTTP 401 `{"error":"Unauthorized."}`. PASS: unauthenticated deletion blocked. Three unauthenticated security checks confirmed (POST create, GET stats, DELETE); health endpoint earlier returned staging scaffold JSON. No deletion occurred. Next: review health and test CORS/security headers; do not attempt authenticated creation while staging mode intentionally rejects it. No code/deploy change. Full details in COMPLETE archive.
