@@ -280,8 +280,32 @@ body{
 const $=id=>document.getElementById(id);
 function show(id,html){$(id).innerHTML=html}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function copyText(t){if(!t)return;const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()}
-function copyResult(id){const e=$(id),n=e.querySelector('[data-copy]');const t=n?n.getAttribute('data-copy'):e.innerText.trim();if(t)copyText(t)}
+async function copyText(t,resultId){
+ if(!t)return false;
+ let copied=false;
+ try{
+  if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t);copied=true}
+ }catch(e){}
+ if(!copied){
+  const a=document.createElement('textarea');
+  a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';
+  document.body.appendChild(a);a.select();a.setSelectionRange(0,a.value.length);
+  try{copied=document.execCommand('copy')}catch(e){copied=false}
+  a.remove();
+ }
+ if(resultId){
+  const box=$(resultId);
+  let status=box.querySelector('.copy-status');
+  if(!status){status=document.createElement('span');status.className='copy-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.style.cssText='display:block;margin-top:9px;font-weight:750';box.appendChild(status)}
+  status.textContent=copied?'Copied to clipboard.':'Could not copy automatically. Select and copy the result manually.';
+  status.style.color=copied?'#087443':'#b42318';
+ }
+ return copied;
+}
+function copyResult(id){
+ const e=$(id),n=e.querySelector('[data-copy]'),t=n?n.getAttribute('data-copy'):e.innerText.trim();
+ if(t)copyText(t,id);
+}
 function clearField(a,b){$(a).value='';$(b).textContent='Cleared.'}
 function validURL(raw){const value=String(raw||'').trim();if(!value)throw Error('Please enter a website URL.');if(value.length>4096)throw Error('This URL is too long. Please use a URL under 4,096 characters.');let u;try{u=new URL(value)}catch(e){throw Error('Enter a complete, valid URL, including https:// or http://.')}if(!['http:','https:'].includes(u.protocol))throw Error('Only http:// and https:// web addresses are accepted.');if(!u.hostname)throw Error('The URL must include a hostname.');if(u.username||u.password)throw Error('URLs with embedded usernames or passwords are not accepted.');const host=u.hostname.toLowerCase();const ipv4=/^(?:\d{1,3}\.){3}\d{1,3}$/.test(host);const ipv6=host.includes(':');if(ipv4&&host.split('.').some(part=>Number(part)>255))throw Error('The IP address is not valid.');if(!ipv4&&!ipv6&&host!=='localhost'){if(host.length>253)throw Error('The hostname is too long.');const labels=host.replace(/\.$/,'').split('.');if(labels.length<2||labels.some(label=>!label||label.length>63||! /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(label)))throw Error('The hostname does not look valid. Check its spelling.');}return u}
 function outLink(id,u,msg){const s=u.toString();show(id,esc(msg||'Result')+'<br><a target="_blank" rel="noopener noreferrer" href="'+esc(s)+'">'+esc(s)+'</a><span data-copy="'+esc(s)+'" hidden></span>')}
@@ -294,7 +318,35 @@ function parseURL(){try{const u=validURL($('parse-url').value),r=[['Protocol',u.
 function makeSlug(){const sep=$('slug-separator').value;let s=$('slug-input').value.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,sep);s=sep==='-'?s.replace(/^-+|-+$/g,''):s.replace(/^_+|_+$/g,'');show('slug-result',esc(s||'Enter a title first.')+'<span data-copy="'+esc(s)+'" hidden></span>')}
 function buildQuery(){try{const u=validURL($('query-base').value),k=$('query-key').value.trim();if(!k)throw Error('Enter a parameter name.');u.searchParams.set(k,$('query-value').value);outLink('query-result',u,'Updated URL:')}catch(e){show('query-result',esc(e.message))}}
 function downloadQR(){if(!window.infoJanoQRData){show('qr-output','Generate a QR code first.');return}const a=document.createElement('a');a.href=window.infoJanoQRData;a.download='infojano-url-qr.png';a.style.display='none';document.body.appendChild(a);a.click();a.remove()}
-function makeURLQR(){try{const u=validURL($('qr-url').value);if(!window.QRCode)throw Error('QR library unavailable. Reload the page while online and try again.');const host=document.createElement('div');host.style.cssText='position:absolute;left:-9999px;top:0';document.body.appendChild(host);new QRCode(host,{text:u.toString(),width:320,height:320,correctLevel:QRCode.CorrectLevel.H});setTimeout(()=>{const c=host.querySelector('canvas');if(!c){host.remove();show('qr-output','QR generation failed. Please try again.');return}const m=40,o=document.createElement('canvas');o.width=c.width+m*2;o.height=c.height+m*2;const x=o.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,o.width,o.height);x.drawImage(c,m,m);const data=o.toDataURL('image/png');window.infoJanoQRData=data;show('qr-output','<img alt="Generated QR code" src="'+data+'" style="display:block;width:100%;max-width:320px;margin:auto;background:#fff"><div class="actions"><button type="button" onclick="downloadQR()">Download PNG</button></div>');host.remove()},100)}catch(e){show('qr-output',esc(e.message))}}
+async function makeURLQR(){
+ let host=null;
+ try{
+  const u=validURL($('qr-url').value);
+  if(!window.QRCode)throw Error('QR library unavailable. Reload the page while online and try again.');
+  window.infoJanoQRData=null;
+  show('qr-output','Generating QR code…');
+  host=document.createElement('div');
+  host.style.cssText='position:absolute;left:-9999px;top:0';
+  document.body.appendChild(host);
+  new QRCode(host,{text:u.toString(),width:320,height:320,correctLevel:QRCode.CorrectLevel.H});
+  let source=host.querySelector('canvas');
+  if(!source){
+   const img=host.querySelector('img');
+   if(!img)throw Error('QR generation failed. Please try again.');
+   if(!img.complete||!img.naturalWidth)await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(Error('QR image could not be rendered.'))});
+   source=img;
+  }
+  const width=source.width||source.naturalWidth,height=source.height||source.naturalHeight;
+  if(!width||!height)throw Error('QR image is empty. Please try again.');
+  const m=40,o=document.createElement('canvas');o.width=width+m*2;o.height=height+m*2;
+  const x=o.getContext('2d');if(!x)throw Error('Your browser cannot prepare the QR image.');
+  x.fillStyle='#fff';x.fillRect(0,0,o.width,o.height);x.drawImage(source,m,m,width,height);
+  const data=o.toDataURL('image/png');
+  window.infoJanoQRData=data;
+  show('qr-output','<img alt="Generated QR code" src="'+data+'" style="display:block;width:100%;max-width:320px;margin:auto;background:#fff"><div class="actions"><button type="button" onclick="downloadQR()">Download PNG</button></div>');
+ }catch(e){window.infoJanoQRData=null;show('qr-output',esc(e.message||'QR generation failed. Please try again.'))}
+ finally{if(host)host.remove()}
+}
 
 // Premium tool navigation: switches panels without changing any calculator/tool logic.
 (function(){
