@@ -1953,3 +1953,7 @@ User opened the live `sitemap.xml` from GSC; screenshot shows valid XML tree and
 
 ## Sitemap URL inspection result — 6 Nov 2026
 GSC inspection of `https://barsulkhan.github.io/InfoJano/sitemap.xml` shows stored crawl data: “Crawled - currently not indexed”; last crawl Oct 27, 2026 6:17:19 AM; Googlebot smartphone; Crawl allowed Yes; Page fetch Successful; no referring sitemap detected. This is not clearly the fresh Live Test result. Next user action: press top-right TEST LIVE URL and share the new result. If live test passes, submit `/sitemap.xml` once again via Sitemaps page and wait. Do not use Request Indexing on the sitemap file. Details in COMPLETE archive.
+
+
+## Sitemap LIVE TEST passed — 6 Nov 2026
+GSC LIVE TEST for `https://barsulkhan.github.io/InfoJano/sitemap.xml` (Nov 6, 9:27 PM) shows green “URL is available to Google” and “Page can be indexed”. Live fetch is therefore accessible. Next: Search Console > Sitemaps > Add a new sitemap; enter only `sitemap.xml` and Submit once. Do not resubmit `sitemap.txt` or repeatedly Request Indexing for the sitemap file. Then share updated row/status and discovered pages. 12 content-page requests remain queued, not yet confirmed indexed; baseline 21 indexed pages; sitemap has 33 URLs. Full checkpoint in COMPLETE archive.
