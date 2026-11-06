@@ -1961,3 +1961,7 @@ GSC LIVE TEST for `https://barsulkhan.github.io/InfoJano/sitemap.xml` (Nov 6, 9:
 
 ## Sitemap resubmission checkpoint — 6 Nov 2026
 GSC green toast confirms `sitemap.xml` submitted successfully on Nov 6 after Live Test passed. But table still shows Type Unknown / `Couldn't fetch` / 0 discovered pages; detail view still says Sitemap could not be read. Submission accepted is not equivalent to successful fetch/processing. Wait, refresh later, verify status and discovered pages; do not repeatedly resubmit. 12 content URL requests queued, not confirmed indexed; 21 indexed baseline; 33 URLs in sitemap. Full detail in COMPLETE archive.
+
+
+## URL Toolkit resumed — 6 Nov 2026
+Current `url-toolkit.html` source audited: inline JS syntax PASS; 8 tabs present; no duplicate IDs; bundled QR library exists. 18 source-level regression cases passed (UTM, cleaner, encode/decode, invalid decode, validator, parser, slug, query builder, invalid URL cases and length limits). This is not real Android/browser testing. Remaining: live Android interaction across all 8 tools, actual QR PNG download and second-device scan, copy/download behavior. Short-link backend remains staging only: health + unauthenticated 401 confirmed; authenticated create/redirect/stats/disable untested; final domain not approved; rate-limit/abuse/DNS-rebinding protections required before public launch. No app code changed, so service-worker cache remains v230. Full checkpoint in COMPLETE archive.
