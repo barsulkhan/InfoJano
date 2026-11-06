@@ -1949,3 +1949,7 @@ GSC screenshots show `/sitemap.xml` Last read Nov 4, 2026, 0 discovered pages, r
 
 ## Sitemap browser verification — 6 Nov 2026
 User opened the live `sitemap.xml` from GSC; screenshot shows valid XML tree and InfoJano URLs. Browser accessibility confirmed, but Googlebot access not yet confirmed. GSC still reports Sitemap could not be read / Couldn't fetch, 0 discovered pages. Next: inspect exact `https://barsulkhan.github.io/InfoJano/sitemap.xml` in URL Inspection, click TEST LIVE URL, expand Page availability and share “Crawl allowed?” and “Page fetch” values. Do not delete/resubmit duplicates until this test. Detailed checkpoint in COMPLETE archive.
+
+
+## Sitemap URL inspection result — 6 Nov 2026
+GSC inspection of `https://barsulkhan.github.io/InfoJano/sitemap.xml` shows stored crawl data: “Crawled - currently not indexed”; last crawl Oct 27, 2026 6:17:19 AM; Googlebot smartphone; Crawl allowed Yes; Page fetch Successful; no referring sitemap detected. This is not clearly the fresh Live Test result. Next user action: press top-right TEST LIVE URL and share the new result. If live test passes, submit `/sitemap.xml` once again via Sitemaps page and wait. Do not use Request Indexing on the sitemap file. Details in COMPLETE archive.
