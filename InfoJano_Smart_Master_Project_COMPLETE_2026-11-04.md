@@ -2596,3 +2596,7 @@ Campaign item 9: `url-toolkit.html` — user screenshot explicitly shows “Inde
 
 ## Search Console campaign checkpoint — 6 Nov 2026
 Campaign item 10: `savings.html` — user screenshot explicitly shows “Indexing requested”; successful request #10. Queued, not yet confirmed indexed. Successful requests so far: image-to-pdf.html, pdf-to-jpg.html, extract-pdf-pages.html, word-converter.html, document-studio.html, number-to-words.html, qr-choice.html, social-qr-maker.html, url-toolkit.html, savings.html. Baseline: sitemap 33 URLs; Search Console screenshot showed 21 indexed pages. Remaining inspection queue: 2 URLs — discount-pt-br.html, percentage-pt-br.html. Historical earlier six requests are separate and not reverified. Continue one URL at a time; distinguish queued requests from actual indexed pages.
+
+
+## Search Console campaign checkpoint — 6 Nov 2026
+Campaign item 11: `discount-pt-br.html` — user screenshot explicitly shows “Indexing requested”; successful request #11. Queued, not yet confirmed indexed. Successful new campaign requests: image-to-pdf.html, pdf-to-jpg.html, extract-pdf-pages.html, word-converter.html, document-studio.html, number-to-words.html, qr-choice.html, social-qr-maker.html, url-toolkit.html, savings.html, discount-pt-br.html. Baseline: sitemap 33 URLs; Search Console screenshot showed 21 indexed pages. Remaining inspection queue: 1 URL — percentage-pt-br.html. Historical earlier six requests are separate and not reverified. Continue one URL at a time; distinguish queued requests from actual indexed pages.
