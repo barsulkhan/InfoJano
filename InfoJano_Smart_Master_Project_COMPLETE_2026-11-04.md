@@ -2670,3 +2670,23 @@ A Bearer-style admin token value was visible in a Hoppscotch screenshot during s
 3. Run a second OPTIONS request with a deliberately different Origin; confirm no permissive wildcard or grant appears.
 4. Rotate the potentially exposed ADMIN_API_TOKEN before any future authenticated API test. Do not reveal the new token in chat.
 5. Keep staging mode; later review rate limiting, hostname DNS resolution/rebinding, private-network/SSRF protections, abuse controls, and a verified production short domain before launch.
+
+## Continuation checkpoint — Hoppscotch mobile session — 6 Nov 2026
+User continued the Short Link API CORS test from Android in Hoppscotch and saved the workspace/request setup. Screenshots show:
+- An early request sent to an incorrectly entered/partial workers.dev host returned HTTP 404 with Cloudflare error code 1042. Treat this as a wrong/unresolved hostname/request-target issue, not an application API failure. Use the confirmed API host from the project's saved Worker configuration; do not guess or shorten it.
+- The request was then changed to OPTIONS for the API links endpoint. The Headers editor shows the intended Origin value `https://barsulkhan.github.io` and intended preflight request fields for POST and authorization/content-type. The rows became visually concatenated/truncated on the phone, so inspect each key/value carefully before relying on them.
+- The OPTIONS request returned HTTP 204 No Content. This confirms OPTIONS responded, but does NOT by itself prove CORS is correctly configured. Response Headers must still be opened and checked for exact `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods`, and `Access-Control-Allow-Headers`.
+- The JSON request body `{"url":"https://example.com","alias":"TEST123"}` remained visible while testing OPTIONS; OPTIONS preflight does not need this body. Remove/ignore the body for OPTIONS; use it only for a later POST test when staging policy permits.
+- A Bearer admin credential was visible in a Hoppscotch Authorization screenshot. Treat it as compromised and rotate the Cloudflare `ADMIN_API_TOKEN` before any authenticated test. Do not copy the old/new token into chat, screenshots, GitHub, or either archive.
+- The user saved the Hoppscotch workspace/request configuration. This is a Hoppscotch workspace save only; it is NOT a GitHub code commit, Worker deployment, D1 change, or proof that a short link was created.
+- No source code, Worker config, D1 schema, secret, or deployment change is evidenced by this session.
+
+### Exact next-chat continuation steps
+1. Open the saved Hoppscotch OPTIONS request and confirm the URL is the full configured Short Link Worker URL plus `/api/links`.
+2. Open response Headers (not request Headers) and inspect the three CORS response headers named above. The allowed origin must be exactly `https://barsulkhan.github.io`; no wildcard.
+3. If the response headers are correct, repeat OPTIONS with a deliberately disallowed Origin and confirm it is not granted.
+4. Rotate `ADMIN_API_TOKEN` in Cloudflare because the prior value appeared in a screenshot. Never send the secret value to ChatGPT.
+5. Keep staging mode enabled. Do not try to create production links or remove the staging restriction until the staged test plan and security controls are reviewed.
+6. Do not claim authenticated create, D1 write, redirect, stats, disable, or production readiness as tested. Those remain pending.
+
+This checkpoint supplements the earlier Short Link API audit and test ledger in this COMPLETE archive; it does not replace the full project history.
