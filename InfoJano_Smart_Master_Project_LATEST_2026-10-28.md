@@ -1917,3 +1917,7 @@ New-chat rule: read BOTH this LATEST file and the COMPLETE archive. Continue fro
 
 ## Search Console campaign checkpoint — 6 Nov 2026
 Detailed tracker is in the COMPLETE master archive. This campaign now has 6 successful Indexing Request confirmations: image-to-pdf.html, pdf-to-jpg.html, extract-pdf-pages.html, word-converter.html, document-studio.html, number-to-words.html. These are queued, not yet confirmed indexed. Baseline sitemap: 33 URLs; indexed report screenshot: 21 pages. Remaining queue: qr-choice.html, social-qr-maker.html, url-toolkit.html, savings.html, discount-pt-br.html, percentage-pt-br.html (6 URLs). Historical earlier 6 requests are separate and not reverified. Continue one URL at a time; keep requests separate from actual indexed count.
+
+
+## Search Console campaign checkpoint — 6 Nov 2026
+The COMPLETE master archive contains the detailed tracker. This campaign now has 7 successful indexing request confirmations, including `qr-choice.html`; all are queued and not yet confirmed indexed. Baseline: 33 sitemap URLs and 21 indexed pages shown in Search Console. Remaining queue: `social-qr-maker.html`, `url-toolkit.html`, `savings.html`, `discount-pt-br.html`, `percentage-pt-br.html` (5 URLs). Keep the historical six earlier requests separate. Continue one URL at a time.
