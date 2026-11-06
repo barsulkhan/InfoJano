@@ -1833,3 +1833,63 @@ When the user starts a new chat and says “InfoJano-এর কাজ শুর�
 
 ## Exact new-chat message (copy and send)
 “InfoJano-এর সম্পূর্ণ Master Archive দেখে শুরু থেকে এখন পর্যন্ত সব কাজের ধারাবাহিকতা বুঝে নাও। শুধু EMI Calculator নয়—পুরোনো সব tools, homepage/design, SEO, Sitemap, PWA, ID Card Print Studio, URL Toolkit, Cloudflare Short Link API এবং সাম্প্রতিক সব পরিবর্তন বিবেচনায় রাখবে। প্রথমে GitHub repository ও latest Actions যাচাই করবে। আমি যে পেজের কাজ বলব শুধু সেই পেজেই কাজ করবে। Android থেকে ধাপে ধাপে চালাবে, আগের কাজ নষ্ট করবে না, এবং কোনো live/visual test না করে সফল বলবে না।”
+
+
+---
+
+# MASTER ARCHIVE UPDATE — 6 NOVEMBER 2026
+This update is appended to the existing canonical master archive. All earlier project history is retained.
+
+## Universal Word Converter — current direction
+- This is part of InfoJano: https://github.com/barsulkhan/InfoJano
+- User wants ONE Universal Word Converter app, not three separate apps. Within it, users choose PDF, JPG or PNG output.
+- User reported that the Convert option/button was not appearing. This remains the immediate blocking issue until the live interface is checked.
+- DOCX test files supplied by the user:
+  - Memo No bdo2.docx
+  - Memo No bdo4.docx
+  - NON AVAILABILITY CERTIFICATE.docx
+  - BOHMTo whom it may concern.docx
+- Earlier four-page test file: InfoJano_Word_Converter_Test_4_Pages.docx.
+- Intended feature scope: DOCX to PDF/JPG/PNG, preview and page selection, DPI/quality controls, ZIP output, browser-side processing, 30 MB limit. Legacy .doc is unsupported. Do not claim these functions are fully working until tested.
+
+## Recent GitHub source commits inspected on 6 November
+- dad9fd55273e85f2d7972a9ccab26d99198fafd3 — wait for Word preview libraries after file selection (word-converter.js).
+- bb08d812f8a1aeea511ebb2c992da83c74b9a4de — load Word converter app before preview libraries (word-converter.html).
+- 307769679e98cf5a1d712c6692b2444ccd7acba6 — service-worker cache v229 (sw.js).
+- 19a3dc3922099304a98d17b07e75b831b9b29fe9 — refresh Word converter script cache v230 (word-converter.html).
+- 747138b38eb1c48fd7f3c01f761bfcd15ff22081 — refresh Word converter cache v230 (sw.js).
+- Earlier reported abbreviated hashes: 3202d76 (Word fix), 80a96c1 (service worker), a934a61 (master archive). Verify full hashes before using them in technical operations.
+- These source commits address script/library loading and cache versioning; they do not prove the Convert button appears or that conversion works in a real browser.
+
+## Testing and deployment status
+- User shared screenshots and asked whether the page was live because expected controls were not visible. The live Convert-button issue remains unresolved pending a direct check.
+- Use the four supplied DOCX files and the earlier four-page test file after the UI is ready. Test PDF, JPG and PNG downloads, multi-page preview/page selection, file size handling, DPI/quality and ZIP output as applicable. Inspect actual outputs.
+- Latest cache value found in recent commits: v230. Re-fetch sw.js before any further cache change.
+- Latest v230 Actions/Pages deployment was not independently confirmed during this handoff. Check current Actions and live page before saying deployed.
+- Keep the single Universal Word Converter with PDF/JPG/PNG choices; do not split into three separate apps.
+
+## Working rules and protections
+- User works from Android; give simple Bengali instructions and copyable links. Take the lead on technical decisions and ask only for genuinely missing information.
+- Inspect current source before editing; make the smallest targeted fix; re-fetch changed files; check Actions; then test the live page.
+- Clearly distinguish source committed, deployment completed, live UI visible, and real conversion tested.
+- Preserve unrelated InfoJano tools, designs, PWA behavior and existing workflows.
+- Do not edit id-card-print-studio.html without explicit user permission. Preserve manual crop, front/back selection, print dimensions, PDF/JPG export and all protected workflows.
+- Keep Word Converter changes isolated to its own HTML/JS and required cache files.
+
+## Immediate next actions
+1. Fetch current word-converter.html, word-converter.js, sw.js and relevant CSS from main.
+2. Check latest GitHub Actions and Pages deployment.
+3. Inspect https://barsulkhan.github.io/InfoJano/word-converter.html and determine why Convert is missing; check script loading, preview-library readiness, runtime errors and responsive visibility.
+4. Fix only the confirmed cause. Retain one app with PDF/JPG/PNG choices.
+5. After deployment, test with all four supplied DOCX files and the four-page test document. Inspect actual PDF/JPG/PNG outputs and relevant controls.
+6. Append exact commit IDs, cache version, deployment result, test results and remaining defects to this same master file. Do not create a duplicate master.
+
+## Key links
+- Repository: https://github.com/barsulkhan/InfoJano
+- Live website: https://barsulkhan.github.io/InfoJano/
+- Universal Word Converter: https://barsulkhan.github.io/InfoJano/word-converter.html
+- GitHub Actions: https://github.com/barsulkhan/InfoJano/actions
+- Latest inspected v230 cache commit: https://github.com/barsulkhan/InfoJano/commit/747138b38eb1c48fd7f3c01f761bfcd15ff22081
+
+## Exact new-chat restart message
+“InfoJano-এর GitHub-এর Smart Master Project File InfoJano_Smart_Master_Project_LATEST_2026-10-28.md সম্পূর্ণ পড়ে শুরু থেকে ৬ নভেম্বর ২০২৬ পর্যন্ত সব কাজের ধারাবাহিকতা বুঝে নাও। আগের কোনো তথ্য আবার জিজ্ঞেস করবে না। এখন Universal Word Converter-এর কাজ চালাও—একটি অ্যাপের মধ্যেই PDF, JPG ও PNG output option থাকবে, তিনটি আলাদা অ্যাপ করবে না। Convert button কেন দেখা যাচ্ছে না সেটা আগে current GitHub source, latest Actions/Pages deployment এবং live page দেখে খুঁজে বের করো। সর্বশেষ source-এ Word converter script/library loading fix এবং service-worker cache v230 আছে—আগে বর্তমান অবস্থা যাচাই করবে। আমার দেওয়া Memo No bdo2.docx, Memo No bdo4.docx, NON AVAILABILITY CERTIFICATE.docx এবং BOHMTo whom it may concern.docx দিয়ে বাস্তব conversion test করবে। কোনো কিছু live বা working বলবে না যতক্ষণ না live page এবং তৈরি হওয়া PDF/JPG/PNG ফাইল সত্যি পরীক্ষা করছ। Android থেকে সহজ বাংলায় ধাপে ধাপে কাজ চালাবে। আগের কোনো tool বা design নষ্ট করবে না এবং id-card-print-studio.html আমি স্পষ্ট অনুমতি না দিলে edit করবে না। কাজ শেষে এই একই Master Project File-এ নতুন checkpoint যোগ করবে।”
