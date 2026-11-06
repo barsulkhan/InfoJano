@@ -1921,3 +1921,7 @@ Detailed tracker is in the COMPLETE master archive. This campaign now has 6 succ
 
 ## Search Console campaign checkpoint — 6 Nov 2026
 The COMPLETE master archive contains the detailed tracker. This campaign now has 7 successful indexing request confirmations, including `qr-choice.html`; all are queued and not yet confirmed indexed. Baseline: 33 sitemap URLs and 21 indexed pages shown in Search Console. Remaining queue: `social-qr-maker.html`, `url-toolkit.html`, `savings.html`, `discount-pt-br.html`, `percentage-pt-br.html` (5 URLs). Keep the historical six earlier requests separate. Continue one URL at a time.
+
+
+## Search Console campaign checkpoint — 6 Nov 2026
+Detailed tracker is in COMPLETE master archive. This campaign has 8 successful indexing request confirmations, including `social-qr-maker.html`; queued, not yet confirmed indexed. Baseline: 33 sitemap URLs, 21 indexed pages shown. Remaining queue: `url-toolkit.html`, `savings.html`, `discount-pt-br.html`, `percentage-pt-br.html` (4 URLs). Historical earlier six requests are separate and not reverified. Continue one URL at a time.
