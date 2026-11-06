@@ -1981,3 +1981,7 @@ Hoppscotch confirmed `GET /api/links/TEST123/stats` with Authorization None retu
 
 ## Short Link API DELETE test — 6 Nov 2026
 Hoppscotch confirmed `DELETE /api/links/TEST123` with Authorization None returns HTTP 401 `{"error":"Unauthorized."}`. PASS: unauthenticated deletion blocked. Three unauthenticated security checks confirmed (POST create, GET stats, DELETE); health endpoint earlier returned staging scaffold JSON. No deletion occurred. Next: review health and test CORS/security headers; do not attempt authenticated creation while staging mode intentionally rejects it. No code/deploy change. Full details in COMPLETE archive.
+
+
+## Short Link API health test — 6 Nov 2026
+Hoppscotch `GET /health` with no auth returned HTTP 200 and `{ok:true, service:"InfoJano Short Link API", mode:"staging-scaffold"}`. PASS. Four confirmed checks total: POST unauthenticated 401, GET stats unauthenticated 401, DELETE unauthenticated 401, health 200. Next: CORS preflight for allowed GitHub Pages Origin, then disallowed Origin. Still staging; no code/deploy change. Full details in COMPLETE archive.
