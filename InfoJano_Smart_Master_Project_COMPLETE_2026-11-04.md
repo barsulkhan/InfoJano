@@ -2498,3 +2498,81 @@ Deploy the Worker and set `CLOUDCONVERT_API_KEY` as a Cloudflare Secret. Then en
 - Found local PDF export was forcing jsPDF format `a4` and fitting Letter pages into A4 with margins. Changed `word-converter.js` so the PDF page uses the measured DOCX width and height in millimetres, and the rendered page image is placed edge-to-edge at (0,0) without A4 fit/centering. This preserves the original paper dimensions instead of imposing A4. Commit: `b96ce7332704398efd176e1b6d89adf278d4345c`.
 - Service Worker cache bumped from infojano-v223 to infojano-v224; commit `91ad7626d1efb0182ca908a0b3e6fdb5e8d01710`.
 - Important: this correction addresses paper size/scaling only. It does not yet prove browser-rendered page contents are pixel-identical to Word/iLovePDF. The optional iLoveAPI route remains unavailable until the Worker is deployed and its Cloudflare secret is configured. Must test on the user's Android after cache refresh and compare output against the same DOCX before claiming complete fidelity.
+
+
+---
+
+# MASTER ARCHIVE RECONCILIATION — 6 NOVEMBER 2026
+This reconciliation was added after checking the GitHub commit history and the complete archive. It records the additional work performed on 5 November 2026 after the earlier 28 October checkpoint. Preserve all previous history; this section supersedes only older status statements where explicitly noted.
+
+## A. Important archive correction
+- The full chronological archive is `InfoJano_Smart_Master_Project_COMPLETE_2026-11-04.md`; it already contained extensive 5 Nov Word Converter work through the exact page-size correction (cache v224). Do not treat the shorter `LATEST_2026-10-28.md` as the only record of work.
+- The 5 Nov work below extends that history through cache v230. The same reconciliation summary is also appended to `InfoJano_Smart_Master_Project_LATEST_2026-10-28.md` so either master entry point points to the same current status.
+- The user explicitly accepted the single Universal Word Converter direction. Do not change the homepage icon or existing homepage design as part of this work.
+
+## B. 5 November — Word Converter backend and high-fidelity route
+- Earlier on 5 Nov, the existing browser DOCX renderer was compared with iLovePDF output. The local renderer did not faithfully preserve some complex Word elements (legacy VML line, page border, watermark scale, table scale, memo/date positions and signature placement).
+- The previous CloudConvert concept was replaced with an iLoveAPI Office-to-PDF route using the `officepdf` tool and India processing region (`in`). Worker source is `backend/word-converter/src/index.js`; deployment config is `backend/word-converter/wrangler.toml`; instructions/security notes are in `backend/word-converter/README.md`.
+- Worker name: `infojano-word-converter`. It obtains a short-lived JWT, starts the Office PDF task, uploads the DOCX, processes it, verifies the successful task status, downloads and validates the PDF signature, and returns the PDF. API key is read from Cloudflare Worker secret `ILOVEPDF_PUBLIC_KEY`; it is not embedded in frontend JavaScript.
+- The website has a collapsed optional High-Fidelity/“Layout-Preserving PDF” panel. The user must enter the HTTPS Worker URL and affirm a third-party upload consent checkbox. Consent is not remembered; the Worker URL may be remembered locally in that browser.
+- The route processes the complete DOCX; selected-page conversion is not supported by the high-fidelity route. The browser preview renderer is not an exact Microsoft Word renderer.
+- The 5 Nov security documentation explicitly requires Cloudflare rate limiting on `POST /convert` before public use. Origin/CORS restriction is not authentication and can be spoofed by non-browser clients. Keep the API key in Worker Secrets and do not publicly launch the endpoint until rate limiting is configured.
+- Privacy: the DOCX is sent to iLoveAPI only after explicit consent. Do not use this route for confidential documents unless the user has reviewed and accepted the provider's privacy/retention terms. Do not claim files are retained nowhere without checking the current provider terms.
+
+## C. 5 November — detailed GitHub commits after the earlier v224 checkpoint
+1. `d0ce914c066f6ccab9225ff39f57934845865b52` — recorded iLoveAPI integration checkpoint in the COMPLETE archive.
+2. `fd1f6a56c7f33219fea545ee82832da2c11d6cdd` — service-worker cache v222 → v223.
+3. `c9910d5f86f20fb3764f8da224c090d0a80cd2cd` — Worker validation hardened: validate iLoveAPI processing server hostname and require an explicit successful task status.
+4. `5148355230b5ca929ef442822e8c053d63cd6cbd` — frontend PDF conversion changed to require the Office-compatible route and consent.
+5. `e1d53b865a2eeb05c07577d990bdde209565deb2` — Word Converter UI/metadata integration for the Office-compatible PDF route.
+6. `15ff1f1daab4fff1a6409d5ab16d26ac04439c4f` — service-worker cache v224 → v225.
+7. `b96ce7332704398efd176e1b6d89adf278d4345c` — local PDF page size changed to use measured DOCX page width/height rather than forcing A4. This is a page-size preservation correction, not proof of full content fidelity.
+8. `91ad7626d1efb0182ca908a0b3e6fdb5e8d01710` — cache v223/v224 sequence advanced to v224 in the related page-size update; subsequent commits continue sequentially.
+9. `238f9877d1382fdb0a596b2e521b64838bc72c67` — save the HTTPS Worker URL in browser localStorage; user consent remains unchecked and must be renewed for each upload.
+10. `4c629eb43c4d88e05bf00b9098bbbc6692092be9` — cache v225 → v226.
+11. `4377ae5b9b2c8ef76274b45e2f9e4298eb850f3f` — JPG/PNG export changed to rasterize pages from the Office-converted PDF; requires explicit consent and the high-fidelity conversion route in the current code path.
+12. `ec91a0f763c7b646b4bfc6ecdcf929997b8a990c` — clarify the Office-based PDF/JPG/PNG pipeline and the third-party transfer/consent text in the UI.
+13. `49a3e4e386368c9f559c3e59387b4e1538ad8649` — cache v226 → v227.
+14. `a7a2ab66146c388cd60ca1b97859b09d42ff52a4` — repair PDF.js/ZIP library loading for JPG/PNG export and use the matching PDF.js worker URL.
+15. `d53fc54464fb8fc6d50f9a369d89f684b3cff4f0` — add cache-busting query to the Word Converter app script.
+16. `a47a0c972fc8d2ea3b496839dfbbb767d12541af` — cache v227 → v228.
+17. `bb08d812f8a1aeea511ebb2c992da83c74b9a4de` — load the Word Converter app in the corrected order before/alongside preview libraries.
+18. `307769679e98cf5a1d712c6692b2444ccd7acba6` — cache v228 → v229.
+19. `dad9fd55273e85f2d7972a9ccab26d99198fafd3` — wait for Word preview libraries after file selection.
+20. `19a3dc3922099304a98d17b07e75b831b9b29fe9` — script cache-busting update for v230.
+21. `747138b38eb1c48fd7f3c01f761bfcd15ff22081` — service-worker cache v229 → v230.
+
+## D. Worker deployment state — reconcile older notes
+- The earlier COMPLETE archive said the iLoveAPI Worker had not yet been deployed. That statement became outdated later on 5 Nov.
+- The later conversation checkpoint reported that Cloudflare Worker `infojano-word-converter` was deployed, with deployment version `fefbe2f2`, and that Origin protection was observed.
+- However, the correct iLoveAPI Project Public Key still needed to be set/verified as the Cloudflare secret `ILOVEPDF_PUBLIC_KEY`; end-to-end conversion using the actual key and the user's DOCX was still pending. Do not describe the Worker as fully operational merely because a deployment version exists.
+- The exact deployed Worker URL was not established in this GitHub reconciliation. Do not invent it. Confirm it in Cloudflare Dashboard or from the user's current Word Converter settings.
+- Latest repository source now has `CACHE_NAME = "infojano-v230"` in `sw.js`. Current fetched source hashes: `sw.js` blob `5557b0017aae1319c43834b337a68f9bfca6932e`; `word-converter.html` blob `5fb6c9aa33ac771c0f2e904ab5ddc811a26d2d7f`; `word-converter.js` blob `af33d0778c0bd188c5f00667028edf1a08dd1ca5`.
+- Current Worker source was inspected on 6 Nov. It accepts POST `/convert`, checks the exact GitHub Pages Origin, requires `ILOVEPDF_PUBLIC_KEY`, validates DOCX type and 30 MB size, validates iLoveAPI server/task/success response and PDF signature. The README requires rate limiting before public use.
+
+## E. Current Universal Word Converter behavior and known limitations
+- One app only: `word-converter.html`; format choices PDF, JPG and PNG are tabs inside the same app. Do not create separate converter apps.
+- Current code path requires the Worker URL and per-upload third-party consent before conversion; the backend returns a layout-preserving PDF. PDF output downloads that PDF; JPG/PNG output uses PDF.js to rasterize pages and JSZip for the selected image files.
+- JPG/PNG therefore also depend on the Office Worker/PDF response in the latest code path; they are not currently an independent offline-only browser export path. Verify whether this is still the intended product behavior before changing it.
+- The converter has page preview/selection, but the Office route requires all pages selected. It checks the Office PDF page count against the browser preview page count before image export to avoid wrong page mapping.
+- The current script explicitly loads PDF.js and JSZip for image export. The earlier reported missing Convert button / upload-preview issue prompted script loading order, cache busting, and wait-for-library fixes. These source fixes must still be visually tested on the live Android browser.
+- Current source advertises DOCX only and a 30 MB maximum. Legacy binary .doc is not supported.
+
+## F. Real test documents and pending verification
+- User-supplied test files in the current work: `Memo No bdo2.docx`, `Memo No bdo4.docx`, `NON AVAILABILITY CERTIFICATE.docx`, `BOHMTo whom it may concern.docx`.
+- Earlier test inputs also included `BDO_Delayed_Birth_Registration_Corrected.docx`, `Memo No bdo.docx`, `BHOM.docx`, `I.docx`, and `InfoJano_Word_Converter_Test_4_Pages.docx`.
+- The earlier VML horizontal-bar investigation and page-size corrections are preserved in the sections immediately above. Do not assume the blue bar, border, watermark, signature alignment or page-size issues are fully resolved without processing the exact same source file and comparing output.
+- Pending: verify the correct iLoveAPI key secret; configure Cloudflare rate limiting before public exposure; confirm the actual Worker URL; check the latest GitHub Actions/Pages deployment; hard-refresh the live page on Android; confirm upload triggers preview and the Convert control is visible; run a real conversion for each supplied DOCX; inspect PDF page dimensions/content and JPG/PNG/ZIP outputs; compare against the same source DOCX/iLovePDF reference.
+- No end-to-end conversion success or exact visual parity is claimed in this checkpoint.
+
+## G. Immediate next-session order
+1. Read this COMPLETE archive plus the LATEST archive and the 24-tools SEO research file before starting.
+2. Verify current `sw.js`, `word-converter.html`, `word-converter.js`, Worker source/config/README and latest Actions/Pages status.
+3. In Cloudflare, verify Worker deployment, exact URL, correct `ILOVEPDF_PUBLIC_KEY` secret and rate limiting. Never ask the user to paste the key in chat.
+4. Resolve any missing Convert/upload preview control with a minimal source edit only after confirming the cause.
+5. Test with the same original DOCX files, then record actual outputs and remaining limitations.
+6. Preserve the homepage icon/design and all unrelated tools. Never modify ID Card Print Studio without explicit permission.
+7. Append future progress to both existing master files; do not replace their earlier history or create another competing master.
+
+## Exact restart instruction for a new chat
+“InfoJano-এর COMPLETE Master Archive এবং LATEST Master Archive দুটোই পড়ে ৫ নভেম্বর ২০২৬-এর সব কাজসহ সম্পূর্ণ ইতিহাস মিলিয়ে নাও। বিশেষ করে Universal Word Converter-এর iLoveAPI Office-to-PDF Worker, Cloudflare deployment version fefbe2f2, ILOVEPDF_PUBLIC_KEY secret, rate-limit security, PDF/JPG/PNG pipeline এবং cache v230-এর সর্বশেষ অবস্থা যাচাই করো। Worker deploy হয়েছে বলে ধরে নেবে না যে conversion কাজ করছে—সঠিক secret ও real DOCX conversion test বাকি। প্রথমে live GitHub Pages/Actions ও Cloudflare Worker status পরীক্ষা করবে। একটি Universal Word Converter থাকবে, তিনটি আলাদা app নয়। আমার DOCX ফাইলগুলো দিয়ে বাস্তব output পরীক্ষা করবে। Android থেকে সহজ বাংলায় চালাবে, homepage icon/design বা অন্য tool নষ্ট করবে না, এবং id-card-print-studio.html আমার অনুমতি ছাড়া edit করবে না। প্রতিটি কাজ শেষে এই একই দুই Master Archive আপডেট করবে।”
