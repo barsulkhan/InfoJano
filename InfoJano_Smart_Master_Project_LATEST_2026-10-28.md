@@ -1945,3 +1945,7 @@ The 12-URL shortlist from the 33-URL sitemap has now been inspected and all 12 h
 
 ## Search Console sitemap diagnosis — 6 Nov 2026
 GSC screenshots show `/sitemap.xml` Last read Nov 4, 2026, 0 discovered pages, red “Sitemap could not be read”; Submitted Sitemaps lists both `/sitemap.xml` (Nov 4) and `/sitemap.txt` (Oct 17) as Type Unknown / “Couldn't fetch” / 0 pages. GitHub source `sitemap.xml` is structurally valid XML with 33 URLs; `robots.txt` allows crawling and points to `https://barsulkhan.github.io/InfoJano/sitemap.xml`. Live Pages delivery still unverified. Next: user taps “OPEN SITEMAP” on GSC detail and shares what loads. Do not delete or resubmit duplicate sitemaps until diagnosis. Full detail in COMPLETE archive.
+
+
+## Sitemap browser verification — 6 Nov 2026
+User opened the live `sitemap.xml` from GSC; screenshot shows valid XML tree and InfoJano URLs. Browser accessibility confirmed, but Googlebot access not yet confirmed. GSC still reports Sitemap could not be read / Couldn't fetch, 0 discovered pages. Next: inspect exact `https://barsulkhan.github.io/InfoJano/sitemap.xml` in URL Inspection, click TEST LIVE URL, expand Page availability and share “Crawl allowed?” and “Page fetch” values. Do not delete/resubmit duplicates until this test. Detailed checkpoint in COMPLETE archive.
