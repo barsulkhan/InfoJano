@@ -1913,3 +1913,7 @@ Confirmed additional 5 Nov work:
 - Current GitHub source fetched on 6 Nov: `sw.js` cache v230; Word Converter HTML/JS updated. Source commits do not prove the live page or end-to-end conversion passed.
 
 New-chat rule: read BOTH this LATEST file and the COMPLETE archive. Continue from the COMPLETE archive's 6 Nov reconciliation, not from the older Word Converter-only note above. Preserve homepage icon/design and all unrelated tools; do not edit ID Card Print Studio without explicit permission.
+
+
+## Search Console campaign checkpoint — 6 Nov 2026
+Detailed tracker is in the COMPLETE master archive. This campaign now has 6 successful Indexing Request confirmations: image-to-pdf.html, pdf-to-jpg.html, extract-pdf-pages.html, word-converter.html, document-studio.html, number-to-words.html. These are queued, not yet confirmed indexed. Baseline sitemap: 33 URLs; indexed report screenshot: 21 pages. Remaining queue: qr-choice.html, social-qr-maker.html, url-toolkit.html, savings.html, discount-pt-br.html, percentage-pt-br.html (6 URLs). Historical earlier 6 requests are separate and not reverified. Continue one URL at a time; keep requests separate from actual indexed count.
