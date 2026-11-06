@@ -1933,3 +1933,7 @@ Detailed tracker is in COMPLETE master archive. This campaign now has 9 successf
 
 ## Search Console campaign checkpoint — 6 Nov 2026
 Detailed tracker is in COMPLETE master archive. This campaign has 10 successful indexing request confirmations, including `savings.html`; queued, not yet confirmed indexed. Baseline: 33 sitemap URLs, 21 indexed pages shown. Remaining queue: `discount-pt-br.html`, `percentage-pt-br.html` (2 URLs). Historical earlier six requests are separate and not reverified. Continue one URL at a time.
+
+
+## Search Console campaign checkpoint — 6 Nov 2026
+Detailed tracker is in COMPLETE master archive. This campaign has 11 successful indexing request confirmations, including `discount-pt-br.html`; queued, not yet confirmed indexed. Baseline: 33 sitemap URLs, 21 indexed pages shown. Remaining queue: `percentage-pt-br.html` (1 URL). Historical earlier six requests are separate and not reverified. Continue one URL at a time.
