@@ -1985,3 +1985,11 @@ Hoppscotch confirmed `DELETE /api/links/TEST123` with Authorization None returns
 
 ## Short Link API health test — 6 Nov 2026
 Hoppscotch `GET /health` with no auth returned HTTP 200 and `{ok:true, service:"InfoJano Short Link API", mode:"staging-scaffold"}`. PASS. Four confirmed checks total: POST unauthenticated 401, GET stats unauthenticated 401, DELETE unauthenticated 401, health 200. Next: CORS preflight for allowed GitHub Pages Origin, then disallowed Origin. Still staging; no code/deploy change. Full details in COMPLETE archive.
+
+## Short Link API latest checkpoint — 6 Nov 2026
+- Hoppscotch OPTIONS /api/links using the intended GitHub Pages Origin and requested POST + authorization/content-type headers returned HTTP 204 No Content.
+- This confirms an HTTP OPTIONS response only. Response CORS headers still need inspection; verify Access-Control-Allow-Origin, Access-Control-Allow-Methods, and Access-Control-Allow-Headers, then test a disallowed Origin.
+- Previous confirmed tests remain: health 200; unauthenticated POST create 401 (staging restriction); unauthenticated stats 401; unauthenticated DELETE 401.
+- A Bearer admin token was visible in a screenshot; rotate ADMIN_API_TOKEN before authenticated tests. Never store or share the token value in chat/archive.
+- Keep the Worker in staging. Authenticated flows, D1-backed behavior, redirect, rate limits, SSRF/DNS-rebinding protections and production-domain readiness remain unverified.
+- Next chat should continue from the COMPLETE archive's latest Short Link API test log and inspect OPTIONS response headers before changing code.
