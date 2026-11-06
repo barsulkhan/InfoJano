@@ -2649,3 +2649,24 @@ User screenshot confirms Hoppscotch request method `DELETE`, path `/api/links/TE
 
 ## Short Link API health endpoint test — 6 Nov 2026 (10:01 PM IST)
 User screenshot confirms Hoppscotch `GET /health` with Authorization None returned HTTP `200 OK` and JSON `{ "ok": true, "service": "InfoJano Short Link API", "mode": "staging-scaffold" }`. PASS: health endpoint responds. It explicitly remains in staging-scaffold mode; link creation is intentionally restricted. Cumulative confirmed API checks: 4 (POST unauthenticated 401, GET stats unauthenticated 401, DELETE unauthenticated 401, GET health 200). Next test: inspect CORS/preflight response using OPTIONS to `/api/links` with Origin `https://barsulkhan.github.io`, Access-Control-Request-Method `POST`, and Access-Control-Request-Headers `authorization,content-type`; expected successful preflight and allow-origin exactly the GitHub Pages origin. Then test disallowed Origin is not granted. No code/config/secret/deployment change.
+
+## Short Link API CORS preflight test — 6 Nov 2026 (11:16 AM session)
+User configured a Hoppscotch OPTIONS request to the Short Link API /api/links endpoint with intended preflight headers: Origin https://barsulkhan.github.io, Access-Control-Request-Method POST, and Access-Control-Request-Headers authorization,content-type. The request returned HTTP 204 No Content. Record this as a successful HTTP OPTIONS response only. The screenshot does not clearly expose the response headers, and the request-header rows were visually cramped/truncated on the mobile screen; therefore do NOT yet claim that Access-Control-Allow-Origin, Access-Control-Allow-Methods, or Access-Control-Allow-Headers are correct. Next inspect Hoppscotch response Headers and confirm those three response headers, with allow-origin exactly https://barsulkhan.github.io; then repeat OPTIONS using a deliberately disallowed Origin and confirm it is not granted. The JSON Body still appeared in the editor, but OPTIONS preflight does not use that JSON body. No Worker source, config, D1, secret or deployment was changed by this test.
+
+### Current Short Link API test ledger (confirmed)
+- GET /health without auth: HTTP 200; response identifies InfoJano Short Link API, mode staging-scaffold.
+- POST /api/links without auth: HTTP 401; staging-phase creation restriction.
+- GET /api/links/TEST123/stats without auth: HTTP 401.
+- DELETE /api/links/TEST123 without auth: HTTP 401; no deletion.
+- OPTIONS /api/links with the intended GitHub Pages preflight request: HTTP 204 No Content; response CORS headers still need inspection.
+- Authenticated create/redirect/stats/disable flows are not verified. Do not remove the staging lock or launch publicly.
+
+### Credential safety
+A Bearer-style admin token value was visible in a Hoppscotch screenshot during setup. Treat that token as potentially exposed: rotate ADMIN_API_TOKEN in Cloudflare before any authenticated testing, update any private client copy securely, and never paste the real token into ChatGPT, screenshots, GitHub files, or the master archive. Store only the secret name and rotation status in project notes, never its value.
+
+### Immediate next actions
+1. In Hoppscotch, keep method OPTIONS and inspect the response Headers tab for Access-Control-Allow-Origin, Access-Control-Allow-Methods, and Access-Control-Allow-Headers.
+2. Confirm allowed origin is exactly https://barsulkhan.github.io, and requested methods/headers are allowed.
+3. Run a second OPTIONS request with a deliberately different Origin; confirm no permissive wildcard or grant appears.
+4. Rotate the potentially exposed ADMIN_API_TOKEN before any future authenticated API test. Do not reveal the new token in chat.
+5. Keep staging mode; later review rate limiting, hostname DNS resolution/rebinding, private-network/SSRF protections, abuse controls, and a verified production short domain before launch.
