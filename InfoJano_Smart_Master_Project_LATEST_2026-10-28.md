@@ -1937,3 +1937,7 @@ Detailed tracker is in COMPLETE master archive. This campaign has 10 successful 
 
 ## Search Console campaign checkpoint — 6 Nov 2026
 Detailed tracker is in COMPLETE master archive. This campaign has 11 successful indexing request confirmations, including `discount-pt-br.html`; queued, not yet confirmed indexed. Baseline: 33 sitemap URLs, 21 indexed pages shown. Remaining queue: `percentage-pt-br.html` (1 URL). Historical earlier six requests are separate and not reverified. Continue one URL at a time.
+
+
+## Search Console campaign completion checkpoint — 6 Nov 2026
+The 12-URL shortlist from the 33-URL sitemap has now been inspected and all 12 have explicit Google “Indexing requested” success confirmations. URLs: `image-to-pdf.html`, `pdf-to-jpg.html`, `extract-pdf-pages.html`, `word-converter.html`, `document-studio.html`, `number-to-words.html`, `qr-choice.html`, `social-qr-maker.html`, `url-toolkit.html`, `savings.html`, `discount-pt-br.html`, `percentage-pt-br.html`. Baseline Search Console screenshot showed 21 indexed pages. All 12 are queued, not yet confirmed indexed; actual post-request indexed count remains unknown. The historical earlier six requests are separate and not reverified. Detailed tracker is in COMPLETE master archive. Next phase: later re-check actual indexing statuses and inspect Sitemap report because the individual inspections showed “No referring sitemaps detected”.
