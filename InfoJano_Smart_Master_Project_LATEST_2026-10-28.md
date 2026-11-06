@@ -1957,3 +1957,7 @@ GSC inspection of `https://barsulkhan.github.io/InfoJano/sitemap.xml` shows stor
 
 ## Sitemap LIVE TEST passed — 6 Nov 2026
 GSC LIVE TEST for `https://barsulkhan.github.io/InfoJano/sitemap.xml` (Nov 6, 9:27 PM) shows green “URL is available to Google” and “Page can be indexed”. Live fetch is therefore accessible. Next: Search Console > Sitemaps > Add a new sitemap; enter only `sitemap.xml` and Submit once. Do not resubmit `sitemap.txt` or repeatedly Request Indexing for the sitemap file. Then share updated row/status and discovered pages. 12 content-page requests remain queued, not yet confirmed indexed; baseline 21 indexed pages; sitemap has 33 URLs. Full checkpoint in COMPLETE archive.
+
+
+## Sitemap resubmission checkpoint — 6 Nov 2026
+GSC green toast confirms `sitemap.xml` submitted successfully on Nov 6 after Live Test passed. But table still shows Type Unknown / `Couldn't fetch` / 0 discovered pages; detail view still says Sitemap could not be read. Submission accepted is not equivalent to successful fetch/processing. Wait, refresh later, verify status and discovered pages; do not repeatedly resubmit. 12 content URL requests queued, not confirmed indexed; 21 indexed baseline; 33 URLs in sitemap. Full detail in COMPLETE archive.
