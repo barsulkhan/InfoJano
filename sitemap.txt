@@ -29,3 +29,13 @@ https://barsulkhan.github.io/InfoJano/savings.html
 https://barsulkhan.github.io/InfoJano/id-card-print-studio.html
 https://barsulkhan.github.io/InfoJano/discount-pt-br.html
 https://barsulkhan.github.io/InfoJano/percentage-pt-br.html
+https://barsulkhan.github.io/InfoJano/url-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/text-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/contact-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/phone-number-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/email-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/sms-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/google-maps-location-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/vcard-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/custom-qr-code-generator.html
+https://barsulkhan.github.io/InfoJano/barcode-scanner-online.html
