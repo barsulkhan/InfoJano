@@ -67,3 +67,7 @@ Variants: make multiple QR codes, QR code from CSV, QR code from Excel, batch QR
 - upi-payment-qr-code-generator.html: UPI payment QR with explicit payment safety caveat.
 - wifi-qr-code-generator.html: Wi-Fi sharing QR and network privacy.
 Each page points to the existing QR Maker mode rather than duplicating the generator. Keep copy accurate; these pages do not process messages or payments.
+
+### 11. QR scanner intent
+- qr-scanner.html: online QR scanner, scan QR from camera, scan QR from photo/screenshot, decode QR safely.
+- Scanner shows decoded text and never auto-opens destinations. Camera requires HTTPS and explicit permission action.
