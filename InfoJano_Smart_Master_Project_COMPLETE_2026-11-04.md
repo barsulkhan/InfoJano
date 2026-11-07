@@ -2818,3 +2818,13 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Fixed the declaration in whatsapp-qr-code-generator.html to --shadow:0 18px 50px rgba(13,39,31,.10)}. Verified CSS curly braces are balanced in the updated source.
 - Bumped service-worker cache from infojano-v234 to infojano-v235 so clients can refresh the corrected page.
 - GitHub Pages deployment for the previous commit succeeded, and its artifact contained the page; the failure was CSS parsing, not missing page output. The CSS fix is now committed to main; wait for the new Pages deployment to succeed, then retest on Android Chrome. Do not mark the page or QR Toolkit fully verified until the corrected live page and remaining QR Toolkit device tests pass.
+
+
+## 8 November 2026 — WhatsApp QR landing page visual refinement
+- Refined the three-step cards with stronger hierarchy, softer gradients, green number tiles, hover lift and cleaner desktop spacing.
+- Refined the feature band with a subtle patterned background, improved card depth, icons and hover feedback.
+- Refined use-case cards with green edge accents, improved spacing and hover elevation.
+- Refined FAQ into a contained panel with clearer open/closed states and better answer spacing; improved related QR tools panel with depth, glow and interactive links.
+- Improved wide desktop/laptop container sizing and intermediate tablet layouts; retained compact mobile breakpoints. Preserved the animated heading text effect.
+- Added restrained floating animation to phone and QR illustration and a soft pulse to the QR badge; animations are disabled for reduced-motion users and on small mobile screens to avoid distraction.
+- Service worker cache bumped from v235 to v236. Source CSS braces checked. Await Pages deployment and Android/desktop browser validation before marking visually verified.
