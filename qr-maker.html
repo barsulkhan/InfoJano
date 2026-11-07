@@ -394,7 +394,21 @@ main .ij-qr-brand{display:none!important}
   ]
 }
 </script>
-</head>
+
+<style>
+/* Phase 1 structured QR forms and scannability controls */
+.ij-qr-types{grid-template-columns:repeat(6,minmax(0,1fr))}
+#ij-qr-structured{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0;padding:15px;border:1px solid #dbe7fa;border-radius:15px;background:#f8fbff}
+#ij-qr-structured[hidden]{display:none!important}
+#ij-qr-structured>strong,#ij-qr-structured>small{grid-column:1/-1}
+#ij-qr-structured>strong{font-size:16px;color:#17305b}
+#ij-qr-structured>small{font-size:12px;line-height:1.5;color:#5b6f91}
+.ij-qr-structured-field{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;color:#263957}
+.ij-qr-structured-field input,.ij-qr-structured-field textarea{width:100%;min-width:0;padding:11px 12px;border:1px solid #ccd8ea;border-radius:10px;background:#fff;color:#182a49;font:inherit;font-weight:500}
+.ij-qr-structured-field textarea{min-height:76px;resize:vertical}
+@media(max-width:600px){.ij-qr-types{grid-template-columns:repeat(3,minmax(0,1fr))!important}#ij-qr-structured{grid-template-columns:1fr;padding:12px}.ij-qr-options{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+</style>
+\n</head>
 <body>
 
 <main>
@@ -422,7 +436,7 @@ main .ij-qr-brand{display:none!important}
 <div class="ij-qr-options">
 <label>QR Color<select id="ij-qr-color"><option value="#6b16c9">🟣 Purple</option><option value="#075df2">🔵 Blue</option><option value="#111827">⚫ Black</option><option value="#078b50">🟢 Green</option><option value="#e11d48">🔴 Red</option></select></label>
 <label>Background<select id="ij-qr-bg"><option value="#ffffff">White</option><option value="#f0f6ff">Light Blue</option><option value="#fff7ed">Cream</option></select></label>
-<label>Style<select id="ij-qr-size"><option value="512">512 × 512</option><option value="384">384 × 384</option><option value="256">256 × 256</option></select></label>
+<label>Style<select id="ij-qr-size"><option value="512">512 × 512</option><option value="384">384 × 384</option><option value="256">256 × 256</option></select></label><label>Error correction<select id="ij-qr-error"><option value="H" selected>High (H)</option><option value="Q">Quartile (Q)</option><option value="M">Medium (M)</option></select></label>
 </div>
 <div class="ij-qr-logo-row"><label for="ij-qr-logo-file">▧ Add Logo (Center) <small>Optional</small></label><input id="ij-qr-logo-file" type="file" accept="image/*"></div>
 </div>
@@ -629,7 +643,7 @@ window.makeQR=async function(){
   const light=document.getElementById('ij-qr-bg').value||'#ffffff';
   const workingSize=400;
   holder=document.createElement('div');holder.style.cssText='position:absolute;left:-10000px;top:0;width:400px;height:400px;overflow:hidden';document.body.appendChild(holder);
-  const instance=new QRCode(holder,{text:value,width:workingSize,height:workingSize,colorDark:dark,colorLight:light,correctLevel:QRCode.CorrectLevel.H});
+  const contrast=window.ijContrastRatio?window.ijContrastRatio(dark,light):21;\n  if(contrast<4.5)throw new Error('Low color contrast. Choose a darker QR color or lighter background (minimum 4.5:1).');\n  const level=document.getElementById('ij-qr-error')?.value||'H';\n  const correction=QRCode.CorrectLevel[level]||QRCode.CorrectLevel.H;\n  const instance=new QRCode(holder,{text:value,width:workingSize,height:workingSize,colorDark:dark,colorLight:light,correctLevel:correction});
   const source=holder.querySelector('canvas');if(!source)throw new Error('QR canvas unavailable');
   const modules=instance._oQRCode&&instance._oQRCode.getModuleCount?instance._oQRCode.getModuleCount():33;
   const quiet=Math.ceil((workingSize/modules)*4),canvas=document.createElement('canvas');
@@ -640,7 +654,7 @@ window.makeQR=async function(){
   const logoFile=document.getElementById('ij-qr-logo-file').files[0];
   if(logoFile){
    const logo=await new Promise((resolve,reject)=>{const im=new Image(),url=URL.createObjectURL(logoFile);im.onload=()=>{URL.revokeObjectURL(url);resolve(im)};im.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Logo failed'))};im.src=url;});
-   const side=Math.floor(canvas.width*.19),x=Math.floor((canvas.width-side)/2),y=x,back=Math.floor(side*1.22);
+   const side=Math.floor(canvas.width*.15),x=Math.floor((canvas.width-side)/2),y=x,back=Math.floor(side*1.22);
    ctx.fillStyle=light;ctx.beginPath();ctx.roundRect(x-(back-side)/2,y-(back-side)/2,back,back,Math.max(8,back*.16));ctx.fill();
    ctx.drawImage(logo,x,y,side,side);
   }
