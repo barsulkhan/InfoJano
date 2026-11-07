@@ -733,7 +733,22 @@ window.makeQR=async function(){
 };
 </script>
 <script>
-(function(){try{const saved=sessionStorage.getItem('infojano-qr-prefill');if(saved){const field=document.getElementById('content');if(field){field.value=saved;sessionStorage.removeItem('infojano-qr-prefill');const label=document.getElementById('ij-qr-input-label');if(label)label.textContent='Scanned content — review before generating';}}}catch(e){}})();
+(function(){
+ try{
+  const params=new URLSearchParams(window.location.search);
+  const requestedType=(params.get('type')||'').toLowerCase();
+  const allowedTypes=['link','text','wifi','contact','phone','more','whatsapp','upi','email','sms','location','vcard'];
+  if(allowedTypes.includes(requestedType)){
+   const modeButton=document.querySelector('[data-qrtype="'+requestedType+'"]');
+   if(modeButton)modeButton.click();
+  }
+  const saved=sessionStorage.getItem('infojano-qr-prefill');
+  if(saved){
+   const field=document.getElementById('content');
+   if(field){field.value=saved;sessionStorage.removeItem('infojano-qr-prefill');const label=document.getElementById('ij-qr-input-label');if(label)label.textContent='Scanned content — review before generating';}
+  }
+ }catch(e){}
+})();
 </script>
 <script src="/InfoJano/install.js"></script>
 </body>
