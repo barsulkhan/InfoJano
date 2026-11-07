@@ -413,9 +413,10 @@ main .ij-qr-brand{display:none!important}
 <h2><span>▦</span> Create Your QR Code</h2>
 <label class="ij-qr-label">Select QR Type</label>
 <div class="ij-qr-types" role="group" aria-label="QR content type">
-<button type="button" class="active" data-qrtype="link">🔗<small>Link / URL</small></button><button type="button" data-qrtype="text">T<small>Text</small></button><button type="button" data-qrtype="wifi">⌁<small>WiFi</small></button><button type="button" data-qrtype="contact">♙<small>Contact</small></button><button type="button" data-qrtype="phone">☎<small>Phone</small></button><button type="button" data-qrtype="more">▦<small>More</small></button>
+<button type="button" class="active" data-qrtype="link">🔗<small>Link / URL</small></button><button type="button" data-qrtype="text">T<small>Text</small></button><button type="button" data-qrtype="wifi">⌁<small>WiFi</small></button><button type="button" data-qrtype="contact">♙<small>Contact</small></button><button type="button" data-qrtype="phone">☎<small>Phone</small></button><button type="button" data-qrtype="more">▦<small>More</small></button><button type="button" data-qrtype="whatsapp">◉<small>WhatsApp</small></button><button type="button" data-qrtype="upi">₹<small>UPI Pay</small></button><button type="button" data-qrtype="email">✉<small>Email</small></button><button type="button" data-qrtype="sms">▤<small>SMS</small></button><button type="button" data-qrtype="location">⌖<small>Location</small></button><button type="button" data-qrtype="vcard">♙<small>vCard</small></button>
 </div>
 <div class="ij-qr-field"><label for="content" id="ij-qr-input-label">Enter URL</label><textarea id="content" placeholder="https://www.example.com" rows="2"></textarea><small id="ij-qr-hint">Paste the full website address you want people to open.</small></div>
+<div id="ij-qr-structured" class="ij-qr-field" hidden aria-live="polite"></div>
 <div class="ij-qr-custom">
 <h3>🎨 Customize Your QR Code <small>(Optional)</small></h3>
 <div class="ij-qr-options">
@@ -616,7 +617,7 @@ button.textContent='Generate QR Code';
  }));
 })();
 window.makeQR=async function(){
- const value=document.getElementById('content').value.trim(),box=document.getElementById('qr'),button=document.getElementById('generate-button');
+ const box=document.getElementById('qr'),button=document.getElementById('generate-button');\n let value;try{value=window.ijGetQRPayload?window.ijGetQRPayload():document.getElementById('content').value.trim();}catch(error){box.textContent=error.message;return;}
  box.replaceChildren();
  if(!value){box.textContent='Please enter your QR content first.';return;}
  if(!window.QRCode){box.textContent='The QR library did not load. Refresh the page and try again.';return;}
