@@ -61,3 +61,9 @@ Variants: make multiple QR codes, QR code from CSV, QR code from Excel, batch QR
 - Do not add a meta keywords tag as a ranking tactic. Put terms naturally in visible copy and page metadata.
 - Never claim unsupported features, scan guarantees, payment processing, dynamic tracking or analytics.
 - Search-volume, competition and traffic estimates remain unverified until checked in first-party/keyword tools.
+
+### 10. Dedicated intent landing pages created in the QR tools branch
+- whatsapp-qr-code-generator.html: WhatsApp chat QR, pre-filled message and customer contact intent.
+- upi-payment-qr-code-generator.html: UPI payment QR with explicit payment safety caveat.
+- wifi-qr-code-generator.html: Wi-Fi sharing QR and network privacy.
+Each page points to the existing QR Maker mode rather than duplicating the generator. Keep copy accurate; these pages do not process messages or payments.
