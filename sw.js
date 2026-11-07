@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v230";
+const CACHE_NAME = "infojano-v231";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -70,6 +70,11 @@ const ASSETS = [
   "/InfoJano/percentage-pt-br.html",
   "/InfoJano/qr-choice.html",
   "/InfoJano/qr-maker.html",
+  "/InfoJano/bulk-qr-generator.html",
+  "/InfoJano/qr-scanner.html",
+  "/InfoJano/whatsapp-qr-code-generator.html",
+  "/InfoJano/upi-payment-qr-code-generator.html",
+  "/InfoJano/wifi-qr-code-generator.html",
   "/InfoJano/social-qr-maker.html",
   "/InfoJano/qr-code-generator.min.js",
   "/InfoJano/savings.html",
