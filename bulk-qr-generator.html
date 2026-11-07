@@ -73,67 +73,136 @@ section.info{margin-top:18px;background:#fff;border:1px solid var(--line);border
 <script src="/InfoJano/jspdf.umd.min.js"></script>
 <script>
 (function(){
-const input=document.getElementById('bulk-input'),fileInput=document.getElementById('csv-file'),zipButton=document.getElementById('zip'),pdfButton=document.getElementById('pdf'),mode=document.getElementById('input-mode'),status=document.getElementById('status'),results=document.getElementById('results'),generate=document.getElementById('generate');
+const input=document.getElementById('bulk-input');
+const fileInput=document.getElementById('csv-file');
+const zipButton=document.getElementById('zip');
+const pdfButton=document.getElementById('pdf');
+const mode=document.getElementById('input-mode');
+const status=document.getElementById('status');
+const results=document.getElementById('results');
+const generate=document.getElementById('generate');
+let generated=[];
+
 function parseCSV(text){
  const rows=[];let row=[],field='',quoted=false;
- for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];
-  if(c==='"'&&quoted&&n==='"'){field+='"';i++;}
-  else if(c==='"'){quoted=!quoted;}
-  else if(c===','&&!quoted){row.push(field);field='';}
-  else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&n==='\n')i++;row.push(field);if(row.some(v=>v.trim()))rows.push(row);row=[];field='';}
-  else field+=c;
+ for(let i=0;i<text.length;i++){
+  const ch=text[i],next=text[i+1];
+  if(ch==='"'&&quoted&&next==='"'){field+='"';i++;}
+  else if(ch==='"'){quoted=!quoted;}
+  else if(ch===','&&!quoted){row.push(field);field='';}
+  else if((ch==='\n'||ch==='\r')&&!quoted){if(ch==='\r'&&next==='\n')i++;row.push(field);if(row.some(v=>v.trim()))rows.push(row);row=[];field='';}
+  else field+=ch;
  }
  row.push(field);if(row.some(v=>v.trim()))rows.push(row);
  if(!rows.length)return [];
  const headers=rows[0].map(v=>v.trim().toLowerCase());
- const idx=headers.findIndex(v=>['value','url','link','text','data'].includes(v));
- const start=idx>=0?1:0, column=idx>=0?idx:0;
- return rows.slice(start).map(r=>String(r[column]||'').trim()).filter(Boolean);
+ const column=headers.findIndex(v=>['value','url','link','text','data'].includes(v));
+ const startRow=column>=0?1:0,selectedColumn=column>=0?column:0;
+ return rows.slice(startRow).map(r=>String(r[selectedColumn]||'').trim()).filter(Boolean);
 }
-let generated=[];
 function getValues(){
  const raw=input.value.trim();if(!raw)return [];
  return mode.value==='csv'?parseCSV(raw):raw.split(/\r?\n/).map(v=>v.trim()).filter(Boolean);
 }
 function createQR(value){
  return new Promise((resolve,reject)=>{
-  const host=document.createElement('div');host.style.cssText='position:fixed;left:-10000px;top:0;width:320px;height:320px;overflow:hidden';document.body.appendChild(host);
+  const host=document.createElement('div');
+  host.style.cssText='position:fixed;left:-10000px;top:0;width:320px;height:320px;overflow:hidden';
+  document.body.appendChild(host);
   try{
-   new QRCode(host,{text:value,width:320,height:320,colorDark:'#111827',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
+   const qr=new QRCode(host,{text:value,width:320,height:320,colorDark:'#111827',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
    const source=host.querySelector('canvas');
    if(!source){host.remove();reject(new Error('QR image could not be generated'));return;}
-   const quiet=Math.ceil((320/Math.max(21,33))*4),canvas=document.createElement('canvas');canvas.width=320+quiet*2;canvas.height=320+quiet*2;
-   const ctx=canvas.getContext('2d');if(!ctx){host.remove();reject(new Error('Canvas is unavailable'));return;}
+   const modules=qr._oQRCode&&qr._oQRCode.getModuleCount?qr._oQRCode.getModuleCount():33;
+   const quiet=Math.ceil((320/modules)*4);
+   const canvas=document.createElement('canvas');canvas.width=320+quiet*2;canvas.height=320+quiet*2;
+   const ctx=canvas.getContext('2d');
+   if(!ctx){host.remove();reject(new Error('Canvas is unavailable'));return;}
    ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.imageSmoothingEnabled=false;ctx.drawImage(source,quiet,quiet,320,320);
-   canvas.toBlob(blob=>{host.remove();if(!blob){reject(new Error('PNG export failed'));return;}resolve(URL.createObjectURL(blob));},'image/png');
-  }catch(e){host.remove();reject(e);}
+   canvas.toBlob(blob=>{host.remove();if(!blob){reject(new Error('PNG export failed'));return;}resolve(blob);},'image/png');
+  }catch(error){host.remove();reject(error);}
  });
+}
+function saveBlob(blob,name){
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function crc32(bytes){
+ let crc=-1;
+ for(let i=0;i<bytes.length;i++){crc^=bytes[i];for(let j=0;j<8;j++)crc=(crc>>>1)^((crc&1)?0xedb88320:0);}
+ return (crc^-1)>>>0;
+}
+function u16(v){return [v&255,(v>>>8)&255];}
+function u32(v){return [v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255];}
+function makeZip(files){
+ const enc=new TextEncoder(),local=[],central=[];let offset=0;
+ for(const file of files){
+  const name=enc.encode(file.name),data=new Uint8Array(file.bytes),crc=crc32(data);
+  const localHeader=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...name]);
+  local.push(localHeader,data);
+  const centralHeader=new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(offset),...name]);
+  central.push(centralHeader);offset+=localHeader.length+data.length;
+ }
+ const centralSize=central.reduce((sum,item)=>sum+item.length,0),count=files.length;
+ const end=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(count),...u16(count),...u32(centralSize),...u32(offset),...u16(0)]);
+ return new Blob([...local,...central,end],{type:'application/zip'});
 }
 generate.addEventListener('click',async()=>{
  const values=getValues();
- if(!values.length){status.textContent='Paste at least one value first.';return;}
+ if(!values.length){status.textContent='Paste or upload at least one value first.';return;}
  if(values.length>50){status.textContent='Please use 50 values or fewer per batch.';return;}
  if(!window.QRCode){status.textContent='QR library did not load. Refresh the page and try again.';return;}
- generate.disabled=true;generate.textContent='Generating…';results.replaceChildren();
+ generated=[];results.replaceChildren();zipButton.disabled=true;pdfButton.disabled=true;
+ generate.disabled=true;generate.textContent='Generating…';
  let success=0;
  for(let i=0;i<values.length;i++){
   const value=values[i],card=document.createElement('article');card.className='item';
-  const title=document.createElement('strong');title.textContent=value.length>48?value.slice(0,45)+'…':value;card.appendChild(title);
+  const title=document.createElement('strong');title.textContent=value.length>48?value.slice(0,45)+'…':value;
   try{
-   const url=await createQR(value),blob=await (await fetch(url)).blob(),dataUrl=await new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(blob);});generated.push({value,url,blob,dataUrl,index:i+1});const img=document.createElement('img');img.src=url;img.alt='QR code for '+value;img.width=120;img.height=120;img.style.cssText='display:block;width:120px;height:120px;max-width:100%;object-fit:contain;margin:0 auto 8px';
-   card.insertBefore(img,title);
-   const link=document.createElement('a');link.className='download';link.href=url;link.download='InfoJano-QR-'+String(i+1).padStart(2,'0')+'.png';link.textContent='Download PNG';card.appendChild(link);success++;
-  }catch(e){const err=document.createElement('p');err.className='muted';err.textContent='Could not generate this value.';card.appendChild(err);}
+   const blob=await createQR(value),url=URL.createObjectURL(blob);
+   const dataUrl=await new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(blob);});
+   generated.push({value,blob,dataUrl,index:i+1});
+   const img=document.createElement('img');img.src=url;img.alt='QR code for '+value;img.width=120;img.height=120;img.style.cssText='display:block;width:120px;height:120px;max-width:100%;object-fit:contain;margin:0 auto 8px';
+   card.appendChild(img);card.appendChild(title);
+   const link=document.createElement('a');link.className='download';link.href=url;link.download='InfoJano-QR-'+String(i+1).padStart(2,'0')+'.png';link.textContent='Download PNG';card.appendChild(link);
+   success++;
+  }catch(error){card.appendChild(title);const err=document.createElement('p');err.className='muted';err.textContent='Could not generate this value.';card.appendChild(err);}
   results.appendChild(card);status.textContent='Generated '+success+' of '+values.length+' QR codes…';
  }
- status.textContent='Finished: '+success+' of '+values.length+' QR codes generated. Download each PNG and test before use.';
+ status.textContent='Finished: '+success+' of '+values.length+' QR codes generated. Download individual PNGs, a ZIP, or an A4 PDF sheet.';
+ zipButton.disabled=success===0;pdfButton.disabled=success===0;
  generate.disabled=false;generate.textContent='Generate QR Codes';
 });
-fileInput.addEventListener('change',async()=>{const file=fileInput.files&&fileInput.files[0];if(!file)return;try{input.value=await file.text();mode.value=file.name.toLowerCase().endsWith('.csv')?'csv':'lines';status.textContent='Loaded '+file.name+'. Review the values, then generate.';}catch(e){status.textContent='Could not read that file. Please try a CSV or TXT file.';}});
-function crc32(bytes){let crc=-1;for(let i=0;i<bytes.length;i++){crc^=bytes[i];for(let j=0;j<8;j++)crc=(crc>>>1)^((crc&1)?0xedb88320:0);}return (crc^-1)>>>0;}
-function u16(v){return [v&255,(v>>>8)&255];}function u32(v){return [v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255];}
-function makeZip(files){const enc=new TextEncoder(),local=[],central=[];let offset=0;for(const f of files){const name=enc.encode(f.name),data=new Uint8Array(f.bytes),crc=crc32(data);const lh=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...name]);local.push(lh,data);const ch=new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(offset),...name]);central.push(ch);offset+=lh.length+data.length;}const centralSize=central.reduce((n,a)=>n+a.length,0),count=files.length,end=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(count),...u16(count),...u32(centralSize),...u32(offset),...u16(0)]);return new Blob([...local,...central,end],{type:'application/zip'});}
-function saveBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000);}\nzipButton.addEventListener('click',()=>{if(!generated.length)return;const files=generated.map(x=>({name:'InfoJano-QR-'+String(x.index).padStart(2,'0')+'.png',bytes:x.blob}));saveBlob(makeZip(files),'InfoJano-Bulk-QR-Codes.zip');});\npdfButton.addEventListener('click',()=>{if(!generated.length)return;if(!window.jspdf||!window.jspdf.jsPDF){status.textContent='PDF library did not load. Please refresh and try again.';return;}const PDF=window.jspdf.jsPDF,doc=new PDF({orientation:'portrait',unit:'mm',format:'a4'}),cols=3,cellW=63,cellH=83,startX=10,startY=12;generated.forEach((item,i)=>{if(i>0&&i%6===0)doc.addPage();const p=i%6,row=Math.floor(p/cols),col=p%cols,x=startX+col*cellW,y=startY+row*cellH;doc.setDrawColor(215,225,240);doc.roundedRect(x,y,59,78,2,2);doc.addImage(item.dataUrl,'PNG',x+5,y+5,49,49);const label=doc.splitTextToSize(item.value,51);doc.setFontSize(7);doc.text(label.slice(0,3),x+4,y+59);doc.setFontSize(6);doc.text('InfoJano QR '+item.index,x+4,y+74);});doc.save('InfoJano-Bulk-QR-A4.pdf');});\ndocument.getElementById('clear').addEventListener('click',()=>{input.value='';fileInput.value='';generated=[];zipButton.disabled=true;pdfButton.disabled=true;results.replaceChildren();const p=document.createElement('p');p.className='muted';p.textContent='No QR codes generated yet.';results.appendChild(p);status.textContent='Cleared.';});
+fileInput.addEventListener('change',async()=>{
+ const file=fileInput.files&&fileInput.files[0];if(!file)return;
+ try{input.value=await file.text();mode.value=file.name.toLowerCase().endsWith('.csv')?'csv':'lines';status.textContent='Loaded '+file.name+'. Review the values, then generate.';}
+ catch(error){status.textContent='Could not read that file. Please try a CSV or TXT file.';}
+});
+zipButton.addEventListener('click',()=>{
+ if(!generated.length)return;
+ const files=generated.map(item=>({name:'InfoJano-QR-'+String(item.index).padStart(2,'0')+'.png',bytes:item.blob}));
+ saveBlob(makeZip(files),'InfoJano-Bulk-QR-Codes.zip');
+});
+pdfButton.addEventListener('click',()=>{
+ if(!generated.length)return;
+ if(!window.jspdf||!window.jspdf.jsPDF){status.textContent='PDF library did not load. Please refresh and try again.';return;}
+ const PDF=window.jspdf.jsPDF,doc=new PDF({orientation:'portrait',unit:'mm',format:'a4'});
+ const cols=3,cellW=63,cellH=83,startX=10,startY=12;
+ generated.forEach((item,index)=>{
+  if(index>0&&index%6===0)doc.addPage();
+  const pageIndex=index%6,row=Math.floor(pageIndex/cols),col=pageIndex%cols,x=startX+col*cellW,y=startY+row*cellH;
+  doc.setDrawColor(215,225,240);doc.roundedRect(x,y,59,78,2,2);
+  doc.addImage(item.dataUrl,'PNG',x+5,y+5,49,49);
+  const label=doc.splitTextToSize(item.value,51);doc.setFontSize(7);doc.text(label.slice(0,3),x+4,y+59);
+  doc.setFontSize(6);doc.text('InfoJano QR '+item.index,x+4,y+74);
+ });
+ doc.save('InfoJano-Bulk-QR-A4.pdf');
+});
+document.getElementById('clear').addEventListener('click',()=>{
+ input.value='';fileInput.value='';generated=[];zipButton.disabled=true;pdfButton.disabled=true;
+ results.replaceChildren();const p=document.createElement('p');p.className='muted';p.textContent='No QR codes generated yet.';results.appendChild(p);status.textContent='Cleared.';
+});
 })();
 </script>
 </body>
