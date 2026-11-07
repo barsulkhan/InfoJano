@@ -630,6 +630,40 @@ button.textContent='Generate QR Code';
   if(!input.value.trim())input.value='';
  }));
 })();
+
+window.ijContrastRatio=function(fg,bg){
+ function lum(hex){const c=hex.replace('#','');const rgb=[0,2,4].map(i=>parseInt(c.slice(i,i+2),16)/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2));return .2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2];}
+ const a=lum(fg),b=lum(bg);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+};
+(function(){
+ const root=document.getElementById('ij-qr-structured'),content=document.getElementById('content'),field=content.closest('.ij-qr-field');
+ const modes={
+ whatsapp:{title:'WhatsApp Chat',hint:'Enter the phone number with country code, digits only.',fields:[['phone','Phone number','e.g. 919876543210'],['message','Prefilled message (optional)','Hello! I would like to know more.','textarea']]},
+ upi:{title:'UPI Payment',hint:'Enter the receiver UPI ID. Check all details before sharing the payment QR.',fields:[['pa','UPI ID','name@bank'],['pn','Payee name','Shop name'],['am','Amount (optional)','100','number'],['tn','Payment note (optional)','Order payment']]},
+ email:{title:'Email',hint:'Creates an email draft. The recipient reviews it before sending.',fields:[['to','Email address','hello@example.com'],['subject','Subject (optional)','Enquiry'],['body','Message (optional)','Hello!','textarea']]},
+ sms:{title:'SMS',hint:'Creates an SMS draft. Your phone may ask which messaging app to use.',fields:[['phone','Phone number','+919876543210'],['body','Message (optional)','Hello!','textarea']]},
+ location:{title:'Map Location',hint:'Enter valid latitude and longitude coordinates.',fields:[['lat','Latitude','22.5726','number'],['lng','Longitude','88.3639','number']]},
+ vcard:{title:'Digital Contact (vCard)',hint:'Create a contact QR that can be saved to a phone address book.',fields:[['name','Full name','Abdul Barik'],['phone','Phone number','+919876543210'],['email','Email (optional)','hello@example.com'],['org','Company (optional)','InfoJano'],['url','Website (optional)','https://example.com']]}
+ };
+ let active='link';
+ function val(id){return (document.getElementById('ij-qr-'+id)?.value||'').trim();}
+ function required(v,name){if(!v)throw new Error('Please enter '+name+'.');return v;}
+ function fieldEl(spec){const [id,title,placeholder,type]=spec,wrap=document.createElement('label');wrap.className='ij-qr-structured-field';wrap.textContent=title;const el=type==='textarea'?document.createElement('textarea'):document.createElement('input');el.id='ij-qr-'+id;el.placeholder=placeholder;el.autocomplete='off';if(type==='number'){el.type='number';el.step='any';}wrap.appendChild(el);root.appendChild(wrap);}
+ function selectMode(type){active=type;const config=modes[type];root.replaceChildren();document.querySelectorAll('[data-qrtype]').forEach(b=>b.classList.toggle('active',b.dataset.qrtype===type));if(config){field.hidden=true;root.hidden=false;const title=document.createElement('strong');title.textContent=config.title;root.appendChild(title);config.fields.forEach(fieldEl);const note=document.createElement('small');note.textContent=config.hint;root.appendChild(note);}else{root.hidden=true;field.hidden=false;}}
+ document.querySelectorAll('[data-qrtype]').forEach(b=>b.addEventListener('click',()=>selectMode(b.dataset.qrtype)));
+ window.ijCurrentQRType=()=>active;
+ window.ijGetQRPayload=function(){
+  if(!modes[active])return content.value.trim();
+  if(active==='whatsapp'){const phone=required(val('phone'),'a WhatsApp phone number').replace(/\D/g,'');if(phone.length<8||phone.length>15)throw new Error('Use an international phone number with 8 to 15 digits.');return 'https://wa.me/'+phone+(val('message')?'?text='+encodeURIComponent(val('message')):'');}
+  if(active==='upi'){const pa=required(val('pa'),'the UPI ID');if(!/^[A-Za-z0-9._-]{2,256}@[A-Za-z0-9.-]{2,64}$/.test(pa))throw new Error('Please check the UPI ID format.');const amount=val('am');if(amount&&(!/^\d+(\.\d{1,2})?$/.test(amount)||Number(amount)<=0))throw new Error('Enter a valid payment amount.');const p=new URLSearchParams({pa,pn:required(val('pn'),'the payee name'),cu:'INR'});if(amount)p.set('am',amount);if(val('tn'))p.set('tn',val('tn'));return 'upi://pay?'+p.toString();}
+  if(active==='email'){const to=required(val('to'),'an email address');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to))throw new Error('Please enter a valid email address.');const p=new URLSearchParams();if(val('subject'))p.set('subject',val('subject'));if(val('body'))p.set('body',val('body'));return 'mailto:'+to+(p.toString()?'?'+p.toString():'');}
+  if(active==='sms'){const phone=required(val('phone'),'a phone number');if(!/^[+0-9() .-]{6,20}$/.test(phone))throw new Error('Please check the phone number.');return 'sms:'+phone+(val('body')?'?body='+encodeURIComponent(val('body')):'');}
+  if(active==='location'){const lat=Number(required(val('lat'),'latitude')),lng=Number(required(val('lng'),'longitude'));if(!Number.isFinite(lat)||lat < -90||lat>90||!Number.isFinite(lng)||lng < -180||lng>180)throw new Error('Latitude must be -90 to 90 and longitude -180 to 180.');return 'https://www.google.com/maps?q='+lat+','+lng;}
+  if(active==='vcard'){const esc=v=>String(v||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');return ['BEGIN:VCARD','VERSION:3.0','FN:'+esc(required(val('name'),'the contact name')),val('org')?'ORG:'+esc(val('org')):'',val('phone')?'TEL;TYPE=CELL:'+esc(val('phone')):'',val('email')?'EMAIL:'+esc(val('email')):'',val('url')?'URL:'+esc(val('url')):'','END:VCARD'].filter(Boolean).join('\\r\\n');}
+ };
+ selectMode('link');
+})();
+
 window.makeQR=async function(){
  const box=document.getElementById('qr'),button=document.getElementById('generate-button');
  let value;try{value=window.ijGetQRPayload?window.ijGetQRPayload():document.getElementById('content').value.trim();}catch(error){box.textContent=error.message;return;}
