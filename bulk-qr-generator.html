@@ -62,8 +62,9 @@ section.info{margin-top:18px;background:#fff;border:1px solid var(--line);border
 <h2>What can I use bulk QR codes for?</h2>
 <p>Create QR codes for product pages, inventory labels, event tickets, classroom resources, business locations, contact details and lists of website links. Each QR code contains the exact value you provide.</p>
 <h2>Frequently asked questions</h2>
-<h3>Can I generate QR codes from Excel?</h3><p>Save or copy your spreadsheet data as CSV text, then paste it here. This first version reads CSV text pasted into the box; it does not upload Excel files directly.</p>
-<h3>Can I download all QR codes as a ZIP?</h3><p>Not in this first version. Download each PNG separately. ZIP export is planned for a later update.</p>
+<h3>Can I generate QR codes from Excel?</h3><p>Save your spreadsheet as a CSV or TXT file and upload it, or paste CSV text into the box. Direct XLSX upload is not supported.</p>
+<h3>Can I download all QR codes as a ZIP?</h3><p>Yes. After generating the batch, choose Download all as ZIP to save the PNG files together.</p>
+<h3>Can I download a print-ready sheet?</h3><p>Yes. Choose Download A4 PDF sheet to arrange up to six QR codes per page.</p>
 <h3>Is my list uploaded?</h3><p>QR generation happens locally in your browser. The list is not sent to an InfoJano server by this tool.</p>
 <h3>How many QR codes can I create at once?</h3><p>This version supports up to 50 values per batch to keep the page responsive on mobile devices.</p>
 <p><a href="qr-maker.html">Open the standard QR Code Generator</a> · <a href="index.html">InfoJano Home</a></p>
@@ -179,10 +180,14 @@ fileInput.addEventListener('change',async()=>{
  try{input.value=await file.text();mode.value=file.name.toLowerCase().endsWith('.csv')?'csv':'lines';status.textContent='Loaded '+file.name+'. Review the values, then generate.';}
  catch(error){status.textContent='Could not read that file. Please try a CSV or TXT file.';}
 });
-zipButton.addEventListener('click',()=>{
+zipButton.addEventListener('click',async()=>{
  if(!generated.length)return;
- const files=generated.map(item=>({name:'InfoJano-QR-'+String(item.index).padStart(2,'0')+'.png',bytes:item.blob}));
- saveBlob(makeZip(files),'InfoJano-Bulk-QR-Codes.zip');
+ zipButton.disabled=true;status.textContent='Preparing ZIP archive…';
+ try{
+  const files=await Promise.all(generated.map(async item=>({name:'InfoJano-QR-'+String(item.index).padStart(2,'0')+'.png',bytes:new Uint8Array(await item.blob.arrayBuffer())})));
+  saveBlob(makeZip(files),'InfoJano-Bulk-QR-Codes.zip');status.textContent='ZIP archive downloaded.';
+ }catch(error){status.textContent='Could not create the ZIP archive. Please download the PNG files individually.';}
+ finally{zipButton.disabled=false;}
 });
 pdfButton.addEventListener('click',()=>{
  if(!generated.length)return;
