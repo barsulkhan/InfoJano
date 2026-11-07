@@ -659,7 +659,10 @@ window.ijContrastRatio=function(fg,bg){
   if(active==='email'){const to=required(val('to'),'an email address');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to))throw new Error('Please enter a valid email address.');const p=new URLSearchParams();if(val('subject'))p.set('subject',val('subject'));if(val('body'))p.set('body',val('body'));return 'mailto:'+to+(p.toString()?'?'+p.toString():'');}
   if(active==='sms'){const phone=required(val('phone'),'a phone number');if(!/^[+0-9() .-]{6,20}$/.test(phone))throw new Error('Please check the phone number.');return 'sms:'+phone+(val('body')?'?body='+encodeURIComponent(val('body')):'');}
   if(active==='location'){const lat=Number(required(val('lat'),'latitude')),lng=Number(required(val('lng'),'longitude'));if(!Number.isFinite(lat)||lat < -90||lat>90||!Number.isFinite(lng)||lng < -180||lng>180)throw new Error('Latitude must be -90 to 90 and longitude -180 to 180.');return 'https://www.google.com/maps?q='+lat+','+lng;}
-  if(active==='vcard'){const esc=v=>String(v||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');return ['BEGIN:VCARD','VERSION:3.0','FN:'+esc(required(val('name'),'the contact name')),val('org')?'ORG:'+esc(val('org')):'',val('phone')?'TEL;TYPE=CELL:'+esc(val('phone')):'',val('email')?'EMAIL:'+esc(val('email')):'',val('url')?'URL:'+esc(val('url')):'','END:VCARD'].filter(Boolean).join('\\r\\n');}
+  if(active==='vcard'){
+   const esc=v=>String(v||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
+   return ['BEGIN:VCARD','VERSION:3.0','FN:'+esc(required(val('name'),'the contact name')),val('org')?'ORG:'+esc(val('org')):'',val('phone')?'TEL;TYPE=CELL:'+esc(val('phone')):'',val('email')?'EMAIL:'+esc(val('email')):'',val('url')?'URL:'+esc(val('url')):'','END:VCARD'].filter(Boolean).join('\r\n');
+  }
  };
  selectMode('link');
 })();
@@ -682,7 +685,8 @@ window.makeQR=async function(){
   const contrast=window.ijContrastRatio?window.ijContrastRatio(dark,light):21;
   if(contrast<4.5)throw new Error('Low color contrast. Choose a darker QR color or lighter background (minimum 4.5:1).');
   const level=document.getElementById('ij-qr-error')?.value||'H';
-  const correction=QRCode.CorrectLevel[level]||QRCode.CorrectLevel.H;\n  const instance=new QRCode(holder,{text:value,width:workingSize,height:workingSize,colorDark:dark,colorLight:light,correctLevel:correction});
+  const correction=QRCode.CorrectLevel[level]||QRCode.CorrectLevel.H;
+  const instance=new QRCode(holder,{text:value,width:workingSize,height:workingSize,colorDark:dark,colorLight:light,correctLevel:correction});
   const source=holder.querySelector('canvas');if(!source)throw new Error('QR canvas unavailable');
   const modules=instance._oQRCode&&instance._oQRCode.getModuleCount?instance._oQRCode.getModuleCount():33;
   const quiet=Math.ceil((workingSize/modules)*4),canvas=document.createElement('canvas');
