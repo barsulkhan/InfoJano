@@ -634,6 +634,7 @@ window.makeQR=async function(){
  const box=document.getElementById('qr'),button=document.getElementById('generate-button');\n let value;try{value=window.ijGetQRPayload?window.ijGetQRPayload():document.getElementById('content').value.trim();}catch(error){box.textContent=error.message;return;}
  box.replaceChildren();
  if(!value){box.textContent='Please enter your QR content first.';return;}
+ if(window.ijCurrentQRType&&window.ijCurrentQRType()==='link'){try{const url=new URL(value);if(!['http:','https:'].includes(url.protocol)||!url.hostname||url.username||url.password)throw new Error();}catch(e){box.textContent='Please enter a complete website URL starting with https:// or http://.';return;}}
  if(!window.QRCode){box.textContent='The QR library did not load. Refresh the page and try again.';return;}
  button.disabled=true;button.textContent='Generating QR Code…';
  let holder=null;
@@ -666,7 +667,7 @@ window.makeQR=async function(){
   const share=document.createElement('button');share.type='button';share.textContent='↗ Share';share.onclick=async()=>{try{const blob=await (await fetch(data)).blob(),file=new File([blob],'InfoJano-QR.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({files:[file],title:'My QR Code'});else if(navigator.share)await navigator.share({title:'My QR Code',text:value});else share.textContent='Use Download';}catch(e){share.textContent='Share cancelled';}};
   actions.append(copy,share);box.appendChild(actions);
   const status=document.createElement('p');status.className='qr-status';status.textContent='QR code created on your device. Scan it once before sharing or printing.';box.appendChild(status);
- }catch(error){box.textContent='Could not create this QR code. Try shorter content or remove the center logo.';}
+ }catch(error){box.textContent=error&&error.message?error.message:'Could not create this QR code. Try shorter content or remove the center logo.';}
  finally{if(holder)holder.remove();button.disabled=false;button.textContent='✦ Generate QR Code';}
 };
 </script>
