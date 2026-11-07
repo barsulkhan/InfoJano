@@ -2044,3 +2044,65 @@ Whenever the user says they want to start work, asks what work remains, asks to 
 6. Do not claim a task is complete merely because code was committed; require the appropriate verification for that task.
 
 **User instruction:** This is a required basic plan, not an optional idea. Keep it in the main InfoJano Master Project record from beginning to latest, and use the unfinished-work reminder rule consistently.
+
+
+---
+
+# QR TOOLKIT SEO LANDING PAGE EXPANSION — 8 NOVEMBER 2026
+
+## User request and implementation
+The user asked to inspect every feature/mode available in QR Maker and create matching dedicated SEO landing pages in the same style, so each search intent can enter the main QR Maker with the correct mode automatically selected.
+
+### Newly created landing pages
+- `url-qr-code-generator.html` → `qr-maker.html?type=link`
+- `text-qr-code-generator.html` → `qr-maker.html?type=text`
+- `contact-qr-code-generator.html` → `qr-maker.html?type=contact`
+- `phone-number-qr-code-generator.html` → `qr-maker.html?type=phone`
+- `email-qr-code-generator.html` → `qr-maker.html?type=email`
+- `sms-qr-code-generator.html` → `qr-maker.html?type=sms`
+- `google-maps-location-qr-code-generator.html` → `qr-maker.html?type=location`
+- `vcard-qr-code-generator.html` → `qr-maker.html?type=vcard`
+- `custom-qr-code-generator.html` → `qr-maker.html?type=more`
+- `barcode-scanner-online.html` → dedicated entry page linking to `qr-scanner.html`
+
+### Existing dedicated pages retained
+- `whatsapp-qr-code-generator.html` → `type=whatsapp`
+- `upi-payment-qr-code-generator.html` → `type=upi`
+- `wifi-qr-code-generator.html` → `type=wifi`
+- `bulk-qr-generator.html` → bulk generation tool
+- `qr-scanner.html` → camera and image QR scanning
+
+### Page content / SEO
+Each new QR mode landing page has its own page title, meta description, canonical URL, visible instructions, use cases, safety checks, FAQs and WebApplication / FAQPage structured data (the barcode scanner landing page has WebApplication structured data and its own distinct content). These pages are not intentionally duplicated; each explains a different QR intent or scanner use case.
+
+### Navigation / indexing / PWA
+- QR Maker's “Choose a QR tool for your purpose” section now links to all QR mode landing pages, Bulk QR, QR Scanner and Barcode Scanner.
+- Added the ten new URLs to `sitemap.xml` and `sitemap.txt`.
+- Added all ten new pages to the service-worker precache list.
+- Service worker cache version bumped from `infojano-v232` to `infojano-v233`.
+
+### Commits
+- QR Maker internal links: `3df550c4811a668281fb8aa82378cced2f30c3a9`
+- XML sitemap: `9926eaf925ce77aa39b1ee9b739bbd4e59990ee4`
+- Service worker cache v233: `4546b8294d65cf9d2d2bbf87b89793968fcfc96`
+- Text sitemap: `9bbf0a85c0ae7a82a7c79ed119590ba2dca196f9`
+- New landing page commits are in the preceding Git history for each page; paths are listed above.
+
+## Verification status
+**Code-level work completed:** all ten pages created, QR Maker mode query values match the existing allowlist, navigation links updated, sitemap files updated, and service-worker cache bumped.
+
+**Not yet device/live verified:** actual GitHub Pages deployment completion, Google indexing, all CTA mode selections on Android Chrome, camera scan, uploaded-image barcode scan, and physical QR readability. Do not claim these are verified until tested.
+
+## Remaining QR Toolkit checklist
+- [ ] Verify latest GitHub Pages Actions deployment for the newest commits.
+- [ ] Test all 12 QR Maker modes from their SEO landing-page CTAs on Android Chrome: link, text, WiFi, contact, phone, more/custom, WhatsApp, UPI, email, SMS, location, vCard.
+- [ ] Confirm the active mode and expected input form appear for every CTA; check browser refresh and direct URL access.
+- [ ] Test QR generation and representative scanning on a second phone, including UPI, WhatsApp, WiFi, email, SMS, location and contact/vCard payloads.
+- [ ] Test uploaded QR/barcode image reading and standalone camera scanner; check permission and stop behavior.
+- [ ] Test Bulk QR: generated results, ZIP extraction and A4 PDF opening/printing.
+- [ ] Test PNG, SVG, JPG, WebP, logo overlay, contrast validation and quiet-zone/readability.
+- [ ] Check all sitemap URLs return successfully, have unique canonicals, and no duplicate sitemap entries.
+- [ ] Confirm service worker v233 activates on the device and all new pages load.
+- [ ] Update this Master Project with real test outcomes; only then mark QR Toolkit complete and proceed to the next tool group.
+
+**Priority remains:** finish QR Toolkit before applying the Multi-Tool SEO Landing & Intent-Based Routing System to other InfoJano tools.
