@@ -2116,3 +2116,11 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Accessibility/responsiveness: semantic sections, labelled navigation, keyboard-friendly FAQ details, responsive mobile layout and reduced-motion support.
 - Service worker cache bumped from `infojano-v233` to `infojano-v234`; the WhatsApp page was already in the precache list.
 - Source work is on branch `design/whatsapp-premium-landing`. Not yet merged or live. After review/merge, verify GitHub Pages deployment, open the live page on Android Chrome, test all CTA routes and confirm QR Maker opens with WhatsApp selected. Continue the broader QR Toolkit test checklist before calling the toolkit complete.
+
+
+## 8 November 2026 — WhatsApp QR landing page CSS defect fixed
+- User's Android screenshot showed the landing page rendered as unstyled default HTML. Reproduced the source-level cause by inspecting the exact GitHub Pages build artifact from deployment run 42404689998 (commit c99e4e030aae0ec2a7fa5c619138d00ae8eff25c).
+- Root cause: malformed CSS custom-property declaration in :root: --shadow:0 18px 50px rgba(13,39,31,.10} was missing the closing ) for rgba(). CSS parsing treated the stylesheet as one malformed qualified rule, so the entire premium stylesheet was ignored by browsers.
+- Fixed the declaration in whatsapp-qr-code-generator.html to --shadow:0 18px 50px rgba(13,39,31,.10)}. Verified CSS curly braces are balanced in the updated source.
+- Bumped service-worker cache from infojano-v234 to infojano-v235 so clients can refresh the corrected page.
+- GitHub Pages deployment for the previous commit succeeded, and its artifact contained the page; the failure was CSS parsing, not missing page output. The CSS fix is now committed to main; wait for the new Pages deployment to succeed, then retest on Android Chrome. Do not mark the page or QR Toolkit fully verified until the corrected live page and remaining QR Toolkit device tests pass.
