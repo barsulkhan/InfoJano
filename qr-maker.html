@@ -631,7 +631,8 @@ button.textContent='Generate QR Code';
  }));
 })();
 window.makeQR=async function(){
- const box=document.getElementById('qr'),button=document.getElementById('generate-button');\n let value;try{value=window.ijGetQRPayload?window.ijGetQRPayload():document.getElementById('content').value.trim();}catch(error){box.textContent=error.message;return;}
+ const box=document.getElementById('qr'),button=document.getElementById('generate-button');
+ let value;try{value=window.ijGetQRPayload?window.ijGetQRPayload():document.getElementById('content').value.trim();}catch(error){box.textContent=error.message;return;}
  box.replaceChildren();
  if(!value){box.textContent='Please enter your QR content first.';return;}
  if(window.ijCurrentQRType&&window.ijCurrentQRType()==='link'){try{const url=new URL(value);if(!['http:','https:'].includes(url.protocol)||!url.hostname||url.username||url.password)throw new Error();}catch(e){box.textContent='Please enter a complete website URL starting with https:// or http://.';return;}}
@@ -644,7 +645,10 @@ window.makeQR=async function(){
   const light=document.getElementById('ij-qr-bg').value||'#ffffff';
   const workingSize=400;
   holder=document.createElement('div');holder.style.cssText='position:absolute;left:-10000px;top:0;width:400px;height:400px;overflow:hidden';document.body.appendChild(holder);
-  const contrast=window.ijContrastRatio?window.ijContrastRatio(dark,light):21;\n  if(contrast<4.5)throw new Error('Low color contrast. Choose a darker QR color or lighter background (minimum 4.5:1).');\n  const level=document.getElementById('ij-qr-error')?.value||'H';\n  const correction=QRCode.CorrectLevel[level]||QRCode.CorrectLevel.H;\n  const instance=new QRCode(holder,{text:value,width:workingSize,height:workingSize,colorDark:dark,colorLight:light,correctLevel:correction});
+  const contrast=window.ijContrastRatio?window.ijContrastRatio(dark,light):21;
+  if(contrast<4.5)throw new Error('Low color contrast. Choose a darker QR color or lighter background (minimum 4.5:1).');
+  const level=document.getElementById('ij-qr-error')?.value||'H';
+  const correction=QRCode.CorrectLevel[level]||QRCode.CorrectLevel.H;\n  const instance=new QRCode(holder,{text:value,width:workingSize,height:workingSize,colorDark:dark,colorLight:light,correctLevel:correction});
   const source=holder.querySelector('canvas');if(!source)throw new Error('QR canvas unavailable');
   const modules=instance._oQRCode&&instance._oQRCode.getModuleCount?instance._oQRCode.getModuleCount():33;
   const quiet=Math.ceil((workingSize/modules)*4),canvas=document.createElement('canvas');
