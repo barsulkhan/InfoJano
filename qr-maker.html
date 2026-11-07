@@ -484,6 +484,29 @@ main .ij-qr-brand{display:none!important}
 <script src="https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js"></script>\n<script src="/InfoJano/jspdf.umd.min.js" defer></script>
 <script src="/InfoJano/qr-code-generator.min.js" defer></script>
 <script>
+(function(){
+ const start=document.getElementById('ij-camera-start'),stop=document.getElementById('ij-camera-stop'),video=document.getElementById('ij-camera-video'),status=document.getElementById('ij-camera-status'),result=document.getElementById('ij-camera-result'),value=document.getElementById('ij-camera-value'),use=document.getElementById('ij-camera-use');
+ if(!start||!stop)return; let reader=null,controls=null,decoded='';
+ function stopCamera(){try{if(controls&&controls.stop)controls.stop();if(reader&&reader.reset)reader.reset();}catch(e){}controls=null;reader=null;video.pause();video.srcObject=null;video.hidden=true;start.disabled=false;stop.disabled=true;}
+ start.addEventListener('click',async()=>{
+  if(!window.isSecureContext){status.textContent='Camera access requires a secure HTTPS page.';return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){status.textContent='This browser does not support camera access. Use Upload QR Image instead.';return;}
+  if(!window.ZXing||!ZXing.BrowserMultiFormatReader){status.textContent='Scanner library is still loading. Please try again.';return;}
+  start.disabled=true;status.textContent='Starting camera…';result.hidden=true;
+  try{reader=new ZXing.BrowserMultiFormatReader();video.hidden=false;stop.disabled=false;
+   controls=await reader.decodeFromVideoDevice(undefined,video,(scan,error)=>{
+    if(scan){decoded=scan.getText();value.textContent=decoded;result.hidden=false;status.textContent='QR code detected. Check the content before opening or using it.';stopCamera();}
+   });
+   status.textContent='Camera is active. Point it at a QR code.';
+  }catch(e){stopCamera();status.textContent='Could not start camera. Allow camera permission or use Upload QR Image.';}
+ });
+ stop.addEventListener('click',()=>{stopCamera();status.textContent='Camera stopped.';});
+ use.addEventListener('click',()=>{document.getElementById('content').value=decoded;document.getElementById('content').focus();status.textContent='Scanned content copied into the QR Generator input.';});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&controls){stopCamera();status.textContent='Camera stopped when you left this tab.';}});
+})();
+</script>
+
+<script>
 let selectedCodeImage = null;
 let codePreviewUrl = null;
 const codeImageInput = document.getElementById('code-image');
