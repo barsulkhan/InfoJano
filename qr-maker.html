@@ -686,7 +686,7 @@ window.makeQR=async function(){
   const contrast=window.ijContrastRatio?window.ijContrastRatio(dark,light):21;
   if(contrast<4.5)throw new Error('Low color contrast. Choose a darker QR color or lighter background (minimum 4.5:1).');
   const level=document.getElementById('ij-qr-error')?.value||'H';
-  const correction=QRCode.CorrectLevel[level]||QRCode.CorrectLevel.H;
+  const correction=QRCode.CorrectLevel[level]??QRCode.CorrectLevel.H;
   const instance=new QRCode(holder,{text:value,width:workingSize,height:workingSize,colorDark:dark,colorLight:light,correctLevel:correction});
   const source=holder.querySelector('canvas');if(!source)throw new Error('QR canvas unavailable');
   const modules=instance._oQRCode&&instance._oQRCode.getModuleCount?instance._oQRCode.getModuleCount():33;
