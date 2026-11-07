@@ -460,6 +460,7 @@ main .ij-qr-brand{display:none!important}
 <p class="ij-qr-back"><a href="index.html">← Back to InfoJano Home</a></p>
 <p><a href="index.html">← Back to InfoJano Home</a></p>
 <section style="margin:22px 0;padding:20px;border:1px solid #dbe5f2;border-radius:20px;background:#fff"><h2>Choose a QR tool for your purpose</h2><p><a href="whatsapp-qr-code-generator.html">WhatsApp QR Code Generator</a> · <a href="upi-payment-qr-code-generator.html">UPI Payment QR Code Generator</a> · <a href="wifi-qr-code-generator.html">WiFi QR Code Generator</a> · <a href="bulk-qr-generator.html">Bulk QR Code Generator</a></p><p>Choose the QR type in the generator, enter the details and test the result before sharing.</p></section>
+<section style="margin:22px 0;padding:20px;border:1px solid #dbe5f2;border-radius:20px;background:#fff"><h2>Scan or create multiple QR codes</h2><p><a href="qr-scanner.html">Scan a QR Code from Camera or Image</a> · <a href="whatsapp-qr-code-generator.html">WhatsApp QR</a> · <a href="upi-payment-qr-code-generator.html">UPI QR</a> · <a href="wifi-qr-code-generator.html">WiFi QR</a> · <a href="bulk-qr-generator.html">Bulk QR</a></p></section>
 <section id="ij-qr-explore" aria-labelledby="related-tools-title">
 <div class="ij-qr-section-heading"><span class="ij-qr-heading-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8z"/></svg></span><div><h2 id="related-tools-title">Explore More Free Tools</h2><p>Keep exploring with these handy tools from InfoJano.</p></div><a class="ij-qr-more" href="index.html#tools">More Tools <span>›</span></a></div>
 <div class="ij-qr-tools-grid">
@@ -724,6 +725,9 @@ window.makeQR=async function(){
  }catch(error){box.textContent=error&&error.message?error.message:'Could not create this QR code. Try shorter content or remove the center logo.';}
  finally{if(holder)holder.remove();button.disabled=false;button.textContent='✦ Generate QR Code';}
 };
+</script>
+<script>
+(function(){try{const saved=sessionStorage.getItem('infojano-qr-prefill');if(saved){const field=document.getElementById('content');if(field){field.value=saved;sessionStorage.removeItem('infojano-qr-prefill');const label=document.getElementById('ij-qr-input-label');if(label)label.textContent='Scanned content — review before generating';}}}catch(e){}})();
 </script>
 <script src="/InfoJano/install.js"></script>
 </body>
