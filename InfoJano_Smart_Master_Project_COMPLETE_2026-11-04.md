@@ -2690,3 +2690,51 @@ User continued the Short Link API CORS test from Android in Hoppscotch and saved
 6. Do not claim authenticated create, D1 write, redirect, stats, disable, or production readiness as tested. Those remain pending.
 
 This checkpoint supplements the earlier Short Link API audit and test ledger in this COMPLETE archive; it does not replace the full project history.
+
+
+---
+
+# MASTER PLAN UPDATE — 8 NOVEMBER 2026
+## Multi-Tool SEO Landing & Intent-Based Routing System
+
+**Status:** PLANNED — NOT YET IMPLEMENTED AS A GENERAL SYSTEM  
+**Priority:** Record as a cross-project basic plan. Do not confuse this with work already completed in the QR Toolkit.
+
+### Core principle
+Build one strong multi-function app/tool containing related features, while giving each important function its own dedicated SEO landing page and Google Search entry point. When a visitor arrives from a search for a specific function, the landing page must open the main tool with the matching mode or function automatically selected. The visitor must still be able to discover and switch to the other functions inside the same app.
+
+### Required implementation standards
+1. Create a dedicated SEO landing page for every important function and meaningful search intent.
+2. Each landing page must have a distinct, useful title, description, visible explanatory content, instructions, examples, relevant FAQs and a clear CTA. Do not create thin, duplicate pages just to target keywords.
+3. Pass the intended mode/function through a reliable URL parameter or equivalent route state, and automatically select it in the main tool.
+4. Verify that every CTA opens the correct mode, not the default mode. Preserve scanner/import handoffs and existing form behavior.
+5. Keep navigation between related functions clear so users can switch modes without leaving the multi-tool experience unnecessarily.
+6. Update canonical URLs, sitemap.xml, robots/internal links and structured data where appropriate; avoid duplicate or conflicting URLs.
+7. Test mobile responsiveness, browser behavior, query-parameter routing, form state, downloads/exports and service-worker cache updates.
+8. Apply this principle to InfoJano and other future user projects whenever a product contains multiple related functions. Do not split related functions into separate apps without a clear product reason.
+
+### Current execution order
+**First: Finish the QR Toolkit completely. Do not start applying this system to other InfoJano tools until the QR Toolkit checklist is completed.**
+
+QR Toolkit pending work to surface at every work-start / remaining-work review:
+- Dedicated SEO landing pages and correct auto-selection for remaining QR Maker modes: Link/URL, Text, Contact, vCard, Phone, Email, SMS and Location/Google Maps.
+- Audit whether all existing QR modes and standalone features (including Bulk QR Generator and QR Scanner) have adequate dedicated SEO entry pages and correct links.
+- Ensure every landing-page CTA opens the exact intended QR Maker mode; re-check WhatsApp, UPI and Wi-Fi routing on a real mobile browser.
+- Complete practical tests for QR generation, decoding/scanning, camera permission/start/stop, image upload scanning, bulk generation, ZIP extraction, A4 PDF opening/printing, and PNG/JPG/WebP/SVG export as applicable.
+- Verify QR readability using another phone or scanner for representative QR types; do not claim untested modes or exports are verified.
+- Audit SEO titles/descriptions/content/FAQs/canonical URLs/internal links, sitemap coverage and duplicates, service-worker cache version and deployment status.
+- Keep PR #12 under review; do not merge it blindly or without explicit user authorization.
+- Distinguish static code audits and screenshot evidence from real-device tests. Record each item as NOT STARTED / IN PROGRESS / CODE CHECKED / DEVICE TESTED / VERIFIED.
+
+**After QR Toolkit completion:** apply the same Multi-Tool SEO Landing & Intent-Based Routing System to the next InfoJano tool groups, then other applicable apps/projects. Prioritize based on the user's instructions and project dependencies.
+
+### Standing unfinished-work reminder rule
+Whenever the user says they want to start work, asks what work remains, asks to continue a project, or resumes after a break:
+1. Check this Master Project and the latest project state first.
+2. Briefly surface the relevant unfinished tasks and dependencies before starting new work.
+3. Keep completed tasks out of the pending list; update statuses as work is completed and tested.
+4. Continue to remind the user about still-pending tasks at each relevant work-start / progress checkpoint until each is genuinely complete.
+5. Do not silently drop unfinished tasks when switching chats. Carry them into the next continuation checkpoint and the updated Master Project.
+6. Do not claim a task is complete merely because code was committed; require the appropriate verification for that task.
+
+**User instruction:** This is a required basic plan, not an optional idea. Keep it in the main InfoJano Master Project record from beginning to latest, and use the unfinished-work reminder rule consistently.
