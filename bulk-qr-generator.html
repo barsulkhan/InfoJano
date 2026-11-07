@@ -41,10 +41,13 @@ section.info{margin-top:18px;background:#fff;border:1px solid var(--line);border
 <h2>1. Add your content</h2>
 <label for="input-mode">Input format</label>
 <select id="input-mode"><option value="lines">One value per line</option><option value="csv">CSV text (first column or value column)</option></select>
+<label for="csv-file">Or upload a CSV / TXT file</label>
+<input id="csv-file" type="file" accept=".csv,.txt,text/csv,text/plain">
 <label for="bulk-input">Paste links or text</label>
 <textarea id="bulk-input" placeholder="https://example.com/product-1&#10;https://example.com/product-2&#10;https://example.com/product-3"></textarea>
-<p class="hint">For CSV, include a header row if you have one. A column named value, url, link, text or data is used when present. Maximum 50 QR codes per batch.</p>
+<p class="hint">For CSV, include a header row if you have one. A column named value, url, link, text or data is used when present. Maximum 50 QR codes per batch. ZIP and A4 PDF downloads are available after generation.</p>
 <div class="actions"><button id="generate" type="button">Generate QR Codes</button><button class="secondary" id="clear" type="button">Clear</button></div>
+<div class="actions"><button class="secondary" id="zip" type="button" disabled>Download all as ZIP</button><button class="secondary" id="pdf" type="button" disabled>Download A4 PDF sheet</button></div>
 <p class="status" id="status" role="status" aria-live="polite">Your QR codes will appear here after generation.</p>
 </section>
 <section class="card">
@@ -67,9 +70,10 @@ section.info{margin-top:18px;background:#fff;border:1px solid var(--line);border
 </section>
 </main>
 <script src="/InfoJano/qr-code-generator.min.js"></script>
+<script src="/InfoJano/jspdf.umd.min.js"></script>
 <script>
 (function(){
-const input=document.getElementById('bulk-input'),mode=document.getElementById('input-mode'),status=document.getElementById('status'),results=document.getElementById('results'),generate=document.getElementById('generate');
+const input=document.getElementById('bulk-input'),fileInput=document.getElementById('csv-file'),zipButton=document.getElementById('zip'),pdfButton=document.getElementById('pdf'),mode=document.getElementById('input-mode'),status=document.getElementById('status'),results=document.getElementById('results'),generate=document.getElementById('generate');
 function parseCSV(text){
  const rows=[];let row=[],field='',quoted=false;
  for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];
@@ -86,7 +90,7 @@ function parseCSV(text){
  const start=idx>=0?1:0, column=idx>=0?idx:0;
  return rows.slice(start).map(r=>String(r[column]||'').trim()).filter(Boolean);
 }
-function getValues(){
+let generated=[];\nfunction getValues(){
  const raw=input.value.trim();if(!raw)return [];
  return mode.value==='csv'?parseCSV(raw):raw.split(/\r?\n/).map(v=>v.trim()).filter(Boolean);
 }
@@ -115,7 +119,7 @@ generate.addEventListener('click',async()=>{
   const value=values[i],card=document.createElement('article');card.className='item';
   const title=document.createElement('strong');title.textContent=value.length>48?value.slice(0,45)+'…':value;card.appendChild(title);
   try{
-   const url=await createQR(value),img=document.createElement('img');img.src=url;img.alt='QR code for '+value;img.width=120;img.height=120;img.style.cssText='display:block;width:120px;height:120px;max-width:100%;object-fit:contain;margin:0 auto 8px';
+   const url=await createQR(value),blob=await (await fetch(url)).blob(),dataUrl=await new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(blob);});generated.push({value,url,blob,dataUrl,index:i+1});const img=document.createElement('img');img.src=url;img.alt='QR code for '+value;img.width=120;img.height=120;img.style.cssText='display:block;width:120px;height:120px;max-width:100%;object-fit:contain;margin:0 auto 8px';
    card.insertBefore(img,title);
    const link=document.createElement('a');link.className='download';link.href=url;link.download='InfoJano-QR-'+String(i+1).padStart(2,'0')+'.png';link.textContent='Download PNG';card.appendChild(link);success++;
   }catch(e){const err=document.createElement('p');err.className='muted';err.textContent='Could not generate this value.';card.appendChild(err);}
@@ -124,7 +128,7 @@ generate.addEventListener('click',async()=>{
  status.textContent='Finished: '+success+' of '+values.length+' QR codes generated. Download each PNG and test before use.';
  generate.disabled=false;generate.textContent='Generate QR Codes';
 });
-document.getElementById('clear').addEventListener('click',()=>{input.value='';results.replaceChildren();const p=document.createElement('p');p.className='muted';p.textContent='No QR codes generated yet.';results.appendChild(p);status.textContent='Cleared.';});
+fileInput.addEventListener('change',async()=>{const file=fileInput.files&&fileInput.files[0];if(!file)return;try{input.value=await file.text();mode.value=file.name.toLowerCase().endsWith('.csv')?'csv':'lines';status.textContent='Loaded '+file.name+'. Review the values, then generate.';}catch(e){status.textContent='Could not read that file. Please try a CSV or TXT file.';}});\nfunction crc32(bytes){let crc=-1;for(let i=0;i<bytes.length;i++){crc^=bytes[i];for(let j=0;j<8;j++)crc=(crc>>>1)^((crc&1)?0xedb88320:0);}return (crc^-1)>>>0;}\nfunction u16(v){return [v&255,(v>>>8)&255];}function u32(v){return [v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255];}\nfunction makeZip(files){const enc=new TextEncoder(),local=[],central=[];let offset=0;for(const f of files){const name=enc.encode(f.name),data=new Uint8Array(f.bytes),crc=crc32(data);const lh=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...name]);local.push(lh,data);const ch=new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(offset),...name]);central.push(ch);offset+=lh.length+data.length;}const centralSize=central.reduce((n,a)=>n+a.length,0),count=files.length,end=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(count),...u16(count),...u32(centralSize),...u32(offset),...u16(0)]);return new Blob([...local,...central,end],{type:'application/zip'});}\nfunction saveBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000);}\nzipButton.addEventListener('click',()=>{if(!generated.length)return;const files=generated.map(x=>({name:'InfoJano-QR-'+String(x.index).padStart(2,'0')+'.png',bytes:x.blob}));saveBlob(makeZip(files),'InfoJano-Bulk-QR-Codes.zip');});\npdfButton.addEventListener('click',()=>{if(!generated.length)return;if(!window.jspdf||!window.jspdf.jsPDF){status.textContent='PDF library did not load. Please refresh and try again.';return;}const PDF=window.jspdf.jsPDF,doc=new PDF({orientation:'portrait',unit:'mm',format:'a4'}),cols=3,cellW=63,cellH=83,startX=10,startY=12;generated.forEach((item,i)=>{if(i>0&&i%6===0)doc.addPage();const p=i%6,row=Math.floor(p/cols),col=p%cols,x=startX+col*cellW,y=startY+row*cellH;doc.setDrawColor(215,225,240);doc.roundedRect(x,y,59,78,2,2);doc.addImage(item.dataUrl,'PNG',x+5,y+5,49,49);const label=doc.splitTextToSize(item.value,51);doc.setFontSize(7);doc.text(label.slice(0,3),x+4,y+59);doc.setFontSize(6);doc.text('InfoJano QR '+item.index,x+4,y+74);});doc.save('InfoJano-Bulk-QR-A4.pdf');});\ndocument.getElementById('clear').addEventListener('click',()=>{input.value='';fileInput.value='';generated=[];zipButton.disabled=true;pdfButton.disabled=true;results.replaceChildren();const p=document.createElement('p');p.className='muted';p.textContent='No QR codes generated yet.';results.appendChild(p);status.textContent='Cleared.';});
 })();
 </script>
 </body>
