@@ -186,6 +186,146 @@ main .ij-qr-brand{display:none!important}
 @media(max-width:380px){.ij-qr-info-card{grid-template-columns:minmax(0,1fr) 104px;padding:14px 10px}.ij-qr-info-card h2{font-size:16px}.ij-qr-art svg{max-width:115px}.ij-qr-more{font-size:0}.ij-qr-more span{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.ij-qr-tool-card{transition:none}}
 
+
+/* Feature highlights: compact responsive card layout */
+.ij-qr-features{
+ display:grid!important;
+ grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ gap:14px!important;
+ margin:22px 0!important;
+ padding:0!important;
+ border:0!important;
+ border-radius:0!important;
+ background:transparent!important;
+ box-shadow:none!important;
+ align-items:stretch;
+}
+.ij-qr-features>div{
+ min-width:0;
+ min-height:148px;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:flex-start!important;
+ justify-content:center;
+ gap:9px!important;
+ padding:20px 18px!important;
+ border:1px solid #dce7f7!important;
+ border-radius:18px!important;
+ background:linear-gradient(145deg,#fff 0%,#f7faff 100%)!important;
+ box-shadow:0 7px 22px rgba(24,65,125,.07);
+ text-align:left!important;
+ font-size:0!important;
+ position:relative;
+ overflow:hidden;
+ transition:transform .18s ease,box-shadow .18s ease;
+}
+.ij-qr-features>div:before{
+ content:"";
+ position:absolute;left:0;top:0;bottom:0;width:4px;
+ background:linear-gradient(180deg,#1687f8,#7254e8);
+}
+.ij-qr-features>div:nth-child(2):before{background:linear-gradient(180deg,#16b981,#0e9f6e)}
+.ij-qr-features>div:nth-child(3):before{background:linear-gradient(180deg,#a78bfa,#7c3aed)}
+.ij-qr-features>div:nth-child(4):before{background:linear-gradient(180deg,#fb923c,#ea580c)}
+.ij-qr-features>div>b{
+ display:block!important;
+ margin:0!important;
+ color:#172b50!important;
+ font-size:16px!important;
+ line-height:1.25;
+ font-weight:800;
+}
+.ij-qr-features>div>small{
+ display:block!important;
+ max-width:none!important;
+ color:#61718d!important;
+ font-size:13px!important;
+ line-height:1.5;
+}
+.ij-qr-features>div{color:#087cf0!important}
+.ij-qr-features>div:nth-child(2){color:#16a36a!important}
+.ij-qr-features>div:nth-child(3){color:#8b5cf6!important}
+.ij-qr-features>div:nth-child(4){color:#f97316!important}
+@media(hover:hover){
+ .ij-qr-features>div:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(24,65,125,.12)}
+}
+@media(max-width:760px){
+ .ij-qr-features{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ .ij-qr-features>div{min-height:130px;padding:16px 14px!important}
+ .ij-qr-features>div>b{font-size:15px!important}
+ .ij-qr-features>div>small{font-size:12px!important}
+}
+@media(max-width:360px){
+ .ij-qr-features{grid-template-columns:1fr!important}
+ .ij-qr-features>div{min-height:112px}
+}
+
+
+/* Strong contrast for the SMART QR GENERATOR hero label */
+.ij-qr-hero .ij-qr-kicker{
+ display:inline-flex!important;
+ align-items:center;
+ width:max-content;
+ max-width:100%;
+ margin:0 0 12px!important;
+ padding:8px 13px!important;
+ border:1px solid rgba(155,231,255,.75)!important;
+ border-radius:999px!important;
+ background:rgba(5,18,64,.88)!important;
+ color:#fff!important;
+ font-size:12px!important;
+ font-weight:900!important;
+ letter-spacing:1.5px!important;
+ line-height:1.25!important;
+ text-shadow:0 1px 2px rgba(0,0,0,.35);
+ box-shadow:0 4px 14px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.12);
+}
+@media(max-width:480px){
+ .ij-qr-hero .ij-qr-kicker{font-size:10px!important;letter-spacing:1px!important;padding:7px 10px!important;margin-bottom:10px!important}
+}
+
+
+/* Final override: keep hero kicker readable on all mobile browsers */
+.ij-qr-hero .ij-qr-hero-copy .ij-qr-kicker{
+ display:inline-flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ width:auto!important;
+ min-height:0!important;
+ max-width:100%!important;
+ padding:7px 12px!important;
+ margin:0 0 12px!important;
+ border:1px solid #8ce8ff!important;
+ border-radius:999px!important;
+ background:#071a4b!important;
+ background-color:#071a4b!important;
+ color:#ffffff!important;
+ -webkit-text-fill-color:#ffffff!important;
+ opacity:1!important;
+ visibility:visible!important;
+ font-size:11px!important;
+ font-weight:900!important;
+ letter-spacing:1.3px!important;
+ line-height:1.4!important;
+ text-shadow:0 1px 2px #000!important;
+ box-shadow:0 4px 14px rgba(0,0,0,.25)!important;
+}
+.ij-qr-hero .ij-qr-hero-copy .ij-qr-kicker::before{
+ content:"";
+ display:inline-block;
+ width:7px;height:7px;flex:0 0 7px;
+ margin-right:8px;border-radius:50%;
+ background:#35e5c1;
+ box-shadow:0 0 8px #35e5c1;
+}
+@media(max-width:480px){
+ .ij-qr-hero .ij-qr-hero-copy .ij-qr-kicker{
+  font-size:10px!important;
+  letter-spacing:1px!important;
+  padding:7px 10px!important;
+ }
+}
+
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
