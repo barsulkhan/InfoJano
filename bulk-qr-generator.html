@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bulk QR Code Generator Online Free | Create Multiple QR Codes - InfoJano</title>
+<meta name="description" content="Create multiple QR codes at once for links, products, contacts and more. Paste a list or CSV, preview each QR code and download PNG files free with InfoJano.">
+<link rel="canonical" href="https://barsulkhan.github.io/InfoJano/bulk-qr-generator.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bulk QR Code Generator Online Free - InfoJano">
+<meta property="og:description" content="Generate multiple QR codes from a list or CSV and download each as a PNG.">
+<meta property="og:url" content="https://barsulkhan.github.io/InfoJano/bulk-qr-generator.html">
+<style>
+:root{color-scheme:light;--ink:#17233b;--muted:#64748b;--blue:#155eef;--line:#dbe5f2;--bg:#f3f7ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header{background:linear-gradient(115deg,#091b49,#174fc0);color:#fff;padding:18px max(16px,calc((100% - 1040px)/2))}
+.brand{font-weight:850;font-size:20px;color:#fff;text-decoration:none}
+main{max-width:1040px;margin:24px auto;padding:0 14px 42px}
+.hero{padding:24px;border-radius:22px;background:linear-gradient(130deg,#102c72,#1767d9);color:#fff;box-shadow:0 12px 28px #153d852b}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.12;margin:0 0 9px}.hero p{margin:0;color:#e4efff}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:0 5px 18px #18365d0b;min-width:0}
+label{display:block;font-weight:750;margin:12px 0 6px}textarea,select,input{width:100%;font:inherit;border:1px solid #cbd5e1;border-radius:11px;padding:12px;background:#fff;color:var(--ink)}
+textarea{min-height:190px;resize:vertical}
+button,.download{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:11px;background:var(--blue);color:#fff;padding:12px 16px;font-weight:750;text-decoration:none;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}.secondary{background:#edf4ff;color:#174db0;border:1px solid #c8dafa}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.muted,.hint{color:var(--muted);font-size:13px}
+.status{margin:12px 0 0;font-size:14px;font-weight:650}.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px;margin-top:13px}
+.item{border:1px solid var(--line);border-radius:13px;padding:10px;text-align:center;min-width:0}.item canvas{display:block;width:120px;height:120px;max-width:100%;margin:0 auto 8px}.item strong{display:block;font-size:12px;overflow-wrap:anywhere;margin-bottom:7px}.item a{font-size:12px}
+section.info{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+@media(max-width:700px){.layout{grid-template-columns:1fr}.card{padding:15px}.hero{padding:20px}}
+</style>
+</head>
+<body>
+<header><a class="brand" href="index.html">InfoJano</a></header>
+<main>
+<section class="hero"><h1>Bulk QR Code Generator</h1><p>Create multiple QR codes at once. Paste a list of website links, text, product IDs or other values, then download each QR code as a PNG image. Free to use, with no account required.</p></section>
+<div class="layout">
+<section class="card">
+<h2>1. Add your content</h2>
+<label for="input-mode">Input format</label>
+<select id="input-mode"><option value="lines">One value per line</option><option value="csv">CSV text (first column or value column)</option></select>
+<label for="bulk-input">Paste links or text</label>
+<textarea id="bulk-input" placeholder="https://example.com/product-1&#10;https://example.com/product-2&#10;https://example.com/product-3"></textarea>
+<p class="hint">For CSV, include a header row if you have one. A column named value, url, link, text or data is used when present. Maximum 50 QR codes per batch.</p>
+<div class="actions"><button id="generate" type="button">Generate QR Codes</button><button class="secondary" id="clear" type="button">Clear</button></div>
+<p class="status" id="status" role="status" aria-live="polite">Your QR codes will appear here after generation.</p>
+</section>
+<section class="card">
+<h2>2. Download your QR codes</h2>
+<p class="muted">Each QR code is generated in your browser. Review the content and test important codes before printing or sharing.</p>
+<div id="results" class="results"><p class="muted">No QR codes generated yet.</p></div>
+</section>
+</div>
+<section class="info">
+<h2>How to create multiple QR codes</h2>
+<ol><li>Paste one website link or text value on each line, or choose CSV input.</li><li>Tap Generate QR Codes to create the batch.</li><li>Check the preview and download each PNG file.</li><li>Scan each important code with a phone before printing or publishing.</li></ol>
+<h2>What can I use bulk QR codes for?</h2>
+<p>Create QR codes for product pages, inventory labels, event tickets, classroom resources, business locations, contact details and lists of website links. Each QR code contains the exact value you provide.</p>
+<h2>Frequently asked questions</h2>
+<h3>Can I generate QR codes from Excel?</h3><p>Save or copy your spreadsheet data as CSV text, then paste it here. This first version reads CSV text pasted into the box; it does not upload Excel files directly.</p>
+<h3>Can I download all QR codes as a ZIP?</h3><p>Not in this first version. Download each PNG separately. ZIP export is planned for a later update.</p>
+<h3>Is my list uploaded?</h3><p>QR generation happens locally in your browser. The list is not sent to an InfoJano server by this tool.</p>
+<h3>How many QR codes can I create at once?</h3><p>This version supports up to 50 values per batch to keep the page responsive on mobile devices.</p>
+<p><a href="qr-maker.html">Open the standard QR Code Generator</a> · <a href="index.html">InfoJano Home</a></p>
+</section>
+</main>
+<script src="/InfoJano/qr-code-generator.min.js"></script>
+<script>
+(function(){
+const input=document.getElementById('bulk-input'),mode=document.getElementById('input-mode'),status=document.getElementById('status'),results=document.getElementById('results'),generate=document.getElementById('generate');
+function parseCSV(text){
+ const rows=[];let row=[],field='',quoted=false;
+ for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];
+  if(c==='"'&&quoted&&n==='"'){field+='"';i++;}
+  else if(c==='"'){quoted=!quoted;}
+  else if(c===','&&!quoted){row.push(field);field='';}
+  else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&n==='\n')i++;row.push(field);if(row.some(v=>v.trim()))rows.push(row);row=[];field='';}
+  else field+=c;
+ }
+ row.push(field);if(row.some(v=>v.trim()))rows.push(row);
+ if(!rows.length)return [];
+ const headers=rows[0].map(v=>v.trim().toLowerCase());
+ const idx=headers.findIndex(v=>['value','url','link','text','data'].includes(v));
+ const start=idx>=0?1:0, column=idx>=0?idx:0;
+ return rows.slice(start).map(r=>String(r[column]||'').trim()).filter(Boolean);
+}
+function getValues(){
+ const raw=input.value.trim();if(!raw)return [];
+ return mode.value==='csv'?parseCSV(raw):raw.split(/\r?\n/).map(v=>v.trim()).filter(Boolean);
+}
+function createQR(value){
+ return new Promise((resolve,reject)=>{
+  const host=document.createElement('div');host.style.cssText='position:fixed;left:-10000px;top:0;width:320px;height:320px;overflow:hidden';document.body.appendChild(host);
+  try{
+   new QRCode(host,{text:value,width:320,height:320,colorDark:'#111827',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
+   const source=host.querySelector('canvas');
+   if(!source){host.remove();reject(new Error('QR image could not be generated'));return;}
+   const quiet=Math.ceil((320/Math.max(21,33))*4),canvas=document.createElement('canvas');canvas.width=320+quiet*2;canvas.height=320+quiet*2;
+   const ctx=canvas.getContext('2d');if(!ctx){host.remove();reject(new Error('Canvas is unavailable'));return;}
+   ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.imageSmoothingEnabled=false;ctx.drawImage(source,quiet,quiet,320,320);
+   canvas.toBlob(blob=>{host.remove();if(!blob){reject(new Error('PNG export failed'));return;}resolve(URL.createObjectURL(blob));},'image/png');
+  }catch(e){host.remove();reject(e);}
+ });
+}
+generate.addEventListener('click',async()=>{
+ const values=getValues();
+ if(!values.length){status.textContent='Paste at least one value first.';return;}
+ if(values.length>50){status.textContent='Please use 50 values or fewer per batch.';return;}
+ if(!window.QRCode){status.textContent='QR library did not load. Refresh the page and try again.';return;}
+ generate.disabled=true;generate.textContent='Generating…';results.replaceChildren();
+ let success=0;
+ for(let i=0;i<values.length;i++){
+  const value=values[i],card=document.createElement('article');card.className='item';
+  const title=document.createElement('strong');title.textContent=value.length>48?value.slice(0,45)+'…':value;card.appendChild(title);
+  try{
+   const url=await createQR(value),img=document.createElement('img');img.src=url;img.alt='QR code for '+value;img.width=120;img.height=120;img.style.cssText='display:block;width:120px;height:120px;max-width:100%;object-fit:contain;margin:0 auto 8px';
+   card.insertBefore(img,title);
+   const link=document.createElement('a');link.className='download';link.href=url;link.download='InfoJano-QR-'+String(i+1).padStart(2,'0')+'.png';link.textContent='Download PNG';card.appendChild(link);success++;
+  }catch(e){const err=document.createElement('p');err.className='muted';err.textContent='Could not generate this value.';card.appendChild(err);}
+  results.appendChild(card);status.textContent='Generated '+success+' of '+values.length+' QR codes…';
+ }
+ status.textContent='Finished: '+success+' of '+values.length+' QR codes generated. Download each PNG and test before use.';
+ generate.disabled=false;generate.textContent='Generate QR Codes';
+});
+document.getElementById('clear').addEventListener('click',()=>{input.value='';results.replaceChildren();const p=document.createElement('p');p.className='muted';p.textContent='No QR codes generated yet.';results.appendChild(p);status.textContent='Cleared.';});
+})();
+</script>
+</body>
+</html>
