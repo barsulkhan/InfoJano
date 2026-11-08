@@ -74,8 +74,13 @@ main .ij-search-phrases h2{margin:0 0 10px;color:#163b68;font-size:18px}
 main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 @media(max-width:760px){main .grid{grid-template-columns:1fr;gap:14px;margin:18px 10px}main .card{margin:14px 10px;padding:22px 17px;border-radius:19px}main .grid>.card{margin:0}main .use-grid,main .uses,main .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}main .ij-search-phrases{margin:14px 10px;padding:19px 16px}}
 @media(max-width:380px){main .use-grid,main .uses,main .feature-grid{grid-template-columns:1fr}}
+
+/* QR hero title-only lighting: thin, slow, left-to-right; no separate banner streak */
+.ij-master-copy h1{position:relative;isolation:isolate;overflow:hidden}
+.ij-master-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:10%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff12 35%,#ffffff66 49%,#b9faff55 53%,#ffffff12 68%,transparent 100%);mix-blend-mode:screen;filter:blur(1.2px);transform:translateX(-120%);animation:ij-title-light-sweep 22s ease-in-out infinite}
+@keyframes ij-title-light-sweep{0%,18%{transform:translateX(-120%)}68%{transform:translateX(1120%)}100%{transform:translateX(1120%)}}
+@media(prefers-reduced-motion:reduce){.ij-master-copy h1:after{animation:none}}
 </style>
-<meta name="keywords" content="text QR code generator, text to QR code, convert text to QR, QR code for text, plain text QR maker, message QR code, note QR code, write text and make QR, QR code me text kaise dale, likha hua QR code, text wala QR, QR code for instructions, offline text QR">
 </head>
 <body><div class="wrap">
 <header class="topbar"><a class="brand" href="index.html">Info<span>Jano</span></a></header>
@@ -90,7 +95,7 @@ main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 <section class="card faq"><h2>Frequently asked questions</h2><details><summary>Does a text QR code need internet?</summary><p>The stored text can be decoded without opening a website. A phone still needs a camera or QR scanning app.</p></details><details><summary>Can I store a long document?</summary><p>Long content makes a denser code that can be harder to scan. Use a URL to a document for lengthy material.</p></details><details><summary>Can I edit the text after printing?</summary><p>No. The text is encoded in the image. Generate and print a new QR code when the message changes.</p></details></section>
 <section class="card"><h2>Explore the QR Toolkit</h2><p>Use the dedicated page for the task you need, or open the full QR Maker to switch between supported QR formats.</p><div class="related"><a href="qr-maker.html">QR Maker</a><a href="bulk-qr-generator.html">Bulk QR</a><a href="qr-scanner.html">QR Scanner</a><a href="whatsapp-qr-code-generator.html">WhatsApp QR</a><a href="upi-payment-qr-code-generator.html">UPI QR</a><a href="wifi-qr-code-generator.html">WiFi QR</a></div></section>
 <section class="card cta"><h2>Ready to create your text qr code?</h2><p>Open the InfoJano QR Maker, enter your details and test the result before sharing.</p><a class="btn" href="qr-maker.html?type=text">Start creating for free →</a></section>
-<section class="ij-search-phrases" aria-label="Related search phrases"><h2>More ways to search for this tool</h2><p>text to QR code · convert text into QR · plain text QR maker · message QR · note QR · QR code for written information · make QR from words · text QR online · text wala QR code · QR mein likha hua message.</p></section>
+<section class="ij-search-phrases" aria-label="Related searches"><h2>What people search for</h2><p>Create a QR code that contains plain text, a short note, instructions, a message, an address or other written information. Search phrases include text to QR code, convert text into QR, QR code for text, plain text QR generator, text QR maker, message QR code, note QR, write text and make QR, QR code with a message, QR for instructions, QR code for paragraph, text QR online, text ka QR code, likha hua QR code, QR mein message kaise dale, QR code kaise banaye, scan and read text, create QR from words, text to barcode style QR.</p></section>
 </main>
 <footer class="footer">© InfoJano · Free everyday online tools · <a href="index.html">Home</a></footer>
 </div></body></html>
