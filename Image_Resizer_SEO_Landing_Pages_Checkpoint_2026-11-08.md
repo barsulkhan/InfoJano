@@ -33,3 +33,15 @@ Status: IN PROGRESS — feature branch only; not merged or live.
 - Confirm Service Worker cache is v254 and all six pages are in precache.
 - Create a review pull request. Do not merge without user approval.
 - After merge, verify GitHub Pages deployment and test CTA mode/preset selection on an Android browser. Do not claim Live Tested before this is done.
+
+
+## 8 November 2026 — Source-level verification and Draft PR #15
+- Re-fetched all six landing pages and the modified main tool, sitemap and Service Worker from the feature branch.
+- Verified all six pages have unique page titles, meta descriptions, canonical URLs, FAQPage JSON-LD and CTA links to the expected main-tool query parameters. All six FAQ JSON-LD blocks parse as JSON.
+- Modified inline JavaScript in `image-resizer.html` passes a JavaScript syntax parse. Routing code selects the existing Custom/Percentage tab or the matching existing preset button.
+- Confirmed the main Image Resizer links to all six landing pages.
+- Confirmed `sitemap.xml` contains 54 unique URLs, including all six new pages.
+- Confirmed `sw.js` uses `infojano-v254` and precaches all six new pages.
+- Opened Draft PR #15: https://github.com/barsulkhan/InfoJano/pull/15 (12 changed files; 446 additions, 3 deletions at creation). PR head commit: `fc04e1fc92c3fe430b1e1dbb772dc26906f4d3bd`.
+- PR remains unmerged. GitHub's initial PR response reported `mergeable=false`; inspect the current PR mergeability/diff state before any merge. Do not merge without user approval.
+- Not yet tested: deployed GitHub Pages preview, browser visual rendering, real CTA mode/preset selection, Android device workflow, or Google Search Console processing. Do not call these Live Tested.
