@@ -2999,3 +2999,13 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - This is a review prototype only. Do not apply to the other 14 QR feature pages until user approves the design.
 - Service worker cache bumped to infojano-v248.
 - User will review the URL QR page on Android and provide feedback before rollout.
+
+
+## 8 November 2026 — URL QR Visible Content Redesign Fix (v249)
+- User reported repeatedly that the first content-section redesign was not visually apparent on Android. Inspection confirmed the original prototype CSS was present, but its styling was too subtle and mobile grid behavior did not match the intended strong redesign.
+- Reworked URL QR page with high-specificity, !important overrides to make the changes unmistakable: stronger premium tinted cards and top gradient bars, larger section headings, vivid numbered step tiles, clearly styled use-case tiles, checklist panels, distinct warning panel, separated expandable FAQ rows, upgraded related-tool chips, and a prominent blue CTA banner.
+- Explicit mobile breakpoint forces the instructional grid to one column under 760px, while use-case tiles remain two columns (one column only on very narrow screens).
+- Updated only url-qr-code-generator.html as requested for the first design preview. Do not roll out to other pages until user confirms.
+- Service worker cache bumped to infojano-v249.
+- Page commit: a81fb7ab875515cf59f72e56ad09de73ea2f3f2e; service worker commit: bc86b9838cb9fea652d83c05948743d79dc87665.
+- Need user to hard-refresh/reopen the page and inspect Android visual result; do not claim visual verification until screenshot received.
