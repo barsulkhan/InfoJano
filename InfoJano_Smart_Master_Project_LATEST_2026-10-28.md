@@ -2561,3 +2561,15 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Keep source-verified existing features separate from future feature ideas. CM/MM sizing, configurable DPI, target-KB compression/resize, passport/exam photo presets or other capabilities must not be described as currently available unless the current source and tests prove them.
 - Task status: **PLANNED / NOT STARTED**. Next action: inspect the latest `image-resizer.html` and prepare the full feature inventory plus SEO page recommendation. No code changes have been made for this task yet.
 - Standing task-list rule: when the user asks “কাজের অবস্থা”, “কি কি বাকি”, “আমাদের কাজের লিস্ট”, or equivalent, include this Image Resizer feature-wise SEO landing-page task in the pending list until it is completed and verified.
+
+
+## 2026-11-08 — Premium Homepage Hero & Footer Design (PR #16)
+- User approved starting implementation based on the generated InfoJano homepage design and specifically requested the Hero Banner to match the reference closely.
+- Created branch: `design/premium-homepage-hero-footer`.
+- Updated `index.html` only: bright white/blue premium header and hero, two-column desktop / stacked mobile hero, subtle animated neon border, soft outer glow, 12-second gradient text light sweep, gently floating hero artwork, card hover lift, prominent CTA strip, and dark multi-column footer.
+- Preserved existing homepage search/filter controls, tool grid, guides and about sections.
+- Added `prefers-reduced-motion` handling. Neon border/glow is limited to the Hero Banner; cards use restrained shadows/hover, not neon borders.
+- Footer links were restricted to destinations confirmed to exist in the repository; no dead contact/legal URLs were added.
+- Draft PR: https://github.com/barsulkhan/InfoJano/pull/16 (open, unmerged). Current GitHub API reports mergeable=true, mergeable_state=unstable; no deployment or Android visual test has been performed.
+- Separate Image Resizer SEO PR #15 remains open and draft. Coordinate service-worker cache versioning when the two changes are ready to integrate; do not overwrite either branch's service-worker changes.
+- Pending: visual review in browser/Android, confirm mobile hero sizing and CTA/footer layout, then coordinate cache bump and user-approved merge. Live site is unchanged until merge/deployment.
