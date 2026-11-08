@@ -74,8 +74,13 @@ main .ij-search-phrases h2{margin:0 0 10px;color:#163b68;font-size:18px}
 main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 @media(max-width:760px){main .grid{grid-template-columns:1fr;gap:14px;margin:18px 10px}main .card{margin:14px 10px;padding:22px 17px;border-radius:19px}main .grid>.card{margin:0}main .use-grid,main .uses,main .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}main .ij-search-phrases{margin:14px 10px;padding:19px 16px}}
 @media(max-width:380px){main .use-grid,main .uses,main .feature-grid{grid-template-columns:1fr}}
+
+/* QR hero title-only lighting: thin, slow, left-to-right; no separate banner streak */
+.ij-master-copy h1{position:relative;isolation:isolate;overflow:hidden}
+.ij-master-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:10%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff12 35%,#ffffff66 49%,#b9faff55 53%,#ffffff12 68%,transparent 100%);mix-blend-mode:screen;filter:blur(1.2px);transform:translateX(-120%);animation:ij-title-light-sweep 22s ease-in-out infinite}
+@keyframes ij-title-light-sweep{0%,18%{transform:translateX(-120%)}68%{transform:translateX(1120%)}100%{transform:translateX(1120%)}}
+@media(prefers-reduced-motion:reduce){.ij-master-copy h1:after{animation:none}}
 </style>
-<meta name="keywords" content="phone number QR code generator, phone QR code, call QR code, telephone number QR, click to call QR, dial number QR, mobile number QR maker, QR code to call phone, business phone QR, contact number QR, phone ka QR code, number scan call QR">
 </head>
 <body><div class="wrap">
 <header class="topbar"><a class="brand" href="index.html">Info<span>Jano</span></a></header>
@@ -90,7 +95,7 @@ main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 <section class="card faq"><h2>Frequently asked questions</h2><details><summary>Does scanning automatically call the number?</summary><p>No. Compatible phones normally display a call action and require the person scanning to confirm.</p></details><details><summary>Should I include the country code?</summary><p>Yes. The international country code helps identify the correct destination, especially for visitors from other countries.</p></details><details><summary>Can I use this for customer support?</summary><p>Yes. Use a number that is staffed and intended for public contact, then test the result before printing.</p></details></section>
 <section class="card"><h2>Explore the QR Toolkit</h2><p>Use the dedicated page for the task you need, or open the full QR Maker to switch between supported QR formats.</p><div class="related"><a href="qr-maker.html">QR Maker</a><a href="bulk-qr-generator.html">Bulk QR</a><a href="qr-scanner.html">QR Scanner</a><a href="whatsapp-qr-code-generator.html">WhatsApp QR</a><a href="upi-payment-qr-code-generator.html">UPI QR</a><a href="wifi-qr-code-generator.html">WiFi QR</a></div></section>
 <section class="card cta"><h2>Ready to create your phone number qr code?</h2><p>Open the InfoJano QR Maker, enter your details and test the result before sharing.</p><a class="btn" href="qr-maker.html?type=phone">Start creating for free →</a></section>
-<section class="ij-search-phrases" aria-label="Related search phrases"><h2>More ways to search for this tool</h2><p>phone number QR · call QR code · scan to call · telephone QR · mobile number QR · click to call QR · phone ka QR kaise banaye · number scan karke call · business phone QR.</p></section>
+<section class="ij-search-phrases" aria-label="Related searches"><h2>What people search for</h2><p>Create a QR code containing a telephone number so a compatible phone can offer to call it after scanning. Search terms include phone number QR code generator, phone QR code, call QR code, telephone number QR, click to call QR, dial number QR, mobile number QR maker, scan to call, business phone QR, contact number QR, phone ka QR code, number scan karke call, QR code for shop phone number, make a phone number QR, tel link QR, mobile number ka QR kaise banaye.</p></section>
 </main>
 <footer class="footer">© InfoJano · Free everyday online tools · <a href="index.html">Home</a></footer>
 </div></body></html>
