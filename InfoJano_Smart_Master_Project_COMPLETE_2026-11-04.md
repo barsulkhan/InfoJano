@@ -2989,3 +2989,13 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Applied to all 15 QR feature pages: URL, Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp, Bulk QR, QR Scanner, Barcode Scanner.
 - Main qr-maker.html hero remains untouched as explicitly requested.
 - Service worker cache bumped to infojano-v247. Android live visual confirmation is pending.
+
+
+## 8 November 2026 — QR Content Sections Design Prototype
+- User asked to improve the visual design of the sections below the hero across QR Toolkit pages, but requested one page design first for review.
+- Implemented the first prototype on url-qr-code-generator.html only. The hero is not changed.
+- Restyled trust badges, two-column feature cards, numbered steps, use-case tiles, tips/checklist, warning note, FAQ accordion, related-tool links, and bottom CTA with a consistent premium blue/cyan/purple InfoJano visual language, cleaner spacing, subtle shadows, responsive mobile stacking, and improved typography.
+- The use-case tiles remain a two-column layout on mobile; the main instructional grid stacks to one column for readability.
+- This is a review prototype only. Do not apply to the other 14 QR feature pages until user approves the design.
+- Service worker cache bumped to infojano-v248.
+- User will review the URL QR page on Android and provide feedback before rollout.
