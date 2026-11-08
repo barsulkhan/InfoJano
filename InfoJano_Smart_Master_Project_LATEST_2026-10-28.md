@@ -2222,3 +2222,21 @@ Each new QR mode landing page has its own page title, meta description, canonica
 ### QR Toolkit lock and next tasks
 - QR Toolkit remains the only active project area. No unrelated InfoJano tool work may begin before full QR Toolkit verification.
 - Next: check GitHub Pages deployment for the newest commits; visually inspect all 12 mode pages on desktop and mobile; test each CTA selects the correct mode and that QR generation/export works; test scanner camera and image upload, Bulk QR generation/ZIP/A4 PDF, barcode decoding and real second-phone scans; then verify sitemap/canonicals and service-worker v239 activation.
+
+
+## QR Toolkit hero banner rollout — first page completed — 8 November 2026
+
+### Step 1: URL QR page hero banner
+- User asked to work one by one and add hero banners to all QR feature pages. Started with `url-qr-code-generator.html` as the first page in the rollout.
+- Replaced the plain text-only hero with a premium split hero: left-side title, description, keyword chips, CTA buttons and trust labels; right-side custom CSS/SVG illustration showing a website preview and decorative QR code.
+- Added desktop two-column layout and mobile stacked responsive layout. Kept CTA destinations unchanged: `qr-maker.html?type=link` and `qr-maker.html`.
+- Hero banner commit: `01d50fae8cf2b5dc649a5490cce85ec9ad01a497`.
+- Bumped service worker cache to `infojano-v240` for the updated page. Cache commit: `c30fd879c322f9dfef1ad02686925c45668ed591`.
+
+### Verification status
+- Source-level checks confirm the new hero markup, custom visual, CTA links and mobile breakpoint are present.
+- Live GitHub Pages deployment and visual rendering on desktop/mobile are not yet confirmed. User should inspect the URL QR page and share a screenshot before the same hero pattern is rolled out to the remaining pages.
+
+### Remaining hero rollout
+- Apply and review one page at a time for: Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp (preserve its existing bespoke hero unless user requests redesign), Bulk QR, QR Scanner and Barcode Scanner.
+- Keep QR Toolkit as the only active project scope until all pages and core functions are tested and verified. Do not begin unrelated InfoJano tools.
