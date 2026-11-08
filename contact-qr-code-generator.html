@@ -74,8 +74,13 @@ main .ij-search-phrases h2{margin:0 0 10px;color:#163b68;font-size:18px}
 main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 @media(max-width:760px){main .grid{grid-template-columns:1fr;gap:14px;margin:18px 10px}main .card{margin:14px 10px;padding:22px 17px;border-radius:19px}main .grid>.card{margin:0}main .use-grid,main .uses,main .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}main .ij-search-phrases{margin:14px 10px;padding:19px 16px}}
 @media(max-width:380px){main .use-grid,main .uses,main .feature-grid{grid-template-columns:1fr}}
+
+/* QR hero title-only lighting: thin, slow, left-to-right; no separate banner streak */
+.ij-master-copy h1{position:relative;isolation:isolate;overflow:hidden}
+.ij-master-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:10%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff12 35%,#ffffff66 49%,#b9faff55 53%,#ffffff12 68%,transparent 100%);mix-blend-mode:screen;filter:blur(1.2px);transform:translateX(-120%);animation:ij-title-light-sweep 22s ease-in-out infinite}
+@keyframes ij-title-light-sweep{0%,18%{transform:translateX(-120%)}68%{transform:translateX(1120%)}100%{transform:translateX(1120%)}}
+@media(prefers-reduced-motion:reduce){.ij-master-copy h1:after{animation:none}}
 </style>
-<meta name="keywords" content="contact QR code generator, MECARD QR code, phone contact QR, save contact QR, address book QR code, contact details QR maker, business contact QR, QR code to save phone number, contact QR online, mobile number contact QR, contact ka QR code, phone contact save QR">
 </head>
 <body><div class="wrap">
 <header class="topbar"><a class="brand" href="index.html">Info<span>Jano</span></a></header>
@@ -90,7 +95,7 @@ main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 <section class="card faq"><h2>Frequently asked questions</h2><details><summary>What is MECARD?</summary><p>MECARD is a text format used by some QR scanners to represent contact information.</p></details><details><summary>Will every phone save the contact automatically?</summary><p>No. Many devices show a contact preview and ask the person scanning to choose Save.</p></details><details><summary>What details should I include?</summary><p>Include only details intended for sharing, such as a public name, business phone and work email.</p></details></section>
 <section class="card"><h2>Explore the QR Toolkit</h2><p>Use the dedicated page for the task you need, or open the full QR Maker to switch between supported QR formats.</p><div class="related"><a href="qr-maker.html">QR Maker</a><a href="bulk-qr-generator.html">Bulk QR</a><a href="qr-scanner.html">QR Scanner</a><a href="whatsapp-qr-code-generator.html">WhatsApp QR</a><a href="upi-payment-qr-code-generator.html">UPI QR</a><a href="wifi-qr-code-generator.html">WiFi QR</a></div></section>
 <section class="card cta"><h2>Ready to create your contact qr code?</h2><p>Open the InfoJano QR Maker, enter your details and test the result before sharing.</p><a class="btn" href="qr-maker.html?type=contact">Start creating for free →</a></section>
-<section class="ij-search-phrases" aria-label="Related search phrases"><h2>More ways to search for this tool</h2><p>contact QR code · save contact by scanning · MECARD QR · phone number and email QR · business contact QR · address book QR · mobile contact ka QR · scan karke number save kare · contact details QR maker.</p></section>
+<section class="ij-search-phrases" aria-label="Related searches"><h2>What people search for</h2><p>Create a contact QR code with a person's name, phone number, email address and supported contact details so compatible phones can save the contact. Related searches include contact QR code generator, save contact QR, phone contact QR, address book QR, MECARD QR code, contact details QR maker, business contact QR, QR to save phone number, mobile number QR, share contact by QR, contact card QR, contact ka QR code, number save karne ka QR, scan karke contact save, phone contact kaise share kare, contact QR online.</p></section>
 </main>
 <footer class="footer">© InfoJano · Free everyday online tools · <a href="index.html">Home</a></footer>
 </div></body></html>
