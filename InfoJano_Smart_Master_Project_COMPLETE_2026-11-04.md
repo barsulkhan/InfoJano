@@ -2838,3 +2838,24 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - User said they are stopping work for now. On next chat, resume from this exact state; do not ask them to repeat project details. First show the unfinished QR Toolkit checklist and then proceed only with the user's approval.
 - Remaining QR Toolkit work (NOT YET FULLY VERIFIED): (1) Android/desktop/laptop visual inspection of the final live WhatsApp page, including hero/illustration animation and all refined sections; (2) test all 12 QR Maker modes and SEO CTA auto-selection on device, including refresh; (3) scan representative QR payloads on a second phone (UPI, WhatsApp, WiFi, email, SMS, location, contact/vCard, URL/text); (4) test uploaded QR/barcode image decoding and camera scanner permission/start/stop/hidden-page behavior; (5) test Bulk QR generation, ZIP extraction and A4 PDF opening/printing; (6) test PNG/SVG/JPG/WebP exports, logo overlay, contrast, quiet zone and scan readability; (7) verify all sitemap URLs/canonicals and service worker v236 activation; (8) record real device test results in both master files. Do not mark QR Toolkit complete or start other tool groups until these are verified.
 - Both InfoJano master project files are being updated with this session-close record. Source and deployment are verified; real-world device and feature testing remains pending.
+
+
+## QR Toolkit source audit and sitemap alignment — 8 November 2026
+
+### Source-level audit completed
+- Re-fetched the current GitHub `main` source for `qr-maker.html`, the 12 QR mode SEO landing pages, the standalone scanner pages, Bulk QR page, both sitemap files and `sw.js`.
+- Confirmed the QR Maker query-parameter handler reads `type` through `URLSearchParams` and allows exactly these 12 mode values: `link`, `text`, `wifi`, `contact`, `phone`, `more`, `whatsapp`, `upi`, `email`, `sms`, `location`, `vcard`.
+- Confirmed the 12 SEO landing pages route their CTAs to the matching `qr-maker.html?type=...` value, including WhatsApp, UPI and Wi-Fi. This is source-level routing verification only; Android browser selection, refresh and live CTA behavior remain pending.
+- Confirmed the QR mode pages, Bulk QR, QR Scanner and Barcode Scanner entries are present in the service-worker precache list. Current source cache version: `infojano-v236`.
+
+### Sitemap mismatch found and corrected
+- Initial source audit: `sitemap.xml` contained 48 URLs; `sitemap.txt` contained 41. Seven URLs present in XML were missing from TXT: `document-studio.html`, `url-toolkit.html`, `bulk-qr-generator.html`, `whatsapp-qr-code-generator.html`, `upi-payment-qr-code-generator.html`, `wifi-qr-code-generator.html`, and `qr-scanner.html`.
+- Updated `sitemap.txt` to include all seven missing URLs.
+- Commit: `c27ce3df5d3cbf29d5d2b08537109f8fb9d16802` (Align text sitemap with XML sitemap).
+- Re-fetched both files after the commit: XML = 48 URLs, TXT = 48 URLs; no URL differences and no duplicate entries in either file.
+- This verifies repository source consistency, not the public live deployment or Google Search Console fetch/indexing.
+
+### Verification boundaries and next actions
+- The previously recorded GitHub Pages run `42407064386` succeeded for commit `279ee3a70f88d015ea2af3be9e3da91a84caeaf2`. The new sitemap commit `c27ce3df5d3cbf29d5d2b08537109f8fb9d16802` is newer; its Pages deployment must be checked separately before calling the sitemap update live.
+- Continue the QR Toolkit checklist: inspect final WhatsApp landing page on desktop/laptop/tablet; test all 12 CTA mode selections and refresh on Android Chrome; test representative QR payloads on a second phone; test uploaded-image decoding and camera permission/start/stop; test Bulk QR, ZIP and A4 PDF; test PNG/SVG/JPG/WebP, logo overlay, contrast, quiet zone and scan readability; verify live sitemap URLs/canonicals and v236 activation; record actual device outcomes.
+- Do not mark QR Toolkit complete or start another tool group until the remaining live/device checks are genuinely verified.
