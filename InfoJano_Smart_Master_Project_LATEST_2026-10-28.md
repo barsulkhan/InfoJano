@@ -2248,3 +2248,12 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Page commit: `873c1e851e2859d65f6eb310202a6b2826d34ecb`.
 - Service worker cache bumped to `infojano-v241`; commit: `3571d58c20f58f539a391cbb889c63445d0efb94`.
 - Verification: source updated; live deployment and fresh desktop/mobile screenshot review still pending. Do not proceed to the next page until user reviews the revised URL hero.
+
+
+## QR Toolkit unified Master Hero Design rollout — 8 November 2026
+- User approved one shared premium visual design for every QR Toolkit page. This is now the permanent Master Hero Design: navy/blue/purple gradient, InfoJano branded top strip, Fast/Secure/No Signup badges, QR Toolkit kicker, bold title with yellow accent, short tool-specific description, three feature chips, two CTA buttons, and a consistent device + QR visual with gradient wave footer.
+- Applied the shared layout to: URL, Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp, Bulk QR, QR Scanner, Barcode Scanner, and the main QR Maker page.
+- Tool name, description, feature labels, icon accent and primary CTA are the only intended content differences. QR Maker links and existing tool-specific content below the hero were retained. Bulk and scanner CTA anchors were added for their existing workflow sections.
+- QR Maker hero commit: `4f0e9e38666b370550cfa43e8f7ba5a788b03e65`. Bulk QR commit: `c7d75dfdb3f4cef269bbf3db195b1fa777a35d5f`. QR Scanner commit: `fe4f264fc730fa0b91d80d322667b16cde823c60`. Barcode Scanner commit: `43563006ce862ea827f1e1459959a0297310113c`. WhatsApp commit: `209bc6c48c61e60a0a52f5a81eea3ef6bfdf6710`. Other feature page commits are in repository history.
+- Service worker cache bumped to `infojano-v242`; commit: `af8df2aad0b8d4de4975222a8d66636e36c9f337`.
+- Verification pending: source changes have been committed, but live GitHub Pages deployment, desktop/mobile visual review, all CTA destinations, and QR generator/scanner/bulk functional regression tests still need to be checked. Do not claim full release verification until these tests pass.
