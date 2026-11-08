@@ -2572,3 +2572,15 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Added the six landing-page URLs to `sitemap.xml` and Service Worker precache; bumped cache from `infojano-v253` to `infojano-v254`.
 - Source changes are being made only on the feature branch. Pending: fetch and inspect every changed file, validate HTML metadata/FAQ schema/CTA paths, parse the modified inline JavaScript, verify sitemap and precache consistency, create a review PR, and run Preview/Live checks after approval. No merge or live deployment has been performed.
 - Important: the current page preset handler intentionally disables aspect-ratio lock for fixed preset dimensions. The landing-page copy warns users to inspect possible stretching; no crop feature is claimed.
+
+
+## 8 November 2026 — Source-level verification and Draft PR #15
+- Re-fetched all six landing pages and the modified main tool, sitemap and Service Worker from the feature branch.
+- Verified all six pages have unique page titles, meta descriptions, canonical URLs, FAQPage JSON-LD and CTA links to the expected main-tool query parameters. All six FAQ JSON-LD blocks parse as JSON.
+- Modified inline JavaScript in `image-resizer.html` passes a JavaScript syntax parse. Routing code selects the existing Custom/Percentage tab or the matching existing preset button.
+- Confirmed the main Image Resizer links to all six landing pages.
+- Confirmed `sitemap.xml` contains 54 unique URLs, including all six new pages.
+- Confirmed `sw.js` uses `infojano-v254` and precaches all six new pages.
+- Opened Draft PR #15: https://github.com/barsulkhan/InfoJano/pull/15 (12 changed files; 446 additions, 3 deletions at creation). PR head commit: `fc04e1fc92c3fe430b1e1dbb772dc26906f4d3bd`.
+- PR remains unmerged. GitHub's initial PR response reported `mergeable=false`; inspect the current PR mergeability/diff state before any merge. Do not merge without user approval.
+- Not yet tested: deployed GitHub Pages preview, browser visual rendering, real CTA mode/preset selection, Android device workflow, or Google Search Console processing. Do not call these Live Tested.
