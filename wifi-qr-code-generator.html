@@ -74,8 +74,13 @@ main .ij-search-phrases h2{margin:0 0 10px;color:#163b68;font-size:18px}
 main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 @media(max-width:760px){main .grid{grid-template-columns:1fr;gap:14px;margin:18px 10px}main .card{margin:14px 10px;padding:22px 17px;border-radius:19px}main .grid>.card{margin:0}main .use-grid,main .uses,main .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}main .ij-search-phrases{margin:14px 10px;padding:19px 16px}}
 @media(max-width:380px){main .use-grid,main .uses,main .feature-grid{grid-template-columns:1fr}}
+
+/* QR hero title-only lighting: thin, slow, left-to-right; no separate banner streak */
+.ij-master-copy h1{position:relative;isolation:isolate;overflow:hidden}
+.ij-master-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:10%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff12 35%,#ffffff66 49%,#b9faff55 53%,#ffffff12 68%,transparent 100%);mix-blend-mode:screen;filter:blur(1.2px);transform:translateX(-120%);animation:ij-title-light-sweep 22s ease-in-out infinite}
+@keyframes ij-title-light-sweep{0%,18%{transform:translateX(-120%)}68%{transform:translateX(1120%)}100%{transform:translateX(1120%)}}
+@media(prefers-reduced-motion:reduce){.ij-master-copy h1:after{animation:none}}
 </style>
-<meta name="keywords" content="WiFi QR code generator, WiFi password QR, share WiFi by QR, wireless network QR code, guest WiFi QR, WiFi scanner connect QR, WiFi QR maker free, internet password QR, wifi ka QR code, WiFi password share QR, WLAN QR code, WPA WPA2 WiFi QR">
 </head>
 <body><div class="wrap">
 <header class="topbar"><a class="brand" href="index.html">Info<span>Jano</span></a></header>
@@ -90,7 +95,7 @@ main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 <section class="card faq"><h2>Frequently asked questions</h2><details><summary>Can visitors connect without typing a password?</summary><p>Compatible phones can read the WiFi details and offer to join the network. The user may still need to confirm the connection.</p></details><details><summary>What if my network is hidden?</summary><p>If the generator offers a hidden-network setting, enable it and enter the SSID exactly. Otherwise use a supported network configuration.</p></details><details><summary>Is my WiFi password uploaded?</summary><p>QR generation is designed to happen in your browser. Treat the generated QR as sensitive because anyone who scans it may obtain network access.</p></details></section>
 <section class="card"><h2>Explore the QR Toolkit</h2><p>Use the dedicated page for the task you need, or open the full QR Maker to switch between supported QR formats.</p><div class="related"><a href="qr-maker.html">QR Maker</a><a href="bulk-qr-generator.html">Bulk QR</a><a href="qr-scanner.html">QR Scanner</a><a href="whatsapp-qr-code-generator.html">WhatsApp QR</a><a href="upi-payment-qr-code-generator.html">UPI QR</a></div></section>
 <section class="card cta"><h2>Ready to create your wifi qr code?</h2><p>Open the InfoJano QR Maker, enter your details and test the result before sharing.</p><a class="btn" href="qr-maker.html?type=wifi">Start creating for free →</a></section>
-<section class="ij-search-phrases" aria-label="Related search phrases"><h2>More ways to search for this tool</h2><p>WiFi QR code · WiFi password QR · share WiFi without typing password · guest network QR · wireless internet QR · WiFi connect QR · WiFi ka QR kaise banaye · password wala WiFi QR · WLAN QR code.</p></section>
+<section class="ij-search-phrases" aria-label="Related searches"><h2>What people search for</h2><p>Create a WiFi QR code so guests can join a wireless network by scanning instead of typing the SSID and password. Common searches include WiFi QR code generator, WiFi password QR, QR code for WiFi password, share WiFi with QR, connect to WiFi by scanning, wireless network QR, guest WiFi QR code, home WiFi QR, office WiFi QR, WLAN QR, WPA WPA2 WiFi QR, WiFi QR maker free, internet password QR, WiFi ka QR code, wifi password share kaise kare, wifi ka QR kaise banaye, scan karke WiFi connect, QR code for router, Android WiFi QR.</p></section>
 </main>
 <footer class="footer">© InfoJano · Free everyday online tools · <a href="index.html">Home</a></footer>
 </div></body></html>
