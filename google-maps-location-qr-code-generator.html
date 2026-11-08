@@ -43,7 +43,39 @@ a{color:#155bc4;text-decoration:none}a:hover{text-decoration:underline}.wrap{wid
 .ij-master-pills span:nth-child(1){animation-delay:2s}.ij-master-pills span:nth-child(2){animation-delay:4s}.ij-master-pills span:nth-child(3){animation-delay:6s}
 @keyframes ij-feature-light-sweep{0%,10%{background-position:100% 0}55%,100%{background-position:0 0}}
 @media(prefers-reduced-motion:reduce){.ij-master-hero,.ij-master-copy h1:after,.ij-master-pills span{animation:none}}
+
+/* Shared InfoJano premium content system — QR Toolkit pages */
+main .trust{display:flex;flex-wrap:wrap;gap:9px;margin:20px 12px 26px}
+main .trust span{display:inline-flex;align-items:center;padding:9px 14px;border:1px solid #cfe4ff;border-radius:999px;background:linear-gradient(135deg,#fff,#eaf4ff);color:#164a86;box-shadow:0 5px 14px #164a8618;font-weight:650}
+main .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 12px}
+main .card,main .section .step,main .feature-grid .feature,main .use-grid .use-card{position:relative;overflow:hidden;border:1px solid #c9ddf6;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#f7fbff 62%,#edf5ff 100%);box-shadow:0 12px 30px rgba(20,65,130,.10),inset 0 1px #fff}
+main .card{padding:24px;margin:15px 10px}
+main .grid>.card{margin:0}
+main .card:before,main .section .step:before,main .feature-grid .feature:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#00c9ec,#377dff 48%,#9565ff)}
+main .card h2,main .section-head h2{color:#102c55;font-weight:800;letter-spacing:-.3px}
+main .card h2{padding-bottom:13px;border-bottom:1px solid #dce9f8}
+main .steps li,main ol li{line-height:1.6}
+main .card .steps li,main .step{padding:15px;border:1px solid #d7e7fa;border-radius:15px;background:linear-gradient(110deg,#eaf4ff,#fff 80%);box-shadow:0 5px 13px #23558b12}
+main .use-grid,main .uses,main .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+main .use-grid div,main .uses div,main .use-card{padding:14px;border:1px solid #d4e5f8;border-radius:15px;background:linear-gradient(145deg,#eaf4ff,#f8fbff);color:#244568;box-shadow:0 5px 13px #23558b12}
+main .checklist li,main .tips li{margin:8px 0;padding:12px 14px;border:1px solid #dce9f7;border-radius:13px;background:linear-gradient(100deg,#f0f7ff,#fff);color:#34516f}
+main .note,main .warning{padding:15px 17px;border:1px solid #f0d58d;border-radius:14px;background:linear-gradient(110deg,#fff6db,#fffaf0);color:#76551d}
+main .faq details,main details{margin:9px 0;border:1px solid #dbe8f7;border-radius:13px;background:linear-gradient(100deg,#f4f8ff,#fff);overflow:hidden}
+main .faq summary,main details summary{padding:15px;font-weight:700;color:#24476d;cursor:pointer}
+main details[open] summary{background:#eaf3ff}
+main details p{padding:0 15px 15px;color:#526b85}
+main .related{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+main .related a,main a.tool-link{display:inline-flex;padding:11px 15px;border:1px solid #cfe1f7;border-radius:13px;background:linear-gradient(145deg,#fff,#eaf3ff);color:#1557a0;font-weight:700;box-shadow:0 5px 12px #1a4a8512}
+main .cta{padding:34px 24px;text-align:center;border:0;border-radius:21px;background:radial-gradient(ellipse at 50% 0%,#2694ff 0%,transparent 55%),linear-gradient(115deg,#062b70,#075fca 65%,#087bc2);box-shadow:0 16px 36px #124a9638;color:#fff}
+main .cta h2{color:#fff;border:0}
+main .cta p{color:#e6f3ff}
+main .ij-search-phrases{margin:16px 10px;padding:22px 22px 20px;border:1px solid #d4e5f8;border-radius:18px;background:linear-gradient(135deg,#fff,#f1f7ff);box-shadow:0 9px 24px #194b8510}
+main .ij-search-phrases h2{margin:0 0 10px;color:#163b68;font-size:18px}
+main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
+@media(max-width:760px){main .grid{grid-template-columns:1fr;gap:14px;margin:18px 10px}main .card{margin:14px 10px;padding:22px 17px;border-radius:19px}main .grid>.card{margin:0}main .use-grid,main .uses,main .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}main .ij-search-phrases{margin:14px 10px;padding:19px 16px}}
+@media(max-width:380px){main .use-grid,main .uses,main .feature-grid{grid-template-columns:1fr}}
 </style>
+<meta name="keywords" content="Google Maps QR code generator, location QR code, map location QR, Google map link QR, directions QR code, address QR maker, GPS coordinates QR, shop location QR, place QR code, location share QR, map ka QR code, ghar ka location QR, Google Maps QR online">
 </head>
 <body><div class="wrap">
 <header class="topbar"><a class="brand" href="index.html">Info<span>Jano</span></a></header>
@@ -58,6 +90,7 @@ a{color:#155bc4;text-decoration:none}a:hover{text-decoration:underline}.wrap{wid
 <section class="card faq"><h2>Frequently asked questions</h2><details><summary>Where do I find latitude and longitude?</summary><p>In a map app, select or long-press the exact point and copy the coordinates shown in its place details.</p></details><details><summary>Can I use a place name instead?</summary><p>The dedicated Location mode uses coordinates. You can encode a Google Maps share link with Link / URL mode.</p></details><details><summary>Will it open Google Maps?</summary><p>The QR stores a Maps URL. A phone may open the Maps app or a browser depending on installed apps and settings.</p></details></section>
 <section class="card"><h2>Explore the QR Toolkit</h2><p>Use the dedicated page for the task you need, or open the full QR Maker to switch between supported QR formats.</p><div class="related"><a href="qr-maker.html">QR Maker</a><a href="bulk-qr-generator.html">Bulk QR</a><a href="qr-scanner.html">QR Scanner</a><a href="whatsapp-qr-code-generator.html">WhatsApp QR</a><a href="upi-payment-qr-code-generator.html">UPI QR</a><a href="wifi-qr-code-generator.html">WiFi QR</a></div></section>
 <section class="card cta"><h2>Ready to create your google maps location qr code?</h2><p>Open the InfoJano QR Maker, enter your details and test the result before sharing.</p><a class="btn" href="qr-maker.html?type=location">Start creating for free →</a></section>
+<section class="ij-search-phrases" aria-label="Related search phrases"><h2>More ways to search for this tool</h2><p>Google Maps QR code · location QR · map link QR · directions QR · shop address QR · GPS location QR · share place by scanning · Google map ka QR kaise banaye · location ka QR code · ghar ya dukaan ka map QR.</p></section>
 </main>
 <footer class="footer">© InfoJano · Free everyday online tools · <a href="index.html">Home</a></footer>
 </div></body></html>
