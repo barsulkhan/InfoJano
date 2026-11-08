@@ -2951,3 +2951,5 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - QR Maker hero commit: `4f0e9e38666b370550cfa43e8f7ba5a788b03e65`. Bulk QR commit: `c7d75dfdb3f4cef269bbf3db195b1fa777a35d5f`. QR Scanner commit: `fe4f264fc730fa0b91d80d322667b16cde823c60`. Barcode Scanner commit: `43563006ce862ea827f1e1459959a0297310113c`. WhatsApp commit: `209bc6c48c61e60a0a52f5a81eea3ef6bfdf6710`. Other feature page commits are in repository history.
 - Service worker cache bumped to `infojano-v242`; commit: `af8df2aad0b8d4de4975222a8d66636e36c9f337`.
 - Verification pending: source changes have been committed, but live GitHub Pages deployment, desktop/mobile visual review, all CTA destinations, and QR generator/scanner/bulk functional regression tests still need to be checked. Do not claim full release verification until these tests pass.
+
+- Follow-up source correction: refined all feature-page hero title hierarchy so the correct tool name remains intact (for example, “URL QR Code Generator”, “Bulk QR Code Generator”, and “Free Online QR Code Scanner”). Cache version advanced to `infojano-v243` (commit `1ca4e3b45f5257cc8622ff0579f75fb384369d0e`).
