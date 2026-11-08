@@ -2978,3 +2978,14 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Service worker cache bumped to infojano-v246 so mobile browsers can fetch the revised CSS.
 - Keep prefers-reduced-motion accessibility support. If device-level Reduce animations is enabled, the motion may still be suppressed by the browser/OS setting.
 - Live visual confirmation on the user's Android device is still pending; do not claim the user has seen the effect until they refresh and confirm.
+
+
+## 8 November 2026 — QR Neon Motion Refinement (User Screenshot Feedback)
+- User supplied Android screenshot showing the previous conic-gradient border effect leaked diagonally across the entire hero because the mask/composite behavior rendered incorrectly on their mobile browser.
+- Removed the rotating conic-gradient overlay entirely; no moving diagonal beam should cross the hero.
+- Replaced it with a contained 2px multicolor gradient perimeter using background-clip, with a very slow 12-second soft glow pulse. Border stays on all four edges; it does not spin.
+- Refined headline sweep: thin 16%-width soft white/cyan light, begins at the right edge and moves right-to-left, 18-second cycle with a long pause; subtle glow only.
+- Feature-chip highlights slowed to 16 seconds and reduced brightness.
+- Applied to all 15 QR feature pages: URL, Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp, Bulk QR, QR Scanner, Barcode Scanner.
+- Main qr-maker.html hero remains untouched as explicitly requested.
+- Service worker cache bumped to infojano-v247. Android live visual confirmation is pending.
