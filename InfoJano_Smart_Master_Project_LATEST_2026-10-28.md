@@ -2266,3 +2266,10 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Restored `qr-maker.html` exactly from its pre-redesign version (original `ij-qr-hero` with original QR artwork, original text/chips, and original workspace markup). Restore commit: `80e408efedbeedfdc666ac65628c8780f90658c5`.
 - Service worker cache advanced to `infojano-v244` (commit `10c5f2f2699ff7a794c7058f198191c45302d9d6`).
 - The shared new hero remains on the individual QR feature/tool pages; QR Maker main page retains its previous hero. Live browser verification still pending.
+
+
+## Permanent QR Hero Neon Motion Standard — 8 November 2026
+- Applied the previously approved motion standard to all 15 individual QR Toolkit feature pages (not the main QR Maker page): continuous neon perimeter around all four hero edges; narrow white/cyan light sweep moving left-to-right over the main heading; sequential light sweep across the three feature chips; blue/purple/gold premium glow; 8-second perimeter rotation and 12-second title/features cycle. Respects prefers-reduced-motion.
+- Pages: URL, Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp, Bulk QR, QR Scanner, Barcode Scanner.
+- Main `qr-maker.html` intentionally excluded; its original hero remains unchanged per user instruction.
+- Cache advanced to `infojano-v245` (commit `ea6bfd25e8a753324e321d9faa9c41f2c548d113`). Source committed; live visual check still pending.
