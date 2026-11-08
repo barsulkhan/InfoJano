@@ -2445,3 +2445,15 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Attempted external opening of the exact live sitemap and robots.txt from the research environment, but the web retrieval tool returned internal access errors. Therefore live HTTP status, redirect chain and Content-Type remain unverified.
 - Next required diagnostic from user: in Search Console's top URL inspection bar, paste the exact full URL `https://barsulkhan.github.io/InfoJano/sitemap-infojano.xml`, press Enter, click **Test Live URL**, wait for completion, expand **Page availability**, and share screenshot showing **Crawl allowed?**, **Page fetch**, and any HTTP/error detail. If available, open **View tested page** and share response details. Do not edit/rename sitemap or repeatedly resubmit before this evidence.
 - Diagnostic interpretation: if Page fetch = Successful and Crawl allowed = Yes, sitemap endpoint is reachable to Google's live tester and the remaining issue may be report processing/temporary Search Console behavior; if Page fetch fails, use the exact returned status/error to fix the cause.
+
+
+### 8 November 2026 — Sitemap URL Inspection Live Test result
+- User shared Google Search Console URL Inspection screenshot for `https://barsulkhan.github.io/InfoJano/sitemap-infojano.xml`.
+- Live Test banner: **“URL is available to Google”**.
+- Page availability summary: **“Page can be indexed”**.
+- Test timestamp shown: Nov 8, 2026, 5:16 PM.
+- This establishes that Google's live URL Inspection test could access the URL and did not report an indexing block at the summary level.
+- Important distinction: this does NOT establish that the Sitemap submission processing succeeded. The Sitemap report still previously showed **“Sitemap could not be read”**, Unknown type, and 0 discovered pages.
+- Next action: expand the **Page availability** row in URL Inspection and inspect the detailed **Crawl allowed** and **Page fetch** values. Capture screenshot before making code changes.
+- Do not press **Request indexing** for the sitemap XML; it is not the needed diagnostic. Do not rename or modify sitemap files until the detailed fetch result is known.
+- QR Toolkit remains the only active project scope; do not start any other tool before full QR Toolkit verification.
