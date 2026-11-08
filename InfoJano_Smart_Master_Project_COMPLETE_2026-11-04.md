@@ -3151,3 +3151,15 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Next action: expand the **Page availability** row in URL Inspection and inspect the detailed **Crawl allowed** and **Page fetch** values. Capture screenshot before making code changes.
 - Do not press **Request indexing** for the sitemap XML; it is not the needed diagnostic. Do not rename or modify sitemap files until the detailed fetch result is known.
 - QR Toolkit remains the only active project scope; do not start any other tool before full QR Toolkit verification.
+
+
+### 8 November 2026 — Expanded Page availability details (sitemap URL)
+- User supplied expanded Google Search Console URL Inspection Live Test screenshot for `https://barsulkhan.github.io/InfoJano/sitemap-infojano.xml`.
+- Page availability: **Page can be indexed**.
+- Crawl details: Crawled as **Google Inspection Tool smartphone**; **Crawl allowed? Yes**; **Page fetch: Successful**; **Indexing allowed? Yes**.
+- User-declared canonical: **None**; Google-selected canonical: **Only determined after indexing**.
+- This confirms the tested URL is reachable by Google's live inspection fetcher, is not blocked by robots for this test, and is not marked noindex.
+- It still does NOT prove Google Sitemap processing can parse/accept the XML. Search Console Sitemap report previously showed **Sitemap could not be read**, Unknown type, and 0 discovered pages. Live URL Inspection and Sitemap processing are distinct diagnostics.
+- Next: inspect the actual response/body of the exact URL. In browser, open `https://barsulkhan.github.io/InfoJano/sitemap-infojano.xml` and confirm it displays raw XML (not HTML/404/redirect page), has a valid `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` root, properly closed tags, and valid absolute `<loc>` URLs. Then inspect HTTP response status and Content-Type (expected successful 200 and XML-compatible content type) using browser DevTools or an HTTP header checker. Do not claim these have been verified yet.
+- Do not press Request indexing for the sitemap; do not change/rename sitemap files or robots.txt until body/response is checked.
+- QR Toolkit remains the only active scope; no other tools until QR Toolkit is fully tested and verified.
