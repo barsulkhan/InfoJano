@@ -74,8 +74,13 @@ main .ij-search-phrases h2{margin:0 0 10px;color:#163b68;font-size:18px}
 main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 @media(max-width:760px){main .grid{grid-template-columns:1fr;gap:14px;margin:18px 10px}main .card{margin:14px 10px;padding:22px 17px;border-radius:19px}main .grid>.card{margin:0}main .use-grid,main .uses,main .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}main .ij-search-phrases{margin:14px 10px;padding:19px 16px}}
 @media(max-width:380px){main .use-grid,main .uses,main .feature-grid{grid-template-columns:1fr}}
+
+/* QR hero title-only lighting: thin, slow, left-to-right; no separate banner streak */
+.ij-master-copy h1{position:relative;isolation:isolate;overflow:hidden}
+.ij-master-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:10%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff12 35%,#ffffff66 49%,#b9faff55 53%,#ffffff12 68%,transparent 100%);mix-blend-mode:screen;filter:blur(1.2px);transform:translateX(-120%);animation:ij-title-light-sweep 22s ease-in-out infinite}
+@keyframes ij-title-light-sweep{0%,18%{transform:translateX(-120%)}68%{transform:translateX(1120%)}100%{transform:translateX(1120%)}}
+@media(prefers-reduced-motion:reduce){.ij-master-copy h1:after{animation:none}}
 </style>
-<meta name="keywords" content="Google Maps QR code generator, location QR code, map location QR, Google map link QR, directions QR code, address QR maker, GPS coordinates QR, shop location QR, place QR code, location share QR, map ka QR code, ghar ka location QR, Google Maps QR online">
 </head>
 <body><div class="wrap">
 <header class="topbar"><a class="brand" href="index.html">Info<span>Jano</span></a></header>
@@ -90,7 +95,7 @@ main .ij-search-phrases p{margin:0;color:#526b85;font-size:13px;line-height:1.8}
 <section class="card faq"><h2>Frequently asked questions</h2><details><summary>Where do I find latitude and longitude?</summary><p>In a map app, select or long-press the exact point and copy the coordinates shown in its place details.</p></details><details><summary>Can I use a place name instead?</summary><p>The dedicated Location mode uses coordinates. You can encode a Google Maps share link with Link / URL mode.</p></details><details><summary>Will it open Google Maps?</summary><p>The QR stores a Maps URL. A phone may open the Maps app or a browser depending on installed apps and settings.</p></details></section>
 <section class="card"><h2>Explore the QR Toolkit</h2><p>Use the dedicated page for the task you need, or open the full QR Maker to switch between supported QR formats.</p><div class="related"><a href="qr-maker.html">QR Maker</a><a href="bulk-qr-generator.html">Bulk QR</a><a href="qr-scanner.html">QR Scanner</a><a href="whatsapp-qr-code-generator.html">WhatsApp QR</a><a href="upi-payment-qr-code-generator.html">UPI QR</a><a href="wifi-qr-code-generator.html">WiFi QR</a></div></section>
 <section class="card cta"><h2>Ready to create your google maps location qr code?</h2><p>Open the InfoJano QR Maker, enter your details and test the result before sharing.</p><a class="btn" href="qr-maker.html?type=location">Start creating for free →</a></section>
-<section class="ij-search-phrases" aria-label="Related search phrases"><h2>More ways to search for this tool</h2><p>Google Maps QR code · location QR · map link QR · directions QR · shop address QR · GPS location QR · share place by scanning · Google map ka QR kaise banaye · location ka QR code · ghar ya dukaan ka map QR.</p></section>
+<section class="ij-search-phrases" aria-label="Related searches"><h2>What people search for</h2><p>Create a QR code for a Google Maps link so people can open a shop, home, office, event venue or destination on a map. Search terms include Google Maps QR code generator, location QR code, map location QR, Google map link QR, directions QR code, address QR maker, GPS coordinates QR, shop location QR, place QR code, share location QR, Google Maps ka QR, map ka QR code, ghar ka location QR, dukaan ka map QR, location ka QR kaise banaye, QR code for directions, scan to open map, create map link QR.</p></section>
 </main>
 <footer class="footer">© InfoJano · Free everyday online tools · <a href="index.html">Home</a></footer>
 </div></body></html>
