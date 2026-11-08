@@ -2967,3 +2967,14 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Pages: URL, Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp, Bulk QR, QR Scanner, Barcode Scanner.
 - Main `qr-maker.html` intentionally excluded; its original hero remains unchanged per user instruction.
 - Cache advanced to `infojano-v245` (commit `ea6bfd25e8a753324e321d9faa9c41f2c548d113`). Source committed; live visual check still pending.
+
+
+## 8 November 2026 — QR Toolkit Neon Visibility Improvement
+- User reported that the neon lighting was not noticeable on the QR feature hero banners.
+- Inspected the live repository CSS: the previous border and headline sweep were too subtle; the headline sweep used a long 12-second cycle and weak glow.
+- Updated all 15 QR feature pages with a higher-visibility neon standard: brighter multi-colour perimeter, thicker 4px border, stronger cyan/purple glow, 5-second border rotation, clear white/cyan left-to-right headline sweep on a 6-second cycle, and brighter sequential feature-chip highlights.
+- Pages updated: URL, Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp, Bulk QR, QR Scanner, Barcode Scanner.
+- Main qr-maker.html hero intentionally remains untouched, per user's explicit instruction.
+- Service worker cache bumped to infojano-v246 so mobile browsers can fetch the revised CSS.
+- Keep prefers-reduced-motion accessibility support. If device-level Reduce animations is enabled, the motion may still be suppressed by the browser/OS setting.
+- Live visual confirmation on the user's Android device is still pending; do not claim the user has seen the effect until they refresh and confirm.
