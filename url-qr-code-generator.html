@@ -53,27 +53,38 @@ a{color:#155bc4;text-decoration:none}a:hover{text-decoration:underline}.wrap{wid
 .visual-caption{position:absolute;bottom:2%;right:2%;font-size:10px;letter-spacing:.12em;font-weight:800;color:#d9eaff}
 @keyframes qrFloat{0%,100%{transform:translateY(0) rotate(7deg)}50%{transform:translateY(-9px) rotate(4deg)}}
 @media(max-width:760px){.hero-split{grid-template-columns:1fr;min-height:unset;padding:30px 23px}.hero h1{font-size:clamp(38px,10vw,52px)}.hero-copy>p{font-size:15px}.hero-visual{min-height:250px;margin-top:4px}.url-window{left:3%;width:65%;top:10%}.qr-float{width:145px;height:145px;right:5%;top:16%}.visual-caption{font-size:9px;bottom:0}.hero-actions .btn{width:100%;justify-content:center}}
+
+/* InfoJano QR Toolkit — approved shared Master Hero */
+.ij-master-hero{position:relative;isolation:isolate;overflow:hidden;margin:12px 0 24px;border-radius:25px;color:#fff;background:radial-gradient(ellipse at 74% 20%,#08a9f5 0,transparent 34%),linear-gradient(118deg,#061b68 0%,#0753b8 54%,#5720c5 100%);box-shadow:0 20px 48px rgba(14,38,110,.22);min-height:360px}
+.ij-master-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 10% 90%,#00d9ff55,transparent 28%),radial-gradient(circle at 100% 100%,#ffcc3550,transparent 24%)}
+.ij-master-top{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:18px 28px;border-bottom:1px solid #ffffff2c;background:#06164f88}
+.ij-master-brand{font-size:27px;font-weight:900;letter-spacing:-1px;color:#fff!important;text-decoration:none!important}.ij-master-brand span{color:#ffd52e}
+.ij-master-tagline{font-size:14px;font-weight:650;color:#e6f3ff;border-left:1px solid #ffffff66;padding-left:20px}
+.ij-master-badges{display:flex;gap:9px;margin-left:auto;flex-wrap:wrap}.ij-master-badges span{border:1px solid #9b83ff;border-radius:99px;padding:7px 13px;background:#ffffff12;font-size:12px;font-weight:800;white-space:nowrap}
+.ij-master-body{display:grid;grid-template-columns:1.03fr .97fr;gap:22px;align-items:center;padding:32px 42px 38px;min-height:300px}
+.ij-master-copy{position:relative;z-index:2}.ij-master-kicker{display:inline-flex;align-items:center;gap:9px;border:1px solid #a58bff;border-radius:99px;padding:8px 15px;background:linear-gradient(100deg,#7d42efaa,#165bd8aa);font-weight:800;font-size:14px;box-shadow:0 0 22px #835dff55}
+.ij-master-copy h1{font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-1.7px;margin:17px 0 13px;color:#fff;font-weight:900;max-width:650px}
+.ij-master-copy h1 em{font-style:normal;color:#ffd52e}
+.ij-master-copy p{max-width:570px;color:#e7f2ff;font-size:16px;line-height:1.55;margin:0 0 17px}
+.ij-master-pills{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 22px}.ij-master-pills span{border:1px solid #16c9f3aa;border-radius:99px;padding:8px 13px;background:#073d9a88;color:#effaff;font-size:12px;font-weight:800}
+.ij-master-actions{display:flex;flex-wrap:wrap;gap:11px}.ij-master-actions a{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:14px;background:linear-gradient(180deg,#ffe45b,#ffbd00);color:#09245e!important;text-decoration:none!important;font-weight:900;box-shadow:0 8px 22px #001b5a66;border:1px solid #fff5a5}.ij-master-actions a.alt{background:linear-gradient(180deg,#fff,#d9eaff);border-color:#fff;color:#09245e!important}
+.ij-master-visual{position:relative;min-height:250px;display:grid;place-items:center;isolation:isolate}
+.ij-master-orb{position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,#00cfff88 0,#6e45ff55 48%,transparent 72%);filter:blur(8px)}
+.ij-master-device{position:absolute;left:5%;top:18%;width:62%;height:180px;border:5px solid #101c52;border-radius:18px;background:linear-gradient(145deg,#f7fbff,#b7d7ff);box-shadow:0 20px 40px #00134f88;transform:rotate(-5deg);padding:12px;color:#10285d}
+.ij-master-devicebar{height:19px;display:flex;gap:5px;align-items:center;border-bottom:1px solid #c6d8f3;padding-bottom:7px}.ij-master-devicebar i{width:7px;height:7px;border-radius:50%;background:#2f7eea}.ij-master-address{margin:12px 0 10px;border-radius:9px;background:#fff;padding:8px;font-size:11px;font-weight:800;color:#163a7c;box-shadow:0 2px 8px #234b8420}
+.ij-master-screenline{height:9px;border-radius:8px;background:#8cb9f0;margin:8px 0;width:86%}.ij-master-screenline.short{width:55%}
+.ij-master-qr{position:absolute;right:4%;top:19%;width:150px;height:150px;padding:10px;border:5px solid #fff;border-radius:19px;background:#fff;box-shadow:0 15px 35px #00134f88;transform:rotate(6deg)}
+.ij-master-qr svg{display:block;width:100%;height:100%}.ij-master-float{position:absolute;right:0;bottom:10%;width:58px;height:58px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(145deg,#9c6bff,#086cff);border:1px solid #b9e9ff;color:#fff;font-size:27px;font-weight:900;box-shadow:0 10px 25px #00134f77;transform:rotate(9deg)}
+.ij-master-caption{position:absolute;right:4%;bottom:0;color:#d9eaff;font-size:10px;letter-spacing:1.5px;font-weight:900}
+.ij-master-wave{height:10px;background:linear-gradient(90deg,#00d9ff,#7d5cff 52%,#ffd52e);opacity:.95}
+@media(max-width:760px){.ij-master-hero{border-radius:19px;min-height:unset}.ij-master-top{padding:14px 17px;gap:10px}.ij-master-brand{font-size:23px}.ij-master-tagline{font-size:11px;padding-left:10px}.ij-master-badges{width:100%;margin-left:0}.ij-master-badges span{font-size:10px;padding:5px 9px}.ij-master-body{grid-template-columns:1fr;padding:25px 21px 22px;gap:7px}.ij-master-copy h1{font-size:clamp(32px,9vw,44px);letter-spacing:-1px}.ij-master-copy p{font-size:14px}.ij-master-actions a{width:100%}.ij-master-visual{min-height:220px;margin-top:3px}.ij-master-device{left:3%;width:63%;height:155px}.ij-master-qr{width:125px;height:125px;right:5%;top:18%}.ij-master-float{width:45px;height:45px;font-size:22px}.ij-master-caption{font-size:8px;right:3%}}
+
 </style>
 </head>
 <body><div class="wrap">
 <header class="topbar"><a class="brand" href="index.html">Info<span>Jano</span></a></header>
 <main>
-<section class="hero hero-split" aria-labelledby="hero-title">
-<div class="hero-copy">
-<div class="eyebrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1 0l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.1 0l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg><span>Free online tool · No signup required</span></div>
-<h1 id="hero-title">URL <span class="shine">QR Code</span> Generator</h1>
-<p>Turn any website address into a scannable QR code. Help customers open your website, online menu, product page or registration form with one quick scan.</p>
-<div class="keyword-chips"><span>Website QR</span><span>URL QR</span><span>Link Sharing</span><span>Free QR Maker</span></div>
-<div class="hero-actions"><a class="btn" href="qr-maker.html?type=link">Create URL QR Code <span aria-hidden="true">→</span></a><a class="btn secondary" href="qr-maker.html">Open QR Maker</a></div>
-<div class="trust-row"><span>Free to use</span><span>No signup</span><span>Instant generation</span><span>Scan before sharing</span></div>
-</div>
-<div class="hero-visual" role="img" aria-label="Illustration showing a website link being shared as a QR code">
-<div class="glow-orb"></div>
-<div class="url-window"><div class="window-bar"><i></i><i></i><i></i><span>yourwebsite.com</span></div><div class="window-content"><div class="link-symbol">↗</div><strong>Your website</strong><small>Share your page with one scan</small><div class="url-line"></div><div class="url-line short"></div></div></div>
-<div class="qr-float"><svg viewBox="0 0 210 210" role="img" aria-label="Decorative QR code illustration"><rect width="210" height="210" rx="10" fill="#fff"/><g fill="#102b52"><path d="M10 10h58v58H10zm10 10v38h38V20zm122-10h58v58h-58zm10 10v38h38V20zM10 142h58v58H10zm10 10v38h38v-38z"/><path d="M82 10h12v12H82zm24 0h12v12h-12zM82 34h12v12H82zm12 12h12v12H94zm24 0h12v12h-12zm-36 24h12v12H82zm24 0h12v12h-12zm24 0h12v12h-12zm24 24h12v12h-12zm24 0h12v12h-12zM82 94h12v12H82zm24 0h12v12h-12zm48 0h12v12h-12zm24 0h12v12h-12zM10 82h12v12H10zm24 0h12v12H34zm24 0h12v12H58zm36 24h12v12H94zm24 0h12v12h-12zm24 0h12v12h-12zm36 0h12v12h-12zM82 130h12v12H82zm24 0h12v12h-12zm24 12h12v12h-12zm24 0h12v12h-12zm24 0h12v12h-12zM82 166h12v12H82zm12 24h12v12H94zm36-24h12v12h-12zm24 24h12v12h-12zm24-12h12v12h-12z"/></g></svg></div>
-<div class="qr-bubble">↗</div><div class="visual-caption">SCAN TO OPEN YOUR WEBSITE · VISUAL PREVIEW</div>
-</div>
-</section>
+<section class="ij-master-hero" aria-label="URL QR Code Generator hero"><div class="ij-master-top"><a class="ij-master-brand" href="index.html">Info<span>Jano</span></a><div class="ij-master-tagline">Free Online Tools for Everyday Needs</div><div class="ij-master-badges"><span>⚡ Fast</span><span>♢ Secure</span><span>▣ No Signup</span></div></div><div class="ij-master-body"><div class="ij-master-copy"><span class="ij-master-kicker">▦ QR Toolkit</span><h1>URL <em>Generator</em></h1><p>Turn any website link into a scannable QR code. Help people open your website, product page or online form with one quick scan.</p><div class="ij-master-pills"><span>Website Links</span><span>Easy Sharing</span><span>Print Ready</span></div><div class="ij-master-actions"><a href="qr-maker.html?type=link">Create URL QR Code <b>→</b></a><a class="alt" href="qr-maker.html">Open QR Maker</a></div></div><div class="ij-master-visual" role="img" aria-label="URL QR Code Generator illustration"><div class="ij-master-orb"></div><div class="ij-master-device"><div class="ij-master-devicebar"><i></i><i></i><i></i></div><div class="ij-master-address">↗ &nbsp; InfoJano · URL QR Code</div><div class="ij-master-screenline"></div><div class="ij-master-screenline short"></div><div class="ij-master-screenline"></div></div><div class="ij-master-qr"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="7" fill="#fff"/><g fill="#081b43"><path d="M5 5h28v28H5zm6 6v16h16V11zm56-6h28v28H67zm6 6v16h16V11zM5 67h28v28H5zm6 6v16h16V73z"/><path d="M40 5h8v8h-8zm16 0h8v8h-8zM40 21h8v8h-8zm8 8h8v8h-8zm16 0h8v8h-8zM40 45h8v8h-8zm16 0h8v8h-8zm24 0h8v8h-8zM40 61h8v8h-8zm16 0h8v8h-8zm16 8h8v8h-8zm16-8h8v8h-8zM40 77h8v8h-8zm16 16h8v8h-8zm16-8h8v8h-8zm16 0h8v8h-8z"/></g></svg></div><div class="ij-master-float">↗</div><div class="ij-master-caption">SCAN · CREATE · SHARE</div></div></div><div class="ij-master-wave"></div></section>
 <div class="trust"><span>Free to use</span><span>Mobile & desktop</span><span>Customizable QR design</span><span>Scan before sharing</span></div>
 <section class="grid">
 <article class="card"><h2>How to create a url qr code</h2><ol class="steps"><li>Copy the complete website address, including https://.</li><li>Open the QR Maker and choose Link / URL.</li><li>Paste the address, generate the code and scan-test it before sharing.</li></ol></article>
