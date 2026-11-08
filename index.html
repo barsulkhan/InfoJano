@@ -1488,6 +1488,89 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
  #home #toolGrid>.tool .icon{animation:none!important}
 }
 </style>
+ 
+<style id="infojano-premium-homepage-v1">
+:root{--ij-blue:#1768e8;--ij-purple:#7137ef;--ij-ink:#14213d;--ij-soft:#f5f8ff}
+html{scroll-behavior:smooth}
+body{background:#f7f9fe!important;color:var(--ij-ink)!important}
+.header{background:rgba(255,255,255,.94)!important;color:#14213d!important;border-bottom:1px solid #e8eef8!important;box-shadow:0 4px 22px rgba(26,57,105,.08)!important;backdrop-filter:blur(16px);padding:9px 14px!important}
+.header .top{max-width:1100px!important}
+.header .brand,.header .brand span{color:#14213d!important}
+.header .tag{color:#6b7891!important}
+.header .nav button{background:#f1f5ff!important;color:#23385d!important;border:1px solid #e3eaf8!important;border-radius:999px!important;padding:9px 13px!important;font-weight:700!important}
+.header .nav button:hover{background:#e5edff!important}
+.wrap{max-width:1100px!important;padding:18px 20px 30px!important}
+#home .hero{position:relative;isolation:isolate;display:grid!important;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr)!important;align-items:center!important;gap:24px!important;min-height:330px!important;margin:10px 0 18px!important;padding:36px 34px!important;border:1px solid rgba(130,177,255,.55)!important;border-radius:28px!important;overflow:hidden!important;color:#14213d!important;background:radial-gradient(ellipse at 88% 12%,rgba(87,183,255,.35),transparent 35%),radial-gradient(ellipse at 8% 100%,rgba(127,95,255,.15),transparent 42%),linear-gradient(118deg,#fff 0%,#f1f6ff 52%,#e7f7ff 100%)!important;box-shadow:0 18px 48px rgba(48,94,164,.13),inset 0 1px 0 #fff!important}
+#home .hero:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(115deg,#52c8ff,#8a59ff,#46d8ee,#52c8ff);background-size:260% 260%;animation:ij-hero-border 12s linear infinite;pointer-events:none;z-index:-1;opacity:.85}
+#home .hero:after{content:"";position:absolute;inset:-22px;border-radius:38px;background:linear-gradient(115deg,rgba(65,185,255,.15),rgba(132,80,255,.12),rgba(65,215,235,.15));filter:blur(24px);z-index:-2;pointer-events:none}
+#home .hero-art-left{display:none!important}
+#home .hero-art-right{grid-column:2;grid-row:1;position:relative;min-height:240px;animation:ij-hero-float 6s ease-in-out infinite}
+#home .hero-art-right svg{width:100%!important;max-width:390px!important;filter:drop-shadow(0 18px 20px rgba(34,95,160,.2))!important}
+#home .hero-content{grid-column:1;grid-row:1;text-align:left!important;min-width:0;position:relative;z-index:2}
+#home .hero h1{font-size:clamp(34px,4.4vw,54px)!important;line-height:1.08!important;letter-spacing:-1.8px!important;font-weight:900!important;color:#101d3b!important;margin:0 0 13px!important}
+#home .hero h1 span{color:#1768e8!important;background:linear-gradient(100deg,#1768e8,#7137ef,#168fcf);background-size:220% auto;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:ij-text-shimmer 12s linear infinite}
+#home .hero p{margin:0!important;max-width:560px;color:#304363!important;font-size:clamp(15px,1.5vw,18px)!important;font-weight:550!important;line-height:1.55!important}
+#home .search{max-width:600px!important;margin:22px 0 12px!important;border:1px solid #d7e4f7!important;box-shadow:0 8px 22px rgba(42,94,163,.12)!important}
+#home .hero-benefits{justify-content:flex-start!important;gap:8px!important;margin:14px 0 0!important}
+#home .hero-benefits span{background:rgba(255,255,255,.82)!important;border-color:#dfe9f8!important;box-shadow:0 3px 10px rgba(42,83,145,.05)}
+#home .chips{margin-top:13px!important}
+#home .chips button{background:#fff!important;border:1px solid #dbe7f8!important;color:#28517f!important;border-radius:999px!important;padding:8px 13px!important}
+#home .chips button:hover{border-color:#7baaf1!important;box-shadow:0 4px 12px #3875d51c}
+#home .popular-tools-heading{margin-top:28px!important}
+#home #toolGrid>.tool,.how-grid>.info,.why-grid>.why-card,.guide-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important}
+#home #toolGrid>.tool:hover,.how-grid>.info:hover,.why-grid>.why-card:hover,.guide-card:hover{transform:translateY(-4px)!important;box-shadow:0 14px 28px rgba(32,77,145,.12)!important;border-color:#c7d9f5!important}
+.ij-home-cta{display:flex;align-items:center;gap:17px;margin:30px 0 22px;padding:20px 24px;border-radius:20px;background:linear-gradient(105deg,#6c2eea,#315de9 55%,#087de8);color:#fff;box-shadow:0 10px 24px rgba(66,75,204,.2)}
+.ij-cta-mark{display:grid;place-items:center;width:52px;height:52px;flex:0 0 52px;border-radius:16px;background:#ffffff24;font-size:30px}
+.ij-cta-copy{flex:1;min-width:0}.ij-cta-copy h2{margin:0 0 3px;color:#fff!important;font-size:22px!important}.ij-cta-copy p{margin:0;color:#e8edff;font-size:13px}
+.ij-cta-button{display:inline-flex;align-items:center;gap:10px;padding:12px 17px;border-radius:12px;background:#fff;color:#18366b;text-decoration:none;font-weight:800;white-space:nowrap;box-shadow:0 4px 12px #122c5b25}
+.ij-premium-footer{margin:0 -20px -30px!important;padding:30px max(24px,calc((100% - 1060px)/2)) 18px!important;text-align:left!important;background:#101e35!important;color:#dce7fb!important}
+.ij-footer-main{display:grid;grid-template-columns:1.45fr repeat(4,minmax(0,1fr));gap:28px;padding-bottom:24px}
+.ij-footer-logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:23px;font-weight:850;letter-spacing:-.5px}
+.ij-footer-logo img{width:42px;height:42px}
+.ij-footer-brand p{max-width:260px;color:#b9c8df;font-size:12px;line-height:1.6}
+.ij-footer-promise{display:flex;flex-wrap:wrap;gap:8px}.ij-footer-promise span{font-size:10px;color:#c7d9f4;background:#ffffff12;border:1px solid #ffffff1c;border-radius:30px;padding:5px 8px}
+.ij-footer-col{display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.ij-footer-col h3{margin:4px 0 5px;color:#fff!important;font-size:14px!important;font-weight:800}
+.ij-footer-col a{color:#bdcce2!important;text-decoration:none;font-size:12px;line-height:1.4}
+.ij-footer-col a:hover{color:#fff!important;text-decoration:underline}
+.ij-footer-bottom{display:flex;justify-content:space-between;gap:12px;padding-top:15px;border-top:1px solid #ffffff25;color:#b6c6df;font-size:11px}
+.ij-premium-footer .footer-languages{margin-top:12px;color:#91a6c6;font-size:10px}.ij-premium-footer .footer-languages a{color:#b9d7ff}
+@keyframes ij-hero-border{0%{background-position:0% 50%}100%{background-position:260% 50%}}
+@keyframes ij-text-shimmer{0%,12%{background-position:0% 50%}55%,100%{background-position:220% 50%}}
+@keyframes ij-hero-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:760px){
+ .wrap{padding:10px 12px 24px!important}
+ #home .hero{grid-template-columns:1fr!important;gap:8px!important;min-height:0!important;padding:25px 17px 19px!important;border-radius:23px!important}
+ #home .hero-content{grid-column:1;grid-row:1;text-align:left!important}
+ #home .hero-art-right{grid-column:1;grid-row:2;min-height:150px!important;max-height:190px}
+ #home .hero-art-right svg{max-width:270px!important;max-height:180px}
+ #home .hero h1{font-size:clamp(30px,8vw,39px)!important;letter-spacing:-1.2px!important}
+ #home .hero p{font-size:14px!important}
+ #home .hero-benefits{justify-content:flex-start!important}
+ #home .hero-benefits span{font-size:10px!important;padding:5px 8px!important}
+ #home .chips{overflow-x:auto;flex-wrap:nowrap;padding-bottom:3px}
+ .ij-home-cta{align-items:flex-start;flex-wrap:wrap;padding:17px;margin:22px 0 18px}
+ .ij-cta-mark{width:43px;height:43px;flex-basis:43px}
+ .ij-cta-copy{flex-basis:calc(100% - 62px)}
+ .ij-cta-copy h2{font-size:18px!important}
+ .ij-cta-button{margin-left:60px;padding:10px 13px;font-size:12px}
+ .ij-premium-footer{margin:0 -12px -24px!important;padding:25px 18px 16px!important}
+ .ij-footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
+ .ij-footer-brand{grid-column:1/-1}
+ .ij-footer-brand p{max-width:420px}
+ .ij-footer-bottom{flex-direction:column;gap:5px}
+}
+@media(max-width:390px){
+ .ij-footer-main{grid-template-columns:1fr 1fr;gap:18px 12px}
+ .ij-footer-col h3{font-size:13px!important}
+ .ij-footer-col a{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ #home .hero:before,#home .hero h1 span,#home .hero-art-right{animation:none!important}
+ #home #toolGrid>.tool:hover,.how-grid>.info:hover,.why-grid>.why-card:hover,.guide-card:hover{transform:none!important}
+}
+</style>
+
 </head>
 <body>
 <header class="header">
@@ -1686,9 +1769,24 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
 </section>
 
 
-<footer class="footer">
-  <div>InfoJano • Global Everyday Utility Portal</div>
-  <div>Privacy-minded • Mobile-first • Built for everyone</div>
+<section class="ij-home-cta" aria-label="Explore InfoJano tools">
+  <div class="ij-cta-mark" aria-hidden="true">↗</div>
+  <div class="ij-cta-copy"><h2>Make Everyday Tasks Easier</h2><p>Explore free online tools designed to save your time.</p></div>
+  <a href="#toolGrid" class="ij-cta-button">Explore All Tools <span aria-hidden="true">→</span></a>
+</section>
+<footer class="footer ij-premium-footer">
+  <div class="ij-footer-main">
+    <div class="ij-footer-brand">
+      <a href="/InfoJano/" class="ij-footer-logo"><img src="/InfoJano/infojano-mark.svg" alt="" width="42" height="42"><span>InfoJano</span></a>
+      <p>Free online tools for everyday tasks. Simple, useful and accessible on mobile, tablet and desktop.</p>
+      <div class="ij-footer-promise"><span>✓ 100% Free</span><span>✓ Privacy-minded</span></div>
+    </div>
+    <div class="ij-footer-col"><h3>Quick Links</h3><a href="/InfoJano/">Home</a><a href="#toolGrid">All Tools</a><a href="#guides">Guides &amp; How-to</a><a href="#" onclick="showSection('about');return false">About InfoJano</a></div>
+    <div class="ij-footer-col"><h3>Popular Tools</h3><a href="image-resizer.html">Image Resizer</a><a href="image-compressor.html">Image Compressor</a><a href="qr-maker.html">QR Code Generator</a><a href="url-toolkit.html">URL Toolkit</a><a href="emi.html">EMI Calculator</a></div>
+    <div class="ij-footer-col"><h3>Help &amp; Support</h3><a href="contact.html">Contact Us</a><a href="#guides">FAQs &amp; Guides</a><a href="report-issue.html">Report an Issue</a></div>
+    <div class="ij-footer-col"><h3>Legal</h3><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="disclaimer.html">Disclaimer</a></div>
+  </div>
+  <div class="ij-footer-bottom"><span>© 2026 InfoJano. All rights reserved.</span><span>Global tools · Mobile-first · Built for everyone</span></div>
   <div class="footer-languages">Português: <a href="discount-pt-br.html">Calculadora de Desconto</a> · <a href="percentage-pt-br.html">Calculadora de Porcentagem</a></div>
 </footer>
 </main>
