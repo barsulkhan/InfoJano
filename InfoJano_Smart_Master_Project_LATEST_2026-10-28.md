@@ -2240,3 +2240,11 @@ Each new QR mode landing page has its own page title, meta description, canonica
 ### Remaining hero rollout
 - Apply and review one page at a time for: Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp (preserve its existing bespoke hero unless user requests redesign), Bulk QR, QR Scanner and Barcode Scanner.
 - Keep QR Toolkit as the only active project scope until all pages and core functions are tested and verified. Do not begin unrelated InfoJano tools.
+
+
+## URL QR hero compact desktop revision — 8 November 2026
+- User reviewed the first URL QR hero on a desktop monitor and felt the banner/illustration looked oversized and visually unbalanced.
+- Revised `url-qr-code-generator.html`: reduced desktop hero minimum height and padding, tightened column gap, reduced headline and paragraph scale, shortened chip/action spacing, and scaled down the website preview, QR illustration and floating bubble. Mobile stacked breakpoint and CTA destinations remain in place.
+- Page commit: `873c1e851e2859d65f6eb310202a6b2826d34ecb`.
+- Service worker cache bumped to `infojano-v241`; commit: `3571d58c20f58f539a391cbb889c63445d0efb94`.
+- Verification: source updated; live deployment and fresh desktop/mobile screenshot review still pending. Do not proceed to the next page until user reviews the revised URL hero.
