@@ -2259,3 +2259,10 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Verification pending: source changes have been committed, but live GitHub Pages deployment, desktop/mobile visual review, all CTA destinations, and QR generator/scanner/bulk functional regression tests still need to be checked. Do not claim full release verification until these tests pass.
 
 - Follow-up source correction: refined all feature-page hero title hierarchy so the correct tool name remains intact (for example, “URL QR Code Generator”, “Bulk QR Code Generator”, and “Free Online QR Code Scanner”). Cache version advanced to `infojano-v243` (commit `1ca4e3b45f5257cc8622ff0579f75fb384369d0e`).
+
+
+## QR Maker original hero restored — 8 November 2026
+- User clarified the newly approved shared hero design was intended only for the QR Toolkit tool pages being redesigned, and the existing original QR Maker hero must remain unchanged.
+- Restored `qr-maker.html` exactly from its pre-redesign version (original `ij-qr-hero` with original QR artwork, original text/chips, and original workspace markup). Restore commit: `80e408efedbeedfdc666ac65628c8780f90658c5`.
+- Service worker cache advanced to `infojano-v244` (commit `10c5f2f2699ff7a794c7058f198191c45302d9d6`).
+- The shared new hero remains on the individual QR feature/tool pages; QR Maker main page retains its previous hero. Live browser verification still pending.
