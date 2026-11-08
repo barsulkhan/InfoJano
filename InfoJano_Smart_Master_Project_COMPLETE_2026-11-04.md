@@ -2859,3 +2859,25 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - The previously recorded GitHub Pages run `42407064386` succeeded for commit `279ee3a70f88d015ea2af3be9e3da91a84caeaf2`. The new sitemap commit `c27ce3df5d3cbf29d5d2b08537109f8fb9d16802` is newer; its Pages deployment must be checked separately before calling the sitemap update live.
 - Continue the QR Toolkit checklist: inspect final WhatsApp landing page on desktop/laptop/tablet; test all 12 CTA mode selections and refresh on Android Chrome; test representative QR payloads on a second phone; test uploaded-image decoding and camera permission/start/stop; test Bulk QR, ZIP and A4 PDF; test PNG/SVG/JPG/WebP, logo overlay, contrast, quiet zone and scan readability; verify live sitemap URLs/canonicals and v236 activation; record actual device outcomes.
 - Do not mark QR Toolkit complete or start another tool group until the remaining live/device checks are genuinely verified.
+
+
+## Desktop icon compatibility audit — 8 November 2026
+
+### User-reported issue and diagnosis
+- User supplied a desktop screenshot of `currency-converter.html` showing missing-glyph/tofu squares where the country flags should appear in the From/To selectors, conversion result, and popular-rate cards.
+- Source inspection confirmed the page used Unicode regional-indicator flag emoji in 45 currency records and rendered them as plain text. The target desktop/browser environment lacks a suitable emoji font, so those flag characters render as empty squares. The other visible interface marks (arrows, stars and geometric symbols) are text symbols/SVG rather than the broken country-flag glyphs.
+- Repository-wide GitHub code searches for the inspected country-flag and currency emoji (🇺🇸, 🇮🇳, 🌍, 💱, 📊) found their source only in `currency-converter.html`. The home page contains a note about avoiding emoji glyph dependencies; its section marks use styled cross-platform symbols. This is a targeted source audit, not a visual review of every page on every desktop OS.
+
+### Fix committed
+- Replaced all 45 currency flag emoji data values with ISO country/region codes.
+- Added a desktop-safe flag renderer using PNG flag images, with a readable two-letter text fallback if an image fails to load.
+- Applied the renderer consistently to From/To selectors, popular live-rate cards and compare-currency cards. Removed the flag emoji from the large conversion-result text so the amount remains legible on systems without emoji fonts.
+- Replaced decorative emoji in the currency page hero with cross-platform text symbols.
+- Currency page commits: `77a4dd99d78779b2a8e16bdde921de4105b8ad40` and fallback hardening `75bcc0ed8db6e74d7a671f035cbe310beaa68bd5`.
+- Bumped service-worker cache from `infojano-v236` to `infojano-v237` so returning visitors can receive the updated currency page: `a831c329f3bd2761debfb8c6bcf50faa98d4aabc`.
+
+### Verification status / next step
+- Source-level check: all 45 currency records now contain two-letter ISO flag codes; old country-flag emoji removed from this page; selector, popular-rate and comparison templates all call the shared `flagMarkup` renderer; service worker source says `infojano-v237` and already precaches `currency-converter.html`.
+- Not yet live/device verified: GitHub Pages deployment of these commits, actual image fetch/fallback in the user's desktop browser, and visual inspection across the full site. Workflow lookup did not return a deployment run for these commits, so do not claim the fix is live yet.
+- User requested broad desktop icon compatibility. Continue checking pages for emoji/missing-glyph icon dependencies and replace fragile text glyphs with SVG or other cross-platform assets where needed. Do not mark the site-wide icon audit complete until desktop visual verification is done.
+- This is a foundational desktop compatibility correction, not permission to start a different tool group. Preserve the existing QR Toolkit completion lock: no unrelated tool development until QR Toolkit is fully verified.
