@@ -2581,6 +2581,6 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Confirmed the main Image Resizer links to all six landing pages.
 - Confirmed `sitemap.xml` contains 54 unique URLs, including all six new pages.
 - Confirmed `sw.js` uses `infojano-v254` and precaches all six new pages.
-- Opened Draft PR #15: https://github.com/barsulkhan/InfoJano/pull/15 (12 changed files; 446 additions, 3 deletions at creation). PR head commit: `fc04e1fc92c3fe430b1e1dbb772dc26906f4d3bd`.
-- PR remains unmerged. GitHub's initial PR response reported `mergeable=false`; inspect the current PR mergeability/diff state before any merge. Do not merge without user approval.
+- Opened Draft PR #15: https://github.com/barsulkhan/InfoJano/pull/15 (12 changed files; 446 additions, 3 deletions at creation). The exact current head commit is shown on the PR page and will advance when the Master Files are updated.
+- PR remains open and draft. GitHub's latest mergeability state was `unknown`; recheck the PR diff and mergeability before any merge. Do not merge without user approval.
 - Not yet tested: deployed GitHub Pages preview, browser visual rendering, real CTA mode/preset selection, Android device workflow, or Google Search Console processing. Do not call these Live Tested.
