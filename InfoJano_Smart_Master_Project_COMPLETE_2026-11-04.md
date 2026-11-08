@@ -2881,3 +2881,18 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Not yet live/device verified: GitHub Pages deployment of these commits, actual image fetch/fallback in the user's desktop browser, and visual inspection across the full site. Workflow lookup did not return a deployment run for these commits, so do not claim the fix is live yet.
 - User requested broad desktop icon compatibility. Continue checking pages for emoji/missing-glyph icon dependencies and replace fragile text glyphs with SVG or other cross-platform assets where needed. Do not mark the site-wide icon audit complete until desktop visual verification is done.
 - This is a foundational desktop compatibility correction, not permission to start a different tool group. Preserve the existing QR Toolkit completion lock: no unrelated tool development until QR Toolkit is fully verified.
+
+
+## QR Toolkit mode-card desktop icon correction — 8 November 2026
+
+### Work started and source change committed
+- User directed to start QR Toolkit work. Began with the QR Maker's 12 mode-selection cards because the user previously reported missing-glyph boxes on desktop.
+- Replaced all 12 mode-card text/emoji glyphs (Link, Text, WiFi, Contact, Phone, More, WhatsApp, UPI, Email, SMS, Location and vCard) with consistent inline SVG icons. SVGs use explicit stroke, size and alignment styles so rendering does not depend on Windows emoji fonts or installed icon fonts.
+- Removed emoji from the QR customization heading, QR color dropdown options, Generate button, privacy note and four feature cards; replaced with inline SVG or plain text labels.
+- Source verification: `qr-maker.html` contains 12 inline SVG mode icons, 12 mode-selection buttons, and zero emoji glyphs. QR Maker file commit: `bcc578bd705176e78dd9f4d3b3b9fd37327c4015`.
+- Bumped service worker cache from `infojano-v237` to `infojano-v238` to refresh the updated QR Maker for returning visitors. `qr-maker.html` was already in the precache list. Cache commit: `65f70f347b10e083603347bca8a1f8478e3a0760`.
+
+### Verification still pending
+- Source-level icon replacement is complete. Do not call this visually verified until the newest GitHub Pages deployment succeeds and the user checks the live QR Maker on desktop/laptop (or supplies a screenshot).
+- Next QR Toolkit tasks: validate all 12 mode card selection states and responsive layouts; then test QR generation payloads, export formats, scanner/upload/camera, Bulk QR ZIP and A4 PDF/print, second-phone readability, and sitemap/canonical plus service-worker activation.
+- Maintain the QR Toolkit-only lock. Do not begin any unrelated InfoJano tool work until the QR Toolkit is fully tested and verified.
