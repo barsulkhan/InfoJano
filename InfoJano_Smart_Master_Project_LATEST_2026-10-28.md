@@ -2559,5 +2559,28 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Each approved landing page should have a clear search-focused title, description, canonical URL, useful original explanation/how-to/FAQ content and a strong CTA into the main Image Resizer tool. Where technically appropriate, the CTA should open the main tool with the relevant mode or preset preselected through a URL parameter. If the main tool does not support that routing yet, record it as a required implementation task; never claim preselection works until source and live behavior are verified.
 - Workflow: (1) audit the current source and list all real features/options; (2) recommend which deserve their own SEO page and which should remain on the main tool; (3) show the proposed page names, target keyword intent, URL slugs and CTA destination for user review; (4) after approval, create pages and implement any required mode-routing; (5) update sitemap and service-worker cache sequentially if applicable; (6) verify links, canonical/meta, mobile layout, CTA mode selection and deployment. Do not edit code or create pages before the feature inventory and page plan are presented and approved.
 - Keep source-verified existing features separate from future feature ideas. CM/MM sizing, configurable DPI, target-KB compression/resize, passport/exam photo presets or other capabilities must not be described as currently available unless the current source and tests prove them.
-- Task status: **PLANNED / NOT STARTED**. Next action: inspect the latest `image-resizer.html` and prepare the full feature inventory plus SEO page recommendation. No code changes have been made for this task yet.
+- Task status: **IN PROGRESS — implementation started on branch `seo/image-resizer-feature-landing-pages` after the user's explicit approval on 8 November 2026.** Six SEO landing pages have been created on the feature branch; Image Resizer URL routing, internal links, sitemap and Service Worker cache changes are in progress. Do not treat the work as live or complete until source checks, preview/CTA checks and user approval to merge are finished.
 - Standing task-list rule: when the user asks “কাজের অবস্থা”, “কি কি বাকি”, “আমাদের কাজের লিস্ট”, or equivalent, include this Image Resizer feature-wise SEO landing-page task in the pending list until it is completed and verified.
+
+
+## 8 November 2026 — Image Resizer SEO landing-page implementation started
+- User explicitly approved starting the previously reviewed six-page Image Resizer SEO cluster.
+- Created isolated branch: `seo/image-resizer-feature-landing-pages`, based on main commit `3cc7efd677b24c0d1a6e9bf83c73fc28e1e69676`. No changes were made directly to `main`; the live site has not been changed by this branch yet.
+- Created six English landing pages: `resize-image-to-pixels.html`, `resize-image-by-percentage.html`, `passport-id-photo-resizer.html`, `social-media-image-resizer.html`, `print-document-image-resizer.html`, and `resize-image-for-website.html`.
+- Page content is constrained to verified existing features: custom pixel dimensions, 1–500% percentage mode, the current passport/ID photo pixel presets, social/profile/YouTube presets, A4/A5/A6/document presets, and large/medium/small web presets. Copy explicitly avoids claiming editable cm/mm, editable DPI, automatic cropping, official photo acceptance, or target-KB resize support.
+- Added CTA URL-routing support to `image-resizer.html` for `?mode=custom`, `?mode=percent`, `?preset=passport-photo`, `?preset=social-post`, `?preset=a4`, and `?preset=web-large`. Added a six-link internal guide section on the main tool page.
+- Added the six landing-page URLs to `sitemap.xml` and Service Worker precache; bumped cache from `infojano-v253` to `infojano-v254`.
+- Source changes are being made only on the feature branch. Pending: fetch and inspect every changed file, validate HTML metadata/FAQ schema/CTA paths, parse the modified inline JavaScript, verify sitemap and precache consistency, create a review PR, and run Preview/Live checks after approval. No merge or live deployment has been performed.
+- Important: the current page preset handler intentionally disables aspect-ratio lock for fixed preset dimensions. The landing-page copy warns users to inspect possible stretching; no crop feature is claimed.
+
+
+## 8 November 2026 — Source-level verification and Draft PR #15
+- Re-fetched all six landing pages and the modified main tool, sitemap and Service Worker from the feature branch.
+- Verified all six pages have unique page titles, meta descriptions, canonical URLs, FAQPage JSON-LD and CTA links to the expected main-tool query parameters. All six FAQ JSON-LD blocks parse as JSON.
+- Modified inline JavaScript in `image-resizer.html` passes a JavaScript syntax parse. Routing code selects the existing Custom/Percentage tab or the matching existing preset button.
+- Confirmed the main Image Resizer links to all six landing pages.
+- Confirmed `sitemap.xml` contains 54 unique URLs, including all six new pages.
+- Confirmed `sw.js` uses `infojano-v254` and precaches all six new pages.
+- Opened Draft PR #15: https://github.com/barsulkhan/InfoJano/pull/15 (12 changed files; 446 additions, 3 deletions at creation). The exact current head commit is shown on the PR page and will advance when the Master Files are updated.
+- PR remains open and draft. GitHub's latest mergeability state was `unknown`; recheck the PR diff and mergeability before any merge. Do not merge without user approval.
+- Not yet tested: deployed GitHub Pages preview, browser visual rendering, real CTA mode/preset selection, Android device workflow, or Google Search Console processing. Do not call these Live Tested.

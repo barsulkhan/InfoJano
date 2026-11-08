@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v253";
+const CACHE_NAME = "infojano-v254";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -42,6 +42,12 @@ const ASSETS = [
   "/InfoJano/gst-calculator.html",
   "/InfoJano/image-compressor.html",
   "/InfoJano/image-resizer.html",
+  "/InfoJano/resize-image-to-pixels.html",
+  "/InfoJano/resize-image-by-percentage.html",
+  "/InfoJano/passport-id-photo-resizer.html",
+  "/InfoJano/social-media-image-resizer.html",
+  "/InfoJano/print-document-image-resizer.html",
+  "/InfoJano/resize-image-for-website.html",
   "/InfoJano/image-to-pdf.html",
   "/InfoJano/pdf-to-jpg.html",
   "/InfoJano/extract-pdf-pages.html",

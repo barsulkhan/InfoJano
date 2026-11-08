@@ -787,6 +787,7 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 </div></section>
 <section class="info-section"><div class="info-grid"><div class="info-card"><h2><span class="info-heading-icon" aria-hidden="true">1</span>How to Resize an Image</h2><ol><li>Upload your image.</li><li>Enter the size or choose a Popular Size.</li><li>Select JPG, PNG or WebP and image quality.</li><li>Tap Resize Image, then download your new image.</li></ol></div><div class="info-card"><h2><span class="info-heading-icon" aria-hidden="true">✦</span>Tips for Best Results</h2><ul><li>Keep aspect ratio to avoid distortion.</li><li>Use JPG for photos and PNG for transparency.</li><li>For website use, 800 to 1200 px width is often enough.</li><li>Higher quality usually means a larger file.</li><li>Print size also depends on DPI and printer settings.</li></ul></div></div></section>
 <section class="seo-card"><h2>Image Resizing Example</h2><p>If a website asks for a 600 × 600 pixel image, enter those exact dimensions. Keep the aspect ratio on to avoid stretching. For print, check both physical size and DPI.</p><h3>Frequently Asked Questions</h3><details><summary>How do I resize an image?</summary><p>Choose an image, enter the required dimensions or select a preset, then tap Resize Image.</p></details><details><summary>Will resizing reduce image quality?</summary><p>Changing dimensions or compressing an image can affect quality. Use a higher quality setting when image detail matters.</p></details><details><summary>Are my images uploaded?</summary><p>No. The image is processed locally in your browser and is not sent to InfoJano.</p></details><p>Related tools: <a href="image-compressor.html">Image Compressor</a> · <a href="image-to-pdf.html">Image to PDF Converter</a> · <a href="index.html">All InfoJano Tools</a>.</p></section>
+<section class="seo-card" id="resize-guides"><h2>Image Resizing Guides</h2><p>Choose a guide based on the dimensions you need. Each guide explains a supported workflow and opens the matching mode or preset in the Image Resizer.</p><ul><li><a href="resize-image-to-pixels.html">Resize Image to Exact Pixels</a> — enter a custom width and height.</li><li><a href="resize-image-by-percentage.html">Resize Image by Percentage</a> — scale from 1% to 500%.</li><li><a href="passport-id-photo-resizer.html">Passport and ID Photo Resizer</a> — review the available photo presets.</li><li><a href="social-media-image-resizer.html">Social Media and YouTube Thumbnail Resizer</a> — use square post, profile and thumbnail presets.</li><li><a href="print-document-image-resizer.html">A4, A5 and A6 Print Resizer</a> — use document and print pixel presets.</li><li><a href="resize-image-for-website.html">Website Image Resizer</a> — choose large, medium or small web dimensions.</li></ul></section>
 </main><footer>© InfoJano · Smart Tools for Everyday Life</footer>
 <script>
 (function(){
@@ -813,6 +814,25 @@ width.addEventListener('input',()=>{fromWidth();clearResult()});height.addEventL
 quality.addEventListener('input',()=> $('qualityValue').textContent=quality.value+'%');
 document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>{let a=t===tab;t.classList.toggle('active',a);t.setAttribute('aria-selected',String(a))});['custom','preset','percent'].forEach(m=>$(m+'Panel').hidden=m!==tab.dataset.mode)}));
 document.querySelectorAll('.preset').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.custom){document.querySelector('[data-mode="custom"]').click();width.focus();say('Enter your own width and height.');return}width.value=btn.dataset.w;height.value=btn.dataset.h;document.querySelector('[data-mode="preset"]').click();ratio.checked=false;clearResult();say(btn.querySelector('strong').textContent+' selected: '+btn.dataset.w+' × '+btn.dataset.h+' pixels.')}));
+// Support focused entry from the Image Resizer SEO landing pages.
+const launchParams=new URLSearchParams(window.location.search);
+const launchMode=launchParams.get('mode');
+const launchPreset=launchParams.get('preset');
+const launchPresetMap={
+ 'passport-photo':{w:'413',h:'531',label:'Passport Photo'},
+ 'social-post':{w:'1080',h:'1080',label:'Social Media Post'},
+ 'a4':{w:'2480',h:'3508',label:'A4 Print'},
+ 'web-large':{w:'1200',h:'800',label:'Web Image Large'}
+};
+if(launchPreset&&launchPresetMap[launchPreset]){
+ const target=launchPresetMap[launchPreset];
+ const presetButton=Array.from(document.querySelectorAll('.preset')).find(btn=>btn.dataset.w===target.w&&btn.dataset.h===target.h&&btn.querySelector('strong')?.textContent.trim()===target.label);
+ if(presetButton)presetButton.click();
+}else if(['custom','percent','preset'].includes(launchMode)){
+ const modeTab=document.querySelector('.tab[data-mode="'+launchMode+'"]');
+ if(modeTab)modeTab.click();
+}
+
 $('percent').addEventListener('input',()=>{if(!sourceImage)return;let p=Number($('percent').value);if(p>0&&p<=500){width.value=Math.max(1,Math.round(originalWidth*p/100));height.value=Math.max(1,Math.round(originalHeight*p/100));clearResult()}});
 const clearBtn=$('clearBtn');clearBtn.disabled=true;$('clearBtn').addEventListener('click',()=>{sourceImage=null;fileInput.value='';preview.removeAttribute('src');preview.hidden=true;empty.hidden=false;$('originalMeta').textContent='Original: —';$('fileMeta').textContent='File size: —';resizeBtn.disabled=true;clearBtn.disabled=true;clearResult();say('Image cleared. Choose another image to begin.')});
 resizeBtn.addEventListener('click',()=>{
