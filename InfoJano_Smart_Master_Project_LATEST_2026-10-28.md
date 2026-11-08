@@ -2325,3 +2325,13 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Applied responsive styling to content cards, steps, use-case grids, tips/checklists, safety notes, FAQ rows, related links and CTA panels. For scanner and bulk pages, styling is generalized while preserving their functional forms and controls.
 - Service worker cache bumped to infojano-v250.
 - This rollout is code committed; live visual validation on mobile remains pending. Verify each page and test scanner/bulk functionality before considering QR Toolkit complete.
+
+
+## 8 November 2026 — QR Toolkit Remaining 14 Pages Premium Styling + SEO Search Terms
+- User approved rolling out the same lower-page premium visual system to all remaining QR tools, while each page retains its own feature name and relevant SEO wording.
+- Updated these 14 pages: Text QR, WiFi QR, Contact QR, Phone Number QR, Email QR, SMS QR, Google Maps Location QR, vCard QR, Custom QR, UPI Payment QR, WhatsApp QR, Bulk QR, QR Scanner, Barcode Scanner.
+- Added a shared premium content-section style system: gradient-accent cards, clearer section headings, soft blue panels, improved steps/use-case cards, checklist/warning styles, separate expandable FAQ rows, related-tool chips, prominent CTA, and responsive mobile layouts.
+- Added page-specific meta keywords and visible natural-language related-search phrase sections. Search wording includes technical terms/abbreviations and common everyday query variants (English + transliterated Hindi/vernacular phrasing), matched to each tool's actual function. Avoid deceptive or unrelated keyword stuffing; retain page-specific content.
+- URL QR page remains the approved prototype; main qr-maker.html hero remains untouched.
+- Service worker cache bumped to infojano-v251.
+- GitHub source files verified to contain shared premium CSS, keyword meta and related-search phrase section for all 14 pages. Actual Android live visual verification is still pending; do not claim screenshot-level verification until user shares a fresh preview.
