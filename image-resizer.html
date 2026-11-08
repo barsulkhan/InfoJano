@@ -753,7 +753,18 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
     <div class="ij-rz-side-note"><span>✧</span> Your image stays on your device</div>
   </div>
 </div>
-<section class="workspace" aria-label="Image resizing tool">
+<section class="ij-rz-featurebar" aria-label="Image Resizer benefits">
+  <div><b>ϟ</b><span><strong>Fast &amp; Easy</strong><small>Resize in seconds</small></span></div>
+  <div><b>◇</b><span><strong>100% Free</strong><small>No sign up required</small></span></div>
+  <div><b>♙</b><span><strong>Privacy Safe</strong><small>Images stay in your browser</small></span></div>
+  <div><b>▣</b><span><strong>Works Everywhere</strong><small>Mobile, tablet &amp; desktop</small></span></div>
+</section>
+<section class="ij-rz-modes" aria-label="Resize modes">
+  <button type="button" data-open-mode="custom"><span class="ij-mode-icon purple">⌗</span><strong>Custom Size (Pixels)</strong><small>Set exact width and height to resize your image.</small></button>
+  <button type="button" data-open-mode="preset"><span class="ij-mode-icon blue">▱</span><strong>Preset Sizes</strong><small>Choose ready-made sizes like Passport, Social Media, A4, A5 and A6.</small></button>
+  <button type="button" data-open-mode="percent"><span class="ij-mode-icon green">％</span><strong>By Percentage</strong><small>Resize your image from 1% to 500% of the original size.</small></button>
+</section>
+<section class="workspace" id="workspace" aria-label="Image resizing tool">
 <div class="panel"><div class="step-title"><span class="step-number">1</span><div><h2>Upload Image</h2><p>Choose an image from your device</p></div></div>
 <input class="file-input" id="file" type="file" accept="image/jpeg,image/png,image/webp">
 <label class="dropzone" id="dropzone" for="file"><span class="upload-icon">☁</span><strong>Click to choose an image</strong><span>or drag and drop here</span><small>JPG, PNG, WebP (Max 10 MB)</small></label>
@@ -767,6 +778,13 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 <div class="settings-grid"><div class="setting"><label for="format">▣ Output Format</label><select id="format"><option value="image/jpeg">JPG (Best for photos)</option><option value="image/png">PNG (Transparency)</option><option value="image/webp">WebP (Smaller file)</option></select></div><div class="setting"><label for="quality">✦ Image Quality</label><div class="quality-row"><input id="quality" type="range" min="40" max="100" value="90"><output class="quality-value" id="qualityValue">90%</output></div></div></div>
 <div class="info"><span>ⓘ</span><span>Your image is processed in your browser. It is not uploaded to InfoJano. JPG, PNG and WebP are supported.</span></div>
 <button class="action-btn" id="resizeBtn" type="button" disabled><span class="btn-icon" aria-hidden="true">↔</span> Resize Image</button><div class="download-state" id="downloadState" hidden role="status" aria-live="polite"><span class="spin-icon" aria-hidden="true"></span><span id="downloadStateText">Preparing your resized image…</span></div><a class="action-btn download-btn" id="download" href="#" hidden><span aria-hidden="true">⬇</span> Download Resized Image</a><div class="status" id="status" role="status" aria-live="polite">Choose an image to begin.</div></div></section>
+<section class="ij-rz-why">
+  <div class="ij-rz-why-art" aria-hidden="true"><span>⌗</span><i>↗</i><b>◇</b></div>
+  <div><h2>Why Use InfoJano Image Resizer?</h2>
+  <p>Resize images for personal, professional and online use. Set a custom size, use ready-made presets or resize by percentage, all in your browser without sending your images to a server.</p>
+  <div class="ij-rz-checks"><span>✓ Multiple resize modes</span><span>✓ JPG, PNG &amp; WebP</span><span>✓ High quality output</span><span>✓ No data upload</span></div></div>
+</section>
+<section class="ij-rz-cta"><div><strong>↗</strong><span><b>Resize Your Image Now</b><small>Open the free Image Resizer and get the perfect size in seconds.</small></span></div><a href="#workspace">Open Image Resizer →</a></section>
 <section class="preset-section" id="popularSizes"><div class="section-heading"><span class="section-icon">★</span><div><h2>Popular Sizes</h2><span style="font-size:12px;color:#53688f">Photo, Social Media, Web and Print</span></div><p>Tap once to set the size</p></div>
 <div class="preset-grid">
 <button class="preset" type="button" data-w="413" data-h="531"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="9" r="2.3"/><path d="M8 17c.9-2 2.2-3 4-3s3.1 1 4 3"/></svg></span><strong>Passport Photo</strong><small>413 × 531 px</small></button>
@@ -845,6 +863,17 @@ resizeBtn.addEventListener('click',()=>{
 });
 window.addEventListener('beforeunload',()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);if(resultUrl)URL.revokeObjectURL(resultUrl)});
 })();
+</script>
+<script>
+document.querySelectorAll('[data-open-mode]').forEach(function(card){
+ card.addEventListener('click',function(){
+  var mode=card.getAttribute('data-open-mode');
+  var tab=document.querySelector('.tab[data-mode="'+mode+'"]');
+  if(tab)tab.click();
+  var workspace=document.getElementById('workspace');
+  if(workspace)workspace.scrollIntoView({behavior:'smooth',block:'start'});
+ });
+});
 </script>
 <script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
 
