@@ -80,17 +80,17 @@ a{color:#155bc4;text-decoration:none}a:hover{text-decoration:underline}.wrap{wid
 @media(max-width:760px){.ij-master-hero{border-radius:19px;min-height:unset}.ij-master-top{padding:14px 17px;gap:10px}.ij-master-brand{font-size:23px}.ij-master-tagline{font-size:11px;padding-left:10px}.ij-master-badges{width:100%;margin-left:0}.ij-master-badges span{font-size:10px;padding:5px 9px}.ij-master-body{grid-template-columns:1fr;padding:25px 21px 22px;gap:7px}.ij-master-copy h1{font-size:clamp(32px,9vw,44px);letter-spacing:-1px}.ij-master-copy p{font-size:14px}.ij-master-actions a{width:100%}.ij-master-visual{min-height:220px;margin-top:3px}.ij-master-device{left:3%;width:63%;height:155px}.ij-master-qr{width:125px;height:125px;right:5%;top:18%}.ij-master-float{width:45px;height:45px;font-size:22px}.ij-master-caption{font-size:8px;right:3%}}
 
 
-/* InfoJano high-visibility Neon Hero standard */
-.ij-master-hero{isolation:isolate;position:relative;overflow:hidden}
-.ij-master-hero:after{content:"";position:absolute;inset:0;padding:4px;border-radius:inherit;pointer-events:none;z-index:5;background:conic-gradient(from 0deg,#00f6ff 0deg,#00f6ff 45deg,#a56bff 90deg,#ff4fd8 140deg,#ffd83d 190deg,#fff 220deg,#00eaff 270deg,#8b5cff 320deg,#00f6ff 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:drop-shadow(0 0 4px #00eaff) drop-shadow(0 0 9px #8b5cff) drop-shadow(0 0 15px #00cfff);animation:ij-neon-border-spin 5s linear infinite}
-@keyframes ij-neon-border-spin{to{transform:rotate(360deg)}}
+/* InfoJano refined premium Neon Hero — contained perimeter and soft reverse sweep */
+.ij-master-hero{isolation:isolate;position:relative;overflow:hidden;border:2px solid transparent;background-image:linear-gradient(118deg,#061b68 0%,#0753b8 54%,#5720c5 100%),linear-gradient(90deg,#00dfff,#8065ff,#ffd52e,#00dfff);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 0 8px #00dfff55,0 0 18px #765cff33,0 20px 48px rgba(14,38,110,.22);animation:ij-neon-edge-glow 12s ease-in-out infinite}
+.ij-master-hero:after{content:none!important;display:none!important}
+@keyframes ij-neon-edge-glow{0%,100%{box-shadow:0 0 7px #00dfff44,0 0 14px #765cff22,0 20px 48px rgba(14,38,110,.22)}50%{box-shadow:0 0 11px #00dfff88,0 0 22px #765cff55,0 20px 48px rgba(14,38,110,.22)}}
 .ij-master-copy h1{position:relative;isolation:isolate;overflow:hidden}
-.ij-master-copy h1:after{content:"";position:absolute;top:-8%;bottom:-8%;left:0;width:100%;pointer-events:none;z-index:2;background:linear-gradient(105deg,transparent 0%,transparent 39%,#ffffff00 44%,#fff 48%,#a9fbff 50%,#ffffff 52%,transparent 58%,transparent 100%);mix-blend-mode:screen;filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 12px #00eaff);transform:translateX(-120%);animation:ij-title-light-sweep 6s ease-in-out infinite}
-@keyframes ij-title-light-sweep{0%,8%{transform:translateX(-120%)}48%,100%{transform:translateX(120%)}}
-.ij-master-pills span{position:relative;overflow:hidden;border-color:#50efff;background-image:linear-gradient(105deg,#073d9a 0%,#073d9a 35%,#ffffff 48%,#7cf4ff 51%,#ffffff 54%,#073d9a 68%,#073d9a 100%);background-size:300% 100%;box-shadow:0 0 8px #00dfff88,inset 0 0 8px #ffffff22;animation:ij-feature-light-sweep 7s ease-in-out infinite}
-.ij-master-pills span:nth-child(1){animation-delay:1.4s}.ij-master-pills span:nth-child(2){animation-delay:2.8s}.ij-master-pills span:nth-child(3){animation-delay:4.2s}
-@keyframes ij-feature-light-sweep{0%,8%{background-position:100% 0}48%,100%{background-position:0 0}}
-@media(prefers-reduced-motion:reduce){.ij-master-hero:after,.ij-master-copy h1:after,.ij-master-pills span{animation:none}}
+.ij-master-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:16%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff22 34%,#ffffffaa 48%,#b9faff99 54%,#ffffff22 70%,transparent 100%);mix-blend-mode:screen;filter:drop-shadow(0 0 2px #bafaff);transform:translateX(560%);animation:ij-title-light-sweep 18s ease-in-out infinite}
+@keyframes ij-title-light-sweep{0%,12%{transform:translateX(560%)}62%,100%{transform:translateX(-560%)}}
+.ij-master-pills span{position:relative;overflow:hidden;border-color:#25cce9;background-image:linear-gradient(105deg,#073d9a 0%,#073d9a 42%,#ffffff88 49%,#7cf4ff77 52%,#073d9a 60%,#073d9a 100%);background-size:240% 100%;box-shadow:0 0 5px #00dfff44;animation:ij-feature-light-sweep 16s ease-in-out infinite}
+.ij-master-pills span:nth-child(1){animation-delay:2s}.ij-master-pills span:nth-child(2){animation-delay:4s}.ij-master-pills span:nth-child(3){animation-delay:6s}
+@keyframes ij-feature-light-sweep{0%,10%{background-position:100% 0}55%,100%{background-position:0 0}}
+@media(prefers-reduced-motion:reduce){.ij-master-hero,.ij-master-copy h1:after,.ij-master-pills span{animation:none}}
 </style>
 </head>
 <body><div class="wrap">
