@@ -356,7 +356,7 @@ fillSelect(fromEl,'USD');fillSelect(toEl,'INR');
 let rates={},lastUpdated='',currentBase='',lastResultText='';
 const popular=['INR','EUR','GBP','JPY','BDT'];
 const fmt=(n,maximumFractionDigits=4)=>Number(n).toLocaleString('en-US',{maximumFractionDigits});
-function flagMarkup(code,alt){const iso=byCode[code]?.[2]||'';if(!/^[a-z]{2}$/.test(iso))return '<span class="flag-fallback">'+code+'</span>';return '<img src="https://flagcdn.com/28x21/'+iso+'.png" alt="'+(alt||code)+' flag" width="28" height="21" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'flag-fallback\',textContent:'${code}'}))">'}
+function flagMarkup(code,alt){const iso=byCode[code]?.[2]||'';if(!/^[a-z]{2}$/.test(iso))return '<span class="flag-fallback">'+code+'</span>';return '<img src="https://flagcdn.com/28x21/'+iso+'.png" alt="'+(alt||code)+' flag" width="28" height="21" loading="lazy" decoding="async" onerror="this.style.display=\'none\';this.parentElement.textContent=\''+iso.toUpperCase()+'\'">'}
 function updateFlags(){document.getElementById('fromFlag').innerHTML=flagMarkup(fromEl.value,byCode[fromEl.value]?.[1]);document.getElementById('toFlag').innerHTML=flagMarkup(toEl.value,byCode[toEl.value]?.[1])}
 function renderResult(){
  const amount=Number(amountEl.value),from=fromEl.value,to=toEl.value;
