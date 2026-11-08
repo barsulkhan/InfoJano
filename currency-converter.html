@@ -29,7 +29,7 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 .field label{display:block;font-size:14px;font-weight:850;margin:0 0 8px;color:#18265f}
 .currency-select{width:100%;height:62px;border:1.5px solid #b9d0ff;border-radius:14px;background:linear-gradient(120deg,#fff,#f5f9ff);padding:0 12px;display:flex;align-items:center;gap:9px;box-shadow:0 3px 9px #1b57ad12}
 .currency-select select{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#111d55;font-size:15px;font-weight:750}
-.flag{font-size:25px;line-height:1}.swap{width:46px;height:46px;border:0;border-radius:50%;background:linear-gradient(145deg,#05bafa,#124de9);color:#fff;font-size:25px;font-weight:900;cursor:pointer;box-shadow:0 5px 12px #1467e94a;margin-bottom:8px}
+.flag{display:flex;align-items:center;justify-content:center;width:28px;height:24px;flex:0 0 28px;line-height:1}.flag img,.rate-flag img,.compare-flag img{display:block;width:28px;height:21px;object-fit:cover;border:1px solid #d7e0ee;border-radius:3px;box-shadow:0 1px 2px #0b1b3820}.rate-flag img,.compare-flag img{width:30px;height:22px;margin:0 auto}.flag img{width:28px;height:21px}.flag-fallback{display:grid;place-items:center;width:28px;height:21px;border-radius:3px;background:#eaf1ff;color:#173fba;font-size:9px;font-weight:900}.swap{width:46px;height:46px;border:0;border-radius:50%;background:linear-gradient(145deg,#05bafa,#124de9);color:#fff;font-size:25px;font-weight:900;cursor:pointer;box-shadow:0 5px 12px #1467e94a;margin-bottom:8px}
 .amount-wrap{margin-top:20px}.amount-wrap label{display:block;font-size:15px;font-weight:850;margin-bottom:8px}.amount-input{height:62px;width:100%;padding:0 17px;border:1.5px solid #b9d0ff;border-radius:14px;background:#fff;color:#10205d;font-size:23px;font-weight:800;outline:none;box-shadow:0 3px 9px #1b57ad12}.amount-input:focus,.currency-select:focus-within{border-color:#367cf6;box-shadow:0 0 0 3px #2674f51c}
 .presets{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.preset{border:1px solid #bfd2ff;border-radius:24px;background:#fff;color:#243b80;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer}.preset.active,.preset:hover{background:linear-gradient(100deg,#087af3,#3348e8);color:#fff;border-color:transparent}
 .action-row{display:flex;gap:11px;margin-top:18px}.convert-btn{flex:1;min-height:58px;border:0;border-radius:15px;color:white;font-size:18px;font-weight:900;background:linear-gradient(100deg,#05b9ed,#174ff0 58%,#c600ed);box-shadow:0 7px 15px #2167ed4a;cursor:pointer}.refresh-btn{padding:0 18px;border:1px solid #bfd2ff;border-radius:15px;background:#fff;color:#1854c9;font-weight:850;cursor:pointer}
@@ -40,7 +40,7 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 .result-tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:13px;position:relative;z-index:1}.mini-btn{border:1px solid #ffffff66;border-radius:20px;background:#ffffff1d;color:white;padding:7px 13px;font-size:12px;font-weight:800;cursor:pointer}
 .rate-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.rate-title{font-size:18px;font-weight:900;display:flex;gap:9px;align-items:center}.updated{font-size:11px;font-weight:750;color:#08764b;background:#d9ffe8;border:1px solid #9be8bd;border-radius:20px;padding:5px 9px;text-align:center}.rate-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 .rate-card{border:1px solid #c5d8ff;border-radius:14px;background:linear-gradient(160deg,#fff,#e9f3ff);padding:12px 5px;text-align:center;box-shadow:0 3px 8px #1951a515;min-width:0}
-.rate-flag{font-size:26px;line-height:1.2}.rate-code{font-size:13px;font-weight:900;color:#1b3477;margin-top:5px}.rate-number{font-size:15px;font-weight:950;color:#111d61;overflow-wrap:anywhere}.rate-name{font-size:10px;color:#65769b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rate-flag{display:flex;align-items:center;justify-content:center;min-height:27px;line-height:1.2}.rate-code{font-size:13px;font-weight:900;color:#1b3477;margin-top:5px}.rate-number{font-size:15px;font-weight:950;color:#111d61;overflow-wrap:anywhere}.rate-name{font-size:10px;color:#65769b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rate-status{font-size:12px;color:#5c6d90;min-height:18px}
 .feature-strip{margin-top:19px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;background:linear-gradient(120deg,#fff,#edf5ff);border:1px solid #cbdfff;border-radius:23px;padding:18px 12px;box-shadow:0 7px 20px #174a9815}
 .feature{display:flex;align-items:center;gap:11px;padding:4px 13px;border-right:1px solid #c6d9ff;min-width:0}.feature:last-child{border:0}.feature-icon{width:45px;height:45px;flex:0 0 45px;display:grid;place-items:center;border-radius:50%;font-size:22px;color:#fff;background:linear-gradient(140deg,#ff37a5,#9c23ed)}.feature:nth-child(2) .feature-icon{background:linear-gradient(140deg,#00df92,#00a86b)}.feature:nth-child(3) .feature-icon{background:linear-gradient(140deg,#08c7f3,#1761ed)}.feature:nth-child(4) .feature-icon{background:linear-gradient(140deg,#b73df8,#6516df)}.feature:nth-child(5) .feature-icon{background:linear-gradient(140deg,#ffbd14,#ff6b00)}.feature strong{display:block;font-size:14px;line-height:1.25}.feature small{display:block;color:#617295;font-size:11px;line-height:1.35;margin-top:4px}
@@ -113,7 +113,7 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
  .hero{grid-template-columns:1fr!important;min-height:0!important;padding:25px 24px!important;text-align:center!important;gap:0!important}
  .hero-art{display:none!important}
  .hero-copy{width:100%;max-width:900px;margin:0 auto!important}
- .hero-copy:before{content:"🌍　💱　💹";display:block;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:0 auto 10px;filter:drop-shadow(0 4px 8px #00dfff88)}
+ .hero-copy:before{content:"◎　⇄　↗";display:block;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:0 auto 10px;filter:drop-shadow(0 4px 8px #00dfff88)}
  .eyebrow{font-size:12px!important;padding:6px 14px!important}
  .hero h1{font-size:clamp(38px,6vw,54px)!important;line-height:1.08!important;margin:12px 0 9px!important;letter-spacing:-1.1px!important}
  .hero p{font-size:clamp(14px,2vw,17px)!important;line-height:1.4!important;max-width:760px;margin:0 auto 16px!important}
@@ -228,7 +228,7 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 .compare-amount strong{font-size:18px;color:#123a9a}.compare-amount span{font-size:11px;color:#607397;text-align:right}
 .compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
 .compare-item{display:flex;align-items:center;gap:9px;min-width:0;padding:11px;border:1px solid #d0e0fb;border-radius:13px;background:linear-gradient(145deg,#fff,#eef6ff)}
-.compare-flag{font-size:24px}.compare-item-info{min-width:0;flex:1}.compare-item-info strong{display:block;font-size:12px;color:#243a79}.compare-item-info b{display:block;font-size:16px;color:#111d61;overflow-wrap:anywhere}.compare-item-info small{font-size:10px;color:#6b7c9d}
+.compare-flag{display:flex;align-items:center;justify-content:center;width:34px;flex:0 0 34px}.compare-item-info{min-width:0;flex:1}.compare-item-info strong{display:block;font-size:12px;color:#243a79}.compare-item-info b{display:block;font-size:16px;color:#111d61;overflow-wrap:anywhere}.compare-item-info small{font-size:10px;color:#6b7c9d}
 .fee-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .fee-fields label,.history-controls label{display:block;font-size:13px;font-weight:800;color:#23376e}
 .fee-fields input,.history-controls select{width:100%;height:45px;margin-top:6px;border:1px solid #c4d8fa;border-radius:11px;padding:0 11px;background:#fff;color:#14265f;font-size:15px;font-weight:750;outline:none}
@@ -273,9 +273,9 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 <div class="crumb"><a href="index.html">⌂ InfoJano Home</a>　›　Currency Converter</div>
 <section class="hero" aria-labelledby="hero-title">
 <div class="hero-side">
-<div class="hero-side-item"><span class="hero-side-icon">🌍</span><span>170+ Currencies</span></div>
-<div class="hero-side-item"><span class="hero-side-icon">💱</span><span>Live Exchange Rates</span></div>
-<div class="hero-side-item"><span class="hero-side-icon">📊</span><span>Quick Conversion</span></div>
+<div class="hero-side-item"><span class="hero-side-icon" aria-hidden="true">◎</span><span>170+ Currencies</span></div>
+<div class="hero-side-item"><span class="hero-side-icon" aria-hidden="true">⇄</span><span>Live Exchange Rates</span></div>
+<div class="hero-side-item"><span class="hero-side-icon" aria-hidden="true">▥</span><span>Quick Conversion</span></div>
 </div>
 <div class="hero-copy"><span class="eyebrow">FREE ONLINE TOOL</span><h1 id="hero-title">Currency <span>Converter</span></h1><p>Convert between 170+ world currencies with the latest available exchange rates.</p><div class="perks"><span class="perk p1">⚡ Latest Rates</span><span class="perk p2">✓ Reliable Data</span><span class="perk p3">▣ Mobile Ready</span><span class="perk p4">♧ No Signup</span></div></div>
 </section>
@@ -283,9 +283,9 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 <section class="panel" aria-labelledby="convert-heading">
 <div class="panel-head"><span class="head-icon" aria-hidden="true">⇄</span><div><h2 id="convert-heading">Convert Currency</h2><p class="sub">Choose currencies and convert your amount instantly.</p></div></div>
 <div class="currency-row">
-<div class="field"><label for="from">From (You have)</label><div class="currency-select"><span class="flag" id="fromFlag">🇺🇸</span><select id="from" aria-label="From currency"></select></div></div>
+<div class="field"><label for="from">From (You have)</label><div class="currency-select"><span class="flag" id="fromFlag" aria-label="United States flag"><img src="https://flagcdn.com/28x21/us.png" alt="" width="28" height="21"></span><select id="from" aria-label="From currency"></select></div></div>
 <button class="swap" id="swap" type="button" aria-label="Swap currencies" title="Swap currencies">⇄</button>
-<div class="field"><label for="to">To (You get)</label><div class="currency-select"><span class="flag" id="toFlag">🇮🇳</span><select id="to" aria-label="To currency"></select></div></div>
+<div class="field"><label for="to">To (You get)</label><div class="currency-select"><span class="flag" id="toFlag" aria-label="India flag"><img src="https://flagcdn.com/28x21/in.png" alt="" width="28" height="21"></span><select id="to" aria-label="To currency"></select></div></div>
 </div>
 <div class="amount-wrap"><label for="amount">Amount</label><input class="amount-input" id="amount" type="number" min="0" step="any" value="1000" placeholder="Enter amount"><div class="presets"><button class="preset" data-amount="100" type="button">100</button><button class="preset" data-amount="500" type="button">500</button><button class="preset active" data-amount="1000" type="button">1,000</button><button class="preset" data-amount="5000" type="button">5,000</button><button class="preset" data-amount="10000" type="button">10,000</button></div></div>
 <div class="action-row"><button class="convert-btn" id="convert" type="button">⇄　Convert</button><button class="refresh-btn" id="refresh" type="button">↻ Refresh Rates</button></div>
@@ -348,7 +348,7 @@ main{width:min(100% - 34px,1480px);margin:0 auto 34px}
 <footer style="text-align:center;padding:20px;color:#60708f;font-size:13px">© InfoJano · Smart Tools for Everyday Life</footer>
 <script>
 const currencyData=[
-["USD","US Dollar","🇺🇸"],["INR","Indian Rupee","🇮🇳"],["EUR","Euro","🇪🇺"],["GBP","British Pound","🇬🇧"],["BDT","Bangladeshi Taka","🇧🇩"],["AED","UAE Dirham","🇦🇪"],["JPY","Japanese Yen","🇯🇵"],["CAD","Canadian Dollar","🇨🇦"],["AUD","Australian Dollar","🇦🇺"],["SGD","Singapore Dollar","🇸🇬"],["CHF","Swiss Franc","🇨🇭"],["CNY","Chinese Yuan","🇨🇳"],["SAR","Saudi Riyal","🇸🇦"],["QAR","Qatari Riyal","🇶🇦"],["KWD","Kuwaiti Dinar","🇰🇼"],["OMR","Omani Rial","🇴🇲"],["MYR","Malaysian Ringgit","🇲🇾"],["THB","Thai Baht","🇹🇭"],["IDR","Indonesian Rupiah","🇮🇩"],["PKR","Pakistani Rupee","🇵🇰"],["NPR","Nepalese Rupee","🇳🇵"],["LKR","Sri Lankan Rupee","🇱🇰"],["NZD","New Zealand Dollar","🇳🇿"],["ZAR","South African Rand","🇿🇦"],["TRY","Turkish Lira","🇹🇷"],["RUB","Russian Ruble","🇷🇺"],["KRW","South Korean Won","🇰🇷"],["HKD","Hong Kong Dollar","🇭🇰"],["MXN","Mexican Peso","🇲🇽"],["BRL","Brazilian Real","🇧🇷"],["SEK","Swedish Krona","🇸🇪"],["NOK","Norwegian Krone","🇳🇴"],["DKK","Danish Krone","🇩🇰"],["EGP","Egyptian Pound","🇪🇬"],["ILS","Israeli New Shekel","🇮🇱"],["PHP","Philippine Peso","🇵🇭"],["VND","Vietnamese Dong","🇻🇳"],["NGN","Nigerian Naira","🇳🇬"],["KES","Kenyan Shilling","🇰🇪"],["GHS","Ghanaian Cedi","🇬🇭"],["PLN","Polish Zloty","🇵🇱"],["CZK","Czech Koruna","🇨🇿"],["HUF","Hungarian Forint","🇭🇺"],["ARS","Argentine Peso","🇦🇷"],["CLP","Chilean Peso","🇨🇱"]];
+["USD","US Dollar","us"],["INR","Indian Rupee","in"],["EUR","Euro","eu"],["GBP","British Pound","gb"],["BDT","Bangladeshi Taka","bd"],["AED","UAE Dirham","ae"],["JPY","Japanese Yen","jp"],["CAD","Canadian Dollar","ca"],["AUD","Australian Dollar","au"],["SGD","Singapore Dollar","sg"],["CHF","Swiss Franc","ch"],["CNY","Chinese Yuan","cn"],["SAR","Saudi Riyal","sa"],["QAR","Qatari Riyal","qa"],["KWD","Kuwaiti Dinar","kw"],["OMR","Omani Rial","om"],["MYR","Malaysian Ringgit","my"],["THB","Thai Baht","th"],["IDR","Indonesian Rupiah","id"],["PKR","Pakistani Rupee","pk"],["NPR","Nepalese Rupee","np"],["LKR","Sri Lankan Rupee","lk"],["NZD","New Zealand Dollar","nz"],["ZAR","South African Rand","za"],["TRY","Turkish Lira","tr"],["RUB","Russian Ruble","ru"],["KRW","South Korean Won","kr"],["HKD","Hong Kong Dollar","hk"],["MXN","Mexican Peso","mx"],["BRL","Brazilian Real","br"],["SEK","Swedish Krona","se"],["NOK","Norwegian Krone","no"],["DKK","Danish Krone","dk"],["EGP","Egyptian Pound","eg"],["ILS","Israeli New Shekel","il"],["PHP","Philippine Peso","ph"],["VND","Vietnamese Dong","vn"],["NGN","Nigerian Naira","ng"],["KES","Kenyan Shilling","ke"],["GHS","Ghanaian Cedi","gh"],["PLN","Polish Zloty","pl"],["CZK","Czech Koruna","cz"],["HUF","Hungarian Forint","hu"],["ARS","Argentine Peso","ar"],["CLP","Chilean Peso","cl"]];
 const byCode=Object.fromEntries(currencyData.map(x=>[x[0],x]));
 const fromEl=document.getElementById('from'),toEl=document.getElementById('to'),amountEl=document.getElementById('amount');
 function fillSelect(el,selected){el.innerHTML=currencyData.map(([c,n])=>'<option value="'+c+'" '+(c===selected?'selected':'')+'>'+c+' – '+n+'</option>').join('')}
@@ -356,19 +356,20 @@ fillSelect(fromEl,'USD');fillSelect(toEl,'INR');
 let rates={},lastUpdated='',currentBase='',lastResultText='';
 const popular=['INR','EUR','GBP','JPY','BDT'];
 const fmt=(n,maximumFractionDigits=4)=>Number(n).toLocaleString('en-US',{maximumFractionDigits});
-function updateFlags(){document.getElementById('fromFlag').textContent=byCode[fromEl.value]?.[2]||'💱';document.getElementById('toFlag').textContent=byCode[toEl.value]?.[2]||'💱'}
+function flagMarkup(code,alt){const iso=byCode[code]?.[2]||'';if(!/^[a-z]{2}$/.test(iso))return '<span class="flag-fallback">'+code+'</span>';return '<img src="https://flagcdn.com/28x21/'+iso+'.png" alt="'+(alt||code)+' flag" width="28" height="21" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'flag-fallback\',textContent:'${code}'}))">'}
+function updateFlags(){document.getElementById('fromFlag').innerHTML=flagMarkup(fromEl.value,byCode[fromEl.value]?.[1]);document.getElementById('toFlag').innerHTML=flagMarkup(toEl.value,byCode[toEl.value]?.[1])}
 function renderResult(){
  const amount=Number(amountEl.value),from=fromEl.value,to=toEl.value;
  document.getElementById('result-caption').textContent=(amountEl.value===''?'0':fmt(amount,2))+' '+from+' =';
  if(!rates[to]||!Number.isFinite(amount)||amount<0){document.getElementById('result-value').textContent='Rate unavailable';document.getElementById('result-rate').textContent='Check your connection and refresh rates.';lastResultText='';return}
  const value=amount*rates[to],rate=rates[to];
- document.getElementById('result-value').textContent=(byCode[to]?.[2]||'')+' '+fmt(value,2)+' '+to;
+ document.getElementById('result-value').textContent=fmt(value,2)+' '+to;
  document.getElementById('result-rate').textContent='Exchange Rate: 1 '+from+' = '+fmt(rate,4)+' '+to;
  lastResultText=fmt(amount,2)+' '+from+' = '+fmt(value,2)+' '+to+' | 1 '+from+' = '+fmt(rate,4)+' '+to;
 }
 function renderRates(){
  const grid=document.getElementById('rate-grid');document.getElementById('base-label').textContent='1 '+fromEl.value;
- grid.innerHTML=popular.map(code=>{const c=byCode[code],rate=rates[code];return '<div class="rate-card"><div class="rate-flag">'+c[2]+'</div><div class="rate-code">'+code+'</div><div class="rate-number">'+(rate?fmt(rate,4):'—')+'</div><div class="rate-name">'+c[1]+'</div></div>'}).join('');
+ grid.innerHTML=popular.map(code=>{const c=byCode[code],rate=rates[code];return '<div class="rate-card"><div class="rate-flag">'+flagMarkup(code,c[1])+'</div><div class="rate-code">'+code+'</div><div class="rate-number">'+(rate?fmt(rate,4):'—')+'</div><div class="rate-name">'+c[1]+'</div></div>'}).join('');
 }
 async function loadRates(force=false){
  const base=fromEl.value,status=document.getElementById('status'),updated=document.getElementById('updated');
@@ -405,7 +406,7 @@ function renderCompare(){
  document.getElementById('compare-amount-label').textContent=fmt(amount,2)+' '+base;
  grid.innerHTML=compareCodes.filter(code=>code!==base).map(code=>{
   const cur=byCode[code],rate=rates[code],value=rate?fmt(amount*rate,2):'—';
-  return '<div class="compare-item"><span class="compare-flag">'+cur[2]+'</span><div class="compare-item-info"><strong>'+code+' · '+cur[1]+'</strong><b>'+value+' '+code+'</b><small>1 '+base+' = '+(rate?fmt(rate,4):'—')+' '+code+'</small></div></div>';
+  return '<div class="compare-item"><span class="compare-flag">'+flagMarkup(code,cur[1])+'</span><div class="compare-item-info"><strong>'+code+' · '+cur[1]+'</strong><b>'+value+' '+code+'</b><small>1 '+base+' = '+(rate?fmt(rate,4):'—')+' '+code+'</small></div></div>';
  }).join('');
 }
 function renderFee(){
