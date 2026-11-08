@@ -133,6 +133,52 @@ a{color:#155bc4;text-decoration:none}a:hover{text-decoration:underline}.wrap{wid
 @media(max-width:760px){.grid{grid-template-columns:1fr;gap:2px;margin:18px 0}.card{padding:21px 18px;margin:13px 0;border-radius:17px}.card h2{font-size:20px}.use-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.use-grid div{min-height:76px;padding:11px 9px 11px 34px;font-size:12px}.use-grid div:before{left:10px;top:12px}.steps li{font-size:13px}.cta{padding:29px 18px!important}.cta h2{font-size:22px}}
 @media(max-width:390px){.use-grid{grid-template-columns:1fr}.trust{gap:7px}.trust span{font-size:11px;padding:7px 10px}}
 
+
+/* VISIBLE MOBILE PREMIUM SECTION REDESIGN — prototype approved for URL page only */
+main{max-width:1120px!important;margin-inline:auto!important}
+main>.trust{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin:20px 12px 26px!important}
+main>.trust span{padding:9px 14px!important;border:1px solid #cfe4ff!important;background:linear-gradient(135deg,#fff,#eaf4ff)!important;color:#164a86!important;box-shadow:0 5px 14px #164a8618!important;font-weight:650!important}
+main>.grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;margin:22px 12px!important}
+main>.card{position:relative!important;overflow:hidden!important;margin:18px 12px!important;padding:25px 24px!important;border:1px solid #c9ddf6!important;border-radius:22px!important;background:linear-gradient(145deg,#fff 0%,#f7fbff 62%,#edf5ff 100%)!important;box-shadow:0 12px 30px rgba(20,65,130,.12),inset 0 1px #fff!important}
+main>.grid>.card{margin:0!important}
+main>.card:before{content:""!important;position:absolute!important;inset:0 0 auto!important;height:6px!important;width:100%!important;background:linear-gradient(90deg,#00c9ec,#377dff 48%,#9565ff)!important}
+main>.card h2{display:flex!important;align-items:center!important;gap:11px!important;margin:0 0 18px!important;padding:0 0 13px!important;color:#102c55!important;font-size:21px!important;font-weight:800!important;border-bottom:1px solid #dce9f8!important}
+main>.card h2:after{content:""!important;position:absolute!important;left:0!important;bottom:0!important;width:62px!important;height:4px!important;border-radius:5px!important;background:linear-gradient(90deg,#00c9ec,#587bff)!important}
+main>.card .steps{gap:11px!important;margin-top:18px!important}
+main>.card .steps li{position:relative!important;min-height:66px!important;padding:14px 14px 14px 58px!important;border:1px solid #d7e7fa!important;border-radius:15px!important;background:linear-gradient(110deg,#eaf4ff,#fff 80%)!important;color:#294765!important;font-size:14px!important;box-shadow:0 5px 13px #23558b12!important}
+main>.card .steps li:before{left:14px!important;width:32px!important;height:32px!important;border-radius:11px!important;background:linear-gradient(145deg,#1269d8,#4d8dff)!important;color:white!important;box-shadow:0 4px 10px #2167bf40!important;font-weight:800!important}
+main>.card .use-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important}
+main>.card .use-grid div{min-height:84px!important;padding:14px 12px 14px 42px!important;border:1px solid #d4e5f8!important;border-radius:15px!important;background:linear-gradient(145deg,#eaf4ff,#f8fbff)!important;color:#244568!important;font-weight:650!important;box-shadow:0 5px 13px #23558b12!important}
+main>.card .use-grid div:before{content:"✦"!important;left:14px!important;top:16px!important;color:#1679d5!important;font-size:19px!important}
+main>.card .checklist{gap:10px!important}
+main>.card .checklist li{padding:13px 14px 13px 43px!important;border:1px solid #dce9f7!important;border-radius:13px!important;background:linear-gradient(100deg,#f0f7ff,#fff)!important;color:#34516f!important}
+main>.card .checklist li:before{left:13px!important;top:12px!important;width:20px!important;height:20px!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#d8f7ed!important;color:#07866e!important}
+main>.card .note{margin-top:18px!important;padding:16px 16px 16px 48px!important;border:1px solid #f0d58d!important;border-radius:14px!important;background:linear-gradient(110deg,#fff6db,#fffaf0)!important;color:#76551d!important}
+main>.card.faq details{border-top:0!important;margin:9px 0!important;border:1px solid #dbe8f7!important;border-radius:13px!important;background:linear-gradient(100deg,#f4f8ff,#fff)!important;overflow:hidden!important}
+main>.card.faq summary{padding:16px 48px 16px 15px!important;font-weight:700!important;color:#24476d!important}
+main>.card.faq summary:after{right:12px!important;background:linear-gradient(145deg,#dcecff,#edf4ff)!important;color:#1764c2!important}
+main>.card.faq details[open] summary{background:#eaf3ff!important}
+main>.card.faq details p{padding:2px 15px 15px!important;color:#526b85!important}
+main>.card .related{display:flex!important;flex-wrap:wrap!important;gap:10px!important;margin-top:18px!important}
+main>.card .related a{padding:11px 15px!important;border:1px solid #cfe1f7!important;border-radius:13px!important;background:linear-gradient(145deg,#fff,#eaf3ff)!important;color:#1557a0!important;font-weight:700!important;box-shadow:0 5px 12px #1a4a8512!important}
+main>.card.cta{padding:36px 24px!important;text-align:center!important;border:0!important;background:radial-gradient(ellipse at 50% 0%,#2694ff 0%,transparent 55%),linear-gradient(115deg,#062b70,#075fca 65%,#087bc2)!important;box-shadow:0 16px 36px #124a9638!important}
+main>.card.cta:before{height:6px!important;background:linear-gradient(90deg,#00e1ff,#9c83ff,#ffe06a)!important}
+main>.card.cta h2{justify-content:center!important;color:#fff!important;border:0!important;font-size:25px!important}
+main>.card.cta h2:after{display:none!important}
+main>.card.cta p{color:#e6f3ff!important}
+main>.card.cta .btn{margin-top:20px!important;padding:14px 22px!important;border-radius:14px!important;background:linear-gradient(180deg,#fff,#e4efff)!important;color:#104b9b!important;font-weight:800!important;box-shadow:0 8px 20px #001e5555!important}
+@media(max-width:760px){
+ main>.grid{grid-template-columns:1fr!important;gap:14px!important;margin:18px 10px!important}
+ main>.card{margin:14px 10px!important;padding:22px 17px!important;border-radius:19px!important}
+ main>.grid>.card{margin:0!important}
+ main>.card h2{font-size:19px!important}
+ main>.card .steps li{min-height:62px!important;font-size:13px!important}
+ main>.card .use-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ main>.card .use-grid div{min-height:88px!important;font-size:12px!important;padding-left:37px!important}
+ main>.card.cta{padding:30px 18px!important}
+}
+@media(max-width:380px){main>.card .use-grid{grid-template-columns:1fr!important}}
+
 </style>
 </head>
 <body><div class="wrap">
