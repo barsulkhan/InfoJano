@@ -2406,3 +2406,15 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Earlier user-reported tests said the QR features worked, but later visual, content and sitemap changes mean the final release still requires the checks above.
 - Source checks and successful GitHub Pages deployment are confirmed; Android/desktop visual review, camera/ZIP/PDF/export/second-phone tests and Google sitemap processing remain unconfirmed.
 - Do not start another InfoJano tool until all remaining QR Toolkit items are checked and the user has confirmed the final result.
+
+
+### 8 November 2026 — Google Search Console screenshot evidence
+- User supplied a screenshot of the Search Console Sitemaps report.
+- Submitted entry: `/sitemap-infojano.xml`, submitted Nov 8, 2026.
+- Reported Type: `Unknown`; Last read: blank; Status: `Couldn't fetch`; Discovered pages: 0; Discovered videos: 0.
+- This is direct evidence that Google Search Console has not successfully fetched/processed this sitemap yet. It does not prove the XML source is malformed: the repository audit found 48 unique URLs and matching lists in sitemap.xml, sitemap-infojano.xml and sitemap.txt.
+- Next diagnostic action: user must open the submitted sitemap row in Search Console and share the details/error panel. Then use URL Inspection > Live Test on the exact sitemap URL and inspect Page availability, Crawl allowed and Page fetch. Do not repeatedly resubmit or modify files before obtaining the detailed error.
+- Google Search Console Help says “Couldn't fetch” means Google could not retrieve the sitemap itself; likely checks include wrong/missing URL (404), robots.txt blocking, manual action, temporary/server access issue. Google recommends opening the sitemap detail row and using URL Inspection live test. Source: https://support.google.com/webmasters/answer/7451001
+- A recent GitHub Community discussion (June 19, 2026) reports similar Google Search Console sitemap fetch problems on GitHub Pages; comments mention checking HTTP 200, XML content type and redirects. This is community evidence, not confirmation of the cause for InfoJano. Source: https://github.com/orgs/community/discussions/199426
+- Exact live HTTP status/content-type could not be independently verified from this environment because external DNS/network access to barsulkhan.github.io was unavailable. Do not claim the live URL is confirmed working until tested from browser or Google URL Inspection.
+- Chat continuity safeguard requested by user: proactively create/update both master-file checkpoints at every major milestone and recommend a new chat when the work is getting long. The assistant cannot inspect remaining chat quota or guarantee an advance warning before a limit is reached; therefore durable GitHub checkpoints are the reliable safeguard.
