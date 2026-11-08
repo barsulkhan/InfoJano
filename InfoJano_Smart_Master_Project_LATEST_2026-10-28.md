@@ -2202,3 +2202,23 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Source-level icon replacement is complete. Do not call this visually verified until the newest GitHub Pages deployment succeeds and the user checks the live QR Maker on desktop/laptop (or supplies a screenshot).
 - Next QR Toolkit tasks: validate all 12 mode card selection states and responsive layouts; then test QR generation payloads, export formats, scanner/upload/camera, Bulk QR ZIP and A4 PDF/print, second-phone readability, and sitemap/canonical plus service-worker activation.
 - Maintain the QR Toolkit-only lock. Do not begin any unrelated InfoJano tool work until the QR Toolkit is fully tested and verified.
+
+
+## QR Toolkit — individual feature pages prepared — 8 November 2026
+
+### Individual pages updated
+- Prepared a consistent standalone, responsive, desktop/mobile page design for the 11 QR modes other than the existing WhatsApp reference page.
+- Updated pages: `url-qr-code-generator.html` (Link), `text-qr-code-generator.html` (Text), `wifi-qr-code-generator.html` (WiFi), `contact-qr-code-generator.html` (Contact/MECARD), `phone-number-qr-code-generator.html` (Phone), `email-qr-code-generator.html` (Email), `sms-qr-code-generator.html` (SMS), `google-maps-location-qr-code-generator.html` (Location), `vcard-qr-code-generator.html` (vCard), `custom-qr-code-generator.html` (More/Custom), and `upi-payment-qr-code-generator.html` (UPI).
+- Existing `whatsapp-qr-code-generator.html` retained as the reference page. Existing functional pages `bulk-qr-generator.html`, `qr-scanner.html` and `barcode-scanner-online.html` retained without replacing their working scripts/UI.
+- Each of the 11 updated pages includes an individual title/description, canonical URL, Open Graph/Twitter metadata, WebApplication structured data, FAQPage structured data, responsive layout, feature-specific intro, steps, use cases, safety/quality tips, FAQs, related QR links and a CTA that passes the correct QR Maker mode.
+- Mode CTA mapping source-checked: URL=link, Text=text, WiFi=wifi, Contact=contact, Phone=phone, Email=email, SMS=sms, Location=location, vCard=vcard, Custom=more, UPI=upi; WhatsApp reference CTA=whatsapp.
+- Source re-fetch verification: all 11 updated pages plus WhatsApp, Bulk QR, QR Scanner and Barcode Scanner return HTML with titles, canonical URLs, styling and scripts where applicable. The 11 feature page CTAs each contain the expected mode parameter.
+- UPI page safety copy explicitly states InfoJano does not process or confirm payments and advises verifying received funds in the user's own bank/UPI app.
+
+### Cache and deployment
+- Bumped service worker from `infojano-v238` to `infojano-v239` to refresh the QR feature pages for returning visitors. Commit: `97d4aedb58e003f04a6e8a34aae4e950d1e1db4f`.
+- Repository source is updated. Live GitHub Pages deployment and real desktop/mobile visual rendering are not yet verified; do not describe these pages as live/fully tested until the newest Pages workflow is successful and the pages are checked on devices.
+
+### QR Toolkit lock and next tasks
+- QR Toolkit remains the only active project area. No unrelated InfoJano tool work may begin before full QR Toolkit verification.
+- Next: check GitHub Pages deployment for the newest commits; visually inspect all 12 mode pages on desktop and mobile; test each CTA selects the correct mode and that QR generation/export works; test scanner camera and image upload, Bulk QR generation/ZIP/A4 PDF, barcode decoding and real second-phone scans; then verify sitemap/canonicals and service-worker v239 activation.
