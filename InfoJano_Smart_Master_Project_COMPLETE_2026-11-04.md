@@ -3029,3 +3029,14 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - URL QR page remains the approved prototype; main qr-maker.html hero remains untouched.
 - Service worker cache bumped to infojano-v251.
 - GitHub source files verified to contain shared premium CSS, keyword meta and related-search phrase section for all 14 pages. Actual Android live visual verification is still pending; do not claim screenshot-level verification until user shares a fresh preview.
+
+
+## 8 November 2026 — QR Audience Search Content + Hero Title Light Direction Update (v252)
+- User requested more complete audience coverage: expert/technical full queries, short-form queries, beginner wording, and everyday transliterated search phrasing for each QR feature.
+- Added unique visible "What people search for" copy to all 15 QR feature pages (URL, Text, WiFi, Contact, Phone, Email, SMS, Google Maps Location, vCard, Custom, UPI, WhatsApp, Bulk QR, QR Scanner, Barcode Scanner). Each section is tailored to actual page functionality and includes full query phrases, shorthand/abbreviations, question-style searches, and common Hindi transliteration variants where relevant.
+- Removed the meta keywords tag because Google explicitly states it does not use the keywords meta tag for ranking. Search intent is represented in useful on-page content instead; avoid keyword stuffing and do not promise rankings.
+- Corrected hero title lighting CSS across all 15 feature pages: thin 10% sweep, starts from left and moves right, 22-second cycle, pauses after pass, no rotating border/extra streak added. This is still a CSS source update; visual effect must be confirmed on Android screenshot.
+- Main qr-maker.html hero remains untouched.
+- Service worker cache bumped from infojano-v251 to infojano-v252.
+- Google Search Central guidance consulted: meta keywords ignored; excessive repetition is keyword stuffing; content should naturally cover terms used by expert and beginner audiences and be useful. See https://developers.google.com/search/docs/fundamentals/seo-starter-guide.
+- Live visual QA pending. Do not claim all visual effects confirmed until user checks the deployed pages.
