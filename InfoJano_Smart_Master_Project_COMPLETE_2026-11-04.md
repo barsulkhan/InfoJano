@@ -3068,3 +3068,35 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Closely matching GitHub Community case (discussion #199426, Oct 2026): user had successful live URL inspection but failed sitemap processing for sitemap.xml. A later user duplicated identical XML to a different filename (sitemap-capa.xml); renamed file processed successfully with 84 discovered pages while sitemap.xml remained Couldn't Fetch. Another reported plain-text sitemap.txt worked. This is community evidence/workaround, not a confirmed official Google bug. https://github.com/orgs/community/discussions/199426
 - Safe workaround deployed: added identical sitemap copy at /sitemap-infojano.xml (48 URL entries) and changed robots.txt Sitemap directive to https://barsulkhan.github.io/InfoJano/sitemap-infojano.xml. Original sitemap.xml and sitemap.txt retained unchanged. Commits: alternate sitemap af312f36c6a048e492b706238cdf0acd06ef5c3f; robots.txt bfed620fe59202ff5bb6b1bc55072d78959832e5.
 - Next user action: wait for GitHub Pages deployment, open https://barsulkhan.github.io/InfoJano/sitemap-infojano.xml in browser, then Search Console > Sitemaps submit sitemap-infojano.xml (not sitemap.xml). Do not remove old submissions yet. Check status and discovered pages after processing. This workaround is not yet verified by Google; do not claim success until Search Console reports Success.
+
+
+## 8 November 2026 — QR Toolkit Restart Audit and Verification Checklist
+
+### Master-file review
+- Resumed from both `InfoJano_Smart_Master_Project_COMPLETE_2026-11-04.md` and `InfoJano_Smart_Master_Project_LATEST_2026-10-28.md`; reviewed the full saved project history and the QR Toolkit checkpoints.
+- QR Toolkit remains the only active scope. Do not begin another tool or unrelated project until every final QR Toolkit verification item below is completed.
+
+### Current repository and deployment
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Latest audited source commit: `a7f7a40cfa1b94f3d05ddcb76edbe21dbece559b`.
+- GitHub Pages run `42475792528` for that exact commit completed successfully (Pages deployment run #1906). The immediately preceding run `42475785326` was cancelled because the newer run superseded it; this is not a deployment failure.
+- Current Service Worker source cache: `infojano-v253`.
+- Source check: `qr-maker.html` supports exactly 12 URL query mode values: link, text, wifi, contact, phone, more, whatsapp, upi, email, sms, location, vcard. Its query handler clicks the matching `[data-qrtype]` button.
+- Source check: all 15 individual QR feature pages have page titles, canonical URLs, descriptions, FAQ structured data, the shared QR hero and visible “What people search for” content. Main `qr-maker.html` retains its original hero as instructed.
+- Sitemap source check: `sitemap.xml` and `sitemap-infojano.xml` each contain 48 URLs with zero duplicates. `sitemap.txt` also contains 48 URLs; all three lists match exactly. `robots.txt` points to `sitemap-infojano.xml`.
+- The latest Pages workflow is successful, but this does not substitute for a live visual check on the user's devices or Google Search Console's own sitemap processing status. The web preview tool could not independently fetch the public GitHub Pages URLs during this audit.
+
+### QR Toolkit remaining work — keep Pending until genuinely verified
+1. **Final visual review:** inspect the deployed final design on desktop and Android for all 15 feature pages, with particular attention to WhatsApp, hero sizing, neon perimeter/light sweep, lower content sections, spacing and responsive layouts.
+2. **12 QR mode cards and CTA routing:** on Android Chrome, open each of the 12 SEO landing-page CTAs, confirm the matching QR Maker mode is selected, refresh the page and confirm the selection remains correct.
+3. **QR generation and output quality:** generate representative QR codes for all 12 payload types; test PNG, SVG, JPG and WebP downloads, logo overlay, foreground/background contrast, quiet zone and scan readability.
+4. **Real scan validation:** scan representative URL/text, Wi-Fi, contact/vCard, phone, email, SMS, location, WhatsApp and UPI codes using a second phone. Verify the decoded content is correct; do not treat visual appearance alone as scan validation.
+5. **QR and barcode scanner:** test camera permission grant/deny, start/stop, switching camera where available, background/hidden-tab behavior, and uploaded QR/barcode image decoding.
+6. **Bulk QR:** generate multiple records; download and extract ZIP; verify filenames and image contents; open the A4 PDF and inspect print layout/scale.
+7. **Live sitemap and PWA:** open the deployed `sitemap-infojano.xml`, confirm it is accessible, verify the deployed `sw.js` reports `infojano-v253`, and confirm activation/update on Android. In Google Search Console submit `sitemap-infojano.xml` and record its actual status/discovered URL count. Do not claim Google accepted it until the report says Success.
+8. Record actual device/browser results and any defects here before marking QR Toolkit Verified.
+
+### Verification boundary
+- Earlier user-reported tests said the QR features worked, but later visual, content and sitemap changes mean the final release still requires the checks above.
+- Source checks and successful GitHub Pages deployment are confirmed; Android/desktop visual review, camera/ZIP/PDF/export/second-phone tests and Google sitemap processing remain unconfirmed.
+- Do not start another InfoJano tool until all remaining QR Toolkit items are checked and the user has confirmed the final result.
