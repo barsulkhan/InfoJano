@@ -2808,3 +2808,12 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Hero headline and supporting sentence are tailored to each landing page; SEO page retains exactly one H1 and one main landmark.
 - Service worker cache bumped to infojano-v267.
 - Work is on feature branch feature/seo-pages-shared-neon-hero. Not merged or deployed. Awaiting PR review and explicit approval before merge.
+
+
+## SEO landing-page content card visual refresh — 9 November 2026
+- User asked to make the informational text blocks below the neon hero look more premium and less like a newspaper.
+- Implemented on all four age-related SEO landing pages: `age-in-days-calculator.html`, `birthday-countdown-calculator.html`, `day-of-week-born-calculator.html`, and `what-happened-on-my-birthday.html`.
+- Added softly colored gradient card backgrounds, refined borders/shadows/rounded corners, section-specific icon accents, colorful FAQ question panels, and a styled related-search area with mobile spacing.
+- The approved neon hero banner and page content/SEO text remain unchanged; CSS targets only content cards below the hero.
+- Service-worker cache bumped from `infojano-v267` to `infojano-v268`.
+- Work is on branch `feature/seo-content-cards-premium-design`; PR pending review. Not merged/live yet. User approval required before merge.

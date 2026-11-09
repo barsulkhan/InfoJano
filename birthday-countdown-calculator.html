@@ -92,6 +92,58 @@
 
 
 
+
+/* Premium editorial-card redesign for SEO content below the neon hero.
+   The hero itself is intentionally excluded from every rule in this block. */
+.ij-age-main>section.card{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  margin:22px 0!important;padding:clamp(20px,2.4vw,30px)!important;
+  border:1px solid #dbeafe!important;border-radius:24px!important;
+  background:linear-gradient(145deg,#fff 0%,#f5f9ff 100%)!important;
+  box-shadow:0 12px 30px rgba(35,76,145,.09),inset 0 1px 0 #fff!important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+}
+.ij-age-main>section.card:before{
+  content:"";position:absolute;z-index:-1;top:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6,#ec4899);
+}
+.ij-age-main>section.card:nth-of-type(2){background:linear-gradient(135deg,#eff8ff,#fff 68%,#f1f5ff)!important;border-color:#bfdbfe!important}
+.ij-age-main>section.card:nth-of-type(3){background:linear-gradient(135deg,#f3f0ff,#fff 68%,#fdf2ff)!important;border-color:#ddd6fe!important}
+.ij-age-main>section.card:nth-of-type(4){background:linear-gradient(135deg,#ecfdf5,#fff 68%,#f0fdfa)!important;border-color:#a7f3d0!important}
+.ij-age-main>section.card:nth-of-type(5){background:linear-gradient(135deg,#fff7ed,#fff 68%,#fffbeb)!important;border-color:#fed7aa!important}
+.ij-age-main>section.card h2{display:flex;align-items:center;gap:11px;margin:0 0 12px!important;color:#173b70!important;font-size:clamp(18px,2vw,22px)!important;font-weight:850!important;letter-spacing:-.25px}
+.ij-age-main>section.card h2:before{content:"✦";display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#dbeafe,#e0e7ff);color:#2563eb;font-size:19px;box-shadow:inset 0 1px #fff}
+.ij-age-main>section.card:nth-of-type(2) h2:before{content:"🧮";background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.ij-age-main>section.card:nth-of-type(3) h2:before{content:"📅";background:linear-gradient(135deg,#ede9fe,#ddd6fe)}
+.ij-age-main>section.card:nth-of-type(4) h2:before{content:"⏱️";background:linear-gradient(135deg,#d1fae5,#a7f3d0)}
+.ij-age-main>section.card:nth-of-type(5) h2:before{content:"✨";background:linear-gradient(135deg,#ffedd5,#fed7aa)}
+.ij-age-main>section.card p{color:#52647d!important;font-size:15px!important;line-height:1.8!important}
+.ij-age-main>section.card .primary{box-shadow:0 7px 16px rgba(23,104,232,.22);transition:transform .2s ease,box-shadow .2s ease}
+.ij-age-main>section.card .primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(23,104,232,.3)}
+.ij-age-main>section.card.faq{padding:clamp(20px,2.5vw,30px)!important;background:linear-gradient(145deg,#f5f3ff,#fff 45%,#eff6ff)!important;border-color:#c4b5fd!important}
+.ij-age-main>section.card.faq:before{background:linear-gradient(90deg,#8b5cf6,#6366f1,#38bdf8)}
+.ij-age-main>section.card.faq h2:before{content:"❔";background:linear-gradient(135deg,#ede9fe,#dbeafe)}
+.ij-age-main .faq-item{position:relative;margin:12px 0 0!important;padding:17px 18px 16px 20px!important;border:1px solid #e0e7ff!important;border-left:4px solid #8b5cf6!important;border-radius:16px!important;background:linear-gradient(110deg,#fff,#f8faff)!important;box-shadow:0 5px 14px rgba(79,70,229,.055)!important}
+.ij-age-main .faq-item:nth-of-type(odd){border-left-color:#06b6d4!important;background:linear-gradient(110deg,#fff,#f0faff)!important}
+.ij-age-main .faq-item h3{display:flex;align-items:flex-start;gap:9px;margin:0 0 7px!important;color:#253f78!important;font-size:15px!important;font-weight:850!important;line-height:1.5!important}
+.ij-age-main .faq-item h3:before{content:"Q";display:grid;place-items:center;flex:0 0 24px;width:24px;height:24px;border-radius:8px;background:#ede9fe;color:#6d28d9;font-size:12px;font-weight:900}
+.ij-age-main .faq-item p{margin:0!important;font-size:14px!important;line-height:1.75!important}
+.ij-age-main>section.card.related{background:linear-gradient(135deg,#ecfeff,#fff 55%,#f5f3ff)!important;border-color:#a5f3fc!important}
+.ij-age-main>section.card.related h2:before{content:"🔎";background:linear-gradient(135deg,#cffafe,#e0e7ff)}
+.ij-age-main .search-phrases{padding:15px 16px!important;border:1px dashed #93c5fd!important;border-radius:16px!important;background:linear-gradient(120deg,#eff6ff,#f5f3ff)!important;color:#31558c!important;font-weight:650!important}
+.ij-age-main>section.card.related a:not(.primary){color:#145bd7!important;font-weight:800!important;text-decoration:none!important;border-bottom:1px solid #93c5fd}
+@media(hover:hover){.ij-age-main>section.card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(35,76,145,.13),inset 0 1px 0 #fff!important}}
+@media(max-width:600px){
+ .ij-age-main>section.card{margin:16px 0!important;padding:19px 17px!important;border-radius:20px!important}
+ .ij-age-main>section.card h2{font-size:18px!important;gap:9px!important}
+ .ij-age-main>section.card h2:before{flex-basis:34px;width:34px;height:34px;border-radius:11px;font-size:17px}
+ .ij-age-main>section.card p{font-size:14px!important;line-height:1.75!important}
+ .ij-age-main .faq-item{padding:14px 13px!important;margin-top:10px!important;border-radius:14px!important}
+ .ij-age-main .faq-item h3{font-size:14px!important}
+ .ij-age-main .faq-item p{font-size:13px!important}
+}
+@media(prefers-reduced-motion:reduce){.ij-age-main>section.card,.ij-age-main>section.card .primary{transition:none!important}}
+
 </style>
 </head>
 <body>
