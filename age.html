@@ -758,6 +758,29 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
 
 
 
+<script id="ij-age-toolkit-logic">
+(function(){
+"use strict";
+const $=id=>document.getElementById(id),dob=$("dobManual"),ref=$("ij-reference-date"),out=$("ij-reference-result"),status=$("ij-reminder-status");
+const pad=n=>String(n).padStart(2,"0"),iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+function parseISO(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s||""))return null;const a=s.split("-").map(Number),d=new Date(a[0],a[1]-1,a[2]);return d.getFullYear()===a[0]&&d.getMonth()===a[1]-1&&d.getDate()===a[2]?d:null}
+function dobDate(){const m=(dob.value||"").trim().match(/^(\d{2})[-/]?(\d{2})[-/]?(\d{4})$/);if(!m)throw Error("Enter date of birth as DD-MM-YYYY.");const d=parseISO(m[3]+"-"+m[2]+"-"+m[1]);if(!d)throw Error("Enter a valid date of birth.");return d}
+function utc(d){return Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())}
+function leap(y){return y%4===0&&(y%100!==0||y%400===0)}
+function ageParts(b,t){let y=t.getFullYear()-b.getFullYear(),m=t.getMonth()-b.getMonth(),d=t.getDate()-b.getDate();if(d<0){m--;d+=new Date(t.getFullYear(),t.getMonth(),0).getDate()}if(m<0){y--;m+=12}return {y,m,d}}
+function nextBirthday(b,t,rule){let y=t.getFullYear(),m=b.getMonth(),d=b.getDate();if(m===1&&d===29&&!leap(y)){if(rule==="mar1"){m=2;d=1}else d=28}let n=new Date(y,m,d);if(utc(n)<=utc(t)){y++;m=b.getMonth();d=b.getDate();if(m===1&&d===29&&!leap(y)){if(rule==="mar1"){m=2;d=1}else d=28}n=new Date(y,m,d)}return n}
+let latest="";
+function calculate(){const b=dobDate(),t=parseISO(ref.value);if(!t)throw Error("Choose a valid calculation date.");if(utc(t)<utc(b))throw Error("Calculation date cannot be before birth date.");const p=ageParts(b,t),days=Math.floor((utc(t)-utc(b))/86400000),weeks=Math.floor(days/7),weekday=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][b.getDay()];latest="Age on "+t.toLocaleDateString("en-GB")+": "+p.y+" years, "+p.m+" months, "+p.d+" days. Total "+days.toLocaleString()+" days, "+weeks+" weeks and "+(days%7)+" days. Born on "+weekday+".";out.textContent=latest+" Total hours: "+(days*24).toLocaleString()+". Total minutes: "+(days*1440).toLocaleString()+"."}
+$("ij-calculate-reference").addEventListener("click",()=>{try{calculate()}catch(e){out.textContent=e.message}});
+async function resultText(){if(!latest)calculate();return latest}
+$("ij-copy-age").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(await resultText());status.textContent="Age result copied."}catch(_){status.textContent="Clipboard unavailable. Please select and copy the result."}});
+$("ij-share-age").addEventListener("click",async()=>{try{const text=await resultText();if(navigator.share)await navigator.share({title:"Age Calculator – InfoJano",text});else{await navigator.clipboard.writeText(text);status.textContent="Share unavailable; result copied instead."}}catch(e){if(e.name!=="AbortError")status.textContent="Sharing could not be completed."}});
+function checkReminder(){try{const s=JSON.parse(localStorage.getItem("ij-age-birthday-reminder")||"null");if(!s)return;const now=new Date(),today=iso(now);if(s.month===now.getMonth()+1&&s.day===now.getDate()){status.textContent="Today is your saved birthday! Happy Birthday!";const k="ij-age-reminder-shown-"+today;if("Notification"in window&&Notification.permission==="granted"&&localStorage.getItem(k)!=="1"){new Notification("Happy Birthday!",{body:"Your saved birthday reminder from InfoJano."});localStorage.setItem(k,"1")}}else status.textContent="Birthday reminder saved on this device. It is checked when this page is open."}catch(_){}}
+$("ij-set-reminder").addEventListener("click",async()=>{try{const b=dobDate(),rule=$("ij-leap-rule").value,today=new Date(),n=nextBirthday(b,today,rule);localStorage.setItem("ij-age-birthday-reminder",JSON.stringify({month:b.getMonth()+1,day:b.getDate(),rule}));if("Notification"in window&&Notification.permission==="default")await Notification.requestPermission();status.textContent="Reminder saved on this device. Next birthday: "+n.toLocaleDateString("en-GB")+". It is checked when this page is open; background delivery is not guaranteed.";checkReminder()}catch(e){status.textContent=e.message}});
+const now=new Date();ref.value=iso(now);checkReminder();window.setInterval(checkReminder,60000);
+})();
+</script>
+
 <script src="/InfoJano/install.js" defer></script>
 <script src="/InfoJano/site-header.js" defer></script>
 </body>
