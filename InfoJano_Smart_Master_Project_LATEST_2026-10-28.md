@@ -2825,3 +2825,31 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Neon hero and all page text/SEO metadata remain unchanged.
 - Service-worker cache bumped to infojano-v269.
 - Branch: `feature/stronger-visible-seo-card-colors`; awaiting PR review/merge. Not live until merged and Pages deploy completes.
+
+
+# SESSION HANDOFF — 9 NOVEMBER 2026 (LATEST / AUTHORITATIVE)
+
+## Age Calculator design finalized
+- User reviewed the mobile screenshots and approved the final visual direction for the Age Calculator SEO pages.
+- PR #29 (shared neon hero) merged successfully. Merge commit: `8997418bf51f612d20d9144a47593f2fd69603c7`.
+- PR #30 (first premium card refresh) merged successfully. Merge commit: `5b5dabd590611e4092dda7cddb641dda12fde5a0`.
+- PR #31 (stronger, clearly visible colored cards) merged successfully with the user's explicit approval. This is the final approved design. Merge commit: `b2495ba89b960d5aaa7d29a8f696c3871e6d0461`.
+- Main branch verified after PR #31: all four SEO pages contain the stronger visible card CSS; `sw.js` cache is `infojano-v269`; this Smart Master File contains the final design notes.
+- Final approved visual system: keep the existing animated blue-purple neon hero unchanged; below it use clearly visible blue, lavender, mint, and peach gradient cards, colored accent bars, stronger borders/shadows, individually styled FAQ panels, and a colorful Related Searches panel. Mobile spacing is included.
+- Finalized pages:
+  1. `age.html` — https://barsulkhan.github.io/InfoJano/age.html
+  2. `age-in-days-calculator.html` — https://barsulkhan.github.io/InfoJano/age-in-days-calculator.html
+  3. `birthday-countdown-calculator.html` — https://barsulkhan.github.io/InfoJano/birthday-countdown-calculator.html
+  4. `day-of-week-born-calculator.html` — https://barsulkhan.github.io/InfoJano/day-of-week-born-calculator.html
+  5. `what-happened-on-my-birthday.html` — https://barsulkhan.github.io/InfoJano/what-happened-on-my-birthday.html
+- Treat this as the FINAL approved Age Calculator design. Do not change its colors, hero, card layout, or visual style unless the user explicitly requests a redesign.
+- PR #31 is CLOSED and MERGED. Do not describe PR #29, #30, or #31 as pending. Earlier historical notes above are retained as a work log; this section supersedes their old pending-status statements.
+- GitHub merge and main-branch source were verified. Do not claim that a full live browser/Android test or CI workflow passed unless actually performed. GitHub Pages publishing/cache propagation can take time.
+
+## Next chat — resume instructions
+- User has paused work for now. On the next chat, continue from this Smart Master File; do not ask the user to repeat project history or re-explain the Age Calculator.
+- Start by acknowledging the Age Calculator visual design is finalized and PR #31 is merged.
+- Before making further changes, check current GitHub main branch, Smart Master File, service-worker cache version, open PRs, and deployment status.
+- Next sensible work: perform a careful QA audit of all five Age Calculator pages on mobile/desktop (layout, links, calculator behavior, accessibility, SEO metadata, canonical/JSON-LD, sitemap, service-worker cache), record only verified results, then propose the next highest-priority InfoJano task. Do not alter the finalized Age Calculator design during QA.
+- Continue the user's established workflow: work autonomously where safe, keep the Smart Master File updated, create feature branches and PRs for code changes, and never merge a PR without explicit user approval.
+- Short resume phrase for a new chat: **“InfoJano Smart Master File থেকে শুরু করো — Age Calculator final, PR #31 merged; আগে current status ও QA audit করো।”**
