@@ -2817,3 +2817,11 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - The approved neon hero banner and page content/SEO text remain unchanged; CSS targets only content cards below the hero.
 - Service-worker cache bumped from `infojano-v267` to `infojano-v268`.
 - Work is on branch `feature/seo-content-cards-premium-design`; PR pending review. Not merged/live yet. User approval required before merge.
+
+
+## Stronger visible SEO card colors — 9 November 2026
+- User reviewed the first premium card redesign and reported that the colors were too subtle to notice on mobile.
+- Follow-up refinement adds clearly visible blue, lavender, mint, and peach gradient backgrounds, stronger colored borders/shadows, vertical accent bars, more distinct FAQ panels, and a stronger Related Searches panel across all four age SEO pages.
+- Neon hero and all page text/SEO metadata remain unchanged.
+- Service-worker cache bumped to infojano-v269.
+- Branch: `feature/stronger-visible-seo-card-colors`; awaiting PR review/merge. Not live until merged and Pages deploy completes.
