@@ -4,10 +4,10 @@
 const $=id=>document.getElementById(id);
 const preview=$('preview'),width=$('width'),height=$('height'),format=$('format'),quality=$('quality'),resizeBtn=$('resizeBtn'),download=$('download'),status=$('status');
 if(!preview||!width||!height||!resizeBtn)return;
-let activeImage=null,batchUrls=[],resetPreviewUrl=null;
+let activeImage=null,batchUrls=[],resetPreviewUrl=null,dpiApplied=false;
 const host=document.createElement('section');host.className='ij-advanced';host.id='ijAdvanced';
 host.innerHTML=`
-<h3>✨ Advanced Image Studio</h3><p class="ij-sub">Precise print sizing, crop tools, target file size and multi-image processing — all inside your browser.</p>
+<h3>✨ Advanced Image Studio</h3><p class="ij-sub">Optional tools for custom print sizing, crop, compression and batch processing.</p>
 <div class="ij-adv-grid">
  <section class="ij-adv-card"><h4>📐 Physical size &amp; DPI</h4>
   <div class="ij-adv-row"><div><label for="ijUnit">Measurement</label><select id="ijUnit"><option value="px">Pixels</option><option value="cm">Centimetres</option><option value="mm">Millimetres</option><option value="in">Inches</option></select></div><div><label for="ijDpi">DPI</label><input id="ijDpi" type="number" min="30" max="1200" value="300"></div></div>
@@ -31,12 +31,17 @@ host.innerHTML=`
   <p class="ij-adv-note">Batch output uses the current pixel dimensions, format and quality. Each result has its own download link.</p>
  </section>
 </div>`;
+const details=document.createElement('details');details.className='ij-advanced-details';
+const summary=document.createElement('summary');summary.innerHTML='<span>⚙️ More Settings — Advanced Image Studio</span><small>Optional · Open only when you need custom controls</small>';
+const body=document.createElement('div');body.className='ij-advanced-body';
+while(host.firstChild)body.appendChild(host.firstChild);
+details.append(summary,body);host.appendChild(details);
 const anchor=document.querySelector('.workspace');
 if(anchor)anchor.insertAdjacentElement('afterend',host);
 function setStatus(message){if(status)status.textContent=message}
 function getImage(src){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src})}
 async function syncImage(){if(!preview.src||preview.hidden)return null;try{activeImage=await getImage(preview.src);return activeImage}catch(e){return null}}
-preview.addEventListener('load',()=>{activeImage=preview;cropRect=null});
+preview.addEventListener('load',()=>{activeImage=preview});
 document.addEventListener('change',e=>{if(e.target&&e.target.id==='file'){setTimeout(syncImage,50)}});
 function canvasBlob(canvas,type,q){return new Promise(resolve=>canvas.toBlob(resolve,type,q))}
 async function encodeTarget(canvas,type,q,targetKB){
@@ -71,6 +76,7 @@ async function applyDpiMetadata(blob,dpi,type){
  return blob;
 }
 function setDownload(blob,name){
+ const actualType=blob.type||'image/png';const ext=actualType==='image/jpeg'?'jpg':actualType==='image/webp'?'webp':'png';name='infojano-resized.'+ext;
  const old=download.href;if(old&&old.startsWith('blob:'))URL.revokeObjectURL(old);
  const url=URL.createObjectURL(blob);download.href=url;download.download=name;download.hidden=false;
  const state=$('downloadState');if(state){state.hidden=false;state.innerHTML='<span aria-hidden="true">✓</span><span>Advanced result ready. Tap Download below.</span>'}
@@ -81,7 +87,7 @@ function applyPhysical(){
  const factor=unit==='cm'?dpi/2.54:unit==='mm'?dpi/25.4:unit==='in'?dpi:1;
  const w=Math.round(pw*factor),h=Math.round(ph*factor);
  if(w>10000||h>10000||w*h>40000000){setStatus('Calculated dimensions exceed the safe output limit. Reduce size or DPI.');return}
- width.value=w;height.value=h;document.querySelector('[data-mode="custom"]')?.click();
+ width.value=w;height.value=h;dpiApplied=true;document.querySelector('[data-mode="custom"]')?.click();
  setStatus('Physical size converted: '+w+' × '+h+' pixels at '+dpi+' DPI calculation.');
 }
 $('ijApplyPhysical').addEventListener('click',applyPhysical);
@@ -102,7 +108,7 @@ resizeBtn.addEventListener('click',async e=>{
  if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000||w*h>40000000){setStatus('Enter valid dimensions within the 40-megapixel safe limit.');return}
  if(target&&(!Number.isFinite(target)||target<5||target>20000)){setStatus('Target size must be between 5 and 20,000 KB.');return}
  resizeBtn.disabled=true;resizeBtn.textContent='Processing…';setStatus('Resizing and checking output size…');
- try{const canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);if(!result.blob)throw Error('Output encoding failed');const finalBlob=await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,type);setDownload(finalBlob,'infojano-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp'));const kb=(finalBlob.size/1024).toFixed(1),finalMet=!!target&&finalBlob.size<=target*1024;setStatus('Ready: '+w+' × '+h+' px · '+kb+' KB'+(target?(finalMet?' · target met':' · target could not be met at minimum quality'):'')+(type!=='image/png'&&target?' · quality '+Math.round(result.quality*100)+'%':''));}
+ try{const canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);if(!result.blob)throw Error('Output encoding failed');const finalBlob=dpiApplied?await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,result.blob.type||type):result.blob;setDownload(finalBlob,'infojano-resized');const kb=(finalBlob.size/1024).toFixed(1),finalMet=!!target&&finalBlob.size<=target*1024;setStatus('Ready: '+w+' × '+h+' px · '+kb+' KB'+(target?(finalMet?' · target met':' · target could not be met at minimum quality'):'')+(type!=='image/png'&&target?' · quality '+Math.round(result.quality*100)+'%':''));}
  catch(err){setStatus('Could not process this image. Try a smaller output size.')}
  finally{resizeBtn.disabled=false;resizeBtn.innerHTML='<span class="btn-icon" aria-hidden="true">↔</span> Resize Image'}
 },true);
@@ -116,7 +122,7 @@ $('ijRunBatch').addEventListener('click',async()=>{
  label.textContent='Processing 0 of '+files.length+' images…';
  for(let i=0;i<files.length;i++){
   const file=files[i];if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10*1024*1024){label.textContent='Skipped unsupported or over-10MB file: '+file.name;continue}
-  try{const sourceUrl=URL.createObjectURL(file),img=await getImage(sourceUrl),canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);URL.revokeObjectURL(sourceUrl);if(!result.blob)throw Error('encode');const finalBlob=await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,type);const url=URL.createObjectURL(finalBlob);batchUrls.push(url);const row=document.createElement('div');row.className='ij-batch-item';const name=document.createElement('span');name.textContent=file.name+' · '+(finalBlob.size/1024).toFixed(1)+' KB';const a=document.createElement('a');a.href=url;a.download=file.name.replace(/\.[^.]+$/,'')+'-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp');a.textContent='Download';row.append(name,a);list.append(row);img.src='';}
+  try{const sourceUrl=URL.createObjectURL(file),img=await getImage(sourceUrl),canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);URL.revokeObjectURL(sourceUrl);if(!result.blob)throw Error('encode');const finalBlob=dpiApplied?await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,result.blob.type||type):result.blob;const url=URL.createObjectURL(finalBlob);batchUrls.push(url);const row=document.createElement('div');row.className='ij-batch-item';const name=document.createElement('span');name.textContent=file.name+' · '+(finalBlob.size/1024).toFixed(1)+' KB';const a=document.createElement('a');a.href=url;a.download=file.name.replace(/\.[^.]+$/,'')+'-resized.'+((finalBlob.type||type)==='image/jpeg'?'jpg':(finalBlob.type||type)==='image/webp'?'webp':'png');a.textContent='Download';row.append(name,a);list.append(row);img.src='';}
   catch(err){const row=document.createElement('div');row.className='ij-batch-item';row.textContent=file.name+' · Could not process';list.append(row)}
   label.textContent='Processed '+(i+1)+' of '+files.length+' images.';
  }
