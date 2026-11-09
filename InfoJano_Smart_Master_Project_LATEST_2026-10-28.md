@@ -3106,5 +3106,5 @@ Decision pending user approval. No branch, PR, code edits, merge or deployment c
   - One H1, one canonical, one title; no duplicate HTML IDs.
   - Date arithmetic isolated checks passed: Jan 31 + 1 month -> Feb 28 2025; Feb 29 2024 + 1 year -> Feb 28 2025; Mar 1 2024 - 1 day -> Feb 29 2024; Jan 1 2026 + 100 days -> Apr 11 2026.
   - No browser/mobile interaction test yet. Need test date parsing, picker sync, date difference, inclusive count, custom holidays, all weekend combinations, countdown, add/subtract UI and reset in a real browser.
-- No changes to homepage, Age Calculator, other tools, sitemap, Service Worker or PWA cache. No deployment; no PR merged.
-- Important remaining QA: business-day custom holiday handling and inclusive count; check empty/invalid inputs; make sure quick birthday prompt and preset buttons work on mobile; verify Add/Subtract layout on small screens. If successful, open PR against main and await user's merge permission.
+- No changes to homepage, Age Calculator, other tools, sitemap, Service Worker or PWA cache. PR #35 is open and not merged; no deployment.
+- Important remaining QA: business-day custom holiday handling and inclusive count; check empty/invalid inputs; make sure quick birthday prompt and preset buttons work on mobile; verify Add/Subtract layout on small screens. PR #35 has now been opened against main; await further QA and user's explicit merge permission.
