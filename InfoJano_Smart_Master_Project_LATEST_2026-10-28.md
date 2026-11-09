@@ -2600,3 +2600,13 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - PR #24: https://github.com/barsulkhan/InfoJano/pull/24 — open, not merged at this checkpoint. Head commit: `df1761c2c2dbe1674dd9498034f5147363d77681`.
 - Still required before calling production-ready: real browser/device tests for cm/mm/in and DPI metadata, crop/reset behaviour, target-KB outcomes, batch downloads and regression checks for the existing modes. GitHub Pages deployment is not triggered until merge.
 - The tool does not guarantee official passport/exam photo acceptance; authority-specific rules and photo composition still require user verification.
+
+
+## 9 November 2026 — Image Resizer Advanced Toolkit continuation
+- Current Image Resizer feature inventory is tracked in `Image_Resizer_SEO_Landing_Pages_Checkpoint_2026-11-08.md`: 8 existing workflow groups plus 4 advanced groups added in PR #24 (12 grouped feature areas total). Six SEO landing pages are separate pages, not six extra tool features.
+- PR #24: https://github.com/barsulkhan/InfoJano/pull/24. It remains OPEN and NOT MERGED; do not describe new advanced controls as live.
+- PR branch: `feature/image-resizer-advanced-toolkit`; latest observed head after QA fixes and checkpoint updates: `33f0f40204cbdbff90facda795c608738b37f1e6`.
+- QA follow-up fixed final target-KB status calculation after metadata embedding, added batch target-KB validation, and cleaned up crop-reset preview object URLs.
+- Compare against main: 10 commits ahead, 0 behind; six changed files in PR.
+- A Cloudflare Workers Build check is currently in progress on the PR head. This check is for `infojano-shortlink-api`, not a GitHub Pages deployment or browser test of Image Resizer.
+- Remaining before production: actual browser/Android functional checks for unit conversion, JPEG/PNG DPI metadata, crop/reset, target KB, batch downloads and regression of existing modes; then obtain explicit approval before merging. Verify GitHub Pages deployment and live page after any merge.
