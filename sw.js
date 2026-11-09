@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v265";
+const CACHE_NAME = "infojano-v266";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -34,6 +34,10 @@ const ASSETS = [
   "/InfoJano/icon-192.png",
   "/InfoJano/icon-512.png",
   "/InfoJano/age.html",
+  "/InfoJano/what-happened-on-my-birthday.html",
+  "/InfoJano/day-of-week-born-calculator.html",
+  "/InfoJano/birthday-countdown-calculator.html",
+  "/InfoJano/age-in-days-calculator.html",
   "/InfoJano/bmi.html",
   "/InfoJano/currency-converter.html",
   "/InfoJano/date-difference.html",

@@ -2722,3 +2722,65 @@ Completed and finalised for this work session:
 - These code and deployment tasks are FINAL. Only real-device verification remains: test Standard and Advanced downloads and confirm the downloaded files open correctly on Windows.
 
 NEXT CHAT: Read this Main Smart Master Project file first, then continue with the pending real-device download test. Do not reopen or redo the completed PRs unless the test reveals a defect. After verification, continue the next InfoJano task already recorded in this file.
+
+
+---
+
+## 2026-11-09 Update — Age Calculator Development (PR #28)
+Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING; NOT MERGED.
+
+- Feature branch: `feature/age-calculator-toolkit`
+- Pull request: https://github.com/barsulkhan/InfoJano/pull/28
+- Original source backup: `backups/age.html.source-backup-2026-11-09.txt`
+- Backup is committed on the feature branch. Main branch remains unchanged.
+- Age Calculator (`age.html`) now has the five approved feature implementations:
+  1. Any-date age calculation, with validation against dates before DOB.
+  2. Detailed age breakdown: years, months, days, total days, weeks, hours and minutes.
+  3. February 29 handling with selectable Feb 28 / Mar 1 anniversary rule.
+  4. Copy result and native share (clipboard fallback when share is unavailable).
+  5. Local-device birthday reminder, permission-aware notification and next-birthday countdown. Background delivery is NOT guaranteed; reminder is checked while page is open.
+- Four SEO pages created:
+  - `age-in-days-calculator.html`
+  - `birthday-countdown-calculator.html`
+  - `day-of-week-born-calculator.html`
+  - `what-happened-on-my-birthday.html`
+- All four pages have distinct titles/descriptions, canonical URLs, WebPage structured data, links to Age Calculator, sitemap entries and service-worker cache entries.
+- Sitemap updated. Service worker cache changed from `infojano-v265` to `infojano-v266`.
+- Commits are small and sequential; PR currently contains 18 commits and 9 changed files (latest checked: 2026-11-09).
+- Logic checks passed for Feb 29 rules (Feb 28 and Mar 1), Mar 1 anniversary, and Jan 31 → Feb 28 date arithmetic. Static checks confirmed controls, logic, SEO metadata, sitemap and SW entries.
+- GitHub Actions PR workflow runs returned none at the time checked. No Android/desktop browser test or live deployment verification has been completed yet.
+- PR is open, not merged. Do NOT merge until user explicitly approves after review and browser checks.
+
+### Next actions
+1. Review PR #28 diff and resolve any comments/checks.
+2. Browser test on Android Chrome and desktop: DOB validation, past/future reference dates, leap-day choices, copy, share, notification permission, reminder persistence, responsive layout and keyboard navigation.
+3. Verify GitHub Pages preview/deployment and all four SEO URLs; confirm sitemap and SW cache update.
+4. Ask user for explicit approval before merging PR #28.
+
+
+### 2026-11-09 SEO Keyword Research & Page Optimization (PR #28 continuation)
+- Researched live Google-style search result patterns and related search phrasing for all five approved Age Calculator feature groups. No paid Keyword Planner/Search Console account data was available; do not state exact search volume or ranking guarantees.
+- Core exact-age phrases: age calculator, free online age calculator, calculate my age, how old am I, exact age in years months and days, age calculator by date of birth, age as on date, age on a specific date.
+- Any-date phrases: age calculator on a specific date, age as of date, calculate age on date, how old was I on that date, how old will I be on a certain date.
+- Breakdown phrases: age in days calculator, how many days old am I, how many days have I been alive, days since birth, total days lived, age in weeks, age in hours, age in minutes.
+- Birthday phrases: birthday countdown, days until my birthday, how many days until my birthday, next birthday calculator, when is my next birthday, birthday in how many days, birthday reminder.
+- Leap-day phrases: February 29 birthday, Feb 29 birthday in non-leap year, leap year age calculator, February 28 or March 1 birthday rule.
+- Birth weekday phrases: what day was I born, what day of the week was I born, which day was I born, birth weekday calculator, day of week by date of birth.
+- History phrases: what happened on my birthday, historical events on my birthday, what happened on this day in history, events on my birth date.
+- Optimized the four SEO landing pages with unique titles/descriptions, one H1 each, focused explanations, long-tail query phrasing, FAQs, WebPage + FAQPage JSON-LD, and internal links. Replaced unnecessarily duplicated large CSS payloads with compact responsive page styles.
+- Optimized main age.html title/description and changed the second H1 to H2 to correct heading hierarchy.
+- Current static checks: all four landing pages have canonical URLs, valid JSON-LD blocks, one H1 each, internal Age Calculator links; all four appear in sitemap.xml and sw.js; service-worker cache is infojano-v266; date-difference.html exists; age.html has balanced script opening/closing counts and all six toolkit controls.
+- Sitemap contains 58 URL entries. No exact keyword search volumes asserted; the Google-style SERP results and observed related queries are directional intent research only.
+- Latest PR check: #28 open, merged=false, 18 commits, 9 changed files, 996 additions, 7 deletions. GitHub currently reports mergeable=false after the latest writes; recheck once GitHub recalculates. Do not merge without explicit user approval.
+- Still pending: full browser-level testing (Android Chrome and desktop), live verification of the feature-branch changes, and a final complete PR diff review. GitHub Actions workflow results were not available in the earlier check; do not claim CI passed.
+
+
+### Final audit follow-up — 2026-11-09
+- Fixed two functional issues found during review:
+  1. Birthday reminder now honors the selected February 29 non-leap-year rule (Feb 28 or Mar 1) when checking the reminder date.
+  2. Copy/share now recalculates from current DOB, reference date and leap rule before producing text, preventing stale copied results after edits.
+- Rechecked all four SEO pages: exactly one H1 each, canonical URL present, FAQPage JSON-LD parses, WebPage JSON-LD parses, and internal link to age.html exists.
+- Rechecked sitemap and sw.js references for all four SEO pages; cache remains infojano-v266. date-difference.html exists. Age Calculator script opening/closing tag counts balance and all toolkit controls are present.
+- Live URL open attempts through the available web reader returned inaccessible errors; this is not proof of a site failure. Feature branch is not deployed to GitHub Pages until merged, so no claim of live deployment or browser verification is made.
+- Latest PR #28 check before this master-file commit: OPEN, NOT MERGED, 20 commits, 9 files; GitHub mergeable=false. Recheck mergeability after GitHub recalculates. No PR workflow runs were returned for the checked commit.
+- Browser-level Android Chrome/desktop interaction testing and final PR diff review remain pending. Do not merge until user explicitly approves.
