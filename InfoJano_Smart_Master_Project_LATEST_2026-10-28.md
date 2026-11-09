@@ -2955,3 +2955,42 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Branch comparison against main: 1 commit ahead, 0 behind; only `age.html` modified (107 additions, 0 deletions).
 - This is a source-level CSS change only. It has not been browser-rendered or tested on Android/desktop yet. It is not deployed and must not be described as live.
 - PR review/merge status: awaiting PR creation and user review. Do not merge without explicit user approval.
+
+
+
+# GLOBAL AGE CALCULATOR SEO OPTIMIZATION — 9 NOVEMBER 2026
+- User requested global English keyword optimization across the main Age Calculator page and its four supporting SEO landing pages. Scope explicitly excludes new features and any visual redesign.
+- Created isolated branch: `seo/global-age-calculator-keywords` from `main`. No merge or deployment has been performed. User approval is required before merge.
+- Updated the title, meta description, Open Graph title/description and Twitter title/description on all five pages with unique, intent-matched global English search phrasing:
+  1. `age.html`: primary intent — Age Calculator, calculate exact age by date of birth, how old am I, exact age in years/months/days, age on any date, total days lived.
+  2. `age-in-days-calculator.html`: age in days calculator, how many days old am I, total days lived, days/weeks from DOB.
+  3. `birthday-countdown-calculator.html`: birthday countdown calculator, days until my birthday, next birthday date, age turning, leap-day options.
+  4. `day-of-week-born-calculator.html`: what day was I born, day of week born, birth weekday calculator.
+  5. `what-happened-on-my-birthday.html`: what happened on my birthday, historical events by date, events on birth date.
+- Added a natural internal navigation section on the main Age Calculator page linking to all four supporting pages. Added contextual cross-links among supporting pages while retaining each page's separate search intent.
+- Main page introductory copy now includes the natural query “how old am I”; corrected the FAQ answer to accurately describe the existing past/future reference-date capability. The matching FAQ JSON-LD answer was also updated.
+- Existing content already contains relevant long-tail/simple-language queries in the supporting pages; retained these rather than repeating keywords unnaturally. No unrelated search terms or volume claims inserted into page copy.
+- Research context: previously reviewed public third-party keyword estimates and Google Keyword Planner documentation. Volumes are directional estimates, not guaranteed traffic or rankings; direct access to the user's Keyword Planner/Search Console account was not available. No exact volume figures have been inserted into metadata or visible page copy.
+- Protected scope: no new feature, calculator JavaScript/logic, form controls, HTML IDs, hero design, visual CSS, page card styling, homepage, sitemap, or Service Worker changes intended. Cache version expected to remain `infojano-v269`.
+- Source-level verification on branch: each of the five pages has one H1, canonical URL, unique title/description, no duplicate IDs, and parseable JSON-LD. Main page links to all four supporting pages; supporting pages cross-link to relevant sibling pages. Live deployment, Google indexing/rankings, and Android/desktop browser rendering have not been tested.
+- Next: complete final diff review and local-link/schema checks, create a PR for user review, and wait for explicit merge permission. Do not claim the work is live until approved merge and successful Pages deployment are confirmed.
+
+
+## Competitor keyword gap review — USA focus (9 November 2026)
+- Additional public research found the USA demand estimates below (third-party estimates; not guaranteed Google traffic):
+  - `age calculator`: ~820,000/month in the KWS Trends estimate; Google Ads Keyword Planner figure displayed there is 673,000. Estimated SEO difficulty 68/100.
+  - `calculate age`: ~82,000; `calculating ages`: ~90,000; `chronological age calculator`: ~45,000; `age calculator by date of birth`: ~37,000 (KWS Trends USA related-keyword table).
+  - `how old am i`: ~61,000/month; Google Ads Keyword Planner figure shown ~60,500; `how old am i calculator`: ~6,600; `how many days old am i`: ~4,000.
+  - `birthday calculator`: ~33,000 (broad phrase; not automatically the same intent as a birthday countdown).
+  - `age calculator between two dates`: ~390; `age calculator by date of birth free`: ~320; `age calculator on specific date`: ~90 in one KWS Trends USA report.
+- Competitor evidence:
+  - Calculator.net's age calculator is listed as ranking #1 for `age calculator` with an estimated US volume of 1.22M and 160K estimated visits in a KWS Trends domain report (data model differs from other keyword tools; treat as an estimate). Its page heading is simply “Age Calculator” and it explains age or interval between two dates plus years/months/weeks/days/hours/minutes/seconds.
+  - CalculatorSoup's page title/H1 is “How Old Am I Calculator” / “How Old Am I | Exact Age”; it targets the conversational query and describes calculating age from DOB, with days/hours/minutes/seconds.
+  - Semrush's public September 2026 snapshot shows calculators.org ranking #2 for `age calculator on specific date` with a 246K volume estimate; another KWS Trends report estimates that exact phrase at only 90/month. These estimates conflict substantially, so don't blindly prioritize the phrase or use the inflated number as a fact.
+  - timeanddate.com Special Age Calculator supports entering birth date or another event date/time, and promotes age down to the second via a linked countdown timer.
+- Coverage audit: PR #34 already covered the main intent and all four supporting intents, but the main-page title did not include the high-intent conversational phrase “How Old Am I?”. The new title now reads: `Age Calculator by Date of Birth – How Old Am I? | InfoJano`, combining the exact DOB phrase and the high-demand conversational query with the primary head term.
+- Do not add unrelated terms such as child age, dog age, retirement age, heart age, pregnancy due date, or generic “calculator” to this page. They have separate intent or no matching feature. Do not force “chronological age calculator” into the title; it is a supporting synonym to use naturally in body copy only if useful.
+- Search volume values are third-party estimates. KWS Trends pages reproduce Keyword Planner numbers for some terms; direct Google Ads / Search Console account access was not available. Ahrefs notes competitor keyword rankings and traffic are estimates and should be interpreted as directional.
+- Sources reviewed: KWS Trends USA reports for `age calculator` and `how old am i`; KWS Trends calculator.net domain report; Semrush calculators.org September 2026 report; live Calculator.net Age Calculator, CalculatorSoup How Old Am I Calculator, and timeanddate Special Age Calculator pages.
+
+- Final keyword coverage check found `chronological age calculator` missing from visible main-page text; added it once in a natural explanatory sentence, tied to the existing chosen-reference-date function. This is SEO copy only; no behavior or feature changed.
