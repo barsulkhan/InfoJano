@@ -4,7 +4,7 @@
 const $=id=>document.getElementById(id);
 const preview=$('preview'),width=$('width'),height=$('height'),format=$('format'),quality=$('quality'),resizeBtn=$('resizeBtn'),download=$('download'),status=$('status');
 if(!preview||!width||!height||!resizeBtn)return;
-let activeImage=null,cropRect=null,batchUrls=[];
+let activeImage=null,batchUrls=[],resetPreviewUrl=null;
 const host=document.createElement('section');host.className='ij-advanced';host.id='ijAdvanced';
 host.innerHTML=`
 <h3>✨ Advanced Image Studio</h3><p class="ij-sub">Precise print sizing, crop tools, target file size and multi-image processing — all inside your browser.</p>
@@ -94,7 +94,7 @@ $('ijApplyCrop').addEventListener('click',async()=>{
  const c=document.createElement('canvas');c.width=cw;c.height=ch;c.getContext('2d').drawImage(img,sx,sy,cw,ch,0,0,cw,ch);
  const url=c.toDataURL('image/png');preview.src=url;preview.hidden=false;activeImage=await getImage(url);width.value=cw;height.value=ch;setStatus('Centred crop applied: '+cw+' × '+ch+' pixels.');if(download)download.hidden=true;
 });
-$('ijResetCrop').addEventListener('click',async()=>{const file=$('file').files&&$('file').files[0];if(!file){setStatus('Choose the original image again to reset crop.');return}const url=URL.createObjectURL(file);preview.src=url;preview.hidden=false;activeImage=await getImage(url);width.value=activeImage.naturalWidth;height.value=activeImage.naturalHeight;setStatus('Original image restored.')});
+$('ijResetCrop').addEventListener('click',async()=>{const file=$('file').files&&$('file').files[0];if(!file){setStatus('Choose the original image again to reset crop.');return}if(resetPreviewUrl)URL.revokeObjectURL(resetPreviewUrl);resetPreviewUrl=URL.createObjectURL(file);preview.src=resetPreviewUrl;preview.hidden=false;activeImage=await getImage(resetPreviewUrl);width.value=activeImage.naturalWidth;height.value=activeImage.naturalHeight;setStatus('Original image restored.')});
 resizeBtn.addEventListener('click',async e=>{
  e.preventDefault();e.stopImmediatePropagation();
  const img=activeImage||await syncImage();if(!img){setStatus('Upload an image first.');return}
@@ -102,7 +102,7 @@ resizeBtn.addEventListener('click',async e=>{
  if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000||w*h>40000000){setStatus('Enter valid dimensions within the 40-megapixel safe limit.');return}
  if(target&&(!Number.isFinite(target)||target<5||target>20000)){setStatus('Target size must be between 5 and 20,000 KB.');return}
  resizeBtn.disabled=true;resizeBtn.textContent='Processing…';setStatus('Resizing and checking output size…');
- try{const canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);if(!result.blob)throw Error('Output encoding failed');const finalBlob=await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,type);setDownload(finalBlob,'infojano-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp'));const kb=(finalBlob.size/1024).toFixed(1);setStatus('Ready: '+w+' × '+h+' px · '+kb+' KB'+(target?(result.met?' · target met':' · target could not be met at minimum quality'):'')+(type!=='image/png'&&target?' · quality '+Math.round(result.quality*100)+'%':''));}
+ try{const canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);if(!result.blob)throw Error('Output encoding failed');const finalBlob=await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,type);setDownload(finalBlob,'infojano-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp'));const kb=(finalBlob.size/1024).toFixed(1),finalMet=!!target&&finalBlob.size<=target*1024;setStatus('Ready: '+w+' × '+h+' px · '+kb+' KB'+(target?(finalMet?' · target met':' · target could not be met at minimum quality'):'')+(type!=='image/png'&&target?' · quality '+Math.round(result.quality*100)+'%':''));}
  catch(err){setStatus('Could not process this image. Try a smaller output size.')}
  finally{resizeBtn.disabled=false;resizeBtn.innerHTML='<span class="btn-icon" aria-hidden="true">↔</span> Resize Image'}
 },true);
@@ -112,6 +112,7 @@ $('ijRunBatch').addEventListener('click',async()=>{
  const w=Number(width.value),h=Number(height.value),type=format.value,q=Number(quality.value)/100,target=$('ijTargetEnabled').checked?Number($('ijTargetKB').value):0;
  if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000||w*h>40000000){label.textContent='Set valid output dimensions before batch processing.';return}
  if(files.length>30){label.textContent='For mobile stability, process up to 30 images per batch.';return}
+ if(target&&(!Number.isFinite(target)||target<5||target>20000)){label.textContent='Target size must be between 5 and 20,000 KB.';return}
  label.textContent='Processing 0 of '+files.length+' images…';
  for(let i=0;i<files.length;i++){
   const file=files[i];if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10*1024*1024){label.textContent='Skipped unsupported or over-10MB file: '+file.name;continue}
@@ -121,5 +122,5 @@ $('ijRunBatch').addEventListener('click',async()=>{
  }
  label.textContent='Batch complete. Download each resized image below.';
 });
-window.addEventListener('beforeunload',()=>batchUrls.forEach(URL.revokeObjectURL));
+window.addEventListener('beforeunload',()=>{batchUrls.forEach(URL.revokeObjectURL);if(resetPreviewUrl)URL.revokeObjectURL(resetPreviewUrl)});
 })();
