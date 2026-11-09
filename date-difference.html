@@ -492,13 +492,20 @@ window.quickBirthday=function(){
  const m=raw.match(/^(\d{1,2})[-/](\d{1,2})$/);if(!m){alert("Enter birthday as DD-MM.");return}
  const day=Number(m[1]),month=Number(m[2]);let target=new Date(today.getFullYear(),month-1,day);
  if(target.getMonth()!==month-1||target.getDate()!==day){alert("Please enter a valid birthday.");return}
- if(target<today)target=new Date(today.getFullYear()+1,month-1,day);
- $("startText").value=dateToText(today);$("endText").value=dateToText(target);window.calculateDifference();
+ if(target<today){let year=today.getFullYear()+1;target=new Date(year,month-1,day);if(target.getMonth()!==month-1||target.getDate()!==day){alert("That birthday does not occur in the next calendar year.");return}}
+ $("startText").value=dateToText(today);$("endText").value=dateToText(target);$("startPicker").value=dateToIso(today);$("endPicker").value=dateToIso(target);window.calculateDifference();
+};
+window.quickAgeDays=function(){
+ const raw=prompt("Enter date of birth as DD-MM-YYYY");if(!raw)return;
+ const parsed=parseManualDate(raw);if(!parsed){alert("Enter a valid date as DD-MM-YYYY.");return}
+ const today=new Date();today.setHours(0,0,0,0);
+ const birth=new Date(parsed.date.getUTCFullYear(),parsed.date.getUTCMonth(),parsed.date.getUTCDate());
+ if(birth>today){alert("Date of birth cannot be in the future.");return}
+ $("startText").value=dateToText(birth);$("endText").value=dateToText(today);$("startPicker").value=dateToIso(birth);$("endPicker").value=dateToIso(today);window.calculateDifference();
 };
 window.setQuickRange=function(days){
- const end=new Date(),start=new Date(end.getFullYear(),0,1);
- if(days!==0){start.setTime(end.getTime()-days*86400000)}
- $("startText").value=dateToText(start);$("endText").value=dateToText(end);window.calculateDifference();
+ const end=new Date();end.setHours(0,0,0,0);const start=days===0?new Date(end.getFullYear(),0,1):new Date(end.getTime()-days*86400000);
+ $("startText").value=dateToText(start);$("endText").value=dateToText(end);$("startPicker").value=dateToIso(start);$("endPicker").value=dateToIso(end);window.calculateDifference();
 };
 window.resetDates=function(){
  ["startText","endText","holidayDates"].forEach(id=>$(id).value="");
