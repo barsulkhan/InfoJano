@@ -2702,3 +2702,12 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - The fix applies one shared download control to standard Resize and Advanced Image Studio output. Batch Resize continues to use individual per-file download links in its batch results list.
 - Real browser/Android testing remains outstanding. After Pages deployment succeeds, test both standard resize and Advanced Studio resize and confirm the same prominent green/teal Download Resized Image button appears and downloads a valid file.
 - Tool URL: https://barsulkhan.github.io/InfoJano/image-resizer.html
+
+
+## 9 November 2026 — Final deployment verification and new-chat checkpoint
+- Follow-up to PR #27: initial Pages workflow for merge commit 3682eaa0c5b6f06129555c2132b4fb2191214b39 (run 42622732118) was cancelled while another workflow was active.
+- A subsequent GitHub Pages deployment was triggered by the master-checkpoint commit 725a23ce4737b5a48d32f0a6b5a7ab2f199406f3. Exact workflow run 42622858204 completed with conclusion SUCCESS at 2026-11-09 13:11:22 UTC. This deployment contains the merged PR #27 code and cache version infojano-v265.
+- Therefore the unified Download Resized Image button code is deployed to GitHub Pages. User-side real browser test is still pending; do not claim confirmed successful file download until user tests it.
+- Next user test: open https://barsulkhan.github.io/InfoJano/image-resizer.html, refresh once (or clear site cache if stale), run a normal preset resize and an Advanced Image Studio resize. In both cases confirm the same full-width teal “⬇ Download Resized Image” button appears and downloads a file that opens in Windows Photos/Paint. Batch downloads remain individual links.
+- Current key status: PR #27 merged; Pages deployment successful; Cache v265; device test pending.
+- Main Master File: https://github.com/barsulkhan/InfoJano/blob/main/InfoJano_Smart_Master_Project_LATEST_2026-10-28.md
