@@ -2610,3 +2610,12 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Compare against main: 10 commits ahead, 0 behind; six changed files in PR.
 - A Cloudflare Workers Build check is currently in progress on the PR head. This check is for `infojano-shortlink-api`, not a GitHub Pages deployment or browser test of Image Resizer.
 - Remaining before production: actual browser/Android functional checks for unit conversion, JPEG/PNG DPI metadata, crop/reset, target KB, batch downloads and regression of existing modes; then obtain explicit approval before merging. Verify GitHub Pages deployment and live page after any merge.
+
+
+## 9 November 2026 — HTML integration correction and latest verification
+- Found and corrected two literal `\\n` sequences accidentally inserted into `image-resizer.html` around the advanced stylesheet and script tags; replaced them with real line breaks.
+- Correction commit: `7ecd5f113e69c620a546c64ee6459ad87fd77555`.
+- Verified the branch HTML has zero remaining literal `\\n` separators and references both `image-resizer-advanced.css?v=1` and `image-resizer-advanced.js?v=1`.
+- Verified `sw.js` remains at `infojano-v262` and precaches both advanced assets.
+- Latest Cloudflare Workers Build check completed successfully, but it builds `infojano-shortlink-api`; it is not a GitHub Pages deployment or Image Resizer browser test.
+- PR #24 remains open and unmerged. Compare reports 12 commits ahead and 0 behind main. Do not merge without explicit approval. Real browser/Android tests remain outstanding.
