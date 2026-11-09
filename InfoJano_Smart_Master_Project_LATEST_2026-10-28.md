@@ -2940,3 +2940,6 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - GitHub Pages deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/42662313263 (run #1960, commit `6c21acee377e4af22a8f74d04c272c60ef7c27b7`). Last checked status: `completed`; conclusion: `success`. Do not call the live deployment complete until this run succeeds and the published endpoints are checked.
 - PR #32 changes only the three sitemap files, `robots.txt`, and this Smart Master Project File. No calculator page/design/CSS/JS/homepage/Service Worker changes; cache remains `infojano-v269`.
 - Historical section above titled “SITEMAP REPAIR — PREPARED FOR REVIEW” records the pre-merge state. This section supersedes its statements that PR #32 is unmerged/not deployed.
+
+- FOLLOW-UP deployment status check: GitHub Pages run #1960 completed successfully (`conclusion=success`) for merge commit `6c21acee377e4af22a8f74d04c272c60ef7c27b7`. Run: https://github.com/barsulkhan/InfoJano/actions/runs/42662313263.
+- Live endpoint fetch through the available web viewer was unavailable, so direct HTTP publication of `robots.txt` and sitemap URLs is not independently confirmed here. GitHub Pages build/deployment workflow success is confirmed; keep direct endpoint/Google Search Console verification as the next check.
