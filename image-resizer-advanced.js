@@ -78,7 +78,7 @@ async function applyDpiMetadata(blob,dpi,type){
 function setDownload(blob,name){
  const actualType=blob.type||'image/png';const ext=actualType==='image/jpeg'?'jpg':actualType==='image/webp'?'webp':'png';name='infojano-resized.'+ext;
  const old=download.href;if(old&&old.startsWith('blob:'))URL.revokeObjectURL(old);
- const url=URL.createObjectURL(blob);download.href=url;download.download=name;download.hidden=false;
+ const url=URL.createObjectURL(blob);download.classList.add('action-btn','download-btn');download.href=url;download.download=name;download.textContent='⬇ Download Resized Image';download.hidden=false;download.removeAttribute('aria-hidden');download.setAttribute('aria-label','Download resized image');download.style.display='flex';
  const state=$('downloadState');if(state){state.hidden=false;state.innerHTML='<span aria-hidden="true">✓</span><span>Advanced result ready. Tap Download below.</span>'}
 }
 function applyPhysical(){
