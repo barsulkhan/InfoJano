@@ -2994,3 +2994,17 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Sources reviewed: KWS Trends USA reports for `age calculator` and `how old am i`; KWS Trends calculator.net domain report; Semrush calculators.org September 2026 report; live Calculator.net Age Calculator, CalculatorSoup How Old Am I Calculator, and timeanddate Special Age Calculator pages.
 
 - Final keyword coverage check found `chronological age calculator` missing from visible main-page text; added it once in a natural explanatory sentence, tied to the existing chosen-reference-date function. This is SEO copy only; no behavior or feature changed.
+
+
+## PR #34 MERGED — GLOBAL AGE CALCULATOR SEO — 9 NOVEMBER 2026
+- User explicitly approved merging PR #34 and publishing the SEO changes.
+- PR: https://github.com/barsulkhan/InfoJano/pull/34 — successfully squash-merged; merged=true.
+- Merge commit on main: `08c9c742b50ce663d43a5e23def2f0842c795794`.
+- Merged scope: global English SEO metadata, USA high-intent keyword targeting, social metadata, internal links across the five Age Calculator pages, natural `chronological age calculator` copy, and corrected reference-date FAQ/FAQ JSON-LD.
+- Main title: `Age Calculator by Date of Birth – How Old Am I? | InfoJano`.
+- Four supporting SEO pages retain separate search intents: age in days, birthday countdown, birth weekday, and historical events on birthday.
+- No calculator feature/logic, form control, hero, CSS/design, homepage, sitemap, or Service Worker changes were included in PR #34. Service Worker cache remains expected at `infojano-v269`; verify against main source before making a future cache claim.
+- GitHub Pages deployment was automatically queued after merge: run #1964, https://github.com/barsulkhan/InfoJano/actions/runs/42666420434. At the first post-merge check it was queued, not yet completed. Do not claim the changes are live until this Pages run completes successfully and the published pages are checked.
+- The separate APK build run #304 was also queued: https://github.com/barsulkhan/InfoJano/actions/runs/42666421607. It is not the Pages deployment.
+- Source-level checks already recorded in the PR: five pages each have one H1, canonical URL, parseable JSON-LD, no duplicate IDs, and checked local links with no missing targets. No browser-rendered or Android live test is claimed.
+- Next: monitor Pages run #1964 until completed; then verify all five published page URLs and current Service Worker cache source. Keep Google indexing/ranking as a later Search Console validation; merge/deployment alone does not prove indexing or rankings.
