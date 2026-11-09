@@ -2619,3 +2619,12 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Verified `sw.js` remains at `infojano-v262` and precaches both advanced assets.
 - Latest Cloudflare Workers Build check completed successfully, but it builds `infojano-shortlink-api`; it is not a GitHub Pages deployment or Image Resizer browser test.
 - PR #24 remains open and unmerged. Compare reports 12 commits ahead and 0 behind main. Do not merge without explicit approval. Real browser/Android tests remain outstanding.
+
+
+## 9 November 2026 — Six SEO hero design synchronization
+- Updated all six Image Resizer SEO landing pages on `feature/image-resizer-advanced-toolkit` to use the same `ij-full-hero ij-resizer-hero` premium banner markup as the main Image Resizer page. Each page keeps its own SEO H1 and description.
+- Added the shared hero CSS rules to the existing `image-resizer-premium.css`; no extra stylesheet dependency was introduced.
+- Restored each page's original two CTA links below the banner so navigation actions were not lost.
+- Verified all six branch pages contain the shared hero class, keep the premium stylesheet link, retain page-specific H1s and no longer use the old `<header class="hero">` banner.
+- Bumped Service Worker cache from `infojano-v262` to `infojano-v263`; premium CSS was already in precache.
+- These changes are on PR #24 branch only; PR remains open/unmerged. They are not live until merged and deployed. Visual verification in real browsers/Android remains outstanding.
