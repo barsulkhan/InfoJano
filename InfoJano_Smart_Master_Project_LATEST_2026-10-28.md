@@ -3016,3 +3016,74 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Successor Pages run #42666481074 completed with conclusion **success**. URL: https://github.com/barsulkhan/InfoJano/actions/runs/42666481074
 - Therefore GitHub Pages build/deployment workflow for main containing PR #34 is successful. Original PR merge commit is `08c9c742b50ce663d43a5e23def2f0842c795794`; the successful workflow ran against the later main commit `c9db71076bca77eda8107cffd39a56dc80ef3854`, which includes that merged change and the Master File update.
 - Tried to inspect the five live page URLs directly through available fetch/browser sources, but the hosting endpoints were inaccessible to those inspection tools. Do not claim independent page-by-page live HTML verification. GitHub Pages workflow success is confirmed.
+
+
+## DATE DIFFERENCE CALCULATOR — FEATURE AUDIT & COMPETITOR RESEARCH — 9 NOVEMBER 2026
+Live/source page: https://barsulkhan.github.io/InfoJano/date-difference.html
+Source file: `date-difference.html` on main; audited current content directly. This is an audit/recommendation only; no code changed and no new features authorized.
+
+### Existing UI and features found in current source
+- Premium visual hero with animated neon border/aura and animated title sweep; desktop-first responsive layout.
+- Manual date input in DD-MM-YYYY format with auto-hyphen formatting; native calendar pickers for both dates.
+- Swap dates button.
+- Calendar-aware exact years/months/days breakdown (later active calculateDifference implementation uses `calendarParts` and clamps month ends), total elapsed days, weeks plus remaining days.
+- Inclusive end-date checkbox.
+- Working-day count option (Monday-Friday baseline), optional Saturday inclusion, custom holiday dates entered as comma-separated YYYY-MM-DD.
+- Exact elapsed hours/minutes/seconds derived from whole calendar days (no time-of-day input; these are totals of date span).
+- Copy result, share result, print / Save PDF.
+- Separate target-date countdown (days remaining / days passed / today).
+- Quick actions: Today to My Birthday, My Age in Days, This Year So Far, Last 30 Days.
+- Reset button, install-this-tool PWA prompt, loader, Related Tools, practical guide and FAQ.
+- Existing page metadata title: `Date Difference Calculator – Days Between Two Dates | InfoJano`.
+
+### Code audit issues / bugs to address before adding new features
+1. Quick preset `quickBirthday()` is mislabeled / incorrect: it currently sets 1 January of current year through today, not today to the user's next birthday.
+2. `setQuickRange(0)` is used for “This Year So Far”; this sets today-to-today rather than Jan 1-to-today.
+3. There are two definitions of `calculateDifference()`; the later window-level implementation overrides the earlier one. Remove duplicate legacy implementation carefully so one authoritative calculation remains.
+4. `resetDates()` clears only some outputs and does not reset calendar picker values, inclusive/business toggles, holiday text, countdown date/result, or hours/minutes/seconds. Reset should restore all fields and UI consistently.
+5. Quick action names and outputs need manual QA; ensure “My Age in Days” correctly handles future DOB and invalid inputs.
+6. Current working-day mode only supports fixed Sunday exclusion plus optional Saturday inclusion. It cannot select arbitrary weekend days (e.g., Fri-Sat).
+7. Holiday input only accepts user-supplied ISO dates; no country/state holiday presets or holiday-name reporting.
+8. Related Tools cards for “Days Calculator” and “Date Added/Subtracted” both currently point to `time-calculator.html`; verify intended destinations and fix only after route inventory check.
+9. The hours/minutes/seconds outputs are derived from date-only elapsed days, not actual start/end times. Label clearly as totals; detailed time-of-day duration belongs to Time Calculator/Time Duration tool.
+10. Confirm input validation, reverse date ordering indication, leap years, month-end behavior, and business-day inclusive/exclusive consistency with automated tests.
+
+### Competitor research and feature benchmark
+- Timeanddate Date Duration supports date-to-date counts, include-end-date, time fields, time-zone conversion and workday counting; its separate Business Days calculator supports weekends and public holidays by selected country/state. Its suite also separates Add/Subtract and Business Date calculators. Sources: https://www.timeanddate.com/date/duration.php ; https://www.timeanddate.com/date/workdays-help.html ; https://www.timeanddate.com/date/
+- Calculator.net Date Calculator combines Days Between Two Dates and Add to/Subtract from a Date, with include-end-day and configurable holiday settings. Its Day Counter reports calendar days, working days, weekends and holidays and shows weekday information. Sources: https://www.calculator.net/date-calculator.html ; https://www.calculator.net/day-counter.html
+- Microsoft Windows Calculator supports both difference between dates and add/subtract date arithmetic. Source: https://support.microsoft.com/en-us/windows/apps/calculate-days-between-dates-or-calculate-a-future-or-past-date
+- Competitor feature lesson: users expect the two major intents “days between dates” and “add/subtract from a date”; business days, holiday controls and weekday display are useful differentiators. Avoid adding time-zone/time-of-day complexity to this date-only app because a separate Time Calculator exists.
+
+### USA keyword estimates (third-party KWS Trends report, updated 2026-10-28; directional estimates, not verified Search Console data)
+- `date calculator`: approx 550,000 monthly US searches; Keyword Planner display 673,000.
+- `date to date calculator`: approx 140,000.
+- `days between dates calculator`: approx 22,000.
+- `date duration calculator`: approx 30,000.
+- `date difference calculator`: approx 9,000.
+- `calculate days between dates`: approx 13,000.
+- `calculate days between two dates`: approx 12,000.
+- `date calculator add days`: approx 9,000.
+- `business days calculator`: approx 24,000 monthly US searches in a separate report (Keyword Planner display 40,500); `calculate business days` approx 7,300; `calculator for business days` approx 3,200.
+- Broad `date calculator` also includes unrelated high-volume intents such as due date/pregnancy; do not stuff those terms into this page.
+- Sources: https://www.kwstrends.com/keywords/us/date-calculator and https://www.kwstrends.com/keywords/us/business-days-calculator. Figures are estimates and keyword difficulty estimates; validate via Search Console after publication.
+
+### Recommended feature roadmap (proposal only; do not implement without user approval)
+Priority 0 — reliability / existing-feature fixes:
+- Correct This Year So Far and birthday quick actions.
+- Remove duplicate calculateDifference implementation.
+- Make Reset fully reset all inputs and outputs.
+- Add robust validation and test cases for leap years, reverse ranges, inclusive count, month-end boundaries, holidays, and all quick presets.
+- Fix/verify Related Tools destinations.
+Priority 1 — high-value features:
+- Add a dedicated “Add or Subtract from a Date” mode: choose start date, add/subtract years/months/weeks/days, display resulting date and weekday.
+- Add weekday labels for From Date and To Date; show calendar days, weekend days, weekdays and working days distinctly.
+- Add customizable weekend selector (choose any weekend days, including Friday-Saturday).
+- Improve business-day breakdown: show count of weekdays, weekend days and holidays excluded, and list matching holiday dates.
+Priority 2 — advanced differentiators:
+- Holiday presets by country/region (US, India, UK, Canada, Australia) with year selection and observed-holiday handling; keep manual custom holidays. Only add when a reliable maintained source/data approach is available.
+- Shareable calculation URL with dates/options encoded in query parameters (no personal data).
+- Export clean PDF/CSV result; current print/save PDF exists, CSV not found.
+- Optional “days since / days until” and milestone presets (30/60/90/100/365/1000 days) if they do not clutter the interface.
+- Keep date-only calculations separate from time-of-day/time-zone calculations handled by Time Calculator.
+
+Decision pending user approval. No branch, PR, code edits, merge or deployment created by this audit.
