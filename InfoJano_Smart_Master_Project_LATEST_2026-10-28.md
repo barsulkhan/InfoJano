@@ -2667,3 +2667,22 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - PR #25: open and not live; cache-version review is the next technical step before merge.
 - Next action: inspect `sw.js` and the PR #25 diff/branch state, apply cache bump if needed, then merge only after confirming checks and proceed to exact-commit Pages deployment verification.
 - Always distinguish source committed, PR merged, Pages deployed, and user-tested. Never claim device testing without evidence.
+
+
+## 9 November 2026 — Image Resizer download fix and optional Advanced Studio (PR #26)
+- User reported: uploaded a photo, selected Full HD Image (1920 × 1080), clicked Resize and Download, but the downloaded file would not open in Windows Photo Viewer. The screenshot showed the generic unsupported-format / outdated viewer message. The original downloaded file was not supplied, so the exact file bytes and actual original failure could not be conclusively identified.
+- Audited `image-resizer.html`, `image-resizer-advanced.js`, `image-resizer-advanced.css`, `download-progress.js`, and `sw.js`.
+- Found an undeclared `cropRect = null` assignment in the advanced preview load handler (strict-mode ReferenceError in that handler); removed it.
+- Hardened output naming: download filename extension now follows the actual encoded Blob MIME type, avoiding a file-extension/actual-format mismatch when canvas encoding falls back to another supported format.
+- Set default output to JPG (already the default option) and quality to 94% for a strong everyday photo-quality default.
+- Advanced Image Studio is now collapsed by default under “More Settings — Advanced Image Studio”. Its physical size/DPI, target KB, crop, and batch controls remain available when the user deliberately opens it.
+- DPI metadata is no longer silently added to every ordinary resize; it is applied only after the user explicitly uses Apply physical size. This keeps the standard workflow simple and leaves special print settings optional.
+- PR #26: https://github.com/barsulkhan/InfoJano/pull/26 — MERGED.
+- Merge commit: `e186445768f21612210551dc0e312969b68229d8`.
+- Service Worker cache bumped to `infojano-v264`.
+- PR #25 was superseded by PR #26 and closed; its YouTube Thumbnail preset-selection changes are included in the merged branch.
+- GitHub Pages deployment for exact merge commit `e186445768f21612210551dc0e312969b68229d8`: run `42621364189` was observed WAITING at the last check (9 Nov 2026, 12:58 UTC). Do not yet claim Pages deployment success or that the fix is live until this exact run completes successfully.
+- APK build run `42621364356` was also in progress; it is unrelated to proving Pages deployment.
+- Source-level fixes are committed and merged, but real Windows/Android download testing remains outstanding. User should test the live tool after the exact Pages run succeeds. If the issue persists, request the actual downloaded file to inspect its bytes/MIME/extension.
+- Tool URL: https://barsulkhan.github.io/InfoJano/image-resizer.html
+- Next action: check Pages run `42621364189` until completed; verify conclusion is success for the exact merge SHA; then ask user to test JPG Full HD download and open it in Windows Photos/Paint. Also test Advanced Studio remains collapsed by default and all custom tools work when expanded.
