@@ -11,7 +11,7 @@ host.innerHTML=`
 <div class="ij-adv-grid">
  <section class="ij-adv-card"><h4>📐 Physical size &amp; DPI</h4>
   <div class="ij-adv-row"><div><label for="ijUnit">Measurement</label><select id="ijUnit"><option value="px">Pixels</option><option value="cm">Centimetres</option><option value="mm">Millimetres</option><option value="in">Inches</option></select></div><div><label for="ijDpi">DPI</label><input id="ijDpi" type="number" min="30" max="1200" value="300"></div></div>
-  <div class="ij-adv-row"><div><label for="ijPhysicalW">Width</label><input id="ijPhysicalW" type="number" min="0.01" step="0.01" value="2.9"></div><div><label for="ijPhysicalH">Height</label><input id="ijPhysicalH" type="number" min="0.01" step="0.01" value="3.6"></div></div>
+  <div class="ij-adv-row"><div><label for="ijPhysicalW">Width (pixels)</label><input id="ijPhysicalW" type="number" min="0.01" step="0.01" value="413"></div><div><label for="ijPhysicalH">Height (pixels)</label><input id="ijPhysicalH" type="number" min="0.01" step="0.01" value="531"></div></div>
   <button class="ij-adv-btn primary" id="ijApplyPhysical" type="button">Apply physical size</button><p class="ij-adv-note">Converts the selected physical size and DPI into pixel dimensions. Print software may still need its own DPI setting.</p>
  </section>
  <section class="ij-adv-card"><h4>🎯 Target file size</h4>
