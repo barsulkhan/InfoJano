@@ -1,0 +1,17 @@
+/* Advanced Image Resizer controls */
+.ij-advanced{margin-top:16px;padding:18px;border:1px solid #d8e5f7;border-radius:20px;background:linear-gradient(145deg,#fff,#f4f8ff);box-shadow:0 10px 26px #183d7512}
+.ij-advanced h3{margin:0 0 6px;color:#15284a;font-size:19px}.ij-advanced .ij-sub{margin:0 0 14px;color:#60718b;font-size:13px;line-height:1.55}
+.ij-adv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ij-adv-card{min-width:0;padding:14px;border:1px solid #e0e9f7;border-radius:15px;background:linear-gradient(145deg,#fff,#f8fbff)}
+.ij-adv-card h4{display:flex;align-items:center;gap:8px;margin:0 0 10px;color:#1a3766;font-size:15px}
+.ij-adv-card label{display:block;margin:8px 0 5px;color:#536783;font-size:12px;font-weight:750}
+.ij-adv-card input,.ij-adv-card select{width:100%;min-width:0;padding:10px 11px;border:1px solid #cad9ef;border-radius:10px;background:#fff;color:#15284a;font:inherit}
+.ij-adv-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ij-adv-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;padding:10px 13px;border:1px solid #cbdcf5;border-radius:10px;background:#edf4ff;color:#1552a6;font-weight:800;font-size:13px;cursor:pointer}
+.ij-adv-btn.primary{border:0;background:linear-gradient(100deg,#0879fa,#5639df);color:#fff}
+.ij-adv-note{margin:8px 0 0;color:#687b96;font-size:11px;line-height:1.5}
+.ij-batch-list{display:grid;gap:7px;margin-top:10px}
+.ij-batch-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border:1px solid #e1eaf7;border-radius:10px;background:#fff;font-size:12px;color:#344b6c;overflow-wrap:anywhere}
+.ij-batch-item a{color:#135cc4;font-weight:800;text-decoration:none;white-space:nowrap}
+.ij-batch-status{margin-top:8px;color:#31577e;font-size:12px;min-height:18px}
+@media(max-width:650px){.ij-advanced{padding:13px}.ij-adv-grid{grid-template-columns:1fr}.ij-adv-card{padding:12px}}
