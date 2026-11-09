@@ -2974,3 +2974,21 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Protected scope: no new feature, calculator JavaScript/logic, form controls, HTML IDs, hero design, visual CSS, page card styling, homepage, sitemap, or Service Worker changes intended. Cache version expected to remain `infojano-v269`.
 - Source-level verification on branch: each of the five pages has one H1, canonical URL, unique title/description, no duplicate IDs, and parseable JSON-LD. Main page links to all four supporting pages; supporting pages cross-link to relevant sibling pages. Live deployment, Google indexing/rankings, and Android/desktop browser rendering have not been tested.
 - Next: complete final diff review and local-link/schema checks, create a PR for user review, and wait for explicit merge permission. Do not claim the work is live until approved merge and successful Pages deployment are confirmed.
+
+
+## Competitor keyword gap review — USA focus (9 November 2026)
+- Additional public research found the USA demand estimates below (third-party estimates; not guaranteed Google traffic):
+  - `age calculator`: ~820,000/month in the KWS Trends estimate; Google Ads Keyword Planner figure displayed there is 673,000. Estimated SEO difficulty 68/100.
+  - `calculate age`: ~82,000; `calculating ages`: ~90,000; `chronological age calculator`: ~45,000; `age calculator by date of birth`: ~37,000 (KWS Trends USA related-keyword table).
+  - `how old am i`: ~61,000/month; Google Ads Keyword Planner figure shown ~60,500; `how old am i calculator`: ~6,600; `how many days old am i`: ~4,000.
+  - `birthday calculator`: ~33,000 (broad phrase; not automatically the same intent as a birthday countdown).
+  - `age calculator between two dates`: ~390; `age calculator by date of birth free`: ~320; `age calculator on specific date`: ~90 in one KWS Trends USA report.
+- Competitor evidence:
+  - Calculator.net's age calculator is listed as ranking #1 for `age calculator` with an estimated US volume of 1.22M and 160K estimated visits in a KWS Trends domain report (data model differs from other keyword tools; treat as an estimate). Its page heading is simply “Age Calculator” and it explains age or interval between two dates plus years/months/weeks/days/hours/minutes/seconds.
+  - CalculatorSoup's page title/H1 is “How Old Am I Calculator” / “How Old Am I | Exact Age”; it targets the conversational query and describes calculating age from DOB, with days/hours/minutes/seconds.
+  - Semrush's public September 2026 snapshot shows calculators.org ranking #2 for `age calculator on specific date` with a 246K volume estimate; another KWS Trends report estimates that exact phrase at only 90/month. These estimates conflict substantially, so don't blindly prioritize the phrase or use the inflated number as a fact.
+  - timeanddate.com Special Age Calculator supports entering birth date or another event date/time, and promotes age down to the second via a linked countdown timer.
+- Coverage audit: PR #34 already covered the main intent and all four supporting intents, but the main-page title did not include the high-intent conversational phrase “How Old Am I?”. The new title now reads: `Age Calculator by Date of Birth – How Old Am I? | InfoJano`, combining the exact DOB phrase and the high-demand conversational query with the primary head term.
+- Do not add unrelated terms such as child age, dog age, retirement age, heart age, pregnancy due date, or generic “calculator” to this page. They have separate intent or no matching feature. Do not force “chronological age calculator” into the title; it is a supporting synonym to use naturally in body copy only if useful.
+- Search volume values are third-party estimates. KWS Trends pages reproduce Keyword Planner numbers for some terms; direct Google Ads / Search Console account access was not available. Ahrefs notes competitor keyword rankings and traffic are estimates and should be interpreted as directional.
+- Sources reviewed: KWS Trends USA reports for `age calculator` and `how old am i`; KWS Trends calculator.net domain report; Semrush calculators.org September 2026 report; live Calculator.net Age Calculator, CalculatorSoup How Old Am I Calculator, and timeanddate Special Age Calculator pages.
