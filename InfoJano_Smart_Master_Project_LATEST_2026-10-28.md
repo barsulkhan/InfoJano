@@ -2916,3 +2916,17 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - PR #29, #30 and #31 are merged.
 - Never merge any PR without the user's explicit permission.
 - Save QA findings in this Smart Master Project file.
+
+
+
+# SITEMAP REPAIR — PREPARED FOR REVIEW — 9 NOVEMBER 2026
+- Created isolated branch: `fix/sitemap-age-seo-pages` from the current `main` after the QA documentation commit.
+- Root cause: `robots.txt` advertised the legacy `sitemap-infojano.xml` and `sitemap.txt`, while the newer `sitemap.xml` contained the more complete 58-URL list, including four Age SEO landing pages and six Image Resizer SEO pages. The advertised legacy sitemaps were stale at 48 URLs.
+- Proposed repair on the isolated branch:
+  1. Keep `sitemap.xml` as canonical complete XML sitemap (58 URLs).
+  2. Synchronize `sitemap-infojano.xml` with the same canonical XML URL set for compatibility.
+  3. Synchronize `sitemap.txt` with the same 58 canonical URLs.
+  4. Change `robots.txt` to advertise only `https://barsulkhan.github.io/InfoJano/sitemap.xml`.
+- Verification on branch: XML opening/closing structure valid; canonical, legacy XML and text sitemap each contain 58 URLs; all four Age SEO pages are present in all three; all three URL lists are identical; robots.txt points to canonical sitemap.
+- Changes are isolated on branch and are NOT merged or deployed. User approval is required before merge.
+- No Age Calculator HTML, CSS, design, calculator logic, homepage, or Service Worker files were changed. Cache remains `infojano-v269` until a future approved deployment/build.
