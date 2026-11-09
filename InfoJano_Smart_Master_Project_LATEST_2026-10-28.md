@@ -2930,3 +2930,13 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Verification on branch: XML opening/closing structure valid; canonical, legacy XML and text sitemap each contain 58 URLs; all four Age SEO pages are present in all three; all three URL lists are identical; robots.txt points to canonical sitemap.
 - Changes are isolated on branch and are NOT merged or deployed. User approval is required before merge.
 - No Age Calculator HTML, CSS, design, calculator logic, homepage, or Service Worker files were changed. Cache remains `infojano-v269` until a future approved deployment/build.
+
+
+## PR #32 MERGE CONFIRMATION — 9 NOVEMBER 2026
+- User explicitly authorized merging PR #32; it was successfully merged into `main`.
+- PR: https://github.com/barsulkhan/InfoJano/pull/32 — state closed, `merged=true`.
+- Merge commit / current main commit at merge time: `6c21acee377e4af22a8f74d04c272c60ef7c27b7`.
+- Confirmed on main after merge: `robots.txt` advertises canonical `https://barsulkhan.github.io/InfoJano/sitemap.xml`; `sitemap.xml`, `sitemap-infojano.xml` and `sitemap.txt` contain the synchronized 58-URL set, including all four Age Calculator SEO landing pages.
+- GitHub Pages deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/42662313263 (run #1960, commit `6c21acee377e4af22a8f74d04c272c60ef7c27b7`). Last checked status: `completed`; conclusion: `success`. Do not call the live deployment complete until this run succeeds and the published endpoints are checked.
+- PR #32 changes only the three sitemap files, `robots.txt`, and this Smart Master Project File. No calculator page/design/CSS/JS/homepage/Service Worker changes; cache remains `infojano-v269`.
+- Historical section above titled “SITEMAP REPAIR — PREPARED FOR REVIEW” records the pre-merge state. This section supersedes its statements that PR #32 is unmerged/not deployed.
