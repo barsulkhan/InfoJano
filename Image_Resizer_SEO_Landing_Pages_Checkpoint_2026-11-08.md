@@ -91,3 +91,11 @@ Status: IN PROGRESS — feature branch only; not merged or live.
 - Confirmed advanced CSS/JS links, Service Worker cache `infojano-v262`, and both assets in precache.
 - Cloudflare Workers Build check passed for the shortlink Worker only; no Pages deploy or browser test is implied.
 - PR #24 remains open/unmerged; branch is 12 commits ahead, 0 behind main. Android/browser functional QA and explicit merge approval are still required.
+
+
+## 9 November 2026 — SEO hero synchronization status
+- All six Image Resizer SEO pages in the PR branch now share the main Image Resizer premium hero markup/class: `ij-full-hero ij-resizer-hero`.
+- Page-specific titles and descriptions remain distinct. Original page CTA links were restored below the shared hero.
+- Shared styles appended to existing `image-resizer-premium.css` (already precached); Service Worker cache bumped to `infojano-v263`.
+- Automated repository-content checks confirm all six pages use the shared hero and no longer use the old `.hero` header.
+- PR #24 remains open/unmerged; these edits are not live. Real mobile/desktop browser visual QA still required.
