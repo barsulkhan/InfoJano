@@ -2773,3 +2773,14 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Sitemap contains 58 URL entries. No exact keyword search volumes asserted; the Google-style SERP results and observed related queries are directional intent research only.
 - Latest PR check: #28 open, merged=false, 18 commits, 9 changed files, 996 additions, 7 deletions. GitHub currently reports mergeable=false after the latest writes; recheck once GitHub recalculates. Do not merge without explicit user approval.
 - Still pending: full browser-level testing (Android Chrome and desktop), live verification of the feature-branch changes, and a final complete PR diff review. GitHub Actions workflow results were not available in the earlier check; do not claim CI passed.
+
+
+### Final audit follow-up — 2026-11-09
+- Fixed two functional issues found during review:
+  1. Birthday reminder now honors the selected February 29 non-leap-year rule (Feb 28 or Mar 1) when checking the reminder date.
+  2. Copy/share now recalculates from current DOB, reference date and leap rule before producing text, preventing stale copied results after edits.
+- Rechecked all four SEO pages: exactly one H1 each, canonical URL present, FAQPage JSON-LD parses, WebPage JSON-LD parses, and internal link to age.html exists.
+- Rechecked sitemap and sw.js references for all four SEO pages; cache remains infojano-v266. date-difference.html exists. Age Calculator script opening/closing tag counts balance and all toolkit controls are present.
+- Live URL open attempts through the available web reader returned inaccessible errors; this is not proof of a site failure. Feature branch is not deployed to GitHub Pages until merged, so no claim of live deployment or browser verification is made.
+- Latest PR #28 check before this master-file commit: OPEN, NOT MERGED, 20 commits, 9 files; GitHub mergeable=false. Recheck mergeability after GitHub recalculates. No PR workflow runs were returned for the checked commit.
+- Browser-level Android Chrome/desktop interaction testing and final PR diff review remain pending. Do not merge until user explicitly approves.
