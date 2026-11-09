@@ -2799,3 +2799,12 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
   - https://barsulkhan.github.io/InfoJano/what-happened-on-my-birthday.html
 - Main-branch source confirmation succeeded. GitHub workflow query for merge commit returned no runs; do not claim a CI or GitHub Pages deployment workflow passed.
 - Deployment/live browser verification remains pending. GitHub Pages may take a few minutes to publish the merged main branch; verify each public URL after deployment and test on Android Chrome.
+
+
+### 2026-11-09 — Shared Neon Hero for Age SEO Pages (pending review)
+- Copied the approved Age Calculator hero banner design into four SEO landing pages: Age in Days, Birthday Countdown, Birth Weekday, and Birthday History.
+- Reused the same neon blue-purple gradient, animated perimeter glow, calendar/cake artwork, preview tile, animated feature chips, and responsive mobile layout.
+- Hero feature chips match the main Age Calculator: Fast & Free, 100% Accurate, Mobile Ready, No Signup.
+- Hero headline and supporting sentence are tailored to each landing page; SEO page retains exactly one H1 and one main landmark.
+- Service worker cache bumped to infojano-v267.
+- Work is on feature branch feature/seo-pages-shared-neon-hero. Not merged or deployed. Awaiting PR review and explicit approval before merge.
