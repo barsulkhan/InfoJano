@@ -12,7 +12,7 @@ host.innerHTML=`
  <section class="ij-adv-card"><h4>📐 Physical size &amp; DPI</h4>
   <div class="ij-adv-row"><div><label for="ijUnit">Measurement</label><select id="ijUnit"><option value="px">Pixels</option><option value="cm">Centimetres</option><option value="mm">Millimetres</option><option value="in">Inches</option></select></div><div><label for="ijDpi">DPI</label><input id="ijDpi" type="number" min="30" max="1200" value="300"></div></div>
   <div class="ij-adv-row"><div><label for="ijPhysicalW">Width (pixels)</label><input id="ijPhysicalW" type="number" min="0.01" step="0.01" value="413"></div><div><label for="ijPhysicalH">Height (pixels)</label><input id="ijPhysicalH" type="number" min="0.01" step="0.01" value="531"></div></div>
-  <button class="ij-adv-btn primary" id="ijApplyPhysical" type="button">Apply physical size</button><p class="ij-adv-note">Converts the selected physical size and DPI into pixel dimensions. Print software may still need its own DPI setting.</p>
+  <button class="ij-adv-btn primary" id="ijApplyPhysical" type="button">Apply physical size</button><p class="ij-adv-note">Converts the selected physical size and DPI into pixel dimensions. JPEG and PNG exports receive DPI metadata; WebP keeps pixel dimensions only. Print software may still apply its own settings.</p>
  </section>
  <section class="ij-adv-card"><h4>🎯 Target file size</h4>
   <label for="ijTargetKB">Maximum target (KB)</label><input id="ijTargetKB" type="number" min="5" max="20000" value="100">
@@ -51,6 +51,25 @@ function drawSource(img,w,h){
  if(format.value==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h)}
  ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,w,h);return c;
 }
+function crc32(bytes){let crc=-1;for(let i=0;i<bytes.length;i++){crc^=bytes[i];for(let j=0;j<8;j++)crc=(crc>>>1)^((crc&1)?0xedb88320:0)}return (crc^-1)>>>0}
+function writeU32(view,offset,value){view.setUint32(offset,value>>>0,false)}
+async function applyDpiMetadata(blob,dpi,type){
+ const d=Math.max(30,Math.min(1200,Math.round(dpi)));
+ if(type==='image/jpeg'){
+  const src=new Uint8Array(await blob.arrayBuffer());if(src[0]!==0xff||src[1]!==0xd8)return blob;
+  const seg=new Uint8Array(18);seg.set([0xff,0xe0,0x00,0x10,0x4a,0x46,0x49,0x46,0x00,0x01,0x02,0x01,(d>>8)&255,d&255,(d>>8)&255,d&255,0,0]);
+  if(src[2]===0xff&&src[3]===0xe0&&src[6]===0x4a&&src[7]===0x46&&src[8]===0x49&&src[9]===0x46){src.set(seg,0);return new Blob([src],{type})}
+  return new Blob([src.slice(0,2),seg,src.slice(2)],{type});
+ }
+ if(type==='image/png'){
+  const src=new Uint8Array(await blob.arrayBuffer());if(src.length<33)return blob;
+  const ppm=Math.round(d/0.0254),data=new Uint8Array(9),dv=new DataView(data.buffer);writeU32(dv,0,ppm);writeU32(dv,4,ppm);data[8]=1;
+  const chunk=new Uint8Array(21),view=new DataView(chunk.buffer);writeU32(view,0,9);chunk.set([0x70,0x48,0x59,0x73],4);chunk.set(data,8);writeU32(view,17,crc32(chunk.slice(4,17)));
+  let pos=8;while(pos+12<=src.length){const len=(src[pos]*0x1000000)+(src[pos+1]<<16)+(src[pos+2]<<8)+src[pos+3];const typeName=String.fromCharCode(src[pos+4],src[pos+5],src[pos+6],src[pos+7]);if(typeName==='pHYs'){const out=new Uint8Array(src.length);out.set(src.slice(0,pos));out.set(chunk,pos);out.set(src.slice(pos+len+12),pos+21);return new Blob([out],{type})}if(typeName==='IDAT')break;pos+=len+12}
+  const out=new Uint8Array(src.length+21);out.set(src.slice(0,pos));out.set(chunk,pos);out.set(src.slice(pos),pos+21);return new Blob([out],{type});
+ }
+ return blob;
+}
 function setDownload(blob,name){
  const old=download.href;if(old&&old.startsWith('blob:'))URL.revokeObjectURL(old);
  const url=URL.createObjectURL(blob);download.href=url;download.download=name;download.hidden=false;
@@ -83,7 +102,7 @@ resizeBtn.addEventListener('click',async e=>{
  if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>10000||h>10000||w*h>40000000){setStatus('Enter valid dimensions within the 40-megapixel safe limit.');return}
  if(target&&(!Number.isFinite(target)||target<5||target>20000)){setStatus('Target size must be between 5 and 20,000 KB.');return}
  resizeBtn.disabled=true;resizeBtn.textContent='Processing…';setStatus('Resizing and checking output size…');
- try{const canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);if(!result.blob)throw Error('Output encoding failed');setDownload(result.blob,'infojano-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp'));const kb=(result.blob.size/1024).toFixed(1);setStatus('Ready: '+w+' × '+h+' px · '+kb+' KB'+(target?(result.met?' · target met':' · target could not be met at minimum quality'):'')+(type!=='image/png'&&target?' · quality '+Math.round(result.quality*100)+'%':''));}
+ try{const canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);if(!result.blob)throw Error('Output encoding failed');const finalBlob=await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,type);setDownload(finalBlob,'infojano-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp'));const kb=(finalBlob.size/1024).toFixed(1);setStatus('Ready: '+w+' × '+h+' px · '+kb+' KB'+(target?(result.met?' · target met':' · target could not be met at minimum quality'):'')+(type!=='image/png'&&target?' · quality '+Math.round(result.quality*100)+'%':''));}
  catch(err){setStatus('Could not process this image. Try a smaller output size.')}
  finally{resizeBtn.disabled=false;resizeBtn.innerHTML='<span class="btn-icon" aria-hidden="true">↔</span> Resize Image'}
 },true);
@@ -96,7 +115,7 @@ $('ijRunBatch').addEventListener('click',async()=>{
  label.textContent='Processing 0 of '+files.length+' images…';
  for(let i=0;i<files.length;i++){
   const file=files[i];if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10*1024*1024){label.textContent='Skipped unsupported or over-10MB file: '+file.name;continue}
-  try{const img=await getImage(URL.createObjectURL(file)),canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);if(!result.blob)throw Error('encode');const url=URL.createObjectURL(result.blob);batchUrls.push(url);const row=document.createElement('div');row.className='ij-batch-item';const name=document.createElement('span');name.textContent=file.name+' · '+(result.blob.size/1024).toFixed(1)+' KB';const a=document.createElement('a');a.href=url;a.download=file.name.replace(/\.[^.]+$/,'')+'-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp');a.textContent='Download';row.append(name,a);list.append(row);img.src='';}
+  try{const sourceUrl=URL.createObjectURL(file),img=await getImage(sourceUrl),canvas=drawSource(img,w,h),result=await encodeTarget(canvas,type,q,target);URL.revokeObjectURL(sourceUrl);if(!result.blob)throw Error('encode');const finalBlob=await applyDpiMetadata(result.blob,Number($('ijDpi').value)||96,type);const url=URL.createObjectURL(finalBlob);batchUrls.push(url);const row=document.createElement('div');row.className='ij-batch-item';const name=document.createElement('span');name.textContent=file.name+' · '+(finalBlob.size/1024).toFixed(1)+' KB';const a=document.createElement('a');a.href=url;a.download=file.name.replace(/\.[^.]+$/,'')+'-resized.'+(type==='image/jpeg'?'jpg':type==='image/png'?'png':'webp');a.textContent='Download';row.append(name,a);list.append(row);img.src='';}
   catch(err){const row=document.createElement('div');row.className='ij-batch-item';row.textContent=file.name+' · Could not process';list.append(row)}
   label.textContent='Processed '+(i+1)+' of '+files.length+' images.';
  }
