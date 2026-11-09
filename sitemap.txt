@@ -56,3 +56,7 @@ https://barsulkhan.github.io/InfoJano/age-in-days-calculator.html
 https://barsulkhan.github.io/InfoJano/birthday-countdown-calculator.html
 https://barsulkhan.github.io/InfoJano/day-of-week-born-calculator.html
 https://barsulkhan.github.io/InfoJano/what-happened-on-my-birthday.html
+https://barsulkhan.github.io/InfoJano/days-between-dates-calculator.html
+https://barsulkhan.github.io/InfoJano/business-days-calculator.html
+https://barsulkhan.github.io/InfoJano/date-duration-calculator.html
+https://barsulkhan.github.io/InfoJano/add-subtract-date-calculator.html
