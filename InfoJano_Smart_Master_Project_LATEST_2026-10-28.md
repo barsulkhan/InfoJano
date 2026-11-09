@@ -3087,3 +3087,24 @@ Priority 2 — advanced differentiators:
 - Keep date-only calculations separate from time-of-day/time-zone calculations handled by Time Calculator.
 
 Decision pending user approval. No branch, PR, code edits, merge or deployment created by this audit.
+
+
+## DATE DIFFERENCE ALL-IN-ONE IMPLEMENTATION — WORK IN PROGRESS — 9 NOVEMBER 2026
+- User explicitly instructed: start implementing the Date Difference Calculator improvements/features.
+- Isolated branch created: `feature/date-difference-all-in-one` from current main. Live main is untouched.
+- File changed on branch: `date-difference.html` only.
+- Implemented:
+  1. New Add or Subtract from a Date panel with date input, add/subtract operation, years/months/weeks/days and calculated resulting date plus weekday.
+  2. New weekday labels for From Date and To Date in the date-difference result.
+  3. Configurable weekend exclusions for business-day calculations: any selection of Sunday through Saturday; default Sunday and Saturday excluded.
+  4. Fixed This Year So Far preset to use January 1 through today; Last 30 Days remains rolling 30 days.
+  5. Reworked Today to My Birthday quick action to ask for birthday as DD-MM and calculate the next upcoming occurrence (including next year when this year's date has passed).
+  6. Reset now clears date text/pickers, countdown, holiday input, toggles, result fields, and resets Add/Subtract controls.
+  7. Removed the earlier duplicate legacy `calculateDifference()` declaration; active calculator implementation remains the calendar-aware version and is wrapped to append weekday labels.
+- Verification so far:
+  - All non-JSON-LD inline JavaScript blocks compile successfully with V8 syntax compilation.
+  - One H1, one canonical, one title; no duplicate HTML IDs.
+  - Date arithmetic isolated checks passed: Jan 31 + 1 month -> Feb 28 2025; Feb 29 2024 + 1 year -> Feb 28 2025; Mar 1 2024 - 1 day -> Feb 29 2024; Jan 1 2026 + 100 days -> Apr 11 2026.
+  - No browser/mobile interaction test yet. Need test date parsing, picker sync, date difference, inclusive count, custom holidays, all weekend combinations, countdown, add/subtract UI and reset in a real browser.
+- No changes to homepage, Age Calculator, other tools, sitemap, Service Worker or PWA cache. No deployment; no PR merged.
+- Important remaining QA: business-day custom holiday handling and inclusive count; check empty/invalid inputs; make sure quick birthday prompt and preset buttons work on mobile; verify Add/Subtract layout on small screens. If successful, open PR against main and await user's merge permission.
