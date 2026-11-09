@@ -2955,3 +2955,22 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Branch comparison against main: 1 commit ahead, 0 behind; only `age.html` modified (107 additions, 0 deletions).
 - This is a source-level CSS change only. It has not been browser-rendered or tested on Android/desktop yet. It is not deployed and must not be described as live.
 - PR review/merge status: awaiting PR creation and user review. Do not merge without explicit user approval.
+
+
+
+# GLOBAL AGE CALCULATOR SEO OPTIMIZATION — 9 NOVEMBER 2026
+- User requested global English keyword optimization across the main Age Calculator page and its four supporting SEO landing pages. Scope explicitly excludes new features and any visual redesign.
+- Created isolated branch: `seo/global-age-calculator-keywords` from `main`. No merge or deployment has been performed. User approval is required before merge.
+- Updated the title, meta description, Open Graph title/description and Twitter title/description on all five pages with unique, intent-matched global English search phrasing:
+  1. `age.html`: primary intent — Age Calculator, calculate exact age by date of birth, how old am I, exact age in years/months/days, age on any date, total days lived.
+  2. `age-in-days-calculator.html`: age in days calculator, how many days old am I, total days lived, days/weeks from DOB.
+  3. `birthday-countdown-calculator.html`: birthday countdown calculator, days until my birthday, next birthday date, age turning, leap-day options.
+  4. `day-of-week-born-calculator.html`: what day was I born, day of week born, birth weekday calculator.
+  5. `what-happened-on-my-birthday.html`: what happened on my birthday, historical events by date, events on birth date.
+- Added a natural internal navigation section on the main Age Calculator page linking to all four supporting pages. Added contextual cross-links among supporting pages while retaining each page's separate search intent.
+- Main page introductory copy now includes the natural query “how old am I”; corrected the FAQ answer to accurately describe the existing past/future reference-date capability. The matching FAQ JSON-LD answer was also updated.
+- Existing content already contains relevant long-tail/simple-language queries in the supporting pages; retained these rather than repeating keywords unnaturally. No unrelated search terms or volume claims inserted into page copy.
+- Research context: previously reviewed public third-party keyword estimates and Google Keyword Planner documentation. Volumes are directional estimates, not guaranteed traffic or rankings; direct access to the user's Keyword Planner/Search Console account was not available. No exact volume figures have been inserted into metadata or visible page copy.
+- Protected scope: no new feature, calculator JavaScript/logic, form controls, HTML IDs, hero design, visual CSS, page card styling, homepage, sitemap, or Service Worker changes intended. Cache version expected to remain `infojano-v269`.
+- Source-level verification on branch: each of the five pages has one H1, canonical URL, unique title/description, no duplicate IDs, and parseable JSON-LD. Main page links to all four supporting pages; supporting pages cross-link to relevant sibling pages. Live deployment, Google indexing/rankings, and Android/desktop browser rendering have not been tested.
+- Next: complete final diff review and local-link/schema checks, create a PR for user review, and wait for explicit merge permission. Do not claim the work is live until approved merge and successful Pages deployment are confirmed.
