@@ -3182,3 +3182,54 @@ Decision pending user approval. No branch, PR, code edits, merge or deployment c
 - Service worker cache bumped from infojano-v270 to infojano-v271 so existing users can receive updated SEO pages.
 - Pages deployment for PR #41 and the cache/master follow-up commits must be checked before claiming live. Browser visual QA, real calculator interaction QA and Google Search Console sitemap/index requests remain separate follow-up tasks.
 - Business Days SEO from PR #40 remains included as the first of the four final Date SEO pages. Four-page SEO coverage is now applied in source on main.
+
+
+## FINAL CHECKPOINT — FOUR DATE SEO PAGES COMPLETED & DEPLOYED (10 NOVEMBER 2026)
+
+User paused work after asking to finish SEO for all four Date Calculator landing pages. Preserve this as the latest project checkpoint; continue from here in the next chat without asking the user to repeat prior decisions.
+
+### Completed and merged
+- All four premium Date SEO landing pages are finalized and merged into `main`. User approved/finalized their design earlier; do not redesign or alter these pages unless explicitly requested.
+- PR #40 — Business Days SEO, merge commit: `811b649f7808092bd08bfb28330842178f2d1a4c`.
+- PR #41 — remaining three Date SEO pages, merge commit: `a78c521b8965da0e01ef15feb4d334c99dc6a08e`.
+- Four pages:
+  1. `business-days-calculator.html`
+  2. `date-duration-calculator.html`
+  3. `add-subtract-date-calculator.html`
+  4. `days-between-dates-calculator.html`
+- SEO applied for US search intent and both plain-language and advanced queries: unique SEO title/meta description, Open Graph, Twitter metadata, WebPage JSON-LD, question-led explanatory copy/FAQs, canonical URLs, internal links and CTA to the existing `date-difference.html`.
+- Business Days content accurately states Sundays are excluded, Saturdays are excluded by default but can be counted, and holidays must be entered manually; do not imply automatic US federal holiday loading.
+- Date duration content targets date duration / time between dates / years-months-days searches.
+- Add/subtract page targets add days, subtract days, weeks/months/years and everyday date questions.
+- Days-between page targets days between dates / how many days between two dates, and explains inclusive counting and calendar days vs business days.
+- No calculator logic was changed. No homepage design/icons, Age Calculator final design, ID Card Print Studio, sitemap or unrelated tools were changed in this SEO pass.
+- Source QA completed: one H1 per page, four FAQ details, JSON-LD, canonical, responsive mobile breakpoint, internal links and CTA checked.
+- Service worker cache bumped to `infojano-v271` in commit `02881a0e2e2d687613ce0670d8235b43134fb993`.
+
+### Deployment confirmation
+- Latest GitHub Pages workflow #1979, run ID `42679882162`, on main SHA `672c94c634fca1ba592b2db3fda663522aa460d8`, completed with conclusion `success`.
+- Workflow: https://github.com/barsulkhan/InfoJano/actions/runs/42679882162
+- Main branch also contains the master-file update commit recorded as `672c94c634fca1ba592b2db3fda663522aa460d8` in the previous checkpoint. Always fetch current main/file SHA before further edits.
+- Deployment success confirms GitHub Pages build/deploy completed; it does not by itself prove Google indexing or search ranking.
+
+### US keyword research notes
+- Third-party KWS Trends estimates (not InfoJano Search Console traffic): broad US “date calculator” around 550,000 average monthly searches (Keyword Planner panel showed 673,000); “days between dates calculator” around 22,000 (Keyword Planner panel showed 33,100); “business days calculator” around 24,000 (Keyword Planner panel showed 40,500).
+- Related phrases include “calculate business days”, “how many work days between two dates”, “time between two dates”, “what date is 30 days from today”, and “how many days between two dates”.
+- Treat these as directional estimates only; never promise ranking or traffic.
+- Research sources: https://www.kwstrends.com/keywords/us/date-calculator ; https://www.kwstrends.com/keywords/us/time-duration-calculator ; https://www.kwstrends.com/zh/keywords/us/days-between-dates-calculator ; https://www.kwstrends.com/keywords/us/business-days-calculator ; https://support.google.com/google-ads/answer/7337243
+
+### Remaining work — next time
+1. Open all four live pages on mobile and desktop; check visual rendering and navigation/CTA.
+2. Test the actual Date Difference calculator CTA and calculation behavior with representative date ranges. Source-level QA is complete, but full browser interaction QA is still pending.
+3. Open Google Search Console, inspect the current sitemap status, submit/check `sitemap.xml`, and request indexing for the four URLs if appropriate. This requires authorized Search Console access; do not claim it is done until confirmed.
+4. Monitor Search Console impressions, clicks, CTR, positions and US country queries after indexing. Do not make speculative SEO edits immediately.
+5. Keep the four SEO page designs unchanged. Do not alter homepage design/icons, Age Calculator final design or ID Card Print Studio without explicit permission. Follow the established workflow: inspect first, make the smallest relevant change, QA, update service-worker cache when assets change, and record every significant change in this same master file. Respect the user's instruction that no PR is merged without permission.
+
+### Live page URLs
+- Business Days: https://barsulkhan.github.io/InfoJano/business-days-calculator.html
+- Date Duration: https://barsulkhan.github.io/InfoJano/date-duration-calculator.html
+- Add/Subtract Date: https://barsulkhan.github.io/InfoJano/add-subtract-date-calculator.html
+- Days Between Dates: https://barsulkhan.github.io/InfoJano/days-between-dates-calculator.html
+
+### New-chat resume instruction (copy/paste)
+“InfoJano Project Resume. প্রথমে GitHub-এর main branch থেকে `InfoJano_Smart_Master_Project_LATEST_2026-10-28.md` সম্পূর্ণ খুলে শুরু থেকে সর্বশেষ checkpoint পর্যন্ত পড়ে নাও। চারটি Date SEO পেজের কাজ সম্পূর্ণ এবং Pages deployment #1979 সফল—এই অবস্থান থেকেই শুরু করবে। আগে বাকি Mobile/Desktop QA, calculator interaction test এবং Google Search Console sitemap/indexing status যাচাই করবে। কোনো final design, homepage, Age Calculator বা ID Card Print Studio পরিবর্তন করবে না; নতুন কাজের আগে বর্তমান repository state যাচাই করবে এবং আমার অনুমতি ছাড়া কোনো PR merge করবে না। প্রতিটি গুরুত্বপূর্ণ কাজ একই Smart Master File-এ append করবে।”
