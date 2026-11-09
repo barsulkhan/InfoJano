@@ -83,3 +83,11 @@ Status: IN PROGRESS — feature branch only; not merged or live.
 - Follow-up commit: 91d58122934f3732692dd97e0a997878e72603d8 on feature/image-resizer-advanced-toolkit.
 - Cloudflare Workers Build check on the prior PR head completed successfully, but it is the shortlink Worker build and is not evidence that GitHub Pages or the Image Resizer has deployed.
 - Still required: real browser/Android functional tests for physical unit conversion, JPEG/PNG DPI metadata, crop/reset, target-size accuracy, batch downloads, and regression of existing modes. Do not merge or call live without user approval and deployment verification.
+
+
+## 9 November 2026 — Latest QA correction
+- Fixed two literal `\\n` text sequences in the main Image Resizer HTML around the new CSS/JS includes. They are now normal line breaks.
+- Latest verified branch commit: `7ecd5f113e69c620a546c64ee6459ad87fd77555`.
+- Confirmed advanced CSS/JS links, Service Worker cache `infojano-v262`, and both assets in precache.
+- Cloudflare Workers Build check passed for the shortlink Worker only; no Pages deploy or browser test is implied.
+- PR #24 remains open/unmerged; branch is 12 commits ahead, 0 behind main. Android/browser functional QA and explicit merge approval are still required.
