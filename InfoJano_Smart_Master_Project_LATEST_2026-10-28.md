@@ -3087,3 +3087,19 @@ Priority 2 — advanced differentiators:
 - Keep date-only calculations separate from time-of-day/time-zone calculations handled by Time Calculator.
 
 Decision pending user approval. No branch, PR, code edits, merge or deployment created by this audit.
+
+
+## DATE DIFFERENCE — PREMIUM US SEO LANDING PAGES — 9 NOVEMBER 2026
+- User approved creating premium SEO landing pages for the Date Difference Calculator, targeting US audiences.
+- Hero design reference: the existing Date Difference Calculator hero (not the Age Calculator hero). New pages reuse the Date Difference hero's bright blue-to-purple gradient, calendar-to-calendar illustration, clock artwork, rounded benefit chips, responsive three-part desktop composition and compact mobile composition.
+- Created four separate search-intent landing pages on isolated branch `seo/date-difference-premium-landing-pages`:
+  1. `days-between-dates-calculator.html` — Title: “Days Between Dates Calculator – Count Days, Weeks & Months | InfoJano”.
+  2. `business-days-calculator.html` — Title: “Business Days Calculator – Count Working Days Between Dates | InfoJano”.
+  3. `date-duration-calculator.html` — Title: “Date Duration Calculator – Years, Months & Days Between Dates | InfoJano”.
+  4. `add-subtract-date-calculator.html` — Title: “Add or Subtract Days from a Date Calculator | InfoJano”.
+- Each page has a unique US-intent title, meta description, canonical URL, Open Graph/Twitter metadata, WebPage JSON-LD, unique H1/subtitle/benefit chips, useful explanatory content, FAQs, and CTA to the existing Date Difference calculator. Cross-links added between the four pages.
+- Business Days page accurately explains that US holidays must be added manually; no automatic federal-holiday calendar is claimed.
+- Added all four canonical URLs to `sitemap.xml` and `sitemap.txt` on this branch.
+- Keyword research: US estimates from KWS Trends report updated 2026-11-07 show “business days calculator” approx. 24,000 average monthly US searches (Google Ads Keyword Planner display 40,500); related “calculate business days” approx. 7,300, “calculator for business days” approx. 3,200, and “business working days calculator” approx. 2,900. Search intent and competitor review also supports separate “days between dates”, “date duration”, and “add/subtract date” pages. All third-party volume figures are estimates, not InfoJano Search Console data.
+- Research sources: https://www.kwstrends.com/keywords/us/business-days-calculator ; https://www.timeanddate.com/date/duration.php ; https://www.calculator.net/date-calculator.html
+- Pending: validate generated HTML/metadata/links, check sitemap URL count, review diff, then open PR. No merge or live deployment authorized.
