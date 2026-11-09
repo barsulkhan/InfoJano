@@ -2853,3 +2853,66 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - Next sensible work: perform a careful QA audit of all five Age Calculator pages on mobile/desktop (layout, links, calculator behavior, accessibility, SEO metadata, canonical/JSON-LD, sitemap, service-worker cache), record only verified results, then propose the next highest-priority InfoJano task. Do not alter the finalized Age Calculator design during QA.
 - Continue the user's established workflow: work autonomously where safe, keep the Smart Master File updated, create feature branches and PRs for code changes, and never merge a PR without explicit user approval.
 - Short resume phrase for a new chat: **“InfoJano Smart Master File থেকে শুরু করো — Age Calculator final, PR #31 merged; আগে current status ও QA audit করো।”**
+
+
+
+# QA AUDIT — AGE CALCULATOR FIVE-PAGE SET — 9 NOVEMBER 2026
+
+## Repository and merge verification
+- Repository: `barsulkhan/InfoJano`; public; default branch `main`.
+- Main HEAD before this documentation update: `7cb7b1631f7c426930c34facddc9bf59f16d5810` ("Save final Age Calculator design and next-chat handoff").
+- PR #29 merged: `8997418bf51f612d20d9144a47593f2fd69603c7`.
+- PR #30 merged: `5b5dabd590611e4092dda7cddb641dda12fde5a0`.
+- PR #31 merged: `b2495ba89b960d5aaa7d29a8f696c3871e6d0461`.
+- All three PRs are closed with `merged=true`. Do not describe them as pending.
+- Current `sw.js` source SHA: `4f2a76ccf5a2661154a1eaf783f4175b7db0649f`; actual cache constant: `infojano-v269`.
+- Five Age Calculator pages are present in main-branch source:
+  1. `age.html`
+  2. `age-in-days-calculator.html`
+  3. `birthday-countdown-calculator.html`
+  4. `day-of-week-born-calculator.html`
+  5. `what-happened-on-my-birthday.html`
+
+## Source-level QA results
+- All five pages fetched from `main`; source is present.
+- All five have one H1, one main landmark, a canonical URL, title, meta description and index/follow directive.
+- Four supporting SEO pages each contain valid JSON-LD `WebPage` and `FAQPage`; each has five visible FAQ questions and the FAQ schema question set matches the visible questions.
+- Main `age.html` has valid JSON-LD graph with `WebApplication` and `FAQPage`; all five schema FAQ questions match the visible FAQ questions.
+- No duplicate HTML IDs were found on any of the five pages.
+- Main Age Calculator has nine form controls; all controls with IDs have associated labels or accessible names.
+- Four supporting SEO pages are landing pages, not independent calculators; their CTAs correctly link to `age.html`, and they also link to `index.html`.
+- All local HTML destinations checked from the five pages exist in the repository.
+- Four SEO pages use the same shared visual CSS block (23,471 characters in each source), the approved neon hero, blue/lavender/mint/peach card gradients, accent bars, styled FAQs and related-search panels.
+- Responsive CSS includes mobile breakpoints at 520/600px and tablet layout up to 850px, plus a large-screen rule at 1600px; reduced-motion rules are present.
+- Main `age.html` has responsive CSS at 480/600/850/1600px.
+- Calculator source review: validates DD-MM-YYYY dates including invalid calendar dates; rejects future birth dates; calculates years/months/days, total days/weeks, birth weekday and next birthday. Secondary reference-date calculator rejects dates before birth and supports February 29 observation rules (Feb 28 or Mar 1). UTC day arithmetic is used for day totals.
+- Source-level date logic was checked against ordinary and February 29 cases. This is not a live browser interaction test.
+
+## Confirmed SEO / sitemap issue — action required
+- `robots.txt` currently references `sitemap-infojano.xml` and `sitemap.txt`; it does not reference `sitemap.xml`.
+- `sitemap-infojano.xml`: 48 URLs. `sitemap.txt`: 48 URLs. Both are well-formed/line-readable, but both omit the four supporting Age SEO pages.
+- `sitemap.xml`: 58 URLs and includes all five Age Calculator pages plus six Image Resizer SEO pages, but it is not currently referenced by `robots.txt`.
+- Therefore the four supporting Age SEO pages are absent from both sitemap endpoints currently advertised in `robots.txt`. The sitemap set needs to be reconciled and one canonical XML sitemap (or all advertised sitemaps) made consistent.
+- Main `age.html` does not currently link internally to the four supporting Age SEO pages. Each supporting page links back to `age.html`. Add a small related-tools/internal-links block in a separate SEO-only change after user review; do not alter the approved visual design.
+- No sitemap or page source was changed during this QA audit.
+
+## Mobile / desktop and live deployment limitations
+- Static source audit confirms responsive CSS and the same visual CSS across all four supporting pages.
+- Direct live URL retrieval through the available web viewer failed for all five pages and the sitemap/robots URLs. No live rendered screenshot or browser viewport interaction could be completed in this session.
+- GitHub Pages deployment workflow status could not be independently retrieved for the latest main push; the commit workflow lookup returned no runs because that lookup only returns PR-triggered runs.
+- Consequently do not mark live deployment, live CSS loading, actual mobile/desktop rendering, or real user interaction as passed. Android Chrome visual confirmation remains outstanding.
+- Do not change the approved Age Calculator hero, card colors, layout, spacing or design during future QA/fixes.
+
+## Current next-work plan
+1. Resolve sitemap inconsistency first: compare the intended canonical sitemap, synchronize `sitemap-infojano.xml`, `sitemap.xml`, `sitemap.txt` and `robots.txt`; add the four Age SEO pages to the sitemap(s) actually advertised. Use an isolated branch and PR; never merge without explicit user approval.
+2. Add safe internal links from `age.html` to the four supporting SEO pages without changing the finalized visual design.
+3. Resume QR Toolkit Phase 1 as the next feature priority. Existing branch `feature/qr-toolkit-phase1-free` is stale/diverged against current main: 11 commits ahead, 275 behind; only `qr-maker.html` appears in the branch comparison (71 additions, 7 deletions). Do not merge or use this stale branch as-is; inspect and port only required Phase 1 changes onto a fresh branch from current main.
+4. Keep QR Toolkit Phase 2 PR #12, Image Resizer PR #17, Homepage PR #16 and other open PRs separate; do not merge without explicit user approval.
+5. After Pages deployment is verifiably successful, open all five exact live URLs on Android Chrome and desktop viewport; check layout, hero, colored cards, CTAs, FAQ, calculator input/output, leap-day handling, console/runtime errors and service-worker refresh.
+6. At each work stop, update this master file with evidence and distinguish source-checked, committed, deployed, browser-tested and user-tested.
+
+## User's explicit instructions for this audit
+- Age Calculator design is FINAL. No visual redesign or style changes during QA.
+- PR #29, #30 and #31 are merged.
+- Never merge any PR without the user's explicit permission.
+- Save QA findings in this Smart Master Project file.
