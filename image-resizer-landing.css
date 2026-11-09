@@ -2,14 +2,13 @@
 
 /* Premium hero lighting and title readability pass */
 .hero{isolation:isolate}
-.hero::before{content:"";position:absolute;z-index:0;inset:-35% -20%;pointer-events:none;background:linear-gradient(112deg,transparent 34%,rgba(255,255,255,0) 42%,rgba(255,255,255,.76) 49%,rgba(110,190,255,.25) 53%,transparent 62%);transform:translateX(-70%) rotate(-7deg);animation:heroLightPass 8s ease-in-out infinite}
 .hero .hero-copy h1{position:relative;isolation:isolate;overflow:hidden;padding:2px 0 5px!important;color:#101b3b!important;background:linear-gradient(105deg,#101b3b 0%,#101b3b 35%,#1559d6 49%,#7138e8 58%,#101b3b 73%,#101b3b 100%);background-size:230% 100%;background-position:0% 50%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 1px 0 rgba(255,255,255,.18)!important;animation:titleLightSweep 7s ease-in-out infinite}
-.hero .hero-copy h1::after{content:"";position:absolute;z-index:2;top:-15%;bottom:-15%;left:-42%;width:23%;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.94),rgba(165,213,255,.62),transparent);filter:blur(2px);transform:skewX(-19deg);animation:titleBeam 5.8s ease-in-out infinite}
+.hero .hero-copy h1::after{content:"";position:absolute;z-index:2;top:0;bottom:0;left:-38%;width:30%;pointer-events:none;background:linear-gradient(100deg,transparent 0%,rgba(255,255,255,.12) 25%,rgba(255,255,255,.98) 48%,rgba(130,205,255,.72) 58%,transparent 100%);filter:blur(1.5px);transform:skewX(-18deg);animation:titleBeam 5.2s cubic-bezier(.45,0,.35,1) infinite}
 .hero-art svg{animation:heroArtFloat 6s ease-in-out infinite;transform-origin:50% 55%}
 .hero-art:before{animation:heroGlowPulse 5s ease-in-out infinite}
-@keyframes heroLightPass{0%,12%{transform:translateX(-80%) rotate(-7deg);opacity:0}24%{opacity:.8}55%,100%{transform:translateX(85%) rotate(-7deg);opacity:0}}
+24%{opacity:.8}55%,100%{transform:translateX(85%) rotate(-7deg);opacity:0}}
 @keyframes titleLightSweep{0%,15%{background-position:0% 50%}65%,100%{background-position:100% 50%}}
-@keyframes titleBeam{0%,22%{left:-42%;opacity:0}32%{opacity:.95}58%,100%{left:125%;opacity:0}}
+@keyframes titleBeam{0%,18%{left:-38%;opacity:0}26%{opacity:1}72%,100%{left:112%;opacity:0}}32%{opacity:.95}58%,100%{left:125%;opacity:0}}
 @keyframes heroArtFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @keyframes heroGlowPulse{0%,100%{opacity:.58;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
-@media(prefers-reduced-motion:reduce){.hero::before,.hero .hero-copy h1,.hero .hero-copy h1::after,.hero-art svg,.hero-art:before{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){.hero .hero-copy h1,.hero .hero-copy h1::after,.hero-art svg,.hero-art:before{animation:none!important;transition:none!important}}}
