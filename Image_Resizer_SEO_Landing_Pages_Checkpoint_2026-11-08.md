@@ -56,3 +56,46 @@ Status: IN PROGRESS — feature branch only; not merged or live.
 - Merge commit: `4bc34eb394f773c9909ee4a13ccbda678a89b7d4`.
 - Source verification: all six HTML pages reference both stylesheets; premium stylesheet brace counts match (71 opening and 71 closing); Service Worker precache contains the new stylesheet.
 - GitHub Pages deployment for merge commit was queued at last check: https://github.com/barsulkhan/InfoJano/actions/runs/42572363119. Do not call the new design live until this run succeeds and the deployed pages are visually checked on mobile.
+
+
+## 9 November 2026 — Advanced Image Resizer feature expansion (PR #24)
+- User explicitly approved building the remaining Image Resizer feature gaps identified in the 2 November research and 8 November checkpoint.
+- Existing modes retained: custom pixel dimensions, preset selection, percentage resizing, aspect-ratio lock, JPG/PNG/WebP output, quality control and local browser processing.
+- Added an advanced control panel in `image-resizer.html` via dedicated assets `image-resizer-advanced.js` and `image-resizer-advanced.css`.
+- Physical-size calculator supports px/cm/mm/in inputs and selectable DPI, converting physical dimensions into pixel width/height.
+- JPEG export writes JFIF density metadata and PNG export writes pHYs density metadata. WebP export uses pixel dimensions only; do not claim embedded DPI metadata for WebP.
+- Added best-effort target-KB sizing for JPEG/WebP by searching output quality. Exact KB cannot be guaranteed for all images; PNG quality search is not supported.
+- Added centred crop ratios (1:1, 4:3, 16:9, 3:4, 2:3, 3:2) and reset-to-original control.
+- Added batch processing for up to 30 images with individual download links; ZIP bundling is not included in this pass.
+- Added both new assets to Service Worker precache and advanced cache from `infojano-v261` to `infojano-v262`.
+- JavaScript syntax validation passed. Source checks confirm both assets are linked from the main Image Resizer and precached by Service Worker.
+- PR #24: https://github.com/barsulkhan/InfoJano/pull/24 — open, not merged at this checkpoint. Head commit: `df1761c2c2dbe1674dd9498034f5147363d77681`.
+- Still required before calling production-ready: real browser/device tests for cm/mm/in and DPI metadata, crop/reset behaviour, target-KB outcomes, batch downloads and regression checks for the existing modes. GitHub Pages deployment is not triggered until merge.
+- The tool does not guarantee official passport/exam photo acceptance; authority-specific rules and photo composition still require user verification.
+
+
+## 9 November 2026 — Image Resizer feature audit and QA follow-up
+- User asked to proceed with completing the Image Resizer work. The six SEO landing pages are separate page assets and are not counted as tool features.
+- Feature inventory grouped from the existing main tool UI and PR #24 additions: existing core workflow groups include upload, custom pixel dimensions, preset sizes, percentage resizing, aspect-ratio lock, JPG/PNG/WebP output, quality control, and preview/download. PR #24 adds physical size + DPI, best-effort target KB, centred crop/reset, and batch resize (up to 30 images, individual downloads; no ZIP).
+- This is a practical grouped inventory (12 groups), not a claim that each group is a single low-level control.
+- PR #24 remains open and unmerged. Current observed head before this note: e60cf55d622bc4c4ad455c0b1aec01fdd9315ce5.
+- QA code review found and fixed two edge cases in the PR branch: final target-KB success now checks the final blob after DPI metadata is embedded; batch mode now validates the target-KB range; crop-reset preview object URLs are cleaned up on replacement/unload.
+- Follow-up commit: 91d58122934f3732692dd97e0a997878e72603d8 on feature/image-resizer-advanced-toolkit.
+- Cloudflare Workers Build check on the prior PR head completed successfully, but it is the shortlink Worker build and is not evidence that GitHub Pages or the Image Resizer has deployed.
+- Still required: real browser/Android functional tests for physical unit conversion, JPEG/PNG DPI metadata, crop/reset, target-size accuracy, batch downloads, and regression of existing modes. Do not merge or call live without user approval and deployment verification.
+
+
+## 9 November 2026 — Latest QA correction
+- Fixed two literal `\\n` text sequences in the main Image Resizer HTML around the new CSS/JS includes. They are now normal line breaks.
+- Latest verified branch commit: `7ecd5f113e69c620a546c64ee6459ad87fd77555`.
+- Confirmed advanced CSS/JS links, Service Worker cache `infojano-v262`, and both assets in precache.
+- Cloudflare Workers Build check passed for the shortlink Worker only; no Pages deploy or browser test is implied.
+- PR #24 remains open/unmerged; branch is 12 commits ahead, 0 behind main. Android/browser functional QA and explicit merge approval are still required.
+
+
+## 9 November 2026 — SEO hero synchronization status
+- All six Image Resizer SEO pages in the PR branch now share the main Image Resizer premium hero markup/class: `ij-full-hero ij-resizer-hero`.
+- Page-specific titles and descriptions remain distinct. Original page CTA links were restored below the shared hero.
+- Shared styles appended to existing `image-resizer-premium.css` (already precached); Service Worker cache bumped to `infojano-v263`.
+- Automated repository-content checks confirm all six pages use the shared hero and no longer use the old `.hero` header.
+- PR #24 remains open/unmerged; these edits are not live. Real mobile/desktop browser visual QA still required.
