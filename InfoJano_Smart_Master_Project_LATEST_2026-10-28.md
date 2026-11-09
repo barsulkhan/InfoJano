@@ -2686,3 +2686,5 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Source-level fixes are committed and merged, but real Windows/Android download testing remains outstanding. User should test the live tool after the exact Pages run succeeds. If the issue persists, request the actual downloaded file to inspect its bytes/MIME/extension.
 - Tool URL: https://barsulkhan.github.io/InfoJano/image-resizer.html
 - Next action: check Pages run `42621364189` until completed; verify conclusion is success for the exact merge SHA; then ask user to test JPG Full HD download and open it in Windows Photos/Paint. Also test Advanced Studio remains collapsed by default and all custom tools work when expanded.
+
+- Deployment follow-up verification: GitHub Pages run `42621364189` for exact merge SHA `e186445768f21612210551dc0e312969b68229d8` completed with conclusion `success` (9 Nov 2026, 12:58 UTC). The merged fix is now deployed to GitHub Pages. Real user-device download verification is still pending.
