@@ -2688,3 +2688,17 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Next action: check Pages run `42621364189` until completed; verify conclusion is success for the exact merge SHA; then ask user to test JPG Full HD download and open it in Windows Photos/Paint. Also test Advanced Studio remains collapsed by default and all custom tools work when expanded.
 
 - Deployment follow-up verification: GitHub Pages run `42621364189` for exact merge SHA `e186445768f21612210551dc0e312969b68229d8` completed with conclusion `success` (9 Nov 2026, 12:58 UTC). The merged fix is now deployed to GitHub Pages. Real user-device download verification is still pending.
+
+
+## 9 November 2026 — Unified Download Button fix (PR #27)
+- User shared a screenshot where Advanced Image Studio showed “Advanced result ready” and output status, but the download action was not visually obvious/consistently styled.
+- Audited the shared download anchor #download used by both standard resizer and Advanced Image Studio.
+- Updated image-resizer.html with an explicit CSS rule for the shared download anchor: full-width flex control, consistent teal gradient, readable white label, minimum 58px height, focus outline, and hidden-state handling.
+- Updated image-resizer-advanced.js setDownload() so Advanced Studio applies the shared action/download classes, sets the same “⬇ Download Resized Image” label, makes the shared link visible, and provides an accessible label.
+- Bumped Service Worker cache from infojano-v264 to infojano-v265.
+- PR #27: https://github.com/barsulkhan/InfoJano/pull/27 — MERGED.
+- Merge commit: 3682eaa0c5b6f06129555c2132b4fb2191214b39.
+- GitHub Pages workflow for the exact merge commit: run 42622732118 was observed IN PROGRESS at the last check (9 Nov 2026, 13:07 UTC). Do not claim the button fix is live until this exact Pages run completes successfully.
+- The fix applies one shared download control to standard Resize and Advanced Image Studio output. Batch Resize continues to use individual per-file download links in its batch results list.
+- Real browser/Android testing remains outstanding. After Pages deployment succeeds, test both standard resize and Advanced Studio resize and confirm the same prominent green/teal Download Resized Image button appears and downloads a valid file.
+- Tool URL: https://barsulkhan.github.io/InfoJano/image-resizer.html
