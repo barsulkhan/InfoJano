@@ -2943,3 +2943,15 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 
 - FOLLOW-UP deployment status check: GitHub Pages run #1960 completed successfully (`conclusion=success`) for merge commit `6c21acee377e4af22a8f74d04c272c60ef7c27b7`. Run: https://github.com/barsulkhan/InfoJano/actions/runs/42662313263.
 - Live endpoint fetch through the available web viewer was unavailable, so direct HTTP publication of `robots.txt` and sitemap URLs is not independently confirmed here. GitHub Pages build/deployment workflow success is confirmed; keep direct endpoint/Google Search Console verification as the next check.
+
+
+## AGE CALCULATOR — PREMIUM LOWER-SECTIONS DESIGN UPDATE — 9 NOVEMBER 2026
+- User shared an Android screenshot and explicitly requested a more premium visual treatment for the content below the Age Calculator hero.
+- Scope is limited to below-hero presentation: historical-events panel, informational content cards, Related Apps cards, practical example guide, and FAQ accordion. Approved hero banner and calculator functionality are not to be changed.
+- Created isolated branch from current main: `design/age-page-premium-lower-sections`.
+- Updated only `age.html` CSS (107 added lines; no deletions). Added refined card surfaces, softer gradients, improved shadows/borders, polished history event cards, elevated Related Apps cards, clearer practical-guide styling, and premium FAQ accordion treatments with mobile adjustments and reduced-motion support.
+- No HTML content, headings, links, IDs, SEO schema, calculator JavaScript, input/output behavior, homepage, or Service Worker was changed.
+- Commit: `14aa307cd2483706fea3b65e010fa1fe37960470`.
+- Branch comparison against main: 1 commit ahead, 0 behind; only `age.html` modified (107 additions, 0 deletions).
+- This is a source-level CSS change only. It has not been browser-rendered or tested on Android/desktop yet. It is not deployed and must not be described as live.
+- PR review/merge status: awaiting PR creation and user review. Do not merge without explicit user approval.

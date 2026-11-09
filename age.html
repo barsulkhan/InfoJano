@@ -224,6 +224,113 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
 .ij-age-main section[aria-labelledby="related-tools-title"]>div>a>span:nth-of-type(2){color:#5c7090!important}
 .ij-age-main section[aria-labelledby="related-tools-title"]>div>a>span:last-child{color:#1765c7!important}
 @media(prefers-reduced-motion:reduce){.ij-age-main section[aria-labelledby="related-tools-title"]>div>a{transition:none!important}}
+
+/* 2026-11-09: Premium finish for Age Calculator content below the approved hero.
+   Visual-only overrides: hero, calculator logic, IDs, copy, SEO and links remain unchanged. */
+.ij-age-main > section:not(.ij-age-hero){
+  position:relative!important;
+  border:1px solid rgba(191,211,244,.92)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,#ffffff 0%,#f8fbff 58%,#f3f7ff 100%)!important;
+  box-shadow:0 12px 30px rgba(28,61,116,.085),inset 0 1px 0 rgba(255,255,255,.95)!important;
+}
+.ij-age-main > section:not(.ij-age-hero):not([aria-labelledby="related-tools-title"]):not(.ij-practical-guide):not(#ij-seo-faq){
+  padding:clamp(20px,2.4vw,30px)!important;
+}
+.ij-age-main > section:not(.ij-age-hero) > h2,
+.ij-age-main .history-heading h2{
+  color:#153767!important;
+  font-weight:850!important;
+  letter-spacing:-.45px!important;
+}
+.ij-age-main > section:not(.ij-age-hero) > h2:after{
+  content:"";display:block;width:54px;height:3px;margin-top:10px;border-radius:9px;
+  background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+}
+.ij-age-main .history-card{
+  margin-top:22px!important;padding:22px!important;
+  border:1px solid #b9d9fb!important;border-radius:22px!important;
+  background:radial-gradient(ellipse at 100% 0%,rgba(125,211,252,.2),transparent 42%),linear-gradient(145deg,#fff,#f2f8ff)!important;
+  box-shadow:0 12px 28px rgba(30,91,164,.11)!important;
+}
+.ij-age-main .history-icon{
+  color:#fff!important;background:linear-gradient(135deg,#0ea5e9,#2563eb 58%,#6366f1)!important;
+  box-shadow:0 7px 16px rgba(37,99,235,.25)!important;
+}
+.ij-age-main .history-event{
+  padding:15px 16px!important;border:1px solid #dbeafe!important;border-radius:15px!important;
+  background:linear-gradient(120deg,#fff,#f7fbff)!important;
+  box-shadow:0 5px 14px rgba(30,64,120,.055)!important;
+}
+.ij-age-main .history-event-featured{
+  border:1px solid #f9a8d4!important;
+  background:linear-gradient(120deg,#fff1f2,#fdf2f8 58%,#fff7ed)!important;
+  box-shadow:0 8px 20px rgba(236,72,153,.10)!important;
+}
+.ij-age-main .history-event-year{
+  padding:4px 10px!important;background:linear-gradient(100deg,#dbeafe,#ede9fe)!important;
+  color:#3155a4!important;font-weight:850!important;
+}
+.ij-age-main section[aria-labelledby="related-tools-title"]{
+  padding:23px!important;border:1px solid #c7dafa!important;border-radius:24px!important;
+  background:radial-gradient(ellipse at 0% 0%,rgba(34,211,238,.13),transparent 42%),linear-gradient(140deg,#f1f8ff,#fff 58%,#f5f3ff)!important;
+  box-shadow:0 12px 28px rgba(35,76,145,.09)!important;
+}
+.ij-age-main section[aria-labelledby="related-tools-title"]>div>a{
+  min-height:148px!important;padding:17px!important;border-radius:18px!important;
+  background:linear-gradient(145deg,#fff,#f5f9ff)!important;
+  box-shadow:0 7px 18px rgba(35,76,145,.075)!important;
+}
+.ij-age-main .ij-practical-guide{
+  max-width:none!important;margin:24px 0!important;padding:clamp(22px,2.5vw,32px)!important;
+  border:1px solid #c9d9f4!important;border-radius:24px!important;
+  background:radial-gradient(ellipse at 100% 0%,rgba(196,181,253,.18),transparent 40%),linear-gradient(145deg,#fff,#f7f8ff)!important;
+  box-shadow:0 12px 28px rgba(47,57,116,.085)!important;
+}
+.ij-age-main .ij-practical-guide h2,
+.ij-age-main #ij-seo-faq h2{color:#17345e!important;font-weight:850!important;letter-spacing:-.5px!important}
+.ij-age-main .ij-practical-guide h3{display:flex;align-items:center;gap:9px;color:#294b82!important}
+.ij-age-main .ij-practical-guide h3:before{
+  content:"✓";display:grid;place-items:center;width:26px;height:26px;flex:0 0 26px;
+  border-radius:9px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#047857;font-size:14px;
+}
+.ij-age-main .ij-practical-guide li{padding:4px 0;color:#4c607c}
+.ij-age-main #ij-seo-faq{
+  max-width:none!important;margin:24px 0!important;padding:clamp(20px,2.4vw,30px)!important;
+  border:1px solid #c7d2fe!important;border-radius:24px!important;
+  background:radial-gradient(ellipse at 100% 0%,rgba(165,180,252,.2),transparent 42%),linear-gradient(145deg,#f7f7ff,#fff 55%,#f2f8ff)!important;
+  box-shadow:0 12px 28px rgba(67,56,145,.09)!important;
+}
+.ij-age-main #ij-seo-faq details{
+  margin:10px 0!important;padding:0!important;overflow:hidden;
+  border:1px solid #dbe4fa!important;border-radius:14px!important;
+  background:linear-gradient(110deg,#fff,#f8faff)!important;
+  box-shadow:0 4px 12px rgba(67,56,145,.045)!important;
+}
+.ij-age-main #ij-seo-faq details summary{
+  position:relative;padding:15px 42px 15px 16px!important;list-style:none!important;
+  color:#294574!important;font-weight:800!important;line-height:1.5;cursor:pointer;
+}
+.ij-age-main #ij-seo-faq details summary::-webkit-details-marker{display:none}
+.ij-age-main #ij-seo-faq details summary:after{
+  content:"+";position:absolute;right:15px;top:50%;transform:translateY(-50%);
+  display:grid;place-items:center;width:24px;height:24px;border-radius:8px;
+  background:#e8edff;color:#5145bd;font-size:18px;font-weight:700;
+}
+.ij-age-main #ij-seo-faq details[open] summary:after{content:"−";background:#dbeafe;color:#1d4ed8}
+.ij-age-main #ij-seo-faq details p{padding:0 16px 15px!important;margin:0!important;color:#5a6d87!important;line-height:1.75}
+@media(max-width:600px){
+ .ij-age-main > section:not(.ij-age-hero){border-radius:20px!important}
+ .ij-age-main .history-card{padding:17px!important;border-radius:19px!important}
+ .ij-age-main section[aria-labelledby="related-tools-title"]{padding:18px!important}
+ .ij-age-main section[aria-labelledby="related-tools-title"]>div>a{min-height:136px!important;padding:13px!important}
+ .ij-age-main .ij-practical-guide,.ij-age-main #ij-seo-faq{padding:19px 17px!important;border-radius:20px!important}
+ .ij-age-main #ij-seo-faq details summary{padding:13px 40px 13px 13px!important;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .ij-age-main section[aria-labelledby="related-tools-title"]>div>a{transition:none!important}
+}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
 
