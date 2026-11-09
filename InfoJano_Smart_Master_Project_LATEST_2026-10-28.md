@@ -3126,3 +3126,12 @@ Decision pending user approval. No branch, PR, code edits, merge or deployment c
 - Each page retains its existing SEO head metadata, canonical URL, Open Graph/Twitter tags and WebPage JSON-LD; page-specific copy/FAQs/feature labels are tailored to the search intent. Calculator CTA links to date-difference.html. Related links point to the four SEO pages.
 - No calculator logic, date-difference.html, homepage, Age Calculator, ID Card Print Studio, sitemap or live main branch was changed.
 - Current work is on the isolated branch only and is not live/deployed. Next: validate markup and responsive CSS, create a PR for user review, then merge/deploy only with explicit user approval. After merge, verify GitHub Pages workflow before claiming live.
+
+
+## DATE SEO MOCKUP MATCH — HERO ARTWORK REVISION (9 NOV 2026)
+- User clarified the first generated full-page business-days design is the exact visual reference. Work must use components realistically implementable in this static HTML/CSS GitHub Pages site; no fake product functionality or decorative artwork that cannot be implemented.
+- Revised all four SEO landing pages on `design/date-seo-exact-premium-mockup` with inline SVG hero illustration: two date-calendar cards on left (existing), a detailed right-side desk calendar with green checked dates, circular clock and potted plant; SVG is embedded in each page (no external image asset dependency).
+- Verified each page contains the SVG calendar/check/clock/plant illustration, four feature cards, four numbered steps, two or more information cards, four FAQ details, exactly one H1, canonical URL, mobile breakpoint and CTA to existing `date-difference.html`.
+- Files: `business-days-calculator.html`, `date-duration-calculator.html`, `add-subtract-date-calculator.html`, `days-between-dates-calculator.html`.
+- Existing SEO metadata and WebPage JSON-LD retained. No calculator logic or protected pages modified.
+- PR #38 remains unmerged. These updates are on the PR branch only; they are not live. Need explicit user approval to merge, then verify GitHub Pages deployment before sharing live URLs. Do not claim pixel-perfect browser parity until a browser/mobile visual check is completed.
