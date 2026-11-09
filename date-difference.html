@@ -444,20 +444,6 @@ function shareDateResult(){const a=document.getElementById('startText').value,b=
 function swapDates(){const a=document.getElementById('startText'),b=document.getElementById('endText');const t=a.value;a.value=b.value;b.value=t;calculateDifference();}
 function resetDates(){document.getElementById('startText').value='';document.getElementById('endText').value='';document.getElementById('result').textContent='Choose two dates to calculate the difference.';['dd-total','dd-years','dd-months','dd-weeks','dd-days'].forEach(id=>document.getElementById(id).textContent='—');}
 function setQuickRange(days){const end=new Date();const start=new Date(end.getTime()-days*86400000);const fmt=d=>String(d.getDate()).padStart(2,'0')+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+d.getFullYear();document.getElementById('startText').value=fmt(start);document.getElementById('endText').value=fmt(end);calculateDifference();}
-function calculateDifference(){
-const a=getDateValue('startText');
-const b=getDateValue('endText');
-const out=document.getElementById('result');
-if(!a||!b){
-out.textContent='Enter both dates as DD-MM-YYYY (day/month/year). Check that each date is valid.';
-return;
-}
-const days=Math.abs(Math.round((b.date-a.date)/86400000));
-const weeks=Math.floor(days/7);
-const years=Math.floor(days/365.2425);
-const months=Math.floor(days/30.4369);
-out.innerHTML='Difference: <strong>'+days.toLocaleString('en-US')+' days</strong><br>Weeks: <strong>'+weeks+'</strong><br>Approximate months: <strong>'+months+'</strong><br>Approximate years: <strong>'+years+'</strong>';document.getElementById('dd-total').textContent=days.toLocaleString('en-US');document.getElementById('dd-years').textContent=years;document.getElementById('dd-months').textContent=months;document.getElementById('dd-weeks').textContent=weeks;document.getElementById('dd-days').textContent=days%7;document.getElementById('dd-total').textContent=days.toLocaleString('en-US');document.getElementById('dd-years').textContent=years;document.getElementById('dd-months').textContent=months;document.getElementById('dd-weeks').textContent=weeks;document.getElementById('dd-days').textContent=days%7;
-}
 </script>
 
 <script>
@@ -520,7 +506,7 @@ window.resetDates=function(){
  ["inclusiveMode","businessMode","excludeSaturday"].forEach(id=>$(id).checked=false);
  $("result").style.display="none";$("result").textContent="Choose two dates to calculate the difference.";
  ["dd-total","dd-years","dd-months","dd-days","dd-weeks","dd-hours","dd-minutes","dd-seconds"].forEach(id=>$(id).textContent="—");
- $("countdownResult").textContent="Select a target date to start.";
+ $("countdownResult").textContent="Select a target date to start.";$("addBaseDate").value=dateToIso(new Date());["addYears","addMonths","addWeeks","addDays"].forEach(id=>$(id).value="0");$("addOperation").value="add";$("addDateResult").textContent="Choose a date and enter a duration.";
 };
 document.addEventListener("DOMContentLoaded",function(){const d=new Date();$("addBaseDate").value=dateToIso(d)});
 })();
