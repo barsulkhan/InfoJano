@@ -3103,3 +3103,17 @@ Decision pending user approval. No branch, PR, code edits, merge or deployment c
 - Keyword research: US estimates from KWS Trends report updated 2026-11-07 show “business days calculator” approx. 24,000 average monthly US searches (Google Ads Keyword Planner display 40,500); related “calculate business days” approx. 7,300, “calculator for business days” approx. 3,200, and “business working days calculator” approx. 2,900. Search intent and competitor review also supports separate “days between dates”, “date duration”, and “add/subtract date” pages. All third-party volume figures are estimates, not InfoJano Search Console data.
 - Research sources: https://www.kwstrends.com/keywords/us/business-days-calculator ; https://www.timeanddate.com/date/duration.php ; https://www.calculator.net/date-calculator.html
 - Pending: validate generated HTML/metadata/links, check sitemap URL count, review diff, then open PR. No merge or live deployment authorized.
+
+
+## DATE SEO PAGES — VISUAL CORRECTION PASS — 9 NOVEMBER 2026
+- Follow-up from user's mobile screenshot review: the four Date Difference SEO pages did not visually match the approved live date-difference.html reference closely enough, and the lower SEO information sections needed a more polished layout.
+- New isolated branch: design/date-seo-pages-reference-match (based on current main).
+- Updated only the CSS in these four SEO pages; no calculator logic, page copy, metadata, sitemap, homepage, Age Calculator, ID Card Print Studio, or main Date Difference Calculator file was changed:
+  - days-between-dates-calculator.html
+  - business-days-calculator.html
+  - date-duration-calculator.html
+  - add-subtract-date-calculator.html
+- Banner pass: stronger blue-to-purple gradient, cyan/neon edge, pink calendar headers, two calendar cards with green arrow, centered/compact title treatment, colored benefit pills, matching translucent clock tile, and responsive three-part mobile composition.
+- Lower SEO content pass: refined white cards, gradient accent edge, clearer heading hierarchy, step cards with numbered markers, improved paragraph rhythm, FAQ accordion cards with plus/minus indicators, stronger CTA buttons, and related-page link chips.
+- This branch is a visual-only correction to PR #36's merged page content. It is not merged or deployed. Next: validate the four files and mobile breakpoints, open a separate PR for user review, and wait for explicit approval before merge.
+- PR #36 remains merged to main (squash commit 4310ad0adeaba4c0e46db9f08a6aed518b26c801); Pages deployment for that merge had not yet been confirmed at the time of the prior status check.
