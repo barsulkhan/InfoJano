@@ -727,7 +727,7 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 .preset-section .preset:hover .picon{transform:translateY(-2px) scale(1.04);box-shadow:0 8px 17px #173b6735,inset 0 1px 2px #ffffff70!important}
 .preset-section .picon{transition:transform .2s ease,box-shadow .2s ease}
 @media(prefers-reduced-motion:reduce){.preset-section .picon{transition:none!important}}
-</style><link rel="stylesheet" href="image-resizer-advanced.css?v=1">
+\n.preset.selected{position:relative;border:2px solid #22c7ff!important;background:linear-gradient(135deg,#e8f8ff,#e9e5ff)!important;box-shadow:0 0 0 3px #24b9ff35,0 8px 22px #1674e633!important;transform:translateY(-1px)}.preset.selected:after{content:'✓ Selected';display:inline-block;margin-top:8px;padding:4px 9px;border-radius:99px;background:#075ee5;color:#fff;font-size:11px;font-weight:850;letter-spacing:.01em}.preset.selected .picon{color:#075ee5!important}\n</style><link rel="stylesheet" href="image-resizer-advanced.css?v=1">
 </head><body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading Image Resize and Converter"><div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">↔</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">Image Resize &amp; Converter</p><p class="ij-loader-subtitle">Getting your image tools ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div></div>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
@@ -765,7 +765,7 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 <div class="mode-panel" id="presetPanel" hidden><div class="info">⭐ Choose any Popular Size below. Its dimensions will be filled in automatically.</div></div>
 <div class="mode-panel" id="percentPanel" hidden><div class="field"><label for="percent">Resize percentage</label><input id="percent" type="number" min="1" max="500" value="50" inputmode="numeric"><small>Example: 50 makes the image half its original size.</small></div></div>
 <label class="checkline"><input id="ratio" type="checkbox" checked> Keep original aspect ratio (recommended)</label>
-<div class="settings-grid"><div class="setting"><label for="format">▣ Output Format</label><select id="format"><option value="image/jpeg">JPG (Best for photos)</option><option value="image/png">PNG (Transparency)</option><option value="image/webp">WebP (Smaller file)</option></select></div><div class="setting"><label for="quality">✦ Image Quality</label><div class="quality-row"><input id="quality" type="range" min="40" max="100" value="90"><output class="quality-value" id="qualityValue">90%</output></div></div></div>
+<div class="settings-grid"><div class="setting"><label for="format">▣ Output Format</label><select id="format"><option value="image/jpeg">JPG (Best for photos)</option><option value="image/png">PNG (Transparency)</option><option value="image/webp">WebP (Smaller file)</option></select></div><div class="setting"><label for="quality">✦ Image Quality</label><div class="quality-row"><input id="quality" type="range" min="40" max="100" value="94"><output class="quality-value" id="qualityValue">94%</output></div></div></div>
 <div class="info"><span>ⓘ</span><span>Your image is processed in your browser. It is not uploaded to InfoJano. JPG, PNG and WebP are supported.</span></div>
 <button class="action-btn" id="resizeBtn" type="button" disabled><span class="btn-icon" aria-hidden="true">↔</span> Resize Image</button><div class="download-state" id="downloadState" hidden role="status" aria-live="polite"><span class="spin-icon" aria-hidden="true"></span><span id="downloadStateText">Preparing your resized image…</span></div><a class="action-btn download-btn" id="download" href="#" hidden><span aria-hidden="true">⬇</span> Download Resized Image</a><div class="status" id="status" role="status" aria-live="polite">Choose an image to begin.</div></div></section>
 <section class="preset-section" id="popularSizes"><div class="section-heading"><span class="section-icon">★</span><div><h2>Popular Sizes</h2><span style="font-size:12px;color:#53688f">Photo, Social Media, Web and Print</span></div><p>Tap once to set the size</p></div>
@@ -793,7 +793,7 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 <script>
 (function(){
 'use strict';
-let sourceImage=null,originalWidth=0,originalHeight=0,previewUrl=null,resultUrl=null;
+let sourceImage=null,originalWidth=0,originalHeight=0,previewUrl=null,resultUrl=null,activePreset=null;
 const $=id=>document.getElementById(id),fileInput=$('file'),dropzone=$('dropzone'),preview=$('preview'),empty=$('previewEmpty'),width=$('width'),height=$('height'),ratio=$('ratio'),status=$('status'),download=$('download'),downloadState=$('downloadState'),downloadStateText=$('downloadStateText'),resizeBtn=$('resizeBtn'),format=$('format'),quality=$('quality');
 function say(t){status.textContent=t}
 function clearResult(){if(resultUrl){URL.revokeObjectURL(resultUrl);resultUrl=null}download.hidden=true;download.removeAttribute('href');downloadState.hidden=true;}
@@ -802,7 +802,7 @@ function loadFile(file){
  if(!['image/jpeg','image/png','image/webp'].includes(file.type)){say('Please choose a JPG, PNG or WebP image.');return}
  if(file.size>10*1024*1024){say('This image is larger than 10 MB. Please choose a smaller image.');return}
  const url=URL.createObjectURL(file),img=new Image();
- img.onload=()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=url;sourceImage=img;originalWidth=img.naturalWidth;originalHeight=img.naturalHeight;preview.src=url;preview.hidden=false;empty.hidden=true;$('originalMeta').textContent='Original: '+originalWidth+' × '+originalHeight+' px';$('fileMeta').textContent='File size: '+(file.size/1024).toFixed(1)+' KB';width.value=originalWidth;height.value=originalHeight;resizeBtn.disabled=false;clearBtn.disabled=false;clearResult();say('Image ready. Choose a size and tap Resize Image.')};
+ img.onload=()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=url;sourceImage=img;originalWidth=img.naturalWidth;originalHeight=img.naturalHeight;preview.src=url;preview.hidden=false;empty.hidden=true;$('originalMeta').textContent='Original: '+originalWidth+' × '+originalHeight+' px';$('fileMeta').textContent='File size: '+(file.size/1024).toFixed(1)+' KB';if(activePreset){width.value=activePreset.dataset.w;height.value=activePreset.dataset.h;ratio.checked=false;say(activePreset.querySelector('strong').textContent+' preset applied to uploaded image: '+activePreset.dataset.w+' × '+activePreset.dataset.h+' px.')}else{width.value=originalWidth;height.value=originalHeight;say('Image ready. Choose a size and tap Resize Image.')}resizeBtn.disabled=false;clearBtn.disabled=false;clearResult();};
  img.onerror=()=>{URL.revokeObjectURL(url);say('Could not open this image. Please try another file.')};img.src=url;
 }
 fileInput.addEventListener('change',()=>loadFile(fileInput.files&&fileInput.files[0]));
@@ -814,7 +814,13 @@ function fromHeight(){if(sourceImage&&ratio.checked&&Number(height.value)>0)widt
 width.addEventListener('input',()=>{fromWidth();clearResult()});height.addEventListener('input',()=>{fromHeight();clearResult()});ratio.addEventListener('change',()=>{if(ratio.checked)fromWidth()});
 quality.addEventListener('input',()=> $('qualityValue').textContent=quality.value+'%');
 document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>{let a=t===tab;t.classList.toggle('active',a);t.setAttribute('aria-selected',String(a))});['custom','preset','percent'].forEach(m=>$(m+'Panel').hidden=m!==tab.dataset.mode)}));
-document.querySelectorAll('.preset').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.custom){document.querySelector('[data-mode="custom"]').click();width.focus();say('Enter your own width and height.');return}width.value=btn.dataset.w;height.value=btn.dataset.h;document.querySelector('[data-mode="preset"]').click();ratio.checked=false;clearResult();say(btn.querySelector('strong').textContent+' selected: '+btn.dataset.w+' × '+btn.dataset.h+' pixels.')}));
+document.querySelectorAll('.preset').forEach(btn=>btn.addEventListener('click',()=>{
+ if(btn.dataset.custom){activePreset=null;document.querySelectorAll('.preset').forEach(p=>{p.classList.remove('selected');p.setAttribute('aria-pressed','false')});document.querySelector('[data-mode="custom"]').click();width.focus();say('Enter your own width and height.');return}
+ activePreset=btn;
+ document.querySelectorAll('.preset').forEach(p=>{const selected=p===btn;p.classList.toggle('selected',selected);p.setAttribute('aria-pressed',String(selected))});
+ width.value=btn.dataset.w;height.value=btn.dataset.h;document.querySelector('[data-mode="preset"]').click();ratio.checked=false;clearResult();
+ say(btn.querySelector('strong').textContent+' selected: '+btn.dataset.w+' × '+btn.dataset.h+' pixels.');
+}));
 // Support focused entry from the Image Resizer SEO landing pages.
 const launchParams=new URLSearchParams(window.location.search);
 const launchMode=launchParams.get('mode');
