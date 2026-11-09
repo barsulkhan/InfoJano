@@ -102,3 +102,10 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 .ij-rz-art,.ij-rz-copy,.ij-rz-side{z-index:1!important}
 @media(prefers-reduced-motion:reduce){.ij-full-hero.ij-resizer-hero:before{animation:none!important}}
 
+
+
+/* SEO hero action links retained below the shared premium banner */
+.ij-seo-hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 auto 20px}
+.ij-seo-hero-actions a{display:inline-flex;align-items:center;gap:8px;padding:11px 17px;border-radius:12px;background:linear-gradient(135deg,#1766ee,#5837d9);color:#fff!important;text-decoration:none!important;font-weight:800;font-size:13px;box-shadow:0 7px 18px #2455bd2b}
+.ij-seo-hero-actions a.secondary{background:#fff;color:#2451a3!important;border:1px solid #d6e4fa;box-shadow:0 4px 12px #1b3d700d}
+@media(max-width:760px){.ij-seo-hero-actions{gap:7px}.ij-seo-hero-actions a{font-size:11px;padding:9px 12px}}
