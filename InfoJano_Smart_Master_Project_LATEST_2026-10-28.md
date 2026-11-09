@@ -3008,3 +3008,11 @@ Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING
 - The separate APK build run #304 was also queued: https://github.com/barsulkhan/InfoJano/actions/runs/42666421607. It is not the Pages deployment.
 - Source-level checks already recorded in the PR: five pages each have one H1, canonical URL, parseable JSON-LD, no duplicate IDs, and checked local links with no missing targets. No browser-rendered or Android live test is claimed.
 - Next: monitor Pages run #1964 until completed; then verify all five published page URLs and current Service Worker cache source. Keep Google indexing/ranking as a later Search Console validation; merge/deployment alone does not prove indexing or rankings.
+
+
+### PR #34 PAGES WORKFLOW FOLLOW-UP — 9 NOVEMBER 2026
+- The user shared a screenshot showing Pages run #1964 cancelled. Confirmed via GitHub API: run #1964 ended with conclusion `cancelled`, annotation said it was cancelled because a higher-priority Pages build/deployment was waiting. This is workflow concurrency/supersession, not a source-code build failure.
+- A successor Pages run #1964? No: successor run ID is **42666481074**, created for the subsequent main commit `c9db71076bca77eda8107cffd39a56dc80ef3854` (which contains the PR #34 merge plus Master File update).
+- Successor Pages run #42666481074 completed with conclusion **success**. URL: https://github.com/barsulkhan/InfoJano/actions/runs/42666481074
+- Therefore GitHub Pages build/deployment workflow for main containing PR #34 is successful. Original PR merge commit is `08c9c742b50ce663d43a5e23def2f0842c795794`; the successful workflow ran against the later main commit `c9db71076bca77eda8107cffd39a56dc80ef3854`, which includes that merged change and the Master File update.
+- Tried to inspect the five live page URLs directly through available fetch/browser sources, but the hosting endpoints were inaccessible to those inspection tools. Do not claim independent page-by-page live HTML verification. GitHub Pages workflow success is confirmed.
