@@ -320,7 +320,23 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
       </div>
       <p id="dobFormatHelp" style="margin:6px 0 0;font-size:13px;color:#64748b">Manual entry only: DD-MM-YYYY (day/month/year), for example 15-08-1947.</p>
 
-      <button id="calculate" type="button">Calculate My Age</button>
+      
+<section id="ij-age-toolkit" class="card" aria-labelledby="ij-toolkit-title" style="margin-top:18px">
+<h2 id="ij-toolkit-title">Advanced Age & Birthday Toolkit</h2>
+<p>Calculate your age on any date, explore a detailed breakdown, and prepare for your next birthday. Your date stays on this device.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px">
+<label for="ij-reference-date">Calculate age on a date<input id="ij-reference-date" type="date" style="display:block;width:100%;padding:12px;margin-top:6px;border:1px solid #cbd5e1;border-radius:10px"></label>
+<label for="ij-leap-rule">February 29 birthday in non-leap years<select id="ij-leap-rule" style="display:block;width:100%;padding:12px;margin-top:6px;border:1px solid #cbd5e1;border-radius:10px"><option value="feb28">Use February 28</option><option value="mar1">Use March 1</option></select></label>
+</div>
+<button id="ij-calculate-reference" type="button" style="margin-top:12px">Calculate on selected date</button>
+<div id="ij-reference-result" aria-live="polite" style="margin-top:12px"></div>
+<div id="ij-age-actions" style="display:flex;flex-wrap:wrap;gap:9px;margin-top:12px">
+<button id="ij-copy-age" type="button">Copy result</button><button id="ij-share-age" type="button">Share result</button><button id="ij-set-reminder" type="button">Enable birthday reminder</button>
+</div>
+<p id="ij-reminder-status" role="status" style="font-size:13px;color:#475569;margin-top:8px">Birthday reminder works while this page is open. Browser notifications require your permission; background delivery is not guaranteed.</p>
+</section>
+
+<button id="calculate" type="button">Calculate My Age</button>
       <div id="result" class="hidden" aria-live="polite"></div>
       <section id="historyCard" class="history-card hidden" aria-labelledby="historyTitle">
         <div class="history-heading"><span class="history-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span><div><h2 id="historyTitle">What Happened on Your Date?</h2><p id="historySubtitle">Discover events from around the world on your date.</p></div></div>
