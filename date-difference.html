@@ -374,6 +374,20 @@ body{margin:0;background:#edf5ff;color:#10234b;font-family:Inter,Arial,sans-seri
  <div id="result" class="result" style="display:none">Choose two dates to calculate the difference.</div>
 </section>
 </div>
+<section class="dd-card" id="dd-add-subtract" style="margin-top:18px;padding:20px;border:1px solid #d8e5f7;border-radius:17px;background:#fff">
+<h2 style="margin:0 0 5px;color:#17376d">Add or Subtract from a Date</h2>
+<p style="margin:0 0 14px;color:#667994">Find a future or past date by adding or subtracting years, months, weeks or days.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+<label style="font-weight:700;color:#334a6c">Start date<input id="addBaseDate" type="date" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Operation<select id="addOperation" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px;background:#fff"><option value="add">Add</option><option value="subtract">Subtract</option></select></label>
+<label style="font-weight:700;color:#334a6c">Years<input id="addYears" type="number" min="0" max="9999" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Months<input id="addMonths" type="number" min="0" max="120000" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Weeks<input id="addWeeks" type="number" min="0" max="520000" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Days<input id="addDays" type="number" min="0" max="3650000" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+</div>
+<button type="button" onclick="calculateAddedDate()" style="margin-top:14px;width:100%;min-height:44px;border:0;border-radius:10px;background:#315bd4;color:#fff;font-weight:800">Calculate New Date</button>
+<div id="addDateResult" aria-live="polite" style="margin-top:12px;padding:13px;border-radius:10px;background:#f3f7ff;color:#214a9c;font-weight:700">Choose a date and enter a duration.</div>
+</section>
 <section class="dd-card dd-countdown"><h2 style="margin:0 0 5px;color:#17376d">Date Countdown</h2><p style="margin:0 0 12px;color:#667994">Count down to a birthday, anniversary, exam or special event.</p><div class="dd-countdown-row"><label>Choose target date<input type="date" id="countdownDate"></label><button type="button" onclick="calculateCountdown()">Calculate Countdown</button></div><div class="dd-countdown-result" id="countdownResult" aria-live="polite">Select a target date to start.</div></section><section class="dd-card dd-quick-panel"><div class="dd-quick-head"><h2>⚡ Quick Calculate</h2><p>Try these common date differences</p></div><div class="dd-quick-list"><button onclick="quickBirthday()">▦ &nbsp; Today to My Birthday</button><button onclick="quickAgeDays()">♟ &nbsp; My Age in Days</button><button onclick="setQuickRange(0)">☆ &nbsp; This Year So Far</button><button onclick="setQuickRange(30)">▦ &nbsp; Last 30 Days</button></div></section>
 <section class="dd-card dd-about"><div class="dd-about-icon">i</div><div><h2>About Date Difference Calculator</h2><p>This tool helps you find the exact difference between two dates. It shows the result in years, months, weeks and days, along with the total number of days.</p></div></section>
 <section class="dd-card"><div class="dd-related-title"><h2>♧ Related Tools</h2><span>Explore more useful calculators</span></div><div class="dd-related-grid">
@@ -459,6 +473,57 @@ function dateResultText(){return 'Date Difference Calculator – InfoJano\nFrom:
 window.copyDateResult=async function(){const msg=dateResultText();try{await navigator.clipboard.writeText(msg);alert('Result copied to clipboard.')}catch(e){prompt('Copy your result:',msg)}};
 window.printDateResult=function(){window.print()};
 window.shareDateResult=function(){const msg=dateResultText();if(navigator.share)navigator.share({title:'Date Difference – InfoJano',text:msg}).catch(()=>{});else window.copyDateResult()};
+</script>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+function dateToIso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function dateToText(d){return String(d.getDate()).padStart(2,"0")+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+d.getFullYear()}
+function parseIsoLocal(v){if(!v)return null;const p=v.split("-").map(Number);const d=new Date(p[0],p[1]-1,p[2]);return d.getFullYear()===p[0]&&d.getMonth()===p[1]-1&&d.getDate()===p[2]?d:null}
+function clampMonth(d,months){const y=d.getFullYear(),m=d.getMonth()+months,day=d.getDate(),first=new Date(y,m,1),last=new Date(first.getFullYear(),first.getMonth()+1,0).getDate();return new Date(first.getFullYear(),first.getMonth(),Math.min(day,last))}
+window.calculateAddedDate=function(){
+ const base=parseIsoLocal($("addBaseDate").value),op=$("addOperation").value;
+ const vals=["addYears","addMonths","addWeeks","addDays"].map(id=>Number($(id).value));
+ if(!base||vals.some(v=>!Number.isFinite(v)||v<0||!Number.isInteger(v))){$("addDateResult").textContent="Please choose a valid date and enter whole, non-negative numbers.";return}
+ const sign=op==="subtract"?-1:1;
+ let result=clampMonth(base,sign*(vals[0]*12+vals[1]));
+ result.setDate(result.getDate()+sign*(vals[2]*7+vals[3]));
+ const weekdays=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ $("addDateResult").textContent=(op==="add"?"New date: ":"New date after subtraction: ")+dateToText(result)+" ("+weekdays[result.getDay()]+")";
+};
+const oldCalc=window.calculateDifference;
+window.calculateDifference=function(){
+ oldCalc();
+ const a=getDateValue("startText"),b=getDateValue("endText"),out=$("result");
+ if(!a||!b)return;
+ const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ const line="<br>From date: <strong>"+days[a.date.getUTCDay()]+"</strong> · To date: <strong>"+days[b.date.getUTCDay()]+"</strong>";
+ if(!out.innerHTML.includes("From date:"))out.innerHTML+=line;
+};
+window.quickBirthday=function(){
+ const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+ const raw=prompt("Enter your birthday as DD-MM (for example 15-08):");if(!raw)return;
+ const m=raw.match(/^(\d{1,2})[-/](\d{1,2})$/);if(!m){alert("Enter birthday as DD-MM.");return}
+ const day=Number(m[1]),month=Number(m[2]);let target=new Date(today.getFullYear(),month-1,day);
+ if(target.getMonth()!==month-1||target.getDate()!==day){alert("Please enter a valid birthday.");return}
+ if(target<today)target=new Date(today.getFullYear()+1,month-1,day);
+ $("startText").value=dateToText(today);$("endText").value=dateToText(target);window.calculateDifference();
+};
+window.setQuickRange=function(days){
+ const end=new Date(),start=new Date(end.getFullYear(),0,1);
+ if(days!==0){start.setTime(end.getTime()-days*86400000)}
+ $("startText").value=dateToText(start);$("endText").value=dateToText(end);window.calculateDifference();
+};
+window.resetDates=function(){
+ ["startText","endText","holidayDates"].forEach(id=>$(id).value="");
+ ["startPicker","endPicker","countdownDate"].forEach(id=>$(id).value="");
+ ["inclusiveMode","businessMode","excludeSaturday"].forEach(id=>$(id).checked=false);
+ $("result").style.display="none";$("result").textContent="Choose two dates to calculate the difference.";
+ ["dd-total","dd-years","dd-months","dd-days","dd-weeks","dd-hours","dd-minutes","dd-seconds"].forEach(id=>$(id).textContent="—");
+ $("countdownResult").textContent="Select a target date to start.";
+};
+document.addEventListener("DOMContentLoaded",function(){const d=new Date();$("addBaseDate").value=dateToIso(d)});
+})();
 </script>
 <script>
 (function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();
