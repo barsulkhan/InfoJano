@@ -364,7 +364,7 @@ body{margin:0;background:#edf5ff;color:#10234b;font-family:Inter,Arial,sans-seri
  </div>
 
  <div class="dd-date-picker-row"><label class="dd-picker-control">Calendar for From Date <input id="startPicker" type="date" aria-label="Choose start date"></label><label class="dd-picker-control">Calendar for To Date <input id="endPicker" type="date" aria-label="Choose end date"></label></div>
- <div class="dd-extra-tools"><div class="dd-option-box"><h3>Counting Options</h3><label class="dd-check-label"><input id="inclusiveMode" type="checkbox"><span>Include both start and end dates</span></label><label class="dd-check-label"><input id="businessMode" type="checkbox"><span>Show working days (Monday to Friday)</span></label><label class="dd-check-label"><input id="excludeSaturday" type="checkbox"><span>Include Saturdays as working days</span></label><label class="dd-holiday-label">Custom holidays (YYYY-MM-DD, comma separated)<input id="holidayDates" type="text" placeholder="2026-01-26, 2026-08-15"></label></div><div class="dd-option-box"><h3>Exact Time Breakdown</h3><p style="margin:0;color:#667994;font-size:13px">Elapsed duration in hours, minutes and seconds.</p><div class="dd-breakdown"><div><small>Total Hours</small><strong id="dd-hours">—</strong></div><div><small>Total Minutes</small><strong id="dd-minutes">—</strong></div><div><small>Total Seconds</small><strong id="dd-seconds">—</strong></div></div></div></div>
+ <div class="dd-extra-tools"><div class="dd-option-box"><h3>Counting Options</h3><label class="dd-check-label"><input id="inclusiveMode" type="checkbox"><span>Include both start and end dates</span></label><label class="dd-check-label"><input id="businessMode" type="checkbox"><span>Show working days (Monday to Friday)</span></label><div style="margin:10px 0;color:#334a6c;font-size:13px;font-weight:700">Weekend days to exclude</div><div style="display:flex;flex-wrap:wrap;gap:10px 14px;font-size:13px;color:#334a6c"><label><input class="dd-weekend-day" type="checkbox" value="0" checked> Sunday</label><label><input class="dd-weekend-day" type="checkbox" value="6" checked> Saturday</label><label><input class="dd-weekend-day" type="checkbox" value="5"> Friday</label><label><input class="dd-weekend-day" type="checkbox" value="1"> Monday</label><label><input class="dd-weekend-day" type="checkbox" value="2"> Tuesday</label><label><input class="dd-weekend-day" type="checkbox" value="3"> Wednesday</label><label><input class="dd-weekend-day" type="checkbox" value="4"> Thursday</label></div><label class="dd-holiday-label">Custom holidays (YYYY-MM-DD, comma separated)<input id="holidayDates" type="text" placeholder="2026-01-26, 2026-08-15"></label></div><div class="dd-option-box"><h3>Exact Time Breakdown</h3><p style="margin:0;color:#667994;font-size:13px">Elapsed duration in hours, minutes and seconds.</p><div class="dd-breakdown"><div><small>Total Hours</small><strong id="dd-hours">—</strong></div><div><small>Total Minutes</small><strong id="dd-minutes">—</strong></div><div><small>Total Seconds</small><strong id="dd-seconds">—</strong></div></div></div></div>
  <div class="dd-feature-actions"><button type="button" onclick="copyDateResult()">Copy Result</button><button type="button" onclick="shareDateResult()">Share Result</button><button type="button" onclick="printDateResult()">Export / Save PDF</button></div>
  <div class="dd-buttons"><button class="dd-calc" onclick="calculateDifference()">▦ &nbsp; Calculate Difference</button><button class="dd-reset" type="button" onclick="resetDates()">⟳ &nbsp; Reset</button></div>
 </section>
@@ -374,6 +374,20 @@ body{margin:0;background:#edf5ff;color:#10234b;font-family:Inter,Arial,sans-seri
  <div id="result" class="result" style="display:none">Choose two dates to calculate the difference.</div>
 </section>
 </div>
+<section class="dd-card" id="dd-add-subtract" style="margin-top:18px;padding:20px;border:1px solid #d8e5f7;border-radius:17px;background:#fff">
+<h2 style="margin:0 0 5px;color:#17376d">Add or Subtract from a Date</h2>
+<p style="margin:0 0 14px;color:#667994">Find a future or past date by adding or subtracting years, months, weeks or days.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+<label style="font-weight:700;color:#334a6c">Start date<input id="addBaseDate" type="date" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Operation<select id="addOperation" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px;background:#fff"><option value="add">Add</option><option value="subtract">Subtract</option></select></label>
+<label style="font-weight:700;color:#334a6c">Years<input id="addYears" type="number" min="0" max="9999" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Months<input id="addMonths" type="number" min="0" max="120000" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Weeks<input id="addWeeks" type="number" min="0" max="520000" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+<label style="font-weight:700;color:#334a6c">Days<input id="addDays" type="number" min="0" max="3650000" value="0" style="display:block;width:100%;height:42px;margin-top:6px;padding:0 9px;border:1px solid #cbd8eb;border-radius:9px"></label>
+</div>
+<button type="button" onclick="calculateAddedDate()" style="margin-top:14px;width:100%;min-height:44px;border:0;border-radius:10px;background:#315bd4;color:#fff;font-weight:800">Calculate New Date</button>
+<div id="addDateResult" aria-live="polite" style="margin-top:12px;padding:13px;border-radius:10px;background:#f3f7ff;color:#214a9c;font-weight:700">Choose a date and enter a duration.</div>
+</section>
 <section class="dd-card dd-countdown"><h2 style="margin:0 0 5px;color:#17376d">Date Countdown</h2><p style="margin:0 0 12px;color:#667994">Count down to a birthday, anniversary, exam or special event.</p><div class="dd-countdown-row"><label>Choose target date<input type="date" id="countdownDate"></label><button type="button" onclick="calculateCountdown()">Calculate Countdown</button></div><div class="dd-countdown-result" id="countdownResult" aria-live="polite">Select a target date to start.</div></section><section class="dd-card dd-quick-panel"><div class="dd-quick-head"><h2>⚡ Quick Calculate</h2><p>Try these common date differences</p></div><div class="dd-quick-list"><button onclick="quickBirthday()">▦ &nbsp; Today to My Birthday</button><button onclick="quickAgeDays()">♟ &nbsp; My Age in Days</button><button onclick="setQuickRange(0)">☆ &nbsp; This Year So Far</button><button onclick="setQuickRange(30)">▦ &nbsp; Last 30 Days</button></div></section>
 <section class="dd-card dd-about"><div class="dd-about-icon">i</div><div><h2>About Date Difference Calculator</h2><p>This tool helps you find the exact difference between two dates. It shows the result in years, months, weeks and days, along with the total number of days.</p></div></section>
 <section class="dd-card"><div class="dd-related-title"><h2>♧ Related Tools</h2><span>Explore more useful calculators</span></div><div class="dd-related-grid">
@@ -430,20 +444,6 @@ function shareDateResult(){const a=document.getElementById('startText').value,b=
 function swapDates(){const a=document.getElementById('startText'),b=document.getElementById('endText');const t=a.value;a.value=b.value;b.value=t;calculateDifference();}
 function resetDates(){document.getElementById('startText').value='';document.getElementById('endText').value='';document.getElementById('result').textContent='Choose two dates to calculate the difference.';['dd-total','dd-years','dd-months','dd-weeks','dd-days'].forEach(id=>document.getElementById(id).textContent='—');}
 function setQuickRange(days){const end=new Date();const start=new Date(end.getTime()-days*86400000);const fmt=d=>String(d.getDate()).padStart(2,'0')+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+d.getFullYear();document.getElementById('startText').value=fmt(start);document.getElementById('endText').value=fmt(end);calculateDifference();}
-function calculateDifference(){
-const a=getDateValue('startText');
-const b=getDateValue('endText');
-const out=document.getElementById('result');
-if(!a||!b){
-out.textContent='Enter both dates as DD-MM-YYYY (day/month/year). Check that each date is valid.';
-return;
-}
-const days=Math.abs(Math.round((b.date-a.date)/86400000));
-const weeks=Math.floor(days/7);
-const years=Math.floor(days/365.2425);
-const months=Math.floor(days/30.4369);
-out.innerHTML='Difference: <strong>'+days.toLocaleString('en-US')+' days</strong><br>Weeks: <strong>'+weeks+'</strong><br>Approximate months: <strong>'+months+'</strong><br>Approximate years: <strong>'+years+'</strong>';document.getElementById('dd-total').textContent=days.toLocaleString('en-US');document.getElementById('dd-years').textContent=years;document.getElementById('dd-months').textContent=months;document.getElementById('dd-weeks').textContent=weeks;document.getElementById('dd-days').textContent=days%7;document.getElementById('dd-total').textContent=days.toLocaleString('en-US');document.getElementById('dd-years').textContent=years;document.getElementById('dd-months').textContent=months;document.getElementById('dd-weeks').textContent=weeks;document.getElementById('dd-days').textContent=days%7;
-}
 </script>
 
 <script>
@@ -451,7 +451,7 @@ out.innerHTML='Difference: <strong>'+days.toLocaleString('en-US')+' days</strong
 [['startPicker','startText'],['endPicker','endText']].forEach(([p,t])=>{$(p).addEventListener('change',()=>{$(t).value=isoToText($(p).value);calculateDifference()});$(t).addEventListener('change',()=>{$(p).value=textToIso($(t).value)})});
 })();
 function addCalendarMonths(date,months){const y=date.getUTCFullYear(),m=date.getUTCMonth()+months,day=date.getUTCDate(),first=new Date(Date.UTC(y,m,1)),last=new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth()+1,0)).getUTCDate();return new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth(),Math.min(day,last)))}function calendarParts(a,b){let y=b.getUTCFullYear()-a.getUTCFullYear(),cursor=addCalendarMonths(a,y*12);if(cursor>b){y--;cursor=addCalendarMonths(a,y*12)}let m=0;while(m<11){const n=addCalendarMonths(cursor,1);if(n>b)break;cursor=n;m++}return {y,m,d:Math.round((b-cursor)/86400000)}}
-function businessDays(start,end,inclusive){const holidays=new Set(($('holidayDates').value||'').split(',').map(x=>x.trim()).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)));let count=0;const stop=new Date(end);if(inclusive)stop.setUTCDate(stop.getUTCDate()+1);for(let d=new Date(start);d<stop;d.setUTCDate(d.getUTCDate()+1)){const dow=d.getUTCDay(),key=d.toISOString().slice(0,10);if(dow!==0&&($('excludeSaturday').checked||dow!==6)&&!holidays.has(key))count++}return count}
+function businessDays(start,end,inclusive){const holidays=new Set(($('holidayDates').value||'').split(',').map(x=>x.trim()).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)));let count=0;const stop=new Date(end);if(inclusive)stop.setUTCDate(stop.getUTCDate()+1);for(let d=new Date(start);d<stop;d.setUTCDate(d.getUTCDate()+1)){const dow=d.getUTCDay(),key=d.toISOString().slice(0,10);const weekend=new Set(Array.from(document.querySelectorAll('.dd-weekend-day:checked')).map(x=>Number(x.value)));if(!weekend.has(dow)&&!holidays.has(key))count++}return count}
 function $(id){return document.getElementById(id)}
 window.calculateDifference=function(){const a=getDateValue('startText'),b=getDateValue('endText'),out=$('result');if(!a||!b){out.style.display='block';out.textContent='Enter two valid dates as DD-MM-YYYY or choose them from the calendar.';return}const start=a.date<b.date?a.date:b.date,end=a.date<b.date?b.date:a.date,elapsed=Math.round((end-start)/86400000),inclusive=$('inclusiveMode').checked,total=elapsed+(inclusive?1:0),p=calendarParts(start,end),hours=elapsed*24,minutes=hours*60,seconds=minutes*60,working=businessDays(start,end,inclusive);[['dd-years',p.y],['dd-months',p.m],['dd-days',p.d],['dd-weeks',Math.floor(total/7)],['dd-total',total.toLocaleString('en-US')],['dd-hours',hours.toLocaleString('en-US')],['dd-minutes',minutes.toLocaleString('en-US')],['dd-seconds',seconds.toLocaleString('en-US')]].forEach(([id,v])=>$(id).textContent=v);out.style.display='block';out.innerHTML='Calendar difference: <strong>'+p.y+' years, '+p.m+' months and '+p.d+' days</strong><br>Counted days: <strong>'+total.toLocaleString('en-US')+'</strong> ('+(inclusive?'inclusive':'elapsed')+')'+($('businessMode').checked?'<br>Working days: <strong>'+working.toLocaleString('en-US')+'</strong> (Monday to Friday'+($('excludeSaturday').checked?', including Saturdays':'')+', custom holidays excluded)':'')+'<br>Weeks: <strong>'+Math.floor(total/7)+'</strong> weeks and '+(total%7)+' days'};
 window.calculateCountdown=function(){const v=$('countdownDate').value;if(!v){$('countdownResult').textContent='Please choose a target date.';return}const [y,m,d]=v.split('-').map(Number),target=Date.UTC(y,m-1,d),now=new Date(),today=Date.UTC(now.getFullYear(),now.getMonth(),now.getDate()),n=Math.round((target-today)/86400000);$('countdownResult').textContent=n>0?n.toLocaleString('en-US')+' days remaining':n===0?'Today is the day!':Math.abs(n).toLocaleString('en-US')+' days have passed'};
@@ -459,6 +459,64 @@ function dateResultText(){return 'Date Difference Calculator – InfoJano\nFrom:
 window.copyDateResult=async function(){const msg=dateResultText();try{await navigator.clipboard.writeText(msg);alert('Result copied to clipboard.')}catch(e){prompt('Copy your result:',msg)}};
 window.printDateResult=function(){window.print()};
 window.shareDateResult=function(){const msg=dateResultText();if(navigator.share)navigator.share({title:'Date Difference – InfoJano',text:msg}).catch(()=>{});else window.copyDateResult()};
+</script>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+function dateToIso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function dateToText(d){return String(d.getDate()).padStart(2,"0")+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+d.getFullYear()}
+function parseIsoLocal(v){if(!v)return null;const p=v.split("-").map(Number);const d=new Date(p[0],p[1]-1,p[2]);return d.getFullYear()===p[0]&&d.getMonth()===p[1]-1&&d.getDate()===p[2]?d:null}
+function clampMonth(d,months){const y=d.getFullYear(),m=d.getMonth()+months,day=d.getDate(),first=new Date(y,m,1),last=new Date(first.getFullYear(),first.getMonth()+1,0).getDate();return new Date(first.getFullYear(),first.getMonth(),Math.min(day,last))}
+window.calculateAddedDate=function(){
+ const base=parseIsoLocal($("addBaseDate").value),op=$("addOperation").value;
+ const vals=["addYears","addMonths","addWeeks","addDays"].map(id=>Number($(id).value));
+ if(!base||vals.some(v=>!Number.isFinite(v)||v<0||!Number.isInteger(v))){$("addDateResult").textContent="Please choose a valid date and enter whole, non-negative numbers.";return}
+ const sign=op==="subtract"?-1:1;
+ let result=clampMonth(base,sign*(vals[0]*12+vals[1]));
+ result.setDate(result.getDate()+sign*(vals[2]*7+vals[3]));
+ const weekdays=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ $("addDateResult").textContent=(op==="add"?"New date: ":"New date after subtraction: ")+dateToText(result)+" ("+weekdays[result.getDay()]+")";
+};
+const oldCalc=window.calculateDifference;
+window.calculateDifference=function(){
+ oldCalc();
+ const a=getDateValue("startText"),b=getDateValue("endText"),out=$("result");
+ if(!a||!b)return;
+ const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ const line="<br>From date: <strong>"+days[a.date.getUTCDay()]+"</strong> · To date: <strong>"+days[b.date.getUTCDay()]+"</strong>";
+ if(!out.innerHTML.includes("From date:"))out.innerHTML+=line;
+};
+window.quickBirthday=function(){
+ const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+ const raw=prompt("Enter your birthday as DD-MM (for example 15-08):");if(!raw)return;
+ const m=raw.match(/^(\d{1,2})[-/](\d{1,2})$/);if(!m){alert("Enter birthday as DD-MM.");return}
+ const day=Number(m[1]),month=Number(m[2]);let target=new Date(today.getFullYear(),month-1,day);
+ if(target.getMonth()!==month-1||target.getDate()!==day){alert("Please enter a valid birthday.");return}
+ if(target<today){let year=today.getFullYear()+1;target=new Date(year,month-1,day);if(target.getMonth()!==month-1||target.getDate()!==day){alert("That birthday does not occur in the next calendar year.");return}}
+ $("startText").value=dateToText(today);$("endText").value=dateToText(target);$("startPicker").value=dateToIso(today);$("endPicker").value=dateToIso(target);window.calculateDifference();
+};
+window.quickAgeDays=function(){
+ const raw=prompt("Enter date of birth as DD-MM-YYYY");if(!raw)return;
+ const parsed=parseManualDate(raw);if(!parsed){alert("Enter a valid date as DD-MM-YYYY.");return}
+ const today=new Date();today.setHours(0,0,0,0);
+ const birth=new Date(parsed.date.getUTCFullYear(),parsed.date.getUTCMonth(),parsed.date.getUTCDate());
+ if(birth>today){alert("Date of birth cannot be in the future.");return}
+ $("startText").value=dateToText(birth);$("endText").value=dateToText(today);$("startPicker").value=dateToIso(birth);$("endPicker").value=dateToIso(today);window.calculateDifference();
+};
+window.setQuickRange=function(days){
+ const end=new Date();end.setHours(0,0,0,0);const start=days===0?new Date(end.getFullYear(),0,1):new Date(end.getTime()-days*86400000);
+ $("startText").value=dateToText(start);$("endText").value=dateToText(end);$("startPicker").value=dateToIso(start);$("endPicker").value=dateToIso(end);window.calculateDifference();
+};
+window.resetDates=function(){
+ ["startText","endText","holidayDates"].forEach(id=>$(id).value="");
+ ["startPicker","endPicker","countdownDate"].forEach(id=>$(id).value="");
+ ["inclusiveMode","businessMode"].forEach(id=>$(id).checked=false);document.querySelectorAll(".dd-weekend-day").forEach(x=>x.checked=(x.value==="0"||x.value==="6"));
+ $("result").style.display="none";$("result").textContent="Choose two dates to calculate the difference.";
+ ["dd-total","dd-years","dd-months","dd-days","dd-weeks","dd-hours","dd-minutes","dd-seconds"].forEach(id=>$(id).textContent="—");
+ $("countdownResult").textContent="Select a target date to start.";$("addBaseDate").value=dateToIso(new Date());["addYears","addMonths","addWeeks","addDays"].forEach(id=>$(id).value="0");$("addOperation").value="add";$("addDateResult").textContent="Choose a date and enter a duration.";
+};
+document.addEventListener("DOMContentLoaded",function(){const d=new Date();$("addBaseDate").value=dateToIso(d)});
+})();
 </script>
 <script>
 (function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();
