@@ -2722,3 +2722,37 @@ Completed and finalised for this work session:
 - These code and deployment tasks are FINAL. Only real-device verification remains: test Standard and Advanced downloads and confirm the downloaded files open correctly on Windows.
 
 NEXT CHAT: Read this Main Smart Master Project file first, then continue with the pending real-device download test. Do not reopen or redo the completed PRs unless the test reveals a defect. After verification, continue the next InfoJano task already recorded in this file.
+
+
+---
+
+## 2026-11-09 Update — Age Calculator Development (PR #28)
+Status: DEVELOPMENT COMPLETE ON FEATURE BRANCH; REVIEW / BROWSER TESTING PENDING; NOT MERGED.
+
+- Feature branch: `feature/age-calculator-toolkit`
+- Pull request: https://github.com/barsulkhan/InfoJano/pull/28
+- Original source backup: `backups/age.html.source-backup-2026-11-09.txt`
+- Backup is committed on the feature branch. Main branch remains unchanged.
+- Age Calculator (`age.html`) now has the five approved feature implementations:
+  1. Any-date age calculation, with validation against dates before DOB.
+  2. Detailed age breakdown: years, months, days, total days, weeks, hours and minutes.
+  3. February 29 handling with selectable Feb 28 / Mar 1 anniversary rule.
+  4. Copy result and native share (clipboard fallback when share is unavailable).
+  5. Local-device birthday reminder, permission-aware notification and next-birthday countdown. Background delivery is NOT guaranteed; reminder is checked while page is open.
+- Four SEO pages created:
+  - `age-in-days-calculator.html`
+  - `birthday-countdown-calculator.html`
+  - `day-of-week-born-calculator.html`
+  - `what-happened-on-my-birthday.html`
+- All four pages have distinct titles/descriptions, canonical URLs, WebPage structured data, links to Age Calculator, sitemap entries and service-worker cache entries.
+- Sitemap updated. Service worker cache changed from `infojano-v265` to `infojano-v266`.
+- Commits are small and sequential; PR currently contains 11 commits and 8 changed files.
+- Logic checks passed for Feb 29 rules (Feb 28 and Mar 1), Mar 1 anniversary, and Jan 31 → Feb 28 date arithmetic. Static checks confirmed controls, logic, SEO metadata, sitemap and SW entries.
+- GitHub Actions PR workflow runs returned none at the time checked. No Android/desktop browser test or live deployment verification has been completed yet.
+- PR is open, not merged. Do NOT merge until user explicitly approves after review and browser checks.
+
+### Next actions
+1. Review PR #28 diff and resolve any comments/checks.
+2. Browser test on Android Chrome and desktop: DOB validation, past/future reference dates, leap-day choices, copy, share, notification permission, reminder persistence, responsive layout and keyboard navigation.
+3. Verify GitHub Pages preview/deployment and all four SEO URLs; confirm sitemap and SW cache update.
+4. Ask user for explicit approval before merging PR #28.
