@@ -727,7 +727,7 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 .preset-section .preset:hover .picon{transform:translateY(-2px) scale(1.04);box-shadow:0 8px 17px #173b6735,inset 0 1px 2px #ffffff70!important}
 .preset-section .picon{transition:transform .2s ease,box-shadow .2s ease}
 @media(prefers-reduced-motion:reduce){.preset-section .picon{transition:none!important}}
-</style></head><body>
+</style><link rel="stylesheet" href="image-resizer-advanced.css?v=1">\n</head><body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading Image Resize and Converter"><div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">↔</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">Image Resize &amp; Converter</p><p class="ij-loader-subtitle">Getting your image tools ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div></div>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button></section>
 <main>
@@ -846,7 +846,7 @@ resizeBtn.addEventListener('click',()=>{
 window.addEventListener('beforeunload',()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);if(resultUrl)URL.revokeObjectURL(resultUrl)});
 })();
 </script>
-<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
+<script src="/InfoJano/image-resizer-advanced.js?v=1" defer></script>\n<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
 
 <script>
 (function(){var loader=document.getElementById('ijPageLoader');if(!loader)return;var hidden=false;function hide(){if(hidden)return;hidden=true;window.setTimeout(function(){loader.classList.add('ij-loaded');window.setTimeout(function(){if(loader.parentNode)loader.parentNode.removeChild(loader)},500)},380)}if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide,{once:true});window.setTimeout(hide,5000)}})();
