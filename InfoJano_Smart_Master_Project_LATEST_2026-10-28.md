@@ -3167,3 +3167,18 @@ Decision pending user approval. No branch, PR, code edits, merge or deployment c
 - Source QA passed: exactly one H1, four FAQs, valid JSON-LD, canonical URL retained, 158-character meta description, mobile breakpoint, CTA to date-difference.html, balanced section tags.
 - GitHub Pages workflow #1975 (run 42679050486) and APK workflow #310 (run 42679051120) were still in progress when this note was written. Verify Pages workflow and public URL before claiming live. APK workflow is separate and not a blocker for web deployment.
 - Google Search Console submission/indexing has not been performed; requires authorized GSC access. Do not claim ranking or traffic gains until Search Console data confirms them.
+
+
+## THREE REMAINING DATE SEO PAGES — US SEARCH INTENT FINALIZATION (10 NOV 2026)
+- User confirmed all four Date SEO landing pages are required, with US audience as primary target. Business Days SEO was previously applied in PR #40. The remaining three were completed in PR #41.
+- PR #41 merged to main. Merge commit: a78c521b8965da0e01ef15feb4d334c99dc6a08e.
+- Pages updated (SEO/content only; no design or calculator logic changes):
+  1. date-duration-calculator.html — “date duration calculator”, “time between two dates”, “how many years, months and days between dates”; calendar-aware explanation.
+  2. add-subtract-date-calculator.html — “add days to a date”, “subtract days from a date”, “what date is 30 days from today”, weeks/months/years and everyday use cases.
+  3. days-between-dates-calculator.html — “days between dates calculator”, “how many days between two dates”, “calculate days between dates”, inclusive date counting, calendar days vs working days.
+- For all three: title/meta description, Open Graph, Twitter and WebPage JSON-LD description synchronized; question-led plain-language content added for simple and advanced searchers; canonical retained; existing four FAQs retained; CTA to date-difference.html retained; internal links retained.
+- US research: KWS Trends reports approximately 550,000 average monthly US searches for broad “date calculator” (Google Ads Keyword Planner panel: 673,000) and approximately 22,000 for “days between dates calculator” (Google Ads panel: 33,100). Date duration related search cluster also substantial. Figures are third-party estimates/ranges, not InfoJano Search Console data. Sources: https://www.kwstrends.com/keywords/us/date-calculator ; https://www.kwstrends.com/keywords/us/time-duration-calculator ; https://www.kwstrends.com/zh/keywords/us/days-between-dates-calculator ; Google Keyword Planner methodology: https://support.google.com/google-ads/answer/7337243
+- Source QA passed on all three: one H1, four FAQ details, valid JSON-LD, balanced section tags, canonical retained, mobile breakpoint retained, calculator CTA retained. No homepage, hero design, calculator logic, sitemap or unrelated tools modified.
+- Service worker cache bumped from infojano-v270 to infojano-v271 so existing users can receive updated SEO pages.
+- Pages deployment for PR #41 and the cache/master follow-up commits must be checked before claiming live. Browser visual QA, real calculator interaction QA and Google Search Console sitemap/index requests remain separate follow-up tasks.
+- Business Days SEO from PR #40 remains included as the first of the four final Date SEO pages. Four-page SEO coverage is now applied in source on main.
