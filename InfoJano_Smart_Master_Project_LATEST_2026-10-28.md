@@ -2628,3 +2628,42 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Verified all six branch pages contain the shared hero class, keep the premium stylesheet link, retain page-specific H1s and no longer use the old `<header class="hero">` banner.
 - Bumped Service Worker cache from `infojano-v262` to `infojano-v263`; premium CSS was already in precache.
 - These changes are on PR #24 branch only; PR remains open/unmerged. They are not live until merged and deployed. Visual verification in real browsers/Android remains outstanding.
+
+
+## 9 November 2026 — Final checkpoint: Image Resizer PR #24 merged and PR #25 pending
+
+### PR #24 — Advanced Image Resizer + six SEO pages
+- PR: https://github.com/barsulkhan/InfoJano/pull/24
+- Status: **MERGED** into `main`.
+- Merge commit: `d2c53864311532ec362c930b8302460fc2e5617a`.
+- PR #24 contains the advanced Image Resizer toolkit and synchronized premium hero design across the six SEO landing pages.
+- GitHub Pages workflow for merge commit `d2c53864311532ec362c930b8302460fc2e5617a` completed successfully: workflow run `42617470890`, conclusion `success` (9 Nov 2026, 12:30 UTC). Therefore the PR #24 changes have a successful Pages deployment workflow. This is not a substitute for real Android/browser functional testing.
+- Tool URL: https://barsulkhan.github.io/InfoJano/image-resizer.html
+- Six landing pages:
+  1. https://barsulkhan.github.io/InfoJano/resize-image-to-pixels.html
+  2. https://barsulkhan.github.io/InfoJano/resize-image-by-percentage.html
+  3. https://barsulkhan.github.io/InfoJano/passport-id-photo-resizer.html
+  4. https://barsulkhan.github.io/InfoJano/social-media-image-resizer.html
+  5. https://barsulkhan.github.io/InfoJano/print-document-image-resizer.html
+  6. https://barsulkhan.github.io/InfoJano/resize-image-for-website.html
+- 12 grouped feature areas in the main tool:
+  1) image upload; 2) custom pixel resize; 3) preset sizes; 4) percentage resize; 5) aspect-ratio lock; 6) JPG/PNG/WebP output; 7) quality control; 8) preview/download; 9) physical sizing in px/cm/mm/in with selectable DPI; 10) best-effort target file size in KB for JPEG/WebP (not guaranteed; PNG quality search not supported); 11) centred crop ratios 1:1, 4:3, 16:9, 3:4, 2:3, 3:2 with reset; 12) batch resize up to 30 images with individual downloads (no ZIP in this release).
+- JPEG JFIF and PNG pHYs density metadata are written for DPI; WebP supports pixel dimensions only, not embedded DPI metadata.
+- Do not promise official passport/exam photo acceptance.
+- Not yet user-tested on a real Android device: physical unit/DPI output, target-KB accuracy, crop/reset, batch downloads, and regressions in all previous modes. User should test the live tool and share screenshots if anything fails.
+
+### PR #25 — YouTube Thumbnail preset selection interaction
+- PR: https://github.com/barsulkhan/InfoJano/pull/25
+- Branch: `fix/youtube-thumbnail-preset-selection`
+- Head commit: `f86037aa07bce5aae16aef65f774fba9b7180b22`.
+- Status at 9 Nov 2026 latest check: **OPEN, NOT MERGED** (`state=open`, `merged=false`, `merged_at=null`). Do not call this change live.
+- Change summary: (a) selecting YouTube Thumbnail preset before uploading should retain the selection and apply 1280×720 after upload; (b) selecting preset after upload should visibly highlight it and show “Selected”; (c) switching to Custom clears preset selection; includes `aria-pressed` state.
+- Source-level change only; no browser/mobile interaction testing yet.
+- Cache caution: PR #25 currently changes only `image-resizer.html` and did not bump Service Worker cache. Before merging, inspect current `sw.js` on the PR branch and decide whether a sequential cache-version bump is required to avoid stale cached HTML. Do not merge until this is checked.
+- After any merge: verify the PR state, main commit, GitHub Pages deployment workflow for that exact commit, then ask user to test both interaction orders on Android. Do not infer deployment from unrelated Worker/APK checks.
+
+### Exact current status / next action
+- PR #24: merged; GitHub Pages deployment workflow succeeded for merge commit `d2c53864311532ec362c930b8302460fc2e5617a`.
+- PR #25: open and not live; cache-version review is the next technical step before merge.
+- Next action: inspect `sw.js` and the PR #25 diff/branch state, apply cache bump if needed, then merge only after confirming checks and proceed to exact-commit Pages deployment verification.
+- Always distinguish source committed, PR merged, Pages deployed, and user-tested. Never claim device testing without evidence.
