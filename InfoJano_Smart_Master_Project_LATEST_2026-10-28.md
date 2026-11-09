@@ -3135,3 +3135,10 @@ Decision pending user approval. No branch, PR, code edits, merge or deployment c
 - Files: `business-days-calculator.html`, `date-duration-calculator.html`, `add-subtract-date-calculator.html`, `days-between-dates-calculator.html`.
 - Existing SEO metadata and WebPage JSON-LD retained. No calculator logic or protected pages modified.
 - PR #38 remains unmerged. These updates are on the PR branch only; they are not live. Need explicit user approval to merge, then verify GitHub Pages deployment before sharing live URLs. Do not claim pixel-perfect browser parity until a browser/mobile visual check is completed.
+
+
+## DATE SEO PAGES — DEPLOYMENT / SERVICE WORKER FIX (9 NOV 2026)
+- PR #38 was merged with user approval (merge commit `a81c2826f47cfdd4d01c26ebeca61c6bccf9750e`). Four premium date SEO pages are on main.
+- Pages workflow #1970 (run `42673404041`) showed Jekyll build success and Pages artifact upload success, but overall run conclusion was failure; public logs did not expose a separate deploy job. Deployment must be verified by a subsequent run and live URL checks; do not claim deployment success prematurely.
+- APK workflow #307 (run `42673405333`) failed at validation because the new `add-subtract-date-calculator.html` page was not listed in `sw.js` precache. This is a service-worker inventory gap, not an APK compilation failure.
+- Fixed `sw.js` on main in commit `7cdd753d575a4f939261942a012d602a2574a6d6`: bumped cache `infojano-v269` to `infojano-v270` and added all four date SEO pages (`days-between-dates-calculator.html`, `business-days-calculator.html`, `date-duration-calculator.html`, `add-subtract-date-calculator.html`) to precache. This should retrigger Pages and APK workflows. Await new workflow results before calling either successful.
