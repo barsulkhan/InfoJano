@@ -3142,3 +3142,15 @@ Decision pending user approval. No branch, PR, code edits, merge or deployment c
 - Pages workflow #1970 (run `42673404041`) showed Jekyll build success and Pages artifact upload success, but overall run conclusion was failure; public logs did not expose a separate deploy job. Deployment must be verified by a subsequent run and live URL checks; do not claim deployment success prematurely.
 - APK workflow #307 (run `42673405333`) failed at validation because the new `add-subtract-date-calculator.html` page was not listed in `sw.js` precache. This is a service-worker inventory gap, not an APK compilation failure.
 - Fixed `sw.js` on main in commit `7cdd753d575a4f939261942a012d602a2574a6d6`: bumped cache `infojano-v269` to `infojano-v270` and added all four date SEO pages (`days-between-dates-calculator.html`, `business-days-calculator.html`, `date-duration-calculator.html`, `add-subtract-date-calculator.html`) to precache. This should retrigger Pages and APK workflows. Await new workflow results before calling either successful.
+
+
+## DATE SEO PAGES — FINAL DESIGN ACCEPTANCE & QA PASS (10 NOV 2026)
+- User explicitly accepted/finalized the four Date SEO landing-page designs. Do not redesign these pages unless user requests.
+- Latest design PR #39 merged to main. Merge commit: `6c8350bc54fb9b065a4602bdc687606bf1849eec`.
+- GitHub Pages workflow for that commit succeeded: run `42676479134`, conclusion `success`. The preceding failed Pages run #1972 is superseded by this successful deployment.
+- Four pages confirmed present in main and sitemap.xml; robots.txt sitemap directive remains configured.
+- Service worker cache is `infojano-v270`; all four pages are in precache.
+- Per-page source audit: unique SEO title, meta description, canonical URL, exactly one H1, Open Graph, Twitter card, JSON-LD, responsive CSS, four FAQ details. Each page links to existing `date-difference.html` and cross-links the other three date SEO pages.
+- Live browser rendering, mobile/desktop visual QA, calculator interaction tests and Google Search Console indexing are not verified by source inspection. User should open all four live URLs and test; do not claim these checks are complete.
+- APK workflow run `42676479261` was still in progress at QA time. Check its final result separately; it is not a blocker for GitHub Pages deployment.
+- Remaining priority: functional/browser QA of all four pages and their calculator CTA; then submit sitemap and URL inspection in Google Search Console (requires authorized account access). Monitor indexing/performance after submission.
