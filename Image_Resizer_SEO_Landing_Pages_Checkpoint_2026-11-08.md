@@ -45,3 +45,14 @@ Status: IN PROGRESS — feature branch only; not merged or live.
 - Opened Draft PR #15: https://github.com/barsulkhan/InfoJano/pull/15 (12 changed files; 446 additions, 3 deletions at creation). The exact current head commit is shown on the PR page and will advance when the Master Files are updated.
 - PR remains open and draft. GitHub's latest mergeability state was `unknown`; recheck the PR diff and mergeability before any merge. Do not merge without user approval.
 - Not yet tested: deployed GitHub Pages preview, browser visual rendering, real CTA mode/preset selection, Android device workflow, or Google Search Console processing. Do not call these Live Tested.
+
+
+## 9 November 2026 — Premium content design pass
+- Reviewed the supplied Android screenshot. The previous information sections, sidebar actions, FAQ and related-guides panel still looked too plain; the related-guides heading also had insufficient contrast.
+- Created a dedicated shared stylesheet: `image-resizer-premium.css`. It adds premium gradient-accent content cards, icon badges, soft depth, refined typography/spacing, upgraded sidebar action cards, a clearer FAQ accordion, high-contrast related-guides links and a refined bottom CTA.
+- Loaded the stylesheet after `image-resizer-landing.css` on all six SEO pages: custom pixels, percentage, passport/ID, social media, print/document and website images.
+- Added the new stylesheet to Service Worker precache and advanced cache from `infojano-v259` to `infojano-v260`.
+- PR #23 merged to main: https://github.com/barsulkhan/InfoJano/pull/23
+- Merge commit: `4bc34eb394f773c9909ee4a13ccbda678a89b7d4`.
+- Source verification: all six HTML pages reference both stylesheets; premium stylesheet brace counts match (71 opening and 71 closing); Service Worker precache contains the new stylesheet.
+- GitHub Pages deployment for merge commit was queued at last check: https://github.com/barsulkhan/InfoJano/actions/runs/42572363119. Do not call the new design live until this run succeeds and the deployed pages are visually checked on mobile.
