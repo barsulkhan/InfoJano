@@ -72,3 +72,14 @@ Status: IN PROGRESS — feature branch only; not merged or live.
 - PR #24: https://github.com/barsulkhan/InfoJano/pull/24 — open, not merged at this checkpoint. Head commit: `df1761c2c2dbe1674dd9498034f5147363d77681`.
 - Still required before calling production-ready: real browser/device tests for cm/mm/in and DPI metadata, crop/reset behaviour, target-KB outcomes, batch downloads and regression checks for the existing modes. GitHub Pages deployment is not triggered until merge.
 - The tool does not guarantee official passport/exam photo acceptance; authority-specific rules and photo composition still require user verification.
+
+
+## 9 November 2026 — Image Resizer feature audit and QA follow-up
+- User asked to proceed with completing the Image Resizer work. The six SEO landing pages are separate page assets and are not counted as tool features.
+- Feature inventory grouped from the existing main tool UI and PR #24 additions: existing core workflow groups include upload, custom pixel dimensions, preset sizes, percentage resizing, aspect-ratio lock, JPG/PNG/WebP output, quality control, and preview/download. PR #24 adds physical size + DPI, best-effort target KB, centred crop/reset, and batch resize (up to 30 images, individual downloads; no ZIP).
+- This is a practical grouped inventory (12 groups), not a claim that each group is a single low-level control.
+- PR #24 remains open and unmerged. Current observed head before this note: e60cf55d622bc4c4ad455c0b1aec01fdd9315ce5.
+- QA code review found and fixed two edge cases in the PR branch: final target-KB success now checks the final blob after DPI metadata is embedded; batch mode now validates the target-KB range; crop-reset preview object URLs are cleaned up on replacement/unload.
+- Follow-up commit: 91d58122934f3732692dd97e0a997878e72603d8 on feature/image-resizer-advanced-toolkit.
+- Cloudflare Workers Build check on the prior PR head completed successfully, but it is the shortlink Worker build and is not evidence that GitHub Pages or the Image Resizer has deployed.
+- Still required: real browser/Android functional tests for physical unit conversion, JPEG/PNG DPI metadata, crop/reset, target-size accuracy, batch downloads, and regression of existing modes. Do not merge or call live without user approval and deployment verification.
