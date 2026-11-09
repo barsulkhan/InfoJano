@@ -56,3 +56,19 @@ Status: IN PROGRESS — feature branch only; not merged or live.
 - Merge commit: `4bc34eb394f773c9909ee4a13ccbda678a89b7d4`.
 - Source verification: all six HTML pages reference both stylesheets; premium stylesheet brace counts match (71 opening and 71 closing); Service Worker precache contains the new stylesheet.
 - GitHub Pages deployment for merge commit was queued at last check: https://github.com/barsulkhan/InfoJano/actions/runs/42572363119. Do not call the new design live until this run succeeds and the deployed pages are visually checked on mobile.
+
+
+## 9 November 2026 — Advanced Image Resizer feature expansion (PR #24)
+- User explicitly approved building the remaining Image Resizer feature gaps identified in the 2 November research and 8 November checkpoint.
+- Existing modes retained: custom pixel dimensions, preset selection, percentage resizing, aspect-ratio lock, JPG/PNG/WebP output, quality control and local browser processing.
+- Added an advanced control panel in `image-resizer.html` via dedicated assets `image-resizer-advanced.js` and `image-resizer-advanced.css`.
+- Physical-size calculator supports px/cm/mm/in inputs and selectable DPI, converting physical dimensions into pixel width/height.
+- JPEG export writes JFIF density metadata and PNG export writes pHYs density metadata. WebP export uses pixel dimensions only; do not claim embedded DPI metadata for WebP.
+- Added best-effort target-KB sizing for JPEG/WebP by searching output quality. Exact KB cannot be guaranteed for all images; PNG quality search is not supported.
+- Added centred crop ratios (1:1, 4:3, 16:9, 3:4, 2:3, 3:2) and reset-to-original control.
+- Added batch processing for up to 30 images with individual download links; ZIP bundling is not included in this pass.
+- Added both new assets to Service Worker precache and advanced cache from `infojano-v261` to `infojano-v262`.
+- JavaScript syntax validation passed. Source checks confirm both assets are linked from the main Image Resizer and precached by Service Worker.
+- PR #24: https://github.com/barsulkhan/InfoJano/pull/24 — open, not merged at this checkpoint. Head commit: `df1761c2c2dbe1674dd9498034f5147363d77681`.
+- Still required before calling production-ready: real browser/device tests for cm/mm/in and DPI metadata, crop/reset behaviour, target-KB outcomes, batch downloads and regression checks for the existing modes. GitHub Pages deployment is not triggered until merge.
+- The tool does not guarantee official passport/exam photo acceptance; authority-specific rules and photo composition still require user verification.
