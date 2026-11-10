@@ -10,7 +10,8 @@ const descriptions={
  waist:['Waist-to-Height Ratio','Compare waist measurement with height using the same unit. This is an adult screening guide, not a diagnosis.'],
  history:['BMI History','Save dated BMI readings on this device and review your recent progress.'],
  healthy:['Healthy Weight Range','Estimate the adult reference weight range for your entered height using BMI 18.5–24.9.'],
- report:['BMI Result Report','Print or save a copy of your BMI result and health guidance as PDF.']
+ report:['BMI Result Report','Print or save a copy of your BMI result and health guidance as PDF.'],
+ bodyfat:['Body Fat Calculator','Estimate adult body fat percentage using the circumference-based US Navy method.']
 };
 function values(){
  const w=Number(document.getElementById('weight')?.value),h=Number(document.getElementById('height')?.value);
@@ -68,6 +69,43 @@ function setActive(tool){
    try{list.push({date:new Date().toISOString().slice(0,10),weight:r.weight,height:r.height,bmi:r.bmi.toFixed(1)});localStorage.setItem(key,JSON.stringify(list.slice(-100)));render()}catch(e){render()}
   });
   document.getElementById('ij-bmi-history-clear').addEventListener('click',()=>{try{localStorage.removeItem(key)}catch(e){}render()});render();
+ }else if(tool==='bodyfat'){
+  content.insertAdjacentHTML('beforeend',
+   '<div class="ij-bmi-tool-grid">'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bf-equation">Equation</label><select id="ij-bf-equation"><option value="male">Male</option><option value="female">Female</option></select></div>'+
+   field('Height (cm)','ij-bf-height','e.g. 175')+
+   field('Waist / abdomen (cm)','ij-bf-waist','Measure at navel for male equation')+
+   field('Neck (cm)','ij-bf-neck','Measure below larynx')+
+   '<div class="ij-bmi-tool-field" id="ij-bf-hip-wrap" hidden><label for="ij-bf-hip">Hip circumference (cm)</label><input id="ij-bf-hip" type="number" min="1" step="0.1" placeholder="Measure widest point"></div>'+
+   '</div><div class="ij-bmi-tool-actions"><button type="button" id="ij-bf-calc">Estimate body fat</button></div>'+
+   '<p class="ij-bmi-tool-note">Use a flexible tape without compressing the skin. Measurements must be in centimetres. This adult estimate is not a diagnosis or a substitute for a clinical body-composition assessment.</p>');
+  const equation=document.getElementById('ij-bf-equation');
+  const hipWrap=document.getElementById('ij-bf-hip-wrap');
+  const heightInput=document.getElementById('ij-bf-height');
+  const waistInput=document.getElementById('ij-bf-waist');
+  const neckInput=document.getElementById('ij-bf-neck');
+  const hipInput=document.getElementById('ij-bf-hip');
+  if(r)heightInput.value=r.height;
+  equation.addEventListener('change',()=>{hipWrap.hidden=equation.value!=='female';});
+  document.getElementById('ij-bf-calc').addEventListener('click',()=>{
+   content.querySelector('.ij-bmi-tool-output')?.remove();
+   const ht=Number(heightInput.value),waist=Number(waistInput.value),neck=Number(neckInput.value),hip=Number(hipInput.value);
+   if(!ht||!waist||!neck||ht<=0||waist<=0||neck<=0||(equation.value==='female'&&(!hip||hip<=0))){output('Please enter valid height, waist and neck measurements. The female equation also requires hip circumference.');return}
+   const inch=cm=>cm/2.54, H=inch(ht), W=inch(waist), N=inch(neck), Hip=inch(hip);
+   let bf;
+   if(equation.value==='male'){
+    if(W<=N){output('Waist / abdomen measurement must be greater than neck measurement. Check your tape measurements.');return}
+    bf=86.010*Math.log10(W-N)-70.041*Math.log10(H)+36.76;
+   }else{
+    if(W+Hip<=N){output('Waist plus hip measurement must be greater than neck measurement. Check your tape measurements.');return}
+    bf=163.205*Math.log10(W+Hip-N)-97.684*Math.log10(H)-78.387;
+   }
+   if(!Number.isFinite(bf)||bf<2||bf>75){output('These measurements produce an out-of-range estimate. Please recheck the measurements; this method may not suit everyone.');return}
+   const weight=r?.weight;
+   output('Estimated body fat: <strong>'+bf.toFixed(1)+'%</strong>'+
+    (weight?'<br>Estimated fat mass: <strong>'+(weight*bf/100).toFixed(1)+' kg</strong><br>Estimated lean mass: <strong>'+(weight*(1-bf/100)).toFixed(1)+' kg</strong>':'')+
+    '<p>Calculated with the US Navy circumference equation. This is a rough estimate and can differ from measurements made with professional equipment. It is intended for adults aged 18 and over; do not use during pregnancy or for children and teens.</p>');
+  });
  }else if(tool==='report'){
   output(r?'Current BMI: <strong>'+r.bmi.toFixed(1)+'</strong><br>Weight: '+r.weight+' kg<br>Height: '+r.height+' cm<br><br>Choose Print, then select “Save as PDF” in your browser.':'Enter your weight and height in the main BMI calculator before creating a report.');
   content.insertAdjacentHTML('beforeend','<div class="ij-bmi-tool-actions"><button type="button" id="ij-bmi-print" '+(r?'':'disabled')+'>Print / Save as PDF</button></div>');
