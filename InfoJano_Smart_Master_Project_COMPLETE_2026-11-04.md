@@ -3672,3 +3672,13 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Kept the scope isolated: no edits to `bmi.html`, BMI calculation JavaScript, homepage, sitemap, service worker, other calculators, navigation or ID Card Print Studio. No service-worker cache bump was needed because these are standalone HTML page changes and `sw.js` does not list these guide pages in its precache.
 - Existing feature concepts discussed separately (unit toggle, waist-to-height ratio, progress tracker, goal estimator, report/share, BMR/TDEE, body-fat and child/teen guidance) are not being represented as working features yet. They require separate functional implementation and QA before publishing any claims or dedicated landing pages.
 - Source-level checks confirmed one BMI hero and one keyword-chip section on each page, preserved canonical URLs and five existing FAQ entries per page. Live visual verification and Pages deployment status remain pending.
+
+
+## BMI SEO Landing Pages Expansion — 2026-11-10
+- PR #59 merged into main. Merge commit: 30fedbf37dc0185efc41c3a93330a0fa6eee5b1e.
+- Updated four existing BMI SEO landing pages only: bmi-calculation-guide.html, bmi-weight-categories.html, bmi-healthy-weight-range.html, bmi-health-guide.html.
+- Added distinct search-intent keyword clusters (English primary/secondary/long-tail and question-style terms), refined page titles and meta descriptions, and readable contextual keyword/topic content.
+- Existing hero markup already matches the main BMI Calculator hero composition; preserved it. Existing canonical URLs preserved. No calculator logic, homepage, shared styles, other pages or sitemap changed.
+- Existing sitemap already contains these four URLs; no sitemap change required. No new pages created in this pass; no not-yet-built features represented as live tools.
+- Pages deployment for this exact merge commit must be checked separately; PR merge alone is not proof of live deployment.
+- Live URLs: https://barsulkhan.github.io/InfoJano/bmi-calculation-guide.html ; https://barsulkhan.github.io/InfoJano/bmi-weight-categories.html ; https://barsulkhan.github.io/InfoJano/bmi-healthy-weight-range.html ; https://barsulkhan.github.io/InfoJano/bmi-health-guide.html
