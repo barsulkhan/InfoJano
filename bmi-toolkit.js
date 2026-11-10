@@ -11,7 +11,8 @@ const descriptions={
  history:['BMI History','Save dated BMI readings on this device and review your recent progress.'],
  healthy:['Healthy Weight Range','Estimate the adult reference weight range for your entered height using BMI 18.5–24.9.'],
  report:['BMI Result Report','Print or save a copy of your BMI result and health guidance as PDF.'],
- bodyfat:['Body Fat Calculator','Estimate adult body fat percentage using the circumference-based US Navy method.']
+ bodyfat:['Body Fat Calculator','Estimate adult body fat percentage using the circumference-based US Navy method.'],
+ bmr:['BMR Calculator','Estimate your resting daily energy needs using the Mifflin-St Jeor equation.']
 };
 function values(){
  const w=Number(document.getElementById('weight')?.value),h=Number(document.getElementById('height')?.value);
@@ -109,6 +110,24 @@ function setActive(tool){
     (weight?'<br>Estimated fat mass: <strong>'+(weight*bf/100).toFixed(1)+' kg</strong><br>Estimated lean mass: <strong>'+(weight*(1-bf/100)).toFixed(1)+' kg</strong>':'')+
     '<p>Calculated with the US Navy circumference equation. This is a rough estimate and can differ from measurements made with professional equipment. Use the reference equation that matches the population for which the equation was developed. It is intended for adults aged 18 and over; do not use during pregnancy or for children and teens.</p>');
   });
+ }else if(tool==='bmr'){
+  content.insertAdjacentHTML('beforeend',
+   '<div class="ij-bmi-tool-grid">'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bmr-sex">Equation reference</label><select id="ij-bmr-sex"><option value="male">Male</option><option value="female">Female</option></select></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bmr-age">Age (years)</label><input id="ij-bmr-age" type="number" min="18" max="100" step="1" placeholder="18–100"></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bmr-weight">Weight (kg)</label><input id="ij-bmr-weight" type="number" min="30" max="300" step="0.1" placeholder="e.g. 70"></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bmr-height">Height (cm)</label><input id="ij-bmr-height" type="number" min="100" max="250" step="0.1" placeholder="e.g. 170"></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bmr-activity">Activity level (optional TDEE estimate)</label><select id="ij-bmr-activity"><option value="" selected>BMR only — skip TDEE</option><option value="1.2">Sedentary — little exercise</option><option value="1.375">Light — 1–3 days/week</option><option value="1.55">Moderate — 3–5 days/week</option><option value="1.725">Very active — 6–7 days/week</option><option value="1.9">Extra active — physical job/training</option></select></div>'+
+   '</div><div class="ij-bmi-tool-actions"><button type="button" id="ij-bmr-calc">Calculate BMR</button></div>'+
+   '<p class="ij-bmi-tool-note">For adults only. Mifflin-St Jeor provides an estimate of resting energy expenditure; it is not a measured metabolism test or medical advice.</p>');
+  if(r){document.getElementById('ij-bmr-weight').value=r.weight;document.getElementById('ij-bmr-height').value=r.height;}
+  const calc=()=>{content.querySelector('.ij-bmi-tool-output')?.remove();
+   const age=Number(document.getElementById('ij-bmr-age').value),weight=Number(document.getElementById('ij-bmr-weight').value),height=Number(document.getElementById('ij-bmr-height').value),sex=document.getElementById('ij-bmr-sex').value,factor=Number(document.getElementById('ij-bmr-activity').value);
+   if(!Number.isInteger(age)||age<18||age>100||!Number.isFinite(weight)||weight<30||weight>300||!Number.isFinite(height)||height<100||height>250){output('Enter valid adult details: age 18–100, weight 30–300 kg and height 100–250 cm.');return}
+   const bmr=10*weight+6.25*height-5*age+(sex==='male'?5:-161),tdee=Number.isFinite(factor)&&factor>0?bmr*factor:null;
+   output('Estimated BMR: <strong>'+Math.round(bmr).toLocaleString()+' kcal/day</strong>'+(tdee===null?'':'<br>Estimated daily energy use (TDEE): <strong>'+Math.round(tdee).toLocaleString()+' kcal/day</strong>')+'<p><strong>Formula:</strong> Mifflin-St Jeor. BMR estimates energy used at rest.'+(tdee===null?' TDEE was not calculated.':' TDEE is a separate estimate that applies the selected activity multiplier.')+' Individual needs can differ; do not treat these values as a prescribed calorie target.</p>');
+  };
+  document.getElementById('ij-bmr-calc').addEventListener('click',calc);
  }else if(tool==='report'){
   output(r?'Current BMI: <strong>'+r.bmi.toFixed(1)+'</strong><br>Weight: '+r.weight+' kg<br>Height: '+r.height+' cm<br><br>Choose Print, then select “Save as PDF” in your browser.':'Enter your weight and height in the main BMI calculator before creating a report.');
   content.insertAdjacentHTML('beforeend','<div class="ij-bmi-tool-actions"><button type="button" id="ij-bmi-print" '+(r?'':'disabled')+'>Print / Save as PDF</button></div>');

@@ -60,3 +60,4 @@ https://barsulkhan.github.io/InfoJano/days-between-dates-calculator.html
 https://barsulkhan.github.io/InfoJano/business-days-calculator.html
 https://barsulkhan.github.io/InfoJano/date-duration-calculator.html
 https://barsulkhan.github.io/InfoJano/add-subtract-date-calculator.html
+https://barsulkhan.github.io/InfoJano/bmr-calculator.html
