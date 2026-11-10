@@ -3356,3 +3356,12 @@ Verified GitHub PR history:
 
 ## 8. Exact continuation instruction
 Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Desktop QA of the four merged Date SEO pages and the current main Date Difference Calculator. Then test calculator cases and record results. Next inspect current Google Search Console sitemap errors and the four Date page indexing statuses using user-provided screenshots where account access is needed. Update this same Master Project File after each meaningful milestone. Preserve all existing design and calculator logic unless the user explicitly approves a specific change.
+
+## 10 November 2026 — Date Difference desktop visual refinement (user-approved; review branch)
+- User explicitly requested improvements on the main Date Difference Calculator page (`date-difference.html`): add color to desktop icons, improve the Date Difference FAQ design, and improve the Exact Time Breakdown panel immediately above.
+- Created isolated branch: `design/date-difference-desktop-icons-faq-breakdown`. No changes were made to `main`; live site is unchanged pending review and approval.
+- Updated only the Date Difference page presentation: added colored icon treatments for hero metric labels, calculator heading, result calendar and quick-action buttons; restyled the Exact Time Breakdown card and its three metric tiles; upgraded the FAQ section to a wider premium card with clearer question rows and open/close affordances.
+- New visual CSS is scoped to desktop widths (`min-width:801px`) so existing mobile layout rules are not intentionally altered. Existing FAQ questions and their structured-data answers remain unchanged.
+- Calculator JavaScript, date parsing, formulas, result values, input controls, IDs and calculation behavior were not intentionally modified.
+- Pending before merge: inspect the final diff, verify CSS/HTML and JavaScript syntax, run desktop visual review and confirm mobile styling is unaffected. Then present preview/review to the user. Do not merge or deploy without explicit user approval.
+- Draft review PR created: #42 — https://github.com/barsulkhan/InfoJano/pull/42. It is open, draft, and unmerged. GitHub initially reported mergeable=false immediately after creation; recheck after GitHub recalculates mergeability. No deployment/live change has been made from this branch.
