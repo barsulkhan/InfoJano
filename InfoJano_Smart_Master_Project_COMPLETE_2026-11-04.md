@@ -3364,3 +3364,4 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - New visual CSS is scoped to desktop widths (`min-width:801px`) so existing mobile layout rules are not intentionally altered. Existing FAQ questions and their structured-data answers remain unchanged.
 - Calculator JavaScript, date parsing, formulas, result values, input controls, IDs and calculation behavior were not intentionally modified.
 - Pending before merge: inspect the final diff, verify CSS/HTML and JavaScript syntax, run desktop visual review and confirm mobile styling is unaffected. Then present preview/review to the user. Do not merge or deploy without explicit user approval.
+- Draft review PR created: #42 — https://github.com/barsulkhan/InfoJano/pull/42. It is open, draft, and unmerged. GitHub initially reported mergeable=false immediately after creation; recheck after GitHub recalculates mergeability. No deployment/live change has been made from this branch.
