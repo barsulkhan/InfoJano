@@ -3620,3 +3620,14 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Visual improvements: saturated navy/blue/purple neon gradient, cyan border and glow, clearer white kicker/title/subtitle/pills, lime accent heading, animated cyan light sweep across the banner, animated lighting sweep over headline text, subtle aura glow. Added reduced-motion fallback.
 - All four files passed source QA for namespaced hero, no old hero markup class, both lighting animations, and retained BMI calculator CTA. No other page, calculator logic, SEO content or homepage changed.
 - GitHub Pages deployment and live mobile visual QA still need confirmation after merge. PR link above; merge commit `ce7b907d5eb2f4940c06ed130257fb723f2fdfa2`.
+
+
+## 10 November 2026 — BMI feature page hero banner reference correction
+
+- User clarified the task is to correct the hero banner only, using the supplied final BMI Calculator design screenshot as the visual reference (do not redesign the lower page sections in this change).
+- PR #49 merged: https://github.com/barsulkhan/InfoJano/pull/49
+- Merge commit: `d3ff0439f1de19b24cabde604cb3206e9ecf7492`.
+- Updated only the four BMI feature pages: `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`, `bmi-health-guide.html`.
+- Hero now has a richer blue/cyan/purple visual background, strong neon border/glow, and an illustrative BMI composition with multicolor BMI gauge, weighing scale, measuring tape, apple, water bottle and dumbbell; the illustration floats subtly and the existing headline/banner lighting sweep remains. Desktop uses a two-column layout; mobile stacks the illustration beneath the text. Reduced-motion support included.
+- Kept each page's unique heading and description. Body sections, FAQs, SEO metadata, BMI calculator, homepage and shared assets were not changed.
+- Source changes merged; GitHub Pages deployment and visual verification on user's mobile still pending.
