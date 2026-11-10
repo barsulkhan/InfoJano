@@ -3537,3 +3537,11 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Status: live-page check completed by user and indexing requests submitted. This does NOT mean Google has indexed the pages yet; indexing and search appearance remain pending Google's crawl and processing.
 - Treat the four Date SEO landing pages' implementation, desktop/mobile visual review, and indexing-request submission as complete for now. Do not make further design/code changes unless a specific defect is reported.
 - Next project work: finish the main Date Difference Calculator functional QA matrix (date edge cases, inclusive/exclusive counting, weekend/Saturday/holiday options, date picker/manual sync, swap/reset, countdown, copy/share/print/PDF); separately investigate Google Search Console sitemap status and later verify each page's actual indexing status. No calculator logic changes without explicit approval.
+
+
+## 10 November 2026 — Image Resizer SEO indexing reminder
+- User attempted to submit the six newly prepared Image Resizer SEO landing pages for Google Search Console indexing.
+- Five pages were submitted/attempted; the sixth page could not be submitted because the user's Search Console request/usage limit was reached:
+  `https://barsulkhan.github.io/InfoJano/resize-image-for-website.html`
+- Keep this exact sixth URL on the pending indexing list. Whenever the user next asks to index any pages, include/remind them of this URL so it is not forgotten.
+- Do not mark this sixth page as indexing-requested or indexed. It remains pending until the user can submit it.
