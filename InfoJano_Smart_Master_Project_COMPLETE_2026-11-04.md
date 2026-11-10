@@ -3608,3 +3608,15 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
   - https://barsulkhan.github.io/InfoJano/bmi-health-guide.html
 - Google Search Console indexing has not yet been requested for these four pages. Remember the pending earlier Image Resizer URL `https://barsulkhan.github.io/InfoJano/resize-image-for-website.html` when the user next has indexing quota.
 - Browser/device visual and interaction QA remains pending. User prefers to inspect the site once the whole batch is ready rather than review intermediate pages individually.
+
+
+## 10 November 2026 — BMI feature landing-page hero visual correction
+
+- User shared a live mobile screenshot showing the four new BMI SEO landing pages' hero area appearing pale/white with low-contrast subtitle text, unlike the approved neon design preview.
+- Fixed all four pages in PR #48: https://github.com/barsulkhan/InfoJano/pull/48 (merged).
+- Merge commit: `ce7b907d5eb2f4940c06ed130257fb723f2fdfa2`.
+- Changed only these four files: `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`, `bmi-health-guide.html`.
+- Root cause addressed by namespacing hero selectors to `.bmi-seo-hero` to prevent shared site CSS collisions from overriding the standalone page hero.
+- Visual improvements: saturated navy/blue/purple neon gradient, cyan border and glow, clearer white kicker/title/subtitle/pills, lime accent heading, animated cyan light sweep across the banner, animated lighting sweep over headline text, subtle aura glow. Added reduced-motion fallback.
+- All four files passed source QA for namespaced hero, no old hero markup class, both lighting animations, and retained BMI calculator CTA. No other page, calculator logic, SEO content or homepage changed.
+- GitHub Pages deployment and live mobile visual QA still need confirmation after merge. PR link above; merge commit `ce7b907d5eb2f4940c06ed130257fb723f2fdfa2`.
