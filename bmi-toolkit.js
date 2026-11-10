@@ -72,12 +72,12 @@ function setActive(tool){
  }else if(tool==='bodyfat'){
   content.insertAdjacentHTML('beforeend',
    '<div class="ij-bmi-tool-grid">'+
-   '<div class="ij-bmi-tool-field"><label for="ij-bf-equation">Equation</label><select id="ij-bf-equation"><option value="male">Male</option><option value="female">Female</option></select></div>'+
-   field('Age (years)','ij-bf-age','18 or older','1')+
-   field('Height (cm)','ij-bf-height','e.g. 175')+
-   field('Waist / abdomen (cm)','ij-bf-waist','Measure at navel for male equation')+
-   field('Neck (cm)','ij-bf-neck','Measure below larynx')+
-   '<div class="ij-bmi-tool-field" id="ij-bf-hip-wrap" hidden><label for="ij-bf-hip">Hip circumference (cm)</label><input id="ij-bf-hip" type="number" min="1" step="0.1" placeholder="Measure widest point"></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bf-equation">Reference equation</label><select id="ij-bf-equation"><option value="male">Male equation</option><option value="female">Female equation</option></select></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bf-age">Age (years)</label><input id="ij-bf-age" type="number" min="18" max="120" step="1" required placeholder="18 or older"></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bf-height">Height (cm)</label><input id="ij-bf-height" type="number" min="100" max="250" step="0.1" required placeholder="e.g. 175"></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bf-waist">Waist / abdomen (cm)</label><input id="ij-bf-waist" type="number" min="30" max="250" step="0.1" required placeholder="Male: measure abdomen at navel"></div>'+
+   '<div class="ij-bmi-tool-field"><label for="ij-bf-neck">Neck (cm)</label><input id="ij-bf-neck" type="number" min="15" max="100" step="0.1" required placeholder="Measure below larynx"></div>'+
+   '<div class="ij-bmi-tool-field" id="ij-bf-hip-wrap" hidden><label for="ij-bf-hip">Hip circumference (cm)</label><input id="ij-bf-hip" type="number" min="30" max="250" step="0.1" placeholder="Measure widest point"></div>'+
    '</div><div class="ij-bmi-tool-actions"><button type="button" id="ij-bf-calc">Estimate body fat</button></div>'+
    '<p class="ij-bmi-tool-note">Use a flexible tape without compressing the skin. Measurements must be in centimetres. This adult estimate is not a diagnosis or a substitute for a clinical body-composition assessment.</p>');
   const equation=document.getElementById('ij-bf-equation');
@@ -92,8 +92,8 @@ function setActive(tool){
    content.querySelector('.ij-bmi-tool-output')?.remove();
    const age=Number(document.getElementById('ij-bf-age').value);
    const ht=Number(heightInput.value),waist=Number(waistInput.value),neck=Number(neckInput.value),hip=Number(hipInput.value);
-   if(!Number.isInteger(age)||age<18){output('This estimate is designed for adults aged 18 and over. It is not suitable for children or teens.');return}
-   if(!ht||!waist||!neck||ht<=0||waist<=0||neck<=0||(equation.value==='female'&&(!hip||hip<=0))){output('Please enter valid height, waist and neck measurements. The female equation also requires hip circumference.');return}
+   if(!Number.isInteger(age)||age<18||age>120){output('Enter an age from 18 to 120 years. This estimate is not suitable for children or teens.');return}
+   if(!ht||!waist||!neck||ht<100||ht>250||waist<30||waist>250||neck<15||neck>100||(equation.value==='female'&&(!hip||hip<30||hip>250))){output('Please enter valid height, waist and neck measurements. The female equation also requires hip circumference.');return}
    const inch=cm=>cm/2.54, H=inch(ht), W=inch(waist), N=inch(neck), Hip=inch(hip);
    let bf;
    if(equation.value==='male'){
@@ -107,7 +107,7 @@ function setActive(tool){
    const weight=r?.weight;
    output('Estimated body fat: <strong>'+bf.toFixed(1)+'%</strong>'+
     (weight?'<br>Estimated fat mass: <strong>'+(weight*bf/100).toFixed(1)+' kg</strong><br>Estimated lean mass: <strong>'+(weight*(1-bf/100)).toFixed(1)+' kg</strong>':'')+
-    '<p>Calculated with the US Navy circumference equation. This is a rough estimate and can differ from measurements made with professional equipment. It is intended for adults aged 18 and over; do not use during pregnancy or for children and teens.</p>');
+    '<p>Calculated with the US Navy circumference equation. This is a rough estimate and can differ from measurements made with professional equipment. Use the reference equation that matches the population for which the equation was developed. It is intended for adults aged 18 and over; do not use during pregnancy or for children and teens.</p>');
   });
  }else if(tool==='report'){
   output(r?'Current BMI: <strong>'+r.bmi.toFixed(1)+'</strong><br>Weight: '+r.weight+' kg<br>Height: '+r.height+' cm<br><br>Choose Print, then select “Save as PDF” in your browser.':'Enter your weight and height in the main BMI calculator before creating a report.');
