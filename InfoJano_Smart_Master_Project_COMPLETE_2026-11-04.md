@@ -3486,3 +3486,18 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Verified on source: no faulty SVG string remains, colored icon rules and CSS arrow are present on all four pages; executable JavaScript blocks remain byte-for-byte unchanged.
 - Calculator logic, SEO content/metadata, canonical URLs, hero artwork and animation rules remain preserved.
 - Master file updated on main. Waiting for GitHub Pages deployment and user's final browser screenshot check.
+
+
+## 10 November 2026 — User desktop screenshot QA: four Date SEO pages
+- User supplied desktop screenshots for all four Date SEO pages:
+  1. `business-days-calculator.html`
+  2. `add-subtract-date-calculator.html`
+  3. `date-duration-calculator.html`
+  4. `days-between-dates-calculator.html`
+- Visual review of the supplied screenshots: all four pages show a consistent wide desktop content layout, matching blue-to-purple hero banners with visible neon-style glow, calendar artwork, and colored feature icons.
+- The previous literal SVG markup leak is no longer visible in the supplied screenshots; the “How to Use This Calculator” section appears normally. No square-box replacement glyphs are apparent in these screenshots.
+- The four-page desktop width update (1500px max-width) and PR #45 icon/arrow styling appear visually consistent in the user's screenshots.
+- GitHub Pages deployment #1993 completed successfully on 10 November 2026 for master-file commit `c5ac402cf8ab59f8a4ef3983dad1ae5fa89c4af9`: https://github.com/barsulkhan/InfoJano/actions/runs/42753036749
+- Limitation: still screenshots can confirm the glow/artwork appearance but cannot prove that the neon/calendar/logo animations are moving. Motion needs a short live browser observation/video to verify.
+- No new code changes were made as part of this screenshot review. Preserve calculator logic and page content.
+- Next project priorities remain: (1) complete mobile visual QA for these four pages, (2) run the Date calculator functional test matrix without changing logic, and (3) investigate Google Search Console sitemap fetch/indexing status using fresh Search Console evidence.
