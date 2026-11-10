@@ -34,60 +34,35 @@
 @media(max-width:760px){.bmi-seo-hero{grid-template-columns:minmax(0,1fr)!important;min-height:0!important;padding:20px 16px!important}.bmi-seo-hero .hero-art{min-height:210px!important;margin-top:2px}.bmi-seo-hero .bmi-hero-illustration{max-width:340px;width:100%}.bmi-seo-hero h1{font-size:clamp(29px,7vw,40px)!important}}
 @media(prefers-reduced-motion:reduce){.bmi-seo-hero .bmi-hero-illustration{animation:none!important}}
 
+
+/* FINAL APPROVED PHOTO-STYLE BMI HERO — shared across all four feature pages */
+.bmi-seo-hero{position:relative!important;isolation:isolate!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(340px,1fr)!important;gap:0!important;align-items:stretch!important;min-height:390px!important;padding:0!important;overflow:hidden!important;border:2px solid #21dcff!important;border-radius:24px!important;background:linear-gradient(112deg,#03459d 0%,#0879d8 58%,#1537b7 100%)!important;box-shadow:0 0 18px #00d9ff88,0 14px 34px #1b55a53b!important}
+.bmi-seo-hero:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.04) 45%,rgba(255,255,255,.45) 49%,rgba(0,229,255,.22) 51%,transparent 58%);transform:translateX(-120%);animation:heroPhotoSweep 8s ease-in-out infinite}
+.bmi-seo-hero:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 0,rgba(0,238,255,.18),transparent 54%);animation:heroPhotoAura 4s ease-in-out infinite alternate}
+.bmi-seo-hero>div:first-child{position:relative;z-index:2;align-self:center;padding:clamp(24px,3.4vw,52px)!important;min-width:0}
+.bmi-seo-hero .kicker{display:inline-flex!important;align-items:center;padding:8px 15px!important;border:1px solid #b9f8ff!important;border-radius:28px!important;background:#fff!important;color:#0754bf!important;font-size:12px!important;box-shadow:0 0 18px #c8faff!important;letter-spacing:.3px!important}
+.bmi-seo-hero h1{font-size:clamp(34px,4.6vw,66px)!important;line-height:1.02!important;letter-spacing:-1.8px!important;color:#fff!important;text-shadow:0 2px 10px #062b69a6!important;margin:16px 0 12px!important}
+.bmi-seo-hero h1 em{display:inline;color:#e5ff00!important;text-shadow:0 0 15px #e5ff0066!important}
+.bmi-seo-hero p{max-width:620px!important;color:#fff!important;font-size:clamp(15px,1.55vw,20px)!important;line-height:1.42!important;text-shadow:0 1px 5px #05285c88!important;margin:0 0 18px!important}
+.bmi-seo-hero .hero-pills{display:flex!important;flex-wrap:wrap!important;gap:9px 16px!important;margin:0 0 20px!important}
+.bmi-seo-hero .hero-pills span{padding:0!important;border:0!important;background:transparent!important;color:#fff!important;font-size:clamp(12px,1.2vw,15px)!important;font-weight:800!important;text-shadow:0 1px 4px #06265c!important}
+.bmi-seo-hero .hero-action{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:54px!important;padding:12px 25px!important;border-radius:40px!important;background:linear-gradient(100deg,#e6ff00,#8df000)!important;color:#071b46!important;font-weight:900!important;font-size:clamp(15px,1.6vw,21px)!important;text-decoration:none!important;box-shadow:0 5px 0 #399c0b,0 0 22px #b9ff36a6!important}
+.bmi-seo-hero .hero-art{position:relative!important;z-index:1!important;display:block!important;min-height:390px!important;width:100%!important;overflow:hidden!important;background:#0877ce!important}
+.bmi-seo-hero .hero-art img{display:block!important;width:100%!important;height:100%!important;min-height:390px!important;object-fit:cover!important;object-position:center!important;clip-path:inset(0 0 0 5%)!important;filter:saturate(1.08) contrast(1.02)!important;animation:heroPhotoFloat 6s ease-in-out infinite!important}
+@keyframes heroPhotoSweep{0%,18%{transform:translateX(-120%)}65%,100%{transform:translateX(120%)}}
+@keyframes heroPhotoAura{from{opacity:.35}to{opacity:.95}}
+@keyframes heroPhotoFloat{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.025) translateY(-4px)}}
+@media(max-width:760px){.bmi-seo-hero{grid-template-columns:minmax(0,1fr)!important;min-height:0!important}.bmi-seo-hero>div:first-child{padding:22px 18px 12px!important}.bmi-seo-hero h1{font-size:clamp(32px,8vw,43px)!important;letter-spacing:-1px!important}.bmi-seo-hero p{font-size:14px!important}.bmi-seo-hero .hero-pills{gap:6px 12px!important;margin-bottom:15px!important}.bmi-seo-hero .hero-pills span{font-size:11px!important}.bmi-seo-hero .hero-action{min-height:46px!important;padding:10px 19px!important;font-size:15px!important}.bmi-seo-hero .hero-art{min-height:245px!important;height:245px!important}.bmi-seo-hero .hero-art img{min-height:245px!important;height:245px!important;object-position:center!important;clip-path:inset(0 0 0 2%)!important}}
+@media(max-width:390px){.bmi-seo-hero .hero-art,.bmi-seo-hero .hero-art img{height:215px!important;min-height:215px!important}.bmi-seo-hero>div:first-child{padding:19px 15px 10px!important}}
+@media(prefers-reduced-motion:reduce){.bmi-seo-hero:before,.bmi-seo-hero:after,.bmi-seo-hero .hero-art img{animation:none!important}}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"BMI Calculation Guide: Formula, Examples & How to Calculate BMI | InfoJano","url":"https://barsulkhan.github.io/InfoJano/bmi-calculation-guide.html","description":"Learn how to calculate Body Mass Index (BMI) using the standard formula, height and weight examples, and a free online BMI calculator.","isPartOf":{"@type":"WebSite","name":"InfoJano","url":"https://barsulkhan.github.io/InfoJano/"}},{"@type":"Article","headline":"BMI Calculation Guide","description":"Learn how to calculate Body Mass Index (BMI) using the standard formula, height and weight examples, and a free online BMI calculator.","mainEntityOfPage":"https://barsulkhan.github.io/InfoJano/bmi-calculation-guide.html","author":{"@type":"Organization","name":"InfoJano"},"publisher":{"@type":"Organization","name":"InfoJano"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate BMI manually?","acceptedAnswer":{"@type":"Answer","text":"Divide your weight in kilograms by your height in metres multiplied by itself."}},{"@type":"Question","name":"What is the BMI formula in kg and cm?","acceptedAnswer":{"@type":"Answer","text":"Convert centimetres to metres first, then divide kilograms by metres squared. Equivalently, BMI = weight (kg) ÷ [height (cm) ÷ 100]²."}},{"@type":"Question","name":"Is a BMI of 22.9 healthy?","acceptedAnswer":{"@type":"Answer","text":"For adults, 22.9 is within the commonly used 18.5–24.9 screening range. BMI alone cannot determine overall health."}},{"@type":"Question","name":"Can I calculate BMI for a child?","acceptedAnswer":{"@type":"Answer","text":"Children and teenagers need BMI-for-age interpretation using age- and sex-specific growth references. Adult categories are not appropriate."}},{"@type":"Question","name":"Does BMI measure body fat?","acceptedAnswer":{"@type":"Answer","text":"No. BMI uses height and weight and does not directly measure body fat or muscle mass."}}]}]}</script>
 </head><body>
 <header class="site-nav"><a class="brand" href="index.html">🌿 InfoJano</a><nav class="nav-links"><a href="index.html">Home</a><a href="bmi.html">BMI Calculator</a><a href="age.html">Age Calculator</a><a href="date-difference.html">Date Tools</a></nav></header>
 <main class="wrap"><div class="crumb"><a href="index.html">Home</a> › <a href="bmi.html">BMI Calculator</a> › BMI Calculation Guide</div>
-<section class="bmi-seo-hero"><div><span class="kicker">BMI FORMULA & EXAMPLES</span><h1>BMI Calculation <em>Guide</em></h1><p>Understand the BMI formula, calculate your Body Mass Index step by step, and use a free online calculator for a quick adult BMI estimate.</p><div class="hero-pills"><span>✓ Free guide</span><span>✓ Easy to understand</span><span>✓ Mobile friendly</span></div></div><div class="hero-art"><svg class="bmi-hero-illustration" viewBox="0 0 520 360" role="img" aria-label="BMI health illustration with body mass index gauge, weighing scale, measuring tape, healthy fruit, water bottle and dumbbell">
-<defs>
- <linearGradient id="gaugeRing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00c875"/><stop offset=".34" stop-color="#ffe000"/><stop offset=".68" stop-color="#ff8b18"/><stop offset="1" stop-color="#f33b67"/></linearGradient>
- <linearGradient id="scaleBody" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#8eb9d9"/></linearGradient>
- <linearGradient id="apple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b9ff34"/><stop offset="1" stop-color="#1a9b42"/></linearGradient>
- <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8fbff" stop-opacity=".95"/><stop offset="1" stop-color="#00a9ff" stop-opacity=".55"/></linearGradient>
- <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="270" cy="325" rx="220" ry="20" fill="#00d9ff" opacity=".24" filter="url(#glow)"/>
-<circle cx="265" cy="137" r="120" fill="#eaffff" opacity=".14" stroke="#bdfaff" stroke-width="5" filter="url(#glow)"/>
-<circle cx="265" cy="137" r="99" fill="none" stroke="url(#gaugeRing)" stroke-width="27" stroke-linecap="round" stroke-dasharray="505 120" transform="rotate(-220 265 137)"/>
-<circle cx="265" cy="137" r="78" fill="#f8ffff" stroke="#d5faff" stroke-width="5"/>
-<text x="265" y="105" text-anchor="middle" font-size="15" font-weight="800" fill="#14516a">INFOJANO BMI</text>
-<text x="265" y="155" text-anchor="middle" font-size="48" font-weight="900" fill="#10265e">22.9</text>
-<text x="265" y="179" text-anchor="middle" font-size="13" font-weight="700" fill="#07865a">HEALTH GUIDE</text>
-<!-- weighing scale -->
-<g transform="translate(42 210) rotate(-8)">
- <rect x="0" y="18" width="150" height="102" rx="22" fill="#18396d" stroke="#b7edff" stroke-width="5"/>
- <rect x="13" y="30" width="124" height="67" rx="15" fill="url(#scaleBody)"/>
- <circle cx="75" cy="62" r="26" fill="#fff" stroke="#6f8eac" stroke-width="4"/>
- <path d="M75 62 L88 45" stroke="#ef3e52" stroke-width="4" stroke-linecap="round"/>
- <circle cx="75" cy="62" r="4" fill="#19345d"/>
- <path d="M28 113h94" stroke="#8bdcff" stroke-width="4" stroke-linecap="round"/>
-</g>
-<!-- measuring tape -->
-<path d="M53 294 C108 260 164 276 207 298" fill="none" stroke="#ffd52c" stroke-width="13" stroke-linecap="round"/>
-<path d="M65 286l5 10m12-16 5 10m13-13 5 10m14-12 5 10m14-8 5 10m14-4 5 10" stroke="#a56b00" stroke-width="2"/>
-<!-- apple -->
-<g transform="translate(352 218)">
- <path d="M39 28C14 8 0 34 9 62c9 31 31 52 54 42 26 12 48-13 53-43 5-31-13-48-39-32-12 7-21 7-38-1z" fill="url(#apple)" stroke="#d5ff9b" stroke-width="3"/>
- <path d="M60 23c-3-13 5-22 18-25" stroke="#714a1c" stroke-width="7" fill="none" stroke-linecap="round"/>
- <path d="M75 10c16-18 38-8 37 8-17 7-31 4-37-8z" fill="#40db72"/>
- <ellipse cx="37" cy="54" rx="8" ry="18" fill="#fff" opacity=".28"/>
-</g>
-<!-- water bottle -->
-<g transform="translate(438 125)">
- <rect x="20" y="0" width="35" height="22" rx="5" fill="#00c9ff"/>
- <rect x="12" y="18" width="51" height="174" rx="17" fill="url(#water)" stroke="#d5faff" stroke-width="4"/>
- <path d="M20 58h35M20 75h35M20 92h35" stroke="#fff" stroke-width="4" opacity=".55"/>
- <path d="M26 34v135" stroke="#fff" stroke-width="5" opacity=".5" stroke-linecap="round"/>
-</g>
-<!-- dumbbell -->
-<g transform="translate(390 290) rotate(-18)">
- <rect x="0" y="16" width="108" height="18" rx="9" fill="#b8a4ff"/>
- <rect x="-8" y="0" width="24" height="50" rx="9" fill="#8b5cf6"/>
- <rect x="92" y="0" width="24" height="50" rx="9" fill="#8b5cf6"/>
-</g>
-</svg></div></section>
-<h2 class="section-title"><span>✦</span> What You’ll Learn</h2><p class="lead">Body Mass Index (BMI) is a simple screening calculation that compares a person's weight with their height. It is commonly used as an initial indicator for adults, but it is not a direct measurement of body fat or a diagnosis of health.</p><div class="grid"><article class="feature"><span class="feature-icon">📘</span><h3>Clear explanations</h3><p>Straightforward information written for everyday readers.</p></article><article class="feature"><span class="feature-icon">🧮</span><h3>Practical examples</h3><p>Understand the topic with useful examples and reference values.</p></article><article class="feature"><span class="feature-icon">📱</span><h3>Mobile friendly</h3><p>Read the complete guide comfortably on phone, tablet or desktop.</p></article></div>
+<section class="bmi-seo-hero"><div><span class="kicker">BMI FORMULA & EXAMPLES</span><h1>BMI Calculation <em>Guide</em></h1><p>Understand the BMI formula, calculate your Body Mass Index step by step, and use a free online calculator for a quick adult BMI estimate.</p><div class="hero-pills"><span>✓ Free Guide</span><span>✓ Easy to Understand</span><span>✓ Mobile Friendly</span></div><a class="hero-action" href="#learn">▣ Read the Complete Guide →</a></div><div class="hero-art"><img src="assets/images/bmi-health-hero-art.webp" alt="BMI gauge, weighing scale, measuring tape, healthy food, water bottle and dumbbells" loading="eager" fetchpriority="high"></div></section>
+<h2 class="section-title" id="learn"><span>✦</span> What You’ll Learn</h2><p class="lead">Body Mass Index (BMI) is a simple screening calculation that compares a person's weight with their height. It is commonly used as an initial indicator for adults, but it is not a direct measurement of body fat or a diagnosis of health.</p><div class="grid"><article class="feature"><span class="feature-icon">📘</span><h3>Clear explanations</h3><p>Straightforward information written for everyday readers.</p></article><article class="feature"><span class="feature-icon">🧮</span><h3>Practical examples</h3><p>Understand the topic with useful examples and reference values.</p></article><article class="feature"><span class="feature-icon">📱</span><h3>Mobile friendly</h3><p>Read the complete guide comfortably on phone, tablet or desktop.</p></article></div>
 <div class="cta"><div><h2>Check your BMI estimate</h2><p>Use the free InfoJano BMI Calculator and explore your result.</p></div><a href="bmi.html">Open BMI Calculator →</a></div>
 <section class="content-card"><h2>What is the BMI formula?</h2><p>For weight measured in kilograms and height measured in metres, BMI is calculated by dividing weight by height squared.</p><div class="example">BMI = Weight (kg) ÷ [Height (m) × Height (m)]</div></section><section class="content-card"><h2>How to calculate BMI step by step</h2><p>First convert height from centimetres to metres. Multiply the height in metres by itself. Divide your weight in kilograms by that result. The number you get is your BMI value.</p><div class="example">Example: weight 70 kg and height 175 cm. Height in metres = 1.75. BMI = 70 ÷ (1.75 × 1.75) = approximately 22.9.</div></section><section class="content-card"><h2>Calculate BMI online</h2><p>You can avoid manual arithmetic by entering your weight and height in the InfoJano BMI Calculator. The calculator displays a BMI estimate and, for adults, the commonly used BMI category. Optional age and activity inputs provide additional context for the general guidance shown.</p><div class="example">Use consistent units: kilograms for weight and centimetres for height. Measure height without shoes and use a recent weight reading.</div></section><section class="content-card"><h2>What does the BMI number mean?</h2><p>For adults aged 20 and over, common screening categories are below 18.5 (underweight), 18.5–24.9 (healthy weight range), 25.0–29.9 (overweight) and 30.0 or above (obesity range). These categories are general reference points, not a personal diagnosis.</p><div class="example">BMI categories for children and teenagers require age- and sex-specific interpretation. Do not apply adult cut-offs to people under 20.</div></section><section class="content-card"><h2>Limitations of BMI calculations</h2><p>BMI does not directly measure body fat, muscle mass or fat distribution. It may not fully reflect an individual's age, pregnancy, body composition or medical circumstances. A healthcare professional can interpret BMI alongside other measures and medical history.</p><div class="example">If you have concerns about weight or health, seek individual advice from a qualified healthcare professional.</div></section>
 <div class="callout"><strong>Health information notice:</strong> BMI is a screening measure, not a diagnosis. This guide provides general educational information and does not replace advice from a qualified healthcare professional.</div>
