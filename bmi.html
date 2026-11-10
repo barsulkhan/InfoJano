@@ -350,6 +350,7 @@ section[aria-labelledby="related-tools-title"]>div>a>span:last-child{flex:1 1 10
 @media(prefers-reduced-motion:reduce){.ij-bmi-seo-section,section[aria-labelledby="related-tools-title"]>div>a{transition:none!important}}
 
 </style>
+<link rel="stylesheet" href="bmi-toolkit.css">
 </head>
 <body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
@@ -365,12 +366,27 @@ section[aria-labelledby="related-tools-title"]>div>a>span:last-child{flex:1 1 10
 </section>
 <section class="ij-bmi-keywords" aria-label="Popular BMI search topics"><span>BMI Calculator</span><span>Body Mass Index Calculator</span><span>Free BMI Check</span><span>BMI by Height and Weight</span><span>Healthy BMI Range</span><span>BMI Chart</span><span>Ideal Weight for Height</span><span>Calculate My BMI</span></section>
 <section class="ij-bmi-workspace">
-<div class="ij-bmi-form card"><div class="ij-bmi-form-heading"><span>▦</span><div><h2>Calculate Your BMI</h2><p>Enter your height and weight to get your BMI result.</p></div></div>
+<div class="ij-bmi-form card" id="ij-bmi-form"><div class="ij-bmi-form-heading"><span>▦</span><div><h2>Calculate Your BMI</h2><p>Enter your height and weight to get your BMI result.</p></div></div>
 <label for="weight">Weight (kg)</label><div class="ij-bmi-input-wrap"><span>▣</span><input id="weight" type="number" min="1" step="any" placeholder="e.g. 70"></div>
 <div class="ij-bmi-label-row"><label for="height">Height (cm)</label><span class="ij-bmi-unit">cm</span></div><div class="ij-bmi-input-wrap"><span>↕</span><input id="height" type="number" min="1" step="any" placeholder="e.g. 170"></div>
 <details class="ij-bmi-personalize"><summary>Personalize your health tips <small>(optional)</small></summary><div class="ij-bmi-personalize-grid"><label for="bmi-age">Age <span>years</span><input id="bmi-age" type="number" min="2" max="120" placeholder="e.g. 30"></label><label for="bmi-activity">Daily activity level<select id="bmi-activity"><option value="unspecified">Choose activity level</option><option value="low">Mostly sitting / low activity</option><option value="moderate">Some walking / moderately active</option><option value="high">Very active / regular exercise</option></select></label></div><p>Age helps us show the right BMI guidance. Adult BMI categories are for ages 20 and over.</p></details>
 <div class="ij-bmi-actions"><button type="button" onclick="calculateBMI()">▦ &nbsp; Calculate BMI</button><button type="button" class="ij-bmi-reset" onclick="document.getElementById('weight').value='';document.getElementById('height').value='';document.getElementById('bmi-age').value='';document.getElementById('bmi-activity').value='unspecified';resetBMIResult()">⟳ &nbsp; Reset</button></div><div id="result" class="ij-bmi-result" aria-live="polite">Enter your weight and height to calculate your BMI.</div></div>
 <div class="ij-bmi-result-panel" id="ij-bmi-result-panel"><div class="ij-bmi-result-heading"><span>✪</span><strong>Your BMI Result</strong></div><div class="ij-bmi-score">BMI <b>—</b><span class="ij-bmi-status">Enter your details</span></div><div class="ij-bmi-scale"><div class="under"><b>&lt; 18.5</b><small>Underweight</small></div><div class="healthy"><b>18.5–24.9</b><small>Healthy</small></div><div class="over"><b>25.0–29.9</b><small>Overweight</small></div><div class="obese"><b>≥ 30.0</b><small>Obesity</small></div></div><div class="ij-bmi-summary"><div><span>▣</span><small>Your Weight</small><b>— kg</b></div><div><span>↕</span><small>Your Height</small><b>— cm</b></div><div><span>◉</span><small>Your BMI</small><b>—</b></div></div><p class="ij-bmi-disclaimer">BMI is a general screening measure, not a medical diagnosis.</p></div>
+</section>
+<section class="ij-bmi-toolkit" id="ij-bmi-toolkit" aria-labelledby="ij-bmi-toolkit-title">
+  <div class="ij-bmi-toolkit-heading"><div><span class="ij-bmi-toolkit-kicker">MORE WAYS TO UNDERSTAND YOUR RESULT</span><h2 id="ij-bmi-toolkit-title">BMI Toolkit</h2><p>Choose the tool that matches what you came here to calculate. Your main BMI result stays at the top.</p></div></div>
+  <nav class="ij-bmi-tool-nav" aria-label="BMI tools">
+    <button type="button" data-bmi-tool="prime" aria-pressed="false">BMI Prime</button>
+    <button type="button" data-bmi-tool="waist" aria-pressed="false">Waist-to-Height</button>
+    <button type="button" data-bmi-tool="history" aria-pressed="false">BMI History</button>
+    <button type="button" data-bmi-tool="healthy" aria-pressed="false">Healthy Weight</button>
+    <button type="button" data-bmi-tool="report" aria-pressed="false">Print Report</button>
+  </nav>
+  <div class="ij-bmi-tool-panel" id="ij-bmi-tool-panel" hidden aria-live="polite">
+    <div class="ij-bmi-tool-panel-head"><div><span id="ij-bmi-tool-eyebrow">BMI TOOL</span><h3 id="ij-bmi-tool-name">BMI Prime</h3><p id="ij-bmi-tool-description"></p></div><button type="button" class="ij-bmi-tool-close" id="ij-bmi-tool-close" aria-label="Close tool">×</button></div>
+    <div id="ij-bmi-tool-content"></div>
+  </div>
+  <p class="ij-bmi-tool-note">BMI and related measurements are screening tools, not diagnoses. Results should be considered with your overall health and, when needed, advice from a qualified healthcare professional.</p>
 </section>
 <section class="ij-bmi-features" aria-label="BMI calculator features"><article><span>⚡</span><h3>Quick BMI Calculation</h3><p>Get a BMI estimate from weight in kilograms and height in centimetres.</p></article><article><span>📊</span><h3>BMI Weight Categories</h3><p>See the standard adult BMI ranges and where your result falls.</p></article><article><span>⚖️</span><h3>Healthy Weight Range</h3><p>View an estimated adult weight range based on your entered height.</p></article><article><span>💡</span><h3>Practical Health Guide</h3><p>Explore general, sustainable habits and helpful next steps.</p></article></section>
 <section class="ij-bmi-health-guide" id="ij-bmi-health-guide" hidden aria-live="polite">
@@ -525,6 +541,7 @@ guide.scrollIntoView({behavior:'smooth',block:'start'});
 
 
 
+<script src="bmi-toolkit.js" defer></script>
 <script src="/InfoJano/install.js" defer></script>
 <script src="/InfoJano/site-header.js" defer></script>
 </body>
