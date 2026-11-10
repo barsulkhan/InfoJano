@@ -3545,3 +3545,12 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
   `https://barsulkhan.github.io/InfoJano/resize-image-for-website.html`
 - Keep this exact sixth URL on the pending indexing list. Whenever the user next asks to index any pages, include/remind them of this URL so it is not forgotten.
 - Do not mark this sixth page as indexing-requested or indexed. It remains pending until the user can submit it.
+
+
+## 10 November 2026 — Session handoff: next task is InfoJano BMI Calculator
+- User is pausing the current chat due to concern about chat limits and wants all project progress retained in the existing Smart Master Project File. Continue using this same file; do not create a separate master file.
+- User supplied a screenshot of the live InfoJano BMI Calculator page: https://barsulkhan.github.io/InfoJano/bmi.html
+- Screenshot visibly shows the InfoJano header and breadcrumb, a blue BMI Calculator hero banner with BMI scale/apple artwork and feature badges, followed by the “Calculate Your BMI” section with Weight (kg) and Height (cm) input fields.
+- Mark the next work item as: review/audit and improve the existing BMI Calculator page (bmi.html) according to the user's next instructions. The screenshot identifies the target page only; it does not authorize changing the page design, calculator formula/logic, or content yet.
+- At the start of the next chat, resume from this master file and ask/confirm the specific BMI Calculator task before making code changes. Preserve existing site-wide design consistency and do not touch unrelated tools/pages.
+- Existing pending items remain: submit https://barsulkhan.github.io/InfoJano/resize-image-for-website.html for indexing when Search Console quota permits; complete main Date Difference Calculator functional QA; investigate sitemap fetch and verify actual Google indexing (indexing requests are not proof of indexing).
