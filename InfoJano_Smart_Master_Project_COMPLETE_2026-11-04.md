@@ -3516,3 +3516,12 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Source-level mobile QA: PASS for presence and consistency of responsive rules. Real-device/live mobile visual QA: PENDING. Need user to open each of the four live pages on a phone (or use browser responsive mode at 360–390 CSS px) and provide screenshots of the top hero, calculator/feature area, How to Use, FAQ and footer. Check horizontal scrolling, clipped text, card wrapping, nav visibility and CTA/FAQ taps.
 - No code, CSS, content, SEO metadata, or calculator logic changed during this audit.
 - Next: complete screenshot-based mobile QA; then continue Date Difference calculator functional test matrix and Google Search Console sitemap/indexing investigation.
+
+
+## 10 November 2026 — User mobile screenshot QA: four Date SEO pages
+- User supplied phone screenshots for all four Date SEO landing pages: `add-subtract-date-calculator.html`, `date-duration-calculator.html`, `business-days-calculator.html`, and `days-between-dates-calculator.html`.
+- Visual review: all four pages render consistently on mobile. The blue-to-purple hero banners, calendar artwork, colored SVG feature icons, intro/CTA cards, feature grids, How to Use steps, information cards and FAQ sections are visible and aligned.
+- No obvious square-box icon glyphs, literal SVG source text, clipped hero artwork, or major horizontal overflow is apparent in the supplied screenshots.
+- Mobile layout is visually approved as a screenshot-based check; no code changes were made during this review. Keep this four-page mobile design unchanged unless the user reports a specific defect.
+- Screenshot limitations: static images cannot confirm that neon glow/calendar/logo animations are actually moving, nor do they verify CTA navigation, FAQ expand/collapse, or all footer links. These interaction/motion checks remain pending.
+- Next priorities: (1) finish any remaining live interaction/motion checks if needed, (2) continue the Date Difference calculator functional test matrix, and (3) investigate current Google Search Console sitemap fetch and individual URL indexing status using fresh evidence. Do not change calculator logic or page design without explicit approval.
