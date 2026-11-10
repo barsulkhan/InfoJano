@@ -251,6 +251,105 @@ body{background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55%,#e9eaff)!important;ba
 @media(max-width:850px){.ij-bmi-features{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.ij-bmi-keywords{gap:6px;padding:11px}.ij-bmi-keywords span{font-size:10px;padding:6px 9px}.ij-bmi-features{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ij-bmi-features article{padding:12px}.ij-bmi-features h3{font-size:13px}.ij-bmi-features p{font-size:11px}.ij-bmi-seo-section{padding:17px;border-radius:17px}.ij-bmi-chart th,.ij-bmi-chart td{padding:10px;font-size:13px}}
 </style>
+<style>
+
+/* Visual polish for BMI educational sections and related tools */
+.ij-bmi-seo-section{
+ position:relative;isolation:isolate;overflow:hidden;
+ margin:22px auto!important;padding:clamp(20px,3vw,32px)!important;
+ border:1px solid #d7e5fb!important;border-radius:24px!important;
+ background:linear-gradient(145deg,#fff 0%,#f9fbff 58%,#eef6ff 100%)!important;
+ box-shadow:0 10px 28px rgba(22,65,140,.08),inset 0 1px 0 #fff!important;
+ transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.ij-bmi-seo-section:before{
+ content:"";position:absolute;z-index:-1;top:0;left:0;width:100%;height:4px;
+ background:linear-gradient(90deg,#00c8ff,#2867ff,#8b5cf6,#ed54d8);
+}
+.ij-bmi-seo-section:after{
+ content:"";position:absolute;z-index:-1;right:-65px;top:-75px;width:190px;height:190px;
+ border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.09),transparent 68%);
+ pointer-events:none;
+}
+.ij-bmi-seo-section h2{
+ display:flex;align-items:center;gap:10px;
+ margin:0 0 14px!important;color:#102d68!important;
+ font-size:clamp(21px,2.5vw,27px)!important;font-weight:850!important;
+ letter-spacing:-.45px;line-height:1.25!important;
+}
+.ij-bmi-seo-section h2:before{
+ content:"";display:inline-block;flex:0 0 5px;width:5px;height:27px;
+ border-radius:8px;background:linear-gradient(180deg,#00c8ff,#315cf4);
+ box-shadow:0 0 10px #36a9ff55;
+}
+.ij-bmi-seo-section p,.ij-bmi-seo-section li{
+ color:#475875!important;font-size:14px;line-height:1.8!important;
+}
+.ij-bmi-seo-section p{margin:10px 0 13px}
+.ij-bmi-seo-section ul,.ij-bmi-seo-section ol{padding-left:22px;margin:12px 0}
+.ij-bmi-seo-section li{padding-left:4px;margin:9px 0!important}
+.ij-bmi-seo-section li::marker{color:#168be8;font-weight:900}
+.ij-bmi-formula{
+ position:relative;overflow:hidden;margin:14px 0!important;padding:17px 18px!important;
+ border:1px solid #c7ddff!important;border-left:4px solid #08aeea!important;
+ border-radius:15px!important;
+ background:linear-gradient(105deg,#eaf5ff,#f3f1ff)!important;
+ color:#17458f!important;font-size:15px!important;font-weight:850!important;
+ box-shadow:inset 0 1px 0 #fff,0 5px 14px #2466c20c!important;
+}
+.ij-bmi-table-wrap{margin:14px 0 10px;border:1px solid #d8e5f6;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 5px 16px #2455a00b}
+.ij-bmi-chart{width:100%!important;min-width:0!important;border:0!important;border-collapse:separate!important;border-spacing:0!important}
+.ij-bmi-chart th,.ij-bmi-chart td{padding:13px 15px!important;border-bottom:1px solid #e8eef8!important;text-align:left!important;font-size:13px!important}
+.ij-bmi-chart th{background:linear-gradient(100deg,#e8f2ff,#eef4ff)!important;color:#1a397b!important;font-weight:850!important}
+.ij-bmi-chart tr:last-child td{border-bottom:0!important}
+.ij-bmi-chart tr:nth-child(even) td{background:#f7faff!important}
+.ij-bmi-chart td:first-child{font-weight:750;color:#263f70}
+.ij-bmi-seo-section details{margin:9px 0;padding:13px 15px!important;border:1px solid #e1eafa!important;border-radius:13px;background:#f8fbff}
+.ij-bmi-seo-section details summary{color:#1c3b78!important}
+.ij-bmi-seo-section details[open]{border-color:#9acbff!important;background:#f2f8ff}
+.ij-bmi-seo-section details p{margin:10px 0 2px}
+section[aria-labelledby="related-tools-title"]{
+ position:relative;overflow:hidden;margin:24px 0!important;padding:22px!important;
+ border:1px solid #cfe0fb!important;border-radius:24px!important;
+ background:radial-gradient(ellipse at 100% 0%,#dceaff 0,transparent 42%),linear-gradient(145deg,#f5f9ff,#fff 65%,#f2f7ff)!important;
+ box-shadow:0 12px 30px #174b9910!important;
+}
+section[aria-labelledby="related-tools-title"]>div{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:13px!important
+}
+section[aria-labelledby="related-tools-title"]>div>a{
+ position:relative;overflow:hidden;min-height:140px!important;padding:17px!important;
+ flex-direction:row!important;align-items:center!important;flex-wrap:wrap;column-gap:12px!important;
+ border:1px solid #d7e5fb!important;border-radius:18px!important;
+ background:linear-gradient(130deg,#fff,#f1f7ff)!important;
+ box-shadow:0 5px 16px #1e56a20d!important;
+ transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important;
+}
+section[aria-labelledby="related-tools-title"]>div>a:hover{
+ transform:translateY(-3px);border-color:#80baff!important;box-shadow:0 12px 24px #1e56a21c!important
+}
+section[aria-labelledby="related-tools-title"]>div>a>span:first-child{
+ width:48px!important;height:48px!important;flex:0 0 48px!important;border-radius:15px!important;
+ box-shadow:0 5px 12px #2a6ad51c
+}
+section[aria-labelledby="related-tools-title"]>div>a>strong{flex:1 1 calc(100% - 64px);font-size:15px!important;color:#18356f!important}
+section[aria-labelledby="related-tools-title"]>div>a>span:nth-of-type(2){flex:1 1 100%;padding-left:60px;color:#60708b!important}
+section[aria-labelledby="related-tools-title"]>div>a>span:last-child{flex:1 1 100%;padding-left:60px;margin-top:0!important;color:#0879dc!important}
+@media(max-width:520px){
+ .ij-bmi-seo-section{margin:16px auto!important;padding:18px!important;border-radius:19px!important}
+ .ij-bmi-seo-section p,.ij-bmi-seo-section li{font-size:13px!important}
+ .ij-bmi-formula{font-size:13px!important;padding:14px!important}
+ .ij-bmi-chart th,.ij-bmi-chart td{padding:11px 9px!important;font-size:12px!important}
+ section[aria-labelledby="related-tools-title"]{padding:16px!important;border-radius:20px!important}
+ section[aria-labelledby="related-tools-title"]>div{gap:9px!important}
+ section[aria-labelledby="related-tools-title"]>div>a{min-height:148px!important;padding:12px 10px!important;gap:7px!important;column-gap:8px!important;border-radius:15px!important}
+ section[aria-labelledby="related-tools-title"]>div>a>span:first-child{width:38px!important;height:38px!important;flex-basis:38px!important}
+ section[aria-labelledby="related-tools-title"]>div>a>strong{font-size:12px!important;flex-basis:calc(100% - 48px)}
+ section[aria-labelledby="related-tools-title"]>div>a>span:nth-of-type(2),section[aria-labelledby="related-tools-title"]>div>a>span:last-child{padding-left:0!important;font-size:11px!important}
+}
+@media(prefers-reduced-motion:reduce){.ij-bmi-seo-section,section[aria-labelledby="related-tools-title"]>div>a{transition:none!important}}
+
+</style>
 </head>
 <body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading InfoJano tool">
