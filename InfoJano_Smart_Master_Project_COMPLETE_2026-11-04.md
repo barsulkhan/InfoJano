@@ -3466,3 +3466,13 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Source verification on main confirms SVG icon, neon keyframes and calendar animation keyframes on all four pages.
 - JavaScript script blocks were byte-for-byte unchanged before merge; calculator logic, SEO metadata/canonical URLs, content, CTA targets and responsive breakpoints were preserved.
 - Browser visual QA remains pending user confirmation after successful Pages deployment; verify desktop and mobile, especially icon rendering, hero glow and calendar/logo motion.
+
+
+## 10 November 2026 — Follow-up fix: SVG source text and icon colors
+- User shared desktop screenshot showing literal SVG markup printed over the “How to Use This Calculator” step cards on all four Date SEO pages; user also requested colorful icons.
+- Root cause found in the shared page CSS repeated across the four files: `.step:not(:last-child):after` used an SVG string inside CSS `content:`, which prints literal text instead of rendering SVG markup.
+- Replaced the faulty text string with a CSS-drawn arrow chevron; no SVG source is emitted as text.
+- Added distinct color palettes for hero pills, feature icons, step icons, section headings, info headings, breadcrumbs and related-tool icons.
+- Changes are isolated to the four Date SEO HTML files on branch `fix/date-seo-svg-text-and-icon-colors`; no homepage, shared CSS/JS, calculator page or calculation logic changed.
+- Source verification: faulty SVG text content removed on all four pages; colored icon rules present; step arrow CSS present; all executable JavaScript script blocks remain byte-for-byte identical to main.
+- Awaiting browser visual confirmation after deployment. Not yet merged/deployed at this checkpoint.
