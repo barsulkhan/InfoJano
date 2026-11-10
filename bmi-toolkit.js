@@ -20,7 +20,7 @@ function values(){
 }
 function output(html){const box=document.createElement('div');box.className='ij-bmi-tool-output';box.innerHTML=html;content.appendChild(box)}
 function field(label,id,placeholder,step='0.1'){return '<div class="ij-bmi-tool-field"><label for="'+id+'">'+label+'</label><input id="'+id+'" type="number" min="0" step="'+step+'" placeholder="'+placeholder+'"></div>'}
-function adultCheck(r){return r&&r.age!==null&&r.age<20}
+function adultCheck(r){const age=Number(document.getElementById('bmi-age')?.value);return (r&&r.age!==null&&r.age<20)||(age>=2&&age<20)}
 function setActive(tool){
  const d=descriptions[tool];if(!d)return;
  buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.bmiTool===tool)));
@@ -37,7 +37,7 @@ function setActive(tool){
   output('Your BMI: <strong>'+r.bmi.toFixed(1)+'</strong><br>BMI Prime: <strong>'+prime.toFixed(2)+'</strong><p>Formula: BMI ÷ 25. A value of 1.00 corresponds to BMI 25. This ratio is not a diagnosis.</p>'+(r.age===null?'<p>Adult reference only. Confirm that this tool is appropriate for your age.</p>':''));
  }else if(tool==='waist'){
   content.insertAdjacentHTML('beforeend','<div class="ij-bmi-tool-grid">'+field('Waist measurement (cm)','ij-bmi-waist','e.g. 82')+field('Height (cm)','ij-bmi-waist-height','e.g. 170')+'</div><div class="ij-bmi-tool-actions"><button type="button" id="ij-bmi-waist-calc">Calculate ratio</button></div>');
-  const h=document.getElementById('ij-bmi-tool-waist-height')||document.getElementById('ij-bmi-waist-height');
+  const h=document.getElementById('ij-bmi-waist-height');
   if(r)h.value=r.height;
   document.getElementById('ij-bmi-waist-calc').addEventListener('click',()=>{
    const w=Number(document.getElementById('ij-bmi-waist').value),ht=Number(h.value);
