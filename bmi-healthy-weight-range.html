@@ -128,6 +128,43 @@
 }
 @media(prefers-reduced-motion:reduce){.ij-bmi-hero,.ij-bmi-hero:before,.ij-bmi-hero:after,.ij-bmi-art *{animation:none!important}}
 
+
+/* Canonical BMI hero: intentionally matched to bmi.html */
+.ij-bmi-hero{position:relative!important;isolation:isolate!important;overflow:hidden!important;display:grid!important;grid-template-columns:25% minmax(0,1fr) 22%!important;align-items:center!important;gap:18px!important;min-height:270px!important;padding:24px 30px!important;border:2px solid transparent!important;border-radius:30px!important;color:#fff!important;background:radial-gradient(ellipse at 8% 45%,#00dcff61,transparent 32%),radial-gradient(ellipse at 94% 18%,#cf4fff8c,transparent 35%),linear-gradient(112deg,#062b9d,#0646d8 50%,#4b16bd) padding-box,conic-gradient(from var(--ij-bmi-neon-angle),#00eaff,#174dff,#bd35ff,#ff39d2,#ffe94a,#00eaff) border-box!important;box-shadow:0 0 8px #00d9ffb0,0 0 18px #5a35ff85,0 0 30px #ed36ff55,0 16px 40px #2359d73d!important;animation:ijBmiNeonOrbit 5.5s linear infinite!important}
+.ij-bmi-art{position:relative!important;min-height:210px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.ij-bmi-meter{width:78%!important;max-width:190px!important;filter:drop-shadow(0 12px 16px #00104d80)!important;animation:ijBmiFloat 5s ease-in-out infinite!important}
+.ij-bmi-apple{position:absolute!important;width:55%!important;max-width:110px!important;right:-5px!important;bottom:0!important;filter:drop-shadow(0 10px 14px #00104d80)!important;animation:ijBmiFloat 4s ease-in-out infinite reverse!important}
+.ij-bmi-tape{position:absolute!important;width:100%!important;max-width:190px!important;left:-5px!important;bottom:0!important;filter:drop-shadow(0 6px 8px #00104d70)!important}
+.ij-bmi-hero-copy{position:relative!important;z-index:1!important;min-width:0!important}
+.ij-bmi-kicker{display:inline-block!important;padding:7px 14px!important;border:1px solid #58eaff99!important;border-radius:999px!important;background:#ffffff20!important;color:#d8faff!important;font-size:12px!important;font-weight:900!important;letter-spacing:1px!important}
+.ij-bmi-hero-copy h1{margin:10px 0 4px!important;color:#fff!important;font-size:clamp(38px,4.5vw,66px)!important;font-weight:900!important;letter-spacing:-2px!important;line-height:1.04!important}
+.ij-bmi-hero-copy h1 em{font-style:normal!important;color:#ffd52f!important}
+.ij-bmi-hero-copy p{margin:10px 0 18px!important;color:#eff7ff!important;font-size:clamp(15px,1.6vw,21px)!important;font-weight:600!important;opacity:1!important}
+.ij-bmi-pills{display:flex!important;flex-wrap:wrap!important;gap:9px!important}
+.ij-bmi-pills span{display:inline-flex!important;align-items:center!important;padding:9px 13px!important;border:1px solid #ffffff60!important;border-radius:999px!important;color:#fff!important;font-size:12px!important;font-weight:850!important;box-shadow:0 5px 16px #06134c35,inset 0 1px #ffffff30!important}
+.ij-bmi-pills .fast{background:linear-gradient(110deg,#087cf4,#0750d8)!important;border-color:#61dfff!important}
+.ij-bmi-pills .accurate{background:linear-gradient(110deg,#16bd65,#07894f)!important;border-color:#7af0ad!important}
+.ij-bmi-pills .mobile{background:linear-gradient(110deg,#ff9a21,#e94b45)!important;border-color:#ffd27a!important}
+.ij-bmi-pills .private{background:linear-gradient(110deg,#a22df1,#6418d1)!important;border-color:#e3a4ff!important}
+.ij-bmi-persons{display:flex!important;justify-content:center!important;align-items:center!important;min-height:190px!important;filter:drop-shadow(0 0 13px #36cfff80)!important}
+.ij-bmi-persons svg{width:100%!important;max-width:185px!important;overflow:visible!important}
+@media(max-width:850px){.ij-bmi-hero{grid-template-columns:22% minmax(0,1fr) 18%!important;padding:18px!important;gap:10px!important}}
+@media(max-width:600px){
+.ij-bmi-hero{grid-template-columns:minmax(0,1fr) 90px!important;min-height:0!important;padding:16px 12px!important;border-radius:22px!important;gap:8px!important}
+.ij-bmi-art{grid-column:2!important;grid-row:1!important;min-height:130px!important}
+.ij-bmi-meter{width:100%!important;max-width:90px!important}
+.ij-bmi-apple{width:62%!important;max-width:58px!important}
+.ij-bmi-tape{max-width:90px!important}
+.ij-bmi-hero-copy{grid-column:1!important;grid-row:1!important}
+.ij-bmi-hero-copy h1{font-size:31px!important;letter-spacing:-1px!important}
+.ij-bmi-hero-copy p{font-size:12px!important;margin:7px 0 10px!important}
+.ij-bmi-kicker{font-size:9px!important;padding:6px 8px!important}
+.ij-bmi-pills{gap:5px!important}
+.ij-bmi-pills span{font-size:9px!important;padding:6px 7px!important}
+.ij-bmi-persons{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){.ij-bmi-hero,.ij-bmi-meter,.ij-bmi-apple{animation:none!important}}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Healthy Weight Range Calculator by Height: BMI Guide & Examples | InfoJano","url":"https://barsulkhan.github.io/InfoJano/bmi-healthy-weight-range.html","description":"Learn how an estimated healthy weight range is calculated from height using adult BMI references, with examples and a free BMI calculator.","isPartOf":{"@type":"WebSite","name":"InfoJano","url":"https://barsulkhan.github.io/InfoJano/"}},{"@type":"Article","headline":"Healthy Weight Range by Height","description":"Learn how an estimated healthy weight range is calculated from height using adult BMI references, with examples and a free BMI calculator.","mainEntityOfPage":"https://barsulkhan.github.io/InfoJano/bmi-healthy-weight-range.html","author":{"@type":"Organization","name":"InfoJano"},"publisher":{"@type":"Organization","name":"InfoJano"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate a healthy weight range by height?","acceptedAnswer":{"@type":"Answer","text":"Convert height to metres, square it, then multiply by 18.5 and 24.9 to estimate the lower and upper adult reference weights."}},{"@type":"Question","name":"What is the healthy weight range for 175 cm?","acceptedAnswer":{"@type":"Answer","text":"Using the adult BMI reference interval 18.5–24.9, the estimate is approximately 56.6–76.2 kg."}},{"@type":"Question","name":"Is the BMI healthy weight range an ideal weight?","acceptedAnswer":{"@type":"Answer","text":"No. It is a general mathematical estimate, not a personal ideal or treatment target."}},{"@type":"Question","name":"Can this range be used for children?","acceptedAnswer":{"@type":"Answer","text":"No. Children and teenagers require age- and sex-specific BMI interpretation."}},{"@type":"Question","name":"Why can two people at the same weight have different BMI values?","acceptedAnswer":{"@type":"Answer","text":"BMI includes height in its formula, so different heights produce different BMI values at the same weight."}}]}]}</script>
 
