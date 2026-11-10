@@ -3662,3 +3662,13 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - The four BMI SEO landing pages use `assets/images/bmi-health-hero-art.webp`; their previous CSS had conflicting legacy hero selectors and responsive sizing. Corrected the image URL to the explicit GitHub Pages path `/InfoJano/assets/images/bmi-health-hero-art.webp` and added a final, scoped responsive CSS override to reliably show the approved artwork beside the hero copy on desktop and below it on mobile.
 - Scope: `bmi-health-guide.html`, `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`, plus `sw.js` cache bump from `infojano-v271` to `infojano-v272`. BMI calculator logic and unrelated pages are not changed.
 - Live visual verification still required after Pages deployment; do not claim pixel-identical rendering until the live pages are visually checked on desktop and mobile.
+
+
+## BMI SEO landing-page refresh — 10 November 2026
+- Started branch: `feature/bmi-seo-hero-keyword-refresh`.
+- Updated only the four existing BMI SEO landing pages: `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`, and `bmi-health-guide.html`.
+- Rebuilt each page's hero using the actual BMI Calculator hero composition and its inline BMI gauge, apple, measuring tape and people illustrations; copied the matching gradient/neon border, animated light sweep, typography, pill badges and responsive layout. This is the real website HTML/CSS implementation, not a generated mockup or background-only placeholder.
+- Added 12 relevant visible search-topic keyword chips to each page (48 page-specific topic phrases total), updated page-specific title and meta/OG/Twitter descriptions, and retained each page's canonical URL, body content, FAQ and existing structured data.
+- Kept the scope isolated: no edits to `bmi.html`, BMI calculation JavaScript, homepage, sitemap, service worker, other calculators, navigation or ID Card Print Studio. No service-worker cache bump was needed because these are standalone HTML page changes and `sw.js` does not list these guide pages in its precache.
+- Existing feature concepts discussed separately (unit toggle, waist-to-height ratio, progress tracker, goal estimator, report/share, BMR/TDEE, body-fat and child/teen guidance) are not being represented as working features yet. They require separate functional implementation and QA before publishing any claims or dedicated landing pages.
+- Source-level checks confirmed one BMI hero and one keyword-chip section on each page, preserved canonical URLs and five existing FAQ entries per page. Live visual verification and Pages deployment status remain pending.
