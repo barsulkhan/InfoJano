@@ -3501,3 +3501,18 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Limitation: still screenshots can confirm the glow/artwork appearance but cannot prove that the neon/calendar/logo animations are moving. Motion needs a short live browser observation/video to verify.
 - No new code changes were made as part of this screenshot review. Preserve calculator logic and page content.
 - Next project priorities remain: (1) complete mobile visual QA for these four pages, (2) run the Date calculator functional test matrix without changing logic, and (3) investigate Google Search Console sitemap fetch/indexing status using fresh Search Console evidence.
+
+
+## 10 November 2026 — Mobile responsive source QA: four Date SEO pages
+- Reviewed the current `main` source for all four live Date SEO landing pages:
+  1. `days-between-dates-calculator.html`
+  2. `business-days-calculator.html`
+  3. `date-duration-calculator.html`
+  4. `add-subtract-date-calculator.html`
+- All four contain the viewport meta tag and a dedicated `@media(max-width:760px)` responsive rule.
+- All four pages use the same mobile breakpoint and identical mobile CSS block (2,456 characters).
+- Mobile source rules cover compact navigation and brand sizing, three-column hero compression, smaller calendar artwork and title, stacked intro/CTA, two-column feature cards, two-column how-to steps, single-column information cards, compact FAQ and responsive related links.
+- The mobile CSS does not introduce any explicit `overflow-x` handling; static source review alone cannot prove absence of horizontal overflow because rendered content, font metrics and browser viewport affect layout.
+- Source-level mobile QA: PASS for presence and consistency of responsive rules. Real-device/live mobile visual QA: PENDING. Need user to open each of the four live pages on a phone (or use browser responsive mode at 360–390 CSS px) and provide screenshots of the top hero, calculator/feature area, How to Use, FAQ and footer. Check horizontal scrolling, clipped text, card wrapping, nav visibility and CTA/FAQ taps.
+- No code, CSS, content, SEO metadata, or calculator logic changed during this audit.
+- Next: complete screenshot-based mobile QA; then continue Date Difference calculator functional test matrix and Google Search Console sitemap/indexing investigation.
