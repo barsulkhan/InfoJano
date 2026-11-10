@@ -94,6 +94,40 @@
 @media(max-width:850px){.ij-bmi-hero{grid-template-columns:22% minmax(0,1fr) 18%;padding:18px;gap:10px}}
 @media(max-width:600px){.ij-bmi-hero{grid-template-columns:minmax(0,1fr) 90px;min-height:0;padding:16px 12px;border-radius:22px}.ij-bmi-art{grid-column:2;grid-row:1;min-height:130px}.ij-bmi-meter{width:100%;max-width:90px}.ij-bmi-apple{width:62%;max-width:58px}.ij-bmi-tape{max-width:90px}.ij-bmi-hero-copy{grid-column:1;grid-row:1}.ij-bmi-hero-copy h1{font-size:31px;letter-spacing:-1px}.ij-bmi-hero-copy p{font-size:12px;margin:7px 0 10px}.ij-bmi-kicker{font-size:9px;padding:6px 8px}.ij-bmi-pills{gap:5px}.ij-bmi-pills span{font-size:9px;padding:6px 7px}.ij-bmi-persons{display:none}.ij-bmi-keywords{gap:6px}.ij-bmi-keywords span{font-size:10px;padding:6px 8px}}
 @media(prefers-reduced-motion:reduce){.ij-bmi-hero,.ij-bmi-meter,.ij-bmi-apple,.ij-bmi-hero:before,.ij-bmi-hero:after{animation:none!important}}
+
+/* HOTFIX: restore high-contrast BMI hero on the three SEO guide pages */
+.ij-bmi-hero{
+  position:relative!important;isolation:isolate!important;display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(220px,.72fr) minmax(0,.72fr)!important;
+  align-items:center!important;gap:18px!important;min-height:330px!important;
+  padding:28px!important;overflow:hidden!important;border:2px solid #20dcff!important;
+  border-radius:28px!important;color:#fff!important;
+  background:radial-gradient(ellipse at 8% 45%,rgba(0,220,255,.30),transparent 32%),
+  radial-gradient(ellipse at 94% 18%,rgba(207,79,255,.34),transparent 35%),
+  linear-gradient(112deg,#062b9d 0%,#0646d8 52%,#3516a8 100%)!important;
+  box-shadow:0 0 12px rgba(0,217,255,.42),0 16px 40px rgba(35,89,215,.24)!important;
+}
+.ij-bmi-hero-copy{position:relative!important;z-index:2!important;min-width:0!important}
+.ij-bmi-hero-copy h1{color:#fff!important;text-shadow:0 2px 10px rgba(0,0,0,.28)!important}
+.ij-bmi-hero-copy h1 em{color:#ffe12e!important}
+.ij-bmi-hero-copy p{color:#f4f8ff!important;opacity:1!important;text-shadow:0 1px 5px rgba(0,0,0,.25)!important}
+.ij-bmi-kicker{color:#e8fcff!important;background:rgba(0,190,255,.16)!important;border-color:#8cefff!important}
+.ij-bmi-pills span{color:#fff!important;text-shadow:0 1px 4px rgba(0,0,0,.3)!important}
+.ij-bmi-art,.ij-bmi-persons{position:relative!important;z-index:1!important;opacity:1!important;filter:drop-shadow(0 8px 14px rgba(0,0,0,.22))}
+.ij-bmi-meter,.ij-bmi-apple,.ij-bmi-tape,.ij-bmi-persons svg{opacity:1!important;visibility:visible!important}
+@media(max-width:760px){
+ .ij-bmi-hero{grid-template-columns:minmax(0,1fr)!important;min-height:0!important;padding:20px 16px!important;gap:8px!important}
+ .ij-bmi-art{min-height:140px!important}
+ .ij-bmi-meter{width:54%!important;max-width:180px!important}
+ .ij-bmi-apple{max-width:82px!important}
+ .ij-bmi-tape{max-width:150px!important}
+ .ij-bmi-persons{min-height:145px!important}
+ .ij-bmi-persons svg{max-width:155px!important}
+ .ij-bmi-hero-copy h1{font-size:clamp(30px,8vw,42px)!important;letter-spacing:-1px!important}
+ .ij-bmi-hero-copy p{font-size:14px!important}
+}
+@media(prefers-reduced-motion:reduce){.ij-bmi-hero,.ij-bmi-hero:before,.ij-bmi-hero:after,.ij-bmi-art *{animation:none!important}}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"BMI Weight Categories for Adults: Underweight, Healthy, Overweight & Obesity | InfoJano","url":"https://barsulkhan.github.io/InfoJano/bmi-weight-categories.html","description":"Understand adult BMI weight categories, standard BMI ranges, what each category means, and the limitations of BMI screening.","isPartOf":{"@type":"WebSite","name":"InfoJano","url":"https://barsulkhan.github.io/InfoJano/"}},{"@type":"Article","headline":"BMI Weight Categories","description":"Understand adult BMI weight categories, standard BMI ranges, what each category means, and the limitations of BMI screening.","mainEntityOfPage":"https://barsulkhan.github.io/InfoJano/bmi-weight-categories.html","author":{"@type":"Organization","name":"InfoJano"},"publisher":{"@type":"Organization","name":"InfoJano"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the four adult BMI categories?","acceptedAnswer":{"@type":"Answer","text":"The common categories are underweight, healthy weight range, overweight and obesity range."}},{"@type":"Question","name":"Is BMI 25 overweight?","acceptedAnswer":{"@type":"Answer","text":"In the standard adult framework, a BMI of 25.0 begins the overweight range."}},{"@type":"Question","name":"Is BMI 30 considered obesity?","acceptedAnswer":{"@type":"Answer","text":"A BMI of 30.0 or above is within the standard adult obesity range."}},{"@type":"Question","name":"Are BMI categories the same for men and women?","acceptedAnswer":{"@type":"Answer","text":"The standard adult cut-offs are generally the same, but BMI does not capture every difference in body composition."}},{"@type":"Question","name":"Can BMI categories diagnose a health condition?","acceptedAnswer":{"@type":"Answer","text":"No. BMI is a screening measure and must not be treated as a diagnosis."}}]}]}</script>
 
