@@ -3525,3 +3525,15 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Mobile layout is visually approved as a screenshot-based check; no code changes were made during this review. Keep this four-page mobile design unchanged unless the user reports a specific defect.
 - Screenshot limitations: static images cannot confirm that neon glow/calendar/logo animations are actually moving, nor do they verify CTA navigation, FAQ expand/collapse, or all footer links. These interaction/motion checks remain pending.
 - Next priorities: (1) finish any remaining live interaction/motion checks if needed, (2) continue the Date Difference calculator functional test matrix, and (3) investigate current Google Search Console sitemap fetch and individual URL indexing status using fresh evidence. Do not change calculator logic or page design without explicit approval.
+
+
+## 10 November 2026 — Four Date SEO pages: live check and indexing request submitted
+- User confirmed that all four live Date SEO page URLs were checked and submitted through Google Search Console for indexing (Request Indexing).
+- URLs submitted:
+  1. https://barsulkhan.github.io/InfoJano/days-between-dates-calculator.html
+  2. https://barsulkhan.github.io/InfoJano/business-days-calculator.html
+  3. https://barsulkhan.github.io/InfoJano/date-duration-calculator.html
+  4. https://barsulkhan.github.io/InfoJano/add-subtract-date-calculator.html
+- Status: live-page check completed by user and indexing requests submitted. This does NOT mean Google has indexed the pages yet; indexing and search appearance remain pending Google's crawl and processing.
+- Treat the four Date SEO landing pages' implementation, desktop/mobile visual review, and indexing-request submission as complete for now. Do not make further design/code changes unless a specific defect is reported.
+- Next project work: finish the main Date Difference Calculator functional QA matrix (date edge cases, inclusive/exclusive counting, weekend/Saturday/holiday options, date picker/manual sync, swap/reset, countdown, copy/share/print/PDF); separately investigate Google Search Console sitemap status and later verify each page's actual indexing status. No calculator logic changes without explicit approval.
