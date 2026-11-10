@@ -3583,3 +3583,28 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Important verification limitation: GitHub connector did not return a Pages workflow run for the merge commit, and external live-page fetch was unavailable in this session. Therefore do NOT mark the new BMI version as confirmed live/deployed yet. Next check: open the live BMI URL after refresh and confirm the new hero, keyword chips, feature cards, educational sections and FAQ appear. If stale, check GitHub Actions → latest Pages deployment.
 - Do not request Google indexing until live publication is confirmed. After the page is live, the user may submit the existing canonical BMI URL in Search Console when quota permits.
 - Preserve the BMI calculation logic and all unrelated site pages. The user prefers not to be interrupted for intermediate review; provide a concise completion report and ask for screenshots only if the live website shows a specific defect.
+
+
+## 10 November 2026 — BMI Calculator: four dedicated feature SEO pages created and merged
+
+- User clarified that the task was to create a separate SEO landing page for each of the four main features shown on the existing BMI Calculator page, not to further rewrite the BMI calculator itself.
+- User approved one identical top-to-bottom visual design for all four pages, with only the page-specific content changing.
+- Created and merged PR #47: https://github.com/barsulkhan/InfoJano/pull/47
+- Merge commit: `1de6f4f16aac51fb543eb0c1e0fc3c8f563376eb`.
+- Added four standalone SEO landing pages:
+  1. `bmi-calculation-guide.html` — BMI formula, calculation steps and worked examples.
+  2. `bmi-weight-categories.html` — adult BMI ranges and category explanations.
+  3. `bmi-healthy-weight-range.html` — height-based estimated adult healthy weight range and examples.
+  4. `bmi-health-guide.html` — nutrition, movement, sleep and practical health guidance.
+- All four use the same responsive page design from navigation/breadcrumb and neon blue-purple hero through feature cards, CTA, educational sections, health notice, FAQ, related-guide links and footer. Each page has unique SEO title/description, canonical URL, Open Graph/Twitter metadata, WebPage/Article/FAQPage JSON-LD and five visible FAQs.
+- Added all four canonical URLs to `sitemap.xml`.
+- Existing `bmi.html` and its calculator logic were not changed in PR #47. No homepage, shared assets, other tools or ID Card Print Studio files were changed.
+- Source QA passed for all four pages: unique title and canonical, one H1, valid JSON-LD, five FAQs, no duplicate IDs, responsive CSS breakpoint, CTA to `bmi.html`, and cross-links among all four pages.
+- GitHub Pages workflow for merge commit `1de6f4f16aac51fb543eb0c1e0fc3c8f563376eb` started: https://github.com/barsulkhan/InfoJano/actions/runs/42761796520. At the time of this note it was still in progress; do not mark live deployment complete until the workflow succeeds and URLs are checked.
+- New live URLs after deployment:
+  - https://barsulkhan.github.io/InfoJano/bmi-calculation-guide.html
+  - https://barsulkhan.github.io/InfoJano/bmi-weight-categories.html
+  - https://barsulkhan.github.io/InfoJano/bmi-healthy-weight-range.html
+  - https://barsulkhan.github.io/InfoJano/bmi-health-guide.html
+- Google Search Console indexing has not yet been requested for these four pages. Remember the pending earlier Image Resizer URL `https://barsulkhan.github.io/InfoJano/resize-image-for-website.html` when the user next has indexing quota.
+- Browser/device visual and interaction QA remains pending. User prefers to inspect the site once the whole batch is ready rather than review intermediate pages individually.
