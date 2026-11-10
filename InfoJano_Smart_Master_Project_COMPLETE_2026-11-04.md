@@ -3554,3 +3554,32 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Mark the next work item as: review/audit and improve the existing BMI Calculator page (bmi.html) according to the user's next instructions. The screenshot identifies the target page only; it does not authorize changing the page design, calculator formula/logic, or content yet.
 - At the start of the next chat, resume from this master file and ask/confirm the specific BMI Calculator task before making code changes. Preserve existing site-wide design consistency and do not touch unrelated tools/pages.
 - Existing pending items remain: submit https://barsulkhan.github.io/InfoJano/resize-image-for-website.html for indexing when Search Console quota permits; complete main Date Difference Calculator functional QA; investigate sitemap fetch and verify actual Google indexing (indexing requests are not proof of indexing).
+
+
+
+## 10 November 2026 — BMI Calculator SEO landing page implementation merged
+- User asked the assistant to complete the BMI SEO work in one pass without repeatedly asking for intermediate design/content/code approvals; user will inspect the website at the end.
+- Implemented the approved BMI SEO plan on isolated branch `feature/bmi-seo-landing-page`.
+- PR #46 merged successfully: https://github.com/barsulkhan/InfoJano/pull/46
+- Merge commit: `88ed54858db19e0d01704d4d504bddb500e1c60c`.
+- Only `bmi.html` was changed. No homepage, shared assets, other calculator pages, ID Card Print Studio, sitemap.xml or robots.txt changes.
+- SEO metadata updated:
+  - Title: `BMI Calculator Online – Free Body Mass Index Calculator | InfoJano`
+  - Meta description updated for online BMI calculation, adult BMI category, estimated healthy weight range and practical guidance.
+  - Open Graph and Twitter title/description updated.
+  - Existing canonical URL preserved: https://barsulkhan.github.io/InfoJano/bmi.html
+- Hero H1 updated to “Free BMI Calculator Online”; subtitle now describes height/weight calculation, adult BMI category, estimated healthy weight range and guidance.
+- Removed unsupported “100% Accurate” promotional claim and replaced it with “Quick BMI Estimate”.
+- Added visible BMI keyword/topic chips and four feature cards.
+- Expanded visible SEO content: What Is BMI, BMI formula, worked example (70 kg / 175 cm ≈ 22.9), adult BMI category chart, estimated healthy weight range, How to Use, and BMI limitations.
+- Removed duplicated mini FAQ and old repeated example section. Added eight visible FAQs and matching FAQPage structured data. Added WebPage structured data; retained WebApplication structured data.
+- Source QA completed:
+  - Exactly one H1 and one canonical URL.
+  - JSON-LD parsed successfully; FAQPage has eight questions matching visible FAQ.
+  - Existing BMI calculation JavaScript was verified byte-for-byte unchanged from main before merge.
+  - Existing under-20 age-specific warning/handling and adult category thresholds preserved.
+  - Existing related-tool destinations (index.html, age.html, percentage.html, savings.html, date-difference.html) verified to exist.
+  - Diff confirmed exactly one changed file: bmi.html.
+- Important verification limitation: GitHub connector did not return a Pages workflow run for the merge commit, and external live-page fetch was unavailable in this session. Therefore do NOT mark the new BMI version as confirmed live/deployed yet. Next check: open the live BMI URL after refresh and confirm the new hero, keyword chips, feature cards, educational sections and FAQ appear. If stale, check GitHub Actions → latest Pages deployment.
+- Do not request Google indexing until live publication is confirmed. After the page is live, the user may submit the existing canonical BMI URL in Search Console when quota permits.
+- Preserve the BMI calculation logic and all unrelated site pages. The user prefers not to be interrupted for intermediate review; provide a concise completion report and ask for screenshots only if the live website shows a specific defect.
