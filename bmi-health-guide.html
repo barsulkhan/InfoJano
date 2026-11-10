@@ -24,12 +24,69 @@
 @keyframes heroAura{from{opacity:.38}to{opacity:.95}}
 @media(prefers-reduced-motion:reduce){.bmi-seo-hero:before,.bmi-seo-hero:after,.bmi-seo-hero h1:after{animation:none!important}}
 
+
+/* Reference-matched BMI hero composition and illustrated artwork */
+.bmi-seo-hero{min-height:390px!important;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;align-items:center!important;background:radial-gradient(ellipse at 83% 30%,rgba(15,207,255,.48),transparent 33%),radial-gradient(ellipse at 95% 80%,rgba(140,44,255,.65),transparent 38%),linear-gradient(112deg,#03439f 0%,#0874d5 54%,#2513a1 100%)!important}
+.bmi-seo-hero .hero-art{min-height:300px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:visible}
+.bmi-seo-hero .bmi-hero-illustration{display:block;width:100%;max-width:510px;height:auto;overflow:visible;filter:drop-shadow(0 12px 18px rgba(0,14,70,.28));animation:bmiHeroFloat 5s ease-in-out infinite}
+.bmi-seo-hero .gauge{display:none}
+@keyframes bmiHeroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:760px){.bmi-seo-hero{grid-template-columns:minmax(0,1fr)!important;min-height:0!important;padding:20px 16px!important}.bmi-seo-hero .hero-art{min-height:210px!important;margin-top:2px}.bmi-seo-hero .bmi-hero-illustration{max-width:340px;width:100%}.bmi-seo-hero h1{font-size:clamp(29px,7vw,40px)!important}}
+@media(prefers-reduced-motion:reduce){.bmi-seo-hero .bmi-hero-illustration{animation:none!important}}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"BMI Health Guide: Nutrition, Activity, Sleep & Understanding Your BMI | InfoJano","url":"https://barsulkhan.github.io/InfoJano/bmi-health-guide.html","description":"Understand what your BMI result can and cannot tell you. Explore balanced nutrition, physical activity, sleep habits and practical next steps.","isPartOf":{"@type":"WebSite","name":"InfoJano","url":"https://barsulkhan.github.io/InfoJano/"}},{"@type":"Article","headline":"Personal BMI Health Guide","description":"Understand what your BMI result can and cannot tell you. Explore balanced nutrition, physical activity, sleep habits and practical next steps.","mainEntityOfPage":"https://barsulkhan.github.io/InfoJano/bmi-health-guide.html","author":{"@type":"Organization","name":"InfoJano"},"publisher":{"@type":"Organization","name":"InfoJano"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does BMI tell me whether I am healthy?","acceptedAnswer":{"@type":"Answer","text":"No. BMI is a screening measure and cannot assess overall health on its own."}},{"@type":"Question","name":"What should I do after checking my BMI?","acceptedAnswer":{"@type":"Answer","text":"Use the result as one piece of information. Consider your overall habits and discuss concerns with a qualified healthcare professional."}},{"@type":"Question","name":"Can I lose weight quickly based on my BMI result?","acceptedAnswer":{"@type":"Answer","text":"Avoid crash diets or extreme plans. If weight change is appropriate, seek evidence-based guidance tailored to your health."}},{"@type":"Question","name":"How much activity should adults aim for?","acceptedAnswer":{"@type":"Answer","text":"A common public-health target is 150–300 minutes of moderate activity weekly, plus muscle-strengthening activity on two or more days, as health allows."}},{"@type":"Question","name":"Should I use BMI during pregnancy?","acceptedAnswer":{"@type":"Answer","text":"Standard BMI categories are not intended to assess weight during pregnancy. Seek pregnancy-specific advice from your healthcare team."}}]}]}</script>
 </head><body>
 <header class="site-nav"><a class="brand" href="index.html">🌿 InfoJano</a><nav class="nav-links"><a href="index.html">Home</a><a href="bmi.html">BMI Calculator</a><a href="age.html">Age Calculator</a><a href="date-difference.html">Date Tools</a></nav></header>
 <main class="wrap"><div class="crumb"><a href="index.html">Home</a> › <a href="bmi.html">BMI Calculator</a> › Personal BMI Health Guide</div>
-<section class="bmi-seo-hero"><div><span class="kicker">PRACTICAL BMI HEALTH GUIDE</span><h1>Personal BMI Health <em>Guide</em></h1><p>Put your BMI result into context with practical information about nutrition, movement, sleep and when to seek professional guidance.</p><div class="hero-pills"><span>✓ Free guide</span><span>✓ Easy to understand</span><span>✓ Mobile friendly</span></div></div><div class="hero-art"><div class="gauge"><div class="gauge-inner"><small>♡ INFOJAN0 GUIDE</small><b>BMI</b><small>Understand your result</small></div></div></div></section>
+<section class="bmi-seo-hero"><div><span class="kicker">PRACTICAL BMI HEALTH GUIDE</span><h1>Personal BMI Health <em>Guide</em></h1><p>Put your BMI result into context with practical information about nutrition, movement, sleep and when to seek professional guidance.</p><div class="hero-pills"><span>✓ Free guide</span><span>✓ Easy to understand</span><span>✓ Mobile friendly</span></div></div><div class="hero-art"><svg class="bmi-hero-illustration" viewBox="0 0 520 360" role="img" aria-label="BMI health illustration with body mass index gauge, weighing scale, measuring tape, healthy fruit, water bottle and dumbbell">
+<defs>
+ <linearGradient id="gaugeRing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00c875"/><stop offset=".34" stop-color="#ffe000"/><stop offset=".68" stop-color="#ff8b18"/><stop offset="1" stop-color="#f33b67"/></linearGradient>
+ <linearGradient id="scaleBody" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#8eb9d9"/></linearGradient>
+ <linearGradient id="apple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b9ff34"/><stop offset="1" stop-color="#1a9b42"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8fbff" stop-opacity=".95"/><stop offset="1" stop-color="#00a9ff" stop-opacity=".55"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="270" cy="325" rx="220" ry="20" fill="#00d9ff" opacity=".24" filter="url(#glow)"/>
+<circle cx="265" cy="137" r="120" fill="#eaffff" opacity=".14" stroke="#bdfaff" stroke-width="5" filter="url(#glow)"/>
+<circle cx="265" cy="137" r="99" fill="none" stroke="url(#gaugeRing)" stroke-width="27" stroke-linecap="round" stroke-dasharray="505 120" transform="rotate(-220 265 137)"/>
+<circle cx="265" cy="137" r="78" fill="#f8ffff" stroke="#d5faff" stroke-width="5"/>
+<text x="265" y="105" text-anchor="middle" font-size="15" font-weight="800" fill="#14516a">INFOJANO BMI</text>
+<text x="265" y="155" text-anchor="middle" font-size="48" font-weight="900" fill="#10265e">22.9</text>
+<text x="265" y="179" text-anchor="middle" font-size="13" font-weight="700" fill="#07865a">HEALTH GUIDE</text>
+<!-- weighing scale -->
+<g transform="translate(42 210) rotate(-8)">
+ <rect x="0" y="18" width="150" height="102" rx="22" fill="#18396d" stroke="#b7edff" stroke-width="5"/>
+ <rect x="13" y="30" width="124" height="67" rx="15" fill="url(#scaleBody)"/>
+ <circle cx="75" cy="62" r="26" fill="#fff" stroke="#6f8eac" stroke-width="4"/>
+ <path d="M75 62 L88 45" stroke="#ef3e52" stroke-width="4" stroke-linecap="round"/>
+ <circle cx="75" cy="62" r="4" fill="#19345d"/>
+ <path d="M28 113h94" stroke="#8bdcff" stroke-width="4" stroke-linecap="round"/>
+</g>
+<!-- measuring tape -->
+<path d="M53 294 C108 260 164 276 207 298" fill="none" stroke="#ffd52c" stroke-width="13" stroke-linecap="round"/>
+<path d="M65 286l5 10m12-16 5 10m13-13 5 10m14-12 5 10m14-8 5 10m14-4 5 10" stroke="#a56b00" stroke-width="2"/>
+<!-- apple -->
+<g transform="translate(352 218)">
+ <path d="M39 28C14 8 0 34 9 62c9 31 31 52 54 42 26 12 48-13 53-43 5-31-13-48-39-32-12 7-21 7-38-1z" fill="url(#apple)" stroke="#d5ff9b" stroke-width="3"/>
+ <path d="M60 23c-3-13 5-22 18-25" stroke="#714a1c" stroke-width="7" fill="none" stroke-linecap="round"/>
+ <path d="M75 10c16-18 38-8 37 8-17 7-31 4-37-8z" fill="#40db72"/>
+ <ellipse cx="37" cy="54" rx="8" ry="18" fill="#fff" opacity=".28"/>
+</g>
+<!-- water bottle -->
+<g transform="translate(438 125)">
+ <rect x="20" y="0" width="35" height="22" rx="5" fill="#00c9ff"/>
+ <rect x="12" y="18" width="51" height="174" rx="17" fill="url(#water)" stroke="#d5faff" stroke-width="4"/>
+ <path d="M20 58h35M20 75h35M20 92h35" stroke="#fff" stroke-width="4" opacity=".55"/>
+ <path d="M26 34v135" stroke="#fff" stroke-width="5" opacity=".5" stroke-linecap="round"/>
+</g>
+<!-- dumbbell -->
+<g transform="translate(390 290) rotate(-18)">
+ <rect x="0" y="16" width="108" height="18" rx="9" fill="#b8a4ff"/>
+ <rect x="-8" y="0" width="24" height="50" rx="9" fill="#8b5cf6"/>
+ <rect x="92" y="0" width="24" height="50" rx="9" fill="#8b5cf6"/>
+</g>
+</svg></div></section>
 <h2 class="section-title"><span>✦</span> What You’ll Learn</h2><p class="lead">A BMI result can be a useful starting point, but it is only one screening measure. A broader view of health includes daily habits, medical history, physical activity, sleep and other clinical measurements.</p><div class="grid"><article class="feature"><span class="feature-icon">📘</span><h3>Clear explanations</h3><p>Straightforward information written for everyday readers.</p></article><article class="feature"><span class="feature-icon">🧮</span><h3>Practical examples</h3><p>Understand the topic with useful examples and reference values.</p></article><article class="feature"><span class="feature-icon">📱</span><h3>Mobile friendly</h3><p>Read the complete guide comfortably on phone, tablet or desktop.</p></article></div>
 <div class="cta"><div><h2>Check your BMI estimate</h2><p>Use the free InfoJano BMI Calculator and explore your result.</p></div><a href="bmi.html">Open BMI Calculator →</a></div>
 <section class="content-card"><h2>Start by understanding your result</h2><p>Check the BMI value and the category shown by the calculator, but avoid treating the category as a diagnosis. Consider how you feel, any recent weight changes and other health information.</p><div class="example">BMI does not directly measure body fat, muscle mass or fat distribution. A clinician can interpret it in context.</div></section><section class="content-card"><h2>Build balanced nutrition habits</h2><p>A varied eating pattern can include vegetables, fruit, whole grains, protein-rich foods and appropriate sources of healthy fats. Regular meals and sustainable portions are generally more useful than extreme restriction.</p><div class="example">Avoid crash diets and unverified weight-loss products. Individual dietary needs vary, especially with medical conditions or medicines.</div></section><section class="content-card"><h2>Choose movement you can maintain</h2><p>Regular movement supports general health. Walking, cycling, swimming, household activity or other enjoyable options can help build consistency. Start at a comfortable level and increase gradually.</p><div class="example">Adults are commonly advised to work towards 150–300 minutes of moderate activity each week and muscle-strengthening activity on at least two days, as health allows. Ask a clinician if you need an adapted plan.</div></section><section class="content-card"><h2>Support sleep and daily routines</h2><p>Consistent sleep and daily routines can support wellbeing. Break up long sitting periods, make time for rest and use realistic routines that fit your circumstances.</p><div class="example">Sleep needs differ by age and individual. If sleep problems persist or affect daily life, consider professional advice.</div></section><section class="content-card"><h2>Know when to seek professional guidance</h2><p>Speak with a qualified healthcare professional if you have unexplained weight changes, persistent symptoms, concerns about eating or activity, or a medical condition that affects weight.</p><div class="example">A clinician may consider waist measurement, blood pressure, blood sugar, cholesterol, medicines and medical history alongside BMI.</div></section>
