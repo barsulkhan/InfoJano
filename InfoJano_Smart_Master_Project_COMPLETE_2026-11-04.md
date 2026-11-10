@@ -3643,3 +3643,14 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Implemented final reference composition: deep blue/photo-style hero, white and lime heading, white pill label, check-mark benefit row, lime guide CTA, cyan neon border/glow, animated lighting sweep and subtle motion; mobile layout stacks text and artwork responsively with reduced-motion support.
 - Preserved all lower-page content, FAQs, SEO metadata, calculator logic, homepage and shared site assets. PR changed exactly five files (four feature pages + one image asset).
 - GitHub Pages deployment and live mobile visual verification remain pending after merge.
+
+
+## 10 November 2026 — BMI hero image rendering fix (PR #51)
+
+- User mobile screenshots confirmed all four BMI SEO hero banners showed only the blue gradient/text and no artwork, despite the prior PR #50 merge.
+- Root cause identified in page markup/CSS: hero image wrapper used `hero-art` while stylesheet styles `bmi-seo-hero-art`; image had no explicit responsive sizing. Asset URL was also changed to the GitHub Pages project-root path.
+- PR #51 merged to main: https://github.com/barsulkhan/InfoJano/pull/51
+- Merge commit: `353b6d67569db5feac0340c8c83080a60a9a9b2f`.
+- Updated only four BMI feature pages: bmi-calculation-guide.html, bmi-weight-categories.html, bmi-healthy-weight-range.html, bmi-health-guide.html. Added matching wrapper styles and responsive image sizing/visibility.
+- No calculator logic, lower-page content, homepage, shared navigation, or unrelated pages changed.
+- Deployment and user-side visual confirmation remain pending. Do not claim the images now display until the live pages are rechecked.
