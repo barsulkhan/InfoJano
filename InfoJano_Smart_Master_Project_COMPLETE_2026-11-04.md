@@ -3401,3 +3401,18 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 2. Continue remaining non-destructive main Date Difference Calculator functional tests only as needed: custom holiday exclusion, Swap, invalid/reversed date inputs, countdown, quick actions, reset, copy/share and PDF export. Keep results recorded; do not modify calculation logic without user approval.
 3. Then continue Google Search Console: inspect the current sitemap error details and individually inspect the four Date SEO URLs. Ask for current screenshots for account-only status; do not claim indexing or sitemap fetch success without evidence.
 - Open PR #35 (Date Difference Calculator upgrade) remains unmerged and separate from the current live calculator. Do not merge it as part of QA or without explicit user review/approval.
+
+
+## 10 November 2026 — Four Date SEO pages source QA checkpoint
+- Latest Pages deployment run #1986 completed successfully for main commit `46db3917ffcc308a5be2d35d87cfd1948cd63130`: https://github.com/barsulkhan/InfoJano/actions/runs/42750762561
+- Source-level audit performed on main for:
+  1. `days-between-dates-calculator.html`
+  2. `business-days-calculator.html`
+  3. `date-duration-calculator.html`
+  4. `add-subtract-date-calculator.html`
+- All four have a unique page title, one H1, self-referencing canonical URL, viewport meta, meta description, Open Graph title, hero section, CTA to `date-difference.html`, and FAQ section.
+- Each page has 11 href links (10 internal), no duplicate HTML IDs, and mobile CSS breakpoint `max-width:760px`.
+- No obvious malformed internal-link target was found in this static source scan. This is not proof that every destination responds successfully.
+- Live browser fetch was not accessible to the inspection tool; no screenshot/browser rendering was performed. Therefore visual desktop/mobile QA, overflow/wrapping, nav behavior, CTA click, FAQ expand/collapse, footer layout and real-device behavior remain PENDING USER SCREENSHOT / browser verification.
+- No code, CSS, or calculator logic was changed during this audit.
+- Next action: ask user to open each live page on desktop/mobile and send screenshots, starting with Days Between Dates page; verify the visible layout and interactions. Then inspect Google Search Console sitemap and URL indexing state using current screenshots.
