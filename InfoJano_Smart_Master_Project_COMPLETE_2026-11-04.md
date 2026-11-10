@@ -3654,3 +3654,11 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Updated only four BMI feature pages: bmi-calculation-guide.html, bmi-weight-categories.html, bmi-healthy-weight-range.html, bmi-health-guide.html. Added matching wrapper styles and responsive image sizing/visibility.
 - No calculator logic, lower-page content, homepage, shared navigation, or unrelated pages changed.
 - Deployment and user-side visual confirmation remain pending. Do not claim the images now display until the live pages are rechecked.
+
+
+## BMI hero artwork fix — 10 November 2026
+- User approved the photo-style “Personal BMI Health Guide” hero artwork and requested it be applied to the actual InfoJano BMI SEO landing pages, not shown as another mockup.
+- Audited GitHub Actions: Pages build/deployment run #2013 for commit `dea4893fb6c47a0db6a1082b3f359a344f75ec65` completed successfully. The separate “Build InfoJano Tool APKs” run #324 failed; that workflow is unrelated to GitHub Pages website deployment.
+- The four BMI SEO landing pages use `assets/images/bmi-health-hero-art.webp`; their previous CSS had conflicting legacy hero selectors and responsive sizing. Corrected the image URL to the explicit GitHub Pages path `/InfoJano/assets/images/bmi-health-hero-art.webp` and added a final, scoped responsive CSS override to reliably show the approved artwork beside the hero copy on desktop and below it on mobile.
+- Scope: `bmi-health-guide.html`, `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`, plus `sw.js` cache bump from `infojano-v271` to `infojano-v272`. BMI calculator logic and unrelated pages are not changed.
+- Live visual verification still required after Pages deployment; do not claim pixel-identical rendering until the live pages are visually checked on desktop and mobile.
