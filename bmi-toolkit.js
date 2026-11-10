@@ -73,6 +73,7 @@ function setActive(tool){
   content.insertAdjacentHTML('beforeend',
    '<div class="ij-bmi-tool-grid">'+
    '<div class="ij-bmi-tool-field"><label for="ij-bf-equation">Equation</label><select id="ij-bf-equation"><option value="male">Male</option><option value="female">Female</option></select></div>'+
+   field('Age (years)','ij-bf-age','18 or older','1')+
    field('Height (cm)','ij-bf-height','e.g. 175')+
    field('Waist / abdomen (cm)','ij-bf-waist','Measure at navel for male equation')+
    field('Neck (cm)','ij-bf-neck','Measure below larynx')+
@@ -89,7 +90,9 @@ function setActive(tool){
   equation.addEventListener('change',()=>{hipWrap.hidden=equation.value!=='female';});
   document.getElementById('ij-bf-calc').addEventListener('click',()=>{
    content.querySelector('.ij-bmi-tool-output')?.remove();
+   const age=Number(document.getElementById('ij-bf-age').value);
    const ht=Number(heightInput.value),waist=Number(waistInput.value),neck=Number(neckInput.value),hip=Number(hipInput.value);
+   if(!Number.isInteger(age)||age<18){output('This estimate is designed for adults aged 18 and over. It is not suitable for children or teens.');return}
    if(!ht||!waist||!neck||ht<=0||waist<=0||neck<=0||(equation.value==='female'&&(!hip||hip<=0))){output('Please enter valid height, waist and neck measurements. The female equation also requires hip circumference.');return}
    const inch=cm=>cm/2.54, H=inch(ht), W=inch(waist), N=inch(neck), Hip=inch(hip);
    let bf;
