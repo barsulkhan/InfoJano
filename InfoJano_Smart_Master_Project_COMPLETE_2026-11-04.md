@@ -3416,3 +3416,16 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Live browser fetch was not accessible to the inspection tool; no screenshot/browser rendering was performed. Therefore visual desktop/mobile QA, overflow/wrapping, nav behavior, CTA click, FAQ expand/collapse, footer layout and real-device behavior remain PENDING USER SCREENSHOT / browser verification.
 - No code, CSS, or calculator logic was changed during this audit.
 - Next action: ask user to open each live page on desktop/mobile and send screenshots, starting with Days Between Dates page; verify the visible layout and interactions. Then inspect Google Search Console sitemap and URL indexing state using current screenshots.
+
+
+## 10 November 2026 — Date SEO desktop wide-layout proposal (awaiting user visual approval)
+- User explicitly approved preparing a consistent wider desktop layout for the four Date SEO landing pages, based on the main Date Difference page's broader presentation.
+- Isolated branch: `design/date-seo-desktop-wide-layout` (not merged to main).
+- Changed exactly one CSS declaration on each of the four Date SEO pages: `.wrap{max-width:1280px` → `.wrap{max-width:1500px`.
+  1. `days-between-dates-calculator.html`
+  2. `business-days-calculator.html`
+  3. `date-duration-calculator.html`
+  4. `add-subtract-date-calculator.html`
+- No HTML content, hero grid, section grid, typography, colors, breakpoints, mobile CSS, JavaScript, calculator logic, SEO metadata, canonical URLs, or links were changed.
+- This is a conservative container-width-only trial, not a full component redesign. At viewport widths above 1500px, the content remains centered and capped at 1500px; mobile rules remain governed by existing CSS.
+- Must run diff/source verification and open a draft PR for review. Do not merge until user sees the deployed preview/PR screenshots or otherwise explicitly approves the tested appearance.
