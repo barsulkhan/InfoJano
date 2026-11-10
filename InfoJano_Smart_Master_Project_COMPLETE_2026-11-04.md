@@ -3278,3 +3278,81 @@ Each new QR mode landing page has its own page title, meta description, canonica
 - Opened Draft PR #15: https://github.com/barsulkhan/InfoJano/pull/15 (12 changed files; 446 additions, 3 deletions at creation). The exact current head commit is shown on the PR page and will advance when the Master Files are updated.
 - PR remains open and draft. GitHub's latest mergeability state was `unknown`; recheck the PR diff and mergeability before any merge. Do not merge without user approval.
 - Not yet tested: deployed GitHub Pages preview, browser visual rendering, real CTA mode/preset selection, Android device workflow, or Google Search Console processing. Do not call these Live Tested.
+
+# RESUME AUDIT & QA CHECKPOINT — 10 NOVEMBER 2026
+
+## 1. Source of truth and archive reconciliation
+- Repository: https://github.com/barsulkhan/InfoJano
+- Default branch confirmed: `main`.
+- This checkpoint is appended to this same Smart Master Project file; do not create a replacement archive.
+- The existing archive contained older pending statuses for Image Resizer PR #24 and Image Resizer SEO PR #15. Those statuses are superseded by the current GitHub records below.
+- Working rule reaffirmed by the user on 10 Nov 2026: do not change any existing page design, homepage design, calculator logic, or established feature behavior without the user's explicit permission. QA and testing must be non-destructive. Record findings first; propose a minimal change and wait for approval before editing.
+
+## 2. Four Date Calculator SEO pages — merged and deployment verified
+The four pages are:
+1. `days-between-dates-calculator.html`
+2. `business-days-calculator.html`
+3. `date-duration-calculator.html`
+4. `add-subtract-date-calculator.html`
+
+Verified GitHub PR history:
+- PR #36 — created the four premium US-intent SEO pages; merged 9 Nov 2026. Merge commit: `4310ad0adeaba4c0e46db9f08a6aed518b26c801`.
+- PR #37 — refined the four pages' hero and lower content design; merged 9 Nov 2026. Merge commit: `ceb15698ec750034ae41208ddcc0770ec788ad8d`.
+- PR #38 — rebuilt all four pages to match the approved premium mockup; merged 9 Nov 2026. Merge commit: `a81c2826f47cfdd4d01c26ebeca61c6bccf9750e`.
+- PR #41 — refined US-focused SEO titles, descriptions, social metadata and WebPage descriptions on the three remaining pages; merged 9 Nov 2026. Merge commit: `a78c521b8965da0e01ef15feb4d334c99dc6a08e`.
+- All four PRs are closed and merged into `main`. No calculator logic was changed by these four Date SEO PRs.
+- GitHub Pages workflow run #1980: completed successfully on 9 Nov 2026 at 19:12:44 UTC, deploying main commit `c3ee82ec0b5c902a9b835f1360daeb4ac8b59d80`. Run: https://github.com/barsulkhan/InfoJano/actions/runs/42681042839
+- Current main-branch source was fetched for all four pages. Each has a unique title, one H1, a canonical URL pointing to its own page, a hero section, and a CTA linking to `date-difference.html`.
+- Source-level checks only. Do not claim real mobile/desktop visual QA or live interaction testing has passed until verified in browsers.
+
+## 3. Current main-branch source and cache snapshot
+- Current Service Worker cache identifier fetched from main: `infojano-v271`.
+- Main `date-difference.html` source SHA: `65eaeafe15a94459369fea7000227bd04fd7d19c`.
+- Date SEO page source SHAs at this audit:
+  - `days-between-dates-calculator.html`: `4a8fce684889364f18d2fe719ec37972648e9893`
+  - `business-days-calculator.html`: `42116d5fe00d730a63a900f27fbdb9dbbba51870`
+  - `date-duration-calculator.html`: `530ac2018052f7bf8f6166bc90f80e81206e0a1a`
+  - `add-subtract-date-calculator.html`: `41d958ba3b56a8c811965bc8967e380d1fc45776`
+- Current `sitemap.xml` and `sitemap.txt` each contain 62 URLs and their URL sets match exactly. All four Date SEO URLs are present in both.
+- Current `robots.txt` source contains `Allow: /` and advertises `https://barsulkhan.github.io/InfoJano/sitemap.xml` only. It does not currently advertise `sitemap.txt`; this differs from an earlier archive note and must be treated as a current-source correction, not silently assumed otherwise.
+- `sitemap-infojano.xml` also exists on main. The last recorded Search Console screenshots (8 Nov) showed sitemap submissions with Type=Unknown / “Couldn't fetch” / 0 discovered pages, while URL Inspection for the XML had Crawl allowed=Yes, Page fetch=Successful and Indexing allowed=Yes. These are distinct checks.
+- Current Search Console report has NOT been freshly inspected in this session. Do not claim sitemap processing or indexing is fixed. Do not create more sitemap filenames, modify sitemap/robots files, or repeatedly resubmit without fresh Search Console detail/error evidence. Live HTTP status, redirect chain and Content-Type remain unverified.
+
+## 4. Calculator testing — next QA work, no code changes
+- Main Date Difference Calculator source was fetched and inspected. Existing visible workflows include manual DD-MM-YYYY inputs, date pickers, swap dates, inclusive/exclusive counting, business-day mode, optional Saturday exclusion, manually supplied holiday dates, copy/share/print result, countdown, quick birthday/age-days/range actions, and reset.
+- PR #35, “Feature: Upgrade Date Difference Calculator”, remains OPEN and UNMERGED on branch `feature/date-difference-all-in-one`. Do not merge or copy its changes to main without explicit approval. Keep QA focused on the current main/live calculator first.
+- Test cases to execute and record:
+  1. Same date; next-day difference; reverse date order.
+  2. Inclusive versus exclusive count.
+  3. Leap-day and year-boundary cases.
+  4. Month-end and year-end dates.
+  5. Business days with default weekends, Saturday exclusion, and manually entered holiday dates.
+  6. Manual date entry versus date-picker synchronization; swap and reset.
+  7. Countdown and quick actions; copy/share/print where available.
+  8. Invalid, incomplete and future/past date inputs as appropriate.
+- Do not change calculation formulas, date parsing, result layout, colors, spacing or calculator controls during QA. Log exact input, expected output, actual output and screenshot/evidence for any mismatch.
+- After Date Difference testing, extend the same non-destructive QA to the other calculator pages in a prioritized list. Do not start redesign or feature expansion during this pass.
+
+## 5. Mobile/Desktop QA — next work
+- First verify the four deployed Date SEO pages on Android mobile and desktop browser widths.
+- Check: hero rendering, navigation, horizontal overflow, text wrapping, card spacing, CTA visibility/target, FAQ expand/collapse, related links, and footer.
+- Test at narrow mobile width and desktop width. Capture screenshots for any defect. Deployment success proves the Pages workflow completed; it does not prove visual quality on every device.
+- No CSS or design edits without explicit user approval after findings are presented.
+
+## 6. Google Search Console — next work
+- Open the exact URL-prefix property: `https://barsulkhan.github.io/InfoJano/`.
+- Inspect the current Sitemaps report rows and open the failed row's detailed error panel before deciding on any change.
+- Check the four Date SEO page URLs individually in URL Inspection. Record Page indexing status, last crawl, user-declared canonical and Google-selected canonical where available.
+- Use Live Test only to establish current fetch/crawl accessibility; do not confuse a successful live test with indexed status or successful sitemap processing.
+- Do not press Request Indexing for sitemap XML/TXT files. Request indexing for individual eligible page URLs only if justified and available in the user's Search Console account.
+- Ask the user for current Search Console screenshots when the exact report/error or account-only inspection result is required. Do not claim account actions were completed by the assistant.
+
+## 7. Corrected project statuses
+- Image Resizer advanced feature PR #24 is CLOSED and MERGED (merge commit `d2c53864311532ec362c930b8302460fc2e5617a`); the old note saying it was still open is superseded. Functional browser/Android testing remains required.
+- Image Resizer six-page SEO PR #15 is CLOSED and MERGED; the old note saying it was still open is superseded. The six pages still require deployed visual/CTA QA where not yet evidenced.
+- Date Difference Calculator PR #35 remains OPEN and UNMERGED.
+- QR Toolkit PRs #11, #12 and #13 are historical merged feature work; do not reopen QR rollout unless the user requests a specific defect or additional work.
+- The current user-approved work sequence is: (1) Mobile/Desktop QA, (2) calculator testing, (3) Google Search Console sitemap and individual-page indexing checks. No redesign or calculator logic changes without permission.
+
+## 8. Exact continuation instruction
+Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Desktop QA of the four merged Date SEO pages and the current main Date Difference Calculator. Then test calculator cases and record results. Next inspect current Google Search Console sitemap errors and the four Date page indexing statuses using user-provided screenshots where account access is needed. Update this same Master Project File after each meaningful milestone. Preserve all existing design and calculator logic unless the user explicitly approves a specific change.
