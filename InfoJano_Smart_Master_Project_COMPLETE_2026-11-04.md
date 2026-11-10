@@ -3443,3 +3443,15 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Verified the 1500px rule exists on all four files on main after merge.
 - Only the max-width declaration changed on each SEO page. Mobile CSS, HTML content, hero/grid rules, JavaScript, calculator logic, SEO metadata, canonical URLs and links remain unchanged.
 - This change is merged to main; live publication depends on the GitHub Pages workflow completing successfully. Browser visual QA is still required on desktop and mobile after deployment.
+
+
+## 10 November 2026 — Date SEO icons and animation repair (draft review)
+- User reported that all four Date SEO pages showed square-box icon glyphs, lacked the intended neon light effect, and did not animate the calendar/hero logo artwork.
+- Prepared isolated branch: `fix/date-seo-icons-neon-calendar-animation`.
+- Replaced fragile Unicode/symbol icons across all four SEO pages with inline SVG icons, including the InfoJano brand mark and navigation, feature, step, CTA, breadcrumb and related-tool symbols.
+- Added CSS animations for a subtle neon hero glow, floating calendar cards, calendar binding rings, arrow motion, hero illustration float, and rotating/glowing brand logo.
+- Added `prefers-reduced-motion` support to disable animations for users who request reduced motion.
+- Preserved existing page text, section layout, SEO metadata/canonical links, calculator CTA targets, responsive breakpoints and JavaScript. Source check confirms all executable script blocks are byte-for-byte unchanged across all four pages.
+- Diff scope: only the four Date SEO HTML files changed; no shared site CSS/JS, homepage, main Date Difference calculator or calculator logic changed.
+- Source verification passed for all four pages: inline SVG icon markup present, brand SVG present, neon animation keyframes present, calendar animation keyframes present, reduced-motion handling present.
+- Browser visual QA is still required before merge; these changes are not yet on main/live. PR to be reviewed as draft first.
