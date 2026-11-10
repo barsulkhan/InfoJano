@@ -366,7 +366,7 @@ section[aria-labelledby="related-tools-title"]>div>a>span:last-child{flex:1 1 10
 </section>
 <section class="ij-bmi-keywords" aria-label="Popular BMI search topics"><span>BMI Calculator</span><span>Body Mass Index Calculator</span><span>Free BMI Check</span><span>BMI by Height and Weight</span><span>Healthy BMI Range</span><span>BMI Chart</span><span>Ideal Weight for Height</span><span>Calculate My BMI</span></section>
 <section class="ij-bmi-workspace">
-<div class="ij-bmi-form card"><div class="ij-bmi-form-heading"><span>▦</span><div><h2>Calculate Your BMI</h2><p>Enter your height and weight to get your BMI result.</p></div></div>
+<div class="ij-bmi-form card" id="ij-bmi-form"><div class="ij-bmi-form-heading"><span>▦</span><div><h2>Calculate Your BMI</h2><p>Enter your height and weight to get your BMI result.</p></div></div>
 <label for="weight">Weight (kg)</label><div class="ij-bmi-input-wrap"><span>▣</span><input id="weight" type="number" min="1" step="any" placeholder="e.g. 70"></div>
 <div class="ij-bmi-label-row"><label for="height">Height (cm)</label><span class="ij-bmi-unit">cm</span></div><div class="ij-bmi-input-wrap"><span>↕</span><input id="height" type="number" min="1" step="any" placeholder="e.g. 170"></div>
 <details class="ij-bmi-personalize"><summary>Personalize your health tips <small>(optional)</small></summary><div class="ij-bmi-personalize-grid"><label for="bmi-age">Age <span>years</span><input id="bmi-age" type="number" min="2" max="120" placeholder="e.g. 30"></label><label for="bmi-activity">Daily activity level<select id="bmi-activity"><option value="unspecified">Choose activity level</option><option value="low">Mostly sitting / low activity</option><option value="moderate">Some walking / moderately active</option><option value="high">Very active / regular exercise</option></select></label></div><p>Age helps us show the right BMI guidance. Adult BMI categories are for ages 20 and over.</p></details>
@@ -379,6 +379,7 @@ section[aria-labelledby="related-tools-title"]>div>a>span:last-child{flex:1 1 10
     <button type="button" data-bmi-tool="prime" aria-pressed="false">BMI Prime</button>
     <button type="button" data-bmi-tool="waist" aria-pressed="false">Waist-to-Height</button>
     <button type="button" data-bmi-tool="history" aria-pressed="false">BMI History</button>
+    <button type="button" data-bmi-tool="healthy" aria-pressed="false">Healthy Weight</button>
     <button type="button" data-bmi-tool="report" aria-pressed="false">Print Report</button>
   </nav>
   <div class="ij-bmi-tool-panel" id="ij-bmi-tool-panel" hidden aria-live="polite">
