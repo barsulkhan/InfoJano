@@ -3429,3 +3429,17 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - No HTML content, hero grid, section grid, typography, colors, breakpoints, mobile CSS, JavaScript, calculator logic, SEO metadata, canonical URLs, or links were changed.
 - This is a conservative container-width-only trial, not a full component redesign. At viewport widths above 1500px, the content remains centered and capped at 1500px; mobile rules remain governed by existing CSS.
 - Must run diff/source verification and open a draft PR for review. Do not merge until user sees the deployed preview/PR screenshots or otherwise explicitly approves the tested appearance.
+
+
+## 10 November 2026 — Four Date SEO pages desktop width merged to main
+- User explicitly authorized publishing the four-page desktop-width update.
+- PR #43 merged successfully: https://github.com/barsulkhan/InfoJano/pull/43
+- Merge commit: `7d712c79e52cf448138c061f232b396c7ac447ef`.
+- The four Date SEO pages now use `.wrap{max-width:1500px`:
+  1. `days-between-dates-calculator.html`
+  2. `business-days-calculator.html`
+  3. `date-duration-calculator.html`
+  4. `add-subtract-date-calculator.html`
+- Verified the 1500px rule exists on all four files on main after merge.
+- Only the max-width declaration changed on each SEO page. Mobile CSS, HTML content, hero/grid rules, JavaScript, calculator logic, SEO metadata, canonical URLs and links remain unchanged.
+- This change is merged to main; live publication depends on the GitHub Pages workflow completing successfully. Browser visual QA is still required on desktop and mobile after deployment.
