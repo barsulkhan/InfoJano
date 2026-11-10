@@ -3383,3 +3383,21 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Successful deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/42748616978
 - This deployment includes PR #42's approved Date Difference desktop icon colors, Exact Time Breakdown panel styling and FAQ visual refinement, as well as the latest Master File documentation.
 - Deployment success confirms the Pages workflow completed. Actual desktop/mobile visual QA in a browser is still pending; open https://barsulkhan.github.io/InfoJano/date-difference.html and inspect after a hard refresh. Do not change calculator logic.
+
+
+## 10 November 2026 — Main Date Difference Calculator user QA checkpoint
+- User manually tested the live main Date Difference Calculator on desktop using screenshots.
+- Date input / calendar picker synchronization: PASS. After entering From `10-11-2026` and To `30-11-2026`, both text inputs and both calendar controls displayed matching dates.
+- Inclusive counting: PASS. For 10–30 Nov 2026, elapsed duration stayed 20 days while inclusive counted days showed 21.
+- Exact elapsed time breakdown: PASS for this case — 480 hours, 28,800 minutes, 1,728,000 seconds; it correctly remains elapsed time and does not increase in inclusive mode.
+- Working days Monday–Friday with inclusive counting: PASS — 15 days for 10–30 Nov 2026.
+- Saturday included as a working day: PASS — 18 days for 10–30 Nov 2026.
+- Swap was not separately re-tested in this session. Custom holiday exclusion was proposed as the next check but the user chose to move on; mark it NOT TESTED rather than passed. Countdown, quick actions, copy/share/PDF export, reset and invalid/reversed dates also remain to be tested.
+- No code or calculator logic was changed during these tests.
+- GitHub Pages deployment run #1985 completed successfully (conclusion: success), run URL: https://github.com/barsulkhan/InfoJano/actions/runs/42748893538, head commit `e59e30d2ea46b7ef0c259724836bbac100af6596`. This is the latest verified successful Pages deployment at this checkpoint.
+
+## Next work sequence after main Date Difference core tests — 10 November 2026
+1. **Mobile/Desktop QA of the four Date SEO landing pages** (already merged and deployed): `days-between-dates-calculator.html`, `business-days-calculator.html`, `date-duration-calculator.html`, and `add-subtract-date-calculator.html`. Check hero, navigation, overflow, wrapping, CTA destination, FAQ expand/collapse, related links and footer at mobile and desktop widths. User screenshots needed for real visual review. No design edits without explicit approval.
+2. Continue remaining non-destructive main Date Difference Calculator functional tests only as needed: custom holiday exclusion, Swap, invalid/reversed date inputs, countdown, quick actions, reset, copy/share and PDF export. Keep results recorded; do not modify calculation logic without user approval.
+3. Then continue Google Search Console: inspect the current sitemap error details and individually inspect the four Date SEO URLs. Ask for current screenshots for account-only status; do not claim indexing or sitemap fetch success without evidence.
+- Open PR #35 (Date Difference Calculator upgrade) remains unmerged and separate from the current live calculator. Do not merge it as part of QA or without explicit user review/approval.
