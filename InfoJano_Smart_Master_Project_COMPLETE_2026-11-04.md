@@ -3631,3 +3631,15 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Hero now has a richer blue/cyan/purple visual background, strong neon border/glow, and an illustrative BMI composition with multicolor BMI gauge, weighing scale, measuring tape, apple, water bottle and dumbbell; the illustration floats subtly and the existing headline/banner lighting sweep remains. Desktop uses a two-column layout; mobile stacks the illustration beneath the text. Reduced-motion support included.
 - Kept each page's unique heading and description. Body sections, FAQs, SEO metadata, BMI calculator, homepage and shared assets were not changed.
 - Source changes merged; GitHub Pages deployment and visual verification on user's mobile still pending.
+
+
+## 10 November 2026 — Final user-approved BMI hero design implemented
+
+- User explicitly selected the final BMI Health Guide reference image and instructed that it be implemented directly on the website, not shown as a preview.
+- PR #50 merged successfully: https://github.com/barsulkhan/InfoJano/pull/50
+- Merge commit: `6925677241c848c70fd3bea98953ea6c461a764c`.
+- Updated only the four dedicated BMI feature SEO pages: `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`, `bmi-health-guide.html`, plus new optimized image `assets/images/bmi-health-hero-art.webp`.
+- Replaced previous cartoon SVG with photo-style visual artwork: multicolor BMI gauge, weighing scale, measuring tape, fresh food, water bottle and dumbbells. Page-specific title and description remain HTML text.
+- Implemented final reference composition: deep blue/photo-style hero, white and lime heading, white pill label, check-mark benefit row, lime guide CTA, cyan neon border/glow, animated lighting sweep and subtle motion; mobile layout stacks text and artwork responsively with reduced-motion support.
+- Preserved all lower-page content, FAQs, SEO metadata, calculator logic, homepage and shared site assets. PR changed exactly five files (four feature pages + one image asset).
+- GitHub Pages deployment and live mobile visual verification remain pending after merge.
