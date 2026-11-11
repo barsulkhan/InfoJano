@@ -338,6 +338,46 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 .ij-percent-visual{margin:14px 0;padding:14px;border:1px solid #e0eafa;border-radius:14px;background:#fff}.ij-visual-track{height:13px;border-radius:20px;background:#e7eef9;overflow:hidden}.ij-visual-track span{display:block;width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#08b9d5,#6945ec);transition:width .3s}.ij-percent-visual small{display:block;margin-top:7px;color:#657994}
 .ij-history{margin-top:15px;padding:13px;border:1px solid #e1e9f5;border-radius:13px;background:#fbfdff}.ij-history summary{font-weight:800;color:#24456f;cursor:pointer}.ij-history li{margin:7px 0;color:#536782;font-size:13px}
 
+
+/* Match Percentage Calculator hero dimensions to the Currency Converter hero */
+.ij-master-hero.ij-unified-currency-hero{
+  position:relative!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:calc(100vw - 34px)!important;
+  max-width:1480px!important;
+  min-height:250px!important;
+  margin:12px 0 26px!important;
+  border-radius:30px!important;
+}
+.ij-master-hero.ij-unified-currency-hero .ij-master-body{
+  min-height:246px!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)!important;
+  padding:24px 34px!important;
+  gap:22px!important;
+}
+.ij-master-hero.ij-unified-currency-hero .ij-master-visual{
+  min-height:190px!important;
+}
+@media(max-width:600px){
+  .ij-master-hero.ij-unified-currency-hero{
+    left:auto!important;
+    transform:none!important;
+    width:100%!important;
+    min-height:0!important;
+    margin:10px 0 22px!important;
+    border-radius:23px!important;
+  }
+  .ij-master-hero.ij-unified-currency-hero .ij-master-body{
+    min-height:0!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:22px 18px 14px!important;
+    gap:4px!important;
+  }
+  .ij-master-hero.ij-unified-currency-hero .ij-master-visual{
+    min-height:185px!important;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -379,7 +419,7 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 </head>
 <body>
 <main>
-<section class="ij-master-hero" aria-labelledby="percentage-hero-title">
+<section class="ij-master-hero ij-unified-currency-hero" aria-labelledby="percentage-hero-title">
   <div class="ij-master-body">
     <div class="ij-master-copy">
       <span class="ij-master-kicker">✦ PERCENTAGE CALCULATION SUITE</span>
