@@ -1,6 +1,6 @@
 /* InfoJano shared sticky header for every tool page. */
 (function(){
-  const ROOT='/InfoJano/';
+  const ROOT=(location.hostname==='barsulkhan.github.io')?'/InfoJano/':'/';
   const css=`
   .ij-global-header{position:sticky;top:0;z-index:100000;width:100%;background:linear-gradient(105deg,#073b9c 0%,#0759d8 58%,#063b9a 100%);color:#fff;box-shadow:0 5px 22px rgba(5,32,91,.22);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
   .ij-global-header *{box-sizing:border-box}
