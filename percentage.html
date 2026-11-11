@@ -506,6 +506,25 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
  .ij-master-hero.ij-unified-currency-hero .ij-master-pills span:after{animation:none!important}
 }
 
+
+/* Currency Converter breadcrumb and a slightly outward neon edge */
+.crumb{padding:10px 4px!important;color:#24427d!important;font-size:14px!important;font-weight:700!important}
+.crumb a{color:#075be8!important;text-decoration:none!important}
+.ij-master-hero.ij-unified-currency-hero{
+  overflow:visible!important;
+  isolation:isolate!important;
+  box-shadow:0 0 0 1px #12eaff55,0 0 12px 3px #00dfff66,0 0 22px 5px #765cff38,0 20px 48px rgba(14,38,110,.22)!important;
+}
+.ij-master-hero.ij-unified-currency-hero:before{
+  inset:-4px!important;
+  border-radius:34px!important;
+  filter:drop-shadow(0 0 5px #00eaffaa) drop-shadow(0 0 9px #765cff66)!important;
+}
+@media(max-width:600px){
+ .crumb{padding:8px 3px!important;font-size:12px!important}
+ .ij-master-hero.ij-unified-currency-hero:before{inset:-3px!important;border-radius:26px!important}
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -547,6 +566,7 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 </head>
 <body>
 <main>
+<div class="crumb"><a href="index.html">⌂ InfoJano Home</a>　›　Percentage Calculator</div>
 <section class="ij-master-hero ij-unified-currency-hero" aria-labelledby="percentage-hero-title">
   <div class="ij-master-body">
     <div class="ij-master-copy">
