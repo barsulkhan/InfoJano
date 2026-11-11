@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v276";
+const CACHE_NAME = "infojano-v277";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -93,6 +93,23 @@ const ASSETS = [
   "/InfoJano/password-generator.html",
   "/InfoJano/percentage-change.html",
   "/InfoJano/percentage.html",
+  "/InfoJano/percent-of-number-calculator.html",
+  "/InfoJano/what-percent-calculator.html",
+  "/InfoJano/reverse-percentage-calculator.html",
+  "/InfoJano/percentage-increase-calculator.html",
+  "/InfoJano/percentage-decrease-calculator.html",
+  "/InfoJano/percentage-difference-calculator.html",
+  "/InfoJano/increase-decrease-by-percentage-calculator.html",
+  "/InfoJano/original-price-before-discount-calculator.html",
+  "/InfoJano/profit-loss-percentage-calculator.html",
+  "/InfoJano/exam-marks-percentage-calculator.html",
+  "/InfoJano/target-marks-calculator.html",
+  "/InfoJano/percentage-of-percentage-calculator.html",
+  "/InfoJano/repeated-percentage-change-calculator.html",
+  "/InfoJano/successive-percentage-change-calculator.html",
+  "/InfoJano/percentage-to-decimal-converter.html",
+  "/InfoJano/percentage-to-fraction-converter.html",
+  "/InfoJano/remove-gst-from-total-calculator.html",
   "/InfoJano/percentage-pt-br.html",
   "/InfoJano/qr-choice.html",
   "/InfoJano/qr-maker.html",
