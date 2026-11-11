@@ -341,9 +341,16 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 
 /* Slim desktop Percentage hero while keeping its established width */
 .ij-master-hero.ij-unified-currency-hero{
+  position:relative!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:calc(100vw - 34px)!important;
+  max-width:1480px!important;
   min-height:210px!important;
   height:210px!important;
+  margin:12px 0 26px!important;
   padding:0!important;
+  border-radius:30px!important;
 }
 .ij-master-hero.ij-unified-currency-hero .ij-master-body{
   min-height:206px!important;
@@ -356,9 +363,14 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 }
 @media(max-width:600px){
   .ij-master-hero.ij-unified-currency-hero{
+    left:auto!important;
+    transform:none!important;
+    width:100%!important;
     height:auto!important;
     min-height:0!important;
+    margin:10px 0 22px!important;
     padding:0!important;
+    border-radius:23px!important;
   }
   .ij-master-hero.ij-unified-currency-hero .ij-master-body{
     height:auto!important;
