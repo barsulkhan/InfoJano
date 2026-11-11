@@ -1042,6 +1042,20 @@ body{background:linear-gradient(180deg,#f5f8ff 0%,#edf3ff 100%);color:var(--ij-i
 @media(max-width:1000px){#home #toolGrid>.tool .icon img{width:51px!important;height:51px!important}}
 @media(max-width:700px){#home #toolGrid>.tool .icon img{width:48px!important;height:48px!important}}
 @media(max-width:360px){#home #toolGrid>.tool .icon img{width:46px!important;height:46px!important}}
+
+/* InfoJano homepage hero visual refresh — isolated to #home */
+#home .hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(135px,.78fr) minmax(0,2fr) minmax(135px,.78fr);align-items:center;gap:8px;background:radial-gradient(ellipse at 50% 5%,#fff 0%,#f5fbff 54%,#e7f5ff 100%);color:#102b59;border:1px solid #d9edff;border-radius:26px;padding:25px 18px;box-shadow:0 12px 35px rgba(26,110,190,.09)}
+#home .hero:before,#home .hero:after{content:"";position:absolute;pointer-events:none;border-radius:50%;background:#bfeaff;filter:blur(38px);opacity:.42;width:190px;height:130px}#home .hero:before{left:-90px;top:-65px}#home .hero:after{right:-90px;bottom:-75px}
+#home .hero-content{position:relative;z-index:1;min-width:0;text-align:center}#home .hero h1{font-size:clamp(27px,3.5vw,42px);line-height:1.08;letter-spacing:-1.3px;color:#102d63;margin:0 0 10px;font-weight:850}#home .hero-content h1 span{background:linear-gradient(90deg,#0757df,#18c9ec);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;position:relative}
+#home .hero p{color:#526784;font-size:15px;line-height:1.5}#home .hero-art{position:relative;z-index:1;min-width:0;animation:ijHeroFloat 5.5s ease-in-out infinite}#home .hero-art-right{animation-delay:1.3s}#home .hero-art img{display:block;width:100%;max-width:230px;margin:auto;height:auto;filter:drop-shadow(0 12px 14px rgba(21,100,180,.12))}
+#home .search{max-width:680px;margin:20px auto 0;padding:5px;gap:8px;border:2px solid #78baff;border-radius:999px;background:#fff;box-shadow:0 0 0 4px rgba(8,118,232,.07),0 8px 22px rgba(8,118,232,.12);transition:box-shadow .25s,transform .25s}#home .search:focus-within{box-shadow:0 0 0 5px rgba(8,118,232,.17),0 12px 28px rgba(8,118,232,.2);transform:translateY(-2px)}#home .search input{background:transparent;border-radius:999px;padding:12px 14px;color:#17345f}#home .search input::placeholder{color:#7b8da8}#home .search .primary{border-radius:999px;background:linear-gradient(110deg,#18c9ec,#0757df);padding:12px 20px}
+#home .hero-benefits{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:16px}#home .hero-benefits span{background:rgba(255,255,255,.86);border:1px solid #e2efff;border-radius:999px;padding:8px 10px;color:#18365f;font-size:11px;box-shadow:0 4px 12px rgba(28,90,160,.06)}
+#home .chips{justify-content:center;flex-wrap:wrap;overflow:visible;margin-top:14px;gap:8px}#home .chips button{background:#fff;color:#173a70;border:1px solid #d4e7ff;padding:9px 13px;font-size:12px;box-shadow:0 4px 12px rgba(20,95,180,.07);transition:transform .25s,box-shadow .25s,background .25s,border-color .25s}#home .chips button:hover,#home .chips button:focus-visible{transform:translateY(-3px);box-shadow:0 8px 18px rgba(8,118,232,.16);background:#f0f7ff;border-color:#0876e8;outline:none}
+@keyframes ijHeroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media(max-width:760px){#home .hero{grid-template-columns:1fr 1fr;gap:0 8px;padding:18px 12px;border-radius:22px}#home .hero-content{grid-column:1/-1;grid-row:1}#home .hero-art{grid-row:2;margin:7px auto 0;width:100%;max-width:155px}#home .hero h1{font-size:clamp(27px,7vw,34px)}#home .hero p{font-size:14px}#home .search{margin-top:15px}#home .hero-benefits{gap:5px}#home .hero-benefits span{font-size:10px;padding:7px 9px}#home .chips{gap:6px}#home .chips button{font-size:11px;padding:8px 11px}}
+@media(max-width:390px){#home .hero-art{max-width:135px}#home .hero-benefits span{font-size:9px;padding:6px 7px}#home .chips button{font-size:10px;padding:7px 9px}}
+@media(prefers-reduced-motion:reduce){#home .hero-art{animation:none!important}#home .search,#home .chips button{transition:none!important}}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"InfoJano","alternateName":"InfoJano Global Online Tools","description":"A global everyday utility portal offering free online image tools, PDF tools, QR code tools, link utilities, calculators and converters.","url":"https://infojano.com/"}
@@ -1513,9 +1527,7 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
 <main class="wrap">
 <section id="home">
   <div class="hero">
-    <div class="hero-art hero-art-left" aria-hidden="true">
-      <svg viewBox="0 0 250 190"><ellipse cx="120" cy="165" rx="108" ry="12" fill="#78b7ef" opacity=".22"/><path d="M35 45q0-9 10-9h139q10 0 10 9v94H35z" fill="#153d79"/><rect x="43" y="44" width="143" height="87" rx="7" fill="#dff3ff"/><rect x="52" y="53" width="125" height="69" rx="5" fill="#1689df"/><rect x="80" y="65" width="69" height="48" rx="13" fill="#fff" opacity=".16"/><text x="114" y="99" text-anchor="middle" font-size="29" font-weight="800" fill="#fff">ij</text><path d="M20 140h190l-18 17H38z" fill="#b9d9f5"/><path d="M92 143h46l-5 6H97z" fill="#7ba9d6"/><path d="M15 157h201" stroke="#7ba9d6" stroke-width="3" stroke-linecap="round"/><path d="M20 95q-13-19-1-31 15 12 1 31m1 1q-21-5-22-20 20 1 22 20m1 0q17-17 30-8-11 18-30 8" fill="#34a66d"/><path d="M22 96v37" stroke="#388a63" stroke-width="3"/><path d="M8 133h29l-4 10H12z" fill="#e9f4ff"/></svg>
-    </div>
+    <div class="hero-art hero-art-left" aria-hidden="true"><img src="/assets/hero-left.svg" alt="" width="320" height="320" loading="eager" decoding="async"></div>
     <div class="hero-content">
       <h1>Your <span>Everyday</span> Online Tools</h1>
       <p>Free &amp; useful tools for documents, images, calculations and more</p>
@@ -1525,9 +1537,7 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
         <button onclick="quickFilter('calculator')">Calculators</button><button onclick="quickFilter('converter')">Converters</button><button onclick="quickFilter('text')">Text</button><button onclick="quickFilter('qr')">QR</button><button onclick="clearFilter()">All</button>
       </div>
     </div>
-    <div class="hero-art hero-art-right" aria-hidden="true">
-      <svg viewBox="0 0 240 190"><ellipse cx="120" cy="169" rx="102" ry="12" fill="#78b7ef" opacity=".22"/><path d="M31 69q0-8 8-8h55q8 0 8 8v80H31z" fill="#fff" stroke="#b7d7f5" stroke-width="3"/><path d="M43 78h33m-33 12h42" stroke="#7aa8d7" stroke-width="5" stroke-linecap="round"/><path d="M75 113h28v26H75z" fill="#e83434"/><text x="89" y="131" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">PDF</text><rect x="121" y="31" width="85" height="65" rx="12" fill="#fff" stroke="#a9d1f3" stroke-width="3" transform="rotate(9 163 63)"/><rect x="131" y="41" width="65" height="45" rx="7" fill="#eaf6ff" transform="rotate(9 163 63)"/><circle cx="151" cy="56" r="8" fill="#ffd34e"/><path d="m135 80 19-17 12 11 10-8 16 18h-57z" fill="#31a5d8"/><rect x="111" y="104" width="82" height="58" rx="12" fill="#fff" stroke="#b7d7f5" stroke-width="3" transform="rotate(-8 152 133)"/><rect x="123" y="114" width="58" height="12" rx="4" fill="#2d8cdb" transform="rotate(-8 152 120)"/><g fill="#e6f2ff" stroke="#2776bf" stroke-width="2"><rect x="126" y="132" width="11" height="9" rx="2"/><rect x="143" y="132" width="11" height="9" rx="2"/><rect x="160" y="132" width="11" height="9" rx="2"/></g><circle cx="45" cy="45" r="17" fill="#fff" stroke="#9dc9ed" stroke-width="3"/><path d="M37 45h16m-8-8v16" stroke="#287bd1" stroke-width="3" stroke-linecap="round"/></svg>
-    </div>
+    <div class="hero-art hero-art-right" aria-hidden="true"><img src="/assets/hero-right.svg" alt="" width="320" height="320" loading="eager" decoding="async"></div>
   </div>
 
   <div class="section-title popular-tools-heading"><h2><span class="section-mark mark-tools" aria-hidden="true">T</span> Popular Tools</h2><span id="toolCount" class="tool-count-badge">23 tools</span></div>
