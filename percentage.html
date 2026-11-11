@@ -231,6 +231,34 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
  .ij-master-hero.ij-unified-currency-hero .ij-float-chip{font-size:9px!important;bottom:5%!important}
 }
 
+
+/* Related tool cards refresh — intentionally scoped below the calculator; hero untouched */
+.ij-related-tools{margin:28px 0;padding:22px 18px;border:1px solid #dce8f8;border-radius:22px;background:linear-gradient(145deg,#f8fbff 0%,#eef5ff 100%);box-shadow:0 8px 24px rgba(35,75,135,.06)}
+.ij-related-heading{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+.ij-related-heading-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#2563eb,#6d45ed);color:#fff;font-size:23px;box-shadow:0 6px 15px rgba(65,90,220,.25)}
+.ij-related-heading h2{margin:0;color:#10264a;font-size:20px;line-height:1.25}
+.ij-related-heading p{margin:4px 0 0;color:#64748b;font-size:13px;line-height:1.45}
+.ij-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ij-related-card{position:relative;display:flex;min-width:0;min-height:190px;flex-direction:column;gap:9px;padding:17px;border:1px solid #dce7f5;border-radius:18px;background:linear-gradient(150deg,#fff 0%,#f8fbff 100%);color:#172b4d;text-decoration:none;box-shadow:0 4px 14px rgba(34,72,130,.07);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;overflow:hidden}
+.ij-related-card:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--ij-card-accent)}
+.ij-related-card:after{content:"";position:absolute;width:120px;height:120px;right:-55px;top:40px;border-radius:50%;background:var(--ij-card-glow);filter:blur(2px);pointer-events:none}
+.ij-related-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(34,72,130,.13);border-color:#b8cbee}
+.ij-related-card:focus-visible{outline:3px solid #60a5fa;outline-offset:3px}
+.ij-related-card-top{display:flex;align-items:center;justify-content:space-between}
+.ij-related-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:var(--ij-card-icon-bg);color:var(--ij-card-accent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+.ij-related-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ij-related-arrow{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f1f5fb;color:#526783;font-size:18px}
+.ij-related-tag{color:var(--ij-card-accent);font-size:9px;font-weight:800;letter-spacing:1px}
+.ij-related-card strong{position:relative;z-index:1;color:#13294b;font-size:15px;line-height:1.35}
+.ij-related-desc{position:relative;z-index:1;color:#64748b;font-size:12px;line-height:1.55}
+.ij-related-link{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;color:var(--ij-card-accent);font-size:12px;font-weight:800}
+.ij-card-growth{--ij-card-accent:#2563eb;--ij-card-icon-bg:linear-gradient(135deg,#dbeafe,#bfdbfe);--ij-card-glow:rgba(59,130,246,.10)}
+.ij-card-discount{--ij-card-accent:#db2777;--ij-card-icon-bg:linear-gradient(135deg,#fce7f3,#fbcfe8);--ij-card-glow:rgba(236,72,153,.10)}
+.ij-card-emi{--ij-card-accent:#7c3aed;--ij-card-icon-bg:linear-gradient(135deg,#ede9fe,#ddd6fe);--ij-card-glow:rgba(139,92,246,.10)}
+.ij-card-savings{--ij-card-accent:#059669;--ij-card-icon-bg:linear-gradient(135deg,#d1fae5,#a7f3d0);--ij-card-glow:rgba(16,185,129,.10)}
+@media(max-width:520px){.ij-related-tools{padding:18px 13px;border-radius:19px}.ij-related-grid{gap:10px}.ij-related-card{min-height:190px;padding:13px 11px;gap:8px;border-radius:16px}.ij-related-icon{width:40px;height:40px;border-radius:13px}.ij-related-card strong{font-size:13px}.ij-related-desc{font-size:11px}.ij-related-tag{font-size:8px}.ij-related-link{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.ij-related-card{transition:none}}
+
 </style>
 <script type="application/ld+json">
 {
@@ -309,33 +337,41 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 <p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;"><strong>Formula:</strong> Percentage × Number ÷ 100</p>
 <p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">Example: 20% of 150 = 30.</p>
 </section>
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="percentage-change.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17 10 11l4 3 6-8"/><path d="M14 6h6v6"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Percentage Change Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate percentage increase or decrease.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="discount.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13 11 22 2 13V4h9z"/><circle cx="7" cy="9" r="1"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Discount Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">find sale prices and savings.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="emi.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 9h10M7 13h3m3 0h4m-10 4h10"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">EMI Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate monthly loan payments.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="savings.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 10H5z"/><path d="M7 10V7a5 5 0 0 1 10 0v3M9 15h6"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Savings Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate future savings.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
+<section class="ij-related-tools" aria-labelledby="related-tools-title">
+  <div class="ij-related-heading">
+    <span class="ij-related-heading-icon" aria-hidden="true">✦</span>
+    <div><h2 id="related-tools-title">Explore More Free Tools</h2><p>Choose another smart tool from InfoJano.</p></div>
+  </div>
+  <div class="ij-related-grid">
+    <a class="ij-related-card ij-card-growth" href="percentage-change.html">
+      <span class="ij-related-card-top"><span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17 10 11l4 3 6-8"/><path d="M14 6h6v6"/></svg></span><span class="ij-related-arrow" aria-hidden="true">↗</span></span>
+      <span class="ij-related-tag">COMPARISON TOOL</span>
+      <strong>Percentage Change Calculator</strong>
+      <span class="ij-related-desc">Calculate percentage increase or decrease between two values.</span>
+      <span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="ij-related-card ij-card-discount" href="discount.html">
+      <span class="ij-related-card-top"><span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 13 11 22 2 13V4h9z"/><circle cx="7" cy="9" r="1"/></svg></span><span class="ij-related-arrow" aria-hidden="true">↗</span></span>
+      <span class="ij-related-tag">SHOPPING TOOL</span>
+      <strong>Discount Calculator</strong>
+      <span class="ij-related-desc">Find the sale price, discount amount and total savings.</span>
+      <span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="ij-related-card ij-card-emi" href="emi.html">
+      <span class="ij-related-card-top"><span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 9h10M7 13h3m3 0h4m-10 4h10"/></svg></span><span class="ij-related-arrow" aria-hidden="true">↗</span></span>
+      <span class="ij-related-tag">FINANCE TOOL</span>
+      <strong>EMI Calculator</strong>
+      <span class="ij-related-desc">Estimate monthly loan payments and plan your budget.</span>
+      <span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="ij-related-card ij-card-savings" href="savings.html">
+      <span class="ij-related-card-top"><span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10h18l-2 10H5z"/><path d="M7 10V7a5 5 0 0 1 10 0v3M9 15h6"/></svg></span><span class="ij-related-arrow" aria-hidden="true">↗</span></span>
+      <span class="ij-related-tag">SAVINGS TOOL</span>
+      <strong>Savings Calculator</strong>
+      <span class="ij-related-desc">Explore how your savings can grow over time.</span>
+      <span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
 </section>
 <section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.6"><h2 id="ij-guide-title">Percentage Calculation Examples</h2><p>To find 20% of 500, calculate 500 × 20 ÷ 100 = 100. For another example, 28% of 170 is 170 × 28 ÷ 100 = 47.6. To find what percentage 25 is of 200, calculate 25 ÷ 200 × 100 = 12.5%.</p><h3>Choose the right calculation</h3><ul><li>“X% of Y” finds a portion of a value.</li><li>“X is what percent of Y?” compares a part with a whole.</li><li>For increases or decreases between two values, use a percentage-change calculation.</li></ul><p>Related tools: <a href="percentage-change.html">Percentage Change</a> and <a href="discount.html">Discount Calculator</a>.</p></section>
 
