@@ -1509,8 +1509,13 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
 <body>
 <header class="header">
   <div class="top">
-    <a class="brand-wrap" href="/InfoJano/" aria-label="InfoJano home">
-      <img class="brand-logo" src="/infojano-mark.svg" alt="">
+    <a class="brand-wrap" href="/" aria-label="InfoJano home">
+      <svg class="brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="InfoJano logo">
+        <defs><linearGradient id="ij-brand-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19c8f5"/><stop offset=".5" stop-color="#0876e8"/><stop offset="1" stop-color="#06358f"/></linearGradient></defs>
+        <path d="M120 60 Q96 60 80 80 L48 120 Q36 136 36 156 V356 Q36 420 104 420 H320 Q356 420 378 392 L452 296 Q474 268 444 244 L168 84 Q148 70 120 60Z" fill="url(#ij-brand-bg)"/>
+        <rect x="150" y="150" width="52" height="200" rx="14" fill="#fff"/>
+        <path d="M250 150 H302 V300 Q302 360 242 360 H222 V310 H242 Q250 310 250 300 Z" fill="#fff"/>
+      </svg>
       <span class="brand-copy"><span class="brand">Info<span>Jano</span></span><span class="tag">Smart Online Tools for Everyday Life</span></span>
     </a>
     <nav class="nav" aria-label="Main navigation">
@@ -1976,5 +1981,77 @@ body header.header .nav button.nav-home,body header.header .nav button.nav-searc
 @keyframes ij-home-press{from{transform:scale(1)}to{transform:scale(.96)}}
 @media(prefers-reduced-motion:reduce){#home #toolGrid>.tool .icon,#home #toolGrid>.tool:hover .icon,#home #toolGrid>.tool:focus-visible .icon,#home #toolGrid>.tool:active .icon{animation:none!important;transform:none!important;will-change:auto!important}}
 </style>
+
+<style id="infojano-header-hero-user-code-refresh">
+/* User-approved Header + Hero styling, adapted to preserve InfoJano navigation and live search. */
+body header.header{
+  background:#fff!important;color:#111!important;padding:0 20px!important;
+  box-shadow:0 2px 10px rgba(0,0,0,.05)!important;border-bottom:1px solid #edf2f8!important;
+}
+body header.header .top{display:flex!important;justify-content:space-between!important;align-items:center!important;
+  padding:15px 0!important;max-width:1200px!important;margin:0 auto!important;gap:12px!important}
+body header.header .brand-wrap{display:flex!important;align-items:center!important;text-decoration:none!important;gap:12px!important}
+body header.header .brand-logo{width:45px!important;height:45px!important;flex:0 0 45px!important}
+body header.header .brand-copy{display:flex!important;flex-direction:column!important}
+body header.header .brand{font-size:22px!important;font-weight:800!important;color:#111!important;line-height:1.2!important}
+body header.header .brand span{color:#e63946!important}
+body header.header .tag{font-size:12px!important;color:#666!important;font-weight:500!important}
+body header.header .nav{display:flex!important;gap:7px!important}
+body header.header .nav button{background:#f2f7ff!important;color:#173a70!important;border:1px solid #e0eafa!important;
+  padding:9px 12px!important;border-radius:10px!important;font-size:13px!important}
+body header.header .nav button.nav-home{background:#0876e8!important;color:#fff!important;border-color:#0876e8!important}
+body header.header .nav button.nav-search{background:#eaf5ff!important;color:#0876e8!important}
+#home .hero{
+  display:flex!important;justify-content:space-between!important;align-items:center!important;gap:20px!important;
+  max-width:1200px!important;margin:20px auto!important;padding:60px 20px!important;
+  min-height:0!important;border-radius:24px!important;color:#111!important;
+  background:linear-gradient(180deg,#f0f7ff 0%,#fff 100%)!important;
+}
+#home .hero-art{flex:1 1 0!important;display:flex!important;justify-content:center!important;align-items:center!important;
+  min-width:0!important;animation:ij-user-float 5s ease-in-out infinite!important}
+#home .hero-art-right{animation-delay:1.5s!important}
+#home .hero-art img{width:100%!important;max-width:300px!important;height:auto!important;
+  filter:drop-shadow(0 15px 25px rgba(8,118,232,.15))!important}
+#home .hero-content{flex:2 1 600px!important;text-align:center!important;max-width:600px!important;min-width:0!important}
+#home .hero h1{font-size:clamp(32px,3.5vw,42px)!important;color:#111!important;margin:0 0 10px!important;line-height:1.2!important;letter-spacing:-.7px!important}
+#home .hero-content h1 span{background:linear-gradient(90deg,#0876e8,#19c8f5)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+#home .hero p{font-size:18px!important;color:#555!important;margin:0 0 22px!important;line-height:1.45!important}
+#home .search{display:flex!important;align-items:center!important;max-width:100%!important;margin:0 auto!important;
+  background:#fff!important;border-radius:50px!important;padding:5px!important;gap:0!important;
+  box-shadow:0 5px 15px rgba(0,0,0,.05)!important;border:1px solid #e0e0e0!important;transition:all .3s ease!important}
+#home .search:focus-within{box-shadow:0 0 0 4px rgba(8,118,232,.15),0 10px 25px rgba(8,118,232,.1)!important;
+  transform:translateY(-2px)!important;border-color:#0876e8!important}
+#home .search input{border:0!important;outline:0!important;background:transparent!important;flex:1!important;min-width:0!important;
+  padding:10px 20px!important;font-size:16px!important}
+#home .search .primary{width:48px!important;height:48px!important;min-width:48px!important;padding:0!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;border:0!important;
+  border-radius:50px!important;background:#0876e8!important;color:#fff!important}
+#home .search .primary:hover{background:#06358f!important}
+#home .hero-benefits{display:flex!important;gap:10px!important;justify-content:center!important;flex-wrap:wrap!important;margin-top:25px!important}
+#home .hero-benefits span{background:#fff!important;padding:8px 16px!important;border-radius:20px!important;font-size:14px!important;
+  font-weight:600!important;color:#333!important;box-shadow:0 2px 10px rgba(0,0,0,.05)!important;border:1px solid #eaeaea!important}
+#home .chips{display:flex!important;gap:10px!important;justify-content:center!important;flex-wrap:wrap!important;margin-top:25px!important;padding:0!important}
+#home .chips button{background:#fff!important;color:#444!important;padding:10px 22px!important;border-radius:20px!important;
+  font-size:15px!important;font-weight:500!important;border:1px solid #e0e0e0!important;transition:all .25s ease!important}
+#home .chips button:hover,#home .chips button:focus-visible{transform:translateY(-3px)!important;
+  box-shadow:0 6px 15px rgba(8,118,232,.15)!important;border-color:#0876e8!important;color:#0876e8!important;outline:none!important}
+@keyframes ij-user-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@media(max-width:768px){
+  #home .hero{flex-direction:column!important;padding:34px 18px!important;gap:0!important}
+  #home .hero-art{display:none!important}
+  #home .hero-content{flex:1 1 auto!important;width:100%!important}
+  #home .hero h1{font-size:32px!important}
+  #home .hero p{font-size:16px!important}
+  body header.header{padding:0 14px!important}
+  body header.header .top{padding:12px 0!important}
+  body header.header .nav{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #home .hero-art{animation:none!important}
+  #home .chips button,#home .search{transition:none!important}
+}
+</style>
+
 </body>
 </html>
