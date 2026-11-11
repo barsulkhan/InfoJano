@@ -339,44 +339,46 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 .ij-history{margin-top:15px;padding:13px;border:1px solid #e1e9f5;border-radius:13px;background:#fbfdff}.ij-history summary{font-weight:800;color:#24456f;cursor:pointer}.ij-history li{margin:7px 0;color:#536782;font-size:13px}
 
 
-/* Match Percentage Calculator hero dimensions to the Currency Converter hero */
+/* Slim desktop Percentage hero while keeping its established width */
 .ij-master-hero.ij-unified-currency-hero{
   position:relative!important;
   left:50%!important;
   transform:translateX(-50%)!important;
   width:calc(100vw - 34px)!important;
   max-width:1480px!important;
-  min-height:250px!important;
+  min-height:210px!important;
+  height:210px!important;
   margin:12px 0 26px!important;
+  padding:0!important;
   border-radius:30px!important;
 }
 .ij-master-hero.ij-unified-currency-hero .ij-master-body{
-  min-height:246px!important;
-  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)!important;
-  padding:24px 34px!important;
-  gap:22px!important;
+  min-height:206px!important;
+  height:206px!important;
+  padding:18px 34px!important;
+  gap:18px!important;
 }
 .ij-master-hero.ij-unified-currency-hero .ij-master-visual{
-  min-height:190px!important;
+  min-height:150px!important;
 }
 @media(max-width:600px){
   .ij-master-hero.ij-unified-currency-hero{
     left:auto!important;
     transform:none!important;
     width:100%!important;
+    height:auto!important;
     min-height:0!important;
     margin:10px 0 22px!important;
+    padding:0!important;
     border-radius:23px!important;
   }
   .ij-master-hero.ij-unified-currency-hero .ij-master-body{
+    height:auto!important;
     min-height:0!important;
-    grid-template-columns:minmax(0,1fr)!important;
     padding:22px 18px 14px!important;
     gap:4px!important;
   }
-  .ij-master-hero.ij-unified-currency-hero .ij-master-visual{
-    min-height:185px!important;
-  }
+  .ij-master-hero.ij-unified-currency-hero .ij-master-visual{min-height:185px!important}
 }
 </style>
 <script type="application/ld+json">
