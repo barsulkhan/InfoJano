@@ -60,6 +60,62 @@ main > section:not([style]) > :last-child{margin-bottom:0}
 main > section:not([style]) p{line-height:1.7;margin:14px 0}
 main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
+
+/* Percentage Calculator premium page design */
+body{background:#f3f7ff;color:#14213d;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!important}
+.ij-master-hero{isolation:isolate;position:relative;overflow:hidden;margin:12px 0 26px;border:2px solid transparent;border-radius:26px;color:#fff;background-image:linear-gradient(118deg,#061b68 0%,#0753b8 54%,#5720c5 100%),linear-gradient(90deg,#00dfff,#8065ff,#ffd52e,#00dfff);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 0 8px #00dfff55,0 0 18px #765cff33,0 20px 48px rgba(14,38,110,.22);animation:ij-neon-edge-glow 12s ease-in-out infinite}
+.ij-master-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 8% 90%,#00d9ff55,transparent 28%),radial-gradient(circle at 100% 0%,#ffcc3540,transparent 25%)}
+.ij-master-hero:after{content:none!important;display:none!important}
+@keyframes ij-neon-edge-glow{0%,100%{box-shadow:0 0 7px #00dfff44,0 0 14px #765cff22,0 20px 48px rgba(14,38,110,.22)}50%{box-shadow:0 0 11px #00dfff88,0 0 22px #765cff55,0 20px 48px rgba(14,38,110,.22)}}
+.ij-master-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 28px;border-bottom:1px solid #ffffff2c;background:#06164f88}
+.ij-master-brand{font-size:25px;font-weight:900;letter-spacing:-1px;color:#fff!important;text-decoration:none!important}
+.ij-master-brand span{color:#ffd52e}
+.ij-master-tagline{font-size:13px;font-weight:650;color:#e6f3ff;border-left:1px solid #ffffff66;padding-left:16px}
+.ij-master-badges{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.ij-master-badges span{border:1px solid #9b83ff;border-radius:99px;padding:6px 11px;background:#ffffff12;font-size:11px;font-weight:800;color:#fff}
+.ij-master-body{display:grid;grid-template-columns:1.04fr .96fr;gap:22px;align-items:center;padding:34px 40px 38px;min-height:315px}
+.ij-master-copy{position:relative;z-index:2}
+.ij-master-kicker{display:inline-flex;border:1px solid #a58bff;border-radius:99px;padding:7px 13px;background:linear-gradient(100deg,#7d42efaa,#165bd8aa);font-weight:800;font-size:12px;color:#fff}
+.ij-master-copy h1{position:relative;isolation:isolate;overflow:hidden;font-size:clamp(34px,4.2vw,54px);line-height:1.04;letter-spacing:-1.7px;margin:16px 0 13px;color:#fff;font-weight:900}
+.ij-master-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:16%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff22 34%,#ffffffaa 48%,#b9faff99 54%,#ffffff22 70%,transparent 100%);mix-blend-mode:screen;filter:drop-shadow(0 0 2px #bafaff);transform:translateX(-160%);animation:ij-title-light-sweep 12s ease-in-out infinite}
+@keyframes ij-title-light-sweep{0%,12%{transform:translateX(-160%)}62%,100%{transform:translateX(660%)}}
+.ij-master-copy h1 em{font-style:normal;color:#ffd52e}
+.ij-master-copy p{max-width:560px;color:#e7f2ff;font-size:16px;line-height:1.6;margin:0 0 15px}
+.ij-master-pills{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 20px}
+.ij-master-pills span{border:1px solid #16c9f3aa;border-radius:99px;padding:7px 11px;background:#073d9a88;color:#effaff;font-size:11px;font-weight:800}
+.ij-master-actions{display:flex;flex-wrap:wrap;gap:10px}
+.ij-master-actions a{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:13px;background:linear-gradient(180deg,#ffe45b,#ffbd00);color:#09245e!important;text-decoration:none!important;font-weight:900;box-shadow:0 8px 22px #001b5a66;border:1px solid #fff5a5}
+.ij-master-actions a.alt{background:linear-gradient(180deg,#fff,#d9eaff);border-color:#fff}
+.ij-master-visual{position:relative;min-height:250px;display:grid;place-items:center;isolation:isolate}
+.ij-master-orb{position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,#00cfff88,#6e45ff55 48%,transparent 72%);filter:blur(8px);animation:ij-orb-pulse 5s ease-in-out infinite alternate}
+@keyframes ij-orb-pulse{to{transform:scale(1.1);opacity:.72}}
+.ij-percent-panel{position:absolute;left:5%;top:18%;width:64%;min-height:178px;padding:16px;border:4px solid #14265f;border-radius:20px;background:linear-gradient(145deg,#f7fbff,#b7d7ff);box-shadow:0 20px 40px #00134f88;transform:rotate(-5deg);color:#10285d;animation:ij-panel-float 6s ease-in-out infinite}
+@keyframes ij-panel-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+.ij-panel-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:900;border-bottom:1px solid #c6d8f3;padding-bottom:9px}
+.ij-panel-dots{display:flex;gap:4px}.ij-panel-dots i{width:7px;height:7px;border-radius:50%;background:#2f7eea}
+.ij-panel-equation{margin:15px 0 8px;font-size:27px;font-weight:950;letter-spacing:-1px}
+.ij-panel-equation b{color:#1764d8}
+.ij-panel-track{height:10px;border-radius:99px;background:#d3e4fb;overflow:hidden}.ij-panel-track i{display:block;width:72%;height:100%;border-radius:99px;background:linear-gradient(90deg,#08b9e9,#7758ff)}
+.ij-panel-answer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:11px;font-weight:800}
+.ij-panel-answer strong{font-size:20px;color:#1258c5}
+.ij-percent-bubble{position:absolute;right:3%;top:12%;width:105px;height:105px;border-radius:28px;display:grid;place-items:center;background:linear-gradient(145deg,#9c6bff,#086cff);border:2px solid #b9e9ff;color:#fff;font-size:38px;font-weight:950;box-shadow:0 15px 35px #00134f88;transform:rotate(8deg);animation:ij-bubble-float 5s ease-in-out infinite}
+@keyframes ij-bubble-float{0%,100%{translate:0 0;rotate:8deg}50%{translate:0 -12px;rotate:2deg}}
+.ij-float-chip{position:absolute;right:0;bottom:12%;padding:10px 13px;border:1px solid #b9e9ff;border-radius:14px;background:#0b4fa9;color:#fff;font-size:12px;font-weight:900;box-shadow:0 10px 25px #00134f77;animation:ij-bubble-float 5.8s ease-in-out infinite reverse}
+.ij-master-caption{position:absolute;right:4%;bottom:0;color:#d9eaff;font-size:9px;letter-spacing:1.5px;font-weight:900}
+.ij-master-wave{height:7px;background:linear-gradient(90deg,#00d9ff,#7d5cff 52%,#ffd52e)}
+.ij-percentage-calculator{max-width:900px;margin:0 auto 24px;padding:28px;border:1px solid #d7e4f6;border-radius:24px;background:#fff;box-shadow:0 12px 34px rgba(18,55,110,.09)}
+.ij-percentage-calculator h2{margin:0 0 8px;color:#132b58;font-size:25px}
+.ij-percentage-calculator>p{margin:0 0 20px;color:#60718a}
+.ij-percentage-calculator input,.ij-percentage-calculator select{border:1px solid #cbd9eb!important;border-radius:12px!important;background:#f9fbff!important;min-height:48px}
+.ij-percentage-calculator button{border-radius:12px;background:linear-gradient(100deg,#155eef,#633fe5);font-weight:800;box-shadow:0 7px 16px #155eef2b}
+.ij-percentage-calculator #result{padding:14px 16px;border-radius:14px;background:#eff6ff;color:#1247a5;min-height:24px}
+.ij-howto-guide,.ij-practical-guide,#ij-seo-faq,main>section:not([style]){border:1px solid #e0e9f5!important;border-radius:22px!important;background:#fff!important;box-shadow:0 8px 24px rgba(15,23,42,.045)!important}
+.ij-howto-guide h2,.ij-practical-guide h2,#ij-seo-faq h2{color:#142e5d}
+.ij-howto-guide p,.ij-practical-guide p,#ij-seo-faq p{color:#52647e}
+@media(max-width:760px){.ij-master-hero{border-radius:20px;min-height:unset}.ij-master-top{padding:13px 17px;gap:9px}.ij-master-brand{font-size:22px}.ij-master-tagline{font-size:11px;padding-left:10px}.ij-master-badges{width:100%;margin-left:0}.ij-master-badges span{font-size:10px;padding:5px 8px}.ij-master-body{grid-template-columns:1fr;padding:25px 20px 18px;gap:5px}.ij-master-copy h1{font-size:clamp(33px,9vw,45px);letter-spacing:-1px}.ij-master-copy p{font-size:14px}.ij-master-actions a{width:100%}.ij-master-visual{min-height:225px;margin-top:4px}.ij-percent-panel{left:2%;width:68%;min-height:155px}.ij-panel-equation{font-size:23px}.ij-percent-bubble{width:84px;height:84px;font-size:31px;right:3%}.ij-float-chip{right:0;bottom:8%}.ij-master-caption{font-size:8px}.ij-percentage-calculator{padding:21px 18px;border-radius:19px}.ij-percentage-calculator h2{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.ij-master-hero,.ij-master-copy h1:after,.ij-orb-pulse,.ij-panel-float,.ij-bubble-float{animation:none!important}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/percentage.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -104,10 +160,27 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <body>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
 <main>
-<div class="card">
-<h1>Percentage Calculator: Find a Percent of a Number</h1>
-<p>Use this free calculator to find a percentage of a value, such as 20% of 150, or work out what percentage one number is of another. The examples below explain the formulas step by step.</p>
+<section class="ij-master-hero" aria-labelledby="percentage-hero-title">
+  <div class="ij-master-top"><a class="ij-master-brand" href="index.html">Info<span>Jano</span></a><span class="ij-master-tagline">Smart everyday calculations</span><div class="ij-master-badges"><span>FREE ONLINE TOOL</span><span>INSTANT RESULTS</span></div></div>
+  <div class="ij-master-body">
+    <div class="ij-master-copy">
+      <span class="ij-master-kicker">✦ PERCENTAGE CALCULATION SUITE</span>
+      <h1 id="percentage-hero-title">Percentage <em>Calculator</em></h1>
+      <p>Find any percentage, compare values and understand the maths behind every result. A simple, clear calculator for everyday numbers, study and work.</p>
+      <div class="ij-master-pills"><span>✓ Easy calculations</span><span>✓ Clear formulas</span><span>✓ Mobile friendly</span></div>
+      <div class="ij-master-actions"><a href="#percentage-calculator">Calculate Now ↓</a><a class="alt" href="#percentage-guide">Learn the Formula</a></div>
+    </div>
+    <div class="ij-master-visual" aria-hidden="true">
+      <div class="ij-master-orb"></div>
+      <div class="ij-percent-panel"><div class="ij-panel-top"><span>QUICK CALCULATION</span><span class="ij-panel-dots"><i></i><i></i><i></i></span></div><div class="ij-panel-equation">20% <b>of</b> 150</div><div class="ij-panel-track"><i></i></div><div class="ij-panel-answer"><span>CALCULATED RESULT</span><strong>30.00</strong></div></div>
+      <div class="ij-percent-bubble">%</div><div class="ij-float-chip">+ 12.5% growth</div><div class="ij-master-caption">PERCENTAGE MADE SIMPLE</div>
+    </div>
+  </div><div class="ij-master-wave"></div>
+</section>
+<div class="card ij-percentage-calculator" id="percentage-calculator">
 <h2>Calculate a Percentage</h2>
+<p>Use this free calculator to find a percentage of a value, such as 20% of 150, or work out what percentage one number is of another. The examples below explain the formulas step by step.</p>
+<p>Choose a calculation type, enter your values and get a clear result.</p>
 <label for="calcMode">What do you want to calculate?</label>
 <select id="calcMode" onchange="updateCalculatorMode()" style="width:100%;box-sizing:border-box;padding:13px;margin:8px 0 16px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:#fff">
 <option value="percentOf">Find X% of a number</option>
@@ -120,7 +193,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <button onclick="calculate()">Calculate</button>
 <div id="result" aria-live="polite"></div>
 </div>
-<section class="ij-howto-guide" style="display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:28px 24px!important;margin:24px 0!important;overflow-wrap:anywhere!important;overflow:hidden!important;border:1px solid #e5eaf2;border-radius:22px;background:#fff;"><h2 style="padding:0!important;margin:0 0 16px!important;box-sizing:border-box;overflow-wrap:anywhere;">How to calculate a percentage</h2>
+<section class="ij-howto-guide" id="percentage-guide" style="display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:28px 24px!important;margin:24px 0!important;overflow-wrap:anywhere!important;overflow:hidden!important;border:1px solid #e5eaf2;border-radius:22px;background:#fff;"><h2 style="padding:0!important;margin:0 0 16px!important;box-sizing:border-box;overflow-wrap:anywhere;">How to calculate a percentage</h2>
 <p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">To find a percentage of a number, multiply the number by the percentage and divide by 100.</p>
 <p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;"><strong>Formula:</strong> Percentage × Number ÷ 100</p>
 <p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">Example: 20% of 150 = 30.</p>
