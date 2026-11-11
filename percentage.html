@@ -440,6 +440,72 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
   .ij-master-hero.ij-unified-currency-hero .ij-master-visual{height:175px!important;min-height:175px!important}
 }
 
+
+/* Currency Converter-style New Life rotating neon border */
+@property --ij-percent-angle{
+  syntax:"<angle>";
+  initial-value:0deg;
+  inherits:false;
+}
+@keyframes ijPercentageNewLife{to{--ij-percent-angle:360deg}}
+.ij-master-hero.ij-unified-currency-hero:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  padding:4px!important;
+  border-radius:30px!important;
+  background:conic-gradient(from var(--ij-percent-angle),#00eaff,#8a2cff,#ff31d2,#ffdf27,#00eaff)!important;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;
+  -webkit-mask-composite:xor!important;
+  mask-composite:exclude!important;
+  filter:drop-shadow(0 0 9px #16dfff)!important;
+  animation:ijPercentageNewLife 8s linear infinite!important;
+  pointer-events:none!important;
+}
+.ij-master-hero.ij-unified-currency-hero .ij-master-body{position:relative!important;z-index:1!important}
+/* Match the Currency Converter's left-to-right title and feature-pill light sweep */
+.ij-master-hero.ij-unified-currency-hero .ij-master-copy h1{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+}
+.ij-master-hero.ij-unified-currency-hero .ij-master-copy h1:after{
+  content:""!important;position:absolute!important;top:-12%!important;bottom:-12%!important;
+  left:-55%!important;width:34%!important;pointer-events:none!important;z-index:3!important;
+  background:linear-gradient(105deg,transparent 0%,#ffffff18 28%,#ffffffc9 49%,#b8f7ff72 58%,transparent 100%)!important;
+  filter:blur(2px)!important;transform:skewX(-18deg)!important;
+  animation:ijPercentageTitleSweep 12s linear infinite!important;
+}
+.ij-master-hero.ij-unified-currency-hero .ij-master-pills span{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+}
+.ij-master-hero.ij-unified-currency-hero .ij-master-pills span:after{
+  content:""!important;position:absolute!important;top:-35%!important;bottom:-35%!important;
+  left:-75%!important;width:42%!important;pointer-events:none!important;
+  background:linear-gradient(105deg,transparent 0%,#ffffff20 28%,#ffffffd9 50%,#ffffff35 63%,transparent 100%)!important;
+  filter:blur(1px)!important;transform:skewX(-18deg)!important;
+  animation:ijPercentagePillSweep 12s linear infinite!important;
+}
+.ij-master-hero.ij-unified-currency-hero .ij-master-pills span:nth-child(1):after{animation-delay:2.4s!important}
+.ij-master-hero.ij-unified-currency-hero .ij-master-pills span:nth-child(2):after{animation-delay:4.8s!important}
+.ij-master-hero.ij-unified-currency-hero .ij-master-pills span:nth-child(3):after{animation-delay:7.2s!important}
+@keyframes ijPercentageTitleSweep{
+  0%{left:-55%;opacity:0}
+  3%{opacity:1}
+  18%{left:125%;opacity:0}
+  100%{left:125%;opacity:0}
+}
+@keyframes ijPercentagePillSweep{
+  0%{left:-75%;opacity:0}
+  3%{opacity:1}
+  18%{left:135%;opacity:0}
+  100%{left:135%;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .ij-master-hero.ij-unified-currency-hero:before,
+ .ij-master-hero.ij-unified-currency-hero .ij-master-copy h1:after,
+ .ij-master-hero.ij-unified-currency-hero .ij-master-pills span:after{animation:none!important}
+}
+
 </style>
 <script type="application/ld+json">
 {
