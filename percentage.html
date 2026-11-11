@@ -322,6 +322,22 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
  .ij-percentage-calculator #result:not(:empty):before{left:12px;width:26px;height:26px}
 }
 
+
+/* Complete percentage suite controls; hero intentionally unchanged */
+.ij-percentage-calculator select,.ij-percentage-calculator input[type=number]{width:100%;box-sizing:border-box;padding:13px 14px;margin:7px 0 14px;border:1px solid #cbd8eb;border-radius:11px;background:#fff;color:#18304f;font-size:15px}
+.ij-percent-options,.ij-quick-values,.ij-percent-actions,.ij-result-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:10px 0 14px}
+.ij-percent-options label{font-size:13px;color:#536782}.ij-percent-options select{width:auto;min-width:72px;margin:0;padding:8px}
+.ij-percent-options input{width:auto!important;margin:0!important}
+.ij-quick-values span{font-size:13px;font-weight:700;color:#52647d}.ij-quick-values button,.ij-result-actions button,.ij-history button{border:1px solid #d4e1f3;background:#f4f8ff;color:#2456a5;border-radius:20px;padding:8px 12px;font-weight:700}
+.ij-percent-actions button{flex:1;min-height:46px;border:0;border-radius:12px;background:linear-gradient(100deg,#0875ed,#6838e9);color:white;font-weight:800}
+.ij-percent-actions .ij-secondary{flex:0 0 auto;padding:0 22px;background:#eef3fb;color:#385477}
+.ij-result-actions{justify-content:flex-end}
+.ij-percentage-calculator #result{min-height:64px;padding:18px;border:1px solid #d6e5f8;border-radius:16px;background:linear-gradient(120deg,#e8f9f2,#edf5ff,#f3edff);color:#153d70;font-weight:800;font-size:17px;line-height:1.55}
+.ij-formula-steps{margin-top:12px;padding:14px 16px;border-radius:13px;background:#f7f9fd;color:#536782;font-size:13px;line-height:1.65}
+.ij-formula-steps:empty{display:none}.ij-formula-steps strong{color:#183b73}
+.ij-percent-visual{margin:14px 0;padding:14px;border:1px solid #e0eafa;border-radius:14px;background:#fff}.ij-visual-track{height:13px;border-radius:20px;background:#e7eef9;overflow:hidden}.ij-visual-track span{display:block;width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#08b9d5,#6945ec);transition:width .3s}.ij-percent-visual small{display:block;margin-top:7px;color:#657994}
+.ij-history{margin-top:15px;padding:13px;border:1px solid #e1e9f5;border-radius:13px;background:#fbfdff}.ij-history summary{font-weight:800;color:#24456f;cursor:pointer}.ij-history li{margin:7px 0;color:#536782;font-size:13px}
+
 </style>
 <script type="application/ld+json">
 {
@@ -380,20 +396,31 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
   </div><div class="ij-master-wave"></div>
 </section>
 <div class="card ij-percentage-calculator" id="percentage-calculator">
-<h2>Calculate a Percentage</h2>
-<p>Use this free calculator to find a percentage of a value, such as 20% of 150, or work out what percentage one number is of another. The examples below explain the formulas step by step.</p>
-<p>Choose a calculation type, enter your values and get a clear result.</p>
-<label for="calcMode">What do you want to calculate?</label>
-<select id="calcMode" onchange="updateCalculatorMode()" style="width:100%;box-sizing:border-box;padding:13px;margin:8px 0 16px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:#fff">
-<option value="percentOf">Find X% of a number</option>
-<option value="whatPercent">Find what percent one number is of another</option>
+<h2>Complete Percentage Calculator</h2>
+<p>Choose a calculation, enter your values and get an instant answer with the formula.</p>
+<label for="calcMode">Choose calculation</label>
+<select id="calcMode" onchange="updateCalculatorMode()">
+<option value="percentOf">Find X% of a number</option><option value="whatPercent">Find what percent X is of Y</option>
+<option value="reverse">Find the original number from a percentage</option><option value="increase">Percentage increase</option><option value="decrease">Percentage decrease</option>
+<option value="change">Percentage change</option><option value="difference">Percentage difference</option><option value="adjust">Increase or decrease a value by %</option>
+<option value="original">Find original price before discount</option><option value="discount">Discount amount and sale price</option><option value="profit">Profit or loss percentage</option><option value="tax">Add or remove tax / GST</option>
+<option value="tip">Tip and bill split</option><option value="marks">Exam marks percentage</option><option value="target">Target marks needed</option><option value="percentOfPercent">Percentage of a percentage</option>
+<option value="repeated">Repeated percentage change</option><option value="multi">Apply two successive percentage changes</option><option value="decimal">Convert percentage to decimal</option><option value="fraction">Convert percentage to fraction</option>
 </select>
-<label id="firstLabel" for="percent">Percentage (%)</label>
-<input id="percent" type="number" step="any" placeholder="Example: 20">
-<label id="secondLabel" for="number">Number</label>
-<input id="number" type="number" step="any" placeholder="Example: 150">
-<button onclick="calculate()">Calculate</button>
+<div class="ij-percent-fields">
+<label id="firstLabel" for="percent">Percentage (%)</label><input id="percent" type="number" step="any" placeholder="Example: 20">
+<label id="secondLabel" for="number">Number</label><input id="number" type="number" step="any" placeholder="Example: 150">
+<label id="thirdLabel" for="extraNumber">Additional value</label><input id="extraNumber" type="number" step="any" placeholder="Optional">
+</div>
+<div class="ij-percent-options"><label for="precision">Decimal places</label><select id="precision"><option>2</option><option>0</option><option>1</option><option>3</option><option>4</option><option>6</option><option>8</option></select><label><input type="checkbox" id="liveCalc"> Calculate as I type</label></div>
+<div class="ij-quick-values"><span>Quick %:</span><button type="button" onclick="setQuickPercent(5)">5%</button><button type="button" onclick="setQuickPercent(10)">10%</button><button type="button" onclick="setQuickPercent(15)">15%</button><button type="button" onclick="setQuickPercent(20)">20%</button><button type="button" onclick="setQuickPercent(25)">25%</button><button type="button" onclick="setQuickPercent(50)">50%</button></div>
+<div class="ij-percent-actions"><button type="button" onclick="calculate()">Calculate</button><button type="button" class="ij-secondary" onclick="resetPercentage()">Reset</button></div>
 <div id="result" aria-live="polite"></div>
+<div class="ij-result-actions"><button type="button" onclick="copyPercentageResult()">Copy result</button><button type="button" onclick="sharePercentageResult()">Share</button></div>
+<div id="formulaSteps" class="ij-formula-steps" aria-live="polite"></div>
+<div class="ij-percent-visual" id="percentageVisual" hidden><div class="ij-visual-track"><span id="percentageBar"></span></div><small id="percentageVisualLabel"></small></div>
+<details class="ij-history"><summary>Calculation history</summary><ol id="percentageHistory"><li>Your recent calculations will appear here.</li></ol><button type="button" onclick="clearPercentageHistory()">Clear history</button></details>
+</div>
 </div>
 <section class="ij-howto-guide" id="percentage-guide" style="display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:28px 24px!important;margin:24px 0!important;overflow-wrap:anywhere!important;overflow:hidden!important;border:1px solid #e5eaf2;border-radius:22px;background:#fff;"><h2 style="padding:0!important;margin:0 0 16px!important;box-sizing:border-box;overflow-wrap:anywhere;">How to calculate a percentage</h2>
 <p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">To find a percentage of a number, multiply the number by the percentage and divide by 100.</p>
@@ -449,49 +476,42 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 </main>
 <footer>© InfoJano</footer>
 <script>
-function updateCalculatorMode(){
-const mode=document.getElementById('calcMode').value;
-const firstLabel=document.getElementById('firstLabel');
-const secondLabel=document.getElementById('secondLabel');
-const firstInput=document.getElementById('percent');
-const secondInput=document.getElementById('number');
-const result=document.getElementById('result');
-if(mode==='whatPercent'){
-firstLabel.textContent='Part or first number';
-secondLabel.textContent='Whole or second number';
-firstInput.placeholder='Example: 25';
-secondInput.placeholder='Example: 200';
-}else{
-firstLabel.textContent='Percentage (%)';
-secondLabel.textContent='Number';
-firstInput.placeholder='Example: 20';
-secondInput.placeholder='Example: 150';
-}
-result.textContent='';
-}
-function calculate(){
-const mode=document.getElementById('calcMode').value;
-const firstInput=document.getElementById('percent').value;
-const secondInput=document.getElementById('number').value;
-const r=document.getElementById('result');
-if(firstInput===''||secondInput===''||!Number.isFinite(Number(firstInput))||!Number.isFinite(Number(secondInput))){
-r.textContent='Please enter both numbers.';
-return;
-}
-const first=Number(firstInput);
-const second=Number(secondInput);
-if(mode==='whatPercent'){
-if(second===0){
-r.textContent='The whole or second number must not be zero.';
-return;
-}
-const answer=first/second*100;
-r.textContent=first+' is '+Number(answer.toFixed(8))+'% of '+second+'.';
-}else{
-const answer=first*second/100;
-r.textContent=first+'% of '+second+' = '+Number(answer.toFixed(8))+'.';
-}
-}
+const percentModes={
+percentOf:["Percentage (%)","Number","Example: 20","Example: 150"],whatPercent:["Part / first number","Whole / second number","Example: 25","Example: 200"],reverse:["Known percentage (%)","Known amount","Example: 20","Example: 30"],increase:["Original value","New value","Example: 100","Example: 125"],decrease:["Original value","New value","Example: 100","Example: 80"],change:["Old value","New value","Example: 100","Example: 125"],difference:["First value","Second value","Example: 80","Example: 100"],adjust:["Starting value","Percentage (%)","Example: 150","Example: 20"],original:["Sale price after discount","Discount (%)","Example: 80","Example: 20"],discount:["Original price","Discount (%)","Example: 100","Example: 20"],profit:["Cost price","Selling price","Example: 80","Example: 100"],tax:["Amount before tax","Tax / GST (%)","Example: 100","Example: 18"],tip:["Bill amount","Tip (%)","Example: 80","Example: 10"],marks:["Marks obtained","Total marks","Example: 425","Example: 500"],target:["Total marks","Target percentage (%)","Example: 500","Example: 80"],percentOfPercent:["First percentage (%)","Second percentage (%)","Example: 20","Example: 50"],repeated:["Starting value","Percentage per step (+/-)","Example: 100","Example: 5"],multi:["Starting value","First change (+/- %)","Example: 100","Example: 10"] ,decimal:["Percentage (%)","Not required","Example: 25",""],fraction:["Percentage (%)","Not required","Example: 12.5",""]};
+let lastPercentageResult="";
+function updateCalculatorMode(){const m=document.getElementById("calcMode").value,d=percentModes[m];document.getElementById("firstLabel").textContent=d[0];document.getElementById("secondLabel").textContent=d[1];document.getElementById("percent").placeholder=d[2];document.getElementById("number").placeholder=d[3];document.getElementById("number").disabled=["decimal","fraction"].includes(m);document.getElementById("extraNumber").parentElement.style.display=["tip","marks","target","repeated","multi"].includes(m)?"block":"none";document.getElementById("thirdLabel").textContent=({tip:"Number of people",marks:"Optional subject count",target:"Marks already obtained",repeated:"Number of periods",multi:"Second change (+/- %)"})[m]||"Additional value";document.getElementById("result").textContent="";document.getElementById("formulaSteps").textContent="";document.getElementById("percentageVisual").hidden=true;}
+function fmt(n){const p=Number(document.getElementById("precision").value);return Number.isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:p}):"—"}
+function calculate(){const m=document.getElementById("calcMode").value,a=Number(document.getElementById("percent").value),b=Number(document.getElementById("number").value),c=Number(document.getElementById("extraNumber").value||0),av=document.getElementById("percent").value,bv=document.getElementById("number").value,cv=document.getElementById("extraNumber").value;let answer,summary,formula,visual=null;
+if(m==="decimal"||m==="fraction"){if(av==="")return showPercentError("Enter a percentage.");if(m==="decimal"){answer=a/100;summary=a+"% = "+fmt(answer);formula="Decimal = Percentage ÷ 100";}else{let n=Math.round(a*1000000),d=100000000;const gcd=(x,y)=>y?gcd(y,x%y):x;const g=gcd(Math.abs(n),d);n/=g;d/=g;summary=a+"% = "+n+"/"+d;answer=n/d;formula="Fraction = (Percentage ÷ 100), then simplify";}}
+else{if(av===""||bv==="")return showPercentError("Please enter both required values.");if(!Number.isFinite(a)||!Number.isFinite(b))return showPercentError("Enter valid numbers.");switch(m){
+case"percentOf":answer=a*b/100;summary=fmt(a)+"% of "+fmt(b)+" = "+fmt(answer);formula="("+a+" × "+b+") ÷ 100";visual=Math.max(0,Math.min(100,a));break;
+case"whatPercent":if(!b)return showPercentError("The whole cannot be zero.");answer=a/b*100;summary=fmt(a)+" is "+fmt(answer)+"% of "+fmt(b);formula="("+a+" ÷ "+b+") × 100";visual=Math.max(0,Math.min(100,answer));break;
+case"reverse":if(!a)return showPercentError("Percentage cannot be zero.");answer=b/(a/100);summary="100% original value = "+fmt(answer);formula=b+" ÷ ("+a+" ÷ 100)";break;
+case"increase":case"change":if(!a)return showPercentError("Old value cannot be zero.");answer=(b-a)/Math.abs(a)*100;summary="Percentage change = "+fmt(answer)+"%";formula="(("+b+" − "+a+") ÷ |"+a+"|) × 100";break;
+case"decrease":if(!a)return showPercentError("Original value cannot be zero.");answer=(a-b)/Math.abs(a)*100;summary="Percentage decrease = "+fmt(answer)+"%";formula="(("+a+" − "+b+") ÷ |"+a+"|) × 100";break;
+case"difference":if((a+b)===0)return showPercentError("The average of the values cannot be zero.");answer=Math.abs(a-b)/((Math.abs(a)+Math.abs(b))/2)*100;summary="Percentage difference = "+fmt(answer)+"%";formula="(|"+a+" − "+b+"| ÷ average of absolute values) × 100";break;
+case"adjust":answer=b>=0?a*(1+b/100):a*(1+b/100);summary="Adjusted value = "+fmt(answer);formula=a+" × (1 + "+b+"/100)";break;
+case"original":if(b>=100)return showPercentError("Discount must be less than 100%.");answer=a/(1-b/100);summary="Original price = "+fmt(answer);formula=a+" ÷ (1 − "+b+"/100)";break;
+case"discount":answer=a*b/100;summary="Discount: "+fmt(answer)+" | Sale price: "+fmt(a-answer);formula="Discount = "+a+" × "+b+"/100; Sale price = Original − Discount";break;
+case"profit":if(!a)return showPercentError("Cost price cannot be zero.");answer=(b-a)/a*100;summary=(answer>=0?"Profit: ":"Loss: ")+fmt(Math.abs(answer))+"%";formula="(("+b+" − "+a+") ÷ "+a+") × 100";break;
+case"tax":answer=a*b/100;summary="Tax: "+fmt(answer)+" | Total with tax: "+fmt(a+answer);formula="Tax = "+a+" × "+b+"/100; Total = Amount + Tax";break;
+case"tip":if(c<=0)return showPercentError("Enter number of people (at least 1).");answer=a*b/100;summary="Tip: "+fmt(answer)+" | Total: "+fmt(a+answer)+" | Per person: "+fmt((a+answer)/c);formula="Tip = Bill × Tip% ÷ 100; Split total ÷ people";break;
+case"marks":if(!b)return showPercentError("Total marks cannot be zero.");answer=a/b*100;summary="Exam percentage = "+fmt(answer)+"%";formula="("+a+" ÷ "+b+") × 100";visual=Math.max(0,Math.min(100,answer));break;
+case"target":if(cv==="")return showPercentError("Enter marks already obtained.");answer=b/100*a-c;summary="Additional marks needed = "+fmt(answer);formula="(Total marks × Target% ÷ 100) − Marks obtained";break;
+case"percentOfPercent":answer=a*b/100;summary=fmt(a)+"% of "+fmt(b)+"% = "+fmt(answer)+"%";formula="("+a+" × "+b+") ÷ 100";break;
+case"repeated":if(c<=0)return showPercentError("Enter periods (at least 1).");answer=a*Math.pow(1+b/100,c);summary="Value after "+c+" periods = "+fmt(answer);formula=a+" × (1 + "+b+"/100)^"+c;break;
+case"multi":if(cv==="")return showPercentError("Enter the second percentage change.");answer=a*(1+b/100)*(1+c/100);summary="Final value after both changes = "+fmt(answer);formula=a+" × (1 + "+b+"/100) × (1 + "+c+"/100)";break;
+}}
+lastPercentageResult=summary;document.getElementById("result").textContent=summary;document.getElementById("formulaSteps").innerHTML="<strong>Formula & steps</strong><br>"+formula+"<br><strong>Answer:</strong> "+summary;const v=document.getElementById("percentageVisual");v.hidden=visual===null;if(visual!==null){document.getElementById("percentageBar").style.width=visual+"%";document.getElementById("percentageVisualLabel").textContent="Visual scale: "+fmt(visual)+"%";}savePercentageHistory(summary);}
+function showPercentError(t){document.getElementById("result").textContent=t;document.getElementById("formulaSteps").textContent="";document.getElementById("percentageVisual").hidden=true;}
+function setQuickPercent(v){document.getElementById("percent").value=v;if(document.getElementById("liveCalc").checked)calculate();}
+function resetPercentage(){["percent","number","extraNumber"].forEach(id=>document.getElementById(id).value="");document.getElementById("result").textContent="";document.getElementById("formulaSteps").textContent="";document.getElementById("percentageVisual").hidden=true;lastPercentageResult="";}
+function copyPercentageResult(){if(lastPercentageResult)navigator.clipboard?.writeText(lastPercentageResult).then(()=>alert("Result copied")).catch(()=>alert("Copy is unavailable in this browser."));}
+function sharePercentageResult(){if(!lastPercentageResult)return;if(navigator.share)navigator.share({title:"InfoJano Percentage Calculator",text:lastPercentageResult}).catch(()=>{});else copyPercentageResult();}
+function savePercentageHistory(t){let h=[];try{h=JSON.parse(localStorage.getItem("ijPercentageHistory")||"[]")}catch(e){}h.unshift(t);h=h.slice(0,8);try{localStorage.setItem("ijPercentageHistory",JSON.stringify(h))}catch(e){}renderPercentageHistory(h);}
+function renderPercentageHistory(h){document.getElementById("percentageHistory").innerHTML=h.length?h.map(x=>"<li>"+String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))+"</li>").join(""):"<li>No saved calculations yet.</li>";}
+function clearPercentageHistory(){localStorage.removeItem("ijPercentageHistory");renderPercentageHistory([])}
+document.addEventListener("DOMContentLoaded",()=>{updateCalculatorMode();let h=[];try{h=JSON.parse(localStorage.getItem("ijPercentageHistory")||"[]")}catch(e){}renderPercentageHistory(h);["percent","number","extraNumber"].forEach(id=>document.getElementById(id).addEventListener("input",()=>{if(document.getElementById("liveCalc").checked)calculate()}));});
 </script>
 
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
