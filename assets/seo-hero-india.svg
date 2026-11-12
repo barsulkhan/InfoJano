@@ -7,13 +7,6 @@
 </defs>
 <rect width="800" height="650" rx="42" fill="url(#bg)"/>
 <circle cx="650" cy="130" r="120" fill="#fff" opacity=".36"/>
-<!-- India Gate silhouette -->
-<g transform="translate(570 45)" fill="#6d9fc9" opacity=".34">
- <path d="M0 70h170v18H0zM18 88h134v16H18zM35 104h100v95H35zM52 199h66v58H52zM22 257h126v13H22z"/>
- <path d="M45 104h80v18H45zM58 122h54v15H58zM68 137h34v62H68z" fill="#e8f5ff"/>
- <path d="M0 60h170v12H0zM14 48h142v12H14zM32 35h106v13H32z"/>
- <text x="85" y="295" text-anchor="middle" font-size="15" font-family="Arial" font-weight="700" fill="#4c83b2">INDIA GATE</text>
-</g>
 <!-- flag -->
 <g transform="translate(120 75) rotate(-7 180 95)" filter="url(#shadow)">
  <path d="M35 20 Q190 -5 365 20 L365 75 Q190 55 35 78Z" fill="#ff9933"/>
