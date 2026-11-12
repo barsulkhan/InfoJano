@@ -1357,3 +1357,41 @@ This addendum corrects older checkpoint statements using the live GitHub reposit
 
 ## Transfer operating rule
 Keep the original historical master/archive files intact. Use this current master plus the migration supplement for handoff. Reconcile current GitHub state before relying on any historical PR/cache/deployment status.
+
+
+---
+
+# 12 November 2026 — Percentage Calculator final update and handoff
+
+## User requirements and completed work
+- Replace the plain-text list with 21 interactive app-style feature cards. Each card shows a tool icon, name and short explanation; clicking selects the matching operation in the main calculator and scrolls/focuses its input.
+- Place all 21 cards ABOVE the “How to calculate a percentage” guide.
+- Expand Percentage Calculation Examples / Explainer, Percentage Calculator FAQs, and Common Percentage Calculator Questions to the same full content width as the hero (remove narrow 900px caps).
+- Give feature icons distinct colours.
+- Preserve the hero and calculator logic. No homepage redesign or unrelated page changes.
+
+## Merged PRs
+- PR #123: https://github.com/barsulkhan/InfoJano/pull/123 — 21 feature cards. Merge commit `40c8bd8b894b7b03bf8a9fd3f49c541b4cd29e91`.
+- PR #124: https://github.com/barsulkhan/InfoJano/pull/124 — moved cards above guide; full-width explainer/FAQ/Common Questions panels; eight-colour app-icon palette; changed only `percentage.html` and `sw.js`. Merge commit `ae043c38d1982f86d9c303d1a7898c4d61f663bb`.
+- PR #124 preserved hero and calculator JavaScript. Existing favicon file `infojano-mark.svg` was confirmed in repo; no favicon source was removed or replaced.
+- Service worker cache bumped from `infojano-v281` to `infojano-v282`.
+
+## Deployment status
+- GitHub Pages deployment run `43228323251` for merge commit `ae043c38d1982f86d9c303d1a7898c4d61f663bb` completed successfully.
+- Workflow: https://github.com/barsulkhan/InfoJano/actions/runs/43228323251
+- APK workflow run `43228323782` was queued at last check; recheck if needed.
+- Live page: https://infojano.com/percentage.html
+- Deployment success is verified, but live desktop/mobile visual QA and actual browser-tab favicon rendering still need direct inspection.
+
+## Pending QA
+- [ ] Inspect live page on desktop and mobile; confirm all panels match hero width and there is no horizontal overflow.
+- [ ] Test all 21 cards select the correct mode and focus the main calculator.
+- [ ] Confirm favicon/page icon renders in the browser tab. Do not replace it without evidence of a defect.
+- [ ] Recheck APK workflow run `43228323782` if APK status is relevant.
+- [ ] Record only verified visual QA results here.
+
+## Next-chat handoff
+"InfoJano project resume করো। প্রথমে GitHub repo `barsulkhan/InfoJano`-এর `docs/04_InfoJano_Master_CURRENT_2026-11-12.md` এবং `docs/INFOJANO_MASTER_MIGRATION_SUPPLEMENT_2026-11-12.md` পড়বে। Latest work: PR #123 and #124 merged; latest merge commit `ae043c38d1982f86d9c303d1a7898c4d61f663bb`; Pages workflow `43228323251` success; cache `infojano-v282`. 21 coloured feature cards are above the percentage guide; explainer, FAQ and Common Questions sections have full-width rules. Next task: visually inspect live `https://infojano.com/percentage.html` desktop/mobile, verify all 21 card actions and favicon, then update this same GitHub master file. Do not save project files to ChatGPT Library. Keep all canonical handoff notes inside this InfoJano GitHub repo. Preserve historical archives, homepage and calculator logic."
+
+## Storage instruction
+The user explicitly said not to save project files in ChatGPT Library. The canonical project source-of-truth and handoff notes must remain inside the InfoJano GitHub repository. Do not delete or overwrite historical master/archive files.
