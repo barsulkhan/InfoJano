@@ -31,7 +31,7 @@ s=s.replace(/^0+(?=\d)/,'');if(s==='0')return w[0];
 const group=(n)=>{n=+n;if(n<100)return w[n];const h=Math.floor(n/100),r=n%100;return (bnMode?w[h]+'শ':w[h]+' सौ')+(r?' '+w[r]:'');};
 let groups=[],first=true;while(s.length){const size=first?3:2;groups.unshift(s.slice(-size));s=s.slice(0,-size);first=false;}
 const names=bnMode?['','হাজার','লক্ষ','কোটি','আরব','খরব']:['','हज़ार','लाख','करोड़','अरब','खरब'];
-const out=[];groups.forEach((g,i)=>{const n=+g,ix=groups.length-i-1;if(n)out.push((group(n)+(ix?' '+(names[ix]||''):'')).trim());});
+const out=[];groups.forEach((g,i)=>{const n=+g,ix=groups.length-i-2;if(n)out.push((group(n)+(ix>0?' '+(names[ix]||''):'')).trim());});
 return (negative?(bnMode?'ঋণাত্মক ':'माइनस '):'')+out.join(' ');
 }
 const old=window.numWords;
@@ -40,6 +40,6 @@ if(o.mode==='currency'||o.mode==='cheque'){const major=bnMode?(o.currency==='USD
 else if(dec)out+=(bnMode?' দশমিক ':' दशमलव ')+dec.split('').map(x=>w[+x]).join(' ');
 return (neg?(bnMode?'ঋণাত্মক ':'माइनस '):'')+out;};
 const oldHandler=$('nw-go').onclick;
-$('nw-go').onclick=function(){try{const m=$('nw-mode').value,raw=$('nw-num').value;let v;if(m==='roman')v=old(raw,{system:$('nw-system').value,mode:'plain'});else if(m==='ordinal'){v=integerWords(raw)+' '+(bnMode?'তম':'वाँ');}else v=window.numWords(raw,{system:$('nw-system').value,mode:m,currency:$('nw-currency').value});const casing=$('nw-case').value;$('nw-output').textContent=casing==='upper'?v.toLocaleUpperCase():casing==='lower'?v.toLocaleLowerCase():v;window.__ijLast=v;}catch(e){$('nw-output').textContent=e.message;}};
+$('nw-go').onclick=function(){try{const m=$('nw-mode').value,raw=$('nw-num').value;let v;if(m==='roman')v=window.roman(raw);else if(m==='ordinal'){v=integerWords(raw)+' '+(bnMode?'তম':'वाँ');}else v=window.numWords(raw,{system:$('nw-system').value,mode:m,currency:$('nw-currency').value});const casing=$('nw-case').value;$('nw-output').textContent=casing==='upper'?v.toLocaleUpperCase():casing==='lower'?v.toLocaleLowerCase():v;window.__ijLast=v;}catch(e){$('nw-output').textContent=e.message;}};
 $('nw-num').dispatchEvent(new Event('input'));
 })();
