@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="650" viewBox="0 0 800 650">
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f1faff"/><stop offset="1" stop-color="#cce8ff"/></linearGradient>
+ <linearGradient id="blue" x2="1" y2="1"><stop stop-color="#087de5"/><stop offset="1" stop-color="#1748ce"/></linearGradient>
+ <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#fff0a8"/><stop offset=".55" stop-color="#f4bd36"/><stop offset="1" stop-color="#bd790b"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="15" flood-color="#326b9b" flood-opacity=".2"/></filter>
+</defs>
+<rect width="800" height="650" rx="42" fill="url(#bg)"/>
+<circle cx="650" cy="130" r="120" fill="#fff" opacity=".36"/>
+<!-- India Gate silhouette -->
+<g transform="translate(570 45)" fill="#6d9fc9" opacity=".34">
+ <path d="M0 70h170v18H0zM18 88h134v16H18zM35 104h100v95H35zM52 199h66v58H52zM22 257h126v13H22z"/>
+ <path d="M45 104h80v18H45zM58 122h54v15H58zM68 137h34v62H68z" fill="#e8f5ff"/>
+ <path d="M0 60h170v12H0zM14 48h142v12H14zM32 35h106v13H32z"/>
+ <text x="85" y="295" text-anchor="middle" font-size="15" font-family="Arial" font-weight="700" fill="#4c83b2">INDIA GATE</text>
+</g>
+<!-- flag -->
+<g transform="translate(120 75) rotate(-7 180 95)" filter="url(#shadow)">
+ <path d="M35 20 Q190 -5 365 20 L365 75 Q190 55 35 78Z" fill="#ff9933"/>
+ <path d="M35 78 Q190 55 365 75 L365 132 Q190 111 35 135Z" fill="#fff"/>
+ <path d="M35 135 Q190 111 365 132 L365 190 Q190 168 35 192Z" fill="#138808"/>
+ <circle cx="200" cy="105" r="21" fill="none" stroke="#17458b" stroke-width="4"/>
+ <circle cx="200" cy="105" r="4" fill="#17458b"/>
+ <g stroke="#17458b" stroke-width="2"><path d="M200 84v42M179 105h42M185 90l30 30M215 90l-30 30"/></g>
+ <path d="M30 15v185" stroke="#d49b29" stroke-width="9" stroke-linecap="round"/>
+ <circle cx="30" cy="12" r="10" fill="#e8b33d"/>
+</g>
+<!-- rear country nameplate -->
+<g transform="translate(260 205) rotate(-7 240 120)" filter="url(#shadow)">
+ <rect width="455" height="230" rx="28" fill="#fff" stroke="#fff" stroke-width="12"/>
+ <path d="M8 30Q8 8 30 8H425Q447 8 447 30V82H8Z" fill="#633bd2"/>
+ <text x="228" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">INDIA • INDIAN RUPEE</text>
+ <rect x="35" y="112" width="100" height="82" rx="15" fill="#e4f3ff"/>
+ <text x="85" y="170" text-anchor="middle" font-family="Arial" font-size="48" fill="#2988c9">🇮🇳</text>
+ <rect x="160" y="125" width="245" height="13" rx="7" fill="#d9e9f8"/><rect x="160" y="153" width="210" height="13" rx="7" fill="#d9e9f8"/><rect x="160" y="181" width="170" height="13" rx="7" fill="#d9e9f8"/>
+</g>
+<!-- front currency card -->
+<g transform="translate(110 310) rotate(-3 280 145)" filter="url(#shadow)">
+ <rect width="560" height="270" rx="34" fill="#fff" stroke="#fff" stroke-width="12"/>
+ <path d="M10 34Q10 10 34 10H526Q550 10 550 34V91H10Z" fill="url(#blue)"/>
+ <text x="280" y="62" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#fff">INDIAN RUPEES</text>
+ <circle cx="145" cy="174" r="72" fill="url(#gold)" stroke="#fff1bd" stroke-width="9"/>
+ <text x="145" y="203" text-anchor="middle" font-family="Arial,sans-serif" font-size="90" font-weight="700" fill="#fff" stroke="#b87808" stroke-width="1">₹</text>
+ <rect x="250" y="139" width="245" height="15" rx="8" fill="#d7e8f7"/><rect x="250" y="172" width="210" height="15" rx="8" fill="#d7e8f7"/><rect x="250" y="205" width="170" height="15" rx="8" fill="#d7e8f7"/>
+ <path d="M390 242h110" stroke="#142b4c" stroke-width="7" stroke-dasharray="5 5"/>
+</g>
+<!-- coins -->
+<g filter="url(#shadow)"><ellipse cx="115" cy="575" rx="46" ry="14" fill="#bd790b"/><rect x="69" y="535" width="92" height="40" rx="10" fill="url(#gold)" stroke="#fff1bd" stroke-width="5"/><text x="115" y="565" text-anchor="middle" font-family="Arial" font-size="35" font-weight="700" fill="#fff">₹</text></g>
+<g filter="url(#shadow)"><ellipse cx="705" cy="590" rx="42" ry="12" fill="#bd790b"/><rect x="663" y="555" width="84" height="35" rx="9" fill="url(#gold)" stroke="#fff1bd" stroke-width="4"/></g>
+</svg>
