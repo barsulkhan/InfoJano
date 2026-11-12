@@ -59,12 +59,59 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 }
 </script>
 <link rel="icon" type="image/svg+xml" href="/infojano-mark.svg">
+<style id="ij-unified-hero-v1">
+/* InfoJano unified premium hero — missing-banner toolkit batch */
+.ij-hero-breadcrumb{width:min(calc(100% - 36px),1200px);margin:18px auto 10px;padding:0 2px;color:#60718a;font:600 13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.ij-hero-breadcrumb a{color:#1768c8;text-decoration:none;font-weight:750}
+.ij-unified-hero{position:relative;isolation:isolate;overflow:hidden;width:min(calc(100% - 32px),1200px);min-height:250px;margin:10px auto 28px;border:2px solid transparent;border-radius:26px;background-image:linear-gradient(118deg,#061b68 0%,#0753b8 54%,#5720c5 100%),linear-gradient(90deg,#00dfff,#8065ff,#ffd52e,#00dfff);background-origin:border-box;background-clip:padding-box,border-box;color:#fff;box-shadow:0 0 8px #00dfff55,0 0 18px #765cff33,0 20px 48px rgba(14,38,110,.22);animation:ij-hero-edge-glow 12s ease-in-out infinite;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.ij-unified-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 8% 90%,#00d9ff55,transparent 28%),radial-gradient(circle at 100% 0%,#ffcc3540,transparent 25%)}
+@keyframes ij-hero-edge-glow{0%,100%{box-shadow:0 0 7px #00dfff44,0 0 14px #765cff22,0 20px 48px rgba(14,38,110,.22)}50%{box-shadow:0 0 11px #00dfff88,0 0 22px #765cff55,0 20px 48px rgba(14,38,110,.22)}}
+.ij-hero-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:13px 26px;border-bottom:1px solid #ffffff2c;background:#06164f88}
+.ij-hero-brand{color:#fff!important;text-decoration:none!important;font-size:23px;font-weight:950;letter-spacing:-.8px}
+.ij-hero-brand span{color:#ffd52e}
+.ij-hero-tagline{padding-left:14px;border-left:1px solid #ffffff66;color:#e6f3ff;font-size:12px;font-weight:650}
+.ij-hero-badges{display:flex;gap:7px;margin-left:auto;flex-wrap:wrap}
+.ij-hero-badges span{padding:5px 10px;border:1px solid #9b83ff;border-radius:99px;background:#ffffff12;color:#fff;font-size:10px;font-weight:800}
+.ij-hero-main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(230px,.85fr);gap:24px;align-items:center;padding:28px 38px 30px;min-height:190px}
+.ij-hero-copy{position:relative;z-index:2;min-width:0}
+.ij-hero-kicker{display:inline-flex;padding:6px 12px;border:1px solid #a58bff;border-radius:99px;background:linear-gradient(100deg,#7d42efaa,#165bd8aa);color:#fff;font-size:11px;font-weight:850;letter-spacing:.45px}
+.ij-hero-copy h1{position:relative;isolation:isolate;overflow:hidden;margin:13px 0 10px;color:#fff;font-size:clamp(30px,4vw,48px);font-weight:950;line-height:1.08;letter-spacing:-1.4px;text-align:left}
+.ij-hero-copy h1:after{content:"";position:absolute;top:0;bottom:0;left:0;width:16%;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent 0%,#ffffff22 34%,#ffffffaa 48%,#b9faff99 54%,#ffffff22 70%,transparent 100%);mix-blend-mode:screen;filter:drop-shadow(0 0 2px #bafaff);transform:translateX(-160%);animation:ij-hero-title-sweep 12s ease-in-out infinite}
+@keyframes ij-hero-title-sweep{0%,12%{transform:translateX(-160%)}62%,100%{transform:translateX(660%)}}
+.ij-hero-copy p{max-width:690px;margin:0;color:#e7f2ff;font-size:15px;line-height:1.6}
+.ij-hero-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.ij-hero-pills span{padding:6px 10px;border:1px solid #16c9f3aa;border-radius:99px;background:#073d9a88;color:#effaff;font-size:10px;font-weight:800}
+.ij-hero-visual{position:relative;display:grid;place-items:center;min-height:170px;isolation:isolate}
+.ij-hero-orb{position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,#00cfff88,#6e45ff55 48%,transparent 72%);filter:blur(7px);animation:ij-hero-orb-pulse 5s ease-in-out infinite alternate}
+@keyframes ij-hero-orb-pulse{to{transform:scale(1.1);opacity:.72}}
+.ij-hero-glass-card{position:relative;z-index:1;width:min(100%,280px);min-height:126px;padding:16px;border:1px solid #c4e9ff;border-radius:22px;background:linear-gradient(145deg,#f8fcff,#c5e0ff);box-shadow:0 18px 38px #00134f88;color:#10285d;transform:rotate(-4deg);animation:ij-hero-card-float 6s ease-in-out infinite}
+@keyframes ij-hero-card-float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.ij-hero-card-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:9px;border-bottom:1px solid #c6d8f3;font-size:10px;font-weight:900;letter-spacing:.45px}
+.ij-hero-card-dots{display:flex;gap:4px}.ij-hero-card-dots i{width:7px;height:7px;border-radius:50%;background:#2f7eea}
+.ij-hero-card-center{display:flex;align-items:center;gap:12px;margin-top:13px}
+.ij-hero-card-icon{width:54px;height:54px;flex:0 0 54px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,#9c6bff,#086cff);border:2px solid #b9e9ff;color:#fff;font-size:25px;font-weight:950;box-shadow:0 8px 18px #1857a944}
+.ij-hero-card-meta{min-width:0}.ij-hero-card-meta strong{display:block;color:#1258c5;font-size:13px;line-height:1.3}.ij-hero-card-meta span{display:block;margin-top:4px;color:#536b8b;font-size:10px;line-height:1.35;overflow-wrap:anywhere}
+.ij-hero-float-chip{position:absolute;right:-4px;bottom:2px;z-index:2;padding:8px 11px;border:1px solid #b9e9ff;border-radius:12px;background:#0b4fa9;color:#fff;font-size:10px;font-weight:900;box-shadow:0 10px 25px #00134f77;animation:ij-hero-chip-float 5.8s ease-in-out infinite reverse}
+@keyframes ij-hero-chip-float{0%,100%{translate:0 0;rotate:4deg}50%{translate:0 -8px;rotate:0deg}}
+.ij-hero-wave{height:5px;background:linear-gradient(90deg,#00d9ff,#7d5cff 52%,#ffd52e)}
+@media(max-width:760px){.ij-hero-breadcrumb{width:calc(100% - 30px);margin:14px auto 8px;font-size:12px}.ij-unified-hero{width:calc(100% - 24px);min-height:220px;margin:8px auto 22px;border-radius:21px}.ij-hero-top{padding:11px 16px;gap:8px}.ij-hero-brand{font-size:21px}.ij-hero-tagline{font-size:10px;padding-left:9px}.ij-hero-badges{width:100%;margin-left:0}.ij-hero-badges span{font-size:9px;padding:4px 8px}.ij-hero-main{grid-template-columns:minmax(0,1fr) 76px;gap:8px;padding:21px 17px 17px;min-height:165px}.ij-hero-copy h1{font-size:clamp(27px,7.2vw,36px);letter-spacing:-.8px;line-height:1.1}.ij-hero-copy p{font-size:13px;line-height:1.5}.ij-hero-pills{gap:5px;margin-top:11px}.ij-hero-pills span{font-size:9px;padding:5px 7px}.ij-hero-visual{min-height:116px;align-self:center}.ij-hero-orb{width:105px;height:105px}.ij-hero-glass-card{width:100%;min-height:85px;padding:8px;border-radius:14px;transform:rotate(-3deg)}.ij-hero-card-top{font-size:7px;padding-bottom:5px}.ij-hero-card-dots i{width:5px;height:5px}.ij-hero-card-center{gap:5px;margin-top:7px}.ij-hero-card-icon{width:30px;height:30px;flex-basis:30px;border-radius:9px;font-size:14px}.ij-hero-card-meta strong{font-size:8px}.ij-hero-card-meta span{font-size:7px;margin-top:2px}.ij-hero-float-chip{right:-2px;bottom:-5px;padding:5px 6px;font-size:7px;border-radius:8px}}
+@media(max-width:380px){.ij-hero-main{grid-template-columns:minmax(0,1fr) 62px;padding-left:14px;padding-right:14px}.ij-hero-copy h1{font-size:26px}.ij-hero-card-meta{display:none}.ij-hero-card-center{justify-content:center}}
+@media(prefers-reduced-motion:reduce){.ij-unified-hero,.ij-hero-copy h1:after,.ij-hero-orb,.ij-hero-glass-card,.ij-hero-float-chip{animation:none!important}}
+</style>
 </head>
 <body>
 <section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
+<nav class="ij-hero-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a> <span aria-hidden="true">›</span> Tip Calculator</nav>
+<section class="ij-unified-hero" aria-labelledby="ij-unified-hero-title">
+ <div class="ij-hero-top"><a class="ij-hero-brand" href="index.html">Info<span>Jano</span></a><span class="ij-hero-tagline">Smart Tools for Everyday Life</span><div class="ij-hero-badges"><span>FREE ONLINE TOOL</span><span>FAST & EASY</span></div></div>
+ <div class="ij-hero-main">
+  <div class="ij-hero-copy"><span class="ij-hero-kicker">BILL & TIP TOOLS</span><h1 id="ij-unified-hero-title">Tip Calculator</h1><p>Calculate a tip, the total bill and each person's share when splitting a bill.</p><div class="ij-hero-pills"><span>Choose tip percentage</span><span>Split between people</span><span>See total per person</span></div></div>
+  <div class="ij-hero-visual" aria-hidden="true"><div class="ij-hero-orb"></div><div class="ij-hero-glass-card"><div class="ij-hero-card-top"><span>BILL SPLIT</span><span class="ij-hero-card-dots"><i></i><i></i><i></i></span></div><div class="ij-hero-card-center"><div class="ij-hero-card-icon">％</div><div class="ij-hero-card-meta"><strong>Tip Calculator</strong><span>Tip · Total · Per person</span></div></div></div><div class="ij-hero-float-chip">✓ INSTANT TOOL</div></div>
+ </div><div class="ij-hero-wave"></div>
+</section>
 <main>
 <div class="card">
-<h1>Tip Calculator - Calculate Tip and Split Bills</h1>
+
 <h2>Calculate Your Tip</h2>
 <label for="bill">Bill Amount</label>
 <input id="bill" type="number" min="0" step="any" placeholder="Example: 1000">
