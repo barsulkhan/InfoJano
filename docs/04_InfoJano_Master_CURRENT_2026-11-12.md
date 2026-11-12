@@ -1559,3 +1559,13 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 - Post-merge GitHub Pages deployment and live desktop/mobile visual QA are still pending verification. The available commit-workflow lookup returned no PR-triggered workflow runs for the merge commit; this is not proof of deployment success or failure.
 - Do not mark the live design complete until the Pages deployment and live rendering have been verified.
 
+
+
+## 12 Nov 2026 — Percentage SEO hero illustration motion fix (pending review)
+- User requested gentle animation on the two overlapping percentage-card illustrations across all 17 Percentage SEO landing pages, with no other visual/content changes.
+- Added independent, subtle vertical float and slight tilt motion to both front and back cards on all 17 pages. Existing fixed transforms remain intact; animation uses individual `translate` and `rotate` properties so prior important transform overrides do not suppress movement.
+- Respects `prefers-reduced-motion: reduce` by disabling both card animations.
+- No hero copy, layout, card sizes, illustration markup, calculator logic, SEO metadata, breadcrumbs, buttons, or other sections changed.
+- Confirmed all 17 pages are already in the service-worker precache list; bumped cache from `infojano-v283` to `infojano-v284` so clients refresh updated page CSS.
+- Branch: `fix/percentage-seo-hero-card-motion`. PR and deployment/live verification are pending. Do not mark complete until source QA, Pages Actions and live rendering are checked.
+- Separate clarification still pending: user mentioned improving the design of some numbered/tile text on the main page; do not change this until the exact elements are confirmed.
