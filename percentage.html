@@ -821,6 +821,7 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 <div class="card ij-percentage-calculator" id="percentage-calculator">
 <h2>Complete Percentage Calculator</h2>
 <p>Choose a calculation, enter your values and get an instant answer with the formula.</p>
+<div class="ij-percent-workspace">
 <div class="ij-percent-input-column">
 <label for="calcMode">Choose calculation</label>
 <select id="calcMode" onchange="updateCalculatorMode()">
@@ -1019,6 +1020,52 @@ document.addEventListener("DOMContentLoaded",()=>{const requestedMode=new URLSea
  .ij-percentage-calculator .ij-percent-output-column{position:static!important}
 }
 @media(prefers-reduced-motion:reduce){.ij-percentage-id-hero .ij-lightword,.ij-percentage-id-hero .ij-id-card-mock.front,.ij-percentage-id-hero .ij-id-card-mock.back{animation:none!important}}
+</style>
+
+
+<style id="ij-percentage-calculator-layout-final">
+/* Keep the complete calculator within the same 1200px frame as the hero. */
+.ij-percentage-calculator{
+ width:min(calc(100% - 28px),1200px)!important;
+ max-width:1200px!important;
+ margin:24px auto 28px!important;
+ padding:clamp(20px,2.6vw,34px)!important;
+ box-sizing:border-box!important;
+}
+.ij-percentage-calculator .ij-percent-workspace{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,.92fr)!important;
+ gap:clamp(16px,2.2vw,28px)!important;
+ align-items:start!important;
+ width:100%!important;
+ max-width:100%!important;
+ min-width:0!important;
+ box-sizing:border-box!important;
+}
+.ij-percentage-calculator .ij-percent-input-column,
+.ij-percentage-calculator .ij-percent-output-column{
+ min-width:0!important;
+ width:100%!important;
+ max-width:100%!important;
+ box-sizing:border-box!important;
+}
+.ij-percentage-calculator .ij-percent-output-column{
+ position:static!important;
+ padding:18px!important;
+ border:1px solid #dce8f7!important;
+ border-radius:18px!important;
+ background:#f8fbff!important;
+}
+.ij-percentage-calculator .ij-percent-output-column #result{margin-top:0!important;min-height:100px!important;overflow-wrap:anywhere!important}
+.ij-percentage-calculator .ij-result-actions{display:flex!important;gap:10px!important;flex-wrap:wrap!important}
+.ij-percentage-calculator .ij-result-actions button{flex:1 1 120px!important;min-width:0!important}
+.ij-percentage-calculator .ij-formula-steps,
+.ij-percentage-calculator .ij-history{max-width:100%!important;overflow-wrap:anywhere!important}
+@media(max-width:760px){
+ .ij-percentage-calculator{width:calc(100% - 20px)!important;margin:18px auto 24px!important;padding:20px 16px!important}
+ .ij-percentage-calculator .ij-percent-workspace{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+ .ij-percentage-calculator .ij-percent-output-column{position:static!important;padding:15px!important}
+}
 </style>
 
 </body>
