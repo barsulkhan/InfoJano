@@ -80,6 +80,68 @@ body{background:#f2f8ff}
  .ij-id-hero{padding:48px 56px}
 }
 
+
+/* Desktop workspace follows the Image Resizer's balanced two-panel workflow. */
+.ij-brandbar-inner{width:100%;max-width:none;gap:14px}
+.ij-brand-home{display:flex;align-items:center;gap:14px;min-width:0;color:inherit;text-decoration:none}
+.ij-brand-home:focus-visible,.ij-home-back:focus-visible{outline:3px solid #42bff2;outline-offset:4px;border-radius:10px}
+.ij-home-back{margin-left:auto;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 16px;border:1px solid #c9e2f8;border-radius:12px;background:linear-gradient(110deg,#eef8ff,#fff);color:#145a9d;text-decoration:none;font-size:14px;font-weight:800;box-shadow:0 4px 14px #1b78bd12;transition:background .2s,transform .2s}
+.ij-home-back:hover{background:#e2f3ff;transform:translateY(-1px)}
+.ij-studio-workspace{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:start;gap:20px;width:100%}
+.ij-studio-left,.ij-studio-right{min-width:0}
+.ij-studio-workspace .card{height:auto;margin-bottom:16px;padding:20px;border-radius:18px;box-shadow:0 7px 24px #1a4c7a0c}
+.ij-studio-right .card:last-child{margin-bottom:16px}
+@media(min-width:1100px){
+ .ij-studio-workspace{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:22px}
+ .ij-studio-left #cropCanvas{max-height:500px!important}
+}
+@media(max-width:1099px){
+ .ij-studio-workspace{grid-template-columns:minmax(0,1fr);gap:0}
+}
+@media(max-width:640px){
+ .ij-brandbar-inner{flex-wrap:wrap;gap:10px}
+ .ij-brand-home{gap:10px}
+ .ij-home-back{margin-left:auto;min-height:38px;padding:8px 11px;font-size:12px}
+ .ij-studio-workspace .card{padding:14px}
+}
+
+
+/* Compact hero height and subtle floating ID/document card artwork. */
+@media(min-width:1001px){
+ .ij-id-hero{padding:26px 42px 22px;margin:12px 0 22px}
+ .ij-id-hero-grid{min-height:0;gap:clamp(18px,3vw,38px)}
+ .ij-id-hero-symbol{width:78px;height:78px;margin-bottom:12px;border-radius:23px}
+ .ij-id-hero-symbol svg{width:54px;height:54px}
+ .ij-id-hero h1{font-size:clamp(34px,3.5vw,50px);margin-bottom:9px}
+ .ij-id-hero-subtitle{font-size:clamp(15px,1.2vw,18px);line-height:1.4}
+ .ij-doc-tiles{margin-top:16px;gap:8px}
+ .ij-doc-tile{min-height:96px;padding:10px 7px;gap:6px}
+ .ij-doc-tile svg{width:32px;height:32px}
+ .ij-id-hero-art{min-height:235px}
+ .ij-id-card-mock{width:min(78%,330px)}
+ .ij-id-card-mock .mock-photo{height:82px}
+ .ij-id-hero-benefits{margin-top:16px;gap:8px}
+ .ij-id-hero-benefits span{padding:8px 12px;font-size:13px}
+ .ij-id-hero-benefits b{width:22px;height:22px}
+}
+@media(min-width:1500px){
+ .ij-id-hero{padding:30px 50px 24px}
+ .ij-id-hero-art{min-height:250px}
+}
+@keyframes ijCardFloatFront{
+ 0%,100%{transform:translate(-12px,34px) rotate(-5deg)}
+ 50%{transform:translate(-12px,25px) rotate(-3.8deg)}
+}
+@keyframes ijCardFloatBack{
+ 0%,100%{transform:translate(25px,-60px) rotate(9deg)}
+ 50%{transform:translate(25px,-49px) rotate(7.8deg)}
+}
+.ij-id-card-mock.front{animation:ijCardFloatFront 5.2s ease-in-out infinite}
+.ij-id-card-mock.back{animation:ijCardFloatBack 5.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+ .ij-id-card-mock.front,.ij-id-card-mock.back{animation:none}
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -97,7 +159,7 @@ body{background:#f2f8ff}
   <link rel="manifest" href="/InfoJano/manifest.json">
 </head>
 <body>
-<header class="ij-brandbar"><div class="ij-brandbar-inner"><div class="ij-brandmark" aria-hidden="true"><svg viewBox="0 0 48 48" width="32" height="32" fill="none"><path d="M13 7h16l10 10v17a7 7 0 0 1-7 7H13a7 7 0 0 1-7-7V14a7 7 0 0 1 7-7Z" fill="white" fill-opacity=".16"/><path d="M17 14v20m0-20h7a7 7 0 0 1 0 14h-7" stroke="white" stroke-width="4" stroke-linecap="round"/><path d="M29 18h5v16h-5" stroke="white" stroke-width="4" stroke-linecap="round"/></svg></div><div><div class="ij-brandname">Info<span>Jano</span></div><div class="ij-brandtag">Smart Online Tools for Everyday Life</div></div><div class="ij-brand-divider"></div><div class="ij-brand-promise">Documents made simple · Print-ready results</div></div></header>
+<header class="ij-brandbar"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="/index.html" aria-label="InfoJano Home"><div class="ij-brandmark" aria-hidden="true"><svg viewBox="0 0 48 48" width="32" height="32" fill="none"><path d="M13 7h16l10 10v17a7 7 0 0 1-7 7H13a7 7 0 0 1-7-7V14a7 7 0 0 1 7-7Z" fill="white" fill-opacity=".16"/><path d="M17 14v20m0-20h7a7 7 0 0 1 0 14h-7" stroke="white" stroke-width="4" stroke-linecap="round"/><path d="M29 18h5v16h-5" stroke="white" stroke-width="4" stroke-linecap="round"/></svg></div><div><div class="ij-brandname">Info<span>Jano</span></div><div class="ij-brandtag">Smart Online Tools for Everyday Life</div></div></a><div class="ij-brand-divider"></div><div class="ij-brand-promise">Documents made simple · Print-ready results</div><a class="ij-home-back" href="/index.html">← Back to Home</a></div></header>
 <main>
 <section class="ij-id-hero" aria-labelledby="ij-id-hero-title">
  <div class="ij-id-hero-grid">
@@ -120,6 +182,7 @@ body{background:#f2f8ff}
  <div class="ij-id-hero-benefits"><span><b>✓</b> Easy to Use</span><span><b>↗</b> Quick Processing</span><span><b>▣</b> Print Ready</span><span><b>✓</b> Free to Use</span></div>
 </section>
 <section class="ij-doc-guide-links" aria-label="Document print guides"><h2>Document-specific print guides</h2><div class="ij-doc-guide-grid"><a href="/ayushman-card-print.html">Ayushman Card Guide <span>PDF and photo printing</span></a><a href="/aadhaar-card-print.html">Aadhaar Card Guide <span>e-Aadhaar crop and print</span></a><a href="/voter-id-card-print.html">Voter ID Guide <span>e-EPIC manual crop</span></a><a href="/digital-ration-card-print.html">Ration Card Guide <span>West Bengal e-Ration PDF</span></a></div></section>
+<div class="ij-studio-workspace"><div class="ij-studio-left">
 <section class="card" id="ij-document-selector"><h2><span class="step">1</span>Choose card type</h2>
 <div class="grid">
 <div class="field"><label for="cardType">Document type</label><select id="cardType"><option selected>Ayushman Bharat Card</option><option>Aadhaar Card</option><option>Voter ID</option><option>Digital Ration Card</option></select></div>
@@ -144,6 +207,7 @@ body{background:#f2f8ff}
 <div class="actions"><button class="btn alt" id="cropFrontBtn" type="button">Use crop as Front</button><button class="btn alt" id="cropBackBtn" type="button">Use crop as Back</button><button class="btn alt" id="cropResetBtn" type="button">Reset selection</button></div>
 </div>
 </section>
+</div><div class="ij-studio-right">
 <section class="card"><h2><span class="step">3</span>Set card size, add border and review</h2>
 <div class="grid">
 <div class="field"><label for="sizePreset">Card size preset</label><select id="sizePreset" disabled><option value="85,55" selected>85 × 55 mm (fixed standard size)</option></select></div>
@@ -164,6 +228,7 @@ body{background:#f2f8ff}
 <div class="actions"><button class="btn" id="downloadBtn" type="button">Create &amp; Download PDF</button><button class="btn alt" id="downloadJpgBtn" type="button">Download JPG (600 DPI)</button><a href="index.html" class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center">← Back to InfoJano</a></div>
 <div id="downloadStatus" class="status" role="status" aria-live="polite">Upload a file and select the sides to create your print PDF.</div>
 </section>
+</div></div>
 </main><footer>InfoJano • ID Card Print Studio</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="/InfoJano/jspdf.umd.min.js"></script>
