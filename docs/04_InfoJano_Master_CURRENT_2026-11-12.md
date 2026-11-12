@@ -1550,3 +1550,12 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 4. Open the 17 live URLs and inspect desktop/mobile hero proportions, heading wrapping, card illustration overlap, tile alignment, breadcrumb alignment, and action links. Record any live visual test limitations separately.
 
 - PR #127: https://github.com/barsulkhan/InfoJano/pull/127 — OPEN, NOT MERGED. Branch: design/percentage-seo-hero-match-current-main. It contains exactly the 17 SEO pages, sw.js, and this master file. User approval is required before merge.
+
+## PR #127 — Merge confirmation (12 November 2026)
+- PR #127, Match all 17 Percentage SEO heroes to the current main banner, was successfully squash-merged into main.
+- Merge commit: a1bea5bb05d2278ee4d15d49ad8cff859ab385ed.
+- The merged scope is the 17 SEO page files, sw.js (cache v283), and this master checkpoint.
+- The 17 page source QA checks remain as recorded above.
+- Post-merge GitHub Pages deployment and live desktop/mobile visual QA are still pending verification. The available commit-workflow lookup returned no PR-triggered workflow runs for the merge commit; this is not proof of deployment success or failure.
+- Do not mark the live design complete until the Pages deployment and live rendering have been verified.
+
