@@ -100,3 +100,30 @@ Purpose: Preserve the latest project decisions and handoff context that were dis
 3. Locate the exact “COMPLETE Master Archive 2026-11-04” if it exists under another filename or in Library; reconcile it without deleting historical versions.
 4. Audit the latest 11–12 November changes and the user-supplied design/code reference from the original conversation.
 5. Start with the user's latest explicitly requested task only. Make one small change, verify, then update this file.
+
+
+---
+
+## 12 November 2026 — Repository verification corrections
+
+A fresh GitHub tree/API audit found that the earlier statement saying the 4 November archive could not be found was incorrect. The exact file is present at:
+`InfoJano_Smart_Master_Project_COMPLETE_2026-11-04.md` (repository root). The 28 October master is also present. Both are historical records and must remain untouched.
+
+The full 1,322-line Library master `04_InfoJano_Master.md` has now been transferred to:
+`docs/04_InfoJano_Master_CURRENT_2026-11-12.md`.
+The first upload attempt contained only the first 1,000 lines; this was detected by comparing source/target lengths. It was corrected by re-reading lines 1–1000 and 1001–1322 and updating the GitHub file. The complete source was then verified against the Library copy.
+
+Fresh PR status corrections:
+- #91 CLOSED/MERGED, merge commit `3d5c6d26a8119231e634f270c070bf8eff7997b0`.
+- #94 OPEN/NOT MERGED; do not merge without explicit user approval.
+- #95 CLOSED/MERGED (ads.txt authorization).
+- #100 CLOSED/MERGED; APK and Pages workflows succeeded.
+- #101, #102, #103 CLOSED/MERGED; PR #103 Pages and APK workflows succeeded.
+- #85 and #86 CLOSED/MERGED.
+
+Current `sw.js` cache is `infojano-v278`. Root `ads.txt` exists in GitHub main, but direct live URL verification was inaccessible in the browser inspection; its live HTTP status remains unverified.
+
+Important migration gaps:
+- The user's exact pasted Header + Hero HTML/CSS source is not included verbatim in either master file; only requirements, visual reference notes, and source audit findings are preserved. Do not recreate it by guessing.
+- USAJIO, Health & Fitness, and AI & Software remain separate projects and have not been migrated into this InfoJano repository. MobilePro also remains separate.
+- Live mobile visual QA and direct custom-domain HTTP checks remain unverified.
