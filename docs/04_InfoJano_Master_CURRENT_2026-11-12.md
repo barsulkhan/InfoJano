@@ -1580,3 +1580,10 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 - This confirms source merge and Pages deployment. Direct live browser rendering and Android/desktop visual QA have not yet been completed; do not claim visual QA complete.
 - Separate open Percentage SEO metadata PR #126 remains pending review/merge; it is not part of the animation fix and must be tracked separately.
 - User's separate request to improve the numbered/feature text styling on the main Percentage Calculator page remains ambiguous and untouched pending clarification.
+
+
+## 12 Nov 2026 — Percentage Calculator remaining SEO and main hero polish
+- PR #126 ("Improve Percentage Calculator SEO snippets for English and Brazil") was merged successfully as commit 39c76d4cd08930ff760528e753d3d0bd9fc32676. It updates the English main Percentage Calculator title/description and Brazilian Portuguese percentage/discount metadata; no calculator logic or layout changes.
+- Follow-up design task is isolated to percentage.html: polished the four hero feature tiles and four benefit-strip items with stronger card hierarchy, differentiated icon treatments, refined spacing, subtle hover states, and responsive 2-column mobile layout. Text, calculator logic, hero layout, and unrelated pages are unchanged.
+- Service worker cache bumped to infojano-v285 for the main-page style update.
+- Branch: design/percentage-main-hero-feature-polish. Pending PR review/merge, Pages deployment, and direct desktop/mobile visual QA.
