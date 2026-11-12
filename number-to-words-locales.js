@@ -23,7 +23,12 @@ Object.entries(labelMap).forEach(([id,v])=>{const e=$(id),l=e&&document.querySel
 const resultLabel=document.querySelector('#nwapp .ij-nw-result small');if(resultLabel)resultLabel.textContent=d.result;
 const opts={'nw-system':bnMode?['ভারতীয় (হাজার, লক্ষ, কোটি)','আন্তর্জাতিক (মিলিয়ন, বিলিয়ন)']:['भारतीय (हज़ार, लाख, करोड़)','अंतरराष्ट्रीय (मिलियन, बिलियन)'],'nw-mode':bnMode?['কথায় সংখ্যা','মুদ্রার পরিমাণ','চেকের ভাষা (Only)','ক্রমবাচক সংখ্যা','রোমান সংখ্যা']:['नंबर शब्दों में','मुद्रा की राशि','चेक फ़ॉर्मेट (Only)','क्रमसूचक संख्या','रोमन अंक'],'nw-currency':bnMode?['ভারতীয় রুপি / পয়সা','মার্কিন ডলার / সেন্ট']:['भारतीय रुपये / पैसे','अमेरिकी डॉलर / सेंट']};
 Object.entries(opts).forEach(([id,arr])=>{const e=$(id);if(e)e.querySelectorAll('option').forEach((o,i)=>{if(arr[i])o.textContent=arr[i];});});
-const focus=params.get('focus'),mode=$('nw-mode');if(focus&&mode){const map={words:'plain',currency:'currency',cheque:'cheque',ordinal:'ordinal',roman:'roman',bulk:'plain'};if(map[focus])mode.value=map[focus];if(focus==='bulk')$('nw-bulk').focus();else $('nw-num').focus();}
+const focus=params.get('focus'),mode=$('nw-mode');
+const system=params.get('system'),currency=params.get('currency'),letterCase=params.get('case');
+if(system&&$('nw-system'))$('nw-system').value=system==='international'?'international':'indian';
+if(currency&&$('nw-currency'))$('nw-currency').value=currency==='USD'?'USD':'INR';
+if(letterCase&&$('nw-case'))$('nw-case').value=letterCase==='upper'?'upper':'sentence';
+if(focus&&mode){const map={words:'plain',currency:'currency',cheque:'cheque',ordinal:'ordinal',roman:'roman',bulk:'plain'};if(map[focus])mode.value=map[focus];if(focus==='bulk')$('nw-bulk').focus();else if(focus==='reverse')$('nw-reverse').focus();else $('nw-num').focus();}
 function integerWords(raw){
 let s=String(raw).replace(/,/g,'').trim(),negative=s[0]==='-';if(negative)s=s.slice(1);
 if(!/^\d+$/.test(s))throw Error(bnMode?'পূর্ণসংখ্যা লিখুন':'कृपया पूर्ण संख्या दर्ज करें');
