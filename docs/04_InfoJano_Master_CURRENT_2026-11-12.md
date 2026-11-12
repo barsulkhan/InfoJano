@@ -1485,3 +1485,67 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 
 ## New-chat handoff
 "Continue InfoJano Percentage Calculator SEO from GitHub. Read this master and migration supplement. PR #126 is open/not merged and contains the measured SEO metadata corrections for `percentage.html`, `percentage-pt-br.html`, and `discount-pt-br.html`. The 17 English SEO pages have already been audited for unique title/description, canonical, WebApplication/FAQ schema and sitemap inclusion. Brazil terms recovered: `porcentagem online`, `calculadora porcentagem online`, `calculadora online de porcentagens`, `porcentagem online calculadora`, `calculadora porcentagem`, `calculadora de desconto`. Map the discount term to `discount-pt-br.html`. Next inspect PR #126 and get fresh Search Console page/query/country data; don't claim Google indexing or CTR change until verified. Do not save any project file in ChatGPT; GitHub only."
+
+## 12 November 2026 — Percentage Calculator 17 SEO pages: match the current main hero design
+
+### Why this correction was required
+- The current percentage.html main hero is the light-blue ID Card Studio-style hero: compact percentage icon, page title with animated light-sweep word, four feature tiles, two overlapping animated percentage cards on the right, and a four-item benefit strip.
+- The 17 SEO pages still used the older dark-blue ij-master-hero.ij-unified-currency-hero banner introduced by the earlier PR #85 work. That earlier hero no longer matched the current main Percentage Calculator design.
+- The user explicitly asked to study the current main hero first, then standardise all 17 SEO page heroes with accurate sizing and responsive proportions.
+
+### Implemented on the dedicated branch
+- Branch: design/percentage-seo-hero-match-current-main
+- The same current main-page hero structure and scoped styling were applied to all 17 dedicated Percentage SEO pages listed below.
+- Each page retains its own H1 and page-specific hero description. The shared visual now includes the same percentage icon, four feature tiles, two overlapping animated percentage cards, and four benefit pills.
+- SEO titles are allowed to wrap naturally on desktop so long page-specific headings do not overflow the text column. Tablet and mobile layouts use responsive two-column/stacked arrangements and centered mobile headings.
+- The old hero's Calculate Now and Learn the Formula in-page links were retained in a compact action row immediately below the hero, so the main hero's dimensions stay aligned with the current reference.
+- Existing page-specific percentage.html?mode=... CTA, calculator form, guide, FAQ, structured data, canonical metadata, related links, and page scripts were preserved.
+- Only the 17 SEO page files and sw.js are intended to change. No main Percentage Calculator, homepage, shared header, sitemap, calculator logic, or other tool page is changed.
+
+### The 17 updated SEO pages
+1. exam-marks-percentage-calculator.html
+2. increase-decrease-by-percentage-calculator.html
+3. original-price-before-discount-calculator.html
+4. percent-of-number-calculator.html
+5. percentage-decrease-calculator.html
+6. percentage-difference-calculator.html
+7. percentage-increase-calculator.html
+8. percentage-of-percentage-calculator.html
+9. percentage-to-decimal-converter.html
+10. percentage-to-fraction-converter.html
+11. profit-loss-percentage-calculator.html
+12. remove-gst-from-total-calculator.html
+13. repeated-percentage-change-calculator.html
+14. reverse-percentage-calculator.html
+15. successive-percentage-change-calculator.html
+16. target-marks-calculator.html
+17. what-percent-calculator.html
+
+### Service Worker
+- All 17 SEO HTML pages are present in the Service Worker precache list.
+- Previous cache: infojano-v282.
+- Updated cache on the branch: infojano-v283, commit acd605746f770559210b895548d152f1bd4755d7.
+- This cache bump is required so returning visitors can receive the revised precached HTML.
+
+### Source QA completed
+- All 17 branch files were re-fetched and audited after editing.
+- Each page has exactly one .ij-id-hero.ij-percentage-id-hero hero, four feature tiles, both percentage card illustrations, one benefit strip, and the new hero stylesheet.
+- The old dark-blue hero markup and old hero stylesheet are absent.
+- Both in-page action links point to existing #calculator and #percentage-guide anchors.
+- The original page-specific main-calculator mode link remains present.
+- Canonical link, WebApplication schema, FAQPage schema, and site-header.js remain present on all 17 pages.
+- The main percentage.html reference file itself was not changed.
+- The branch was created from current main and was initially 0 commits behind. Final PR diff must be checked to confirm only the 17 pages, sw.js, and this master file are included.
+
+### Not yet completed
+- PR creation/review and user approval to merge.
+- GitHub Pages deployment after merge.
+- Direct live HTTP/rendered visual inspection and real Android desktop/mobile viewport QA. Source checks do not substitute for visual device verification.
+- Do not claim the new hero is live until the PR is merged and the post-merge Pages deployment succeeds.
+
+### Next steps
+1. Open the dedicated PR and review its complete changed-file list and diff.
+2. Wait for the user's merge approval; do not merge automatically.
+3. After approval and merge, verify the GitHub Pages deployment tied to the merge commit.
+4. Open the 17 live URLs and inspect desktop/mobile hero proportions, heading wrapping, card illustration overlap, tile alignment, breadcrumb alignment, and action links. Record any live visual test limitations separately.
+
