@@ -1395,3 +1395,40 @@ Keep the original historical master/archive files intact. Use this current maste
 
 ## Storage instruction
 The user explicitly said not to save project files in ChatGPT Library. The canonical project source-of-truth and handoff notes must remain inside the InfoJano GitHub repository. Do not delete or overwrite historical master/archive files.
+
+
+---
+
+# 12 November 2026 — Percentage Calculator Live Visual QA checkpoint
+
+## Source and deployment verification
+- Re-fetched `percentage.html` from `main`; blob SHA: `7f4c26a50730cf0f5a38f77ae2f5c2ff3e997ca3`.
+- Re-fetched `sw.js`; current cache remains `infojano-v282`.
+- GitHub Pages deployment run `43228323251` was inspected at job level. `build`, `report-build-status`, and `deploy` all completed with conclusion `success`.
+- No source files were changed during this QA pass.
+
+## Static UI and interaction audit
+- Confirmed all 21 feature cards are present, have 21 unique `data-percent-mode` values, matching calculator mode options, individual target URLs, and the shared `choosePercentageFeature` handler.
+- Confirmed each card mode is represented in the calculator's mode configuration; no card has a missing matching option.
+- Confirmed the launcher section appears before the “How to calculate a percentage” guide.
+- Confirmed the feature-card grid has responsive 3-column / 2-column / 1-column breakpoints, and distinct icon colour rules for all card positions.
+- Confirmed the click handler selects the matching mode, updates the calculator UI, scrolls to the calculator and focuses the primary input.
+- Confirmed no duplicate HTML IDs.
+- Confirmed the main calculator, feature launcher, how-to guide, explainer, FAQ and common-questions panels have explicit full-width layout rules in the current source.
+- Confirmed the page links to `/infojano-mark.svg`; the SVG file exists in the repository root and is valid SVG source.
+- Confirmed reduced-motion CSS handling is present.
+
+## Live visual QA — blocked, not passed
+- Attempted to retrieve `https://infojano.com/percentage.html` and the GitHub Pages fallback URL from the available browser/network environment. Both attempts failed because DNS resolution/network access was unavailable in this session.
+- Therefore desktop rendering, Android/mobile rendering, real horizontal-overflow checks, live card click/focus behavior and actual browser-tab favicon rendering remain UNVERIFIED.
+- Do not mark Live Visual QA complete based only on source inspection or a successful deployment workflow.
+
+## Current status and next action
+- [x] Source-level audit of 21 cards and mode-option mapping.
+- [x] Source-level responsive/full-width CSS and favicon asset checks.
+- [x] Pages deployment job success rechecked.
+- [ ] Live desktop visual inspection.
+- [ ] Live Android/mobile visual inspection and horizontal-overflow check.
+- [ ] Test all 21 cards in the live browser for correct mode selection and focus.
+- [ ] Verify the favicon actually renders in a browser tab.
+- Next: retry direct live access when network/DNS is available. If browser access remains unavailable, obtain current desktop and Android screenshots plus one interaction check from the user before changing any code. Do not repeat the completed source audit or modify unrelated files.
