@@ -1569,3 +1569,14 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 - Confirmed all 17 pages are already in the service-worker precache list; bumped cache from `infojano-v283` to `infojano-v284` so clients refresh updated page CSS.
 - Branch: `fix/percentage-seo-hero-card-motion`. PR and deployment/live verification are pending. Do not mark complete until source QA, Pages Actions and live rendering are checked.
 - Separate clarification still pending: user mentioned improving the design of some numbered/tile text on the main page; do not change this until the exact elements are confirmed.
+
+
+## 12 Nov 2026 — Percentage SEO hero motion merge and deployment verification
+- PR #128, "Restore subtle animation on Percentage SEO hero cards", was successfully squash-merged into main.
+- Merge commit: 74647612e92bd74b9b5c172afe06572d7ee106fe.
+- Verified main contains service-worker cache infojano-v284 and the front/back card animation keyframes in the Percentage SEO page source.
+- GitHub Pages deployment run #2106 for the exact merge commit completed successfully (success).
+- The APK build workflow run #403 for the same commit also completed successfully.
+- This confirms source merge and Pages deployment. Direct live browser rendering and Android/desktop visual QA have not yet been completed; do not claim visual QA complete.
+- Separate open Percentage SEO metadata PR #126 remains pending review/merge; it is not part of the animation fix and must be tracked separately.
+- User's separate request to improve the numbered/feature text styling on the main Percentage Calculator page remains ambiguous and untouched pending clarification.
