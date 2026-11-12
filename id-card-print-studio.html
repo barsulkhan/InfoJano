@@ -142,6 +142,72 @@ body{background:#f2f8ff}
  .ij-id-card-mock.front,.ij-id-card-mock.back{animation:none}
 }
 
+
+/* Premium workspace polish — visual-only layer; keep document processing untouched. */
+.ij-doc-guide-links{margin-bottom:26px}
+.ij-doc-guide-links h2{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:850;letter-spacing:-.25px}
+.ij-doc-guide-links h2:before{content:"";width:5px;height:22px;border-radius:8px;background:linear-gradient(180deg,#21b9ec,#1760d5)}
+.ij-doc-guide-grid a{position:relative;min-height:82px;padding:14px 14px 13px 52px;border:1px solid #d8e8f8;border-radius:16px;background:linear-gradient(145deg,#fff 0%,#f6fbff 100%);box-shadow:0 5px 16px rgba(31,91,151,.055);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.ij-doc-guide-grid a:before{position:absolute;left:14px;top:16px;width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:#e5f3ff;color:#087ee8;font-size:15px;font-weight:900}
+.ij-doc-guide-grid a:nth-child(1):before{content:"✚";color:#0b9c78;background:#e5f8f2}
+.ij-doc-guide-grid a:nth-child(2):before{content:"▤";color:#6653d9;background:#f0edff}
+.ij-doc-guide-grid a:nth-child(3):before{content:"✓";color:#087ee8;background:#e5f3ff}
+.ij-doc-guide-grid a:nth-child(4):before{content:"▣";color:#d8871b;background:#fff4df}
+.ij-doc-guide-grid a:hover,.ij-doc-guide-grid a:focus-visible{transform:translateY(-3px);border-color:#9bcdf2;box-shadow:0 11px 22px rgba(31,91,151,.11);outline:none}
+.ij-doc-guide-grid a span{font-size:11px;line-height:1.45}
+.ij-studio-workspace .card{position:relative;overflow:hidden;border:1px solid #dceafa;background:linear-gradient(155deg,#fff 0%,#fbfdff 100%);box-shadow:0 8px 26px rgba(27,79,132,.075);transition:box-shadow .2s ease,border-color .2s ease}
+.ij-studio-workspace .card:hover{border-color:#c6def5;box-shadow:0 11px 30px rgba(27,79,132,.10)}
+.ij-studio-workspace .card>h2{display:flex;align-items:center;gap:10px;margin:0 0 17px;color:#14264a;font-size:clamp(16px,1.15vw,19px);font-weight:850;letter-spacing:-.35px;line-height:1.35}
+.ij-studio-workspace .card>h2 .step{flex:0 0 32px;width:32px;height:32px;margin:0;border-radius:11px;background:linear-gradient(145deg,#e7f5ff,#dceaff);color:#1269d3;box-shadow:inset 0 0 0 1px #c9e3fb;font-size:15px}
+.ij-studio-workspace .field label{margin-bottom:8px;color:#344866;font-size:12px;font-weight:800;letter-spacing:.1px}
+.ij-studio-workspace .field input:not([type=file]),.ij-studio-workspace .field select{min-height:44px;border:1px solid #d4e1ef;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);padding:10px 12px;color:#253854;box-shadow:0 2px 5px rgba(20,60,100,.025);transition:border-color .18s ease,box-shadow .18s ease}
+.ij-studio-workspace .field input:focus-visible,.ij-studio-workspace .field select:focus-visible{outline:none;border-color:#55a9ed;box-shadow:0 0 0 3px rgba(28,139,225,.13)}
+.ij-studio-workspace .field input[type=file]{width:100%;min-width:0;min-height:48px;padding:7px;border:1.5px dashed #8bbce9;border-radius:13px;background:linear-gradient(135deg,#f3f9ff,#fff);color:#516782;font-size:12px}
+.ij-studio-workspace .field input[type=file]::file-selector-button{margin-right:10px;padding:9px 13px;border:0;border-radius:9px;background:linear-gradient(110deg,#147de0,#2854d9);color:#fff;font-weight:800;cursor:pointer}
+.ij-studio-workspace .hint{color:#687b96;font-size:12px;line-height:1.65}
+#ij-document-selector .grid{gap:14px}
+#ij-document-selector .status,.ij-studio-workspace #downloadStatus{border:1px solid #d7e9fb;background:linear-gradient(110deg,#f0f8ff,#f8fbff);border-radius:13px;color:#28547f;line-height:1.55}
+.ij-studio-workspace .previewgrid{gap:12px}
+.ij-studio-workspace .preview{position:relative;min-height:132px;border:1px solid #dce8f5;border-radius:15px;background:linear-gradient(145deg,#f8fbff,#f1f7fd);padding:14px;box-shadow:inset 0 1px 0 #fff}
+.ij-studio-workspace .preview>strong{display:inline-flex;align-items:center;gap:7px;margin-bottom:8px;color:#294568;font-size:13px;font-weight:850}
+.ij-studio-workspace .preview .placeholder{display:grid;place-items:center;min-height:76px;padding:18px 8px;color:#8192a8;font-size:12px}
+.ij-studio-workspace .preview canvas,.ij-studio-workspace .preview img{border-radius:9px;box-shadow:0 3px 12px rgba(20,50,90,.07)}
+.ij-studio-workspace .card .card{border:1px solid #dbe9f8!important;border-radius:15px!important;background:linear-gradient(145deg,#f7fbff,#fff)!important;padding:16px!important}
+.ij-studio-workspace .card .card>strong{display:block;color:#23446c;font-size:14px;font-weight:850;margin-bottom:5px}
+#cropCanvas{border-radius:11px;background:#fff;box-shadow:0 4px 15px rgba(22,60,100,.07)}
+.ij-studio-workspace .btn{min-height:43px;border-radius:12px;background:linear-gradient(110deg,#147fe5,#2854d8);box-shadow:0 5px 13px rgba(24,104,204,.16);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.ij-studio-workspace .btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(24,104,204,.22);filter:saturate(1.08)}
+.ij-studio-workspace .btn.alt{border:1px solid #d2e4f7;background:linear-gradient(110deg,#f0f7ff,#e7f1ff);color:#20569b;box-shadow:none}
+.ij-studio-workspace .btn.alt:hover:not(:disabled){border-color:#9cc8ee;background:#e4f2ff;box-shadow:0 5px 13px rgba(24,104,204,.09)}
+.ij-studio-workspace .warning{position:relative;border:1px solid #f4dfb9;border-radius:13px;background:linear-gradient(110deg,#fff9ee,#fffdf8);color:#86551b;padding:13px 14px 13px 42px;line-height:1.6}
+.ij-studio-workspace .warning:before{content:"!";position:absolute;left:13px;top:13px;width:20px;height:20px;display:grid;place-items:center;border-radius:50%;background:#f5b84b;color:#fff;font-size:13px;font-weight:900}
+#previewBtn{background:linear-gradient(110deg,#e9f5ff,#e9edff)}
+#printPreview{min-height:130px;display:grid;place-items:center}
+#printPreview .placeholder{min-height:100px}
+.ij-studio-workspace #downloadStatus{min-height:48px}
+.ij-studio-workspace .status.error{border-color:#fecaca;background:#fff5f5;color:#a33131}
+.ij-studio-workspace .status.ok{border-color:#bcebd4;background:#f0fff7;color:#16724a}
+.ij-studio-workspace .actions{align-items:center;gap:10px}
+.ij-studio-workspace a.btn{font-size:13px}
+.ij-studio-workspace button:focus-visible,.ij-studio-workspace a:focus-visible{outline:3px solid rgba(28,139,225,.3);outline-offset:3px}
+@media(max-width:1099px){
+ .ij-studio-workspace .card{padding:18px}
+}
+@media(max-width:640px){
+ .ij-doc-guide-grid{gap:8px}
+ .ij-doc-guide-grid a{min-height:78px;padding:12px 9px 11px 43px;font-size:12px}
+ .ij-doc-guide-grid a:before{left:10px;top:13px;width:25px;height:25px}
+ .ij-studio-workspace .card>h2{font-size:16px;gap:8px}
+ .ij-studio-workspace .field input[type=file]{font-size:11px}
+ .ij-studio-workspace .previewgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ij-studio-workspace .preview{padding:10px;min-height:116px}
+ .ij-studio-workspace .actions .btn{flex:1 1 auto;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+ .ij-doc-guide-grid a,.ij-studio-workspace .card,.ij-studio-workspace .btn{transition:none}
+ .ij-doc-guide-grid a:hover,.ij-studio-workspace .btn:hover:not(:disabled){transform:none}
+}
+
 </style>
 <script type="application/ld+json">
 {
