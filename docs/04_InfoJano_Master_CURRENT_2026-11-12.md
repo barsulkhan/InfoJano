@@ -1320,3 +1320,40 @@ Do not mark PR merge, Pages deployment, or source-level CSS presence as proof th
 - Present the 12-page missing-hero list to the user and obtain approval for the visual implementation scope.
 - If approved, create one coordinated PR for all 12 pages, reusing the approved InfoJano hero visual language while adapting each illustration, title, subtitle, benefits, and mobile layout to the tool.
 - Do not change homepage design or calculator/document logic. Keep the changes limited to banner markup and scoped CSS, and verify all 12 pages before merge.
+
+---
+
+# 12 November 2026 — Migration verification addendum (GitHub audit)
+
+This addendum corrects older checkpoint statements using the live GitHub repository state checked on 12 November 2026.
+
+## Verified repository records
+- The 4 November archive DOES exist in the repository root: `InfoJano_Smart_Master_Project_COMPLETE_2026-11-04.md` (approximately 460 KB). Preserve it; do not overwrite it.
+- The 28 October historical master also exists: `InfoJano_Smart_Master_Project_LATEST_2026-10-28.md`.
+- The complete 1,322-line Library master `04_InfoJano_Master.md` has been transferred to `docs/04_InfoJano_Master_CURRENT_2026-11-12.md`. The full source was read in two sections and reassembled; verified transfer length 1,322 lines / 142,766 characters. This GitHub copy is the current project handoff copy, while the original Library file remains unchanged.
+- The migration supplement is at `docs/INFOJANO_MASTER_MIGRATION_SUPPLEMENT_2026-11-12.md`.
+
+## Corrected current PR states
+- PR #91 — CLOSED and MERGED. Merge commit: `3d5c6d26a8119231e634f270c070bf8eff7997b0`. Older sections saying OPEN/NOT MERGED are historical checkpoints and are superseded by this verified state.
+- PR #94 — OPEN, NOT MERGED. Discount Calculator APK installer validation remains pending; do not merge without explicit user approval.
+- PR #95 — CLOSED and MERGED. AdSense ads.txt authorization merge commit: `c633fdf3365187d5e6cbe25aab3fea012836c53a`.
+- PR #100 — CLOSED and MERGED. All missing APK installer references batch fix; merge commit: `394686ffbdb5038d9590c29b317ebdb8689b6198`. APK workflow run `43154046988` and Pages run `43154047003` succeeded.
+- PR #101 — CLOSED and MERGED. Savings Calculator hero banner; merge commit: `0ea8cf26b47dc0714b0e727020e52578debad0c7`.
+- PR #102 — CLOSED and MERGED. Savings Calculator supplied hero design; merge commit: `30912225f073cd03cae18a51d02444b206603989`.
+- PR #103 — CLOSED and MERGED. Full Savings Calculator page design; merge commit: `c5b668865514269c6199f1a4564d23aac8aab869`. Pages run `43164275666` and APK run `43164275672` succeeded.
+- PR #85 and #86 are CLOSED (merged) in the current repository state.
+
+## Current source/deployment facts
+- Current `sw.js` cache constant is `infojano-v278`.
+- Root `ads.txt` exists in GitHub main and contains the publisher authorization line supplied by the user. PR #95 is merged. Direct access to `https://infojano.com/ads.txt` could not be verified by the available browser inspection, so live HTTP availability remains UNVERIFIED; do not claim the previous 404 is fixed until a direct HTTP check succeeds.
+- Latest successful Pages deployment before the migration-document commits was run `43164275666` for PR #103 merge commit `c5b6688...`.
+- The Pages workflow for migration commit `aa62dfc4246e96f26e61e4f530ade7e103be886a` was still in progress at the time of this audit (run `43180830692`). Recheck the latest run after the final documentation commit; do not infer deployment success from the source commit alone.
+
+## Items not fully migrated / still pending
+- The exact verbatim Header + Hero HTML/CSS pasted by the user is not embedded in this master file or the migration supplement. The file preserves design requirements, screenshots/visual descriptions, source-audit findings and the instruction not to guess. The exact original code itself remains NOT TRANSFERRED; recover it from the original conversation if accessible, otherwise ask the user to provide it again before literal implementation.
+- The separate USAJIO Personal Finance, Health & Fitness, and AI & Software website projects are intentionally not mixed into this InfoJano repository. Their separate master records still need to be located and migrated to their own appropriate project repositories/files if the user wants a complete multi-site migration.
+- MobilePro remains a separate shop-demo project and must not be merged into InfoJano.
+- Live mobile visual QA, direct custom-domain HTTP verification, ads.txt live response, and PR #94 are not marked complete by this documentation transfer.
+
+## Transfer operating rule
+Keep the original historical master/archive files intact. Use this current master plus the migration supplement for handoff. Reconcile current GitHub state before relying on any historical PR/cache/deployment status.
