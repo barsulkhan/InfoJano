@@ -1549,3 +1549,4 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 3. After approval and merge, verify the GitHub Pages deployment tied to the merge commit.
 4. Open the 17 live URLs and inspect desktop/mobile hero proportions, heading wrapping, card illustration overlap, tile alignment, breadcrumb alignment, and action links. Record any live visual test limitations separately.
 
+- PR #127: https://github.com/barsulkhan/InfoJano/pull/127 — OPEN, NOT MERGED. Branch: design/percentage-seo-hero-match-current-main. It contains exactly the 17 SEO pages, sw.js, and this master file. User approval is required before merge.
