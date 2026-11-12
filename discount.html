@@ -357,5 +357,6 @@ out.innerHTML='<div class="ij-discount-metric"><small>Discount Amount</small><st
  $('ijSmartShare').addEventListener('click',async()=>{if(!lastSummary)return;if(navigator.share){try{await navigator.share({title:'InfoJano Smart Shopping Comparison',text:lastSummary});}catch(e){}}else{try{await navigator.clipboard.writeText(lastSummary);$('ijSmartShare').textContent='Copied to share';}catch(e){$('ijSmartShare').textContent='Use Copy summary';}}});
 })();
 </script>
+<script src="/InfoJano/install.js" defer></script>
 </body>
 </html>
