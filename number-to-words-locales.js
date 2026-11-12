@@ -56,3 +56,5 @@ const oldHandler=$('nw-go').onclick;
 $('nw-go').onclick=function(){try{const m=$('nw-mode').value,raw=$('nw-num').value;let v;if(m==='roman')v=window.roman(raw);else if(m==='ordinal'){v=integerWords(raw)+' '+(bnMode?'তম':'वाँ');}else v=window.numWords(raw,{system:$('nw-system').value,mode:m,currency:$('nw-currency').value});const casing=$('nw-case').value;$('nw-output').textContent=casing==='upper'?v.toLocaleUpperCase():casing==='lower'?v.toLocaleLowerCase():v;window.__ijLast=v;}catch(e){$('nw-output').textContent=e.message;}};
 $('nw-num').dispatchEvent(new Event('input'));
 })();
+
+(function(){const s=document.getElementById("ij-language-select");if(!s)return;const p=new URLSearchParams(location.search),c=p.get("lang")||"en";s.value=["en","bn","hi"].includes(c)?c:"en";s.addEventListener("change",function(){if(this.value==="en")p.delete("lang");else p.set("lang",this.value);const q=p.toString();location.href=location.pathname+(q?"?"+q:"")+location.hash;});})();
