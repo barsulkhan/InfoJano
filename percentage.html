@@ -1025,19 +1025,23 @@ document.addEventListener("DOMContentLoaded",()=>{const requestedMode=new URLSea
 
 
 <style id="ij-percentage-calculator-layout-final">
-/* Keep the complete calculator within the same 1200px frame as the hero. */
+/* Match the calculator's outer frame exactly to the hero banner. */
 .ij-percentage-calculator{
- width:min(calc(100% - 28px),1200px)!important;
- max-width:1200px!important;
- margin:24px auto 28px!important;
- padding:clamp(20px,2.6vw,34px)!important;
+ width:100%!important;
+ max-width:none!important;
+ margin:12px 0 28px!important;
+ padding:clamp(22px,2.5vw,34px)!important;
  box-sizing:border-box!important;
+ border:1px solid #cfe0f3!important;
+ border-radius:26px!important;
+ background:#fff!important;
+ box-shadow:0 14px 36px rgba(22,65,125,.10)!important;
 }
 .ij-percentage-calculator .ij-percent-workspace{
  display:grid!important;
- grid-template-columns:minmax(0,1fr) minmax(0,.92fr)!important;
- gap:clamp(16px,2.2vw,28px)!important;
- align-items:start!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ gap:0!important;
+ align-items:stretch!important;
  width:100%!important;
  max-width:100%!important;
  min-width:0!important;
@@ -1050,22 +1054,40 @@ document.addEventListener("DOMContentLoaded",()=>{const requestedMode=new URLSea
  max-width:100%!important;
  box-sizing:border-box!important;
 }
+.ij-percentage-calculator .ij-percent-input-column{
+ padding:4px clamp(18px,2.5vw,34px) 4px 2px!important;
+}
 .ij-percentage-calculator .ij-percent-output-column{
  position:static!important;
- padding:18px!important;
- border:1px solid #dce8f7!important;
- border-radius:18px!important;
- background:#f8fbff!important;
+ align-self:stretch!important;
+ padding:4px 2px 4px clamp(18px,2.5vw,34px)!important;
+ border:0!important;
+ border-left:2px solid #cbd9eb!important;
+ border-radius:0!important;
+ background:transparent!important;
 }
-.ij-percentage-calculator .ij-percent-output-column #result{margin-top:0!important;min-height:100px!important;overflow-wrap:anywhere!important}
+.ij-percentage-calculator .ij-percent-output-column #result{
+ margin-top:0!important;min-height:100px!important;overflow-wrap:anywhere!important;
+ border:1px solid #dce8f7!important;background:#f3f8ff!important;border-radius:16px!important;padding:18px!important;
+}
 .ij-percentage-calculator .ij-result-actions{display:flex!important;gap:10px!important;flex-wrap:wrap!important}
 .ij-percentage-calculator .ij-result-actions button{flex:1 1 120px!important;min-width:0!important}
 .ij-percentage-calculator .ij-formula-steps,
 .ij-percentage-calculator .ij-history{max-width:100%!important;overflow-wrap:anywhere!important}
 @media(max-width:760px){
- .ij-percentage-calculator{width:calc(100% - 20px)!important;margin:18px auto 24px!important;padding:20px 16px!important}
- .ij-percentage-calculator .ij-percent-workspace{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
- .ij-percentage-calculator .ij-percent-output-column{position:static!important;padding:15px!important}
+ .ij-percentage-calculator{
+  width:calc(100% - 20px)!important;
+  margin:14px auto 24px!important;
+  padding:20px 16px!important;
+  border-radius:22px!important;
+ }
+ .ij-percentage-calculator .ij-percent-workspace{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+ .ij-percentage-calculator .ij-percent-input-column{padding:0 0 18px!important}
+ .ij-percentage-calculator .ij-percent-output-column{
+  padding:18px 0 0!important;
+  border:0!important;
+  border-top:2px solid #cbd9eb!important;
+ }
 }
 </style>
 
