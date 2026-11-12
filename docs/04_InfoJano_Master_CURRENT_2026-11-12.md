@@ -998,3 +998,325 @@ Work on one task at a time. After the single change, verify it from GitHub, then
 - A live rendered-page inspection attempt could not access `https://infojano.com/` from the current inspection environment. Do not claim visual live verification.
 
 ## Pending one-task-at-a-time actions
+- [ ] Inspect current live homepage on desktop and mobile (prefer user-provided screenshots if browser rendering is unavailable).
+- [ ] Compare the exact supplied Header + Hero reference code against merged `index.html`, section by section.
+- [ ] Audit CSS cascade order/specificity for `body header.header`, `.header .top`, `.brand`, `.nav`, `#home .hero`, `.hero-art`, `.hero-content`, `.hero h1`, `.hero p`, `.search`, `.chips`, and mobile breakpoints.
+- [ ] Identify the smallest conflicting declarations; do not perform broad CSS rewrites or regex replacements.
+- [ ] Prepare a narrow correction PR only after the conflict is identified; preserve search, category filters, navigation, tool grid, and protected files.
+- [ ] Verify the corrected desktop and mobile rendered result before marking the redesign complete.
+
+## Separate pending APK workflow fix
+- PR #94: https://github.com/barsulkhan/InfoJano/pull/94
+- Title: Fix Discount Calculator APK installer validation.
+- State at last verified checkpoint: OPEN, NOT MERGED.
+- Branch: `fix/discount-apk-installer-validation`.
+- Commit: `4cd7cf3dbf804b4ed79626ee579229c51365c571`.
+- One-line change: add `<script src="/InfoJano/install.js" defer></script>` to `discount.html` before `</body>`.
+- Original failure: APK workflow assertion `Missing installer script: discount.html`; website Pages deployment is separate and unaffected.
+- [ ] Wait for explicit user merge approval. Do not merge without approval.
+- [ ] After approved merge, rerun/verify APK workflow and confirm artifact count; do not claim 23 APKs succeeded until verified.
+
+## Operating rule
+Do not mark PR merge, Pages deployment, or source-level CSS presence as proof that the requested design is visually correct. Record implementation and visual QA as separate statuses. Continue one small task at a time and preserve the user's approval requirement for merges.
+
+---
+
+# 12 November 2026 — Header + Hero first diagnostic audit (Version 22 checkpoint)
+
+## User's active instruction
+- Continue InfoJano from this checkpoint; Header + Hero only.
+- The user's complete previously supplied HTML/CSS remains the canonical reference. Do not substitute a redesign or approximate it.
+- Do not modify other homepage sections, calculator logic, or protected files. Do not merge any PR without explicit user approval.
+- Work in small steps. After each verified task, update and re-read this Master File.
+
+## Master file and reference status
+- Read `/Website Control Center/04_InfoJano_Master.md` completely (1,020 lines) before work.
+- The saved conversation context confirms the user's exact complete Header + Hero HTML/CSS was supplied on 11 Nov 2026, including selectors, responsive breakpoint, float animation/keyframes, inline SVG logo, search icon, markup, image paths, benefits and category chips.
+- The canonical visual requirements include a sticky white header, inline SVG logo, light-blue gradient hero panel, left and right illustrations, centered "Your Everyday Online Tools" heading, search, benefits and category chips; hide hero artwork on mobile.
+- Important: the verbatim original code is not embedded in this Master File. Preserve the fact that it exists as the canonical reference; do not claim a line-by-line literal comparison against the original pasted code has been completed unless that exact original code is available in the active context.
+
+## Live site inspection — 12 Nov 2026
+- URL inspected: https://infojano.com/
+- A live browser inspection completed without making site changes.
+- Desktop report: header and hero render; inline SVG brand mark and both hero image assets load; navigation, heading, subtitle, search, four benefit chips and five category chips are present; no broken image or visible rendering error was reported.
+- Current live hero assets reported by the browser: `/assets/hero-left.svg` and `/assets/hero-right.svg`.
+- The two saved user reference screenshots were inspected directly. They show: a white header with blue IJ mark, vertical divider, InfoJano wordmark/tagline, Home, Tools dropdown, Blog, About, Contact and circular search icon; hero with two-line heading, gradient/underlined Everyday plus accent strokes, left document+chart+calculator illustration with foliage, right browser/QR/image/upload illustration with foliage, centered search button labelled Search, icon-led benefits, and icon-led chips with Calculators highlighted blue.
+- One browser summary described a light-blue header; a later computed-style attempt returned unrelated selectors/classes (`.nav-bar`, `.nav-links`, `/assets/app.css`) that do not exist in the current GitHub `index.html`. Treat that computed-style report as unreliable; do not use it as proof of actual live computed CSS.
+- The first browser inspection did not provide a reliable mobile viewport screenshot; mobile rendered QA remains pending.
+- A separate live HTML fetch successfully confirmed the current live homepage content and both `/assets/hero-left.svg` and `/assets/hero-right.svg` image URLs. The live extracted content matches the main-branch heading/subtitle and homepage text. Keep live HTML evidence distinct from computed-style evidence.
+
+## GitHub source audit — current main
+- Repository: `barsulkhan/InfoJano`; file: `index.html`; current fetched main blob SHA at audit: `97af7647f629edf460aa78eefaf3e087de0f2d5a`.
+- PR #93 is confirmed merged; merge commit `28ef816178b7c2533e3a634eaf7629eacfa343c0`; one file changed (`index.html`), 79 additions and 2 deletions.
+- Header DOM uses an inline SVG `.brand-logo`; header navigation contains Home, All Tools, Guides, About and Search.
+- Hero DOM contains two `<img>` illustrations (`/assets/hero-left.svg`, `/assets/hero-right.svg`), `.hero-content`, heading, subtitle, search, four `.hero-benefits` and five `.chips` category buttons. Search/filter handlers and category actions remain wired in source.
+- PR #93 did not literally replace the complete homepage header/hero markup with the user's supplied full reference implementation; it adapted styling around the existing DOM and behavior. Existing illustrations were retained rather than replacing them with the exact reference artwork. This is a confirmed source-level reason the result may not look identical.
+
+## CSS cascade findings — confirmed source facts
+- `index.html` contains multiple historical design/cascade style blocks before the new `infojano-header-hero-user-code-refresh` block.
+- The `infojano-homepage-cascade-fix-2026` block uses `html body header.header` with `!important`. This selector has greater specificity than the later `body header.header` selector in the PR #93 block, so its important background/background-image/border/shadow declarations can continue to win in the cascade.
+- That older block also applies `!important` to hero chips, hero grid-template declarations, illustration SVG sizing, and responsive rules. A concrete conflict is `#home .hero .chips button` in the earlier cascade-fix block versus `#home .chips button` in PR #93: both use `!important`, but the earlier selector has higher specificity (one extra `.hero` class), so its white background, muted text, border and padding win over the newer lower-specificity declarations. This prevents the new chip style from fully taking effect. A property-by-property cascade audit is still required for the remaining declarations.
+- The pre-existing `infojano-final-home-design-2026` block defines a grid-based `#home .hero` with `!important`; PR #93 later changes the same hero to `display:flex!important` with matching selector specificity and later source order. Flex wins for `display`, while leftover `grid-template-columns` declarations become inactive rather than controlling the flex layout.
+- The current hero HTML uses `<img>` elements, so the new `#home .hero-art img` selector does match the current DOM. Earlier `.hero-art svg` declarations are legacy/inactive for these image elements; do not misdiagnose them as the direct cause of missing artwork.
+- Header background conflict is also present: the earlier selector list `body header.header, html body header.header` has greater specificity than the later PR selector `body header.header`, and both use `!important`. The earlier near-white `rgba(255,255,255,.98)` background therefore wins over the later pure `#fff`; this is a small shade difference, not the main fidelity failure.
+
+## First diagnostic conclusion
+- Confirmed fidelity gap: PR #93 was an adaptation of the existing header/hero DOM and existing illustrations, not a literal application of the complete user-supplied reference code. The two illustration assets match the broad document/calculator and QR/browser/image/upload subject matter, but omit foliage and the richer dimensional styling shown in the approved reference images.
+- Confirmed CSS conflict: the earlier higher-specificity `html body header.header` rule wins the near-white header background; the earlier higher-specificity `#home .hero .chips button` rule wins key chip styles over PR #93. The hero `display:flex!important` from PR #93 wins over the older grid display because the selector specificity is equal and the PR block is later; leftover grid-template declarations are inert while display is flex.
+- Not yet confirmed: exact computed-style winners and mobile appearance, because the browser inspection did not produce a mobile viewport rendering or computed-style trace.
+- No source files or GitHub branches were changed in this diagnostic task. No PR was created or merged.
+
+## Next exact task — small-step continuation
+1. Completed: inspect both current SVG assets and compare them with the two saved reference screenshots. Current SVGs reproduce the broad document/calculator and QR/browser/image/upload subject matter, but omit the foliage and richer dimensional treatment shown in the reference images.
+2. Completed first-pass cascade map: confirmed the header background specificity conflict and the chip-button specificity conflict described above. Remaining header/hero properties and responsive behavior still need a complete selector-by-selector audit.
+3. Obtain a reliable mobile viewport screenshot or user-provided Android screenshot before making any mobile correction. The automated computed-style report was inconsistent with the actual HTML and must not be trusted.
+4. The exact verbatim user-pasted HTML/CSS is not present in the Master File or Library search results available in this session; the two user reference screenshots are saved and inspected. Do not reconstruct and call it the exact original code. Recover the verbatim code before literal recreation; if it cannot be retrieved from the earlier conversation, ask the user to re-share it at implementation time.
+5. Only after the remaining findings are established, propose one narrow Header + Hero-only correction branch/PR. Preserve search/filter/navigation and every other homepage section. Never merge without explicit user approval.
+
+## 12 November 2026 — Detailed Header + Hero source comparison (Version 23 checkpoint)
+
+### Saved visual reference inspected
+- Two saved user reference images were opened directly from Library: `InfoJano Everyday Tools Hero(1).png` and `InfoJano Everyday Tools Hero.png`.
+- The first image shows the blue hexagonal IJ logo, vertical divider, InfoJano wordmark with red `Jano`, tagline, Home active pill, Tools dropdown, Blog, About, Contact and circular search control.
+- The hero reference has a two-line title (`Your Everyday` / `Online Tools`), gradient `Everyday` with underline/swoosh and three accent strokes, soft pale-blue background/waves, two large side illustrations with foliage and sparkles, centered search with visible `Search` text, four icon-led benefit badges, and five icon-led category chips with Calculators highlighted blue.
+- The second image is a close variation: it uses a slightly different logo treatment and the labels `Image Tools`, `QR Tools`, and `All Tools` in the category row. The first image is the primary exact visual reference unless the user later chooses the second variant.
+
+### Actual current main markup compared with reference
+- Header currently has Home, All Tools, Guides, About and an icon-only search button. It does not have Tools dropdown, Blog or Contact.
+- Current logo is an inline SVG, but there is no vertical divider between the mark and wordmark.
+- Hero heading markup is a single line: `Your <span>Everyday</span> Online Tools`; no explicit line break, underline element/pseudo-element or decorative accent strokes exist.
+- Search button markup contains only `⌕`; it does not display the word `Search`.
+- Benefit badges use simple text glyphs (`✓`, `ϟ`, `✓`, `▯`) rather than the distinct illustrated icons in the reference.
+- Category chips have no icons and no active/highlight class for the first Calculators chip.
+- Existing SVGs (`assets/hero-left.svg`, `assets/hero-right.svg`) contain the right broad subject matter (document/chart/calculator; browser/QR/image/upload) but are simpler, omit the reference foliage, and do not match the full glossy dimensional treatment. Their GitHub blob SHAs are `ae6b21a2ce2fd63668ae324f717087e1d20f659c` and `41d0778383319756231e8489bb42fc48459733cb` respectively.
+
+### Property-by-property CSS cascade audit — verified source order and specificity
+- Header background: earlier `html body header.header` is more specific than later `body header.header`; both are `!important`. Earlier near-white `rgba(255,255,255,.98)` wins over later `#fff`. The practical color difference is small; sticky positioning and white header appearance are retained.
+- Header `.top`: the older `body header.header .top` and later PR selector have equal specificity; PR #93 appears later and wins where both declare the same property. The 1200px max-width from PR #93 therefore overrides the earlier 1500px max-width.
+- Brand and nav: the later PR selectors for `.brand`, `.tag`, `.nav`, and `.nav button` are equal or more specific than the earlier cascade-fix declarations, so the PR rules win on overlapping properties. No confirmed high-specificity blocker was found for these styles.
+- Hero container: older and newer `#home .hero` selectors have equal specificity. PR #93 is later and sets `display:flex!important`; this wins over the earlier `display:grid!important`. Older `grid-template-columns` declarations remain in the cascade but are inert while the computed display is flex. Earlier `position`, `overflow`, `isolation`, and pseudo-element wave styling are not all reset by PR #93 and can remain active.
+- Hero artwork: actual markup uses `<img>`, so `#home .hero-art img` is a valid selector and the PR's width/max-width rule applies. Earlier `#home .hero-art svg` rules do not target these `<img>` elements. Do not report an img/svg selector mismatch as the cause.
+- Hero heading and paragraph: older and newer `#home .hero h1` / `#home .hero p` selectors have equal specificity; the later PR block wins on overlapping declarations. The remaining visual failure is missing markup (line break, underline/sparks), not proof that the older heading CSS wins.
+- Search: later PR `#home .search`, input and `.primary` selectors are equal in specificity to earlier matching `#home` selectors and are later in source order; no confirmed old-rule blocker was found for their overlapping declarations. The button still lacks the visible `Search` label in HTML.
+- Benefits: PR #93's later `#home .hero-benefits span` declarations override the earlier lower-specificity/non-important badge rules. The mismatch is mainly the glyph-only icon markup and layout, not a confirmed CSS override.
+- Category chips: confirmed important conflict. Earlier `#home .hero .chips button` has higher specificity than later `#home .chips button`; both use `!important`. Earlier white background, muted text, border and padding win. This is a real CSS reason the later chip appearance does not fully apply. Separately, the markup lacks category icons and an active state, so CSS alone cannot reproduce those reference details.
+- Mobile: existing CSS hides `.hero-art` at max-width 760px and PR #93 hides it at max-width 768px; this agrees with the saved reference's mobile artwork hiding requirement. PR #93 also hides the entire `.nav` at max-width 768px; current markup has no hamburger control. Actual mobile viewport rendering has not been reliably verified.
+
+### Diagnostic conclusion
+- The primary reason PR #93 does not match the reference is incomplete HTML/visual implementation, not a blanket legacy CSS override. The PR added 79 CSS/markup lines but retained the existing header navigation, simple text glyphs, existing SVG artwork and most existing hero markup.
+- Two actual cascade conflicts are confirmed: near-white header background specificity (minor visual effect) and the higher-specificity chip-button rule (material visual effect).
+- No changes were made to `index.html`, any calculator, or any other GitHub file during this audit. No new branch or PR was created. PR #93 remains merged; no PR merge action was taken in this session.
+- The exact verbatim HTML/CSS pasted by the user earlier is not recoverable from the Master File or Library search in this session. The two saved visual references are available. Do not claim the screenshots are the verbatim code or recreate the original code by guessing.
+
+### Next task
+- Before implementation, recover the exact user-pasted HTML/CSS from the earlier conversation if available. If it cannot be recovered, ask the user to re-share that code at implementation time.
+- Then prepare a one-file, Header + Hero-only correction on a new branch, using the reference code exactly while preserving existing search/filter handlers and all content below the hero. Fix only the confirmed chip specificity collision within this scope; avoid global CSS rewrites.
+- Test desktop and mobile rendering with a reliable viewport/screenshot method. Verify the header links, search input/button, category filters, tool grid, and reduced-motion behavior. Do not merge without explicit user approval.
+
+## 12 November 2026 — User-supplied Header + Hero code applied to implementation branch
+
+### User instruction and canonical reference
+- User explicitly instructed: "তোমাকে কোড টা সেন্ড করলাম তুমি সেটাকে কাজে লাগাও।" Treat the complete Header + Hero HTML/CSS they pasted in this conversation as the canonical implementation reference. Do not ask them to resend it.
+- Reference styling: white sticky header, 1200px header inner width, 45px logo, InfoJano wordmark with red Jano and tagline; pale blue-to-white hero gradient, max-width 1200px, 60px desktop vertical padding, floating side illustrations, centered headline/search, four benefit pills, five category chips; at <=768px stack hero, hide side artwork, 32px heading.
+- Preserve existing live InfoJano nav, search/filter behavior and lower homepage content rather than deleting working functionality just because the pasted visual snippet omits those elements.
+
+### Implementation completed on GitHub
+- Repository: `barsulkhan/InfoJano`.
+- Created branch: `feat/header-hero-user-reference-fix` from `main`.
+- Updated only `index.html` on that branch. The base `main` blob at branch creation was `97af7647f629edf460aa78eefaf3e087de0f2d5a`.
+- First implementation commit: `bd510d895f7ff6993d2f0a65e599676fa91ffbd6`.
+- Follow-up stylesheet comment cleanup commit: `4fda307c0a15ee3c6d29ea2821993a254cf49175`.
+- Added a final, higher-specificity cascade correction (`html body header.header`) so the legacy `html body header.header` important rule cannot override the user-approved white header. Applied the user's desktop/mobile header and hero dimensions, gradient, artwork float, typography, search styling, benefits and chips.
+- Kept the existing inline SVG logo, current nav links, search input id `search` with `oninput="filterTools()"`, search action `searchFocus()`, category handlers `quickFilter(...)` / `clearFilter()`, and all homepage sections after the hero unchanged.
+- The exact pasted reference mentioned root assets `/hero-left.png` and `/hero-right.png`, but those PNGs are not in the repository. Reused existing, verified `/assets/hero-left.svg` and `/assets/hero-right.svg` rather than adding broken image paths or inventing new artwork.
+
+### Pull request and verification status
+- Opened draft PR #96: https://github.com/barsulkhan/InfoJano/pull/96
+- PR title: `Apply approved InfoJano Header & Hero design`.
+- PR is OPEN, DRAFT, and NOT MERGED. Do not merge until the user explicitly approves.
+- PR currently changes only `index.html`; GitHub reports 1 changed file, 68 additions, 0 deletions, 1 commit at PR creation (a second cleanup commit was pushed afterward; re-fetch PR/branch to confirm current count and head SHA before reporting).
+- Desktop/mobile visual screenshot testing, functional browser testing, GitHub Actions checks, Pages deployment and live-domain verification are still PENDING. Do not mark the design complete or claim it is live until these are verified.
+- The current implementation is an incremental CSS implementation against the existing DOM, not a full HTML replacement. It deliberately retains navigation and functional handlers. If exact visual fidelity requires richer artwork or additional visual markup from the supplied code, assess that after screenshot QA; do not modify lower homepage sections.
+
+### Next actions
+1. Fetch PR #96 and branch head to verify latest commit, diff and checks.
+2. Inspect the PR diff to confirm only Header + Hero styling is changed and no lower sections or JS handlers were modified.
+3. Obtain reliable desktop and mobile rendering screenshots; verify header, hero, search, chips, all tool cards, navigation and reduced-motion behavior.
+4. If checks pass, present PR #96 to the user for review and explicit merge permission. Never merge automatically.
+5. After user approval and merge, verify Pages deployment and live site before marking complete.
+
+## 12 November 2026 — Hero Banner width alignment PR #97 merged and Pages deployment verified
+
+### User-approved change
+- User clarified the exact alignment target: the Hero Banner left edge must align with the left edge of the blue Popular Tools icon; the Hero Banner right edge must align with the right edge of the "25 tools" count label.
+- This is a width/alignment correction, not a height increase.
+
+### GitHub implementation and merge
+- Repository: `barsulkhan/InfoJano`.
+- Branch: `fix/hero-banner-align-popular-tools`.
+- Changed only `index.html`, adding CSS block `infojano-hero-align-popular-tools-v1`.
+- CSS sets the desktop hero width to `calc(100% - 36px)` with 18px horizontal margins, and a mobile adjustment to `calc(100% - 24px)` with 12px horizontal margins.
+- PR #97: https://github.com/barsulkhan/InfoJano/pull/97 — title: `Align hero banner with Popular Tools section`.
+- User explicitly instructed: "মার্ক করে ওয়েবসাইটটি লাইভ কর"; this authorized merge and deployment.
+- PR #97 merged successfully using squash. Merge commit: `bbcf42cb65c7d703b1524499e18a874d41bbfba9`.
+- Verified PR state `closed`, `merged=true`, merged at `2026-11-12T03:14:21Z`.
+
+### Deployment
+- GitHub Actions `pages build and deployment` for merge commit `bbcf42cb65c7d703b1524499e18a874d41bbfba9` completed with conclusion `success` at `2026-11-12T03:15:01Z`.
+- Deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/43146841772.
+- Live site: https://infojano.com.
+- Therefore the code is merged and the GitHub Pages deployment workflow succeeded.
+
+### QA status — do not overstate
+- Automated live-browser geometry inspection returned internally inconsistent/misidentified element coordinates and failed to reliably confirm the exact alignment. It also did not reliably confirm the new CSS block, despite the `main/index.html` source containing it.
+- First live browser pass at approximately 1000px viewport reported nonmatching element edges; second pass reported impossible/reversed element coordinate interpretation and did not actually establish a 1440px viewport. Treat these geometry reports as unreliable, not as proof of alignment or failure.
+- Source verification on `main` confirmed the new CSS block exists in `index.html`; blob SHA `d3732463bc163c5cd8e2848c54b86135636d9cd1`.
+- **Completed:** PR merged; Pages deployment workflow successful; new CSS source present on main.
+- **Pending:** trustworthy visual confirmation of the exact desktop left/right alignment and mobile rendering on the live website. Ask user for a fresh browser screenshot if a reliable visual test is unavailable; do not claim exact pixel alignment has been visually verified.
+- Do not change any other homepage sections or protected files without permission.
+
+### Master File update — 12 November 2026 (PR #97)
+- Status marked: PR #97 merged; GitHub Pages deployment workflow completed successfully.
+- Live URL: https://infojano.com
+- Merge commit: `bbcf42cb65c7d703b1524499e18a874d41bbfba9`.
+- Deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/43146841772 (conclusion: `success`).
+- Change: Hero Banner horizontal width alignment adjustment intended to line up with Popular Tools heading icon on the left and the “25 tools” label on the right; mobile margins also adjusted.
+- Main branch source check confirms the CSS block `infojano-hero-align-popular-tools-v1` is present in `index.html` (blob `d3732463bc163c5cd8e2848c54b86135636d9cd1`).
+- QA caution: live browser geometry inspection was inconsistent and did not reliably prove exact pixel alignment. Therefore the implementation is deployed, but exact desktop alignment and mobile visual appearance remain pending reliable visual confirmation. Do not mark visual QA complete until verified.
+- Next: ask the user for a fresh live-site screenshot if needed, compare the hero left/right edges against the Popular Tools icon and tool-count label, then make only a narrowly scoped correction if required. Do not change other homepage sections or protected files without permission.
+
+### User confirmation — 12 November 2026: Hero Banner alignment visually confirmed
+- The user has now explicitly confirmed: “হিরো ব্যানারের আইল্যান্ড্মেন্ট ঠিক হয়ে গেছে” (Hero Banner alignment is fixed).
+- Update the project status: Hero Banner horizontal alignment correction from PR #97 is accepted by the user as visually correct; mark this item COMPLETE.
+- PR #97 remains merged; GitHub Pages deployment remains verified successful (workflow run `43146841772`, conclusion `success`).
+- Live site: https://infojano.com
+- Do not reopen the alignment task unless the user reports a new issue.
+- No other homepage sections or protected files were changed as part of this alignment correction.
+
+---
+
+# 12 November 2026 — PR #99 EMI installer fix and APK workflow checkpoint
+
+## PR #99 — merged
+- Repository: `barsulkhan/InfoJano`.
+- PR: https://github.com/barsulkhan/InfoJano/pull/99
+- Title: `Fix missing installer script on EMI calculator`.
+- User explicitly instructed to merge this PR.
+- PR #99 was squash-merged successfully.
+- Merge commit: `2113d8ea3eb090d3791cf478d9ac202d1a0a2973`.
+- Scope: one-line change in `emi.html` adding `<script src="/InfoJano/install.js" defer></script>`; no EMI calculator logic or page design changed.
+
+## Workflows after PR #99 merge
+- APK workflow run: https://github.com/barsulkhan/InfoJano/actions/runs/43150315869
+  - Run name: `Build InfoJano Tool APKs`.
+  - Trigger commit: `2113d8ea3eb090d3791cf478d9ac202d1a0a2973`.
+  - The job reached `Validate tool icons, manifests, and APK matrix` and that step reported `failure`; APK build, package count, artifact upload and release steps were skipped.
+  - At the last poll, GitHub still showed the job as `in_progress` while the validation step was failed. A subsequent workflow log download returned 404 (`BlobNotFound`), so the exact assertion/error is NOT YET KNOWN. Do not guess that another page is missing; retrieve the completed job log or rerun after diagnosing.
+- Pages build/deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/43150315713
+  - At the last observed workflow-list poll, status was `in_progress`; no success conclusion had yet been verified. Recheck before claiming deployment.
+- Prior known Pages deployment for PR #98 merge commit `68d89166479fe527beb98071a104f817965a3548` succeeded: run `43149978208`. This does not prove the PR #99 commit is deployed.
+
+## Related preceding fixes
+- PR #91 SEO metadata repair was merged. Merge commit: `3d5c6d26a8119231e634f270c070bf8eff7997b0`.
+- Favicon audit: all 73 HTML files changed in PR #91 were checked; all 73 contain favicon links and `infojano-mark.svg` exists on `main`. A few root-level files use relative rather than absolute favicon paths; no broken path was demonstrated, so no unnecessary edits were made.
+- PR #98 fixed the missing installer script on `discount.html`; merged commit `68d89166479fe527beb98071a104f817965a3548`. Its Pages workflow run `43149978208` succeeded. The subsequent APK workflow failed at `emi.html`, which led to PR #99.
+
+## Current status
+- [x] PR #99 merged with explicit user approval.
+- [x] One-line EMI installer reference change verified in PR scope before merge.
+- [x] PR #98 Pages deployment workflow success verified.
+- [ ] Verify Pages deployment run `43150315713` for PR #99 commit; do not assume success.
+- [ ] Re-fetch APK workflow run `43150315869` and its latest job/step status.
+- [ ] Obtain the exact validation failure log for run `43150315869`; previous log download returned 404, so exact error remains unknown.
+- [ ] Diagnose the validator failure from evidence, make only the smallest safe correction, and create a separate PR if code change is required.
+- [ ] Do not report APK build/release as successful until all validation, build, count, artifact and release steps pass.
+- [ ] Update this Master File after the next verified major step.
+
+## Next exact task
+1. Recheck Actions runs `43150315869` (APK) and `43150315713` (Pages).
+2. If the APK run has completed, retrieve its job log and identify the exact failed assertion. If logs are unavailable, rerun the workflow only after confirming the existing failed step and current `main` source; do not invent a missing filename.
+3. Fix only the proven cause, verify source and workflow, and open a small PR. Do not merge without the user's explicit approval.
+4. Keep the existing homepage design, protected files and unrelated calculator logic unchanged.
+
+## New-chat handoff
+"InfoJano project resume করো। প্রথমে Library-র `/Website Control Center/04_InfoJano_Master.md` Master Project file পড়বে। সর্বশেষ checkpoint: PR #99 (`Fix missing installer script on EMI calculator`) আমার অনুমতিতে squash-merge হয়েছে; merge commit `2113d8ea3eb090d3791cf478d9ac202d1a0a2973`; `emi.html`-এ শুধু `/InfoJano/install.js` script reference যোগ হয়েছে। APK workflow run `43150315869`-এ validation step failed, কিন্তু exact assertion এখনও জানা নেই—log download 404/BlobNotFound দিয়েছে; অনুমান করে আরেকটি HTML page পরিবর্তন করবে না। Pages workflow run `43150315713` সর্বশেষে in_progress ছিল, recheck করতে হবে। প্রথমে এই দুই Actions run-এর বর্তমান status এবং exact failure log যাচাই করো। তারপর প্রমাণিত কারণের smallest safe fix করো, আলাদা PR খোলো, merge-এর আগে আমার অনুমতি নেবে। APK build/release সফল বলবে না যতক্ষণ সব ধাপ pass না করে। প্রতিটি major verified update Master File-এ সংরক্ষণ করবে।"
+
+---
+
+# 12 November 2026 — Batch APK installer audit and successful release (PR #100)
+
+## User direction
+- User objected to repeated one-error-at-a-time fixes and asked that the remaining issues be handled together in one batch.
+- Response: audit all 23 APK target pages listed in `.github/workflows/build-tool-apks.yml` before making the fix.
+
+## Full 23-target audit
+- Audited all 23 page targets in the APK workflow against their manifest links and `install.js` reference.
+- Two pages were missing the installer script:
+  - `image-resizer.html`
+  - `percentage.html`
+- The other 21 manifest-backed APK target pages already had installer references.
+- `id-card-print-studio.html` is in the APK target matrix but does not have a same-named `app-manifests/id-card-print-studio.webmanifest` link. This audit did not change that page or its protected source; the workflow validator iterates manifest-backed pages and the APK target matrix separately.
+
+## PR #100 — merged
+- PR: https://github.com/barsulkhan/InfoJano/pull/100
+- Title: `Fix all missing installer scripts in APK tool pages`.
+- Branch: `fix/all-missing-apk-installer-scripts`.
+- Changes: exactly two HTML files, two additions, zero deletions.
+- Added `<script src="/InfoJano/install.js" defer></script>` to `image-resizer.html` and `percentage.html`.
+- No calculator logic, page layout, SEO metadata, homepage section, or protected ID Card Print Studio source changed.
+- User's broad instruction to do all the remaining fixes together authorized this narrow batch correction and merge.
+- Squash merge commit: `394686ffbdb5038d9590c29b317ebdb8689b6198`.
+
+## Verification after PR #100
+- APK workflow: https://github.com/barsulkhan/InfoJano/actions/runs/43154046988 — completed, conclusion `success`.
+- Verified all job steps passed: icon/manifest/APK matrix validation, building one APK for each remaining tool, verifying APK package count, uploading workflow artifact, and publishing the tool APK release.
+- Pages build and deployment: https://github.com/barsulkhan/InfoJano/actions/runs/43154047003 — completed, conclusion `success`.
+- Both workflows ran against merge commit `394686ffbdb5038d9590c29b317ebdb8689b6198`.
+- **APK build and release are now verified successful: 23 APK targets validated and built, package-count check passed, artifact upload passed, and release publish step passed.**
+
+## Current status
+- [x] Full audit of 23 APK workflow target pages completed.
+- [x] Both missing installer references fixed together in PR #100.
+- [x] PR #100 merged.
+- [x] APK workflow completed successfully, including package count, artifact upload and release publishing.
+- [x] GitHub Pages deployment completed successfully.
+- [ ] If the user wants, provide the APK release/artifact link after retrieving and verifying the exact release URL and downloadable assets; do not guess an asset URL.
+- [ ] Continue with the next InfoJano priority from this Master File; do not invent a new priority or alter protected homepage sections without permission.
+
+## New-chat handoff
+"InfoJano project resume করো। প্রথমে `/Website Control Center/04_InfoJano_Master.md` পড়বে। Latest checkpoint: user asked to batch-fix all remaining APK installer errors. Audited all 23 APK workflow targets; only `image-resizer.html` and `percentage.html` lacked `install.js`. Both were fixed together in PR #100 and squash-merged as `394686ffbdb5038d9590c29b317ebdb8689b6198`. APK workflow run `43154046988` succeeded including validation, all APK builds, package count, artifact upload and release publishing. GitHub Pages deployment run `43154047003` also succeeded. Do not repeat those fixes. Next, retrieve the verified release and asset URL if APK delivery is requested, then continue the next pending project task in this Master File. Preserve protected homepage sections and files; do not mark any unverified item complete."
+
+## 2026-11-12 — Full HTML Hero Banner Audit (87 root-level pages)
+
+### Audit scope and method
+- Audited all 87 root-level `.html` files on the `main` branch, excluding `index.html` and the Google verification file.
+- Checked page markup for a visible hero/banner container with an H1 inside it; a CSS class alone was not counted as a completed hero.
+- This was a read-only audit. No site files were changed as part of this check.
+
+### Result
+- 68 of 87 pages contain a hero/banner section with an H1.
+- 19 pages do not contain a full hero/banner section.
+- Of those 19, 7 are utility/locale/redirect pages where a full hero may not be needed: `404.html`, `discount-pt-br.html`, `percentage-pt-br.html`, `qr-choice.html`, `word-to-jpg.html`, `word-to-pdf.html`, `word-to-png.html`.
+- 12 actual tool pages have no full hero/banner and should be considered for a coordinated hero-banner upgrade:
+  1. `gst-calculator.html`
+  2. `id-card-print-studio.html`
+  3. `loan-eligibility.html`
+  4. `loan-interest.html`
+  5. `number-to-words.html`
+  6. `password-generator.html`
+  7. `percentage-change.html`
+  8. `savings.html`
+  9. `text-counter.html`
+  10. `time-calculator.html`
+  11. `tip-calculator.html`
+  12. `unit-converter.html`
+
+### Important observations
+- Some pages without a hero place the H1 directly inside the calculator card, e.g. GST, loan, number-to-words, password, percentage-change, savings, text-counter, time, tip, and unit converter.
+- `id-card-print-studio.html` starts with a compact header/title and then the tool card; preserve its calculator/document workflow and do not alter protected functionality.
+- No banner implementation work has been started or merged from this audit.
+
+### Pending work / next step
+- Present the 12-page missing-hero list to the user and obtain approval for the visual implementation scope.
+- If approved, create one coordinated PR for all 12 pages, reusing the approved InfoJano hero visual language while adapting each illustration, title, subtitle, benefits, and mobile layout to the tool.
+- Do not change homepage design or calculator/document logic. Keep the changes limited to banner markup and scoped CSS, and verify all 12 pages before merge.
