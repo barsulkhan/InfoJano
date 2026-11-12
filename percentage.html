@@ -794,6 +794,40 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
   }
 }
 </style>
+
+<style id="ij-percentage-final-width-and-color-fix">
+/* Full hero-width information panels on the Percentage Calculator page */
+main > .ij-practical-guide,
+main > #ij-seo-faq,
+main > section[aria-labelledby="ij-guide-title"],
+main > section[aria-labelledby="ij-search-questions-title"]{
+ width:100%!important;
+ max-width:none!important;
+ box-sizing:border-box!important;
+ margin-left:0!important;
+ margin-right:0!important;
+}
+#ij-seo-faq{padding:clamp(20px,2.4vw,30px)!important;border-radius:22px!important}
+main > section[aria-labelledby="ij-guide-title"],
+main > section[aria-labelledby="ij-search-questions-title"]{padding:clamp(20px,2.4vw,30px)!important;border-radius:22px!important}
+/* Distinct app-style icon colours for all 21 feature cards */
+.ij-percent-feature-card:nth-child(8n+1) .ij-percent-feature-icon{background:linear-gradient(145deg,#dbeafe,#93c5fd);color:#1d4ed8}
+.ij-percent-feature-card:nth-child(8n+2) .ij-percent-feature-icon{background:linear-gradient(145deg,#dcfce7,#86efac);color:#15803d}
+.ij-percent-feature-card:nth-child(8n+3) .ij-percent-feature-icon{background:linear-gradient(145deg,#f3e8ff,#c4b5fd);color:#6d28d9}
+.ij-percent-feature-card:nth-child(8n+4) .ij-percent-feature-icon{background:linear-gradient(145deg,#ffedd5,#fdba74);color:#c2410c}
+.ij-percent-feature-card:nth-child(8n+5) .ij-percent-feature-icon{background:linear-gradient(145deg,#ffe4e6,#fda4af);color:#be123c}
+.ij-percent-feature-card:nth-child(8n+6) .ij-percent-feature-icon{background:linear-gradient(145deg,#cffafe,#67e8f9);color:#0e7490}
+.ij-percent-feature-card:nth-child(8n+7) .ij-percent-feature-icon{background:linear-gradient(145deg,#fef9c3,#fde047);color:#a16207}
+.ij-percent-feature-card:nth-child(8n) .ij-percent-feature-icon{background:linear-gradient(145deg,#e0e7ff,#a5b4fc);color:#4338ca}
+.ij-percent-feature-card{border-color:#d7e4f4}
+.ij-percent-feature-card:hover .ij-percent-feature-icon{filter:saturate(1.18);transform:scale(1.04)}
+.ij-percent-feature-icon{transition:transform .18s ease,filter .18s ease}
+@media(max-width:760px){
+ main > .ij-practical-guide,main > #ij-seo-faq,
+ main > section[aria-labelledby="ij-guide-title"],
+ main > section[aria-labelledby="ij-search-questions-title"]{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+}
+</style>
 </head>
 <body>
 <main>
@@ -851,11 +885,6 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 </div>
 </div>
 </div>
-<section class="ij-howto-guide" id="percentage-guide" style="display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:28px 24px!important;margin:24px 0!important;overflow-wrap:anywhere!important;overflow:hidden!important;border:1px solid #e5eaf2;border-radius:22px;background:#fff;"><h2 style="padding:0!important;margin:0 0 16px!important;box-sizing:border-box;overflow-wrap:anywhere;">How to calculate a percentage</h2>
-<p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">To find a percentage of a number, multiply the number by the percentage and divide by 100.</p>
-<p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;"><strong>Formula:</strong> Percentage × Number ÷ 100</p>
-<p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">Example: 20% of 150 = 30.</p>
-</section>
 <section class="ij-percent-feature-section" aria-labelledby="ij-percent-feature-title"><div class="ij-percent-feature-heading"><div><span class="ij-percent-feature-kicker">21 QUICK TOOLS</span><h2 id="ij-percent-feature-title">Explore Every Percentage Calculator</h2><p>Choose the calculation you need. Each feature opens the matching tool in the main calculator above.</p></div></div><div class="ij-percent-feature-grid"><a class="ij-percent-feature-card" href="percent-of-number-calculator.html" data-percent-mode="percentOf" onclick="return choosePercentageFeature(event,'percentOf')"><span class="ij-percent-feature-icon" aria-hidden="true">％</span><span class="ij-percent-feature-copy"><strong>Percent of a Number</strong><small>Find a percentage of any value.</small></span><span class="ij-percent-feature-arrow" aria-hidden="true">↗</span></a>
 <a class="ij-percent-feature-card" href="what-percent-calculator.html" data-percent-mode="whatPercent" onclick="return choosePercentageFeature(event,'whatPercent')"><span class="ij-percent-feature-icon" aria-hidden="true">÷</span><span class="ij-percent-feature-copy"><strong>What Percent?</strong><small>See what percentage one number is of another.</small></span><span class="ij-percent-feature-arrow" aria-hidden="true">↗</span></a>
 <a class="ij-percent-feature-card" href="reverse-percentage-calculator.html" data-percent-mode="reverse" onclick="return choosePercentageFeature(event,'reverse')"><span class="ij-percent-feature-icon" aria-hidden="true">↶</span><span class="ij-percent-feature-copy"><strong>Reverse Percentage</strong><small>Find the original value from a known percentage.</small></span><span class="ij-percent-feature-arrow" aria-hidden="true">↗</span></a>
@@ -877,6 +906,12 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 <a class="ij-percent-feature-card" href="remove-gst-from-total-calculator.html" data-percent-mode="removeTax" onclick="return choosePercentageFeature(event,'removeTax')"><span class="ij-percent-feature-icon" aria-hidden="true">−</span><span class="ij-percent-feature-copy"><strong>Remove GST from Total</strong><small>Find the price before included tax.</small></span><span class="ij-percent-feature-arrow" aria-hidden="true">↗</span></a>
 <a class="ij-percent-feature-card" href="tip-calculator.html" data-percent-mode="tip" onclick="return choosePercentageFeature(event,'tip')"><span class="ij-percent-feature-icon" aria-hidden="true">☕</span><span class="ij-percent-feature-copy"><strong>Tip and Bill Split</strong><small>Calculate a tip and split the bill per person.</small></span><span class="ij-percent-feature-arrow" aria-hidden="true">↗</span></a>
 <a class="ij-percent-feature-card" href="percentage-change.html" data-percent-mode="change" onclick="return choosePercentageFeature(event,'change')"><span class="ij-percent-feature-icon" aria-hidden="true">↕</span><span class="ij-percent-feature-copy"><strong>Percentage Change</strong><small>Measure the percentage change between two values.</small></span><span class="ij-percent-feature-arrow" aria-hidden="true">↗</span></a></div></section>
+<section class="ij-howto-guide" id="percentage-guide" style="display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:28px 24px!important;margin:24px 0!important;overflow-wrap:anywhere!important;overflow:hidden!important;border:1px solid #e5eaf2;border-radius:22px;background:#fff;"><h2 style="padding:0!important;margin:0 0 16px!important;box-sizing:border-box;overflow-wrap:anywhere;">How to calculate a percentage</h2>
+<p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">To find a percentage of a number, multiply the number by the percentage and divide by 100.</p>
+<p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;"><strong>Formula:</strong> Percentage × Number ÷ 100</p>
+<p style="padding:0!important;margin:0 0 14px!important;box-sizing:border-box;line-height:1.65;overflow-wrap:anywhere;">Example: 20% of 150 = 30.</p>
+</section>
+
 <section class="ij-related-tools" aria-labelledby="related-tools-title">
   <div class="ij-related-heading">
     <span class="ij-related-heading-icon" aria-hidden="true">✦</span>
