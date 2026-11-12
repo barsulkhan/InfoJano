@@ -1587,3 +1587,10 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 - Follow-up design task is isolated to percentage.html: polished the four hero feature tiles and four benefit-strip items with stronger card hierarchy, differentiated icon treatments, refined spacing, subtle hover states, and responsive 2-column mobile layout. Text, calculator logic, hero layout, and unrelated pages are unchanged.
 - Service worker cache bumped to infojano-v285 for the main-page style update.
 - Branch: design/percentage-main-hero-feature-polish. Pending PR review/merge, Pages deployment, and direct desktop/mobile visual QA.
+
+
+## 12 Nov 2026 — Remaining Percentage Calculator tasks merged
+- PR #126 SEO snippet update merged successfully: 39c76d4cd08930ff760528e753d3d0bd9fc32676. GitHub Pages deployment for this commit completed successfully. Verified the English main page title/description and both Brazilian Portuguese page title/descriptions on main.
+- PR #129 main Percentage Calculator hero feature/benefit design polish merged successfully: b7f19ba5ac364c28a088367c970e084f5423208d. The four feature tiles and four benefit items now have refined card styling, icon treatments, spacing, hover feedback, and responsive mobile two-column layout. Calculator logic and page copy were not changed.
+- Service Worker cache on main is infojano-v285. Source verification passed for the new styles and reduced-motion support.
+- GitHub Pages deployment for PR #129 commit is currently queued/in progress (run 43248468327). Do not mark the main-page styling live until this deployment succeeds and a browser/mobile visual check is completed.
