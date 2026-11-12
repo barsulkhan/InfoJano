@@ -794,3 +794,51 @@ document.addEventListener("DOMContentLoaded",()=>{const requestedMode=new URLSea
 <script src="/InfoJano/install.js" defer></script>
 </body>
 </html>
+
+
+<style id="ij-percentage-id-studio-desktop-match">
+/* Match the approved ID Card Print Studio desktop hero frame and proportions. */
+@media (min-width: 1001px) {
+  .ij-percentage-id-hero {
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    margin: 12px 0 22px;
+    padding: 26px 42px 22px;
+    border-radius: 22px;
+  }
+  .ij-percentage-id-hero .ij-id-hero-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+    gap: clamp(18px, 3vw, 38px);
+  }
+  .ij-percentage-id-hero .ij-id-hero-symbol {
+    width: 78px;
+    height: 78px;
+    margin-bottom: 12px;
+    border-radius: 23px;
+  }
+  .ij-percentage-id-hero h1 {
+    font-size: clamp(34px, 3.5vw, 50px);
+    margin-bottom: 9px;
+  }
+  .ij-percentage-id-hero .ij-id-hero-subtitle {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.4;
+  }
+  .ij-percentage-id-hero .ij-percent-hero-art {
+    min-height: 235px;
+  }
+  .ij-percentage-id-hero .ij-id-hero-benefits {
+    margin-top: 16px;
+    gap: 8px;
+  }
+  .ij-percentage-id-hero .ij-id-hero-benefits span {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .ij-percentage-id-hero .ij-id-hero-benefits b {
+    width: 22px;
+    height: 22px;
+  }
+}
+</style>
