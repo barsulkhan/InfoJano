@@ -1641,3 +1641,15 @@ For every new banner, document and agree on these details before implementation:
 - Avoid unrelated page, homepage, SEO, or shared-component changes.
 - After implementation, verify the source, responsive CSS, asset dimensions/weight, GitHub diff, deployment, and actual rendered mobile/desktop appearance. Do not mark visual QA complete without inspecting the rendered page.
 - Keep this standard in the InfoJano GitHub master file and use it as the checklist for future banners and hero sections.
+
+
+## 2026-11-12 — Full Sitemap and canonical source audit
+- Audited all 88 URLs listed in the current `sitemap.xml` against the GitHub main source tree. All 88 corresponding HTML files exist.
+- All 88 sitemap pages have a title, meta description, and canonical tag in source; none of the audited sitemap pages declares `noindex`.
+- Found one canonical defect: `id-card-print-studio.html` pointed to the old GitHub Pages URL. Corrected it to `https://infojano.com/id-card-print-studio.html`.
+- Found legacy sitemap inconsistencies: `sitemap-infojano.xml` contained 58 old `barsulkhan.github.io/InfoJano/` URLs; `sitemap.txt` contained only 67 custom-domain URLs. Both are being synchronized to the same 88 canonical custom-domain URLs in `sitemap.xml`.
+- `robots.txt` allows crawling and declares `https://infojano.com/sitemap.xml`.
+- The three `word-to-*.html` utility route files are intentionally `noindex,follow` and canonicalize to `word-converter.html`; they are not sitemap targets. The 404 page is also correctly noindex and excluded.
+- Metadata length review found several long titles/descriptions that may be truncated in search snippets; this is a presentation optimization, not an indexing block. Further copy review should be prioritized after live GSC data.
+- Important limitation: source audit does not establish HTTP status, Google crawl state, indexed status, or URL Inspection outcomes. Google Search Console access is required to verify those. Do not claim all 48 remaining URLs are indexable or submit-ready until GSC inspection is completed.
+- Proposed correction branch: `fix/indexing-sitemap-canonical-audit`. Await PR review, merge, Pages deployment, then submit/refresh sitemap in Search Console and inspect eligible URLs.
