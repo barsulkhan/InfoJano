@@ -192,6 +192,28 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
 }
 @media(max-width:360px){.ij-master-visual{min-height:175px}.ij-percent-panel{min-height:120px}}
 
+
+/* Exact desktop frame and hero proportions copied from ID Card Print Studio. */
+@media screen and (min-width:1001px){
+  main{width:calc(100% - 64px)!important;max-width:1600px!important;margin:0 auto!important;padding:28px 24px 36px!important}
+  .ij-percentage-id-hero{width:100%!important;max-width:none!important;min-height:220px!important;margin:12px 0 28px!important;padding:42px 46px!important;border-radius:22px!important}
+  .ij-percentage-id-hero .ij-id-hero-grid{min-height:220px!important;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;gap:clamp(22px,4vw,54px)!important}
+  .ij-percentage-id-hero .ij-id-hero-symbol{width:112px!important;height:112px!important;margin:0 0 20px!important;border-radius:30px!important}
+  .ij-percentage-id-hero h1{font-size:clamp(36px,4.3vw,62px)!important;line-height:1.04!important;letter-spacing:-2.1px!important;margin:0 0 14px!important;text-align:left!important}
+  .ij-percentage-id-hero .ij-id-hero-subtitle{max-width:660px!important;font-size:clamp(16px,1.55vw,20px)!important;line-height:1.55!important}
+  .ij-percent-hero-tiles{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px!important;margin-top:25px!important}
+  .ij-percent-hero-tile{min-height:128px!important;border-radius:20px!important;padding:14px 8px!important;gap:9px!important}
+  .ij-percent-hero-tile span{width:39px!important;height:39px!important;font-size:25px!important}
+  .ij-percent-hero-tile strong{font-size:14px!important;line-height:1.25!important}
+  .ij-percentage-id-hero .ij-percent-hero-art{min-height:370px!important}
+  .ij-percentage-id-hero .ij-id-hero-benefits{gap:10px!important;margin-top:27px!important}
+  .ij-percentage-id-hero .ij-id-hero-benefits span{padding:11px 15px!important;font-size:14px!important}
+  .ij-percentage-id-hero .ij-id-hero-benefits b{width:25px!important;height:25px!important;font-size:14px!important}
+}
+@media screen and (min-width:1500px){
+  .ij-percentage-id-hero{padding:48px 56px!important}
+}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/percentage.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
