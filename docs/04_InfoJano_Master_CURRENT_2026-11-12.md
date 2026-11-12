@@ -1432,3 +1432,56 @@ The user explicitly said not to save project files in ChatGPT Library. The canon
 - [ ] Test all 21 cards in the live browser for correct mode selection and focus.
 - [ ] Verify the favicon actually renders in a browser tab.
 - Next: retry direct live access when network/DNS is available. If browser access remains unavailable, obtain current desktop and Android screenshots plus one interaction check from the user before changing any code. Do not repeat the completed source audit or modify unrelated files.
+
+
+---
+
+# 12 November 2026 — Percentage Calculator SEO and Brazil CTR audit (PR #126)
+
+## User request
+- Improve Google Search visibility and click-through relevance for the Percentage Calculator.
+- Reuse the Brazil-related Portuguese search terms shared in the earlier conversation.
+- Audit and correct all Percentage Calculator SEO landing pages, not only the main calculator.
+
+## Recovered Brazil query context
+- Prior user-approved query set included:
+  - `porcentagem online`
+  - `calculadora porcentagem online`
+  - `calculadora online de porcentagens`
+  - `porcentagem online calculadora`
+  - `calculadora porcentagem`
+  - `calculadora de desconto`
+- Earlier Search Console screenshot observation: Brazil 502 impressions, 1 click, CTR 0.2%, average position 12.5. Queries included `porcentagem online`, `calculadora porcentagem online`, and `calculadora de desconto`. This is a historical screenshot observation, not fresh live Search Console data.
+- Search intent mapping: the percentage terms belong on `percentage-pt-br.html`; `calculadora de desconto` belongs on `discount-pt-br.html`, not the general percentage landing page.
+- Longer keyword variants are present in the Brazilian Portuguese percentage page's visible content. Do not stuff all variants into every English feature page.
+
+## Full 17-page English SEO audit
+Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `remove-gst-from-total-calculator.html` page from PR #86, main `percentage.html`, and both Brazilian Portuguese landing pages.
+- Confirmed all 17 English SEO landing pages are included in `sitemap.xml`.
+- Confirmed each audited English feature page has its own unique title and meta description, a self-referencing canonical URL, WebApplication structured data and FAQ structured data.
+- Confirmed the main English and Brazilian Portuguese percentage pages have reciprocal `en` / `pt-BR` / `x-default` alternate links.
+- Confirmed the Brazilian Portuguese discount page has matching locale alternates for the English discount page.
+- No need to add Portuguese hreflang tags to English feature pages that do not have translated counterparts.
+- No changes to calculator logic, hero/layout, homepage, sitemap, service worker or other protected files.
+
+## PR #126 — open, not merged
+- PR: https://github.com/barsulkhan/InfoJano/pull/126
+- Branch: `seo/percentage-brazil-ctr-refresh`
+- Changed files: exactly `percentage.html`, `percentage-pt-br.html`, `discount-pt-br.html`.
+- Main English Percentage Calculator title shortened from 76 to 52 characters; description shortened from 175 to 143 characters. Matching Open Graph, Twitter and WebApplication description values were updated.
+- Brazilian Portuguese percentage title refined to `Calculadora de Porcentagem Online Grátis | InfoJano`; description refined to match the Portuguese online-percentage intent. Open Graph and Twitter descriptions now match the SEO description.
+- Brazilian Portuguese discount title shortened to `Calculadora de Desconto Online Grátis | InfoJano`; title and description metadata aligned across SEO, Open Graph, Twitter and WebApplication data.
+- Final discount-page metadata check confirmed meta description, Open Graph description and Twitter description match exactly.
+- Latest branch commit after metadata consistency correction: `8683eba08ca103ba18ce5779402041b9f6257c52`.
+- PR #126 is OPEN and NOT MERGED. Do not claim changes are live or Google has recrawled them.
+
+## Pending Google Search validation
+- [ ] Review fresh Search Console Performance data by country = Brazil, page, query, device, clicks, impressions, CTR and average position.
+- [ ] Verify which URL currently receives each Brazil query; especially confirm whether `calculadora de desconto` is landing on the discount page.
+- [ ] After merge/deployment, request recrawl for the changed URLs if Search Console allows; a request is not proof of indexing.
+- [ ] Recheck indexed/canonical URL state and performance after Google recrawls. Do not promise ranking or CTR improvements.
+- [ ] Ask the user for a Search Console page/query export or screenshot if account data is not available through a connected source.
+- [ ] Do not repeat the completed 17-page static metadata/sitemap audit unless source changes.
+
+## New-chat handoff
+"Continue InfoJano Percentage Calculator SEO from GitHub. Read this master and migration supplement. PR #126 is open/not merged and contains the measured SEO metadata corrections for `percentage.html`, `percentage-pt-br.html`, and `discount-pt-br.html`. The 17 English SEO pages have already been audited for unique title/description, canonical, WebApplication/FAQ schema and sitemap inclusion. Brazil terms recovered: `porcentagem online`, `calculadora porcentagem online`, `calculadora online de porcentagens`, `porcentagem online calculadora`, `calculadora porcentagem`, `calculadora de desconto`. Map the discount term to `discount-pt-br.html`. Next inspect PR #126 and get fresh Search Console page/query/country data; don't claim Google indexing or CTR change until verified. Do not save any project file in ChatGPT; GitHub only."
