@@ -124,15 +124,18 @@ main{width:min(calc(100% - 28px),1200px);max-width:none;margin:24px auto;padding
 .ij-nw-links a{padding:12px;border:1px solid #dfebf7;border-radius:12px;background:#f8fbff;color:#185a9c;text-decoration:none;font-size:13px;font-weight:700}
 main>section[style]{max-width:none!important;width:100%;margin:24px auto!important;padding:0!important}
 @media(max-width:760px){
- main{width:calc(100% - 20px);margin:16px auto;padding:0}
- .ij-nw{padding:17px;border-radius:18px}
- .ij-nw-columns{grid-template-columns:1fr;gap:20px}
- .ij-nw-panel-left{padding-right:0}
- .ij-nw-panel-right{padding:20px 0 0;border-left:0;border-top:2px solid #d8e7f5}
- .ij-nw-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ main{width:calc(100% - 28px);margin:16px auto;padding:0}
+ .ij-reference-hero{width:calc(100% - 28px)}
+ .ij-nw{padding:15px;border-radius:18px}
+ .ij-nw-columns{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+ .ij-nw-panel-left{padding-right:10px}
+ .ij-nw-panel-right{padding-left:10px;border-left:2px solid #d8e7f5;border-top:0}
+ .ij-nw-panel h3{font-size:14px}
+ .ij-nw-grid{grid-template-columns:1fr;gap:10px}
  .ij-nw-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ij-nw-actions{grid-template-columns:1fr}
 }
-@media(max-width:420px){.ij-nw-grid{grid-template-columns:1fr}.ij-nw-actions{grid-template-columns:1fr}}
+@media(max-width:360px){.ij-nw{padding:11px}.ij-nw-panel-left{padding-right:7px}.ij-nw-panel-right{padding-left:7px}.ij-nw input,.ij-nw select,.ij-nw textarea{padding:8px 7px;font-size:12px}.ij-nw-panel h3{font-size:12px}}
 </style></head>
 <body>
 
