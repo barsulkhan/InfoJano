@@ -1603,3 +1603,41 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 - Source and deployment are verified. Remaining check: direct live visual QA on actual mobile and desktop viewports; do not mark visual QA complete until rendered appearance is inspected.
 - Main page: https://infojano.com/percentage.html
 - Deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/43248468327
+
+
+## 2026-11-12 — Reusable Hero Banner and Feature Layout Design Standards
+These standards are the default reference for future InfoJano tool/calculator pages. Apply them consistently unless the user approves a different design. Do not redesign the homepage or protected pages without explicit permission.
+
+### Hero banner composition
+- Build a clear visual hierarchy: eyebrow/category label when useful, one prominent H1, concise supporting subtitle, and the primary visual or calculator preview.
+- Keep the headline and subtitle readable, with intentional line length, line-height, alignment, and spacing. Avoid crowding the hero with excess copy.
+- Use supporting feature tiles only when they add value. Give each tile a clear icon, short heading, and concise description.
+- Use cohesive surfaces (subtle gradients where appropriate, restrained borders, radius, and soft shadows); maintain strong contrast and a polished, consistent icon treatment.
+- Keep the banner balanced across desktop and mobile. Define responsive behavior deliberately; do not simply shrink the desktop composition.
+
+### Below-hero feature and benefit content
+- Use a consistent grid and equal, intentional gaps. Align icon, heading, and description within each item.
+- Keep card heights, padding, typography hierarchy, and baseline alignment consistent where practical.
+- Preserve enough whitespace between cards and between icon, title, and body copy. Prevent text collisions, cramped wrapping, or uneven spacing.
+- Use desktop columns appropriate to the content (often four for four short items) and a mobile two-column layout when readable; collapse to one column if the content needs more width.
+- Add restrained hover/focus feedback and honor `prefers-reduced-motion`. Animation must never impair reading or interaction.
+- Prioritize accessibility, responsive behavior, readability, and performance over decorative effects.
+
+### Mandatory banner specification to record before creating each future banner
+For every new banner, document and agree on these details before implementation:
+1. **Placement and purpose:** page name, section, target audience, and what the banner should communicate.
+2. **Canvas dimensions:** exact desktop width × height in pixels and aspect ratio; exact mobile width × height and aspect ratio (or the responsive sizing rule if fluid). Do not assume dimensions from a previous banner.
+3. **Safe area:** text/logo/button safe-zone dimensions and margins; note any crop-sensitive region.
+4. **Content inventory:** exact headline, subtitle, optional label, CTA text, logo/brand elements, and any supporting labels or badges.
+5. **Photo/visual asset specifications:** whether a photo/illustration is needed; subject and composition; source or generation approach; exact displayed/rendered image width × height (or container ratio), aspect ratio, crop/fit mode, focal point, and mobile crop behavior. Record the source/export dimensions and file format/weight target when relevant.
+6. **Layout measurements:** text and visual column proportions, alignment, gaps, padding, spacing between heading/subtitle/CTA, and feature-card dimensions.
+7. **Typography and visual style:** font family/weight, heading and body sizes for desktop and mobile, line-height, colors, contrast, card treatment, icon style, and animation behavior.
+8. **Responsive and accessibility checks:** mobile/tablet/desktop breakpoints, text wrapping, image crop, contrast, keyboard/focus states, and reduced-motion behavior.
+9. **Delivery and QA:** asset filename/path in the GitHub repo, exported dimensions, file size, page files changed, cache version if needed, and verified screenshots/live checks.
+
+### Implementation and change-control rules
+- Never invent or silently choose a banner's exact dimensions or photo crop when those affect the design; record the specification first or ask the user to approve it.
+- Keep the approved copy and existing calculator functionality unchanged unless the user explicitly requests edits.
+- Avoid unrelated page, homepage, SEO, or shared-component changes.
+- After implementation, verify the source, responsive CSS, asset dimensions/weight, GitHub diff, deployment, and actual rendered mobile/desktop appearance. Do not mark visual QA complete without inspecting the rendered page.
+- Keep this standard in the InfoJano GitHub master file and use it as the checklist for future banners and hero sections.
