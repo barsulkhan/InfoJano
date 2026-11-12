@@ -44,6 +44,7 @@ body{background:#f2f8ff}
 .ij-doc-tile strong{font-size:14px;line-height:1.25}
 .ij-doc-tile svg{width:39px;height:39px}
 .ij-doc-tile:nth-child(1) svg{color:#0787e8}.ij-doc-tile:nth-child(2) svg{color:#7050df}.ij-doc-tile:nth-child(3) svg{color:#0ca66c}.ij-doc-tile:nth-child(4) svg{color:#e98b20}
+.ij-doc-guide-links{width:min(calc(100% - 28px),1200px);margin:0 auto 22px}.ij-doc-guide-links h2{font-size:19px;color:#14264a;margin:0 0 12px}.ij-doc-guide-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.ij-doc-guide-grid a{display:block;padding:13px 14px;border:1px solid #d9e9f8;border-radius:14px;background:#fff;color:#155a9b;text-decoration:none;font-size:14px;font-weight:800}.ij-doc-guide-grid a span{display:block;margin-top:4px;color:#71839a;font-size:11px;font-weight:500}@media(max-width:640px){.ij-doc-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ij-doc-guide-links{width:calc(100% - 20px)}}
 .ij-id-hero-art{position:relative;min-height:370px;display:grid;place-items:center;perspective:1000px}
 .ij-id-card-mock{position:absolute;width:min(82%,360px);aspect-ratio:1.59;border:8px solid rgba(255,255,255,.95);border-radius:27px;background:#fff;box-shadow:0 18px 32px rgba(22,72,137,.22);overflow:hidden}
 .ij-id-card-mock .mock-band{height:31%;display:flex;align-items:center;justify-content:center;background:linear-gradient(110deg,#058bea,#1253d8);color:white;font-weight:850;font-size:clamp(13px,1.4vw,19px);letter-spacing:.5px}
@@ -104,6 +105,7 @@ body{background:#f2f8ff}
  </div>
  <div class="ij-id-hero-benefits"><span><b>✓</b> Easy to Use</span><span><b>↗</b> Quick Processing</span><span><b>▣</b> Print Ready</span><span><b>✓</b> Free to Use</span></div>
 </section>
+<section class="ij-doc-guide-links" aria-label="Document print guides"><h2>Document-specific print guides</h2><div class="ij-doc-guide-grid"><a href="/ayushman-card-print.html">Ayushman Card Guide <span>PDF and photo printing</span></a><a href="/aadhaar-card-print.html">Aadhaar Card Guide <span>e-Aadhaar crop and print</span></a><a href="/voter-id-card-print.html">Voter ID Guide <span>e-EPIC manual crop</span></a><a href="/digital-ration-card-print.html">Ration Card Guide <span>West Bengal e-Ration PDF</span></a></div></section>
 <section class="card" id="ij-document-selector"><h2><span class="step">1</span>Choose card type</h2>
 <div class="grid">
 <div class="field"><label for="cardType">Document type</label><select id="cardType"><option selected>Ayushman Bharat Card</option><option>Aadhaar Card</option><option>Voter ID</option><option>Digital Ration Card</option></select></div>
@@ -633,8 +635,8 @@ $('downloadJpgBtn').addEventListener('click',()=>{let f=selected('frontSelect'),
 })();
 </script>
 <script>
-/* Hero document shortcuts: select the matching existing workflow without changing its processing logic. */
-document.querySelectorAll('[data-ij-doc]').forEach(function(button){button.addEventListener('click',function(){var select=document.getElementById('cardType');if(!select)return;select.value=button.getAttribute('data-ij-doc');select.dispatchEvent(new Event('change',{bubbles:true}));var target=document.getElementById('ij-document-selector');if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});});
+/* Hero shortcuts and SEO guide deep links select an existing document workflow only. */
+(function(){var select=document.getElementById('cardType');if(!select)return;function chooseDocument(value,scroll){var option=Array.from(select.options).find(function(item){return item.value===value||item.text===value;});if(!option)return;select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));if(scroll){var target=document.getElementById('ij-document-selector');if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}}var requested=new URLSearchParams(window.location.search).get('document');if(requested)chooseDocument(requested,false);document.querySelectorAll('[data-ij-doc]').forEach(function(button){button.addEventListener('click',function(){chooseDocument(button.getAttribute('data-ij-doc'),true);});});})();
 </script>
 <script src="/InfoJano/site-header.js" defer></script>
 </body></html>
