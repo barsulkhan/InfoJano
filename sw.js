@@ -136,6 +136,7 @@ const ASSETS = [
   "/InfoJano/tip-calculator.html",
   "/InfoJano/unit-converter.html",
   "/InfoJano/id-card-print-studio.html",
+  "/InfoJano/id-card-guides.css",
   "/InfoJano/digital-ration-card-print.html",
   "/InfoJano/voter-id-card-print.html",
   "/InfoJano/aadhaar-card-print.html",
