@@ -163,6 +163,35 @@ main{max-width:1120px!important;margin:28px auto!important;padding:0 18px 48px!i
  .ij-panel-answer strong{font-size:17px}
 }
 
+
+/* Compact balanced hero sizing — align with ID Card Print Studio proportions */
+.ij-master-hero{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:16px auto 22px;border-radius:24px}
+.ij-master-top{padding:12px 22px}
+.ij-master-body{grid-template-columns:minmax(0,1.08fr) minmax(260px,.92fr);gap:24px;padding:22px 30px 20px;min-height:0}
+.ij-master-copy h1{font-size:clamp(30px,3.2vw,42px);line-height:1.08;margin:10px 0}
+.ij-master-copy p{font-size:14px;line-height:1.5;margin-bottom:10px}
+.ij-master-pills{gap:7px;margin:10px 0 13px}
+.ij-master-pills span{padding:6px 9px;font-size:10px}
+.ij-master-actions a{padding:10px 15px;font-size:13px}
+.ij-master-visual{min-height:205px}
+.ij-master-orb{width:205px;height:205px}
+.ij-percent-panel{top:16%;width:min(68%,300px);min-height:145px;padding:13px;border-width:3px}
+.ij-panel-equation{margin:10px 0 7px;font-size:23px}
+.ij-percent-bubble{width:82px;height:82px;font-size:30px;border-radius:22px}
+.ij-float-chip{font-size:10px;padding:8px 10px}
+.ij-master-caption{font-size:8px}
+@media(max-width:760px){
+ .ij-master-hero{width:calc(100% - 20px);margin:12px auto 20px}
+ .ij-master-body{grid-template-columns:minmax(0,1fr);padding:20px 18px 14px;gap:4px}
+ .ij-master-copy h1{font-size:clamp(29px,8vw,38px);max-width:100%;margin:9px 0}
+ .ij-master-copy p{font-size:13px;line-height:1.5}
+ .ij-master-visual{min-height:190px;margin-top:4px;max-width:430px}
+ .ij-percent-panel{min-height:130px}
+ .ij-percent-bubble{width:70px;height:70px;font-size:26px}
+ .ij-master-actions a{min-height:40px}
+}
+@media(max-width:360px){.ij-master-visual{min-height:175px}.ij-percent-panel{min-height:120px}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/percentage.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
