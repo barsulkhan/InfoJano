@@ -311,7 +311,39 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 
   </div>
 </section>
-<main id="calculator">
+
+<style>
+/* Savings page full-layout visual refresh */
+.savings-page{max-width:1180px!important;margin:28px auto!important;padding:0 20px!important}
+.savings-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:22px;align-items:stretch}
+.savings-page .card{padding:28px;border:1px solid #e5edf8;border-radius:22px;box-shadow:0 12px 34px rgba(20,55,100,.08)}
+.savings-page .card h1{font-size:27px;margin:0 0 4px;color:#101b3c}
+.savings-page .card h2{font-size:17px;margin:0 0 18px;color:#53627b;font-weight:500}
+.savings-page label{font-size:14px;color:#172554;margin-top:16px}
+.savings-page input{border:1px solid #cbd5e1;border-radius:11px;background:#fff;padding:14px}
+.savings-page button{border-radius:12px;background:linear-gradient(90deg,#0876e8,#1555d8);font-weight:700;cursor:pointer}
+.savings-side{display:flex;flex-direction:column;gap:18px}
+.savings-visual{min-height:230px;border-radius:22px;background:radial-gradient(circle at 70% 25%,#d9f99d 0,#a7e68c 20%,transparent 48%),linear-gradient(135deg,#e8f7d8,#b6e5a8 48%,#4e9a57);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.savings-visual svg{width:78%;max-width:310px;filter:drop-shadow(0 14px 15px #174b3028)}
+.savings-benefits,.savings-info-card{background:#f7faff;border:1px solid #e7eef8;border-radius:22px;padding:22px}
+.savings-benefits h2,.savings-info-card h2{font-size:20px;margin:0 0 14px;color:#111c3b}
+.savings-benefits ul,.savings-tips ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.savings-benefits li:before{content:'✓';display:inline-grid;place-items:center;width:20px;height:20px;margin-right:9px;border-radius:50%;background:#16a34a;color:white;font-weight:800;font-size:12px}
+.savings-lower{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+.savings-tips{background:#f5f7fc}.savings-goals{background:#f0fbf3}
+.savings-goals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
+.savings-goals-grid div{font-size:13px;font-weight:650;color:#334155}
+.savings-goals-grid b{display:block;font-size:26px;margin-bottom:4px}
+.savings-faq{margin:24px 0;padding:0 4px}
+.savings-faq h2{font-size:24px;color:#101b3c}
+.savings-faq details{background:white;border:1px solid #e6edf7;border-radius:13px;padding:14px 18px;margin:8px 0;box-shadow:0 3px 12px #102a5008}
+.savings-faq summary{font-weight:700;cursor:pointer;color:#172554}
+.savings-faq p{color:#52627a;margin:10px 0 0}
+@media(max-width:800px){.savings-layout,.savings-lower{grid-template-columns:1fr}.savings-page{padding:0 14px!important}.savings-page .card{padding:22px}.savings-visual{min-height:190px}}
+@media(max-width:420px){.savings-goals-grid{gap:10px}.savings-goals-grid b{font-size:22px}}
+</style>
+<main id="calculator" class="savings-page">
+<div class="savings-layout">
 <div class="card">
 <h1>Savings Calculator - Estimate Future Savings</h1>
 <h2>Calculate Future Savings</h2>
@@ -322,8 +354,34 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <button onclick="calculate()">Calculate Savings</button>
 <div id="result" class="result" aria-live="polite">Enter your savings details to estimate the future value.</div>
 </div>
-<section><h2>How it works</h2><p>This estimate applies an assumed monthly rate to the starting balance and monthly contributions. Actual returns can vary and are not guaranteed.</p></section>
-<p><a href="index.html">← Back to InfoJano Home</a></p>
+
+<aside class="savings-side">
+<div class="savings-visual" aria-label="Savings growth illustration">
+<svg viewBox="0 0 360 250" role="img" aria-hidden="true">
+<ellipse cx="180" cy="220" rx="145" ry="15" fill="#39764a" opacity=".18"/>
+<g fill="#d9a52d"><ellipse cx="75" cy="192" rx="28" ry="9"/><rect x="47" y="174" width="56" height="18" rx="4"/><ellipse cx="75" cy="174" rx="28" ry="9"/><ellipse cx="275" cy="192" rx="28" ry="9"/><rect x="247" y="174" width="56" height="18" rx="4"/><ellipse cx="275" cy="174" rx="28" ry="9"/></g>
+<g fill="#f2c84b"><ellipse cx="115" cy="202" rx="26" ry="8"/><rect x="89" y="185" width="52" height="17" rx="4"/><ellipse cx="115" cy="185" rx="26" ry="8"/></g>
+<rect x="132" y="92" width="96" height="112" rx="18" fill="#f8fbff" fill-opacity=".72" stroke="#fff" stroke-width="5"/>
+<path d="M145 98h70v-14h-70z" fill="#e8f4ff" stroke="#fff" stroke-width="4"/>
+<g fill="#d6a52c"><circle cx="163" cy="170" r="13"/><circle cx="195" cy="178" r="13"/><circle cx="181" cy="148" r="13"/><circle cx="164" cy="139" r="11"/></g>
+<path d="M180 91C158 58 155 32 174 20c19 13 21 37 6 65M181 87c1-38 22-58 43-48 2 22-14 39-43 48M178 85c-29-21-54-20-59 1 14 18 35 18 59-1" fill="#269b55" stroke="#187a42" stroke-width="3"/>
+<path d="M180 88v-42" stroke="#187a42" stroke-width="4" stroke-linecap="round"/>
+</svg>
+</div>
+<div class="savings-benefits"><h2>Why Use a Savings Calculator?</h2><ul><li>Plan for short and long term financial goals</li><li>Understand how regular deposits build savings</li><li>See the effect of an assumed interest rate</li><li>Make more realistic financial plans</li></ul></div>
+</aside>
+</div>
+<div class="savings-lower">
+<section class="savings-info-card savings-tips"><h2>💡 Savings Tips</h2><ul><li>Set a clear and realistic savings goal.</li><li>Save a fixed amount every month.</li><li>Compare savings account and recurring deposit options.</li><li>Avoid unnecessary expenses.</li><li>Review and adjust your plan regularly.</li></ul></section>
+<section class="savings-info-card savings-goals"><h2>📊 Popular Savings Goals</h2><div class="savings-goals-grid"><div><b>⌂</b>Buy a Home</div><div><b>🎓</b>Higher Education</div><div><b>🚗</b>Buy a Car</div><div><b>✈</b>Travel</div><div><b>♥</b>Emergency Fund</div><div><b>🌱</b>Retirement</div></div></section>
+</div>
+<section class="savings-faq"><h2>❔ Frequently Asked Questions</h2>
+<details><summary>What is a Savings Calculator?</summary><p>It estimates how your starting savings and regular monthly contributions may grow over a selected period.</p></details>
+<details><summary>How is the future savings amount calculated?</summary><p>The calculator applies the assumed monthly rate to your balance and adds your monthly contribution for each month.</p></details>
+<details><summary>Does the interest rate affect my savings plan?</summary><p>Yes. A higher assumed rate can increase the estimate, but actual returns may vary and are not guaranteed.</p></details>
+<details><summary>Can I use this calculator for any financial goal?</summary><p>Yes. You can use it to explore savings for education, a home, travel, emergencies or retirement.</p></details>
+<details><summary>Is this Savings Calculator free to use?</summary><p>Yes. The InfoJano Savings Calculator is free to use and does not require signup.</p></details>
+</section>
 <section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
 <h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
 <p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
@@ -352,8 +410,8 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
 </a></div>
 </section>
-</main>
-<footer>© InfoJano</footer>
+<p><a href="index.html">← Back to InfoJano Home</a></p>
+</main><footer>© InfoJano</footer>
 <script>
 function calculate(){
  const start=Number(document.getElementById('start').value);
