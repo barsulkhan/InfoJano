@@ -1536,7 +1536,7 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
     <div class="hero-content">
       <h1>Your <span>Everyday</span> Online Tools</h1>
       <p>Free &amp; useful tools for documents, images, calculations and more</p>
-      <div class="search"><span class="search-glass" aria-hidden="true">⌕</span><input id="search" aria-label="Search tools" placeholder="Search tools (e.g. image resize, PDF, calculator...)" oninput="filterTools()"><button class="primary" aria-label="Search" onclick="searchFocus()">⌕</button></div>
+      <div class="search"><span class="search-glass" aria-hidden="true">⌕</span><input id="search" aria-label="Search tools" placeholder="Search tools..." oninput="filterTools()"><button class="primary" aria-label="Search" onclick="searchFocus()">⌕</button></div>
       <div class="hero-benefits"><span><b class="benefit-check">✓</b> 100% Free</span><span><b class="benefit-flash">ϟ</b> Fast &amp; Simple</span><span><b class="benefit-shield">✓</b> Privacy Safe</span><span><b class="benefit-phone">▯</b> Mobile Friendly</span></div>
       <div class="chips">
         <button onclick="quickFilter('calculator')">Calculators</button><button onclick="quickFilter('converter')">Converters</button><button onclick="quickFilter('text')">Text</button><button onclick="quickFilter('qr')">QR</button><button onclick="clearFilter()">All</button>
@@ -2132,6 +2132,64 @@ html body header.header .nav button.nav-search{background:#eaf5ff!important;colo
 }
 @media(max-width:768px){
   #home > .hero{width:calc(100% - 24px)!important;margin:16px 12px 22px!important}
+}
+</style>
+
+
+<style id="infojano-mobile-hero-readability-v1">
+/* Mobile-only readability correction; desktop styling and other homepage sections remain unchanged. */
+@media (max-width: 768px) {
+  #home > .hero h1 {
+    color: #10254a !important;
+    -webkit-text-fill-color: #10254a !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+  }
+  #home > .hero h1 span {
+    background: linear-gradient(90deg, #0876e8, #19c8f5) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  #home > .hero p {
+    color: #465a73 !important;
+    -webkit-text-fill-color: #465a73 !important;
+    opacity: 1 !important;
+  }
+  #home > .hero .search input {
+    color: #18375e !important;
+    -webkit-text-fill-color: #18375e !important;
+    font-size: 15px !important;
+    padding-left: 12px !important;
+    padding-right: 8px !important;
+  }
+  #home > .hero .search input::placeholder {
+    color: #627993 !important;
+    -webkit-text-fill-color: #627993 !important;
+    opacity: 1 !important;
+  }
+  #home > .hero .chips {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    overflow: visible !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+  #home > .hero .chips button {
+    flex: 0 1 auto !important;
+    white-space: nowrap !important;
+    color: #34577c !important;
+    -webkit-text-fill-color: #34577c !important;
+    background: #fff !important;
+    border: 1px solid #d6e7f7 !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+  body { padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
+  .bottom-nav { bottom: calc(9px + env(safe-area-inset-bottom)) !important; }
 }
 </style>
 
