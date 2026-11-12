@@ -1594,3 +1594,12 @@ Audited the 17 Percentage Calculator SEO pages from PR #85, plus the related `re
 - PR #129 main Percentage Calculator hero feature/benefit design polish merged successfully: b7f19ba5ac364c28a088367c970e084f5423208d. The four feature tiles and four benefit items now have refined card styling, icon treatments, spacing, hover feedback, and responsive mobile two-column layout. Calculator logic and page copy were not changed.
 - Service Worker cache on main is infojano-v285. Source verification passed for the new styles and reduced-motion support.
 - GitHub Pages deployment for PR #129 commit is currently queued/in progress (run 43248468327). Do not mark the main-page styling live until this deployment succeeds and a browser/mobile visual check is completed.
+
+
+## 2026-11-12 — Percentage Calculator final deployment verification
+- PR #129 (main Percentage Calculator hero feature tiles and benefit strip polish) is merged at `b7f19ba5ac364c28a088367c970e084f5423208d`.
+- GitHub Pages deployment for that merge completed successfully: run #43248468327, conclusion `success`.
+- Service Worker cache version: `infojano-v285`.
+- Source and deployment are verified. Remaining check: direct live visual QA on actual mobile and desktop viewports; do not mark visual QA complete until rendered appearance is inspected.
+- Main page: https://infojano.com/percentage.html
+- Deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/43248468327
