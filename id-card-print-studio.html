@@ -66,6 +66,20 @@ body{background:#f2f8ff}
 @media(max-width:640px){.ij-brandbar{padding:12px 14px}.ij-brandmark{width:42px;height:42px;flex-basis:42px}.ij-brandname{font-size:23px}.ij-brandtag{font-size:11px}.ij-brand-divider,.ij-brand-promise{display:none}.ij-id-hero{width:calc(100% - 20px);margin:14px auto 22px;padding:24px 18px 34px;border-radius:24px}.ij-id-hero-grid{grid-template-columns:1fr;gap:18px}.ij-id-hero-copy{text-align:center}.ij-id-hero-symbol{width:78px;height:78px;margin:0 auto 16px;border-radius:23px}.ij-id-hero-symbol svg{width:49px;height:49px}.ij-id-hero h1{text-align:center;font-size:clamp(32px,9vw,43px);letter-spacing:-1.3px}.ij-id-hero-subtitle{font-size:15px;margin:0 auto}.ij-doc-tiles{gap:9px;margin-top:20px}.ij-doc-tile{min-height:112px;border-radius:17px;padding:12px 6px}.ij-doc-tile strong{font-size:13px}.ij-id-hero-art{min-height:250px;margin:0 2px 6px}.ij-id-card-mock{width:min(82%,320px);border-width:6px;border-radius:21px}.ij-id-card-mock .mock-body{padding:10px;gap:8px}.ij-id-card-mock .mock-photo{height:78px}.ij-id-card-mock .mock-lines{gap:7px}.ij-id-hero-benefits{justify-content:center;gap:7px;margin-top:17px}.ij-id-hero-benefits span{font-size:12px;padding:8px 10px}.ij-id-hero-benefits b{width:21px;height:21px}}
 @media(prefers-reduced-motion:reduce){.ij-id-hero .ij-lightword{animation:none;background-position:50% 0}.ij-doc-tile{transition:none}}
 
+
+/* Match the InfoJano homepage hero container on desktop: same wide page frame,
+   full-width banner, 220px minimum height and generous 42px/46px spacing. */
+@media screen and (min-width:1001px){
+ main{width:calc(100% - 64px);max-width:1600px;margin:0 auto;padding:28px 24px 36px}
+ .ij-id-hero{width:100%;max-width:none;min-height:220px;margin:12px 0 28px;padding:42px 46px;border-radius:22px}
+ .ij-id-hero-grid{min-height:220px}
+ .ij-id-hero-art{min-height:370px}
+ .ij-doc-guide-links{width:100%;max-width:none;margin:0 0 22px}
+}
+@media screen and (min-width:1500px){
+ .ij-id-hero{padding:48px 56px}
+}
+
 </style>
 <script type="application/ld+json">
 {
