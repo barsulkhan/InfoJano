@@ -781,3 +781,33 @@ When the user says “কাজ চালাও” or “continue”, first read
 3. Confirm the published EXEs have fresh timestamps and expected asset count (23 individual + 2 combined).
 4. Keep the desktop product discussion separate from this repair: the proposed “one main desktop app + per-tool shortcut/install option” and true offline packaging are not implemented. Do not begin the major offline architecture without the user's approval.
 5. Browser/device runtime QA remains unverified: live custom-domain HTTP behavior, Chrome/Android PWA install prompt, SW activation/update, offline cache navigation, and external API failure handling have not been tested in a real browser/device in this work.
+
+
+## Individual Windows app downloads — 14 Nov 2026
+
+### User requirement
+- The user wants every supported tool to have its own Windows download option on that tool's InfoJano website page, so a visitor can download only the app they are currently using.
+- This is distinct from the all-in-one InfoJano desktop app. The individual installer should launch the matching tool in its own Windows window.
+
+### Implemented
+- PR #186 merged successfully.
+- PR: https://github.com/barsulkhan/InfoJano/pull/186
+- Merge commit: `5427fc4814bc856b97b22ab785f472aaa45f1db6`
+- File changed: `related-apps.js`.
+- Added a dedicated "Download [tool] for Windows" panel to the existing contextual app section. It generates the matching installer filename from the tool name and links to the individual Windows release asset.
+- The panel discloses Windows 10/11, internet required, approximate 75 MB installer size, and that the installer is unsigned.
+- Scope: the existing 23 individual tool pages represented in the `related-apps.js` app registry. Existing Related Apps cards remain intact.
+- The links point to the current release tag `infojano-desktop-apps-v1.0.0`; all 23 individual installer assets were present in that release when checked earlier in this session.
+
+### Important limitations / pending verification
+- Existing 23 EXE files in the release were last updated 4 Nov 2026. They may still contain the older GitHub Pages URL. PR #185 corrected the workflow source to use `https://infojano.com/`, but its rebuild run #43487044793 is still in progress and has not refreshed the assets.
+- Workflow run: https://github.com/barsulkhan/InfoJano/actions/runs/43487044793 — last checked 14 Nov 2026, status `in_progress`, no conclusion. Do not claim the new installer binaries are ready until refreshed assets are confirmed.
+- PR #186 source was merged, but the Pages deployment and live browser display of the new download panel still need confirmation.
+- Downloaded apps are online wrappers for hosted tool pages, not offline/local copies. Internet is required. Do not label them offline apps.
+- Installer signature is not currently configured; Windows SmartScreen may warn.
+
+### Next exact actions
+1. Check the Pages deployment associated with merge commit `5427fc4814bc856b97b22ab785f472aaa45f1db6`.
+2. Verify the download panel on at least one live tool page and validate all 23 generated filenames against the release assets.
+3. Resolve the stalled installer workflow safely; after successful rebuild, verify that all 23 release assets have fresh timestamps and corrected custom-domain URLs.
+4. If the run remains stalled, inspect and improve the workflow to avoid 23 repeated dependency installations; do not report old binaries as refreshed.
