@@ -1,6 +1,6 @@
 /* InfoJano contextual Related Apps: show four other tools, excluding the current tool. */
 (()=> {
-  const base="/InfoJano/";
+  const base=location.hostname==="barsulkhan.github.io"?"/InfoJano/":"/";
   const release="https://github.com/barsulkhan/InfoJano/releases/download/infojano-tool-apps-v1.1.1/";
   const desktopRelease="https://github.com/barsulkhan/InfoJano/releases/download/infojano-desktop-apps-v1.0.0/";
   const apps=[
@@ -84,7 +84,7 @@
     `;document.head.appendChild(style);
   }
   function addHomeReturn(){
-    if(location.pathname.endsWith("/index.html")||location.pathname==="/InfoJano/"||location.pathname==="/InfoJano")return;
+    if(location.pathname.endsWith("/index.html")||location.pathname===base||location.pathname===base.slice(0,-1))return;
     if(document.getElementById("ij-home-return"))return;
     const a=document.createElement("a");
     a.id="ij-home-return";a.href=base+"index.html";a.textContent="← Home";
