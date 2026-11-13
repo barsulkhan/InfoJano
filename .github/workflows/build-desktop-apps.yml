@@ -61,7 +61,7 @@ jobs:
             $slug = ($name -replace '[^A-Za-z0-9]+','-').Trim('-')
             $dir = Join-Path $PWD ("desktop/build-" + $id)
             New-Item -ItemType Directory -Force -Path $dir | Out-Null
-            $url = "https://barsulkhan.github.io/InfoJano/" + $page
+            $url = "https://infojano.com/" + $page
             $main = @"
           const { app, BrowserWindow, shell } = require('electron');
           const { URL } = require('url');
