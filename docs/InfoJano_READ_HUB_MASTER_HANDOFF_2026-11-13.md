@@ -603,3 +603,17 @@ When the user says “কাজ চালাও” or “continue”, first read
 3. Retry live custom-domain and GitHub Pages URL checks with browser-capable tooling; verify Homepage, Calculator pages, Countdown Studio, manifests, sw.js.
 4. Perform actual service-worker registration/activation, install prompt, and offline reload tests in Chrome/Android.
 5. Keep Read Hub updated with actual test results and commits only.
+
+## Additional page-level PWA source checks — 13 Nov 2026
+- Directly checked Homepage `index.html`: links root `manifest.json`, loads `install.js`, and references the root SVG favicon.
+- Directly checked `age.html`: links `app-manifests/age.webmanifest` and loads `install.js`.
+- Directly checked `bmi.html`: links `app-manifests/bmi.webmanifest` and loads `install.js`.
+- Directly checked `date-difference.html`: links `app-manifests/date-difference.webmanifest` and loads `install.js`.
+- Directly checked `countdown-studio.html`: links `app-manifests/countdown-studio.webmanifest` and loads `install.js`.
+- Inspected `install.js`: it registers `ROOT + "sw.js"` with `scope: ROOT`, where ROOT is `/InfoJano/` on barsulkhan.github.io and `/` on the custom domain; registration errors are logged to console.
+- These source inspections confirm registration is wired into these pages, but they do not prove registration succeeds in a live browser or that offline navigation works.
+
+### Latest Pages run after this Read Hub update
+- Run #43484514621 for Read Hub commit 08d4bcf4c59282390b20c79bdc027ab0e8dd069f:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43484514621
+- Status: in_progress at last check.
