@@ -835,3 +835,13 @@ When the user says “কাজ চালাও” or “continue”, first read
 - The 23 registry entries map to 23 matching EXE assets in release v1.0.0 (0 missing filenames). The site still points to v1.0.0 until the optimized v1.0.1 build is successful and verified.
 - Optimized v1.0.1 workflow run #43488835667 remains in progress at last check: https://github.com/barsulkhan/InfoJano/actions/runs/43488835667
 - Browser visual check remains pending. Do not tell the user the panel is visible on the live site until Pages run #43489043506 succeeds and a live page is checked.
+
+
+### Final verification update — individual Windows downloads — 14 Nov 2026
+- Website Pages deployment run #43489078161 completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/43489078161. Its commit `98edd5adc0d91bb13f7389a118313f9f2859ebfd` is after the PR #188 shared-loader fix, so the site deployment includes the panel + loader changes.
+- The previous long-running installer workflow #43487044793 eventually completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/43487044793
+- Release `infojano-desktop-apps-v1.0.0` now has all 23 individual tool EXEs freshly updated between 19:08:27Z and 19:08:30Z on 13 Nov 2026. The matching filenames exist for all 23 registry entries (0 missing); each is approximately 78.3 MB.
+- These are separate Windows installers, one per tool. They open the hosted tool page in a dedicated window and require an internet connection; they are not offline/local copies.
+- The optimized workflow run #43488835667 is still in progress at last check. It is a future v1.0.1 improvement; it is not required to use the refreshed v1.0.0 installer set.
+- Live browser access to `https://infojano.com/age.html` and `related-apps.js` could not be verified by the available browser fetcher, so actual visual rendering/click-through remains a final manual check despite successful Pages deployment.
+- Website download links still point to v1.0.0, which currently has all 23 freshly updated assets.
