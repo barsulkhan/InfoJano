@@ -1,9 +1,9 @@
 /* InfoJano shared page helpers: no top install banner; apply theme and contextual related apps. */
 (()=> {
+  const ROOT=location.hostname==="barsulkhan.github.io"?"/InfoJano/":"/";
 /* Register the site-wide worker from every page that loads this shared helper. */
   function registerServiceWorker(){
     if(!("serviceWorker" in navigator))return;
-    const ROOT=location.hostname==="barsulkhan.github.io"?"/InfoJano/":"/";
     navigator.serviceWorker.register(ROOT+"sw.js",{scope:ROOT})
       .catch(error=>console.error("Service Worker registration failed:",error));
   }
