@@ -17,7 +17,7 @@ GitHub Pages fallback: https://barsulkhan.github.io/InfoJano/
 ### Work confirmed successful (merged)
 1. **PR #168 — Fix Countdown Studio interactions and media previews**
    - Status: merged.
-   - Merge commit: `80f32ad79b215bd573d94f02f7d1734ff7158ba2` is NOT the PR #168 merge SHA; see PR history for its actual merge commit.
+   - Merge commit: `5c5336e4a046a22a5c9e28e0b423a765bd701659`.
    - Scope: corrected over-escaped JavaScript regular expressions affecting media URL parsing, YouTube embed detection, direct video extension detection and event interactions.
    - PR: https://github.com/barsulkhan/InfoJano/pull/168
 
