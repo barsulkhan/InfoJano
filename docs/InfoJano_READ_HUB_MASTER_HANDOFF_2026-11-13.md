@@ -133,3 +133,13 @@ When the user says “কাজ চালাও” or “continue”, first read
 2. Audit every `ASSETS` entry in `sw.js` against the merged repository tree; fix any missing or incorrect paths in a new focused PR.
 3. Scan all standalone web manifests and remaining page references for path compatibility.
 4. Test homepage, one calculator, Countdown Studio, manifest, service-worker registration and offline fallback where feasible. Record each check as passed/failed/not tested.
+
+
+## Deployment-path verification progress — 13 Nov 2026
+- Audited the merged `sw.js` precache list against the complete GitHub main tree (267 tracked paths): all 169 listed `/InfoJano/...` assets map to existing repository files; missing count = 0.
+- Verified the root `manifest.json` uses relative `./` identity/start_url/scope and relative icon paths.
+- Verified standalone manifests for Age, BMI, Currency Converter, Date Difference, Discount, EMI, and PDF Extractor use relative paths (e.g. `../...`) appropriate for their location under `app-manifests/`.
+- Verified `emi.html` links to `./app-manifests/emi.webmanifest`.
+- Correction to earlier review note: the apparent EMI manifest absolute paths were read from a stale search-index result at an older commit, not current main. Current main content is relative and correct.
+- A prior spot-check accidentally fetched `404.html` while labeling it as Age manifest; corrected by fetching `app-manifests/age.webmanifest` directly. Age manifest is relative and valid JSON.
+- Still pending: complete audit of all 28 standalone manifests, HTML/JS/CSS absolute path references, actual GitHub Pages deployment status, live custom-domain and GitHub Pages HTTP checks, and browser/PWA/offline tests. No source change was needed in this verification pass.
