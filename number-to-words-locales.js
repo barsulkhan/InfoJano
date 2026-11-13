@@ -44,7 +44,7 @@ s=s.replace(/^0+(?=\d)/,'');if(s==='0')return w[0];
 const group=(n)=>{n=+n;if(n<100)return w[n];const h=Math.floor(n/100),r=n%100;return (bnMode?w[h]+'শ':w[h]+' सौ')+(r?' '+w[r]:'');};
 let groups=[],first=true;while(s.length){const size=first?3:2;groups.unshift(s.slice(-size));s=s.slice(0,-size);first=false;}
 const names=bnMode?['','হাজার','লক্ষ','কোটি','আরব','খরব']:['','हज़ार','लाख','करोड़','अरब','खरब'];
-const out=[];groups.forEach((g,i)=>{const n=+g,ix=groups.length-i-2;if(n)out.push((group(n)+(ix>0?' '+(names[ix]||''):'')).trim());});
+const out=[];groups.forEach((g,i)=>{const n=+g,ix=groups.length-i-1;if(n)out.push((group(n)+(ix>0?' '+(names[ix]||''):'')).trim());});
 return (negative?(bnMode?'ঋণাত্মক ':'माइनस '):'')+out.join(' ');
 }
 const old=window.numWords;
