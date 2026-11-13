@@ -510,3 +510,47 @@ When the user says “কাজ চালাও” or “continue”, first read
 3. Check all tool manifests and PWA registration behavior, including the newly added Countdown Studio manifest.
 4. Recheck current Pages deployment run #43482576740.
 5. Live browser testing remains unavailable in the current fetch-only environment; do not claim real install/offline functionality until tested in a browser.
+
+## Continuation update — 13 Nov 2026 (HTML local-link sweep completed)
+
+### PR #180 — Social QR Maker shared-header path
+- PR #180: https://github.com/barsulkhan/InfoJano/pull/180
+- Merge commit: 28fee167f982d5a8aedbae5fb3deaa377f4545fa
+- Fixed dynamically injected `site-header.js` URL in social-qr-maker.html from `/InfoJano/site-header.js` to document-relative `site-header.js`.
+- Root-absolute /InfoJano path failed on the custom domain, even though it was only suitable for the GitHub Pages project-path host.
+- Confirmed the target script exists at repository root; one-URL-only change.
+
+### PR #181 — final missing All Tools link
+- PR #181: https://github.com/barsulkhan/InfoJano/pull/181
+- Merge commit: 3a8b37205f5fcbf890c31ab6414d1da82753ec3d
+- Fresh first-batch scan found one more `tools.html` link in add-subtract-date-calculator.html.
+- Replaced it with `index.html#toolGrid`, the actual homepage tool listing.
+- Combined with PR #179, all four discovered `tools.html` references across add-subtract-date-calculator.html, business-days-calculator.html, date-duration-calculator.html and days-between-dates-calculator.html have been corrected.
+- PR #181 was merged after confirming the commit was mergeable; commit status had no published checks (pending with empty status list), so this was a scoped one-line navigation correction, not a test-suite pass.
+
+### Static HTML local target audit — completed
+- Enumerated 109 root-level HTML pages in the repository (excluding backup folders).
+- Inspected static `href`, `src`, `action` and `poster` attributes in batches against the complete repository tree.
+- The scan discovered:
+  - Four references to missing `tools.html`; all four have now been corrected by PR #179 and PR #181.
+  - One root-absolute `/InfoJano/site-header.js` dynamically injected by social-qr-maker.html; corrected by PR #180.
+  - No other missing local static targets were reported in the remaining batches.
+- Re-ran the first 20 HTML pages against latest main after PR #181: **0 missing local targets**.
+- The rest of the batches (20–108) had no additional missing static href/src/action/poster targets, except the issues already corrected above.
+- Scope limitation: this is a repository-tree existence check for statically declared attributes, not a live HTTP test. It does not prove every fragment target exists or that every external URL responds.
+- CSS `url()` references and JavaScript-created dynamic URLs/import/fetch/worker paths still need their own audit.
+
+### Latest main
+- Latest main commit at this update: 3a8b37205f5fcbf890c31ab6414d1da82753ec3d.
+- Pages deployment for this latest commit is expected to have a new Actions run; inspect Actions list for current status.
+- Most recent confirmed Pages success before PR #179/#180/#181: run #43481307489 for commit 7b4e3391d0439ab525df464bc696a56f9e2c9294:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43481307489
+- APK workflow run #43481272458 for Countdown Studio PWA commit c49fb5c5beeee09fd7f864cd6a9227e223ca8453 completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43481272458
+
+### Remaining audit / QA
+1. Inspect local CSS `url()` and JS `fetch()`, dynamic script, worker, import and navigation URLs against the repo tree.
+2. Verify all app manifests and service-worker precache mapping on latest main; Countdown Studio now has a manifest and shared installer registration.
+3. Inspect SW install failure behavior, cache update/cleanup, offline fallback and navigation handling.
+4. Check Pages deployment after PR #181.
+5. Browser-based live homepage/calculator/countdown/manifest/SW registration/install/offline checks remain unverified; previous direct live fetch interface attempts were inaccessible, which is not evidence of site outage.
