@@ -199,6 +199,15 @@ main>section[style]{max-width:none!important;width:100%;margin:24px auto!importa
   .ij-reference-art{align-self:center}
 }
 </style>
+<style id="ij-hero-height-match-id-studio">
+@media screen and (min-width:761px){
+  .ij-reference-hero{height:auto!important;min-height:0!important;padding:clamp(26px,4vw,52px)!important}
+  .ij-reference-grid{height:auto!important;min-height:0!important;align-items:center}
+  .ij-reference-copy{height:auto!important;min-height:0!important;justify-content:center}
+  .ij-reference-art{height:auto!important;min-height:0!important}
+  .ij-currency-art{min-height:0!important}
+}
+</style>
 </head>
 <body>
 
@@ -243,32 +252,26 @@ main>section[style]{max-width:none!important;width:100%;margin:24px auto!importa
 <script src="/InfoJano/site-header.js" defer></script>
 <script src="number-to-words-locales.js"></script><script id="ij-sync-hero-to-pro-box">
 (function(){
-  function syncHeroToProBox(){
+  function syncHeroWidthToProBox(){
     var hero=document.querySelector('.ij-reference-hero');
     var box=document.querySelector('#nwapp');
     if(!hero||!box||window.innerWidth<761)return;
     var rect=box.getBoundingClientRect();
     hero.style.width=rect.width+'px';
     hero.style.maxWidth='none';
-    hero.style.height=rect.height+'px';
+    hero.style.height='auto';
     hero.style.minHeight='0';
     hero.style.marginLeft=(rect.left+window.scrollX)+'px';
     hero.style.marginRight='0';
     hero.style.boxSizing='border-box';
-    var grid=hero.querySelector('.ij-reference-grid');
-    if(grid){grid.style.minHeight='100%';grid.style.height='100%';grid.style.maxWidth='none';grid.style.width='100%';}
   }
   var queued=false;
-  function schedule(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;syncHeroToProBox();});}
+  function schedule(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;syncHeroWidthToProBox();});}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule,{once:true});else schedule();
   window.addEventListener('load',schedule);
   window.addEventListener('resize',schedule);
-  if('ResizeObserver' in window){
-    var target=document.querySelector('#nwapp');
-    if(target)new ResizeObserver(schedule).observe(target);
-  }
-  setTimeout(schedule,300);
-  setTimeout(schedule,1200);
+  if('ResizeObserver' in window){var target=document.querySelector('#nwapp');if(target)new ResizeObserver(schedule).observe(target);}
+  setTimeout(schedule,300);setTimeout(schedule,1200);
 })();
 </script>
 </body>
