@@ -617,3 +617,44 @@ When the user says “কাজ চালাও” or “continue”, first read
 - Run #43484514621 for Read Hub commit 08d4bcf4c59282390b20c79bdc027ab0e8dd069f:
   https://github.com/barsulkhan/InfoJano/actions/runs/43484514621
 - Status: in_progress at last check.
+
+## Continuation update — PWA coverage and dynamic URL audit — 14 Nov 2026
+
+### GitHub Pages deployment confirmed
+- Latest Read Hub commit before this entry: d7bf0b62c02b982050bdce4fc836796b21543543.
+- Pages run #43484602601 for that commit completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43484602601
+- The preceding Pages run #43484514621 was cancelled as superseded; this is not a failed build.
+- Latest confirmed APK build remains run #43483568528, success:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43483568528
+
+### Manifest-page install wiring
+- Queried manifest-linked HTML pages and directly fetched all 33 source pages in batches.
+- All 33 pages containing a manifest link also load `install.js`.
+- This confirms page source wiring only; browser registration/installability remains untested.
+
+### Service Worker precache tree validation — repeated on latest main
+- Parsed current `sw.js` ASSETS array from main.
+- Count: 170 entries, 170 unique.
+- Resolved each root-relative asset against current repository tree: **0 missing targets**.
+- Confirmed Countdown Studio is included in the precache.
+- Current cache version: `infojano-v305`.
+- `ASSETS` entries beginning `/InfoJano/` are normalized using BASE before cache.addAll; source review shows the intended custom-domain and GitHub Pages path handling.
+- Service Worker runtime behavior still requires real browser testing.
+
+### Dynamic URL / external service source review
+- Reviewed all 14 repository JavaScript files and all 5 CSS files for fetch/importScripts/import/Worker, dynamic src/href, and CSS url() references.
+- No CSS local `url()` asset references were found in the 5 stylesheets.
+- Root JS shared helpers use host-aware root selection and expected local paths.
+- Reviewed `word-converter.js`: it sends the uploaded DOCX to the user-configured HTTPS Worker URL with `POST /convert`; this is an intentionally configurable external backend, not a missing repository path.
+- Reviewed backend Worker fetch paths; they are remote service calls and do not reference missing local site assets.
+- Reviewed inline fetches in `age.html` (ipapi.co, Wikimedia/Wikipedia, Wikidata) and `currency-converter.html` (open.er-api.com and historical data URL). These are external API dependencies; their uptime, CORS, quotas and availability need runtime testing. No paid API has been added by this audit.
+- Reviewed QR Maker data-URL fetch/share operations; these operate on generated browser Blob/data URLs, not local site paths.
+- No confirmed new broken local path was found in this pass; therefore no code PR was created from speculative matches.
+
+### Remaining work — do not mark complete yet
+1. Browser-based live URL checks and rendered-page checks for custom domain and GitHub Pages.
+2. Test SW install/activate/update, offline navigation to cached and uncached pages, and recovery after cache install failure.
+3. Test PWA install prompt and installed launch on Android Chrome.
+4. Exercise external API-dependent features (age history/location, currency rates, DOCX Worker) and document graceful failure behavior.
+5. Continue any remaining HTML inline-script / external endpoint audit if additional defects surface.
