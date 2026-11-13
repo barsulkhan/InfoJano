@@ -143,3 +143,34 @@ When the user says “কাজ চালাও” or “continue”, first read
 - Correction to earlier review note: the apparent EMI manifest absolute paths were read from a stale search-index result at an older commit, not current main. Current main content is relative and correct.
 - A prior spot-check accidentally fetched `404.html` while labeling it as Age manifest; corrected by fetching `app-manifests/age.webmanifest` directly. Age manifest is relative and valid JSON.
 - Still pending: complete audit of all 28 standalone manifests, HTML/JS/CSS absolute path references, actual GitHub Pages deployment status, live custom-domain and GitHub Pages HTTP checks, and browser/PWA/offline tests. No source change was needed in this verification pass.
+
+
+## Final PWA / path audit update — 13 Nov 2026
+
+### Completed checks
+- Re-fetched the handoff and audited all **28** files under `app-manifests/*.webmanifest` from current main. The manifests inspected all contain valid JSON structure and deployment-relative values: `id` and `start_url` point to the matching tool page via `../...`, `scope` is `../`, and app icons use `../app-icons/...`. No absolute `/InfoJano/` manifest paths were found in the audited set.
+- Checked the matching app-icon inventory in the repository tree; the referenced app icon assets exist in the tracked tree (including the Word converter shared icon used by Word-to-JPG/PDF/PNG).
+- Re-checked root `manifest.json`: `id`, `start_url`, `scope`, and icon paths are relative to the site root; correct for both root custom domain and project-site deployment.
+- Re-checked `install.js` and `site-header.js`: both choose `/InfoJano/` only on `barsulkhan.github.io`, and `/` on the custom domain.
+- Re-checked `sw.js`: `BASE` is detected from the service-worker script path; each `/InfoJano/...` precache entry is mapped to that base. Earlier complete tree comparison established all 169 precache asset paths exist in the repository.
+- Found a real edge-case bug in `404.html`: relative `./` home and favicon paths could resolve to a nested missing-page directory instead of the site root. Fixed it by selecting the correct deployment root at runtime and applying it to the favicon and homepage link.
+- 404 fix committed directly to main: `32f5942192a0c583e97286732b382a3ecb124cce`. File: https://github.com/barsulkhan/InfoJano/blob/main/404.html
+
+### Deployment and live verification result
+- Queried combined commit status for PR #171 merge commit `36c99d410ad9bcd761586aa2afb48afd0b5a6b7f`: no status checks were returned.
+- Queried workflow runs associated with that merge commit: empty list returned. This does not establish a successful Pages deployment.
+- Attempted to open the live custom-domain manifest, service worker and 404 URLs, plus GitHub Pages manifest and service worker URLs. The web fetcher returned inaccessible/internal errors for these endpoints. Therefore HTTP availability, actual deployment freshness, browser rendering, PWA installation and offline behavior remain **not verified**.
+
+### Remaining work — do not mark complete
+1. Perform a repository-wide scan of HTML, JS and CSS references for any remaining root-absolute or incorrectly relative assets, not only the PR #171 patch.
+2. Check GitHub Pages deployment configuration and actual recent deployment run using a supported Actions/deployments endpoint; current commit status/workflow lookup gave no evidence either way.
+3. Test live URLs from a normal browser: custom-domain homepage, one calculator, Countdown Studio, `manifest.json`, `sw.js`, one app-specific manifest and a deliberately missing nested URL.
+4. Test PWA install prompt, service-worker registration/update, cache install, and offline fallback on Android/Chrome. No physical device/browser test was performed by this audit.
+5. After these checks, separately record pass/fail/not-tested results. Do not claim deployment success based on repository source alone.
+
+### Current handoff state
+- Latest main commit from this audit: `32f5942192a0c583e97286732b382a3ecb124cce` (404 edge-case fix).
+- 28/28 standalone manifests inspected; all inspected paths are relative and structurally valid.
+- 169/169 service-worker precache entries previously mapped to tracked files.
+- Remaining site-wide absolute path audit and real live/PWA tests are still pending.
+- Next chat should start by re-reading this Read Hub, checking latest main, then continue from Remaining work item 1 above.
