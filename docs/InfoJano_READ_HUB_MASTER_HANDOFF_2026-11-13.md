@@ -554,3 +554,52 @@ When the user says “কাজ চালাও” or “continue”, first read
 3. Inspect SW install failure behavior, cache update/cleanup, offline fallback and navigation handling.
 4. Check Pages deployment after PR #181.
 5. Browser-based live homepage/calculator/countdown/manifest/SW registration/install/offline checks remain unverified; previous direct live fetch interface attempts were inaccessible, which is not evidence of site outage.
+
+## Continuation update — 13 Nov 2026 (shared header, manifests, JS/CSS audit)
+
+### PR #182 — shared header All Tools anchor
+- PR #182: https://github.com/barsulkhan/InfoJano/pull/182
+- Merge commit: 15fe173cf2c2eff678528b25a2747970e5e088b2
+- Fixed shared header `site-header.js` link from `index.html#tools` to `index.html#toolGrid`.
+- Confirmed index.html has `id="toolGrid"` and no `id="tools"`.
+- Host-aware ROOT logic was left unchanged.
+- PR was clean/mergeable and merged.
+
+### JavaScript / CSS source audit progress
+- Current main tree has 17 root-level JS/CSS files (not 19):
+  - CSS: bmi-toolkit.css, id-card-guides.css, image-resizer-advanced.css, image-resizer-landing.css, image-resizer-premium.css
+  - JS: bmi-toolkit.js, download-progress.js, image-resizer-advanced.js, install.js, jspdf.umd.min.js, number-to-words-locales.js, qr-code-generator.min.js, related-apps.js, site-header.js, sw.js, theme.js, word-converter.js
+- Inspected all 17 source files for CSS url(), fetch/importScripts/import, Worker and direct src/href references.
+- CSS files produced no local url() asset references in the targeted scan.
+- install.js uses host-aware service-worker registration logic.
+- related-apps.js defines 23 app links and 23 app icon paths. Cross-checked against repository tree: **23/23 target HTML pages exist and 23/23 app-icons exist**. Its host-aware base selection remains in place.
+- site-header.js used an incorrect `index.html#tools` fragment; corrected via PR #182.
+- sw.js uses CACHE_NAME `infojano-v305`, precaches 170 assets, removes older infojano-* caches on activate, claims clients, network-first for navigations with exact-page cache/HOME fallback, and network-first for same-origin assets with cache/HOME fallback.
+- Static source review cannot confirm runtime Cache API behavior or offline response correctness. Browser tests remain necessary.
+- Minified third-party jsPDF code contains many dynamic strings; regex extraction from minified vendor code is not a reliable local-asset audit method. No changes made to vendor library.
+
+### PWA manifest audit
+- Current main tree contains **29 app-manifests/*.webmanifest files plus root manifest.json = 30 manifests total**.
+- Fetched and parsed all 30: **30/30 valid JSON**.
+- Checked start_url and icon paths for all 29 app manifests against repository tree: all targets exist.
+- Root manifest.json uses `start_url: "./"` and `scope: "./"`, which correctly target the root application directory; its declared icon files are present.
+- Countdown Studio manifest is included and points to ../countdown-studio.html with ../ scope and existing ../infojano-mark.svg icon.
+- This is source/tree validation, not deployed manifest MIME/HTTP/browser installability verification.
+
+### Latest deployment / workflow status
+- Latest main commit at this update: 15fe173cf2c2eff678528b25a2747970e5e088b2.
+- GitHub Pages deployment run #43484010255 for that commit completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43484010255
+- Pages run #43483752991 for preceding Read Hub commit also completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43483752991
+- APK workflow run #43483568528 for PR #181 merge commit 3a8b37205f5fcbf890c31ab6414d1da82753ec3d completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43483568528
+- APK workflow run #43481272458 for Countdown Studio PWA merge commit c49fb5c5beeee09fd7f864cd6a9227e223ca8453 completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43481272458
+
+### Next steps
+1. Continue validating JavaScript-created URL references and check PWA manifest links on every intended installable tool page.
+2. Inspect Service Worker cache install/activate/fetch logic for edge cases; validate against real browser behavior before changing runtime behavior.
+3. Retry live custom-domain and GitHub Pages URL checks with browser-capable tooling; verify Homepage, Calculator pages, Countdown Studio, manifests, sw.js.
+4. Perform actual service-worker registration/activation, install prompt, and offline reload tests in Chrome/Android.
+5. Keep Read Hub updated with actual test results and commits only.
