@@ -658,3 +658,40 @@ When the user says “কাজ চালাও” or “continue”, first read
 3. Test PWA install prompt and installed launch on Android Chrome.
 4. Exercise external API-dependent features (age history/location, currency rates, DOCX Worker) and document graceful failure behavior.
 5. Continue any remaining HTML inline-script / external endpoint audit if additional defects surface.
+
+## Continuation update — custom-domain metadata and installed-app URLs — 14 Nov 2026
+
+### PR #183 — ID Card Print Studio metadata aligned
+- PR: https://github.com/barsulkhan/InfoJano/pull/183
+- Merge commit: 108e87495d01d90ccd0d29b7d1e7ceb338ea3996
+- The page canonical URL already used `https://infojano.com/id-card-print-studio.html`, but Open Graph `og:url` and WebApplication structured-data `url` still used the old GitHub Pages URL.
+- Updated both metadata values to the custom domain. No functional code changed.
+
+### PR #184 — Android and desktop launch URLs aligned to custom domain
+- PR: https://github.com/barsulkhan/InfoJano/pull/184
+- Merge commit: 4ccaf12aecd0a37c89f33d92ae3acc46d510e008
+- Updated APK workflow launch URLs in `.github/workflows/build-tool-apks.yml` and `.github/workflows/build-age-apk.yml` to `https://infojano.com/`.
+- Updated Android Gradle default tool URL to `https://infojano.com/age.html`.
+- Updated Electron desktop app HOME_URL to `https://infojano.com/`.
+- Electron in-app navigation allowlist now accepts both the custom domain and the legacy GitHub Pages project path; external http(s) links still open in the system browser.
+- Updated desktop-app README to document the custom domain and GitHub Pages fallback.
+- PR diff reviewed; clean/mergeable; changes limited to URL constants and README.
+
+### Deployment and build runs
+- Pages deployment for PR #183 merge commit 108e87495d01d90ccd0d29b7d1e7ceb338ea3996 completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485483131
+- Pages deployment for latest main commit 4ccaf12aecd0a37c89f33d92ae3acc46d510e008 was queued at last check:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485660663
+- APK workflow for latest main commit was queued:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485661052
+- Windows desktop build for latest main commit was queued:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485661006
+- Age Calculator APK workflow for latest main commit was queued:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485660813
+- Older Pages run #43485244750 for commit ba2fa5d44f5fddff3a08d21e2bf32890f842ac9c completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485244750
+- Do not mark latest APK/desktop workflows successful until their own run conclusions are checked.
+
+### Latest main code commit
+- `4ccaf12aecd0a37c89f33d92ae3acc46d510e008` (PR #184 merge).
+- This Read Hub update will create a later documentation-only commit; check the newest Pages run after this update.
