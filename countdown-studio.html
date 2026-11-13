@@ -105,7 +105,8 @@ document.querySelectorAll("[data-kind]").forEach(b=>b.addEventListener("click",(
 $("startBtn").addEventListener("click",start);
 $("shareBtn").addEventListener("click",async()=>{start();if(!targetMs)return;const url=buildShareUrl();try{await navigator.clipboard.writeText(url);status("Share link copied. Anyone opening it will see this countdown.");}catch(_){status("Copy is unavailable here. You can copy this link: "+url)}});
 $("saveBtn").addEventListener("click",()=>{start();if(!targetMs)return;try{localStorage.setItem("ij-countdown-studio-v1",JSON.stringify({kind,name:$("eventName").value,date:$("targetDate").value,time:$("targetTime").value,zone:$("timezone").value,message:$("message").value,theme:$("theme").value}));status("Countdown saved on this device.");}catch(_){status("This browser could not save the countdown.")}});
-$("closeCelebrate").addEventListener("click",()=>{$("celebrateOverlay").classList.remove("show");$("confetti").replaceChildren()});\n["mediaImageUrl","mediaVideoUrl"].forEach(id=>$(id).addEventListener("change",renderMedia));$("mediaUpload").addEventListener("change",e=>previewLocalMedia(e.target.files&&e.target.files[0]));
+$("closeCelebrate").addEventListener("click",()=>{$("celebrateOverlay").classList.remove("show");$("confetti").replaceChildren()});
+["mediaImageUrl","mediaVideoUrl"].forEach(id=>$(id).addEventListener("change",renderMedia));$("mediaUpload").addEventListener("change",e=>previewLocalMedia(e.target.files&&e.target.files[0]));
 ["currentCount","targetCount","goalName","platform"].forEach(id=>$(id).addEventListener("input",goal));
 const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);$("targetDate").value=tomorrow.getFullYear()+"-"+pad(tomorrow.getMonth()+1)+"-"+pad(tomorrow.getDate());
 const saved=params.has("date")?null:(()=>{try{return JSON.parse(localStorage.getItem("ij-countdown-studio-v1")||"null")}catch(_){return null}})();
