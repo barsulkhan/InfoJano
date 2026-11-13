@@ -71,7 +71,7 @@
           <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span><span class="ij-global-tagline">Smart Tools for Everyday Life</span></span>
         </a>
         <span class="ij-global-divider" aria-hidden="true"></span>
-        <a class="ij-global-tools" href="${ROOT}index.html#tools" aria-label="Browse all tools">
+        <a class="ij-global-tools" href="${ROOT}index.html#toolGrid" aria-label="Browse all tools">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
           All Tools
         </a>
