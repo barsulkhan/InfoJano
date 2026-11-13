@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/savings.html",
+  "id": "../savings.html",
   "name": "InfoJano — Savings Calculator",
   "short_name": "Savings Calculator",
   "description": "Install the InfoJano Savings Calculator tool for quick access.",
-  "start_url": "/InfoJano/savings.html",
-  "scope": "/InfoJano/",
+  "start_url": "../savings.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/savings.svg",
+      "src": "../app-icons/savings.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
