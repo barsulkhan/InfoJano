@@ -822,3 +822,16 @@ When the user says “কাজ চালাও” or “continue”, first read
 - Old build run #43487044793 remains `in_progress` with no updated timestamp since 18:54 UTC. No connector action is available to cancel a running workflow safely.
 - Pages run #43488835218 for merge commit was queued at last check. Pages run #43488662894 for the previous website merge completed successfully, but the later workflow merge has not yet deployed.
 - Do not update website links from v1.0.0 to v1.0.1 until the new release has all 23 EXEs and each asset is verified.
+
+
+### Shared-loader correction for website download panel — 14 Nov 2026
+- During a source check, found the 23 tool pages load `site-header.js` but do not directly load `related-apps.js`; the first download-panel PR alone therefore would not display its panel on those pages.
+- Fixed this through PR #188, merged successfully: https://github.com/barsulkhan/InfoJano/pull/188
+- Merge commit: `f24dc5499becca70c8161211dbead731b1bafb47`
+- `site-header.js` now injects `related-apps.js` once, using the deployment-aware ROOT path. The related-apps script self-exits on pages outside its 23-tool registry.
+- Pages deployment for this merge: run #43489043506, queued at last check: https://github.com/barsulkhan/InfoJano/actions/runs/43489043506
+- Prior Pages run #43488873400 completed successfully for the preceding Read Hub commit; it predates PR #188, so it does not confirm the shared-loader fix is deployed.
+- Source confirmation: Age, BMI, Currency Converter, ID Card Print Studio and Unit Converter pages all load `site-header.js`; before PR #188 none directly loaded `related-apps.js`.
+- The 23 registry entries map to 23 matching EXE assets in release v1.0.0 (0 missing filenames). The site still points to v1.0.0 until the optimized v1.0.1 build is successful and verified.
+- Optimized v1.0.1 workflow run #43488835667 remains in progress at last check: https://github.com/barsulkhan/InfoJano/actions/runs/43488835667
+- Browser visual check remains pending. Do not tell the user the panel is visible on the live site until Pages run #43489043506 succeeds and a live page is checked.
