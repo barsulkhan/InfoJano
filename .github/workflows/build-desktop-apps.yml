@@ -15,19 +15,70 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
+    timeout-minutes: 180
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Prepare shared Electron build environment
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $workspace = Join-Path $PWD 'desktop/individual-installer-build'
+          $out = Join-Path $PWD 'desktop-dist'
+          New-Item -ItemType Directory -Force -Path $workspace, $out | Out-Null
+
+          $package = @{
+            name = 'infojano-individual-tool-installers'
+            version = '1.0.1'
+            description = 'Individual InfoJano Windows tool installers'
+            main = 'main.cjs'
+            author = 'InfoJano'
+            license = 'MIT'
+            build = @{
+              appId = 'com.infojano.desktop.placeholder'
+              productName = 'InfoJano Tool'
+              directories = @{ output = 'release' }
+              files = @('main.cjs', 'package.json')
+              win = @{
+                target = @('nsis')
+                artifactName = 'InfoJano-Tool-Setup.exe'
+              }
+              nsis = @{
+                oneClick = $false
+                allowToChangeInstallationDirectory = $true
+                createDesktopShortcut = $true
+                createStartMenuShortcut = $true
+              }
+            }
+            devDependencies = @{
+              electron = '31.7.7'
+              'electron-builder' = '24.13.3'
+            }
+          }
+
+          Set-Content -Path (Join-Path $workspace 'package.json') -Value ($package | ConvertTo-Json -Depth 10) -Encoding utf8
+          Push-Location $workspace
+          try {
+            npm install --no-audit --no-fund
+          } finally {
+            Pop-Location
+          }
+
       - name: Build 23 Windows installers
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
+          $workspace = Join-Path $PWD 'desktop/individual-installer-build'
           $out = Join-Path $PWD 'desktop-dist'
-          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $packagePath = Join-Path $workspace 'package.json'
+          $package = Get-Content $packagePath -Raw | ConvertFrom-Json -AsHashtable
+
           $tools = @'
           age|Age Calculator|age.html
           bmi|BMI Calculator|bmi.html
@@ -53,63 +104,80 @@ jobs:
           tip-calculator|Tip Calculator|tip-calculator.html
           unit-converter|Unit Converter|unit-converter.html
           '@
+
           foreach ($line in ($tools -split "`n")) {
             $line = $line.Trim()
             if (-not $line) { continue }
             $parts = $line -split '\|'
-            $id = $parts[0].Trim(); $name = $parts[1].Trim(); $page = $parts[2].Trim()
+            $id = $parts[0].Trim()
+            $name = $parts[1].Trim()
+            $page = $parts[2].Trim()
             $slug = ($name -replace '[^A-Za-z0-9]+','-').Trim('-')
-            $dir = Join-Path $PWD ("desktop/build-" + $id)
-            New-Item -ItemType Directory -Force -Path $dir | Out-Null
             $url = "https://infojano.com/" + $page
+
             $main = @"
           const { app, BrowserWindow, shell } = require('electron');
-          const { URL } = require('url');
+          const TOOL_URL = '$url';
+          const TOOL_NAME = '$name';
+
           function createWindow() {
             const win = new BrowserWindow({
-              width: 1180, height: 820, minWidth: 760, minHeight: 560,
-              autoHideMenuBar: true, backgroundColor: '#f2f6fd',
-              title: '$name',
-              webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true }
+              width: 1180,
+              height: 820,
+              minWidth: 760,
+              minHeight: 560,
+              autoHideMenuBar: true,
+              backgroundColor: '#f2f6fd',
+              title: TOOL_NAME,
+              webPreferences: {
+                contextIsolation: true,
+                nodeIntegration: false,
+                sandbox: true
+              }
             });
-            win.loadURL('$url');
+            win.loadURL(TOOL_URL);
             win.webContents.setWindowOpenHandler(({ url }) => {
               if (url.startsWith('https://') || url.startsWith('http://')) shell.openExternal(url);
               return { action: 'deny' };
             });
           }
-          app.whenReady().then(() => { createWindow(); app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); }); });
-          app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
+
+          app.whenReady().then(() => {
+            createWindow();
+            app.on('activate', () => {
+              if (BrowserWindow.getAllWindows().length === 0) createWindow();
+            });
+          });
+          app.on('window-all-closed', () => {
+            if (process.platform !== 'darwin') app.quit();
+          });
           "@
-            $package = @{
-              name = "infojano-$id"; version = "1.0.0"; description = "InfoJano $name desktop app"
-              main = "main.cjs"; author = "InfoJano"; license = "MIT"
-              build = @{
-                appId = "com.infojano.desktop.$($id -replace '[^a-zA-Z0-9.-]','')"
-                productName = "InfoJano $name"
-                directories = @{ output = "release" }
-                files = @("main.cjs")
-                win = @{ target = @("nsis"); artifactName = "InfoJano-$slug-Setup.exe" }
-                nsis = @{ oneClick = $false; allowToChangeInstallationDirectory = $true; createDesktopShortcut = $true; createStartMenuShortcut = $true }
-              }
-              devDependencies = @{ electron = "31.7.7"; "electron-builder" = "24.13.3" }
-            } | ConvertTo-Json -Depth 8
-            Set-Content -Path (Join-Path $dir 'main.cjs') -Value $main -Encoding utf8
-            Set-Content -Path (Join-Path $dir 'package.json') -Value $package -Encoding utf8
-            Push-Location $dir
+
+            $package.build.appId = "com.infojano.desktop.$($id -replace '[^a-zA-Z0-9.-]','')"
+            $package.build.productName = "InfoJano $name"
+            $package.build.win.artifactName = "InfoJano-$slug-Setup.exe"
+            Set-Content -Path (Join-Path $workspace 'package.json') -Value ($package | ConvertTo-Json -Depth 10) -Encoding utf8
+            Set-Content -Path (Join-Path $workspace 'main.cjs') -Value $main -Encoding utf8
+
+            Push-Location $workspace
             try {
-              npm install --no-audit --no-fund
               npx electron-builder --win nsis --x64 --publish never
-              Get-ChildItem (Join-Path $dir 'release') -Filter '*.exe' | ForEach-Object { Copy-Item $_.FullName $out -Force }
-            } finally { Pop-Location }
+              $builtFile = Join-Path $workspace ("release/InfoJano-" + $slug + "-Setup.exe")
+              if (-not (Test-Path $builtFile)) { throw "Installer missing after build: $builtFile" }
+              Copy-Item $builtFile $out -Force
+            } finally {
+              Pop-Location
+            }
           }
+
           $built = @(Get-ChildItem $out -Filter '*.exe')
           if ($built.Count -ne 23) { throw "Expected 23 Windows installers, got $($built.Count)" }
+
       - name: Publish Windows installers
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: infojano-desktop-apps-v1.0.0
-          name: InfoJano Windows Desktop Apps v1.0.0
+          tag_name: infojano-desktop-apps-v1.0.1
+          name: InfoJano Windows Desktop Apps v1.0.1
           prerelease: true
           generate_release_notes: false
           body: |
