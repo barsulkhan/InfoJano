@@ -78,3 +78,23 @@ The repository contains `docs/04_InfoJano_Master_CURRENT_2026-11-12.md`. Its pro
 
 ## Resume instruction
 When the user says “কাজ চালাও” or “continue”, first read this file, then inspect the latest GitHub main/PR/Actions state, and continue from the exact next action. Do not ask the user to repeat project history.
+
+
+## Resume review update — 13 Nov 2026 (PR #171)
+
+### Review result: BLOCKED — do not merge yet
+- Re-read this handoff and fetched PR #171 metadata, all 58 file patches, review submissions and review threads.
+- Current PR status at this check: open, not merged; GitHub reports `mergeable=false` (updated 2026-11-13T17:24:08Z). No submitted reviews or review threads were returned.
+- Confirmed source-level defects in the branch:
+  1. `app-manifests/age.webmanifest` and `app-manifests/bmi.webmanifest` still hard-code `/InfoJano/` for `id`, `start_url`, `scope`, and icon `src`. Their pages now reference these manifests relatively, but the manifests themselves are still GitHub Pages-only paths and will not be correct on the custom-domain root.
+  2. `word-to-jpg.html`, `word-to-pdf.html`, and `word-to-png.html` still have absolute `/InfoJano/word-converter.html` URLs in the meta refresh tag, even though the inline `location.replace()` and fallback link were changed to relative URLs.
+  3. Changed pages `extract-pdf-pages.html`, `image-resizer.html`, and `word-converter.html` still use root-absolute `/infojano-mark.svg` favicons. This resolves on the custom domain but not at the GitHub Pages project subpath unless the asset is also present at the host root.
+  4. `sw.js` rewrites its precache list from `/InfoJano/` to the detected base path, which is directionally sound, but it still needs validation for every path and cache install behavior. No browser test has been performed.
+- The per-file patch scan found the above remaining root-absolute references in added lines. Full repository-wide scan of all standalone web manifests and unmodified pages is still pending.
+- No files changed during this review; no deployment or live browser/device test performed.
+
+### Next exact actions
+1. Fix the three redirect meta-refresh URLs and normalize favicon paths for both deployment bases.
+2. Make all app-specific web manifests deployment-base-safe (relative IDs/start URLs/scopes/icons where valid) and scan the full repository for remaining absolute `/InfoJano/` paths.
+3. Re-check the service worker precache list and both hosting layouts, then re-fetch PR metadata to understand why GitHub reports `mergeable=false`.
+4. Only after source checks pass, ask for approval before merging this broad change. After merge, verify Actions and live URLs separately.
