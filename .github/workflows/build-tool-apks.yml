@@ -67,18 +67,22 @@ jobs:
               assert f'app-manifests/{slug}.webmanifest' in html, f'Missing manifest link: {page}'
               assert 'install.js' in html, f'Missing installer script: {page}'
           sw = (root / 'sw.js').read_text(encoding='utf-8')
-          for icon in icons:
-              assert f'/InfoJano/{icon.as_posix()}' in sw, f'Icon missing from service-worker cache: {icon}'
-          for page in pages:
-              assert f'/InfoJano/{page.name}' in sw, f'Tool page missing from service-worker cache: {page}'
-          for manifest in manifests:
-              assert f'/InfoJano/{manifest.as_posix()}' in sw, f'Manifest missing from service-worker cache: {manifest}'
           workflow = (root / '.github/workflows/build-tool-apks.yml').read_text(encoding='utf-8')
           section = workflow.split("done <<'TOOLS'", 1)[1]
           entries = [line.strip() for line in section.splitlines() if line.strip().count('|') == 4 and line.strip().split('|')[0].isalnum()]
           assert len(entries) == 23, f'Expected 23 APK targets, found {len(entries)}'
           assert len({line.split('|')[0] for line in entries}) == 23, 'Duplicate APK IDs'
-          assert all((root / line.split('|')[2]).exists() for line in entries), 'An APK target references a missing tool page'
+          for entry in entries:
+              tool_id, tool_name, page_name, icon_text, icon_file = entry.split('|')
+              page = root / page_name
+              icon = root / 'app-icons' / icon_file
+              assert page.is_file(), f'APK target references a missing tool page: {page}'
+              assert icon.is_file(), f'APK target references a missing tool icon: {icon}'
+              assert f'/InfoJano/{page_name}' in sw, f'APK target page missing from service-worker cache: {page_name}'
+              assert f'/InfoJano/app-icons/{icon_file}' in sw, f'APK target icon missing from service-worker cache: {icon_file}'
+              manifest = root / 'app-manifests' / f'{page.stem}.webmanifest'
+              if manifest.is_file():
+                  assert f'/InfoJano/app-manifests/{manifest.name}' in sw, f'APK target manifest missing from service-worker cache: {manifest.name}'
           print(f'Validation passed: {len(icons)} SVGs, {len(manifests)} manifests, {len(pages)} pages and {len(entries)} APK targets.')
           PY
 
