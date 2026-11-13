@@ -232,3 +232,39 @@ When the user says “কাজ চালাও” or “continue”, first read
 3. Inspect the full service-worker fetch/offline logic and confirm the cache-install behavior, not just the 169 precache file paths.
 4. Retry live URL checks through a real browser or a reliable HTTP client; test homepage, calculator, Countdown Studio, manifest, sw.js, one app manifest and nested 404.
 5. Test service-worker registration, install prompt, cache and offline fallback in Chrome on Android. Record each as pass/fail/not-tested.
+
+
+### PR #172 / #173 merged — 13 Nov 2026
+- Reviewed the exact one-file diffs for both PRs and merged them with squash commits.
+- **PR #172 merged**: https://github.com/barsulkhan/InfoJano/pull/172
+  - Merge commit: `8b1000d5bb6317b499cc7defe9315484635c70e4`
+  - Fixes APK workflow validation so relative manifest `start_url`, `scope` and icon `src` values are resolved from the manifest's directory.
+- **PR #173 merged**: https://github.com/barsulkhan/InfoJano/pull/173
+  - Merge commit: `cfd66b74bd2d624a130df8b30e221e1f6d7440f3`
+  - Fixes Related Apps base-path selection for custom domain vs GitHub Pages project path.
+- Both PRs were reported mergeable before merge; both merge operations returned success.
+
+### Post-merge Actions state at last check
+- APK workflow for commit `8b1000d5bb6317b499cc7defe9315484635c70e4`:
+  - Run #? / ID `43478978269`: https://github.com/barsulkhan/InfoJano/actions/runs/43478978269
+  - Status: `in_progress` at last check.
+  - Checkout and Java setup succeeded; Gradle setup was still running. Manifest validator, APK build, artifact upload and release publication had not yet run. Do not claim this run passed until checked again.
+- Pages workflow for PR #172 merge commit was cancelled as a superseded run: ID `43478978223`.
+- Pages workflow for latest main commit `cfd66b74bd2d624a130df8b30e221e1f6d7440f3`:
+  - ID `43478990929`: https://github.com/barsulkhan/InfoJano/actions/runs/43478990929
+  - Status: `queued` at last check. Check again; do not assume deployment is complete.
+
+### Path audit progress — additional direct-source findings
+- Directly fetched additional main-branch HTML files and confirmed root-absolute references remain in multiple legacy pages, beyond the already-fixed shared Related Apps script.
+- Examples confirmed:
+  - BMI guides: `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html` still load `/InfoJano/install.js` and `/InfoJano/site-header.js`.
+  - ID card guides: `aadhaar-card-print.html`, `ayushman-card-print.html`, `digital-ration-card-print.html`, `voter-id-card-print.html` still use root-absolute favicon/CSS and internal guide links.
+  - `id-card-print-studio.html` still has root-absolute home/guide links.
+  - A number of legacy calculator/SEO pages still use `/infojano-mark.svg` as favicon.
+  - The root-level absolute references work on the custom-domain root but do not reliably resolve under the GitHub Pages `/InfoJano/` project path.
+- Do not mark the full path audit complete yet. Remaining root-relative page fixes are still open work.
+
+### Latest main / Read Hub state
+- Read Hub update commit: `593ef0fbb6fa393d583fc9f75d6f5614bc2224c5`.
+- Latest main after PR #172 and #173 merges: `cfd66b74bd2d624a130df8b30e221e1f6d7440f3`.
+- Next action: check Actions run `43478978269` to see whether the corrected APK validation passes, check Pages run `43478990929`, then continue the remaining HTML/JS/CSS root-path audit and fix confirmed issues in focused PRs.
