@@ -114,3 +114,22 @@ When the user says “কাজ চালাও” or “continue”, first read
 2. Audit every ASSETS entry in `sw.js` against files actually present in the repository and verify mapping under both `/` and `/InfoJano/`.
 3. Inspect all web manifests and the full repository for remaining deployment-specific absolute paths, not only changed PR lines.
 4. Re-run source checks; update PR description and this handoff with results. Ask user before merging the broad PR.
+
+
+## PR #171 merge confirmation — 13 Nov 2026
+- User confirmed the PR action (“মার্ক”) and GitHub now reports PR #171 as **closed and merged**.
+- PR: https://github.com/barsulkhan/InfoJano/pull/171
+- Merge commit: `36c99d410ad9bcd761586aa2afb48afd0b5a6b7f`
+- PR head: `9971cb5e647a79bb2702c46ca1dc9cd0dbffbc1e`
+- Scope merged: 60 files changed (166 additions, 164 deletions); custom-domain and GitHub Pages deployment-path compatibility changes.
+- Verified on main after merge: `install.js` selects `/InfoJano/` for `barsulkhan.github.io` and `/` otherwise; `manifest.json` uses relative paths; `sw.js` maps its `/InfoJano/` precache paths to the detected deployment base.
+- GitHub's PR-specific workflow-runs lookup for the merge SHA returned no runs. This is **not** proof that deployment completed or CI passed.
+- Not yet verified: path-by-path existence of every service-worker precache asset; all standalone manifests and all pages; live custom-domain and GitHub Pages responses; browser/PWA install/offline behavior; Android device behavior.
+- No claim is made that the live website is updated until deployment is independently confirmed.
+- Working agreement going forward: after each meaningful task, update this Read Hub file in GitHub, then tell the user what was done and explicitly confirm it was saved here.
+
+### Next task
+1. Verify GitHub Pages deployment status using repository Actions/deployment state and check live URLs for both hosting layouts.
+2. Audit every `ASSETS` entry in `sw.js` against the merged repository tree; fix any missing or incorrect paths in a new focused PR.
+3. Scan all standalone web manifests and remaining page references for path compatibility.
+4. Test homepage, one calculator, Countdown Studio, manifest, service-worker registration and offline fallback where feasible. Record each check as passed/failed/not tested.
