@@ -58,6 +58,22 @@
   if(!current)return;
   const isDesktop=window.matchMedia("(min-width: 900px)").matches && !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   function addStyles(){
+    if(document.getElementById("ij-windows-download-style"))return;
+    const style=document.createElement("style");style.id="ij-windows-download-style";
+    style.textContent=`
+      #ij-windows-app-download{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:24px 0;padding:20px 22px;border:1px solid #cfe0ff;border-radius:20px;background:linear-gradient(120deg,#f3f8ff 0%,#fff 72%);box-shadow:0 8px 24px rgba(28,78,160,.07);color:#172554}
+      #ij-windows-app-download .ij-win-copy{min-width:0}
+      #ij-windows-app-download h2{margin:0 0 6px;font-size:20px;line-height:1.25;color:#102d61}
+      #ij-windows-app-download p{margin:0;color:#60718d;font-size:13px;line-height:1.55}
+      #ij-windows-app-download .ij-win-meta{margin-top:5px;font-size:11px;color:#74839b}
+      #ij-windows-app-download .ij-win-button{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:12px 18px;border-radius:13px;background:#1254bd;color:#fff;text-decoration:none;font-size:14px;font-weight:800;box-shadow:0 5px 14px #164da52b}
+      #ij-windows-app-download .ij-win-button:hover,#ij-windows-app-download .ij-win-button:focus-visible{background:#0b3e91;outline:2px solid #1254bd;outline-offset:3px}
+      #ij-windows-app-download .ij-win-button svg{width:18px;height:18px}
+      @media(max-width:620px){#ij-windows-app-download{align-items:stretch;flex-direction:column;padding:17px}#ij-windows-app-download h2{font-size:18px}#ij-windows-app-download .ij-win-button{width:100%}}
+    `;
+    document.head.appendChild(style);
+  }
+
     if(document.getElementById("ij-related-apps-style"))return;
     const style=document.createElement("style");style.id="ij-related-apps-style";
     style.textContent=`
@@ -118,6 +134,21 @@
       link.setAttribute("aria-label","Open "+a.name);
       link.append(icon,name,desc,arrow);grid.appendChild(link);
     });
+    const download=document.createElement("section");download.id="ij-windows-app-download";download.setAttribute("aria-labelledby","ij-win-download-title");
+    const copy=document.createElement("div");copy.className="ij-win-copy";
+    const downloadTitle=document.createElement("h2");downloadTitle.id="ij-win-download-title";downloadTitle.textContent="Download "+current.name+" for Windows";
+    const downloadText=document.createElement("p");downloadText.textContent="Install this tool as a separate Windows desktop app. It opens directly in its own window.";
+    const meta=document.createElement("p");meta.className="ij-win-meta";meta.textContent="Windows 10/11 • Internet connection required • Installer is approximately 75 MB • Unsigned app";
+    copy.append(downloadTitle,downloadText,meta);
+    const downloadLink=document.createElement("a");const fileSlug=current.name.replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"");
+    downloadLink.className="ij-win-button";downloadLink.href=desktopRelease+"InfoJano-"+fileSlug+"-Setup.exe";downloadLink.target="_blank";downloadLink.rel="noopener noreferrer";
+    downloadLink.setAttribute("aria-label","Download "+current.name+" Windows installer");
+    downloadLink.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 17v3h14v-3"/></svg><span>Download for Windows</span>';
+    download.append(copy,downloadLink);
+    const main=document.querySelector("main")||document.body;
+    const previousDownload=document.getElementById("ij-windows-app-download");
+    if(previousDownload)previousDownload.remove();
+    main.insertBefore(download,section);
     section.replaceChildren(h2,p,grid);
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",render,{once:true});else render();
