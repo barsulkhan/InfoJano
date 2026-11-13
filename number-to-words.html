@@ -191,6 +191,14 @@ main>section[style]{max-width:none!important;width:100%;margin:24px auto!importa
   #ij-nw-explore{box-sizing:border-box;width:100%;max-width:none;margin:24px 0;padding:0}
 }
 </style>
+<style id="ij-hero-match-pro-box">
+@media screen and (min-width:761px){
+  .ij-reference-hero{box-sizing:border-box;max-width:none;margin-top:14px;margin-bottom:26px}
+  .ij-reference-grid{box-sizing:border-box;width:100%;max-width:none;min-height:100%;align-content:center}
+  .ij-reference-copy{align-self:center}
+  .ij-reference-art{align-self:center}
+}
+</style>
 </head>
 <body>
 
@@ -233,5 +241,35 @@ main>section[style]{max-width:none!important;width:100%;margin:24px auto!importa
 
 
 <script src="/InfoJano/site-header.js" defer></script>
-<script src="number-to-words-locales.js"></script></body>
+<script src="number-to-words-locales.js"></script><script id="ij-sync-hero-to-pro-box">
+(function(){
+  function syncHeroToProBox(){
+    var hero=document.querySelector('.ij-reference-hero');
+    var box=document.querySelector('#nwapp');
+    if(!hero||!box||window.innerWidth<761)return;
+    var rect=box.getBoundingClientRect();
+    hero.style.width=rect.width+'px';
+    hero.style.maxWidth='none';
+    hero.style.height=rect.height+'px';
+    hero.style.minHeight='0';
+    hero.style.marginLeft=(rect.left+window.scrollX)+'px';
+    hero.style.marginRight='0';
+    hero.style.boxSizing='border-box';
+    var grid=hero.querySelector('.ij-reference-grid');
+    if(grid){grid.style.minHeight='100%';grid.style.height='100%';grid.style.maxWidth='none';grid.style.width='100%';}
+  }
+  var queued=false;
+  function schedule(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;syncHeroToProBox();});}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule,{once:true});else schedule();
+  window.addEventListener('load',schedule);
+  window.addEventListener('resize',schedule);
+  if('ResizeObserver' in window){
+    var target=document.querySelector('#nwapp');
+    if(target)new ResizeObserver(schedule).observe(target);
+  }
+  setTimeout(schedule,300);
+  setTimeout(schedule,1200);
+})();
+</script>
+</body>
 </html>
