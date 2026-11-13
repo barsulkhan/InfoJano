@@ -713,3 +713,48 @@ When the user says “কাজ চালাও” or “continue”, first read
 - Earlier Pages run #43485244750 completed successfully:
   https://github.com/barsulkhan/InfoJano/actions/runs/43485244750
 - Do not mark multi-tool APK, Windows desktop, or latest Pages deployment as complete until the run conclusion is checked.
+
+## Continuation update — Windows app capabilities and build verification — 14 Nov 2026
+
+### Workflow results confirmed
+- Multi-tool Android APK build run #43485661052 completed **success**:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485661052
+- Its artifact `InfoJano-Tool-APKs` was created (artifact ID 14066684525; 987,661 bytes).
+- Windows all-tools desktop app build run #43485661006 completed **success**:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485661006
+- Age Calculator APK build run #43485660813 completed **success**:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485660813
+- Pages deployment for Read Hub commit `7e1013687c7d3fd212e5d20a119ab4a0cb665402` completed **success**:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485706308
+- Pages deployment for preceding Read Hub commit `3e794db6e01b6621b0ac170cf232e33680a3bd04` completed **success**:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485856255
+
+### Existing Windows download products — important discovery
+- The release `infojano-desktop-apps-v1.0.0` already contains:
+  - `InfoJano-Setup-1.0.0.exe`: combined InfoJano Desktop installer.
+  - `InfoJano-Portable-1.0.0.exe`: portable combined app.
+  - 23 separate per-tool Windows installers (Age, BMI, Currency, Date Difference, Discount, EMI, GST, ID Card Studio, Image Compressor, Image Resizer, Image to PDF, Loan Eligibility, Loan Interest, Number to Words, Password Generator, Percentage, Percentage Change, QR Maker, Savings, Text Counter, Time Calculator, Tip Calculator, Unit Converter).
+- Release page: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-desktop-apps-v1.0.0
+- Combined app build workflow is `.github/workflows/build-desktop-app.yml`; it packages `desktop-app/main.cjs` and publishes combined installer + portable EXE.
+- The separate 23-installer workflow is `.github/workflows/build-desktop-apps.yml`. Each tool EXE opens its matching hosted web page in a dedicated Electron window and **requires internet**.
+- Current desktop apps are web wrappers, not fully offline copies of all tool code. Offline capability requires a separate architecture/workstream and per-tool dependency audit.
+- The individual installer workflow was still embedding the old GitHub Pages URL even after PR #184; this discrepancy was caught and corrected below.
+
+### PR #185 — individual Windows tool installer URLs aligned
+- PR: https://github.com/barsulkhan/InfoJano/pull/185
+- Merge commit: `f5ec2a5c03c8599de052504752416d4035d1abbb`
+- Updated the one URL constant in `.github/workflows/build-desktop-apps.yml` so all 23 individual Windows tool installers open `https://infojano.com/<tool-page>`.
+- PR diff reviewed; no other build steps or targets changed.
+- New workflow run #43487044793 (individual Windows apps) was queued at last check:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43487044793
+- Pages deployment for PR #185 merge commit queued as run #43487044274:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43487044274
+- Do not claim refreshed individual installers have been republished until run #43487044793 succeeds and release assets are checked.
+
+### Product direction discussed with user
+- User is considering a Windows computer app that can make all InfoJano tools available in one place, while letting a user keep/download an individual favorite tool.
+- Recommendation for discussion: keep one main InfoJano Desktop installer as the primary product; offer per-tool desktop shortcut / optional dedicated installer for users who want a single tool.
+- Clearly distinguish:
+  1. Current Electron wrappers: open hosted InfoJano pages and require internet.
+  2. Future offline-capable desktop: bundle local HTML/CSS/JS/assets and test each tool locally; API/backend-dependent tools must disclose online requirement or be redesigned.
+- No new product architecture or offline implementation has been started; user asked to discuss feasibility first. Do not silently start a major architecture change without agreement.
