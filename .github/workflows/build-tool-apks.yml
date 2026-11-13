@@ -55,10 +55,14 @@ jobs:
               slug = manifest.stem
               page = root / f'{slug}.html'
               assert page.exists(), f'Missing tool page: {page}'
-              assert data.get('start_url') == f'/InfoJano/{slug}.html', f'Wrong start_url: {manifest}'
-              assert data.get('scope') == '/InfoJano/', f'Wrong scope: {manifest}'
-              icon_paths = [item.get('src', '').removeprefix('/InfoJano/') for item in data.get('icons', [])]
-              assert icon_paths and any((root / icon_path).is_file() for icon_path in icon_paths), f'Missing manifest icon file: {manifest}'
+              start_url = data.get('start_url', '')
+              resolved_start = (manifest.parent / start_url).resolve()
+              assert resolved_start == page.resolve(), f'Wrong start_url: {manifest}'
+              scope = data.get('scope', '')
+              resolved_scope = (manifest.parent / scope).resolve()
+              assert resolved_scope == root.resolve(), f'Wrong scope: {manifest}'
+              icon_paths = [item.get('src', '') for item in data.get('icons', [])]
+              assert icon_paths and any((manifest.parent / icon_path).resolve().is_file() for icon_path in icon_paths), f'Missing manifest icon file: {manifest}'
               html = page.read_text(encoding='utf-8')
               assert f'app-manifests/{slug}.webmanifest' in html, f'Missing manifest link: {page}'
               assert 'install.js' in html, f'Missing installer script: {page}'
