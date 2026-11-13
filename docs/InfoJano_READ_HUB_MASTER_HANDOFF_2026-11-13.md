@@ -471,3 +471,42 @@ When the user says “কাজ চালাও” or “continue”, first read
 2. Test Countdown Studio in a real browser: manifest discovery, Service Worker registration, activation, installability criteria and offline navigation.
 3. Continue checking all internal local href/src links and JavaScript-generated URLs for missing targets.
 4. Verify live custom-domain and GitHub Pages fallback behavior when a browser/HTTP testing route is available.
+
+## Continuation update — 13 Nov 2026 (local-link audit and All Tools navigation fix)
+
+### Latest deployment / APK workflow confirmation
+- Pages deployment on Read Hub update commit 7b4e3391d0439ab525df464bc696a56f9e2c9294 completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43481307489
+- APK workflow for Countdown Studio PWA merge commit c49fb5c5beeee09fd7f864cd6a9227e223ca8453 completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43481272458
+- Latest main commit after PR #179: 836c57afe95c379e1dcae91049d5ceeb1092156e.
+- Pages deployment for that latest main commit is queued at last check:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43482576740
+
+### Broken local navigation found and fixed — PR #179
+- While checking local href targets, found three date calculator SEO pages linking to `tools.html`, which does not exist in the repository.
+- Affected pages:
+  - business-days-calculator.html
+  - date-duration-calculator.html
+  - days-between-dates-calculator.html
+- Confirmed the homepage has the actual tool listing container `id="toolGrid"`.
+- Replaced the invalid link with `index.html#toolGrid` on all three pages.
+- PR #179: https://github.com/barsulkhan/InfoJano/pull/179
+- Merge commit: 836c57afe95c379e1dcae91049d5ceeb1092156e
+- All three page updates were path-only. The PR was clean/mergeable and merged to main.
+
+### Local link audit progress
+- The scan method resolves relative local href/src/action/poster values against repository-root HTML files and checks them against the main Git tree.
+- First 10 HTML pages: one missing target was reported, then confirmed to be a false positive because the scanner treated an in-page fragment-only reference as a file path; no actual missing file found in that first group.
+- HTML pages 10–19: found the three `tools.html` links described above; corrected via PR #179.
+- HTML pages 20–29 and 30–39: no missing targets found in those batches.
+- The full 109-page local href/src scan is NOT complete yet. The attempted large batch exceeded the GitHub tool call limit; continue in smaller batches and record exact counts.
+- Some HTML pages have very large minified single-line markup; avoid dumping full file content. Extract matching attributes and nearby context only.
+- The audit currently checks static href/src/action/poster attributes. It does not yet cover CSS url() values, JavaScript-created navigation/fetch/import URLs, form destinations in dynamically generated markup, or external URL validity.
+
+### Current remaining work
+1. Continue the 109 HTML page local target audit in small batches; classify anchors/fragments and intentional dynamic URLs correctly.
+2. Scan CSS url() and JS imports/fetch/worker/script-created paths against repository assets.
+3. Check all tool manifests and PWA registration behavior, including the newly added Countdown Studio manifest.
+4. Recheck current Pages deployment run #43482576740.
+5. Live browser testing remains unavailable in the current fetch-only environment; do not claim real install/offline functionality until tested in a browser.
