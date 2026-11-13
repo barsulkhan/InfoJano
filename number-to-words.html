@@ -148,26 +148,21 @@ main>section[style]{max-width:none!important;width:100%;margin:24px auto!importa
  .ij-nw-actions{grid-template-columns:1fr}
 }
 @media(max-width:360px){.ij-nw{padding:11px}.ij-nw-panel-left{padding-right:7px}.ij-nw-panel-right{padding-left:7px}.ij-nw input,.ij-nw select,.ij-nw textarea{padding:8px 7px;font-size:12px}.ij-nw-panel h3{font-size:12px}}
-</style><style id="ij-number-words-expanded-hero-final">
-/* Final desktop sizing: intentionally placed after legacy hero rules so old 340px/250px overrides cannot shrink it again. */
+</style><style id="ij-number-words-horizontal-width-only">
+/* Horizontal-only correction. Match ID Card Print Studio's 1200px frame; restore the original vertical proportions. */
 @media(min-width:761px){
-  .ij-reference-hero{box-sizing:border-box;width:100%;max-width:1320px;min-height:520px;padding:clamp(38px,4vw,56px);margin:18px auto 30px}
-  .ij-reference-grid{box-sizing:border-box;width:100%;max-width:none;min-height:420px;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);gap:clamp(32px,4vw,64px);align-items:stretch}
-  .ij-reference-copy{box-sizing:border-box;min-height:420px;display:flex;flex-direction:column;justify-content:center}
-  .ij-currency-art,.ij-reference-art{box-sizing:border-box;min-height:420px}
-  #ij-nw-explore{box-sizing:border-box;width:100%;max-width:1320px;margin:30px auto 36px;padding:0 0}
-  #ij-nw-explore .ij-nw-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-  #ij-nw-explore .ij-nw-links a.ij-nw-tool-card{box-sizing:border-box;min-height:164px;padding:18px;border-radius:20px;gap:12px}
-  #ij-nw-explore .ij-nw-tool-icon{width:42px;height:42px;flex-basis:42px}
-  #ij-nw-explore .ij-nw-tool-icon svg{width:26px;height:26px}
-  #ij-nw-explore .ij-nw-tool-head strong{font-size:14px}
-  #ij-nw-explore .ij-nw-tool-desc{font-size:13px;line-height:1.5}
-}
-@media(min-width:761px) and (max-width:1000px){
-  .ij-reference-hero{min-height:480px;padding:32px}
-  .ij-reference-grid{min-height:390px;grid-template-columns:minmax(0,1fr) minmax(300px,.9fr);gap:24px}
-  .ij-reference-copy,.ij-currency-art,.ij-reference-art{min-height:390px}
-  #ij-nw-explore{padding:0 14px}
+  .ij-reference-hero{box-sizing:border-box;width:min(calc(100% - 28px),1200px);max-width:1200px;min-height:340px;padding:42px 46px;margin:14px auto 26px}
+  .ij-reference-grid{box-sizing:border-box;width:100%;max-width:none;min-height:250px;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);gap:clamp(22px,4vw,54px);align-items:center}
+  .ij-reference-copy{box-sizing:border-box;min-height:250px;display:flex;flex-direction:column;justify-content:center}
+  .ij-reference-art{min-height:270px}
+  .ij-currency-art{min-height:300px}
+  #ij-nw-explore{box-sizing:border-box;width:min(calc(100% - 28px),1200px);max-width:1200px;margin:24px auto;padding:0}
+  #ij-nw-explore .ij-nw-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+  #ij-nw-explore .ij-nw-links a.ij-nw-tool-card{box-sizing:border-box;min-height:136px;padding:15px;border-radius:18px;gap:9px}
+  #ij-nw-explore .ij-nw-tool-icon{width:34px;height:34px;flex-basis:34px}
+  #ij-nw-explore .ij-nw-tool-icon svg{width:22px;height:22px}
+  #ij-nw-explore .ij-nw-tool-head strong{font-size:11px}
+  #ij-nw-explore .ij-nw-tool-desc{font-size:12px;line-height:1.45}
 }
 </style>
 </head>
