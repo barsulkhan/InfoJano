@@ -8,9 +8,9 @@
 <link rel="canonical" href="https://infojano.com/emi.html">
 <meta property="og:type" content="website"><meta property="og:title" content="EMI Calculator | InfoJano"><meta property="og:description" content="Calculate loan EMI, interest and repayment schedule."><meta property="og:url" content="https://infojano.com/emi.html"><meta property="og:image" content="https://infojano.com/icon-512.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="EMI Calculator | InfoJano"><meta name="twitter:description" content="Calculate loan EMI, interest and repayment schedule.">
-<link rel="manifest" href="/InfoJano/app-manifests/emi.webmanifest">
+<link rel="manifest" href="./app-manifests/emi.webmanifest">
 <script>/* Ensure installed browsers promptly pick up the current EMI hero design. */
-if('serviceWorker' in navigator){let reloadOnce=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!reloadOnce){reloadOnce=true;location.reload();}});window.addEventListener('load',()=>navigator.serviceWorker.getRegistration('/InfoJano/').then(reg=>reg&&reg.update()).catch(()=>{}));}
+if('serviceWorker' in navigator){let reloadOnce=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!reloadOnce){reloadOnce=true;location.reload();}});window.addEventListener('load',()=>navigator.serviceWorker.getRegistration('./').then(reg=>reg&&reg.update()).catch(()=>{}));}
 </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
@@ -258,6 +258,6 @@ $('feeFields').classList.remove('visible');syncTenure();calc();setupPlanner();
 })();
 </script>
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hide(){setTimeout(()=>loader.classList.add('ij-loaded'),350)}if(document.readyState==='complete')hide();else{window.addEventListener('load',hide,{once:true});setTimeout(hide,5000)}})();</script>
-<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
-<script src="/InfoJano/install.js" defer></script>
+<script src="./download-progress.js" defer></script><script src="./site-header.js" defer></script>
+<script src="./install.js" defer></script>
 </body></html>

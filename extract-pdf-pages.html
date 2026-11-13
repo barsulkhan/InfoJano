@@ -9,7 +9,7 @@
 <meta property="og:type" content="website"><meta property="og:title" content="Extract PDF Pages Online Free | PDF Page Extractor | InfoJano"><meta property="og:description" content="Extract selected pages from a PDF and save them as a new PDF online for free. Select page thumbnails, enter page ranges, choose odd or even pages and download a clean PDF in your browser."><meta property="og:url" content="https://infojano.com/extract-pdf-pages.html">
 <meta property="og:image" content="https://infojano.com/icon-512.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Extract PDF Pages Online Free | PDF Page Extractor | InfoJano"><meta name="twitter:description" content="Extract selected pages from a PDF and save them as a new PDF online for free. Select page thumbnails, enter page ranges, choose odd or even pages and download a clean PDF in your browser.">
-<link rel="icon" href="/infojano-mark.svg" type="image/svg+xml"><link rel="manifest" href="/InfoJano/app-manifests/extract-pdf-pages.webmanifest">
+<link rel="icon" href="./infojano-mark.svg" type="image/svg+xml"><link rel="manifest" href="./app-manifests/extract-pdf-pages.webmanifest">
 <style>
 :root{--ink:#10234b;--muted:#607394;--blue:#075de0;--line:#dce7f6;--soft:#f3f8ff;--green:#087f5b}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#edf4ff,#f8fbff 52%,#e9fbfa);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
@@ -51,7 +51,7 @@ footer{text-align:center;padding:25px 12px 45px;color:#72819a;font-size:12px}foo
 }
 </script>
 </head>
-<body><main><div class="crumb"><a href="/InfoJano/">Home</a> / PDF Tools / Extract PDF Pages</div>
+<body><main><div class="crumb"><a href="./">Home</a> / PDF Tools / Extract PDF Pages</div>
 <header class="hero"><div class="hero-art"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M25 9h34l19 19v62H25z" fill="#fff" stroke="#1d4ed8" stroke-width="4"/><path d="M59 9v20h19" stroke="#1d4ed8" stroke-width="4"/><rect x="33" y="45" width="38" height="25" rx="6" fill="#e11d48"/><text x="52" y="62" fill="white" font-size="14" font-weight="900" text-anchor="middle">PDF</text><path d="M34 78h32" stroke="#93c5fd" stroke-width="4" stroke-linecap="round"/></svg></div><div><div class="kicker">FREE ONLINE PDF TOOL</div><h1>PDF Page Extractor</h1><p>Choose the exact pages you need and create a new PDF. Keep the original text, images and page quality intact.</p><div class="pills"><span>✓ Select page thumbnails</span><span>✓ No account</span><span>✓ Browser processing</span></div></div></header>
 <section class="panel"><h2>1. Upload your PDF</h2><p class="sub">Choose a PDF from your device. The file is processed locally in your browser.</p>
 <label class="upload"><span class="cloud">⇧</span><strong>Choose a PDF file</strong><small>PDF files up to 100 MB</small><input id="file" type="file" accept="application/pdf,.pdf"></label>
@@ -72,8 +72,8 @@ footer{text-align:center;padding:25px 12px 45px;color:#72819a;font-size:12px}foo
 <details><summary>Can I extract odd or even pages?</summary><p>Yes. Use the Quick selection menu to select all odd pages or all even pages, then adjust the selection if needed.</p></details>
 <details><summary>Will extracted pages lose quality?</summary><p>No page is rendered as an image. The extractor copies original PDF page content, preserving selectable text and vector elements where supported by the source PDF.</p></details>
 <details><summary>Are my PDF files uploaded to a server?</summary><p>The extraction runs locally in your browser. Your document is not uploaded to an InfoJano processing server. The PDF library is loaded from a public CDN.</p></details></section>
-<section class="panel"><h2>Explore more free PDF tools</h2><div class="related"><a href="/InfoJano/pdf-to-jpg.html">PDF to JPG Converter</a><a href="/InfoJano/image-to-pdf.html">JPG to PDF</a><a href="/InfoJano/">All InfoJano tools</a></div></section>
-</main><footer>© InfoJano · <a href="/InfoJano/">Home</a> · Free online PDF tools</footer>
+<section class="panel"><h2>Explore more free PDF tools</h2><div class="related"><a href="./pdf-to-jpg.html">PDF to JPG Converter</a><a href="./image-to-pdf.html">JPG to PDF</a><a href="./">All InfoJano tools</a></div></section>
+</main><footer>© InfoJano · <a href="./">Home</a> · Free online PDF tools</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script type="module">
 import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs';
@@ -86,4 +86,4 @@ $('file').addEventListener('change',async e=>{const f=e.target.files[0];sourceBy
 $('range').addEventListener('change',()=>{try{selected=new Set(parsePages($('range').value,total));sync();}catch(e){status(e.message,'error');}});$('all').onclick=()=>{selected=new Set(Array.from({length:total},(_,i)=>i+1));sync();};$('invert').onclick=()=>{const n=new Set();for(let i=1;i<=total;i++)if(!selected.has(i))n.add(i);selected=n;sync();};
 $('quick').onchange=()=>{const v=$('quick').value;selected.clear();for(let i=1;i<=total;i++)if(v==='all'||(v==='odd'&&i%2)||(v==='even'&&i%2===0))selected.add(i);sync();};
 $('extract').onclick=async()=>{if(!sourceBytes||!selected.size)return;$('extract').disabled=true;try{status('Creating a new PDF with selected pages…');const src=await PDFLib.PDFDocument.load(sourceBytes);const out=await PDFLib.PDFDocument.create();const indices=[...selected].sort((a,b)=>a-b).map(n=>n-1);const copied=await out.copyPages(src,indices);copied.forEach(p=>out.addPage(p));const bytes=await out.save();const blob=new Blob([bytes],{type:'application/pdf'});const url=URL.createObjectURL(blob);const a=document.createElement('a');const name=($('filename').value.trim()||'InfoJano-Extracted-Pages').replace(/[^a-z0-9_-]/gi,'-');a.href=url;a.download=name+'.pdf';a.textContent='↓ Download extracted PDF ('+copied.length+' pages)';$('downloads').innerHTML='';$('downloads').append(a);$('downloads').className='status success';status('Done. '+copied.length+' page(s) saved in a new PDF.','success');}catch(e){status('Could not extract pages. This PDF may use encryption or unsupported features.','error');}finally{$('extract').disabled=false;}};
-</script><script src="/InfoJano/install.js" defer></script><script src="/InfoJano/site-header.js" defer></script></body></html>
+</script><script src="./install.js" defer></script><script src="./site-header.js" defer></script></body></html>

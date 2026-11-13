@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/age.html",
+  "id": "../age.html",
   "name": "InfoJano — Age Calculator",
   "short_name": "Age Calculator",
   "description": "Install the InfoJano Age Calculator tool for quick access.",
-  "start_url": "/InfoJano/age.html",
-  "scope": "/InfoJano/",
+  "start_url": "../age.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/age.svg",
+      "src": "../app-icons/age.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
