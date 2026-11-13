@@ -174,3 +174,61 @@ When the user says “কাজ চালাও” or “continue”, first read
 - 169/169 service-worker precache entries previously mapped to tracked files.
 - Remaining site-wide absolute path audit and real live/PWA tests are still pending.
 - Next chat should start by re-reading this Read Hub, checking latest main, then continue from Remaining work item 1 above.
+
+
+## Resume audit update — 13 Nov 2026 (continuation)
+
+### GitHub Pages / Actions verification
+- Checked the actual GitHub Actions runs for the repository.
+- **GitHub Pages deployment succeeded**:
+  - Run #2297: https://github.com/barsulkhan/InfoJano/actions/runs/43477129706
+  - Run ID: 43477129706
+  - Commit: `61be8b3ca35ef98772cdb25c1a1f08800db2e7a1`
+  - Conclusion: `success`
+  - Jobs `build`, `report-build-status`, and `deploy` all completed successfully.
+- The separate APK workflow failed:
+  - Run #577: https://github.com/barsulkhan/InfoJano/actions/runs/43477101651
+  - Commit: `32f5942192a0c583e97286732b382a3ecb124cce`
+  - Failure is confirmed from job log: `AssertionError: Wrong start_url: app-manifests/age.webmanifest`.
+  - Root cause: the validator expected absolute `/InfoJano/<tool>.html` start_url and `/InfoJano/` scope, but the current manifests intentionally use relative `../<tool>.html` and `../` so they work on both hosting layouts. APK build and later steps were skipped; no APKs were produced in this run.
+
+### Fixes prepared in open PRs (not merged)
+1. **PR #172 — Fix APK workflow validation for relative PWA manifests**
+   - https://github.com/barsulkhan/InfoJano/pull/172
+   - Branch: `fix/apk-manifest-relative-path-validation`
+   - Head: `93a5f3aa35435fd3520ca1780b1bcfd612a4d1f2`
+   - Changes only the workflow validation to resolve manifest start_url, scope and icon src relative to each manifest's directory.
+   - GitHub currently reports mergeable=true. The workflow is configured for pushes to main / manual dispatch, not pull_request; no passing run for this branch has yet been observed.
+
+2. **PR #173 — Fix Related Apps links on the custom domain**
+   - https://github.com/barsulkhan/InfoJano/pull/173
+   - Branch: `fix/related-apps-deployment-base`
+   - Head: `e30b3017fff72c5efce19b743ee41dbc67121312`
+   - Fixes `related-apps.js` hard-coded `/InfoJano/` base by selecting `/InfoJano/` on `barsulkhan.github.io` and `/` on the custom domain; also uses that detected base when deciding whether to show the Home return link.
+   - GitHub currently reports mergeable=true. Not merged.
+
+### Repository path audit — confirmed residual findings
+- Recursive Git tree for main is complete (not truncated): 267 tracked paths, including 110 HTML, 14 JS and 5 CSS files.
+- Re-fetched and inspected key source files including `install.js`, `site-header.js`, `related-apps.js`, `sw.js`, `manifest.json`, homepage, Age Calculator, Countdown Studio and multiple calculator/SEO pages.
+- Confirmed `install.js` and `site-header.js` already choose the correct root based on hostname.
+- Confirmed a number of unmodified pages still contain root-absolute references. Examples include:
+  - `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`: hard-coded `/InfoJano/install.js` and `/InfoJano/site-header.js` plus root-absolute favicon.
+  - `aadhaar-card-print.html`, `ayushman-card-print.html`, `digital-ration-card-print.html`, `voter-id-card-print.html`: root-absolute favicon/CSS and internal guide links.
+  - `id-card-print-studio.html`: root-absolute home and guide links.
+  - Multiple calculator/SEO pages still use root-absolute `/infojano-mark.svg` favicons.
+- These root-absolute paths resolve on the custom-domain root but can break on the GitHub Pages project subpath. They need a focused follow-up patch using paths relative to the root-level HTML files.
+- Search-index results can be stale; direct main-branch fetches are the source of truth. The above findings were confirmed by direct fetches of the named current-main files.
+- This is a targeted source audit in progress, not a claim that every one of the 110 HTML files and all JS/CSS references have been fully scanned yet.
+
+### Live website / browser / PWA verification
+- GitHub Pages Actions deploy job succeeded as above.
+- Direct live URL opens attempted for custom-domain manifest, service worker, Age Calculator, Countdown Studio, and GitHub Pages manifest/service worker. The available web fetcher returned inaccessible/internal errors for these endpoints.
+- Therefore live HTTP responses, custom-domain freshness, browser rendering, manifest response headers, service-worker registration/activation, install prompt, cache population, offline fallback, and Android behavior remain **not verified**. Do not infer them from the successful Actions run.
+- No physical Android browser/device test has been performed.
+
+### Next exact actions
+1. Review and safely merge PR #172 and PR #173 after their exact diffs are checked; then confirm the next Actions runs.
+2. Finish the full root-absolute path scan across all 110 HTML, 14 JS and 5 CSS files; fix the remaining unmodified pages so both custom-domain root and GitHub Pages project-path layouts work.
+3. Inspect the full service-worker fetch/offline logic and confirm the cache-install behavior, not just the 169 precache file paths.
+4. Retry live URL checks through a real browser or a reliable HTTP client; test homepage, calculator, Countdown Studio, manifest, sw.js, one app manifest and nested 404.
+5. Test service-worker registration, install prompt, cache and offline fallback in Chrome on Android. Record each as pass/fail/not-tested.
