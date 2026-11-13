@@ -256,6 +256,41 @@ main>section[style]{max-width:none!important;width:100%;margin:24px auto!importa
 .ij-reference-copy h1:after{content:"";position:absolute;z-index:2;top:-18%;bottom:-18%;left:-62%;width:34%;pointer-events:none;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,0) 24%,rgba(255,255,255,.92) 48%,rgba(110,211,255,.42) 58%,rgba(255,255,255,0) 78%,transparent 100%);filter:blur(3px);transform:skewX(-18deg);animation:ijHeroTextLightSweep 4.8s ease-in-out infinite}
 @keyframes ijHeroTextLightSweep{0%,12%{left:-62%;opacity:0}20%{opacity:.95}58%{left:128%;opacity:.85}68%,100%{left:128%;opacity:0}}
 @media(prefers-reduced-motion:reduce){.ij-reference-copy h1:after{animation:none;display:none}}
+</style><style id="ij-shared-hero-edge-alignment-v2">
+/* One shared outer frame for the header, breadcrumb and hero banner. */
+.ij-brandbar{padding:10px 0!important}
+.ij-brandbar .ij-brandbar-inner{box-sizing:border-box;width:min(calc(100% - 48px),1200px)!important;max-width:1200px;margin-inline:auto!important;padding:0!important;display:flex!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;gap:16px!important}
+.ij-brandbar .ij-brand-home{flex:0 0 auto;margin:0!important}
+.ij-brandbar .ij-brandbar-actions{display:flex!important;flex:0 1 auto;align-items:center!important;justify-content:flex-end!important;gap:16px!important;margin-left:auto!important;padding:0!important}
+.ij-brandbar .ij-brandbar-actions .ij-home-back{margin:0!important;flex:0 0 auto}
+.ij-hero-breadcrumb{box-sizing:border-box;width:min(calc(100% - 48px),1200px)!important;max-width:1200px;margin:10px auto 8px!important;padding:0!important;position:static!important}
+@media(max-width:760px){
+ .ij-brandbar{padding:8px 0!important}
+ .ij-brandbar .ij-brandbar-inner{width:calc(100% - 48px)!important;gap:8px!important}
+ .ij-brandbar .ij-brand-home{gap:7px}
+ .ij-brandbar .ij-brand-home .ij-brand-logo-image{width:36px;height:36px}
+ .ij-brandbar .ij-brand-home .ij-brandname{font-size:21px}
+ .ij-brandbar .ij-brandbar-actions{gap:7px!important}
+ .ij-brandbar .ij-language-wrap{font-size:10px}
+ .ij-brandbar .ij-language-wrap select{max-width:88px;min-height:32px;font-size:11px}
+ .ij-brandbar .ij-home-back{font-size:10px;padding:6px 8px;min-height:32px}
+ .ij-hero-breadcrumb{width:calc(100% - 48px)!important;margin:9px auto 7px!important;font-size:11px}
+}
+@media(max-width:380px){
+ .ij-brandbar .ij-brandbar-inner{width:calc(100% - 28px)!important;gap:6px!important}
+ .ij-brandbar .ij-brand-home .ij-brand-logo-image{width:32px;height:32px}
+ .ij-brandbar .ij-brand-home .ij-brandname{font-size:19px}
+ .ij-brandbar .ij-brandbar-actions{gap:5px!important}
+ .ij-brandbar .ij-language-wrap{font-size:9px}
+ .ij-brandbar .ij-language-wrap select{max-width:76px;padding-inline:5px}
+ .ij-brandbar .ij-home-back{font-size:9px;padding:5px 6px}
+ .ij-hero-breadcrumb{width:calc(100% - 28px)!important}
+}
+/* Soft, clearly visible light beam moving slowly from left to right across the hero title. */
+.ij-reference-copy h1{position:relative;isolation:isolate;overflow:hidden}
+.ij-reference-copy h1:after{content:"";position:absolute;z-index:2;top:-18%;bottom:-18%;left:-42%;width:24%;pointer-events:none;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.12) 25%,rgba(255,255,255,.95) 49%,rgba(111,214,255,.5) 59%,rgba(255,255,255,.08) 78%,transparent 100%);filter:blur(3px);transform:skewX(-18deg);animation:ijHeroTextLightSweep 7.2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes ijHeroTextLightSweep{0%,16%{left:-42%;opacity:0}24%{opacity:.95}69%{left:120%;opacity:.9}80%,100%{left:120%;opacity:0}}
+@media(prefers-reduced-motion:reduce){.ij-reference-copy h1:after{animation:none;display:none}}
 </style></head>
 <body>
 
