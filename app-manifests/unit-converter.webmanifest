@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/unit-converter.html",
+  "id": "../unit-converter.html",
   "name": "InfoJano — Unit Converter",
   "short_name": "Unit Converter",
   "description": "Install the InfoJano Unit Converter tool for quick access.",
-  "start_url": "/InfoJano/unit-converter.html",
-  "scope": "/InfoJano/",
+  "start_url": "../unit-converter.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/unit-converter.svg",
+      "src": "../app-icons/unit-converter.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
