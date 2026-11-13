@@ -124,7 +124,7 @@ jobs:
             gradle --no-daemon assembleDebug \
               -PtoolId="$tool_id" \
               -PtoolName="$tool_name" \
-              -PtoolUrl="https://barsulkhan.github.io/InfoJano/$page?app=1"
+              -PtoolUrl="https://infojano.com/$page?app=1"
             filename="InfoJano-${tool_name// /-}.apk"
             cp app/build/outputs/apk/debug/app-debug.apk "dist/$filename"
             echo "Built $filename"
