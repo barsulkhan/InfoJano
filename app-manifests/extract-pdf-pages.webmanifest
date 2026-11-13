@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/extract-pdf-pages.html",
+  "id": "../extract-pdf-pages.html",
   "name": "InfoJano — PDF Page Extractor",
   "short_name": "PDF Extractor",
   "description": "Install the InfoJano PDF Page Extractor.",
-  "start_url": "/InfoJano/extract-pdf-pages.html",
-  "scope": "/InfoJano/",
+  "start_url": "../extract-pdf-pages.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/extract-pdf-pages.svg",
+      "src": "../app-icons/extract-pdf-pages.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
