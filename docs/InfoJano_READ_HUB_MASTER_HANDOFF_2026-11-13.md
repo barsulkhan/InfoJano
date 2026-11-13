@@ -268,3 +268,67 @@ When the user says “কাজ চালাও” or “continue”, first read
 - Read Hub update commit: `593ef0fbb6fa393d583fc9f75d6f5614bc2224c5`.
 - Latest main after PR #172 and #173 merges: `cfd66b74bd2d624a130df8b30e221e1f6d7440f3`.
 - Next action: check Actions run `43478978269` to see whether the corrected APK validation passes, check Pages run `43478990929`, then continue the remaining HTML/JS/CSS root-path audit and fix confirmed issues in focused PRs.
+
+## Continuation update — 13 Nov 2026 (path audit + APK workflow)
+
+### New APK workflow failure investigated and fixed
+- After PR #172 corrected manifest path validation, the next real run exposed a second independent assertion error:
+  - Run #43478978269: https://github.com/barsulkhan/InfoJano/actions/runs/43478978269
+  - Job log error: Tool page missing from service-worker cache: bengali-number-to-words.html.
+- Root cause: APK workflow asserted that every root-level HTML file (including SEO landing pages) must be in the Service Worker precache. This is not the intended scope: SW precache contains the offline-supported tool/app subset, not every SEO page.
+- PR #174 reviewed and merged:
+  - https://github.com/barsulkhan/InfoJano/pull/174
+  - Merge commit: 9817c75a9295da30bb63af555859a49dc64ef721
+  - Validation now checks that each of the 23 APK matrix targets has its HTML page and icon cached, and checks its manifest only when that page has a corresponding manifest. Manifest correctness checks remain for all manifest files.
+- Independently compared the 23 APK matrix entries against sw.js from main: 23/23 target pages and 23/23 target icons are present.
+- Independently checked all 28 tracked app icons and all 28 tracked manifests against sw.js: 28/28 icons and 28/28 manifests are referenced in the precache.
+
+### APK workflow successful
+- Run #43479398845: https://github.com/barsulkhan/InfoJano/actions/runs/43479398845
+- Commit: 9817c75a9295da30bb63af555859a49dc64ef721
+- Conclusion: success.
+- All stages succeeded: icon/manifest/APK matrix validation, APK builds, package-count verification, workflow artifact upload, and GitHub release publication.
+- Workflow verified 23 APK files and published prerelease InfoJano Tool Apps v1.1.1.
+- The newer APK workflow run triggered by the next path-only PR merge is also running at last check:
+  - Run #43480202554: https://github.com/barsulkhan/InfoJano/actions/runs/43480202554
+  - Commit: 89813d10a83cc9505bccb55cbbda9787ee1fa4de
+  - Status: in_progress at last check; Gradle setup in progress.
+
+### Full source path audit progress
+- Enumerated the current main recursive Git tree and directly scanned all 109 root-level HTML files (excluding backup text files), plus all 19 tracked JS/CSS files.
+- JS/CSS scan: 19/19 inspected. Remaining /InfoJano/ occurrences in install.js, site-header.js, related-apps.js, and sw.js are deliberate host-aware deployment-root handling / precache path declarations. No additional root-absolute asset URLs were found in the other JS/CSS files by the targeted scan.
+- HTML scan found:
+  - A large group of root-absolute favicon references to /infojano-mark.svg still needs conversion to relative paths for GitHub Pages project-subpath compatibility.
+  - Three BMI guide pages had hard-coded /InfoJano/install.js and /InfoJano/site-header.js.
+  - Four ID card guide pages had root-absolute favicon, CSS and internal navigation links.
+  - ID Card Print Studio had root-absolute Home and guide links.
+  - 404.html has intentional hostname-aware path resolution in script; its favicon is also set dynamically by that script, so its initial root fallback does not need the same treatment.
+  - index.html root href / is the custom-domain homepage and is intentional for current primary hosting; fallback GitHub Pages behavior should be tested separately.
+- Do not claim all path references have been corrected yet; favicon sweep and remaining HTML references are pending.
+
+### PR #175 merged — legacy BMI and ID guide paths
+- PR #175: https://github.com/barsulkhan/InfoJano/pull/175
+- Merge commit: 89813d10a83cc9505bccb55cbbda9787ee1fa4de
+- Changed 8 HTML files:
+  - bmi-calculation-guide.html, bmi-weight-categories.html, bmi-healthy-weight-range.html: favicon and shared scripts changed to document-relative paths.
+  - id-card-print-studio.html: Home and all document-guide links changed to relative paths.
+  - aadhaar-card-print.html, ayushman-card-print.html, digital-ration-card-print.html, voter-id-card-print.html: favicon, shared stylesheet and local navigation links changed to relative paths.
+- Directly re-fetched the 8 files from the PR branch and confirmed 0 remaining root-absolute href/src/action/poster attributes in those files before merge.
+- No calculation or document-processing logic was changed.
+
+### GitHub Pages and live testing status
+- Pages run for PR #174 merge commit 9817c75a9295da30bb63af555859a49dc64ef721:
+  - Run #43479398125: https://github.com/barsulkhan/InfoJano/actions/runs/43479398125
+  - Conclusion: success.
+- Pages run for latest main commit 89813d10a83cc9505bccb55cbbda9787ee1fa4de:
+  - Run #43480202191: https://github.com/barsulkhan/InfoJano/actions/runs/43480202191
+  - Status: in_progress at last check.
+- Live URL fetches for https://infojano.com/, manifest.json, sw.js, countdown-studio.html, and age.html failed in the available fetch interface with inaccessible/internal errors. Live HTTP status, page rendering, SW registration/activation, install prompt and offline behavior remain not verified.
+- Browser/Android testing has not been performed.
+
+### Next actions
+1. Check completion of Actions run #43480202554 and Pages run #43480202191 for latest main.
+2. Continue converting remaining root-absolute favicon references in the remaining root-level HTML pages to relative paths, in focused reviewable PRs.
+3. Inspect HTML page links and all local asset references for broken targets, not only leading-slash paths.
+4. Inspect service worker cache install failure handling, runtime caching and offline fallback. The 169 path inventory alone does not prove runtime offline success.
+5. Retry live checks with a browser-capable environment and perform Chrome/Android PWA installation and offline tests.
