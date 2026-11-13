@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/percentage-change.html",
+  "id": "../percentage-change.html",
   "name": "InfoJano — Percentage Change Calculator",
   "short_name": "Percentage Change Calculator",
   "description": "Install the InfoJano Percentage Change Calculator tool for quick access.",
-  "start_url": "/InfoJano/percentage-change.html",
-  "scope": "/InfoJano/",
+  "start_url": "../percentage-change.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/percentage-change.svg",
+      "src": "../app-icons/percentage-change.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
