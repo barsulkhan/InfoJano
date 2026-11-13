@@ -6,7 +6,7 @@
 <link rel="canonical" href="https://infojano.com/image-resizer.html">
 <meta property="og:type" content="website"><meta property="og:title" content="Image Resizer | InfoJano"><meta property="og:description" content="Resize images to exact pixels with popular photo and print presets."><meta property="og:url" content="https://infojano.com/image-resizer.html"><meta property="og:image" content="https://infojano.com/infojano-logo.svg">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://infojano.com/infojano-logo.svg">
-<link rel="icon" href="/infojano-mark.svg" type="image/svg+xml"><link rel="manifest" href="/InfoJano/app-manifests/image-resizer.webmanifest">
+<link rel="icon" href="/infojano-mark.svg" type="image/svg+xml"><link rel="manifest" href="./app-manifests/image-resizer.webmanifest">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Resizer","url":"https://infojano.com/image-resizer.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <style>
@@ -858,11 +858,11 @@ resizeBtn.addEventListener('click',()=>{
 window.addEventListener('beforeunload',()=>{if(previewUrl)URL.revokeObjectURL(previewUrl);if(resultUrl)URL.revokeObjectURL(resultUrl)});
 })();
 </script>
-<script src="/InfoJano/image-resizer-advanced.js?v=1" defer></script>
-<script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/site-header.js" defer></script>
+<script src="./image-resizer-advanced.js?v=1" defer></script>
+<script src="./download-progress.js" defer></script><script src="./site-header.js" defer></script>
 
 <script>
 (function(){var loader=document.getElementById('ijPageLoader');if(!loader)return;var hidden=false;function hide(){if(hidden)return;hidden=true;window.setTimeout(function(){loader.classList.add('ij-loaded');window.setTimeout(function(){if(loader.parentNode)loader.parentNode.removeChild(loader)},500)},380)}if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide,{once:true});window.setTimeout(hide,5000)}})();
 </script>
-<script src="/InfoJano/install.js" defer></script>
+<script src="./install.js" defer></script>
 </body></html>
