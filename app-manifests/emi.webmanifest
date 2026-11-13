@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/emi.html",
+  "id": "../emi.html",
   "name": "InfoJano — EMI Calculator",
   "short_name": "EMI Calculator",
   "description": "Install the InfoJano EMI Calculator tool for quick access.",
-  "start_url": "/InfoJano/emi.html",
-  "scope": "/InfoJano/",
+  "start_url": "../emi.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/emi.svg",
+      "src": "../app-icons/emi.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
