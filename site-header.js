@@ -62,6 +62,13 @@
       pills.forEach((pill)=>pill.classList.add('ij-unified-currency-pill'));
     });
     if(!document.getElementById('ij-global-header-style')){const style=document.createElement('style');style.id='ij-global-header-style';style.textContent=css;document.head.appendChild(style);}
+    if(!document.getElementById('ij-related-apps-script')){
+      const relatedAppsScript=document.createElement('script');
+      relatedAppsScript.id='ij-related-apps-script';
+      relatedAppsScript.src=ROOT+'related-apps.js';
+      relatedAppsScript.async=true;
+      document.head.appendChild(relatedAppsScript);
+    }
     if(document.querySelector('.ij-global-header'))return;
     const header=document.createElement('header');header.className='ij-global-header';header.setAttribute('role','banner');
     header.innerHTML=`
