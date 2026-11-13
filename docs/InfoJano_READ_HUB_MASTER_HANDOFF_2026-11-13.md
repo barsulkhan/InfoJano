@@ -758,3 +758,26 @@ When the user says “কাজ চালাও” or “continue”, first read
   1. Current Electron wrappers: open hosted InfoJano pages and require internet.
   2. Future offline-capable desktop: bundle local HTML/CSS/JS/assets and test each tool locally; API/backend-dependent tools must disclose online requirement or be redesigned.
 - No new product architecture or offline implementation has been started; user asked to discuss feasibility first. Do not silently start a major architecture change without agreement.
+
+
+## Follow-up verification — 14 Nov 2026
+
+### PR #185 workflow and release recheck
+- PR #185 remains merged: https://github.com/barsulkhan/InfoJano/pull/185
+- The GitHub Pages deployment for Read Hub commit `087731f689271e597f18e65ce2e3a51a764ded46`, run #43487094503, completed with conclusion **success**:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43487094503
+- Individual Windows installer workflow run #43487044793 is still reported as **in_progress**. Its only build job is in progress at step “Build 23 Windows installers”; the publish step has not started:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43487044793
+- Attempt to retrieve job logs returned GitHub BlobNotFound; no reliable log output was available. Do not infer the reason for the long-running build and do not claim it succeeded.
+- Release recheck: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-desktop-apps-v1.0.0
+  - 25 assets total: 23 individual tool installers + combined Setup + Portable.
+  - The 23 individual installers still show upload/update dates of 4 Nov 2026 (roughly 78.3 MB each); they have NOT been refreshed by the PR #185 workflow yet.
+  - Combined Setup (about 91.5 MB) and Portable (about 84.2 MB) were updated on 13 Nov 2026. These are separate combined-app artifacts and do not prove the 23 individual installers were rebuilt.
+- Conclusion: the custom-domain URL source fix is merged, but refreshed individual Windows installers are still pending. Existing individual EXEs may still contain the old URL until the build/publish workflow completes.
+
+### Current exact next steps
+1. Investigate why run #43487044793 remains in progress; check job timing and whether GitHub Actions has stalled. Do not claim success without a completed run and newly timestamped assets.
+2. If the run is genuinely stuck, cancel/re-run the workflow safely (only after checking current run/job state) and verify all 23 individual release assets are replaced.
+3. Confirm the published EXEs have fresh timestamps and expected asset count (23 individual + 2 combined).
+4. Keep the desktop product discussion separate from this repair: the proposed “one main desktop app + per-tool shortcut/install option” and true offline packaging are not implemented. Do not begin the major offline architecture without the user's approval.
+5. Browser/device runtime QA remains unverified: live custom-domain HTTP behavior, Chrome/Android PWA install prompt, SW activation/update, offline cache navigation, and external API failure handling have not been tested in a real browser/device in this work.
