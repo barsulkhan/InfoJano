@@ -695,3 +695,21 @@ When the user says “কাজ চালাও” or “continue”, first read
 ### Latest main code commit
 - `4ccaf12aecd0a37c89f33d92ae3acc46d510e008` (PR #184 merge).
 - This Read Hub update will create a later documentation-only commit; check the newest Pages run after this update.
+
+### Follow-up Actions status check — 14 Nov 2026
+- Latest Read Hub commit `7e1013687c7d3fd212e5d20a119ab4a0cb665402` Pages run #43485706308:
+  - Jekyll build and artifact upload: success.
+  - Deploy job: in progress at last check.
+  - Run: https://github.com/barsulkhan/InfoJano/actions/runs/43485706308
+- Latest main code commit `4ccaf12aecd0a37c89f33d92ae3acc46d510e008`:
+  - Age Calculator APK run #43485660813: **success**, including APK release publish:
+    https://github.com/barsulkhan/InfoJano/actions/runs/43485660813
+  - Multi-tool APK run #43485661052: manifest/icon/APK-matrix validation step **success**; per-tool APK builds still in progress at last check:
+    https://github.com/barsulkhan/InfoJano/actions/runs/43485661052
+  - Windows desktop build run #43485661006: dependency installation success; installer/portable app build still in progress at last check:
+    https://github.com/barsulkhan/InfoJano/actions/runs/43485661006
+- Earlier Pages run #43485483131 for PR #183 metadata commit completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485483131
+- Earlier Pages run #43485244750 completed successfully:
+  https://github.com/barsulkhan/InfoJano/actions/runs/43485244750
+- Do not mark multi-tool APK, Windows desktop, or latest Pages deployment as complete until the run conclusion is checked.
