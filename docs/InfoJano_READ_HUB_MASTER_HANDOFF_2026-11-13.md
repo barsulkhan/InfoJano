@@ -811,3 +811,14 @@ When the user says “কাজ চালাও” or “continue”, first read
 2. Verify the download panel on at least one live tool page and validate all 23 generated filenames against the release assets.
 3. Resolve the stalled installer workflow safely; after successful rebuild, verify that all 23 release assets have fresh timestamps and corrected custom-domain URLs.
 4. If the run remains stalled, inspect and improve the workflow to avoid 23 repeated dependency installations; do not report old binaries as refreshed.
+
+
+### Installer rebuild workflow optimization — 14 Nov 2026
+- PR #187 merged successfully: https://github.com/barsulkhan/InfoJano/pull/187
+- Merge commit: `3422cbb6b3f5368e4d703de07dcb3679c3bc70c3`
+- Updated `.github/workflows/build-desktop-apps.yml` to install Electron/electron-builder once in a shared workspace instead of running npm install 23 times.
+- The build still creates 23 independent Windows installers, checks each expected EXE exists, and publishes them to a new prerelease tag `infojano-desktop-apps-v1.0.1`. This avoids a possible race with the older stalled run publishing to v1.0.0.
+- New build run #43488835667: https://github.com/barsulkhan/InfoJano/actions/runs/43488835667 — queued at last check; no build result yet.
+- Old build run #43487044793 remains `in_progress` with no updated timestamp since 18:54 UTC. No connector action is available to cancel a running workflow safely.
+- Pages run #43488835218 for merge commit was queued at last check. Pages run #43488662894 for the previous website merge completed successfully, but the later workflow merge has not yet deployed.
+- Do not update website links from v1.0.0 to v1.0.1 until the new release has all 23 EXEs and each asset is verified.
