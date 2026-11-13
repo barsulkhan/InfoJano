@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/word-to-jpg.html",
+  "id": "../word-to-jpg.html",
   "name": "InfoJano — Word to JPG Converter",
   "short_name": "Word to JPG",
   "description": "Install the InfoJano Word to JPG converter.",
-  "start_url": "/InfoJano/word-to-jpg.html",
-  "scope": "/InfoJano/",
+  "start_url": "../word-to-jpg.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/word-converter.svg",
+      "src": "../app-icons/word-converter.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
