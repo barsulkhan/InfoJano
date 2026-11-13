@@ -1,6 +1,6 @@
 const { app, BrowserWindow, shell } = require("electron");
 const path = require("node:path");
-const HOME_URL = "https://barsulkhan.github.io/InfoJano/";
+const HOME_URL = "https://infojano.com/";
 function createWindow() {
   const win = new BrowserWindow({
     width: 1360, height: 900, minWidth: 900, minHeight: 650,
@@ -20,7 +20,7 @@ function createWindow() {
     return { action: "deny" };
   });
   win.webContents.on("will-navigate", (event, url) => {
-    if (!url.startsWith("https://barsulkhan.github.io/InfoJano/")) {
+    if (!url.startsWith("https://infojano.com/") && !url.startsWith("https://barsulkhan.github.io/InfoJano/")) {
       event.preventDefault();
       if (url.startsWith("https://") || url.startsWith("http://")) shell.openExternal(url);
     }

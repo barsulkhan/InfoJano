@@ -4,7 +4,7 @@ plugins {
 
 def toolId = providers.gradleProperty('toolId').getOrElse('agecalculator')
 def toolName = providers.gradleProperty('toolName').getOrElse('Age Calculator')
-def toolUrl = providers.gradleProperty('toolUrl').getOrElse('https://barsulkhan.github.io/InfoJano/age.html')
+def toolUrl = providers.gradleProperty('toolUrl').getOrElse('https://infojano.com/age.html')
 
 android {
     namespace 'com.infojano.agecalculator'
