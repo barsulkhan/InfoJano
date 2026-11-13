@@ -332,3 +332,45 @@ When the user says “কাজ চালাও” or “continue”, first read
 3. Inspect HTML page links and all local asset references for broken targets, not only leading-slash paths.
 4. Inspect service worker cache install failure handling, runtime caching and offline fallback. The 169 path inventory alone does not prove runtime offline success.
 5. Retry live checks with a browser-capable environment and perform Chrome/Android PWA installation and offline tests.
+
+## Continuation update — 13 Nov 2026 (favicon path correction)
+
+### PR #176 merged
+- PR #176: https://github.com/barsulkhan/InfoJano/pull/176
+- Merge commit: a8cdab92323c1c8d16b0506a4cb4e16614c1580a
+- Updated 37 root-level HTML files to use the document-relative favicon URL infojano-mark.svg instead of /infojano-mark.svg.
+- Reviewed the complete PR patch: all 37 files had favicon-only changes (no content, calculator logic, layout or SEO changes).
+- GitHub reported the PR clean/mergeable before merge.
+- This corrects favicon resolution on both custom-domain root and GitHub Pages project-subpath hosting.
+
+### Updated path audit summary
+- Direct source scan covered 109 root-level HTML pages and 19 JS/CSS files.
+- PR #175 corrected 8 pages with internal root-absolute paths and shared asset references; 0 remaining root-absolute href/src/action/poster attributes were found in those 8 pages on its branch before merge.
+- PR #176 corrected 37 more pages with root-absolute favicon references.
+- Remaining deliberate exceptions from the scan:
+  - 404.html sets its favicon and homepage link dynamically based on the hostname.
+  - index.html uses href="/" for the primary custom-domain root; verify behavior on GitHub Pages fallback separately.
+  - install.js, site-header.js, related-apps.js and sw.js intentionally contain host-aware /InfoJano/ logic or cache path declarations.
+- A fresh final sweep across all 109 HTML pages after PR #176 is still required to confirm no other root-absolute local references remain. Do not call the repository-wide path audit complete until this is done.
+
+### Latest Actions after PR #176
+- Pages deployment for latest main commit a8cdab92323c1c8d16b0506a4cb4e16614c1580a:
+  - Run #43480726138: https://github.com/barsulkhan/InfoJano/actions/runs/43480726138
+  - Status: in_progress at last check.
+- APK workflow for latest main commit a8cdab92323c1c8d16b0506a4cb4e16614c1580a:
+  - Run #43480726422: https://github.com/barsulkhan/InfoJano/actions/runs/43480726422
+  - Status: in_progress at last check.
+- Pages run for prior main commit 3566c2f15b48a850c2b8e489a408464096d561a4 completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/43480308586
+- APK run for commit 9817c75a9295da30bb63af555859a49dc64ef721 completed successfully and published 23 APKs: https://github.com/barsulkhan/InfoJano/actions/runs/43479398845
+
+### Live and PWA QA remains pending
+- Direct fetch attempts for custom-domain and GitHub Pages homepage, manifest.json, sw.js, countdown-studio.html and age.html were inaccessible through the available fetch interfaces. This is a tooling/access limitation, not evidence that the website is down.
+- No browser-based HTTP status, DOM/render, service-worker registration, install prompt or offline-cache test has been completed.
+- Android Chrome install/offline test is still pending.
+
+### Next actions
+1. Check latest Pages run #43480726138 and APK run #43480726422 until completed.
+2. Perform one fresh direct fetch scan of all 109 HTML pages after PR #176 and confirm only intentional root paths remain.
+3. Inspect local href/src links and CSS url() references for missing target files across all HTML/JS/CSS, not only root-absolute paths.
+4. Review the 404 and homepage fallback path behavior on GitHub Pages project path.
+5. Continue live/browser/PWA/Android testing when a reliable browser-capable test environment is available.
