@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v304";
+const CACHE_NAME = "infojano-v305";
 const BASE = self.location.pathname.startsWith("/InfoJano/") ? "/InfoJano/" : "/";
 const HOME = BASE;
 const ASSETS = [
@@ -151,6 +151,7 @@ const ASSETS = [
   "/InfoJano/related-apps.js",
   "/InfoJano/theme.js",
   "/InfoJano/download-progress.js",
+  "/InfoJano/app-manifests/countdown-studio.webmanifest",
   "/InfoJano/app-manifests/age.webmanifest",
   "/InfoJano/app-manifests/bmi.webmanifest",
   "/InfoJano/app-manifests/currency-converter.webmanifest",

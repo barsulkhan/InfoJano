@@ -1,0 +1,19 @@
+{
+  "id": "../countdown-studio.html",
+  "name": "InfoJano — Countdown Studio",
+  "short_name": "Countdown",
+  "description": "Install InfoJano Countdown Studio to create and manage event countdowns and goals.",
+  "start_url": "../countdown-studio.html",
+  "scope": "../",
+  "display": "standalone",
+  "background_color": "#f5f8fc",
+  "theme_color": "#1768e8",
+  "icons": [
+    {
+      "src": "../infojano-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
