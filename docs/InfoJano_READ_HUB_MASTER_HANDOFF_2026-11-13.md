@@ -98,3 +98,19 @@ When the user says “কাজ চালাও” or “continue”, first read
 2. Make all app-specific web manifests deployment-base-safe (relative IDs/start URLs/scopes/icons where valid) and scan the full repository for remaining absolute `/InfoJano/` paths.
 3. Re-check the service worker precache list and both hosting layouts, then re-fetch PR metadata to understand why GitHub reports `mergeable=false`.
 4. Only after source checks pass, ask for approval before merging this broad change. After merge, verify Actions and live URLs separately.
+
+
+### PR #171 follow-up fixes — 13 Nov 2026
+- Continued work on branch `fix/custom-domain-asset-paths`; PR #171 now contains 60 changed files / 67 commits (was 58 files / 59 commits at initial review).
+- Fixed both Age and BMI app manifests to use paths relative to the manifest location: `../age.html` / `../bmi.html`, `../` scope, and `../app-icons/...` icons. This supports both the custom-domain root and the GitHub Pages `/InfoJano/` base.
+- Fixed the three Word redirect pages so meta refresh, JavaScript redirect and fallback link all use the same relative destination.
+- Changed the remaining three reviewed favicon references (`extract-pdf-pages.html`, `image-resizer.html`, `word-converter.html`) to relative paths.
+- Re-fetched the complete PR patch after edits. In the added lines of the PR, the only remaining literal `/InfoJano/` occurrences are intentional host-detection/base-path logic in `install.js` and `sw.js`. This is a patch-level scan of the PR, not a full repository-wide scan.
+- Current PR status: still open and not merged; GitHub still reports `mergeable=false`. Latest head commit: `9971cb5e647a79bb2702c46ca1dc9cd0dbffbc1e`. PR: https://github.com/barsulkhan/InfoJano/pull/171
+- No deployment, live browser check, or Android device test has been performed. Service-worker precache still needs a systematic path-by-path audit. The reason for GitHub's `mergeable=false` also needs diagnosis before merge.
+
+### Next exact actions
+1. Determine why PR #171 is currently reported non-mergeable (check current main/base changes and conflict status); do not force-merge.
+2. Audit every ASSETS entry in `sw.js` against files actually present in the repository and verify mapping under both `/` and `/InfoJano/`.
+3. Inspect all web manifests and the full repository for remaining deployment-specific absolute paths, not only changed PR lines.
+4. Re-run source checks; update PR description and this handoff with results. Ask user before merging the broad PR.
