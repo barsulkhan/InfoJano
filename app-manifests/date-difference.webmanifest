@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/date-difference.html",
+  "id": "../date-difference.html",
   "name": "InfoJano — Date Difference Calculator",
   "short_name": "Date Difference Calculator",
   "description": "Install the InfoJano Date Difference Calculator tool for quick access.",
-  "start_url": "/InfoJano/date-difference.html",
-  "scope": "/InfoJano/",
+  "start_url": "../date-difference.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/date-difference.svg",
+      "src": "../app-icons/date-difference.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
