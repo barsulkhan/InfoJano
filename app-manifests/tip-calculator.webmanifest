@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/tip-calculator.html",
+  "id": "../tip-calculator.html",
   "name": "InfoJano — Tip Calculator",
   "short_name": "Tip Calculator",
   "description": "Install the InfoJano Tip Calculator tool for quick access.",
-  "start_url": "/InfoJano/tip-calculator.html",
-  "scope": "/InfoJano/",
+  "start_url": "../tip-calculator.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/tip-calculator.svg",
+      "src": "../app-icons/tip-calculator.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
