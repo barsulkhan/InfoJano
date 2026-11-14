@@ -1794,3 +1794,50 @@ User feedback: remove the country flag graphic from the hero and prioritize a mo
 ### QA before merge
 - Check all three pages for flag-free hero markup, valid HTML structure, matching Open Graph/JSON-LD metadata, canonical URLs, FAQ schema, no Birthday Calculator link, responsive CSS and natural country-specific content.
 - Browser/mobile visual QA and GitHub Pages deployment verification remain outstanding until run after merge.
+
+## 14 Nov 2026 — Countdown country SEO completion pass
+
+User asked to complete the outstanding SEO work for the India, Bangladesh and USA country countdown landing pages before moving on.
+
+### Research and implementation branch
+- Branch: `seo/countdown-country-seo-completion`
+- Dedicated research file: `docs/COUNTDOWN_COUNTRY_SEO_RESEARCH_2026-11-14.md`
+- Research separates primary, secondary and event/use-case keyword clusters for USA, India and Bangladesh. USA receives the strongest timezone and seasonal-event targeting.
+- Public competitor feature observations include CountUsDown, tick.to, timer.ad, utoolgo and TekPulse. These are feature/positioning observations, not claims about rankings or traffic.
+
+### Files changed
+- `countdown-timer-india.html`: unique title/meta/OG/Twitter copy; visible three-step setup guide; India/IST intent.
+- `countdown-timer-bangladesh.html`: unique title/meta/OG/Twitter copy; visible three-step setup guide; Eid, Bengali event-name, BST intent.
+- `countdown-timer-usa.html`: unique title/meta/OG/Twitter copy; US time-zone explainer (Eastern, Central, Mountain, Pacific, Alaska, Hawaii-Aleutian) and setup guide.
+- `sitemap.xml`: all three URLs retained and `lastmod` set to 2026-11-14.
+- `sw.js`: all three country pages remain in precache; cache bumped from `infojano-v306` to `infojano-v307`.
+- `docs/COUNTDOWN_COUNTRY_SEO_RESEARCH_2026-11-14.md`: detailed keyword map, search intent, competitor notes, technical checklist, Google policy notes, sources and measurement handoff.
+- This Read Hub update.
+
+### QA principles
+- Preserve self-referencing canonicals, index/follow, matching WebPage/BreadcrumbList/FAQPage JSON-LD, crawlable CTA, internal links, responsive styles and reduced-motion handling.
+- Keep flag-free hero design; do not add Birthday Countdown Calculator links or merge it with Countdown Studio/Age Calculator.
+- Google FAQ rich results are not generally displayed for ordinary commercial sites; FAQ schema must not be sold as a guaranteed rich result.
+- Sitemap inclusion is discovery support only; it does not guarantee indexing.
+
+### Measurement blockers — explicitly not fabricated
+- No Google Keyword Planner export was available; exact monthly search volume, paid competition/CPC and trend values remain unverified.
+- No Search Console query/page export or URL Inspection account access was available; organic clicks, impressions, CTR, average positions and indexed state remain unverified.
+- To finish measurement, import the Keyword Planner CSV for separate US/India/Bangladesh location targeting and connect the verified Search Console property. The research document lists the exact workflow.
+- Do not launch paid campaigns or incur spend for this organic SEO task.
+- Do not claim Pages deployment or live URLs until the relevant GitHub Pages workflow succeeds and each URL is checked.
+
+### Commits on this branch
+- India page: `808deca5d4a55d4902a9b343fb817540cf558971`
+- Bangladesh page: `dbd1bc5005945f5c4169ce7d486890e80ff2479c`
+- USA page: `aacd9c19273a1cc2ad2c51da5905ef1652bdb956`
+- Sitemap: `084ecbbed2e2e389142c872ac2f015550c583f4f`
+- Service worker: `69a75bd0a360bb748e092f126461cd53446710f7`
+- Research doc: `13a17c87fa6cd1bb20fb3d5e78d87a61ebb67c26`
+
+### Final verification before PR
+- Parse each page's JSON-LD and confirm FAQ text matches visible FAQ.
+- Verify exactly one canonical and one title/description per page; verify new setup/timezone sections and no flag/Birthday Calculator cross-links.
+- Parse sitemap XML and confirm each target URL occurs once with lastmod.
+- Confirm robots.txt points to the sitemap.
+- Confirm all three pages are in sw.js precache and cache is v307.
