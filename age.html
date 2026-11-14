@@ -342,11 +342,11 @@ body:has(.ij-age-main) .ij-global-page-context{display:none!important}
   grid-template-areas:
     "heading result"
     "intro result"
+    "toolkit result"
     "doblabel result"
     "format result"
     "dobinput result"
     "dobhelp result"
-    "toolkit result"
     "calculate result"
     "history history"!important;
   align-items:start!important;
@@ -370,7 +370,7 @@ body:has(.ij-age-main) .ij-global-page-context{display:none!important}
 @media(max-width:760px){
  .ij-age-main>section.card:has(#dobManual){
   grid-template-columns:minmax(0,1fr)!important;
-  grid-template-areas:"heading" "intro" "doblabel" "format" "dobinput" "dobhelp" "toolkit" "calculate" "result" "history"!important;
+  grid-template-areas:"heading" "intro" "toolkit" "doblabel" "format" "dobinput" "dobhelp" "calculate" "result" "history"!important;
   gap:10px!important;
  }
  .ij-age-main>section.card:has(#dobManual)>#result{min-height:220px!important;padding:16px!important}
@@ -834,6 +834,11 @@ body:has(.ij-age-main) .ij-global-page-context{display:none!important}
         <div class="ij-age-weekday">You were born on a <strong>${birthWeekday}</strong> · ${totalWeeks.toLocaleString("en-IN")} full weeks and ${totalDays % 7} days</div>
       `;
       const info = document.createElement("div"); info.className = "age-result-info";
+      const agePreviewCard = document.querySelector(".ij-age-preview");
+      if (agePreviewCard) {
+        agePreviewCard.style.cssText = "position:relative;justify-self:center;width:min(100%,205px);max-width:205px;margin:8px auto 14px;transform:none;animation:none";
+        info.append(agePreviewCard);
+      }
       if (isBirthdayToday) {
         const greeting = document.createElement("div");
         greeting.setAttribute("role", "status");
