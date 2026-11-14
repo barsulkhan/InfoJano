@@ -60,5 +60,6 @@
 <script>
 (function(){const p=document.getElementById('price'),d=document.getElementById('discount'),r=document.getElementById('result');function calc(){const price=Number(p.value),pct=Number(d.value);if(p.value===''||d.value===''||!Number.isFinite(price)||!Number.isFinite(pct)||price<0||pct<0||pct>100){r.textContent='Informe um preço válido e um desconto entre 0 e 100%.';return}const saved=price*pct/100,final=price-saved;const fmt=n=>n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});r.innerHTML='<strong>Você economiza: '+fmt(saved)+'</strong><br>Preço final: <strong>'+fmt(final)+'</strong>'}document.getElementById('calculate').addEventListener('click',calc);[p,d].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calc()}));})();
 </script>
+<script src="site-header.js" defer></script>
 </body>
 </html>
