@@ -177,3 +177,12 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 ## Batch history
 - Batch 1: All 10 URLs submitted on 2026-11-12 using the GitHub Pages Search Console property. All 10 remain Pending Google indexing verification. User will approve/confirm when Google shows them indexed.
 - Batch 2 onward: not yet issued.
+
+## 14 Nov 2026 — Repository sitemap reconciliation (source-side check)
+- Current `sitemap.xml` in the default branch contains **106 unique canonical URLs**; no duplicate `<loc>` entries were found.
+- The 3 Countdown country pages (India, Bangladesh, USA) are present in `sitemap.xml` and are also present in the Service Worker precache list in `sw.js`.
+- The tracker has 50 original pending sitemap URLs, plus 15 Number to Words Pro SEO pages, plus 3 Countdown country pages.
+- Comparing the current sitemap with the tracker’s explicit URL lists: 37 URLs are present in the tracker’s Indexed URL list and match current sitemap entries; 50 original Pending URLs + 15 Number to Words Pro URLs + 3 Countdown URLs are accounted for; the homepage `https://infojano.com/` is the one remaining sitemap URL not explicitly classified by those lists.
+- Historical tracker says 40 Indexed URLs from screenshots, but the explicit Indexed URL list contains 39 entries, including two sitemap XML URLs that are not current `sitemap.xml` content entries. Do not silently treat the historical screenshot count and explicit URL list as identical. Confirm the homepage and any missing screenshot entry in Search Console.
+- Current sitemap count supersedes the old 88-URL snapshot for future planning. This is a repository source comparison only, not a live Search Console inspection or a statement that any pending URL has been indexed.
+- Before next batch: inspect homepage and exact URLs in Search Console, confirm the verified property/canonical host, refresh the queue, then submit at most 10. No new URLs were submitted during this check.
