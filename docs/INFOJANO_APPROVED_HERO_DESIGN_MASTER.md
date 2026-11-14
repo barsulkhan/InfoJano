@@ -62,3 +62,11 @@ No additional page is marked complete until its source change and rendered layou
 - Calculator JavaScript, IDs, SEO metadata, birthday/history features, and lower informational sections were not intentionally changed.
 - Source commits: `e400bb5d0628e6ec9d54598510e90ee4a2566f3e` (layout), `dc833c536f09effc3f7fd107810457e64f332802` (selector correction).
 - Status: source committed; deployment and live browser visual verification not yet confirmed.
+
+## 2026-11-14 — Age Calculator form and birthday panel positioning
+- Moved the Advanced Age & Birthday Toolkit above the manual date-of-birth entry area on desktop and mobile.
+- The DD-MM-YYYY date input remains outside the Advanced Toolkit card.
+- Repositioned the existing age-preview card from the hero into the result information area, before the Happy Birthday greeting, when a calculation is run.
+- Preserved the calendar illustration and birthday greeting artwork.
+- Source commit: `835a94afe014d54d069dfd040cf45de1950e6ff4`.
+- Status: source committed; deployment and live visual verification pending.
