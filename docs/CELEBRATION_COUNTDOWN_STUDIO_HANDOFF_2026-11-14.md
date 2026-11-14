@@ -42,6 +42,14 @@ Base: current `main` at branch creation (main was not modified)
 - Fixed a malformed literal backslash-n between the YouTube Connect and Refresh event-listener statements. In the archived source this was present in the JavaScript code line and could prevent the entire inline script from parsing.
 - Fixed media slideshow timer lifecycle: rebuilding a gallery now clears its previous interval, and closing the celebration overlay clears its slideshow interval. This prevents repeated media edits / overlay closes from leaving orphaned timers.
 
+## Separate native Windows desktop package prepared
+
+- Added `desktop-app/countdown-studio/main.cjs` with a dedicated Electron window that opens `https://infojano.com/countdown-studio.html`, context isolation, sandboxing, no Node integration, and external handling for links outside the trusted origin.
+- Added `desktop-app/countdown-studio/package.json` for x64 NSIS setup and portable EXE builds.
+- Added `desktop-app/countdown-studio/README.md` documenting internet dependency, PWA distinction, unsigned installer warning, and release gating.
+- Added `.github/workflows/build-countdown-studio-desktop.yml`. It is manual-dispatch only, runs only on `feature/celebration-countdown-studio-rebuild`, and uploads EXE outputs as a 30-day GitHub Actions artifact. It does not publish a public release or deploy the site.
+- The desktop build has NOT been run in GitHub Actions yet. The production URL will only resolve to the new page after a separately approved merge/deploy; no installer download link is published before that.
+
 ## Static source checks completed
 
 - Manifest parses as JSON.
@@ -65,6 +73,7 @@ Base: current `main` at branch creation (main was not modified)
 - Public media URLs, local file previews, video playback, gallery timer cleanup and celebration overlay lifecycle.
 - Share-link round trip, local storage restore and PNG export.
 - PWA install prompt, Service Worker activation/update and offline navigation.
+- Native Windows Electron build, EXE file verification and launch test (workflow prepared but not yet run).
 - Native desktop installer or offline desktop packaging.
 
 ## Safety / release constraints
