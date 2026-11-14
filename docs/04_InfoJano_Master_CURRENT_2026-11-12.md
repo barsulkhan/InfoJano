@@ -1719,3 +1719,12 @@ For every new banner, document and agree on these details before implementation:
 - USA research evidence added: birthday countdown 9.9K/month (SEODATA, Jun 14 2026); TickCounter US organic keyword estimates in Sep 2026 include countdown 135K, Halloween 201K and Christmas 1.5M; dataset types differ and are not directly comparable. Sources and caveats in `docs/COUNTDOWN_STUDIO_SEO_RESEARCH_2026-11-14.md`.
 - USA URL added to XML/text sitemaps and Service Worker precache; cache remains v306 as part of same unreleased SEO branch.
 - Branch remains `feature/countdown-country-seo-pages-phase1`; PR #199 updated to include three country pages. No merge/live deployment without explicit approval.
+
+
+## 14 Nov 2026 — Country countdown pages premium visual refinement
+- User requested removal of the separate “Birthday Countdown” CTA from all three country landing pages and asked for a more premium visual finish.
+- Removed the Birthday Countdown button from the hero and removed the standalone Birthday Countdown Calculator cross-link from the related-search section on India, Bangladesh and USA pages. Birthday countdown remains a supported event use-case in page copy; the separate calculator remains an independent tool and is not embedded into Countdown Studio.
+- Preserved the country-page hero geometry at 390px minimum height, two-column desktop layout, same 900px/520px responsive breakpoints and existing Countdown Studio visual dimensions.
+- Added a restrained premium finish: layered pale-blue page background, refined breadcrumb, softer hero gradients and clock-card shadow, gradient primary CTA, elevated fact tiles, rounded white content cards, improved spacing/line-height, refined links and subtle hover states. Mobile spacing and hover behavior adjusted.
+- Branch: `design/countdown-country-pages-premium`. Three country HTML files updated. Static source QA confirms zero references to `birthday-countdown-calculator.html` in those three pages, retained “Create Your Countdown” CTA, and retained 390px hero geometry.
+- Changes are on a review branch only; not merged and not live. Browser/device visual QA still required before merge.
