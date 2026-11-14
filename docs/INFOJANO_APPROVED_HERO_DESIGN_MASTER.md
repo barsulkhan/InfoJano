@@ -70,3 +70,10 @@ No additional page is marked complete until its source change and rendered layou
 - Preserved the calendar illustration and birthday greeting artwork.
 - Source commit: `835a94afe014d54d069dfd040cf45de1950e6ff4`.
 - Status: source committed; deployment and live visual verification pending.
+
+## 2026-11-14 — Advanced Toolkit placement and birthday fireworks correction
+- Moved the Advanced Age & Birthday Toolkit out of the DOB calculator card and positioned it as a separate full-width card immediately above the calculator card.
+- The calculator card retains the date-entry controls and result panel; the Advanced Toolkit is no longer a nested grid item.
+- Hardened birthday fireworks canvas sizing and cleanup; added result-panel resize observation so the overlay follows the result panel dimensions and removes animation resources cleanly.
+- Source commits: `4a79188f2651fc496cf5084cfeed9ebffce4c5dd`, `4647b608581b6934c1bdbdf9a25eb81a6716bab9`.
+- Status: source committed; deployment and live browser verification pending.
