@@ -51,7 +51,33 @@
   @media(max-width:950px){.ij-unified-currency-hero{padding:23px!important;min-height:250px!important}}
   @media(max-width:600px){.ij-unified-currency-hero{min-height:220px!important;height:auto!important;padding:21px 17px!important;border-radius:23px!important;display:flex!important;align-items:center!important}.ij-unified-currency-title{font-size:clamp(29px,8vw,38px)!important;letter-spacing:-.8px!important;line-height:1.12!important}}
   @media(max-width:600px){.ij-unified-currency-hero.emi-hero{min-height:220px!important;aspect-ratio:auto!important;padding:20px 17px!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy{width:62%!important;margin-left:3%!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy h1{font-size:clamp(30px,8vw,40px)!important}}
-  @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}`;
+  @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}
+  /* One shared header only: remove the legacy ID Studio brand strip under it. */
+  .ij-brandbar{display:none!important}
+  /* Consistent wide content frame for all shared tool heroes. */
+  @media screen and (min-width:1001px){
+    main:has(.ij-unified-currency-hero){
+      width:calc(100% - 64px)!important;max-width:1600px!important;
+      margin:0 auto!important;padding:28px 24px 36px!important;box-sizing:border-box!important;
+    }
+    .ij-unified-currency-hero{
+      display:block;width:100%!important;max-width:none!important;
+      min-height:250px!important;height:auto!important;margin:12px 0 28px!important;
+      box-sizing:border-box!important;
+    }
+  }
+  @media screen and (max-width:1000px){
+    main:has(.ij-unified-currency-hero){
+      width:calc(100% - 32px)!important;max-width:none!important;
+      margin:0 auto!important;padding:20px 0 30px!important;box-sizing:border-box!important;
+    }
+    .ij-unified-currency-hero{width:100%!important;max-width:none!important;margin:12px 0 22px!important;box-sizing:border-box!important}
+  }
+  @media screen and (max-width:600px){
+    main:has(.ij-unified-currency-hero){width:calc(100% - 20px)!important;padding:14px 0 26px!important}
+    .ij-unified-currency-hero{width:100%!important;min-height:220px!important;margin:10px 0 20px!important;padding:21px 17px!important}
+  }
+`;
   function mount(){
     const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero');
     heroes.forEach((hero)=>{
