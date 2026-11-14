@@ -1841,3 +1841,37 @@ User asked to complete the outstanding SEO work for the India, Bangladesh and US
 - Parse sitemap XML and confirm each target URL occurs once with lastmod.
 - Confirm robots.txt points to the sitemap.
 - Confirm all three pages are in sw.js precache and cache is v307.
+
+
+## 14 Nov 2026 — Countdown country SEO post-merge verification checkpoint
+
+### Repository / PR state rechecked
+- PR #203 (Complete India, Bangladesh and USA countdown SEO) is CLOSED and MERGED to main.
+- Merge commit: `d5bc4ae86f4dabbdba24a524df789909537409d7`.
+- Main-branch `sw.js` re-read after merge: cache name is `infojano-v307`; all three country SEO pages are present in the precache array.
+- Main-branch `sitemap.xml` re-read: India, Bangladesh and USA countdown URLs each appear once with `lastmod` 2026-11-14.
+
+### GitHub Pages deployment verified
+- Pages workflow run: `43615205385` — completed with conclusion `success` for merge commit `d5bc4ae86f4dabbdba24a524df789909537409d7`.
+- Build, artifact upload, and Deploy to GitHub Pages jobs all completed successfully.
+- Run URL: https://github.com/barsulkhan/InfoJano/actions/runs/43615205385
+- Separate APK workflow run `43615205590` failed. This is the Android APK workflow, not the Pages deployment; do not confuse it with website deployment.
+
+### Live URL verification limitation
+- Attempted to open all three custom-domain URLs and the custom-domain sitemap from the current web inspection environment; all returned inaccessible/internal error.
+- Therefore Pages deployment workflow success is verified, but actual public HTTP/rendered content for the three custom-domain URLs is NOT independently verified here. User-side browser check remains outstanding.
+
+### Current source checkpoint
+- Service worker: `sw.js`, cache `infojano-v307`.
+- Sitemap: `sitemap.xml`, all three countdown-country URLs included once with lastmod 2026-11-14.
+- Research: `docs/COUNTDOWN_COUNTRY_SEO_RESEARCH_2026-11-14.md`.
+- Country pages: `countdown-timer-india.html`, `countdown-timer-bangladesh.html`, `countdown-timer-usa.html`.
+
+### Remaining SEO work — do not mark complete yet
+1. Verify the three custom-domain URLs from a normal browser/mobile connection and check title, hero, CTA, visible setup guide and FAQ.
+2. Connect/verify the site's Google Search Console property and inspect each exact URL; record indexed/not-indexed and any coverage/canonical issue separately. No Search Console account metrics or indexing status have been obtained in this session.
+3. Obtain genuine Google Keyword Planner exports for United States, India and Bangladesh if available without launching ads; otherwise continue with intent-based, non-volume-claimed keyword research. Ahrefs Free workspace previously returned an insufficient-plan error; do not spend money or claim Ahrefs metrics.
+4. After URL inspection and initial crawl data, refine internal links/content based on actual query and indexing evidence.
+
+### Resume instruction
+Continue the three-country Countdown SEO measurement and validation. Do not redo PR #203 or change the flag-free hero. Preserve the separate Birthday Countdown Calculator and Age Calculator. Record every completed check, file path, commit and workflow result in this Master Project file. Never equate a successful Pages workflow with a verified live page or Google indexing.
