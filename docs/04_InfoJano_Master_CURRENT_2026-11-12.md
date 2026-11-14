@@ -1698,3 +1698,15 @@ For every new banner, document and agree on these details before implementation:
 ### New-chat handoff prompt — copy/paste
 "InfoJano-র Celebration Countdown কাজ শুরু করো। আগে GitHub-এর বর্তমান main branch, branches, commits, PRs এবং Actions যাচাই করো। পুরোনো saved handoff-এ Countdown Studio নামে আলাদা archive/branch-এর কথা আছে—সেখানে `countdown-studio.html`, Web App Manifest এবং Countdown, YouTube Subscriber Goal, Celebration Effects, Photos/Videos, Share Link, Download Progress Card-এর উল্লেখ আছে। এগুলো সত্যিই কোথায় আছে তা খুঁজে exact source পড়ো; অনুমান করে নতুন করে বানিও না। 13 Nov 2026-এ main site restore commit `8d5e3bae` বলা হয়েছিল—বর্তমান main history দিয়ে যাচাই করো এবং restored main অক্ষত রাখো। আলাদা feature branch-এ Celebration Countdown কাজ করো; মূল সাইটে merge/deploy করার আগে আমাকে জানাও। Computer-এ আলাদা tool/app install বা download করার চাহিদাটিও মাথায় রাখবে, কিন্তু PWA আর native desktop installer-কে এক জিনিস বলবে না।"
 
+
+
+## 14 Nov 2026 — Countdown Studio finalized and SEO country cluster started
+- PR #198 merged to main; merge commit `608e6954b9ba6d3c8559c7fee512cb3853c061a4`.
+- GitHub Pages deployment run `43609705571` completed successfully. APK workflow run `43609706201` failed; separate from the website deployment and not evidence of a Pages failure.
+- Countdown Studio page: `https://infojano.com/countdown-studio.html`. The live deployment workflow is successful; real device re-test of the same-fullscreen celebration is still recommended.
+- Current service worker cache observed at `infojano-v305` before this SEO branch.
+- New SEO research report: `docs/COUNTDOWN_STUDIO_SEO_RESEARCH_2026-11-14.md`.
+- Initial country pages drafted on `feature/countdown-country-seo-pages-phase1`: `countdown-timer-india.html` and `countdown-timer-bangladesh.html`. Sitemap files updated and cache proposed as `infojano-v306`.
+- Keyword volumes for exact country-modified countdown phrases were not verifiably available from public sources; report labels these as seed keywords and keeps adjacent birthday/date demand figures separate. Do not invent exact countdown search volumes.
+- Competitor themes reviewed: timeanddate (event/countdown/date hubs, themes, location/timezone, share/fullscreen), TickCounter (customizable/embed/share/timezone), Online Stopwatch (many intent-specific timer categories).
+- This branch is a proposed first SEO batch only; do not merge until page/source QA passes. Search Console indexing remains separate from deployment.
