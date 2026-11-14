@@ -1653,3 +1653,48 @@ For every new banner, document and agree on these details before implementation:
 - Metadata length review found several long titles/descriptions that may be truncated in search snippets; this is a presentation optimization, not an indexing block. Further copy review should be prioritized after live GSC data.
 - Important limitation: source audit does not establish HTTP status, Google crawl state, indexed status, or URL Inspection outcomes. Google Search Console access is required to verify those. Do not claim all 48 remaining URLs are indexable or submit-ready until GSC inspection is completed.
 - Proposed correction branch: `fix/indexing-sitemap-canonical-audit`. Await PR review, merge, Pages deployment, then submit/refresh sitemap in Search Console and inspect eligible URLs.
+
+---
+
+## 14 November 2026 — Header adjustment, Age Calculator corrections, and Celebration Countdown handoff
+
+### User instructions learned and confirmed today
+- If any instruction is ambiguous, stop and ask the user one clear question before changing code. Do not guess, reverse the requested order, or silently reinterpret wording.
+- The Age Calculator's main calculator card (date entry on the left, result on the right) must appear ABOVE the separate Advanced Age & Birthday Toolkit card. Do not reverse this order.
+- Preserve the Age Calculator calendar illustration and Happy Birthday artwork. The fireworks animation must visibly launch and then burst outward like an exploding firework; a rocket merely rising and disappearing is not acceptable.
+- The shared InfoJano header logo/brand should move slightly left when requested, while retaining the exact tagline: "Smart Tools for Everyday Life". Do not remove the tagline.
+- Preserve unrelated page layouts, calculator logic, artwork, SEO metadata and existing features unless the user explicitly asks for a change.
+- Keep project decisions, code changes, commit hashes, test evidence and pending work in this GitHub master/handoff documentation, not solely in ChatGPT memory.
+- Distinguish source commit, merge, deployment, live URL verification, and real browser/device QA. Never claim a later stage passed without evidence.
+
+### 14 Nov shared header adjustment
+- File: `site-header.js`.
+- Changed only the shared brand anchor left margin from `0` to `-24px` so the logo and brand text sit slightly farther left on desktop.
+- Preserved the tagline text: `Smart Tools for Everyday Life`.
+- Commit: `0b5c1151ea3c26ae39c4626a2e8526c5abd6cc2f`.
+- This is a source commit only. Live deployment and desktop/mobile visual appearance have not yet been independently verified.
+- Do not make further header spacing changes without inspecting the live result or receiving the user's feedback.
+
+### Age Calculator current corrections / verification boundary
+- Correct content order: Calculator card first; Advanced Age & Birthday Toolkit card below it.
+- Happy Birthday fireworks must have a visible radial burst after launch. Latest source fix noted in project handoff: commit `1a534ce382650f52f2e0608871f31a24e11ef5f8` in `age.html`; it adjusts rocket damping/trigger and adds a bright flash plus radial sparks. This source change has not yet been independently verified in the live browser/device.
+- Keep the calendar illustration and Happy Birthday logo/art intact.
+- Recheck the current main-branch source before additional edits; do not assume the animation is fixed until visually tested.
+
+### Celebration Countdown — next-chat task (keep separate)
+- User explicitly wants to start the Celebration Countdown work in a NEW chat, not continue it in this conversation.
+- Prior saved context refers to a separate feature/archive called "Countdown Studio". A prior handoff claimed an archive branch contains `countdown-studio.html`, its Web App Manifest and feature details. The recorded feature scope included:
+  1. Countdown
+  2. YouTube Subscriber Goal
+  3. Celebration Effects
+  4. Photos and videos
+  5. Share Link
+  6. Download Progress Card
+- A prior note said the main website was restored to an earlier state at commit `8d5e3bae` (13 Nov 2026 19:17 IST). These are historical handoff claims, not freshly re-verified facts; check the actual branches, commits, files and PR/workflow state before relying on them.
+- Earlier user preference: make tools usable/downloadable on computers as individual apps where practical. Treat desktop packaging/installability as a separate requirement to discuss and validate; do not claim a native desktop installer exists just because a PWA manifest exists.
+- New-chat task must begin by inspecting the repository and locating the actual Countdown Studio/Celebration Countdown archive branch, source file, manifest, assets, commits and any handoff notes. Preserve the restored main site. Work in a dedicated feature branch and do not merge/deploy without appropriate user authorization.
+- Do not implement or modify Celebration Countdown in this chat. The user will initiate it in a new chat.
+
+### New-chat handoff prompt — copy/paste
+"InfoJano-র Celebration Countdown কাজ শুরু করো। আগে GitHub-এর বর্তমান main branch, branches, commits, PRs এবং Actions যাচাই করো। পুরোনো saved handoff-এ Countdown Studio নামে আলাদা archive/branch-এর কথা আছে—সেখানে `countdown-studio.html`, Web App Manifest এবং Countdown, YouTube Subscriber Goal, Celebration Effects, Photos/Videos, Share Link, Download Progress Card-এর উল্লেখ আছে। এগুলো সত্যিই কোথায় আছে তা খুঁজে exact source পড়ো; অনুমান করে নতুন করে বানিও না। 13 Nov 2026-এ main site restore commit `8d5e3bae` বলা হয়েছিল—বর্তমান main history দিয়ে যাচাই করো এবং restored main অক্ষত রাখো। আলাদা feature branch-এ Celebration Countdown কাজ করো; মূল সাইটে merge/deploy করার আগে আমাকে জানাও। Computer-এ আলাদা tool/app install বা download করার চাহিদাটিও মাথায় রাখবে, কিন্তু PWA আর native desktop installer-কে এক জিনিস বলবে না।"
+
