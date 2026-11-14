@@ -42,3 +42,12 @@ For each non-homepage HTML tool page:
 
 ## Page-by-page implementation log
 No additional page is marked complete until its source change and rendered layout have both been verified.
+
+
+## Implementation record — shared tool hero + Age Calculator
+- Shared file: `site-header.js` — common hero dimensions aligned to ID Card Print Studio: desktop width 100% of page frame, min-height 220px, margin 12px 0 28px, padding 42px 46px, radius 22px; tablet padding 28px 26px; mobile padding 24px 18px, radius 22px.
+- Common visual language: light blue-white gradient, pale blue border, soft blue shadow, navy headings and slate supporting copy. Existing page-specific content and artwork remain in place.
+- Age Calculator: `age.html`, selector `.ij-age-main > .ij-age-hero`; page frame max-width 1600px, desktop width calc(100% - 64px); banner min-height 220px, padding 42px 46px, radius 22px, two/three-column layout retaining the original calendar illustration (`.ij-calendar-art`) and age preview; mobile frame calc(100% - 20px), two-column hero with calendar illustration preserved.
+- Scope: homepage excluded; calculator logic and SEO content not edited.
+- Source commits: shared hero `5e63241e80e7df69cb7b4982a2b282f8eb4e6c36`; Age Calculator `0d6482d56780dec2477fe559020aa183b69f68d9`.
+- Verification: source changes saved; live rendering and full-page regression checks still pending.
