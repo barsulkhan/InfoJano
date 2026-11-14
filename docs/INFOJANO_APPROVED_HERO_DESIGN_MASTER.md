@@ -51,3 +51,14 @@ No additional page is marked complete until its source change and rendered layou
 - Scope: homepage excluded; calculator logic and SEO content not edited.
 - Source commits: shared hero `5e63241e80e7df69cb7b4982a2b282f8eb4e6c36`; Age Calculator `0d6482d56780dec2477fe559020aa183b69f68d9`.
 - Verification: source changes saved; live rendering and full-page regression checks still pending.
+
+## 2026-11-14 — Age Calculator two-column workspace update
+- User-approved direction: input/work area on the left; calculated result panel on the right.
+- Removed the extra tagline and generated page-description line beneath the InfoJano brand on the Age Calculator page only; logo and brand name remain.
+- Preserved the existing calendar illustration in the Age Calculator hero.
+- Reworked the first DOB calculator card into a responsive two-column CSS grid: DOB entry and advanced controls on the left; result panel on the right.
+- Added a clear empty-state message in the result panel before calculation.
+- At widths up to 760px, the layout stacks into one column with the result below the input controls.
+- Calculator JavaScript, IDs, SEO metadata, birthday/history features, and lower informational sections were not intentionally changed.
+- Source commits: `e400bb5d0628e6ec9d54598510e90ee4a2566f3e` (layout), `dc833c536f09effc3f7fd107810457e64f332802` (selector correction).
+- Status: source committed; deployment and live browser visual verification not yet confirmed.
