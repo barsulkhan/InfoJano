@@ -1951,3 +1951,34 @@ Use this Master Read Hub and the dedicated indexing tracker in `docs/` as the on
 - The dedicated indexing tracker remains the active queue for all URLs not verified indexed. Batch 1 is submitted but unverified; later batches are on hold pending Search Console evidence. Never mark indexing complete without URL Inspection confirmation.
 - The user asked to save a Search Console/indexing link, but no actual URL was included in that message. Ask the user to paste the exact link, then add it to the tracker; do not invent one.
 - Remaining work is external verification only: Search Console URL Inspection/status confirmation and public live-browser rendering/device checks. These are explicitly not claimed complete.
+
+
+---
+
+## 14 November 2026 — Number to Words Pro QA batch ported to current main
+
+The three older open Number to Words Pro PRs (#134, #136, #137) were based on an outdated main/base commit. Their intended changes were reviewed and ported as three isolated PRs against current main, preserving later main-branch changes.
+
+### Current PRs
+- PR #204 — Bengali/Hindi Indian numbering suffix correction: https://github.com/barsulkhan/InfoJano/pull/204
+  - One-line fix in `number-to-words-locales.js`: suffix index now uses `groups.length - i - 1`.
+  - Source-level grouping checks covered 1,000; 1,00,000; 10,00,000; 1,00,00,000; 10,00,00,000; 1,00,00,00,000.
+  - GitHub check `Workers Builds: infojano-shortlink-api` succeeded.
+- PR #205 — Number to Words SEO offline artwork cache: https://github.com/barsulkhan/InfoJano/pull/205
+  - Current main already precaches all 15 Number to Words SEO HTML pages; this PR adds the five existing SVG hero assets only.
+  - Service Worker cache advances sequentially from `infojano-v307` to `infojano-v308`.
+  - All five asset files exist and all five paths are present in the updated Service Worker.
+  - GitHub check `Workers Builds: infojano-shortlink-api` succeeded.
+- PR #206 — Number to Words SEO CTAs, defaults and hero artwork: https://github.com/barsulkhan/InfoJano/pull/206
+  - Updated six relevant SEO pages' main-converter deep links; set Rupees to INR currency mode, Dollars to USD currency mode, and Cheque Amount to INR cheque mode.
+  - Added dedicated decimal and international number-scale SVG artwork and descriptive alt text.
+  - Preserved current main page source rather than replacing whole files from the stale branch.
+  - Source files and SVG root structure re-fetched and checked. No GitHub check run was present at the time of audit.
+
+### Release status and remaining QA
+- All three new PRs target current `main` and GitHub currently reports them clean/mergeable.
+- PRs #204 and #205 have successful reported checks; PR #206 has no reported check run.
+- None of the three PRs has been merged or deployed. Do not mark these tasks live/complete until user approval, merge, Pages deployment, and browser/device QA.
+- Remaining QA: run actual Bengali/Hindi browser examples, test CTA query preselection, currency/cheque output, inspect both new hero illustrations at desktop/mobile sizes, and verify offline Service Worker activation.
+- Original stale PRs #134, #136 and #137 remain open as historical source branches; the current-main replacements are #206, #205 and #204 respectively. Do not merge the stale branches.
+
