@@ -83,3 +83,14 @@ Base: current `main` at branch creation (main was not modified)
 - Do not modify the main branch while feature work is in progress.
 - Keep PWA and native desktop application work explicitly separate.
 - Record further findings, commits, tests and unresolved decisions in this handoff.
+
+
+## Follow-up: black-screen / large-display countdown (14 November 2026)
+
+- Work branch: `feature/countdown-black-screen-tv-celebration` (based on current main; main/live site remains unchanged).
+- Updated `countdown-studio.html` with a quick duration input in minutes (1–10,080) and a dedicated Start Minutes Countdown action.
+- Added a dedicated pure-black countdown presentation with very large responsive day/hour/minute/second digits, event title, Full Screen API action, and Escape/Exit return behavior. When the timer reaches zero, the black display closes and the celebration overlay opens.
+- Added an illustrated celebratory boy scene with balloons and confetti to the completion screen.
+- Widened the page container to 1,480px and expanded hero-banner height, horizontal padding, and two-column spacing; mobile breakpoints retain a stacked layout.
+- Static checks: JavaScript parser, duplicate IDs, and static element selectors are checked before PR. Device testing on phones, desktops and 100-inch TVs is still required; browsers/TVs may differ in Full Screen API support. Browser Full Screen must be initiated by a user gesture.
+- Not merged or deployed. Awaiting user review and explicit approval before merge/live deployment.
