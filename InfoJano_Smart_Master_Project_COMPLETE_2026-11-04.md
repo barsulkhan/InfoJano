@@ -3704,3 +3704,14 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - GitHub reports PR #12 is still open, unmerged and non-mergeable. Branch comparison against current main is `diverged`: 4 commits ahead and 700 commits behind. It must be carefully rebuilt/rebased against current main before merge; do not merge the stale branch or force-update it blindly.
 - No GitHub Actions PR workflow run was returned for the latest head commit. No real browser/device, camera-permission, camera-stream, PDF-download, print or physical QR scan test was performed. Those remain required before production approval.
 - No production changes, merge or deployment were made. No Hero Section was edited.
+
+
+## 14 November 2026 — QR Toolkit Phase 2 rebuilt on current main
+- Created fresh branch: `fix/qr-toolkit-phase2-current-main` from current `main` (base SHA `8935dba4fee0835f149a721276884abaca58717e`).
+- Added opt-in camera QR scanning with Start/Stop, visibility-change camera stop, and explicit user action before inserting scanned content into the generator.
+- Added local jsPDF-backed A4 PDF export, using existing `jspdf.umd.min.js`.
+- Pull request: [#209](https://github.com/barsulkhan/InfoJano/pull/209), currently Open; mergeable status initially false/pending GitHub calculation. Not merged and not deployed.
+- Source changes: 1 file (`qr-maker.html`); commit `eeb0fe75183d00c19ce116eadd21a42306e1aef0`; blob SHA `c6bcaaecf4990c9093fc5216e459e3d38e606914`.
+- Source QA: 6 inline script blocks identified; no duplicate HTML IDs; no unresolved static `getElementById` targets. Existing local jsPDF asset and ZXing library include confirmed.
+- Browser/device QA remains pending: camera permission/start/stop, actual QR scan, PDF download, and print verification not performed. No live deployment claim.
+- Hero Section was not changed.
