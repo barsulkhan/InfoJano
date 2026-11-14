@@ -3715,3 +3715,12 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Source QA: 6 inline script blocks identified; no duplicate HTML IDs; no unresolved static `getElementById` targets. Existing local jsPDF asset and ZXing library include confirmed.
 - Browser/device QA remains pending: camera permission/start/stop, actual QR scan, PDF download, and print verification not performed. No live deployment claim.
 - Hero Section was not changed.
+
+
+## 14 November 2026 — QR Toolkit PR #209 recheck
+- Rechecked PR #209 after the Read Hub checkpoint commit advanced `main`.
+- PR #209 remains Open and is now reported `mergeable=true` by GitHub; current PR base SHA `064802531ca9f2b6481d38ea1cf964336765659e`; head SHA `eeb0fe75183d00c19ce116eadd21a42306e1aef0`.
+- Current compare reports one feature commit ahead and one Read Hub-only commit behind; changed-file list remains exactly `qr-maker.html`.
+- No review submissions, inline review threads, or PR-triggered workflow runs were returned at this check.
+- Merge is still deferred pending real browser/device verification of camera permissions, camera lifecycle/scan, PDF download and print output. No merge/deployment performed.
+- Hero Section remains untouched.
