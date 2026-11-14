@@ -3724,3 +3724,11 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - No review submissions, inline review threads, or PR-triggered workflow runs were returned at this check.
 - Merge is still deferred pending real browser/device verification of camera permissions, camera lifecycle/scan, PDF download and print output. No merge/deployment performed.
 - Hero Section remains untouched.
+
+
+## 14 November 2026 — QR Toolkit PR #209 latest consistency check
+- Re-fetched current main `qr-maker.html` (blob SHA `8be6599fc9a9f7571278bf60753da1574eaa81cc`) and confirmed PR #209's changed-file list is still exactly `qr-maker.html`; no other file is in its scope.
+- Compare against current main now reports `diverged`, 1 commit ahead and 2 behind; mergeability responses are inconsistent across GitHub endpoints (`get_pr_info`: false; open-PR listing: true). PR #209 remains open and unmerged; do not merge while this state is inconsistent.
+- No PR-triggered workflow runs were returned for head `eeb0fe75183d00c19ce116eadd21a42306e1aef0`. Real browser/device QA is still outstanding for camera permission/start/stop, scan handling, PDF export and printing.
+- Older PRs #137, #205 and #206 also returned contradictory open/merged metadata (merge commit SHA present while state says open/merged=false); no action taken until their actual GitHub state is reconciled. Their already-present changes must not be duplicated.
+- Saved this checkpoint in the Read Hub only. No source code changed, no merge/deployment performed, and no Hero Section edited.
