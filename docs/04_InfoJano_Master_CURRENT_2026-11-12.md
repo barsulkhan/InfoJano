@@ -1875,3 +1875,57 @@ User asked to complete the outstanding SEO work for the India, Bangladesh and US
 
 ### Resume instruction
 Continue the three-country Countdown SEO measurement and validation. Do not redo PR #203 or change the flag-free hero. Preserve the separate Birthday Countdown Calculator and Age Calculator. Record every completed check, file path, commit and workflow result in this Master Project file. Never equate a successful Pages workflow with a verified live page or Google indexing.
+
+
+## 14 Nov 2026 — Project context migration / single source of truth
+
+This section consolidates the remaining operational preferences and current cross-project handoff so project continuity is maintained in GitHub rather than relying on ChatGPT Memory. The detailed implementation history above remains authoritative; do not replace it with this summary.
+
+### Source of truth and working rules
+- GitHub repository and this Master Read Hub are the authoritative record for InfoJano. Do not treat ChatGPT Memory as the project database.
+- Save each completed work checkpoint to this file or the relevant project document, then report exact path, commit SHA, number of files saved, PR and deployment state.
+- Never claim a save, merge, deployment, live-page test, Search Console submission or Google indexing unless the relevant tool/account evidence confirms it.
+- Preserve existing working features; inspect current source before edits; use small dedicated branches/PRs and perform source QA. Keep website work in this repository.
+- No paid domain, hosting, API, subscription, SEO tool or campaign spend without explicit approval. User does not want to pay for Ahrefs; free research methods only.
+- Separate code/source validation, GitHub Pages workflow success, live browser/device verification and Google indexing. These are distinct statuses.
+
+### Design and product preferences
+- Preferred UI: clean, light, premium, white/off-white surfaces with navy/dark readable text; mobile-first and uncluttered.
+- For relevant SEO hero banners, maintain consistent layout and appropriate country/currency context; avoid the previously rejected plate-style flag/currency treatment. User later explicitly requested flag-free Countdown country heroes; that specific decision overrides any earlier generic flag concept.
+- Keep Birthday Countdown Calculator separate from Countdown Studio and Age Calculator. Do not add birthday-calculator CTA/cross-links to the Countdown country landing pages unless the user explicitly changes this instruction.
+- Preserve the existing BMI hero exactly; it was explicitly finalized and must not be redesigned without permission.
+- Languages discussed for localization: Bengali, English and Hindi. Existing language selector was noted to change URL/query or local storage and reload but not translate page copy; do not claim full localization until implemented and tested.
+- User prefers website/project records in GitHub Read Hub, not ChatGPT Memory.
+
+### Current Countdown SEO checkpoint
+- India, Bangladesh and USA country pages are complete in source and merged through PR #203; merge commit `d5bc4ae86f4dabbdba24a524df789909537409d7`.
+- Pages workflow run `43615205385` succeeded; custom-domain live rendering still was not independently verified from the prior environment.
+- `sw.js` cache is `infojano-v307`; `sitemap.xml` includes all three country pages once.
+- SEO research is in `docs/COUNTDOWN_COUNTRY_SEO_RESEARCH_2026-11-14.md`; exact keyword volumes and Search Console performance/indexing remain unverified. Do not invent volumes, CPC, clicks, impressions or positions.
+
+### Google indexing tracker and batching rules
+- A user Library file named `InfoJano_Google_Indexing_Tracker_2026-11-12.md` was located. Its contents are the working record for URL indexing status and batch order; migrate/maintain a GitHub copy under `docs/` as the durable project tracker.
+- Tracker snapshot: 40 URLs shown indexed in user-provided Search Console screenshots dated 2026-11-12; 88 sitemap URLs checked; 38 content URLs matched indexed screenshot paths; 50 original sitemap URLs remained pending, plus 15 Number to Words Pro SEO pages, for 65 pending URLs tracked.
+- Batch 1: 10 URLs were recorded as submitted on 2026-11-12 using the GitHub Pages Search Console property; all remain Submitted/Pending Google indexing verification, not Indexed. `image-to-pdf.html` also had an individual submission note. Submission is not proof of indexing.
+- Batch rules: submit no more than 10 URLs at a time; after each batch, wait for Search Console confirmation before preparing the next batch; never mark Indexed until Search Console verifies it; refresh sitemap and add every newly published canonical URL to Pending immediately. Keep submitted-but-unverified URLs pending.
+- The tracker lists the 50 original pending sitemap URLs and 15 Number to Words Pro SEO landing pages in the Library copy. Preserve that exact list and status when creating the GitHub copy; do not invent or reorder URL states.
+- Google Search Console account access/URL Inspection has not been independently verified in the current work session. Do not submit URLs or claim indexing without actual property access and user authorization.
+
+### SEO research and measurement rules
+- Use free/public sources where possible. Distinguish seed keywords and qualitative intent from measured search volume. Do not present adjacent keyword volumes as exact volume for a target phrase.
+- Search Console metrics require a verified property/export; Keyword Planner metrics require a genuine export. Ahrefs Free workspace returned an insufficient-plan error; do not ask user to upgrade or spend money.
+- Keep competitor observations qualitative unless reliable traffic/ranking evidence is available.
+
+### Other known project notes to preserve
+- InfoJano is a global-first, mobile-first utilities portal and PWA; do not migrate architecture or combine it with other sites without explicit approval.
+- Preserve ID Card Print Studio manual crop, front/back selection, print dimensions and PDF/JPG export.
+- Service Worker cache updates must be sequential and checked against actual `sw.js`; update precache when new assets/pages are added.
+- Desktop-downloadable tool/app packaging is a separate user interest. A PWA is not the same as a native desktop installer; investigate actual repository capability before claiming availability.
+
+### Next maintenance actions
+1. Copy the exact complete contents of the Library indexing tracker into `docs/InfoJano_Google_Indexing_Tracker_2026-11-12.md` and verify its URL list/counts against the current sitemap before preparing any batch.
+2. Continue Countdown SEO measurement only when normal browser access or Search Console evidence is available; keep live URL verification separate from workflow success.
+3. Recheck the next active feature checkpoint in this master file before starting any unrelated work.
+
+### Handoff instruction
+Use this Master Read Hub and the dedicated indexing tracker in `docs/` as the only project continuity records. Do not ask the user to repeat facts already recorded here. After each completed task, commit the updated record and report the exact saved files and SHA.
