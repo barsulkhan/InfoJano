@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v305";
+const CACHE_NAME = "infojano-v306";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -38,6 +38,8 @@ const ASSETS = [
   "/InfoJano/day-of-week-born-calculator.html",
   "/InfoJano/birthday-countdown-calculator.html",
   "/InfoJano/countdown-studio.html",
+  "/InfoJano/countdown-timer-india.html",
+  "/InfoJano/countdown-timer-bangladesh.html",
   "/InfoJano/age-in-days-calculator.html",
   "/InfoJano/bmi.html",
   "/InfoJano/bmr-calculator.html",
