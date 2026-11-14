@@ -2,19 +2,19 @@
 (function(){
   const ROOT=(location.hostname==='barsulkhan.github.io')?'/InfoJano/':'/';
   const css=`
-  .ij-global-header{position:sticky;top:0;z-index:100000;width:100%;background:#fff;color:#14264a;box-shadow:0 3px 16px rgba(15,40,80,.08);border-bottom:1px solid #e6edf6;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+  .ij-global-header{position:sticky;top:0;z-index:100000;width:100%;background:linear-gradient(105deg,#073b9c 0%,#0759d8 58%,#063b9a 100%);color:#fff;box-shadow:0 5px 22px rgba(5,32,91,.22);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
   .ij-global-header *{box-sizing:border-box}
   .ij-global-header-inner{max-width:1440px;min-height:72px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:18px}
-  .ij-global-brand{display:flex;align-items:center;gap:11px;min-width:0;color:#14264a;text-decoration:none;flex:1}
-  .ij-global-logo{width:46px;height:46px;flex:0 0 46px;border-radius:14px;box-shadow:0 3px 10px #001b5b18}
+  .ij-global-brand{display:flex;align-items:center;gap:11px;min-width:0;color:#fff;text-decoration:none;flex:1}
+  .ij-global-logo{width:46px;height:46px;flex:0 0 46px;border-radius:14px;box-shadow:0 3px 10px #001b5b55}
   .ij-global-brand-copy{display:flex;flex-direction:column;line-height:1.08;min-width:0}
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
-  .ij-global-tagline{font-size:11px;font-weight:550;color:#64748b;opacity:1;margin-top:4px;white-space:nowrap}
-  .ij-global-divider{width:1px;height:38px;background:#dbe4ef}
-  .ij-global-tools{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid #dbe6f2;border-radius:30px;color:#24456e;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#f8fbff}
-  .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#eef6ff;outline:2px solid #93c5fd;outline-offset:2px}
-  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:122px;padding:11px 19px;border:1px solid #d5e5f5;border-radius:30px;background:#f3f8fe;color:#174a78;text-decoration:none;font-weight:850;font-size:15px;white-space:nowrap;box-shadow:0 3px 10px rgba(15,60,110,.06)}
-  .ij-global-home:hover,.ij-global-home:focus-visible{background:#e8f3ff;outline:2px solid #93c5fd;outline-offset:2px}
+  .ij-global-tagline{font-size:11px;font-weight:550;opacity:.88;margin-top:4px;white-space:nowrap}
+  .ij-global-divider{width:1px;height:38px;background:#ffffff50}
+  .ij-global-tools{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid #ffffff65;border-radius:30px;color:#fff;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#ffffff12}
+  .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#ffffff25;outline:2px solid #fff;outline-offset:2px}
+  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:122px;padding:11px 19px;border:1px solid #ffffff75;border-radius:30px;background:linear-gradient(135deg,#13a9f4 0%,#0870e9 55%,#3154e8 100%);color:#fff;text-decoration:none;font-weight:850;font-size:15px;white-space:nowrap;box-shadow:0 4px 14px #001b5b45,inset 0 1px 0 #ffffff45}
+  .ij-global-home:hover,.ij-global-home:focus-visible{background:linear-gradient(135deg,#31baff 0%,#126ff0 55%,#5267f4 100%);outline:2px solid #fff;outline-offset:2px}
   .ij-global-home svg,.ij-global-tools svg{width:19px;height:19px;flex:0 0 auto}
   .ij-global-header-spacer{height:0}
   .ij-site-brand{display:none!important}
@@ -39,7 +39,7 @@
   }
 
   /* Unified tool hero standard: Currency Converter reference dimensions and light sweep */
-  .ij-unified-currency-hero{box-sizing:border-box!important;width:calc(100% - 32px)!important;max-width:1440px!important;margin-left:auto!important;margin-right:auto!important;min-height:250px!important;height:auto!important;padding:26px 34px!important;border-radius:30px!important;position:relative!important;isolation:isolate!important;overflow:hidden!important;border:2px solid #08d7f4!important;box-shadow:0 0 8px #00dfff66,0 0 18px #765cff33,0 12px 30px rgba(12,45,120,.18)!important;animation:ijUnifiedNeonLife 8s linear infinite!important}
+  .ij-unified-currency-hero{box-sizing:border-box!important;min-height:250px!important;height:auto!important;padding:26px 34px!important;border-radius:30px!important;position:relative!important;isolation:isolate!important;overflow:hidden!important;border:2px solid #08d7f4!important;box-shadow:0 0 8px #00dfff66,0 0 18px #765cff33,0 12px 30px rgba(12,45,120,.18)!important;animation:ijUnifiedNeonLife 8s linear infinite!important}
   @keyframes ijUnifiedNeonLife{0%,100%{box-shadow:0 0 7px #00dfff44,0 0 14px #765cff22,0 12px 30px rgba(12,45,120,.18)}50%{box-shadow:0 0 12px #00dfff99,0 0 24px #765cff66,0 12px 30px rgba(12,45,120,.18)}}
   .ij-unified-currency-title{position:relative!important;isolation:isolate!important;overflow:hidden!important}
   .ij-unified-currency-title:after{content:""!important;position:absolute!important;top:-12%!important;bottom:-12%!important;left:-55%!important;width:34%!important;pointer-events:none!important;z-index:5!important;background:linear-gradient(105deg,transparent 0%,#ffffff18 28%,#ffffffc9 49%,#b8f7ff72 58%,transparent 100%)!important;filter:blur(2px)!important;transform:skewX(-18deg)!important;animation:ijUnifiedTitleSweep 12s linear infinite!important}
@@ -48,8 +48,8 @@
   .ij-unified-currency-pill:after{content:""!important;position:absolute!important;top:-35%!important;bottom:-35%!important;left:-75%!important;width:42%!important;pointer-events:none!important;background:linear-gradient(105deg,transparent 0%,#ffffff20 28%,#ffffffd9 50%,#ffffff35 63%,transparent 100%)!important;filter:blur(1px)!important;transform:skewX(-18deg)!important;animation:ijUnifiedPillSweep 12s linear infinite!important}
   .ij-unified-currency-pill:nth-child(1):after{animation-delay:2.4s!important}.ij-unified-currency-pill:nth-child(2):after{animation-delay:4.8s!important}.ij-unified-currency-pill:nth-child(3):after{animation-delay:7.2s!important}.ij-unified-currency-pill:nth-child(4):after{animation-delay:9.6s!important}
   @keyframes ijUnifiedPillSweep{0%{left:-75%;opacity:0}3%{opacity:1}18%{left:135%;opacity:0}100%{left:135%;opacity:0}}
-  @media(max-width:950px){.ij-unified-currency-hero{width:calc(100% - 24px)!important;padding:23px!important;min-height:250px!important}}
-  @media(max-width:600px){.ij-unified-currency-hero{width:calc(100% - 20px)!important;min-height:220px!important;height:auto!important;padding:21px 17px!important;border-radius:23px!important;display:flex!important;align-items:center!important}.ij-unified-currency-title{font-size:clamp(29px,8vw,38px)!important;letter-spacing:-.8px!important;line-height:1.12!important}}
+  @media(max-width:950px){.ij-unified-currency-hero{padding:23px!important;min-height:250px!important}}
+  @media(max-width:600px){.ij-unified-currency-hero{min-height:220px!important;height:auto!important;padding:21px 17px!important;border-radius:23px!important;display:flex!important;align-items:center!important}.ij-unified-currency-title{font-size:clamp(29px,8vw,38px)!important;letter-spacing:-.8px!important;line-height:1.12!important}}
   @media(max-width:600px){.ij-unified-currency-hero.emi-hero{min-height:220px!important;aspect-ratio:auto!important;padding:20px 17px!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy{width:62%!important;margin-left:3%!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy h1{font-size:clamp(30px,8vw,40px)!important}}
   @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}`;
   function mount(){
@@ -69,7 +69,6 @@
       relatedAppsScript.async=true;
       document.head.appendChild(relatedAppsScript);
     }
-    if(document.body.classList.contains('ij-no-global-header'))return;
     if(document.querySelector('.ij-global-header'))return;
     const header=document.createElement('header');header.className='ij-global-header';header.setAttribute('role','banner');
     header.innerHTML=`
