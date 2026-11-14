@@ -5,7 +5,7 @@
   .ij-global-header{position:sticky;top:0;z-index:100000;width:100%;margin:0!important;padding:0!important;background:#fff!important;color:#14264a!important;box-shadow:0 3px 16px rgba(15,40,80,.08);border:0;border-bottom:1px solid #e6edf6;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;text-align:left!important;line-height:normal!important}
   .ij-global-header *{box-sizing:border-box}
   .ij-global-header-inner{width:min(calc(100% - 28px),1200px);max-width:1200px;min-height:84px;margin:0 auto!important;padding:10px 0!important;display:flex;align-items:center;gap:14px}
-  .ij-global-brand{display:flex;align-items:center;gap:9px;min-width:0;color:#14264a;text-decoration:none;flex:1;margin-left:0}
+  .ij-global-brand{display:flex;align-items:center;gap:9px;min-width:0;color:#14264a;text-decoration:none;flex:1;margin-left:-24px}
   .ij-global-logo{width:44px;height:44px;flex:0 0 44px;border-radius:13px;box-shadow:0 3px 10px #001b5b18}
   .ij-global-brand-copy{display:flex;flex-direction:column;line-height:1.08;min-width:0;gap:3px}
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
