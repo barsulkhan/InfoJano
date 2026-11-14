@@ -967,15 +967,17 @@ const now=new Date();ref.value=iso(now);checkReminder();window.setInterval(check
 
 <script src="/InfoJano/install.js" defer></script>
 <script src="/site-header.js" defer></script>
-<script id="ij-age-toolkit-position">/* Keep Advanced Toolkit as a separate card immediately above the DOB calculator card. */
+<script id="ij-age-toolkit-position">/* Keep calculator and birthday result ABOVE Advanced Toolkit. */
 (function(){
  function placeAgeToolkit(){
   const main=document.querySelector(".ij-age-main");
   const toolkit=document.getElementById("ij-age-toolkit");
   const calculator=main&&main.querySelector("section.card:has(#dobManual)");
-  if(main&&toolkit&&calculator&&toolkit.parentElement!==main){
-   main.insertBefore(toolkit,calculator);
-   toolkit.style.margin="0 0 18px";
+  if(main&&toolkit&&calculator){
+   if(toolkit.parentElement!==main) main.appendChild(toolkit);
+   if(calculator.parentElement!==main) main.insertBefore(calculator,toolkit);
+   else if(calculator.nextElementSibling!==toolkit) main.insertBefore(toolkit,calculator.nextElementSibling);
+   toolkit.style.margin="18px 0 0";
    toolkit.style.width="100%";
   }
  }
