@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="650" viewBox="0 0 800 650" role="img" aria-labelledby="t d">
+<title id="t">Decimal number illustration</title><desc id="d">A calculator-style card showing a decimal value and separated whole and fractional parts.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f4fbff"/><stop offset="1" stop-color="#c9e7ff"/></linearGradient><linearGradient id="blue" x2="1" y2="1"><stop stop-color="#1598ef"/><stop offset="1" stop-color="#164acb"/></linearGradient><filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#28618f" flood-opacity=".2"/></filter></defs>
+<rect width="800" height="650" rx="42" fill="url(#bg)"/><circle cx="650" cy="115" r="120" fill="#fff" opacity=".38"/>
+<g filter="url(#sh)"><rect x="125" y="95" width="550" height="410" rx="38" fill="#fff"/><rect x="155" y="130" width="490" height="145" rx="22" fill="#edf7ff" stroke="#c9e5fa" stroke-width="3"/>
+<text x="400" y="225" text-anchor="middle" font-family="Arial,sans-serif" font-size="86" font-weight="800" fill="#163e6b">1250<tspan fill="#087de5">.</tspan><tspan fill="#0d9baf">75</tspan></text>
+<rect x="170" y="315" width="205" height="125" rx="20" fill="#eaf5ff"/><rect x="425" y="315" width="205" height="125" rx="20" fill="#e8fbff"/>
+<text x="272" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="800" fill="#5b7896">WHOLE NUMBER</text><text x="272" y="410" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="800" fill="#174a80">1250</text>
+<text x="527" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="800" fill="#428197">DECIMAL PART</text><text x="527" y="410" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="800" fill="#087d9d">75</text></g>
+<text x="400" y="575" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="800" letter-spacing="3" fill="#416b91">NUMBER • POINT • DECIMAL PLACES</text></svg>
