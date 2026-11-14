@@ -69,6 +69,7 @@
       relatedAppsScript.async=true;
       document.head.appendChild(relatedAppsScript);
     }
+    if(document.body.classList.contains('ij-no-global-header'))return;
     if(document.querySelector('.ij-global-header'))return;
     const header=document.createElement('header');header.className='ij-global-header';header.setAttribute('role','banner');
     header.innerHTML=`
