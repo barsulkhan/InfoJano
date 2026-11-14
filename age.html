@@ -40,7 +40,7 @@
 #result{display:none;margin-top:20px;padding:18px;background:linear-gradient(120deg,#eff6ff,#f0fdf4);border-radius:12px;line-height:1.8}
     #result:not(.hidden){display:block}
     #result{position:relative;overflow:hidden}
-    .birthday-fireworks-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+    .birthday-fireworks-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;display:block;overflow:hidden}
     .age-result-layout{display:flex;align-items:stretch;justify-content:space-between;gap:14px}
     .age-result-info{flex:1;min-width:0}
     .birthday-art{flex:0 0 190px;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid #fed7aa;border-radius:20px;background:radial-gradient(circle at 50% 32%,#fff 0,#fff7ed 40%,#ffedd5 76%,#dbeafe 100%);position:relative;overflow:hidden;isolation:isolate}
@@ -332,6 +332,21 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
 }
 
 
+/* Keep Advanced Toolkit as a separate card immediately above the DOB calculator card. */
+(function(){
+ function placeAgeToolkit(){
+  const main=document.querySelector(".ij-age-main");
+  const toolkit=document.getElementById("ij-age-toolkit");
+  const calculator=main&&main.querySelector("section.card:has(#dobManual)");
+  if(main&&toolkit&&calculator&&toolkit.parentElement!==main){
+   main.insertBefore(toolkit,calculator);
+   toolkit.style.margin="0 0 18px";
+   toolkit.style.width="100%";
+  }
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",placeAgeToolkit,{once:true});
+ else placeAgeToolkit();
+})();
 /* 2026-11-14: Two-column Age Calculator workspace.
    User enters details on the left; calculated output stays on the right. */
 body:has(.ij-age-main) .ij-global-tagline,
@@ -370,7 +385,7 @@ body:has(.ij-age-main) .ij-global-page-context{display:none!important}
 @media(max-width:760px){
  .ij-age-main>section.card:has(#dobManual){
   grid-template-columns:minmax(0,1fr)!important;
-  grid-template-areas:"heading" "intro" "toolkit" "doblabel" "format" "dobinput" "dobhelp" "calculate" "result" "history"!important;
+  grid-template-areas:"heading" "intro" "doblabel" "format" "dobinput" "dobhelp" "calculate" "result" "history"!important;
   gap:10px!important;
  }
  .ij-age-main>section.card:has(#dobManual)>#result{min-height:220px!important;padding:16px!important}
@@ -861,9 +876,9 @@ body:has(.ij-age-main) .ij-global-page-context{display:none!important}
           const dpr = Math.min(window.devicePixelRatio || 1, 2);
           let w = 0, h = 0;
           function resizeCanvas() {
-            w = result.clientWidth; h = result.clientHeight;
+            w = Math.max(1,result.clientWidth); h = Math.max(1,result.clientHeight);
             canvas.width = Math.max(1, w * dpr); canvas.height = Math.max(1, h * dpr);
-            canvas.style.width = w + "px"; canvas.style.height = h + "px";
+            canvas.style.position="absolute";canvas.style.inset="0";canvas.style.width = w + "px"; canvas.style.height = h + "px";
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
           }
           resizeCanvas();
@@ -918,9 +933,16 @@ body:has(.ij-age-main) .ij-global-page-context{display:none!important}
           }
           window.__ijBirthdayFireworksStop = function() {
             stopped=true; window.cancelAnimationFrame(rafId); window.clearTimeout(timerId);
-            canvas.remove(); window.removeEventListener("resize",resizeCanvas);
+            window.removeEventListener("resize",resizeCanvas);
+            if(canvas.isConnected)canvas.remove();
           };
           window.addEventListener("resize",resizeCanvas);
+          if(typeof ResizeObserver!=="undefined"){
+            const observer=new ResizeObserver(()=>{if(!stopped)resizeCanvas()});
+            observer.observe(result);
+            const stop=window.__ijBirthdayFireworksStop;
+            window.__ijBirthdayFireworksStop=function(){observer.disconnect();stop()};
+          }
           launchShow();
         } else canvas.remove();
       }
