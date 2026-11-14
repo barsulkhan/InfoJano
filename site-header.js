@@ -64,7 +64,6 @@
       box-sizing:border-box!important;
     }
     .ij-unified-currency-hero{
-      display:block;
       width:100%!important;
       max-width:none!important;
       min-height:250px!important;
