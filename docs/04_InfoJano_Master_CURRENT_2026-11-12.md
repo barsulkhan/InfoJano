@@ -1753,3 +1753,44 @@ User approved a stronger visual redesign after reviewing the first CSS-only poli
 - Source validation for the three pages and responsive CSS.
 - Browser/device visual QA and deployment verification after merge.
 - No claim of live deployment until GitHub Pages workflow succeeds and live URLs are checked.
+
+## 14 Nov 2026 — Country Countdown pages: flag-free hero + SEO refresh
+
+User feedback: remove the country flag graphic from the hero and prioritize a more elegant visual design. Also requested fresh SEO research and keyword targeting for India, Bangladesh and especially the USA.
+
+### Design changes prepared on branch `seo/countdown-country-pages-keyword-refresh`
+- Removed the flag/country-stamp badge from all three hero sections; no country flag emoji remains in page markup.
+- Rebalanced the hero around typography, layered ambient rings, a centered glass timer card and a restrained floating note.
+- Retained the country/time-zone label as text only (India IST UTC+05:30; Bangladesh BST UTC+06:00; USA event city/time-zone selection).
+- Improved spacing, typography, feature cards and mobile breakpoints.
+- Replaced raw keyword-list paragraphs with natural, useful event-planning copy to avoid keyword stuffing.
+- Kept Countdown Studio as the single main CTA; did not add a Birthday Countdown Calculator cross-link.
+
+### SEO metadata and content targeting
+- Updated page titles and meta descriptions with natural primary phrases:
+  - India: “free countdown timer India”, “online event countdown”
+  - Bangladesh: “free countdown timer Bangladesh”, “online event clock”
+  - USA: “free online countdown timer USA”, “event countdown clock”
+- Updated Open Graph title/description and WebPage JSON-LD name/description to match the new metadata.
+- Added locally relevant content around IST, Bangladesh Standard Time, moon-sighting date verification, US local event time zones and daylight-saving considerations.
+- Preserved canonical URLs, FAQPage JSON-LD, BreadcrumbList JSON-LD, existing FAQ sections and internal country links.
+
+### External research notes (14 Nov 2026)
+- Search results show competitor pages such as CountingDownTo, CountdownClock.net, webCountdown.net and Timeanddate's free countdown widget. Common user-facing features include custom event name/date/time/time zone, shareable links, fullscreen display, personalization and embed support. Opportunity: make InfoJano's setup flow and country-specific timezone guidance clearer without claiming features the tool does not provide.
+- US keyword research surfaced broad adjacent terms such as “timer” (very high demand but broad intent), “time zone converter” and “time duration calculator”; these are not direct proof of search volume for “countdown timer USA”. Avoid targeting unrelated high-volume keywords as primary terms.
+- No reliable exact Google Keyword Planner volumes for the three exact country countdown phrases were publicly verified in this research pass. Treat the listed phrases as intent-led target keywords, not volume-validated terms. Validate country/location-specific volume and competition in Google Keyword Planner and Search Console before making numeric claims.
+- USA content priority: “online countdown timer”, “countdown clock”, “full screen countdown timer”, “birthday countdown”, “Thanksgiving countdown”, “Halloween countdown”, “Christmas countdown”, “New Year countdown”, “days until [event]”, with explicit US time-zone selection guidance.
+- India content priority: “countdown timer India”, “online countdown timer”, “birthday countdown”, “wedding countdown”, “exam countdown”, “festival countdown”, “New Year countdown”.
+- Bangladesh content priority: “countdown timer Bangladesh”, “online countdown clock”, “birthday countdown Bangladesh”, “Eid countdown”, “exam/result countdown”, “Pohela Boishakh countdown”.
+
+### Sources reviewed
+- CountingDownTo: https://countingdownto.com/
+- CountdownClock.net: https://www.countdownclock.net/
+- webCountdown: https://www.webcountdown.net/
+- Timeanddate free countdown: https://www.timeanddate.com/clocks/freecountdown.html
+- US keyword context: https://nudgescout.com/website-data/timeanddate.com/ and https://www.kwstrends.com/keywords/us/time-zone-converter
+- Search intent and Bangladesh language-market context: https://digiil.com/blog/keyword-research-bangladesh/
+
+### QA before merge
+- Check all three pages for flag-free hero markup, valid HTML structure, matching Open Graph/JSON-LD metadata, canonical URLs, FAQ schema, no Birthday Calculator link, responsive CSS and natural country-specific content.
+- Browser/mobile visual QA and GitHub Pages deployment verification remain outstanding until run after merge.
