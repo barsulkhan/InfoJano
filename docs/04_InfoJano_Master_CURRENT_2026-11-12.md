@@ -1710,3 +1710,12 @@ For every new banner, document and agree on these details before implementation:
 - Keyword volumes for exact country-modified countdown phrases were not verifiably available from public sources; report labels these as seed keywords and keeps adjacent birthday/date demand figures separate. Do not invent exact countdown search volumes.
 - Competitor themes reviewed: timeanddate (event/countdown/date hubs, themes, location/timezone, share/fullscreen), TickCounter (customizable/embed/share/timezone), Online Stopwatch (many intent-specific timer categories).
 - This branch is a proposed first SEO batch only; do not merge until page/source QA passes. Search Console indexing remains separate from deployment.
+
+
+## 14 Nov 2026 — Countdown country SEO expanded to USA; shared hero spec locked
+- User requested three country SEO pages (India, Bangladesh, USA) and explicitly required the hero banner dimensions to match Countdown Studio exactly.
+- Countdown Studio main hero spec inspected from main branch: page width min(1480px, calc(100% - 24px)); hero 2-column grid minmax(0,1fr) minmax(340px,1fr), gap clamp(28px,5vw,76px), min-height 390px, padding clamp(38px,6vw,86px), radius 28px; at max-width 900px one column and art min-height 185px; at max-width 520px page gutters 22px, hero radius 21px, art min-height 170px. Applied this same CSS geometry and the same clock-card artwork style to all three country pages.
+- USA page created: `countdown-timer-usa.html`, with US-specific birthday/holiday/exam/fullscreen intent, FAQs, timezone caution for multiple US zones and DST, canonical/OG, WebPage/Breadcrumb/FAQ schemas, CTA and country cross-links.
+- USA research evidence added: birthday countdown 9.9K/month (SEODATA, Jun 14 2026); TickCounter US organic keyword estimates in Sep 2026 include countdown 135K, Halloween 201K and Christmas 1.5M; dataset types differ and are not directly comparable. Sources and caveats in `docs/COUNTDOWN_STUDIO_SEO_RESEARCH_2026-11-14.md`.
+- USA URL added to XML/text sitemaps and Service Worker precache; cache remains v306 as part of same unreleased SEO branch.
+- Branch remains `feature/countdown-country-seo-pages-phase1`; PR #199 updated to include three country pages. No merge/live deployment without explicit approval.
