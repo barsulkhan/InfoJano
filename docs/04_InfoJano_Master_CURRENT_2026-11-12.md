@@ -1982,3 +1982,31 @@ The three older open Number to Words Pro PRs (#134, #136, #137) were based on an
 - Remaining QA: run actual Bengali/Hindi browser examples, test CTA query preselection, currency/cheque output, inspect both new hero illustrations at desktop/mobile sizes, and verify offline Service Worker activation.
 - Original stale PRs #134, #136 and #137 remain open as historical source branches; the current-main replacements are #206, #205 and #204 respectively. Do not merge the stale branches.
 
+
+
+---
+
+## 14 November 2026 — Number to Words Pro changes merged to main
+
+User authorized merging and publishing the three Number to Words Pro work items. Current-main replacement PRs were merged in this order:
+- PR #204 — Bengali/Hindi Indian group suffix correction. Merge commit: `0b7aec6031a50be2571ec48d99e2864c214736b6`.
+- PR #207 — precache five Number to Words SEO hero SVGs and advance Service Worker to `infojano-v308`. Merge commit: `9507a6d4ca095e910225fded2e3d864dff345792`.
+- PR #208 — correct six SEO page CTAs/defaults and add decimal/international hero SVG artwork. Merge commit: `a36f9474b124e902bcac541f8a92a0bb03e0acdb`.
+
+The earlier PRs #205 and #206 became stale after PR #204 was merged; equivalent changes were recreated against current main as #207 and #208. Do not merge the stale PRs.
+
+### Main-branch verification
+- Confirmed locale suffix expression `groups.length - i - 1` is in main.
+- Confirmed `sw.js` cache version is `infojano-v308` and all five SEO hero SVG paths are precached.
+- Re-fetched six SEO pages and confirmed CTA query parameters, INR/USD currency defaults, cheque mode default, and decimal/international hero artwork references.
+
+### Deployment
+- GitHub Pages deployment run `43619020010` for main commit `a36f9474b124e902bcac541f8a92a0bb03e0acdb` was observed in progress at the time of this note. Do not call the site live until this run completes successfully and public pages are verified.
+- APK workflow run `43619020151` was also in progress; it is separate from website deployment and not a release requirement for the web changes.
+
+### Remaining verification
+- Confirm Pages workflow success and live custom-domain rendering.
+- Browser-test Bengali/Hindi number grouping, SEO CTA preselection, INR/USD currency wording, cheque output.
+- Check visual hero artwork on mobile/desktop.
+- Verify Service Worker v308 activation and offline precache behavior.
+- Native-speaker review for Bengali/Hindi remains recommended.
