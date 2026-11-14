@@ -92,7 +92,7 @@
       </div>`;
     document.body.insertBefore(header,document.body.firstChild);
     const pageHeading=document.querySelector(".ij-id-hero h1, .hero h1, main h1, h1");
-    const pageName=pageHeading? pageHeading.textContent.replace(/\\s+/g," ").trim() : document.title.replace(/\\s*[|–-]\\s*InfoJano.*$/i,"").trim();
+    const pageName=pageHeading? pageHeading.textContent.replace(/\s+/g," ").trim() : document.title.replace(/\s*[|–-]\s*InfoJano.*$/i,"").trim();
     const pageContext=header.querySelector(".ij-global-page-context");
     if(pageContext)pageContext.textContent="InfoJano Home  •  "+pageName;
     const languageSelect=header.querySelector('.ij-global-language');
