@@ -90,3 +90,27 @@ Source: [countdown timer competitor roundup](https://aibrandtracker.keywordsever
 - Check Search Console query impressions for the existing Countdown Studio and Birthday Countdown Calculator before creating more pages.
 - Review top-10 SERPs per country and record page type, title pattern, FAQs, internal links, schema and unique functionality.
 - Publish no more than a small batch, inspect canonical/indexability, then evaluate impressions and CTR before expanding.
+
+
+## USA country research added — 14 November 2026
+### US keyword evidence (estimates; source and date matter)
+| Keyword | US estimate | Source context |
+|---|---:|---|
+| birthday countdown | 9,900/month | SEODATA keyword report, updated 14 Jun 2026; Google Ads API average |
+| countdown | 135,000/month | Semrush US organic keyword data for TickCounter, Sep 2026; not a full market total |
+| how many days until Halloween | 201,000/month | Semrush US organic keyword data for TickCounter, Sep 2026 |
+| how many days until Christmas | 1,500,000/month | Semrush US organic keyword data for TickCounter, Sep 2026 |
+| countdown timer | 61,000/month | AhrefsTop US traffic keyword estimate for TickCounter; third-party domain ranking data |
+These figures are from different datasets and should not be added together or treated as directly comparable. They indicate meaningful seasonal and birthday intent, not guaranteed InfoJano traffic. Sources: https://www.seodata.dev/keyword/birthday-tracker ; https://www.semrush.com/website/tickcounter.com/overview/ ; https://ahrefstop.com/websites/tickcounter.com
+### USA keyword clusters
+- Core: countdown timer USA; online countdown timer; countdown clock; countdown to any date.
+- Birthday: birthday countdown; countdown for birthday; how many days until my birthday.
+- Seasonal: Halloween countdown; Thanksgiving countdown; Christmas countdown; New Year countdown; Independence Day countdown.
+- Utility: full screen countdown timer; exam countdown timer; classroom timer; presentation timer.
+- Long-tail: how many days until Halloween; how many days until Christmas; countdown timer for TV; share a countdown link.
+### US competitor observations
+- TickCounter's US organic keyword set includes broad countdown and seasonal “how many days until…” searches; third-party Semrush data showed 201K for Halloween and 1.5M for Christmas (Sep 2026). This suggests event pages can capture seasonal demand, but pages must be published well before the season and offer a useful countdown.
+- Timeanddate's timers hub exposes “Countdown to Any Date”, New Year, Thanksgiving and Black Friday countdowns, and a site countdown embed. Source: https://www.timeanddate.com/counters/
+- Competitor discovery roundups repeatedly surface Timeanddate, TickCounter, Online Stopwatch, CountingDownTo, Timer Tab and CountdownPage. Use these as SERP review candidates, not as verified keyword volume sources.
+### USA timezone and content accuracy
+The US has multiple time zones and daylight-saving exceptions. The landing page therefore instructs users to use the event's local city/region time rather than claiming one national timezone. Holiday dates must be verified per year and observance.
