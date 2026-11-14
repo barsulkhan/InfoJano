@@ -3682,3 +3682,16 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Existing sitemap already contains these four URLs; no sitemap change required. No new pages created in this pass; no not-yet-built features represented as live tools.
 - Pages deployment for this exact merge commit must be checked separately; PR merge alone is not proof of live deployment.
 - Live URLs: https://barsulkhan.github.io/InfoJano/bmi-calculation-guide.html ; https://barsulkhan.github.io/InfoJano/bmi-weight-categories.html ; https://barsulkhan.github.io/InfoJano/bmi-healthy-weight-range.html ; https://barsulkhan.github.io/InfoJano/bmi-health-guide.html
+
+
+## 14 November 2026 — QR Toolkit Phase 2 source review checkpoint (PR #12)
+- User instructed work to resume, with a strict protection rule: do not edit any page Hero Section, hero design, hero copy, artwork, CSS or responsive behavior without explicit approval. Homepage Hero PR #16 is excluded from work.
+- Reviewed QR Toolkit Phase 2 PR #12 on branch `feature/qr-toolkit-phase2-pro`; production main remains untouched and no merge/deployment was performed.
+- Found two accidental literal backslash-n sequences introduced into `qr-maker.html`: one between the QR reader and following section markup, and one after the SVG download-link statement inside JavaScript. The latter breaks JavaScript parsing and prevents the new PDF button code from running.
+- Corrected both separators to real newline characters in two focused commits on the existing feature branch:
+  - `750173ce4c917b08e2b97515ac2688cc6c6fa32c` — `Fix QR Toolkit Phase 2 literal newline syntax errors`.
+  - `9398c19d220c1ec11131ff063a4a476a8cd9fcda` — `Fix QR Toolkit script tag separator`.
+- Latest `qr-maker.html` blob SHA: `9b12a12d2ac19970bd682a9dc6e2676fdd7eb7c7`.
+- Remaining literal `\\n` sequences are intentional JavaScript escape sequences in vCard/regular-expression code; no further broad replacement was made.
+- QA still required before merge: compile all inline JS after correction, verify jsPDF asset path/library load, test camera permission/start/stop/tab-hidden behavior, scan result handling, PDF output and physical print/scan on mobile/desktop. This connector session did not perform a real browser/device test.
+- PR #12 remains open and unmerged; its base branch is reported non-mergeable/stale. Rebase/merge only after review and explicit user approval. No homepage or page Hero files were changed.
