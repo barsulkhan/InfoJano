@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v303";
+const CACHE_NAME = "infojano-v304";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -90,6 +90,21 @@ const ASSETS = [
   "/InfoJano/loan-eligibility.html",
   "/InfoJano/loan-interest.html",
   "/InfoJano/number-to-words.html",
+  "/InfoJano/bengali-number-to-words.html",
+  "/InfoJano/bulk-number-to-words.html",
+  "/InfoJano/cheque-amount-in-words.html",
+  "/InfoJano/decimal-number-to-words.html",
+  "/InfoJano/dollars-in-words.html",
+  "/InfoJano/hindi-number-to-words.html",
+  "/InfoJano/lakh-crore-converter.html",
+  "/InfoJano/million-billion-converter.html",
+  "/InfoJano/number-to-words-for-cheque.html",
+  "/InfoJano/number-to-words-indian.html",
+  "/InfoJano/number-to-words-international.html",
+  "/InfoJano/number-to-words-uppercase.html",
+  "/InfoJano/ordinal-number-converter.html",
+  "/InfoJano/rupees-in-words.html",
+  "/InfoJano/words-to-number-converter.html",
   "/InfoJano/password-generator.html",
   "/InfoJano/percentage-change.html",
   "/InfoJano/percentage.html",
