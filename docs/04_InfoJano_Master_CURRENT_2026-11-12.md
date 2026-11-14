@@ -1728,3 +1728,28 @@ For every new banner, document and agree on these details before implementation:
 - Added a restrained premium finish: layered pale-blue page background, refined breadcrumb, softer hero gradients and clock-card shadow, gradient primary CTA, elevated fact tiles, rounded white content cards, improved spacing/line-height, refined links and subtle hover states. Mobile spacing and hover behavior adjusted.
 - Branch: `design/countdown-country-pages-premium`. Three country HTML files updated. Static source QA confirms zero references to `birthday-countdown-calculator.html` in those three pages, retained “Create Your Countdown” CTA, and retained 390px hero geometry.
 - Changes are on a review branch only; not merged and not live. Browser/device visual QA still required before merge.
+
+## 14 Nov 2026 — Countdown country pages visual redesign v2
+
+User approved a stronger visual redesign after reviewing the first CSS-only polish and finding it insufficient. This pass is a substantive hero and page-hierarchy redesign for India, Bangladesh and USA; the Countdown Studio tool itself and its functionality remain untouched.
+
+### Implemented on branch `design/countdown-country-pages-visual-redesign`
+- Rebuilt the hero presentation into a larger editorial two-column layout with stronger headline scale, deeper visual depth, layered radial background, and a more deliberate CTA.
+- Replaced the simple floating timer card with a glass-style timer dashboard, country flag/name stamp, timezone label, and share-ready status note.
+- Added clearer country identity and timezone cues:
+  - India — IST (UTC+05:30)
+  - Bangladesh — BST (UTC+06:00)
+  - United States — choose the event city and local zone
+- Reworked the feature strip and content-card rhythm with stronger hierarchy, varied subtle backgrounds, improved spacing and mobile-specific sizing.
+- Preserved each page's existing SEO metadata, canonical URL, structured data, FAQ content, links and main Countdown Studio CTA.
+- Birthday Countdown Calculator remains separate and is not reintroduced as a CTA or cross-link. Age Calculator remains separate.
+
+### Files changed
+- `countdown-timer-india.html`
+- `countdown-timer-bangladesh.html`
+- `countdown-timer-usa.html`
+
+### QA still required
+- Source validation for the three pages and responsive CSS.
+- Browser/device visual QA and deployment verification after merge.
+- No claim of live deployment until GitHub Pages workflow succeeds and live URLs are checked.
