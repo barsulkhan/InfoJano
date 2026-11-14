@@ -3732,3 +3732,16 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - No PR-triggered workflow runs were returned for head `eeb0fe75183d00c19ce116eadd21a42306e1aef0`. Real browser/device QA is still outstanding for camera permission/start/stop, scan handling, PDF export and printing.
 - Older PRs #137, #205 and #206 also returned contradictory open/merged metadata (merge commit SHA present while state says open/merged=false); no action taken until their actual GitHub state is reconciled. Their already-present changes must not be duplicated.
 - Saved this checkpoint in the Read Hub only. No source code changed, no merge/deployment performed, and no Hero Section edited.
+
+
+## 14 November 2026 — Batch PR audit and merge-readiness check
+- Audited the current open PR list and checked changed-file scopes for #209, #206, #205, #137, #136, #134, #35, #17, #8, #7, #94 and #1.
+- Confirmed #206 duplicates work already delivered by merged PR #208; #205 duplicates the Service Worker cache work already delivered by merged PR #207; #137 duplicates the locale correction already delivered by merged PR #204. Their source changes were not re-applied.
+- PR #136/#134 are older superseded branches for the same #207/#208 work; no merge attempted.
+- PR #17 changes only `image-resizer.html`; visual redesign needs explicit review against approved reference and must not alter any protected Hero Section. No merge attempted.
+- PR #35 changes `date-difference.html` plus an obsolete project master file; merge blocked by divergence. Needs careful source-level comparison/rebuild before action.
+- PR #8 and #7 are stale/non-mergeable and overlap live source files; no blind merge.
+- PR #94 changes only `discount.html` to add the existing installer script, but its head has no PR workflow run and GitHub reports non-mergeable in the open-PR list; no merge attempted pending fresh-base comparison and test.
+- PR #1 security workflow run #41401938946 completed successfully, but GitHub rejected the merge request with HTTP 405 because the PR is still marked Draft. No code merged. This is a workflow/PR-state restriction, not a failed test.
+- PR #209 remains blocked by divergent base and missing browser/device QA; no merge/deployment.
+- This batch made no source-code edits. Checkpoint saved in this Read Hub file. No Hero Section was edited.
