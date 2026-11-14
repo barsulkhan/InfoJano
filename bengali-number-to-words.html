@@ -60,4 +60,5 @@ el("bn-number").addEventListener("keydown",e=>{if(e.key==="Enter")convert();});
 el("bn-clear").addEventListener("click",()=>{el("bn-number").value="";el("bn-output").textContent="এখানে ফলাফল দেখা যাবে";el("bn-error").textContent="";});
 el("bn-copy").addEventListener("click",async()=>{const t=el("bn-output").textContent;if(!t||t==="এখানে ফলাফল দেখা যাবে")return;try{await navigator.clipboard.writeText(t);el("bn-error").textContent="ফলাফল কপি হয়েছে।";}catch(e){el("bn-error").textContent="কপি করা যায়নি—ফলাফলটি নির্বাচন করে কপি করুন।";}});
 })();
-</script></body></html>
+</script><script src="site-header.js" defer></script>
+</body></html>
