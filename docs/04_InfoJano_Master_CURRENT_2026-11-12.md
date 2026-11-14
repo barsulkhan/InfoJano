@@ -2010,3 +2010,63 @@ The earlier PRs #205 and #206 became stale after PR #204 was merged; equivalent 
 - Check visual hero artwork on mobile/desktop.
 - Verify Service Worker v308 activation and offline precache behavior.
 - Native-speaker review for Bengali/Hindi remains recommended.
+
+
+---
+
+## 14 November 2026 — Post-merge deployment and remaining-project audit
+
+### Number to Words Pro release status
+- The three replacement PRs #204, #207 and #208 are merged to main.
+- Latest GitHub Pages workflow for the follow-up documentation commit `a9221abf4f30042763f82fb857ccdade7e71d9a6`, run `43619075449`, completed with **success**.
+- Earlier Pages runs for the intermediate content commits were cancelled when newer commits superseded them; the latest run is the authoritative workflow result.
+- This confirms the GitHub Pages build/deploy workflow succeeded. It does not replace visual browser/device QA, live custom-domain HTTP checks, or Google Search Console indexing confirmation.
+- APK workflow runs `43619020151` and `43619000968` failed. They are separate from Pages deployment. Do not describe APKs as built/released.
+
+### Remaining work across InfoJano (repository audit snapshot)
+The following are not all blockers to the Number to Words website release; they are separate project backlog items.
+
+1. **Number to Words Pro — post-deploy QA**
+   - Browser-test Bengali/Hindi grouping and spoken words, six SEO CTA deep links, INR/USD currency wording, cheque output.
+   - Visual-check hero artwork at mobile and desktop widths.
+   - Verify Service Worker v308 activation and offline behavior.
+   - Native-speaker review for Bengali/Hindi is recommended.
+2. **Google Search Console / indexing**
+   - Batch 1's 10 submitted URLs remain Submitted — Pending Google indexing verification; do not mark Indexed without URL Inspection evidence.
+   - 15 Number to Words SEO pages and 3 Countdown country pages remain pending/not submitted in the tracker.
+   - Refresh sitemap-to-tracker reconciliation; resolve the historical 40-indexed screenshot vs explicit list count and homepage classification.
+   - Authenticated Search Console inspection is not available in this workflow. User-provided Search Console export/screenshots or connected authenticated access is required.
+3. **Countdown Studio**
+   - PR #178 PWA install support and PR #198 same-fullscreen celebration are merged.
+   - Remaining runtime/device QA includes black-screen/TV display mode, timezone/DST edge cases, same-screen completion behavior, PWA/offline installation on Android/Desktop, and YouTube subscriber goal API/key/quota/error handling.
+   - Photo/video gallery, share link, local save and PNG export remain product backlog items if still in scope.
+   - Countdown country SEO pages are merged (PR #203); verify live custom-domain rendering and inspect indexing after release.
+4. **Image Resizer**
+   - PR #15, #23 and #24 are merged (six SEO pages and advanced resizer).
+   - Remaining QA: cm/mm/in to px conversion, JPEG/PNG DPI metadata, crop/reset, target-KB accuracy, batch resize up to 30 files/download, regression tests for existing modes, and mobile/desktop visual checks.
+5. **QR Toolkit Phase 2**
+   - PR #12 remains open and is not mergeable at this audit. Review/rebase before any merge; runtime-test camera scan, permission handling, camera stop and PDF export.
+6. **URL Toolkit reliability**
+   - PR #8 remains open and is not mergeable at this audit. Review/rebase before any merge; test clipboard fallback, QR render, error handling and download.
+7. **Date Difference Calculator**
+   - PR #35 remains open and is not mergeable at this audit. Review/rebase before any merge; test Add/Subtract Date, weekday display, configurable weekends, reset, leap years/month-end, inclusive/business-day calculations and date-picker synchronization.
+8. **Homepage Header + Hero / design**
+   - PR #16 (homepage hero/footer) and #17 (Image Resizer redesign) remain open and are not mergeable at this audit. Do not merge stale branches blindly.
+   - Header + Hero visual QA remains pending: reliable desktop/mobile screenshots, property-by-property CSS cascade audit, reference fidelity comparison. The exact original user-pasted HTML/CSS was not retained in the Read Hub; ask user to re-share it before literal recreation. Preserve homepage search/filter/navigation and all other sections.
+9. **Global SEO**
+   - PR #7 remains open and is not mergeable at this audit. Review current main vs branch and rebase only after checking for stale/overwriting changes.
+10. **Discount Calculator APK installer**
+    - PR #94 remains open and is not mergeable at this audit. Original failure was missing installer script assertion for `discount.html`; inspect current workflow and source before attempting fix. APK workflow currently fails; verify artifact count only after successful workflow.
+11. **Short Link security**
+    - Earlier audit flagged PR #1 for URL validation/security review. Recheck its current status before acting; perform URL validation and abuse/security tests if still relevant.
+12. **Ads / monetization**
+    - Recheck live AdSense approval/status and `ads.txt` serving. No approval/revenue claim without current account/site evidence.
+
+### Work sequencing recommendation
+- First finish Number to Words runtime QA and verify live pages.
+- Next reconcile Search Console indexing and continue batches of no more than 10 only after exact status confirmation.
+- Then choose one separate feature backlog item at a time (suggest Image Resizer QA or Date Difference Calculator), preserving current main and avoiding blind merges of stale PRs.
+- No new code PRs were merged in this audit. Do not infer that the whole InfoJano project is finished merely because the latest Pages deployment succeeded.
+
+### Financial / project closeout
+- No contract, agreed rate, invoice, expense ledger or outstanding payment amount is recorded in this Read Hub snapshot. Do not calculate or invent a final amount. A financial closeout requires the agreed amount/rate and any paid/outstanding records from the user.
