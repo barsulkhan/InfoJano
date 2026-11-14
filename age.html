@@ -331,6 +331,51 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
  .ij-age-main section[aria-labelledby="related-tools-title"]>div>a{transition:none!important}
 }
 
+
+/* 2026-11-14: Two-column Age Calculator workspace.
+   User enters details on the left; calculated output stays on the right. */
+body:has(.ij-age-main) .ij-global-tagline,
+body:has(.ij-age-main) .ij-global-page-context{display:none!important}
+.ij-age-main>.card:first-of-type{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  grid-template-areas:
+    "heading result"
+    "intro result"
+    "doblabel result"
+    "format result"
+    "dobinput result"
+    "dobhelp result"
+    "toolkit result"
+    "calculate result"
+    "history history"!important;
+  align-items:start!important;
+  gap:12px 24px!important;
+  padding:clamp(18px,2.4vw,32px)!important;
+}
+.ij-age-main>.card:first-of-type>h2{grid-area:heading!important;margin:0!important}
+.ij-age-main>.card:first-of-type>p:first-of-type{grid-area:intro!important;margin:0 0 4px!important}
+.ij-age-main>.card:first-of-type>label[for="dobManual"]{grid-area:doblabel!important;margin:8px 0 0!important}
+.ij-age-main>.card:first-of-type>p[style*="DD-MM-YYYY"]{grid-area:format!important;margin:0!important}
+.ij-age-main>#none{display:none}
+.ij-age-main>.card:first-of-type>#dobBirthdayFrame{grid-area:dobinput!important}
+.ij-age-main>.card:first-of-type>#dobFormatHelp{grid-area:dobhelp!important}
+.ij-age-main>.card:first-of-type>#ij-age-toolkit{grid-area:toolkit!important;margin:8px 0 0!important;width:100%!important}
+.ij-age-main>.card:first-of-type>#calculate{grid-area:calculate!important;margin:4px 0 0!important}
+.ij-age-main>.card:first-of-type>#result{grid-area:result!important;align-self:stretch!important;min-height:100%!important;margin:0!important;padding:22px!important;border:1px solid #cfe0fa!important;border-radius:22px!important;background:linear-gradient(145deg,#f8fbff,#edf5ff)!important;box-shadow:inset 0 1px #fff,0 8px 22px #1749a014!important}
+.ij-age-main>.card:first-of-type>#result.hidden{display:block!important}
+.ij-age-main>.card:first-of-type>#result.hidden:before{content:"🎂  Your age result will appear here";display:flex;align-items:center;justify-content:center;min-height:220px;padding:24px;text-align:center;color:#496486;font-size:clamp(18px,2vw,24px);font-weight:800;border:2px dashed #c5d8f2;border-radius:16px;background:linear-gradient(145deg,#fff,#f4f8ff)}
+.ij-age-main>.card:first-of-type>#historyCard{grid-area:history!important;width:100%!important}
+.ij-age-main>.card:first-of-type>#result:not(.hidden){display:block!important}
+@media(max-width:760px){
+ .ij-age-main>.card:first-of-type{
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"heading" "intro" "doblabel" "format" "dobinput" "dobhelp" "toolkit" "calculate" "result" "history"!important;
+  gap:10px!important;
+ }
+ .ij-age-main>.card:first-of-type>#result{min-height:220px!important;padding:16px!important}
+ .ij-age-main>.card:first-of-type>#result.hidden:before{min-height:150px}
+}
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/age.webmanifest">
 
