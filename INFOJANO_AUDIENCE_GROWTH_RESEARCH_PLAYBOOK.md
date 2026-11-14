@@ -202,3 +202,26 @@ For the next pass, use the same Search results report and date range:
 3. Then remove query filter, open Pages, sort by Impressions (descending), and share the first 10 rows with clicks, impressions, CTR and position.
 4. If possible, export the report as CSV with dimensions query + page and include country/device for a separate breakdown.
 This page-level mapping is the missing evidence needed to choose a specific, safe change. No source-code edits are justified by the query screenshots alone.
+
+
+## Query-to-page mapping evidence — QR (user screenshot, 14 Nov 2026)
+Selected query shown in the screenshot: **"qr code create online"** (note: this is not the earlier query "make qr code online").
+- Date range: last 3 months (10 Oct–11 Nov 2026 shown on graph)
+- Clicks: 0
+- Impressions: 1
+- CTR: 0%
+- Average position: 97
+- Pages tab shows one URL only: `https://barsulkhan.github.io/InfoJano/qr-maker.html`
+- This is a single impression at a very low average position; it is not enough to diagnose a title/snippet CTR problem or infer demand.
+- It does confirm that Google associated this query with the QR Maker page.
+
+Source inspection of current main `qr-maker.html` (blob SHA `8be6599fc9a9f7571278bf60753da1574eaa81cc`):
+- Title: "Free Online QR Code Maker & Generator | Create QR Codes - InfoJano"
+- Description: "Create a QR code online free for links, text, WiFi, WhatsApp, email and contacts. Use this free online QR code maker to generate and download a QR code."
+- Canonical: `https://infojano.com/qr-maker.html`
+- Open Graph URL also points to `https://infojano.com/qr-maker.html`.
+Interpretation:
+- The canonical tag already points from the GitHub Pages alias document to the preferred custom domain URL. Do not change title/description/canonical based on this one impression.
+- Important follow-up is to verify in Search Console URL Inspection whether the GitHub Pages alias is indexed, what Google-selected canonical is, and whether the custom-domain URL is indexed. Check the canonical live URL and sitemap/canonical consistency.
+- No source change or merge is justified by this screenshot. Keep Hero Section unchanged.
+Status: Query-page mapping confirmed; canonical consolidation check pending.
