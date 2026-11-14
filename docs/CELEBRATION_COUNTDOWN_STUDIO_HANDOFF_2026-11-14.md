@@ -10,6 +10,8 @@ Base: current `main` at branch creation (main was not modified)
 - Archive branch: `archive/countdown-studio-2026-11-14`
 - Archive README: `archives/countdown-studio-2026-11-14/README.md`
 - Original source commit recorded by archive README: `0abc79c06dc38754bcea25119ea5a53b5458c4fa`
+- The archive branch is historically divergent from current main (initial comparison: 223 commits ahead / 64 behind; merge base `8d5e3bae076f163adf08d38fd49139cb96c97c6b`). Do not merge the archive branch wholesale.
+- Current main HEAD at feature-branch creation: `6509905698c823d78e792396a4957e96f85e42e8`. Current main did not contain `countdown-studio.html` or its dedicated manifest; its Service Worker was `infojano-v304`.
 - Preserved source: `countdown-studio.html`
 - Preserved PWA manifest: `app-manifests/countdown-studio.webmanifest`
 - Master handoff fully reviewed from `docs/InfoJano_READ_HUB_MASTER_HANDOFF_2026-11-13.md` on the archive branch (848 lines).
