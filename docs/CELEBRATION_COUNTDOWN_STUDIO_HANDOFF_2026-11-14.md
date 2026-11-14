@@ -38,6 +38,7 @@ Base: current `main` at branch creation (main was not modified)
 - Added `app-manifests/countdown-studio.webmanifest`.
 - Updated `sw.js`: cache `infojano-v304` -> `infojano-v305`; added Countdown Studio HTML and manifest to precache.
 - Fixed a malformed literal backslash-n between the YouTube Connect and Refresh event-listener statements. In the archived source this was present in the JavaScript code line and could prevent the entire inline script from parsing.
+- Fixed media slideshow timer lifecycle: rebuilding a gallery now clears its previous interval, and closing the celebration overlay clears its slideshow interval. This prevents repeated media edits / overlay closes from leaving orphaned timers.
 
 ## Static source checks completed
 
@@ -47,13 +48,15 @@ Base: current `main` at branch creation (main was not modified)
 - Shared dependencies `install.js`, `site-header.js`, `index.html`, and `birthday-countdown-calculator.html` exist in the feature branch.
 - No duplicate HTML IDs found.
 - No missing element IDs among static `$("id")` references.
+- Local file uploads are included in the media-item collection and use object URLs for same-device previews.
+- Gallery rebuild and celebration-close paths now clean up slideshow timers.
 - The malformed YouTube listener sequence is corrected.
 - Both Countdown Studio HTML and its manifest are present in the Service Worker precache.
-- Feature branch currently differs from main in exactly three files: the new HTML page, the new manifest, and `sw.js`.
+- Feature branch currently differs from main in exactly four files: the new HTML page, the new manifest, `sw.js`, and this branch handoff document. The branch is 5 commits ahead of main and 0 commits behind at the latest comparison.
 
 ## Not yet verified
 
-- Real browser JavaScript runtime / syntax execution.
+- Real browser JavaScript runtime / syntax execution (the malformed listener was corrected and static checks pass, but a browser parser/runtime test has not yet been run).
 - Responsive visual QA on desktop and mobile.
 - Countdown behavior across time zones and DST boundaries.
 - YouTube API success, invalid key, quota, hidden subscriber count and refresh failure paths.
