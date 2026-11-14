@@ -3695,3 +3695,12 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - Remaining literal `\\n` sequences are intentional JavaScript escape sequences in vCard/regular-expression code; no further broad replacement was made.
 - QA still required before merge: compile all inline JS after correction, verify jsPDF asset path/library load, test camera permission/start/stop/tab-hidden behavior, scan result handling, PDF output and physical print/scan on mobile/desktop. This connector session did not perform a real browser/device test.
 - PR #12 remains open and unmerged; its base branch is reported non-mergeable/stale. Rebase/merge only after review and explicit user approval. No homepage or page Hero files were changed.
+
+
+## 14 November 2026 — QR Toolkit Phase 2 follow-up QA
+- Continued source review of PR #12 after the two separator fixes. The PR changes exactly one file, `qr-maker.html`; no page Hero Section or homepage files are in the diff.
+- JavaScript syntax check: all 6 non-empty inline JavaScript blocks compile successfully; JSON-LD was intentionally excluded from JS compilation. HTML source audit found no duplicate IDs and no missing static `getElementById` targets.
+- Confirmed the referenced local asset `/InfoJano/jspdf.umd.min.js` exists in repository main (blob SHA `a9781f1dc03f77453adf11c8be05105330fefadc`). The corrected PR file blob SHA is `9b12a12d2ac19970bd682a9dc6e2676fdd7eb7c7`.
+- GitHub reports PR #12 is still open, unmerged and non-mergeable. Branch comparison against current main is `diverged`: 4 commits ahead and 700 commits behind. It must be carefully rebuilt/rebased against current main before merge; do not merge the stale branch or force-update it blindly.
+- No GitHub Actions PR workflow run was returned for the latest head commit. No real browser/device, camera-permission, camera-stream, PDF-download, print or physical QR scan test was performed. Those remain required before production approval.
+- No production changes, merge or deployment were made. No Hero Section was edited.
