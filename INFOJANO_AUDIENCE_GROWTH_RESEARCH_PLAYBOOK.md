@@ -113,3 +113,92 @@ Status: Research signal identified; page mapping and SERP audit pending.
 
 ## Next research action
 Start with a Search Console page-level mapping of the visible QR, loan-interest, BMI, and Portuguese percentage query rows. For each query, identify the exact page, country/device distribution, impressions/clicks/CTR/position, and compare the latest complete 28 days with the preceding 28 days. Then perform a small competitor/SERP audit for the highest-opportunity cluster. No code change should be made until that evidence is available.
+
+
+## Expanded Search Console query evidence (additional user screenshots, 14 Nov 2026)
+The user supplied further pages of the same 3-month Queries table (rows 1–83). The site-level scorecards remained 32 clicks, 1.05K impressions, 3.1% CTR, average position 21.3. All individual query rows visible across these screenshots showed 0 clicks; this does NOT mean the site had zero clicks overall. The screenshot's graph covers roughly 10 Oct–11 Nov 2026 and showed recent impression growth, but does not establish the exact current-day click count.
+
+Additional visible queries and impressions:
+- free online qr code maker — 4
+- qr maker online — 4
+- create qr code free online — 4
+- count percentage online — 3
+- subtract from date — 3
+- qr code generator free — 3
+- online qr code maker — 3
+- make a qr code online free — 3
+- gen qr code free — 3
+- date difference calculator — 2
+- difference between two dates — 2
+- free qr code maker — 2
+- calculadora porcentagem online — 2
+- calculadora de desconto — 2
+- qr code generator free online — 2
+- create qr code online — 2
+- online qr maker — 2
+- qr code maker online — 2
+- create qr code free — 2
+- qr code generator online — 2
+- qr maker free — 2
+- make qr code online free — 2
+- create a qr code online — 2
+- qr code maker free online — 2
+- dot bmi calculator — 1
+- calculadora online de porcentagens — 1
+- date difference between two dates — 1
+- percentage calculator — 1
+- loan interest calculation formula — 1
+- percentage calculate — 1
+- get percentage online — 1
+- difference between two days — 1
+- difference between 2 dates — 1
+- generate qr code free — 1
+- generate qr online — 1
+- porcentagem online calculadora — 1
+- qr online generator — 1
+- working out interest on a loan — 1
+- character sentence — 1
+- výpočet percenta — 1
+- how to calculate loan interest per annum — 1
+- how to compute loan interest per annum — 1
+- qr code create free — 1
+- text count — 1
+- calculating interest on a loan — 1
+- create online qr code — 1
+- how to calculate interest on a loan — 1
+- passport photo resizer software free — 1
+- calculate percentage — 1
+- generate qr code online — 1
+- online qr code generate — 1
+- qr code maker online free — 1
+- figure interest on a loan — 1
+- calculation of loan interest — 1
+- generate qr code — 1
+- loan interest formula — 1
+- qr code create online — 1
+- free generate qr code online — 1
+- how to work out interest on a loan — 1
+
+Interpretation and caution:
+- QR creation is the largest visible query cluster by variety, with many phrase variants. This suggests a shared intent cluster, not proof that many separate pages are needed. Map variants to the actual landing URL first.
+- Loan-interest searches form a second distinct intent cluster, including formula/how-to phrasing. Verify whether the site has a relevant calculator/page and whether Google is showing it for informational or calculator intent.
+- Date-difference and percentage searches appear in multiple languages; inspect country/device and the actual landing pages before changing language targeting or page copy.
+- The Portuguese/Spanish/Czech-language queries suggest international impressions, but the sample is too small to decide localization strategy.
+- A few queries such as "character sentence", "text count", and "passport photo resizer software free" should be mapped to exact pages; do not assume these are irrelevant or that their target pages need changes.
+- All these are tiny impression counts (mostly 1–4); avoid making title or page changes based on a single impression. Prioritize query clusters and page-level aggregate evidence.
+
+## Additional current research (checked 14 Nov 2026)
+7. Google Search Console Help — Performance report tasks and use cases:
+   https://support.google.com/webmasters/answer/17010961?hl=en
+   Key lesson: click a query row, then open Pages to identify which URL Google showed for that query. For low-CTR pages, inspect the title/snippet and query alignment. Segment and compare periods; do not diagnose from query text alone.
+8. Ahrefs — The Free Tools SEO Strategy (Ryan Law, 16 Jul 2026):
+   https://ahrefs.com/blog/the-free-tools-seo-strategy/
+   Additional lesson: Ahrefs describes free utility pages as satisfying action-oriented searches better than an article alone can. It recommends validating the actual SERP/page types and finding tool opportunities rather than assuming keyword volume means a tool will rank. Its reported traffic is Ahrefs' own case, not a forecast for InfoJano.
+
+## Next evidence request / exact Search Console workflow
+For the next pass, use the same Search results report and date range:
+1. Open Queries and tap the query "make qr code online"; then open Pages and capture the resulting URL row(s), clicks, impressions, CTR and position.
+2. Repeat for "how do i calculate interest on a loan" and "bmi calculator".
+3. Then remove query filter, open Pages, sort by Impressions (descending), and share the first 10 rows with clicks, impressions, CTR and position.
+4. If possible, export the report as CSV with dimensions query + page and include country/device for a separate breakdown.
+This page-level mapping is the missing evidence needed to choose a specific, safe change. No source-code edits are justified by the query screenshots alone.
