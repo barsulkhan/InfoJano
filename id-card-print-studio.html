@@ -783,5 +783,5 @@ $('downloadJpgBtn').addEventListener('click',()=>{let f=selected('frontSelect'),
 /* Hero shortcuts and SEO guide deep links select an existing document workflow only. */
 (function(){var select=document.getElementById('cardType');if(!select)return;function chooseDocument(value,scroll){var option=Array.from(select.options).find(function(item){return item.value===value||item.text===value;});if(!option)return;select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));if(scroll){var target=document.getElementById('ij-document-selector');if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}}var requested=new URLSearchParams(window.location.search).get('document');if(requested)chooseDocument(requested,false);document.querySelectorAll('[data-ij-doc]').forEach(function(button){button.addEventListener('click',function(){chooseDocument(button.getAttribute('data-ij-doc'),true);});});})();
 </script>
-<script src="/InfoJano/site-header.js" defer></script>
+<script src="/site-header.js" defer></script>
 </body></html>
