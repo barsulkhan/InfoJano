@@ -1,0 +1,45 @@
+name: Build Celebration Countdown Windows Desktop App
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    if: github.ref == 'refs/heads/feature/celebration-countdown-studio-rebuild'
+    runs-on: windows-latest
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: desktop-app/countdown-studio/package.json
+      - name: Install dependencies
+        working-directory: desktop-app/countdown-studio
+        run: npm install --no-audit --no-fund
+      - name: Build Windows setup and portable apps
+        working-directory: desktop-app/countdown-studio
+        run: npm run dist
+      - name: Verify packages
+        shell: pwsh
+        run: |
+          $setup = "desktop-app/countdown-studio/dist/InfoJano-Celebration-Countdown-Setup-1.0.0.exe"
+          $portable = "desktop-app/countdown-studio/dist/InfoJano-Celebration-Countdown-Portable-1.0.0.exe"
+          if (!(Test-Path $setup)) { throw "Missing setup installer: $setup" }
+          if (!(Test-Path $portable)) { throw "Missing portable app: $portable" }
+          if ((Get-Item $setup).Length -lt 1000000) { throw "Setup installer is unexpectedly small." }
+          if ((Get-Item $portable).Length -lt 1000000) { throw "Portable app is unexpectedly small." }
+          Get-Item $setup, $portable | Select-Object Name, Length
+      - name: Upload build artifacts (no public release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: infojano-celebration-countdown-windows-x64
+          path: |
+            desktop-app/countdown-studio/dist/*.exe
+          if-no-files-found: error
+          retention-days: 30

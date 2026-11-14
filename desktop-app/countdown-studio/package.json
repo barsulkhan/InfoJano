@@ -1,0 +1,54 @@
+{
+  "name": "infojano-celebration-countdown",
+  "version": "1.0.0",
+  "description": "InfoJano Celebration Countdown native Windows desktop wrapper",
+  "main": "main.cjs",
+  "author": "InfoJano",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable --x64"
+  },
+  "devDependencies": {
+    "electron": "35.0.0",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "com.infojano.celebrationcountdown",
+    "productName": "InfoJano Celebration Countdown",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "package.json"
+    ],
+    "artifactName": "InfoJano-Celebration-Countdown-Setup-${version}.${ext}",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "InfoJano Celebration Countdown"
+    },
+    "portable": {
+      "artifactName": "InfoJano-Celebration-Countdown-Portable-${version}.${ext}"
+    }
+  }
+}
