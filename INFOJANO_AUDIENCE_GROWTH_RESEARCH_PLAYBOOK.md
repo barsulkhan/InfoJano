@@ -225,3 +225,14 @@ Interpretation:
 - Important follow-up is to verify in Search Console URL Inspection whether the GitHub Pages alias is indexed, what Google-selected canonical is, and whether the custom-domain URL is indexed. Check the canonical live URL and sitemap/canonical consistency.
 - No source change or merge is justified by this screenshot. Keep Hero Section unchanged.
 Status: Query-page mapping confirmed; canonical consolidation check pending.
+
+
+## URL Inspection evidence — legacy QR URL indexed (user screenshot, 14 Nov 2026)
+Inspected URL shown:
+`https://barsulkhan.github.io/InfoJano/qr-maker.html`
+Visible status:
+- "URL is on Google"
+- Page indexing: "Page is indexed"
+- HTTPS: "Page is served over HTTPS"
+Interpretation: the legacy GitHub Pages QR Maker URL is definitely indexed according to the user's Search Console screenshot. This explains why the Performance report attributes impressions to the legacy URL. The screenshot does NOT show user-declared canonical or Google-selected canonical, so canonical consolidation is still unverified. Do not remove the legacy URL or make SEO/code changes based on this evidence alone.
+Next exact check: inspect `https://infojano.com/qr-maker.html` in the same property; capture URL is on Google/Page indexing status, then expand Page indexing details on both URLs and compare user-declared canonical and Google-selected canonical. If the custom-domain URL is indexed and Google-selected canonical is the custom domain, this is a healthy consolidation signal; if not, investigate canonical/redirect/sitemap/internal-link consistency before edits.
