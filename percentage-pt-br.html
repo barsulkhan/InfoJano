@@ -146,5 +146,6 @@
 <script>
 (function(){const p=document.getElementById('pct'),a=document.getElementById('amount'),r=document.getElementById('result');function calc(){if(p.value===''||a.value===''||!Number.isFinite(Number(p.value))||!Number.isFinite(Number(a.value))){r.textContent='Informe uma porcentagem e um valor válidos.';return}const v=Number(p.value)*Number(a.value)/100;r.textContent=Number(p.value).toLocaleString('pt-BR')+'% de '+Number(a.value).toLocaleString('pt-BR')+' = '+v.toLocaleString('pt-BR',{maximumFractionDigits:8})}document.getElementById('calculate').addEventListener('click',calc);[p,a].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calc()}));})();
 </script>
+<script src="site-header.js" defer></script>
 </body>
 </html>
