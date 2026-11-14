@@ -3745,3 +3745,51 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 - PR #1 security workflow run #41401938946 completed successfully, but GitHub rejected the merge request with HTTP 405 because the PR is still marked Draft. No code merged. This is a workflow/PR-state restriction, not a failed test.
 - PR #209 remains blocked by divergent base and missing browser/device QA; no merge/deployment.
 - This batch made no source-code edits. Checkpoint saved in this Read Hub file. No Hero Section was edited.
+
+
+## 15 November 2026 — Consolidated audit and next-chat handoff
+
+### Canonical project record and source hierarchy
+- Primary restart file: `InfoJano_Smart_Master_Project_COMPLETE_2026-11-04.md` (this file). It contains the accumulated project history through the 14 Nov PR audit and is the file to continue updating.
+- Audience-growth research source: `INFOJANO_AUDIENCE_GROWTH_RESEARCH_PLAYBOOK.md` (updated 14 Nov 2026). Use its evidence-first research rules and hypotheses.
+- Google indexing tracker: `docs/InfoJano_Google_Indexing_Tracker_2026-11-12.md`. Treat its URL lists as historical tracker data, not proof of current indexing.
+- `docs/04_InfoJano_Master_CURRENT_2026-11-12.md` is an older portfolio/restart document with older task priorities (e.g. Image Resizer PR #15); do not let its old "immediate next task" override the later consolidated project history in this file.
+- The "batch PR audit and merge-readiness" record is already a section in this primary file (14 Nov 2026); no separate replacement master/audit file is needed.
+
+### Fresh GitHub PR state check (15 Nov 2026)
+- Recent PR listing returned #209 open, #208/#207/#204 merged, while duplicate/superseded #206/#205 remained open and unmerged. The existing audit's instruction not to duplicate merged work remains valid.
+- PR #209, "Add camera scanning and print-ready PDF to QR Toolkit", remains Open and Unmerged; changed_files=1, additions=26, deletions=1; changed-file scope in the PR diff is only `qr-maker.html`.
+- Current `get_pr_info` reports mergeable=true, but the recent open-PR listing reports mergeable=false. This is a conflicting GitHub status response. Do not merge based on either single response; recheck comparison/base/head and GitHub status in the morning.
+- PR #209 head remains `eeb0fe75183d00c19ce116eadd21a42306e1aef0`; PR body says browser/device QA is outstanding for camera permission/start/stop, actual QR scan, PDF download and print. No PR-triggered workflow runs were returned for this head at this check.
+- No merge, source-code edit, deployment, or Hero Section edit was performed during this audit.
+
+### QR Maker / AMP / AdSense evidence (user screenshots + source check, 15 Nov 2026)
+- AdSense "Manage ads for your site" screenshot shows `infojano.com` with Auto optimize ON and Auto ads ON.
+- Separate AdSense "Auto ads for AMP" screenshot shows the AMP Auto ads toggle ON and In-page ads / Anchor ads toggles ON; the user had not yet confirmed pressing Apply. Do not assume AMP ads have been applied or are serving.
+- Current repository `qr-maker.html` source (blob SHA `8be6599fc9a9f7571278bf60753da1574eaa81cc`) contains canonical `https://infojano.com/qr-maker.html` and zero occurrences of `amphtml`. This confirms no `rel=amphtml` reference was found in this page's current source; it does NOT prove that every site page is non-AMP.
+- User's mobile page screenshot demonstrates responsive rendering only; responsive design is not evidence of AMP.
+- Advice at this checkpoint: ordinary Auto Ads can serve on standard HTML pages if AdSense site approval, site-wide AdSense code and policy/account status are all valid. Auto ads ON alone does not prove ads are already being served. Do not apply AMP-specific settings or add AMP code until a real AMP page/version is identified. Next check: inspect the remaining page templates/source for AMP runtime/boilerplate and `rel=amphtml` / `rel=canonical` relationships, then review AdSense site status and live ad code. Do not change ad settings without evidence/user approval.
+
+### Search Console / indexing tracker reconciliation warning
+- The tracker says current repository sitemap has 106 unique canonical URLs.
+- Its historical Indexed section says 40 URLs from screenshots, but the explicit Indexed URL list contains 40 numbered entries; the 14 Nov reconciliation text elsewhere says 39 explicit entries. These historical counts/definitions conflict and must be recalculated from the actual file before reporting a single total.
+- Tracker pending sections enumerate 50 original sitemap URLs + 15 Number to Words Pro SEO pages + 3 Countdown country pages (=68), while one earlier tracker sentence says 65 pending. Treat 68 as the arithmetic of those listed sections only, not a verified current Search Console pending count.
+- Batch 1 (10 URLs) remains Submitted — Pending Google indexing verification in the record; submission is not indexing. The latest user screenshot previously showed sitemap Success / 106 discovered pages, which is not proof that 106 pages are indexed.
+- Do not resubmit old URLs blindly, erase the legacy GitHub Pages URL history, or mark any URL Indexed without exact URL Inspection evidence. In the morning, first refresh sitemap and tracker lists, resolve count discrepancies, then inspect the exact canonical URLs in the authenticated Search Console property.
+
+### Audience-growth research handoff
+- Use `INFOJANO_AUDIENCE_GROWTH_RESEARCH_PLAYBOOK.md` as the research method and preserve its 14 Nov GSC screenshot evidence (3-month totals: 32 clicks, 1.05K impressions, 3.1% CTR, average position 21.3; small sample).
+- Highest-priority query clusters noted there: QR creation variants, loan-interest calculation, BMI, plus smaller date/percentage/multilingual queries. Query-to-page mapping is incomplete; do not change titles/content or create synonym pages based on tiny impression counts.
+- Next research action remains page-level GSC mapping for the visible QR, loan-interest and BMI queries, then compare a complete recent 28-day period with the preceding 28 days and perform a limited SERP/competitor review. Research first; no code change without evidence.
+
+### Morning new-chat resume instructions (15 Nov checkpoint)
+1. Start by reading this primary file, the Audience Growth Research Playbook, and the Google Indexing Tracker; do not ask the user to re-send repository links or create another master file.
+2. Re-fetch current GitHub PR #209 metadata, compare status and workflow runs; reconcile the contradictory mergeable responses. Keep it unmerged until browser/device QA and status are clear.
+3. Continue the wider PR audit from the 14 Nov section; confirm current status before any action and never duplicate changes already merged in #204/#207/#208.
+4. Verify current GitHub Pages deployment and live custom-domain pages separately; a successful workflow is not the same as browser/device QA or indexing.
+5. Finish Search Console page-level query mapping and indexing tracker reconciliation using fresh evidence; preserve old GitHub Pages indexing history.
+6. Complete site-wide AMP/template check and AdSense account/site/code status check. Standard Auto Ads and AMP Auto Ads are separate; do not switch or apply AMP settings without proof an AMP page exists.
+7. Keep the protected Hero Section rule. No paid services, purchases, merges, deployments, or consequential source changes without appropriate user approval.
+8. Record every completed check with date, exact URL/PR/commit, evidence, and separate statuses for source QA, workflow, browser/device QA, live deployment and Google indexing.
+
+**Checkpoint boundary:** This 15 Nov audit only records verified repository/source and user-screenshot evidence. No production code was changed, no PR was merged, no deployment was triggered, no Search Console URL was submitted, and no ad setting was changed.
