@@ -40,6 +40,7 @@ const ASSETS = [
   "/InfoJano/countdown-studio.html",
   "/InfoJano/countdown-timer-india.html",
   "/InfoJano/countdown-timer-bangladesh.html",
+  "/InfoJano/countdown-timer-usa.html",
   "/InfoJano/age-in-days-calculator.html",
   "/InfoJano/bmi.html",
   "/InfoJano/bmr-calculator.html",
