@@ -332,21 +332,6 @@ body{padding:16px!important;background:linear-gradient(135deg,#e9f7ff,#f3f0ff 55
 }
 
 
-/* Keep Advanced Toolkit as a separate card immediately above the DOB calculator card. */
-(function(){
- function placeAgeToolkit(){
-  const main=document.querySelector(".ij-age-main");
-  const toolkit=document.getElementById("ij-age-toolkit");
-  const calculator=main&&main.querySelector("section.card:has(#dobManual)");
-  if(main&&toolkit&&calculator&&toolkit.parentElement!==main){
-   main.insertBefore(toolkit,calculator);
-   toolkit.style.margin="0 0 18px";
-   toolkit.style.width="100%";
-  }
- }
- if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",placeAgeToolkit,{once:true});
- else placeAgeToolkit();
-})();
 /* 2026-11-14: Two-column Age Calculator workspace.
    User enters details on the left; calculated output stays on the right. */
 body:has(.ij-age-main) .ij-global-tagline,
@@ -982,5 +967,21 @@ const now=new Date();ref.value=iso(now);checkReminder();window.setInterval(check
 
 <script src="/InfoJano/install.js" defer></script>
 <script src="/site-header.js" defer></script>
+<script id="ij-age-toolkit-position">/* Keep Advanced Toolkit as a separate card immediately above the DOB calculator card. */
+(function(){
+ function placeAgeToolkit(){
+  const main=document.querySelector(".ij-age-main");
+  const toolkit=document.getElementById("ij-age-toolkit");
+  const calculator=main&&main.querySelector("section.card:has(#dobManual)");
+  if(main&&toolkit&&calculator&&toolkit.parentElement!==main){
+   main.insertBefore(toolkit,calculator);
+   toolkit.style.margin="0 0 18px";
+   toolkit.style.width="100%";
+  }
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",placeAgeToolkit,{once:true});
+ else placeAgeToolkit();
+})();
+</script>
 </body>
 </html>
