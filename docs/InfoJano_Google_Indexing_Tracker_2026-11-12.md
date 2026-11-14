@@ -186,3 +186,11 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 - Historical tracker says 40 Indexed URLs from screenshots, but the explicit Indexed URL list contains 39 entries, including two sitemap XML URLs that are not current `sitemap.xml` content entries. Do not silently treat the historical screenshot count and explicit URL list as identical. Confirm the homepage and any missing screenshot entry in Search Console.
 - Current sitemap count supersedes the old 88-URL snapshot for future planning. This is a repository source comparison only, not a live Search Console inspection or a statement that any pending URL has been indexed.
 - Before next batch: inspect homepage and exact URLs in Search Console, confirm the verified property/canonical host, refresh the queue, then submit at most 10. No new URLs were submitted during this check.
+
+## Final handoff status — 14 Nov 2026
+- Repository-side sitemap reconciliation and static Countdown SEO source checks are complete for this work scope.
+- Keep every unverified URL in the Pending queue. Do not delete, archive as complete, or mark Indexed until Google Search Console confirms the exact canonical URL.
+- Batch 1 remains Submitted — Pending Google indexing verification. Batch 2 onward remains on hold until Search Console evidence is reviewed.
+- The Google Search Console URL Inspection/property link requested for saving was not present in the user's latest message. Add the exact link here when the user supplies it; do not guess or create a link.
+- Remaining external verification: inspect current URL statuses in the authenticated Search Console property and verify public live rendering in a normal browser. These cannot be marked complete from repository source checks alone.
+- Project-side task is closed at this checkpoint; indexing remains an open external dependency, not forgotten or marked complete.
