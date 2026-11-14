@@ -9,7 +9,6 @@
   .ij-global-logo{width:44px;height:44px;flex:0 0 44px;border-radius:13px;box-shadow:0 3px 10px #001b5b18}
   .ij-global-brand-copy{display:flex;flex-direction:column;line-height:1.08;min-width:0;gap:3px}
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
-  .ij-global-tagline{font-size:11px;font-weight:550;color:#64748b;opacity:1;margin-top:2px;white-space:nowrap}.ij-global-page-context{display:block;font-size:12px;font-weight:550;line-height:1.4;color:#526782;white-space:normal;overflow-wrap:anywhere;max-width:min(58vw,650px);margin-top:5px}
   .ij-global-divider{width:1px;height:38px;background:#dbe4ef}
   .ij-global-tools{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid #dbe6f2;border-radius:30px;color:#24456e;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#f8fbff}
   .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#eef6ff;outline:2px solid #93c5fd;outline-offset:2px}
@@ -25,9 +24,8 @@
   @media(max-width:620px){
     .ij-global-header-inner{width:calc(100% - 24px);min-height:62px;padding:8px 0;gap:8px}
     .ij-global-logo{width:39px;height:39px;flex-basis:39px;border-radius:12px}
-    .ij-global-brand{gap:6px;margin-left:0}.ij-global-page-context{font-size:10px;line-height:1.35;max-width:52vw;margin-top:3px}
+    .ij-global-brand{gap:6px;margin-left:0}
     .ij-global-brand-name{font-size:19px;letter-spacing:-.4px}
-    .ij-global-tagline{font-size:9px;margin-top:3px}
     .ij-global-divider{height:30px}
     .ij-global-tools{font-size:0;padding:10px;width:40px;height:40px;justify-content:center;gap:0;border-radius:13px}
     .ij-global-tools svg{width:20px;height:20px}
@@ -37,7 +35,6 @@
   @media(max-width:360px){
     .ij-global-header-inner{gap:5px;width:calc(100% - 16px)}
     .ij-global-brand-name{font-size:17px}
-    .ij-global-tagline{font-size:8px}
     .ij-global-home{padding:9px 8px;font-size:11px}.ij-global-language{max-width:88px;font-size:11px}
     .ij-global-tools{width:36px;height:38px}
   }
@@ -75,7 +72,7 @@
       <div class="ij-global-header-inner">
         <a class="ij-global-brand" href="${ROOT}index.html" aria-label="InfoJano home">
           <img class="ij-global-logo" src="${ROOT}infojano-mark.svg" alt="InfoJano logo">
-          <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span><span class="ij-global-tagline">Smart Tools for Everyday Life</span><span class="ij-global-page-context"></span></span>
+          <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span></span>
         </a>
         <span class="ij-global-divider" aria-hidden="true"></span>
         <a class="ij-global-tools" href="${ROOT}index.html#tools" aria-label="Browse all tools">
@@ -94,11 +91,6 @@
         </a>
       </div>`;
     document.body.insertBefore(header,document.body.firstChild);
-    const pageHeading=document.querySelector(".ij-id-hero h1, .hero h1, main h1, h1");
-    const pageName=pageHeading? pageHeading.textContent.replace(/\s+/g," ").trim() : document.title.replace(/\s*[|–-]\s*InfoJano.*$/i,"").trim();
-    const pageContext=header.querySelector(".ij-global-page-context");
-    const pageDescription=document.querySelector('meta[name="description"]')?.content?.trim();
-    if(pageContext)pageContext.textContent=pageDescription||("Explore the "+pageName+" tool on InfoJano. Enter your details, use the available options and get a clear result instantly.");
     const languageSelect=header.querySelector('.ij-global-language');
     const supported=['en','hi','bn'];
     let saved='en';try{saved=localStorage.getItem('infojano-language')||'en'}catch(e){}
