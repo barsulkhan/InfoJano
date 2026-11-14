@@ -208,6 +208,25 @@ body{background:#f2f8ff}
  .ij-doc-guide-grid a:hover,.ij-studio-workspace .btn:hover:not(:disabled){transform:none}
 }
 
+
+/* ID Card Studio: keep the header clean, align its brand with the hero frame,
+   and reserve the detailed page copy for the footer. */
+@media(min-width:1001px){
+ body .ij-global-header .ij-global-header-inner{width:calc(100% - 112px)!important;max-width:1600px!important}
+}
+body .ij-global-header .ij-global-page-context{display:none!important}
+.ij-studio-seo-footer{width:calc(100% - 28px);max-width:1600px;margin:44px auto 0;padding:34px clamp(18px,3vw,42px) 26px;border:1px solid #d8e8f8;border-radius:24px 24px 0 0;background:linear-gradient(145deg,#fff 0%,#f3f9ff 100%);color:#314663;box-shadow:0 -8px 28px rgba(28,83,138,.045)}
+.ij-studio-seo-footer h2{margin:0 0 12px;color:#12264a;font-size:clamp(22px,2vw,28px);letter-spacing:-.5px}
+.ij-studio-seo-footer h3{margin:0 0 8px;color:#173d6c;font-size:16px}
+.ij-studio-seo-footer p,.ij-studio-seo-footer li{font-size:14px;line-height:1.75;color:#5a6d86}
+.ij-studio-seo-footer p{margin:0 0 14px}
+.ij-studio-footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:26px;margin-top:24px}
+.ij-studio-seo-footer ul{margin:0;padding-left:19px}
+.ij-studio-seo-footer a{color:#1768b5;text-decoration:none;font-weight:700}
+.ij-studio-seo-footer a:hover{text-decoration:underline}
+.ij-studio-footer-bottom{margin-top:24px;padding-top:18px;border-top:1px solid #dce9f6;text-align:center;color:#6b7e95;font-size:12px}
+@media(max-width:760px){.ij-studio-seo-footer{width:calc(100% - 20px);margin-top:28px;padding:24px 18px 18px;border-radius:20px 20px 0 0}.ij-studio-footer-grid{grid-template-columns:1fr;gap:18px}.ij-studio-seo-footer p,.ij-studio-seo-footer li{font-size:13px}}
+
 </style>
 <script type="application/ld+json">
 {
@@ -295,7 +314,41 @@ body{background:#f2f8ff}
 <div id="downloadStatus" class="status" role="status" aria-live="polite">Upload a file and select the sides to create your print PDF.</div>
 </section>
 </div></div>
-</main><footer>InfoJano • ID Card Print Studio</footer>
+</main><footer class="ij-studio-seo-footer">
+ <h2>InfoJano • ID Card Print Studio</h2>
+ <p>Prepare your government identity documents for clear, correctly sized printing with the InfoJano ID Card Print Studio. Use this free online tool to work with Ayushman Bharat, Aadhaar, Voter ID and Digital Ration Card files. Upload a PDF or image, select the front and back, crop the card carefully, review the print layout and create a print-ready PDF or JPG.</p>
+ <div class="ij-studio-footer-grid">
+  <section>
+   <h3>What you can do</h3>
+   <ul>
+    <li>Prepare ID card images for printing at a fixed 85 × 55 mm card size.</li>
+    <li>Work with PDF, JPG and PNG files directly in your browser.</li>
+    <li>Crop and review the front and back before exporting.</li>
+    <li>Create print-ready PDF or high-resolution JPG output.</li>
+    <li>Check the preview and print at Actual size / 100% for accurate dimensions.</li>
+   </ul>
+  </section>
+  <section>
+   <h3>Supported document guides</h3>
+   <ul>
+    <li><a href="/ayushman-card-print.html">Ayushman Card print guide</a></li>
+    <li><a href="/aadhaar-card-print.html">Aadhaar Card print guide</a></li>
+    <li><a href="/voter-id-card-print.html">Voter ID print guide</a></li>
+    <li><a href="/digital-ration-card-print.html">Digital Ration Card print guide</a></li>
+   </ul>
+  </section>
+  <section>
+   <h3>How to use the studio</h3>
+   <ul>
+    <li>Choose the document type and upload its PDF or image.</li>
+    <li>Select or crop the complete front and back card faces.</li>
+    <li>Review the card size, border and page arrangement.</li>
+    <li>Download the PDF or JPG and print at 100% scale.</li>
+   </ul>
+  </section>
+ </div>
+ <div class="ij-studio-footer-bottom">Free online ID card print preparation by InfoJano. Files are processed in your browser and are not intentionally uploaded to an InfoJano server.</div>
+</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="/InfoJano/jspdf.umd.min.js"></script>
 <script src="/InfoJano/download-progress.js" defer></script><script src="/InfoJano/install.js" defer></script>
