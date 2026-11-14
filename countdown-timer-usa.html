@@ -28,10 +28,38 @@
 .faq details{padding:14px 0;border-top:1px solid #e3ebf5}.faq summary{font-weight:800;color:#1b3e70;cursor:pointer}.faq details p{margin:8px 0 0;color:#4b5f7b}.related{color:#4b5f7b}.related a{color:#1768e8;font-weight:750}
 @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{min-height:185px}.orb{width:175px;height:175px}.clock-card{max-width:270px}}
 @media(max-width:520px){.wrap,.page{width:calc(100% - 22px)}.hero{border-radius:21px}.hero-art{min-height:170px}.facts{grid-template-columns:1fr}.card{padding:19px}.card h2{font-size:19px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}</style>
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+/* Premium country landing-page polish — keeps the Countdown Studio hero geometry intact. */
+body{background:linear-gradient(180deg,#f4f8ff 0%,#f8fbff 42%,#eef4fc 100%);color:#14233f}
+.wrap{width:min(1480px,calc(100% - 32px));margin:0 auto 64px}
+.crumb{display:flex;align-items:center;gap:9px;margin:18px 4px 20px;color:#71819a;font-size:13px;font-weight:650}
+.crumb a{color:#2768bd;font-weight:750}
+.hero{min-height:390px;border-radius:30px;border-color:#d4e3f5;background:radial-gradient(ellipse at 88% 12%,#bdeeff 0,transparent 32%),radial-gradient(ellipse at 5% 100%,#dce8ff 0,transparent 36%),linear-gradient(125deg,#fff 0%,#f3f8ff 54%,#e8f4ff 100%);box-shadow:0 22px 60px rgba(30,69,120,.10),inset 0 1px 0 #fff}
+.hero h1{color:#102b55;text-wrap:balance}
+.hero p{color:#526782;line-height:1.75}
+.tag{background:#fff;border-color:#d5e6fa;color:#2465ad;box-shadow:0 4px 14px #1d4d7b0d}
+.clock-card{border-color:#fff;background:linear-gradient(145deg,#fff,#f0f7ff);box-shadow:0 24px 55px rgba(29,70,125,.18)}
+.actions{gap:12px;margin-top:26px}
+.btn{min-height:48px;padding:13px 22px;border-radius:14px;background:linear-gradient(105deg,#1768e8,#168fc9);box-shadow:0 10px 24px #1768e82b;transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px #1768e83b}
+.facts{gap:14px;margin:22px 0 26px}
+.fact{padding:17px 16px;border-radius:17px;background:linear-gradient(135deg,#fff,#f2f7ff);border-color:#dce8f7;box-shadow:0 8px 22px rgba(26,64,110,.055);font-size:14px}
+.card{position:relative;margin:16px 0;padding:26px 30px;border:1px solid #dce7f4;border-radius:22px;background:linear-gradient(145deg,#fff 0%,#fcfdff 100%);box-shadow:0 10px 28px rgba(25,59,101,.055);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:hover{transform:translateY(-2px);border-color:#c9dcf3;box-shadow:0 16px 34px rgba(25,59,101,.085)}
+.card h2{font-size:clamp(19px,2vw,23px);letter-spacing:-.025em;color:#153b70}
+.card p{line-height:1.8;color:#52647c}
+.card a{color:#1768d7;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:750}
+.card.related{background:linear-gradient(135deg,#f1f7ff,#fff 70%);border-color:#d5e4f7}
+.faq details{padding:16px 0}
+.faq summary{color:#1b477e}
+@media(max-width:900px){.hero{min-height:390px}.wrap{width:min(100% - 24px,1480px)}}
+@media(max-width:520px){.wrap{width:calc(100% - 20px);margin-bottom:40px}.hero{border-radius:22px}.card{padding:20px 19px;border-radius:18px}.facts{gap:9px;margin:16px 0 20px}.fact{padding:13px 10px}}
+@media(hover:none){.card:hover,.btn:hover{transform:none}}
+
+</style>
 </head><body><div class="wrap">
 <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> › <a href="countdown-studio.html">Countdown Studio</a> › Countdown Timer USA</nav>
-<header class="hero"><div><span class="tag">✦ FREE ONLINE TOOL · UNITED STATES</span><h1>Countdown Timer for the United States</h1><p>Create a live countdown for birthdays, weddings, school events, exams, Thanksgiving, Halloween, Independence Day, Christmas and New Year in the United States. Set the event's local date and time, open a large full-screen display and share the countdown link.</p><div class="actions"><a class="btn" href="countdown-studio.html#create-title">Create Your Countdown</a><a class="btn alt" href="birthday-countdown-calculator.html">Birthday Countdown</a></div></div><div class="hero-art" aria-hidden="true"><div class="orb"></div><div class="clock-card"><small>YOUR NEXT BIG MOMENT</small><strong>12 : 08 : 45</strong><em>Days · Hours · Minutes</em></div></div></header>
+<header class="hero"><div><span class="tag">✦ FREE ONLINE TOOL · UNITED STATES</span><h1>Countdown Timer for the United States</h1><p>Create a live countdown for birthdays, weddings, school events, exams, Thanksgiving, Halloween, Independence Day, Christmas and New Year in the United States. Set the event's local date and time, open a large full-screen display and share the countdown link.</p><div class="actions"><a class="btn" href="countdown-studio.html#create-title">Create Your Countdown</a></div></div><div class="hero-art" aria-hidden="true"><div class="orb"></div><div class="clock-card"><small>YOUR NEXT BIG MOMENT</small><strong>12 : 08 : 45</strong><em>Days · Hours · Minutes</em></div></div></header>
 <div class="facts"><div class="fact">No signup required</div><div class="fact">Full-screen display</div><div class="fact">Shareable countdown link</div></div>
 <section class="card"><h2>Countdowns for the United States</h2><p>Create a custom countdown for personal milestones, school schedules, holidays and public celebrations. InfoJano Countdown Studio lets you set the event name and target date, display a large timer and share a link. This page does not assume official event dates or automatically determine local holiday schedules.</p></section>
 <section class="card"><h2>Birthday and anniversary countdowns</h2><p>Build a personal countdown for a birthday, wedding anniversary, graduation or family celebration. Add the event title, choose the date and time for the place where the event will happen, then share the countdown with friends and family.</p></section>
@@ -46,5 +74,5 @@
 <details><summary>Can I create a birthday, wedding or holiday countdown?</summary><p>Yes. Set the date and time for a birthday, wedding, Thanksgiving, Halloween, Christmas, Independence Day or another personal event.</p></details>
 <details><summary>Can I show the countdown on a TV?</summary><p>Open the countdown on a computer connected to the TV and use the full-screen display. Actual browser and TV behaviour can vary by device.</p></details>
 <details><summary>Does InfoJano automatically know US holiday dates?</summary><p>No. Enter and verify the date from an official calendar or event organiser. Some holidays have fixed dates while others vary by year or observance.</p></details></section>
-<section class="card related"><h2>Related countdown searches</h2><p>countdown timer USA · online countdown timer USA · full screen countdown timer · birthday countdown · wedding countdown · Thanksgiving countdown · Halloween countdown · Christmas countdown · New Year countdown · exam countdown timer · days until an event</p><p>US seasonal search themes: how many days until Halloween · how many days until Christmas · how many days until Thanksgiving · days until Independence Day · birthday countdown · countdown clock.</p><p>Explore <a href="countdown-studio.html">InfoJano Countdown Studio</a> for a custom event countdown, a large black-screen timer, final-ten-second animation and an event celebration. You can also use the <a href="birthday-countdown-calculator.html">Birthday Countdown Calculator</a>.</p></section>
+<section class="card related"><h2>Related countdown searches</h2><p>countdown timer USA · online countdown timer USA · full screen countdown timer · birthday countdown · wedding countdown · Thanksgiving countdown · Halloween countdown · Christmas countdown · New Year countdown · exam countdown timer · days until an event</p><p>US seasonal search themes: how many days until Halloween · how many days until Christmas · how many days until Thanksgiving · days until Independence Day · birthday countdown · countdown clock.</p><p>Explore <a href="countdown-studio.html">InfoJano Countdown Studio</a> for a custom event countdown, a large black-screen timer, final-ten-second animation and an event celebration.</p></section>
 </div><script src="site-header.js" defer></script></body></html>
