@@ -1929,3 +1929,10 @@ This section consolidates the remaining operational preferences and current cros
 
 ### Handoff instruction
 Use this Master Read Hub and the dedicated indexing tracker in `docs/` as the only project continuity records. Do not ask the user to repeat facts already recorded here. After each completed task, commit the updated record and report the exact saved files and SHA.
+
+### 14 Nov 2026 — Project information transfer checkpoint
+- The complete Google indexing tracker was copied from the user's Library source into `docs/InfoJano_Google_Indexing_Tracker_2026-11-12.md` in this repository.
+- Tracker file commit: `fc42cd3cdb969331972f2e03e68330dec93e6a91`.
+- The tracker contains the full indexed URL list, original pending sitemap URL list, 15 Number to Words Pro landing pages, 3 Countdown country pages, Batch 1 submission record, and the max-10-per-batch verification rules.
+- Important: tracker figures are a historical snapshot from 2026-11-12/14, not a fresh Search Console verification. The stated 65 pending count refers to 50 original sitemap URLs plus 15 Number to Words Pro pages; the 3 Countdown pages are listed separately. Reconcile against the current sitemap before the next batch; do not silently change historical counts.
+- This master file plus the dedicated tracker and existing project docs are the authoritative project records in GitHub. ChatGPT cannot delete chat history or account Memory; the user controls those through ChatGPT settings and chat deletion. Do not claim they have been cleared.
