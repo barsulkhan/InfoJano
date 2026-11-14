@@ -61,7 +61,7 @@
       margin:0 auto!important;padding:28px 24px 36px!important;box-sizing:border-box!important;
     }
     .ij-unified-currency-hero{
-      display:block;width:100%!important;max-width:none!important;
+      width:100%!important;max-width:none!important;
       min-height:250px!important;height:auto!important;margin:12px 0 28px!important;
       box-sizing:border-box!important;
     }
