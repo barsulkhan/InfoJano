@@ -14,18 +14,20 @@ QA type: User-performed manual mobile browser testing; evidence supplied as scre
 | ET-003 | Break Duration deduction | Start 09:00 AM; End 05:30 PM; Break 30 min | Gross 8h 30m; break 30m; net 8h; 480 min; 28,800 sec; 8.00 decimal hours | Displayed gross 8h 30m; break 0h 30m; net 8h; 480 min; 28,800 sec; 8.00 hours. Item appeared in Recent Calculations. | PASS |
 | ET-004 | Add Time with seconds and next-day rollover | Starting time 10:30:00 PM; operation Add; duration 2h 45m 30s | Calculated time 01:15:30 AM on the following day | Screenshot shows calculated time 01:15:30; starting time 22:30:00; duration 2h 45m 30s; operation Add; day adjustment Following day. New Add / Subtract entry appears in Recent Calculations. | PASS |
 | ET-005 | Subtract Time with seconds and previous-day rollover | Starting time 01:15:30 AM; operation Subtract; duration 2h 45m 30s | Calculated time 10:30:00 PM on the previous day | Screenshot shows calculated time 22:30:00; starting time 01:15:30; duration 2h 45m 30s; operation Subtract; day adjustment Previous day. New Subtract entry appears in Recent Calculations. | PASS |
+| ET-006 | Date + Time duration across midnight | Start 15 Nov 2026, 11:30 PM; End 16 Nov 2026, 01:45 AM | 0 days, 2h 15m 0s; 2.25 total hours; 135 total minutes; 8,100 total seconds | Screenshot shows total duration 0 days, 2 hours, 15 minutes, 0 seconds; total days 0; remaining time 2h 15m 0s; total hours 2.25; total minutes 135.00; total seconds 8,100. New Date + Time Duration entry appears in Recent Calculations. | PASS |
 
 ## Notes and limitations
 
 - ET-001 and ET-003 were confirmed from user-supplied mobile screenshots.
 - ET-002 was confirmed from a user-supplied mobile screenshot. The start/end values were 11:05 PM and 12:05:25 PM; the page's stated behavior treats an end time earlier than the start time as the following day.
-- ET-004 and ET-005 were confirmed from user-supplied mobile screenshots in this session. ET-004 addition produced 01:15:30 with “Following day”; ET-005 subtraction produced 22:30:00 with “Previous day”. Both new calculations appeared in Recent Calculations.
+- ET-004 and ET-005 were confirmed from user-supplied mobile screenshots. ET-004 addition produced 01:15:30 with “Following day”; ET-005 subtraction produced 22:30:00 with “Previous day”. Both new calculations appeared in Recent Calculations.
+- ET-006 was confirmed from the user-supplied mobile screenshot: 15 Nov 2026 11:30 PM to 16 Nov 2026 01:45 AM. The result panel displayed 0 days, 2 hours, 15 minutes, 0 seconds; 2.25 hours; 135.00 minutes; and 8,100 seconds. The Date + Time Duration item appeared in Recent Calculations.
 - Recent Calculations visibly showed each submitted calculation in the supplied screenshots.
 - These checks confirm the displayed calculations for the specific test cases only; they do not establish complete browser compatibility or all edge cases.
 - Copy Result and Share Result were visible but their actions were not yet functionally tested.
-- Persistence after page refresh, Clear History, history maximum of five, Date + Time mode, keyboard accessibility, desktop layout, and broader mobile viewport/overflow behavior remain untested.
+- Persistence after page refresh, Clear History, history maximum of five, keyboard accessibility, desktop layout, and broader mobile viewport/overflow behavior remain untested.
 - Protected calculator hero design was not changed during QA.
 
 ## Next test
 
-ET-006: Date + Time mode — verify a duration spanning midnight and a full date boundary. Continue one test at a time and append actual inputs, expected/observed outputs, status, and screenshot evidence.
+ET-007: Copy Result action — test whether the current Date + Time result is successfully copied and whether the user receives clear confirmation. Continue one test at a time and record the observed outcome.
