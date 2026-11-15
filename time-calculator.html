@@ -93,8 +93,9 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 </style>
 
 <style id="ij-elapsed-time-workspace-v1">
-/* Scoped to Elapsed Time Calculator: match the approved ID Studio's compact hero proportions. */
-body .ij-reference-hero.ij-unified-currency-hero{width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;min-height:220px!important;margin:12px auto 22px!important;padding:26px 42px 22px!important;border-radius:22px!important}
+/* Scoped to Elapsed Time Calculator only: slightly widen the hero evenly on both sides. */
+body .ij-reference-hero{width:min(calc(100% - 16px),1280px)!important;max-width:1280px!important;margin-left:auto!important;margin-right:auto!important}
+@media(max-width:760px){body .ij-reference-hero{width:calc(100% - 16px)!important}}
 .ij-reference-hero .ij-reference-grid{min-height:0}
 .ij-reference-hero .ij-reference-art{min-height:190px}
 main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:22px auto;padding:0}
