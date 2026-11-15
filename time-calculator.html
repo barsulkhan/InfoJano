@@ -358,6 +358,7 @@ function calculateAddSubtract(){
   const pad=value=>String(value).padStart(2,'0');
   const dayText=dayOffset===0?'Same day':dayOffset===1?'Following day':dayOffset===-1?'Previous day':dayOffset>1?dayOffset+' days later':Math.abs(dayOffset)+' days earlier';
   out.innerHTML='Calculated time: <strong>'+pad(h)+':'+pad(m)+':'+pad(s)+'</strong><div class="ij-time-result-grid"><div class="ij-time-result-stat"><span>Starting time</span><strong>'+baseValue+'</strong></div><div class="ij-time-result-stat"><span>Operation</span><strong>'+(signed<0?'Subtract':'Add')+'</strong></div><div class="ij-time-result-stat"><span>Duration</span><strong>'+nums[0]+'h '+nums[1]+'m '+nums[2]+'s</strong></div><div class="ij-time-result-stat"><span>Day adjustment</span><strong>'+dayText+'</strong></div></div>';
+  recordTimeCalculation('Add / Subtract');
 }
 const IJ_TIME_HISTORY_KEY='ijElapsedTimeHistoryV1';
 function getTimeHistory(){
@@ -489,7 +490,8 @@ function calculateTime(){
     '<div class="ij-time-result-stat"><span>Net duration</span><strong>'+hours+'h '+minutes+'m '+seconds+'s</strong></div>'+
     '</div>';
   const minuteStat=document.getElementById('ij-total-minutes');
-  if(minuteStat)minuteStat.textContent=Number.isInteger(totalMinutes)?String(totalMinutes):totalMinutes.toFixed(2);\n  recordTimeCalculation('Time Difference');
+  if(minuteStat)minuteStat.textContent=Number.isInteger(totalMinutes)?String(totalMinutes):totalMinutes.toFixed(2);
+  recordTimeCalculation('Time Difference');
 }
 </script>
 
