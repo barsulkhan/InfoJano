@@ -310,3 +310,27 @@ Scope: fetched complete raw source for 12 selected files on `feature/privacy-pol
 3. Compare each observed external host and storage category with the draft policy; record missing/uncertain statements.
 4. Ask publisher to confirm production Worker URL and whether the Word Converter custom domain is enabled; do not change Worker/DNS.
 5. Keep account-side CMP/AdSense vendor inventory separate from repository source evidence.
+
+## 15. Shared scripts, homepage and file-tool source audit (2026-11-15)
+
+Scope: complete raw-source inspection of 14 selected files on the PR branch: `index.html`, shared scripts `site-header.js`, `sw.js`, `theme.js`, `related-apps.js`, `download-progress.js`, `install.js`, `image-resizer-advanced.js`; and `image-compressor.html`, `image-resizer.html`, `image-to-pdf.html`, `pdf-to-jpg.html`, `extract-pdf-pages.html`, `document-studio.html`.
+
+### Findings
+- Homepage `index.html` contains GA4 measurement ID `G-P8D7XRGVEF` and AdSense loader with publisher client `ca-pub-2908196513377151`. No Funding Choices / Google Privacy & Messaging / `__tcfapi` / `googlefc` marker was found in this inspected homepage source. Account-side or dynamically injected runtime behavior remains unknown.
+- Selected image utility pages (Image Compressor, Image Resizer, Image-to-PDF) also contain the GA4 measurement ID. This confirms GA4 is present on these selected pages only; it is not a complete all-pages count.
+- Image Compressor includes a fetch used to retrieve a generated download link/blob; the inspected line alone does not establish an upload to InfoJano or third-party processing.
+- PDF-to-JPG and Extract PDF Pages load PDF.js/pdf-lib-related assets from cdnjs; Document Studio loads Google Fonts and cdnjs-hosted libraries.
+- `site-header.js` stores the interface language in localStorage; no external request found in this shared script.
+- `sw.js` contains fetch handlers for service-worker cache/network behavior; this is same-origin request handling in the inspected code, not by itself a third-party data recipient.
+- `theme.js`, `related-apps.js`, `download-progress.js`, `install.js`, and `image-resizer-advanced.js` showed no direct external API, browser storage, analytics or consent API markers in the inspected source excerpts.
+- No CMP API or consent-gating code was found in the inspected homepage/shared script set. This remains source evidence only.
+
+### Limits
+- This is a 14-file selected batch, not every root HTML file.
+- Search for a marker in a file does not prove the absence of all dynamic imports, embedded components or runtime account-side injection.
+- No browser network capture, consent-state test, cookie inspection or live tag execution test was performed.
+
+### Next
+- Continue source batches across remaining pages with personal data, calculators, embeds and external APIs.
+- Build a consolidated page-to-vendor matrix and distinguish global tags (GA4/AdSense) from feature-specific APIs/CDNs.
+- Check whether analytics/ads tags are gated by consent at runtime; do not alter tags or CMP settings without explicit approval.
