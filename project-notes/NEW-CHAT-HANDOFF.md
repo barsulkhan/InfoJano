@@ -114,3 +114,11 @@ Copy/paste prompt:
 - The current research decision remains: only two URLs are justified — /time-calculator.html (interactive utility) and /elapsed-time-calculator-guide.html (how-to guide). No additional keyword/country pages are justified by the available evidence; Ahrefs numeric metrics are unavailable and no GSC export exists.
 - Do not create duplicate/thin pages to satisfy a page-count target. Reopen CARD-010 only when a distinct intent is evidenced or a substantiated opportunity is approved.
 - Existing calculator hero, homepage hero and ID Card Print Studio hero remain protected.
+
+
+## QA continuation handoff — 2026-11-15
+- User asked to continue remaining Elapsed Time Calculator/guide QA. Latest calculator, guide, sitemap and QA log were re-fetched.
+- No interactive browser/computer-control session or browser automation connector is available; no new runtime/browser test was run. Existing SRC-001–SRC-016 and formula checks remain the latest verified evidence.
+- Pending: runtime six-calculation/five-entry history cap; desktop and full responsive visual QA; keyboard/focus; screen-reader; copy/share end-to-end; DST runtime. Pages deployment for documentation commit 6afaeed98338a36db4bfbacbcc94653299a36f74 was not verified by PR-only workflow lookup.
+- Next single manual test: create six distinct calculations in the live calculator and confirm only the newest five appear in Recent Calculations; ask user for a screenshot.
+- Preserve the user instruction: do not revise the existing guide hero now. Any future justified SEO page hero must match the calculator hero, not homepage hero.
