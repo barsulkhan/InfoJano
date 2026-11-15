@@ -523,3 +523,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: research plan `182b51460e13`; task evidence `c39d9536ef51`.
 - D-001 remains IN PROGRESS; this is a bounded sample, not full sitewide/runtime verification.
 - No production code, policy, account settings, DNS, merge, deployment or protected design changed.
+
+### 2026-11-15 — Root-page inventory batch 04
+- Inspected 12 additional date/countdown/QR/number pages. GA4 found in Date Difference; Google Fonts referenced in Business Days, Date Duration and Days Between Dates. Other sampled pages had no direct network/storage/CMP marker in source.
+- Task evidence: [2026-11-15-2324-root-page-inventory-batch-04.md](2026-11-15-2324-root-page-inventory-batch-04.md); master plan §18.
+- Commits: plan `580d7b7aeb21`; task file `47e4291425f1`.
+- D-001 remains in progress; after this batch, 67 root HTML files remain unreviewed in the branch tree. Live runtime tests not run.
+- No production/policy/account/DNS/merge/deployment changes.
