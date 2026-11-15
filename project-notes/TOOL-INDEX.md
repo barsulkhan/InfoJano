@@ -1,4 +1,4 @@
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — four-keyword research, competitor/content-gap review, and GSC/index-discovery blocker saved; Ahrefs plan prevents numeric metrics/project lookup; no index verdict inferred; browser/live verification and remaining calculator QA pending | 2026-11-15 | Obtain GSC property/export or authorized metrics access; inspect exact URLs in Search Console; run guide mobile/desktop browser QA and finish calculator desktop/accessibility QA |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — four-keyword and expanded public SERP/country-language research saved; quantitative metrics unavailable (Ahrefs plan restriction; no GSC data); two-page architecture retained; live/browser/accessibility verification pending | 2026-11-15 | Run real browser QA on guide and calculator; validate equal-time/timezone assumptions; revisit metrics when a usable provider/property is available |
 
 Last updated: 2026-11-15
 
@@ -6,5 +6,5 @@ Last updated: 2026-11-15
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — 1 supporting SEO guide created; source checks PASS and Pages workflow #2550 SUCCESS; browser/live verification and calculator desktop/accessibility QA pending | 2026-11-15 | Run guide mobile/desktop browser QA and live URL check; finish calculator desktop/accessibility QA |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; Pages workflow #2550 SUCCESS; follow-up SERP and qualitative localization research saved; live/browser/accessibility QA pending | 2026-11-15 | Run guide mobile/desktop browser QA; finish calculator desktop/accessibility QA and runtime five-entry-cap check |
 | Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP page created; source checks PASS; Pages workflow #2550 SUCCESS; browser/functional QA pending; keyword metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
