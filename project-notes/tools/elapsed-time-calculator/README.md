@@ -405,3 +405,12 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Checked the latest repository Actions runs after all page/tracker commits. Pages build and deployment workflow run #2550 for commit `f44e679ad5e8e0746061ea98c81b017605229485` completed with conclusion `success`.
 - This confirms the repository's Pages deployment workflow succeeded for the commit containing the elapsed-time guide and sitemap/internal-link updates. Direct live URL fetch through the available web inspection channel returned inaccessible, so final HTTP/rendered-page verification remains pending.
 - SEO guide browser visual/accessibility QA remains NOT RUN; workflow success is not a substitute for browser QA.
+
+
+### 2026-11-15 — Four-keyword SEO research saved
+- Researched the four agreed seed terms: elapsed time calculator, time duration calculator, time between two times, and time difference calculator.
+- Saved the detailed keyword-to-page mapping, country metric attempts, competitor references, limitations, recommendation and next research gate in [RESEARCH.md](RESEARCH.md), section 11.
+- Ahrefs overview requests for IN, BD, US and GB all returned "Insufficient plan"; volume/KD/CPC/traffic potential remain N/A. No numeric estimates were invented.
+- Decision: retain the current calculator + informational guide architecture; do not create one page per keyword or another generic calculator URL.
+- Code changes: none. Documentation-only update.
+- Research dossier commit: 66b23a8f9335f7148a11da6c3d0d08ea4f7d6edc.
