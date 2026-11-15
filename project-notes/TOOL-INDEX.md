@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 
-এই index-এ প্রতিটি tool-এর tracking folder, সামগ্রিক অবস্থা, সর্বশেষ কাজের তারিখ এবং পরবর্তী পদক্ষেপ থাকবে। বিস্তারিত ইতিহাস সংশ্লিষ্ট tool-এর README.md-তে।
+এই index-এ প্রতিটি tool-এর tracking folder, সামগ্রিক অবস্থা, সর্বশেষ কাজের তারিখ এবং পরবর্তী পদক্ষেপ থাকবে। বিস্তারিত ইতিহাস সংশ্লিষ্ট tool-এর README.md-তে। নতুন chat শুরুতে [SESSION-START-PROMPT.md](SESSION-START-PROMPT.md) ব্যবহার করো।
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
