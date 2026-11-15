@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/id-card-print-studio.html
-Overall status: In progress
+Overall status: Completed (user-confirmed live functionality)
 
 ## User-approved scope and constraints
 - Tighten footer bullet-list spacing so text begins close to its bullet marker, especially under “Supported document guides”.
@@ -14,17 +14,20 @@ Overall status: In progress
 - [x] CARD-001 — Add English name and location to both hero mock cards; source commit 52092b48aa120801ee437cf2f514ebe1e28d64ae.
 - [x] CARD-002 — Tighten footer list indentation and add direct PDF print action; source commit aa45fa3d152a4378ee3d2f8092913f99cf185d2a.
 
+### Completed
+- [x] CARD-003 — User confirmed the updated live tool is now working, including the PDF/print flow, on 2026-11-15.
+- [x] CARD-004 — User confirmed the live fix works after the jsPDF path correction.
+
 ### In progress
-- [ ] CARD-003 — Browser QA for footer alignment and direct-print flow; browser runtime/visual QA not yet run.
-- [ ] CARD-004 — Verify jsPDF relative asset path fix on live custom domain and GitHub Pages deployment.
+- None.
 
 ## QA and release checklist
 - [x] Source-level anchor checks for targeted CSS, button and PDF handler changes.
 - [ ] JavaScript syntax/runtime test.
-- [ ] Desktop browser visual QA for footer bullet spacing.
-- [ ] Desktop browser print-dialog test.
+- [x] User-confirmed live footer and print flow working (2026-11-15; manual user verification).
+- [x] User-confirmed print workflow working on live page (2026-11-15; user-reported, not independently reproduced here).
 - [ ] Mobile browser print behavior test.
-- [ ] GitHub Pages deployment for latest source commit.
+- [x] Live deployment/functionality confirmed by user (2026-11-15).
 
 ## Detailed work log
 ### 2026-11-15 — Footer list spacing and direct PDF print
@@ -48,3 +51,10 @@ Overall status: In progress
 - Commit: c5270c0cbcc38c3e01b6ff93eb2eba300660d4b6.
 - Still pending: confirm live asset returns successfully, run browser PDF export/print, and verify Pages workflow.
 - Protected areas preserved: hero/banner, mock cards, footer styling, workspace layout, crop logic and document processing.
+
+
+### 2026-11-15 — User final acceptance
+- User explicitly confirmed: “চলো ঠিকভাবে কাজ করছে এটাকে ফাইনাল করো” after testing the updated page.
+- Treat the current ID Card Print Studio work as finalized and user-confirmed working.
+- No further code changes authorized unless the user reports a new issue or requests a change.
+- User is moving to a new chat to discuss a separate AdSense problem; this tool's implementation context is preserved here for reference.
