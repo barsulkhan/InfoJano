@@ -151,3 +151,15 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 ### Next concrete QA step
 
 When a real browser is available, perform the five-entry history test (create six different calculations and verify only the newest five remain), then inspect guide/calculator at mobile and desktop widths and run keyboard/focus and screen-reader checks. Add DST boundary runtime tests for date+time mode.
+
+
+### 2026-11-15 — QA continuation attempt; interactive checks still blocked
+- User said “Koro” to continue the remaining calculator/guide QA.
+- Re-fetched the current default-branch calculator (time-calculator.html), SEO guide (elapsed-time-calculator-guide.html), sitemap, and QA ledger before continuing.
+- Confirmed repository source still contains both calculator and guide URLs in sitemap; existing source QA evidence SRC-001–SRC-016 and formula checks remain recorded above.
+- Checked available execution options in this session: no connected interactive browser/computer-control session or browser automation connector is exposed. A local Chromium binary exists in the shell environment, but the repository page source could not be retrieved into that environment through the available file-transfer route; no real browser session was run.
+- Workflow lookup for documentation commit 6afaeed98338a36db4bfbacbcc94653299a36f74 returned no associated PR-triggered workflow runs; this endpoint does not verify the Pages workflow. Do not claim deployment status for that commit based on this lookup.
+- New tests this session: no additional browser/runtime tests executed. Five-entry history cap runtime, desktop visual QA, full responsive viewport sweep, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime remain NOT RUN.
+- Hero instruction: user explicitly said not to revise the existing guide hero now. Future separately justified SEO pages must match the calculator tool hero, not the homepage hero; this requirement is recorded in README and handoff. Existing guide remains unchanged.
+- Next concrete manual test: on the live calculator, create six distinct calculations, then inspect Recent Calculations. Expected: only the newest five remain. Capture a screenshot showing the five entries and share it so the runtime cap can be verified. After that, continue desktop visual and keyboard/focus checks.
+- Protected areas: no application source or hero/banner files changed.
