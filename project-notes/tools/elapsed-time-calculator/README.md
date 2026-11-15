@@ -482,3 +482,10 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Workflow lookup for commit 6afaeed98338a36db4bfbacbcc94653299a36f74 returned no PR-triggered runs; Pages deployment for that documentation commit is not verified by this lookup.
 - Next single manual test: create six distinct calculations on the live calculator and confirm only the newest five appear in Recent Calculations; send a screenshot for verification.
 - No application source or hero/banner files changed. Existing guide hero intentionally left untouched per user instruction.
+
+
+## 2026-11-15 — Recent Calculations five-entry cap runtime verification
+- ET-011: PASS from sequential user-supplied live mobile screenshots. After a sixth distinct calculation was added, the list still contained exactly five records; the newest record (2:11:37 PM) appeared first and the previous oldest record (2:07:49 PM) was evicted.
+- This confirms the five-entry cap and newest-first retention for the tested session. It does not replace cross-browser/storage testing.
+- Remaining QA: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery, and DST boundary runtime checks.
+- No calculator source, SEO metadata, or protected hero artwork/layout changed.
