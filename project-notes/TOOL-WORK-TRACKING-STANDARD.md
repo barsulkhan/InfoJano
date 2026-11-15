@@ -16,14 +16,19 @@
 ```text
 project-notes/
   TOOL-WORK-TRACKING-STANDARD.md
+  TOOL-RESEARCH-STANDARD.md
   TOOL-INDEX.md
+  templates/
+    TOOL-RESEARCH-TEMPLATE.md
   tools/
     <tool-slug>/
       README.md
+      RESEARCH.md
+      QA-TEST-LOG.md
 ```
 - <tool-slug> হবে lowercase kebab-case, যেমন elapsed-time-calculator, countdown-studio।
 - কাজ শুরুর আগে folder/README খুঁজে দেখো; না থাকলে তৈরি করো, থাকলে আপডেট করো।
-- README.md ওই tool-এর single source of truth। পুরনো project note থাকলে তার তথ্য নতুন tracker-এ স্থানান্তর/লিংক করো; পুরনো নোট মুছে ফেলো না।
+- README.md ওই tool-এর work-status single source of truth; RESEARCH.md research dossier; QA-TEST-LOG.md test evidence ledger। পুরনো project note থাকলে তার তথ্য link/migrate করো; পুরনো নোট মুছে ফেলো না।
 - প্রতিটি নতুন tool যোগ হলে TOOL-INDEX.md আপডেট করো।
 
 ## 2. বাধ্যতামূলক daily/work log
