@@ -445,3 +445,10 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Detailed evidence: RESEARCH.md, section 14.
 - Next: complete browser/mobile/desktop/accessibility QA when an interactive browser is available; quantitative keyword validation when a usable provider/property becomes available.
 - Protected homepage and calculator hero areas unchanged.
+
+
+### 2026-11-15 — Calculator boundary semantics source check
+- Inspected current clock-only and date+time calculation functions in time-calculator.html.
+- Clock-only: end earlier than start adds one day; equal start/end produces zero, not 24 hours. No timezone conversion/selector is present.
+- Date+time: JavaScript Date parses local date-time input and epoch milliseconds are subtracted; DST transition behavior may therefore depend on the browser's local timezone rules. No timezone selector or explicit DST explanation is present.
+- Source-level result only; equal-clock and DST runtime tests remain NOT RUN. This evidence is saved in RESEARCH.md section 14.7.
