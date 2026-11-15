@@ -755,3 +755,37 @@ This is a research proposal only. `privacy-policy.html` remains unchanged.
 - Google AdSense live approval status and selected vendor/CMP screenshots or accessible account view.
 - Whether the Word Converter Worker is deployed for `infojano.com` and which iLoveAPI plan/terms apply.
 - Whether the Android/Windows public prereleases are intended to remain distributed; GitHub release metadata proves availability, not actual installs/usage.
+
+
+## 9. Superseding status update — 2026-11-16
+
+This section supersedes earlier statements in this plan that PR #236 was still draft/unmerged or that the Privacy Policy was not deployed.
+
+### Completed since the research baseline
+- PR #236 was approved by the user, marked ready, and squash-merged to `main` as `0131c77a0ec8d9efbee53a332f77b54e3813cd6b`.
+- User screenshots confirm that the live Privacy Policy page, Contact page, homepage Privacy Policy link and Contact link are visible.
+- Root sitemap now includes both `https://infojano.com/privacy-policy.html` and `https://infojano.com/contact.html`.
+- QA checker now verifies local policy hrefs/fragments, sitemap root/URLs/no duplicates/canonical origin, required policy/contact entries and robots sitemap reference.
+- QA workflow now triggers on main pushes and relevant PR changes.
+- Latest source-only quick-win task record: [2026-11-16-0012-autonomous-source-quick-wins.md](2026-11-16-0012-autonomous-source-quick-wins.md).
+
+### Current execution status
+| Workstream | Current status | Evidence / next step |
+|---|---|---|
+| Privacy Policy + Contact live pages | LIVE — user screenshot confirmed | Visual evidence supplied by user |
+| Homepage Privacy Policy + Contact links | LIVE — user screenshot confirmed | Visual evidence supplied by user |
+| Privacy Policy + Contact sitemap entries | SOURCE UPDATED | 110 unique sitemap URLs; crawler/cache refresh not verified |
+| QA workflow | CONFIG UPDATED | Main pushes and relevant PR paths trigger; latest main-push execution not independently retrieved |
+| CMP revocation control | OPEN | Consent link is conditional on Google CMP API readiness; user screenshot did not show it. Need diagnose actual live CMP injection/runtime |
+| Live EEA consent and TCF v2.4 | OPEN | Requires regional browser runtime evidence |
+| AdSense review | WAITING | Request review already submitted; do not resubmit |
+| ads.txt body | PASS (user screenshot) | HTTP status/headers/redirects and dashboard crawler status still open |
+| Legal controller/jurisdiction | Publisher-supplied facts exist in policy | Publisher should review final wording; not a substitute for legal advice |
+| Android/Windows runtime | OPEN | Device/emulator required |
+| Worker production CORS/secrets/retention | OPEN | Provider/account evidence required |
+
+### Work order from here
+1. Continue independent source checks and official-doc verification without asking the user for repetitive screenshots.
+2. Attempt read-only public HTTP verification; if the environment cannot reach the site, record UNVERIFIED and defer.
+3. Prepare one concise user action only when account/device evidence becomes the next blocker.
+4. Do not change CMP/AdSense account settings, DNS, Worker secrets/configuration, or app releases without separate approval.
