@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b2d68">
+<title>Work Hours Calculator – Shift & Timesheet Calculator | InfoJano</title>
+<meta name="description" content="Calculate work hours across multiple shifts. Subtract unpaid breaks, handle overnight shifts, total weekly hours and export a free timesheet CSV.">
+<link rel="canonical" href="https://infojano.com/work-hours-calculator.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work Hours Calculator – Shift & Timesheet Calculator | InfoJano">
+<meta property="og:description" content="Track multiple work shifts, subtract unpaid breaks, calculate weekly hours and export a timesheet.">
+<meta property="og:url" content="https://infojano.com/work-hours-calculator.html">
+<meta property="og:image" content="https://infojano.com/infojano-logo.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Work Hours Calculator | InfoJano">
+<meta name="twitter:description" content="Calculate shift hours, unpaid breaks and weekly totals with a free timesheet export.">
+<link rel="icon" type="image/svg+xml" href="/infojano-mark.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Work Hours & Shift Calculator","url":"https://infojano.com/work-hours-calculator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Calculate multiple work shifts, subtract unpaid breaks, total daily and weekly hours, convert to decimal hours and export a timesheet CSV.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<style>
+:root{--ink:#10264c;--muted:#62748e;--line:#dce8f6;--blue:#0876e8;--cyan:#18c9ec;--navy:#0b2d68;--bg:#f4f8ff;--green:#087f5b;--red:#b42318}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f2f8ff 0%,#fff 55%,#f7faff 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55}
+a{color:#075fc4}.ij-brandbar{background:rgba(255,255,255,.97);border-bottom:1px solid #e5effa;padding:12px 16px}.ij-brandbar-inner{max-width:1360px;margin:auto;display:flex;align-items:center;gap:12px}.ij-brandmark{width:42px;height:42px;flex:0 0 42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#22c7ed,#0877e8 60%,#164bd2);color:#fff;font-weight:900;font-size:20px;box-shadow:0 7px 17px #087ee833}.ij-brandname{font-size:22px;font-weight:850;letter-spacing:-.8px;color:#101d42;line-height:1}.ij-brandname span{color:#e63d55}.ij-brandtag{font-size:11px;color:#64748b;margin-top:4px}.ij-home-back{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;padding:8px 13px;border:1px solid #c9e2f8;border-radius:12px;background:#f4faff;color:#145a9d;text-decoration:none;font-size:12px;font-weight:800}
+.page{width:min(100%,1360px);margin:0 auto;padding:0 8px 48px}.crumb{font-size:12px;color:#657b98;margin:13px 2px 8px}.crumb a{text-decoration:none}
+.wh-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(120px,.78fr) minmax(0,2fr) minmax(120px,.78fr);align-items:center;gap:8px;background:radial-gradient(ellipse at 50% 5%,#fff 0%,#f5fbff 54%,#e7f5ff 100%);color:#102b59;border:1px solid #d9edff;border-radius:26px;padding:25px 18px;margin:4px 0 22px;box-shadow:0 12px 35px rgba(26,110,190,.09)}
+.wh-hero:before,.wh-hero:after{content:"";position:absolute;pointer-events:none;border-radius:50%;background:#bfeaff;filter:blur(38px);opacity:.42;width:190px;height:130px}.wh-hero:before{left:-90px;top:-65px}.wh-hero:after{right:-90px;bottom:-75px}
+.wh-hero-copy{position:relative;z-index:1;min-width:0;text-align:center}.wh-hero h1{font-size:clamp(27px,3.5vw,42px);line-height:1.08;letter-spacing:-1.3px;color:#102d63;margin:0 0 10px;font-weight:850}.wh-hero h1 span{background:linear-gradient(90deg,#0757df,#18c9ec);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}.wh-hero p{color:#526784;font-size:15px;line-height:1.5;margin:0 auto;max-width:680px}.wh-hero-art{position:relative;z-index:1;min-width:0;animation:whFloat 5.5s ease-in-out infinite}.wh-hero-art.right{animation-delay:1.3s}.wh-hero-art img{display:block;width:100%;max-width:230px;margin:auto;height:auto;filter:drop-shadow(0 12px 14px rgba(21,100,180,.12))}.wh-benefits{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:16px}.wh-benefits span{background:rgba(255,255,255,.86);border:1px solid #e2efff;border-radius:999px;padding:8px 10px;color:#18365f;font-size:11px;box-shadow:0 4px 12px rgba(28,90,160,.06)}@keyframes whFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:18px;box-shadow:0 7px 24px rgba(15,55,105,.055);margin:14px 0}.card h2{font-size:19px;margin:0 0 12px;letter-spacing:-.3px}.muted{color:var(--muted)}.settings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field label{display:block;font-size:12px;font-weight:750;color:#435a7a;margin-bottom:6px}.field input,.field select{width:100%;min-width:0;padding:11px 12px;border:1px solid #cbd9ea;border-radius:11px;background:#fff;color:var(--ink);font:inherit}.field input:focus,.field select:focus,button:focus-visible,a:focus-visible{outline:3px solid #7bc4ff;outline-offset:2px}.hint{font-size:12px;color:var(--muted);margin:7px 0 0;line-height:1.5}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:690px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #edf1f7;vertical-align:middle}th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#637895}td input{width:100%;min-width:90px;padding:10px;border:1px solid #d3deeb;border-radius:9px;font:inherit;color:var(--ink);background:white}td .date{min-width:132px}td .break{min-width:84px}td .remove{border:0;border-radius:9px;background:#fff0ef;color:#b42318;padding:8px 10px;font-weight:800;cursor:pointer}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.btn{border:0;border-radius:11px;padding:11px 15px;background:linear-gradient(105deg,#0876e8,#1555db);color:#fff;font-weight:800;font-size:14px;cursor:pointer}.btn.secondary{background:#eaf4ff;color:#145a9d;border:1px solid #cfe5fb}.btn.danger{background:#fff0ef;color:#a22b23;border:1px solid #f5d1cd}.btn:disabled{opacity:.5;cursor:not-allowed}
+.status{padding:11px 13px;border-radius:11px;background:#eff6ff;color:#174a91;font-size:13px;margin-top:12px}.status.error{background:#fff0ef;color:#a22b23}.status.good{background:#eafaf3;color:#087f5b}
+.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.metric{padding:14px;border-radius:14px;background:linear-gradient(145deg,#f4f9ff,#eaf4ff);border:1px solid #dcecff}.metric span{display:block;font-size:11px;color:#5e7494;font-weight:700}.metric strong{display:block;font-size:clamp(19px,2.6vw,27px);letter-spacing:-.7px;color:#123d7b;margin-top:4px;overflow-wrap:anywhere}.metric small{display:block;font-size:11px;color:#71829b;margin-top:2px}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.subpanel{border:1px solid #e3ebf5;border-radius:14px;padding:13px;min-width:0}.subpanel h3{font-size:14px;margin:0 0 8px}.summary-table{width:100%;min-width:0;font-size:13px}.summary-table td,.summary-table th{padding:8px 5px}.summary-table td:last-child,.summary-table th:last-child{text-align:right}.empty{font-size:13px;color:var(--muted);padding:12px 4px}
+.privacy-row{display:flex;align-items:center;gap:9px;margin-top:13px;font-size:13px;color:#526784}.privacy-row input{width:17px;height:17px;accent-color:#0876e8}.privacy-row button{margin-left:auto}
+.content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.content-grid .card{margin:0}.card p,.card li{font-size:14px;color:#506582;line-height:1.7}.card ul{padding-left:20px}.example{background:#f5f9ff;border:1px solid #e2edfa;border-radius:12px;padding:12px;margin:9px 0;font-size:13px;color:#3d5575}.faq details{padding:12px 0;border-bottom:1px solid #e8eef6}.faq summary{cursor:pointer;font-weight:800;color:#24466f}.faq details p{margin:8px 0 0}.footer{text-align:center;padding:24px 10px 12px;font-size:12px;color:#71809a}.footer a{color:#41658f}
+@media(max-width:760px){.wh-hero{grid-template-columns:1fr 1fr;gap:0 8px;padding:18px 12px;border-radius:22px}.wh-hero-copy{grid-column:1/-1;grid-row:1}.wh-hero-art{grid-row:2;margin:7px auto 0;width:100%;max-width:155px}.wh-hero h1{font-size:clamp(27px,7vw,34px)}.wh-hero p{font-size:14px}.wh-benefits{gap:5px}.wh-benefits span{font-size:10px;padding:7px 9px}.settings{grid-template-columns:1fr 1fr}.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-grid{grid-template-columns:1fr}}
+@media(max-width:390px){.wh-hero-art{max-width:135px}.wh-benefits span{font-size:9px;padding:6px 7px}.ij-brandtag{font-size:10px}.ij-brandname{font-size:20px}.card{padding:14px}.settings{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.wh-hero-art{animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="ij-brandbar"><div class="ij-brandbar-inner"><div class="ij-brandmark" aria-hidden="true">IJ</div><div><div class="ij-brandname">Info<span>Jano</span></div><div class="ij-brandtag">Smart Online Tools for Everyday Life</div></div><a class="ij-home-back" href="/">⌂ Home</a></div></header>
+<main class="page">
+<nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/time-calculator.html">Date &amp; Time Tools</a> › Work Hours Calculator</nav>
+<section class="wh-hero" aria-labelledby="page-title">
+<div class="wh-hero-art" aria-hidden="true"><img src="/assets/hero-left.svg" alt="" width="320" height="320" fetchpriority="high"></div>
+<div class="wh-hero-copy"><h1 id="page-title">Work Hours <span>Calculator</span></h1><p>Track shifts, subtract unpaid breaks and total your work week — with a simple timesheet you can export.</p><div class="wh-benefits"><span>✓ Free to use</span><span>⚡ Instant totals</span><span>🔒 Stays in your browser</span><span>▦ CSV export</span></div></div>
+<div class="wh-hero-art right" aria-hidden="true"><img src="/assets/hero-right.svg" alt="" width="320" height="320" fetchpriority="high"></div>
+</section>
+
+<section class="card" id="calculator">
+<h2>Your work shifts</h2>
+<p class="muted" style="font-size:13px;margin:-5px 0 14px">Add each shift separately. If the end time is earlier than the start time, the calculator treats it as an overnight shift ending the next day.</p>
+<div class="settings">
+<div class="field"><label for="overtime-threshold">Daily hours threshold</label><input id="overtime-threshold" type="number" min="0.25" max="24" step="0.25" value="8"></div>
+<div class="field"><label for="hourly-rate">Hourly rate (optional)</label><input id="hourly-rate" type="number" min="0" step="0.01" placeholder="e.g. 15.00"></div>
+<div class="field"><label for="currency-symbol">Currency symbol</label><input id="currency-symbol" type="text" maxlength="5" value="$" aria-describedby="currency-hint"><p id="currency-hint" class="hint">Only used for the optional estimate.</p></div>
+</div>
+<div class="table-wrap" style="margin-top:15px">
+<table aria-label="Work shift entries"><thead><tr><th scope="col">Shift date</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Unpaid break (min)</th><th scope="col">Action</th></tr></thead><tbody id="shift-rows"></tbody></table>
+</div>
+<div class="actions"><button type="button" class="btn secondary" id="add-shift">＋ Add shift</button><button type="button" class="btn" id="export-csv">Download CSV</button><button type="button" class="btn secondary" id="reset">Reset entries</button></div>
+<div id="message" class="status" role="status" aria-live="polite">Add your shifts to see the totals.</div>
+<div class="privacy-row"><input type="checkbox" id="remember"><label for="remember">Remember my entries on this device</label><button type="button" class="btn secondary" id="clear-saved" style="padding:7px 10px;font-size:12px">Clear saved data</button></div>
+<p class="hint">Your calculations happen in this browser. Entries are not uploaded. Local saving is off unless you turn on the option above.</p>
+</section>
+
+<section class="card" aria-labelledby="summary-title">
+<h2 id="summary-title">Your timesheet summary</h2>
+<div class="summary-grid">
+<div class="metric"><span>Net hours worked</span><strong id="net-total">0h 00m</strong><small id="decimal-total">0.00 decimal hours</small></div>
+<div class="metric"><span>Gross shift time</span><strong id="gross-total">0h 00m</strong><small>Before unpaid breaks</small></div>
+<div class="metric"><span>Unpaid breaks</span><strong id="break-total">0h 00m</strong><small>Deducted from gross time</small></div>
+<div class="metric"><span>Overtime above threshold</span><strong id="overtime-total">0h 00m</strong><small>Based on your daily setting</small></div>
+</div>
+<div class="results-grid">
+<div class="subpanel"><h3>Daily totals</h3><div id="daily-results" class="empty">Your daily totals will appear here.</div></div>
+<div class="subpanel"><h3>Weekly totals (Monday–Sunday)</h3><div id="weekly-results" class="empty">Your weekly totals will appear here.</div></div>
+</div>
+<div id="earnings-wrap" class="status" style="display:none;margin-top:14px"></div>
+<p class="hint">For daily summaries, an overnight shift is assigned to the date it starts. Overtime is only the amount above the threshold you enter; this is not a legal or payroll determination.</p>
+</section>
+
+<div class="content-grid">
+<section class="card"><h2>How to calculate work hours</h2><ol><li>Add the date and start/end time for each shift.</li><li>Enter only unpaid break minutes. Paid breaks should not be subtracted.</li><li>Add more rows for additional shifts or split shifts.</li><li>Review net hours, decimal hours and weekly totals.</li><li>Download your timesheet as a CSV file for a spreadsheet.</li></ol></section>
+<section class="card"><h2>Work hours examples</h2><div class="example"><strong>Day shift:</strong> 9:00 AM–5:30 PM with a 30-minute unpaid break = <b>8 hours</b> (8.00 decimal hours).</div><div class="example"><strong>Night shift:</strong> 10:00 PM–6:00 AM with a 45-minute unpaid break = <b>7 hours 15 minutes</b> (7.25 decimal hours).</div><div class="example"><strong>Part-time:</strong> 10:00 AM–2:30 PM with no break = <b>4 hours 30 minutes</b> (4.50 decimal hours).</div></section>
+</div>
+
+<section class="card faq"><h2>Frequently asked questions</h2>
+<details><summary>How does the calculator handle overnight shifts?</summary><p>If the end time is earlier than the start time, it is treated as the following day. For example, 10:00 PM to 6:00 AM is eight gross hours before unpaid breaks.</p></details>
+<details><summary>What is the difference between hours and decimal hours?</summary><p>Hours and minutes show clock-style time, such as 7 hours 30 minutes. Decimal hours show the same duration as 7.5 hours. Thirty minutes is 0.5 of an hour, not 0.30.</p></details>
+<details><summary>Are breaks deducted automatically?</summary><p>Only the unpaid break minutes you enter are deducted. Do not subtract paid breaks if they count as working time under your arrangement.</p></details>
+<details><summary>How is overtime calculated?</summary><p>The calculator shows hours above the daily threshold you choose. It does not determine whether those hours legally qualify for overtime or calculate premiums, taxes or deductions. Check your contract and local rules.</p></details>
+<details><summary>How are weekly hours grouped?</summary><p>Entries are grouped Monday through Sunday by the shift start date. An overnight shift is assigned to the date it starts in daily and weekly summaries.</p></details>
+<details><summary>Are my timesheet entries uploaded?</summary><p>No. Calculations run in your browser. Entries are only stored in this browser if you enable Remember my entries. You can clear the saved copy at any time.</p></details>
+<details><summary>Can I use this as a payslip or official timesheet?</summary><p>No. It is a time arithmetic helper and CSV export. Earnings, if entered, are a simple net-hours-times-rate estimate and exclude overtime premiums, taxes, deductions, rounding rules and employer policies.</p></details>
+</section>
+<section class="card"><h2>More time tools</h2><p>Need to calculate a single time interval or add and subtract hours? Try the <a href="/time-calculator.html">Elapsed Time Calculator</a>. You can also use the <a href="/date-duration-calculator.html">Date Duration Calculator</a> for the time between dates.</p></section>
+<footer class="footer">© InfoJano · Free online tools · <a href="/">Home</a> · <a href="/privacy-policy.html">Privacy</a></footer>
+</main>
+<script>
+(function(){
+"use strict";
+var STORAGE_KEY="infojano_work_hours_entries_v1";
+var rows=document.getElementById("shift-rows");
+var message=document.getElementById("message");
+var remember=document.getElementById("remember");
+var today=new Date();
+function dateValue(d){var y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");return y+"-"+m+"-"+day}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function addRow(data){
+ data=data||{};var tr=document.createElement("tr");
+ tr.innerHTML='<td><input class="date" type="date" aria-label="Shift date" value="'+esc(data.date||dateValue(today))+'"></td><td><input type="time" aria-label="Shift start time" value="'+esc(data.start||"09:00")+'"></td><td><input type="time" aria-label="Shift end time" value="'+esc(data.end||"17:00")+'"></td><td><input class="break" type="number" min="0" max="1440" step="1" aria-label="Unpaid break minutes" value="'+esc(data.breakMinutes==null?"30":data.breakMinutes)+'"></td><td><button type="button" class="remove" aria-label="Remove shift">Remove</button></td>';
+ rows.appendChild(tr);
+}
+function parseTime(value){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(value))return null;var p=value.split(":");return Number(p[0])*60+Number(p[1])}
+function dateObj(s){var p=s.split("-");if(p.length!==3)return null;var d=new Date(Number(p[0]),Number(p[1])-1,Number(p[2]),12);return isNaN(d.getTime())?null:d}
+function dateKey(d){return dateValue(d)}
+function mondayOf(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);var day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);return x}
+function minsText(n){n=Math.max(0,Math.round(n));var h=Math.floor(n/60),m=n%60;return h+"h "+String(m).padStart(2,"0")+"m"}
+function decText(n){return (n/60).toFixed(2)}
+function showError(text){message.className="status error";message.textContent=text}
+function showGood(text){message.className="status good";message.textContent=text}
+function getEntries(){
+ var list=[],errors=[];
+ Array.prototype.forEach.call(rows.querySelectorAll("tr"),function(tr,i){
+  var f=tr.querySelectorAll("input"),date=f[0].value,start=f[1].value,end=f[2].value,br=Number(f[3].value);
+  if(!date||!start||!end||!Number.isFinite(br)||br<0||br>1440){errors.push("Shift "+(i+1)+": enter a valid date, start/end time and non-negative break.");return}
+  var d=dateObj(date),a=parseTime(start),b=parseTime(end);
+  if(!d||a===null||b===null||a===b){errors.push("Shift "+(i+1)+": start and end times must be valid and different.");return}
+  var gross=b<a?b+1440-a:b-a;
+  if(br>gross){errors.push("Shift "+(i+1)+": unpaid break cannot be longer than the shift.");return}
+  list.push({date:date,start:start,end:end,breakMinutes:br,gross:gross,net:gross-br,overnight:b<a,index:i+1});
+ });
+ return {list:list,errors:errors};
+}
+function saveIfEnabled(){
+ if(!remember.checked)return;
+ var data={threshold:document.getElementById("overtime-threshold").value,rate:document.getElementById("hourly-rate").value,currency:document.getElementById("currency-symbol").value,entries:[]};
+ Array.prototype.forEach.call(rows.querySelectorAll("tr"),function(tr){var f=tr.querySelectorAll("input");data.entries.push({date:f[0].value,start:f[1].value,end:f[2].value,breakMinutes:f[3].value})});
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}catch(e){showError("Could not save entries in this browser. Check storage settings.");}
+}
+function render(){
+ var parsed=getEntries(),entries=parsed.list;
+ if(parsed.errors.length){showError(parsed.errors[0])}else if(entries.length){showGood("Showing totals for "+entries.length+" valid shift"+(entries.length===1?"":"s")+".")}else{message.className="status";message.textContent="Add your shifts to see the totals."}
+ var gross=0,breaks=0,net=0,daily={},weekly={},threshold=Number(document.getElementById("overtime-threshold").value);
+ entries.forEach(function(e){
+  gross+=e.gross;breaks+=e.breakMinutes;net+=e.net;
+  if(!daily[e.date])daily[e.date]={net:0,gross:0,breaks:0};
+  daily[e.date].net+=e.net;daily[e.date].gross+=e.gross;daily[e.date].breaks+=e.breakMinutes;
+  var monday=mondayOf(dateObj(e.date)),key=dateKey(monday);
+  if(!weekly[key])weekly[key]={net:0,gross:0,breaks:0,days:{}};
+  weekly[key].net+=e.net;weekly[key].gross+=e.gross;weekly[key].breaks+=e.breakMinutes;
+  weekly[key].days[e.date]=(weekly[key].days[e.date]||0)+e.net;
+ });
+ var dailyOT=0;Object.keys(daily).forEach(function(k){dailyOT+=Math.max(0,daily[k].net-(Number.isFinite(threshold)&&threshold>0?threshold*60:0))});
+ document.getElementById("net-total").textContent=minsText(net);
+ document.getElementById("decimal-total").textContent=decText(net)+" decimal hours";
+ document.getElementById("gross-total").textContent=minsText(gross);
+ document.getElementById("break-total").textContent=minsText(breaks);
+ document.getElementById("overtime-total").textContent=minsText(dailyOT);
+ var dkeys=Object.keys(daily).sort(),wkeys=Object.keys(weekly).sort();
+ document.getElementById("daily-results").innerHTML=dkeys.length?'<table class="summary-table"><thead><tr><th>Date</th><th>Net hours</th></tr></thead><tbody>'+dkeys.map(function(k){return "<tr><td>"+k+"</td><td>"+minsText(daily[k].net)+"</td></tr>"}).join("")+'</tbody></table>':'<div class="empty">Your daily totals will appear here.</div>';
+ document.getElementById("weekly-results").innerHTML=wkeys.length?'<table class="summary-table"><thead><tr><th>Week starting</th><th>Net hours</th></tr></thead><tbody>'+wkeys.map(function(k){return "<tr><td>"+k+"</td><td>"+minsText(weekly[k].net)+"</td></tr>"}).join("")+'</tbody></table>':'<div class="empty">Your weekly totals will appear here.</div>';
+ var rate=Number(document.getElementById("hourly-rate").value),currency=document.getElementById("currency-symbol").value||"";
+ var earn=document.getElementById("earnings-wrap");
+ if(document.getElementById("hourly-rate").value!==""&&Number.isFinite(rate)&&rate>=0&&entries.length){earn.style.display="block";earn.textContent="Simple estimated earnings: "+currency+(net/60*rate).toFixed(2)+" (net hours × rate; excludes premiums, taxes and deductions)."}else{earn.style.display="none"}
+ return {entries:entries,errors:parsed.errors,daily:daily,weekly:weekly,gross:gross,breaks:breaks,net:net,dailyOT:dailyOT};
+}
+function loadSaved(){
+ try{var raw=localStorage.getItem(STORAGE_KEY);if(!raw)return false;var data=JSON.parse(raw);if(!data||!Array.isArray(data.entries))return false;
+ document.getElementById("overtime-threshold").value=data.threshold||8;document.getElementById("hourly-rate").value=data.rate||"";document.getElementById("currency-symbol").value=data.currency||"$";
+ rows.innerHTML="";data.entries.forEach(addRow);remember.checked=true;return true;
+ }catch(e){return false}
+}
+function csvCell(v){var s=String(v==null?"":v);return '"'+s.replace(/"/g,'""')+'"'}
+document.getElementById("add-shift").addEventListener("click",function(){addRow({date:dateValue(today),start:"09:00",end:"17:00",breakMinutes:30});render();saveIfEnabled()});
+rows.addEventListener("click",function(e){if(e.target.classList.contains("remove")){e.target.closest("tr").remove();if(!rows.children.length)addRow();render();saveIfEnabled()}});
+rows.addEventListener("input",function(){render();saveIfEnabled()});
+["overtime-threshold","hourly-rate","currency-symbol"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){render();saveIfEnabled()})});
+remember.addEventListener("change",function(){if(remember.checked){saveIfEnabled();showGood("Remembering entries on this device. Turn this off to stop saving.");}else{try{localStorage.removeItem(STORAGE_KEY)}catch(e){}showGood("Local saving is off. Existing saved entries were cleared.");}});
+document.getElementById("clear-saved").addEventListener("click",function(){try{localStorage.removeItem(STORAGE_KEY)}catch(e){}remember.checked=false;showGood("Saved entries cleared from this browser. Current rows remain on screen.");});
+document.getElementById("reset").addEventListener("click",function(){rows.innerHTML="";addRow();remember.checked=false;try{localStorage.removeItem(STORAGE_KEY)}catch(e){}document.getElementById("hourly-rate").value="";document.getElementById("overtime-threshold").value="8";document.getElementById("currency-symbol").value="$";render();showGood("Timesheet reset.");});
+document.getElementById("export-csv").addEventListener("click",function(){
+ var result=render();if(result.errors.length){showError("Fix invalid shift entries before downloading the CSV.");return}if(!result.entries.length){showError("Add at least one valid shift before exporting.");return}
+ var lines=[["Date","Start","End","Overnight","Unpaid break minutes","Gross minutes","Net minutes","Net decimal hours"]];
+ result.entries.forEach(function(e){lines.push([e.date,e.start,e.end,e.overnight?"Yes":"No",e.breakMinutes,e.gross,e.net,decText(e.net)])});
+ lines.push([]);lines.push(["Summary","Value"]);lines.push(["Gross minutes",result.gross]);lines.push(["Unpaid break minutes",result.breaks]);lines.push(["Net minutes",result.net]);lines.push(["Net decimal hours",decText(result.net)]);lines.push(["Overtime above daily threshold (minutes)",result.dailyOT]);
+ var csv="\uFEFF"+lines.map(function(row){return row.map(csvCell).join(",")}).join("\r\n");
+ var blob=new Blob([csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="infojano-work-timesheet.csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showGood("CSV timesheet downloaded.");
+});
+if(!loadSaved()){addRow({date:dateValue(today),start:"09:00",end:"17:00",breakMinutes:30})}
+render();
+})();
+</script>
+</body>
+</html>
