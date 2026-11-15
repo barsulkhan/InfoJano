@@ -524,3 +524,89 @@ Scope: fetched complete source for 12 shared/worker JS files, 5 CSS files, 4 JSO
 - This batch covers shared JS, selected CSS/config and Worker source/docs, but not every dynamic import, all 30 PWA manifests, live Cloudflare account state or actual network traces.
 - Next: inspect PWA manifests and remaining non-root resource tree; build a consolidated matrix separating live-root-source observations, optional third-party routes, undeployed scaffolds and unknown production configuration.
 - No CMP/TCF live test, cookies inspection, provider contract review, Cloudflare dashboard check or production request capture was performed.
+
+## 26. Consolidated repository source inventory — root pages, PWA manifests and libraries (2026-11-15)
+
+### 26.1 Coverage and confidence
+- Recursive branch tree contains 300 files, including 116 root HTML pages and one nested backup HTML artifact.
+- Source-marker review completed for all 116 root HTML pages. This is a complete root-page static inventory pass, not exhaustive semantic review of every line, runtime network QA or legal verification.
+- Inspected all 14 root JavaScript files (including `jspdf.umd.min.js` and `qr-code-generator.min.js`), all 5 root CSS files, 4 root/package JSON files and all 29 app-specific `.webmanifest` files plus root `manifest.json`.
+- Inspected both Worker source files, both Worker READMEs/configs, the shortlinks D1 schema, and the nested historical ID-card backup page.
+- PWA manifests use same-origin relative or `/InfoJano/` start URLs/scopes and local SVG/PNG icons. Countdown Studio uses relative `../` start URL/scope. No external manifest icon or third-party start URL was found.
+
+### 26.2 Explicit GA4 source map
+The GA4 measurement ID `G-P8D7XRGVEF` is explicitly present in these 24 inspected root pages:
+
+1. `index.html`
+2. `qr-maker.html`
+3. `age.html`
+4. `image-compressor.html`
+5. `image-resizer.html`
+6. `image-to-pdf.html`
+7. `emi.html`
+8. `loan-eligibility.html`
+9. `loan-interest.html`
+10. `savings.html`
+11. `bmi.html`
+12. `password-generator.html`
+13. `date-difference.html`
+14. `discount-pt-br.html`
+15. `discount.html`
+16. `gst-calculator.html`
+17. `number-to-words.html`
+18. `percentage-change.html`
+19. `percentage-pt-br.html`
+20. `percentage.html`
+21. `text-counter.html`
+22. `time-calculator.html`
+23. `tip-calculator.html`
+24. `unit-converter.html`
+
+This is the exact positive source-marker list found in the 116-page scan. It does not prove runtime firing, consent gating, event payloads or account-side injection. No GA4 tag was found in the other 92 root HTML source files in this scan.
+
+### 26.3 AdSense and CMP source map
+- Explicit AdSense loader found in homepage `index.html`: `pagead2.googlesyndication.com/pagead/js/adsbygoogle.js` with publisher client `ca-pub-2908196513377151`.
+- No explicit AdSense loader/adsbygoogle/Google ad network marker found in the other root HTML pages during this source scan.
+- No Funding Choices / Google Privacy & Messaging / `__tcfapi` / `googlefc` marker found in the 116 root HTML pages or inspected shared JavaScript.
+- This does NOT prove the live site lacks an account-side CMP, injected tags, consent-mode signals or dynamically delivered vendor scripts. Live browser/runtime and Google account inspection are still required.
+
+### 26.4 Feature-specific APIs and external service routes
+| Feature/page | Source-observed destination | Data or operation | Status / caveat |
+|---|---|---|---|
+| Countdown Studio | Google YouTube Data API v3 | Visitor-entered channel lookup and API key; requests channel snippet/statistics; periodic refresh while connected | Source verified; actual provider retention not checked |
+| Currency Converter | open.er-api.com; api.frankfurter.dev | Base currency and historical currency-pair/range query | Source verified; provider retention unknown |
+| Age Calculator | ipapi.co; Wikipedia On This Day API; Wikidata SPARQL | IP-based geolocation lookup; public event/entity lookup | Source verified; provider retention unknown |
+| Word Converter optional high-fidelity route | InfoJano Worker then iLoveAPI | DOCX multipart upload, Office-to-PDF task, result download | Explicit opt-in in UI; Worker source/docs verified; production binding, provider terms and actual retention need confirmation |
+| QR Scanner | Browser camera API + ZXing CDN | Camera frames decoded in browser; decoded value handed to QR Maker via sessionStorage | Source suggests local decode; live network verification not run |
+| ID Card Print Studio | cdnjs PDF.js; local jsPDF | Browser-side PDF/image processing and export | Source/page copy says no intentional InfoJano upload; runtime not tested |
+| Currency flags | FlagCDN | Remote flag images | Source verified |
+| Fonts | Google Fonts | Inter font resource on selected date/business-day pages and Document Studio | Source verified; provider retention unknown |
+| Libraries | jsDelivr, cdnjs, unpkg | JSZip, docx-preview, PDF.js, ZXing and other client libraries | Source verified; browser requests expose normal connection metadata to CDN operators |
+| Official document portals | UIDAI myAadhaar, PM-JAY Beneficiary Portal, WB Food & Supplies, ECI Voters' Services | User-initiated outbound navigation from guide pages | Not an observed InfoJano API or automatic data upload |
+
+### 26.5 Browser storage map
+| Key / feature | Stored data | Control / behavior |
+|---|---|---|
+| `ij-countdown-studio-v1` | Countdown name, date/time/timezone, message/theme, optional media URLs and event settings | Saved on device; source has load/save behavior |
+| `infojano-qr-prefill` (sessionStorage) | Scanned QR text passed from QR Scanner to QR Maker | Consumed/removed when QR Maker reads it |
+| Word Converter Worker URL | Configured HTTPS Worker base URL | Stored in localStorage; clear/remove behavior exists |
+| Age Calculator reminder | Birthday month/day and leap-day rule; per-day reminder marker | Stored locally; notification behavior is on-page and permission-dependent in Age Calculator source |
+| BMI toolkit | Up to 100 date/weight/height/BMI history records | Clear-history action exists |
+| `infojano-language` | Selected interface language | Persists language preference |
+| `ijPercentageHistory` | Up to 8 percentage-calculation history entries | Clear-history action exists |
+| `ijElapsedTimeHistoryV1` | Up to 5 time-calculation history entries with mode/result text/timestamp | Clear-history action exists |
+| `infojano_work_hours_entries_v1` | Shift dates/start/end/break minutes, overtime threshold, hourly rate and currency | Only saved after user enables “Remember my entries on this device”; opt-out, clear and reset remove saved data |
+
+### 26.6 Specific source/content mismatches to reconcile
+- Birthday Countdown Calculator describes browser notifications, but its inspected source contains no Notification API, permission request or local reminder storage. Do not state the feature is operational without resolving this discrepancy.
+- AdSense/GA4 tags are not shown as gated by an explicit CMP API in inspected source. Actual Google CMP/Consent Mode account-side behavior is unknown.
+- Word Converter README documents a GitHub Pages origin allowlist; InfoJano custom-domain Worker configuration is unconfirmed.
+- Short Link Worker is a repository-documented undeployed staging scaffold. Do not include it as a live data processor unless deployment is confirmed.
+- Work Hours, BMI, Time and Percentage local history behavior must be accurately disclosed as browser storage; Work Hours is opt-in.
+
+### 26.7 Next phase
+1. Inspect remaining non-root resource categories (PWA manifests are now complete; review relevant app icons/assets only if they embed remote resources).
+2. Inspect desktop/Android app shells and workflows to determine whether they are separate distribution surfaces or share the same web privacy disclosures.
+3. Compare the source-level matrices above against the actual `privacy-policy.html` draft, marking each item accurate/missing/uncertain; do not edit policy until user-approved scope and publisher legal facts are confirmed.
+4. Perform live runtime tests only in an available browser/account context: GA4/AdSense requests, cookies, CMP UI, `__tcfapi`, TC string, reject/manage/revoke, network destinations and Worker endpoint behavior.
+5. Keep source evidence, runtime evidence, provider-contract facts and publisher legal declarations as separate evidence classes.
