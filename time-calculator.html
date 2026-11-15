@@ -102,6 +102,12 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 .ij-time-workspace{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start;gap:0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
 .ij-time-left,.ij-time-right{min-width:0}
 .ij-time-field{margin-top:14px}.ij-time-field label{margin-top:0}
+.ij-time-mode{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 8px}
+.ij-time-mode-btn{width:100%;margin:0;padding:11px 8px;border:1px solid #cfe0f4;border-radius:10px;background:#f3f8ff;color:#17518d;font-size:13px;font-weight:800;cursor:pointer}
+.ij-time-mode-btn.is-active{background:#1458c8;border-color:#1458c8;color:#fff}
+#add-subtract-fields[hidden],#difference-fields[hidden]{display:none}
+#duration-hours,#duration-minutes,#duration-seconds{width:33.333%;min-width:0}
+@media(max-width:480px){.ij-time-mode-btn{font-size:12px;padding:10px 5px}}
 .ij-time-input-row{display:flex;align-items:stretch;gap:9px}
 .ij-time-input-row input{flex:1;min-width:0;margin-top:7px}
 .ij-time-utility,.ij-time-swap{width:auto;min-width:100px;margin-top:7px;padding:0 14px;border:1px solid #cfe0f4;border-radius:10px;background:#f3f8ff;color:#17518d;font-size:13px;font-weight:750;cursor:pointer}
@@ -142,7 +148,12 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
   <section class="ij-time-left card" aria-labelledby="ij-time-input-title">
     <span class="ij-time-step">STEP 1 · ENTER TIMES</span>
     <h2 id="ij-time-input-title">Calculate Time Difference</h2>
-    <p class="ij-time-intro">Select the starting and ending clock times.</p>
+    <p class="ij-time-intro">Choose whether to calculate a time difference or add/subtract a duration from a clock time.</p>
+    <div class="ij-time-mode" role="group" aria-label="Calculation mode">
+      <button type="button" class="ij-time-mode-btn is-active" id="mode-difference" aria-pressed="true" onclick="setTimeMode('difference')">Time Difference</button>
+      <button type="button" class="ij-time-mode-btn" id="mode-add-subtract" aria-pressed="false" onclick="setTimeMode('add-subtract')">Add / Subtract Time</button>
+    </div>
+    <div id="difference-fields">
     <div class="ij-time-field">
       <label for="start">Start Time</label>
       <div class="ij-time-input-row"><input id="start" type="time" step="1" aria-describedby="time-input-help"><button class="ij-time-utility" type="button" onclick="setCurrentTime('start')">Use Now</button></div>
@@ -164,7 +175,30 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
       <button type="button" data-start="22:00:00" data-end="06:00:00" onclick="useTimeExample(this)">10:00 PM – 6:00 AM</button>
       <button type="button" data-start="09:15:00" data-end="12:00:00" onclick="useTimeExample(this)">9:15 AM – 12:00 PM</button>
     </div>
-    <button type="button" onclick="calculateTime()">Calculate Difference</button>
+    </div>
+    <div id="add-subtract-fields" hidden>
+      <div class="ij-time-field">
+        <label for="base-time">Starting Time</label>
+        <div class="ij-time-input-row"><input id="base-time" type="time" step="1"><button class="ij-time-utility" type="button" onclick="setCurrentTime('base-time')">Use Now</button></div>
+      </div>
+      <div class="ij-time-field">
+        <label for="time-operation">Operation</label>
+        <select id="time-operation" style="width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:#fff">
+          <option value="add">Add duration (+)</option>
+          <option value="subtract">Subtract duration (−)</option>
+        </select>
+      </div>
+      <div class="ij-time-field">
+        <label for="duration-hours">Duration</label>
+        <div class="ij-time-input-row">
+          <input id="duration-hours" type="number" min="0" step="1" value="1" inputmode="numeric" aria-label="Duration hours" placeholder="Hours">
+          <input id="duration-minutes" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" aria-label="Duration minutes" placeholder="Minutes">
+          <input id="duration-seconds" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" aria-label="Duration seconds" placeholder="Seconds">
+        </div>
+        <p class="ij-time-help">Enter whole hours, minutes, and seconds. The result can fall on the previous or following day.</p>
+      </div>
+    </div>
+    <button type="button" id="calculate-time-btn" onclick="calculateTime()">Calculate Difference</button>
   </section>
   <section class="ij-time-right" aria-labelledby="ij-time-output-title">
     <div class="ij-time-output card">
@@ -256,7 +290,52 @@ function useTimeExample(button){
   document.getElementById('end').value=button.dataset.end;
   calculateTime();
 }
+function setTimeMode(mode){
+  const difference=mode==='difference';
+  document.getElementById('difference-fields').hidden=!difference;
+  document.getElementById('add-subtract-fields').hidden=difference;
+  document.getElementById('mode-difference').classList.toggle('is-active',difference);
+  document.getElementById('mode-add-subtract').classList.toggle('is-active',!difference);
+  document.getElementById('mode-difference').setAttribute('aria-pressed',String(difference));
+  document.getElementById('mode-add-subtract').setAttribute('aria-pressed',String(!difference));
+  const button=document.getElementById('calculate-time-btn');
+  button.textContent=difference?'Calculate Difference':'Calculate Result';
+  document.getElementById('ij-time-output-title').textContent=difference?'Elapsed Time Result':'Add / Subtract Result';
+  document.getElementById('result').textContent=difference?'Choose a start time and end time, then select Calculate Difference.':'Enter a starting time and duration, then select Calculate Result.';
+}
+function calculateAddSubtract(){
+  const baseValue=document.getElementById('base-time').value;
+  const out=document.getElementById('result');
+  const fields=['duration-hours','duration-minutes','duration-seconds'];
+  const values=fields.map(id=>document.getElementById(id).value);
+  if(!baseValue||values.some(value=>value==='')){
+    out.textContent='Please enter a starting time and all duration fields.';
+    return;
+  }
+  const nums=values.map(Number);
+  if(nums.some(value=>!Number.isSafeInteger(value)||value<0)||nums[1]>59||nums[2]>59){
+    out.textContent='Enter whole non-negative hours, minutes (0–59), and seconds (0–59).';
+    return;
+  }
+  const parts=baseValue.split(':').map(Number);
+  const base=parts[0]*3600+(parts[1]||0)*60+(parts[2]||0);
+  const duration=nums[0]*3600+nums[1]*60+nums[2];
+  if(!Number.isSafeInteger(duration)){
+    out.textContent='The duration is too large. Please enter a smaller value.';
+    return;
+  }
+  const signed=document.getElementById('time-operation').value==='subtract'?-duration:duration;
+  const result=base+signed;
+  const dayOffset=Math.floor(result/86400);
+  const clock=((result%86400)+86400)%86400;
+  const h=Math.floor(clock/3600),m=Math.floor((clock%3600)/60),s=clock%60;
+  const pad=value=>String(value).padStart(2,'0');
+  const dayText=dayOffset===0?'Same day':dayOffset===1?'Following day':dayOffset===-1?'Previous day':dayOffset>1?dayOffset+' days later':Math.abs(dayOffset)+' days earlier';
+  out.innerHTML='Calculated time: <strong>'+pad(h)+':'+pad(m)+':'+pad(s)+'</strong><div class="ij-time-result-grid"><div class="ij-time-result-stat"><span>Starting time</span><strong>'+baseValue+'</strong></div><div class="ij-time-result-stat"><span>Operation</span><strong>'+(signed<0?'Subtract':'Add')+'</strong></div><div class="ij-time-result-stat"><span>Duration</span><strong>'+nums[0]+'h '+nums[1]+'m '+nums[2]+'s</strong></div><div class="ij-time-result-stat"><span>Day adjustment</span><strong>'+dayText+'</strong></div></div>';
+}
 function calculateTime(){
+  if(!document.getElementById('add-subtract-fields').hidden){calculateAddSubtract();return;}
+
   const startValue=document.getElementById('start').value;
   const endValue=document.getElementById('end').value;
   const breakInput=document.getElementById('break-duration');
