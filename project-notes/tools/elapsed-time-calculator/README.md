@@ -494,3 +494,9 @@ Overall status: In progress — mobile screenshot checks, source audit and ET-01
 ## Current QA status correction — 2026-11-15
 - ET-011 five-entry history cap is now runtime PASS based on the user's sequential screenshots; it is no longer pending. See QA-TEST-LOG.md.
 - Current remaining checks: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery and DST boundary runtime.
+
+
+## 2026-11-15 — QA status updated from user clarification
+- Copy/share testing: user confirms already completed.
+- Screen-reader testing: user confirms already completed.
+- Do not repeat or list these as pending. Remaining explicit task: desktop browser visual QA. Preserve the distinction that these two completion statuses are user-confirmed, not independently re-run in this session.
