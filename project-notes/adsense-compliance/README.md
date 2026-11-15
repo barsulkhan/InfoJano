@@ -501,3 +501,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task evidence file commit: `4f11ccdc3428`; research-plan commit: `659c7f2b2c36`.
 - D-001 remains IN PROGRESS; exhaustive all-page source inventory and live runtime/config verification are not complete.
 - No production code, settings, DNS, Worker binding, PR merge, deployment or protected design changed.
+
+### 2026-11-15 — Homepage/shared-script audit batch
+- Inspected 14 files including homepage, shared scripts and image/PDF utilities. Homepage source confirms GA4 + AdSense tags and no explicit CMP/TCF API marker in that source. Selected image tools also contain GA4; PDF utilities and Document Studio load third-party libraries/fonts.
+- Detailed evidence: [2026-11-15-2320-homepage-shared-script-audit.md](2026-11-15-2320-homepage-shared-script-audit.md); master plan §15.
+- Commits: plan `fa16fa93436d`; task log `c904bdae059f`.
+- D-001 remains in progress; no exhaustive all-pages scan or live runtime consent test claimed.
+- No production, settings, DNS, Worker, merge, deployment or protected design changes.
