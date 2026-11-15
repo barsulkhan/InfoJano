@@ -674,3 +674,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Detailed task record: [2026-11-15-1822-privacy-policy-qa-follow-up.md](2026-11-15-1822-privacy-policy-qa-follow-up.md); task file commit: c8e9161795845306e9fd8952208aed81fec4833d.
 - Fix commits: workflow a31a106da2d4b62e462db16c23f46a680494d627; policy doctype d2f069349c152a798b970c310868e77dd62af828.
 - Remaining: live CMP/revocation/TCF test, AdSense approval/vendor/crawler status, production HTTP headers/redirects, Android/Windows runtime, Worker production configuration and provider retention confirmation. PR #236 remains draft/unmerged; no deployment, account/DNS/Worker setting or protected design change.
+
+
+### 2026-11-16 — Privacy Policy QA strengthened and live footer gap reconfirmed
+- User screenshot of live homepage footer still shows no Privacy and cookie settings / Privacy Policy / Contact links. Main branch `index.html` at `48732b0a88db6df6562456c4aca1712063af99a8` contains none of these footer link markers; the PR branch does contain them and the consent callback source. This explains why the live screenshot does not yet reflect the branch work.
+- Enhanced `scripts/validate-privacy-policy-links.mjs` to check local target files and URL fragments (IDs / anchor names), including the homepage revocation anchor.
+- Successful PR workflow #14: https://github.com/barsulkhan/InfoJano/actions/runs/43747375957 . HTML5 validation PASS; link/fragment validation PASS; log says “Checked 26 hrefs; all local targets and fragments exist.”
+- Current tested source commit: `a23a0ae7216915e1ade5a4141bfa40ec9fad4094`; task record: [2026-11-16-0003-privacy-policy-qa-strengthening.md](2026-11-16-0003-privacy-policy-qa-strengthening.md); task record commit: `0d3b3dfc0bf07085889e8353d5710c44953eb1c1`.
+- PR #236 remains Draft, open, unmerged. No merge/deployment or account/DNS/Worker changes made. User approval for merge is still required. Live CMP/TCF, AdSense account/vendor/crawler, HTTP headers/redirects and Android/Windows runtime remain unverified.
