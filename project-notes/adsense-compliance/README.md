@@ -456,3 +456,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Result: live revocation/settings control NOT FOUND in the checked homepage footer; CARD-003 remains In progress. This does not prove that no alternate CMP entry point exists elsewhere or in other regions/session states.
 - No CMP editor setting, AdSense setting, source code, DNS, production content, PR merge or deployment changed.
 - Next step: continue read-only source/runtime integration inspection and retain the requirement for a live consent/revocation test; do not ask the user to repeat the footer check.
+
+### 2026-11-15 — Homepage CMP integration source inspection
+- Read-only inspection of current `index.html` on both `main` and `feature/privacy-policy-adsense-compliance` (same blob SHA: `48732b0a88db6df6562456c4aca1712063af99a8`).
+- Search terms checked: Funding Choices, Google Privacy & Messaging, Google FC, consent, CMP, cookie settings, and AdSense loader.
+- Finding: homepage source contains the AdSense loader for publisher `ca-pub-2908196513377151` but no explicit Funding Choices / Google Privacy & Messaging CMP script or visible consent-revocation link in the inspected HTML.
+- Interpretation: this is a source-level finding and may not capture account-side injection, tag-manager injection, or runtime scripts; it supports the user's live observation that no footer privacy control is visible, but does not alone prove the CMP never runs.
+- CARD-003 remains In progress; CARD-004 remains In progress pending live consent/rejection and TC-string verification. No settings, code, DNS, production, PR merge or deployment changed.
+- Next: inspect AdSense/Privacy & Messaging account evidence and live runtime separately. Do not ask the user to repeat the footer check; do not change CMP settings without explicit approval.
