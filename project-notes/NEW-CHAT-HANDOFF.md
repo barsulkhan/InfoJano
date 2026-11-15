@@ -222,3 +222,11 @@ Copy/paste prompt:
 ## CI status follow-up — 2026-11-15
 - APK workflow #683 now PASSED the “Validate tool icons, manifests, and APK matrix” step after the service-worker cache fix. It is still in “Build one APK for each remaining tool”; package-count verification, artifact upload and release publication remain pending.
 - Latest Pages runs for the documentation commits were still processing at last check; Pages #2624 for an earlier commit succeeded. Recheck before stating final deployment status.
+
+
+## Follow-up after user said “Koro” — 2026-11-15
+- Rechecked GitHub Actions. Pages deployment run #2631 for commit `a123933a0fed29a5e18264ad6ac578d0e6c81727` completed SUCCESS. Earlier Pages runs for intermediate commits were cancelled because newer commits superseded them.
+- APK workflow #683 for service-worker fix `e8a0beab9cb70643fa612230956cc106474a71f1` has passed its validation step; at latest check the sequential APK build step remained in progress. Package count, artifact upload and release steps had not run yet. Do not claim the APK release is complete.
+- Re-audited existing date SEO pages: `days-between-dates-calculator.html`, `date-duration-calculator.html`, `add-subtract-date-calculator.html`, and `business-days-calculator.html` are informational landing pages, not embedded calculators; each CTA points to `date-difference.html`. The target calculator has date-range and business-day options, but no add/subtract-date mode was found in the inspected page scripts. Business-day holiday dates are user-entered; the page explicitly says US holidays are not auto-loaded.
+- Decision: do not add a duplicate date-duration URL or claim add/subtract-date functionality exists in the target calculator. The add/subtract-date landing page's CTA/feature promise needs a dedicated functional destination or a revised honest scope before more SEO promotion. Date input currently uses DD-MM-YYYY in the main Date Difference calculator; review US locale presentation before claiming US-first UX.
+- No source edits made to the date pages during this audit. Protected hero banners remain unchanged. Next: finish APK workflow status check; prioritize honest CTA/feature mapping and Work Hours browser QA; then build a distinct new SEO calculator only after feature scope and free-SERP evidence are solid.
