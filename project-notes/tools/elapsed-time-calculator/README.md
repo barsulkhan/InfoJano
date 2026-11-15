@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/time-calculator.html
-Overall status: In progress — feature work merged; mobile/desktop visual browser QA pending
+Overall status: In progress — calculator features merged; screenshot-backed mobile QA ET-001–ET-009 passed; manual ET-010, five-item cap runtime, desktop visual QA and accessibility review remain pending
 
 ## User-approved scope and constraints
 - Existing Elapsed Time Calculator hero banner dimensions, layout, styling, artwork and copy must remain unchanged unless the user explicitly approves a hero change.
@@ -45,9 +45,9 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] APK workflow: run 43684495904 — success. https://github.com/barsulkhan/InfoJano/actions/runs/43684495904
 - [x] GitHub Pages deployment before CARD-011: run 43684495751 — success. https://github.com/barsulkhan/InfoJano/actions/runs/43684495751
 - [x] GitHub Pages deployment after PR #229 — run 43685533520 succeeded for the latest main commit `3e1d25497dd893b71275fb547131c4bf52a32b47` (includes PR #229 and tracker updates). https://github.com/barsulkhan/InfoJano/actions/runs/43685533520
-- [ ] Mobile browser QA — pending.
-- [ ] Desktop browser QA — pending.
-- [ ] Accessibility review — not yet recorded.
+- [ ] Mobile browser QA — partial: user screenshots confirm ET-001–ET-009; responsive full-page visual review and ET-010 manual clear-history confirmation remain pending.
+- [ ] Desktop browser QA — pending; no interactive desktop browser available in this session.
+- [ ] Accessibility review — source-level spot checks only; full keyboard/screen-reader review pending.
 - [x] Source review follow-up for CARD-011 — merged in PR #229; runtime/browser regression still pending.
 
 ## Detailed work log
@@ -336,3 +336,15 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Validation: re-fetched the updated file; confirmed the duplicate lower link count is zero, header Home navigation remains, and scoped icon color styles exist. Source-level check only; no interactive browser visual QA or deployment confirmation yet.
 - Commit: `d65d341e7c89e294708a64c81288a26331f50038`.
 - Next: verify deployment, then ask user to refresh and review the icon accents and removed lower link.
+
+
+### 2026-11-15 — Remaining QA/source review and shared tagline update
+- User asked to complete remaining work quickly. Re-read the current handoff, tracking standard, calculator tracker, QA log, `time-calculator.html`, and shared `site-header.js` before editing.
+- ET-010 manual Clear History: not performed because it requires tapping the live page and confirming the device's resulting UI; no browser-control session is available here. Source review confirms `clearTimeHistory()` removes `ijElapsedTimeHistoryV1` from localStorage and calls `renderTimeHistory()`, whose empty state is “No recent calculations yet.” Do not mark ET-010 PASS until user/browser evidence exists.
+- Five-item cap: source review confirms `getTimeHistory()` and `recordTimeCalculation()` both limit the stored history to five entries using `.slice(0,5)`. This is source-level verification, not runtime test.
+- Shared header tagline: updated `site-header.js` so “Smart Online Tools for Everyday Life” is bold (font-weight 850) and uses a two-tone blue-to-teal gradient. This is in the shared header generator and therefore applies to pages that load `site-header.js`; pages using only legacy/static headers are not proven covered. No other brand/header geometry changed.
+- Existing previous task: related-tool icon color styles and removal of the lower duplicate Back to Home link remain in `time-calculator.html` commit `d65d341e7c89e294708a64c81288a26331f50038`; the header Home button remains. Deployment not confirmed.
+- Validation: re-fetched `site-header.js`; confirmed bold weight, two-tone gradient and shared tagline markup. Source-level review only. Workflow lookup for commit `48325b82c22d946ccf41f991f1f4b79d9753c599` returned no associated workflow runs; Pages deployment is unverified.
+- Still pending: manual ET-010 clear-history result and refresh-after-clear check; runtime verification of five-entry cap; confirm which site pages load the shared header script; verify Pages deployment and inspect live mobile appearance of colored tagline/icons and removed link; full desktop/mobile visual QA and accessibility review.
+- Next step: ask user for one quick live check: tap Clear history, confirm the empty-state text, then refresh and confirm the list remains empty. After that, request one desktop screenshot when available.
+- Protected areas: calculator hero, homepage Hero Banner, ID Card Print Studio Hero, and calculator logic outside history are untouched.
