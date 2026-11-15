@@ -373,3 +373,20 @@ Scope: complete raw source fetched for 12 remaining root HTML pages: `404.html`,
 - Source inspection does not prove no tags are injected at runtime by account-side systems or shared deployment configuration.
 - Continue with remaining root pages in batches; prioritize document/photo, QR, calculators, API-driven tools and embedded media.
 - Reconcile Birthday Countdown's notification wording with actual source behavior before any policy statement is drafted; no code change authorized.
+
+## 18. Root-page inventory batch 04 — date tools, countdown pages and QR generators (2026-11-15)
+
+Scope: complete raw source fetched for 12 additional root HTML pages: `business-days-calculator.html`, `cheque-amount-in-words.html`, `contact-qr-code-generator.html`, `countdown-timer-bangladesh.html`, `countdown-timer-india.html`, `countdown-timer-usa.html`, `custom-qr-code-generator.html`, `date-difference.html`, `date-duration-calculator.html`, `day-of-week-born-calculator.html`, `days-between-dates-calculator.html`, and `decimal-number-to-words.html`.
+
+### Findings (source verified)
+- GA4 measurement ID `G-P8D7XRGVEF` is present in `date-difference.html`.
+- Google Fonts (`fonts.googleapis.com`) is referenced by Business Days Calculator, Date Duration Calculator and Days Between Dates Calculator. No fetch/storage/permission/analytics/CMP marker was found in those three source samples.
+- Cheque Amount in Words, Contact QR Code Generator, Bangladesh/India/USA Countdown Timer pages, Custom QR Code Generator, Day of Week Born Calculator and Decimal Number to Words showed no direct GA4/AdSense/CMP, fetch/XHR, browser-storage or device-permission marker in this bounded source scan.
+- No CMP/TCF API marker found in this batch.
+- Countdown timer pages are separate localized/region-specific pages; no API-backed countdown or server call was identified in the source scan. Confirm full runtime behavior only if later evidence indicates dynamic loading.
+- QR generators in this batch showed no external QR-generation API call in source; do not infer that no browser/CDN requests occur elsewhere without inspecting shared dependencies/runtime.
+
+### Limits / next
+- This is a 12-page source batch only; 67 root HTML pages remain after this batch according to the branch tree inventory (116 total root HTML files).
+- Continue with next 12 pages and maintain exact distinction between observed GA4, external font requests, ordinary links and client-side-only calculations.
+- Live network, consent-state and cookie testing remain NOT RUN.
