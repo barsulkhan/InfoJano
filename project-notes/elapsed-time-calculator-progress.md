@@ -41,12 +41,20 @@ Merge commit: a4b5017c1fd27061ca50aae63330e67e0af235bf
 - [x] Check GitHub Pages deployment after merge — Pages build/deployment run 43677856456 completed successfully.
 - [ ] Visual browser QA on mobile and desktop (requires an interactive browser session).
 
-## Completed — break deduction (PR in review)
+## Completed — break deduction (PR #221, merged)
 - Added an optional whole-minute break input, defaulting to 0.
 - Calculator validates non-negative whole minutes and rejects a break longer than the elapsed duration.
 - Results distinguish gross elapsed time, break deducted, and net working time; total minutes, total seconds, and decimal hours now describe the net duration.
 - Overnight calculations remain supported. Existing hero markup and styles were not edited.
 - Source-level checks passed for input, validation, overnight handling, output fields, and hero markup. Browser visual QA remains pending.
+- Merge commit: 1887be9cf860519f5c4906dc101767e8aa846037
+
+## In progress — add / subtract time mode
+Branch: `feature/elapsed-time-add-subtract-mode`
+- Added a mode switch so users can choose between elapsed-time difference and adding/subtracting a duration from a starting clock time.
+- Add/subtract mode accepts hours, minutes, and seconds, validates whole non-negative values (minutes and seconds limited to 0–59), and reports the resulting clock time plus previous/same/following day adjustment.
+- Existing difference mode, break deduction, overnight handling, and hero markup/artwork remain in place.
+- Initial source checks passed for mode switching, duration inputs, calculation dispatch, day rollover, existing break validation, and hero markup/artwork. Further calculation tests, PR review, and browser visual QA are pending.
 
 ## Later roadmap
 - Add/subtract time mode.
