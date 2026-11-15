@@ -217,3 +217,8 @@ Copy/paste prompt:
 - Pages workflow #2624 for preceding handoff commit completed SUCCESS. APK #683 and Pages #2625 for the service-worker fix were queued at last check; do not claim their outcomes until rechecked.
 - Failed APK #682 stopped at validation, before APK build/package/release steps; no APK release was produced by that run.
 - Next: recheck latest Actions runs; continue source audit of date pages if CI is green. Keep user-only work to real browser visual/functional checks when needed.
+
+
+## CI status follow-up — 2026-11-15
+- APK workflow #683 now PASSED the “Validate tool icons, manifests, and APK matrix” step after the service-worker cache fix. It is still in “Build one APK for each remaining tool”; package-count verification, artifact upload and release publication remain pending.
+- Latest Pages runs for the documentation commits were still processing at last check; Pages #2624 for an earlier commit succeeded. Recheck before stating final deployment status.
