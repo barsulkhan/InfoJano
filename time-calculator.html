@@ -102,10 +102,10 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 .ij-time-workspace{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start;gap:0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
 .ij-time-left,.ij-time-right{min-width:0}
 .ij-time-field{margin-top:14px}.ij-time-field label{margin-top:0}
-.ij-time-mode{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 8px}
+.ij-time-mode{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 8px}
 .ij-time-mode-btn{width:100%;margin:0;padding:11px 8px;border:1px solid #cfe0f4;border-radius:10px;background:#f3f8ff;color:#17518d;font-size:13px;font-weight:800;cursor:pointer}
 .ij-time-mode-btn.is-active{background:#1458c8;border-color:#1458c8;color:#fff}
-#add-subtract-fields[hidden],#difference-fields[hidden]{display:none}
+#add-subtract-fields[hidden],#difference-fields[hidden],#date-duration-fields[hidden]{display:none}
 #duration-hours,#duration-minutes,#duration-seconds{width:33.333%;min-width:0}
 @media(max-width:480px){.ij-time-mode-btn{font-size:12px;padding:10px 5px}}
 .ij-time-input-row{display:flex;align-items:stretch;gap:9px}
@@ -152,6 +152,7 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
     <div class="ij-time-mode" role="group" aria-label="Calculation mode">
       <button type="button" class="ij-time-mode-btn is-active" id="mode-difference" aria-pressed="true" onclick="setTimeMode('difference')">Time Difference</button>
       <button type="button" class="ij-time-mode-btn" id="mode-add-subtract" aria-pressed="false" onclick="setTimeMode('add-subtract')">Add / Subtract Time</button>
+      <button type="button" class="ij-time-mode-btn" id="mode-date-duration" aria-pressed="false" onclick="setTimeMode('date-duration')">Date + Time</button>
     </div>
     <div id="difference-fields">
     <div class="ij-time-field">
@@ -197,6 +198,11 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
         </div>
         <p class="ij-time-help">Enter whole hours, minutes, and seconds. The result can fall on the previous or following day.</p>
       </div>
+    </div>
+    <div id="date-duration-fields" hidden>
+      <div class="ij-time-field"><label for="date-start">Start Date &amp; Time</label><input id="date-start" type="datetime-local" step="1"></div>
+      <div class="ij-time-field"><label for="date-end">End Date &amp; Time</label><input id="date-end" type="datetime-local" step="1"></div>
+      <p class="ij-time-help">Choose the full date and time for both points. The end must be later than the start. Times use your device's local time zone.</p>
     </div>
     <button type="button" id="calculate-time-btn" onclick="calculateTime()">Calculate Difference</button>
   </section>
@@ -292,16 +298,18 @@ function useTimeExample(button){
 }
 function setTimeMode(mode){
   const difference=mode==='difference';
+  const addSubtract=mode==='add-subtract';
   document.getElementById('difference-fields').hidden=!difference;
-  document.getElementById('add-subtract-fields').hidden=difference;
-  document.getElementById('mode-difference').classList.toggle('is-active',difference);
-  document.getElementById('mode-add-subtract').classList.toggle('is-active',!difference);
-  document.getElementById('mode-difference').setAttribute('aria-pressed',String(difference));
-  document.getElementById('mode-add-subtract').setAttribute('aria-pressed',String(!difference));
-  const button=document.getElementById('calculate-time-btn');
-  button.textContent=difference?'Calculate Difference':'Calculate Result';
-  document.getElementById('ij-time-output-title').textContent=difference?'Elapsed Time Result':'Add / Subtract Result';
-  document.getElementById('result').textContent=difference?'Choose a start time and end time, then select Calculate Difference.':'Enter a starting time and duration, then select Calculate Result.';
+  document.getElementById('add-subtract-fields').hidden=!addSubtract;
+  document.getElementById('date-duration-fields').hidden=mode!=='date-duration';
+  [['mode-difference',difference],['mode-add-subtract',addSubtract],['mode-date-duration',mode==='date-duration']].forEach(function(item){
+    const button=document.getElementById(item[0]),active=item[1];
+    button.classList.toggle('is-active',active);
+    button.setAttribute('aria-pressed',String(active));
+  });
+  document.getElementById('calculate-time-btn').textContent=difference?'Calculate Difference':addSubtract?'Calculate Result':'Calculate Duration';
+  document.getElementById('ij-time-output-title').textContent=difference?'Elapsed Time Result':addSubtract?'Add / Subtract Result':'Date + Time Duration Result';
+  document.getElementById('result').textContent=difference?'Choose a start time and end time, then select Calculate Difference.':addSubtract?'Enter a starting time and duration, then select Calculate Result.':'Choose a start date and time and an end date and time, then select Calculate Duration.';
 }
 function calculateAddSubtract(){
   const baseValue=document.getElementById('base-time').value;
@@ -333,7 +341,21 @@ function calculateAddSubtract(){
   const dayText=dayOffset===0?'Same day':dayOffset===1?'Following day':dayOffset===-1?'Previous day':dayOffset>1?dayOffset+' days later':Math.abs(dayOffset)+' days earlier';
   out.innerHTML='Calculated time: <strong>'+pad(h)+':'+pad(m)+':'+pad(s)+'</strong><div class="ij-time-result-grid"><div class="ij-time-result-stat"><span>Starting time</span><strong>'+baseValue+'</strong></div><div class="ij-time-result-stat"><span>Operation</span><strong>'+(signed<0?'Subtract':'Add')+'</strong></div><div class="ij-time-result-stat"><span>Duration</span><strong>'+nums[0]+'h '+nums[1]+'m '+nums[2]+'s</strong></div><div class="ij-time-result-stat"><span>Day adjustment</span><strong>'+dayText+'</strong></div></div>';
 }
+function calculateDateDuration(){
+  const startValue=document.getElementById('date-start').value;
+  const endValue=document.getElementById('date-end').value;
+  const out=document.getElementById('result');
+  if(!startValue||!endValue){out.textContent='Please enter both the start and end date and time.';return;}
+  const startMs=new Date(startValue).getTime(),endMs=new Date(endValue).getTime();
+  if(!Number.isFinite(startMs)||!Number.isFinite(endMs)){out.textContent='Please enter valid dates and times.';return;}
+  if(endMs<=startMs){out.textContent='End date and time must be later than the start date and time.';return;}
+  const totalSeconds=Math.floor((endMs-startMs)/1000);
+  const days=Math.floor(totalSeconds/86400),hours=Math.floor((totalSeconds%86400)/3600);
+  const minutes=Math.floor((totalSeconds%3600)/60),seconds=totalSeconds%60;
+  out.innerHTML='Total duration: <strong>'+days+' days, '+hours+' hours, '+minutes+' minutes, '+seconds+' seconds</strong><div class="ij-time-result-grid"><div class="ij-time-result-stat"><span>Total days</span><strong>'+days+'</strong></div><div class="ij-time-result-stat"><span>Remaining time</span><strong>'+hours+'h '+minutes+'m '+seconds+'s</strong></div><div class="ij-time-result-stat"><span>Total hours</span><strong>'+(totalSeconds/3600).toFixed(2)+'</strong></div><div class="ij-time-result-stat"><span>Total minutes</span><strong>'+(totalSeconds/60).toFixed(2)+'</strong></div><div class="ij-time-result-stat"><span>Total seconds</span><strong>'+totalSeconds.toLocaleString()+'</strong></div></div>';
+}
 function calculateTime(){
+  if(!document.getElementById('date-duration-fields').hidden){calculateDateDuration();return;}
   if(!document.getElementById('add-subtract-fields').hidden){calculateAddSubtract();return;}
 
   const startValue=document.getElementById('start').value;
