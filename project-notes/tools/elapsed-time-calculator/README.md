@@ -43,7 +43,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] Date duration checks: 25h30m15s; 2-hour overnight interval; equal endpoints rejected.
 - [x] APK workflow: run 43684495904 — success. https://github.com/barsulkhan/InfoJano/actions/runs/43684495904
 - [x] GitHub Pages deployment before CARD-011: run 43684495751 — success. https://github.com/barsulkhan/InfoJano/actions/runs/43684495751
-- [ ] GitHub Pages deployment after PR #229 — no workflow run surfaced for merge commit `69ad8a8865cedfc6df952fa87dae8598f904ad27`; live page fetch through web reader was inaccessible, so deployment not verified.
+- [x] GitHub Pages deployment after PR #229 — run 43685533520 succeeded for the latest main commit `3e1d25497dd893b71275fb547131c4bf52a32b47` (includes PR #229 and tracker updates). https://github.com/barsulkhan/InfoJano/actions/runs/43685533520
 - [ ] Mobile browser QA — pending.
 - [ ] Desktop browser QA — pending.
 - [ ] Accessibility review — not yet recorded.
@@ -169,3 +169,15 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Still pending: verify GitHub Pages deployment for PR #229; run functional regression for date-duration history/copy/share plus all three calculator modes; perform real mobile and desktop visual QA (CARD-009); accessibility review; defer CARD-010 until keyword/page intent is confirmed.
 - Next step: inspect Pages/deployment configuration and available deployments for the merge commit; if no automated deploy is triggered, verify through an authorized deployment mechanism or await site publication. Then complete runtime/browser QA in an interactive browser.
 - Protected areas preserved: only one line in `time-calculator.html` changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain unchanged.
+
+
+### 2026-11-15 — Resume CARD-009; deployment verified and source QA pass
+- Requested: resume the last active InfoJano task rather than only summarize it; the active task is CARD-009 mobile/desktop visual browser QA, with post-PR #229 deployment verification as a prerequisite.
+- Inspected: current default-branch `time-calculator.html`, tracker and latest GitHub Actions runs. Reviewed responsive breakpoints, all three mode containers and state toggles, labels/ARIA state, result live region, history controls, copy/share hooks, and calculation dispatch/validation paths.
+- Changed: tracker and tool index only; marked post-PR #229 Pages deployment verified and added this source-QA log. No application source or protected hero was changed.
+- Tests and results: GitHub Pages run #2478 / run ID `43685533520` completed with conclusion `success` for latest main commit `3e1d25497dd893b71275fb547131c4bf52a32b47`; this commit includes the CARD-011 merge. Static source QA confirmed viewport meta, responsive breakpoints at 480/760/850/1001px, mobile one-column workspace at <=850px, mobile hero/grid rules, reduced-motion support, three mode buttons with `aria-pressed`, labeled inputs, `role=status`/live result, recent-history list, copy/share handlers, and date-duration hook. No new definite source defect was established by this inspection. The live page URL could not be opened by the available web reader, and no interactive browser/Computer Use tool is available in this session; therefore no real visual screenshots, viewport rendering, touch/keyboard interaction, clipboard/share, or localStorage runtime test is claimed.
+- PR/commit/workflow: PR #229 merged; deployment run https://github.com/barsulkhan/InfoJano/actions/runs/43685533520 succeeded. Superseded PR #228 remains closed unmerged.
+- Issues and resolution: post-merge deployment uncertainty resolved by successful Pages run. CARD-009 remains open because real browser QA is not possible in this tool session.
+- Still pending: use a real mobile viewport and desktop browser to verify hero/workspace sizing, horizontal overflow, control tap targets, all mode transitions, calculations, localStorage history, clear history, clipboard fallback and native share; record actual screenshots/findings. Accessibility review remains pending.
+- Next step: perform live visual and interactive QA in an actual browser session; if defects are observed, create a new card before code changes. Keep protected hero areas unchanged.
+- Protected areas preserved: only tracking documentation updated in this step; Calculator Hero, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
