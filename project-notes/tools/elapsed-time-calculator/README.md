@@ -23,6 +23,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] [CARD-008] APK manifest relative icon path validation — PR #227; merge 4ae9624fb8978b832d58e2b93f2e41091227dc80. Workflow resolves relative icon src against manifest URL before checking repository asset.
 
 ### In progress
+- [ ] [CARD-012] Lower-page related-tools and guide refresh — redesigned “More Helpful Tools” cards and replaced repetitive lower-page copy with practical calculator-use guidance; PR pending; mobile/desktop visual QA not yet performed. Hero and calculator workspace are out of scope.
 - [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-009 passed (ET-008 confirms Android share-sheet launch; final delivery not tested). Next: continue manual QA from ET-010, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
 - [x] [CARD-011] Date-duration results missing from recent history — fixed and merged via PR #229 (squash merge `69ad8a8865cedfc6df952fa87dae8598f904ad27`). `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling recent history and shared Copy/Share action visibility. Current default-branch file re-fetched and hook presence confirmed. Runtime/browser regression and post-merge deployment verification remain separate pending checks.
 
@@ -270,3 +271,15 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Still pending: ET-010 Clear History; confirm five-record cap; real mobile/desktop visual QA; accessibility review.
 - Next step: ask user to tap Clear history and capture the resulting state.
 - Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
+
+
+### 2026-11-15 — Lower-page visual and copy refresh (CARD-012)
+- Requested: improve the appearance of the related-tools cards and replace the repetitive information block near the bottom with more useful, attractive content.
+- Inspected: current `time-calculator.html` lower sections and tracking standard. Existing related tools were plain two-column cards; the guide repeated generic elapsed-time copy.
+- Changed on branch `design/elapsed-time-lower-sections`: only the related-tools section and lower guide section in `time-calculator.html`. Added more polished responsive cards, improved hierarchy/spacing, keyboard focus styles and reduced-motion handling. Replaced the generic copy with four concise feature/use-case explanations covering time difference, overnight calculation, add/subtract and Date + Time mode.
+- Protected: hero banner, calculator workspace/form/result/history logic, existing navigation destinations and footer were not intentionally changed.
+- Validation: re-fetched the branch file and confirmed the new headings/content are present and the old lower heading is absent. This is source-content verification only; no live mobile/desktop visual browser QA or automated HTML/CSS test has been run.
+- PR: pending creation at time of this entry; no merge or deployment claimed.
+- Still pending: user review of the updated live preview after PR deployment/merge; ET-010 Clear History test is still pending (the screenshot supplied before this request showed the bottom content, not the history-cleared state).
+- Next step: open PR, then ask user to review lower-page appearance and copy after preview is available. Resume ET-010 separately.
+- Protected areas preserved: calculator Hero banner dimensions/layout/styling/artwork/copy unchanged; Homepage Hero Banner and ID Card Print Studio Hero untouched.
