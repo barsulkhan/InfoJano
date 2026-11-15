@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v308";
+const CACHE_NAME = "infojano-v309";
 const HOME = "/InfoJano/";
 const ASSETS = [
   HOME,
@@ -95,6 +95,7 @@ const ASSETS = [
   "/InfoJano/loan-eligibility.html",
   "/InfoJano/loan-interest.html",
   "/InfoJano/number-to-words.html",
+  "/InfoJano/number-to-words-locales.js",
   "/InfoJano/assets/seo-hero-india.svg",
   "/InfoJano/assets/seo-hero-global.svg",
   "/InfoJano/assets/seo-hero-inr.svg",
