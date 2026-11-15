@@ -1,0 +1,23 @@
+# Root-page inventory batch 06 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:25:28+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- User instruction: continue research and save every completed work package with a timestamped task file; do not create folders.
+- Scope: inspect 12 number conversion, percentage calculator and photo-resizer page sources for third-party hosts, analytics/ads/CMP, network, storage, permissions and upload endpoints. Read-only.
+- Files inspected: `increase-decrease-by-percentage-calculator.html`, `lakh-crore-converter.html`, `million-billion-converter.html`, `number-to-words-for-cheque.html`, `number-to-words-indian.html`, `number-to-words-international.html`, `number-to-words-uppercase.html`, `number-to-words.html`, `ordinal-number-converter.html`, `original-price-before-discount-calculator.html`, `passport-id-photo-resizer.html`, `percent-of-number-calculator.html`.
+- Findings:
+  - GA4 `G-P8D7XRGVEF` appears in `number-to-words.html`.
+  - The other 11 pages showed no direct GA4/AdSense/CMP, fetch/XHR, browser-storage or device-permission marker in the bounded source scan.
+  - Passport ID Photo Resizer and sampled number/percentage tools showed no explicit upload endpoint or FormData/network call in the inspected source. Treat browser-side processing as a source-level indication only, not a live runtime proof.
+  - No CMP/TCF marker found.
+- Checks: raw source retrieval for all 12 pages — PASS; bounded marker scan — PASS; full root-page inventory — IN PROGRESS; live runtime/network/cookie/consent tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §20.
+- Changed: research plan only. No app source, policy, account settings, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `407de166a124c564f2f09702f7f6fbca49f83c06`.
+- Next: continue remaining root HTML pages; after inventory, compile exact GA4 page list and processing/vendor map.
+- Approval boundaries: no production/account change authorized.
