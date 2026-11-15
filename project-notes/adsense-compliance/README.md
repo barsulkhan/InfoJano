@@ -424,3 +424,21 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Google's current AdSense Help “Set up and manage your CMP” says publishers must clearly identify every selected ad technology provider and provide provider data-use details; “About European regulations messages” explains the consent, manage options and vendor preferences journeys. These confirm the policy's need for an accurate dynamic vendor list and accessible user choices, but do not establish InfoJano's actual live behavior.
 - Time-saving conclusion: repository/source edits and available documentation checks are done for this pass. The remaining three AdSense items (live revocation/CMP runtime, live TC string/consent behavior, live ads.txt HTTP/crawler access) cannot be completed safely from GitHub or static source alone; they require a real browser/account runtime. Policy publication also remains blocked by missing publisher/controller legal identity and jurisdiction and partial rather than exhaustive data-flow inventory.
 - No CMP or AdSense account setting was changed; no Request review resubmission; no merge, production deployment, DNS or ads.txt changes. PR #236 remains draft and unmerged pending accuracy/live verification and publisher details.
+
+### 2026-11-15 — Current-session source audit and PR handoff
+- Requested: resume AdSense / Privacy Policy compliance from the existing tracker; verify PR #236 and branch state; complete safe repository-side checks without repeating prior work or changing live settings.
+- Re-read current handoff, tracking standard, research standard and this compliance tracker before proceeding.
+- PR #236 verified: open, draft, unmerged; base `main`; head branch `feature/privacy-policy-adsense-compliance`; observed head SHA before this tracker-only update: `acfeef78768502c4d48bd939e69dc908b8d2df20`. PR currently contains the Privacy Policy draft, Contact-page links and tracker update; no merge or deployment performed.
+- Read-only source checks on the PR branch:
+  - `privacy-policy.html`: doctype, title, canonical URL, single H1, sections 1–12, supplied public contact mailto and Contact-page link — PASS.
+  - `contact.html`: at least two links to `/privacy-policy.html` — PASS.
+  - root `ads.txt`: exactly one Google seller record, `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0` — SOURCE PASS.
+  - `robots.txt`: global Allow and sitemap declaration — SOURCE PASS.
+  - `sitemap.xml`: Privacy Policy URL is not present — FOLLOW-UP identified; not changed in this session.
+  - Overall lightweight source assertions: 12 passed, 1 follow-up (sitemap inclusion). These are source assertions, not a full standards validator or live/browser QA.
+- Public URL inspection attempted for homepage, `/ads.txt`, and `/privacy-policy.html`; all returned tool-level inaccessible/internal errors. This is not evidence of HTTP 404, and live response/body/redirect remains UNVERIFIED.
+- Reconfirmed the remaining live tasks: CMP consent and rejection behavior, live privacy/cookie settings revocation/reopen flow, actual TCF signal/version, live ads.txt HTTP/crawler status, and production vendor/runtime inventory. Google AdSense review remains already submitted; do not resubmit.
+- Legal publication blockers remain: publisher/controller legal identity and jurisdiction are unconfirmed; source inventory and runtime vendor/configuration audit are incomplete. Do not invent legal details or treat this draft as final legal advice.
+- Changed: this tracker file only, on the existing PR feature branch. No policy HTML, Contact HTML, sitemap, application code, protected hero/banner, DNS, CMP/AdSense settings, production site or deployment changed.
+- Tests: lightweight source assertions — 12 PASS / 1 follow-up; browser/runtime tests — NOT RUN; live URL checks — UNVERIFIED due inspection-tool errors; deployment — NOT RUN.
+- Next single user action: open `https://infojano.com/ads.txt` directly in a browser and send the visible page screenshot (or exact text/status). Do not change any settings.
