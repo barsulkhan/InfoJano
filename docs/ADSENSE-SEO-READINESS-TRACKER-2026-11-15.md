@@ -181,3 +181,10 @@ Status: In progress.
 4. In Privacy & messaging, check three-choice consent UI (Consent / Do not consent / Manage options), vendor list, privacy-policy URL and consent mode settings.
 5. Test message from EEA/UK/Swiss region and verify TCF v2.4 / CMP ID 300 and Policy Center consent status.
 6. Complete browser/mobile tests and update PR #233. No merge or production deploy without explicit approval.
+
+
+### 2026-11-15 17:04 +05:30 — AdSense tag source verification
+- Verified all 12 pages receiving static AdSense tag in their document head: social-qr-maker, days-between-dates-calculator, business-days-calculator, date-duration-calculator, number-to-words-indian, number-to-words-international, rupees-in-words, dollars-in-words, cheque-amount-in-words, hindi-number-to-words, work-hours-calculator and elapsed-time-calculator-guide.
+- Verified both shared helpers (`site-header.js`, `install.js`) contain the guarded loader, publisher client ID `ca-pub-2908196513377151`, and duplicate-script detection.
+- This combined with the existing homepage tag covers the 99 non-legal sitemap pages identified by source search; the four legal pages remain intentionally without ad code.
+- PR #233 is still open/draft, unmerged, and GitHub currently reports it mergeable. No live deploy, AdSense account configuration or EEA geolocation test was performed.
