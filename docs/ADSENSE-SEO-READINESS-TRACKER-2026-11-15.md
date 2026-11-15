@@ -230,3 +230,11 @@ Status: In progress.
 - No changes to `main`; no merge or production deployment.
 - No SEO landing-page source deleted; archive branch and restore manifest remain the recovery source.
 - ID Card Print Studio crop/selection/print/export logic and protected design remain untouched.
+
+
+### Additional resume checks — 2026-11-15
+- Rechecked the remaining nine static-tag pages in the 12-page AdSense coverage batch; all nine contain the standard AdSense loader in `<head>`. Earlier in this resume, the first three pages in that batch were also confirmed. Together with the prior 12-page audit, all 12 static-tag pages are accounted for.
+- Rechecked the four legal pages: About, Contact, Privacy Policy and Terms of Use each have an absolute HTTPS canonical and `index,follow`; they intentionally have no AdSense loader.
+- Corrected time-sensitive TCF v2.4 wording in `privacy-policy.html` and the companion audit: the IAB 23 October 2026 full-implementation deadline has passed as of this audit date; the wording now says publishers should verify current CMP/TCF v2.4 compliance, not treat the deadline as upcoming.
+- Re-fetched PR #233 after the documentation correction. It remains open/draft, unmerged, mergeable=true; latest head SHA: `1e619e96c6bb70de4f33fbfaea06f55da965fd13`. No PR-triggered workflow runs were returned for this SHA. Preview deployment comment is not a production deployment.
+- Current status remains In progress: source-side work and documentation are saved; live DNS/HTTPS, GitHub Pages settings, AdSense account CMP publication, EEA geolocation test, browser/device QA and CI/deployment verification remain pending.
