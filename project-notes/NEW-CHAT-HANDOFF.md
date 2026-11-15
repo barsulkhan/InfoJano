@@ -290,3 +290,13 @@ Copy/paste prompt:
 - Head SHA: `a6730d90ae0af1adfe3e3687e800d59351fe4a5f`; main unchanged at `9b069a536b3b5f5ed4afac19f3de0257475c58ab`.
 - PR-triggered workflow runs not present yet; CI/deployment not verified.
 - Continue with remaining content audit and browser/device QA; obtain user approval before merge.
+
+## Follow-up — Custom Domain / AdSense CMP / EEA (15 Nov 2026)
+- Read: `docs/CUSTOM-DOMAIN-CMP-EEA-AUDIT-2026-11-15.md`.
+- Confirmed repository `CNAME` contains `infojano.com`; homepage canonical and robots sitemap target use HTTPS custom domain. Live DNS, www redirect, SSL and GitHub Pages Enforce HTTPS could not be verified from current access.
+- Google CMP/TCF: Google's certified Privacy & Messaging CMP is recommended; Google docs say personalized ads in EEA/UK/Switzerland require certified CMP+TCF. Google European messages support TCF v2.4 ahead of 23 Oct 2026 full implementation deadline. CMP account message not configured/published yet; needs AdSense login.
+- Source: AdSense tag previously only homepage. Added guarded site-wide loader to `site-header.js` and `install.js`; added static tag to 12 monetizable pages that did not load either helper. Four legal pages intentionally excluded.
+- Privacy policy updated with EEA/UK/Swiss and TCF v2.4 disclosure; this does not claim live CMP is active.
+- Account tasks: AdSense > Privacy & messaging > European regulations; publish Google CMP message; review three choices, vendor list, policy URL and consent mode; test EEA geo and CMP ID 300/TCF v2.4. No credentials in chat.
+- Domain tasks: compare registrar @ A/AAAA/ALIAS and www CNAME to GitHub Pages docs; verify GitHub Pages Settings custom domain and Enforce HTTPS; test live HTTPS and www redirect.
+- PR #233 remains draft and unmerged; no deployment.
