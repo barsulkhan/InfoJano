@@ -195,3 +195,15 @@ Copy/paste prompt:
 - This is source review only. WH-001–WH-010 real browser/runtime checks remain NOT RUN; no connected interactive browser/computer-control tool is exposed in this session. Do not claim runtime QA or deployment.
 - No application source changed. Protected homepage, Elapsed Time Calculator and ID Card Print Studio heroes preserved.
 - Next: perform WH-001–WH-009 runtime checks in a real browser, then desktop/mobile/accessibility QA and verify the current Pages deployment/live URL. User does not want paid SEO tool spend; use free sources and qualitative analysis only.
+
+
+## Work Hours source-validation fixes — 2026-11-15
+- User asked to batch as much work as possible and keep only tasks requiring their input/device as manual items.
+- Re-fetched current handoff, tracking/research standards, index, Work Hours README/RESEARCH/QA log, master SEO dossier and current `work-hours-calculator.html` before continuing.
+- Fixed two source-level edge cases in `work-hours-calculator.html`: impossible calendar dates are now rejected by strict ISO-format plus calendar-component round-trip validation; blank or out-of-range daily threshold (valid range 0.25–24 hours) now shows a validation message and does not calculate misleading overtime-above-threshold totals.
+- Commits: `56486dc6d83792b97f44d1edcbe8c8409577ff92` and follow-up regex correction `c15ecec44313503db91fb40f295dc127bd7a7565`.
+- Updated Work Hours QA log, README tracker and TOOL-INDEX. Source snippets were re-fetched and inspected. No browser runtime, JavaScript compiler, CSV download, localStorage interaction, Pages deployment or live URL verification was performed in this session.
+- WH-001–WH-010 remain NOT RUN as browser/runtime tests. User's manual input is needed only for live browser checks/screenshots if no interactive browser becomes available.
+- SEO decision remains: create quality SEO pages when research supports distinct intent; existing Work Hours page is the consolidated Work Hours/Time Card/Timesheet destination. Business Hours, Decimal Hours and Military Time remain HOLD; no new URL should be built from unsupported demand claims. No paid SEO subscriptions or tools.
+- Protected homepage hero, Elapsed Time Calculator hero and ID Card Print Studio hero were not modified.
+- Next: verify the latest Pages workflow/live page; execute Work Hours validation and arithmetic in browser if available; otherwise batch source audits of remaining date pages and leave only live-browser tasks for the user.
