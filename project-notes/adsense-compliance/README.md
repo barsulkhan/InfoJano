@@ -656,3 +656,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task evidence: [2026-11-15-2358-policy-reconciliation-and-validation.md](2026-11-15-2358-policy-reconciliation-and-validation.md); task file commit: `04d23266154c1e43750bbae9d018bf76b7471075`.
 - Policy content commit: `410df772673988da2b66c51a15fd54d4756097dd`.
 - No production deployment, PR merge, AdSense/CMP settings, DNS, Worker or sitemap changes.
+
+
+### 2026-11-15 — Combined consent, AdSense, runtime and QA batch
+- Added homepage consent-revocation entry point using Google's documented `CONSENT_API_READY` callback and `googlefc.showRevocationMessage()`; added Policy footer route to that entry point.
+- Added HTML5 validation + local-link CI workflow and a local policy-link checker. Manual checks: key tag counts balanced, no duplicate policy IDs, all local policy href targets exist.
+- Account-side vendor/approval, live HTTP/crawler, CMP/TCF/network runtime, app device testing, and Worker production/retention checks remain blocked by unavailable account/live-network/device evidence; no success claims made.
+- Full record: [2026-11-15-privacy-consent-live-audit-and-qa-batch.md](2026-11-15-privacy-consent-live-audit-and-qa-batch.md); task file commit: `b956f249332edd9bc3e87b73b948030ecbf8ecd7`.
+- No production deployment, account setting, Worker config/secret, DNS or merge changed.
