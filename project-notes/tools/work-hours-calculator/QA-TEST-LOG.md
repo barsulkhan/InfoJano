@@ -57,3 +57,14 @@ Source-only checks were run after page creation. Inline JavaScript syntax and ke
 - Commits: date/threshold fix `56486dc6d83792b97f44d1edcbe8c8409577ff92`; strict date-regex correction `c15ecec44313503db91fb40f295dc127bd7a7565`.
 - WH-001–WH-010 remain NOT RUN as browser/runtime tests. Protected homepage, Elapsed Time Calculator and ID Card Print Studio heroes remain unchanged.
 - Next: run WH-008 invalid-date/threshold behavior and WH-001/002 arithmetic in a real browser, then continue WH-003–WH-009 and responsive/desktop QA.
+
+
+### 2026-11-15 — APK workflow regression found and service-worker cache fixed
+- Latest Actions review found APK workflow run #682 failed at “Validate tool icons, manifests, and APK matrix” with exact error: `Tool page missing from service-worker cache: elapsed-time-calculator-guide.html`.
+- Compared all root HTML pages (excluding the homepage and Google verification file) with `sw.js`: exactly two tool pages were missing — `elapsed-time-calculator-guide.html` and `work-hours-calculator.html`.
+- Updated `sw.js`: added both page URLs to the precache list and incremented cache version from `infojano-v309` to `infojano-v310`.
+- Re-fetched repository root and `sw.js`; source-level parity check now reports 112 tool pages and zero missing service-worker cache entries.
+- Fix commit: `e8a0beab9cb70643fa612230956cc106474a71f1`.
+- Workflow #683 (APK) and Pages #2625 were queued for this commit at the time of recording; no success is claimed until they finish. Pages #2624 for preceding handoff commit completed SUCCESS.
+- No APK was built/released by failed run #682; the failure was a repository validation assertion, not a Gradle compile failure. No protected hero/banner was changed.
+- Next: monitor run #683 and #2625; if APK validation passes, confirm build/package count/release separately.
