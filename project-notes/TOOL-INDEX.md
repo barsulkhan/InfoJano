@@ -19,3 +19,8 @@ Last updated: 2026-11-15
 ### 2026-11-15 — QA continuation status
 - Re-fetched calculator, guide, sitemap and QA log; no new runtime/browser test was run because no interactive browser session is connected. Latest source/formula results remain unchanged.
 - Five-entry history runtime, desktop/responsive, keyboard/focus, screen-reader, copy/share and DST checks remain pending. Detailed status in tools/elapsed-time-calculator/README.md and QA-TEST-LOG.md.
+
+
+### 2026-11-15 — Elapsed Time Calculator five-entry history cap runtime PASS
+- User-supplied sequential live mobile screenshots verify that after adding a sixth distinct calculation, Recent Calculations still displays exactly five; newest entry is first and the prior oldest entry is removed.
+- ET-011 recorded PASS in the tool QA log. Remaining desktop/responsive/accessibility/DST checks are still pending.
