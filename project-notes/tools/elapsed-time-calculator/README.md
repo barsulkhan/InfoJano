@@ -303,3 +303,17 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Fix PR: #231 — https://github.com/barsulkhan/InfoJano/pull/231. Source re-fetch confirms old inline guide markup remains and new lower guide uses a unique class. No live browser verification of the fix yet. PR currently reports mergeable=false; do not claim merged.
 - No main-branch source changed by this fix yet. Existing hero and calculator logic untouched.
 - Next: resolve PR mergeability/conflict or checks, merge only after GitHub permits; then verify deployment and request a fresh mobile screenshot to confirm the inline guide is back in its result-column position.
+
+
+### 2026-11-15 — CARD-012 mobile layout regression fixed and merged
+- User asked to make the correction live after a mobile screenshot exposed the original inline guide card overlapping the calculator workspace.
+- Root cause: the new full-width lower guide and original compact result-column guide shared `.ij-time-guide`; the broad new selector displaced the original card.
+- Fix: new lower section uses `.ij-time-guide-section`; all new full-width styles are scoped to this unique class. Original `<div class="ij-time-guide card">` and `.ij-time-right .ij-time-guide` styles remain intact.
+- PR #232: https://github.com/barsulkhan/InfoJano/pull/232 — squash-merged successfully.
+- Merge commit: `2ee765a34c0652bd3d626a98f86d4b3917047384`.
+- Main-branch source re-fetched after merge: confirmed new unique guide class and scoped selector; confirmed old broad `.ij-related-tools,.ij-time-guide{` selector is absent and original inline guide markup remains.
+- Stale PR #231 was closed as superseded by #232.
+- Deployment: no workflow run was returned for this commit; live deployment is not yet confirmed.
+- QA: source-level fix verified only. User must refresh the live page and provide a new mobile screenshot to confirm the guide card is back inside the result column and no overlap remains. Full lower guide still needs viewport review.
+- Next: check Pages deployment availability; then user live mobile visual confirmation. Resume ET-010 Clear History afterward.
+- Protected hero/banner and calculator logic untouched.
