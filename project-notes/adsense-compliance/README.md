@@ -16,12 +16,14 @@ Overall status: In progress
 ## Feature cards
 
 ### In progress
-- [ ] [CARD-001] Verify current AdSense site-review status after the user-submitted Request review — acceptance: inspect current Site Details status and record exact visible status; do not infer approval from request submission.
-- [ ] [CARD-002] Audit Google Privacy & Messaging European regulations message — inspect all four preview states and current setup without publishing.
-- [ ] [CARD-003] Verify live Privacy and cookie settings / consent-revocation link — acceptance: locate and test the live link, not just the editor preview.
-- [ ] [CARD-004] Verify Google-certified CMP and EEA consent behavior — distinguish editor metadata from actual live behavior.
-- [ ] [CARD-005] Verify TCF v2.4 compatibility and related vendor/consent signals using current Google/IAB documentation and available evidence.
-- [ ] [CARD-006] Audit ads.txt live availability and publisher record — do not edit or deploy without approval.
+- [ ] [CARD-003] Verify live Privacy and cookie settings / consent-revocation link — editor preview exists; live link and reopen behavior still unverified.
+- [ ] [CARD-004] Verify Google-certified CMP and EEA consent behavior — CMP identity verified; live runtime behavior still unverified.
+- [ ] [CARD-006] Audit ads.txt live availability and publisher record — source pass; live HTTP response and crawler status unverified.
+
+### Completed (audit/research evidence only; no production changes)
+- [x] [CARD-001] Record current AdSense site-review status — user screenshot shows Getting ready; this completes the status observation, not Google's review.
+- [x] [CARD-002] Audit Google Privacy & Messaging European regulations editor — published message, setup, settings and all four preview states inspected; no changes made.
+- [x] [CARD-005] Check Google CMP listing and TCF v2.4 documentation — Google CMP ID 300 listing and official Google/IAB timeline/support reviewed; live TC signal remains unverified..
 
 ### Backlog
 - [ ] [CARD-007] Review Privacy Policy URL/content and its connection from the consent message.
@@ -203,3 +205,17 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Record decisions and “do not repeat” instructions.
 - Update the “At-a-glance status dashboard”, detailed work log, and next single user action together when state changes.
 - The next manual instruction must be only one small action in Bengali, with exact click path and the specific screenshot/text requested.
+
+
+### 2026-11-15 — Tracker cleanup and next-action handoff
+- User instruction: maintain one durable AdSense folder/tracker so completed checks are not repeated; continue the next task independently where possible.
+- Re-read the repository's current NEW-CHAT-HANDOFF.md, TOOL-WORK-TRACKING-STANDARD.md, TOOL-RESEARCH-STANDARD.md and this AdSense tracker before proceeding.
+- Corrected feature-card states to distinguish completed evidence gathering from pending live/runtime verification:
+  - CARD-001 completed as a status observation: user screenshot showed “Getting ready”; Google review itself remains WAITING.
+  - CARD-002 completed as an editor audit: published European message, settings and four preview states inspected; no settings changed.
+  - CARD-005 completed as a documentation/listing check: Google CMP ID 300 and TCF v2.4 documentation checked; live emitted TC signal remains UNVERIFIED.
+  - CARD-003, CARD-004 and CARD-006 remain in progress because they require live browser/account evidence.
+- Reconfirmed no source files, DNS, AdSense settings, CMP settings or production state changed; Publish changes was not pressed.
+- The next step that requires the user is a single read-only account inspection: AdSense > Sites > click the infojano.com row (not Request review), then capture the Site details panel showing review status and ads.txt details. This is needed because the assistant cannot access the user's signed-in AdSense UI.
+- After the Site details evidence, resume independent live CMP/revocation and ads.txt checks; do not repeat the editor audit or re-submit review.
+- Protected areas preserved: homepage hero, ID Card Print Studio hero, tool heroes, website code, DNS and production settings untouched.
