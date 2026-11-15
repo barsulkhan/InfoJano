@@ -702,3 +702,12 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Latest checker commits: `efc33d8638140d3c808382ac7832bb195f1440ba` and regex correction `190f50bbd379f85039eccf7973ea3390c2d76cb5`.
 - Task record: [2026-11-16-0013-sitemap-qa-and-live-check.md](2026-11-16-0013-sitemap-qa-and-live-check.md); commit `02cc7f6eac37357c6aa1ca3ac687160021e7b145`.
 - The new expanded QA has not yet been confirmed by a workflow run on main; do not claim CI PASS for the latest checker.
+
+
+### 2026-11-16 — Expanded QA CI confirmed PASS
+- Found and inspected main push run #43748356041 for commit `190f50bbd379f85039eccf7973ea3390c2d76cb5`.
+- HTML5 validation PASS; expanded policy link + sitemap + robots + repository-file checker PASS. Workflow/job conclusion SUCCESS.
+- Additional repository search reconfirmed Privacy Policy links on homepage and Contact page; did not find a common shared policy footer across all tool pages. Sitewide link insertion is deferred pending a safe footer/template inventory.
+- Source search reconfirmed homepage AdSense loader, GA4 marker presence, and optional third-party routes for Age, Currency, Countdown Studio and Word Converter. No live firing or ad-serving claims.
+- Detailed task record: [2026-11-16-0014-qa-ci-confirmation-and-source-search.md](2026-11-16-0014-qa-ci-confirmation-and-source-search.md); commit `b661c80dce6f2053f01bb6077b51530bb2ca2841`.
+- Workflow run: https://github.com/barsulkhan/InfoJano/actions/runs/43748356041
