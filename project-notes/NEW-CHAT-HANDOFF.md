@@ -273,3 +273,14 @@ Copy/paste prompt:
 - User confirmed live operation works on 2026-11-15. Tracker: `project-notes/tools/id-card-print-studio/README.md`; QA: `project-notes/tools/id-card-print-studio/QA-TEST-LOG.md`.
 - Latest source URL: https://github.com/barsulkhan/InfoJano/blob/main/id-card-print-studio.html
 - Next conversation topic: user has a new AdSense-related problem and wants to discuss it. No details of that problem have been provided yet; ask them to explain/show the issue before diagnosing. First reread `NEW-CHAT-HANDOFF.md`, `TOOL-WORK-TRACKING-STANDARD.md`, `TOOL-RESEARCH-STANDARD.md`, `TOOL-INDEX.md`, and relevant AdSense/monetization notes if present. Do not assume the issue or make AdSense/account changes without explicit authorization.
+
+## Current active task — AdSense Readiness & SEO Cleanup (15 Nov 2026)
+- Read first: `docs/ADSENSE-SEO-READINESS-TRACKER-2026-11-15.md` and `docs/SEO-LANDING-PAGE-RESTORE-MANIFEST-2026-11-15.md`.
+- Active branch: `audit/adsense-readiness-seo-cleanup-2026-11-15`; base main SHA `9b069a536b3b5f5ed4afac19f3de0257475c58ab`. Not merged or deployed.
+- Pre-change source archive branch: `archive/seo-landing-pages-before-cleanup-2026-11-15`. The nine temporarily noindexed pages are preserved there byte-for-byte.
+- New legal pages: `privacy-policy.html`, `about.html`, `contact.html`, `terms-of-use.html`; shared footer helper: `legal-links.js`.
+- Service Worker cache: `infojano-v312`. Sitemap variants: 103 unique URLs each, matched in source QA.
+- Current noindex pages: decimal-number-to-words, bulk-number-to-words, words-to-number-converter, ordinal-number-converter, million-billion-converter, lakh-crore-converter, number-to-words-uppercase, number-to-words-for-cheque, qr-choice. Do not delete them. Restore from archive branch using the exact paths in the restore manifest.
+- Four BMI guides have had visible keyword-list blocks removed and CDC/WHO references added. Other reviewed Number to Words, percentage, QR, date and image-resizer pages were retained where task intent was distinct.
+- CMP source integration not found; AdSense Privacy & Messaging / certified CMP setup is still account-side pending. Browser/device/live HTTP, deployment, AdSense account and Search Console verification have not been completed.
+- Continue on the active branch; do not merge or deploy without explicit user approval. Preserve ID Card Print Studio behavior and visual design.
