@@ -105,3 +105,49 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 ### 2026-11-15 — Deployment workflow status
 - GitHub Pages workflow run #2550: SUCCESS, commit `f44e679ad5e8e0746061ea98c81b017605229485` (contains the elapsed-time guide and latest tracker updates).
 - Direct live URL verification unavailable in the current inspection channel; rendered/mobile/desktop QA remains NOT RUN.
+
+
+## 2026-11-15 — Follow-up source QA (repository snapshot)
+
+**Scope:** Re-fetched the latest handoff, tracking/research standards, tool index, elapsed-time tracker/research/QA log, `time-calculator.html`, `elapsed-time-calculator-guide.html` and `sitemap.xml` before testing. No application source files were changed.
+
+### Static/source checks
+
+| Test ID | Check | Result | Evidence |
+|---|---|---|---|
+| SRC-001 | Calculator self-canonical | PASS | Canonical points to `/time-calculator.html` |
+| SRC-002 | Guide self-canonical | PASS | Canonical points to `/elapsed-time-calculator-guide.html` |
+| SRC-003 | Sitemap membership | PASS | Both URLs found in repository `sitemap.xml` |
+| SRC-004 | Bidirectional internal links | PASS | Calculator links to guide; guide links to calculator |
+| SRC-005 | Guide heading structure | PASS | Exactly one H1 in guide source |
+| SRC-006 | Guide layout constraint | PASS | 1360px max width and 8px horizontal gutters present |
+| SRC-007 | Guide JSON-LD syntax | PASS | Embedded JSON-LD successfully parsed with JSON.parse |
+| SRC-008 | Clock-only overnight rule | PASS | Source adds 86,400 seconds only when end is earlier than start |
+| SRC-009 | Break validation | PASS | Source rejects break duration greater than gross elapsed duration |
+| SRC-010 | Recent-history cap | PASS | `getTimeHistory()` read path and `recordTimeCalculation()` write path both slice to five |
+| SRC-011 | Reduced-motion support | PASS | `prefers-reduced-motion: reduce` rules present in both page sources |
+| SRC-012 | Visible guide FAQ | PASS | Multiple native `<details>` FAQ entries present |
+| SRC-013 | Duplicate calculator IDs | PASS | No duplicate IDs detected in calculator source |
+| SRC-014 | Button type declarations | PASS | All 14 calculator buttons have explicit button type |
+| SRC-015 | Input-label source heuristic | PASS (heuristic only) | 9 inputs and label/aria-label coverage found; this does not prove screen-reader usability |
+| SRC-016 | Inline JavaScript syntax | PASS | All three executable inline calculator scripts parsed successfully; JSON-LD excluded from JS parse and validated separately |
+
+### Deterministic arithmetic checks (formula-level, not browser runtime)
+
+| Case | Expected | Computed | Result |
+|---|---:|---:|---|
+| 09:00–17:30 | 30,600 seconds | 30,600 | PASS |
+| 23:05:00–12:05:25 next day | 46,825 seconds | 46,825 | PASS |
+| 09:00–17:30 less 30-minute break | 28,800 seconds | 28,800 | PASS |
+| Equal start/end clock time | 0 seconds | 0 | PASS |
+
+### Workflow and limitations
+
+- Checked GitHub Actions latest runs: Pages build/deployment run #2570 for commit `824653a4458312cf60fa20acb579ed6487458a79` completed SUCCESS. This verifies the documentation/handoff commit deployment workflow, not browser rendering of this QA session's subsequent commits.
+- Actual mobile/desktop browser rendering, five-entry history cap through UI, keyboard navigation, visible focus, screen-reader output, copy/share end-to-end, and DST transition behavior were NOT RUN. No interactive browser/computer-control session is available here.
+- A first history-cap static assertion used an overly narrow regex and reported a false FAIL; direct inspection confirmed both getter and writer use `.slice(0,5)`. The corrected assertions PASS. No product defect was found from that check.
+- No app code, SEO metadata, calculator hero, homepage hero or ID Card Print Studio hero changed.
+
+### Next concrete QA step
+
+When a real browser is available, perform the five-entry history test (create six different calculations and verify only the newest five remain), then inspect guide/calculator at mobile and desktop widths and run keyboard/focus and screen-reader checks. Add DST boundary runtime tests for date+time mode.
