@@ -51,3 +51,11 @@ No code was changed in this session. Only this review note is being saved.
 - No other hero copy, artwork, layout, dimensions, spacing, colors, or animations were intentionally changed. No workspace layout or document processing logic was changed.
 - Source commit: `bfdf85f5241e3577ef51a91d34300cd3b53f65c2`
 - Browser visual QA and Pages deployment status: not yet verified.
+
+
+## 2026-11-15 — User correction: English name and location on both mock cards
+
+- User clarified the mock-card text must be in English, not Bengali.
+- Both mock cards now show `ABDUL BARIK` with `FARAKKA, WEST BENGAL` directly underneath.
+- Source commit: `52092b48aa120801ee437cf2f514ebe1e28d64ae`
+- Source update only; browser visual QA and Pages deployment remain unverified.
