@@ -44,7 +44,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/time-calculator.webmanifest">
-<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,28 +91,60 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 @media(max-width:760px){.ij-brandbar{padding:10px 12px}.ij-brandmark{width:38px;height:38px;flex-basis:38px}.ij-brandname{font-size:20px}.ij-brandtag{font-size:10px}.ij-brand-divider,.ij-brand-promise{display:none}.ij-home-back{font-size:11px;padding:7px 10px;min-height:34px}.ij-hero-breadcrumb{width:calc(100% - 24px);margin:12px auto 7px;font-size:11px}.ij-reference-hero{width:calc(100% - 20px);margin:12px auto 20px;padding:23px 17px 35px;border-radius:23px}.ij-reference-grid{grid-template-columns:1fr;gap:17px}.ij-reference-copy{text-align:center}.ij-reference-kicker{font-size:10px}.ij-reference-copy h1{text-align:center;font-size:clamp(31px,8.5vw,42px);letter-spacing:-1.1px;margin:12px 0 10px}.ij-reference-copy p{font-size:14px;margin:0 auto}.ij-reference-pills{justify-content:center;gap:6px;margin-top:17px}.ij-reference-pills span{font-size:10px;padding:7px 9px}.ij-reference-art{min-height:205px}.ij-art-paper,.ij-art-sheet,.ij-art-chart,.ij-art-receipt,.ij-art-convert{min-height:160px;width:min(83%,310px);padding:17px;border-width:6px}.ij-art-big{font-size:36px}.ij-art-clock-face{width:150px;height:150px}.ij-art-minute{height:57px}.ij-art-hour{height:42px}.ij-art-lock{transform:scale(.83);height:140px}.ij-art-receipt{min-height:190px}.ij-art-counts b{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.ij-reference-hero *{scroll-behavior:auto!important}}
 </style>
+
+<style id="ij-elapsed-time-workspace-v1">
+/* Scoped to Elapsed Time Calculator: match the approved ID Studio's compact hero proportions. */
+body .ij-reference-hero.ij-unified-currency-hero{width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;min-height:220px!important;margin:12px auto 22px!important;padding:26px 42px 22px!important;border-radius:22px!important}
+.ij-reference-hero .ij-reference-grid{min-height:0}
+.ij-reference-hero .ij-reference-art{min-height:190px}
+main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:22px auto;padding:0}
+.ij-time-workspace{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start;gap:0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.ij-time-left,.ij-time-right{min-width:0}
+.ij-time-workspace .card{padding:20px;border-radius:17px;box-shadow:none}
+.ij-time-left{background:#f8fbff;border:1px solid #e1eafa}
+.ij-time-right{border-left:2px solid #d6e4f4;padding-left:24px;margin-left:24px}
+.ij-time-right .card{border:1px solid #e1eafa;background:#fff}
+.ij-time-right .ij-time-guide{margin-top:16px;background:#f8fbff}
+.ij-time-workspace h2{margin:6px 0 12px;font-size:22px;line-height:1.3;color:#14264a}
+.ij-time-step{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.6px;color:#087ce5}
+.ij-time-intro{margin:0 0 14px;color:#52627a;font-size:14px}
+.ij-time-workspace .result{margin-top:14px;min-height:115px;display:flex;flex-direction:column;justify-content:center;background:#edf6ff;border:1px solid #d5e8fb;color:#1c3d68;line-height:1.65}
+.ij-time-guide p{margin:0;color:#52627a;font-size:14px;line-height:1.7}
+.ij-time-home-link{margin:18px 0 8px}
+@media(max-width:850px){.ij-time-workspace{grid-template-columns:1fr;gap:18px;padding:16px}.ij-time-right{border-left:0;border-top:2px solid #d6e4f4;padding-left:0;padding-top:18px;margin-left:0}}
+@media(max-width:760px){body .ij-reference-hero.ij-unified-currency-hero{width:calc(100% - 20px)!important;min-height:0!important;padding:22px 18px!important;margin:12px auto 20px!important;border-radius:22px!important}.ij-reference-hero .ij-reference-art{min-height:165px}main{width:calc(100% - 20px)}.ij-time-workspace{padding:12px;gap:14px}.ij-time-workspace .card{padding:16px}.ij-time-workspace h2{font-size:20px}}
+</style>
 </head>
 <body>
-<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
+
 <header class="ij-brandbar"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><span class="ij-brandmark">▣</span><span><span class="ij-brandname">Info<span>Jano</span></span><span class="ij-brandtag">Smart Online Tools for Everyday Life</span></span></a><span class="ij-brand-divider"></span><span class="ij-brand-promise">Simple tools. Clear results.</span><a class="ij-home-back" href="index.html">← Back to Home</a></div></header>
 <nav class="ij-hero-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a> <span aria-hidden="true">›</span> Elapsed Time Calculator</nav>
 <section class="ij-reference-hero" aria-labelledby="ij-reference-hero-title"><div class="ij-reference-grid"><div class="ij-reference-copy"><span class="ij-reference-kicker">TIME TOOLS</span><h1 id="ij-reference-hero-title">Elapsed Time <span>Calculator</span></h1><p>Find the time between two clock times in hours and minutes, including calculations that cross midnight.</p><div class="ij-reference-pills"><span><b>✓</b>Hours and minutes</span><span><b>↗</b>Overnight time support</span><span><b>•</b>Quick time calculation</span></div></div><div class="ij-reference-art" aria-hidden="true"><div class="ij-art-clock"><div class="ij-art-clock-face"><i class="ij-hour"></i><i class="ij-minute"></i><b></b></div><div class="ij-art-time-pill">09:15 <span>→</span> 12:00</div></div></div></div></section>
 <main>
-<div class="card">
-
-<h2>Calculate Time Difference</h2>
-<label for="start">Start Time</label>
-<input id="start" type="time">
-<label for="end">End Time</label>
-<input id="end" type="time">
-<button onclick="calculateTime()">Calculate Difference</button>
-<div id="result" class="result" aria-live="polite">Choose a start time and end time.</div>
+<div class="ij-time-workspace" aria-label="Elapsed time calculator workspace">
+  <section class="ij-time-left card" aria-labelledby="ij-time-input-title">
+    <span class="ij-time-step">STEP 1 · ENTER TIMES</span>
+    <h2 id="ij-time-input-title">Calculate Time Difference</h2>
+    <p class="ij-time-intro">Select the starting and ending clock times.</p>
+    <label for="start">Start Time</label>
+    <input id="start" type="time">
+    <label for="end">End Time</label>
+    <input id="end" type="time">
+    <button type="button" onclick="calculateTime()">Calculate Difference</button>
+  </section>
+  <section class="ij-time-right" aria-labelledby="ij-time-output-title">
+    <div class="ij-time-output card">
+      <span class="ij-time-step">STEP 2 · VIEW RESULT</span>
+      <h2 id="ij-time-output-title">Elapsed Time Result</h2>
+      <div id="result" class="result" role="status" aria-live="polite">Choose a start time and end time, then select Calculate Difference.</div>
+    </div>
+    <div class="ij-time-guide card">
+      <h2>How to Calculate Time Difference</h2>
+      <p>Choose the start and end times to calculate the elapsed time in hours and minutes. If the end time is earlier than the start time, the calculator assumes the end time is on the following day.</p>
+    </div>
+  </section>
 </div>
-<section>
-<h2>How to Calculate Time Difference</h2>
-<p>Choose the start and end times to calculate the elapsed time in hours and minutes. If the end time is earlier than the start time, the calculator assumes the end time is on the following day.</p>
-</section>
-<p><a href="index.html">← Back to InfoJano Home</a></p>
+<p class="ij-time-home-link"><a href="index.html">← Back to InfoJano Home</a></p>
 <section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
 <h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
 <p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>

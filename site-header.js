@@ -9,6 +9,7 @@
   .ij-global-logo{width:44px;height:44px;flex:0 0 44px;border-radius:13px;box-shadow:0 3px 10px #001b5b18}
   .ij-global-brand-copy{display:flex;flex-direction:column;line-height:1.08;min-width:0;gap:3px}
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
+  .ij-global-brand-tagline{font-size:11px;font-weight:600;line-height:1.25;color:#64748b;letter-spacing:0}
   .ij-global-divider{width:1px;height:38px;background:#dbe4ef}
   .ij-global-tools{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid #dbe6f2;border-radius:30px;color:#24456e;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#f8fbff}
   .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#eef6ff;outline:2px solid #93c5fd;outline-offset:2px}
@@ -26,6 +27,7 @@
     .ij-global-logo{width:39px;height:39px;flex-basis:39px;border-radius:12px}
     .ij-global-brand{gap:6px;margin-left:0}
     .ij-global-brand-name{font-size:19px;letter-spacing:-.4px}
+    .ij-global-brand-tagline{font-size:9px;line-height:1.15}
     .ij-global-divider{height:30px}
     .ij-global-tools{font-size:0;padding:10px;width:40px;height:40px;justify-content:center;gap:0;border-radius:13px}
     .ij-global-tools svg{width:20px;height:20px}
@@ -72,7 +74,7 @@
       <div class="ij-global-header-inner">
         <a class="ij-global-brand" href="${ROOT}index.html" aria-label="InfoJano home">
           <img class="ij-global-logo" src="${ROOT}infojano-mark.svg" alt="InfoJano logo">
-          <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span></span>
+          <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span><span class="ij-global-brand-tagline">Smart Online Tools for Everyday Life</span></span>
         </a>
         <span class="ij-global-divider" aria-hidden="true"></span>
         <a class="ij-global-tools" href="${ROOT}index.html#tools" aria-label="Browse all tools">
