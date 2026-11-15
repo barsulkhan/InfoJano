@@ -90,3 +90,11 @@ Overall status: In progress — standalone page committed; source/logic audit id
 - Commits: `56486dc6d83792b97f44d1edcbe8c8409577ff92`, then regex correction `c15ecec44313503db91fb40f295dc127bd7a7565`.
 - Verification: source re-fetched and relevant snippets inspected. No browser runtime, syntax compiler, CSV download or localStorage interaction was run. WH-001–WH-010 remain NOT RUN.
 - Next: browser-test validation and core arithmetic; verify current Pages deployment separately. Protected hero/banner assets were not changed.
+
+
+### 2026-11-15 — Shared service-worker cache regression fixed
+- APK workflow #682 failed in repository validation because the new elapsed-time guide and Work Hours page were absent from the service-worker precache list. This was discovered while checking deployment/build status after the page source fixes.
+- Added both page URLs to `sw.js` and incremented cache version to `infojano-v310`. Repository-root comparison now finds 112 HTML tool pages and zero missing service-worker cache entries.
+- Fix commit: `e8a0beab9cb70643fa612230956cc106474a71f1`.
+- APK workflow #683 and Pages #2625 were queued; pending final results. Pages #2624 for the preceding handoff commit succeeded. This does not yet prove the new page is live or the APKs were built.
+- See QA-TEST-LOG.md for exact failure and source evidence.
