@@ -6,5 +6,5 @@ Last updated: 2026-11-15
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator QA has deferred desktop/accessibility items; informational SEO guide created, source/browser/deployment QA pending | 2026-11-15 | Validate guide source/JSON-LD/internal links, then mobile/desktop QA and Pages deployment verification |
-| Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP page created; source syntax check passed; browser QA/deployment pending; keyword metrics N/A | 2026-11-15 | Run arithmetic/CSV/localStorage tests, then mobile/desktop QA and Pages deployment verification |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — 1 supporting SEO guide created; source checks PASS and Pages workflow #2550 SUCCESS; browser/live verification and calculator desktop/accessibility QA pending | 2026-11-15 | Run guide mobile/desktop browser QA and live URL check; finish calculator desktop/accessibility QA |
+| Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP page created; source checks PASS; Pages workflow #2550 SUCCESS; browser/functional QA pending; keyword metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
