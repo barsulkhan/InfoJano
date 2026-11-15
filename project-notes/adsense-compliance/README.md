@@ -82,3 +82,43 @@ Overall status: In progress
 ## Decisions and handoff
 - 2026-11-15 — Request review was already submitted per user confirmation. Never ask to submit it again by default; inspect the current status first.
 - 2026-11-15 — Continue in Bengali with one short manual instruction at a time.
+
+### 2026-11-15 — Independent Google/IAB and repository compliance audit
+- Requested: use the user's 30-minute window to complete every part that can be verified independently; avoid repeating already completed editor review.
+- Re-read: current AdSense tracker, current project handoff and repository standards.
+- Official Google documentation reviewed:
+  - Google AdSense European regulations messages: https://support.google.com/adsense/answer/10961068?hl=en
+  - Google-certified CMP requirements/list: https://support.google.com/adsense/answer/13554116?hl=en
+  - Google CMP setup: https://support.google.com/adsense/answer/7670013?hl=en
+- Official IAB Europe timeline reviewed:
+  - Notification dated 16 July 2026: https://iabeurope.eu/wp-content/uploads/TCF_V-CMP_comms_TCFpoliciesV5.0.bAndSpecificationsV2.4ConfirmationOf-theTimeline_160726_IABEurope.pdf
+  - TCF v2.4 published 23 July 2026; web CMP new-disclosure deadline 23 October 2026; mobile app/CTV deadline 23 February 2027. The web deadline has passed as of this audit date.
+- Verified against current Google certified CMP list: Google LLC CMP, TCF CMP ID 300, platform Web and app. This matches the CMP ID 300 displayed in the user's editor preview. This verifies the identity/listing, not the live website's runtime signals.
+- Google states its Privacy & Messaging European regulations messages have been updated to support IAB TCF v2.4. The user's published Google European regulations message is therefore the right supported route; still need live/runtime verification to establish the site's emitted TC string and current CMP behavior.
+- Google says consent revocation must remain available after initial choice; when reopened via a revocation link or site privacy settings, the message must show three choices: Do not consent, Consent, Manage options. The user's editor preview displays a Revocation link footer, but live availability is unverified.
+- Repository checks:
+  - Current main tree contains root ads.txt; exact contents are `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`. This matches Google's documented ads.txt line format and DIRECT relationship format. The publisher ID is omitted from this summary where not needed.
+  - robots.txt allows all paths and points to https://infojano.com/sitemap.xml; no ads.txt disallow rule was found.
+  - Current main tree contains NO privacy-policy.html or other privacy/cookie policy page. Search found a footer link to /privacy-policy.html in work-hours-calculator.html, so that link appears to point to a missing page in the current tree. This is a concrete repository defect, but creating legal policy text or deploying a new policy page requires the publisher's accurate data-processing, retention, third-party and contact details plus explicit approval.
+  - No `Privacy and cookie settings` or CMP/revocation string was found by repository code search. Google CMP may inject this dynamically, so source search alone cannot prove runtime absence.
+- Live checks attempted:
+  - HTTPS root ads.txt, HTTP root ads.txt, www ads.txt and homepage could not be fetched by the available web inspection service (internal inspection error). Therefore HTTP status, redirect chain, body as served, Googlebot access and live page rendering remain UNVERIFIED.
+  - User's prior browser Find screenshot showed 0/0 matches for “privacy and cookie settings”; this is consistent with a missing visible link but not conclusive because CMP UI may be injected or appear only for EEA visitors.
+- Settings review decision:
+  - Do not enable/disable Consent Mode, legitimate-interest purposes, DSA, RTB creative checks, Special Feature 2 or other options by guesswork. These controls depend on actual data uses and legal disclosures. In particular, Consent Mode is a separate optional integration for Google Ads/Analytics consent signals; it is not the same as whether the Google CMP is certified.
+  - User's Special Feature 2 control was OFF in the screenshot. No evidence was found that InfoJano itself uses this feature; leave it OFF unless an actual use case is established.
+  - The Ad partners preview's TCF vendors label failing to open remains an editor-preview observation only; Google documentation describes vendor preferences as the control that opens the vendor list. A live browser interaction is needed to diagnose it.
+- Tests and results:
+  - Official CMP list ID 300 and platform: PASS.
+  - TCF v2.4 web timeline: PASS (authoritative IAB PDF).
+  - Google Privacy & Messaging v2.4 support: PASS (Google help).
+  - ads.txt source contents: PASS.
+  - robots.txt crawler permission: PASS (source).
+  - privacy-policy.html repository existence: FAIL / missing.
+  - live ads.txt HTTP/Googlebot fetch: NOT RUN / tool could not access.
+  - live CMP revocation link and TC string: NOT RUN.
+  - current AdSense site review status: NOT RUN (requires signed-in account view).
+- Changed: tracker documentation only. No website code, DNS, AdSense setting, CMP setting, PR, merge or production deployment changed. Publish changes not pressed.
+- Pending / blockers: signed-in Site Details screenshot; EEA-region live CMP test; revocation link click and three-button reopen behavior; runtime TCF v2.4 TC string verification; ads.txt direct HTTP 200/body and Googlebot crawl confirmation; legal policy page content and approval.
+- Next single user action: open AdSense > Sites > infojano.com and share a screenshot of the current review/status card. After that, continue to the live revocation test.
+- Protected areas preserved: homepage hero, ID Card Print Studio hero, all calculator/tool heroes, source code, DNS and production settings untouched.
