@@ -23,7 +23,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] [CARD-008] APK manifest relative icon path validation — PR #227; merge 4ae9624fb8978b832d58e2b93f2e41091227dc80. Workflow resolves relative icon src against manifest URL before checking repository asset.
 
 ### In progress
-- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-005 passed. Next: continue manual QA from ET-006, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
+- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-006 passed. Next: continue manual QA from ET-007, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
 - [x] [CARD-011] Date-duration results missing from recent history — fixed and merged via PR #229 (squash merge `69ad8a8865cedfc6df952fa87dae8598f904ad27`). `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling recent history and shared Copy/Share action visibility. Current default-branch file re-fetched and hook presence confirmed. Runtime/browser regression and post-merge deployment verification remain separate pending checks.
 
 ### Backlog
@@ -220,4 +220,17 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
 - Still pending: ET-006 Date + Time mode; Copy/Share actions; refresh persistence, Clear History and five-item cap; real mobile/desktop visual QA; accessibility review.
 - Next step: ask user to run ET-006 only, then compare screenshot and record the result.
+- Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
+
+
+### 2026-11-15 — User-performed mobile QA: Date + Time duration across midnight (ET-006)
+- Requested: verify a Date + Time interval spanning midnight and a calendar-date boundary.
+- Inspected: user-supplied mobile screenshot of the live Elapsed Time Calculator.
+- Test: Start 15 Nov 2026, 11:30 PM; End 16 Nov 2026, 01:45 AM.
+- Expected: 0 days, 2 hours, 15 minutes, 0 seconds; 2.25 total hours; 135 total minutes; 8,100 total seconds.
+- Observed: result panel displayed 0 days, 2 hours, 15 minutes, 0 seconds; total days 0; remaining time 2h 15m 0s; total hours 2.25; total minutes 135.00; total seconds 8,100. The Date + Time Duration item appeared in Recent Calculations.
+- Result: ET-006 PASS — screenshot-backed user-performed mobile test. QA evidence recorded in `QA-TEST-LOG.md`.
+- Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
+- Still pending: ET-007 Copy Result; Share Result; refresh persistence, Clear History and five-item cap; real mobile/desktop visual QA; accessibility review.
+- Next step: ask user to test Copy Result for the current Date + Time output, then record the observed result.
 - Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
