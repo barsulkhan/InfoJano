@@ -565,3 +565,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `5184eca083eb`; task file `514db10182a9`.
 - D-001 remains in progress; 7 root HTML files remain unreviewed; live runtime tests not run.
 - No production, policy, account, DNS, merge or deployment changes.
+
+### 2026-11-15 — Final root-page inventory batch 10
+- Inspected final 7 root HTML pages. Work Hours Calculator optionally stores shift dates/times, breaks, overtime threshold, hourly rate and currency locally only after opt-in; clear and opt-out removal controls exist. Word-to-JPG/PDF/PNG pages are internal redirects to Word Converter; WhatsApp/WiFi QR source showed no API upload marker.
+- Root HTML source-marker review is now recorded for all 116 root HTML files. This is not a full dynamic dependency or live runtime audit.
+- Task evidence: [2026-11-15-2328-final-root-page-inventory-batch-10.md](2026-11-15-2328-final-root-page-inventory-batch-10.md); master plan §24.
+- Commits: plan `7da8aa2b8c53`; task file `0cf6e175d26d`.
+- Next phase: consolidate page-to-GA4/AdSense/API/CDN/storage map, inspect nested dependencies, reconcile Privacy Policy. CMP/TCF live verification and account-side configuration remain pending.
+- No production, policy, account, DNS, merge or deployment changes.
