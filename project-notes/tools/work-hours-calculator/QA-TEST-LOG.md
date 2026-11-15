@@ -46,3 +46,14 @@ Source-only checks were run after page creation. Inline JavaScript syntax and ke
 - Important limitation: these are source/logic inspections, not real browser functional tests. No connected interactive browser/computer-control tool is available in this session. WH-001–WH-010 remain NOT RUN as runtime/browser tests; no CSV file download, localStorage UI interaction, keyboard or responsive rendering was executed.
 - Application source was not changed. Protected homepage hero, Elapsed Time Calculator hero and ID Card Print Studio hero were not changed.
 - Next concrete step: run WH-001–WH-009 in a real browser, capture actual outputs/download/storage behavior, then desktop/mobile/accessibility review and release verification. Do not claim runtime PASS from this source audit.
+
+
+### 2026-11-15 — Input-validation defect fix (source review)
+- Reopened the current page source after the focused audit and identified two edge cases worth correcting before browser QA:
+  - JavaScript Date normalizes impossible calendar dates (for example, an out-of-range day) unless the parsed year/month/day are checked against the constructed date.
+  - Clearing the required daily-threshold field converts the empty string to numeric zero; the previous calculation then treated every positive daily total as above-threshold time.
+- Updated `work-hours-calculator.html`: strict YYYY-MM-DD format and round-trip calendar-component validation now reject impossible dates; the daily threshold now must be within the visible input range 0.25–24 hours, otherwise a clear validation message is shown and the overtime estimate is not calculated.
+- Source inspection after the change: PASS — fetched source contains the strict date regex, calendar-component round-trip checks, threshold range guard and guarded daily-OT calculation. This is a source inspection only; no browser/runtime test or syntax compiler was available in this session.
+- Commits: date/threshold fix `56486dc6d83792b97f44d1edcbe8c8409577ff92`; strict date-regex correction `c15ecec44313503db91fb40f295dc127bd7a7565`.
+- WH-001–WH-010 remain NOT RUN as browser/runtime tests. Protected homepage, Elapsed Time Calculator and ID Card Print Studio heroes remain unchanged.
+- Next: run WH-008 invalid-date/threshold behavior and WH-001/002 arithmetic in a real browser, then continue WH-003–WH-009 and responsive/desktop QA.
