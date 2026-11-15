@@ -1,0 +1,22 @@
+# Universal timestamped task-log standard — adopted
+
+- Website: InfoJano
+- Site URL: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: 2026-11-15T23:18:40+05:30
+- Saved: 2026-11-15T23:18:56+05:30 (Asia/Kolkata)
+- Status: COMPLETED — documentation rule adopted in InfoJano repository
+- User request: after every task, create a task-named file with date/time; save all work in the relevant existing task folder; do not create folders; apply this practice across all four websites.
+- Scope: establish a reusable repository-wide rule and handoff instruction. This is a documentation-only task.
+- Inspected: `project-notes/TOOL-WORK-TRACKING-STANDARD.md`, `project-notes/NEW-CHAT-HANDOFF.md`, current AdSense master plan and tracker.
+- Decision: use `YYYY-MM-DD-HHMM-<task-name-kebab-case>.md`; save directly in the existing project folder, never create date/log folders; include timestamp/timezone, site/repo/branch, request, evidence, tests, changes, commits, blockers, next action and approval boundaries; link from tracker and update index when top-level status changes.
+- Changed files:
+  - `project-notes/TOOL-WORK-TRACKING-STANDARD.md` — added mandatory §2A.
+  - `project-notes/NEW-CHAT-HANDOFF.md` — added cross-website handoff rule.
+- Tests: fetched both updated files after commit — PASS; timestamp source checked from current local-time tool — PASS.
+- Not changed: production code, CMP/AdSense settings, DNS, sitemap, PR merge, deployment, homepage hero/banner or protected designs.
+- Commit: `951205b20559d6321b001e2450591fe04de228c1` (handoff update; standard rule commit immediately preceding: `f00a2281e0e3d4814ae90f10d5f5cace1a99b651`).
+- Limitation: the names/repositories of the other three websites have not been supplied in this conversation, so their separate repositories could not yet be updated. The rule is recorded as a global instruction in this InfoJano handoff and will be applied by default; to physically install it in each other repo, its repository must be identified.
+- Next: continue the InfoJano D-001 source inventory under the master plan; create a separate timestamped file for each completed work package.
+- Approval boundaries: no production/account/DNS/deployment/merge changes authorized.
