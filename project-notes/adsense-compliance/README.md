@@ -450,3 +450,9 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Result: LIVE BODY VISIBLE / CONTENT MATCH — PASS. The screenshot does not expose HTTP status code, response headers, redirect chain, cache behavior, or AdSense crawler diagnostics; those remain UNVERIFIED.
 - No code, ads.txt, DNS, account settings, CMP settings, PR merge, production deployment or protected design changed.
 - Next single user action: open `https://infojano.com/`, scroll to the bottom/footer, and send one screenshot showing whether “Privacy and cookie settings” or another privacy/cookie control is visible. Do not change any settings.
+
+### 2026-11-15 — Live homepage footer privacy-control check
+- Evidence: user reports that the live homepage footer still shows no “Privacy and cookie settings” link or other privacy/cookie control, consistent with the earlier browser Find result (0/0).
+- Result: live revocation/settings control NOT FOUND in the checked homepage footer; CARD-003 remains In progress. This does not prove that no alternate CMP entry point exists elsewhere or in other regions/session states.
+- No CMP editor setting, AdSense setting, source code, DNS, production content, PR merge or deployment changed.
+- Next step: continue read-only source/runtime integration inspection and retain the requirement for a live consent/revocation test; do not ask the user to repeat the footer check.
