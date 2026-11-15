@@ -334,3 +334,20 @@ Scope: complete raw-source inspection of 14 selected files on the PR branch: `in
 - Continue source batches across remaining pages with personal data, calculators, embeds and external APIs.
 - Build a consolidated page-to-vendor matrix and distinguish global tags (GA4/AdSense) from feature-specific APIs/CDNs.
 - Check whether analytics/ads tags are gated by consent at runtime; do not alter tags or CMP settings without explicit approval.
+
+## 16. Finance, health-adjacent, QR and contact page audit (2026-11-15)
+
+Scope: complete raw source fetched for 12 selected pages: `emi.html`, `loan-eligibility.html`, `loan-interest.html`, `savings.html`, `bmi.html`, `bmr-calculator.html`, `barcode-scanner-online.html`, `bulk-qr-generator.html`, `url-toolkit.html`, `document-studio.html`, `password-generator.html`, and `contact.html`.
+
+### Findings
+- GA4 measurement ID `G-P8D7XRGVEF` is present in the inspected EMI, Loan Eligibility, Loan Interest, Savings, BMI and Password Generator pages. This extends the confirmed sample list; it is not yet a complete page count.
+- BMR Calculator, Barcode Scanner Online, Bulk QR Generator and Contact page showed no GA4/AdSense/CMP/network/storage marker in the inspected raw source. This is a source-level marker check, not proof that no dynamically loaded or shared tag executes.
+- Document Studio loads Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) and cdnjs assets.
+- URL Toolkit's `http://.` match is an HTML placeholder/validation string, not evidence of a real third-party recipient.
+- No direct CMP API or TCF marker found in this selected batch.
+- No new upload endpoint or external API was confirmed in the inspected lines for these selected pages.
+
+### Limits / next
+- This 12-page batch does not establish global GA4 coverage or absence of tags on uninspected pages.
+- Continue inventory across remaining root HTML pages and classify pages by shared tag presence, data input sensitivity, external requests and permission APIs.
+- Inspect dynamic scripts and shared header inclusion behavior; compare with the final GA4/AdSense tag map.
