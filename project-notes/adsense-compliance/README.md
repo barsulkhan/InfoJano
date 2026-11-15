@@ -719,3 +719,6 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Fixed both in `contact.html` (commit `29281c6e59fdbd701320eedf714a90e487b3bc4a`).
 - Repair run #43748683497 was still in progress when recorded; do not claim the Contact page QA is PASS until that run completes.
 - Task record: [2026-11-16-0015-contact-page-html-qa.md](2026-11-16-0015-contact-page-html-qa.md); commit `0230f0703f7ca00bde3d984513d0074c96849729`.
+
+
+- Follow-up result: repair run #43748683497 completed SUCCESS. Privacy Policy HTML5 validation PASS, Contact HTML5 validation PASS, and policy links/sitemap/robots checker PASS. See [task record](2026-11-16-0015-contact-page-html-qa.md).
