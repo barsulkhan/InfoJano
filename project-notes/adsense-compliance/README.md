@@ -537,3 +537,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `71f591a1ce8d`; task file `41c7db3c816c`.
 - D-001 remains in progress; live processing/network tests not run.
 - No production, policy, account, DNS, merge or deployment changes.
+
+### 2026-11-15 — Root-page inventory batch 06
+- Inspected 12 more number-conversion, percentage and photo utility pages. GA4 confirmed in main Number to Words page; 11 other sampled pages had no direct network/storage/CMP marker. No upload endpoint was identified in Passport ID Photo Resizer source.
+- Task evidence: [2026-11-15-2325-root-page-inventory-batch-06.md](2026-11-15-2325-root-page-inventory-batch-06.md); master plan §20.
+- Commits: plan `407de166a124`; task file `eafc4a5fae7e`.
+- D-001 remains in progress; 43 root HTML files remain unreviewed; live runtime tests not run.
+- No production, policy, account, DNS, merge or deployment changes.
