@@ -604,3 +604,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task evidence: [2026-11-15-2333-privacy-policy-source-reconciliation.md](2026-11-15-2333-privacy-policy-source-reconciliation.md).
 - Commits: plan `431b93141e87`; task file `06084c8832ba`.
 - No `privacy-policy.html` edits, account settings, CMP tags, Worker, DNS, merge or deployment changes.
+
+### 2026-11-15 — Robots, ads.txt and sitemap source audit
+- Inspected robots.txt, ads.txt and three sitemap files. robots allows all and references sitemap.xml; ads.txt source seller line matches prior user-verified body. sitemap.xml has 107 URLs vs 105 in two legacy lists; Work Hours and Elapsed Time Guide are the two additions. Nine root HTML files are omitted, including Privacy Policy/Contact/Countdown Studio plus likely intentional 404/verification/redirect/index aliases.
+- Live direct HTTP fetch was inaccessible; HTTP 200, redirects, headers and AdSense crawler status remain unverified.
+- Task evidence: [2026-11-15-2334-robots-adstxt-sitemap-audit.md](2026-11-15-2334-robots-adstxt-sitemap-audit.md); master plan §29.
+- Commits: plan `74542ad9f595`; task file `93ce980af2d8`.
+- No robots, ads.txt, sitemap, policy, DNS, merge or deployment changes.
