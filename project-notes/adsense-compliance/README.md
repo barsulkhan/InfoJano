@@ -442,3 +442,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Changed: this tracker file only, on the existing PR feature branch. No policy HTML, Contact HTML, sitemap, application code, protected hero/banner, DNS, CMP/AdSense settings, production site or deployment changed.
 - Tests: lightweight source assertions — 12 PASS / 1 follow-up; browser/runtime tests — NOT RUN; live URL checks — UNVERIFIED due inspection-tool errors; deployment — NOT RUN.
 - Next single user action: open `https://infojano.com/ads.txt` directly in a browser and send the visible page screenshot (or exact text/status). Do not change any settings.
+
+### 2026-11-15 — User screenshot confirms live ads.txt body
+- Evidence: user-provided mobile Chrome screenshot of `https://infojano.com/ads.txt` (address bar shows the ads.txt path with a query suffix; rendered response body is visible).
+- Exact visible body: `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`.
+- Comparison: exact match with the single root `ads.txt` record on the PR branch and previously inspected main source.
+- Result: LIVE BODY VISIBLE / CONTENT MATCH — PASS. The screenshot does not expose HTTP status code, response headers, redirect chain, cache behavior, or AdSense crawler diagnostics; those remain UNVERIFIED.
+- No code, ads.txt, DNS, account settings, CMP settings, PR merge, production deployment or protected design changed.
+- Next single user action: open `https://infojano.com/`, scroll to the bottom/footer, and send one screenshot showing whether “Privacy and cookie settings” or another privacy/cookie control is visible. Do not change any settings.
