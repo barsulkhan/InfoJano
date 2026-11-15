@@ -146,3 +146,38 @@ Status: In progress.
 - New legal pages were checked for canonical URLs and `index,follow` metadata.
 - Main branch remains unchanged. No merge, deployment, Search Console submission or AdSense account action was performed.
 - Next: finish remaining sitemap URL content audit and real browser/device QA, then ask the user to review PR #233 before any merge.
+
+
+## Follow-up — Custom Domain, AdSense CMP and EEA (2026-11-15 17:02 +05:30)
+
+### CARD-002 — Custom Domain (expanded audit)
+- Confirmed root `CNAME` file contains exactly `infojano.com`; homepage canonical is `https://infojano.com/`; robots.txt points to `https://infojano.com/sitemap.xml`.
+- Confirmed existing `ads.txt` publisher ID matches the AdSense client ID used in source.
+- GitHub Pages custom-domain source configuration is present. This alone does NOT prove live DNS or HTTPS is correct.
+- Live HTTP fetch of infojano.com, www, robots, sitemap and ads.txt was not accessible in this audit; DNS resolver/SSL/redirect checks could not be completed. GitHub Pages Settings API was not accessible through the connected GitHub tool.
+- Created `docs/CUSTOM-DOMAIN-CMP-EEA-AUDIT-2026-11-15.md` with GitHub's documented apex A/AAAA records, www CNAME target, CAA/Let's Encrypt note, Enforce HTTPS and redirect checks. Do not change registrar records without checking current mail and verification records.
+- Remaining: user/registrar DNS records read-only view and GitHub Pages Settings > Custom domain / Enforce HTTPS check.
+
+### CARD-001 — CMP and Google EEA / UK / Switzerland
+- Official Google policy rechecked: certified Google CMP integrated with IAB TCF required for personalized ads in EEA/UK (since 16 Jan 2024) and Switzerland (since 31 Jul 2024).
+- Google Privacy & Messaging European regulations messages are certified and support TCF v2.4; Google documentation states IAB's full TCF v2.4 implementation deadline for publishers/CMPs was 23 Oct 2026. This is current as of the audit date.
+- Google CMP is listed as IAB TCF CMP ID 300 (Google LLC).
+- Recommendation: use Google's own AdSense Privacy & Messaging European regulations message rather than add an unverified third-party CMP. Account-side creation, site assignment, publishing, vendor selection and message testing remain pending because no AdSense account connection is available.
+- Google CMP message is served based on configured account message, visitor region and consent state; presence of AdSense code does not prove the message is active.
+- Updated `privacy-policy.html` with EEA/UK/Swiss consent explanation, Google CMP/TCF v2.4 details, and a clear note that the message must be published and tested before claiming it is active.
+
+### CARD-002 / CARD-006 — AdSense tag coverage
+- Initial audit found standard AdSense tag only in `index.html`.
+- Added a guarded AdSense loader (client `ca-pub-2908196513377151`) to shared `site-header.js` and `install.js`. It checks for an existing tag before injecting the standard asynchronous loader into the document head; homepage's static tag is not duplicated.
+- Added the static AdSense tag to the 12 sitemap pages not loading either shared helper: `social-qr-maker.html`, `days-between-dates-calculator.html`, `business-days-calculator.html`, `date-duration-calculator.html`, `number-to-words-indian.html`, `number-to-words-international.html`, `rupees-in-words.html`, `dollars-in-words.html`, `cheque-amount-in-words.html`, `hindi-number-to-words.html`, `work-hours-calculator.html`, `elapsed-time-calculator-guide.html`.
+- The four legal/information pages are intentionally not wired for Auto Ads.
+- This is source readiness only. It does not enable Auto ads, publish a CMP, activate ads, or verify live consent. Account settings and EEA geo testing are required.
+- Before account approval or activation, review Auto Ads page exclusions for the 9 temporary noindex pages and any pages where ads are unsuitable.
+
+### Current blocker and next steps
+1. User provides read-only screenshots/export of registrar DNS records for `@` and `www`, including A/AAAA/CNAME/CAA/NS (hide account identifiers); do not send passwords or 2FA codes.
+2. User verifies GitHub Settings > Pages shows `infojano.com` and Enforce HTTPS enabled.
+3. In AdSense > Sites, confirm `infojano.com` site is added and current review status; select Google's CMP option and publish European regulations message.
+4. In Privacy & messaging, check three-choice consent UI (Consent / Do not consent / Manage options), vendor list, privacy-policy URL and consent mode settings.
+5. Test message from EEA/UK/Swiss region and verify TCF v2.4 / CMP ID 300 and Policy Center consent status.
+6. Complete browser/mobile tests and update PR #233. No merge or production deploy without explicit approval.
