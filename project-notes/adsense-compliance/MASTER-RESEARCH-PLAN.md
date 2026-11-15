@@ -453,3 +453,19 @@ Scope: complete raw source fetched for 12 additional pages: `qr-choice.html`, `r
 - 19 root HTML files remain unreviewed in the branch tree after this batch.
 - Continue final root-page batches and then consolidate page-to-vendor, GA4 and browser-storage matrices.
 - Live runtime/network/cookie/consent tests remain NOT RUN.
+
+## 23. Root-page inventory batch 09 — time, text, QR and voter services (2026-11-15)
+
+Scope: complete raw source fetched for 12 additional pages: `target-marks-calculator.html`, `text-counter.html`, `text-qr-code-generator.html`, `time-calculator.html`, `tip-calculator.html`, `unit-converter.html`, `upi-payment-qr-code-generator.html`, `url-qr-code-generator.html`, `vcard-qr-code-generator.html`, `voter-id-card-print.html`, `what-happened-on-my-birthday.html`, and `what-percent-calculator.html`.
+
+### Findings (source verified)
+- GA4 measurement ID `G-P8D7XRGVEF` is present in Text Counter, Time Calculator, Tip Calculator and Unit Converter.
+- Time Calculator stores up to 5 recent calculation records in localStorage key `ijElapsedTimeHistoryV1`; each record includes mode, result text and an ISO timestamp. A clear-history action removes the key. No server sync was identified in the inspected page source.
+- Voter ID Print Guide links users to the Election Commission of India Voters' Services Portal (`voters.eci.gov.in`) and internally to ID Card Print Studio. The guide source shows ordinary outbound navigation, not an InfoJano API upload.
+- QR Choice, Text QR, UPI Payment QR, URL QR and vCard QR pages showed no direct GA4/AdSense/CMP, fetch/XHR, browser-storage or permission marker in the bounded scan. `https://.` in URL QR copy is an instructional placeholder, not a real host.
+- Target Marks, Tip, Unit, What Happened on My Birthday and What Percent pages showed no direct network/storage/CMP marker in this scan; GA4 was independently observed on Tip and Unit pages as above.
+- No CMP/TCF marker found in this batch.
+
+### Limits / next
+- 7 root HTML files remain unreviewed in the current branch tree after this batch.
+- Complete the final root-page batch, then build the consolidated source-level inventory. Runtime consent and network verification remain separate and NOT RUN.
