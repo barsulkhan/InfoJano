@@ -722,3 +722,36 @@ Scope: inspected Android `MainActivity.java`, `AndroidManifest.xml`, Gradle conf
 - GitHub release metadata is source evidence for publicly downloadable prerelease assets; it does not prove downloads, installations, active usage or app-store distribution.
 - No app was downloaded/installed or run during this audit. No live Android WebView/Electron requests, cookies, consent dialogs or native storage behavior were inspected.
 - No policy or app source was changed.
+
+## 31. Proposed Privacy Policy revision map and approval gates (2026-11-15)
+
+This is a research proposal only. `privacy-policy.html` remains unchanged.
+
+| Existing section | Proposed revision | Evidence needed before final wording |
+|---|---|---|
+| Intro / controller | Add the legal publisher/controller name, business/contact address if required, establishment/jurisdiction and whether InfoJano is a trade name | Publisher-confirmed facts; never infer from domain, location or GitHub owner |
+| 1. Information processed | Keep broad technical information description; explain GA4 is included on selected pages/features, not claim every page. Optionally summarize feature-specific request parameters in sections 4–5 | Live GA4 network test, event/parameter inspection, Consent Mode/CMP test |
+| 2. Cookies/local storage | Add a concise, accurate storage table: countdown event config; language preference; Age birthday reminder; BMI history; Percentage and Time histories; Work Hours opt-in timesheet fields; Word Worker URL; QR sessionStorage handoff. Separate persistent localStorage from tab-session storage and opt-in from automatic storage | Recheck current source at final edit; browser storage test for each feature |
+| 2–3. Advertising / consent | State only verified AdSense deployment scope and describe actual consent choices. Replace “if displayed” with a working tested “Privacy and cookie settings” mechanism when it exists; do not promise a revocation link that is absent | AdSense site approval/status, live page network, CMP message, `googlefc` API, regional consent/reject/manage/revoke test and actual selected vendor export |
+| 4. Third-party services | Keep current provider list but specify the feature: YouTube API sends channel lookup and visitor API key; Currency API request includes base currency/pair; Age feature calls ipapi, Wikipedia and Wikidata; identify Google Fonts/FlagCDN/CDNs as resource hosts | Live request confirmation; provider privacy/retention documents; actual enabled feature flags |
+| 4–5. Word Converter | Clearly distinguish browser preview route from optional high-fidelity upload route. State DOCX goes through InfoJano Worker to iLoveAPI only when enabled/consented; do not imply feature is currently available on custom domain until verified | Cloudflare Worker deployment, custom-domain CORS, rate limits, observability/log retention, iLoveAPI account plan and written retention confirmation |
+| 5. Local tools | Add local storage and QR session handoff details; clarify Work Hours data is stored only after Remember option is enabled; avoid saying Birthday Countdown sends notifications until feature mismatch is resolved | Final source recheck and feature owner decision on notification copy/implementation |
+| New section: Android & Windows apps | Disclose public GitHub prerelease Android APK and Windows desktop wrappers; apps load hosted pages and require internet, so web services/tags/storage may apply. Explain Android file chooser and local Downloads export | Release metadata confirmed; still test installed app network/cookies/consent and confirm distribution channels/usage/support contact |
+| 6. Contact | Confirm monitored privacy-request email and whether any additional contact route/address should be disclosed | Publisher confirmation and deliverability test |
+| 7. Retention | Keep browser-local retention “until cleared/removed”; do not invent Google/Cloudflare/CDN retention. For iLoveAPI, avoid a single numeric guarantee until API-specific written confirmation resolves public 2h/48h discrepancy | Provider account/contract and written answer; actual Cloudflare observability/log settings |
+| 9–10. Children/rights | Tailor only after publisher jurisdiction is confirmed; do not add jurisdiction-specific legal bases/rights from assumptions | Legal review and publisher-confirmed jurisdiction |
+
+### Implementation order after approval
+1. Publisher confirms legal identity, jurisdiction, privacy contact email and whether public apps are intended for ongoing distribution.
+2. Read-only Google account review: AdSense site approval, Privacy & Messaging published state, selected vendors, CMP configuration and any automatic revocation behavior.
+3. Live browser QA on clean sessions and region-appropriate test locations: first view, accept, reject, manage, save, revoke; `__tcfapi`/TC string; GA4/AdSense requests and cookies. Do not use guessed geo/VPN as legal proof.
+4. Verify optional Word Worker production binding, domain allowlist, rate limiting, observability and iLoveAPI retention terms.
+5. Prepare complete proposed `privacy-policy.html` diff and show it to user. No edits until explicit approval.
+6. After approval, implement only approved policy/CMP/source changes, run source checks and browser QA, then request separate approval for PR merge/deployment.
+
+### Blockers still requiring user-side facts/evidence
+- Exact publisher legal name/person/entity and jurisdiction.
+- Confirmation that `infojanowebsite@gmail.com` is controlled and monitored for privacy requests.
+- Google AdSense live approval status and selected vendor/CMP screenshots or accessible account view.
+- Whether the Word Converter Worker is deployed for `infojano.com` and which iLoveAPI plan/terms apply.
+- Whether the Android/Windows public prereleases are intended to remain distributed; GitHub release metadata proves availability, not actual installs/usage.
