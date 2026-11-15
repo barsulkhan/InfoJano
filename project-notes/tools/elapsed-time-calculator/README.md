@@ -16,6 +16,9 @@ Overall status: Paused at user's request — current mobile checks and source au
 ## Feature cards
 
 ### Completed
+- [x] [CARD-013] Dedicated informational SEO guide — created `/elapsed-time-calculator-guide.html` for how-to intent (formula, worked examples, overnight handling, break deduction, decimal hours, date/time mode and FAQs); reuses the homepage hero layout and `/assets/hero-left.svg` + `/assets/hero-right.svg` artwork on the new guide only. Added contextual link from the calculator and sitemap entry. Source QA/deployment pending.
+
+### Completed
 - [x] [CARD-001] Shared header alignment and live local clock — PR #219; merge 84bd768b17a5ba13c55f5cfece4a593cf6635f9c. Header alignment standardized on reference-hero pages; hero clock uses device-local time and updates seconds/analog hands every second.
 - [x] [CARD-002] Core elapsed-time controls and precision — PR #220; merge a4b5017c1fd27061ca50aae63330e67e0af235bf. Swap Start/End, Now controls for both fields, quick examples including overnight, seconds-aware calculation, total seconds and decimal hours.
 - [x] [CARD-003] Break deduction — PR #221; merge 1887be9cf860519f5c4906dc101767e8aa846037. Optional whole-minute break, validation, gross/break/net output, overnight support.
@@ -381,3 +384,16 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Metrics limitation: Ahrefs Keywords Explorer lookups for IN and BD returned “Insufficient plan”; therefore search volume, KD, CPC, traffic potential, country split and seasonality are N/A, not guessed. Web SERP discovery identified Calculator.net, timeanddate.com, TimeCamp, Toggl and OnTheClock as direct/adjacent competitors.
 - No page code, title, meta description or keyword metadata changed. Do not add a legacy meta-keywords tag or stuff keywords. Complete country-specific metrics and GSC query review before on-page SEO changes or new landing pages.
 - Research dossier commit: `c852314620e2dca06c244401e05f8bd7a92acb1f`.
+
+
+### 2026-11-15 — User-approved SEO guide page
+- Requested: build the SEO page for the existing Elapsed Time Calculator; not a new calculator tool.
+- Inspected: latest `time-calculator.html`, existing RESEARCH.md, README and QA log, sitemap, and homepage hero CSS/artwork references. Existing calculator hero and original homepage hero were preserved.
+- Decision: created a separate informational guide URL `/elapsed-time-calculator-guide.html` targeting how-to intent rather than duplicating the calculator. The guide links prominently to the existing calculator and explains the formula, same-day example, overnight rollover, break deduction, decimal hours, multi-day date/time mode and FAQs.
+- Hero: reused the main homepage hero's layout/CSS style and the same left/right artwork assets on the new guide page only.
+- Changed: new guide page; contextual guide link added to existing calculator page; sitemap updated; research dossier and QA log updated.
+- SEO: self-canonical, title/meta description, Open Graph/Twitter metadata, WebPage + BreadcrumbList + FAQPage JSON-LD; no meta-keywords tag or fabricated keyword metrics.
+- Tests: source/syntax QA pending immediate validation; browser QA and deployment NOT RUN.
+- Commit: guide page `4fce31547db0b4dc99836e3037d817d073d5c90d`; follow-up commits recorded after writes.
+- Pending: validate HTML/JSON-LD and exact links, check responsive layout, inspect live Pages deployment and Search Console performance after indexing.
+- Protected areas preserved: original homepage hero and existing Elapsed Time Calculator hero.
