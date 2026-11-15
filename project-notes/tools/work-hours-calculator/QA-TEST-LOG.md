@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 
-No implementation/browser tests have run yet. Source creation is not QA evidence.
+Source-only checks were run after page creation. Inline JavaScript syntax and key source-structure checks passed. Browser/functional tests have not run; source checks are not browser QA.
 
 | ID | Feature | Inputs/action | Expected result | Status | Evidence |
 |---|---|---|---|---|---|
@@ -17,9 +17,9 @@ No implementation/browser tests have run yet. Source creation is not QA evidence
 | WH-009 | Local save | Remember on/off; clear saved data | Saves only when enabled; clear removes local copy | NOT RUN | — |
 | WH-010 | Responsive/accessibility | Mobile, desktop, keyboard | No overflow; labels/focus/controls usable | NOT RUN | — |
 
-## Work log
+## Source checks (2026-11-15)\n- Inline JavaScript syntax: PASS (compiled with the JavaScript engine; no syntax error).\n- Source structure: PASS — canonical URL, both reused homepage hero artwork assets, 1360px max width, 8px side gutters, CSV export path, opt-in localStorage and WebApplication JSON-LD found.\n- Functional arithmetic, real CSV file, localStorage behavior, browser rendering, accessibility and deployment: NOT RUN.\n\n## Work log
 ### 2026-11-15 — Initial test plan
-- Implementation: not yet available.
+- Implementation: `work-hours-calculator.html` created and committed; functional/browser tests remain NOT RUN.
 - Source/automated tests: NOT RUN.
 - Manual mobile/desktop QA: NOT RUN.
 - Deployment/live QA: NOT RUN.
