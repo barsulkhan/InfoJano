@@ -59,3 +59,10 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 - This confirms the latest shared tagline/icon/link styling is present in the live page screenshot at the time supplied. It is a screenshot-based visual check, not full responsive QA.
 - ET-010 Clear History is NOT tested: the screenshot still shows five Recent Calculations entries, so the clear action has not yet been confirmed. Five-item history cap is source-reviewed only; runtime cap remains untested.
 - Next: user should tap “Clear history” and share the resulting empty-state screenshot; then refresh once and confirm the list remains empty.
+
+
+### 2026-11-15 — ET-010 Clear History: empty state confirmed
+- User supplied a live mobile screenshot showing Recent Calculations with the message “No recent calculations yet.” and no calculation records.
+- Result: Clear History action and empty-state rendering are visually confirmed (partial ET-010 PASS).
+- The screenshot does not yet prove persistence after a page reload. Final ET-010 status remains pending until the user refreshes and confirms the list stays empty.
+- Five-entry cap remains source-reviewed only; runtime cap test is still pending.
