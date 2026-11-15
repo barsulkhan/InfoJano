@@ -711,3 +711,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Source search reconfirmed homepage AdSense loader, GA4 marker presence, and optional third-party routes for Age, Currency, Countdown Studio and Word Converter. No live firing or ad-serving claims.
 - Detailed task record: [2026-11-16-0014-qa-ci-confirmation-and-source-search.md](2026-11-16-0014-qa-ci-confirmation-and-source-search.md); commit `b661c80dce6f2053f01bb6077b51530bb2ca2841`.
 - Workflow run: https://github.com/barsulkhan/InfoJano/actions/runs/43748356041
+
+
+### 2026-11-16 — Contact page added to automated HTML QA
+- Expanded HTML validation from Privacy Policy only to include Contact page.
+- First run #43748627700 identified two existing Contact markup issues (lowercase doctype and raw ampersand in title/Open Graph title).
+- Fixed both in `contact.html` (commit `29281c6e59fdbd701320eedf714a90e487b3bc4a`).
+- Repair run #43748683497 was still in progress when recorded; do not claim the Contact page QA is PASS until that run completes.
+- Task record: [2026-11-16-0015-contact-page-html-qa.md](2026-11-16-0015-contact-page-html-qa.md); commit `0230f0703f7ca00bde3d984513d0074c96849729`.
