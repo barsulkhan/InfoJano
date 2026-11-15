@@ -82,3 +82,15 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 - Accessibility source audit: 9 inputs; all have labels (7 `<label for>` associations and 2 `aria-label`); all 14 buttons have explicit `type`; 10 aria-label attributes; 2 aria-live attributes; no duplicate IDs. Dedicated `:focus-visible` styling not found; native focus behavior not visually verified. Keyboard navigation and screen-reader tests NOT TESTED.
 - Desktop visual QA NOT TESTED: no interactive desktop browser session available. Do not report as passed.
 - No app source changes made during this audit. Remaining work requires actual browser interaction/desktop viewport and assistive technology.
+
+
+## SEO guide page QA — 2026-11-15
+
+| ID | Check | Expected | Status |
+|---|---|---|---|
+| SEO-001 | New guide source structure | Correct title, description, self-canonical, H1, guide sections, FAQs and CTA to calculator | PENDING source validation |
+| SEO-002 | Structured data | Valid JSON-LD syntax for WebPage, BreadcrumbList and FAQPage | PENDING source validation |
+| SEO-003 | Internal links and sitemap | Calculator links to guide; sitemap includes guide; guide links to calculator | PENDING source validation |
+| SEO-004 | Hero and protected areas | New guide uses homepage hero art assets; original homepage and calculator hero unchanged | Source diff review pending |
+| SEO-005 | Browser QA | Mobile/desktop layout, content rendering, navigation and accessibility | NOT RUN |
+| SEO-006 | Deployment/indexing | Pages workflow success, live URL, canonical and indexability | NOT RUN |
