@@ -485,3 +485,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Detailed source-discovery findings and next inspection pass saved in `MASTER-RESEARCH-PLAN.md` §13.
 - This is a partial discovery pass only. Full file-by-file source inspection and complete external-origin inventory remain OPEN; no compliance completion claimed.
 - No production source, DNS, CMP/AdSense settings, sitemap, PR merge, deployment or protected design changed.
+
+### 2026-11-15 — Universal timestamped task-file rule adopted
+- User requires a task-named, date/time-stamped Markdown file after every distinct completed work package, saved directly in the existing task folder without creating folders; applies to all of the user's websites.
+- Standard updated: `project-notes/TOOL-WORK-TRACKING-STANDARD.md` §2A; handoff updated: `project-notes/NEW-CHAT-HANDOFF.md`.
+- Task evidence file: [2026-11-15-2318-universal-timestamped-task-log-standard.md](2026-11-15-2318-universal-timestamped-task-log-standard.md).
+- Commits: `f00a2281e0e3` (standard), `951205b20559` (handoff), `1e3c17326a66` (task evidence file).
+- The other three website repository names have not yet been supplied, so their individual repositories cannot be updated yet. Global rule is recorded in the InfoJano handoff and applies by default.
+- No production/account/DNS/PR merge/deployment changes.
