@@ -284,3 +284,14 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - No source-level evidence found in the inspected files for navigator.geolocation; Age Calculator uses ipapi.co request instead. This is a code-search observation, not a full runtime network audit.
 - Current privacy inventory remains PARTIAL. Need inspect exact YouTube API request, remaining tool pages, all shared scripts, and live GA4/AdSense/CMP network behavior. Do not publish legal policy yet.
 - Changed: tracker only. No production code, account settings, DNS, CMP settings or deployment changed.
+
+
+### 2026-11-15 — Resume AdSense / Privacy Policy work after clean-URL detour
+- User instruction: return to the previously active AdSense and Privacy Policy work; clean-URL migration is paused.
+- Re-opened and reviewed this tracker, NEW-CHAT-HANDOFF.md and TOOL-WORK-TRACKING-STANDARD.md from current main.
+- Reconfirmed source evidence: privacy-policy.html is absent from main; work-hours-calculator.html links to /privacy-policy.html; ads.txt source is correct but live serving remains unverified; AdSense review is already submitted and Site Details previously showed Getting your site ready to show ads.
+- No completed CMP editor audit or submitted AdSense review is being repeated.
+- No production source, DNS, AdSense settings, CMP settings, PR merge or deployment changed in this resumed session.
+- Clean URL migration remains isolated in draft PR #234 and is not part of this active task.
+- Remaining policy blockers: publisher must provide a public contact email; full external-service/library inventory and current production feature confirmation are still required before final legal wording. Do not invent controller identity, jurisdiction, retention policy or contact details.
+- Next action: continue independent repository inventory where tool limits permit; then ask for the one missing publisher input (public contact email) with exact instructions. Prepare draft for review only; no publish/deploy without explicit approval.
