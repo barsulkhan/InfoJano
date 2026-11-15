@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/work-hours-calculator.html
-Overall status: In progress — standalone page committed; source syntax/structure checks passed; browser QA and deployment verification pending.
+Overall status: In progress — standalone page committed; initial source syntax/structure checks and focused source/logic audit passed; WH-001–WH-010 runtime/browser QA and current deployment/live verification pending.
 
 ## Research dossier
 - [RESEARCH.md](RESEARCH.md) — country/language screening, qualitative keyword clusters, live competitor review, metrics limitations and GO decision.
@@ -21,7 +21,7 @@ Overall status: In progress — standalone page committed; source syntax/structu
 - [x] [CARD-001] Research and scope — competitor review, country/language screen, metrics limitations and GO decision saved in RESEARCH.md.
 
 ### In progress
-- [x] [CARD-002] Multi-shift calculator MVP — standalone page committed; includes dated shift rows, unpaid breaks, overnight rollover, gross/net/decimal hours, daily and Monday–Sunday weekly summaries, configurable daily threshold, optional simple earnings estimate, CSV and opt-in local save. Source syntax check passed; browser/functional QA pending.
+- [x] [CARD-002] Multi-shift calculator MVP — standalone page committed; includes dated shift rows, unpaid breaks, overnight rollover, gross/net/decimal hours, daily and Monday–Sunday weekly summaries, configurable daily threshold, optional simple earnings estimate, CSV and opt-in local save. Source syntax and focused source/logic audit passed; runtime/browser QA pending.
 
 ### Backlog
 - [ ] [CARD-003] SEO metrics validation — collect country-level volume, trend, KD, CPC/currency and traffic potential from Google Keyword Planner/Search Console or authorized provider.
@@ -64,6 +64,13 @@ Overall status: In progress — standalone page committed; source syntax/structu
 ### 2026-11-15 — GitHub Pages workflow verification
 - Latest Pages workflow run #2550 for commit `f44e679ad5e8e0746061ea98c81b017605229485` completed with conclusion `success`; this commit includes the work-hours page, homepage directory link and sitemap update.
 - Direct live URL/rendered-page verification remains pending because the available live-page inspection returned inaccessible. Functional and browser QA remain NOT RUN.
+
+### 2026-11-15 — Work Hours QA resumed: source/logic audit
+- Re-fetched the current handoff, tracking/research standards, index and Work Hours README/RESEARCH/QA log before continuing.
+- Inspected the current page source for shift parsing, overnight rollover, break validation, daily/weekly aggregation, daily threshold estimate, simple earnings, CSV escaping/download and opt-in localStorage/clear/reset paths.
+- Source/logic review PASS for WH-001/002 arithmetic paths and for the relevant aggregation, validation, CSV and storage implementation. This is not browser runtime evidence; WH-001–WH-010 remain NOT RUN in a real browser.
+- QA evidence: [QA-TEST-LOG.md](QA-TEST-LOG.md), latest entry 2026-11-15. No application code changed; protected hero/banner areas preserved.
+- Next: execute WH-001–WH-009 in a real browser, then responsive/desktop/accessibility and release verification. No interactive browser/computer-control tool is currently connected.
 
 ### 2026-11-15 — Expanded US time/pay SERP and adjacent intent research
 - User asked to research as many related opportunities together as practical.
