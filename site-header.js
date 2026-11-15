@@ -9,7 +9,7 @@
   .ij-global-logo{width:44px;height:44px;flex:0 0 44px;border-radius:13px;box-shadow:0 3px 10px #001b5b18}
   .ij-global-brand-copy{display:flex;flex-direction:column;line-height:1.08;min-width:0;gap:3px}
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
-  .ij-global-brand-tagline{font-size:11px;font-weight:600;line-height:1.25;color:#64748b;letter-spacing:0}
+  .ij-global-brand-tagline{display:inline-block;width:max-content;max-width:100%;font-size:11px;font-weight:850;line-height:1.25;letter-spacing:0;background:linear-gradient(100deg,#0756c9 0%,#0786d8 52%,#0b9b86 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
   .ij-global-divider{width:1px;height:38px;background:#dbe4ef}
   .ij-global-tools{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;gap:8px;height:44px;min-height:44px;padding:0 16px;border:1px solid #dbe6f2;border-radius:30px;color:#24456e;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#f8fbff}
   .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#eef6ff;outline:2px solid #93c5fd;outline-offset:2px}
