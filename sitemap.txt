@@ -95,3 +95,7 @@ https://infojano.com/bengali-number-to-words.html
 https://infojano.com/countdown-timer-india.html
 https://infojano.com/countdown-timer-bangladesh.html
 https://infojano.com/countdown-timer-usa.html
+https://infojano.com/about.html
+https://infojano.com/contact.html
+https://infojano.com/privacy-policy.html
+https://infojano.com/terms-of-use.html
