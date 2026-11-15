@@ -527,3 +527,17 @@ Overall status: In progress — mobile screenshot checks, source audit and ET-01
 - Tests: source inspection and qualitative SERP comparison completed; no browser/runtime test or deployment claim made.
 - Pending: desktop visual QA remains the explicit manual calculator QA item; Work Hours functional/browser QA and live deployment verification are separately pending in that tool's tracker.
 - Protected areas preserved: existing calculator hero, homepage hero, ID Card Print Studio hero and existing guide hero.
+
+### 2026-11-15 — Expanded US time/date opportunity audit
+- User requested that as many related opportunities as practical be researched together.
+- Re-fetched latest handoff, work-tracking/research standards, tool index, elapsed-time research/tracker, Work Hours research/tracker, and source for time calculator, work-hours calculator, date-difference calculator, business-days page and sitemap.
+- Broadened US-intent SERP review to work hours/timecard/timesheet, date-time duration, date difference/business days, business hours, decimal-hours conversion, military-time conversion, clock-out/clock-in planning, overtime and cross-timezone duration.
+- Repo audit found existing /date-difference.html and /business-days-calculator.html as well as elapsed and work-hours pages. Business-days page source appears to be explanatory landing content with CTA to date-difference rather than its own calculator form/script. Date-difference manual input uses DD-MM-YYYY, which needs US MM/DD/YYYY review.
+- Decisions: no duplicate Time Card/Timesheet, Date & Time Duration, Business Days, Overtime or Time Zone Duration URLs. Existing Work Hours page remains the single multi-shift destination. New candidates for quantitative validation: Business Hours (strongest distinct task), Decimal Hours Converter, Military Time Converter; Clock-Out should first be considered as a Work Hours mode.
+- Competitor pages reviewed include Toggl, QuickBooks, ClockSlate, Ordio, HourPeak, TimeMath.tools, HiveDesk, timeanddate, CalculatorSoup, Intious, BiznTools, WorkHourMath, TimeDifference.io, FreeToolCabin, Merondis, ByteTools, Redmoon, Clockspot, TimoDesk, CalcuTools, TimeToDecimal, iSObj, Shift Ledger, HourPunch and MyClockOut.
+- Primary sources: US DOL overtime guidance (covered nonexempt weekly rule and no averaging across workweeks) and OPM federal holiday schedule. Legal/holiday rules are not generalized to every worker/employer.
+- Metrics: exact volume/trend/KD/CPC/traffic potential remain N/A; Ahrefs entitlement and GSC export unavailable. No revenue assumptions made.
+- Updated: project-notes/tools/elapsed-time-calculator/RESEARCH.md §18 and project-notes/tools/work-hours-calculator/RESEARCH.md §5. Research commits: 8fc1c6d1134e72e0a5bd9bd496bc92c78b7afbcb, db09fcf5a14ac221ae1d55c2d1a5617d444f028f.
+- No app code, metadata, sitemap, URLs or protected hero artwork changed. No browser/runtime QA or deployment claimed.
+- Pending: finish current Work Hours functional QA; audit US date-input convention and Business Days landing-page destination; quantitative US keyword validation before any new page build.
+- Protected areas preserved: homepage hero, Elapsed Time Calculator hero, ID Card Print Studio hero and existing guide hero.
