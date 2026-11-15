@@ -407,3 +407,18 @@ Scope: complete raw source fetched for 12 additional pages: `digital-ration-card
 - This batch adds 12 source files; remaining unreviewed root pages continue to be tracked by the branch tree inventory.
 - CDN requests and ordinary external links must be distinguished from user-data uploads. No live network or file-processing runtime test was run.
 - Continue with next page batch, then reconcile complete GA4 page coverage and the inventory of document-processing/CDN dependencies.
+
+## 20. Root-page inventory batch 06 — number conversion, percentage and photo utilities (2026-11-15)
+
+Scope: complete raw source fetched for 12 additional pages: `increase-decrease-by-percentage-calculator.html`, `lakh-crore-converter.html`, `million-billion-converter.html`, `number-to-words-for-cheque.html`, `number-to-words-indian.html`, `number-to-words-international.html`, `number-to-words-uppercase.html`, `number-to-words.html`, `ordinal-number-converter.html`, `original-price-before-discount-calculator.html`, `passport-id-photo-resizer.html`, and `percent-of-number-calculator.html`.
+
+### Findings (source verified)
+- GA4 measurement ID `G-P8D7XRGVEF` is present in the main `number-to-words.html` page.
+- The other 11 inspected pages showed no direct GA4/AdSense/CMP, fetch/XHR, browser-storage, or device-permission marker in the bounded source scan.
+- Passport ID Photo Resizer and the number/percentage tools showed no explicit upload endpoint or FormData/network call in the inspected source. This suggests the page-level workflow is browser-side, but does not establish behavior of every imported/shared dependency or runtime injection.
+- No CMP/TCF marker found in this batch.
+
+### Limits / next
+- 43 root HTML files remain unreviewed in the current branch tree after this batch (116 total root HTML files).
+- Continue page inventory; later produce a consolidated GA4 page list and classify local-only file/image processing separately from any optional upload routes.
+- Live runtime/network/cookie/consent testing remains NOT RUN.
