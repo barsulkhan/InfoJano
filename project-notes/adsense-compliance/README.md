@@ -544,3 +544,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `407de166a124`; task file `eafc4a5fae7e`.
 - D-001 remains in progress; 43 root HTML files remain unreviewed; live runtime tests not run.
 - No production, policy, account, DNS, merge or deployment changes.
+
+### 2026-11-15 — Root-page inventory batch 07
+- Inspected 12 additional percentage/QR/photo pages. GA4 confirmed in Percentage Change, Portuguese Percentage and main Percentage pages; main Percentage stores up to 8 history entries locally under `ijPercentageHistory` with a clear action.
+- Task evidence: [2026-11-15-2326-root-page-inventory-batch-07.md](2026-11-15-2326-root-page-inventory-batch-07.md); master plan §21.
+- Commits: plan `c0fe0d2867bb`; task file `e6eef25c2ecc`.
+- D-001 remains in progress; 31 root HTML files remain unreviewed; runtime tests not run.
+- No production, policy, account, DNS, merge or deployment changes.
