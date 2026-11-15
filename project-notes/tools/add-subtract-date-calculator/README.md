@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/add-subtract-date-calculator.html
-Overall status: In progress — existing SEO page now contains a functional date-offset calculator; source syntax and arithmetic checks passed; browser QA and latest deployment verification pending.
+Overall status: In progress — existing SEO page now contains a functional date-offset calculator; source syntax and arithmetic checks passed; GitHub Pages deployment succeeded for the implementation and tracker commits; browser visual/interaction QA pending.
 
 ## Research dossier
 - [RESEARCH.md](RESEARCH.md) — free US-first qualitative SERP review, competitor comparisons, market/language screen, limitations and REVISE/GO decision.
@@ -37,7 +37,7 @@ Overall status: In progress — existing SEO page now contains a functional date
 - [ ] Browser functional QA
 - [ ] Mobile/desktop visual QA
 - [ ] Keyboard/focus and screen-reader QA
-- [ ] GitHub Pages deployment and live URL verification
+- [x] GitHub Pages workflow #2642 SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`; live URL direct fetch was inaccessible in this session, so browser rendering not independently confirmed
 
 ## Detailed work log
 ### 2026-11-15 — Correct the date-offset page product mismatch
@@ -53,3 +53,9 @@ Overall status: In progress — existing SEO page now contains a functional date
 
 ## Decisions and handoff
 - 2026-11-15 — Use one existing add/subtract-date URL; don't create a duplicate. Business-day calculation remains separate and uses manually entered holiday exclusions.
+
+
+### 2026-11-15 — Deployment pipeline verification
+- Pages workflow #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`, including the calculator implementation and tracker docs.
+- Direct live-page retrieval through the available browser fetch failed; do not claim live browser rendering or interaction verified. Browser QA remains pending.
+- APK workflow #685 for the calculator page change passed repository validation and was still building APKs at last check. The previous release tag v1.1.1 was independently verified to contain 23 APK assets.
