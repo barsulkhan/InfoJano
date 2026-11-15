@@ -390,3 +390,20 @@ Scope: complete raw source fetched for 12 additional root HTML pages: `business-
 - This is a 12-page source batch only; 67 root HTML pages remain after this batch according to the branch tree inventory (116 total root HTML files).
 - Continue with next 12 pages and maintain exact distinction between observed GA4, external font requests, ordinary links and client-side-only calculations.
 - Live network, consent-state and cookie testing remain NOT RUN.
+
+## 19. Root-page inventory batch 05 — government print guides, finance tools and QR pages (2026-11-15)
+
+Scope: complete raw source fetched for 12 additional pages: `digital-ration-card-print.html`, `discount-pt-br.html`, `discount.html`, `dollars-in-words.html`, `elapsed-time-calculator-guide.html`, `email-qr-code-generator.html`, `exam-marks-percentage-calculator.html`, `google-maps-location-qr-code-generator.html`, `google4a4795e5c7c03eae.html`, `gst-calculator.html`, `hindi-number-to-words.html`, and `id-card-print-studio.html`.
+
+### Findings (source verified)
+- GA4 measurement ID `G-P8D7XRGVEF` appears in `discount-pt-br.html`, `discount.html`, and `gst-calculator.html`.
+- Digital Ration Card Print Guide links outward to West Bengal Food & Supplies (`food.wb.gov.in`) and internally to ID Card Print Studio. The inspected guide contains no fetch/upload or browser-storage API; the external link is ordinary navigation.
+- ID Card Print Studio loads PDF.js and its worker from cdnjs; jsPDF is loaded from a local repository asset. Its footer says files are processed in the browser and are not intentionally uploaded to an InfoJano server. Static source scan found no `fetch`, XHR, FormData, localStorage or sessionStorage use in this page; this supports a client-side processing statement for this page, but does not independently prove every runtime/library behavior.
+- ID Card Print Studio contains legacy GitHub Pages URLs in metadata/schema; these are metadata references, not a data-transfer endpoint.
+- Dollars in Words, Elapsed Time Calculator Guide, Email QR Code Generator, Exam Marks Percentage Calculator, Google Maps Location QR Code Generator, Google verification HTML, and Hindi Number-to-Words showed no direct GA4/AdSense/CMP, fetch/XHR, browser-storage or device-permission marker in this bounded scan.
+- No CMP/TCF marker found in this batch.
+
+### Limits / next
+- This batch adds 12 source files; remaining unreviewed root pages continue to be tracked by the branch tree inventory.
+- CDN requests and ordinary external links must be distinguished from user-data uploads. No live network or file-processing runtime test was run.
+- Continue with next page batch, then reconcile complete GA4 page coverage and the inventory of document-processing/CDN dependencies.
