@@ -17,7 +17,8 @@ Repository: https://github.com/barsulkhan/InfoJano
 3. project-notes/TOOL-INDEX.md
 4. যে tool নিয়ে কাজ হবে তার project-notes/tools/<tool-slug>/README.md
 5. ওই tool-এর QA/test log, যেমন Elapsed Time Calculator-এর project-notes/tools/elapsed-time-calculator/QA-TEST-LOG.md
-6. প্রয়োজন হলে সংশ্লিষ্ট source file, PR, commit, Actions workflow ও deployment status।
+6. নতুন tool/major feature হলে `project-notes/TOOL-RESEARCH-STANDARD.md` এবং `project-notes/templates/TOOL-RESEARCH-TEMPLATE.md` পড়ে সংশ্লিষ্ট `RESEARCH.md`।
+7. প্রয়োজন হলে সংশ্লিষ্ট source file, PR, commit, Actions workflow ও deployment status।
 
 কোনো file inaccessible হলে সেটা স্পষ্ট বলবে; না পড়ে পড়েছ বলে দাবি করবে না। Handoff বা এই prompt-এর পুরোনো status-কে বর্তমান status ধরে নেবে না—GitHub-এর latest তথ্যই চূড়ান্ত।
 
