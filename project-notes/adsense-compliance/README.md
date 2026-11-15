@@ -295,3 +295,14 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Clean URL migration remains isolated in draft PR #234 and is not part of this active task.
 - Remaining policy blockers: publisher must provide a public contact email; full external-service/library inventory and current production feature confirmation are still required before final legal wording. Do not invent controller identity, jurisdiction, retention policy or contact details.
 - Next action: continue independent repository inventory where tool limits permit; then ask for the one missing publisher input (public contact email) with exact instructions. Prepare draft for review only; no publish/deploy without explicit approval.
+
+
+### 2026-11-15 — Publisher contact address received; Contact page drafted
+- Publisher supplied the public contact address: `infojanowebsite@gmail.com`. This is user-provided; deliverability and ownership have not been independently verified.
+- Created `contact.html` with a mailto contact link, issue-reporting guidance, accessible layout, canonical metadata and links to Home / Privacy Policy.
+- Created `assets/contact-support.svg`, a lightweight custom InfoJano-style support illustration.
+- Opened draft PR #235: https://github.com/barsulkhan/InfoJano/pull/235
+- Branch: `feature/contact-page-and-support-artwork`. Not merged; not deployed to production.
+- Source-level checks: files created successfully; live rendering, mobile browser QA, mailto behavior and email deliverability remain unverified.
+- Privacy Policy remains blocked from final publication: complete service/library inventory and confirmation of current production behavior are still required. Do not invent publisher legal identity, jurisdiction or retention schedule. Once inventory is reconciled, prepare a draft for review; no production publish without explicit approval.
+- Clean URL PR #234 remains separate and untouched.
