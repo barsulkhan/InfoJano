@@ -11,20 +11,21 @@
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
   .ij-global-brand-tagline{font-size:11px;font-weight:600;line-height:1.25;color:#64748b;letter-spacing:0}
   .ij-global-divider{width:1px;height:38px;background:#dbe4ef}
-  .ij-global-tools{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 16px;border:1px solid #dbe6f2;border-radius:30px;color:#24456e;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#f8fbff}
+  .ij-global-tools{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;gap:8px;height:44px;min-height:44px;padding:0 16px;border:1px solid #dbe6f2;border-radius:30px;color:#24456e;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#f8fbff}
   .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#eef6ff;outline:2px solid #93c5fd;outline-offset:2px}
-  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:44px;min-width:116px;margin-right:0;padding:0 17px;border:1px solid #d5e5f5;border-radius:28px;background:#f3f8fe;color:#174a78;text-decoration:none;font-weight:850;font-size:14px;white-space:nowrap;box-shadow:0 3px 10px rgba(15,60,110,.06)}
+  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;gap:9px;height:44px;min-height:44px;min-width:116px;margin-right:0;padding:0 17px;border:1px solid #d5e5f5;border-radius:28px;background:#f3f8fe;color:#174a78;text-decoration:none;font-weight:850;font-size:14px;white-space:nowrap;box-shadow:0 3px 10px rgba(15,60,110,.06)}
   .ij-global-home:hover,.ij-global-home:focus-visible{background:#e8f3ff;outline:2px solid #93c5fd;outline-offset:2px}
   .ij-global-home svg,.ij-global-tools svg{width:19px;height:19px;flex:0 0 auto}
 
-  .ij-global-language{height:44px;max-width:126px;padding:0 30px 0 11px;border:1px solid #dbe6f2;border-radius:12px;background:#fff;color:#24456e;font:650 13px Inter,system-ui,sans-serif;cursor:pointer}
+  .ij-global-language{display:block;box-sizing:border-box;align-self:center;vertical-align:middle;line-height:1;height:44px;min-height:44px;max-width:126px;margin:0;padding:0 30px 0 11px;border:1px solid #dbe6f2;border-radius:12px;background:#fff;color:#24456e;font:650 13px Inter,system-ui,sans-serif;cursor:pointer}
   .ij-global-language:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
 
-  .ij-global-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex:0 0 auto;min-width:0}\n  .ij-global-header-spacer{height:0}
+  .ij-global-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex:0 0 auto;min-width:0;align-self:center}
+  .ij-global-header-spacer{height:0}
   .ij-site-brand,.ij-brandbar{display:none!important}
   @media(max-width:620px){
     .ij-global-header-inner{width:calc(100% - 24px);min-height:62px;padding:8px 0;gap:8px}
-    .ij-global-nav{gap:7px}
+    .ij-global-nav{gap:7px;align-items:center}
     .ij-global-logo{width:39px;height:39px;flex-basis:39px;border-radius:12px}
     .ij-global-brand{gap:6px;margin-left:0}
     .ij-global-brand-name{font-size:19px;letter-spacing:-.4px}
@@ -33,13 +34,13 @@
     .ij-global-tools{font-size:0;padding:0;width:40px;height:40px;justify-content:center;gap:0;border-radius:13px}
     .ij-global-tools svg{width:20px;height:20px}
     .ij-global-home{min-width:0;margin-right:0;padding:0 11px;height:40px;font-size:12px;gap:6px;border-radius:13px}
-    .ij-global-home svg{width:17px;height:17px}.ij-global-language{max-width:100px;height:40px;padding:0 22px 0 8px;font-size:12px;border-radius:11px}
+    .ij-global-home svg{width:17px;height:17px}.ij-global-language{max-width:100px;height:40px;min-height:40px;padding:0 22px 0 8px;font-size:12px;border-radius:11px}
   }
   @media(max-width:360px){
     .ij-global-header-inner{gap:5px;width:calc(100% - 16px)}
     .ij-global-nav{gap:5px}
     .ij-global-brand-name{font-size:17px}
-    .ij-global-home{height:38px;padding:0 8px;font-size:11px}.ij-global-language{height:38px;max-width:88px;font-size:11px}
+    .ij-global-home{height:38px;min-height:38px;padding:0 8px;font-size:11px}.ij-global-language{height:38px;min-height:38px;max-width:88px;font-size:11px}
     .ij-global-tools{width:36px;height:38px}
   }
 
@@ -80,11 +81,11 @@
         </a>
         <span class="ij-global-divider" aria-hidden="true"></span>
         <nav class="ij-global-nav" aria-label="Main navigation">
-        <a class="ij-global-tools href="${ROOT}index.html#tools" aria-label="Browse all tools">
+        <a class="ij-global-tools" href="${ROOT}index.html#tools" aria-label="Browse all tools">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
           All Tools
         </a>
-        <label class="ij-global-language-wrap" style="display:flex;align-items:center">
+        <label class="ij-global-language-wrap" style="display:flex;align-items:center;justify-content:center;height:44px;min-height:44px;margin:0;padding:0">
           <span class="ij-sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Select language</span>
           <select class="ij-global-language" aria-label="Select language">
             <option value="en">English</option><option value="hi">हिन्दी</option><option value="bn">বাংলা</option>
