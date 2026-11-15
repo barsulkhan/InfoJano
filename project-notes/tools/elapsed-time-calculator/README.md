@@ -472,3 +472,13 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Decision: do not generate thin/duplicate "remaining" pages without a distinct supported search intent. Keep CARD-010 as conditional backlog; reopen only when a new intent is evidenced by GSC/keyword data or a separately approved, substantiated content opportunity.
 - Code changes: none. Existing guide was intentionally left untouched per user instruction; calculator hero, homepage hero and ID Card Print Studio hero preserved.
 - Next: continue existing QA backlog. If a new SEO page becomes justified, first capture the current calculator hero as the exact design reference and build the new page hero to match it.
+
+
+### 2026-11-15 — QA continuation attempt
+- User asked to continue the remaining calculator/guide QA. Re-fetched current calculator, guide, sitemap and QA log from the default branch.
+- No connected interactive browser/computer-control or browser automation session is available. A local Chromium binary exists, but current source could not be transferred into that environment through the available route; no real browser test was run.
+- Existing source checks SRC-001–SRC-016 and four formula-level checks remain the latest verified results; no new runtime/browser PASS is claimed.
+- Five-entry history cap runtime, desktop visual QA, full responsive sweep, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime remain NOT RUN.
+- Workflow lookup for commit 6afaeed98338a36db4bfbacbcc94653299a36f74 returned no PR-triggered runs; Pages deployment for that documentation commit is not verified by this lookup.
+- Next single manual test: create six distinct calculations on the live calculator and confirm only the newest five appear in Recent Calculations; send a screenshot for verification.
+- No application source or hero/banner files changed. Existing guide hero intentionally left untouched per user instruction.
