@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/time-calculator.html
-Overall status: In progress — calculator features merged; screenshot-backed mobile QA ET-001–ET-009 passed; manual ET-010, five-item cap runtime, desktop visual QA and accessibility review remain pending
+Overall status: Core calculator features complete; ET-001–ET-010 passed with user screenshot evidence. Source audit confirms five-item cap and responsive/accessibility foundations; runtime cap, desktop visual QA, full mobile coverage and assistive-technology review remain pending.
 
 ## User-approved scope and constraints
 - Existing Elapsed Time Calculator hero banner dimensions, layout, styling, artwork and copy must remain unchanged unless the user explicitly approves a hero change.
@@ -348,3 +348,14 @@ Overall status: In progress — calculator features merged; screenshot-backed mo
 - Still pending: manual ET-010 clear-history result and refresh-after-clear check; runtime verification of five-entry cap; confirm which site pages load the shared header script; verify Pages deployment and inspect live mobile appearance of colored tagline/icons and removed link; full desktop/mobile visual QA and accessibility review.
 - Next step: ask user for one quick live check: tap Clear history, confirm the empty-state text, then refresh and confirm the list remains empty. After that, request one desktop screenshot when available.
 - Protected areas: calculator hero, homepage Hero Banner, ID Card Print Studio Hero, and calculator logic outside history are untouched.
+
+
+### 2026-11-15 — Remaining QA source audit
+- User asked to complete remaining QA. Re-fetched latest handoff, tracking standard, tool tracker, QA log, `time-calculator.html`, and shared `site-header.js` before review.
+- ET-010: already PASS based on the two sequential screenshots (empty state after Clear History, then still empty after refresh).
+- History cap source audit: `getTimeHistory()` filters valid entries and returns `.slice(0,5)`; `recordTimeCalculation()` prepends new entry and writes `history.slice(0,5)`. Source confirms five-entry cap logic; runtime test still not executed in a real browser.
+- Responsive source audit: breakpoints present at 480px, 760px, 850px and 1001px; reduced-motion media query present. Prior user screenshots provide mobile visual evidence for the tested view, not a complete viewport sweep.
+- Accessibility source audit: 9 inputs; all have programmatic labels (7 associated `<label for>` and 2 `aria-label`); 14 buttons and all explicitly declare `type`; 10 aria-label attributes; 2 aria-live attributes; no duplicate IDs found. A dedicated `:focus-visible` style was not found (native browser focus may still apply, but keyboard focus appearance was not visually verified). No screen-reader test performed.
+- Desktop visual QA: not performed; no interactive browser/computer-control session available in this task. Do not mark complete.
+- Result: no confirmed functional defect in the source audit. No application code changed during this audit. No runtime tests or desktop visual tests claimed.
+- Next: real-browser test the five-entry cap and keyboard tab/focus order; desktop viewport visual inspection; screen-reader pass. If no browser-control capability is available, these remain explicitly blocked for user-assisted testing.
