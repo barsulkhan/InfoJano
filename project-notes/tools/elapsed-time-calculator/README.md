@@ -24,7 +24,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 
 ### In progress
 - [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. Next: use a real interactive browser on mobile and desktop, verify layouts and all calculator modes, record actual findings and screenshots/evidence.
-- [ ] [CARD-011] Date-duration results missing from recent history — source inspection of `time-calculator.html` shows `calculateDateDuration()` renders a result but does not call `recordTimeCalculation('Date + Time Duration')`; therefore date-duration results do not enter the recent-history list or reveal the copy/share actions through the shared recording hook. Next: implement the hook after successful date-duration output and run regression checks for all three modes.
+- [ ] [CARD-011] Date-duration results missing from recent history — fix implemented on branch `fix/date-duration-history-actions`, PR #228 open: `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling history and shared Copy/Share action visibility. Await PR checks/review/merge; then run regression checks for all three modes.
 
 ### Backlog
 - [ ] [CARD-010] Review related SEO landing page opportunities — only after keyword and page intent are confirmed; follow 1360px max width and 8px gutters.
@@ -46,7 +46,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [ ] Mobile browser QA — pending.
 - [ ] Desktop browser QA — pending.
 - [ ] Accessibility review — not yet recorded.
-- [ ] Source review follow-up for CARD-011 — pending implementation and regression verification.
+- [ ] Source review follow-up for CARD-011 — hook added in PR #228; automated/runtime regression and merge pending.
 
 ## Detailed work log
 
@@ -132,3 +132,15 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Still pending: implement CARD-011 with regression coverage; perform real mobile and desktop browser QA for CARD-009; accessibility review; later assess CARD-010 only after keyword/page intent confirmation.
 - Next step: inspect current GitHub branch/PR/test setup, fix CARD-011 on a feature branch if safe, run available source-level checks, then return to CARD-009 when an interactive browser is available.
 - Protected areas preserved: no files outside project notes were modified; Calculator Hero, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
+
+
+### 2026-11-15 — CARD-011 fix submitted (PR #228)
+- Requested: continue from CARD-009, avoid redoing merged work, and maintain repository tracking. During source inspection, the date-duration path was found to skip the common result-recording hook.
+- Inspected: current default-branch `time-calculator.html`; focused on `calculateDateDuration()`, `recordTimeCalculation()`, `renderTimeHistory()`, and shared result-action visibility.
+- Changed: created branch `fix/date-duration-history-actions`; added `recordTimeCalculation('Date + Time Duration')` immediately after successful date-duration result rendering. Only `time-calculator.html` changed on the feature branch.
+- Tests and results: source-level placement check passed (expected output block found and hook insertion confirmed). No JavaScript syntax/test suite execution and no interactive runtime/browser test in this session. PR workflow lookup for commit `3253d2690ece6082e970e8aa1eadf1cd74d655c4` returned no workflow runs at the time checked; CI status therefore not verified.
+- PR/commit/workflow: PR #228 https://github.com/barsulkhan/InfoJano/pull/228; branch commit `3253d2690ece6082e970e8aa1eadf1cd74d655c4`. PR is open and unmerged. Connector reported mergeable=false at creation; do not infer a conflict or merge until status is refreshed.
+- Issues and resolution: missing date-duration history/copy-share hook addressed in proposed change; awaiting review/checks and runtime validation.
+- Still pending: PR #228 checks/review/merge; regression tests for all three modes; CARD-009 actual mobile/desktop browser QA; accessibility review; CARD-010 SEO intent research.
+- Next step: refresh PR #228 metadata and associated workflow checks; after merge verify Pages deployment separately. Then perform browser QA when an interactive browser is available.
+- Protected areas preserved: only `time-calculator.html` changed on the feature branch; calculator hero, homepage Hero Banner, and ID Card Print Studio Hero were not edited.
