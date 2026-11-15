@@ -243,3 +243,32 @@ Rationale:
 - Saved ordered phases, dependencies, priorities, approval gates, issue register, source register and explicit no-repeat decisions in this file.
 - No source code, settings, DNS, production, PR merge or deployment changed.
 - Research confidence: high for official platform requirements; medium for mapping requirements to InfoJano due unavailable live runtime/account diagnostics; low/unknown for legal identity and jurisdiction until publisher confirms.
+
+## 13. Source inventory continuation — first read-only search batch (partial)
+
+Date: 2026-11-15
+Scope: repository-wide GitHub code search on main/default branch; this is discovery evidence, not a complete file-by-file audit.
+
+| Area | Source evidence found | Interpretation / follow-up |
+|---|---|---|
+| YouTube Data API | `countdown-studio.html` calls `https://www.googleapis.com/youtube/v3/channels` with channel lookup and a visitor-entered API key; refreshes while page is open | Disclose the request fields and key handling accurately; inspect the full source and any embedded player path |
+| Browser storage | `word-converter.js`, `bmi-toolkit.js`, `site-header.js`, `age.html` contain localStorage use | Map each key, data category, opt-in condition, retention/clear behavior and whether any value leaves the browser |
+| Session storage | `qr-maker.html` and `qr-scanner.html` use `infojano-qr-prefill` to transfer scanned text between pages | Record that QR content may persist for the current tab session; inspect clear/consumption behavior |
+| Camera | `qr-scanner.html` calls camera through ZXing/browser media APIs after user action | Confirm permission timing and whether frames are processed locally; avoid claiming no external requests from library loading |
+| Currency API | `currency-converter.html` calls `https://open.er-api.com/v6/latest/{base}`; historical data also uses Frankfurter (previous tracker evidence) | Record base-currency request path and actual response fields; provider retention remains unknown |
+| Word conversion | `word-converter.html`, `word-converter.js`, `backend/word-converter/src/index.js`, and backend README exist | Worker source currently has an origin allowlist for GitHub Pages; custom-domain availability and production Worker binding must be confirmed; file upload occurs only on optional high-fidelity route after consent |
+| External libraries | Search found cdnjs, jsDelivr and unpkg fallbacks for PDF.js/JSZip and other libraries | Need complete inventory across all HTML and dynamically imported modules |
+| Ad/CMP integration | Homepage `index.html` has AdSense loader but no explicit CMP script in the inspected source | Account-side/dynamic injection is still possible; runtime network inspection remains mandatory |
+
+### Discovery limits
+- GitHub search excerpts are not exhaustive and search covers the default branch, not necessarily every PR-only file.
+- This batch does not prove every page has been inspected.
+- No live requests, cookies, browser storage, CMP API, TC string, or network payloads were inspected.
+- D-001 remains OPEN / IN PROGRESS; do not mark the data inventory complete.
+
+### Next read-only source inventory pass
+1. Fetch the full source for every discovered file and inspect each relevant function, not only search excerpts.
+2. Enumerate all root-level HTML files and shared JS/CSS/worker files; classify each external origin and data flow.
+3. Search for analytics IDs, AdSense tags, consent APIs, fetch/XHR/WebSocket, script/link/font/image origins, storage keys, file uploads, camera/geolocation/notifications.
+4. Compare the complete inventory with the current Privacy Policy draft and mark each disclosure accurate / missing / uncertain.
+5. Record any production-only configuration as publisher-confirmation required; do not guess or expose secrets.
