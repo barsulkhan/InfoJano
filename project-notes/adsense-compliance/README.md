@@ -647,3 +647,12 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Policy commit: `641ff424df0103f020060c844d99afa4a86bda39`.
 - Timestamped task record: [2026-11-15-2350-privacy-policy-operator-details.md](2026-11-15-2350-privacy-policy-operator-details.md); task file commit: `97f6cb5badfaf5aeb08c74d868507ca4f73442e1`.
 - Production is unchanged; PR #236 remains draft/unmerged. Live CMP/TCF, AdSense vendor/crawler, runtime, Worker and QA checks remain open.
+
+
+### 2026-11-15 — Privacy Policy source reconciliation applied on review branch
+- Updated `privacy-policy.html` with evidence-backed details for Android/Windows wrappers, exact GA4 source scope, additional local/session storage examples, notification mismatch, optional DOCX/Worker/iLoveAPI processing and cautious consent-revocation wording.
+- Lightweight structural validation passed: balanced opening/closing counts for key HTML tags; doctype/title/canonical checks passed. This is not a full HTML validator or browser QA.
+- Live production URLs could not be inspected from the current environment; HTTP status/redirects, CMP runtime, ads.txt crawler access and production page state remain unverified. GitHub connector reports no PR workflow runs/status checks for current head.
+- Task evidence: [2026-11-15-2358-policy-reconciliation-and-validation.md](2026-11-15-2358-policy-reconciliation-and-validation.md); task file commit: `04d23266154c1e43750bbae9d018bf76b7471075`.
+- Policy content commit: `410df772673988da2b66c51a15fd54d4756097dd`.
+- No production deployment, PR merge, AdSense/CMP settings, DNS, Worker or sitemap changes.
