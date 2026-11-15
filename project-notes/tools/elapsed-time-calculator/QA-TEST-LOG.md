@@ -88,9 +88,15 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 
 | ID | Check | Expected | Status |
 |---|---|---|---|
-| SEO-001 | New guide source structure | Correct title, description, self-canonical, H1, guide sections, FAQs and CTA to calculator | PENDING source validation |
-| SEO-002 | Structured data | Valid JSON-LD syntax for WebPage, BreadcrumbList and FAQPage | PENDING source validation |
-| SEO-003 | Internal links and sitemap | Calculator links to guide; sitemap includes guide; guide links to calculator | PENDING source validation |
-| SEO-004 | Hero and protected areas | New guide uses homepage hero art assets; original homepage and calculator hero unchanged | Source diff review pending |
+| SEO-001 | New guide source structure | Correct title, description, self-canonical, H1, guide sections, FAQs and CTA to calculator | PASS — source inspection |
+| SEO-002 | Structured data | Valid JSON-LD syntax for WebPage, BreadcrumbList and FAQPage | PASS — JSON.parse succeeded |
+| SEO-003 | Internal links and sitemap | Calculator links to guide; sitemap includes guide; guide links to calculator | PASS — both links and sitemap entry verified |
+| SEO-004 | Hero and protected areas | New guide uses homepage hero art assets; original homepage and calculator hero unchanged | PASS — original homepage and calculator source left unchanged |
 | SEO-005 | Browser QA | Mobile/desktop layout, content rendering, navigation and accessibility | NOT RUN |
 | SEO-006 | Deployment/indexing | Pages workflow success, live URL, canonical and indexability | NOT RUN |
+
+### 2026-11-15 — SEO guide source validation
+- Fetched the committed guide, calculator page and sitemap from GitHub after writes.
+- PASS: SEO title, meta description, self-canonical, one H1, both reused homepage artwork paths, 1360px max-width/8px gutter, formula, overnight example, visible FAQ details, WebPage/BreadcrumbList/FAQPage JSON-LD parses as JSON, guide-to-tool and tool-to-guide links, sitemap entry.
+- PASS: existing calculator hero markup/style still present; homepage index.html was not modified. Source checks do not verify rendered artwork or layout.
+- Browser QA: NOT RUN. Pages deployment: initial latest run #2548 was in progress at check; must recheck after tracker commit.
