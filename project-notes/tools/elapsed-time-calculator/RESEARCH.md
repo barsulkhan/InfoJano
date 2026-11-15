@@ -453,3 +453,85 @@ Sources:
 - No application code, metadata, sitemap or page URLs changed in this research pass.
 
 **Decision:** RESEARCH / HOLD. Three concepts have been shortlisted, but no three-page build approval is inferred from the user's wording alone. The actual page count should follow US intent separation and product usefulness, not a fixed quota.
+
+
+## 16. US Work Hours vs Time Card — SERP overlap and feature-gap review (2026-11-15)
+
+**Research scope:** Public web-indexed result pages for US-oriented queries around “work hours calculator”, “time card calculator”, “time card calculator with lunch”, “weekly/biweekly time card calculator”. This is a qualitative SERP/page review, not a location-locked Google top-10 export or verified rank tracking. Search engine, country targeting and observation date recorded; individual results can vary by location/device.
+
+### 16.1 Observed US-oriented result set and competitors
+
+| Competitor/page | Observed product scope | Relevant strength / gap signal |
+|---|---|---|
+| WageCoach — https://www.wagecoach.com/calculators/time-card-calculator | Daily in/out/break grid; weekly/biweekly; state selector; hourly rate; weekly overtime and selected state daily overtime; printable/shareable workflow | Strong US timecard/pay-period intent. Makes a useful distinction between a simple work-hours total and payroll/overtime assumptions. |
+| Toggl — https://toggl.com/online-tools/time-card-calculator | Seven-day in/out/break grid; weekly/biweekly; 12/24h; hourly rate; configurable OT threshold/multiplier; gross pay; print and CSV | Mature all-round timecard feature set and strong explanatory content. |
+| OnTheClock — https://www.ontheclock.com/Free-Online-Time-Card-Calculator | Date range; daily punch/break rows; regular/overtime/total; save PDF/Excel; employee/company details | Business/payroll-oriented form and export expectations. |
+| HourTotal — https://hourtotal.com/ | One/two weeks; overtime; rounding; multiple shifts; employee/period/notes; CSV/print/share | Covers weekly and biweekly timecard workflow with practical timesheet output. |
+| Toolbaro — https://toolbaro.com/en/time-card-calculator/ | Weekly/biweekly; first day of week; 12/24h; multiple punch pairs; breaks; overtime/pay; copy-forward; printable/exportable output | Shows common timecard interaction expectations and quick-entry conveniences. |
+| WageCoach and Time Card Calculator with Lunch competitors reviewed above | State-specific and meal-break scenarios | US users may expect explicit break treatment and clear caveats, not generic one-interval arithmetic. |
+
+Adjacent references:
+- Jibble comparison — https://www.jibble.io/best-software/time-card-calculators-with-lunch/ (comparison of lunch, rounding, pay periods, exports and overtime feature expectations).
+- CountMyWorkHours — https://countmyworkhours.com/calculators (one shared engine presented through work-hours, timecard, punch clock, biweekly and payroll-hours entry points; illustrates how one tool can target related phrases without separate thin pages).
+- TimeMath.tools — https://timemath.tools/ (work-week totals, breaks, gross pay, federal rule settings and related time/pay calculators).
+
+### 16.2 SERP overlap conclusion: Work Hours vs Time Card
+
+The reviewed results show substantial overlap: multiple pages title themselves “Time Card Calculator” while describing the same task as calculating work hours, weekly hours, hours worked, breaks and overtime. Some sites use one shared calculator and treat “work hours”, “time card”, “timesheet” and “payroll hours” as related entry points rather than separate tools. This qualitative evidence does **not** justify two separate InfoJano URLs at this stage.
+
+**Recommended architecture:** one US-focused **Time Card / Work Hours Calculator** page/tool concept, with “work hours calculator”, “hours worked calculator”, “weekly hours calculator” and “time card calculator” mapped to the same URL. Reassess separate URLs only if a controlled US SERP overlap export later demonstrates clearly different ranking pages and task expectations.
+
+### 16.3 Common feature expectations observed
+
+Core expectations recurring across reviewed pages:
+1. Multiple days (usually a 7-day week) with separate clock-in and clock-out inputs.
+2. Per-day unpaid lunch/break deduction.
+3. Daily totals plus weekly total.
+4. HH:MM and decimal-hour output.
+5. Overnight shift handling.
+6. Weekly and biweekly periods, with overtime evaluated independently per workweek where offered.
+7. Optional hourly rate and gross-pay estimate.
+8. Print, CSV or spreadsheet export.
+
+Advanced/variable expectations:
+- Multiple shifts or lunch clock-out/clock-in punch pairs per day.
+- Punch rounding controls.
+- State-specific daily overtime rules and double-time scenarios.
+- Employee/company/pay-period details on printable timecard.
+- Shareable link or local save.
+
+### 16.4 InfoJano feature gap and recommended scope
+
+Current Elapsed Time Calculator supports one interval, optional break deduction, three modes (clock difference, add/subtract, date+time duration), copy/share and recent history. It is **not** currently a weekly timecard, payroll or state-overtime calculator.
+
+A competitive US-focused Time Card / Work Hours tool would require a new feature scope before a landing page is written:
+- MVP: seven-day workweek grid; configurable week start; per-day in/out; per-day unpaid break; overnight shifts; blank/off days; daily and weekly totals; HH:MM + decimal hours; weekly and biweekly views that preserve two distinct workweeks; mobile-first input; print/CSV export.
+- Optional phase 2: hourly rate and gross-pay estimate; configurable weekly overtime threshold and multiplier; explicit “estimate only—not payroll/legal advice” language; local-only data handling only if verified.
+- Later only after legal/product review: state-specific daily overtime/double-time rules, punch rounding, complex split shifts, semi-monthly periods and statutory rule presets. Do not imply legal compliance based on a generic 40-hour calculation.
+
+Differentiation opportunity: make the weekly/biweekly card very fast to fill, transparent about break deductions and overnight assumptions, show both clock and decimal totals, preserve privacy only if technically verified, and keep advanced payroll assumptions optional and clearly explained.
+
+### 16.5 Risks and content safeguards
+- Do not claim the tool calculates legally owed overtime or complies with all US state laws without a jurisdiction-specific, maintained rules engine and legal review.
+- Federal weekly overtime rules have exemptions and coverage conditions; a simple “over 40 hours” estimate must be clearly labeled as a configurable general estimate, not a universal paycheck determination.
+- Paid short rest breaks vs unpaid meal periods have legal distinctions; do not automatically deduct every break. Let the user enter only the unpaid break time they intend to exclude and explain assumptions neutrally.
+- “Time card”, “timesheet”, “work hours” and “hours worked” are related but not necessarily identical in every workplace. Use accurate task labels and disclaimers.
+- No payroll tax/net-pay claims; gross pay is not take-home pay.
+
+### 16.6 Decision and next step
+
+**Decision: GO for product/keyword planning of one consolidated US Time Card / Work Hours concept; HOLD separate Work Hours and Time Card URLs.** This is a planning recommendation only, not approval to implement code or publish a new page.
+
+Next, complete a dedicated US SERP overlap review for “date and time duration calculator” versus the existing elapsed-time calculator and guide. Then produce a consolidated page architecture/feature spec for the three previously discussed candidate concepts. Obtain a reliable US keyword dataset (GKP/Ahrefs/Semrush or user export) and GSC country/query evidence before final URL and build approval.
+
+### 16.7 Sources observed
+- WageCoach: https://www.wagecoach.com/calculators/time-card-calculator
+- Toggl: https://toggl.com/online-tools/time-card-calculator
+- OnTheClock: https://www.ontheclock.com/Free-Online-Time-Card-Calculator
+- HourTotal: https://hourtotal.com/
+- Toolbaro: https://toolbaro.com/en/time-card-calculator/
+- Jibble: https://www.jibble.io/best-software/time-card-calculators-with-lunch/
+- CountMyWorkHours: https://countmyworkhours.com/calculators
+- TimeMath.tools: https://timemath.tools/
+
+**Limitations:** Public web result pages were used as qualitative competitor evidence; no controlled US Google top-10 export, exact keyword-volume dataset, KD export, or InfoJano GSC query report was available. No app code, metadata, sitemap or existing hero changed.
