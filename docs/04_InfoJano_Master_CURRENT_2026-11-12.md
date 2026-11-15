@@ -2070,3 +2070,20 @@ The following are not all blockers to the Number to Words website release; they 
 
 ### Financial / project closeout
 - No contract, agreed rate, invoice, expense ledger or outstanding payment amount is recorded in this Read Hub snapshot. Do not calculate or invent a final amount. A financial closeout requires the agreed amount/rate and any paid/outstanding records from the user.
+
+---
+
+## 15 November 2026 — AdSense Readiness and SEO Cleanup handoff
+
+- User authorized work on privacy/publisher disclosure, custom-domain path migration, About/Contact/Terms, content quality, and reversible SEO landing-page deactivation.
+- Active branch: `audit/adsense-readiness-seo-cleanup-2026-11-15`; base main SHA `9b069a536b3b5f5ed4afac19f3de0257475c58ab`. Work is not merged or deployed.
+- Detailed card-by-card tracker: `docs/ADSENSE-SEO-READINESS-TRACKER-2026-11-15.md`.
+- Reversible SEO archive branch: `archive/seo-landing-pages-before-cleanup-2026-11-15`, created before edits from the exact base SHA. Restore manifest: `docs/SEO-LANDING-PAGE-RESTORE-MANIFEST-2026-11-15.md`.
+- Added `privacy-policy.html`, `about.html`, `contact.html`, `terms-of-use.html`, and shared `legal-links.js`. Contact uses the real public GitHub issue tracker; no unverified email/address was invented.
+- Updated identified production `/InfoJano/` references, install/header root handling, Service Worker and PWA manifests. Service Worker cache is v312. ID Card Print Studio workflow logic/design remains protected; only deployment path references were updated.
+- Temporarily set `noindex,follow` and removed from sitemaps: decimal-number-to-words, bulk-number-to-words, words-to-number-converter, ordinal-number-converter, million-billion-converter, lakh-crore-converter, number-to-words-uppercase, number-to-words-for-cheque, qr-choice. Original source preserved on archive branch; do not delete or rewrite.
+- Removed explicit keyword-list blocks from four BMI guides and added CDC/WHO source references and adult-only/screening caveats.
+- All three sitemap variants were source-checked at 103 unique URLs each and matched exactly; `robots.txt` points to the canonical sitemap; `ads.txt` publisher line is present.
+- Google-certified CMP integration was not found in source; AdSense Privacy & Messaging configuration remains an account-side blocker for personalized ads in EEA/UK/Switzerland.
+- Static source QA only. Browser/device QA, live HTTP verification, workflow, deployment, AdSense account status and Search Console URL inspection remain pending.
+- No merge or deployment. Create a draft PR and obtain user approval before merge.
