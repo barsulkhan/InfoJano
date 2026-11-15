@@ -73,3 +73,12 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 - The Recent Calculations section still displays “No recent calculations yet.” and contains no restored records.
 - Result: Clear History empty-state and persistence-after-refresh are visually confirmed. ET-010 marked PASS based on the two sequential user screenshots (empty state before refresh and still empty after refresh).
 - Remaining QA: five-entry cap runtime test; desktop visual QA; complete mobile responsive review; keyboard and screen-reader accessibility review.
+
+
+### 2026-11-15 — Five-entry cap, responsive CSS and accessibility source audit
+- ET-010 Clear History persistence: PASS (two user screenshots: empty state before refresh and still empty after refresh).
+- Five-entry cap: source review PASS, runtime NOT TESTED. `getTimeHistory()` uses `.slice(0,5)` and `recordTimeCalculation()` writes `history.slice(0,5)` after prepending the newest entry.
+- Responsive CSS: source review confirms media-query breakpoints at 480px, 760px, 850px and 1001px, plus `prefers-reduced-motion: reduce`. Full device/viewport sweep NOT TESTED.
+- Accessibility source audit: 9 inputs; all have labels (7 `<label for>` associations and 2 `aria-label`); all 14 buttons have explicit `type`; 10 aria-label attributes; 2 aria-live attributes; no duplicate IDs. Dedicated `:focus-visible` styling not found; native focus behavior not visually verified. Keyboard navigation and screen-reader tests NOT TESTED.
+- Desktop visual QA NOT TESTED: no interactive desktop browser session available. Do not report as passed.
+- No app source changes made during this audit. Remaining work requires actual browser interaction/desktop viewport and assistive technology.
