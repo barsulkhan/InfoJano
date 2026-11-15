@@ -478,3 +478,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Decision: REVISE / PROCEED WITH READ-ONLY EVIDENCE COLLECTION; NO PRODUCTION IMPLEMENTATION YET.
 - Next work must follow MASTER-RESEARCH-PLAN.md in dependency order, starting with remaining source-only data-flow inventory. Ask the publisher for legal identity/jurisdiction only when needed for policy finalization.
 - No production code, CMP/AdSense setting, DNS, PR merge, sitemap, deployment or protected hero/banner changed.
+
+### 2026-11-15 — First read-only data-flow inventory search batch
+- Started D-001 from the approved master research order after saving the complete plan.
+- Repository code search found additional concrete evidence in Countdown Studio (YouTube Data API v3 request), localStorage in Word Converter/BMI/site header/Age Calculator, QR sessionStorage handoff, QR Scanner camera permission, Currency Converter's open.er-api request and the Word Converter Worker source/config documentation.
+- Detailed source-discovery findings and next inspection pass saved in `MASTER-RESEARCH-PLAN.md` §13.
+- This is a partial discovery pass only. Full file-by-file source inspection and complete external-origin inventory remain OPEN; no compliance completion claimed.
+- No production source, DNS, CMP/AdSense settings, sitemap, PR merge, deployment or protected design changed.
