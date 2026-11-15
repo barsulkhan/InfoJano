@@ -435,6 +435,7 @@ function calculateDateDuration(){
   const days=Math.floor(totalSeconds/86400),hours=Math.floor((totalSeconds%86400)/3600);
   const minutes=Math.floor((totalSeconds%3600)/60),seconds=totalSeconds%60;
   out.innerHTML='Total duration: <strong>'+days+' days, '+hours+' hours, '+minutes+' minutes, '+seconds+' seconds</strong><div class="ij-time-result-grid"><div class="ij-time-result-stat"><span>Total days</span><strong>'+days+'</strong></div><div class="ij-time-result-stat"><span>Remaining time</span><strong>'+hours+'h '+minutes+'m '+seconds+'s</strong></div><div class="ij-time-result-stat"><span>Total hours</span><strong>'+(totalSeconds/3600).toFixed(2)+'</strong></div><div class="ij-time-result-stat"><span>Total minutes</span><strong>'+(totalSeconds/60).toFixed(2)+'</strong></div><div class="ij-time-result-stat"><span>Total seconds</span><strong>'+totalSeconds.toLocaleString()+'</strong></div></div>';
+  recordTimeCalculation('Date + Time Duration');
 }
 function calculateTime(){
   if(!document.getElementById('date-duration-fields').hidden){calculateDateDuration();return;}
