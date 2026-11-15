@@ -186,9 +186,9 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 | Consent revocation | Editor preview shows “Privacy and cookie settings”; live homepage browser Find showed 0/0 | NOT VERIFIED LIVE | Test on live site, ideally from EEA context |
 | ads.txt repository source | Root ads.txt has the Google DIRECT seller record and certification authority ID; robots.txt does not block it | SOURCE PASS | Verify live HTTP response and AdSense crawler status |
 | ads.txt live serving | Direct live fetch could not be completed; AdSense screenshot's “Not found” was low-confidence | UNVERIFIED | Inspect Site details and live URL; don't edit correct source without evidence |
-| Privacy Policy page | No privacy-policy.html in current main tree; work-hours-calculator.html links to /privacy-policy.html | SOURCE DEFECT CONFIRMED | Prepare accurate policy after publisher details are confirmed |
-| Privacy Policy data inventory | GA4; browser-local image/PDF tools; optional DOCX-to-Cloudflare-Worker-to-iLovePDF flow; localStorage use documented | PARTIAL INVENTORY | Finish full page-by-page third-party/library and production-config audit |
-| Public contact email | Not yet supplied/confirmed | BLOCKED | User to provide a public contact email or Contact-page screenshot |
+| Privacy Policy page | Draft exists on PR #236 branch and Contact page cross-links it; not merged or live-verified | DRAFT / NOT PUBLISHED | Finish source inventory and runtime verification; obtain approval before merge |
+| Privacy Policy data inventory | GA4, AdSense, CMP, browser-local tools/storage, iLoveAPI Worker, YouTube, ipapi, exchange APIs, Wikimedia and CDNs identified; provider references cross-checked | PARTIAL INVENTORY | Complete exhaustive source/runtime reconciliation and ad vendor list |
+| Public contact email | User supplied infojanowebsite@gmail.com; ownership/deliverability not independently tested | PROVIDED / NOT DELIVERABILITY-TESTED | Retain for contact/privacy requests; no further contact detail inferred |
 | Production changes | None made; no Publish changes pressed | PROTECTED | Obtain explicit approval before any code/settings/DNS/publish change |
 
 ### Decisions already made — do not redo
@@ -343,3 +343,12 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - No source on main, DNS, AdSense account, CMP settings, ads.txt or production deployment changed. PR #236 remains a draft and unmerged.
 - Pending: finish exhaustive remaining HTML/shared-script scan; confirm actual live feature/service configuration; run HTML validation; obtain real browser QA and live HTTP checks if access becomes available; then present final review and ask for explicit publication approval before merge.
 - Protected homepage/tool hero sections and all production settings preserved.
+
+
+### 2026-11-15 — Privacy Policy source validation and PR checkpoint
+- Updated privacy-policy.html on PR #236 branch with corrected iLoveAPI naming and terms link, provider-stated 48-hour maximum API file retention caveat, and YouTube Privacy Enhanced Mode description plus official help link. Updated ExchangeRate-API link to its terms/privacy information and Wikimedia policy link to the official English page.
+- Lightweight source structural validation: 183 HTML tags scanned; matching open/close tag stack with no mismatch or unclosed tags; no duplicate IDs; 21 href attributes detected. This is a simple structural scan, not a standards-complete HTML validator or browser test.
+- Current policy file commit: 44f790b9bc861b6c41e4d693dbe8c78b3fc1edab. Tracker log commit before this checkpoint: 150eef605135ed71226401eb9ff5e2c949b5d7ea.
+- PR #236 remains OPEN, DRAFT, UNMERGED. Latest commit checks endpoint returned total_count 0 (no check runs). A Cloudflare bot comment advertised a preview deployment for the earlier commit b00bf7f; this is a Worker preview, not proof that GitHub Pages website policy URL is live or deployed. Latest policy commit preview status has not been confirmed.
+- Mergeability was reported true on the latest PR fetch; do not interpret this as legal approval or CI pass.
+- Still pending: exhaustive inventory of remaining page scripts/assets, live browser/DevTools cookie/network/CMP test, live HTTP 200/body verification for ads.txt and policy page, full ad vendor disclosure, and user approval to publish. No settings, DNS, ads.txt or production changes made.
