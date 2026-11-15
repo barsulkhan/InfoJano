@@ -126,3 +126,14 @@ Overall status: In progress
 - Additional IAB Europe policy clarification reviewed (29 May 2026): TCF web UI must display standard explanation text alongside Features and feature illustrations; Special Feature 2 was renamed to “Identify devices based on information actively requested”. Source: https://iabeurope.eu/wp-content/uploads/TCF_V-CMP_comms_TCFpoliciesAmendmentsMulti-deviceConsentTCFUIimprovementsSpecialFeature2Clarification_290526_IABEurope.pdf
 - The user's first-layer two-choice configuration (Consent + Manage options) is a documented Google European-message layout; Google also documents a three-button layout. This alone is not evidence of a defect. However, the revocation/reopen state must expose Do not consent, Consent and Manage options. Do not enable/disable the first-layer reject option solely from assumption; verify legal/user experience and account's live behavior.
 - CMP ID 300 is explicitly listed as Google LLC CMP (Web and app), so no third-party CMP purchase or installation is indicated by current evidence.
+
+
+### 2026-11-15 — User screenshot: current AdSense Sites status
+- User supplied a fresh screenshot of AdSense > Sites > Manage your sites.
+- The row for infojano.com visibly shows **Approval status: Getting ready**. The status filter tabs include Ready, Getting ready, Requires review and Needs attention.
+- This is the current account UI evidence; it supersedes the earlier “status not yet rechecked” note.
+- Interpretation: site is not currently shown as Ready/approved, nor shown in Requires review or Needs attention. Do not infer rejection or a need to resubmit. User previously confirmed Request review was already submitted; do not ask them to submit again.
+- The screenshot's “Ads.txt status” appears to show “Not found” (low-resolution image; text is not sufficiently sharp to treat as definitive). Must recheck by opening the infojano.com row/details or a sharper screenshot before marking ads.txt live status. The “Last updated” field is also not reliably legible.
+- Next manual check: click the infojano.com row to open Site details and inspect any displayed review details / ads.txt explanation. Do not click Request review or change any settings.
+- Tests: current approval status — OBSERVED: Getting ready; detailed reason/status details — NOT VISIBLE / NOT VERIFIED; ads.txt status — POSSIBLY “Not found”, LOW-CONFIDENCE and pending confirmation.
+- No account setting, website source, DNS or production state changed.
