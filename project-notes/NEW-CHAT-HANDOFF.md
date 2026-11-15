@@ -300,3 +300,57 @@ Copy/paste prompt:
 - Account tasks: AdSense > Privacy & messaging > European regulations; publish Google CMP message; review three choices, vendor list, policy URL and consent mode; test EEA geo and CMP ID 300/TCF v2.4. No credentials in chat.
 - Domain tasks: compare registrar @ A/AAAA/ALIAS and www CNAME to GitHub Pages docs; verify GitHub Pages Settings custom domain and Enforce HTTPS; test live HTTPS and www redirect.
 - PR #233 remains draft and unmerged; no deployment.
+
+
+## NEW CHAT HANDOFF — AdSense site review screen reached (2026-11-15)
+**Resume from this exact point.** User expects the next chat to continue the remaining AdSense tasks from the latest screenshot, without losing earlier project work or repeating already completed repository checks.
+
+### Latest AdSense screenshot — current observed state
+User has moved past the previous “You're almost there / account wasn't approved” onboarding screen. The latest AdSense page for `infojano.com` shows:
+- Header/status: `Requires review`; main message: `Your site needs review`.
+- `Verify site ownership` section has a green check (ownership verification appears complete).
+- `Request review` section is expanded and displays a blue `Request review` button.
+- This screenshot does **not** show that the button has been clicked or that a review request was submitted. Do not say review is already in progress.
+- No exact rejection reason is visible on this screen.
+- The previous AdSense onboarding screen showed Payments “We've got your info” and Ads “Ads settings confirmed”; Sites “Connect your site to AdSense” was required and the user clicked “Let's go” to reach this page.
+- User's likely next action is to click `Request review`, but do not click/submit or claim submission on their behalf. Explain what the button does and ask for explicit confirmation if they want guidance before submitting. The user previously said they want to understand issues before review; now they have reached the actual site-review flow after resolving the onboarding access block. Be careful not to conflate the earlier checkbox-based resubmit with this current site review request.
+
+### Immediate next-chat task
+1. Start by acknowledging the exact current screen: ownership verified; site review request is available but not yet visibly submitted.
+2. Ask whether the user has clicked `Request review`. If not, explain that this is the actual site review action; submission asks Google to review `infojano.com` against AdSense Program Policies. It is not a CMP configuration action and does not reveal the rejection reason beforehand.
+3. If user chooses to submit, guide them to click it themselves and capture the confirmation/status screen. Do not operate their AdSense account or change settings without explicit authorization.
+4. After submission, check the new status and whether the account dashboard / Privacy & messaging becomes accessible. If available, configure/review European regulations message only with user approval.
+5. If review is not submitted yet and user wants a pre-review check, inspect the current active branch/PR #233 evidence and explain the known remaining checks. Do not make further website edits, merge or deploy without approval.
+6. Continue CMP/EEA work after review access: Privacy & messaging → European regulations; Google-certified CMP; IAB TCF v2.4; three choices (Consent / Do not consent / Manage options), privacy policy URL `https://infojano.com/privacy-policy.html`, provider/purpose list, publish and test EEA/UK/Swiss behavior. Account-side configuration remains not done.
+
+### GitHub Pages and domain checks now closed at settings level
+Latest user-provided GitHub Settings → Pages screenshot confirms:
+- Site live at `https://infojano.com/`.
+- Source: Deploy from a branch; branch `main`; folder `/(root)`.
+- Custom domain `infojano.com`.
+- GitHub status `DNS check successful`.
+- `Enforce HTTPS` visibly checked.
+Registrar screenshot previously showed four GitHub Pages A records (185.199.108.153 / .109.153 / .110.153 / .111.153), `www` CNAME `barsulkhan.github.io`, and Google verification TXT; TTL 30 min. Preserve all records. Apex host labels are truncated in the photo; no AAAA/CAA/MX/SPF/DKIM/DMARC/nameserver audit was established.
+- These screenshots establish GitHub Pages settings and registrar UI configuration, not independent multi-resolver DNS, www redirect, certificate-chain or live HTTP response verification.
+
+### AdSense account and CMP state
+- Earlier account view was blocked at `You're almost there` with checkbox `I confirm I've read and am meeting AdSense Program Policies` and `Resubmit`. User could not access other dashboard sections.
+- User then completed the onboarding flow to `Let's get you started`: Payments info received; Ads settings confirmed; Sites required. Clicking `Let's go` opened site detail page.
+- Current site detail: ownership green check; review request button available. Review request not confirmed submitted.
+- Privacy & Messaging remains unverified/inaccessible. A Help article screenshot showed generic Google instructions, not the actual account UI.
+- Do not imply a CMP is configured or published. Source-side AdSense tag integration in active branch does not prove a consent message is live.
+- No AdSense account settings were changed by the assistant.
+
+### Active repository work and guardrails (preserve)
+- Active branch: `audit/adsense-readiness-seo-cleanup-2026-11-15`.
+- Draft PR #233: https://github.com/barsulkhan/InfoJano/pull/233 — open, draft, unmerged. Main branch must remain untouched until user explicitly approves merge/deployment.
+- Audit details: `docs/ADSENSE-SEO-READINESS-TRACKER-2026-11-15.md`, `docs/SEO-LANDING-PAGE-RESTORE-MANIFEST-2026-11-15.md`, `docs/CUSTOM-DOMAIN-CMP-EEA-AUDIT-2026-11-15.md`.
+- Nine temporarily noindexed SEO pages remain preserved byte-for-byte on `archive/seo-landing-pages-before-cleanup-2026-11-15`; do not delete. Restore exact paths from restore manifest when user asks.
+- Legal pages created on active branch: `privacy-policy.html`, `about.html`, `contact.html`, `terms-of-use.html`; `legal-links.js`; service worker cache `infojano-v312`.
+- Protected ID Card Print Studio remains finalized and user-tested. Do not alter its layout, hero, card labels, crop behavior, document-processing logic or exports unless explicitly requested.
+- No PR merge, DNS change, AdSense setting change, or production publish performed by assistant.
+
+### Earlier work preservation
+- Read `project-notes/TOOL-WORK-TRACKING-STANDARD.md`, `project-notes/TOOL-RESEARCH-STANDARD.md`, and `project-notes/TOOL-INDEX.md` before continuing. This repo uses per-tool README/RESEARCH/QA-TEST-LOG and tracking conventions; append evidence with dates, statuses and next steps.
+- ID Card Print Studio finalized on 2026-11-15; live operation confirmed by user. Details and commit remain in earlier handoff sections.
+- Other ongoing tool QA notes (Work Hours browser/runtime, desktop visual QA etc.) remain in earlier handoff sections. Do not drop or overwrite them.
