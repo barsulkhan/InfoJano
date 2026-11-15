@@ -1,4 +1,4 @@
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — four-keyword SEO research saved; numeric metrics blocked by Ahrefs plan; existing calculator + guide architecture retained; browser/live verification and remaining calculator QA pending | 2026-11-15 | Obtain authorized keyword metrics/GSC data; run guide mobile/desktop browser QA and finish calculator desktop/accessibility QA |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — four-keyword research and follow-up competitor/content-gap review saved; numeric metrics blocked by Ahrefs plan; existing calculator + guide architecture retained; browser/live verification and remaining calculator QA pending | 2026-11-15 | Obtain authorized keyword metrics/GSC data; run guide mobile/desktop browser QA and finish calculator desktop/accessibility QA |
 
 Last updated: 2026-11-15
 
