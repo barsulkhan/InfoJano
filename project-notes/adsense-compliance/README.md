@@ -573,3 +573,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `7da8aa2b8c53`; task file `0cf6e175d26d`.
 - Next phase: consolidate page-to-GA4/AdSense/API/CDN/storage map, inspect nested dependencies, reconcile Privacy Policy. CMP/TCF live verification and account-side configuration remain pending.
 - No production, policy, account, DNS, merge or deployment changes.
+
+### 2026-11-15 — Nested resource and Worker audit batch 11
+- Inspected shared scripts, 5 CSS files, package/config JSON, a backup HTML and Worker source/docs. Confirmed optional Word Converter DOCX upload through Worker to iLoveAPI; BMI toolkit and Work Hours/Time/Percentage pages have browser-local histories; service worker uses Cache Storage. Shortlinks Worker is documented as an undeployed staging scaffold.
+- Task evidence: [2026-11-15-2329-nested-resource-worker-audit-batch-11.md](2026-11-15-2329-nested-resource-worker-audit-batch-11.md); master plan §25.
+- Commits: plan `b834fe09f99f`; task file `e8e4f4f78671`.
+- Next: inspect PWA manifests and remaining resource tree; consolidate data flows and reconcile Privacy Policy. Live Cloudflare/provider/network checks remain pending.
+- No production code/config/account/DNS/merge/deployment changes.
