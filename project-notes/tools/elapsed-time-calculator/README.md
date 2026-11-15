@@ -452,3 +452,14 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Clock-only: end earlier than start adds one day; equal start/end produces zero, not 24 hours. No timezone conversion/selector is present.
 - Date+time: JavaScript Date parses local date-time input and epoch milliseconds are subtracted; DST transition behavior may therefore depend on the browser's local timezone rules. No timezone selector or explicit DST explanation is present.
 - Source-level result only; equal-clock and DST runtime tests remain NOT RUN. This evidence is saved in RESEARCH.md section 14.7.
+
+
+### 2026-11-15 — Follow-up source QA recorded
+- Re-fetched all required handoff/standard/index/tracker/research/QA files and the current calculator, guide and sitemap source before testing.
+- Added SRC-001–SRC-016 to QA-TEST-LOG.md: canonical tags, sitemap entries, bidirectional links, guide H1/layout/JSON-LD/FAQ, overnight rule, break validation, five-item history read/write cap, reduced-motion rules, duplicate IDs, explicit button types, label heuristic and inline JavaScript syntax. All recorded source checks PASS; label coverage is only a source heuristic.
+- Formula-level arithmetic checks PASS for standard daytime, overnight seconds precision, break deduction and equal clock time. These are deterministic formula checks, not browser runtime tests.
+- Latest Pages workflow checked: run #2570 for handoff commit 824653a4458312cf60fa20acb579ed6487458a79 SUCCESS. This run predates the QA-log commit and is not evidence of browser QA.
+- No app code changed. Mobile/desktop rendering, runtime history cap, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime tests remain NOT RUN because no interactive browser/computer-control session is available.
+- Initial history-cap assertion had an overly narrow regex and false-failed; direct function inspection and corrected assertions confirmed getter and writer both use `.slice(0,5)`. No product bug identified.
+- Detailed test evidence: [QA-TEST-LOG.md](QA-TEST-LOG.md), Follow-up source QA section.
+- Protected homepage/calculator/ID-card heroes unchanged.
