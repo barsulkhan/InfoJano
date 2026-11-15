@@ -94,3 +94,5 @@ Last updated: 2026-11-15
 ### 2026-11-15 — Date offset page deployed
 - Pages workflow #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`. Direct live browser rendering could not be independently fetched; interaction QA remains pending.
 - APK workflow #685 passed repository validation and continued building; the previously published release has 23 APK assets.
+
+| Clean URL Migration | clean-urls/ | In progress — GitHub Pages/Jekyll route audit complete; pilot on feature branch adds `/image-resizer/` and legacy `.html` refresh redirect; build/live QA pending | 2026-11-15 | Validate pilot build and redirects, then migrate all public HTML pages and sitemap/internal links |
