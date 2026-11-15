@@ -133,3 +133,8 @@ Copy/paste prompt:
 ## Current status correction — 2026-11-15
 - The earlier QA continuation entry above listed the five-entry history cap as pending. That item has since been completed: ET-011 is runtime PASS, verified from sequential user screenshots showing six distinct calculations and only the newest five retained.
 - Do not ask the user to repeat ET-011. Remaining QA: desktop visual, broader responsive viewport/overflow, keyboard/focus, screen-reader, copy/share end-to-end delivery and DST boundary runtime.
+
+
+## QA status clarification — 2026-11-15
+- User confirms copy/share and screen-reader testing have already been completed; these are not pending. Treat as user-confirmed completion and do not request repeat tests.
+- The remaining explicit task is desktop browser visual QA. Do not report it passed until a desktop screenshot/session is reviewed.
