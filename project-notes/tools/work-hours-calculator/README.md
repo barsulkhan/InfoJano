@@ -64,3 +64,15 @@ Overall status: In progress — standalone page committed; source syntax/structu
 ### 2026-11-15 — GitHub Pages workflow verification
 - Latest Pages workflow run #2550 for commit `f44e679ad5e8e0746061ea98c81b017605229485` completed with conclusion `success`; this commit includes the work-hours page, homepage directory link and sitemap update.
 - Direct live URL/rendered-page verification remains pending because the available live-page inspection returned inaccessible. Functional and browser QA remain NOT RUN.
+
+### 2026-11-15 — Expanded US time/pay SERP and adjacent intent research
+- User asked to research as many related opportunities together as practical.
+- Re-fetched the Work Hours tracker/research and inspected current work-hours-calculator.html source alongside elapsed/date/business-day pages.
+- Expanded competitor review: Toggl, QuickBooks, ClockSlate, Ordio, HourPeak, TimeMath.tools and HiveDesk. Their feature expectations include weekly/biweekly periods, 12/24-hour entry, breaks, multiple punch pairs, daily/weekly totals, decimal hours, exports/print and optional pay/overtime.
+- Current InfoJano page has multi-shift rows, unpaid breaks, overnight, daily/weekly totals, decimal output, configurable daily threshold, simple earnings estimate, CSV and opt-in local save. It does not currently establish a biweekly selector, independent weekly overtime subtotals, multi-punch pairs/day, print/PDF or maintained state overtime rules.
+- Decision unchanged: GO for one Work Hours page; NO-GO for separate Time Card/Timesheet URLs. New candidates held for metrics: Business Hours, Decimal Hours Converter, Military Time Converter; Clock-Out should first be evaluated as a mode. Overtime legal engine remains out of scope.
+- US DOL primary guidance was reviewed: covered nonexempt overtime is generally 1.5× after 40 hours in a fixed workweek; exemptions and state rules apply, and hours cannot be averaged across two workweeks. Do not market the current daily threshold or simple earnings estimate as legal overtime/payroll calculation.
+- Exact US search volume/trend/KD/CPC/traffic potential remain N/A; no usable keyword-provider or GSC export.
+- Detailed evidence: project-notes/tools/work-hours-calculator/RESEARCH.md §5 and elapsed-time research §18. Research commit db09fcf5a14ac221ae1d55c2d1a5617d444f028f.
+- No application code, URL, metadata, sitemap or hero changed. Functional/browser QA and deployment verification remain pending.
+- Next: finish WH-001–WH-009 QA, then decide whether a Business Hours or conversion micro-tool merits quantitative research/build.
