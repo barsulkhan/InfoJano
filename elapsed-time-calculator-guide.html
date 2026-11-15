@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>How to Calculate Elapsed Time Between Two Times | InfoJano</title>
+<meta name="description" content="Learn how to calculate elapsed time between two times with simple formulas and examples. Understand overnight time, breaks, decimal hours and date-time duration.">
+<link rel="canonical" href="https://infojano.com/elapsed-time-calculator-guide.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Calculate Elapsed Time Between Two Times | InfoJano">
+<meta property="og:description" content="A practical guide to time difference, overnight calculations, break deductions and decimal hours, with worked examples.">
+<meta property="og:url" content="https://infojano.com/elapsed-time-calculator-guide.html">
+<meta property="og:image" content="https://infojano.com/infojano-logo.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Calculate Elapsed Time Between Two Times | InfoJano">
+<meta name="twitter:description" content="Learn the elapsed time formula and calculate time between two clock times, including overnight intervals.">
+<link rel="icon" type="image/svg+xml" href="/infojano-mark.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://infojano.com/elapsed-time-calculator-guide.html#webpage","url":"https://infojano.com/elapsed-time-calculator-guide.html","name":"How to Calculate Elapsed Time Between Two Times","description":"A practical guide to calculating elapsed time, overnight intervals, break deductions and decimal hours.","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://infojano.com/","name":"InfoJano"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infojano.com/"},{"@type":"ListItem","position":2,"name":"Elapsed Time Calculator","item":"https://infojano.com/time-calculator.html"},{"@type":"ListItem","position":3,"name":"Elapsed Time Guide","item":"https://infojano.com/elapsed-time-calculator-guide.html"}]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I calculate elapsed time between two times?","acceptedAnswer":{"@type":"Answer","text":"Convert both times to minutes or seconds after midnight, subtract the start from the end, and add one full day when the interval crosses midnight."}},
+{"@type":"Question","name":"How do I calculate time across midnight?","acceptedAnswer":{"@type":"Answer","text":"When the end clock time is earlier than the start and the event continues into the next day, add 24 hours (1,440 minutes or 86,400 seconds) before subtracting."}},
+{"@type":"Question","name":"How do I subtract an unpaid break?","acceptedAnswer":{"@type":"Answer","text":"Calculate the gross elapsed duration first, convert it to minutes, subtract the unpaid break minutes, and convert the remaining minutes back to hours and minutes."}},
+{"@type":"Question","name":"What is 8 hours and 30 minutes in decimal hours?","acceptedAnswer":{"@type":"Answer","text":"8 hours and 30 minutes equals 8.5 decimal hours because 30 minutes divided by 60 is 0.5 hour."}},
+{"@type":"Question","name":"Can I calculate a duration longer than 24 hours?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use start and end dates as well as times. A clock-only calculation cannot distinguish a zero-length interval from a full 24-hour interval when the two clock readings are identical."}}
+]}
+]}
+</script>
+<style>
+*{box-sizing:border-box}
+:root{--ink:#10264c;--muted:#5c6f89;--line:#dce8f6;--blue:#0876e8;--pale:#f4f9ff}
+body{margin:0;background:linear-gradient(180deg,#f4f9ff 0%,#fff 62%,#f7faff 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.65}
+a{color:#075fc4}
+.sitebar{background:rgba(255,255,255,.97);border-bottom:1px solid #e5effa;padding:12px 16px}
+.sitebar-inner{max-width:1360px;margin:auto;display:flex;align-items:center;gap:12px}
+.brandmark{width:42px;height:42px;flex:0 0 42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#22c7ed,#0877e8 60%,#164bd2);color:#fff;font-weight:900;font-size:20px;box-shadow:0 7px 17px #087ee833}
+.brand{font-size:22px;font-weight:850;letter-spacing:-.8px;color:#101d42;line-height:1}.brand span{color:#e63d55}
+.brandtag{font-size:11px;color:#64748b;margin-top:4px}
+.home-link{margin-left:auto;padding:8px 13px;border:1px solid #c9e2f8;border-radius:12px;background:#f4faff;color:#145a9d;text-decoration:none;font-size:12px;font-weight:800}
+.page{width:min(100%,1360px);margin:0 auto;padding:0 8px 48px}
+.breadcrumb{font-size:12px;color:#657b98;margin:13px 2px 8px}.breadcrumb a{text-decoration:none}
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(135px,.78fr) minmax(0,2fr) minmax(135px,.78fr);align-items:center;gap:8px;background:radial-gradient(ellipse at 50% 5%,#fff 0%,#f5fbff 54%,#e7f5ff 100%);color:#102b59;border:1px solid #d9edff;border-radius:26px;padding:25px 18px;box-shadow:0 12px 35px rgba(26,110,190,.09);margin:4px 0 22px}
+.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border-radius:50%;background:#bfeaff;filter:blur(38px);opacity:.42;width:190px;height:130px}.hero:before{left:-90px;top:-65px}.hero:after{right:-90px;bottom:-75px}
+.hero-content{position:relative;z-index:1;min-width:0;text-align:center}
+.hero h1{font-size:clamp(27px,3.5vw,42px);line-height:1.08;letter-spacing:-1.3px;color:#102d63;margin:0 0 10px;font-weight:850}
+.hero h1 span{background:linear-gradient(90deg,#0757df,#18c9ec);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.hero p{color:#526784;font-size:15px;line-height:1.5;margin:0 auto;max-width:700px}
+.hero-art{position:relative;z-index:1;min-width:0;animation:ijHeroFloat 5.5s ease-in-out infinite}.hero-art-right{animation-delay:1.3s}
+.hero-art img{display:block;width:100%;max-width:230px;margin:auto;height:auto;filter:drop-shadow(0 12px 14px rgba(21,100,180,.12))}
+.hero-benefits{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:16px}
+.hero-benefits span{background:rgba(255,255,255,.86);border:1px solid #e2efff;border-radius:999px;padding:8px 10px;color:#18365f;font-size:11px;box-shadow:0 4px 12px rgba(28,90,160,.06)}
+.cta{display:inline-flex;align-items:center;justify-content:center;margin-top:17px;padding:12px 20px;border-radius:999px;background:linear-gradient(110deg,#18c9ec,#0757df);color:#fff;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 8px 18px #0876e833}
+.content{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:20px;align-items:start}
+.article,.toc,.cta-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.article{padding:clamp(20px,3vw,32px);min-width:0}
+.article h2{font-size:clamp(21px,2.4vw,28px);line-height:1.25;color:#142b55;margin:32px 0 10px}
+.article h2:first-child{margin-top:0}
+.article h3{font-size:17px;color:#1d477a;margin:20px 0 7px}
+.article p{margin:12px 0;color:#405672}
+.article li{margin:7px 0;color:#405672}
+.article a{font-weight:700}
+.toc{padding:18px;position:sticky;top:16px}
+.toc strong{display:block;margin-bottom:9px;color:#17345f}
+.toc a{display:block;padding:6px 0;color:#45617f;text-decoration:none;font-size:13px;border-bottom:1px solid #edf2f8}
+.toc a:last-child{border:0}
+.formula{margin:16px 0;padding:16px;border:1px solid #d8e9fb;border-radius:14px;background:#f4f9ff;color:#164276;font-weight:750;overflow-wrap:anywhere}
+.example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.example{padding:15px;border:1px solid #e0eaf6;border-radius:14px;background:#f9fbff}
+.example b{display:block;color:#164276;margin-bottom:6px}
+.example p{margin:0;font-size:14px}
+.table-wrap{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;min-width:460px;font-size:14px}
+th,td{text-align:left;padding:11px;border-bottom:1px solid #e5edf7}
+th{background:#f3f8ff;color:#244b78}
+.faq details{border-top:1px solid #e3ebf5;padding:13px 0}
+.faq summary{cursor:pointer;font-weight:800;color:#1d477a}
+.faq details p{margin:9px 0 0}
+.cta-card{padding:18px;margin-top:16px}
+.cta-card h2{margin:0 0 8px;font-size:18px;color:#17345f}
+.cta-card p{font-size:13px;color:#5c6f89;margin:0 0 12px}
+.cta-card a{display:block;text-align:center;padding:10px 12px;border-radius:11px;background:#0876e8;color:#fff;text-decoration:none;font-size:13px;font-weight:800}
+.footer{text-align:center;padding:20px;color:#65748a;font-size:12px}
+@keyframes ijHeroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media(max-width:760px){.hero{grid-template-columns:1fr 1fr;gap:0 8px;padding:18px 12px;border-radius:22px}.hero-content{grid-column:1/-1;grid-row:1}.hero-art{grid-row:2;margin:7px auto 0;width:100%;max-width:155px}.hero h1{font-size:clamp(27px,7vw,34px)}.hero p{font-size:14px}.hero-benefits{gap:5px}.hero-benefits span{font-size:10px;padding:7px 9px}.content{grid-template-columns:1fr}.toc{position:static;order:-1}.example-grid{grid-template-columns:1fr}}
+@media(max-width:390px){.hero-art{max-width:135px}.hero-benefits span{font-size:9px;padding:6px 7px}.brandtag{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.hero-art{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="sitebar"><div class="sitebar-inner"><a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none"><span class="brandmark">▣</span><span><span class="brand">Info<span>Jano</span></span><span class="brandtag">Smart Online Tools for Everyday Life</span></span></a><a class="home-link" href="/">← Back to Home</a></div></header>
+<div class="page">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/time-calculator.html">Elapsed Time Calculator</a> › How to Calculate Elapsed Time</nav>
+<section class="hero" aria-labelledby="guide-title">
+<div class="hero-art hero-art-left" aria-hidden="true"><img src="/assets/hero-left.svg" alt="" width="320" height="320" loading="eager" decoding="async"></div>
+<div class="hero-content"><h1 id="guide-title">How to Calculate <span>Elapsed Time</span></h1><p>Learn the time-difference formula with clear examples for everyday intervals, overnight times, unpaid breaks and longer date-and-time spans.</p><div class="hero-benefits"><span>✓ Step-by-step examples</span><span>✓ Overnight calculations</span><span>✓ Hours, minutes & seconds</span></div><a class="cta" href="/time-calculator.html">Open Free Elapsed Time Calculator →</a></div>
+<div class="hero-art hero-art-right" aria-hidden="true"><img src="/assets/hero-right.svg" alt="" width="320" height="320" loading="eager" decoding="async"></div>
+</section>
+<div class="content">
+<article class="article">
+<p><strong>Elapsed time</strong> is the amount of time that passes between a starting moment and an ending moment. To calculate it, subtract the start time from the end time. If the interval continues past midnight, account for the next day before subtracting.</p>
+<h2 id="basic-method">How to calculate time between two times</h2>
+<ol><li>Write both clock readings in 24-hour format.</li><li>Convert each time to minutes after midnight: hours × 60 + minutes.</li><li>Subtract the start total from the end total.</li><li>If the event ends on the next day, add 1,440 minutes to the end total before subtracting.</li><li>Convert the result into hours and remaining minutes. If seconds matter, use seconds throughout.</li></ol>
+<div class="formula">Elapsed minutes = End minutes − Start minutes<br>For an overnight interval: Elapsed minutes = End minutes + 1,440 − Start minutes</div>
+<div class="example-grid"><div class="example"><b>Example 1: 9:15 AM to 5:45 PM</b><p>09:15 = 555 minutes; 17:45 = 1,065 minutes. Difference: 1,065 − 555 = 510 minutes = <strong>8 hours 30 minutes</strong>.</p></div><div class="example"><b>Example 2: 10:00 PM to 6:00 AM</b><p>22:00 = 1,320 minutes; 06:00 = 360 minutes. Overnight: 360 + 1,440 − 1,320 = 480 minutes = <strong>8 hours</strong>.</p></div></div>
+<h2 id="overnight">How to calculate elapsed time across midnight</h2>
+<p>When an event starts late at night and ends after midnight, the end clock reading is smaller even though the end moment is later. Treat the end as belonging to the following day. For example, 11:30 PM to 2:15 AM is 2 hours 45 minutes, not a negative duration.</p>
+<p>This clock-only rule assumes the interval crosses midnight when the end time is earlier than the start time. If the times are equal, the result is treated as zero in a clock-only calculation. To represent a full 24 hours or a longer period, enter the actual dates in a date-and-time calculator.</p>
+<h2 id="breaks">How to subtract a break from elapsed time</h2>
+<p>First calculate the gross interval. Convert that duration to minutes, subtract the unpaid break minutes, and convert the remaining minutes back to hours and minutes.</p>
+<div class="formula">Net time = Gross elapsed minutes − Unpaid break minutes</div>
+<p>Example: 9:00 AM to 5:30 PM is 510 minutes (8 hours 30 minutes). Subtract a 30-minute unpaid break: 510 − 30 = 480 minutes, or <strong>8 net hours</strong>. Only subtract a break when it should be excluded from the duration you are measuring.</p>
+<h2 id="decimal">How to convert hours and minutes to decimal hours</h2>
+<p>Divide the minutes by 60, then add that fraction to the whole hours. Decimal hours are useful for spreadsheets and time records, but the digits after the decimal are a fraction of an hour—not extra minutes.</p>
+<div class="formula">Decimal hours = Hours + (Minutes ÷ 60)</div>
+<div class="table-wrap"><table><thead><tr><th>Duration</th><th>Decimal hours</th><th>Calculation</th></tr></thead><tbody><tr><td>1 hour 15 minutes</td><td>1.25</td><td>1 + 15 ÷ 60</td></tr><tr><td>2 hours 30 minutes</td><td>2.50</td><td>2 + 30 ÷ 60</td></tr><tr><td>7 hours 45 minutes</td><td>7.75</td><td>7 + 45 ÷ 60</td></tr><tr><td>8 hours 30 minutes</td><td>8.50</td><td>8 + 30 ÷ 60</td></tr></tbody></table></div>
+<p>For example, 8 hours 30 minutes is 8.5 decimal hours—not 8.30.</p>
+<h2 id="more-modes">When to use date and time or add/subtract mode</h2>
+<p>A pair of clock times is suitable for a same-day or overnight interval. If the period spans multiple calendar days, use actual start and end dates as well as times. If you know a starting clock time and want to find a later or earlier clock reading after a duration, use an add/subtract time calculation instead.</p>
+<ul><li><strong>Time Difference:</strong> measure the interval between two clock times, including overnight rollover and optional break deduction.</li><li><strong>Add / Subtract Time:</strong> add or subtract hours, minutes and seconds from a starting clock time.</li><li><strong>Date + Time:</strong> calculate a duration using both start and end dates and times, including periods longer than 24 hours.</li></ul>
+<h2 id="use-cases">Common uses for an elapsed time calculator</h2>
+<p>People use elapsed-time calculations to measure study sessions, exercise, travel, appointments, event durations, machine run time and work intervals. For payroll or attendance, follow the applicable employer rules for rounding, breaks and paid time; a general time calculator does not determine legal pay entitlements.</p>
+<h2 id="faq">Frequently asked questions</h2>
+<div class="faq">
+<details><summary>How do I calculate the time between two times?</summary><p>Convert both times to minutes after midnight and subtract the start from the end. If the interval crosses midnight, add 1,440 minutes to the end first.</p></details>
+<details><summary>How do I calculate time from 9 AM to 5 PM?</summary><p>5:00 PM is 17:00 in 24-hour time. 17:00 − 09:00 = 8 hours.</p></details>
+<details><summary>How do I calculate an overnight time difference?</summary><p>When the event continues into the next day, add 24 hours to the end time before subtracting. For example, 10:00 PM to 6:00 AM is 8 hours.</p></details>
+<details><summary>How do I subtract a 30-minute break?</summary><p>Calculate the full interval in minutes, subtract 30, then convert the remaining minutes into hours and minutes.</p></details>
+<details><summary>Is 8 hours 30 minutes the same as 8.30 hours?</summary><p>No. It is 8.5 decimal hours because 30 ÷ 60 = 0.5. The value 8.30 decimal hours is 8 hours and 18 minutes.</p></details>
+<details><summary>Can I calculate time across multiple dates?</summary><p>Yes. Enter both dates and clock times in the Date + Time mode of the calculator. Clock-only inputs are intended for intervals up to one day.</p></details>
+<details><summary>Does the calculator decide paid hours or overtime?</summary><p>No. It calculates time durations and optional break deductions. Employer policies and local rules determine paid time, rounding and overtime.</p></details>
+</div>
+<p>Ready to calculate? <a href="/time-calculator.html">Use the free InfoJano Elapsed Time Calculator</a> to enter your own start and end times and view the result in hours, minutes, seconds and decimal hours.</p>
+</article>
+<aside><nav class="toc" aria-label="On this page"><strong>On this page</strong><a href="#basic-method">Basic calculation method</a><a href="#overnight">Overnight time</a><a href="#breaks">Break deduction</a><a href="#decimal">Decimal hours</a><a href="#more-modes">Calculator modes</a><a href="#use-cases">Common uses</a><a href="#faq">FAQs</a></nav><div class="cta-card"><h2>Calculate your time now</h2><p>Use three calculation modes for time differences, adding or subtracting time, and date-time durations.</p><a href="/time-calculator.html">Open Time Calculator</a></div></aside>
+</div>
+</div>
+<footer class="footer">© InfoJano · <a href="/">Home</a> · <a href="/time-calculator.html">Elapsed Time Calculator</a></footer>
+</body>
+</html>
