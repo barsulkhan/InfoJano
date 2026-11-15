@@ -209,3 +209,8 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 ## 15 Nov 2026 — Follow-up functional audit note
 - The Words to Number page was found to contain a forward number-to-words converter instead of reverse parsing. PR #210 replaces it with an English words-to-digits parser; nine source-level examples passed. This remains unmerged and is not live.
 - PR #210 also removes duplicate Bengali/Hindi hreflang entries and adds localized WebApplication JSON-LD. No indexing state changed; all 15 dedicated SEO pages remain pending submission, and the main converter remains submitted/pending verification.
+
+### 15 Nov follow-up — PR #210 scope clarification
+- PR #210 now covers six Number to Words feature-cluster files, including the reverse words-to-number parser, Bengali/Hindi hreflang and localized WebApplication schema, plus the mobile chip layout and v309 locale precache.
+- The reverse parser received a source correction for standalone minor currency phrases (e.g. `fifty paise` → `0.50`) and rejects minor-unit groups above 99.
+- PR #210 is still open/unmerged; no indexing or live deployment status changes as a result.
