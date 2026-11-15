@@ -639,3 +639,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Full proposal and seven publication gates: [2026-11-15-2342-proposed-privacy-policy-revision-draft.md](2026-11-15-2342-proposed-privacy-policy-revision-draft.md).
 - Task file commit: `cf444e1244c3d9b333082b71aa679680989b6640`.
 - `privacy-policy.html` remains unchanged. No CMP/AdSense settings, Worker, DNS, merge or deployment changes. PR #236 remains open/draft/unmerged at last check.
+
+
+### 2026-11-15 — Publisher identity confirmed; policy operator details added
+- User confirmed operator name Abdul Barik, location West Bengal, India, and that `infojanowebsite@gmail.com` is their email address.
+- Added a concise operator/contact disclosure to `privacy-policy.html` on the review branch. Wording identifies an individual operator and does not claim a registered company.
+- Policy commit: `641ff424df0103f020060c844d99afa4a86bda39`.
+- Timestamped task record: [2026-11-15-2350-privacy-policy-operator-details.md](2026-11-15-2350-privacy-policy-operator-details.md); task file commit: `97f6cb5badfaf5aeb08c74d868507ca4f73442e1`.
+- Production is unchanged; PR #236 remains draft/unmerged. Live CMP/TCF, AdSense vendor/crawler, runtime, Worker and QA checks remain open.
