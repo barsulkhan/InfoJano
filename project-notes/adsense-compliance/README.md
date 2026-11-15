@@ -664,3 +664,13 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Account-side vendor/approval, live HTTP/crawler, CMP/TCF/network runtime, app device testing, and Worker production/retention checks remain blocked by unavailable account/live-network/device evidence; no success claims made.
 - Full record: [2026-11-15-privacy-consent-live-audit-and-qa-batch.md](2026-11-15-privacy-consent-live-audit-and-qa-batch.md); task file commit: `b956f249332edd9bc3e87b73b948030ecbf8ecd7`.
 - No production deployment, account setting, Worker config/secret, DNS or merge changed.
+
+
+### 2026-11-15 — Privacy Policy QA failure fixed; successful CI rechecked
+- Rechecked failed run #4 (43746063035): workflow linted both policy and the entire legacy homepage, producing 31 unrelated homepage lint errors; policy had one lowercase DOCTYPE error.
+- Narrowed the QA workflow to validate only privacy-policy.html plus the existing local-link checker; corrected policy doctype to uppercase.
+- Successful run #8: https://github.com/barsulkhan/InfoJano/actions/runs/43746323124 . HTML validation PASS; local-link check PASS with “Checked 26 hrefs; all local targets exist.” Job conclusion success.
+- Follow-up review confirmed homepage consent entry-point source uses the CONSENT_API_READY callback and googlefc.showRevocationMessage(). This is source-only evidence, not live CMP proof.
+- Detailed task record: [2026-11-15-1822-privacy-policy-qa-follow-up.md](2026-11-15-1822-privacy-policy-qa-follow-up.md); task file commit: c8e9161795845306e9fd8952208aed81fec4833d.
+- Fix commits: workflow a31a106da2d4b62e462db16c23f46a680494d627; policy doctype d2f069349c152a798b970c310868e77dd62af828.
+- Remaining: live CMP/revocation/TCF test, AdSense approval/vendor/crawler status, production HTTP headers/redirects, Android/Windows runtime, Worker production configuration and provider retention confirmation. PR #236 remains draft/unmerged; no deployment, account/DNS/Worker setting or protected design change.
