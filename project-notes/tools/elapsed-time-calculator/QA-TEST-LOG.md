@@ -42,7 +42,7 @@ QA type: User-performed manual mobile browser testing; evidence supplied as scre
 
 ## Next test
 
-ET-010: Clear History — use the Clear history control and confirm that the recent-calculation list is cleared, with a suitable empty state. Then refresh and confirm the list remains empty.
+ET-011 (completed below): create six distinct calculations and verify that Recent Calculations retains only the newest five. Current remaining checks are desktop/responsive visual QA, keyboard/focus, screen-reader, copy/share end-to-end delivery and DST boundary runtime.
 
 
 ### 2026-11-15 — Source review of Clear History and history cap
@@ -161,7 +161,7 @@ When a real browser is available, perform the five-entry history test (create si
 - Workflow lookup for documentation commit 6afaeed98338a36db4bfbacbcc94653299a36f74 returned no associated PR-triggered workflow runs; this endpoint does not verify the Pages workflow. Do not claim deployment status for that commit based on this lookup.
 - New tests this session: no additional browser/runtime tests executed. Five-entry history cap runtime, desktop visual QA, full responsive viewport sweep, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime remain NOT RUN.
 - Hero instruction: user explicitly said not to revise the existing guide hero now. Future separately justified SEO pages must match the calculator tool hero, not the homepage hero; this requirement is recorded in README and handoff. Existing guide remains unchanged.
-- Next concrete manual test: on the live calculator, create six distinct calculations, then inspect Recent Calculations. Expected: only the newest five remain. Capture a screenshot showing the five entries and share it so the runtime cap can be verified. After that, continue desktop visual and keyboard/focus checks.
+- Next concrete QA work: desktop/responsive visual review and keyboard/focus checks when an interactive desktop browser is available; also screen-reader, copy/share delivery and DST boundary runtime.
 - Protected areas: no application source or hero/banner files changed.
 
 
