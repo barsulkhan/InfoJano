@@ -214,3 +214,13 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 - PR #210 now covers six Number to Words feature-cluster files, including the reverse words-to-number parser, Bengali/Hindi hreflang and localized WebApplication schema, plus the mobile chip layout and v309 locale precache.
 - The reverse parser received a source correction for standalone minor currency phrases (e.g. `fifty paise` → `0.50`) and rejects minor-unit groups above 99.
 - PR #210 is still open/unmerged; no indexing or live deployment status changes as a result.
+
+
+## 15 Nov 2026 — Reversible SEO landing-page deactivation
+- As part of the user-approved AdSense/SEO cleanup, nine low-content/overlapping pages were changed to `noindex,follow` and removed from the active sitemap variants: decimal-number-to-words, bulk-number-to-words, words-to-number-converter, ordinal-number-converter, million-billion-converter, lakh-crore-converter, number-to-words-uppercase, number-to-words-for-cheque, and qr-choice.
+- This does not mean Google has already removed these URLs from its index. Google must recrawl and process the noindex directive.
+- Historical Indexed/Pending/Submitted entries above are intentionally preserved unchanged as historical evidence. For the eight Number to Words pages, the old Pending state remains historical; current action state is Temporarily noindex / not eligible for an indexing request until reactivated.
+- All nine original full HTML files are preserved exactly on branch `archive/seo-landing-pages-before-cleanup-2026-11-15`, created from pre-cleanup main commit `9b069a536b3b5f5ed4afac19f3de0257475c58ab`.
+- Restore manifest: `docs/SEO-LANDING-PAGE-RESTORE-MANIFEST-2026-11-15.md`. Do not delete or rewrite archived originals.
+- Retained Number to Words pages: main converter, Indian, International, Rupees, Dollars, Cheque Amount, Bengali and Hindi pages.
+- Current sitemap will also include About, Contact, Privacy Policy and Terms of Use pages. Reconcile counts and URLs from the latest source before any Search Console batch.

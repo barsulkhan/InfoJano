@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/gst-calculator.html",
+  "id": "../gst-calculator.html",
   "name": "InfoJano — GST Calculator",
   "short_name": "GST Calculator",
   "description": "Install the InfoJano GST Calculator tool for quick access.",
-  "start_url": "/InfoJano/gst-calculator.html",
-  "scope": "/InfoJano/",
+  "start_url": "../gst-calculator.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/gst-calculator.svg",
+      "src": "../app-icons/gst-calculator.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

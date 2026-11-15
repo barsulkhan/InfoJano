@@ -68,6 +68,16 @@
   @media(max-width:600px){.ij-unified-currency-hero{width:100%!important;min-height:0!important;height:auto!important;margin:12px 0 22px!important;padding:24px 18px!important;border-radius:22px!important}.ij-unified-currency-title{font-size:clamp(29px,8vw,38px)!important;letter-spacing:-.8px!important;line-height:1.12!important}}
   @media(max-width:600px){.ij-unified-currency-hero.emi-hero{min-height:220px!important;aspect-ratio:auto!important;padding:20px 17px!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy{width:62%!important;margin-left:3%!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy h1{font-size:clamp(30px,8vw,40px)!important}}
   @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}`;
+  function ensureAdSenseTag(){
+    const selector='script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]';
+    if(document.querySelector(selector))return;
+    const script=document.createElement("script");
+    script.async=true;
+    script.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2908196513377151";
+    script.crossOrigin="anonymous";
+    script.setAttribute("data-ij-adsense","1");
+    (document.head||document.documentElement).insertBefore(script,(document.head||document.documentElement).firstChild);
+  }
   function mount(){
     const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-reference-hero,.ij-id-hero,.idg-hero');
     heroes.forEach((hero)=>{
@@ -105,6 +115,7 @@
         </nav>
       </div>`;
     document.body.insertBefore(header,document.body.firstChild);
+    if(!document.querySelector('script[data-ij-legal-links]')){const legal=document.createElement('script');legal.src=ROOT+'legal-links.js';legal.defer=true;legal.setAttribute('data-ij-legal-links','1');document.head.appendChild(legal);}
     const languageSelect=header.querySelector('.ij-global-language');
     const supported=['en','hi','bn'];
     let saved='en';try{saved=localStorage.getItem('infojano-language')||'en'}catch(e){}
@@ -119,5 +130,6 @@
       location.href=url.pathname+url.search+url.hash;
     });
   }
+  ensureAdSenseTag();
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
