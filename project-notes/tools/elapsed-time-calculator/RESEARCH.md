@@ -621,3 +621,81 @@ Do not create any of these URLs until US SERP separation, verified keyword deman
 - Keito: https://keito.ai/tools/time-duration-calculator/
 
 **Research status:** qualitative intent/SERP review complete for this decision; quantitative US metrics and controlled US SERP overlap export remain unavailable. No app code, metadata, sitemap, URLs or hero artwork changed.
+
+## 18. Expanded US time/date utility opportunity audit (2026-11-15)
+
+**Scope:** Public US-intent SERP/competitor review plus source audit of existing InfoJano pages. Qualitative only; no controlled US top-10 export or verified GKP/Ahrefs/GSC metrics. Exact volume, trend, KD, CPC and traffic potential for newly screened clusters remain N/A. US is primary; UK, India, Canada, Australia and Bangladesh are secondary screens only.
+
+### 18.1 Existing repository coverage (source inspected)
+
+| Existing page | Actual scope found | Implication |
+|---|---|---|
+| `/time-calculator.html` | Clock difference, add/subtract, Date + Time duration, break deduction, decimal output, history/copy/share. Date+Time uses device-local datetime inputs and JS Date milliseconds. | No generic elapsed/date-time duplicate. |
+| `/elapsed-time-calculator-guide.html` | How-to guide for clock intervals, overnight, breaks, decimal hours and date-time mode. | Keep as informational companion. |
+| `/work-hours-calculator.html` | Multi-shift rows, unpaid breaks, overnight, daily/weekly totals, decimal hours, daily threshold, simple earnings estimate, CSV, opt-in local save. | One consolidated Work Hours / Time Card / Timesheet destination. |
+| `/date-difference.html` | Calendar date difference, years/months/weeks/days, inclusive option, working-day option, Saturday option, custom holidays, exact time totals and countdown/date helpers. Manual text input uses DD-MM-YYYY. | Already covers date difference and some business-day intent; US MM/DD/YYYY convention needs review. |
+| `/business-days-calculator.html` | Content/landing page describes working-day count, weekends and custom holidays; source contains no calculator form or calculation script, and CTA links to `date-difference.html`. | No new Business Days URL. Audit page usefulness/CTA promise and avoid duplicate thin pages. |
+| `/days-between-dates-calculator.html`, `/date-duration-calculator.html`, `/add-subtract-date-calculator.html` | Existing sitemap entries. | Inspect and map their actual intent before any date-tool expansion. |
+
+Source blobs checked: time calculator `815412e7ba90201f831d5cebcdf2da62fa9b386d`; work-hours `da8d25f1b5a1664f23bde742064471b381c42cc6`; date difference `633695ded8949cda1db4426969205eca36b79534`; business-days landing page `56ca7386565007768a5887793ee4ab9377b2b1fe`; sitemap `70c0b78eb5f593677fd27a5387e185e6e4c70fb3`.
+
+### 18.2 Additional US intent clusters and decision
+
+| Cluster | Observed SERP / competitors | Current coverage and decision |
+|---|---|---|
+| Work hours / time card / timesheet / weekly hours | Toggl, QuickBooks, ClockSlate, Ordio, HourPeak, TimeCardCalculator.app, TimeMath.tools and HiveDesk show overlapping weekly/biweekly grids, breaks, daily/weekly totals, decimal hours, CSV/PDF, optional pay/OT. | **GO existing page only.** No separate Time Card or Timesheet URL. Prioritize functional QA and weekly-boundary logic. |
+| Date-time duration | Toggl combines date-time and clock duration; Count My Hours focuses on DST-aware elapsed time; CalculatorSoup and timeanddate provide date/time and timezone tools. | **NO-GO new URL.** Existing time calculator + guide. |
+| Date difference / days between / business days | timeanddate, CalculatorSoup, Intious, BiznTools, ClockSlate and WorkHourMath expose inclusive-end, weekday, custom holiday and federal holiday variants. | **NO-GO new URL.** Existing date-difference and business-days pages; audit current US date format and landing-page utility. |
+| Business hours between timestamps | TimeDifference.io, FreeToolCabin, Merondis, ByteTools and Redmoon calculate time only within configured daily work windows, weekdays and optional breaks/holidays. Common SLA/response-time use case. | **HOLD — strongest new candidate.** No dedicated page found. Validate US metrics and specify schedule windows, workweek, break, manual holiday list and exact inclusion rules. |
+| Decimal hours converter | Clockspot, Ordio, TimoDesk, CalcuTools and TimeToDecimal provide bidirectional HH:MM/minutes ↔ decimal conversion; some support batch paste and charts. | **HOLD — distinct micro-tool.** Current tools display decimal output but no focused bidirectional/batch converter found. Validate demand before new URL. |
+| Military time converter | iSObj and TimeAndDuration have dedicated 12h/24h converters; timecard tools commonly embed 12/24-hour input. | **HOLD — distinct simple intent.** No dedicated InfoJano page found in repo search; validate demand and SERP overlap. |
+| Clock-out / clock-in calculator | Shift Ledger, HourPunch, WorkHourTools and MyClockOut support reverse planning from start + paid-hours target + unpaid breaks or desired finish. | **HOLD — narrow distinct intent.** Test as a mode within Work Hours before considering separate URL. |
+| Overtime / time-and-a-half / double-time | Toggl, RightSums, QuickBooks and HiveDesk provide estimates; advanced tools add jurisdiction-specific daily/double-time rules. | **HOLD / high risk.** No legal-rule engine. US DOL says covered nonexempt employees generally receive 1.5× after 40 hours in a workweek; exemptions and other rules apply, and hours cannot be averaged across two weeks. https://www.dol.gov/agencies/whd/overtime/ |
+| Time-zone duration | timeanddate and DateTimeWise accept endpoint locations/zones and account for DST/UTC offsets. | **NO-GO now.** InfoJano is device-local only; needs IANA zone semantics, DST and ambiguous/nonexistent-time tests. |
+
+### 18.3 Product safeguards and US-specific gaps
+
+- Work Hours competitors add configurable workweek start, biweekly view, multiple punch pairs, print/PDF, rounding and pay details. Finish current functional QA before expanding. Do not label the existing daily threshold as statutory overtime.
+- Federal overtime is calculated per fixed workweek, not averaged across two weeks. The DOL rule applies to covered, nonexempt workers; exemptions and state rules mean no universal legal/payroll claim. Source: https://www.dol.gov/agencies/whd/overtime/
+- OPM holiday schedules specify federal employee holidays; private employers, states and workplaces may differ. Any federal holiday preset must be optional, maintained and clearly scoped. Source: https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/
+- Business Hours should distinguish actual work shifts (Work Hours) from date counts (Business Days). Do not imply contractual SLA guarantees.
+- Decimal converter should explain 7:30 = 7.50, not 7.30; display rounding is not punch rounding.
+- Military time should accept leading-zero forms (0705), validate 00:00–23:59 and explain 12 AM/PM carefully; no timezone implied.
+- Clock-out must distinguish paid target from elapsed span and add only unpaid breaks.
+- US examples should use MM/DD/YYYY, AM/PM by default with 24-hour option, USD where pay is shown, and explicit workweek configuration.
+
+### 18.4 Prioritized opportunity register
+
+1. **Work Hours / Time Card — GO existing page, no duplicate URL.** Separate task from single-interval duration; page exists, functional QA is pending.
+2. **Business Hours — HOLD for metrics/spec.** Best new distinct candidate from this audit; medium-high complexity.
+3. **Decimal Hours Converter — HOLD.** Distinct simple conversion job; low-medium complexity; could first be a module.
+4. **Military Time Converter — HOLD.** Distinct simple conversion job; low complexity; volume unknown.
+5. **Clock-Out — HOLD as Work Hours mode first.** Distinct planning task, narrow standalone scope.
+6. **Business Days — NO-GO new URL.** Existing date-difference/business-days coverage; audit existing page rather than clone.
+7. **Overtime — HOLD.** High legal/data-maintenance risk; no legal engine.
+8. **Date & Time Duration — NO-GO new URL.** Existing calculator/guide overlap.
+9. **Time Zone Duration — NO-GO until supported.** Requires actual cross-zone engine and DST tests.
+
+### 18.5 Country/language screen and metrics
+
+- US (primary): English, MM/DD/YYYY, AM/PM with 24-hour option, USD, configurable workweek and explicit observed-holiday caveats.
+- UK: English, DD/MM/YYYY, 24-hour examples, GBP and bank-holiday differences.
+- India: English/Hindi/Bengali hypotheses, INR and state-specific holiday differences.
+- Canada: English/French, CAD and province-specific holidays.
+- Australia: English, DD/MM/YYYY, AUD and state/territory holidays.
+- Bangladesh: Bengali/English, BDT and organization-specific Friday/Saturday weekend possibilities.
+- These are localization hypotheses, not demand validation. No numeric metrics available for the new clusters. Prior Ahrefs requests returned “Insufficient plan”; no usable GSC export/property report. CPC is advertiser bid value, not publisher RPM; no revenue estimate is supportable.
+
+### 18.6 Architecture decision and next gate
+
+Retain existing elapsed, guide, work-hours, date-difference and business-days destinations. Do not create separate Time Card, Timesheet, Date & Time Duration, Business Days, Overtime or Time Zone Duration URLs in this cycle. Next quantitative validation candidates: **Business Hours, Decimal Hours Converter, Military Time Converter**; evaluate **Clock-Out** as a Work Hours mode first. Before any new implementation, validate US demand/SERP overlap and finish current Work Hours functional QA.
+
+### 18.7 Public sources reviewed (2026-11-15)
+
+Work/timecard: Toggl https://toggl.com/online-tools/time-card-calculator ; QuickBooks https://quickbooks.intuit.com/time-tracking/resources/time-card-calculator/ ; ClockSlate https://clockslate.com/time-card-calculator/ ; Ordio https://www.ordio.com/en/tools/timesheet-calculator ; HourPeak https://hourpeak.com/ ; TimeCardCalculator.app https://timecardcalculator.app/en/calculators/ ; TimeMath.tools https://timemath.tools/ ; HiveDesk https://www.hivedesk.com/calculators .
+
+Date/business days/hours: timeanddate https://www.timeanddate.com/date/workdays.html ; CalculatorSoup https://www.calculatorsoup.com/calculators/time/date-difference-calculator.php ; Intious https://intious.com/tools/business-days-calculator/ ; BiznTools https://bizntools.com/time-pay/business-days-calculator ; ClockSlate https://clockslate.com/business-days-calculator/ ; WorkHourMath https://workhourmath.com/work-days-calculator.html ; TimeDifference.io https://timedifference.io/business-hours-calculator/ ; FreeToolCabin https://freetoolcabin.com/business-hours-calculator/ ; Merondis https://www.merondis.com/tools/date-time/business-hours-calculator ; ByteTools https://bytetools.bytevancer.com/business-hours-calculator ; Redmoon https://redmoonbusinessdatecalculators.com/calculators/business-hours/ ; OPM https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/ .
+
+Converters/planning: Clockspot https://www.clockspot.com/tools/decimal-hours-converter ; Ordio https://www.ordio.com/en/tools/decimal-hours-calculator ; TimoDesk https://timodesk.com/tools/decimal-hours-calculator ; CalcuTools https://calcutools.com/time/decimal-hours-calculator/ ; TimeToDecimal https://timetodecimal.app/ ; iSObj https://isobj.com/tools/military-time-converter/ ; TimeAndDuration https://timeandduration.com/tools/military-time-calculator ; Shift Ledger https://www.scheduleledger.com/clock-out-calculator/ ; HourPunch https://hourpunch.com/clock-out-calculator ; WorkHourTools https://workhourtools.com/calculators/clock-out-calculator ; MyClockOut https://www.myclockout.com/clock-in-calculator ; Toggl overtime https://toggl.com/online-tools/overtime-calculator ; RightSums https://rightsums.com/tools/overtime-calculator .
+
+**Confidence:** Medium for observed intent/feature separation; low for search demand and monetization because quantitative keyword and GSC datasets were unavailable. Candidate audit only; it does not authorize building every tool. No application code, metadata, sitemap or hero was changed.
