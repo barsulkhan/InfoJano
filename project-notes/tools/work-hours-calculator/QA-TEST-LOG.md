@@ -23,3 +23,8 @@ Source-only checks were run after page creation. Inline JavaScript syntax and ke
 - Source/automated tests: NOT RUN.
 - Manual mobile/desktop QA: NOT RUN.
 - Deployment/live QA: NOT RUN.
+
+
+### 2026-11-15 — Deployment workflow status
+- GitHub Pages workflow run #2550: SUCCESS, commit `f44e679ad5e8e0746061ea98c81b017605229485`.
+- Direct live URL check, browser QA and functional tests WH-001–WH-010 remain NOT RUN.
