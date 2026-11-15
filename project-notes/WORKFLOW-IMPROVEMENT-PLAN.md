@@ -163,17 +163,23 @@ Notify only for events requiring action:
 
 Avoid noisy daily notifications with no action required.
 
+
+
+## New user-approved requirement — research-first for every tool
+Before implementation of each tool or major feature, create a per-tool `RESEARCH.md` dossier using `project-notes/TOOL-RESEARCH-STANDARD.md` and `project-notes/templates/TOOL-RESEARCH-TEMPLATE.md`. Research must screen relevant countries and languages, local keyword variants, search volume/trends, KD, CPC/currency, traffic potential, intent/SERP, audience, competitors/features, market/monetization opportunity and concrete InfoJano differentiation. Save sources, dates, provider/database, confidence and unavailable data. CPC is not publisher RPM. Country landing pages need distinct local intent/value; no thin doorway pages. Record a Go/Revise/No-Go decision before planned coding. Emergency bug fixes may use a logged minimum-research exception.
+
 ## Recommended implementation order
 
 | Order | Improvement | Why now | Risk |
 |---|---|---|---|
 | 1 | Continue manual QA ET-004 onward | Already active and low risk | Low |
-| 2 | Add issue forms and PR template | Improves future requests and bug reports | Low |
-| 3 | Create isolated Playwright harness for Elapsed Time Calculator | Converts repeatable manual cases into automated regression tests | Medium |
-| 4 | Add PR CI and post-deploy smoke test | Stops regressions before and after merge | Medium |
-| 5 | Create GitHub Project board | Useful as more tool trackers become active | Low–Medium |
-| 6 | Visual regression, accessibility and Lighthouse | Adds broader quality coverage | Medium |
-| 7 | Generated status dashboard and actionable notifications | Reduces manual status gathering | Medium |
+| 2 | Establish per-tool research dossier and research-first gate | User-approved requirement; prevents building without market/competitor evidence | Low |
+| 3 | Add issue forms and PR template | Improves future requests and bug reports | Low |
+| 4 | Create isolated Playwright harness for Elapsed Time Calculator | Converts repeatable manual cases into automated regression tests | Medium |
+| 5 | Add PR CI and post-deploy smoke test | Stops regressions before and after merge | Medium |
+| 6 | Create GitHub Project board | Useful as more tool trackers become active | Low–Medium |
+| 7 | Visual regression, accessibility and Lighthouse | Adds broader quality coverage | Medium |
+| 8 | Generated status dashboard and actionable notifications | Reduces manual status gathering | Medium |
 
 ## Decisions needed before implementation
 
