@@ -41,6 +41,7 @@ jobs:
         run: |
           python - <<'PY'
           import json, pathlib, xml.etree.ElementTree as ET
+          from urllib.parse import urljoin, urlparse
           root = pathlib.Path('.')
           icons = sorted((root / 'app-icons').glob('*.svg'))
           manifests = sorted((root / 'app-manifests').glob('*.webmanifest'))
@@ -55,8 +56,11 @@ jobs:
               slug = manifest.stem
               page = root / f'{slug}.html'
               assert page.exists(), f'Missing tool page: {page}'
-              assert data.get('start_url') == f'/InfoJano/{slug}.html', f'Wrong start_url: {manifest}'
-              assert data.get('scope') == '/InfoJano/', f'Wrong scope: {manifest}'
+              manifest_url = f'https://infojano.example/InfoJano/{manifest.as_posix()}'
+              resolved_start = urlparse(urljoin(manifest_url, data.get('start_url', ''))).path
+              resolved_scope = urlparse(urljoin(manifest_url, data.get('scope', ''))).path
+              assert resolved_start == f'/InfoJano/{slug}.html', f'Wrong start_url: {manifest}'
+              assert resolved_scope == '/InfoJano/', f'Wrong scope: {manifest}'
               icon_paths = [item.get('src', '').removeprefix('/InfoJano/') for item in data.get('icons', [])]
               assert icon_paths and any((root / icon_path).is_file() for icon_path in icon_paths), f'Missing manifest icon file: {manifest}'
               html = page.read_text(encoding='utf-8')
