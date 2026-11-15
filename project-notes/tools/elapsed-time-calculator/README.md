@@ -24,7 +24,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 
 ### In progress
 - [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. Next: use a real interactive browser on mobile and desktop, verify layouts and all calculator modes, record actual findings and screenshots/evidence.
-- [ ] [CARD-011] Date-duration results missing from recent history — fix implemented on branch `fix/date-duration-history-actions`, PR #228 open: `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling history and shared Copy/Share action visibility. Await PR checks/review/merge; then run regression checks for all three modes.
+- [x] [CARD-011] Date-duration results missing from recent history — fixed and merged via PR #229 (squash merge `69ad8a8865cedfc6df952fa87dae8598f904ad27`). `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling recent history and shared Copy/Share action visibility. Current default-branch file re-fetched and hook presence confirmed. Runtime/browser regression and post-merge deployment verification remain separate pending checks.
 
 ### Backlog
 - [ ] [CARD-010] Review related SEO landing page opportunities — only after keyword and page intent are confirmed; follow 1360px max width and 8px gutters.
@@ -42,11 +42,12 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] Calculation logic checks: 09:00–17:30 = 8h30m; 22:00–06:00 = 8h; 09:15–12:00 = 2h45m; 09:00:30–09:01:45 = 1m15s.
 - [x] Date duration checks: 25h30m15s; 2-hour overnight interval; equal endpoints rejected.
 - [x] APK workflow: run 43684495904 — success. https://github.com/barsulkhan/InfoJano/actions/runs/43684495904
-- [x] GitHub Pages deployment: run 43684495751 — success. https://github.com/barsulkhan/InfoJano/actions/runs/43684495751
+- [x] GitHub Pages deployment before CARD-011: run 43684495751 — success. https://github.com/barsulkhan/InfoJano/actions/runs/43684495751
+- [ ] GitHub Pages deployment after PR #229 — no workflow run surfaced for merge commit `69ad8a8865cedfc6df952fa87dae8598f904ad27`; live page fetch through web reader was inaccessible, so deployment not verified.
 - [ ] Mobile browser QA — pending.
 - [ ] Desktop browser QA — pending.
 - [ ] Accessibility review — not yet recorded.
-- [ ] Source review follow-up for CARD-011 — hook added in PR #228; automated/runtime regression and merge pending.
+- [x] Source review follow-up for CARD-011 — merged in PR #229; runtime/browser regression still pending.
 
 ## Detailed work log
 
@@ -156,3 +157,15 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Still pending: determine whether a real merge conflict exists or checks are not configured/triggered; run required regression validation; merge only after safe checks. CARD-009 interactive visual QA also pending.
 - Next step: inspect PR diff/base comparison and repository workflow configuration to determine mergeability/CI cause.
 - Protected areas preserved: no source or hero/banner changes made in this status-check step.
+
+
+### 2026-11-15 — CARD-011 merged; deployment verification pending
+- Requested: continue the calculator work, preserve all prior merged features and maintain detailed GitHub tracking.
+- Inspected: PR #229 diff (one-line change in `time-calculator.html`), refreshed PR metadata, branch comparison, commit status, Actions run list, and current default-branch `time-calculator.html`.
+- Changed: PR #229 merged by squash; current default-branch source contains `recordTimeCalculation('Date + Time Duration')` immediately after valid date-duration output. PR #228 was closed unmerged because its branch had fallen three commits behind main after tracker updates; replacement PR #229 was created from current main and had no behind commits.
+- Tests and results: PR diff scope verified as one insertion in `time-calculator.html`; branch compare before merge was ahead by 1 / behind by 0; post-merge default-branch fetch confirmed the hook is present. Runtime regression tests not run. GitHub Actions runs query for merge commit returned 0 runs; combined status pending with 0 statuses. Web reader could not access the live page. No Pages deployment success is claimed.
+- PR/commit/workflow: PR #229 https://github.com/barsulkhan/InfoJano/pull/229 — merged; squash commit `69ad8a8865cedfc6df952fa87dae8598f904ad27`. Superseded PR #228 https://github.com/barsulkhan/InfoJano/pull/228 — closed unmerged. No associated workflow run found for merge commit.
+- Issues and resolution: CARD-011 source defect fixed and merged. Deployment status remains unverified; browser QA remains unavailable.
+- Still pending: verify GitHub Pages deployment for PR #229; run functional regression for date-duration history/copy/share plus all three calculator modes; perform real mobile and desktop visual QA (CARD-009); accessibility review; defer CARD-010 until keyword/page intent is confirmed.
+- Next step: inspect Pages/deployment configuration and available deployments for the merge commit; if no automated deploy is triggered, verify through an authorized deployment mechanism or await site publication. Then complete runtime/browser QA in an interactive browser.
+- Protected areas preserved: only one line in `time-calculator.html` changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain unchanged.
