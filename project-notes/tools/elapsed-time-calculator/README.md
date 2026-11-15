@@ -23,7 +23,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] [CARD-008] APK manifest relative icon path validation — PR #227; merge 4ae9624fb8978b832d58e2b93f2e41091227dc80. Workflow resolves relative icon src against manifest URL before checking repository asset.
 
 ### In progress
-- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-008 passed (ET-008 confirms Android share-sheet launch; final delivery not tested). Next: continue manual QA from ET-009, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
+- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-009 passed (ET-008 confirms Android share-sheet launch; final delivery not tested). Next: continue manual QA from ET-010, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
 - [x] [CARD-011] Date-duration results missing from recent history — fixed and merged via PR #229 (squash merge `69ad8a8865cedfc6df952fa87dae8598f904ad27`). `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling recent history and shared Copy/Share action visibility. Current default-branch file re-fetched and hook presence confirmed. Runtime/browser regression and post-merge deployment verification remain separate pending checks.
 
 ### Backlog
@@ -257,4 +257,16 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
 - Still pending: ET-009 Recent Calculations persistence after refresh; Clear History and five-item cap; real mobile/desktop visual QA; accessibility review.
 - Next step: ask user to reload the calculator and check whether the recent Date + Time, Subtract and Add entries remain.
+- Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
+
+
+### 2026-11-15 — User-performed mobile QA: Recent Calculations persistence after refresh (ET-009)
+- Requested: reload the calculator and verify saved Date + Time, Subtract and Add entries remain.
+- Inspected: user-supplied mobile screenshot after page refresh.
+- Expected: previously saved records remain in Recent Calculations.
+- Observed: Date + Time Duration, Subtract (Previous day), Add (Following day), and two earlier Time Difference records remain visible. The active calculator form/result reset to the initial empty Time Difference state while saved history remained.
+- Result: ET-009 PASS — screenshot-backed user-performed mobile test. History persistence after reload is confirmed for the visible records.
+- Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
+- Still pending: ET-010 Clear History; confirm five-record cap; real mobile/desktop visual QA; accessibility review.
+- Next step: ask user to tap Clear history and capture the resulting state.
 - Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
