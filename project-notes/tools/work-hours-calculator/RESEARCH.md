@@ -74,3 +74,51 @@ Potential advertiser categories: workforce scheduling, time tracking, payroll/ac
 - Double Crewed: https://doublecrewed.co.uk/tools/shift-calculator — live page inspected 2026-11-15.
 - Google Search Central: https://developers.google.com/search/docs/essentials/spam-policies — doorway/scaled content guidance.
 - Ahrefs Keywords Explorer: prior connected-plan request returned “Insufficient plan”; metrics unavailable.
+
+## 5. Expanded US adjacent-cluster review (2026-11-15)
+
+A broader audit was completed alongside the Elapsed Time Calculator research. Full candidate matrix and sources are saved in `project-notes/tools/elapsed-time-calculator/RESEARCH.md` §18. This section records the implications specific to the existing Work Hours product.
+
+### 5.1 Additional US competitor findings
+
+Newly reviewed pages include:
+- Toggl Time Card: weekly/biweekly, 12/24-hour entry, unpaid breaks, daily/weekly totals, overtime/pay and CSV.
+- QuickBooks Time Card: weekly/biweekly, 5/7-day options, configurable overtime/pay inputs and daily punch rows.
+- ClockSlate: weekly/biweekly, split shifts, direct daily totals, decimal output, CSV/print/share and optional local save.
+- Ordio Timesheet: one/two weeks, weekly overtime per workweek, hourly rate, gross-pay estimate, CSV/PDF.
+- HourPeak: multiple shifts/day, weekly/biweekly, optional hourly rate and overtime modes, Excel/CSV/PDF.
+- TimeMath.tools: quick weekly ledger, 12/24-hour, optional break/pay/OT settings and paste-friendly inputs.
+- HiveDesk: separate timecard, timesheet, overtime and decimal-hours calculators.
+
+**SERP implication:** Work Hours, Time Card and Timesheet remain highly overlapping for a full weekly ledger. Separate URLs would risk splitting the same task. Keep one Work Hours page and map related phrases there.
+
+### 5.2 Current product gap confirmed
+
+Current `work-hours-calculator.html` source has multiple dated shift rows, unpaid break, overnight handling, daily/weekly totals, decimal hours, configurable daily threshold, optional simple earnings estimate, CSV and opt-in localStorage. It does not yet demonstrate a dedicated two-week period selector, independent workweek overtime summaries, multiple punch pairs within a single day row, print/PDF output or maintained state overtime rules.
+
+Priority sequence:
+1. Complete WH-001–WH-009 functional/CSV/localStorage QA already defined in the tool QA log.
+2. Verify date/week boundary, overnight attribution and decimal precision.
+3. Consider a biweekly display only after user demand and product scope are confirmed; if added, calculate each seven-day workweek independently rather than averaging hours across a pay period.
+4. Add print/PDF only if user need and QA justify it.
+5. Keep statutory overtime/state-specific rules out of scope until a maintained legal-source review and product/legal approval exist.
+
+### 5.3 Federal overtime caution (primary source)
+
+U.S. Department of Labor guidance states that covered, nonexempt employees generally receive at least 1.5 times their regular rate for hours over 40 in a workweek; a workweek is a fixed recurring 168-hour period and hours cannot be averaged across multiple weeks. Exemptions and state rules apply. Source: https://www.dol.gov/agencies/whd/overtime/ . This supports a strong disclaimer: the current configurable daily threshold and optional earnings estimate are not a legal overtime/payroll determination.
+
+### 5.4 New adjacent clusters — do not split the Work Hours page prematurely
+
+- **Clock-Out Calculator:** a separate reverse-planning task exists in US SERPs (Shift Ledger, HourPunch, WorkHourTools, MyClockOut). First consider a simple “Find clock-out time” mode within Work Hours; a separate URL needs its own demand/SERP proof.
+- **Decimal Hours Converter:** dedicated pages (Clockspot, Ordio, TimoDesk, CalcuTools, TimeToDecimal) offer bidirectional conversion, precision and batch conversion. Current Work Hours shows decimal totals but is not a general-purpose bidirectional/batch converter. Treat as a separate micro-tool candidate, pending metrics.
+- **Military Time Converter:** standalone 12h/24h conversion pages exist (iSObj, TimeAndDuration), but timecard tools also include a 12/24h toggle. Validate demand before a standalone page.
+- **Business Hours Calculator:** separate SLA/opening-hours task; not the same as shift-work totals. Candidate should be evaluated in its own research/spec rather than added as a Time Card feature.
+- **Overtime Calculator:** distinct payroll/legal task with high maintenance risk; no legal-rule engine approved.
+
+### 5.5 Metrics and country scope
+
+Exact US search volume, trend, KD, CPC and traffic potential remain N/A for these additional clusters. Ahrefs entitlement was insufficient and no usable GSC export was supplied. CPC is not publisher RPM. US remains primary; UK, India, Canada, Australia and Bangladesh remain secondary localization hypotheses, not validated demand markets. No country clone recommended.
+
+### 5.6 Decision
+
+**Retain GO for the existing single Work Hours & Shift Calculator page; NO-GO for separate Time Card/Timesheet URLs.** New candidate research (Business Hours, Decimal Hours, Military Time and Clock-Out) is HOLD pending quantitative US metrics and current Work Hours QA. No new code or URL is approved by this research update.
