@@ -626,3 +626,8 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task evidence: [2026-11-15-2335-privacy-policy-revision-map.md](2026-11-15-2335-privacy-policy-revision-map.md).
 - Commits: plan `a690b1ae974c`; task file `f694fffa85f7`.
 - `privacy-policy.html` remains unchanged; no account, app source, DNS, merge or deployment changes.
+
+### 2026-11-15 — AdSense research handoff refreshed
+- Updated `project-notes/NEW-CHAT-HANDOFF.md` with full source inventory status, policy gap/revision map, public app prerelease evidence, sitemap/ads.txt status, official-source updates and blockers.
+- Task evidence: [2026-11-15-2336-adsense-research-handoff-refresh.md](2026-11-15-2336-adsense-research-handoff-refresh.md).
+- Commit: handoff `778a7bcb279d`; task file `a5d11dee83f7`.
