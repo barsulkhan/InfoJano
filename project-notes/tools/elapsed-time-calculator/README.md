@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/time-calculator.html
-Overall status: In progress — mobile screenshot checks, source audit and ET-011 five-entry cap runtime test PASS. Remaining computer-dependent work: desktop visual QA and keyboard/screen-reader accessibility QA; broader responsive and DST checks also pending.
+Overall status: In progress — mobile screenshot checks, source audit and ET-011 five-entry cap runtime test PASS. Remaining computer-dependent work: desktop visual QA and broader responsive/DST checks pending. User confirmed copy/share and screen-reader QA are completed; retain that as user-reported evidence, not a fresh retest.
 
 ## Research dossier
 - SEO keyword and landing-page research: [RESEARCH.md](RESEARCH.md) — preliminary qualitative review saved 2026-11-15. Ahrefs metrics unavailable due plan entitlement; volume/KD/CPC/trend are N/A. Decision: optimize the existing canonical page first; no separate generic elapsed-time page yet. Further metrics validation is required before SEO implementation.
@@ -541,3 +541,7 @@ Overall status: In progress — mobile screenshot checks, source audit and ET-01
 - No app code, metadata, sitemap, URLs or protected hero artwork changed. No browser/runtime QA or deployment claimed.
 - Pending: finish current Work Hours functional QA; audit US date-input convention and Business Days landing-page destination; quantitative US keyword validation before any new page build.
 - Protected areas preserved: homepage hero, Elapsed Time Calculator hero, ID Card Print Studio hero and existing guide hero.
+
+### 2026-11-15 — User-confirmed QA status clarification
+- User has explicitly confirmed that copy/share testing and screen-reader QA are already completed. These are recorded as user-reported completion and should not be requested again.
+- Desktop visual QA and broader responsive/DST checks remain pending. Existing calculator hero remains protected and unchanged.
