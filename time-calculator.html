@@ -237,43 +237,69 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
   </section>
 </div>
 <p class="ij-time-home-link"><a href="index.html">← Back to InfoJano Home</a></p>
-<section aria-labelledby="related-tools-title" style="width:min(calc(100vw - 8px),1360px);max-width:1360px;position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="date-difference.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-12 4h2m3 0h2m-7 3h2"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Date Difference Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">find the time between two dates.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
+<style>
+/* Scoped polish for the lower related-tools and guide sections only. */
+.ij-related-tools,.ij-time-guide{box-sizing:border-box;width:min(calc(100vw - 8px),1360px);max-width:1360px;position:relative;left:50%;transform:translateX(-50%);overflow:hidden}
+.ij-related-tools{margin:28px 0;padding:clamp(20px,3vw,30px);border:1px solid #dce9fb;border-radius:24px;background:radial-gradient(circle at 100% 0%,rgba(191,219,254,.45),transparent 34%),linear-gradient(145deg,#f8fbff,#fff 72%);box-shadow:0 12px 32px rgba(30,64,175,.07)}
+.ij-related-heading{display:flex;align-items:center;gap:12px;margin:0 0 8px;color:#10254a;font-size:clamp(21px,2.2vw,25px);line-height:1.25}
+.ij-related-heading-icon{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;border:1px solid #cfe2ff;border-radius:15px;background:linear-gradient(145deg,#dbeafe,#eff6ff);color:#1d4ed8;box-shadow:0 4px 12px rgba(37,99,235,.1)}
+.ij-related-intro{margin:0 0 20px;color:#61718a;font-size:14px;line-height:1.6}
+.ij-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px}
+.ij-related-card{position:relative;display:flex;min-width:0;min-height:174px;flex-direction:column;gap:10px;padding:18px;border:1px solid #e0eaf8;border-radius:19px;background:linear-gradient(150deg,#fff 10%,#f4f8ff 100%);color:#172554;text-decoration:none;box-shadow:0 4px 14px rgba(15,23,42,.045);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.ij-related-card:after{content:"";position:absolute;right:0;top:0;width:76px;height:76px;border-radius:0 18px 0 76px;background:linear-gradient(135deg,rgba(219,234,254,.45),rgba(224,242,254,.08));pointer-events:none}
+.ij-related-card:hover{transform:translateY(-3px);border-color:#b9d4fa;box-shadow:0 12px 24px rgba(37,99,235,.11)}
+.ij-related-card:focus-visible{outline:3px solid #60a5fa;outline-offset:3px}
+.ij-related-icon{position:relative;z-index:1;display:grid;place-items:center;width:46px;height:46px;border:1px solid #d7e8ff;border-radius:15px;background:linear-gradient(145deg,#e0f2fe,#dbeafe);color:#1d4ed8}
+.ij-related-card strong{position:relative;z-index:1;font-size:15px;line-height:1.35;color:#18345f}
+.ij-related-card .ij-related-desc{position:relative;z-index:1;color:#66758b;font-size:13px;line-height:1.5}
+.ij-related-link{position:relative;z-index:1;margin-top:auto;color:#1d4ed8;font-size:12px;font-weight:750}
+.ij-time-guide{margin:24px 0 30px;padding:clamp(22px,3.5vw,36px);border:1px solid #dce8f7;border-radius:24px;background:linear-gradient(135deg,#fff 0%,#f8fbff 100%);box-shadow:0 12px 30px rgba(15,23,42,.055);line-height:1.7}
+.ij-guide-kicker{display:inline-flex;align-items:center;gap:7px;margin-bottom:11px;padding:6px 10px;border:1px solid #dbeafe;border-radius:999px;background:#eff6ff;color:#2457a7;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.ij-guide-title{margin:0 0 10px;color:#14264a;font-size:clamp(23px,2.5vw,30px);line-height:1.25;letter-spacing:-.025em}
+.ij-guide-lead{max-width:850px;margin:0;color:#586981;font-size:15px;line-height:1.75}
+.ij-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,225px),1fr));gap:14px;margin-top:22px}
+.ij-guide-card{padding:19px;border:1px solid #e1eafa;border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 4px 14px rgba(15,23,42,.035)}
+.ij-guide-card h3{display:flex;align-items:center;gap:9px;margin:0 0 9px;color:#183b68;font-size:16px;line-height:1.35}
+.ij-guide-card h3 span{display:grid;place-items:center;width:30px;height:30px;flex:0 0 30px;border-radius:10px;background:#eaf3ff;color:#2563eb;font-size:15px}
+.ij-guide-card p{margin:0;color:#607087;font-size:14px;line-height:1.7}
+.ij-guide-tip{display:flex;align-items:flex-start;gap:12px;margin-top:18px;padding:15px 17px;border:1px solid #cfe4fb;border-radius:16px;background:linear-gradient(100deg,#eff6ff,#f0f9ff);color:#315477;font-size:14px;line-height:1.65}
+.ij-guide-tip strong{color:#173d6c}
+@media(max-width:520px){.ij-related-card{min-height:158px;padding:15px}.ij-guide-card{padding:16px}.ij-time-guide{border-radius:19px}}
+@media(prefers-reduced-motion:reduce){.ij-related-card{transition:none}.ij-related-card:hover{transform:none}}
+</style>
+<section class="ij-related-tools" aria-labelledby="related-tools-title">
+<h2 id="related-tools-title" class="ij-related-heading"><span class="ij-related-heading-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>More Helpful Tools</span></h2>
+<p class="ij-related-intro">A little help for your everyday calculations — explore another free InfoJano tool.</p>
+<div class="ij-related-grid">
+<a class="ij-related-card" href="date-difference.html">
+<span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-12 4h2m3 0h2m-7 3h2"/></svg></span>
+<strong>Date Difference Calculator</strong><span class="ij-related-desc">Find the number of days between two dates with a simple calculation.</span><span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
 </a>
-<a href="age.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Age Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate age in years, months and days.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
+<a class="ij-related-card" href="age.html">
+<span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+<strong>Age Calculator</strong><span class="ij-related-desc">Work out age in years, months and days from a date of birth.</span><span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
 </a>
-<a href="unit-converter.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h15l-3-3m3 3-3 3M20 17H5l3 3m-3-3 3-3"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Unit Converter</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">convert common measurement units.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
+<a class="ij-related-card" href="unit-converter.html">
+<span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h15l-3-3m3 3-3 3M20 17H5l3 3m-3-3 3-3"/></svg></span>
+<strong>Unit Converter</strong><span class="ij-related-desc">Convert common units of length, weight, temperature and more.</span><span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
 </a>
-<a href="savings.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 10H5z"/><path d="M7 10V7a5 5 0 0 1 10 0v3M9 15h6"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Savings Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate future savings.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
-</section>
-<section aria-labelledby="ij-elapsed-time-guide" style="width:100%;max-width:none;margin:24px 0;padding:clamp(20px,3vw,30px);border:1px solid #e1eafa;border-radius:22px;background:#fff;line-height:1.7;box-shadow:0 8px 24px rgba(15,23,42,.04)">
-<h2 id="ij-elapsed-time-guide" style="margin:0 0 12px;color:#14264a;font-size:clamp(22px,2.2vw,28px)">Free Elapsed Time Calculator</h2>
-<p>Use this free elapsed time calculator to find exactly how much time passes between two clock times. Enter a start time and an end time to get the difference in hours and minutes, plus the total number of minutes.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px">
-<div style="padding:17px;border:1px solid #e1eafa;border-radius:15px;background:#f8fbff"><h3 style="margin:0 0 7px;color:#173d6c;font-size:16px">How overnight calculation works</h3><p style="margin:0;color:#52627a;font-size:14px">If the end time is earlier than the start time, the calculator treats the end time as being on the next day. For example, 10:00 PM to 6:00 AM is 8 hours.</p></div>
-<div style="padding:17px;border:1px solid #e1eafa;border-radius:15px;background:#f8fbff"><h3 style="margin:0 0 7px;color:#173d6c;font-size:16px">A quick example</h3><p style="margin:0;color:#52627a;font-size:14px">From 9:15 AM to 12:00 PM, the elapsed time is 2 hours and 45 minutes, or 165 minutes in total.</p></div>
-<div style="padding:17px;border:1px solid #e1eafa;border-radius:15px;background:#f8fbff"><h3 style="margin:0 0 7px;color:#173d6c;font-size:16px">When it is useful</h3><p style="margin:0;color:#52627a;font-size:14px">Check work shifts, study sessions, travel duration, appointments, exercise time, and the length of everyday activities.</p></div>
+<a class="ij-related-card" href="savings.html">
+<span class="ij-related-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 10H5z"/><path d="M7 10V7a5 5 0 0 1 10 0v3M9 15h6"/></svg></span>
+<strong>Savings Calculator</strong><span class="ij-related-desc">Explore how regular deposits can grow towards a savings goal.</span><span class="ij-related-link">Explore tool <span aria-hidden="true">→</span></span>
+</a>
 </div>
-<p style="margin:18px 0 0;color:#52627a;font-size:14px">For an accurate result, enter both times carefully. The calculator displays hours and minutes and also shows the total minutes, making it easy to record or compare durations.</p>
+</section>
+<section class="ij-time-guide" aria-labelledby="ij-elapsed-time-guide">
+<span class="ij-guide-kicker">TIME MADE SIMPLE</span>
+<h2 id="ij-elapsed-time-guide" class="ij-guide-title">Plan Your Time, One Calculation at a Time</h2>
+<p class="ij-guide-lead">Whether you are checking work hours, planning a study session or measuring time between two moments, InfoJano’s elapsed time calculator helps you turn start and end times into a clear duration.</p>
+<div class="ij-guide-grid">
+<div class="ij-guide-card"><h3><span aria-hidden="true">◷</span>Check a time difference</h3><p>Enter when an activity starts and ends to see the total time spent. You can also subtract an unpaid break to find the net working duration.</p></div>
+<div class="ij-guide-card"><h3><span aria-hidden="true">↗</span>Calculate across midnight</h3><p>If an end time falls after midnight, the calculator can account for the overnight period. For example, 10:00 PM to 6:00 AM is 8 hours.</p></div>
+<div class="ij-guide-card"><h3><span aria-hidden="true">＋</span>Add or subtract time</h3><p>Start with a clock time, add or subtract hours, minutes and seconds, and see whether the result falls on the previous or following day.</p></div>
+<div class="ij-guide-card"><h3><span aria-hidden="true">▦</span>Compare full dates</h3><p>Use Date + Time mode when both the calendar date and clock time matter. The result includes days, remaining time, total hours, minutes and seconds.</p></div>
+</div>
+<div class="ij-guide-tip"><span aria-hidden="true">✦</span><div><strong>Quick tip:</strong> For the most accurate result, check AM/PM and include seconds when they matter. For a full date range, use Date + Time mode rather than the clock-only difference mode.</div></div>
 </section>
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
