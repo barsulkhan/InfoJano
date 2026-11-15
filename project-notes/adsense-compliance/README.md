@@ -611,3 +611,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task evidence: [2026-11-15-2334-robots-adstxt-sitemap-audit.md](2026-11-15-2334-robots-adstxt-sitemap-audit.md); master plan §29.
 - Commits: plan `74542ad9f595`; task file `93ce980af2d8`.
 - No robots, ads.txt, sitemap, policy, DNS, merge or deployment changes.
+
+### 2026-11-15 — Public Android and Windows app release verification
+- GitHub release metadata confirms public prerelease `infojano-tool-apps-v1.1.1` with 23 APKs and `infojano-desktop-apps-v1.0.0` with 23 Windows EXEs. App wrappers are publicly downloadable; installs/usage are not proven. Dedicated Countdown Studio desktop workflow remains artifact-only, not public release.
+- Privacy Policy should cover Android/Windows access surfaces because they load hosted InfoJano pages and inherit web processing; native runtime behavior remains untested.
+- Proposed policy change list: MASTER-RESEARCH-PLAN.md §30.
+- Task evidence: [2026-11-15-2335-public-app-release-and-policy-scope-audit.md](2026-11-15-2335-public-app-release-and-policy-scope-audit.md).
+- Commits: plan `7b91eb378ace`; task file `38405102f514`.
+- No app code or Privacy Policy edits; no account/DNS/merge/deployment changes.
