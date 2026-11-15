@@ -682,3 +682,14 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Successful PR workflow #14: https://github.com/barsulkhan/InfoJano/actions/runs/43747375957 . HTML5 validation PASS; link/fragment validation PASS; log says “Checked 26 hrefs; all local targets and fragments exist.”
 - Current tested source commit: `a23a0ae7216915e1ade5a4141bfa40ec9fad4094`; task record: [2026-11-16-0003-privacy-policy-qa-strengthening.md](2026-11-16-0003-privacy-policy-qa-strengthening.md); task record commit: `0d3b3dfc0bf07085889e8353d5710c44953eb1c1`.
 - PR #236 remains Draft, open, unmerged. No merge/deployment or account/DNS/Worker changes made. User approval for merge is still required. Live CMP/TCF, AdSense account/vendor/crawler, HTTP headers/redirects and Android/Windows runtime remain unverified.
+
+
+### 2026-11-16 — Autonomous source-only quick wins after publication
+- PR #236 was already merged; user screenshots now confirm the live Privacy Policy, Contact page, and homepage footer Privacy Policy/Contact links.
+- Source audit found the root sitemap omitted both `privacy-policy.html` and `contact.html`. Added both URLs with lastmod 2026-11-16.
+- Strengthened the QA script to check local policy href targets/fragments, sitemap root/URLs/no duplicates/canonical origin, required policy/contact URLs and the robots sitemap directive.
+- Updated QA workflow triggers to run on main pushes as well as feature-branch pushes, and on PR changes to policy/contact/homepage/sitemap/robots/checker/workflow.
+- Source checks: sitemap now has 110 unique URLs; required pages present; robots references canonical sitemap; homepage policy and consent-anchor source present; Contact links to policy.
+- Commits: sitemap `50e55a37e8d0196ef2f0d33ecb37492b17f70fc2`; checker `ca4c43887b42268e6c7d263fd9f57683a8631ef7`; workflow `c89fbe7a6b0fc9ac11a449d28041acd8befcac84`.
+- Detailed task record: [2026-11-16-0012-autonomous-source-quick-wins.md](2026-11-16-0012-autonomous-source-quick-wins.md); task commit `5ee555c438b84a8b1d98b381af0dfdd166c278af`.
+- New main-push workflow execution could not be retrieved through the available GitHub workflow-run view; do not claim that run passed. Live CMP/TCF, AdSense account/vendor/crawler, HTTP headers/redirects, Android/Windows runtime and Worker production configuration remain queued for evidence.
