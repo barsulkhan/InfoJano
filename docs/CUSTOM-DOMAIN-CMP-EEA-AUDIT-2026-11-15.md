@@ -54,7 +54,7 @@ For `www`, use a CNAME directly to `barsulkhan.github.io` (not to the apex and n
 ### Verified official policy
 - Google AdSense/Ad Manager/AdMob publishers serving personalized ads to EEA or UK users must use a Google-certified CMP integrated with IAB TCF (effective 16 Jan 2024); Switzerland has the requirement from 31 Jul 2024.
 - Google Privacy & Messaging's European regulations messages are certified and integrate with TCF.
-- Google's current documentation states Privacy & Messaging European regulations messages support IAB TCF v2.4 ahead of the IAB mandatory full TCF v2.4 implementation deadline of 23 Oct 2026.
+- Google's current documentation states Privacy & Messaging European regulations messages support IAB TCF v2.4. The IAB deadline for full TCF v2.4 implementation by publishers and CMPs was 23 Oct 2026; because this date has passed, the publisher should verify current CMP/TCF v2.4 compliance rather than treating the deadline as upcoming. Sources: https://support.google.com/adsense/answer/13554116 and https://support.google.com/adsense/answer/7670013.
 - Google CMP ID is 300 (Google LLC) in IAB TCF.
 - Google CMP UI is shown to visitors based on configured Privacy & Messaging messages, their region and consent state. The presence of a code tag alone does not prove a message is published or appearing.
 - Google CMP / AdSense account configuration is an account-side task and cannot be done through repository changes.
