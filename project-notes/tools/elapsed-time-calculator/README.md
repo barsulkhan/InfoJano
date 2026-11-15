@@ -463,3 +463,12 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Initial history-cap assertion had an overly narrow regex and false-failed; direct function inspection and corrected assertions confirmed getter and writer both use `.slice(0,5)`. No product bug identified.
 - Detailed test evidence: [QA-TEST-LOG.md](QA-TEST-LOG.md), Follow-up source QA section.
 - Protected homepage/calculator/ID-card heroes unchanged.
+
+
+### 2026-11-15 — User clarification: future SEO-page hero must match the calculator hero
+- User clarified that the previously created guide's hero does not follow the requested design reference: it used the homepage hero treatment/artwork. User explicitly said not to revise that existing page now.
+- For any future, separately justified SEO landing page for this tool, the hero must reproduce the existing Elapsed Time Calculator tool hero as the design reference: same layout, dimensions, visual styling, artwork, typography and copy treatment. Do not substitute the homepage hero. The existing calculator hero itself remains protected and must not be edited.
+- Rechecked the saved keyword/competitor/country research. It maps the four researched terms to the existing calculator and guide, and explicitly recommends retaining the two-URL architecture; no additional URL is currently justified. Quantitative demand evidence remains unavailable (Ahrefs plan restriction; no GSC report).
+- Decision: do not generate thin/duplicate "remaining" pages without a distinct supported search intent. Keep CARD-010 as conditional backlog; reopen only when a new intent is evidenced by GSC/keyword data or a separately approved, substantiated content opportunity.
+- Code changes: none. Existing guide was intentionally left untouched per user instruction; calculator hero, homepage hero and ID Card Print Studio hero preserved.
+- Next: continue existing QA backlog. If a new SEO page becomes justified, first capture the current calculator hero as the exact design reference and build the new page hero to match it.
