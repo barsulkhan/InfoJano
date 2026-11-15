@@ -3841,6 +3841,14 @@ All 16 files exist on main and have canonical URLs:
 - Main converter features found in source: Indian/International grouping; plain, currency, cheque, ordinal and Roman output modes; INR/USD; sentence/title/upper/lower case; quick presets; bulk conversion; copy, speech, TXT, CSV and print actions. Words-to-number is a separate SEO tool page, not a visible reverse-input panel in the main converter.
 - Locale source checks for Bengali and Hindi returned correct sample grouping for 25, 100, 1,000, 1 lakh, 1 crore and 12,34,56,789, plus decimal and INR cheque wording. These were source-algorithm tests, not browser/device tests.
 
+### Expanded Number to Words Pro PR #210 review (15 Nov, follow-up)
+- PR #210 now contains six feature-cluster files (not just the initial two-file mobile/cache patch): `number-to-words.html`, `number-to-words-locales.js`, `words-to-number-converter.html`, `bengali-number-to-words.html`, `hindi-number-to-words.html`, and `sw.js`.
+- The reverse-converter SEO page had a functional mismatch: its original page accepted numeric input and converted it to words, despite the title promising words-to-number conversion. PR #210 replaces this with an English phrase parser and numeric digit output.
+- The branch also redirects legacy `?focus=reverse` links to the dedicated reverse-converter page, removes duplicate hreflang entries from Bengali/Hindi pages, and adds localized WebApplication JSON-LD.
+- Independent parser review found a standalone minor-currency edge case: `fifty paise` could be returned as `50.50`. The PR branch was corrected to return `0.50` and reject minor-unit groups above 99. This correction is in the latest PR head `7cbb99d72b17f808441fd23378206940aa87f3eb`.
+- PR #210 remains OPEN / UNMERGED / mergeable=true. Its nine commits and six-file scope should be reviewed as one feature-cluster change. No merge or deployment was performed.
+- The PR description lists source-level parser examples, but real browser tests and independent Bengali/Hindi native-speaker review remain outstanding.
+
 ### Sitemap reconciliation
 - Canonical `sitemap.xml`: 106 unique URLs; robots.txt points to `https://infojano.com/sitemap.xml`.
 - Legacy `sitemap-infojano.xml` and `sitemap.txt` each contained 91 URLs and omitted the 15 dedicated Number to Words SEO pages.
