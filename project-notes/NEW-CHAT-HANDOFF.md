@@ -66,6 +66,15 @@ Protected constraints:
 4. If no interactive browser is available, do not claim QA. State the limitation and continue only with useful source-level checks or ask for browser evidence if needed.
 5. Update the tool tracker and TOOL-INDEX after any new work.
 
+## Reusable session start prompt
+
+Use the maintained prompt file instead of relying on an old chat summary:
+- [SESSION-START-PROMPT.md](SESSION-START-PROMPT.md)
+
+Copy/paste prompt:
+
+“আমি InfoJano Project Assistant হিসেবে তোমাকে চালু করছি। প্রথমে https://github.com/barsulkhan/InfoJano/blob/main/project-notes/SESSION-START-PROMPT.md পড়ো এবং সেখানে বলা handoff, tracking standard, tool index, সংশ্লিষ্ট tool tracker ও QA log-এর latest GitHub version নিজে খুলে যাচাই করো। আগের chat-এর memory বা এই prompt-এর পুরোনো status-এর ওপর নির্ভর করবে না। completed কাজ repeat করবে না। pending কাজ নিজে priority অনুযায়ী বেছে নেবে। প্রতিটি কাজ/test-এর evidence, exact result, status, dated log, commit/PR/workflow ও next step GitHub-এ update করবে। আমাকে একবারে একটি করে manual test দেবে; screenshot পেলে যাচাই করে QA log-এ লিখবে। কোনো test না করলে PASS বলবে না। protected hero/banner অনুমতি ছাড়া বদলাবে না। বাংলায় উত্তর দেবে। এখন latest GitHub state পড়ে আমাকে current status ও পরবর্তী একটিমাত্র কাজ জানাও।”
+
 ## Copy/paste starter prompt for a new chat
 
 “আমরা InfoJano project চালাচ্ছি। প্রথমে এই GitHub handoff ফাইলটি পড়ো: https://github.com/barsulkhan/InfoJano/blob/main/project-notes/NEW-CHAT-HANDOFF.md । এরপর TOOL-WORK-TRACKING-STANDARD.md, TOOL-INDEX.md এবং সংশ্লিষ্ট tool-এর tracker পড়বে। সব নিয়ম স্বয়ংক্রিয়ভাবে follow করবে—প্রতিটি tool-এর আলাদা folder, date-wise detailed work log, feature cards, success/failure, test evidence, PR/commit/workflow, pending কাজ ও next step GitHub-এ লিখবে। আমাকে tracking মনে করিয়ে দিতে হবে না। Shortcut ‘ট্র্যাক’। এখন Elapsed Time Calculator-এর CARD-009 mobile/desktop visual QA pending; merged কাজ পুনরায় করবে না। Protected hero/banner অনুমতি ছাড়া বদলাবে না।”
