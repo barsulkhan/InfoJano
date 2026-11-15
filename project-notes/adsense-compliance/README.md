@@ -737,3 +737,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - CI run #43749910209 on commit `b4f58f1cd7d842cb74e30c391b70c0f2b3fa2165`: PASS. Privacy Policy and Contact HTML5 validation PASS; policy link/sitemap/robots checker PASS.
 - Task record: [2026-11-16-0017-shared-footer-qa-trigger.md](2026-11-16-0017-shared-footer-qa-trigger.md); commit `d0f08953346f975432b6d63affd5e914dc23ce1d`.
 - GitHub Pages deployment for this exact commit was still queued at the time of the CI check; browser/mobile visual QA and live cache propagation remain unverified.
+
+
+### 2026-11-16 — Screenshot follow-up: privacy links added to 10 tool pages
+- Reviewed the uploaded mobile screenshots and added direct Privacy Policy + Contact links to Image Resizer, Document Studio, Universal Word Converter, Image to PDF, PDF Page Extractor, QR Maker, Social QR Maker, URL Toolkit, Currency Converter and Unit Converter.
+- Existing footer markup was retained; pages without a footer received a compact footer. Relative links support both the custom domain and repository project path.
+- Task record: [2026-11-16-0017-screenshot-pages-privacy-links.md](2026-11-16-0017-screenshot-pages-privacy-links.md), commit `415062f31fed83f8c96f81bfcc4972fe5bccff06`.
+- Live after-state/browser cache verification remains pending; no production/account settings or tool logic changed.
