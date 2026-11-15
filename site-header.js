@@ -105,6 +105,7 @@
         </nav>
       </div>`;
     document.body.insertBefore(header,document.body.firstChild);
+    if(!document.querySelector('script[data-ij-legal-links]')){const legal=document.createElement('script');legal.src=ROOT+'legal-links.js';legal.defer=true;legal.setAttribute('data-ij-legal-links','1');document.head.appendChild(legal);}
     const languageSelect=header.querySelector('.ij-global-language');
     const supported=['en','hi','bn'];
     let saved='en';try{saved=localStorage.getItem('infojano-language')||'en'}catch(e){}
