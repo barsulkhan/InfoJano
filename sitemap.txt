@@ -18,7 +18,6 @@ https://infojano.com/loan-interest.html
 https://infojano.com/number-to-words.html
 https://infojano.com/password-generator.html
 https://infojano.com/percentage.html
-https://infojano.com/qr-choice.html
 https://infojano.com/qr-maker.html
 https://infojano.com/social-qr-maker.html
 https://infojano.com/text-counter.html
@@ -91,16 +90,8 @@ https://infojano.com/number-to-words-international.html
 https://infojano.com/rupees-in-words.html
 https://infojano.com/dollars-in-words.html
 https://infojano.com/cheque-amount-in-words.html
-https://infojano.com/decimal-number-to-words.html
-https://infojano.com/bulk-number-to-words.html
-https://infojano.com/words-to-number-converter.html
 https://infojano.com/hindi-number-to-words.html
 https://infojano.com/bengali-number-to-words.html
-https://infojano.com/ordinal-number-converter.html
-https://infojano.com/million-billion-converter.html
-https://infojano.com/lakh-crore-converter.html
-https://infojano.com/number-to-words-uppercase.html
-https://infojano.com/number-to-words-for-cheque.html
 https://infojano.com/countdown-timer-india.html
 https://infojano.com/countdown-timer-bangladesh.html
 https://infojano.com/countdown-timer-usa.html
