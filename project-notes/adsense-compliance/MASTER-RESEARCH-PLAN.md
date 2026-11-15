@@ -789,3 +789,10 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 2. Attempt read-only public HTTP verification; if the environment cannot reach the site, record UNVERIFIED and defer.
 3. Prepare one concise user action only when account/device evidence becomes the next blocker.
 4. Do not change CMP/AdSense account settings, DNS, Worker secrets/configuration, or app releases without separate approval.
+
+
+### Additional evidence update — 2026-11-16 00:13 +05:30
+- Sitemap contains 110 unique URLs; both Privacy Policy and Contact are included; all 110 paths match files in the repository tree.
+- QA checker includes sitemap and robots consistency checks, and QA workflow now triggers on main pushes. The expanded checker has not yet been confirmed by a fresh CI run.
+- Live read-only fetch attempts for privacy-policy.html, contact.html, sitemap.xml, ads.txt and robots.txt were inaccessible. HTTP status, redirects, headers and crawler reachability remain UNVERIFIED.
+- Task evidence: [2026-11-16-0013-sitemap-qa-and-live-check.md](2026-11-16-0013-sitemap-qa-and-live-check.md).
