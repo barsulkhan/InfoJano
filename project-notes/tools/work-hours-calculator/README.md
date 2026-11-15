@@ -59,3 +59,8 @@ Overall status: In progress — standalone page committed; source syntax/structu
 
 ## Decisions and handoff
 - 2026-11-15 — GO for one English multi-shift timesheet MVP; no country clones until local demand and localization are validated.
+
+
+### 2026-11-15 — GitHub Pages workflow verification
+- Latest Pages workflow run #2550 for commit `f44e679ad5e8e0746061ea98c81b017605229485` completed with conclusion `success`; this commit includes the work-hours page, homepage directory link and sitemap update.
+- Direct live URL/rendered-page verification remains pending because the available live-page inspection returned inaccessible. Functional and browser QA remain NOT RUN.
