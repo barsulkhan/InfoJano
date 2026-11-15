@@ -178,3 +178,62 @@ Before implementing SEO copy changes or creating another landing page:
 
 ### Implementation status
 - Guide page created; calculator contextual link and sitemap entry added. Source validation, browser QA, deployment and post-indexing GSC review remain pending.
+
+
+## 11. Four-keyword focused research update (2026-11-15)
+
+**User request:** Research four priority SEO keywords first, save each completed research task to the repository, and report each save.
+
+### 11.1 Keywords and intent map
+
+| Keyword | Intended task / search intent | Page mapping | Priority |
+|---|---|---|---|
+| elapsed time calculator | Calculate elapsed duration between start and end clock times; strongest direct tool-use fit | /time-calculator.html | Primary |
+| time duration calculator | Calculate a duration in hours/minutes/seconds; overlaps the existing calculator modes | /time-calculator.html | Primary supporting |
+| time between two times | Find the interval between two clock times, including overnight cases | /time-calculator.html; explanatory support in /elapsed-time-calculator-guide.html | Supporting |
+| time difference calculator | Calculate difference between clock times; query can also mean time-zone difference, so intent is mixed | /time-calculator.html only where clock-time meaning is clear | Secondary |
+
+This mapping is qualitative and based on the existing tool's actual functionality and the previously recorded SERP observations. It is not a claim that the terms have been validated as the highest-volume opportunities.
+
+### 11.2 Country-level metrics check
+
+A fresh Ahrefs Keywords Explorer overview request was attempted for all four seed terms in each of these country databases: India (IN), Bangladesh (BD), United States (US), and United Kingdom (GB). All four country requests returned the provider error **"Insufficient plan"**. No metric rows were returned.
+
+| Country | Search volume | Keyword Difficulty | CPC | Traffic potential | Status |
+|---|---:|---:|---:|---:|---|
+| India (IN) | N/A | N/A | N/A | N/A | Ahrefs plan restriction |
+| Bangladesh (BD) | N/A | N/A | N/A | N/A | Ahrefs plan restriction |
+| United States (US) | N/A | N/A | N/A | N/A | Ahrefs plan restriction |
+| United Kingdom (GB) | N/A | N/A | N/A | N/A | Ahrefs plan restriction |
+
+No volume, KD, CPC, trend, or country-demand figures are estimated or fabricated. Numeric demand and difficulty remain unverified.
+
+### 11.3 Qualitative competitor / SERP evidence
+
+Previously identified direct and adjacent results include:
+- Calculator.net time-duration calculator: https://www.calculator.net/time-duration-calculator.html
+- timeanddate.com duration tool: https://www.timeanddate.com/date/timeduration.html
+- TimeCamp time-duration calculator: https://www.timecamp.com/helpers/time-duration-calculator/
+- Toggl time-duration calculator: https://toggl.com/online-tools/time-duration-calculator/
+- OnTheClock time-duration calculator: https://www.ontheclock.com/time-duration-calculator-hours-minutes
+- SpeedCalculator time calculator: https://www.speedcalculator.net/time-calculator/
+
+The qualitative review indicates established calculator competitors and overlapping utility intent. It does not constitute a fresh country-localized top-10 SERP export for each keyword/country. Therefore, competition labels such as "high" or "medium" are intentionally not presented as measured KD.
+
+### 11.4 Recommendation
+
+**Decision: optimize and measure the existing two-page architecture; do not create four pages or additional generic calculator pages for these four phrases.**
+- Keep /time-calculator.html as the primary interactive utility page.
+- Keep /elapsed-time-calculator-guide.html as the informational/how-to companion.
+- Use the four phrases naturally where they match the implemented clock-time and duration functionality.
+- Do not target time-zone intent as satisfied unless the product actually supports time-zone comparison.
+- Avoid keyword stuffing, duplicate pages, and country clones.
+
+### 11.5 Confidence, limitations, and next gate
+
+- Intent and page mapping: medium confidence (qualitative; grounded in current feature set and existing SERP observations).
+- Numeric demand, KD, CPC, seasonality and country prioritization: unavailable; confidence not assessable.
+- Exact country SERP ranking difficulty: not completed; requires localized SERP review.
+- Next: obtain authorized keyword metrics (Ahrefs plan, Google Keyword Planner, or another documented provider); then compare with Google Search Console query/impression/click/position data for the existing URLs before changing metadata or creating another page.
+
+**Code changes:** none. This research update changes documentation only.
