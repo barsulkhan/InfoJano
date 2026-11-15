@@ -33,6 +33,21 @@ QA type: User-performed manual mobile browser testing; evidence supplied as scre
 - Clear History, keyboard accessibility, desktop layout, and broader mobile viewport/overflow behavior remain untested.
 - Protected calculator hero design was not changed during QA.
 
+## Source review (not a substitute for manual QA)
+
+- `clearTimeHistory()` removes the `ijElapsedTimeHistoryV1` localStorage key and calls `renderTimeHistory()`.
+- `renderTimeHistory()` renders “No recent calculations yet.” when the history array is empty.
+- `getTimeHistory()` and `recordTimeCalculation()` each limit the list to five entries with `.slice(0,5)`.
+- These are source-level findings only. ET-010 and the five-item cap still require runtime confirmation in a real browser.
+
 ## Next test
 
-ET-010: Clear History — use the Clear history control and confirm that the recent-calculation list is cleared, with a suitable empty state and no stale records remaining.
+ET-010: Clear History — use the Clear history control and confirm that the recent-calculation list is cleared, with a suitable empty state. Then refresh and confirm the list remains empty.
+
+
+### 2026-11-15 — Source review of Clear History and history cap
+- Inspected current `time-calculator.html` history functions.
+- `clearTimeHistory()` removes the `ijElapsedTimeHistoryV1` localStorage key and rerenders the list.
+- `renderTimeHistory()` creates an empty list item reading “No recent calculations yet.” when no records exist.
+- `getTimeHistory()` filters malformed entries and slices to five; `recordTimeCalculation()` also writes only the first five records.
+- Result: source-level logic appears correct; ET-010 manual UI behavior and five-item cap runtime behavior remain NOT TESTED. No PASS claim.
