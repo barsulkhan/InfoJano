@@ -16,6 +16,7 @@ Overall status: In progress
 
 ### In progress
 - [ ] CARD-003 — Browser QA for footer alignment and direct-print flow; browser runtime/visual QA not yet run.
+- [ ] CARD-004 — Verify jsPDF relative asset path fix on live custom domain and GitHub Pages deployment.
 
 ## QA and release checklist
 - [x] Source-level anchor checks for targeted CSS, button and PDF handler changes.
@@ -38,3 +39,12 @@ Overall status: In progress
 
 ## Decisions and handoff
 - 2026-11-15 — Direct print uses the same generated PDF, preserving current page sizing and crop/export pipeline.
+
+### 2026-11-15 — PDF library load failure fix
+- Requested: fix the on-page “PDF export library did not load” error so the Print PDF action can proceed.
+- Inspected: the repository contains `jspdf.umd.min.js` at the repository root, but the page loaded it from `/InfoJano/jspdf.umd.min.js`. On the custom domain this path incorrectly points into a non-existent subdirectory.
+- Changed: use the relative URL `jspdf.umd.min.js`, which resolves alongside the HTML page on both the custom domain and the GitHub Pages project path.
+- Verification: fetched the updated source; confirmed new script URL present, old broken URL absent, and the existing jsPDF availability guard remains. Browser runtime and print dialog NOT RUN.
+- Commit: c5270c0cbcc38c3e01b6ff93eb2eba300660d4b6.
+- Still pending: confirm live asset returns successfully, run browser PDF export/print, and verify Pages workflow.
+- Protected areas preserved: hero/banner, mock cards, footer styling, workspace layout, crop logic and document processing.
