@@ -1,91 +1,114 @@
 # InfoJano Tool Work Tracking Standard
 
-এই নিয়ম InfoJano-র প্রতিটি tool-এর কাজের জন্য প্রযোজ্য। নতুন কোনো tool-এ কাজ শুরু করার আগে তার জন্য আলাদা tracking folder তৈরি করতে হবে। কাজের অগ্রগতি ChatGPT Memory-তে নয়, এই GitHub repository-তেই সংরক্ষণ করতে হবে।
+এই নিয়ম InfoJano-র প্রতিটি tool-এর কাজে স্বয়ংক্রিয়ভাবে প্রযোজ্য। ব্যবহারকারীকে বারবার tracking-এর কথা বলতে হবে না। কাজ শুরু, মাঝপথে, এবং শেষ—প্রতিটি পর্যায়ে GitHub repository-তে বিস্তারিত progress লিখতে হবে।
+
+## Shortcut
+- **ট্র্যাক** — সর্বশেষ tool-এর কাজের অবস্থা দেখাও: কী করা হয়েছে, কী সফল হয়েছে, কী ব্যর্থ/ব্লকড, কী বাকি, সর্বশেষ তারিখ ও পরবর্তী পদক্ষেপ।
+- ব্যবহারকারী tool-এর কাজ করতে বললেই shortcut না বললেও tracking নিয়ম স্বয়ংক্রিয়ভাবে চালু হবে।
+- **ট্র্যাক <tool-name>** — নির্দিষ্ট tool-এর পূর্ণ progress report দেখাও।
 
 ## 1. Folder convention
-
-প্রতিটি tool-এর জন্য এই কাঠামো ব্যবহার করো:
-
+প্রতিটি tool-এর জন্য:
 ```text
 project-notes/
   TOOL-WORK-TRACKING-STANDARD.md
+  TOOL-INDEX.md
   tools/
     <tool-slug>/
       README.md
 ```
+- <tool-slug> হবে lowercase kebab-case, যেমন elapsed-time-calculator, countdown-studio।
+- কাজ শুরুর আগে folder/README খুঁজে দেখো; না থাকলে তৈরি করো, থাকলে আপডেট করো।
+- README.md ওই tool-এর single source of truth। পুরনো project note থাকলে তার তথ্য নতুন tracker-এ স্থানান্তর/লিংক করো; পুরনো নোট মুছে ফেলো না।
+- প্রতিটি নতুন tool যোগ হলে TOOL-INDEX.md আপডেট করো।
 
-- `<tool-slug>` হবে tool-এর ছোট, স্থিতিশীল, lowercase kebab-case নাম; যেমন `elapsed-time-calculator`, `countdown-studio`।
-- কোনো tool-এর folder না থাকলে কাজ শুরুর সময় তৈরি করতে হবে।
-- আগে থেকে folder ও tracking file থাকলে নতুন করে বানানো যাবে না; বিদ্যমান নোট আপডেট করতে হবে।
-- `README.md` হবে ওই tool-এর একক progress tracker। বড় কাজ হলে একই folder-এ প্রয়োজনমতো আলাদা design, QA বা release note যোগ করা যাবে।
+## 2. বাধ্যতামূলক daily/work log
+প্রতিটি কাজের session-এ তারিখসহ একটি entry যোগ করতে হবে। শুধু summary নয়, যথেষ্ট বিস্তারিত লিখবে:
+- কী কাজ করতে বলা হয়েছিল / উদ্দেশ্য
+- কোন ফাইল, component, page বা workflow পরীক্ষা/পরিবর্তন হয়েছে
+- কী implement বা edit করা হয়েছে
+- কী কী check/test চালানো হয়েছে এবং ফলাফল (pass/fail/not run)
+- PR, commit, workflow run ও deployment link/ID
+- কী সমস্যা/ত্রুটি পাওয়া গেছে, root cause কী, কীভাবে সমাধান হয়েছে
+- কী এখনো অসম্পূর্ণ, কেন অসম্পূর্ণ
+- পরবর্তী নির্দিষ্ট পদক্ষেপ
+- user-এর অনুমতি/সীমাবদ্ধতা এবং কোন protected area অপরিবর্তিত রাখা হয়েছে
 
-## 2. প্রতি tool-এর README.md template
+সময়/তারিখ জানা না থাকলে অনুমান করে লিখবে না। একই দিনে একাধিক কাজ হলে আলাদা log entry হবে। কোনো কাজ মাঝপথে থামলে status In progress/Blocked রেখে handoff note লিখবে—কখনো নীরবে Completed করবে না।
 
-নতুন tool folder তৈরি করার সময় নিচের headings ব্যবহার করো:
-
+## 3. README template
 ```markdown
 # <Tool Name> — Work Tracker
 
 Last updated: YYYY-MM-DD
 Tool page: <URL বা TBD>
+Overall status: Backlog / In progress / Blocked / Completed
 
-## Scope and user-approved constraints
-- কী করা হবে
-- কোন design, hero, content বা feature অনুমতি ছাড়া বদলানো যাবে না
+## User-approved scope and constraints
+- ...
 
 ## Feature cards
 ### Completed
-- [x] **[CARD-001] Card title** — কী করা হয়েছে; PR/commit link; validation status
+- [x] [CARD-001] Title — acceptance criteria; implementation; PR/commit; evidence
 
 ### In progress
-- [ ] **[CARD-002] Card title** — বর্তমান অবস্থা; পরের ধাপ
+- [ ] [CARD-002] Title — current state; last action; next step
 
 ### Backlog
-- [ ] **[CARD-003] Card title** — সংক্ষিপ্ত বিবরণ / acceptance criteria
+- [ ] [CARD-003] Title — goal and acceptance criteria
+
+### Blocked
+- [ ] [CARD-004] Title — blocker; what is needed to unblock
 
 ## Bugs and follow-ups
-- [ ] Bug বা follow-up; severity/priority; status
+- Date — issue — severity — status — evidence
 
-## QA and release
-- Source checks:
-- Functional tests:
-- Browser/device QA:
-- Accessibility:
-- Deployment workflow:
-- APK/build/release workflow (যদি প্রযোজ্য হয়):
+## QA and release checklist
+- [ ] Source/syntax checks:
+- [ ] Functional tests:
+- [ ] Mobile browser QA:
+- [ ] Desktop browser QA:
+- [ ] Accessibility:
+- [ ] GitHub Pages deployment:
+- [ ] APK/build/release (if applicable):
 
-## Decisions and change log
-- YYYY-MM-DD — সিদ্ধান্ত/পরিবর্তন — কারণ — PR/commit
+## Detailed work log
+### YYYY-MM-DD — Session title
+- Requested:
+- Inspected:
+- Changed:
+- Tests and results:
+- PR/commit/workflow:
+- Issues and resolution:
+- Still pending:
+- Next step:
+- Protected areas preserved:
+
+## Decisions and handoff
+- YYYY-MM-DD — decision/context/unfinished work/next action
 ```
 
-## 3. Card লেখার নিয়ম
+## 4. Card rules
+- প্রতিটি feature, bug, refactor বা follow-up-এর আলাদা card।
+- ID ধারাবাহিক: CARD-001, CARD-002; ব্যবহৃত ID পুনর্ব্যবহার নয়।
+- প্রতিটি card-এ উদ্দেশ্য, acceptance criteria, status, implementation/evidence থাকবে।
+- Status: Backlog, In progress, Blocked, Completed।
+- Completed বলার আগে merge হয়েছে কি না উল্লেখ করো। CI, deployment, APK release এবং browser QA আলাদা আলাদা status।
+- Source check-কে browser QA বলা যাবে না। Workflow success না হলে deployment/APK success বলা যাবে না।
+- Feature code merged হলেও visual QA pending থাকলে card-এ সেটি স্পষ্ট লিখবে।
 
-- প্রতিটি আলাদা feature, bug বা follow-up-এর জন্য আলাদা card থাকবে।
-- Card ID হবে ধারাবাহিক: `CARD-001`, `CARD-002` ইত্যাদি। ID একবার ব্যবহৃত হলে পরে অন্য card-এ পুনরায় ব্যবহার করা যাবে না।
-- Card-এ অন্তত থাকবে: উদ্দেশ্য, সংক্ষিপ্ত acceptance criteria, status, এবং প্রাসঙ্গিক PR/commit বা test evidence।
-- Status স্পষ্টভাবে `Backlog`, `In progress`, `Completed` বা `Blocked` হবে।
-- কোনো card-কে Completed বলা যাবে কেবল কাজ merge হওয়ার পর; প্রযোজ্য CI/deployment এবং QA status আলাদাভাবে লিখতে হবে।
-- Browser QA না হলে সেটিকে pending বলতে হবে। Source-level check-কে visual/browser test হিসেবে দেখানো যাবে না।
-- Workflow সফল না হওয়া পর্যন্ত deployment বা APK release সফল বলা যাবে না।
+## 5. প্রতিটি কাজের স্বয়ংক্রিয় workflow
+1. Tool শনাক্ত করে তার tracker খুলো; আগের session-এর log ও handoff পড়ো।
+2. Tracker না থাকলে folder, README এবং index entry তৈরি করো।
+3. কাজ শুরুর আগেই dated log-এ request, scope ও planned cards লিখো।
+4. কাজ চলার সময় status এবং log update করো; কোনো বড় ধাপ শেষ হলে evidence লিখো।
+5. কোনো test/workflow fail করলে failure details ও root cause log করো; fix করার পর নতুন ফলাফল লিখো।
+6. কাজ থামলে অসম্পূর্ণ অবস্থা, blocker ও next step লিখে রাখো।
+7. কাজ শেষ হলে merge/commit, CI, deployment, QA status যাচাই করে tracker আপডেট করো।
+8. প্রতিটি tool session শেষে tracker update না করে কাজ শেষ বলে জানাবে না।
+9. উত্তরে সংক্ষেপে completed, successful, pending/blocked, এবং tracker link জানাবে।
 
-## 4. প্রতিটি কাজের বাধ্যতামূলক workflow
-
-1. কাজ শুরুর আগে tool-এর tracking folder ও README আছে কি না দেখো।
-2. না থাকলে এই template অনুসারে folder ও README তৈরি করো।
-3. বিদ্যমান user-approved constraints এবং আগের decisions পড়ে নাও।
-4. কাজকে ছোট, যাচাইযোগ্য feature cards-এ ভাগ করো; নতুন কাজ শুরু হলে In progress-এ নাও।
-5. Implementation চলাকালে card status ও evidence আপডেট করো।
-6. PR merge হলে Completed section, PR/commit link এবং validation ফলাফল যোগ করো।
-7. কাজ শেষে Backlog, Blocked এবং QA/release pending items স্পষ্ট রাখো।
-8. এই standard-এ নতুন প্রয়োজনীয় নিয়ম এলে এই ফাইল আপডেট করো।
-
-## 5. নিরাপত্তা ও অনুমতির নিয়ম
-
-- User-এর স্পষ্ট অনুমতি ছাড়া সংরক্ষিত hero/banner, branding, layout বা অন্য নিষিদ্ধ scope পরিবর্তন করা যাবে না।
-- বিদ্যমান design অপরিবর্তিত রাখার নির্দেশ থাকলে implementation এবং review-তে তা যাচাই করতে হবে।
-- কোনো কাজ, test, browser QA, deployment বা release বাস্তবে না হলে সম্পন্ন বলে লেখা যাবে না।
-- Project notes-এ গোপন তথ্য, token, password বা ব্যক্তিগত credential রাখা যাবে না।
-
-## 6. Repository-wide tool index
-
-প্রতিটি নতুন tool folder তৈরি হলে এই standard-এর পাশাপাশি একটি repository-wide index-এ tool-এর নাম, folder path এবং বর্তমান status তালিকাভুক্ত করা উচিত। Index তৈরি না হওয়া পর্যন্ত এই ফাইলটিই tracking convention-এর source of truth থাকবে।
+## 6. Safety and permission
+- User-এর স্পষ্ট অনুমতি ছাড়া protected hero/banner, branding, layout বা নিষিদ্ধ scope বদলাবে না।
+- Project notes-এ password, token, credential বা গোপন ব্যক্তিগত তথ্য লিখবে না।
+- বাস্তবে না করা কাজ/test/QA/deployment/release সম্পন্ন বলে লিখবে না।
