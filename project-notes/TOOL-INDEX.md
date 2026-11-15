@@ -33,3 +33,8 @@ Last updated: 2026-11-15
 ### 2026-11-15 — QA status clarification
 - User confirms copy/share and screen-reader tests were already completed. Removed them from the pending list; do not ask to repeat them.
 - Desktop visual QA is the remaining explicit manual check.
+
+
+### 2026-11-15 — USA-first Elapsed Time SEO research started
+- User set USA as the primary audience. Preliminary US keyword estimates and three page concepts are saved in `tools/elapsed-time-calculator/RESEARCH.md` §15.
+- Work Hours and Time Card appear overlapping; investigate SERP overlap before separate URLs. Date & Time Duration needs intent separation from the current calculator. No new page approved or coded.
