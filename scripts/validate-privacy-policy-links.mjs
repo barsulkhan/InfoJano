@@ -48,10 +48,44 @@ for (const href of hrefs) {
   }
 }
 
+const sitemapPath = path.resolve("sitemap.xml");
+const sitemap = fs.readFileSync(sitemapPath, "utf8");
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/gi)].map(match => match[1].trim());
+const requiredSitemapUrls = [
+  "https://infojano.com/privacy-policy.html",
+  "https://infojano.com/contact.html"
+];
+
+if (!sitemap.includes("<urlset") || !sitemap.includes("</urlset>")) {
+  errors.push("sitemap.xml is missing the urlset root element");
+}
+if (sitemapUrls.length === 0) errors.push("sitemap.xml contains no loc entries");
+if (new Set(sitemapUrls).size !== sitemapUrls.length) errors.push("sitemap.xml contains duplicate loc URLs");
+
+for (const url of sitemapUrls) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== "https:" || parsed.hostname !== "infojano.com") {
+      errors.push("Unexpected sitemap URL origin: " + url);
+    }
+  } catch {
+    errors.push("Invalid sitemap URL: " + url);
+  }
+}
+
+for (const url of requiredSitemapUrls) {
+  if (!sitemapUrls.includes(url)) errors.push("sitemap.xml is missing " + url);
+}
+
+const robots = fs.readFileSync("robots.txt", "utf8");
+if (!/^\s*Sitemap:\s*https:\/\/infojano\.com\/sitemap\.xml\s*$/im.test(robots)) {
+  errors.push("robots.txt does not reference the canonical sitemap.xml URL");
+}
+
 if (errors.length) {
-  console.error("Broken local links or fragments in privacy-policy.html:");
+  console.error("Privacy Policy link / sitemap checks failed:");
   for (const error of errors) console.error(" - " + error);
   process.exit(1);
 }
 
-console.log("Checked " + hrefs.length + " hrefs; all local targets and fragments exist.");
+console.log("Checked " + hrefs.length + " policy hrefs and " + sitemapUrls.length + " sitemap URLs; local targets, fragments, required sitemap entries and robots sitemap reference are valid.");
