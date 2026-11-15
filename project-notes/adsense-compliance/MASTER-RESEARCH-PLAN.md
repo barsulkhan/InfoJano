@@ -438,3 +438,18 @@ Scope: complete raw source fetched for 12 additional pages: `percentage-change.h
 - 31 root HTML files remain unreviewed in the branch tree after this batch.
 - Continue remaining page inventory; include local browser history/storage as a separate data category from external processing.
 - Live runtime/network/cookie/consent tests remain NOT RUN.
+
+## 22. Root-page inventory batch 08 — image resize, GST and social QR pages (2026-11-15)
+
+Scope: complete raw source fetched for 12 additional pages: `qr-choice.html`, `remove-gst-from-total-calculator.html`, `repeated-percentage-change-calculator.html`, `resize-image-by-percentage.html`, `resize-image-for-website.html`, `resize-image-to-pixels.html`, `reverse-percentage-calculator.html`, `rupees-in-words.html`, `sms-qr-code-generator.html`, `social-media-image-resizer.html`, `social-qr-maker.html`, and `successive-percentage-change-calculator.html`.
+
+### Findings (source verified)
+- No direct GA4/AdSense/CMP, fetch/XHR, browser-storage or device-permission marker was found in the 12 inspected pages in this bounded source scan.
+- Social QR Maker contains URL templates/links for social destinations including Instagram, Facebook, YouTube, TikTok, Telegram and WhatsApp. These are QR payload destinations/user-selected links, not evidence of server-side API calls or automatic transmission to those platforms.
+- The sampled image-resize pages showed no explicit upload endpoint or FormData/network request in their page sources; this supports a browser-side processing indication at page level, subject to runtime verification.
+- No CMP/TCF marker found.
+
+### Limits / next
+- 19 root HTML files remain unreviewed in the branch tree after this batch.
+- Continue final root-page batches and then consolidate page-to-vendor, GA4 and browser-storage matrices.
+- Live runtime/network/cookie/consent tests remain NOT RUN.
