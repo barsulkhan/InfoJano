@@ -15,3 +15,12 @@ Last updated: 2026-11-15
 - GitHub Pages deployment: NOT VERIFIED.
 - Source commit: aa45fa3d152a4378ee3d2f8092913f99cf185d2a.
 - Next: run source syntax validation, then inspect desktop footer and test print flow in a real browser; verify Pages workflow separately.
+
+## 2026-11-15 — jsPDF library path correction
+- SRC-006 — Confirmed repository file exists at root as `jspdf.umd.min.js`: PASS.
+- SRC-007 — Changed page script reference from absolute `/InfoJano/jspdf.umd.min.js` to relative `jspdf.umd.min.js`: PASS.
+- SRC-008 — Re-fetched committed page source; new URL present, old URL absent, jsPDF availability guard retained: PASS.
+- Browser asset load, PDF creation and print dialog: NOT RUN.
+- GitHub Pages deployment: NOT VERIFIED.
+- Commit: c5270c0cbcc38c3e01b6ff93eb2eba300660d4b6.
+- Next: verify live URL for the JS asset and run real browser print test.
