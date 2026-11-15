@@ -304,3 +304,15 @@ The next meaningful evidence should be InfoJano Search Console query/page data a
 - https://calculatorlib.com/clock-duration-calculator
 
 **Limitations:** Search result snippets and indexed page content can change. This review does not verify rankings, traffic, search volume, KD, CPC, country-specific SERP order, or competitor conversion rates.
+
+
+## 13. Search Console access and index-discovery check (2026-11-15)
+
+- Attempted to list the connected Ahrefs projects to identify an authorized Google Search Console-linked project. The Ahrefs management-projects request returned **"Insufficient plan"**; no project ID or GSC property could be confirmed.
+- Ran web-index discovery queries for:
+  - site:infojano.com/time-calculator.html "Elapsed Time Calculator" InfoJano
+  - site:infojano.com/elapsed-time-calculator-guide.html InfoJano
+- The search provider returned no results for either query. This is **not proof of deindexing** and does not replace URL Inspection in Google Search Console.
+- No GSC impressions, clicks, CTR, average position, query list, or indexing status are available in this session.
+- Required next evidence: open the verified InfoJano property in Google Search Console, inspect both exact URLs, and export Performance > Search results data (query + page + country + device) for an appropriate date range. Save the export before making SEO metadata/page changes.
+- Status: blocked on connected GSC/Ahrefs access or user-provided GSC export. No code or SEO metadata changed.
