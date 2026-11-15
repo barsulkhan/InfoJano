@@ -693,3 +693,12 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: sitemap `50e55a37e8d0196ef2f0d33ecb37492b17f70fc2`; checker `ca4c43887b42268e6c7d263fd9f57683a8631ef7`; workflow `c89fbe7a6b0fc9ac11a449d28041acd8befcac84`.
 - Detailed task record: [2026-11-16-0012-autonomous-source-quick-wins.md](2026-11-16-0012-autonomous-source-quick-wins.md); task commit `5ee555c438b84a8b1d98b381af0dfdd166c278af`.
 - New main-push workflow execution could not be retrieved through the available GitHub workflow-run view; do not claim that run passed. Live CMP/TCF, AdSense account/vendor/crawler, HTTP headers/redirects, Android/Windows runtime and Worker production configuration remain queued for evidence.
+
+
+### 2026-11-16 — Sitemap consistency and live endpoint check
+- Sitemap now contains 110 URLs, including Privacy Policy and Contact, with no duplicates; all 110 URL paths map to files in the main-branch repository tree.
+- QA checker now also validates sitemap origin, required URLs, matching repository files and robots.txt sitemap reference. Corrected the path-normalization regex after source inspection.
+- Read-only live fetch attempts for policy, contact, sitemap, ads.txt and robots.txt were inaccessible in this environment. HTTP status/redirects/headers/crawler access remain UNVERIFIED; user screenshots remain evidence for visible pages and footer links.
+- Latest checker commits: `efc33d8638140d3c808382ac7832bb195f1440ba` and regex correction `190f50bbd379f85039eccf7973ea3390c2d76cb5`.
+- Task record: [2026-11-16-0013-sitemap-qa-and-live-check.md](2026-11-16-0013-sitemap-qa-and-live-check.md); commit `02cc7f6eac37357c6aa1ca3ac687160021e7b145`.
+- The new expanded QA has not yet been confirmed by a workflow run on main; do not claim CI PASS for the latest checker.
