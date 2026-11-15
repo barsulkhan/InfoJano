@@ -1,0 +1,25 @@
+# Root-page inventory batch 05 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:24:49+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- User instruction: continue research and save each work package with a task-named timestamped file; no new folders.
+- Scope: inspect complete source for 12 pages covering government print guides, finance tools, number conversion and QR generators for third-party resources, analytics/ads/CMP, API calls, storage and uploads. Read-only.
+- Files inspected: `digital-ration-card-print.html`, `discount-pt-br.html`, `discount.html`, `dollars-in-words.html`, `elapsed-time-calculator-guide.html`, `email-qr-code-generator.html`, `exam-marks-percentage-calculator.html`, `google-maps-location-qr-code-generator.html`, `google4a4795e5c7c03eae.html`, `gst-calculator.html`, `hindi-number-to-words.html`, `id-card-print-studio.html`.
+- Findings:
+  - GA4 `G-P8D7XRGVEF` appears in Discount (English), Discount (pt-BR) and GST Calculator.
+  - Digital Ration Card Guide links to West Bengal Food & Supplies; no data upload/API transfer found in the guide source.
+  - ID Card Print Studio loads PDF.js and worker from cdnjs; jsPDF from local asset. Footer says browser-side processing and no intentional upload to InfoJano server. Static scan found no fetch/XHR/FormData/localStorage/sessionStorage in this page.
+  - Legacy GitHub Pages URL in ID Card Print Studio is metadata/schema, not a transfer endpoint.
+  - Dollars in Words, Elapsed Time Guide, Email QR, Exam Marks, Google Maps QR, Google verification page and Hindi Number-to-Words showed no direct GA4/AdSense/CMP, network, storage or permission marker in this bounded scan.
+  - No CMP/TCF marker found.
+- Checks: full raw source retrieval for 12 files — PASS; targeted source marker/host inspection — PASS; live file-processing/network test — NOT RUN; exhaustive site inventory — IN PROGRESS.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §19.
+- Changed: research plan only. No app source, policy, account setting, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `71f591a1ce8dfceb8a7ac499527a9744033d2e97`.
+- Next: continue next batch; later reconcile GA4 page map and document-processing/CDN disclosures.
+- Approval boundaries: no production/account change authorized.
