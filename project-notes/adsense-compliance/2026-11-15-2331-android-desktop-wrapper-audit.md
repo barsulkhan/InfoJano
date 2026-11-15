@@ -1,0 +1,24 @@
+# Android and Windows desktop wrapper audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:31:59+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded native-wrapper source audit; broader compliance research remains IN PROGRESS.
+- User instruction: continue research and save each task in a task-named timestamped file; no new folders.
+- Scope: inspect Android WebView shell and Windows Electron wrappers for network, storage, permissions, native file handling and navigation controls. Read-only.
+- Files inspected: Android `MainActivity.java`, `AndroidManifest.xml`, `android/app/build.gradle`, root Android Gradle files; `desktop-app/main.cjs`, `desktop-app/preload.cjs`, `desktop-app/countdown-studio/main.cjs`, desktop READMEs and package metadata.
+- Findings:
+  - Android app declares INTERNET only in the inspected manifest; cleartext traffic disabled. WebView enables JavaScript and DOM storage, loads hosted website, allows system file chooser and exposes AndroidBridge for local MediaStore Downloads export. No native camera/location/contacts/microphone/notification permission found in this manifest.
+  - Android default tool URL is GitHub Pages Age Calculator; release override/runtime URL not verified. WebView has no explicit origin allowlist in inspected MainActivity while JavaScript bridge is exposed; noted as security review item, not changed.
+  - General Electron app loads GitHub Pages portal; dedicated Countdown Studio wrapper loads `infojano.com/countdown-studio.html`; both require internet. Both set contextIsolation, sandbox and disable nodeIntegration; external navigation is opened in system browser and in-app navigation is restricted to trusted origin/path.
+  - Preload exposes only static platform label. No analytics SDK or direct user-data upload found in inspected desktop wrapper code.
+  - Native shells inherit hosted site's web analytics/ads/CMP/API/storage behavior; not tested in runtime.
+- Checks: raw source retrieval and static inspection — PASS; native install/runtime/network/cookie/permission tests — NOT RUN; app distribution status — UNVERIFIED.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §27.
+- Changed: research plan only. No app code, privacy policy, native permissions, account settings, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `01872d5f8fd6dd81aa78d1b4b3b80a104e353951`.
+- Next: compare source inventory with Privacy Policy draft; confirm whether native apps are currently distributed and whether the policy covers these surfaces.
+- Approval boundaries: no production/account/native code change authorized.
