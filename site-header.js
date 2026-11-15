@@ -22,9 +22,16 @@
 
   .ij-global-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex:0 0 auto;min-width:0;align-self:center}
   .ij-global-header-spacer{height:0}
+  /* On reference-hero tool pages, align the shared header edges to the hero. */
+  .ij-global-header--hero-aligned .ij-global-header-inner{width:min(calc(100% - 8px),1360px);max-width:1360px;gap:18px}
+  .ij-global-header--hero-aligned .ij-global-brand{flex:0 1 auto}
+  .ij-global-header--hero-aligned .ij-global-nav{margin-left:auto}
+  .ij-global-header--hero-aligned .ij-global-divider{display:none}
+
   .ij-site-brand,.ij-brandbar{display:none!important}
   @media(max-width:620px){
     .ij-global-header-inner{width:calc(100% - 24px);min-height:62px;padding:8px 0;gap:8px}
+    .ij-global-header--hero-aligned .ij-global-header-inner{width:calc(100% - 8px)}
     .ij-global-nav{gap:7px;align-items:center}
     .ij-global-logo{width:39px;height:39px;flex-basis:39px;border-radius:12px}
     .ij-global-brand{gap:6px;margin-left:0}
@@ -72,7 +79,7 @@
     });
     if(!document.getElementById('ij-global-header-style')){const style=document.createElement('style');style.id='ij-global-header-style';style.textContent=css;document.head.appendChild(style);}
     if(document.querySelector('.ij-global-header'))return;
-    const header=document.createElement('header');header.className='ij-global-header';header.setAttribute('role','banner');
+    const header=document.createElement('header');header.className='ij-global-header'+(document.querySelector('.ij-reference-hero')?' ij-global-header--hero-aligned':'');header.setAttribute('role','banner');
     header.innerHTML=`
       <div class="ij-global-header-inner">
         <a class="ij-global-brand" href="${ROOT}index.html" aria-label="InfoJano home">
