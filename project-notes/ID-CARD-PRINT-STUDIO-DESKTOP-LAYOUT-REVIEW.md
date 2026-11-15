@@ -41,3 +41,13 @@ If the user later approves changes:
 
 **Paused — waiting for user desktop inspection and a new instruction.**
 No code was changed in this session. Only this review note is being saved.
+
+
+## 2026-11-15 — User-approved name addition to hero mock cards
+
+- User requested the full name **আব্দুল বারিক** inside both the “DOCUMENT CARD” and “IDENTITY CARD” illustrations and explicitly asked to start.
+- Source inspection showed these two visuals are not PNG files; they are HTML/CSS mock card elements in the hero artwork.
+- Added the Bengali full name to both mock card detail areas, with compact bold styling.
+- No other hero copy, artwork, layout, dimensions, spacing, colors, or animations were intentionally changed. No workspace layout or document processing logic was changed.
+- Source commit: `bfdf85f5241e3577ef51a91d34300cd3b53f65c2`
+- Browser visual QA and Pages deployment status: not yet verified.
