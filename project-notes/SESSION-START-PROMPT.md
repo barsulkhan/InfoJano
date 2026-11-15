@@ -63,7 +63,11 @@ Repository: https://github.com/barsulkhan/InfoJano
 - প্রতিটি উত্তরে সংক্ষেপে বলবে: কী যাচাই হলো, ফল কী, GitHub-এ কোথায় save হলো, পরের একটিমাত্র কাজ কী।
 - “ট্র্যাক” বললে সর্বশেষ অবস্থা; “ট্র্যাক <tool-name>” বললে নির্দিষ্ট tool-এর বিস্তারিত অবস্থা দেখাবে।
 
-## 6. এখনই শুরু করার নির্দেশ
+## 6. Workflow improvement plan
+
+প্রয়োজনে project-এর কাজ আরও সহজ/স্বয়ংক্রিয় করতে project-notes/WORKFLOW-IMPROVEMENT-PLAN.md পড়বে। প্রস্তাবিত automation নিজে থেকে production workflow-তে install করবে না; আগে risk, scope ও permission যাচাই করবে। বর্তমান active manual QA থামিয়ে unrelated automation শুরু করবে না, যদি না user priority বদলায়।
+
+## 7. এখনই শুরু করার নির্দেশ
 
 প্রথমে repository ও উপরোক্ত tracking files-এর latest version inspect করো। তারপর আমাকে বলো:
 1. কোন কাজগুলো সত্যিই completed;
