@@ -1,0 +1,24 @@
+# Nested resource and Worker audit — batch 11
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:29:21+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded shared-resource/Worker source audit; overall compliance research remains IN PROGRESS.
+- User instruction: keep researching and save each work package in a task-named timestamped file; no new folders.
+- Scope: inspect shared JS, Worker sources/docs, D1 schema/config, CSS, package/manifest JSON and nested backup HTML for data flows, storage, external requests and processor roles.
+- Files inspected: `backend/shortlinks/src/worker.js`, `backend/word-converter/src/index.js`, `bmi-toolkit.js`, `download-progress.js`, `image-resizer-advanced.js`, `install.js`, `number-to-words-locales.js`, `related-apps.js`, `site-header.js`, `sw.js`, `theme.js`, `word-converter.js`; five shared CSS files; four package/config JSON files; `backups/InfoJano-Ayushman-VoterID-FINAL-LOCKED-2026-10-19.html`; shortlinks README/migration/Wrangler config; Word Converter README/Wrangler config.
+- Findings:
+  - BMI toolkit stores up to 100 date/weight/height/BMI entries in localStorage with clear action; shared header stores language preference.
+  - Word Converter saves the Worker URL in localStorage; optional high-fidelity DOCX route posts FormData to Worker. Worker source authenticates with iLoveAPI, uploads the DOCX to iLoveAPI, processes Office-to-PDF and downloads result. README describes optional third-party consent and says Worker does not persist files; provider retention/terms need fresh verification. Source CORS allowlist is GitHub Pages origin; custom-domain binding not confirmed. Worker observability is enabled in config, live state unknown.
+  - Service worker uses Cache Storage and fetch handlers for PWA/offline behavior. Related-apps links to GitHub releases. Other inspected shared scripts showed no direct third-party request or storage marker.
+  - Shortlinks Worker is described by repository README as an undeployed staging scaffold. It requires admin token; design stores destination URL and aggregate click data (date, referrer hostname, coarse device category) but no IP/full referrer URL in inspected schema. Actual Cloudflare deployment/account state not checked.
+  - Five CSS files showed no external imports/URLs; four JSON/package files showed no external endpoints. Historical backup page loads PDF.js/jsPDF from cdnjs and uses browser object URLs/canvas.
+- Checks: complete raw source retrieval for named resources — PASS; bounded static flow/storage/config inspection — PASS; PWA manifest inventory — NOT RUN; live Worker/account/network tests — NOT RUN; provider retention review — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §25.
+- Changed: research plan documentation only. No app code, Worker config, account settings, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `b834fe09f99f1a97ab98815a16b4d6e6fc787e5e`.
+- Next: inspect 30 PWA manifests and remaining resource tree; consolidate data-flow matrix and reconcile Privacy Policy.
+- Approval boundaries: no production/account change authorized.
