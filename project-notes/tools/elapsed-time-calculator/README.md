@@ -506,3 +506,10 @@ Overall status: In progress — mobile screenshot checks, source audit and ET-01
 - User set the United States as the primary audience for this tool's future SEO planning. Prioritize US English, US search intent, examples and competitors.
 - Preliminary US keyword screen is saved in RESEARCH.md §15. Three concepts are research candidates only: Work Hours, Time Card (likely overlapping Work Hours), and Date & Time Duration. No new URL is approved yet; current two-URL architecture remains in place pending US SERP overlap and feature validation.
 - Time Zone Converter is not a candidate until actual timezone-aware functionality exists. No app source or SEO metadata changed.
+
+
+## US Work Hours / Time Card research — 2026-11-15
+- Completed qualitative US-oriented SERP and competitor feature review; detailed evidence in RESEARCH.md §16.
+- Work Hours and Time Card results substantially overlap. Recommended one consolidated US Time Card / Work Hours concept, not two separate thin URLs.
+- New feature scope would need a 7-day weekly grid, breaks, overnight, daily/weekly totals, decimal hours, biweekly week-by-week overtime handling, and print/CSV. Payroll/state overtime features need careful legal scope and disclaimers.
+- Planning decision only: GO for consolidated concept research/spec; HOLD code and URL creation until date-time intent research and US keyword/GSC evidence are reviewed.
