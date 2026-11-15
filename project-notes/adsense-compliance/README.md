@@ -744,3 +744,9 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Existing footer markup was retained; pages without a footer received a compact footer. Relative links support both the custom domain and repository project path.
 - Task record: [2026-11-16-0017-screenshot-pages-privacy-links.md](2026-11-16-0017-screenshot-pages-privacy-links.md), commit `415062f31fed83f8c96f81bfcc4972fe5bccff06`.
 - Live after-state/browser cache verification remains pending; no production/account settings or tool logic changed.
+
+
+### 2026-11-16 — Second screenshot batch: six more pages updated
+- Added direct Privacy Policy + Contact links to Number to Words, Percentage Change Calculator, Tip Calculator, Date Difference Calculator, GST Calculator and Text Counter.
+- Existing footer and calculator functionality preserved. Task record: [2026-11-16-0018-second-screenshot-batch-privacy-links.md](2026-11-16-0018-second-screenshot-batch-privacy-links.md), commit `10b8e79c42a2f264c65ec8561414c2f7eeb41999`.
+- Live deployment/browser confirmation remains pending.
