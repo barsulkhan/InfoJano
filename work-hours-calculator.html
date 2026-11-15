@@ -117,7 +117,7 @@ function addRow(data){
  rows.appendChild(tr);
 }
 function parseTime(value){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(value))return null;var p=value.split(":");return Number(p[0])*60+Number(p[1])}
-function dateObj(s){var p=s.split("-");if(p.length!==3)return null;var d=new Date(Number(p[0]),Number(p[1])-1,Number(p[2]),12);return isNaN(d.getTime())?null:d}
+function dateObj(s){if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(s))return null;var p=s.split("-"),y=Number(p[0]),m=Number(p[1]),day=Number(p[2]),d=new Date(y,m-1,day,12);if(isNaN(d.getTime())||d.getFullYear()!==y||d.getMonth()!==m-1||d.getDate()!==day)return null;return d}
 function dateKey(d){return dateValue(d)}
 function mondayOf(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);var day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);return x}
 function minsText(n){n=Math.max(0,Math.round(n));var h=Math.floor(n/60),m=n%60;return h+"h "+String(m).padStart(2,"0")+"m"}
@@ -145,8 +145,9 @@ function saveIfEnabled(){
 }
 function render(){
  var parsed=getEntries(),entries=parsed.list;
- if(parsed.errors.length){showError(parsed.errors[0])}else if(entries.length){showGood("Showing totals for "+entries.length+" valid shift"+(entries.length===1?"":"s")+".")}else{message.className="status";message.textContent="Add your shifts to see the totals."}
- var gross=0,breaks=0,net=0,daily={},weekly={},threshold=Number(document.getElementById("overtime-threshold").value);
+ var threshold=Number(document.getElementById("overtime-threshold").value),thresholdValid=Number.isFinite(threshold)&&threshold>=0.25&&threshold<=24;
+ if(!thresholdValid){showError("Enter a daily hours threshold from 0.25 to 24.")}else if(parsed.errors.length){showError(parsed.errors[0])}else if(entries.length){showGood("Showing totals for "+entries.length+" valid shift"+(entries.length===1?"":"s")+".")}else{message.className="status";message.textContent="Add your shifts to see the totals."}
+ var gross=0,breaks=0,net=0,daily={},weekly={};
  entries.forEach(function(e){
   gross+=e.gross;breaks+=e.breakMinutes;net+=e.net;
   if(!daily[e.date])daily[e.date]={net:0,gross:0,breaks:0};
@@ -156,7 +157,7 @@ function render(){
   weekly[key].net+=e.net;weekly[key].gross+=e.gross;weekly[key].breaks+=e.breakMinutes;
   weekly[key].days[e.date]=(weekly[key].days[e.date]||0)+e.net;
  });
- var dailyOT=0;Object.keys(daily).forEach(function(k){dailyOT+=Math.max(0,daily[k].net-(Number.isFinite(threshold)&&threshold>0?threshold*60:0))});
+ var dailyOT=0;if(thresholdValid){Object.keys(daily).forEach(function(k){dailyOT+=Math.max(0,daily[k].net-threshold*60)})}
  document.getElementById("net-total").textContent=minsText(net);
  document.getElementById("decimal-total").textContent=decText(net)+" decimal hours";
  document.getElementById("gross-total").textContent=minsText(gross);
