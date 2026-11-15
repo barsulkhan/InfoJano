@@ -7,7 +7,7 @@ Last updated: 2026-11-15
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; ET-011 five-entry cap runtime PASS; Pages workflow #2550 SUCCESS; follow-up SERP/localization research and 16 static source checks saved; remaining desktop/responsive/accessibility/DST QA pending | 2026-11-15 | Run remaining desktop/responsive browser QA; keyboard/focus, screen-reader, copy/share end-to-end and DST runtime checks |
-| Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP source checks PASS; expanded US SERP/adjacent cluster research saved; GO for one Work Hours page, no separate Time Card/Timesheet URLs; functional/browser QA and deployment verification pending; metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
+| Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP source checks and focused source/logic audit PASS; WH-001–WH-010 runtime/browser QA and current deployment verification pending; GO for one Work Hours page, no separate Time Card/Timesheet URLs; metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
 
 
 ### 2026-11-15 — SEO page hero design requirement recorded
@@ -63,3 +63,8 @@ Last updated: 2026-11-15
 - Ahrefs Keywords Explorer returned “Insufficient plan”; missing metrics remain N/A. KWS Trends and competitor-published estimates are explicitly caveated.
 - No app code, page metadata, sitemap, URL or protected hero was changed.
 - Next: finish source audit of date pages, then prioritize Work Hours QA and candidate keyword validation when a usable provider is available.
+
+
+### 2026-11-15 — Work Hours QA resumed
+- Focused source/logic audit recorded in `tools/work-hours-calculator/QA-TEST-LOG.md`: arithmetic paths, overnight rollover, date/week grouping, threshold estimate, earnings caveat, CSV escaping and opt-in localStorage/clear/reset reviewed.
+- Source review only; WH-001–WH-010 browser/runtime tests remain NOT RUN. No app code changed. Next: execute runtime tests in a real browser, then desktop/mobile/accessibility and release verification.
