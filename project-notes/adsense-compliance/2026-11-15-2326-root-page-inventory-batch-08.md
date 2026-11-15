@@ -1,0 +1,23 @@
+# Root-page inventory batch 08 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:26:43+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- User instruction: continue research and save each work package with task-named date/time file; no new folders.
+- Scope: inspect 12 QR, image-resize, GST and percentage pages for analytics/ads/CMP, external hosts, API/network calls, browser storage, permissions and uploads. Read-only.
+- Files inspected: `qr-choice.html`, `remove-gst-from-total-calculator.html`, `repeated-percentage-change-calculator.html`, `resize-image-by-percentage.html`, `resize-image-for-website.html`, `resize-image-to-pixels.html`, `reverse-percentage-calculator.html`, `rupees-in-words.html`, `sms-qr-code-generator.html`, `social-media-image-resizer.html`, `social-qr-maker.html`, `successive-percentage-change-calculator.html`.
+- Findings:
+  - No direct GA4/AdSense/CMP, fetch/XHR, browser-storage or device-permission marker found in the bounded scan of these 12 pages.
+  - Social QR Maker includes destination URL templates for Instagram, Facebook, YouTube, TikTok, Telegram and WhatsApp. These are user-facing QR payload destinations, not evidence of API calls or automatic transfer to those platforms.
+  - Sampled image resize pages showed no explicit upload endpoint/FormData/network request in their page sources; browser-side processing is a source-level indication, not runtime proof.
+  - No CMP/TCF marker found.
+- Checks: full raw source retrieval for 12 files — PASS; bounded static marker scan — PASS; full inventory — IN PROGRESS; live runtime/network/cookie/consent tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §22.
+- Changed: research plan only. No app source, policy, CMP/AdSense settings, DNS, merge, deployment or protected design changed.
+- Research-plan commit: `2653d1bc921e01ac3e30d8bcb7208a12d0d39887`.
+- Next: inspect remaining 19 root HTML pages, then build consolidated GA4/vendor/storage inventory.
+- Approval boundaries: no production/account change authorized.
