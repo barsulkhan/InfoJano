@@ -68,3 +68,9 @@ Source-only checks were run after page creation. Inline JavaScript syntax and ke
 - Workflow #683 (APK) and Pages #2625 were queued for this commit at the time of recording; no success is claimed until they finish. Pages #2624 for preceding handoff commit completed SUCCESS.
 - No APK was built/released by failed run #682; the failure was a repository validation assertion, not a Gradle compile failure. No protected hero/banner was changed.
 - Next: monitor run #683 and #2625; if APK validation passes, confirm build/package count/release separately.
+
+
+### 2026-11-15 — APK workflow validation re-run
+- APK workflow #683 for service-worker fix commit `e8a0beab9cb70643fa612230956cc106474a71f1` reached the validation step and PASSED: 112 HTML pages, 23 manifests/targets and service-worker cache coverage validated.
+- At last check, the workflow was still building APKs; package-count verification, artifact upload and release publication had not completed. Do not claim APK success yet.
+- Pages workflow for the latest documentation commits was still processing; earlier Pages #2624 succeeded.
