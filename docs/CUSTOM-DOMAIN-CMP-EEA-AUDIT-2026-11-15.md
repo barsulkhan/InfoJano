@@ -87,3 +87,27 @@ Official sources:
 - AdSense account access is not connected. Publisher must configure Privacy & Messaging and provide screenshots (hide account/email/payment details) for review; never share passwords or 2FA codes.
 - Browser/real EEA geolocation test and live domain HTTP response remain pending.
 - No merge or deployment has occurred. Continue on draft PR #233 and obtain user approval before merge.
+
+
+## Resume verification — 2026-11-15 17:17 +05:30
+### Live custom-domain verification attempt
+- Attempted direct web retrieval of `https://infojano.com/`, `https://www.infojano.com/`, `https://infojano.com/robots.txt`, and `https://infojano.com/ads.txt`. The web client returned internal inspection errors for all four. This is inconclusive and must not be described as DNS failure, HTTP failure or site downtime.
+- Attempted public DNS lookup endpoints for A, AAAA, www CNAME and CAA and a third-party DNS checker page; those endpoints were not accessible through the available web client. No live DNS values or SSL certificate details were obtained.
+- Current source-side records remain: CNAME `infojano.com`, homepage canonical `https://infojano.com/`, robots sitemap target `https://infojano.com/sitemap.xml`, ads.txt publisher record `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`.
+- Required next evidence: read-only registrar records for apex and www, plus GitHub Settings > Pages showing custom domain and Enforce HTTPS. Preserve existing MX, TXT, SPF, DKIM, DMARC and verification records; do not replace the DNS zone wholesale.
+
+### CMP and EEA/UK/Switzerland implementation checklist refined
+- Google AdSense Help confirms a Google-certified CMP integrated with IAB TCF is required for personalized ads to EEA/UK users (from 16 Jan 2024) and Switzerland (from 31 Jul 2024). Google Privacy & Messaging European regulations messages are certified and support TCF v2.4.
+- Google Help describes a three-choice layout with `Do not consent`, `Consent`, and `Manage options`; users must also be able to revisit/revoke or change preferences. The message must be configured for the correct site(s), include the privacy policy URL and disclose the selected ad technology providers.
+- Current official setup references:
+  - https://support.google.com/adsense/answer/13554116
+  - https://support.google.com/adsense/answer/10960768
+  - https://support.google.com/adsense/answer/10961068
+  - https://support.google.com/adsense/answer/11546682
+  - https://support.google.com/adsense/answer/16053245
+- The publisher should enable consent mode for advertising/analytics only after checking whether the site actually uses Google Ads and GA4 and confirming intended signal behavior. Google says consent mode settings are account-side and apply across configured European messages.
+- Account-side actions remain NOT DONE: site selection, privacy URL assignment, provider/purpose selection, publish, Policy Center warning review and real EEA/UK/Swiss consent test. No AdSense account connector was available. Never ask the user to share passwords or 2FA codes.
+
+### Source-side referrer and AdSense notes
+- Sampled homepage, tool pages and shared helpers do not contain an explicit restrictive `no-referrer` policy or referrer meta tag. This does not verify the deployed HTTP `Referrer-Policy` response header or actual cross-origin referrer behavior. Google notes the referrer policy must permit sharing the Referrer header on cross-origin requests for message eligibility; verify in a real browser/network response.
+- Source scan of the full 103-URL sitemap did not surface missing title, meta description, canonical or H1 fields. One duplicate-H1 issue in `savings.html` was corrected in the working branch. This is not live-rendered browser QA.
