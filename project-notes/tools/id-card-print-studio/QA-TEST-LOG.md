@@ -24,3 +24,10 @@ Last updated: 2026-11-15
 - GitHub Pages deployment: NOT VERIFIED.
 - Commit: c5270c0cbcc38c3e01b6ff93eb2eba300660d4b6.
 - Next: verify live URL for the JS asset and run real browser print test.
+
+
+## 2026-11-15 — User final acceptance
+- User tested the live page after the jsPDF asset-path correction and explicitly confirmed the tool is now working correctly.
+- Overall feature status: ACCEPTED / FINAL (user-reported live verification).
+- This is user-reported real-world verification; no independent browser session or screenshot capture was performed in this session.
+- No further QA requested for this feature unless a new issue is reported.
