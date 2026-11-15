@@ -73,3 +73,13 @@ Branch: `feature/elapsed-time-copy-share-history`
 
 ## Later roadmap
 - Related SEO pages only after keyword/page intent is confirmed; follow the 1360px / 8px layout standard.
+
+
+## Completed — result actions, APK validation fixes, and deployment status (2026-11-15)
+- PR #226 updated the APK workflow to resolve each PWA manifest's relative `start_url` and `scope` against the manifest URL before validating expected paths. The manifest's relative URLs were already valid and were not changed.
+- PR #227 updated APK workflow validation to resolve relative manifest icon `src` paths against the manifest URL before checking the referenced repository asset. No manifest or site icon asset was changed.
+- PR #227 merge commit: 4ae9624fb8978b832d58e2b93f2e41091227dc80.
+- Final APK workflow run 43684495904 completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/43684495904
+- Final GitHub Pages deployment run 43684495751 completed successfully: https://github.com/barsulkhan/InfoJano/actions/runs/43684495751
+- Browser visual QA on mobile and desktop is still pending; no interactive browser session was available for this work.
+- Homepage Hero Banner and ID Card Print Studio Hero were not changed.
