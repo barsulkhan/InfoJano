@@ -551,3 +551,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `c0fe0d2867bb`; task file `e6eef25c2ecc`.
 - D-001 remains in progress; 31 root HTML files remain unreviewed; runtime tests not run.
 - No production, policy, account, DNS, merge or deployment changes.
+
+### 2026-11-15 — Root-page inventory batch 08
+- Inspected 12 QR, image resize, GST and percentage pages. No direct analytics/network/storage/CMP marker found in this sample. Social QR Maker contains destination URL templates for social networks; sampled image resize pages show no upload endpoint in source.
+- Task evidence: [2026-11-15-2326-root-page-inventory-batch-08.md](2026-11-15-2326-root-page-inventory-batch-08.md); master plan §22.
+- Commits: plan `2653d1bc921e`; task file `33dc27353426`.
+- D-001 remains in progress; 19 root HTML files remain unreviewed; live runtime tests not run.
+- No production, policy, account, DNS, merge or deployment changes.
