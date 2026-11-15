@@ -181,3 +181,17 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Still pending: use a real mobile viewport and desktop browser to verify hero/workspace sizing, horizontal overflow, control tap targets, all mode transitions, calculations, localStorage history, clear history, clipboard fallback and native share; record actual screenshots/findings. Accessibility review remains pending.
 - Next step: perform live visual and interactive QA in an actual browser session; if defects are observed, create a new card before code changes. Keep protected hero areas unchanged.
 - Protected areas preserved: only tracking documentation updated in this step; Calculator Hero, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
+
+
+### 2026-11-15 — User-performed mobile QA: basic difference and break deduction
+- Requested: save each manually tested feature and its observed result in a durable test file in the repository.
+- Inspected: user-supplied mobile screenshots for basic Time Difference, overnight/seconds precision, and Break Duration.
+- Changed: created `project-notes/tools/elapsed-time-calculator/QA-TEST-LOG.md` and recorded ET-001 through ET-003 with exact inputs, expected values, observed values, pass status, evidence notes, and remaining test coverage.
+- Tests and results:
+  - ET-001 PASS — 09:00 AM to 05:30 PM, 0 break: 8h30m, 510 minutes, 30,600 seconds, 8.50 decimal hours; Recent Calculations entry visible.
+  - ET-002 PASS — 11:05:00 PM to 12:05:25 PM, 0 break: 13h0m25s, 780.42 minutes, 46,825 seconds, 13.01 decimal hours; Recent Calculations entry visible. Earlier end clock time is interpreted as next day.
+  - ET-003 PASS — 09:00 AM to 05:30 PM, 30-minute break: gross 8h30m, break 30m, net 8h, 480 minutes, 28,800 seconds, 8.00 decimal hours; Recent Calculations entry visible.
+- PR/commit/workflow: QA log created in commit 47f1b6caecf6b79d8847de52fc07678036a898e2; no application source changed and no PR or deployment needed for this documentation-only update.
+- Issues and resolution: no calculation mismatch observed in these three screenshot-backed test cases. Copy/share, refresh persistence, clear history, five-item cap, other modes, desktop and accessibility remain untested.
+- Next step: ET-004 Add / Subtract Time mode; continue guided one-feature-at-a-time manual QA and append each result to QA-TEST-LOG.md.
+- Protected areas preserved: no application source or hero/banner files changed.
