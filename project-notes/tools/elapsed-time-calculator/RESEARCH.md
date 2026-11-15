@@ -316,3 +316,63 @@ The next meaningful evidence should be InfoJano Search Console query/page data a
 - No GSC impressions, clicks, CTR, average position, query list, or indexing status are available in this session.
 - Required next evidence: open the verified InfoJano property in Google Search Console, inspect both exact URLs, and export Performance > Search results data (query + page + country + device) for an appropriate date range. Save the export before making SEO metadata/page changes.
 - Status: blocked on connected GSC/Ahrefs access or user-provided GSC export. No code or SEO metadata changed.
+
+
+## 14. Independent follow-up research without Search Console data (2026-11-15)
+
+**User instruction:** Continue independently because Search Console has no usable updated report yet; finish the work efficiently and save each completed result. No GSC export or Ahrefs project access is assumed.
+
+### 14.1 Fresh public SERP observations
+
+Reviewed currently surfaced public result pages on 2026-11-15. This is discovery evidence only; it is not a controlled Google top-10 export, verified ranking position, traffic estimate or country-filtered SERP.
+
+| Competitor | Newly observed capability/content | Implication for InfoJano |
+|---|---|---|
+| Toggl — https://toggl.com/online-tools/time-duration-calculator | Multiple time blocks, break deduction, decimal hours/minutes, date-time duration, add/subtract and CSV export | InfoJano supports break deduction and multiple modes, but current documented scope does not establish multi-block totals or CSV export. Do not claim parity; these are possible future differentiators only if demand is validated. |
+| TimeToolSet — https://timetoolset.com/calculators/time-duration-calculator/ | Distinguishes raw elapsed-time calculation from shift/payroll/break use; explains optional dates, overnight assumption and seconds | A clear scope explanation is valuable. InfoJano guide should distinguish clock-only spans from date+time spans and avoid implying payroll-rule compliance. |
+| PercentPoint — https://percentpoint.com/time-duration-calculator/ | Three-mode architecture, overnight assumption, equal-time behavior, decimal/total minutes/seconds, worked arithmetic and FAQ | Confirms that equal start/end and 24-hour ambiguity should be explained accurately. Check current InfoJano runtime/source semantics before writing a claim about equal readings. |
+| TimeDateLab — https://timedatelab.com/ | 12/24-hour input, explicit same/next-day choice, seconds, copy/share, worked examples, local calculation and timezone/DST caveat | Explicitly communicate the current tool's day assumption and timezone/DST scope only after source verification. |
+| TimeCalculator.ca — https://timecalculator.ca/ | Multiple duration rows, break subtraction, add/subtract, date-aware calculations and unit outputs | Another broad multi-operation competitor; no verified traffic or ranking data. |
+
+Other observed relevant results retained from earlier review include Calculator.net, timeanddate, TimeCamp, OnTheClock, Cardamon, we-Calculate and CalculatorLib (section 12).
+
+### 14.2 Country and language screening — qualitative only
+
+| Market | Relevant language/script to screen | Candidate wording to validate (not measured demand) | Decision |
+|---|---|---|---|
+| India (IN) | English; Hindi (Devanagari); Bengali (বাংলা); other regional languages only if separate demand is demonstrated | elapsed time calculator; time duration calculator; समय अवधि कैलकुलेटर / दो समय के बीच का समय; অতিবাহিত সময় ক্যালকুলেটর / দুই সময়ের মধ্যে সময় | Keep one English utility page for now. Do not create Hindi/Bengali clones without localized SERP/demand and genuinely localized UX/content. |
+| Bangladesh (BD) | Bangla (বাংলা); English | সময়ের ব্যবধান ক্যালকুলেটর; দুই সময়ের মধ্যে সময়; time duration calculator | Bangla phrases are research hypotheses, not keyword-tool results. Validate spelling/actual query usage before targeting. |
+| United States (US) | English | elapsed time calculator; time between two times; hours between times; time duration calculator | Existing English page can serve the broad utility intent; no country-specific page justified. |
+| United Kingdom (GB) | English (UK) | time duration calculator; time between two times; hours between times; time difference calculator | Keep same English page unless a distinct UK convention or query demand is demonstrated. |
+
+No monthly search volumes, trend indices, KD, CPC, traffic potential, or country split were available from these public snippets. All numeric fields remain N/A. Local-language phrases above are literal candidate translations for future validation, not claims of exact native search phrasing.
+
+### 14.3 Existing page/source review
+
+Fetched the current repository versions of time-calculator.html, elapsed-time-calculator-guide.html and sitemap.xml on 2026-11-15.
+
+- Calculator title: “Elapsed Time Calculator – Time Between Two Times | InfoJano”; description directly states clock-time duration and crossing midnight; canonical points to /time-calculator.html.
+- Guide title and description target how-to intent and the guide has its own self-canonical, visible formula/examples/FAQs, WebPage/BreadcrumbList/FAQPage structured data.
+- Sitemap contains both /time-calculator.html and /elapsed-time-calculator-guide.html.
+- Guide source uses max-width 1360px and 8px side gutters, matching the recorded design constraint.
+- These are repository-source findings. They do not verify live HTTP status, rendered output, Google indexing, canonical selected by Google, or browser behavior.
+
+### 14.4 Live verification attempt and limits
+
+Attempted direct public fetches of the calculator, guide, robots.txt and sitemap.xml URLs. The available web inspection channel returned an internal access error for all four URLs. Therefore live HTTP status, robots directives, live sitemap response, rendered content and Google index state remain unverified. Do not infer that the URLs are down or deindexed from this tool error.
+
+### 14.5 Updated decision and immediate action
+
+**Decision: REVISE / HOLD new page expansion.** The existing two-URL architecture remains the best-supported scope. Fresh public SERP evidence shows multi-block totals and CSV export as competitor capabilities not documented for InfoJano; however, without demand metrics or user approval, do not start a feature build or create another page. Prioritize:
+1. Preserve the current two URLs and avoid duplicate country pages.
+2. Keep copy strictly aligned with verified calculator behavior; explicitly explain clock-only vs date+time use.
+3. When browser access is available, verify equal start/end behavior, overnight assumption, timezone/DST wording, mobile/desktop rendering and accessibility.
+4. Revisit multi-block totals/CSV only after a real query-demand or user-need signal.
+
+**Research status:** Qualitative follow-up completed; full quantitative/country-specific research remains incomplete because Ahrefs plan and GSC data are unavailable. No code or SEO metadata changed.
+
+### 14.6 Sources and method
+
+- Public search results reviewed 2026-11-15: Toggl, TimeToolSet, PercentPoint, TimeDateLab, TimeCalculator.ca (URLs in table above).
+- Repository source files fetched 2026-11-15: time-calculator.html, elapsed-time-calculator-guide.html, sitemap.xml.
+- Limitations: result snippets/page content may change; no country-localized top-10 export, keyword database metrics, GSC data, live page fetch or interactive browser test was available.
