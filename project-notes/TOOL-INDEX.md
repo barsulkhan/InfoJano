@@ -6,4 +6,4 @@ Last updated: 2026-11-15
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — CARD-009 browser QA pending; CARD-011 date-duration history gap found in source review | 2026-11-15 | CARD-011 fix/regression check; then real mobile ও desktop browser QA |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — CARD-009 browser QA pending; CARD-011 fix proposed in open PR #228; merge/CI pending | 2026-11-15 | CARD-011 fix/regression check; then real mobile ও desktop browser QA |
