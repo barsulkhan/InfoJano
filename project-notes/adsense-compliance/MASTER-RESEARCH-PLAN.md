@@ -351,3 +351,25 @@ Scope: complete raw source fetched for 12 selected pages: `emi.html`, `loan-elig
 - This 12-page batch does not establish global GA4 coverage or absence of tags on uninspected pages.
 - Continue inventory across remaining root HTML pages and classify pages by shared tag presence, data input sensitivity, external requests and permission APIs.
 - Inspect dynamic scripts and shared header inclusion behavior; compare with the final GA4/AdSense tag map.
+
+## 17. Root-page inventory batch 03 — public information, date and BMI support pages (2026-11-15)
+
+Scope: complete raw source fetched for 12 remaining root HTML pages: `404.html`, `aadhaar-card-print.html`, `add-subtract-date-calculator.html`, `age-in-days-calculator.html`, `ayushman-card-print.html`, `bengali-number-to-words.html`, `birthday-countdown-calculator.html`, `bmi-calculation-guide.html`, `bmi-health-guide.html`, `bmi-healthy-weight-range.html`, `bmi-weight-categories.html`, and `bulk-number-to-words.html`.
+
+### Findings (source verified)
+- Aadhaar Card Print Guide links users outward to the official UIDAI myAadhaar portal (`myaadhaar.uidai.gov.in`) and then internally to InfoJano's ID Card Print Studio. The inspected guide itself shows no fetch/upload, analytics, ad or browser-storage API. This outbound link is navigation, not evidence that Aadhaar data is sent to UIDAI by InfoJano.
+- Ayushman Card Print Guide links outward to the official PM-JAY Beneficiary Portal (`beneficiary.nha.gov.in`) and internally to the ID Card Print Studio. The inspected guide itself shows no fetch/upload, analytics, ad or browser-storage API. This outbound link is navigation, not evidence of an InfoJano-to-NHA data transfer.
+- Add/Subtract Date Calculator imports Google Fonts (Inter) from `fonts.googleapis.com`; its inspected inline calculation script has no fetch, browser storage, analytics/ad or CMP API marker. The font request is a third-party resource request.
+- Birthday Countdown Calculator's visible copy says notifications can be allowed and that delivery while closed is not guaranteed; however, the inspected source contains no `Notification` API call, no notification permission request and no localStorage/sessionStorage use. Treat the copy as a feature claim needing product/source reconciliation, not as evidence that notification data is collected or a notification is actually implemented.
+- 404, Age in Days, Bengali Number-to-Words, BMI guide/support pages and Bulk Number-to-Words showed no direct analytics/ad/CMP, fetch/XHR, browser storage or device-permission API marker in the inspected source. Bengali Number-to-Words and Bulk Number-to-Words perform conversion in inline browser-side JavaScript; no server transfer was found in these files.
+- No direct CMP/TCF marker was found in this batch.
+
+### Important distinction
+- External official-government links (UIDAI/NHA) are ordinary user-initiated navigation links. They should not be listed as embedded processors or API integrations unless a separate source proves a data exchange.
+- Google Fonts is an external resource origin. Whether a visitor's IP is exposed as part of fetching the font is a technical consequence of the browser request; provider retention/processing details were not verified here.
+
+### Limits / next
+- This is a bounded 12-page batch, not a full root-page audit.
+- Source inspection does not prove no tags are injected at runtime by account-side systems or shared deployment configuration.
+- Continue with remaining root pages in batches; prioritize document/photo, QR, calculators, API-driven tools and embedded media.
+- Reconcile Birthday Countdown's notification wording with actual source behavior before any policy statement is drafted; no code change authorized.
