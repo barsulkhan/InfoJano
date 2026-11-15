@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/qr-maker.html",
+  "id": "../qr-maker.html",
   "name": "InfoJano — QR Code Maker",
   "short_name": "QR Code Maker",
   "description": "Install the InfoJano QR Code Maker tool for quick access.",
-  "start_url": "/InfoJano/qr-maker.html",
-  "scope": "/InfoJano/",
+  "start_url": "../qr-maker.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/qr-maker.svg",
+      "src": "../app-icons/qr-maker.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
