@@ -58,7 +58,7 @@ Branch: `feature/elapsed-date-time-duration` (stacked on PR #222)
 - Added a third mode for calculating duration between two full date-and-time values using local `datetime-local` inputs.
 - Requires both values and rejects invalid or non-increasing ranges; displays days plus remaining hours/minutes/seconds, total hours, total minutes, and total seconds.
 - Existing time-difference and add/subtract modes are retained; hero markup and artwork are not intentionally changed.
-- Initial source-level checks and date-duration test cases are pending.
+- JavaScript syntax checks passed for all executable inline scripts. Date-duration arithmetic checks passed for 25h 30m 15s, a 2-hour overnight interval, and the equal-time rejection boundary (the UI rejects equal endpoints). Browser visual QA remains pending.
 
 ## Later roadmap
 - Copy/share result and recent calculation history.
