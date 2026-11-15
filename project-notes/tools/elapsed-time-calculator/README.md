@@ -423,3 +423,11 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Decision unchanged: retain the existing calculator + informational guide URLs; no new URL justified by this qualitative SERP review.
 - Country-specific ranking order, traffic and numeric keyword metrics remain unverified.
 - Research dossier commit: e721419a189ced2988736b8721a4b9b2fc84a00d.
+
+
+### 2026-11-15 — Search Console access and index-discovery check saved
+- Attempted to identify an Ahrefs project connected to Google Search Console; project listing returned "Insufficient plan" and no project/property ID was available.
+- Web-index discovery queries for both the calculator and guide URLs returned no results. This does not prove deindexing; exact URL Inspection in Search Console is still required.
+- No GSC performance metrics or indexing verdict are claimed. No code/metadata changes made.
+- Detailed evidence and next requirements: [RESEARCH.md](RESEARCH.md), section 13.
+- Research dossier commit: b76b426fa9d1315a9a17689636b6ce84cfb049a6.
