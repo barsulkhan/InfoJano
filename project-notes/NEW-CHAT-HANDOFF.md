@@ -177,3 +177,12 @@ Copy/paste prompt:
 - Detailed research: elapsed RESEARCH.md §18; Work Hours RESEARCH.md §5. Commits: elapsed research 8fc1c6d1134e72e0a5bd9bd496bc92c78b7afbcb; Work Hours research db09fcf5a14ac221ae1d55c2d1a5617d444f028f; elapsed README cd872fa876b2fcfe0eb27b7c46e6091789aaacfc; Work Hours README bf8dcd4ed942b4bc8f77bff2c9ea36b68bfd6fb6; index 47d2fc61a413f50ff33111632ef35f09a0e86fa4.
 - No app code, metadata, sitemap, URLs or protected hero artwork changed. Browser QA/deployment not claimed.
 - Next: complete Work Hours functional QA; separately audit US date-input conventions and Business Days page utility; validate Business Hours/Decimal Hours/Military Time with a reliable US keyword source before any new build.
+
+
+## Consolidated SEO research handoff — 2026-11-15
+- Read the full master dossier before repeating keyword/competitor research: [project-notes/SEO-OPPORTUNITY-RESEARCH-US-2026-11-15.md](SEO-OPPORTUNITY-RESEARCH-US-2026-11-15.md).
+- It consolidates current US-first research for elapsed time, Work Hours/Time Card, Business Hours, Decimal Hours, Military Time, Clock-Out, Overtime, Date/Business Days and Time Zones, including source caveats and Go/Hold/No-Go decisions.
+- Latest batch attempted Ahrefs Keywords Explorer; provider returned “Insufficient plan”. KWS Trends and competitor-published estimates are directional only. Do not repeat the same research unless fresh data/provider access or a material SERP change is available.
+- New distinct opportunity priority: Business Hours (HOLD pending metrics/spec), Decimal Hours (HOLD), Military Time (HOLD). Clock-Out should be considered inside Work Hours first. No new URL or implementation is approved by this dossier.
+- Existing date-page source audit is not fully complete; remaining pages should be inspected before date architecture changes.
+- User requests batching research and saving it to files to avoid repeated back-and-forth. Prefer completing all feasible related research in one batch, documenting unavailable data once, and updating this handoff.
