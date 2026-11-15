@@ -619,3 +619,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task evidence: [2026-11-15-2335-public-app-release-and-policy-scope-audit.md](2026-11-15-2335-public-app-release-and-policy-scope-audit.md).
 - Commits: plan `7b91eb378ace`; task file `38405102f514`.
 - No app code or Privacy Policy edits; no account/DNS/merge/deployment changes.
+
+### 2026-11-15 — Proposed Privacy Policy revision map and approval gates
+- Converted source reconciliation into a section-by-section revision map covering legal identity, GA4 scope, local/session storage, CMP revocation, feature APIs, Word Converter upload, public Android/Windows wrappers, contact, retention and jurisdiction-specific rights.
+- Added ordered implementation gates and exact publisher/runtime blockers in MASTER-RESEARCH-PLAN.md §31.
+- Task evidence: [2026-11-15-2335-privacy-policy-revision-map.md](2026-11-15-2335-privacy-policy-revision-map.md).
+- Commits: plan `a690b1ae974c`; task file `f694fffa85f7`.
+- `privacy-policy.html` remains unchanged; no account, app source, DNS, merge or deployment changes.
