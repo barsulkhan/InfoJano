@@ -580,3 +580,12 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `b834fe09f99f`; task file `e8e4f4f78671`.
 - Next: inspect PWA manifests and remaining resource tree; consolidate data flows and reconcile Privacy Policy. Live Cloudflare/provider/network checks remain pending.
 - No production code/config/account/DNS/merge/deployment changes.
+
+### 2026-11-15 — Consolidated source inventory and PWA manifest audit
+- Consolidated all 116 root HTML source-marker scans, 14 JS files, 5 CSS files, 4 JSON/package files, all 29 app PWA manifests plus root manifest, Worker source/docs and nested backup page.
+- GA4 explicit tag found in 24 root pages; AdSense loader found in homepage source only; no explicit CMP/TCF API marker in inspected root pages/shared JS. Runtime/account-side behavior remains unknown.
+- Consolidated API/CDN, local storage, PWA, Word Converter optional upload, shortlinks scaffold and unresolved mismatches in MASTER-RESEARCH-PLAN.md §26.
+- Task evidence: [2026-11-15-2330-consolidated-source-inventory-and-pwa-audit.md](2026-11-15-2330-consolidated-source-inventory-and-pwa-audit.md).
+- Commits: plan `76482be21ded`; task file `651c36e09776`.
+- Next: inspect desktop/Android shells and workflows, then compare the complete source inventory against Privacy Policy. Live CMP/TCF/account/network and publisher legal facts remain pending.
+- No app code, policy, account, Cloudflare, DNS, merge, deployment or protected design changes.
