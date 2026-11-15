@@ -150,3 +150,24 @@ Overall status: In progress
 - Attempted live URL inspection for https://infojano.com/ads.txt, https://infojano.com/robots.txt, and https://infojano.com/privacy-policy.html; web inspection service returned internal inaccessible errors for all three. Live HTTP status, redirects, response body and page availability remain UNVERIFIED (not evidence that URLs are down).
 - No code, DNS, AdSense settings, CMP settings or production changes made.
 - Current next steps within audit scope: user may open the infojano.com row in AdSense Sites to view status details and ads.txt details if desired; do not press Request review, remove/re-add site, or publish CMP changes. The repository's missing privacy-policy.html remains a source-level blocker; drafting/deploying legal policy requires accurate publisher disclosures and explicit approval.
+
+### 2026-11-15 — Privacy Policy and ads.txt source audit (requested first)
+- User asked to proceed with the Privacy Policy / ads.txt work first.
+- Re-read latest project handoff and mandatory work-tracking/research standards before continuing.
+- ads.txt source: root ads.txt exists on main and contains one Google DIRECT seller record with the required Google certification authority ID.
+- robots.txt contains User-agent: * and Allow: /; no crawler block for ads.txt was found.
+- This is a SOURCE PASS only. Live HTTPS/HTTP root response, redirects, HTTP 200, exact body served, and Google crawler access are still UNVERIFIED because live inspection requests failed. Do not edit a correct source record just because AdSense UI screenshot may show Not found.
+- Privacy-policy page: no privacy-policy.html exists in current main tree, while work-hours-calculator.html footer links to /privacy-policy.html; this is a confirmed broken source-level link.
+- Source-derived data processing findings:
+  - GA4 gtag script with the same measurement ID is present in the homepage and multiple tool pages. Google Analytics default collection may include user/session statistics, approximate geolocation, browser/device information, and a first-party _ga identifier cookie (Google documentation).
+  - Image Compressor source says image processing occurs in-browser and images are not uploaded to an InfoJano server.
+  - Image-to-PDF source says browser-side processing and no server upload.
+  - PDF-to-JPG source says browser-side processing; PDF.js is loaded from a public CDN.
+  - Work Hours Calculator source says calculations are local; entries are saved in localStorage only when the user enables Remember my entries.
+  - Word Converter has an optional high-fidelity route. The UI requires an explicit checkbox consent before uploading the DOCX; the browser sends the file to the configured HTTPS Cloudflare Worker, and the Worker forwards it to iLovePDF API. The browser stores the Worker URL in localStorage. The source's UI text says iLoveAPI India region. iLovePDF's API terms state API-processed files are deleted within a maximum of 48 hours (not the consumer service's 2-hour rule); exact contractual account settings should be checked before making a stronger claim.
+  - Public CDNs are used for libraries; the exact inventory of all external libraries/vendors across every page still needs a full pass.
+- Google AdSense official required-content guidance says the privacy policy must disclose Google/third-party ad cookies, web beacons/IP addresses/other identifiers, third-party vendors/ad networks and user opt-out options. Google Analytics default collection and AdSense cookie disclosures also need to be covered accurately.
+- Legal-policy drafting is BLOCKED pending publisher-supplied contact email and confirmation that the source-derived inventory reflects the currently enabled production features/services. Do not invent an email, legal entity, jurisdiction, retention schedule for InfoJano, or data controller identity. Do not publish a placeholder policy.
+- Official sources consulted: Google AdSense required content (https://support.google.com/adsense/answer/1348695); Google Publisher Policies privacy disclosures (https://support.google.com/adsense/answer/10502938); Google Analytics data collection (https://support.google.com/analytics/answer/11593727); Google AdSense cookie use (https://support.google.com/adsense/answer/7549925); iLovePDF Privacy Policy (https://www.ilovepdf.com/help/privacy); iLovePDF Terms (API file retention) (https://www.ilovepdf.com/help/terms).
+- Changed: tracker documentation only. No app source, privacy page, ads.txt, DNS, AdSense setting, CMP setting, or production deployment changed.
+- Next action: obtain the public privacy contact email to publish in the policy; then complete a full external-service inventory and prepare a reviewable draft before deployment. Independently, user can open the ads.txt status details in AdSense; do not press Request review or remove/re-add the site.
