@@ -10,7 +10,7 @@
 <title>Free Online QR Code Maker & Generator | Create QR Codes - InfoJano</title>
 <meta name="description" content="Create a QR code online free for links, text, WiFi, WhatsApp, email and contacts. Use this free online QR code maker to generate and download a QR code.">
 <link rel="canonical" href="https://infojano.com/qr-maker.html">
-<link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
+<link rel="manifest" href="./app-manifests/qr-maker.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Free Online QR Code Maker & Generator | Create QR Codes - InfoJano">
 <meta property="og:description" content="Create a QR code online free with InfoJano. Use this free QR code generator and QR code maker for website links or text, then download your QR code as a PNG.">
@@ -337,7 +337,7 @@ main .ij-qr-brand{display:none!important}
 .ij-qr-features>div>svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:480px){.ij-qr-types .ij-qr-mode-icon{width:24px;height:24px;flex-basis:24px}}
 </style>
-<link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
+<link rel="manifest" href="./app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
 /* Colorful, high-contrast icon system for QR Maker */
 .ij-qr-types button{background:linear-gradient(145deg,#f7fbff,#eaf3ff)!important;border:1px solid #cbdcf5!important;color:#1559b8!important}
@@ -506,7 +506,7 @@ main .ij-qr-brand{display:none!important}
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script src="https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js"></script>
-<script src="/InfoJano/qr-code-generator.min.js" defer></script>
+<script src="./qr-code-generator.min.js" defer></script>
 <script>
 let selectedCodeImage = null;
 let codePreviewUrl = null;
@@ -635,7 +635,7 @@ button.textContent='Generate QR Code';
 }
 </script>
 
-<script src="/InfoJano/site-header.js" defer></script>
+<script src="./site-header.js" defer></script>
 <script>
 (function(){
  const typeButtons=[...document.querySelectorAll('[data-qrtype]')];
@@ -767,6 +767,6 @@ window.makeQR=async function(){
  }catch(e){}
 })();
 </script>
-<script src="/InfoJano/install.js"></script>
+<script src="./install.js"></script>
 </body>
 </html>
