@@ -3793,3 +3793,90 @@ Resume from this 10 Nov 2026 checkpoint. Start with non-destructive Mobile/Deskt
 8. Record every completed check with date, exact URL/PR/commit, evidence, and separate statuses for source QA, workflow, browser/device QA, live deployment and Google indexing.
 
 **Checkpoint boundary:** This 15 Nov audit only records verified repository/source and user-screenshot evidence. No production code was changed, no PR was merged, no deployment was triggered, no Search Console URL was submitted, and no ad setting was changed.
+
+
+---
+
+## 15 November 2026 — Number to Words Pro layout, locale and SEO checkpoint
+
+### Current source and deployment verification
+- Current main handoff commit: `149e7d05979566a0b030e6fdba8c28de236cb07b`.
+- Latest GitHub Pages run for that main commit: run `43637491206` (Pages run #2445), completed successfully. Build, deploy and report-build-status jobs all succeeded.
+- Earlier Pages run `43619020010` for commit `a36f9474b124e902bcac541f8a92a0bb03e0acdb` was cancelled. This was superseded by the later successful Pages run above.
+- APK workflow run `43619020151` for the same `a36f947` commit failed. This is a separate APK workflow and is not a Pages deployment failure.
+- Current main Service Worker cache is `infojano-v308`; the user's earlier `v287` reference is superseded by current repository source.
+- Direct live custom-domain/GitHub Pages browser retrieval and rendered desktop/mobile QA could not be completed in this environment. Do not claim visual/live page verification based on the successful workflow alone.
+
+### Number to Words Pro — source-level design audit
+- Main page source: `number-to-words.html`, current main blob SHA `6ad9a1c048696cb4f7bc1e57c512924e0887719f`.
+- The hero-to-converter width synchronisation script is present for desktop/tablet widths. Mobile CSS sets both the hero and converter frame to the same `calc(100% - 28px)` width.
+- The converter uses two side-by-side panels at mobile and desktop widths; the right panel has a 2px vertical left border. Mobile control grids are constrained to one column inside each half-panel to prevent overflow.
+- The official `infojano-mark.svg` logo mark and InfoJano wordmark are rendered by `site-header.js`.
+- `install.js` removes `.ij-install-card` and `#ij-install-button` and observes later DOM insertions. This is source evidence for the no-large-install-banner behavior, not a live DOM test.
+- A mobile fit issue was identified in the five quick-number chips: the desktop five-column grid was being retained inside the mobile left half-panel. PR #210 changes the mobile chip layout to two columns and allows chip labels to wrap.
+- PR #210 also adds `number-to-words-locales.js` to the Service Worker precache and advances the cache from `infojano-v308` to `infojano-v309` on its branch. PR #210 is OPEN and UNMERGED; main/live remains v308 until an approved merge and successful Pages deployment.
+- PR #210: https://github.com/barsulkhan/InfoJano/pull/210. Changed files: `number-to-words.html`, `sw.js`. No homepage or protected file changed. No merge or deployment performed.
+
+### Sixteen Number to Words URLs — repository audit
+All 16 files exist on main and have canonical URLs:
+1. `number-to-words.html`
+2. `number-to-words-indian.html`
+3. `number-to-words-international.html`
+4. `rupees-in-words.html`
+5. `dollars-in-words.html`
+6. `cheque-amount-in-words.html`
+7. `decimal-number-to-words.html`
+8. `bulk-number-to-words.html`
+9. `words-to-number-converter.html`
+10. `bengali-number-to-words.html`
+11. `hindi-number-to-words.html`
+12. `ordinal-number-converter.html`
+13. `million-billion-converter.html`
+14. `lakh-crore-converter.html`
+15. `number-to-words-uppercase.html`
+16. `number-to-words-for-cheque.html`
+- All 16 are present in the current canonical `sitemap.xml` (106 unique URLs, no duplicate loc entries).
+- All 16 HTML pages are present in the main Service Worker precache list in v308. The shared locale script `number-to-words-locales.js` is not in v308; PR #210 adds it.
+- All 16 pages have a canonical URL, title, meta description and H1 in source. The 14 English pages have WebApplication JSON-LD and FAQ content; Bengali/Hindi pages have localized FAQ content but no WebApplication JSON-LD in the current source. Their hreflang tags include duplicate language entries; review before future SEO changes.
+- Main converter features found in source: Indian/International grouping; plain, currency, cheque, ordinal and Roman output modes; INR/USD; sentence/title/upper/lower case; quick presets; bulk conversion; copy, speech, TXT, CSV and print actions. Words-to-number is a separate SEO tool page, not a visible reverse-input panel in the main converter.
+- Locale source checks for Bengali and Hindi returned correct sample grouping for 25, 100, 1,000, 1 lakh, 1 crore and 12,34,56,789, plus decimal and INR cheque wording. These were source-algorithm tests, not browser/device tests.
+
+### Expanded Number to Words Pro PR #210 review (15 Nov, follow-up)
+- PR #210 now contains six feature-cluster files (not just the initial two-file mobile/cache patch): `number-to-words.html`, `number-to-words-locales.js`, `words-to-number-converter.html`, `bengali-number-to-words.html`, `hindi-number-to-words.html`, and `sw.js`.
+- The reverse-converter SEO page had a functional mismatch: its original page accepted numeric input and converted it to words, despite the title promising words-to-number conversion. PR #210 replaces this with an English phrase parser and numeric digit output.
+- The branch also redirects legacy `?focus=reverse` links to the dedicated reverse-converter page, removes duplicate hreflang entries from Bengali/Hindi pages, and adds localized WebApplication JSON-LD.
+- Independent parser review found a standalone minor-currency edge case: `fifty paise` could be returned as `50.50`. The PR branch was corrected to return `0.50` and reject minor-unit groups above 99. This correction is in the latest PR head `7cbb99d72b17f808441fd23378206940aa87f3eb`.
+- PR #210 remains OPEN / UNMERGED / mergeable=true. Its nine commits and six-file scope should be reviewed as one feature-cluster change. No merge or deployment was performed.
+- The PR description lists source-level parser examples, but real browser tests and independent Bengali/Hindi native-speaker review remain outstanding.
+
+### Sitemap reconciliation
+- Canonical `sitemap.xml`: 106 unique URLs; robots.txt points to `https://infojano.com/sitemap.xml`.
+- Legacy `sitemap-infojano.xml` and `sitemap.txt` each contained 91 URLs and omitted the 15 dedicated Number to Words SEO pages.
+- PR #211 synchronizes both legacy sitemap files to the same 106 URL set as `sitemap.xml`. PR #211 is OPEN and UNMERGED; no sitemap update is live until approved merge and deployment.
+- PR #211: https://github.com/barsulkhan/InfoJano/pull/211. Changed files: `sitemap-infojano.xml`, `sitemap.txt`. No robots.txt or homepage change.
+
+### Google Indexing Tracker status
+- Latest tracker evidence remains user-provided Search Console screenshots dated 12 Nov 2026; no authenticated fresh Search Console inspection was performed in this checkpoint.
+- The tracker contains 40 historical Indexed screenshot entries; 2 are sitemap XML URLs, leaving 38 entries that match sitemap content URLs.
+- Pending lists enumerate 50 original URLs + 15 Number to Words Pro SEO URLs + 3 Countdown pages = 68 URLs pending indexing verification. This is tracker-list arithmetic, not a fresh Search Console pending count.
+- Main `number-to-words.html` appears in Batch 1 as Submitted — Pending Google indexing verification. The 15 dedicated Number to Words SEO pages remain Pending — not submitted. Do not mark any as indexed without URL Inspection evidence.
+- No URLs were submitted to Search Console during this checkpoint.
+
+### Remaining work / verification boundary
+1. Review PR #210 and PR #211; obtain the user's approval before merging either.
+2. After approved merge, recheck the Pages workflow and current Service Worker cache. Do not confuse APK workflow failures with Pages.
+3. Perform real desktop/mobile browser checks at common widths, verify hero/converter alignment, mobile chip fit, two-panel divider, logo and install-banner absence.
+4. Test English, Bengali and Hindi main-converter output, query preselection, bulk, currency, cheque, ordinal, Roman, copy, speech, TXT/CSV, print and offline locale behavior in a real browser/device.
+5. Check all 16 exact live URLs, not just source files. Direct live URL retrieval was unavailable during this checkpoint.
+6. Refresh Search Console URL Inspection and the indexing tracker only with authenticated evidence. Keep all unverified URLs pending.
+7. Revisit Bengali/Hindi WebApplication schema and duplicate hreflang entries after layout work is approved and live-verified.
+
+**Checkpoint boundary:** Source audit and source-level tests only. PRs #210 and #211 are unmerged; no production code, sitemap or cache update is live from these PRs; no browser/device QA, live HTTP verification, Search Console submission or indexing verification was completed.
+
+
+### Follow-up found during the 16-URL functional audit
+- The `words-to-number-converter.html` page was incorrectly running a number-to-words script despite its reverse-conversion title and description. PR #210 now replaces it with an English words-to-digits parser, including Indian/International grouping, scale words, decimals, negative values, rupees/paise and dollars/cents. Nine source-level examples passed.
+- Legacy `?focus=reverse` links now route to the dedicated reverse converter rather than a nonexistent main-page control.
+- Bengali and Hindi SEO pages had duplicate hreflang entries and lacked WebApplication JSON-LD. PR #210 removes the duplicate tags and adds localized WebApplication schema. Reciprocal hreflang links are already present on the English main page.
+- PR #210 now covers six files: `number-to-words.html`, `number-to-words-locales.js`, `words-to-number-converter.html`, `bengali-number-to-words.html`, `hindi-number-to-words.html`, and `sw.js`. It remains OPEN / UNMERGED; its proposed cache is v309, not live.
+- These are source-level corrections only. Real browser/device, live URL, offline, clipboard, speech, download and print checks remain outstanding.

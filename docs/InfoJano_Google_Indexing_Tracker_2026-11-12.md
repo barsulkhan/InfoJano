@@ -1,14 +1,16 @@
 # InfoJano Google Indexing Tracker
 
-Last verified from user-provided Google Search Console screenshots: 2026-11-12
+Last verified from user-provided Google Search Console screenshots: 2026-11-12. Repository source reconciliation: 2026-11-15. No fresh authenticated Search Console inspection was performed on 15 Nov.
 
 ## Current status
-- Google Search Console indexed count shown in screenshots: **40 URLs**.
-- Sitemap URLs checked from repository `sitemap-infojano.xml`: **88**.
-- Sitemap content URLs matching the 40 indexed screenshot paths: **38**.
-- Remaining sitemap URLs not shown as indexed in the screenshots: **50**.
-- Note: the two sitemap XML URLs are included in the Search Console count but are not content URLs in the sitemap URL set.
-- Screenshot property displayed GitHub Pages URLs; the sitemap currently lists the matching canonical `https://infojano.com/` paths. Match is based on URL path, not host.
+- Historical Google Search Console indexed count shown in screenshots: **40 URLs** (not a fresh current count).
+- Current canonical repository `sitemap.xml`: **106 unique canonical URLs**.
+- The 40 historical screenshot entries include two sitemap XML URLs, leaving **38 entries matching sitemap content URLs**.
+- Tracker pending lists enumerate **68 URLs pending indexing verification** (50 original + 15 Number to Words Pro SEO pages + 3 Countdown country pages). This is list arithmetic, not a fresh Search Console pending count.
+- The current `robots.txt` points to `https://infojano.com/sitemap.xml`. The alternate `sitemap-infojano.xml` and `sitemap.txt` were each found with 91 URLs and omitted the 15 dedicated Number to Words SEO pages; PR #211 proposes synchronizing them to 106. PR #211 is not merged.
+- The 15 dedicated Number to Words SEO pages remain Pending — not submitted. The main `number-to-words.html` is listed in Batch 1 as Submitted — Pending Google indexing verification.
+- Note: Search Console submission, discovery, indexing and live page availability are separate statuses. Do not mark any URL Indexed without exact URL Inspection evidence.
+- Screenshot property displayed GitHub Pages URLs; the sitemap lists matching canonical `https://infojano.com/` paths. Match is based on URL path, not host.
 
 ## Indexed URLs (40 shown in Search Console)
 1. https://infojano.com/sitemap-infojano.xml
@@ -194,3 +196,21 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 - The Google Search Console URL Inspection/property link requested for saving was not present in the user's latest message. Add the exact link here when the user supplies it; do not guess or create a link.
 - Remaining external verification: inspect current URL statuses in the authenticated Search Console property and verify public live rendering in a normal browser. These cannot be marked complete from repository source checks alone.
 - Project-side task is closed at this checkpoint; indexing remains an open external dependency, not forgotten or marked complete.
+
+
+## 15 Nov 2026 — Number to Words Pro source audit
+- All 16 Number to Words HTML files were found in the current repository and all 16 canonical URLs are present in `sitemap.xml`.
+- Bengali/Hindi source-algorithm samples were checked for common Indian groupings, decimals and INR cheque wording. No Search Console status was changed.
+- PR #210 adds the mobile quick-chip two-column layout and precaches `number-to-words-locales.js`, proposing Service Worker cache `v309`. OPEN / UNMERGED; main remains `v308`.
+- PR #211 synchronizes `sitemap-infojano.xml` and `sitemap.txt` with the canonical 106-URL `sitemap.xml`. OPEN / UNMERGED.
+- Direct live URL checks and browser/device rendering were not available; do not infer live or indexed status from repository source or Pages workflow success.
+
+
+## 15 Nov 2026 — Follow-up functional audit note
+- The Words to Number page was found to contain a forward number-to-words converter instead of reverse parsing. PR #210 replaces it with an English words-to-digits parser; nine source-level examples passed. This remains unmerged and is not live.
+- PR #210 also removes duplicate Bengali/Hindi hreflang entries and adds localized WebApplication JSON-LD. No indexing state changed; all 15 dedicated SEO pages remain pending submission, and the main converter remains submitted/pending verification.
+
+### 15 Nov follow-up — PR #210 scope clarification
+- PR #210 now covers six Number to Words feature-cluster files, including the reverse words-to-number parser, Bengali/Hindi hreflang and localized WebApplication schema, plus the mobile chip layout and v309 locale precache.
+- The reverse parser received a source correction for standalone minor currency phrases (e.g. `fifty paise` → `0.50`) and rejects minor-unit groups above 99.
+- PR #210 is still open/unmerged; no indexing or live deployment status changes as a result.
