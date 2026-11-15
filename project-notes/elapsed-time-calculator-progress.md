@@ -18,7 +18,7 @@ Last updated: 2026-11-15
 
 Merge commit: 84bd768b17a5ba13c55f5cfece4a593cf6635f9c
 
-## In progress — core calculator enhancements
+## Completed — core calculator enhancements
 Branch: feature/elapsed-time-calculator-core-upgrades
 
 Planned first five features:
@@ -28,13 +28,16 @@ Planned first five features:
 4. Seconds-aware calculation and total seconds output.
 5. Decimal hours output.
 
-Implementation currently includes all five in `time-calculator.html`. Changes are isolated to the calculator page and do not edit the hero artwork or dimensions.
+Implemented all five in `time-calculator.html` and merged via PR #220. Changes are isolated to the calculator page and do not edit the hero artwork or dimensions.
+
+Merge commit: a4b5017c1fd27061ca50aae63330e67e0af235bf
 
 ## Validation checklist before merge
-- [ ] Verify JavaScript syntax and calculation examples: 09:00–17:30 = 8h 30m; 22:00–06:00 = 8h; 09:15–12:00 = 2h 45m; 09:00:30–09:01:45 = 1m 15s.
-- [ ] Verify swap, both Use Now controls, and each quick example.
-- [ ] Verify mobile and desktop layout and ensure hero remains unchanged.
-- [ ] Open pull request and review changed files before merging.
+- [x] Run calculation logic checks: 09:00–17:30 = 8h 30m; 22:00–06:00 = 8h; 09:15–12:00 = 2h 45m; 09:00:30–09:01:45 = 1m 15s.
+- [x] Review source for swap, both Use Now controls, and quick-example handlers.
+- [x] Confirm PR #220 changed only `time-calculator.html` and this project note; hero source remains unchanged.
+- [x] Merge PR #220.
+- [ ] Visual browser QA on mobile and desktop.
 - [ ] Check GitHub Pages deployment after merge.
 
 ## Later roadmap
