@@ -596,3 +596,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task evidence: [2026-11-15-2331-android-desktop-wrapper-audit.md](2026-11-15-2331-android-desktop-wrapper-audit.md); master plan §27.
 - Commits: plan `01872d5f8fd6`; task file `ae24225a3f2f`.
 - No native code, privacy policy, account, DNS, merge or deployment changes.
+
+### 2026-11-15 — Privacy Policy source reconciliation and official-source verification
+- Read the complete policy draft and reconciled it against all root-page source scans and shared dependencies. Identified gaps in local-storage examples, exact GA4 scope, Birthday Countdown notification wording, controller/jurisdiction, native-app coverage and live CMP/TCF evidence.
+- Checked current official Google publisher disclosures, AdSense required content, Google revocation guidance, IAB TCF v2.4 timeline and iLoveAPI terms/security/docs. iLoveAPI's API-specific terms say max 48h while general terms/security/docs say 2h; retain as provider inconsistency pending confirmation.
+- Detailed gap matrix: MASTER-RESEARCH-PLAN.md §28.
+- Task evidence: [2026-11-15-2333-privacy-policy-source-reconciliation.md](2026-11-15-2333-privacy-policy-source-reconciliation.md).
+- Commits: plan `431b93141e87`; task file `06084c8832ba`.
+- No `privacy-policy.html` edits, account settings, CMP tags, Worker, DNS, merge or deployment changes.
