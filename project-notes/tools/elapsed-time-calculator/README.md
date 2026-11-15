@@ -414,3 +414,12 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Decision: retain the current calculator + informational guide architecture; do not create one page per keyword or another generic calculator URL.
 - Code changes: none. Documentation-only update.
 - Research dossier commit: 66b23a8f9335f7148a11da6c3d0d08ea4f7d6edc.
+
+
+### 2026-11-15 — Follow-up SERP competitor/content-gap research saved
+- Reviewed newly surfaced competitor tool and guide pages for the four priority keyword themes.
+- Added comparison notes, supported InfoJano differentiation opportunities, FAQ themes to validate, sources and explicit limitations to [RESEARCH.md](RESEARCH.md), section 12.
+- Main finding: competitor pages commonly emphasize overnight handling, break deduction, decimal hours, seconds, date-time scope and worked examples. InfoJano already supports several of these; messaging should accurately reflect the implemented feature set.
+- Decision unchanged: retain the existing calculator + informational guide URLs; no new URL justified by this qualitative SERP review.
+- Country-specific ranking order, traffic and numeric keyword metrics remain unverified.
+- Research dossier commit: e721419a189ced2988736b8721a4b9b2fc84a00d.
