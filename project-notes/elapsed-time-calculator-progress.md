@@ -38,7 +38,8 @@ Merge commit: a4b5017c1fd27061ca50aae63330e67e0af235bf
 - [x] Confirm PR #220 changed only `time-calculator.html` and this project note; hero source remains unchanged.
 - [x] Merge PR #220.
 - [ ] Visual browser QA on mobile and desktop.
-- [ ] Check GitHub Pages deployment after merge.
+- [x] Check GitHub Pages deployment after merge — Pages build/deployment run 43677856456 completed successfully.
+- [ ] Visual browser QA on mobile and desktop (requires an interactive browser session).
 
 ## Later roadmap
 - Break deduction.
