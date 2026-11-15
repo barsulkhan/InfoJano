@@ -151,3 +151,30 @@ Before implementing SEO copy changes or creating another landing page:
 - Then record a Go / Revise / No-Go decision and only afterward change page copy or create a distinct page.
 
 **No application code or SEO metadata was changed as part of this research.**
+
+
+## 10. Supplemental informational SEO guide (2026-11-15)
+
+**User-approved deliverable:** `/elapsed-time-calculator-guide.html`, a supporting how-to guide linked from the existing calculator. This is intentionally not a second calculator or a near-duplicate utility landing page. The primary calculator remains canonical at `/time-calculator.html`.
+
+### Search intent and page role
+- Primary informational intent: how to calculate elapsed time / time between two times.
+- Supporting questions: how to calculate overnight time, subtract an unpaid break, convert hours and minutes to decimal hours, and distinguish clock-only spans from multi-day date-time spans.
+- The guide provides formula explanation and worked examples, then links to the calculator for task completion. It does not duplicate the interactive calculator UI.
+- Candidate query wording is qualitative only; search volume, KD, CPC, traffic potential and country split remain N/A pending an authorized keyword dataset and Search Console data.
+
+### Additional SERP observations (2026-11-15)
+- This Calculator publishes formula/guide pages for time-between-two-times, duration-between-times and minutes-between-times; these demonstrate a distinct informational page format alongside calculators: https://this-calculator.com/formula-calculate-time-between-two-times.php and https://this-calculator.com/duration-between-two-times.php
+- Sekin publishes a how-to article covering manual calculation and overnight examples: https://sekin.in/how-to-calculate-hours-and-minutes-between-two-times/
+- Time Calculator (Cardamon) provides step-by-step explanations and FAQs alongside a calculator: https://www.timecalculator.app/guides/time-between-two-times
+- These are qualitative SERP observations, not verified traffic/volume or a country-specific top-10 ranking study.
+
+### Architecture decision
+- Keep `/time-calculator.html` as the canonical interactive utility for elapsed time, time difference, add/subtract and date-time duration.
+- Add `/elapsed-time-calculator-guide.html` as a separate explanatory resource targeting how-to intent; it has its own self-canonical, visible educational content, worked examples, FAQs, breadcrumb and internal CTA to the tool.
+- Use the homepage hero banner layout and its two artwork assets on the new guide page only. Do not modify the original homepage hero or the existing calculator hero.
+- Link from the calculator to the guide and include the guide in sitemap.xml.
+- Do not create country clones or another generic elapsed-time calculator URL without new evidence.
+
+### Implementation status
+- Guide page created; calculator contextual link and sitemap entry added. Source validation, browser QA, deployment and post-indexing GSC review remain pending.
