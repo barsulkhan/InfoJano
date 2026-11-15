@@ -500,3 +500,9 @@ Overall status: In progress — mobile screenshot checks, source audit and ET-01
 - Copy/share testing: user confirms already completed.
 - Screen-reader testing: user confirms already completed.
 - Do not repeat or list these as pending. Remaining explicit task: desktop browser visual QA. Preserve the distinction that these two completion statuses are user-confirmed, not independently re-run in this session.
+
+
+## USA-first SEO direction — 2026-11-15
+- User set the United States as the primary audience for this tool's future SEO planning. Prioritize US English, US search intent, examples and competitors.
+- Preliminary US keyword screen is saved in RESEARCH.md §15. Three concepts are research candidates only: Work Hours, Time Card (likely overlapping Work Hours), and Date & Time Duration. No new URL is approved yet; current two-URL architecture remains in place pending US SERP overlap and feature validation.
+- Time Zone Converter is not a candidate until actual timezone-aware functionality exists. No app source or SEO metadata changed.
