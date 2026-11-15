@@ -56,12 +56,19 @@ Merge commit: a4b5017c1fd27061ca50aae63330e67e0af235bf
 - Source-level checks passed for mode switching, duration inputs, calculation dispatch, day rollover, existing break validation, and hero markup/artwork. Browser visual QA remains pending.
 - Merge commit: ff67d2198a9fe69eeeea4ea4a69a8c1546a73741
 
-## In progress — date + time duration mode
-Branch: `feature/elapsed-date-time-duration-main`
+## Completed — date + time duration mode (PR #224, merged)
 - Added a third mode for calculating duration between two full date-and-time values using local `datetime-local` inputs.
 - Requires both values and rejects invalid or non-increasing ranges; displays days plus remaining hours/minutes/seconds, total hours, total minutes, and total seconds.
 - Existing time-difference and add/subtract modes are retained; hero markup and artwork are unchanged.
 - All executable inline JavaScript passed syntax checks. Date-duration arithmetic checks passed for 25h 30m 15s and a 2-hour overnight interval; equal endpoints are rejected. Browser visual QA remains pending.
+- Merge commit: 46ecea5ee2eb113e316f81bcf681737ee2119330
+
+## In progress — copy/share result and recent calculation history
+Branch: `feature/elapsed-time-copy-share-history`
+- Added Copy Result and Share Result actions for successful calculations across all three calculator modes.
+- Added a recent-calculation list persisted in browser local storage, capped at the latest five results, with a clear-history action.
+- Clipboard API has a fallback; native share is used where available and otherwise falls back to copy.
+- All executable inline JavaScript blocks passed syntax checks; source checks confirmed result-recording hooks for all three modes, clipboard/share handlers, and the five-item history cap. Browser visual QA remains pending.
 
 ## Later roadmap
 - Related SEO pages only after keyword/page intent is confirmed; follow the 1360px / 8px layout standard.
