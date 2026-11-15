@@ -273,3 +273,11 @@ Copy/paste prompt:
 - User confirmed live operation works on 2026-11-15. Tracker: `project-notes/tools/id-card-print-studio/README.md`; QA: `project-notes/tools/id-card-print-studio/QA-TEST-LOG.md`.
 - Latest source URL: https://github.com/barsulkhan/InfoJano/blob/main/id-card-print-studio.html
 - Next conversation topic: user has a new AdSense-related problem and wants to discuss it. No details of that problem have been provided yet; ask them to explain/show the issue before diagnosing. First reread `NEW-CHAT-HANDOFF.md`, `TOOL-WORK-TRACKING-STANDARD.md`, `TOOL-RESEARCH-STANDARD.md`, `TOOL-INDEX.md`, and relevant AdSense/monetization notes if present. Do not assume the issue or make AdSense/account changes without explicit authorization.
+
+## Mandatory task-by-task timestamped evidence files — applies to every website
+- New user rule (2026-11-15): after every distinct task/work package, create a separate Markdown evidence file named after the task with the real date/time: `YYYY-MM-DD-HHMM-<task-name-kebab-case>.md`.
+- Save each file directly inside the relevant existing project folder (e.g. AdSense files directly in `project-notes/adsense-compliance/`; tool files directly in the existing tool folder). Do not create new folders or date-based subfolders just for logs.
+- Include site/repository/branch, start and finish time with timezone, request/scope, files/evidence inspected, decisions, tests and exact statuses, changed files, commit/PR/workflow, blockers, next dependency/action, approval boundaries and protected areas preserved.
+- Update the related tracker with a link to the task file; update TOOL-INDEX for top-level status. A task is not documented/completed until its task file commit succeeds.
+- This rule is global for all of the user's websites/repositories, not only InfoJano. Apply automatically; no reminder needed.
+- Current InfoJano standard: `project-notes/TOOL-WORK-TRACKING-STANDARD.md` §2A.
