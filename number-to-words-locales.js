@@ -4,6 +4,7 @@
 const params=new URLSearchParams(location.search),lang=params.get('lang');
 if(!['bn','hi'].includes(lang)){
  const qSystem=params.get('system'),qCurrency=params.get('currency'),qCase=params.get('case'),qFocus=params.get('focus');
+ if(qFocus==='reverse'){location.replace('words-to-number-converter.html');return;}
  const byId=id=>document.getElementById(id);
  if(qSystem&&byId('nw-system'))byId('nw-system').value=qSystem==='international'?'international':'indian';
  if(qCurrency&&byId('nw-currency'))byId('nw-currency').value=qCurrency==='USD'?'USD':'INR';
