@@ -142,7 +142,7 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 .ij-time-step{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.6px;color:#087ce5}
 .ij-time-intro{margin:0 0 14px;color:#52627a;font-size:14px}
 .ij-time-workspace .result{margin-top:14px;min-height:115px;display:flex;flex-direction:column;justify-content:center;background:#edf6ff;border:1px solid #d5e8fb;color:#1c3d68;line-height:1.65}
-.ij-time-guide p{margin:0;color:#52627a;font-size:14px;line-height:1.7}
+.ij-time-guide-section p{margin:0;color:#52627a;font-size:14px;line-height:1.7}
 .ij-time-home-link{margin:18px 0 8px}
 @media(max-width:850px){.ij-time-workspace{grid-template-columns:1fr;gap:18px;padding:16px}.ij-time-right{border-left:0;border-top:2px solid #d6e4f4;padding-left:0;padding-top:18px;margin-left:0}}
 @media(max-width:760px){body .ij-reference-hero.ij-unified-currency-hero{width:calc(100% - 20px)!important;min-height:0!important;padding:22px 18px!important;margin:12px auto 20px!important;border-radius:22px!important}.ij-reference-hero .ij-reference-art{min-height:165px}main{width:calc(100% - 8px)}.ij-time-workspace{padding:12px;gap:14px}.ij-time-workspace .card{padding:16px}.ij-time-workspace h2{font-size:20px}}
@@ -239,7 +239,7 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 <p class="ij-time-home-link"><a href="index.html">← Back to InfoJano Home</a></p>
 <style>
 /* Scoped polish for the lower related-tools and guide sections only. */
-.ij-related-tools,.ij-time-guide{box-sizing:border-box;width:min(calc(100vw - 8px),1360px);max-width:1360px;position:relative;left:50%;transform:translateX(-50%);overflow:hidden}
+.ij-related-tools,.ij-time-guide-section{box-sizing:border-box;width:min(calc(100vw - 8px),1360px);max-width:1360px;position:relative;left:50%;transform:translateX(-50%);overflow:hidden}
 .ij-related-tools{margin:28px 0;padding:clamp(20px,3vw,30px);border:1px solid #dce9fb;border-radius:24px;background:radial-gradient(circle at 100% 0%,rgba(191,219,254,.45),transparent 34%),linear-gradient(145deg,#f8fbff,#fff 72%);box-shadow:0 12px 32px rgba(30,64,175,.07)}
 .ij-related-heading{display:flex;align-items:center;gap:12px;margin:0 0 8px;color:#10254a;font-size:clamp(21px,2.2vw,25px);line-height:1.25}
 .ij-related-heading-icon{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;border:1px solid #cfe2ff;border-radius:15px;background:linear-gradient(145deg,#dbeafe,#eff6ff);color:#1d4ed8;box-shadow:0 4px 12px rgba(37,99,235,.1)}
@@ -253,7 +253,7 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 .ij-related-card strong{position:relative;z-index:1;font-size:15px;line-height:1.35;color:#18345f}
 .ij-related-card .ij-related-desc{position:relative;z-index:1;color:#66758b;font-size:13px;line-height:1.5}
 .ij-related-link{position:relative;z-index:1;margin-top:auto;color:#1d4ed8;font-size:12px;font-weight:750}
-.ij-time-guide{margin:24px 0 30px;padding:clamp(22px,3.5vw,36px);border:1px solid #dce8f7;border-radius:24px;background:linear-gradient(135deg,#fff 0%,#f8fbff 100%);box-shadow:0 12px 30px rgba(15,23,42,.055);line-height:1.7}
+.ij-time-guide-section{margin:24px 0 30px;padding:clamp(22px,3.5vw,36px);border:1px solid #dce8f7;border-radius:24px;background:linear-gradient(135deg,#fff 0%,#f8fbff 100%);box-shadow:0 12px 30px rgba(15,23,42,.055);line-height:1.7}
 .ij-guide-kicker{display:inline-flex;align-items:center;gap:7px;margin-bottom:11px;padding:6px 10px;border:1px solid #dbeafe;border-radius:999px;background:#eff6ff;color:#2457a7;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
 .ij-guide-title{margin:0 0 10px;color:#14264a;font-size:clamp(23px,2.5vw,30px);line-height:1.25;letter-spacing:-.025em}
 .ij-guide-lead{max-width:850px;margin:0;color:#586981;font-size:15px;line-height:1.75}
@@ -264,7 +264,7 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 .ij-guide-card p{margin:0;color:#607087;font-size:14px;line-height:1.7}
 .ij-guide-tip{display:flex;align-items:flex-start;gap:12px;margin-top:18px;padding:15px 17px;border:1px solid #cfe4fb;border-radius:16px;background:linear-gradient(100deg,#eff6ff,#f0f9ff);color:#315477;font-size:14px;line-height:1.65}
 .ij-guide-tip strong{color:#173d6c}
-@media(max-width:520px){.ij-related-card{min-height:158px;padding:15px}.ij-guide-card{padding:16px}.ij-time-guide{border-radius:19px}}
+@media(max-width:520px){.ij-related-card{min-height:158px;padding:15px}.ij-guide-card{padding:16px}.ij-time-guide-section{border-radius:19px}}
 @media(prefers-reduced-motion:reduce){.ij-related-card{transition:none}.ij-related-card:hover{transform:none}}
 </style>
 <section class="ij-related-tools" aria-labelledby="related-tools-title">
@@ -289,7 +289,7 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 </a>
 </div>
 </section>
-<section class="ij-time-guide" aria-labelledby="ij-elapsed-time-guide">
+<section class="ij-time-guide-section" aria-labelledby="ij-elapsed-time-guide">
 <span class="ij-guide-kicker">TIME MADE SIMPLE</span>
 <h2 id="ij-elapsed-time-guide" class="ij-guide-title">Plan Your Time, One Calculation at a Time</h2>
 <p class="ij-guide-lead">Whether you are checking work hours, planning a study session or measuring time between two moments, InfoJano’s elapsed time calculator helps you turn start and end times into a clear duration.</p>
