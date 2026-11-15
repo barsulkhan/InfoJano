@@ -490,3 +490,37 @@ Scope: complete raw source fetched for the final 7 root HTML pages: `whatsapp-qr
 - Source inspection is not browser network QA. Runtime tag injection, cookies, CMP/TCF signals, Consent Mode behavior and actual provider requests remain UNVERIFIED.
 - Shared scripts, CSS imports, worker modules, dynamic imports, PWA manifests and non-root nested HTML/resources still need dependency-aware review.
 - Reconcile the Birthday Countdown notification copy mismatch, Work Hours opt-in storage disclosure, BMI/time/percentage history, Word Converter optional upload route, GA4 tag map, AdSense loader and all CDN/API hosts before editing the policy.
+
+## 25. Nested resources, shared JavaScript, CSS and Worker audit — batch 11 (2026-11-15)
+
+Scope: fetched complete source for 12 shared/worker JS files, 5 CSS files, 4 JSON/package files and one nested backup HTML file; additionally inspected Worker READMEs, D1 schema and Wrangler configs.
+
+### Shared browser scripts
+- `bmi-toolkit.js` stores up to 100 history entries containing date, weight, height and BMI in localStorage; a clear-history action removes the stored key.
+- `site-header.js` stores language preference in localStorage key `infojano-language`.
+- `word-converter.js` stores the configured HTTPS Worker base URL in localStorage; it loads JSZip/docx-preview/PDF.js from jsDelivr/cdnjs/unpkg fallback CDNs. The optional high-fidelity path constructs FormData with the selected DOCX and POSTs to the configured Worker `/convert` endpoint.
+- `sw.js` uses Cache Storage and fetch handlers for same-origin PWA/offline caching. No third-party analytics or CMP integration was found in this file.
+- `related-apps.js` contains GitHub release download URLs; no API call or visitor data upload found.
+- `download-progress.js`, `image-resizer-advanced.js`, `install.js`, `number-to-words-locales.js` and `theme.js` showed no direct third-party request, analytics, consent or persistent browser storage marker in inspected source.
+
+### Word Converter Worker — important external processing route
+- `backend/word-converter/src/index.js` accepts a multipart DOCX upload, authenticates with an iLoveAPI bearer token, uploads to the iLoveAPI task server, starts Office-to-PDF processing, downloads the resulting PDF and returns it to the browser.
+- `backend/word-converter/README.md` explicitly describes this as an optional third-party upload route; the page asks the user to tick a third-party upload consent box. It states the Worker does not persist document files and describes provider temporary retention/deletion; current provider terms/retention still require fresh verification.
+- Source CORS allowlist constant is `https://barsulkhan.github.io`; README also documents that exact GitHub Pages origin. The custom-domain `https://infojano.com` binding/allowlist is not confirmed by source docs. Do not claim custom-domain availability or change Worker config/DNS without authorization.
+- `backend/word-converter/wrangler.toml` enables Cloudflare observability. Actual deployed state and what telemetry is retained were not inspected.
+
+### Short Link Worker scaffold
+- `backend/shortlinks/README.md` explicitly labels the Cloudflare Worker + D1 project as an undeployed staging scaffold; no Cloudflare account/deployment state was inspected.
+- Source requires `ADMIN_API_TOKEN` for link creation, stats and disable actions; anonymous link creation is disabled. It stores destination URL, code, creation/expiry/status and aggregate click count. Redirect handling records click date, referrer hostname and coarse device type (mobile/tablet/desktop), but does not store IP or full referrer URL in the shown schema/queries.
+- D1 schema contains `links` and `daily_clicks` tables. This is repository-design evidence only, not evidence of a live production processor or live data collection.
+- Wrangler config contains a D1 database identifier and GitHub Pages allowed origin; this is not a credential/secret. Actual account resource/deployment status remains unverified.
+
+### CSS, package/config and backup page
+- Five shared CSS files were inspected; no remote CSS `@import` or external `url()` resource was identified in this sample.
+- Four package/manifest JSON files inspected; no external endpoint or visitor data processing identified.
+- Nested backup `backups/InfoJano-Ayushman-VoterID-FINAL-LOCKED-2026-10-19.html` is a backup artifact, not a root production page. It loads PDF.js and jsPDF from cdnjs and uses browser object URLs/canvas for uploaded images. Its copy says browser-side processing and no intentional InfoJano upload; this is historical backup evidence, not proof of current live page behavior.
+
+### Limits / next
+- This batch covers shared JS, selected CSS/config and Worker source/docs, but not every dynamic import, all 30 PWA manifests, live Cloudflare account state or actual network traces.
+- Next: inspect PWA manifests and remaining non-root resource tree; build a consolidated matrix separating live-root-source observations, optional third-party routes, undeployed scaffolds and unknown production configuration.
+- No CMP/TCF live test, cookies inspection, provider contract review, Cloudflare dashboard check or production request capture was performed.
