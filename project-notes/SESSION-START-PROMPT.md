@@ -21,7 +21,23 @@ Repository: https://github.com/barsulkhan/InfoJano
 
 কোনো file inaccessible হলে সেটা স্পষ্ট বলবে; না পড়ে পড়েছ বলে দাবি করবে না। Handoff বা এই prompt-এর পুরোনো status-কে বর্তমান status ধরে নেবে না—GitHub-এর latest তথ্যই চূড়ান্ত।
 
-## 2. নিজে নিজে কাজ বেছে নেওয়ার নিয়ম
+
+
+## 2. Research before development — mandatory for every tool
+Before coding a new tool, major feature or SEO landing page:
+- Read project-notes/TOOL-RESEARCH-STANDARD.md.
+- Create/update project-notes/tools/<tool-slug>/RESEARCH.md from project-notes/templates/TOOL-RESEARCH-TEMPLATE.md.
+- Research country-by-country keyword opportunities and language/script/local phrasing; screen all plausible markets, then prioritize with evidence.
+- Capture monthly search volume, trend, keyword difficulty, CPC and currency, traffic potential, search intent, SERP features and date/provider wherever available.
+- Identify direct/indirect and country-specific competitors; inspect their actual features, UX, mobile behavior, limits, privacy, pricing/ads, localization and content.
+- Analyze audience segments, use cases, devices, country/language demand and realistic monetization potential.
+- Compare gaps and decide how InfoJano can deliver a better experience.
+- Clearly label unavailable metrics, assumptions and inferences. CPC is not publisher RPM or guaranteed revenue.
+- Do not create thin country doorway pages. A locale page must provide distinct local value.
+- Do not begin planned implementation until research is complete and the Go/Revise/No-Go decision is recorded. An urgent bug fix may take a documented minimal-research exception.
+Research is a separate phase from coding, QA and release. Never claim research is complete without saved sources and evidence.
+
+## 3. নিজে নিজে কাজ বেছে নেওয়ার নিয়ম
 
 - আগে completed, in-progress, backlog, blocked এবং QA-pending কাজ আলাদা করবে।
 - ইতিমধ্যে merged/সম্পন্ন কাজ আবার করবে না, যদি না নতুন bug বা regression evidence পাওয়া যায়।
@@ -31,7 +47,7 @@ Repository: https://github.com/barsulkhan/InfoJano
 - আমার কাছ থেকে পাওয়া screenshot, input, expected/observed result ছাড়া কোনো manual test PASS ঘোষণা করবে না।
 - source inspection, automated test, user-performed browser test, visual QA, accessibility QA, CI এবং deployment—প্রতিটিকে আলাদা evidence/status হিসেবে দেখাবে।
 
-## 3. Tracking বাধ্যতামূলক — আমাকে মনে করাতে হবে না
+## 4. Tracking বাধ্যতামূলক — আমাকে মনে করাতে হবে না
 
 প্রতিটি tool-এর জন্য আলাদা tracker folder/README রাখবে। প্রতিটি session-এ:
 - কাজ শুরুর আগে বর্তমান tracker ও test log পড়বে।
@@ -43,7 +59,7 @@ Repository: https://github.com/barsulkhan/InfoJano
 - GitHub update সফল না হলে file save হয়েছে বলে বলবে না; error জানাবে এবং retry/alternative plan দেবে।
 - কোনো test করা না হলে NOT RUN লিখবে; অনুমান করে PASS নয়।
 
-## 4. Scope ও safety
+## 5. Scope ও safety
 
 - Repository-র existing architecture ও coding conventions অনুসরণ করবে।
 - স্পষ্ট অনুমতি ছাড়া protected hero/banner/artwork/layout/copy/design পরিবর্তন করবে না।
@@ -53,7 +69,7 @@ Repository: https://github.com/barsulkhan/InfoJano
 - credentials, tokens, passwords বা গোপন তথ্য project notes-এ লিখবে না।
 - browser বা প্রয়োজনীয় tool না থাকলে সেটা জানাবে; browser QA হয়েছে বলে ভান করবে না।
 
-## 5. আমার সঙ্গে কাজের ধরন
+## 6. আমার সঙ্গে কাজের ধরন
 
 - বাংলায় সহজভাবে কথা বলবে।
 - আমাকে একবারে একটি নির্দিষ্ট কাজ/পরীক্ষা দেবে: কোথায় চাপতে হবে, কী input দিতে হবে, expected result কী।
@@ -63,11 +79,11 @@ Repository: https://github.com/barsulkhan/InfoJano
 - প্রতিটি উত্তরে সংক্ষেপে বলবে: কী যাচাই হলো, ফল কী, GitHub-এ কোথায় save হলো, পরের একটিমাত্র কাজ কী।
 - “ট্র্যাক” বললে সর্বশেষ অবস্থা; “ট্র্যাক <tool-name>” বললে নির্দিষ্ট tool-এর বিস্তারিত অবস্থা দেখাবে।
 
-## 6. Workflow improvement plan
+## 7. Workflow improvement plan
 
 প্রয়োজনে project-এর কাজ আরও সহজ/স্বয়ংক্রিয় করতে project-notes/WORKFLOW-IMPROVEMENT-PLAN.md পড়বে। প্রস্তাবিত automation নিজে থেকে production workflow-তে install করবে না; আগে risk, scope ও permission যাচাই করবে। বর্তমান active manual QA থামিয়ে unrelated automation শুরু করবে না, যদি না user priority বদলায়।
 
-## 7. এখনই শুরু করার নির্দেশ
+## 8. এখনই শুরু করার নির্দেশ
 
 প্রথমে repository ও উপরোক্ত tracking files-এর latest version inspect করো। তারপর আমাকে বলো:
 1. কোন কাজগুলো সত্যিই completed;
