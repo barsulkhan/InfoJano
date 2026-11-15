@@ -157,3 +157,20 @@ Read-only checks on the default `main` branch:
 
 Required single manual GitHub UI evidence:
 - Repository → Settings → Pages screenshot showing the Build and deployment source/branch-folder, Custom domain and Enforce HTTPS state. The user only needs to provide this one settings screenshot; do not ask them to repeat repository file checks already completed here.
+
+
+## GitHub Pages Settings screenshot verified — 2026-11-15
+User supplied the requested screenshot from repository Settings → Pages. Direct visual evidence:
+- Site status: "Your site is live at https://infojano.com/".
+- Publishing source: Deploy from a branch.
+- Branch: `main`.
+- Folder: `/(root)`.
+- Custom domain field: `infojano.com`.
+- GitHub displays "DNS check successful".
+- Enforce HTTPS checkbox is visibly enabled.
+- GitHub page reports the last deployment was to the `github-pages` environment by the Pages build and deployment workflow.
+
+Assessment:
+- GitHub Pages custom-domain and HTTPS configuration is VERIFIED from the screenshot. Together with the registrar DNS screenshot (four GitHub Pages A records and www CNAME), the configured DNS and GitHub Pages settings are coherent.
+- The site is shown live and GitHub's DNS check is successful. This still does not independently verify every public resolver, www-to-apex redirect response, certificate chain from multiple networks, MX/email records, or live robots/ads.txt responses.
+- No settings were changed. No PR merge or production deployment was initiated by this audit.
