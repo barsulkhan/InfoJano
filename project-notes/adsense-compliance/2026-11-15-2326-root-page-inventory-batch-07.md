@@ -1,0 +1,23 @@
+# Root-page inventory batch 07 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:26:07+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- User instruction: continue research and save each completed task in a task-named timestamped file; do not create folders.
+- Scope: inspect 12 percentage calculator, QR and image utility pages for third-party resources, analytics/ads/CMP, API/network calls, browser storage, permissions and uploads. Read-only.
+- Files inspected: `percentage-change.html`, `percentage-decrease-calculator.html`, `percentage-difference-calculator.html`, `percentage-increase-calculator.html`, `percentage-of-percentage-calculator.html`, `percentage-pt-br.html`, `percentage-to-decimal-converter.html`, `percentage-to-fraction-converter.html`, `percentage.html`, `phone-number-qr-code-generator.html`, `print-document-image-resizer.html`, `profit-loss-percentage-calculator.html`.
+- Findings:
+  - GA4 `G-P8D7XRGVEF` appears in `percentage-change.html`, `percentage-pt-br.html` and `percentage.html`.
+  - `percentage.html` stores up to 8 calculation-history entries in localStorage key `ijPercentageHistory`; a clear-history action exists. No server sync identified in inspected page source.
+  - The other 9 pages showed no direct GA4/AdSense/CMP, fetch/XHR, browser-storage or device-permission marker in the bounded scan.
+  - No CMP/TCF marker, QR-generation API or upload endpoint identified in this sample.
+- Checks: raw source retrieval for 12 pages — PASS; bounded source marker scan — PASS; full inventory — IN PROGRESS; live runtime/network/cookie/consent tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §21.
+- Changed: research plan only. No app source, policy, CMP/AdSense settings, DNS, merge, deployment or protected design changed.
+- Research-plan commit: `c0fe0d2867bb39d975b3c41d3be441bd51568bb6`.
+- Next: inspect remaining root pages; later reconcile the full local-storage inventory and analytics page list.
+- Approval boundaries: no production/account change authorized.
