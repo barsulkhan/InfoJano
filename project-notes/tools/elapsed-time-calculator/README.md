@@ -16,7 +16,7 @@ Overall status: Paused at user's request — current mobile checks and source au
 ## Feature cards
 
 ### Completed
-- [x] [CARD-013] Dedicated informational SEO guide — created `/elapsed-time-calculator-guide.html` for how-to intent (formula, worked examples, overnight handling, break deduction, decimal hours, date/time mode and FAQs); reuses the homepage hero layout and `/assets/hero-left.svg` + `/assets/hero-right.svg` artwork on the new guide only. Added contextual link from the calculator and sitemap entry. Source QA/deployment pending.
+- [x] [CARD-013] Dedicated informational SEO guide — created `/elapsed-time-calculator-guide.html` for how-to intent (formula, worked examples, overnight handling, break deduction, decimal hours, date/time mode and FAQs); reuses the homepage hero layout and `/assets/hero-left.svg` + `/assets/hero-right.svg` artwork on the new guide only. Added contextual link from the calculator and sitemap entry. Source validation PASS; browser QA/deployment pending.
 
 ### Completed
 - [x] [CARD-001] Shared header alignment and live local clock — PR #219; merge 84bd768b17a5ba13c55f5cfece4a593cf6635f9c. Header alignment standardized on reference-hero pages; hero clock uses device-local time and updates seconds/analog hands every second.
@@ -393,7 +393,9 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Hero: reused the main homepage hero's layout/CSS style and the same left/right artwork assets on the new guide page only.
 - Changed: new guide page; contextual guide link added to existing calculator page; sitemap updated; research dossier and QA log updated.
 - SEO: self-canonical, title/meta description, Open Graph/Twitter metadata, WebPage + BreadcrumbList + FAQPage JSON-LD; no meta-keywords tag or fabricated keyword metrics.
-- Tests: source/syntax QA pending immediate validation; browser QA and deployment NOT RUN.
+- Tests: source structure and JSON-LD parse PASS (15 checks); browser QA NOT RUN. Pages workflow run #2548 was in progress at first check; deployment not yet verified.
 - Commit: guide page `4fce31547db0b4dc99836e3037d817d073d5c90d`; follow-up commits recorded after writes.
 - Pending: validate HTML/JSON-LD and exact links, check responsive layout, inspect live Pages deployment and Search Console performance after indexing.
 - Protected areas preserved: original homepage hero and existing Elapsed Time Calculator hero.
+
+- Validation evidence: guide title/description/canonical, single H1, both homepage artwork references, 1360px max width/8px gutters, formula and examples, visible FAQ, JSON-LD parse, both directions of internal links, sitemap entry, and existing calculator hero presence all PASS in source inspection. This is not browser visual QA.
