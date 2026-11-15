@@ -63,12 +63,13 @@ Merge commit: a4b5017c1fd27061ca50aae63330e67e0af235bf
 - All executable inline JavaScript passed syntax checks. Date-duration arithmetic checks passed for 25h 30m 15s and a 2-hour overnight interval; equal endpoints are rejected. Browser visual QA remains pending.
 - Merge commit: 46ecea5ee2eb113e316f81bcf681737ee2119330
 
-## In progress — copy/share result and recent calculation history
+## Completed — copy/share result and recent calculation history (PR #225, merged)
 Branch: `feature/elapsed-time-copy-share-history`
 - Added Copy Result and Share Result actions for successful calculations across all three calculator modes.
 - Added a recent-calculation list persisted in browser local storage, capped at the latest five results, with a clear-history action.
 - Clipboard API has a fallback; native share is used where available and otherwise falls back to copy.
 - All executable inline JavaScript blocks passed syntax checks; source checks confirmed result-recording hooks for all three modes, clipboard/share handlers, and the five-item history cap. Browser visual QA remains pending.
+- Merge commit: 4bb2de85be0a0577fb2b4822fc299e96f05e0425
 
 ## Later roadmap
 - Related SEO pages only after keyword/page intent is confirmed; follow the 1360px / 8px layout standard.
