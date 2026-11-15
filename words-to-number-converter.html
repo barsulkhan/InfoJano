@@ -23,7 +23,10 @@ function parseWords(raw){
  for(const token of wholeTokens){
   if(ignored.has(token))continue;
   if(majorUnits.has(token)){total+=group;group=0n;hasNumber=true;continue;}
-  if(minorUnits.has(token)){minor=group;group=0n;continue;}
+  if(minorUnits.has(token)){
+   if(group>99n)throw new Error('Minor currency units must be less than 100.');
+   minor=group;group=0n;continue;
+  }
   if(Object.prototype.hasOwnProperty.call(small,token)){group+=BigInt(small[token]);hasNumber=true;continue;}
   if(Object.prototype.hasOwnProperty.call(tens,token)){group+=BigInt(tens[token]);hasNumber=true;continue;}
   if(token==='hundred'){group=(group||1n)*100n;hasNumber=true;continue;}
@@ -31,7 +34,7 @@ function parseWords(raw){
   throw new Error('Unsupported word: '+token);
  }
  if(!hasNumber)throw new Error('Enter a supported English number phrase.');
- const integer=(total+group).toString();
+ const integer=(minor!==null&&total===0n&&group===0n?'0':(total+group).toString());
  let decimals='';
  if(decimalTokens.length){
   const digitWords={zero:'0',one:'1',two:'2',three:'3',four:'4',five:'5',six:'6',seven:'7',eight:'8',nine:'9'};
