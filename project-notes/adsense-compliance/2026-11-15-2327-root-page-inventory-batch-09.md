@@ -1,0 +1,24 @@
+# Root-page inventory batch 09 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:27:27+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- User instruction: continue research and save every completed work package in a task-named timestamped file; no new folders.
+- Scope: inspect 12 time/text/calculator, QR and voter-service pages for analytics/ads/CMP, external requests, browser storage, permissions and upload endpoints. Read-only.
+- Files inspected: `target-marks-calculator.html`, `text-counter.html`, `text-qr-code-generator.html`, `time-calculator.html`, `tip-calculator.html`, `unit-converter.html`, `upi-payment-qr-code-generator.html`, `url-qr-code-generator.html`, `vcard-qr-code-generator.html`, `voter-id-card-print.html`, `what-happened-on-my-birthday.html`, `what-percent-calculator.html`.
+- Findings:
+  - GA4 `G-P8D7XRGVEF` appears in Text Counter, Time Calculator, Tip Calculator and Unit Converter.
+  - Time Calculator stores up to 5 history records (mode, result text, ISO timestamp) in localStorage key `ijElapsedTimeHistoryV1`, with a clear action; no server sync identified in page source.
+  - Voter ID guide links to ECI Voters' Services Portal and internally to ID Card Print Studio; ordinary navigation, no InfoJano upload/API evidence in guide source.
+  - QR Choice, Text QR, UPI Payment QR, URL QR and vCard QR pages show no direct network/storage/CMP marker in this bounded scan. `https://.` is instructional placeholder copy.
+  - No CMP/TCF marker found.
+- Checks: full raw source retrieval for 12 pages — PASS; bounded static marker/storage scan — PASS; full inventory — IN PROGRESS; live runtime/network/cookie/consent tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §23.
+- Changed: research plan only. No app source, policy, account settings, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `5184eca083eb47500644c6833f73b77a19ea362d`.
+- Next: inspect final 7 root pages and then consolidate source-level findings.
+- Approval boundaries: no production/account change authorized.
