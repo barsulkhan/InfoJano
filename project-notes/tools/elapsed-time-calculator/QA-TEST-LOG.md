@@ -51,3 +51,11 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 - `renderTimeHistory()` creates an empty list item reading “No recent calculations yet.” when no records exist.
 - `getTimeHistory()` filters malformed entries and slices to five; `recordTimeCalculation()` also writes only the first five records.
 - Result: source-level logic appears correct; ET-010 manual UI behavior and five-item cap runtime behavior remain NOT TESTED. No PASS claim.
+
+
+### 2026-11-15 — Screenshot review: current live mobile layout
+- User supplied a fresh mobile screenshot of `https://infojano.com/time-calculator.html`.
+- Observed: shared header tagline is visibly bold and uses a blue-to-teal two-tone treatment; related-tool icons show distinct blue, teal, amber, and violet accents; the Explore More Free Tools section is visible; no lower duplicate “Back to InfoJano Home” link appears in the captured viewport (the header Home button remains).
+- This confirms the latest shared tagline/icon/link styling is present in the live page screenshot at the time supplied. It is a screenshot-based visual check, not full responsive QA.
+- ET-010 Clear History is NOT tested: the screenshot still shows five Recent Calculations entries, so the clear action has not yet been confirmed. Five-item history cap is source-reviewed only; runtime cap remains untested.
+- Next: user should tap “Clear history” and share the resulting empty-state screenshot; then refresh once and confirm the list remains empty.
