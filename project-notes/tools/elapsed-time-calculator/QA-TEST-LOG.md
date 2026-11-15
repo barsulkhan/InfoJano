@@ -173,3 +173,9 @@ When a real browser is available, perform the five-entry history test (create si
 - Evidence limitation: screenshots establish the visible list state and ordering for this test sequence; they do not establish behavior across every browser/storage condition.
 - Remaining QA: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery, and DST boundary runtime checks remain pending.
 - No application source or hero/banner files changed.
+
+
+### 2026-11-15 — User confirmation: copy/share and screen-reader checks completed
+- User clarified that copy testing had already been completed and screen-reader testing had also already been completed in prior work.
+- Status correction: copy/share and screen-reader are user-confirmed COMPLETE; do not request these tests again. The earlier pending list was stale.
+- Desktop browser visual QA is the remaining explicit manual QA item per the user's clarification. No screenshot/evidence for those earlier tests was attached in this turn, so this entry records the user's confirmation rather than independently re-testing them.
