@@ -23,7 +23,8 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] [CARD-008] APK manifest relative icon path validation — PR #227; merge 4ae9624fb8978b832d58e2b93f2e41091227dc80. Workflow resolves relative icon src against manifest URL before checking repository asset.
 
 ### In progress
-- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session was available in the previous work. Next: open the live page on mobile and desktop, verify layouts and all calculator modes, record actual findings and screenshots/evidence where available.
+- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. Next: use a real interactive browser on mobile and desktop, verify layouts and all calculator modes, record actual findings and screenshots/evidence.
+- [ ] [CARD-011] Date-duration results missing from recent history — source inspection of `time-calculator.html` shows `calculateDateDuration()` renders a result but does not call `recordTimeCalculation('Date + Time Duration')`; therefore date-duration results do not enter the recent-history list or reveal the copy/share actions through the shared recording hook. Next: implement the hook after successful date-duration output and run regression checks for all three modes.
 
 ### Backlog
 - [ ] [CARD-010] Review related SEO landing page opportunities — only after keyword and page intent are confirmed; follow 1360px max width and 8px gutters.
@@ -45,6 +46,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [ ] Mobile browser QA — pending.
 - [ ] Desktop browser QA — pending.
 - [ ] Accessibility review — not yet recorded.
+- [ ] Source review follow-up for CARD-011 — pending implementation and regression verification.
 
 ## Detailed work log
 
@@ -118,3 +120,15 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - First next action is mobile and desktop visual QA when a real interactive browser is available.
 - If browser QA finds defects, create a new card and dated log entry before fixing.
 - Never change the protected hero areas without explicit permission.
+
+
+### 2026-11-15 — Resume handoff; CARD-009 source inspection
+- Requested: resume InfoJano from NEW-CHAT-HANDOFF.md and follow the mandatory per-tool tracking standard without repeating merged feature work.
+- Inspected: `project-notes/NEW-CHAT-HANDOFF.md`, `project-notes/TOOL-WORK-TRACKING-STANDARD.md`, `project-notes/TOOL-INDEX.md`, this tracker, legacy `project-notes/elapsed-time-calculator-progress.md`, and current `time-calculator.html` from the repository default branch.
+- Changed: tracker only; added CARD-011 after source inspection identified that `calculateDateDuration()` does not call the shared `recordTimeCalculation()` hook. This means date-duration results are not saved to recent history and the shared result-action visibility hook is not triggered for that mode. This is a source-level finding, not browser QA.
+- Tests and results: source inspection of the date-duration handler and shared history/copy-share hooks — finding confirmed by code path review; automated test not run. Mobile/desktop browser QA — not run; no interactive browser tool is available in this session.
+- PR/commit/workflow: none created in this session. Existing merged PRs and successful workflow runs remain as previously documented; not re-verified here.
+- Issues and resolution: CARD-011 recorded as a new in-progress follow-up; no code change made yet.
+- Still pending: implement CARD-011 with regression coverage; perform real mobile and desktop browser QA for CARD-009; accessibility review; later assess CARD-010 only after keyword/page intent confirmation.
+- Next step: inspect current GitHub branch/PR/test setup, fix CARD-011 on a feature branch if safe, run available source-level checks, then return to CARD-009 when an interactive browser is available.
+- Protected areas preserved: no files outside project notes were modified; Calculator Hero, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
