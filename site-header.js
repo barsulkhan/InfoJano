@@ -118,6 +118,20 @@
       if(lang==='en')url.searchParams.delete('lang');else url.searchParams.set('lang',lang);
       location.href=url.pathname+url.search+url.hash;
     });
+
+    /* Add a quiet, shared privacy route only where the page has no policy link. */
+    if(!document.querySelector('a[href*="privacy-policy"]')){
+      if(!document.getElementById('ij-global-privacy-footer-style')){
+        const footerStyle=document.createElement('style');
+        footerStyle.id='ij-global-privacy-footer-style';
+        footerStyle.textContent='.ij-global-privacy-footer{box-sizing:border-box;width:min(calc(100% - 32px),1200px);margin:28px auto 18px;padding:14px 8px;border-top:1px solid #e6edf6;text-align:center;color:#64748b;font:12px/1.6 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}.ij-global-privacy-footer a{color:#315b88;text-decoration:underline;text-underline-offset:3px}.ij-global-privacy-footer a:focus-visible{outline:2px solid #93c5fd;outline-offset:3px;border-radius:3px}';
+        document.head.appendChild(footerStyle);
+      }
+      const privacyFooter=document.createElement('footer');
+      privacyFooter.className='ij-global-privacy-footer';
+      privacyFooter.innerHTML='© InfoJano · <a href="'+ROOT+'privacy-policy.html">Privacy Policy</a> · <a href="'+ROOT+'contact.html">Contact</a>';
+      document.body.appendChild(privacyFooter);
+    }
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
