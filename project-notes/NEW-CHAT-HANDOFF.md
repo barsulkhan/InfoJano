@@ -138,3 +138,10 @@ Copy/paste prompt:
 ## QA status clarification — 2026-11-15
 - User confirms copy/share and screen-reader testing have already been completed; these are not pending. Treat as user-confirmed completion and do not request repeat tests.
 - The remaining explicit task is desktop browser visual QA. Do not report it passed until a desktop screenshot/session is reviewed.
+
+
+## USA-first SEO planning — 2026-11-15
+- Standing priority: target US audiences first for Elapsed Time Calculator-related SEO work; use US English phrasing, US conventions, US keyword/SERP evidence and competitor examples.
+- Preliminary US keyword research and three candidate concepts (Work Hours, Time Card, Date & Time Duration) are saved in `project-notes/tools/elapsed-time-calculator/RESEARCH.md` §15.
+- These are research candidates, not three approved URLs. Work Hours and Time Card likely overlap; Date & Time Duration may overlap the current calculator. Keep the current two-URL architecture until US SERP overlap and unique feature/content value are established. Time-zone intent requires real timezone conversion support.
+- No app code, metadata, sitemap or hero artwork changed during this research pass.
