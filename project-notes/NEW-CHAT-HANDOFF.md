@@ -98,3 +98,11 @@ Copy/paste prompt:
 - Live URL/robots/sitemap web fetch returned internal inspection errors; no live-status or index verdict is available. GSC/Ahrefs quantitative access remains unavailable, but it is not a blocker for qualitative work.
 - Latest documentation commits: RESEARCH `26af4a1724a83e108a00070164bd25c57dd83d0c`; README `4b38fbe137de84d52d7616171b722b4896cc3f14`; TOOL-INDEX `4afea227764c124442b36ebc06adf6dcafda501c`. Re-fetch files before relying on these SHAs as current.
 - Next practical step: perform real-browser mobile/desktop and accessibility QA when an interactive browser session is available; do not wait for GSC just to continue source/QA work.
+
+
+## Latest Elapsed Time Calculator QA update — 2026-11-15
+- Follow-up source QA is recorded in `project-notes/tools/elapsed-time-calculator/QA-TEST-LOG.md` as SRC-001–SRC-016. All recorded source checks pass, including inline JavaScript syntax, canonical/sitemap/internal links, JSON-LD parsing, clock rollover, break validation, history cap source logic, reduced motion, IDs, button types and guide structure.
+- Formula-level arithmetic checks pass for daytime duration, overnight seconds precision, break deduction and equal start/end (zero duration). These are not browser runtime tests.
+- Actual mobile/desktop browser rendering, runtime five-entry cap, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime checks remain NOT RUN due unavailable interactive browser/computer-control session.
+- Pages workflow #2570 for prior handoff commit succeeded; it is not browser QA and predates the latest QA documentation commits. Check latest Actions run before claiming deployment for these commits.
+- Latest QA documentation commits: QA log `40a1ba3ef1dc14ebbe24e5d98ab277d59519fbb4`; README `5594345be7467300f70161e173b778efb35a2a36`; TOOL-INDEX `16ffc40ce7f53f763e2b619a6ae549a384db4c26`.
