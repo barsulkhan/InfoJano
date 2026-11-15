@@ -530,3 +530,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `580d7b7aeb21`; task file `47e4291425f1`.
 - D-001 remains in progress; after this batch, 67 root HTML files remain unreviewed in the branch tree. Live runtime tests not run.
 - No production/policy/account/DNS/merge/deployment changes.
+
+### 2026-11-15 — Root-page inventory batch 05
+- Inspected 12 more pages covering Digital Ration Card, Discount, GST, QR, number words and ID Card Print Studio. GA4 confirmed on both Discount pages and GST Calculator; ID Card Print Studio loads PDF.js from cdnjs and states browser-side processing/no intentional server upload.
+- Task evidence: [2026-11-15-2324-root-page-inventory-batch-05.md](2026-11-15-2324-root-page-inventory-batch-05.md); master plan §19.
+- Commits: plan `71f591a1ce8d`; task file `41c7db3c816c`.
+- D-001 remains in progress; live processing/network tests not run.
+- No production, policy, account, DNS, merge or deployment changes.
