@@ -6,7 +6,7 @@ Last updated: 2026-11-15
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; Pages workflow #2550 SUCCESS; follow-up SERP/localization research and 16 static source checks saved; Pages workflow #2570 success for prior handoff commit; live/browser/accessibility QA pending | 2026-11-15 | Run guide/calculator mobile/desktop browser QA; runtime five-entry-cap, keyboard/focus, screen-reader and DST checks |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; ET-011 five-entry cap runtime PASS; Pages workflow #2550 SUCCESS; follow-up SERP/localization research and 16 static source checks saved; remaining desktop/responsive/accessibility/DST QA pending | 2026-11-15 | Run remaining desktop/responsive browser QA; keyboard/focus, screen-reader, copy/share end-to-end and DST runtime checks |
 | Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP page created; source checks PASS; Pages workflow #2550 SUCCESS; browser/functional QA pending; keyword metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
 
 
@@ -24,3 +24,7 @@ Last updated: 2026-11-15
 ### 2026-11-15 — Elapsed Time Calculator five-entry history cap runtime PASS
 - User-supplied sequential live mobile screenshots verify that after adding a sixth distinct calculation, Recent Calculations still displays exactly five; newest entry is first and the prior oldest entry is removed.
 - ET-011 recorded PASS in the tool QA log. Remaining desktop/responsive/accessibility/DST checks are still pending.
+
+
+### 2026-11-15 — QA status correction
+- ET-011 five-entry history cap is runtime PASS from sequential user screenshots; remove it from pending lists. Remaining QA is desktop/responsive, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime.
