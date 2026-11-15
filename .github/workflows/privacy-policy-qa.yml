@@ -6,6 +6,7 @@ on:
       - "privacy-policy.html"
       - "contact.html"
       - "index.html"
+      - "site-header.js"
       - "sitemap.xml"
       - "robots.txt"
       - "scripts/validate-privacy-policy-links.mjs"
