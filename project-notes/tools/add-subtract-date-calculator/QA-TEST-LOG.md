@@ -23,3 +23,5 @@ Work tracker: README.md
 - Manual browser tests: buttons, keyboard operation, clipboard permission behavior, mobile layout, desktop layout, screen-reader labels and focus visibility.
 - Deployment: check latest GitHub Pages run and live page before claiming the change is live.
 - Tests above are source-level and isolated Node arithmetic checks; they are not end-to-end browser QA.
+
+| AD-011 | GitHub Pages build/deploy workflow | Successful deployment workflow for implementation + tracker commit | Run #2642 completed SUCCESS | PASS — workflow only; direct live rendering not independently fetched |
