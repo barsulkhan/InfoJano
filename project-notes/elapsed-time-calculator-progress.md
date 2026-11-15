@@ -49,16 +49,18 @@ Merge commit: a4b5017c1fd27061ca50aae63330e67e0af235bf
 - Source-level checks passed for input, validation, overnight handling, output fields, and hero markup. Browser visual QA remains pending.
 - Merge commit: 1887be9cf860519f5c4906dc101767e8aa846037
 
-## In progress — add / subtract time mode
-Branch: `feature/elapsed-time-add-subtract-mode`
-- Added a mode switch so users can choose between elapsed-time difference and adding/subtracting a duration from a starting clock time.
-- Add/subtract mode accepts hours, minutes, and seconds, validates whole non-negative values (minutes and seconds limited to 0–59), and reports the resulting clock time plus previous/same/following day adjustment.
-- Existing difference mode, break deduction, overnight handling, and hero markup/artwork remain in place.
-- Initial source checks passed for mode switching, duration inputs, calculation dispatch, day rollover, existing break validation, and hero markup/artwork. Further calculation tests, PR review, and browser visual QA are pending.
+## Submitted for review — add / subtract time mode (PR #222)
+- Implementation and project notes are committed on `feature/elapsed-time-add-subtract-mode`; PR #222 is open against `main`.
+- Source checks passed for mode toggle, inputs, calculation dispatch, day rollover, existing break validation, and hero markup/artwork. Calculation scenario testing and browser visual QA remain pending.
+
+## In progress — date + time duration mode
+Branch: `feature/elapsed-date-time-duration` (stacked on PR #222)
+- Added a third mode for calculating duration between two full date-and-time values using local `datetime-local` inputs.
+- Requires both values and rejects invalid or non-increasing ranges; displays days plus remaining hours/minutes/seconds, total hours, total minutes, and total seconds.
+- Existing time-difference and add/subtract modes are retained; hero markup and artwork are not intentionally changed.
+- Initial source-level checks and date-duration test cases are pending.
 
 ## Later roadmap
-- Add/subtract time mode.
-- Add/subtract time mode.
-- Date + time duration mode.
+- Copy/share result and recent calculation history.
 - Copy/share result and recent calculation history.
 - Related SEO pages only after keyword/page intent is confirmed; follow the 1360px / 8px layout standard.
