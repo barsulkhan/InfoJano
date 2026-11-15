@@ -431,3 +431,17 @@ Overall status: Paused at user's request — current mobile checks and source au
 - No GSC performance metrics or indexing verdict are claimed. No code/metadata changes made.
 - Detailed evidence and next requirements: [RESEARCH.md](RESEARCH.md), section 13.
 - Research dossier commit: b76b426fa9d1315a9a17689636b6ce84cfb049a6.
+
+
+### 2026-11-15 — Independent SEO follow-up without GSC report
+- User clarified Search Console has no updated report and instructed the assistant to handle the remaining work independently, finish quickly, and save every result.
+- Re-read latest handoff, work-tracking standard, research standard, tool index, Elapsed Time README/RESEARCH/QA log before continuing.
+- Fresh public SERP review: Toggl, TimeToolSet, PercentPoint, TimeDateLab and TimeCalculator.ca. Documented competitor capabilities (multi-block totals, CSV, break deduction, date-time, explicit day assumptions, scope explanations) and gaps without claiming competitor traffic/rankings.
+- Screened India, Bangladesh, US and UK qualitatively for English/Hindi/Bengali wording hypotheses. No search-volume, KD, CPC, trend or traffic estimates invented; local-language phrases marked unvalidated.
+- Re-fetched repository source for calculator, guide and sitemap. Confirmed source metadata/canonicals and both sitemap entries; guide source respects 1360px max-width and 8px gutters.
+- Tried direct public fetch of calculator, guide, robots.txt and sitemap.xml; web inspection returned internal access errors. Live status, robots directives and index state remain unverified; this is not evidence of site failure/deindexing.
+- Decision: keep current calculator + guide URLs; no additional page or feature build justified without quantitative demand or explicit feature scope. Multi-block/CSV remain possible future gaps, not approved implementation.
+- Code/SEO metadata changed: none. Tests: repository source inspection PASS for presence of metadata/canonicals/sitemap entries; live HTTP/browser/GSC checks NOT RUN or unavailable.
+- Detailed evidence: RESEARCH.md, section 14.
+- Next: complete browser/mobile/desktop/accessibility QA when an interactive browser is available; quantitative keyword validation when a usable provider/property becomes available.
+- Protected homepage and calculator hero areas unchanged.
