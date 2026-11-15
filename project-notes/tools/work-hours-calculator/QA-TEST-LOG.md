@@ -74,3 +74,10 @@ Source-only checks were run after page creation. Inline JavaScript syntax and ke
 - APK workflow #683 for service-worker fix commit `e8a0beab9cb70643fa612230956cc106474a71f1` reached the validation step and PASSED: 112 HTML pages, 23 manifests/targets and service-worker cache coverage validated.
 - At last check, the workflow was still building APKs; package-count verification, artifact upload and release publication had not completed. Do not claim APK success yet.
 - Pages workflow for the latest documentation commits was still processing; earlier Pages #2624 succeeded.
+
+
+### 2026-11-15 — Shared CI and release status
+- APK workflow #683 completed SUCCESS: validation, all 23 APK builds, package count, artifact upload and release publication passed. Release v1.1.1 verified to contain exactly 23 APK assets.
+- APK workflow #685, triggered by the later date-offset HTML update, also completed SUCCESS with all build/package/upload/release steps passed. Release asset count remains 23.
+- GitHub Pages run #2642 completed SUCCESS for the date-offset implementation + tracker update commit. Latest documentation-only Pages run #2646 was in progress at last check.
+- These workflow results are separate from Work Hours browser/runtime QA; WH-001–WH-010 remain NOT RUN.
