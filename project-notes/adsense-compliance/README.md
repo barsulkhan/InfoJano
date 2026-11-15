@@ -5,6 +5,10 @@ Site: https://infojano.com
 Repository: https://github.com/barsulkhan/InfoJano
 Overall status: In progress
 
+Master research and execution order: [MASTER-RESEARCH-PLAN.md](MASTER-RESEARCH-PLAN.md)
+
+Execution rule: follow the master plan's dependency order; do not select isolated next tasks without updating the plan.
+
 ## User-approved scope and constraints
 - Continue the existing Google AdSense account/site configuration audit for infojano.com.
 - User confirms that the AdSense **Request review** action has already been submitted. Do not ask them to submit it again unless the account explicitly requests a new action.
@@ -18,7 +22,7 @@ Overall status: In progress
 ### In progress
 - [ ] [CARD-003] Verify live Privacy and cookie settings / consent-revocation link — editor preview exists; live link and reopen behavior still unverified.
 - [ ] [CARD-004] Verify Google-certified CMP and EEA consent behavior — CMP identity verified; live runtime behavior still unverified.
-- [ ] [CARD-006] Audit ads.txt live availability and publisher record — source pass; live HTTP response and crawler status unverified.
+- [ ] [CARD-006] Audit ads.txt live availability and publisher record — live body exact-match PASS from user screenshot; HTTP status/headers, HTTP+HTTPS redirects and AdSense crawler status remain unverified.
 
 ### Completed (audit/research evidence only; no production changes)
 - [x] [CARD-001] Record current AdSense site-review status — user screenshot shows Getting ready; this completes the status observation, not Google's review.
@@ -464,3 +468,13 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Interpretation: this is a source-level finding and may not capture account-side injection, tag-manager injection, or runtime scripts; it supports the user's live observation that no footer privacy control is visible, but does not alone prove the CMP never runs.
 - CARD-003 remains In progress; CARD-004 remains In progress pending live consent/rejection and TC-string verification. No settings, code, DNS, production, PR merge or deployment changed.
 - Next: inspect AdSense/Privacy & Messaging account evidence and live runtime separately. Do not ask the user to repeat the footer check; do not change CMP settings without explicit approval.
+
+### 2026-11-15 — Master research plan established
+- User direction: stop handling compliance as isolated one-off tasks; research the entire workstream first, save it as a durable file with an index, and define what happens first, later and when.
+- Read current handoff, tracking standard, research standard, research template, tool index and this tracker.
+- Created `MASTER-RESEARCH-PLAN.md` with official Google and IAB sources; current status matrix; ordered tasks and dependencies; P0/P1 priorities; legal, CMP, TCF, ads.txt, policy, review and release gates; issue register; limitations; approval rules; no-repeat decisions.
+- Added AdSense & Privacy Compliance to `project-notes/TOOL-INDEX.md`.
+- Research conclusions: prioritize diagnosing the missing live privacy/revocation entry point and verifying live TCF v2.4 behavior; finish publisher legal identity/jurisdiction and data inventory before finalizing policy; ads.txt body is verified but HTTP/crawler status is not.
+- Decision: REVISE / PROCEED WITH READ-ONLY EVIDENCE COLLECTION; NO PRODUCTION IMPLEMENTATION YET.
+- Next work must follow MASTER-RESEARCH-PLAN.md in dependency order, starting with remaining source-only data-flow inventory. Ask the publisher for legal identity/jurisdiction only when needed for policy finalization.
+- No production code, CMP/AdSense setting, DNS, PR merge, sitemap, deployment or protected hero/banner changed.
