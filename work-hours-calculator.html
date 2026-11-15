@@ -117,7 +117,7 @@ function addRow(data){
  rows.appendChild(tr);
 }
 function parseTime(value){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(value))return null;var p=value.split(":");return Number(p[0])*60+Number(p[1])}
-function dateObj(s){if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(s))return null;var p=s.split("-"),y=Number(p[0]),m=Number(p[1]),day=Number(p[2]),d=new Date(y,m-1,day,12);if(isNaN(d.getTime())||d.getFullYear()!==y||d.getMonth()!==m-1||d.getDate()!==day)return null;return d}
+function dateObj(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s))return null;var p=s.split("-"),y=Number(p[0]),m=Number(p[1]),day=Number(p[2]),d=new Date(y,m-1,day,12);if(isNaN(d.getTime())||d.getFullYear()!==y||d.getMonth()!==m-1||d.getDate()!==day)return null;return d}
 function dateKey(d){return dateValue(d)}
 function mondayOf(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);var day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);return x}
 function minsText(n){n=Math.max(0,Math.round(n));var h=Math.floor(n/60),m=n%60;return h+"h "+String(m).padStart(2,"0")+"m"}
