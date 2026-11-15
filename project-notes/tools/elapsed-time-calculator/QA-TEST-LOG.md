@@ -179,3 +179,8 @@ When a real browser is available, perform the five-entry history test (create si
 - User clarified that copy testing had already been completed and screen-reader testing had also already been completed in prior work.
 - Status correction: copy/share and screen-reader are user-confirmed COMPLETE; do not request these tests again. The earlier pending list was stale.
 - Desktop browser visual QA is the remaining explicit manual QA item per the user's clarification. No screenshot/evidence for those earlier tests was attached in this turn, so this entry records the user's confirmation rather than independently re-testing them.
+
+
+### 2026-11-15 — User-confirmed completion clarification
+- User explicitly confirmed that copy/share tests and screen-reader QA have been completed. Record these as user-reported completed checks; no new screenshots or retest evidence was supplied in this session.
+- Desktop visual QA and broader responsive/DST runtime checks remain pending. Do not ask the user to repeat copy/share or screen-reader testing.
