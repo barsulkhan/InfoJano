@@ -120,7 +120,7 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 
 <header class="ij-brandbar"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><span class="ij-brandmark">▣</span><span><span class="ij-brandname">Info<span>Jano</span></span><span class="ij-brandtag">Smart Online Tools for Everyday Life</span></span></a><span class="ij-brand-divider"></span><span class="ij-brand-promise">Simple tools. Clear results.</span><a class="ij-home-back" href="index.html">← Back to Home</a></div></header>
 <nav class="ij-hero-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a> <span aria-hidden="true">›</span> Elapsed Time Calculator</nav>
-<section class="ij-reference-hero" aria-labelledby="ij-reference-hero-title"><div class="ij-reference-grid"><div class="ij-reference-copy"><span class="ij-reference-kicker">TIME TOOLS</span><h1 id="ij-reference-hero-title">Elapsed Time <span>Calculator</span></h1><p>Find the time between two clock times in hours and minutes, including calculations that cross midnight.</p><div class="ij-reference-pills"><span><b>✓</b>Hours and minutes</span><span><b>↗</b>Overnight time support</span><span><b>•</b>Quick time calculation</span></div></div><div class="ij-reference-art" aria-hidden="true"><div class="ij-art-clock"><div class="ij-art-clock-face"><i class="ij-hour"></i><i class="ij-minute"></i><b></b></div><div class="ij-art-time-pill">09:15 <span>→</span> 12:00</div></div></div></div></section>
+<section class="ij-reference-hero" aria-labelledby="ij-reference-hero-title"><div class="ij-reference-grid"><div class="ij-reference-copy"><span class="ij-reference-kicker">TIME TOOLS</span><h1 id="ij-reference-hero-title">Elapsed Time <span>Calculator</span></h1><p>Find the time between two clock times in hours and minutes, including calculations that cross midnight.</p><div class="ij-reference-pills"><span><b>✓</b>Hours and minutes</span><span><b>↗</b>Overnight time support</span><span><b>•</b>Quick time calculation</span></div></div><div class="ij-reference-art" aria-hidden="true"><div class="ij-art-clock"><div class="ij-art-clock-face"><i class="ij-hour"></i><i class="ij-minute"></i><b></b></div><div class="ij-art-time-pill" aria-label="Your local current time"><time id="ij-live-clock-time" aria-live="off">--:--:--</time></div></div></div></div></section>
 <main>
 <div class="ij-time-workspace" aria-label="Elapsed time calculator workspace">
   <section class="ij-time-left card" aria-labelledby="ij-time-input-title">
@@ -187,6 +187,25 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script>
+/* Live local clock for the existing hero clock illustration; visual styling stays unchanged. */
+(function(){
+  const face=document.querySelector('.ij-art-clock-face');
+  const hourHand=face&&face.querySelector('.ij-hour');
+  const minuteHand=face&&face.querySelector('.ij-minute');
+  const digital=document.getElementById('ij-live-clock-time');
+  if(!face||!hourHand||!minuteHand||!digital)return;
+  const pad=value=>String(value).padStart(2,'0');
+  function updateLiveClock(){
+    const now=new Date();
+    const hours=now.getHours(),minutes=now.getMinutes(),seconds=now.getSeconds();
+    hourHand.style.transform='translate(-50%,-100%) rotate('+(((hours%12)+minutes/60+seconds/3600)*30)+'deg)';
+    minuteHand.style.transform='translate(-50%,-100%) rotate('+((minutes+seconds/60)*6)+'deg)';
+    digital.textContent=pad(hours)+':'+pad(minutes)+':'+pad(seconds);
+  }
+  updateLiveClock();
+  window.setInterval(updateLiveClock,1000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)updateLiveClock();});
+})();
 function calculateTime(){
 const s=document.getElementById('start').value;
 const e=document.getElementById('end').value;
