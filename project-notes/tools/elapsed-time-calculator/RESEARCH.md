@@ -385,3 +385,71 @@ A targeted source inspection of the clock-only calculation and date-time calcula
 - Clock-only mode does not expose a timezone selector or perform a timezone conversion; it is arithmetic on the entered clock values.
 - Date + time mode parses the entered date-time strings with JavaScript Date and subtracts their epoch milliseconds. It rejects an end that is not later than the start. Because Date parsing of local date-time input uses the browser's local timezone and timezone offset rules, daylight-saving transitions may affect the elapsed seconds. The UI does not currently offer a timezone selector or explicit DST explanation. Do not describe it as timezone-independent or universally DST-neutral.
 - This is source-level inspection, not runtime/browser validation. A dedicated DST boundary test and equal-clock runtime test remain pending.
+
+
+## 15. USA-first SEO expansion research — preliminary screen (2026-11-15)
+
+**New standing market priority from user:** prioritize the United States audience for future InfoJano SEO planning. Use US English phrasing, US-specific examples and conventions, and US-filtered SERP/keyword evidence as the primary decision basis. Other countries are secondary unless the user changes priority.
+
+### 15.1 Important scope reconciliation
+The prior approved research decision remains two current URLs only: `/time-calculator.html` (interactive utility) and `/elapsed-time-calculator-guide.html` (how-to guide). The repository does not currently contain an approved list naming three additional elapsed-time SEO URLs. Therefore this section treats three page ideas as a research shortlist, not a commitment to publish three pages. Do not create URLs until intent separation, functionality and US SERP evidence are confirmed.
+
+### 15.2 Preliminary US keyword signals
+Public third-party keyword reports accessed 2026-11-15 surfaced these estimates:
+
+| Keyword / cluster | US estimated monthly searches | Reported SEO difficulty | CPC (USD) | Initial reading |
+|---|---:|---:|---:|---|
+| time calculator | 610,000 | 77/100 | $1.42 | Very broad, competitive umbrella; not a sensible new page target by itself |
+| time duration calculator | 110,000 | 28/100 | Not reported | Strong direct utility fit; keep mapped to existing calculator unless SERP split proves otherwise |
+| time card calculator | 150,000 | 62/100 | $8.38 | Strong US-specific work/payroll intent; needs a real timecard workflow, not only a single interval calculator |
+| work hours calculator | 82,000 (related term shown under hours calculator) | 34/100 (related-term figure) | $2.06 | Promising work-shift intent; overlaps time-card intent and needs a distinct feature/content proposition |
+| date calculator | 550,000 | 72/100 | $1.06 | Broad/mixed intent; not equivalent to date-time duration |
+| time zone converter | 670,000 | 93/100 | Not reported | Large US demand but a different task; current tool does not convert time zones |
+
+Sources:
+- https://www.kwstrends.com/keywords/us/time-calculator (updated 2026-11-07)
+- https://www.kwstrends.com/keywords/us/time-duration-calculator (updated 2026-11-09)
+- https://www.kwstrends.com/keywords/us/time-card-calculator (updated 2026-10-31)
+- https://www.kwstrends.com/keywords/us/hours-calculator (updated 2026-11-10)
+- https://www.kwstrends.com/keywords/us/date-calculator (updated 2026-10-28)
+- https://www.kwstrends.com/keywords/us/time-zone-converter (updated 2026-10-28)
+
+**Data caveat:** these are third-party estimates, not an authorized Ahrefs export, Google Keyword Planner account export or InfoJano Search Console data. Values can differ between providers and reports; the work-hours figure is a related-keyword row rather than a standalone keyword overview. Treat all as directional only. CPC is advertiser bid estimate, not publisher RPM or guaranteed revenue. Ahrefs entitlement still returned “Insufficient plan”; GSC data remains unavailable.
+
+### 15.3 Three candidate page concepts — not approved for build
+
+1. **Work Hours Calculator (US shift-work intent)**
+   - Candidate cluster: work hours calculator, hours worked calculator, calculate work hours, working hours calculator.
+   - Potential audience: hourly employees, shift workers, managers and small businesses.
+   - Product gap before a distinct page: multiple shifts/rows, daily/weekly totals, break handling, decimal hours and clear pay-period export/summary. Current elapsed calculator supports one start/end interval and optional break; it must not be marketed as a full timesheet/payroll calculator without feature expansion.
+   - Initial status: strongest practical candidate to validate, but needs product-scope confirmation.
+
+2. **Time Card Calculator (US timecard/pay-period intent)**
+   - Candidate cluster: time card calculator, timecard calculator, time card calculator with lunch/breaks, biweekly time card calculator.
+   - Potential audience: US hourly workers and employers. Reported CPC is relatively high, but that is advertising-market context only.
+   - SERP/product gap: users may expect multiple daily punches, lunch breaks, weekly/biweekly totals, decimal payroll hours and possibly overtime/pay summaries. Do not create a thin SEO page that simply re-labels the current elapsed-time calculator.
+   - Cannibalization warning: strong overlap with “work hours calculator”; likely these should be one consolidated work-hours/timecard tool and one URL unless a US-localized top-10 SERP overlap study proves distinct intents.
+   - Initial status: do not create a separate URL from Work Hours yet.
+
+3. **Date & Time Duration Calculator (multi-date elapsed span)**
+   - Candidate cluster: date and time duration calculator, date-time duration, duration between dates and times.
+   - Potential audience: users measuring project/event/task spans across calendar dates.
+   - Existing fit: current Date + Time mode already computes duration between two date-time points. A separate page risks duplicating the existing calculator and guide unless US SERPs show a distinct date-time-specific result set and the page adds unique examples/UX (e.g. multi-day totals, explicit timezone/DST scope).
+   - Initial status: validate SERP separation before deciding; do not clone current mode into a near-duplicate page.
+
+**Not a current candidate:** Time Zone Difference / Converter. Despite large US query estimates, current product has no timezone selection or conversion and date+time uses the browser's local timezone semantics. A page would require a real timezone-aware feature, including DST handling, before it can satisfy the intent.
+
+### 15.4 US competitor observations
+- The US time-duration report surfaced Calculator.net, timeanddate, OnTheClock, TimeCamp, HiveDesk and Toggl among top organic results. This supports keeping the current general duration intent on the existing utility page.
+- A public time-card report shows a distinct group of timecard-oriented terms, including “time card calculator with lunch”, “biweekly time card calculator” and “time card calculator with breaks”. This indicates a more specific work/pay-period task than a simple elapsed-time calculation, but ranking overlap still needs manual US SERP verification.
+- Reference competitor pages already captured in earlier sections include Calculator.net, timeanddate, TimeCamp, Toggl, OnTheClock, TimeToolSet, PercentPoint and TimeDateLab.
+
+### 15.5 Preliminary recommendation / next research gate
+- **USA is primary market** for subsequent keyword, SERP and content decisions.
+- Keep current elapsed-time utility and how-to guide as the existing two URLs; do not retarget or duplicate them prematurely.
+- Research Work Hours + Time Card together first to measure SERP overlap and define whether one genuinely useful US-focused tool can serve both clusters.
+- Validate the Date & Time Duration cluster separately against the current calculator/guide SERPs.
+- Before any new URL: collect US top-10 SERP snapshots for each seed and close variants, inspect overlapping ranking URLs, compare feature expectations, obtain a reliable keyword dataset (GKP/Ahrefs/Semrush or user export), and confirm GSC query/page/country data if available.
+- No application code, metadata, sitemap or page URLs changed in this research pass.
+
+**Decision:** RESEARCH / HOLD. Three concepts have been shortlisted, but no three-page build approval is inferred from the user's wording alone. The actual page count should follow US intent separation and product usefulness, not a fixed quota.
