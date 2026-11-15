@@ -100,3 +100,8 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 - PASS: SEO title, meta description, self-canonical, one H1, both reused homepage artwork paths, 1360px max-width/8px gutter, formula, overnight example, visible FAQ details, WebPage/BreadcrumbList/FAQPage JSON-LD parses as JSON, guide-to-tool and tool-to-guide links, sitemap entry.
 - PASS: existing calculator hero markup/style still present; homepage index.html was not modified. Source checks do not verify rendered artwork or layout.
 - Browser QA: NOT RUN. Pages deployment: initial latest run #2548 was in progress at check; must recheck after tracker commit.
+
+
+### 2026-11-15 — Deployment workflow status
+- GitHub Pages workflow run #2550: SUCCESS, commit `f44e679ad5e8e0746061ea98c81b017605229485` (contains the elapsed-time guide and latest tracker updates).
+- Direct live URL verification unavailable in the current inspection channel; rendered/mobile/desktop QA remains NOT RUN.
