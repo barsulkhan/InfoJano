@@ -1,0 +1,22 @@
+# Finance, health-adjacent, QR and contact page source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: 2026-11-15T23:20:39+05:30
+- Saved: 2026-11-15T23:21:15+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- Scope: inspect complete raw source for analytics/ads/CMP tags, external hosts, APIs, storage and permissions in selected finance, health-adjacent, QR and contact pages. Read-only.
+- Files inspected: `emi.html`, `loan-eligibility.html`, `loan-interest.html`, `savings.html`, `bmi.html`, `bmr-calculator.html`, `barcode-scanner-online.html`, `bulk-qr-generator.html`, `url-toolkit.html`, `document-studio.html`, `password-generator.html`, `contact.html`.
+- Findings:
+  - GA4 measurement ID `G-P8D7XRGVEF` appears in EMI, Loan Eligibility, Loan Interest, Savings, BMI and Password Generator pages.
+  - BMR Calculator, Barcode Scanner Online, Bulk QR Generator and Contact page had no GA4/AdSense/CMP/network/storage marker in inspected raw source; this is not proof against dynamic/shared scripts.
+  - Document Studio uses Google Fonts and cdnjs assets.
+  - URL Toolkit's `http://.` text is a placeholder/validation string, not a real third-party endpoint.
+  - No direct CMP API/TCF marker or new external upload endpoint confirmed in this sample.
+- Checks: full raw source retrieval for 12 named pages — PASS; bounded static marker scan — PASS; whole-repository exhaustive scan — NOT RUN; live runtime/network/cookie tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §16.
+- Changed: research plan only. No production code, account settings, DNS, sitemap, Worker, PR merge, deployment or protected design changed.
+- Research-plan commit: `67b0082e6b99c525f8fb75d323c8f93cf784172f`.
+- Next: continue remaining page inventory and compile exact page-to-vendor/GA4 map; runtime consent gating remains unverified.
