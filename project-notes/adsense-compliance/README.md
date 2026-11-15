@@ -241,3 +241,33 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Result: live ads.txt HTTP status/body/redirect and live Privacy Policy page status remain UNVERIFIED. No live HTTP 200 or 404 claim made.
 - Next work: complete source-only third-party/library inventory across the remaining pages and identify every Privacy Policy-linked feature/data flow; prepare a draft outline only after that inventory. Legal publication remains blocked until public contact email and production data-flow confirmation are supplied.
 - Changed: documentation only. No source, DNS, account setting, CMP setting or production state changed.
+
+
+### 2026-11-15 — Privacy Policy data-flow inventory (source review, partial)
+- Scope: read-only source inspection of homepage, image/PDF tools, Word Converter, Work Hours Calculator, QR tools, Age Calculator, Currency Converter, Document Studio, shared header and install/download helpers. No production changes.
+- Confirmed source-level integrations / data flows:
+  1. **Google Analytics 4** — measurement ID G-P8D7XRGVEF is embedded in the homepage and many tool pages (including Age, BMI, Discount, EMI, Savings, QR Maker, Image Resizer, Image-to-PDF). This indicates GA4 page measurement code is present in source; live firing/consent behavior is not verified.
+  2. **Google AdSense** — homepage source loads pagead2.googlesyndication.com/pagead/js/adsbygoogle.js using the site's AdSense publisher client. This is source evidence only; it does not prove ads are currently served or exact cookie behavior.
+  3. **Cloudflare Worker + iLoveAPI** — Word Converter's optional high-fidelity DOCX conversion sends the file to the configured HTTPS Worker /convert endpoint after an explicit per-upload consent checkbox. Worker forwards the DOCX to iLoveAPI (India region per UI text). Worker URL is stored in localStorage; explicit consent is not persisted. Exact production Worker URL/config and vendor contractual retention still need confirmation.
+  4. **ipapi.co** — Age Calculator requests https://ipapi.co/json/ to obtain location data for its location-related experience. This sends a request to the IP geolocation provider; exact provider-side processing/retention is not established by source review.
+  5. **Wikimedia services** — Age Calculator requests Wikipedia On This Day events and Wikidata SPARQL data. These are date/event content requests; inspect exact query fields and live behavior before final policy wording.
+  6. **open.er-api.com** — Currency Converter requests latest exchange-rate data for the selected base currency; historical data is also fetched from a separate URL in source. Provider retention/analytics practices not established.
+  7. **Public CDNs / libraries** — observed: cdnjs (QRCode.js, JSZip, PDF.js, pdf-lib, html2canvas), jsDelivr (PDF.js worker / JSZip fallbacks), unpkg (ZXing QR/barcode decoder), Google Fonts (Noto Sans Bengali / Inter), FlagCDN (currency flag images). Requests to these hosts expose ordinary network metadata such as IP address and user-agent; no provider-specific retention claims made.
+  8. **Browser-local processing / storage** — Image Compressor, Image Resizer, Image-to-PDF, PDF-to-JPG, PDF page extraction and Document Studio describe/implement local browser processing. Work Hours Calculator uses localStorage only when Remember my entries is enabled; user can clear saved entries. QR Scanner requests camera only after user action and can decode uploaded images; QR Maker uses sessionStorage to pass scanned content between scanner and maker. Age Calculator stores birthday reminder preferences in localStorage and may use browser Notification API when permission is granted. Shared header stores language preference in localStorage.
+- Source observations / caveats:
+  - Image/PDF tool pages claim files are not uploaded to InfoJano's processing server; external CDN library requests still occur.
+  - Word Converter standard conversion is browser-side; optional high-fidelity path is the exception and requires explicit user consent before upload.
+  - Age Calculator's ipapi request means a blanket no-data-ever-leaves-the-browser claim would be inaccurate for that feature.
+  - Currency Converter contacts a third-party exchange-rate API; selected base currency is included in the request URL.
+  - Document Studio uses Google Fonts and html2canvas; source text states document content is processed locally.
+- Not yet verified / gaps:
+  - Full page-by-page scan of every HTML file and dynamically loaded script is incomplete.
+  - Exact historical exchange-rate API endpoint and request payload need extraction.
+  - Exact Worker URL and current production configuration need publisher confirmation; do not expose or invent it.
+  - GA4 and AdSense runtime consent behavior, cookies, and actual network requests need browser DevTools verification.
+  - CMP script injection and live revocation UI remain unverified.
+  - No public Contact page / email was found at the guessed contact.html or about.html paths; this does not prove no contact details exist elsewhere.
+  - Publisher/controller identity, public contact email, jurisdiction, InfoJano retention schedule and data subject request process remain unknown; do not invent.
+- Status: PARTIAL INVENTORY — useful source evidence gathered, not complete enough for a final legal policy.
+- Next task: continue source scan across remaining tool pages and shared scripts; then reconcile with publisher's current production configuration. Only after that prepare a draft for review. Do not publish without explicit approval.
+- Changed: this tracker only. No source code, DNS, AdSense/CMP settings or production deployment changed.
