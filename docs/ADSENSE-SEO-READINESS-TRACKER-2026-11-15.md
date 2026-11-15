@@ -188,3 +188,45 @@ Status: In progress.
 - Verified both shared helpers (`site-header.js`, `install.js`) contain the guarded loader, publisher client ID `ca-pub-2908196513377151`, and duplicate-script detection.
 - This combined with the existing homepage tag covers the 99 non-legal sitemap pages identified by source search; the four legal pages remain intentionally without ad code.
 - PR #233 is still open/draft, unmerged, and GitHub currently reports it mergeable. No live deploy, AdSense account configuration or EEA geolocation test was performed.
+
+
+## Resume session — 2026-11-15
+
+### User request
+- User reported the previous work appeared to stop mid-way and asked to resume.
+- Resume the existing work on the dedicated branch and draft PR; do not restart or repeat completed changes.
+
+### Re-opened source of truth and current state
+- Re-read this tracker, the custom-domain/CMP/EEA audit, SEO restore manifest, and project work-tracking standard.
+- Re-fetched PR #233. It remains open and draft, targets `main`, and GitHub reports mergeable=true. It is not merged.
+- Latest PR head observed: `90141ff71e8d80ac241173bc43f28f5e30e9c764`.
+- PR conversation contains a Cloudflare preview deployment comment for that commit. This is a preview only, not production deployment.
+- `fetch_commit_workflow_runs` returned no PR-triggered workflow runs for the observed head SHA; CI remains unverified.
+
+### Verification performed during resume
+- Re-fetched `CNAME`, `robots.txt`, `ads.txt`, `index.html`, `manifest.json`, `sw.js`, `site-header.js`, `install.js`, `privacy-policy.html`, and representative sitemap pages from the working branch.
+- Confirmed CNAME remains `infojano.com`; homepage canonical remains `https://infojano.com/`; robots points to `https://infojano.com/sitemap.xml`; ads.txt publisher record remains `pub-2908196513377151`.
+- Confirmed Service Worker cache is `infojano-v312`, and its `/InfoJano/` strings are intentional legacy precache entries rewritten to the active `HOME` path. The legacy hostname fallback remains in shared helpers.
+- Confirmed shared AdSense loader remains in both `site-header.js` and `install.js`, with duplicate-tag detection and the correct publisher client ID. Homepage retains its existing static tag.
+- Re-fetched all 12 pages that do not load either shared helper and confirmed each has the static AdSense loader in its document head: social-qr-maker, days-between-dates-calculator, business-days-calculator, date-duration-calculator, number-to-words-indian, number-to-words-international, rupees-in-words, dollars-in-words, cheque-amount-in-words, hindi-number-to-words, work-hours-calculator, elapsed-time-calculator-guide.
+- The four legal/information pages remain intentionally ad-free. This is source coverage only; Auto Ads account settings and live ad serving are not verified.
+- Rechecked the three sitemap files with a parser that includes the root URL. Each contains 103 unique URLs and the URL sets match. An earlier quick regex count of 102 omitted the root URL from the XML count; this was a check-script issue, not a sitemap defect.
+- Re-opened Google Help documentation: the AdSense code should be placed in the head and across pages intended for Auto ads; Google CMP integrated with IAB TCF is required for personalized ads in EEA/UK/Switzerland; Google Privacy & Messaging docs state TCF v2.4 support and the 23 Oct 2026 full implementation deadline. Official links are recorded in the companion audit file.
+
+### Live checks still blocked / not run
+- Web fetch of `https://infojano.com/`, `www.infojano.com`, `/robots.txt` and `/ads.txt` returned internal inspection errors. This is not proof that the domain is down; live HTTP, DNS, TLS, redirects and response headers remain unverified.
+- No registrar DNS read-only view or GitHub Pages Settings access is connected.
+- No AdSense account connection: cannot create/publish European regulations message, confirm the site is listed/approved, review vendor settings, set consent mode, or inspect Policy Center.
+- No EEA/UK/Swiss geo-browser test, mobile/desktop browser QA, PWA install/offline test, or production deployment was performed.
+
+### Next actions
+1. Continue source QA of the sitemap pages and shared helper coverage; avoid broad content changes without page-level evidence.
+2. Ask user for read-only DNS screenshots/export for `@` and `www` (A, AAAA, CNAME, CAA, NS; preserve MX/TXT/mail records) and GitHub Pages Settings screenshot showing custom domain and Enforce HTTPS.
+3. Ask user to configure/publish Google's AdSense Privacy & Messaging European regulations message for `infojano.com`; then review redacted screenshots and guide a real EEA/UK/Swiss consent test.
+4. Complete real browser QA and workflow verification; update PR and tracker with exact results.
+5. Keep PR #233 draft and do not merge/deploy until user explicitly approves.
+
+### Preservation
+- No changes to `main`; no merge or production deployment.
+- No SEO landing-page source deleted; archive branch and restore manifest remain the recovery source.
+- ID Card Print Studio crop/selection/print/export logic and protected design remain untouched.
