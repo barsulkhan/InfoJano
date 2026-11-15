@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/time-calculator.html
-Overall status: Core calculator features complete; ET-001–ET-010 passed with user screenshot evidence. Source audit confirms five-item cap and responsive/accessibility foundations; runtime cap, desktop visual QA, full mobile coverage and assistive-technology review remain pending.
+Overall status: Paused at user's request — current mobile checks and source audit recorded. Two computer-only tasks deferred until user is at a computer: (1) desktop visual QA and (2) keyboard/screen-reader accessibility QA. Five-entry cap runtime test also remains unverified.
 
 ## User-approved scope and constraints
 - Existing Elapsed Time Calculator hero banner dimensions, layout, styling, artwork and copy must remain unchanged unless the user explicitly approves a hero change.
@@ -359,3 +359,12 @@ Overall status: Core calculator features complete; ET-001–ET-010 passed with u
 - Desktop visual QA: not performed; no interactive browser/computer-control session available in this task. Do not mark complete.
 - Result: no confirmed functional defect in the source audit. No application code changed during this audit. No runtime tests or desktop visual tests claimed.
 - Next: real-browser test the five-entry cap and keyboard tab/focus order; desktop viewport visual inspection; screen-reader pass. If no browser-control capability is available, these remain explicitly blocked for user-assisted testing.
+
+
+### 2026-11-15 — User-requested pause
+- User asked to finish the current work for now and defer the remaining computer-dependent checks until they are at a computer.
+- No further application code changes are authorized or needed in this pause step.
+- Confirmed completed evidence: ET-001–ET-010 user-screenshot/manual tests are recorded; ET-010 Clear History remains empty after refresh. Source audit confirms the five-entry history cap implementation, responsive breakpoints/reduced-motion rule, input labels, explicit button types and no duplicate IDs.
+- Deferred for user's computer session: desktop visual QA; keyboard navigation/focus and screen-reader accessibility QA. Also still unverified at runtime: add six calculations and confirm only the latest five remain. This history-cap test can be done on mobile or desktop, but has not yet been performed.
+- Status: PAUSED, not fully QA-complete. Resume only when user asks and has computer/browser access for the deferred checks.
+- Separate keyword research note: no AdSense/ad-keyword or SEO keyword/CPC research has been performed for this calculator in this workstream.
