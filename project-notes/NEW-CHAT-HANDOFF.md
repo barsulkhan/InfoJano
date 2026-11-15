@@ -145,3 +145,11 @@ Copy/paste prompt:
 - Preliminary US keyword research and three candidate concepts (Work Hours, Time Card, Date & Time Duration) are saved in `project-notes/tools/elapsed-time-calculator/RESEARCH.md` §15.
 - These are research candidates, not three approved URLs. Work Hours and Time Card likely overlap; Date & Time Duration may overlap the current calculator. Keep the current two-URL architecture until US SERP overlap and unique feature/content value are established. Time-zone intent requires real timezone conversion support.
 - No app code, metadata, sitemap or hero artwork changed during this research pass.
+
+
+## Latest US SEO research — Work Hours / Time Card (2026-11-15)
+- Re-read the current handoff, tracking/research standards, tool research and README before continuing.
+- Completed US-oriented public SERP/competitor review; detailed notes in `project-notes/tools/elapsed-time-calculator/RESEARCH.md` §16.
+- Work Hours and Time Card intents substantially overlap in reviewed results. Recommend one consolidated US-focused Time Card / Work Hours tool/page concept; do not split into two URLs at present.
+- Core feature gap: 7-day grid, per-day breaks, overnight shifts, daily/weekly totals, decimal hours, biweekly workweek-by-workweek calculation and print/CSV. Advanced payroll/state overtime requires legal/product review and disclaimers.
+- Planning decision only; no app code, metadata, sitemap or page URL changed. Next: US SERP overlap research for Date & Time Duration vs existing elapsed-time calculator/guide.
