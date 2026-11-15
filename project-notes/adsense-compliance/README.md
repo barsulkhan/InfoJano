@@ -50,7 +50,7 @@ Overall status: In progress
 - Earlier records said ads should remain disabled until approval and ads.txt placement/serving are verified. Do not claim ads are serving solely because Auto ads is ON.
 
 ## QA and release checklist
-- [ ] Current AdSense Site Details status rechecked after Request review
+- [x] Current AdSense Site Details status rechecked after Request review — screenshot: Getting your site ready to show ads; Verify site ownership ✓; Review requested ✓; request time 15 Nov 2026, 7:19 (timezone not visible)
 - [ ] Live privacy/cookie settings link found and tested
 - [ ] Consent, Manage options, Ad partners, Revocation link reviewed
 - [ ] Google CMP live behavior verified separately from editor preview
@@ -179,7 +179,7 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 
 | Area | Current result | Status | Next action |
 |---|---|---|---|
-| AdSense site review | User already submitted Request review; latest Sites screenshot showed **Getting ready** | WAITING on Google | Do not resubmit/remove site; check status later |
+| AdSense site review | Site Details screenshot confirms **Getting your site ready to show ads**; Verify site ownership and Review requested both have green checks. Request time shown: **15 Nov 2026, 7:19** (timezone not visible). Google says checks usually take a few days, sometimes 2–4 weeks. | VERIFIED: prerequisites shown complete; WAITING on Google review | No further account action now; monitor status only |
 | Google European CMP message | Published; English +31 languages; Consent and Manage options enabled in observed settings | CONFIGURATION OBSERVED | Live behavior still needs testing |
 | Google CMP identity | CMP ID 300 is listed by Google as Google LLC CMP for Web and app | VERIFIED (identity/listing only) | Verify live runtime behavior |
 | TCF v2.4 | IAB web-CMP deadline was 23 Oct 2026; Google says its Privacy & Messaging European message supports v2.4 | DOCS VERIFIED; SITE SIGNAL UNVERIFIED | Verify live TC string / CMP behavior |
@@ -219,3 +219,16 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - The next step that requires the user is a single read-only account inspection: AdSense > Sites > click the infojano.com row (not Request review), then capture the Site details panel showing review status and ads.txt details. This is needed because the assistant cannot access the user's signed-in AdSense UI.
 - After the Site details evidence, resume independent live CMP/revocation and ads.txt checks; do not repeat the editor audit or re-submit review.
 - Protected areas preserved: homepage hero, ID Card Print Studio hero, tool heroes, website code, DNS and production settings untouched.
+
+
+### 2026-11-15 — User supplied expanded AdSense Site Details screenshots
+- Evidence reviewed: two user screenshots of AdSense > Sites > infojano.com Site details.
+- Exact visible status: “Getting your site ready to show ads”.
+- “Verify site ownership” section has a green check. Expanded section displays AdSense code snippet verification method selected; this is UI evidence of completed ownership verification. No need to copy/paste or change the verification code now.
+- “Review requested” section has a green check. Text says Google will run checks; this usually takes a few days, but in some cases can take 2–4 weeks. It also reminds the publisher to enter payment information to avoid delays.
+- Request time visible in screenshot: **15 Nov 2026, 7:19**. Timezone is not shown, so no timezone is inferred.
+- Result: site ownership verification and review request steps are complete in the AdSense UI. Overall site review is still **WAITING / Getting ready**, not approved yet. Do not submit another review request, remove/re-add the site, or alter verification method.
+- Ads.txt details are not shown in these screenshots; live ads.txt remains unverified.
+- Changed: tracker documentation only. No website source, DNS, AdSense settings, CMP settings, or production deployment changed.
+- Next task chosen: continue independent public-source verification of ads.txt and privacy-policy link; if live inspection remains inaccessible, retain UNVERIFIED rather than ask user to repeat completed account steps.
+- Protected areas preserved: all production code, DNS, AdSense/CMP settings and protected hero sections untouched.
