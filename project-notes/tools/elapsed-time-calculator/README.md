@@ -23,7 +23,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] [CARD-008] APK manifest relative icon path validation — PR #227; merge 4ae9624fb8978b832d58e2b93f2e41091227dc80. Workflow resolves relative icon src against manifest URL before checking repository asset.
 
 ### In progress
-- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-007 passed. Next: continue manual QA from ET-008, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
+- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-008 passed (ET-008 confirms Android share-sheet launch; final delivery not tested). Next: continue manual QA from ET-009, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
 - [x] [CARD-011] Date-duration results missing from recent history — fixed and merged via PR #229 (squash merge `69ad8a8865cedfc6df952fa87dae8598f904ad27`). `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling recent history and shared Copy/Share action visibility. Current default-branch file re-fetched and hook presence confirmed. Runtime/browser regression and post-merge deployment verification remain separate pending checks.
 
 ### Backlog
@@ -245,4 +245,16 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
 - Still pending: ET-008 Share Result; refresh persistence, Clear History and five-item cap; real mobile/desktop visual QA; accessibility review.
 - Next step: ask user to tap Share Result and report/show the resulting share sheet or fallback.
+- Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
+
+
+### 2026-11-15 — User-performed mobile QA: Share Result / Android share sheet (ET-008)
+- Requested: verify Share Result opens the native Android share UI and displays the Date + Time result payload.
+- Inspected: user-supplied screenshot of Android's “Sharing text” sheet.
+- Expected: native share sheet opens with the result summary available to share.
+- Observed: Android “Sharing text” sheet opened. Preview begins with “InfoJano Time Calculator Result” and “Total duration: 0 days, 2 hours, 15 minutes, 0 sec…nds”. Suggested destinations include WhatsApp, Chrome and Quick Share. The OS preview truncates the visible text; no destination was selected, so end-to-end delivery and complete underlying payload were not verified.
+- Result: ET-008 PASS for native share-sheet launch and visible payload preview only; recipient delivery remains untested. QA evidence recorded in `QA-TEST-LOG.md`.
+- Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
+- Still pending: ET-009 Recent Calculations persistence after refresh; Clear History and five-item cap; real mobile/desktop visual QA; accessibility review.
+- Next step: ask user to reload the calculator and check whether the recent Date + Time, Subtract and Add entries remain.
 - Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
