@@ -111,3 +111,30 @@ Official sources:
 ### Source-side referrer and AdSense notes
 - Sampled homepage, tool pages and shared helpers do not contain an explicit restrictive `no-referrer` policy or referrer meta tag. This does not verify the deployed HTTP `Referrer-Policy` response header or actual cross-origin referrer behavior. Google notes the referrer policy must permit sharing the Referrer header on cross-origin requests for message eligibility; verify in a real browser/network response.
 - Source scan of the full 103-URL sitemap did not surface missing title, meta description, canonical or H1 fields. One duplicate-H1 issue in `savings.html` was corrected in the working branch. This is not live-rendered browser QA.
+
+
+## Registrar DNS screenshot received — 2026-11-15
+The user supplied a photo of the registrar's DNS Records tab. The screenshot visibly shows six custom records, each with a green active/status icon and TTL 30 min:
+
+| Host | Type | Value visible in screenshot |
+|---|---|---|
+| Apex/root (host text truncated in UI) | A | `185.199.108.153` |
+| Apex/root (host text truncated in UI) | A | `185.199.109.153` |
+| Apex/root (host text truncated in UI) | A | `185.199.110.153` |
+| Apex/root (host text truncated in UI) | A | `185.199.111.153` |
+| `www` | CNAME | `barsulkhan.github.io` |
+| Apex/root (host text truncated in UI) | TXT | Google site-verification token (full token intentionally not copied into this report) |
+
+Assessment:
+- The four apex A records match the standard GitHub Pages IPv4 endpoints; the www CNAME points to the repository owner's GitHub Pages hostname. This is a coherent GitHub Pages custom-domain DNS configuration.
+- The screenshot shows all six records as enabled/active in the registrar UI. TTL is 30 minutes.
+- No AAAA or CAA record is visible in this six-record screenshot; this does not prove that none exists in another record group/view or at the authoritative DNS.
+- The host field is visually truncated for apex records, so the screenshot is consistent with (but does not conclusively show) the root host `@` / `infojano.com`. Confirm the expanded host value before changing anything.
+- The TXT value is visibly a Google site-verification token; retain it. Do not edit/delete.
+- DNSSEC and Personal Nameservers are separate tabs and were not shown. No registrar changes were made.
+
+Still required to close domain verification:
+1. GitHub repository Settings → Pages screenshot showing Custom domain = `infojano.com` and Enforce HTTPS enabled/available.
+2. A registrar expanded-row or export view confirming the four A records and TXT record host is apex/root, and the CNAME host is exactly `www`.
+3. Read-only confirmation of existing MX/TXT (SPF/DKIM/DMARC/email) records and nameservers; preserve them.
+4. Live DNS/HTTPS/redirect checks from an external resolver/browser remain outstanding. The screenshot is evidence of the registrar configuration, not proof of public propagation or a valid live certificate.
