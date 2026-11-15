@@ -7,7 +7,7 @@ Last updated: 2026-11-15
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; ET-011 five-entry cap runtime PASS; Pages workflow #2550 SUCCESS; follow-up SERP/localization research and 16 static source checks saved; remaining desktop/responsive/accessibility/DST QA pending | 2026-11-15 | Run remaining desktop/responsive browser QA; keyboard/focus, screen-reader, copy/share end-to-end and DST runtime checks |
-| Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP page created; source checks PASS; Pages workflow #2550 SUCCESS; browser/functional QA pending; keyword metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
+| Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP source checks PASS; expanded US SERP/adjacent cluster research saved; GO for one Work Hours page, no separate Time Card/Timesheet URLs; functional/browser QA and deployment verification pending; metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
 
 
 ### 2026-11-15 — SEO page hero design requirement recorded
@@ -48,3 +48,10 @@ Last updated: 2026-11-15
 - Existing `time-calculator.html` already supports date-time duration across multiple dates; the guide also explains this mode. Qualitative competitor review (Toggl, Count My Hours, CalculatorSoup, NumUtility, LiveTools and timezone-focused alternatives) found substantial generic intent overlap.
 - Decision: no separate generic Date & Time Duration URL. Keep phrase cluster mapped to `/time-calculator.html` and `/elapsed-time-calculator-guide.html`; only consider a future distinct calendar-date/business-hours/timezone feature if demand and scope justify it.
 - Detailed source/competitor evidence, feature gaps, metrics limitations and consolidated three-concept architecture saved in `tools/elapsed-time-calculator/RESEARCH.md` §17. No app code, metadata, sitemap or hero changed.
+
+
+### 2026-11-15 — Expanded US time/date utility opportunity audit
+- Reviewed additional clusters together: Business Hours, Business Days, Date Difference, Decimal Hours, Military Time, Clock-Out, Overtime, Time Zone Duration, Work Hours/Time Card/Timesheet and Date + Time Duration.
+- Confirmed existing repository destinations for Work Hours, Date Difference, Business Days and Elapsed/Date-Time Duration; no duplicate URLs recommended.
+- New candidates held for quantitative US validation: Business Hours, Decimal Hours Converter and Military Time Converter. Clock-Out should first be tested as a mode within Work Hours. Overtime and Time Zone Duration remain out of scope until the required legal/timezone logic exists.
+- Full evidence: tools/elapsed-time-calculator/RESEARCH.md §18 and tools/work-hours-calculator/RESEARCH.md §5.
