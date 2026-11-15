@@ -317,3 +317,13 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - QA: source-level fix verified only. User must refresh the live page and provide a new mobile screenshot to confirm the guide card is back inside the result column and no overlap remains. Full lower guide still needs viewport review.
 - Next: check Pages deployment availability; then user live mobile visual confirmation. Resume ET-010 Clear History afterward.
 - Protected hero/banner and calculator logic untouched.
+
+
+### 2026-11-15 — User-requested rollback of CARD-012 lower-page redesign
+- User reviewed the live page after the layout fix and explicitly requested restoring the previous state from before the lower-page redesign.
+- Restored `time-calculator.html` from verified pre-CARD-012 commit `817d298f95aa724cce3150ffb9c347c26ea10b5e` (which already contains CARD-011 Date + Time history recording, Add/Subtract mode, history, and the protected hero). Compared that baseline with current main first: the only application-file differences since that baseline were the CARD-012 lower-page redesign and the subsequent CSS class fix; tracker documentation also differed.
+- Rollback commit: `1a9da349c8c555b12d25215f90f54491556e0b1d` on main.
+- Restored lower sections: original “Explore More Free Tools” cards and original “Free Elapsed Time Calculator” information section. Removed the CARD-012 styling and new guide copy. No core calculator logic, history functionality, hero, or protected banner was rolled back.
+- Validation: source was restored byte-for-byte from the pre-CARD-012 baseline. This is source-level verification only; deployment and live visual confirmation remain pending.
+- CARD-012 is considered rolled back; do not reapply without a fresh explicit request and a scoped visual QA plan.
+- Next: verify Pages deployment for rollback commit, then ask user to refresh and confirm the previous layout is restored. Resume ET-010 Clear History only after the layout is back to the requested state.
