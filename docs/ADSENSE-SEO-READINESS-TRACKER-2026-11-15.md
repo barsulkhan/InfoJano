@@ -134,3 +134,15 @@ Status: In progress.
 4. Configure Google-certified CMP in AdSense Privacy & Messaging for eligible EEA/UK/Switzerland traffic; this requires account access and cannot be certified by source code alone.
 5. Create a draft PR for review. Do not merge or deploy without explicit approval.
 6. After merge/deploy, verify live page responses, crawler access, ads.txt, PWA/offline and Search Console. Only then consider AdSense resubmission.
+
+
+### 2026-11-15 16:53 +05:30 — Draft PR and final source checks
+- Created draft PR #233: https://github.com/barsulkhan/InfoJano/pull/233
+- PR targets `main`, reports `mergeable=true` / `mergeable_state=clean` on re-fetch, and remains open/draft. It is not merged.
+- PR head: `a6730d90ae0af1adfe3e3687e800d59351fe4a5f`; base/main remains `9b069a536b3b5f5ed4afac19f3de0257475c58ab`.
+- GitHub PR-triggered workflow run list returned no runs; commit status reports pending with zero statuses. CI is therefore NOT verified.
+- Sitemap consistency rechecked: `sitemap.xml`, `sitemap-infojano.xml`, and `sitemap.txt` each contain 103 unique URLs and their URL sets match exactly.
+- Noindex/restore check passed for all nine selected pages: active source has `noindex,follow`; canonical sitemap does not list them; archive-branch originals do not contain the noindex directive.
+- New legal pages were checked for canonical URLs and `index,follow` metadata.
+- Main branch remains unchanged. No merge, deployment, Search Console submission or AdSense account action was performed.
+- Next: finish remaining sitemap URL content audit and real browser/device QA, then ask the user to review PR #233 before any merge.
