@@ -671,3 +671,25 @@ Scope: inspected Android `MainActivity.java`, `AndroidManifest.xml`, Gradle conf
 - Privacy Policy draft is a useful provisional baseline, not final. Most feature integrations are represented, but storage examples and exact GA4 scope need reconciliation; controller/jurisdiction are blocked on publisher input; runtime CMP/TCF and ad-vendor configuration remain unverified.
 - Do not edit `privacy-policy.html`, add/remove CMP tags, change ad settings, add revocation code, change Worker config, merge PR #236 or deploy until the proposed changes and legal facts are reviewed and the user explicitly authorizes implementation.
 - Next research phase: verify non-root asset/app distribution and source dependencies; prepare a line-by-line proposed policy change list (without applying it); identify exactly which facts need publisher confirmation and which need browser/account evidence.
+
+## 29. Robots, ads.txt and sitemap source audit (2026-11-15)
+
+### Source files inspected
+- `robots.txt`: `User-agent: *`, `Allow: /`, and sitemap reference `https://infojano.com/sitemap.xml`.
+- `ads.txt`: exact seller line `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`.
+- `sitemap.xml`: 107 InfoJano URLs.
+- `sitemap-infojano.xml`: 105 URLs.
+- `sitemap.txt`: 105 URLs.
+
+### Findings
+- `robots.txt` source does not block crawling and points to `sitemap.xml`; source text alone does not prove the live robots response is reachable or interpreted as intended.
+- `ads.txt` source line exactly matches the previously user-verified live response body and homepage AdSense publisher client ID. HTTP status, content type, redirect behavior, robots access and AdSense crawler dashboard status remain unverified.
+- `sitemap.xml` contains two URLs absent from both `sitemap-infojano.xml` and `sitemap.txt`: `work-hours-calculator.html` and `elapsed-time-calculator-guide.html`. The older sitemap files otherwise match the 107 URLs in `sitemap.xml`.
+- Nine root HTML files are not listed in `sitemap.xml`: `404.html`, `contact.html`, `countdown-studio.html`, `google4a4795e5c7c03eae.html`, `index.html`, `privacy-policy.html`, `word-to-jpg.html`, `word-to-pdf.html`, and `word-to-png.html`. Some are likely intentionally excluded (404, verification, redirect aliases, duplicate index); Contact/Privacy Policy and Countdown Studio exclusion should be checked against indexing strategy, but omission from a sitemap is not by itself a privacy-policy violation.
+- Live direct fetch attempts for `https://infojano.com/ads.txt`, `/robots.txt`, and `/privacy-policy.html` were inaccessible through the current web retrieval path. No HTTP status or live body is claimed from this attempt.
+
+### Next actions / constraints
+1. When a suitable live HTTP/browser environment is available, verify ads.txt HTTP 200, content type, redirects, HTTP/HTTPS coverage, robots accessibility and AdSense crawler status.
+2. Confirm which sitemap file is canonical and whether `sitemap-infojano.xml` / `sitemap.txt` are still submitted or referenced anywhere; do not edit without approval.
+3. Decide whether Privacy Policy, Contact and Countdown Studio should be listed in the canonical sitemap; do not infer solely from omission.
+4. No robots, ads.txt, sitemap, DNS, production or deployment changes were made.
