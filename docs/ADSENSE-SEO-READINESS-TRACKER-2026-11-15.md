@@ -238,3 +238,43 @@ Status: In progress.
 - Corrected time-sensitive TCF v2.4 wording in `privacy-policy.html` and the companion audit: the IAB 23 October 2026 full-implementation deadline has passed as of this audit date; the wording now says publishers should verify current CMP/TCF v2.4 compliance, not treat the deadline as upcoming.
 - Re-fetched PR #233 after the documentation correction. It remains open/draft, unmerged, mergeable=true; latest head SHA: `1e619e96c6bb70de4f33fbfaea06f55da965fd13`. No PR-triggered workflow runs were returned for this SHA. Preview deployment comment is not a production deployment.
 - Current status remains In progress: source-side work and documentation are saved; live DNS/HTTPS, GitHub Pages settings, AdSense account CMP publication, EEA geolocation test, browser/device QA and CI/deployment verification remain pending.
+
+
+## Full five-card resume pass — 2026-11-15 17:17 +05:30
+
+### CARD-005 — Full active sitemap page-source audit
+- Reviewed the source of all 103 URLs in the active `sitemap.xml` (including the homepage root), using the current PR branch tree/blob contents.
+- Checked page title, meta description, canonical URL, H1 presence/count, visible text volume, robots directive, JSON-LD presence and AdSense/shared-loader reference.
+- No missing title, description, canonical or H1 was surfaced by the static scan. The scan did not render pages and cannot validate actual DOM behavior.
+- Found one duplicate-H1 issue on `savings.html`: the hero already had the primary H1 and the calculator card repeated a second H1. Fixed by changing the card title to H2 and adding a matching CSS selector to preserve its visual size/weight. Post-edit source check: exactly one H1; card title remains styled as the prior 27px heading.
+- Thin-copy candidates flagged for deliberate editorial improvement (not automatic noindex): `tip-calculator.html`, `unit-converter.html`, `percentage-change.html`, `discount-pt-br.html`, `percentage-pt-br.html`, `bmr-calculator.html`, `percentage-of-percentage-calculator.html`, `percentage-to-decimal-converter.html`, `percentage-to-fraction-converter.html`, `number-to-words-indian.html`, `number-to-words-international.html`, `rupees-in-words.html`, `dollars-in-words.html`, `cheque-amount-in-words.html`, `hindi-number-to-words.html`, `bengali-number-to-words.html`, `about.html`, and `contact.html`. Static visible text was generally below 300 words on these pages; this is a review signal, not a Google policy threshold.
+- Kept these pages indexable for now: several are distinct functional tools, localized pages or currency/numbering intents; no Search Console traffic/queries or keyword evidence was available to justify deactivation. Do not inflate copy with repetitive keyword text. Prior 9-page reversible noindex batch remains the only active deactivation batch.
+- Corrected an earlier regex counting error: the root URL was omitted by a pattern that required a non-empty path. Recounted using XML `<loc>` entries and full text sitemap lines. `sitemap.xml`, `sitemap-infojano.xml`, and `sitemap.txt` each contain exactly 103 unique URLs; all three URL sets match exactly.
+
+### CARD-006 — AdSense tag/source coverage and consent prerequisites
+- Rechecked the first 12 sitemap pages with full-document search (not head-only). All 12 have an AdSense loader reference; remaining batches also showed loader references for all monetizable pages. The four legal pages are intentionally excluded. The 12 pages requiring a direct static tag were separately rechecked; shared-helper pages use `site-header.js` or `install.js`.
+- Checked homepage, sample tool pages and shared scripts for explicit referrer-policy overrides. No restrictive `no-referrer` policy or referrer meta tag was found in the checked files. Browser default/runtime headers were not observable; do not treat this as a live CMP eligibility test.
+- Google Help source rechecked: certified Google CMP + IAB TCF is required for personalized ads in EEA/UK and Switzerland; Google Privacy & Messaging European messages support TCF v2.4. Three-choice user experience (Do not consent / Consent / Manage options) is documented. Google notes consent messages must be configured, published and targeted to the site; account UI remains inaccessible here.
+- No AdSense connector is available in this session. Account-side site selection, policy URL assignment, vendor/purpose settings, consent-mode choices, message publication and Policy Center status remain blocked pending publisher login and screenshots.
+
+### CARD-002 — Custom domain / DNS / HTTPS
+- Reconfirmed source-side CNAME, canonical, robots sitemap target and ads.txt publisher line.
+- Direct fetch attempts for `https://infojano.com/`, `https://www.infojano.com/`, `/robots.txt`, `/ads.txt`, and public DNS lookup pages returned internal inspection errors in the available web client. This is inconclusive, not a DNS/SSL failure result.
+- DNS A/AAAA, www CNAME, CAA, NS, SSL certificate, HTTP status, HTTPS redirect, www-to-apex redirect and GitHub Pages Enforce HTTPS remain NOT VERIFIED. No DNS records were changed. Registrar access and GitHub Pages Settings screenshot/export are required to continue safely, preserving all mail MX/TXT records.
+
+### CARD-006 — Browser QA and workflow
+- No interactive browser/computer-control session is available in this task. Desktop/mobile rendering, form interaction, keyboard/focus, PWA install/offline, EEA geo simulation, consent persistence/revocation and real HTTP headers are NOT RUN.
+- Latest GitHub PR-triggered workflow query and combined commit status returned no runs/statuses for the then-current head. CI is NOT VERIFIED; Cloudflare preview comment is not production deployment.
+- Static source checks completed: all 103 active sitemap pages parsed for metadata/H1/content signals; sitemap sets consistent; savings H1 fixed; AdSense loader references present; four legal pages intentionally ad-free; nine disabled SEO sources preserved on archive branch.
+
+### Still blocked / exact inputs needed
+1. DNS: read-only registrar screenshot/export for `@` and `www` A, AAAA, CNAME, CAA and NS; leave MX/TXT/mail/verification records visible but redact account identifiers. Also GitHub Settings > Pages screenshot showing custom domain and Enforce HTTPS.
+2. CMP: publisher to sign in to AdSense > Privacy & messaging > European regulations, select `infojano.com`, set the privacy URL to `https://infojano.com/privacy-policy.html`, configure the correct ad technology providers and meaningful user choices (including Do not consent / Consent / Manage options), then publish. Consent mode should be enabled only after checking whether Google Ads/GA4 are actually deployed and how the consent signals should apply.
+3. Browser QA: real desktop and mobile browser sessions plus an EEA/UK/Swiss test path are required. No simulated PASS is recorded.
+4. Content: editorial expansion for the 18 thin-copy candidates is backlog; retain distinct pages for now and avoid keyword stuffing. Search Console/keyword evidence is still unavailable.
+5. PR: review current draft PR #233; do not merge or deploy without explicit approval.
+
+### Preservation
+- No production merge/deployment, no registrar DNS changes, no AdSense account changes.
+- SEO page bodies are retained; archive branch and restore manifest remain intact.
+- ID Card Print Studio crop, selection, print/export logic and protected visual design remain unchanged.
