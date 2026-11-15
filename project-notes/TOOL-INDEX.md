@@ -74,3 +74,9 @@ Last updated: 2026-11-15
 - Fixed impossible ISO calendar dates being normalized by JavaScript Date and prevented an empty/out-of-range daily-threshold field from producing misleading overtime-above-threshold totals.
 - Commits: `56486dc6d83792b97f44d1edcbe8c8409577ff92`, `c15ecec44313503db91fb40f295dc127bd7a7565`.
 - Source snippets re-fetched and inspected; no browser/runtime test or deployment verification claimed. WH-001–WH-010 remain NOT RUN.
+
+
+### 2026-11-15 — Service-worker cache coverage corrected
+- APK workflow #682 exposed two missing precache entries: `elapsed-time-calculator-guide.html` and `work-hours-calculator.html`. Both were added to `sw.js`; cache version advanced to v310.
+- Root HTML/service-worker source parity now reports zero missing entries across 112 tool pages. Commit `e8a0beab9cb70643fa612230956cc106474a71f1`.
+- APK #683 and Pages #2625 queued; final build/deployment status pending.
