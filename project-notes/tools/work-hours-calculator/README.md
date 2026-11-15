@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/work-hours-calculator.html
-Overall status: In progress — standalone page committed; initial source syntax/structure checks and focused source/logic audit passed; WH-001–WH-010 runtime/browser QA and current deployment/live verification pending.
+Overall status: In progress — standalone page committed; source/logic audit identified and fixed impossible-date acceptance and blank/invalid daily-threshold handling; WH-001–WH-010 runtime/browser QA and current deployment/live verification pending.
 
 ## Research dossier
 - [RESEARCH.md](RESEARCH.md) — country/language screening, qualitative keyword clusters, live competitor review, metrics limitations and GO decision.
@@ -21,7 +21,7 @@ Overall status: In progress — standalone page committed; initial source syntax
 - [x] [CARD-001] Research and scope — competitor review, country/language screen, metrics limitations and GO decision saved in RESEARCH.md.
 
 ### In progress
-- [x] [CARD-002] Multi-shift calculator MVP — standalone page committed; includes dated shift rows, unpaid breaks, overnight rollover, gross/net/decimal hours, daily and Monday–Sunday weekly summaries, configurable daily threshold, optional simple earnings estimate, CSV and opt-in local save. Source syntax and focused source/logic audit passed; runtime/browser QA pending.
+- [x] [CARD-002] Multi-shift calculator MVP — standalone page committed; includes dated shift rows, unpaid breaks, overnight rollover, gross/net/decimal hours, daily and Monday–Sunday weekly summaries, configurable daily threshold, optional simple earnings estimate, CSV and opt-in local save. Focused source/logic audit passed; impossible dates and blank/out-of-range daily threshold handling were corrected in commits `56486dc6d83792b97f44d1edcbe8c8409577ff92` and `c15ecec44313503db91fb40f295dc127bd7a7565`. Runtime/browser QA pending.
 
 ### Backlog
 - [ ] [CARD-003] SEO metrics validation — collect country-level volume, trend, KD, CPC/currency and traffic potential from Google Keyword Planner/Search Console or authorized provider.
@@ -83,3 +83,10 @@ Overall status: In progress — standalone page committed; initial source syntax
 - Detailed evidence: project-notes/tools/work-hours-calculator/RESEARCH.md §5 and elapsed-time research §18. Research commit db09fcf5a14ac221ae1d55c2d1a5617d444f028f.
 - No application code, URL, metadata, sitemap or hero changed. Functional/browser QA and deployment verification remain pending.
 - Next: finish WH-001–WH-009 QA, then decide whether a Business Hours or conversion micro-tool merits quantitative research/build.
+
+### 2026-11-15 — Source-level validation hardening
+- Reopened current source and fixed two validation edge cases: impossible calendar dates were accepted through JavaScript Date normalization; an empty threshold input could be interpreted as zero and inflate the overtime-above-threshold display.
+- Date validation now checks ISO format and verifies year/month/day round-trip. Threshold validation enforces 0.25–24 hours and suppresses the estimate when invalid.
+- Commits: `56486dc6d83792b97f44d1edcbe8c8409577ff92`, then regex correction `c15ecec44313503db91fb40f295dc127bd7a7565`.
+- Verification: source re-fetched and relevant snippets inspected. No browser runtime, syntax compiler, CSV download or localStorage interaction was run. WH-001–WH-010 remain NOT RUN.
+- Next: browser-test validation and core arithmetic; verify current Pages deployment separately. Protected hero/banner assets were not changed.
