@@ -237,3 +237,70 @@ The qualitative review indicates established calculator competitors and overlapp
 - Next: obtain authorized keyword metrics (Ahrefs plan, Google Keyword Planner, or another documented provider); then compare with Google Search Console query/impression/click/position data for the existing URLs before changing metadata or creating another page.
 
 **Code changes:** none. This research update changes documentation only.
+
+
+## 12. Focused SERP competitor and content-gap review (2026-11-15)
+
+**Scope:** Follow-up research for the four approved keyword seeds. This is a web-indexed result review, not a verified country-specific Google top-10 export. Result availability and ranking order can vary by location, device and personalization.
+
+### 12.1 Newly observed competitor pages and page formats
+
+| Result / page | Observed focus | Useful competitive observation |
+|---|---|---|
+| TimeCalculator.Tools — https://timecalculator.tools/time-duration-calculator | Duration between clock times; overnight, break deduction, seconds, decimal hours, copy/print and privacy statement | A direct tool competitor combines core duration outputs with advanced options and concise feature explanations |
+| TimeDateLab — https://timedatelab.com/ | Time-only and date-time modes, same-day/next-day selection, seconds, decimal hours, examples, explicit no-time-zone caveat | Explicitly explains the boundary between clock-time duration and timezone/date semantics |
+| Toggl — https://toggl.com/online-tools/time-duration-calculator | Multiple time blocks, breaks, decimal output, date-time duration, add/subtract and CSV export | Strong breadth and work/productivity use cases; avoid claiming InfoJano has features it does not have |
+| This Calculator — https://this-calculator.com/formula-calculate-time-between-two-times.php | Formula-led informational page with worked examples and overnight arithmetic | Supports the distinction between a calculator page and a genuinely explanatory guide |
+| Time Calculator (Cardamon) — https://www.timecalculator.app/guides/time-between-two-times | Step-by-step conversion from clock time to duration since midnight; explains overnight adjustment and scope | Informational guide can answer the method separately from the tool |
+| we-Calculate — https://we-calculate.com/calculator/time-between-times | HH:MM / HH:MM:SS, midnight rollover, decimal hours and explicit limits | Competitor language surfaces common user questions and limitations |
+| CalculatorLib — https://calculatorlib.com/clock-duration-calculator | Clock-cycle explanation, overnight example and decimal-hours use | Simple formula plus a clear worked overnight example is a common content pattern |
+
+### 12.2 Feature/content comparison against InfoJano's documented scope
+
+Current InfoJano page scope from repository research/tracker:
+- Time difference between clock times with overnight handling and optional break.
+- Add/subtract time mode.
+- Date + time duration mode.
+- Seconds precision, total seconds and decimal hours.
+- Copy/share results and recent history.
+
+Differentiation opportunities that are supported by the existing product:
+1. Make the three modes easy to discover without overloading the first calculator view.
+2. Explain the overnight assumption and show a precise worked example.
+3. Explain decimal conversion correctly (e.g. 7h 30m = 7.5 decimal hours, not 7.30).
+4. Explain when to use clock-only mode versus date + time mode.
+5. Clarify timezone/daylight-saving scope only after checking the implementation; do not imply timezone conversion if it is not implemented.
+6. Describe privacy/local processing only if verified directly in source and network behavior; do not copy competitors' privacy claims.
+
+### 12.3 FAQ/query themes worth validating in Search Console
+
+These are observed competitor question themes and proposed query checks, not confirmed InfoJano impressions:
+- How do I calculate the time between two times?
+- How do I calculate time when it crosses midnight?
+- How do I subtract an unpaid break?
+- How do I convert hours and minutes to decimal hours?
+- Can I calculate a duration across multiple dates?
+- What is the difference between elapsed time and time difference?
+- Does a time duration calculator account for time zones or daylight saving?
+
+Only add FAQs that are accurate for the current tool and do not duplicate the guide's existing answers unnecessarily.
+
+### 12.4 Revised recommendation
+
+No new URL is justified by this qualitative competitor review. Keep the two existing URLs with distinct roles:
+- /time-calculator.html — interactive tool-use intent.
+- /elapsed-time-calculator-guide.html — explanatory/how-to intent.
+
+The next meaningful evidence should be InfoJano Search Console query/page data and a localized SERP export for IN, BD, US and GB. Ahrefs keyword volume/KD/CPC remain unavailable due the connected plan restriction documented in section 11.
+
+### 12.5 Sources accessed
+
+- https://timecalculator.tools/time-duration-calculator
+- https://timedatelab.com/
+- https://toggl.com/online-tools/time-duration-calculator
+- https://this-calculator.com/formula-calculate-time-between-two-times.php
+- https://www.timecalculator.app/guides/time-between-two-times
+- https://we-calculate.com/calculator/time-between-times
+- https://calculatorlib.com/clock-duration-calculator
+
+**Limitations:** Search result snippets and indexed page content can change. This review does not verify rankings, traffic, search volume, KD, CPC, country-specific SERP order, or competitor conversion rates.
