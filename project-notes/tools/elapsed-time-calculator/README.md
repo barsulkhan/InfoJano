@@ -23,7 +23,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] [CARD-008] APK manifest relative icon path validation — PR #227; merge 4ae9624fb8978b832d58e2b93f2e41091227dc80. Workflow resolves relative icon src against manifest URL before checking repository asset.
 
 ### In progress
-- [ ] [CARD-012] Lower-page related-tools and guide refresh — redesigned “More Helpful Tools” cards and replaced repetitive lower-page copy with practical calculator-use guidance; PR pending; mobile/desktop visual QA not yet performed. Hero and calculator workspace are out of scope.
+- [x] [CARD-012] Lower-page related-tools and guide refresh — redesigned “More Helpful Tools” cards and replaced repetitive lower-page copy with practical calculator-use guidance; PR #230 squash-merged as `b73edbeeb501625fea2eff538731648c99c2ea09`. Mobile/desktop visual QA remains pending. Hero and calculator workspace are out of scope.
 - [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-009 passed (ET-008 confirms Android share-sheet launch; final delivery not tested). Next: continue manual QA from ET-010, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
 - [x] [CARD-011] Date-duration results missing from recent history — fixed and merged via PR #229 (squash merge `69ad8a8865cedfc6df952fa87dae8598f904ad27`). `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling recent history and shared Copy/Share action visibility. Current default-branch file re-fetched and hook presence confirmed. Runtime/browser regression and post-merge deployment verification remain separate pending checks.
 
@@ -283,3 +283,13 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Still pending: user review of the updated live preview after PR deployment/merge; ET-010 Clear History test is still pending (the screenshot supplied before this request showed the bottom content, not the history-cleared state).
 - Next step: open PR, then ask user to review lower-page appearance and copy after preview is available. Resume ET-010 separately.
 - Protected areas preserved: calculator Hero banner dimensions/layout/styling/artwork/copy unchanged; Homepage Hero Banner and ID Card Print Studio Hero untouched.
+
+
+### 2026-11-15 — CARD-012 merged
+- Requested: merge the approved lower-page design refresh.
+- PR: #230 — https://github.com/barsulkhan/InfoJano/pull/230
+- Result: GitHub confirmed successful squash merge. Merge commit: `b73edbeeb501625fea2eff538731648c99c2ea09`.
+- Changed files in PR: `time-calculator.html` and this tool tracker. The main-branch HTML was re-fetched after merge; the new “More Helpful Tools” heading and “Plan Your Time, One Calculation at a Time” guide heading are present.
+- Validation: source content confirmed on default branch. No live visual browser QA performed yet; deployment status not yet verified in this entry.
+- Protected areas: calculator hero and core calculator workspace/history logic untouched; homepage Hero Banner and ID Card Print Studio Hero untouched.
+- Next: verify the GitHub Pages deployment for the merge commit, then ask user for live mobile review of the refreshed lower sections. Continue ET-010 Clear History separately.
