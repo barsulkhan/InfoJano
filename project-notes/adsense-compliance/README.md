@@ -306,3 +306,21 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Source-level checks: files created successfully; live rendering, mobile browser QA, mailto behavior and email deliverability remain unverified.
 - Privacy Policy remains blocked from final publication: complete service/library inventory and confirmation of current production behavior are still required. Do not invent publisher legal identity, jurisdiction or retention schedule. Once inventory is reconciled, prepare a draft for review; no production publish without explicit approval.
 - Clean URL PR #234 remains separate and untouched.
+
+
+### 2026-11-15 — Privacy Policy draft and Contact cross-link prepared
+- User instruction: proceed with the remaining AdSense / Privacy Policy work as quickly as possible.
+- Re-read current main handoff and work-tracking standard before continuing.
+- Publisher contact email received: `infojanowebsite@gmail.com`; ownership/deliverability not independently tested.
+- Created `privacy-policy.html` on isolated branch `feature/privacy-policy-adsense-compliance`. Draft covers Google Analytics 4, AdSense cookies/identifiers, Privacy & Messaging consent choices, locally stored tool preferences/history, browser-side file processing, optional DOCX external conversion, YouTube Data API/embed, ipapi.co, exchange-rate APIs, Wikimedia, and public CDN/library requests.
+- Updated Contact page on the same branch to link the Privacy Policy.
+- Google policy references checked on 2026-11-15:
+  - Required AdSense privacy disclosures: https://support.google.com/adsense/answer/1348695
+  - Publisher privacy disclosures: https://support.google.com/adsense/answer/10502938
+  - AdSense cookie behavior: https://support.google.com/adsense/answer/7549925
+  - Google partner-site data use: https://policies.google.com/technologies/partner-sites
+- Important limitations: source inventory remains partial; live analytics/ad/cookie/consent runtime and complete third-party vendor list are not verified. Publisher legal entity/controller identity, jurisdiction, formal retention schedule, and request-handling process are not independently known. Policy avoids inventing those details and explicitly describes its inventory limitations.
+- Tests: source-level HTML content created; automated HTML validation, browser/mobile QA, live URL response and accessibility checks NOT RUN. No production deployment or live publication verified.
+- AdSense review: previously submitted; Site Details previously showed “Getting your site ready to show ads”. Do not resubmit or remove/re-add the site. Review status remains pending until rechecked in account.
+- No AdSense/CMP settings, DNS, ads.txt, production code or deployment changed.
+- Next: open reviewable PR for policy; finish page/service inventory and runtime verification; verify live Contact/Privacy URLs after merge/deployment. Only mark policy complete after source/runtime reconciliation and user review.
