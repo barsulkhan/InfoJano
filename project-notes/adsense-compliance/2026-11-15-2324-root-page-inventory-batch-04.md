@@ -1,0 +1,24 @@
+# Root-page inventory batch 04 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:24:01+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- User instruction: continue research and persist task files with actual date/time, no new folders.
+- Scope: fetch and inspect complete raw sources for date tools, countdown pages, QR generators and number-to-words page for analytics/ads/CMP, external hosts, API/network, storage and permission signals.
+- Files inspected: `business-days-calculator.html`, `cheque-amount-in-words.html`, `contact-qr-code-generator.html`, `countdown-timer-bangladesh.html`, `countdown-timer-india.html`, `countdown-timer-usa.html`, `custom-qr-code-generator.html`, `date-difference.html`, `date-duration-calculator.html`, `day-of-week-born-calculator.html`, `days-between-dates-calculator.html`, `decimal-number-to-words.html`.
+- Findings:
+  - GA4 `G-P8D7XRGVEF` appears in `date-difference.html`.
+  - Google Fonts is referenced in Business Days Calculator, Date Duration Calculator and Days Between Dates Calculator.
+  - Cheque Amount in Words, Contact QR Code Generator, Bangladesh/India/USA Countdown Timer, Custom QR Code Generator, Day of Week Born Calculator and Decimal Number to Words had no direct GA4/AdSense/CMP, network, browser-storage or device-permission marker in this bounded scan.
+  - No CMP/TCF marker found.
+  - No external QR-generation API or countdown API call identified in inspected page sources.
+- Checks: full raw source retrieval for 12 files — PASS; bounded static marker/host inspection — PASS; live runtime/network/cookie/consent tests — NOT RUN; full inventory — IN PROGRESS.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §18.
+- Changed: research plan only. No app source, policy, CMP/AdSense setting, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `580d7b7aeb21d8ff5478864fa43dce4b8e89c618`.
+- Next: continue next root-page batch; branch inventory had 67 unreviewed root HTML files remaining after this 12-file batch.
+- Approval boundaries: no production/account change authorized.

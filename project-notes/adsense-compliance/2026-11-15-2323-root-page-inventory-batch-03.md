@@ -1,0 +1,24 @@
+# Root-page inventory batch 03 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:23:31+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 12-page source audit; overall D-001 remains IN PROGRESS.
+- User instruction: continue research and save each task's work in files with date/time; no new folders.
+- Scope: inspect complete raw source of 12 pages for third-party origins, analytics/ads/CMP tags, API/network calls, browser storage and device permissions. Read-only.
+- Files inspected: `404.html`, `aadhaar-card-print.html`, `add-subtract-date-calculator.html`, `age-in-days-calculator.html`, `ayushman-card-print.html`, `bengali-number-to-words.html`, `birthday-countdown-calculator.html`, `bmi-calculation-guide.html`, `bmi-health-guide.html`, `bmi-healthy-weight-range.html`, `bmi-weight-categories.html`, `bulk-number-to-words.html`.
+- Findings:
+  - Aadhaar guide links outward to UIDAI myAadhaar; Ayushman guide links outward to PM-JAY Beneficiary Portal. These are ordinary navigation links; no InfoJano-side upload/API transfer was found in the guide pages.
+  - Add/Subtract Date Calculator imports Google Fonts (Inter); no fetch, storage, analytics/ad or CMP API marker in its inspected inline logic.
+  - Birthday Countdown copy describes browser notifications, but the inspected source has no Notification API, permission request or browser-storage implementation. Treat as copy/source mismatch to reconcile; do not claim notifications are implemented.
+  - 404, Age in Days, Bengali Number-to-Words, BMI guide pages and Bulk Number-to-Words showed no direct analytics/ad/CMP, network, storage or device-permission marker in the inspected source. Number-to-words conversion is inline client-side code.
+  - No CMP/TCF marker found in this batch.
+- Checks: full raw source retrieval for 12 pages — PASS; targeted API/storage/permission/external-origin inspection — PASS for bounded sample; full site inventory — NOT COMPLETE; live runtime/network tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §17.
+- Changed: research plan documentation only. No source code, privacy policy, CMP/AdSense settings, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `182b51460e13806298aca15cc3c1a80acbf27fd3`.
+- Next: continue next batch of remaining root pages; separately reconcile Birthday Countdown notification copy with actual behavior when authorized.
+- Approval boundaries: no production or account changes authorized.

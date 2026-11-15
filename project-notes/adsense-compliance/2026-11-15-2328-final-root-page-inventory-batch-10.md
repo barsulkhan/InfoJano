@@ -1,0 +1,24 @@
+# Final root-page inventory batch 10 — source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:28:14+05:30 (Asia/Kolkata)
+- Status: COMPLETED — final 7 root-page source batch; root HTML source marker inventory now covers all 116 root HTML files. Broader dependency and live runtime audit remain IN PROGRESS.
+- User instruction: continue research and save every work package in task-named timestamped files, no new folders.
+- Scope: inspect the final 7 root HTML files for analytics/ads/CMP, API/network, storage, permissions, redirects and upload behavior. Read-only.
+- Files inspected: `whatsapp-qr-code-generator.html`, `wifi-qr-code-generator.html`, `word-to-jpg.html`, `word-to-pdf.html`, `word-to-png.html`, `words-to-number-converter.html`, `work-hours-calculator.html`.
+- Findings:
+  - Work Hours Calculator has an unchecked opt-in “Remember my entries on this device”. If enabled, localStorage key `infojano_work_hours_entries_v1` stores shift dates, start/end times, break minutes, overtime threshold, hourly rate and currency. Clear saved data/reset and opt-out removal controls exist. No fetch/XHR/FormData upload route found in this page source; page copy says entries are not uploaded.
+  - Word-to-JPG/PDF/PNG pages redirect internally to Word Converter with a format query parameter.
+  - WhatsApp QR and WiFi QR pages show no direct network/storage/analytics/ads/CMP marker in the bounded scan. QR content can contain user-entered phone/message or WiFi credentials; no server transfer evidence found in these page sources.
+  - Words to Number Converter shows no direct network/storage/CMP marker.
+  - No CMP/TCF marker found.
+- Checks: raw source retrieval for all 7 final pages — PASS; bounded marker scan — PASS; root HTML inventory — PASS (116/116 reviewed at source-marker level); full dependency and runtime audit — IN PROGRESS; live network/cookie/consent tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §24.
+- Changed: research plan only. No app source, policy, CMP/AdSense settings, DNS, merge, deployment or protected design changed.
+- Research-plan commit: `7da8aa2b8c5365e5d71a2d956986953b28c0a9b9`.
+- Next: consolidate GA4/AdSense, API/CDN, storage and feature data-flow maps; inspect nested modules/shared dependencies; then reconcile Privacy Policy draft.
+- Approval boundaries: no production/account change authorized.

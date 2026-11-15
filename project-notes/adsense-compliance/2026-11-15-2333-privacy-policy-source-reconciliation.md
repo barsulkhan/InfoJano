@@ -1,0 +1,30 @@
+# Privacy Policy source reconciliation and official-source verification
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:33:11+05:30 (Asia/Kolkata)
+- Status: COMPLETED — draft/source gap analysis documented; policy editing not authorized/performed.
+- User instruction: continue research and save every completed work package with task-named timestamped file; no new folders.
+- Scope: read complete `privacy-policy.html`, compare it with source inventory §26 and current official Google/IAB/iLoveAPI sources.
+- Findings:
+  - Draft already covers GA4, AdSense, Google Privacy & Messaging, YouTube, ipapi, exchange APIs, Wikimedia, optional Word Converter/iLoveAPI, CDNs, local processing and contact/privacy rights.
+  - Gaps: missing confirmed controller identity/jurisdiction; generic GA4 page scope (24 source-positive pages); incomplete local storage list (Countdown settings, QR sessionStorage, Percentage and Time histories); Birthday Countdown notification-copy mismatch; no confirmed native-app disclosure; no live CMP/TCF or selected ad-vendor evidence.
+  - Draft says iLoveAPI API retention is 48 hours. API-specific terms do state max 48 hours, but general terms/API docs/security page also say 2 hours. This public inconsistency requires provider confirmation; do not silently replace or overstate.
+  - Google revocation requirements require “Privacy and cookie settings” for relevant EEA/UK/Switzerland users. Google says AdSense automatically adds the link only on approved sites containing AdSense code; current site review status previously shown as “Getting your site ready to show ads” may explain absence, but does not prove compliance.
+  - IAB Europe confirmed TCF v2.4 web disclosure deadline 2026-10-23 and mobile app/CTV deadline 2027-02-23.
+- Official sources checked:
+  - Google privacy disclosures: https://support.google.com/publisherpolicies/answer/10437794
+  - Google AdSense required content: https://support.google.com/adsense/answer/1348695
+  - Google revocability: https://support.google.com/adsense/answer/14852903
+  - Google revocation implementation: https://support.google.com/admanager/answer/10114217
+  - IAB TCF v2.4 timeline: https://iabeurope.eu/wp-content/uploads/TCF_V-CMP_comms_TCFpoliciesV5.0.bAndSpecificationsV2.4ConfirmationOf-theTimeline_160726_IABEurope.pdf
+  - iLoveAPI terms/API retention: https://www.iloveapi.com/terms ; API docs: https://www.iloveapi.com/docs/api-reference ; security: https://www.iloveapi.com/legal/security
+- Checks: complete privacy-policy source retrieval — PASS; line-by-line comparison against source inventory — PASS; official web sources opened/reviewed — PASS; live CMP/TCF/network/ads vendor test — NOT RUN; publisher legal facts — NOT PROVIDED.
+- Detailed matrix and decisions: MASTER-RESEARCH-PLAN.md §28.
+- Changed: master research plan documentation only. `privacy-policy.html` unchanged. No CMP/AdSense setting, Worker, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `431b93141e87498f4979c018a0c019ba873bd81a`.
+- Next: inspect remaining assets/app distribution status; prepare proposed policy edit list only, then request publisher identity/jurisdiction and other facts when needed.
+- Approval boundaries: no policy edit, account change, production code, merge or deployment authorized.

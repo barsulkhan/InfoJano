@@ -1,0 +1,27 @@
+# Homepage, shared-script and file-tool source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: 2026-11-15T23:19:50+05:30
+- Saved: 2026-11-15T23:20:39+05:30 (Asia/Kolkata)
+- Status: COMPLETED — bounded 14-file source audit; overall D-001 remains IN PROGRESS.
+- Scope: inspect homepage tags, shared JS and selected image/PDF tool pages for analytics, ads, CMP, external hosts, network calls and browser storage. Read-only.
+- Files inspected: `index.html`, `site-header.js`, `sw.js`, `theme.js`, `related-apps.js`, `download-progress.js`, `install.js`, `image-resizer-advanced.js`, `image-compressor.html`, `image-resizer.html`, `image-to-pdf.html`, `pdf-to-jpg.html`, `extract-pdf-pages.html`, `document-studio.html`.
+- Findings:
+  - Homepage has GA4 `G-P8D7XRGVEF` and AdSense loader for `ca-pub-2908196513377151`; no explicit Funding Choices / Google Privacy & Messaging / `__tcfapi` / `googlefc` marker in inspected source.
+  - GA4 tag also appears in selected Image Compressor, Image Resizer and Image-to-PDF pages; not a full sitewide count.
+  - PDF-to-JPG and Extract PDF Pages load PDF tooling from cdnjs; Document Studio uses Google Fonts and cdnjs libraries.
+  - Shared header stores language in localStorage. Service worker fetch handlers appear to be cache/network handling; not by themselves a third-party data recipient.
+  - No direct external API, storage, analytics or CMP marker identified in inspected shared scripts `theme.js`, `related-apps.js`, `download-progress.js`, `install.js`, `image-resizer-advanced.js`.
+- Checks:
+  - Full raw source fetched for all 14 named files — PASS.
+  - Static marker/host scan — PASS for bounded sample only.
+  - Full repository-wide all-page scan — NOT RUN.
+  - Live network/cookie/CMP behavior — NOT RUN.
+- Detailed record: MASTER-RESEARCH-PLAN.md §15.
+- Changed: master research plan only. No production code, account setting, DNS, sitemap, Worker, PR merge, deployment or protected design changed.
+- Commit: `fa16fa93436d43dc0fb7a9220d4fd89beb5f1006`.
+- Next: continue page-specific batches and assemble a consolidated page-to-vendor matrix; verify analytics/ads consent gating only through live runtime evidence.
+- Approval boundaries: all production/account changes remain prohibited without explicit user approval.

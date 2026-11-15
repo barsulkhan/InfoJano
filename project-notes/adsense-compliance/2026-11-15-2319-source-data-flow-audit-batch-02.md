@@ -1,0 +1,31 @@
+# Source data-flow audit — batch 02
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: 2026-11-15T23:18:56+05:30
+- Saved: 2026-11-15T23:19:50+05:30 (Asia/Kolkata)
+- Status: COMPLETED — this bounded source-audit batch; overall D-001 remains IN PROGRESS.
+- User instruction: research first, preserve each completed task in a task-named timestamped file, no new folders, continue from existing tracker without repeating completed work.
+- Scope: inspect complete source for 12 selected files for external requests, browser storage, permissions, uploads and Privacy Policy references. Read-only only.
+- Files inspected: `countdown-studio.html`, `qr-maker.html`, `qr-scanner.html`, `currency-converter.html`, `word-converter.html`, `word-converter.js`, `backend/word-converter/src/index.js`, `backend/word-converter/README.md`, `age.html`, `bmi-toolkit.js`, `site-header.js`, `privacy-policy.html`.
+- Findings:
+  - Countdown Studio sends visitor-entered YouTube channel lookup and API key to YouTube Data API v3; refreshes every 60 seconds while connected; stores countdown settings/media URLs in localStorage.
+  - QR Maker uses GA4 ID G-P8D7XRGVEF and unpkg ZXing; QR Scanner requests camera after user action and transfers decoded text through sessionStorage.
+  - Currency Converter calls open.er-api.com and api.frankfurter.dev; FlagCDN images are used.
+  - Word Converter uses jsDelivr/cdnjs/unpkg library fallbacks; optional high-fidelity route posts FormData to a configured Worker; Worker source calls iLoveAPI. Worker allowlist in source names GitHub Pages origin; actual custom-domain Worker binding remains to confirm.
+  - Age Calculator uses GA4, ipapi.co, Wikipedia and Wikidata; birthday reminder data and daily marker are stored in localStorage; Notification API is used only when permission is granted.
+  - BMI toolkit stores up to 100 entries containing date, weight, height and BMI in localStorage, with a clear action.
+  - Shared header stores language preference in localStorage.
+  - Existing Privacy Policy names several relevant vendors, but must be reconciled against full inventory and exact production config.
+- Tests/checks:
+  - Full raw source retrieval for 12 named files — PASS.
+  - Static extraction of external URLs, API calls, storage keys and permission APIs — PASS.
+  - Exhaustive bulk scan of every root HTML/JS file — NOT RUN / not completed; tool-call limit reached.
+  - Live browser/network, cookies, consent gating and provider retention checks — NOT RUN.
+- Detailed source observations and next dependencies saved in MASTER-RESEARCH-PLAN.md §14.
+- Changed: master research plan documentation only. No app source, CMP/AdSense settings, DNS, Worker config, production, sitemap, PR merge, deployment or protected design changed.
+- Commit: `659c7f2b2c368c0feb1ca61c8158905b9fd8307e`.
+- Next: continue D-001 in small batches with remaining high-risk pages and shared scripts; then reconcile exact claims in Privacy Policy. Production Worker URL and domain binding require publisher/account confirmation.
+- Approval boundaries: no live setting or production change authorized.

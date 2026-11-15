@@ -1,0 +1,26 @@
+# Consolidated source inventory and PWA manifest audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:30:55+05:30 (Asia/Kolkata)
+- Status: COMPLETED — consolidated static source inventory and all PWA manifests; live runtime/account/legal verification remains IN PROGRESS.
+- User instruction: continue research and persist each completed task in a task-named timestamped file; no new folders.
+- Scope: consolidate all 116 root HTML source scans, 14 root JS files, 5 CSS files, 4 JSON/package files, 29 app webmanifests plus root manifest, Worker sources/docs/config and nested backup page.
+- Findings:
+  - Root HTML source-marker review: 116/116 complete. Recursive branch tree contained 300 files at audit time.
+  - Exact GA4 positive source-marker list: 24 pages — index, qr-maker, age, image-compressor, image-resizer, image-to-pdf, emi, loan-eligibility, loan-interest, savings, bmi, password-generator, date-difference, discount-pt-br, discount, gst-calculator, number-to-words, percentage-change, percentage-pt-br, percentage, text-counter, time-calculator, tip-calculator and unit-converter.
+  - Explicit AdSense loader observed in homepage `index.html` only, with publisher client `ca-pub-2908196513377151`.
+  - No explicit CMP/Funding Choices/`__tcfapi`/`googlefc` marker in the 116 root pages or inspected shared JS. Runtime/account-side injection remains unknown.
+  - Consolidated API/CDN/official portal and browser-storage matrix saved in MASTER-RESEARCH-PLAN.md §26.
+  - All 29 app-specific PWA manifests plus root manifest inspected; start URLs/scopes/icons are same-origin/local paths. No external manifest icon/start URL found.
+  - Two minified local libraries inspected: jsPDF contains generic XHR code/URLs in bundled library; this alone is not proof that the page sends visitor data. QR generator library contains only W3C namespace URLs.
+- Checks: all 116 root HTML source-marker reviews — PASS; 14 JS/5 CSS/4 JSON and 30 PWA manifest inspections — PASS; live browser/CMP/network tests — NOT RUN; account-side vendor inventory — NOT RUN.
+- Important caveats: source scan does not prove runtime tag firing, consent gating, cookies, provider retention or production Worker deployment. Birthday Countdown notification copy mismatch and Word Converter custom-domain allowlist remain unresolved. Short Link Worker is documented as undeployed staging scaffold.
+- Detailed consolidated matrix: MASTER-RESEARCH-PLAN.md §26.
+- Changed: master research plan only. No app code, Privacy Policy, CMP/AdSense settings, Cloudflare account, DNS, PR merge, deployment or protected design changed.
+- Research-plan commit: `76482be21ded21c0cb9d406fd3acc60097a59ecc`.
+- Next: inspect desktop/Android app shells and workflows; then reconcile Privacy Policy draft with verified source inventory, keeping live runtime and legal facts separate.
+- Approval boundaries: no production/account change authorized.

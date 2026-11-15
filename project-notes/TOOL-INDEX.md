@@ -7,6 +7,7 @@ Last updated: 2026-11-15
 এই index-এ প্রতিটি tool-এর tracking folder, সামগ্রিক অবস্থা, সর্বশেষ কাজের তারিখ এবং পরবর্তী পদক্ষেপ থাকবে। বিস্তারিত ইতিহাস সংশ্লিষ্ট tool-এর README.md-তে। নতুন chat শুরুতে [SESSION-START-PROMPT.md](SESSION-START-PROMPT.md) ব্যবহার করো। Workflow উন্নয়নের প্রস্তাব: [WORKFLOW-IMPROVEMENT-PLAN.md](WORKFLOW-IMPROVEMENT-PLAN.md)। প্রতিটি tool-এর development-এর আগে [TOOL-RESEARCH-STANDARD.md](TOOL-RESEARCH-STANDARD.md) অনুসারে country-wise keyword ও competitor research বাধ্যতামূলক।
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
+| AdSense & Privacy Compliance | adsense-compliance/ | In progress — full source inventory, policy gap matrix and proposed revision gates saved; 24 GA4 pages, homepage AdSense and data flows mapped; public Android/Windows prereleases confirmed; live HTTP/CMP/TCF/app runtime, publisher legal identity and provider retention confirmations pending | 2026-11-15 | Obtain publisher legal facts and live Google/Worker evidence; then present complete proposed policy diff for approval |
 |---|---|---|---|---|
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; ET-011 five-entry cap runtime PASS; Pages workflow #2550 SUCCESS; follow-up SERP/localization research and 16 static source checks saved; remaining desktop/responsive/accessibility/DST QA pending | 2026-11-15 | Run remaining desktop/responsive browser QA; keyboard/focus, screen-reader, copy/share end-to-end and DST runtime checks |
 | Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP source review plus strict calendar-date and daily-threshold validation fixes committed; WH-001–WH-010 runtime/browser QA and current deployment verification pending; GO for one Work Hours page, no separate Time Card/Timesheet URLs; metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
@@ -94,3 +95,8 @@ Last updated: 2026-11-15
 ### 2026-11-15 — Date offset page deployed
 - Pages workflow #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`. Direct live browser rendering could not be independently fetched; interaction QA remains pending.
 - APK workflow #685 passed repository validation and continued building; the previously published release has 23 APK assets.
+
+### 2026-11-15 — AdSense compliance master research plan
+- Created `adsense-compliance/MASTER-RESEARCH-PLAN.md` with official-source research, current evidence, dependency-aware phases, priorities, stop/approval gates, issue register and ordered next actions.
+- AdSense & Privacy Compliance added to this index. The master plan is the execution order source; `adsense-compliance/README.md` remains the evidence/work tracker.
+- No production code, account settings, DNS, merge or deployment changed.

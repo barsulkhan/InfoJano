@@ -1,0 +1,24 @@
+# Robots, ads.txt and sitemap source audit
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:34:21+05:30 (Asia/Kolkata)
+- Status: COMPLETED — repository source audit only; live HTTP/crawler verification remains NOT RUN.
+- User instruction: continue research and save each completed task in a task-named timestamped file; no new folders.
+- Scope: inspect robots.txt, ads.txt, canonical and legacy sitemaps; compare URL sets against root HTML tree; attempt live fetch of public files.
+- Files inspected: `robots.txt`, `ads.txt`, `sitemap.xml`, `sitemap-infojano.xml`, `sitemap.txt`, plus branch recursive tree.
+- Findings:
+  - robots.txt allows all and references `https://infojano.com/sitemap.xml`.
+  - ads.txt line exactly matches `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`.
+  - sitemap.xml has 107 URLs; sitemap-infojano.xml and sitemap.txt each have 105. The two newer URLs only in sitemap.xml are `work-hours-calculator.html` and `elapsed-time-calculator-guide.html`.
+  - Nine root HTML files absent from sitemap.xml: 404, Contact, Countdown Studio, Google verification, index alias, Privacy Policy, and three Word-to-* redirects. Some may be intentionally excluded; Contact/Privacy Policy/Countdown Studio need indexing-strategy review.
+  - Live fetch attempts for ads.txt, robots.txt and privacy-policy.html were inaccessible through current retrieval path; no HTTP 200/status/headers or crawler result claimed.
+- Checks: repository file retrieval — PASS; sitemap URL-set comparison — PASS; live HTTP response/status/redirect test — NOT RUN / inaccessible; AdSense crawler dashboard — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §29.
+- Changed: research plan documentation only. No robots, ads.txt, sitemap, DNS, policy, production, merge or deployment changes.
+- Research-plan commit: `74542ad9f595f280460e3be10c8cddcfa85bab28`.
+- Next: obtain suitable live HTTP/browser access for ads.txt/robots checks; confirm canonical sitemap and intended exclusions.
+- Approval boundaries: no production changes authorized.

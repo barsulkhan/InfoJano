@@ -121,3 +121,46 @@ Overall status: Backlog / In progress / Blocked / Completed
 - User-এর স্পষ্ট অনুমতি ছাড়া protected hero/banner, branding, layout বা নিষিদ্ধ scope বদলাবে না।
 - Project notes-এ password, token, credential বা গোপন ব্যক্তিগত তথ্য লিখবে না।
 - বাস্তবে না করা কাজ/test/QA/deployment/release সম্পন্ন বলে লিখবে না।
+
+## 2A. বাধ্যতামূলক per-task timestamped evidence file (সব website/project-এর জন্য)
+
+এই নিয়ম InfoJano-সহ ব্যবহারকারীর সব website/repository-তে প্রযোজ্য। প্রতিটি আলাদা কাজ/কার্যকর work package শেষ হলে সেই কাজের নাম দিয়ে একটি স্বতন্ত্র Markdown file তৈরি করতে হবে। শুধু README-তে log entry দিলেই এই শর্ত পূরণ হবে না।
+
+### File location — নতুন folder নয়
+- সংশ্লিষ্ট website-এর আগে থেকে থাকা project/tracker folder-এর ভেতরে সরাসরি file রাখবে।
+- শুধু log রাখার জন্য নতুন folder, date-folder, nested folder বা archive folder তৈরি করবে না।
+- উদাহরণ: AdSense কাজের file সরাসরি `project-notes/adsense-compliance/`-এ; calculator কাজের file সংশ্লিষ্ট আগে থেকে থাকা `project-notes/tools/<tool-slug>/`-এ।
+- সংশ্লিষ্ট project folder না থাকলে আগে project owner-এর repository structure দেখে বিদ্যমান উপযুক্ত notes location ব্যবহার করবে; অকারণে নতুন folder hierarchy তৈরি করবে না।
+
+### বাধ্যতামূলক filename
+```text
+YYYY-MM-DD-HHMM-<task-name-kebab-case>.md
+```
+- Date/time হবে কাজ শেষ/লগ সংরক্ষণের প্রকৃত সময়, project/site-এর timezone স্পষ্টভাবে লিখবে।
+- সময় নির্ভরযোগ্যভাবে পাওয়া না গেলে বানিয়ে লিখবে না; timestamp সংগ্রহ না হওয়া পর্যন্ত file save complete দাবি করবে না।
+- একই সময়ে একই task name collision হলে শেষে `-02`, `-03` যোগ করবে।
+- উদাহরণ: `2026-11-15-2318-adsense-live-ads-txt-verification.md`
+
+### প্রতিটি task file-এর বাধ্যতামূলক contents
+1. Task title, website name, canonical site URL, repository ও branch
+2. Started/completed timestamp এবং timezone (যা জানা আছে; অজানা হলে Unknown)
+3. User request, scope এবং explicit permission boundaries
+4. আগের কোন কাজ reuse করা হয়েছে; পুনরাবৃত্তি এড়ানোর প্রমাণ
+5. Inspected files/pages/settings/evidence এবং exact commit/ref
+6. কাজের ধাপ ও সিদ্ধান্ত
+7. Tests/checks: প্রতিটির PASS / FAIL / NOT RUN / UNVERIFIED status এবং ফল
+8. Changed files এবং পরিবর্তনের সারাংশ; কোনো পরিবর্তন না হলে তা স্পষ্ট
+9. PR/commit/workflow/deployment references
+10. Blocker, uncertainty, risk ও unresolved question
+11. Next action, dependency এবং approval needed
+12. Protected areas ও production/settings/DNS/deployment অপরিবর্তিত ছিল কি না
+
+### Save/update rules
+- প্রতিটি কাজ শেষ হওয়ার সঙ্গে সঙ্গে task file create করে commit করবে; একই task চলমান থাকলে file-টি update করবে, একই কাজের জন্য অপ্রয়োজনীয় duplicate file বানাবে না।
+- একই দিনে একাধিক আলাদা কাজ হলে প্রতিটির আলাদা file হবে।
+- README/tracker-এ সংক্ষিপ্ত status ও task-file link যোগ করবে; TOOL-INDEX-এ শুধু top-level status/next action রাখবে।
+- Task file, tracker এবং index-এর status/commit তথ্য পরস্পর সামঞ্জস্যপূর্ণ রাখতে হবে।
+- Failed/blocked task-ও task file পাবে; filename-এ task name থাকবে এবং body-তে status Blocked/Failed লেখা থাকবে।
+- Sensitive secrets, API keys, personal identifiers বা private account data task file-এ রাখা যাবে না।
+- File save/commit সফল না হওয়া পর্যন্ত কাজটিকে documented/completed বলা যাবে না।
+- এই নিয়ম নতুন ও বিদ্যমান website/project—সব ক্ষেত্রেই default; user-কে প্রতিবার মনে করাতে হবে না।

@@ -1,0 +1,25 @@
+# Public Android and Windows app release verification
+
+- Website: InfoJano
+- Site: https://infojano.com
+- Repository: https://github.com/barsulkhan/InfoJano
+- Branch: feature/privacy-policy-adsense-compliance
+- Started: Unknown (not reliably captured; not inferred)
+- Saved: 2026-11-15T23:35:12+05:30 (Asia/Kolkata)
+- Status: COMPLETED — GitHub release metadata verified; native runtime/privacy tests remain NOT RUN.
+- User instruction: continue research and save each task in a timestamped file; no new folders.
+- Scope: inspect GitHub public release metadata and relevant Android/Windows build workflows to confirm distribution status and update Privacy Policy scope.
+- Sources inspected: GitHub release tags `infojano-tool-apps-v1.1.1` and `infojano-desktop-apps-v1.0.0`; workflows `build-tool-apks.yml`, `build-desktop-app.yml`, `build-desktop-apps.yml`, `build-age-apk.yml`, `build-countdown-studio-desktop.yml`.
+- Findings:
+  - Android tag `infojano-tool-apps-v1.1.1` is a public GitHub prerelease (not draft) with 23 APK assets, published 2026-10-24.
+  - Windows tag `infojano-desktop-apps-v1.0.0` is a public GitHub prerelease (not draft) with 23 EXE assets, published 2026-10-25.
+  - Thus Android and Windows wrappers are publicly downloadable; earlier uncertainty about distribution status is resolved. Downloads/installs/active use are not proven.
+  - Dedicated Countdown Studio Windows workflow is feature-branch-only and uploads a 30-day workflow artifact, not a public release.
+  - Google privacy disclosure policy applies to app surfaces as well as websites. Native wrappers load hosted InfoJano pages and inherit web processing; Android also has DOM storage, file chooser and local Downloads bridge.
+  - Proposed policy changes are recorded in MASTER-RESEARCH-PLAN.md §30; no policy/app code changed.
+- Checks: GitHub release metadata retrieval — PASS; asset counts verified — PASS; workflow source retrieval — PASS; native runtime/install/network/CMP tests — NOT RUN.
+- Detailed evidence: MASTER-RESEARCH-PLAN.md §30.
+- Changed: research plan documentation only. No app code, privacy policy, account settings, DNS, merge or deployment changed.
+- Research-plan commit: `7b91eb378ace3f0fe707ddaa6cff68eb10f32d79`.
+- Next: use §30 proposed policy change list to prepare a non-applied draft revision plan; obtain publisher legal identity/jurisdiction and iLoveAPI retention confirmation; run live app/network/CMP tests when available.
+- Approval boundaries: no policy editing, app changes, account changes, merge or deployment authorized.
