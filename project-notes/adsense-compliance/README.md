@@ -271,3 +271,16 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Status: PARTIAL INVENTORY — useful source evidence gathered, not complete enough for a final legal policy.
 - Next task: continue source scan across remaining tool pages and shared scripts; then reconcile with publisher's current production configuration. Only after that prepare a draft for review. Do not publish without explicit approval.
 - Changed: this tracker only. No source code, DNS, AdSense/CMP settings or production deployment changed.
+
+
+### 2026-11-15 — Additional source scan: API calls and browser storage
+- Expanded GitHub code search and inspected countdown-studio.html, bmi-toolkit.js, age.html and currency-converter.html.
+- Additional integrations/data flows identified:
+  - **YouTube Data API v3** in Countdown Studio: user may enter a public channel URL/handle and a Google Cloud API key; source says the key is used in the browser session only and refreshes the public subscriber count every 60 seconds while the page is open. API key is an input type password, but client-side use means it is not a server-side secret. UI instructs users to restrict the key to YouTube Data API v3 and website HTTP referrers. Exact API request and returned fields need inspection before final disclosure.
+  - **YouTube embedded player**: Countdown Studio uses youtube-nocookie.com/embed for YouTube videos. This is an external embedded media request; actual cookies/network behavior depends on playback and browser context.
+  - **Frankfurter API**: Currency Converter uses api.frankfurter.dev for historical exchange-rate queries; latest rates use open.er-api.com. Both providers are now recorded in the inventory.
+  - **BMI local history**: bmi-toolkit.js saves up to 100 entries (date, weight, height, BMI) to localStorage only when user saves history; clear action removes it. This is potentially sensitive health-related personal data stored on the user's device; do not overstate privacy or imply it is sent to InfoJano based on this source alone.
+  - **Age Calculator notifications**: birthday reminder preference (month/day/rule) is stored in localStorage; browser Notification permission is requested only when user enables reminder. Source says reminders are checked while the page is open; background delivery is not guaranteed.
+- No source-level evidence found in the inspected files for navigator.geolocation; Age Calculator uses ipapi.co request instead. This is a code-search observation, not a full runtime network audit.
+- Current privacy inventory remains PARTIAL. Need inspect exact YouTube API request, remaining tool pages, all shared scripts, and live GA4/AdSense/CMP network behavior. Do not publish legal policy yet.
+- Changed: tracker only. No production code, account settings, DNS, CMP settings or deployment changed.
