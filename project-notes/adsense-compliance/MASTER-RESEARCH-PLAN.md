@@ -610,3 +610,26 @@ This is the exact positive source-marker list found in the 116-page scan. It doe
 3. Compare the source-level matrices above against the actual `privacy-policy.html` draft, marking each item accurate/missing/uncertain; do not edit policy until user-approved scope and publisher legal facts are confirmed.
 4. Perform live runtime tests only in an available browser/account context: GA4/AdSense requests, cookies, CMP UI, `__tcfapi`, TC string, reject/manage/revoke, network destinations and Worker endpoint behavior.
 5. Keep source evidence, runtime evidence, provider-contract facts and publisher legal declarations as separate evidence classes.
+
+## 27. Android and Windows desktop wrapper source audit (2026-11-15)
+
+Scope: inspected Android `MainActivity.java`, `AndroidManifest.xml`, Gradle configuration, and Windows desktop Electron `main.cjs`, `preload.cjs`, package/config and READMEs for the general portal and dedicated Countdown Studio wrapper.
+
+### Android WebView app
+- `AndroidManifest.xml` declares INTERNET permission and `usesCleartextTraffic=false`; no camera, contacts, location, microphone or notification permission is declared in this manifest.
+- `MainActivity.java` loads the configured hosted website in a WebView, enables JavaScript and DOM storage, exposes an `AndroidBridge` JavaScript interface for saving generated files into Android Downloads, and supports user-selected file uploads via the system file chooser.
+- The native bridge writes supplied base64 bytes into Android MediaStore Downloads; this is local file export, not a server upload.
+- The Android build default tool URL is the GitHub Pages Age Calculator URL; actual release/build property overrides and runtime URL were not verified here.
+- WebView is configured with a basic WebViewClient and no explicit origin allowlist in the inspected MainActivity. This is a security review item because the JavaScript bridge is exposed to the loaded page; do not change it in this privacy research task without approval.
+
+### Windows desktop wrappers
+- General Electron wrapper loads `https://barsulkhan.github.io/InfoJano/`; dedicated Countdown Studio wrapper loads `https://infojano.com/countdown-studio.html`. Both require internet and load the hosted web app rather than bundling it.
+- Both wrappers set `contextIsolation: true`, `nodeIntegration: false`, `sandbox: true`; external links/new windows are opened through the system browser, and in-app navigation is restricted to the trusted site origin/path.
+- `preload.cjs` exposes only a static platform label via contextBridge. No analytics SDK, cookie handling, direct external API or user-data upload was found in the inspected desktop wrapper source.
+- The desktop READMEs describe build/distribution mechanics; no additional personal-data collection was documented in those files.
+
+### Privacy interpretation / limits
+- These native shells inherit the web page's own analytics, AdSense, CMP, API, CDN and storage behavior when they load the hosted site; this source review does not test those requests inside Android WebView or Electron.
+- File chooser access is user initiated. Local Downloads export and user-selected local file input should be distinguished from network upload.
+- No Android runtime permission dialog, WebView network trace, Electron cookie/storage inspection, native build install test or app-store policy review was performed.
+- Confirm whether Android and desktop apps are publicly distributed and whether privacy policy should explicitly include them as separate surfaces; do not infer release status from source alone.
