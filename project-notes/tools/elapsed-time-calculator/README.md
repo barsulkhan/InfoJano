@@ -513,3 +513,17 @@ Overall status: In progress — mobile screenshot checks, source audit and ET-01
 - Work Hours and Time Card results substantially overlap. Recommended one consolidated US Time Card / Work Hours concept, not two separate thin URLs.
 - New feature scope would need a 7-day weekly grid, breaks, overnight, daily/weekly totals, decimal hours, biweekly week-by-week overtime handling, and print/CSV. Payroll/state overtime features need careful legal scope and disclaimers.
 - Planning decision only: GO for consolidated concept research/spec; HOLD code and URL creation until date-time intent research and US keyword/GSC evidence are reviewed.
+
+### 2026-11-15 — US Date & Time Duration SERP review
+- Requested: compare the US “Date & Time Duration Calculator” intent with the existing Elapsed Time Calculator and guide before deciding whether to create another SEO URL.
+- Re-fetched: current handoff, tracking/research standards, tool index, elapsed-time README/RESEARCH/QA log, current calculator and guide source; also noted the existing Work Hours & Shift Calculator tracker/page already exists in the repository.
+- Source finding: `time-calculator.html` already implements Date + Time mode with two `datetime-local` inputs, local-device timezone semantics, days/remainder and total hours/minutes/seconds. The guide already documents this mode. There is no per-endpoint timezone selection or explicit DST-crossing explanation.
+- Public competitor review: Toggl combines clock duration, date-time duration and add/subtract on one page; Count My Hours treats multi-day date-time duration as a time-duration tool and highlights DST; CalculatorSoup provides date/time difference with broader calendar-unit explanations; NumUtility, LiveTools, timezones.com, All Over Tools and Keito show variations around local time, calendar units, DST and timezone/offset handling.
+- Decision: NO-GO for a separate generic Date & Time Duration URL. Map the phrase cluster to existing `/time-calculator.html` and `/elapsed-time-calculator-guide.html`. A future distinct page would require a genuinely separate feature/task (calendar date difference, business hours, or timezone-aware duration), validated US demand and product scope.
+- Three-concept consolidation: (1) Work Hours + Time Card = one consolidated weekly/biweekly multi-shift concept; a Work Hours & Shift Calculator page already exists in the repo, so do not create another Time Card URL. (2) Date & Time Duration = existing Date + Time mode, no new URL. (3) Generic elapsed/time duration = existing calculator + guide, no duplicate page.
+- Metrics: exact US volume/trend/KD/CPC/traffic potential remain N/A for this phrase cluster; no controlled US top-10 export or usable GSC query/page/country export. Existing third-party estimates remain directional. CPC is not publisher RPM.
+- Changed: RESEARCH.md §17 only. No app code, metadata, sitemap, URL or hero artwork changed.
+- Research commit: `bf2789607dfbe8cb00672d8bb729c49b5cbaa82e`.
+- Tests: source inspection and qualitative SERP comparison completed; no browser/runtime test or deployment claim made.
+- Pending: desktop visual QA remains the explicit manual calculator QA item; Work Hours functional/browser QA and live deployment verification are separately pending in that tool's tracker.
+- Protected areas preserved: existing calculator hero, homepage hero, ID Card Print Studio hero and existing guide hero.
