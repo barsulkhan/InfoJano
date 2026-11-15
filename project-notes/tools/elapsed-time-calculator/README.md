@@ -399,3 +399,9 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Protected areas preserved: original homepage hero and existing Elapsed Time Calculator hero.
 
 - Validation evidence: guide title/description/canonical, single H1, both homepage artwork references, 1360px max width/8px gutters, formula and examples, visible FAQ, JSON-LD parse, both directions of internal links, sitemap entry, and existing calculator hero presence all PASS in source inspection. This is not browser visual QA.
+
+
+### 2026-11-15 — GitHub Pages workflow verification
+- Checked the latest repository Actions runs after all page/tracker commits. Pages build and deployment workflow run #2550 for commit `f44e679ad5e8e0746061ea98c81b017605229485` completed with conclusion `success`.
+- This confirms the repository's Pages deployment workflow succeeded for the commit containing the elapsed-time guide and sitemap/internal-link updates. Direct live URL fetch through the available web inspection channel returned inaccessible, so final HTTP/rendered-page verification remains pending.
+- SEO guide browser visual/accessibility QA remains NOT RUN; workflow success is not a substitute for browser QA.
