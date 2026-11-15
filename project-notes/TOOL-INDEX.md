@@ -55,3 +55,11 @@ Last updated: 2026-11-15
 - Confirmed existing repository destinations for Work Hours, Date Difference, Business Days and Elapsed/Date-Time Duration; no duplicate URLs recommended.
 - New candidates held for quantitative US validation: Business Hours, Decimal Hours Converter and Military Time Converter. Clock-Out should first be tested as a mode within Work Hours. Overtime and Time Zone Duration remain out of scope until the required legal/timezone logic exists.
 - Full evidence: tools/elapsed-time-calculator/RESEARCH.md §18 and tools/work-hours-calculator/RESEARCH.md §5.
+
+
+### 2026-11-15 — Consolidated US-first research batch saved
+- Master dossier: [SEO-OPPORTUNITY-RESEARCH-US-2026-11-15.md](SEO-OPPORTUNITY-RESEARCH-US-2026-11-15.md).
+- Consolidates US keyword estimates, market/country screen, existing page source audit, competitor review, product safeguards and Go/Hold/No-Go decisions across elapsed time, Work Hours/Time Card, Business Hours, Decimal Hours, Military Time, Clock-Out, Overtime, Business Days, Date Duration and Time Zones.
+- Ahrefs Keywords Explorer returned “Insufficient plan”; missing metrics remain N/A. KWS Trends and competitor-published estimates are explicitly caveated.
+- No app code, page metadata, sitemap, URL or protected hero was changed.
+- Next: finish source audit of date pages, then prioritize Work Hours QA and candidate keyword validation when a usable provider is available.
