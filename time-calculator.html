@@ -101,6 +101,22 @@ body .ij-reference-hero{width:min(calc(100% - 8px),1360px)!important;max-width:1
 main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;padding:0}
 .ij-time-workspace{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start;gap:0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
 .ij-time-left,.ij-time-right{min-width:0}
+.ij-time-field{margin-top:14px}.ij-time-field label{margin-top:0}
+.ij-time-input-row{display:flex;align-items:stretch;gap:9px}
+.ij-time-input-row input{flex:1;min-width:0;margin-top:7px}
+.ij-time-utility,.ij-time-swap{width:auto;min-width:100px;margin-top:7px;padding:0 14px;border:1px solid #cfe0f4;border-radius:10px;background:#f3f8ff;color:#17518d;font-size:13px;font-weight:750;cursor:pointer}
+.ij-time-swap{width:100%;min-height:42px;margin-top:12px}
+.ij-time-utility:hover,.ij-time-swap:hover,.ij-time-examples button:hover{background:#e7f2ff}
+.ij-time-help{margin:8px 0 0;color:#64748b;font-size:12px}
+.ij-time-examples{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:15px}
+.ij-time-examples>span{width:100%;font-size:12px;font-weight:800;color:#52627a}
+.ij-time-examples button{width:auto;margin:0;padding:8px 10px;border:1px solid #d6e5f5;border-radius:10px;background:#fff;color:#24517e;font-size:12px;cursor:pointer}
+.ij-time-workspace .result strong{color:#1458c8}
+.ij-time-result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.ij-time-result-stat{padding:10px 12px;border:1px solid #d5e8fb;border-radius:12px;background:#fff}
+.ij-time-result-stat span{display:block;color:#64748b;font-size:11px;font-weight:700}
+.ij-time-result-stat strong{display:block;margin-top:3px;color:#174a78;font-size:17px}
+@media(max-width:480px){.ij-time-input-row{gap:6px}.ij-time-utility{min-width:82px;padding:0 9px;font-size:12px}.ij-time-examples button{font-size:11px}.ij-time-result-grid{grid-template-columns:1fr 1fr}}
 .ij-time-workspace .card{padding:20px;border-radius:17px;box-shadow:none}
 .ij-time-left{background:#f8fbff;border:1px solid #e1eafa}
 .ij-time-right{border-left:2px solid #d6e4f4;padding-left:24px;margin-left:24px}
@@ -127,10 +143,22 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
     <span class="ij-time-step">STEP 1 · ENTER TIMES</span>
     <h2 id="ij-time-input-title">Calculate Time Difference</h2>
     <p class="ij-time-intro">Select the starting and ending clock times.</p>
-    <label for="start">Start Time</label>
-    <input id="start" type="time">
-    <label for="end">End Time</label>
-    <input id="end" type="time">
+    <div class="ij-time-field">
+      <label for="start">Start Time</label>
+      <div class="ij-time-input-row"><input id="start" type="time" step="1" aria-describedby="time-input-help"><button class="ij-time-utility" type="button" onclick="setCurrentTime('start')">Use Now</button></div>
+    </div>
+    <div class="ij-time-field">
+      <label for="end">End Time</label>
+      <div class="ij-time-input-row"><input id="end" type="time" step="1" aria-describedby="time-input-help"><button class="ij-time-utility" type="button" onclick="setCurrentTime('end')">Use Now</button></div>
+    </div>
+    <p id="time-input-help" class="ij-time-help">Seconds are optional. Your device's local time is used for “Use Now”.</p>
+    <button class="ij-time-swap" type="button" onclick="swapTimes()" aria-label="Swap start and end times">⇅ Swap Start / End</button>
+    <div class="ij-time-examples" aria-label="Quick time examples">
+      <span>Quick examples</span>
+      <button type="button" data-start="09:00:00" data-end="17:30:00" onclick="useTimeExample(this)">9:00 AM – 5:30 PM</button>
+      <button type="button" data-start="22:00:00" data-end="06:00:00" onclick="useTimeExample(this)">10:00 PM – 6:00 AM</button>
+      <button type="button" data-start="09:15:00" data-end="12:00:00" onclick="useTimeExample(this)">9:15 AM – 12:00 PM</button>
+    </div>
     <button type="button" onclick="calculateTime()">Calculate Difference</button>
   </section>
   <section class="ij-time-right" aria-labelledby="ij-time-output-title">
@@ -206,23 +234,53 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
   window.setInterval(updateLiveClock,1000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)updateLiveClock();});
 })();
-function calculateTime(){
-const s=document.getElementById('start').value;
-const e=document.getElementById('end').value;
-const out=document.getElementById('result');
-if(!s||!e){
-out.textContent='Please select both times.';
-return;
+function setCurrentTime(fieldId){
+  const now=new Date();
+  const pad=value=>String(value).padStart(2,'0');
+  document.getElementById(fieldId).value=pad(now.getHours())+':'+pad(now.getMinutes())+':'+pad(now.getSeconds());
 }
-const [sh,sm]=s.split(':').map(Number);
-const [eh,em]=e.split(':').map(Number);
-let start=sh*60+sm;
-let end=eh*60+em;
-if(end<start)end+=1440;
-const diff=end-start;
-const hours=Math.floor(diff/60);
-const minutes=diff%60;
-out.innerHTML='Time difference: <strong>'+hours+' hours '+minutes+' minutes</strong><br>Total minutes: <strong>'+diff+'</strong>';
+function swapTimes(){
+  const start=document.getElementById('start');
+  const end=document.getElementById('end');
+  const previous=start.value;
+  start.value=end.value;
+  end.value=previous;
+}
+function useTimeExample(button){
+  document.getElementById('start').value=button.dataset.start;
+  document.getElementById('end').value=button.dataset.end;
+  calculateTime();
+}
+function calculateTime(){
+  const startValue=document.getElementById('start').value;
+  const endValue=document.getElementById('end').value;
+  const out=document.getElementById('result');
+  if(!startValue||!endValue){
+    out.textContent='Please select both start and end times.';
+    return;
+  }
+  function toSeconds(value){
+    const parts=value.split(':').map(Number);
+    return parts[0]*3600+(parts[1]||0)*60+(parts[2]||0);
+  }
+  let start=toSeconds(startValue);
+  let end=toSeconds(endValue);
+  if(end<start)end+=24*60*60;
+  const totalSeconds=end-start;
+  const hours=Math.floor(totalSeconds/3600);
+  const minutes=Math.floor((totalSeconds%3600)/60);
+  const seconds=totalSeconds%60;
+  const totalMinutes=totalSeconds/60;
+  const decimalHours=(totalSeconds/3600).toFixed(2);
+  out.innerHTML='Time difference: <strong>'+hours+' hours '+minutes+' minutes '+seconds+' seconds</strong>'+
+    '<div class="ij-time-result-grid">'+
+    '<div class="ij-time-result-stat"><span>Total minutes</span><strong>'+Number.isInteger(totalMinutes)?'': ''+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Total seconds</span><strong>'+totalSeconds.toLocaleString()+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Decimal hours</span><strong>'+decimalHours+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Duration</span><strong>'+hours+'h '+minutes+'m '+seconds+'s</strong></div>'+
+    '</div>';
+  const minuteStat=out.querySelector('.ij-time-result-stat strong');
+  if(minuteStat)minuteStat.textContent=Number.isInteger(totalMinutes)?String(totalMinutes):totalMinutes.toFixed(2);
 }
 </script>
 
