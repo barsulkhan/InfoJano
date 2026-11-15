@@ -1,0 +1,4 @@
+title: InfoJano
+url: https://infojano.com
+plugins:
+  - jekyll-redirect-from
