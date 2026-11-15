@@ -7,6 +7,10 @@
 - ব্যবহারকারী tool-এর কাজ করতে বললেই shortcut না বললেও tracking নিয়ম স্বয়ংক্রিয়ভাবে চালু হবে।
 - **ট্র্যাক <tool-name>** — নির্দিষ্ট tool-এর পূর্ণ progress report দেখাও।
 
+## 0. Research-first gate (mandatory)
+
+প্রতিটি নতুন tool, major feature বা SEO landing page-এ coding শুরুর আগে `TOOL-RESEARCH-STANDARD.md` পড়বে এবং `tools/<tool-slug>/RESEARCH.md` dossier তৈরি করবে। Country/language keyword demand, volume/trend, KD, CPC/currency, traffic potential, intent/SERP, audience, direct/indirect competitors, competitor features/gaps, monetization caveats এবং InfoJano differentiation গবেষণা করবে। সব plausible market screen করে evidence দিয়ে priority নির্ধারণ করবে; একই পেজ অনুবাদ করে সব দেশে ছড়াবে না। Source/date/provider/confidence/unavailable data লিখবে। CPC publisher RPM নয়। Research decision Go/Revise/No-Go নথিভুক্ত না করে planned coding শুরু করবে না; urgent bug fix হলে exception log করবে।
+
 ## 1. Folder convention
 প্রতিটি tool-এর জন্য:
 ```text
