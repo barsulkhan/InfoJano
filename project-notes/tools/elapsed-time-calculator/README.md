@@ -327,3 +327,12 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Validation: source was restored byte-for-byte from the pre-CARD-012 baseline. This is source-level verification only; deployment and live visual confirmation remain pending.
 - CARD-012 is considered rolled back; do not reapply without a fresh explicit request and a scoped visual QA plan.
 - Next: verify Pages deployment for rollback commit, then ask user to refresh and confirm the previous layout is restored. Resume ET-010 Clear History only after the layout is back to the requested state.
+
+
+### 2026-11-15 — Related-tool icon colors and duplicate lower home link removal
+- Request: add color accents to the icons used on the page and remove the extra “Back to InfoJano Home” link appearing below the calculator; retain the header Home navigation.
+- Changed: `time-calculator.html` only. Added scoped color treatments for the four related-tool SVG icons (blue, teal, amber, violet) and the related-tools heading sparkle icon. Removed only the lower `.ij-time-home-link` paragraph; retained the header `.ij-home-back` navigation.
+- Protected: calculator hero banner, clock artwork, calculator workspace, results/history, and functional scripts were not changed.
+- Validation: re-fetched the updated file; confirmed the duplicate lower link count is zero, header Home navigation remains, and scoped icon color styles exist. Source-level check only; no interactive browser visual QA or deployment confirmation yet.
+- Commit: `d65d341e7c89e294708a64c81288a26331f50038`.
+- Next: verify deployment, then ask user to refresh and review the icon accents and removed lower link.
