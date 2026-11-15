@@ -36,6 +36,6 @@ jobs:
         with:
           node-version: 22
       - name: Validate Privacy Policy HTML5 markup
-        run: npx --yes html-validate@latest privacy-policy.html
+        run: npx --yes html-validate@latest privacy-policy.html contact.html
       - name: Check policy links, sitemap and robots reference
         run: node scripts/validate-privacy-policy-links.mjs
