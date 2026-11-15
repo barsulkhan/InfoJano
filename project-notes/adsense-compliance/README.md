@@ -722,3 +722,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 
 
 - Follow-up result: repair run #43748683497 completed SUCCESS. Privacy Policy HTML5 validation PASS, Contact HTML5 validation PASS, and policy links/sitemap/robots checker PASS. See [task record](2026-11-16-0015-contact-page-html-qa.md).
+
+
+### 2026-11-16 — Shared privacy-link coverage on tool pages
+- Inspected the shared `site-header.js`: its navigation had no Privacy Policy link, and several sampled tool pages had no page-level policy link.
+- Added a conditional, unobtrusive shared footer with Privacy Policy and Contact links only when a page has no existing Privacy Policy link. Existing linked pages are not given a duplicate footer; header/nav and hero layouts remain unchanged.
+- Source commit: `fc1649439ccb7e33524043600dc080ebef6d7d0d`.
+- Task record: [2026-11-16-0016-shared-privacy-link-coverage.md](2026-11-16-0016-shared-privacy-link-coverage.md); commit `716a5da7def5c2cf284444400f2267e1f514f107`.
+- Browser/mobile QA and live deployment/cache propagation are not yet verified. Next: wait for source CI, then spot-check one tool page with no existing policy link and one page with an existing link at desktop/mobile widths.
