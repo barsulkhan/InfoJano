@@ -6,4 +6,4 @@ Last updated: 2026-11-15
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — CARD-011 merged via PR #229; CARD-009 real browser visual/interaction QA pending; Pages deployment verified successfully (run 43685533520) | 2026-11-15 | Real mobile ও desktop browser visual/interaction QA; then accessibility review |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — manual mobile QA ET-001–ET-003 passed; CARD-009 broader mobile/desktop visual and interaction QA still pending | 2026-11-15 | Continue manual QA from QA-TEST-LOG.md (ET-004 Add/Subtract); then desktop/browser and accessibility review |
