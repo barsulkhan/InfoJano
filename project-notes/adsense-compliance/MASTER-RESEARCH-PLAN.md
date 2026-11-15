@@ -272,3 +272,41 @@ Scope: repository-wide GitHub code search on main/default branch; this is discov
 3. Search for analytics IDs, AdSense tags, consent APIs, fetch/XHR/WebSocket, script/link/font/image origins, storage keys, file uploads, camera/geolocation/notifications.
 4. Compare the complete inventory with the current Privacy Policy draft and mark each disclosure accurate / missing / uncertain.
 5. Record any production-only configuration as publisher-confirmation required; do not guess or expose secrets.
+
+## 14. Source data-flow audit — full-file sample batch (2026-11-15)
+
+Scope: fetched complete raw source for 12 selected files on `feature/privacy-policy-adsense-compliance`: `countdown-studio.html`, `qr-maker.html`, `qr-scanner.html`, `currency-converter.html`, `word-converter.html`, `word-converter.js`, `backend/word-converter/src/index.js`, `backend/word-converter/README.md`, `age.html`, `bmi-toolkit.js`, `site-header.js`, and `privacy-policy.html`.
+
+### Confirmed source observations
+
+| File / feature | Source-level data flow | Privacy implications / questions |
+|---|---|---|
+| `countdown-studio.html` | YouTube Data API v3 `/youtube/v3/channels` receives `part=snippet,statistics`, user-provided channel lookup and API key; page refreshes count every 60 seconds while connected. YouTube no-cookie embed host is also referenced. | API key is entered by the visitor and sent to Google API in query parameters; inspect whether the visitor is told this and verify embed loading/consent behavior. Event settings including optional media URL and theme are stored in localStorage key `ij-countdown-studio-v1`. |
+| `qr-maker.html` | GA4 tag uses measurement ID `G-P8D7XRGVEF`; ZXing library loaded from unpkg; sharing/copy uses browser APIs. | GA4 firing/consent gating unknown; QR content should be treated as user-provided potentially sensitive data. |
+| `qr-scanner.html` | ZXing from unpkg; camera access requested only after user presses Start and browser media permission is invoked; scanned text passed to QR Maker through sessionStorage key `infojano-qr-prefill`. | Explain camera permission and browser-local decoding only if confirmed; verify whether frames or decoded text are transmitted (source suggests local decode, but external library download still contacts CDN). |
+| `currency-converter.html` | Latest rates fetched from `open.er-api.com/v6/latest/{base}`; historical rates fetched from `api.frankfurter.dev/v2/rates?base=`; flag images from `flagcdn.com`. | Base currency and requested historical range/pair are disclosed to providers by request URL; provider-side retention/analytics unknown. |
+| `word-converter.html` / `word-converter.js` | JSZip, docx-preview and PDF.js loaded from jsDelivr/cdnjs/unpkg fallback CDNs; optional high-fidelity route POSTs FormData to configured HTTPS Worker `/convert`; Worker URL stored in localStorage. | Standard route vs upload route must be distinguished in policy; confirm actual production Worker URL/binding, retention and provider contract. |
+| `backend/word-converter/src/index.js` | Worker code calls iLoveAPI `https://api.ilovepdf.com/v1`; source allowlist observed as `https://barsulkhan.github.io`. | Current allowlist appears to name GitHub Pages origin, not the custom domain; production custom-domain route must be confirmed. Never infer live Worker binding from README placeholder. |
+| `age.html` | GA4; `ipapi.co/json/`; Wikipedia On This Day REST; Wikidata SPARQL; localStorage birthday reminder and per-day reminder marker; Notification API only when permission is granted. | IP geolocation request reveals visitor IP to provider; birthday data stays in browser storage in inspected code; notification permission is user-triggered. Verify GA consent gating. |
+| `bmi-toolkit.js` | Stores up to 100 entries containing date, weight, height and BMI in localStorage; clear action removes the key. | Health-adjacent personal data stored locally; policy should say browser-local only if no server sync exists. No server transfer identified in this JS file. |
+| `site-header.js` | Stores selected interface language in localStorage key `infojano-language`. | Preference data is local; no external transfer found in this file. |
+| `privacy-policy.html` | Existing policy references Google, AdSense vendor list, Google ad settings, ipapi, ExchangeRate-API, Frankfurter, Wikimedia, iLovePDF/iLoveAPI. | References are present but must be reconciled against exact live feature integrations, vendor list and legal controller facts; links alone do not prove complete disclosure. |
+
+### Cross-cutting signals
+- GA4 measurement ID `G-P8D7XRGVEF` appears in selected files; this sample does not establish whether it is present on every page or whether Consent Mode / CMP gating is active.
+- Third-party script/CDN origins identified in this sample: Google Tag Manager, unpkg, jsDelivr, cdnjs, FlagCDN, Google APIs, ipapi, Wikimedia, ExchangeRate-API and Frankfurter.
+- Browser storage identified in this sample: countdown configuration, QR scanner-to-maker handoff, Worker URL, birthday reminder markers, BMI history and language preference.
+- No secrets or actual visitor data were copied into this report.
+
+### Limitations / status
+- This is a 12-file full-source sample, not a complete audit of all 100+ root HTML pages and shared scripts.
+- A bulk raw-file scan across every root HTML/JS file was attempted but not completed because the tool-call limit was reached; no exhaustive scan result is claimed.
+- No production browser network log, live cookies/storage inspection, account-side vendor export, Worker production binding, or third-party retention contract was inspected.
+- D-001 remains IN PROGRESS. All source findings above are SOURCE-VERIFIED only.
+
+### Next D-001 work
+1. Continue root-page inventory in small batches, prioritizing pages with analytics, APIs, file uploads, device permissions and embedded media.
+2. Inspect all shared scripts and the full homepage tag setup.
+3. Compare each observed external host and storage category with the draft policy; record missing/uncertain statements.
+4. Ask publisher to confirm production Worker URL and whether the Word Converter custom domain is enabled; do not change Worker/DNS.
+5. Keep account-side CMP/AdSense vendor inventory separate from repository source evidence.
