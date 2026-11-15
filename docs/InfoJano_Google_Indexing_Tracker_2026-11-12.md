@@ -204,3 +204,8 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 - PR #210 adds the mobile quick-chip two-column layout and precaches `number-to-words-locales.js`, proposing Service Worker cache `v309`. OPEN / UNMERGED; main remains `v308`.
 - PR #211 synchronizes `sitemap-infojano.xml` and `sitemap.txt` with the canonical 106-URL `sitemap.xml`. OPEN / UNMERGED.
 - Direct live URL checks and browser/device rendering were not available; do not infer live or indexed status from repository source or Pages workflow success.
+
+
+## 15 Nov 2026 — Follow-up functional audit note
+- The Words to Number page was found to contain a forward number-to-words converter instead of reverse parsing. PR #210 replaces it with an English words-to-digits parser; nine source-level examples passed. This remains unmerged and is not live.
+- PR #210 also removes duplicate Bengali/Hindi hreflang entries and adds localized WebApplication JSON-LD. No indexing state changed; all 15 dedicated SEO pages remain pending submission, and the main converter remains submitted/pending verification.
