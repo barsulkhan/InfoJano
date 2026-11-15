@@ -693,3 +693,32 @@ Scope: inspected Android `MainActivity.java`, `AndroidManifest.xml`, Gradle conf
 2. Confirm which sitemap file is canonical and whether `sitemap-infojano.xml` / `sitemap.txt` are still submitted or referenced anywhere; do not edit without approval.
 3. Decide whether Privacy Policy, Contact and Countdown Studio should be listed in the canonical sitemap; do not infer solely from omission.
 4. No robots, ads.txt, sitemap, DNS, production or deployment changes were made.
+
+## 30. Public Android and Windows release verification; policy-scope update (2026-11-15)
+
+### Release evidence retrieved from GitHub
+- Android release tag `infojano-tool-apps-v1.1.1` exists, is not a draft and is marked prerelease. GitHub release metadata reports 23 downloadable APK assets, including Age, BMI, Currency, Date Difference, Discount, EMI, GST, ID Card Print Studio, image tools, Loan, Number-to-Words, Password, Percentage, QR Maker, Savings, Text, Time, Tip and Unit Converter. Published 2026-10-24.
+- Windows release tag `infojano-desktop-apps-v1.0.0` exists, is not a draft and is marked prerelease. GitHub release metadata reports 23 downloadable Windows EXE assets, including 21/22 individual tool installers plus combined setup/portable packages (asset list is preserved by GitHub release metadata). Published 2026-10-25.
+- Therefore, Android and Windows desktop wrappers are publicly downloadable GitHub prereleases, not merely unbuilt repository scaffolds. This supersedes the earlier “distribution status unverified” note in §27.
+- The dedicated Countdown Studio desktop workflow is branch-only and uploads a 30-day artifact; it explicitly does not publish a public release. Do not conflate it with the general Windows desktop release.
+
+### Privacy scope consequence
+- Google publisher privacy-disclosure requirements expressly apply to web, app and other platform surfaces. Because the native shells load hosted InfoJano pages, their use can trigger the same GA4, AdSense, CMP, API, CDN and browser-storage behavior documented in §26.
+- The public Android app also enables WebView DOM storage and exposes a local Downloads export bridge; Windows apps load the hosted portal/tool and route external links to the system browser.
+- The Privacy Policy should explicitly identify the downloadable Android and Windows app wrappers as additional access surfaces and explain that they load hosted website functionality and require internet access. Native file chooser/local Downloads export should be distinguished from server upload.
+- This does not establish that ads/analytics actually fire inside every app; native WebView/Electron runtime network/cookie/CMP tests remain required.
+
+### Proposed policy change list — research only, not implemented
+1. Add an “Apps and desktop software” paragraph: public Android APK and Windows desktop wrappers; they load hosted InfoJano tools, require internet, and inherit relevant website processing; local file chooser/download behavior for Android where appropriate.
+2. Expand local storage examples: Countdown Studio saved event configuration; QR scanner-to-maker sessionStorage; Percentage and Time histories; Work Hours opt-in timesheet fields; BMI history; Age reminder; language preference; Worker URL.
+3. Clarify feature-specific requests: YouTube channel lookup/API key to Google; Currency Converter base/historical requests; Age Calculator IP-based location lookup and Wikipedia/Wikidata; optional Word Converter DOCX upload to Worker/iLoveAPI.
+4. Replace Birthday Countdown notification claim with accurate feature behavior after product owner chooses whether to change copy or implement the feature. No code change is authorized in this task.
+5. Clarify that the optional Word Converter route is not confirmed available on `infojano.com`; confirm Worker deployment/origin allowlist before making any public availability claim.
+6. Keep iLoveAPI retention language conditional and provider-confirmed: current API-specific terms state up to 48h while general/security/docs pages state 2h. Obtain written confirmation for the publisher's actual API plan/project.
+7. Clarify AdSense/CMP status based on live approval and runtime evidence; do not promise a visible revocation link until a working “Privacy and cookie settings” route is tested.
+8. Add controller legal identity/jurisdiction and contact confirmation only after publisher supplies/validates these facts.
+
+### Evidence / limits
+- GitHub release metadata is source evidence for publicly downloadable prerelease assets; it does not prove downloads, installations, active usage or app-store distribution.
+- No app was downloaded/installed or run during this audit. No live Android WebView/Electron requests, cookies, consent dialogs or native storage behavior were inspected.
+- No policy or app source was changed.
