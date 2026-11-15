@@ -1,3 +1,4 @@
+| Add or Subtract Date Calculator | tools/add-subtract-date-calculator/ | In progress — functional calculator embedded in existing SEO page; Node syntax and date arithmetic checks pass; browser QA/deployment verification pending | 2026-11-15 | Complete browser QA; verify Pages deployment; then review related date-page CTA consistency |
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — US Work Hours/Time Card SERP review recommends one consolidated concept; US Date & Time Duration review finds overlap with existing Date + Time mode; no additional elapsed/date-time URL justified; quantitative metrics/GSC unavailable; desktop visual QA pending | 2026-11-15 | Complete desktop visual QA when browser access is available; revisit US metrics/GSC when reliable data is available |
 
 Last updated: 2026-11-15
@@ -80,3 +81,10 @@ Last updated: 2026-11-15
 - APK workflow #682 exposed two missing precache entries: `elapsed-time-calculator-guide.html` and `work-hours-calculator.html`. Both were added to `sw.js`; cache version advanced to v310.
 - Root HTML/service-worker source parity now reports zero missing entries across 112 tool pages. Commit `e8a0beab9cb70643fa612230956cc106474a71f1`.
 - APK #683 and Pages #2625 queued; final build/deployment status pending.
+
+
+### 2026-11-15 — Add/Subtract Date calculator implementation
+- Added functional browser-local calculator to existing `add-subtract-date-calculator.html`; kept same canonical URL and preserved hero. CTA now points to calculator section.
+- Research and QA dossier: `project-notes/tools/add-subtract-date-calculator/`.
+- Code commits: `c9d8bc99a9273f4dbc7c33b805a7b0de674ac424`, `f6265401f3317f11af61c0013c6f4f1b6abe9518`. Node syntax + arithmetic cases passed; browser QA and latest deployment pending.
+- APK workflow #683 completed SUCCESS, including 23 APK package verification, artifact upload and release publication. Release: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1
