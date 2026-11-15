@@ -4,6 +4,9 @@ Last updated: 2026-11-15
 Tool page: https://infojano.com/time-calculator.html
 Overall status: Paused at user's request — current mobile checks and source audit recorded. Two computer-only tasks deferred until user is at a computer: (1) desktop visual QA and (2) keyboard/screen-reader accessibility QA. Five-entry cap runtime test also remains unverified.
 
+## Research dossier
+- SEO keyword and landing-page research: [RESEARCH.md](RESEARCH.md) — preliminary qualitative review saved 2026-11-15. Ahrefs metrics unavailable due plan entitlement; volume/KD/CPC/trend are N/A. Decision: optimize the existing canonical page first; no separate generic elapsed-time page yet. Further metrics validation is required before SEO implementation.
+
 ## User-approved scope and constraints
 - Existing Elapsed Time Calculator hero banner dimensions, layout, styling, artwork and copy must remain unchanged unless the user explicitly approves a hero change.
 - Homepage Hero Banner and ID Card Print Studio Hero must not be changed without separate explicit permission.
@@ -368,3 +371,13 @@ Overall status: Paused at user's request — current mobile checks and source au
 - Deferred for user's computer session: desktop visual QA; keyboard navigation/focus and screen-reader accessibility QA. Also still unverified at runtime: add six calculations and confirm only the latest five remain. This history-cap test can be done on mobile or desktop, but has not yet been performed.
 - Status: PAUSED, not fully QA-complete. Resume only when user asks and has computer/browser access for the deferred checks.
 - Separate keyword research note: no AdSense/ad-keyword or SEO keyword/CPC research has been performed for this calculator in this workstream.
+
+
+### 2026-11-15 — SEO keyword research and landing-page decision
+- User clarified they want search-engine ranking keyword research, candidate keywords added/researched, and a decision on whether a separate SEO page is needed.
+- Created `RESEARCH.md` with keyword clusters, current page review, country/language research scope, SERP competitors, content gaps, page architecture recommendation, source log and limitations.
+- Preliminary decision: REVISE — target the related elapsed-time/time-difference/time-duration/add-subtract clusters on the existing canonical `/time-calculator.html`; do not create a second generic page yet. A distinct work-hours/shift page may be considered only if validated demand and unique feature scope justify it.
+- Candidate clusters documented: primary elapsed-time/time-difference/time-duration; secondary time-between-two-times/add-subtract/overnight; date-time duration; possible future work-hours/shift terms.
+- Metrics limitation: Ahrefs Keywords Explorer lookups for IN and BD returned “Insufficient plan”; therefore search volume, KD, CPC, traffic potential, country split and seasonality are N/A, not guessed. Web SERP discovery identified Calculator.net, timeanddate.com, TimeCamp, Toggl and OnTheClock as direct/adjacent competitors.
+- No page code, title, meta description or keyword metadata changed. Do not add a legacy meta-keywords tag or stuff keywords. Complete country-specific metrics and GSC query review before on-page SEO changes or new landing pages.
+- Research dossier commit: `c852314620e2dca06c244401e05f8bd7a92acb1f`.
