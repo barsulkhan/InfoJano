@@ -23,8 +23,15 @@ Live site: https://infojano.com/
 11. কাজ শেষে উত্তরে completed, successful, failed/blocked, pending এবং tracker link সংক্ষেপে জানাবে।
 12. কোনো tool/action/browser access না থাকলে তা স্পষ্ট বলবে; ভিজ্যুয়াল QA হয়েছে বলে ভান করবে না।
 
+
+
+## Mandatory research-first rule (new user requirement)
+For every tool/major feature, do not start coding first. First complete a saved country/language SEO and market research dossier covering keyword clusters, monthly volume/trends, KD, CPC/currency, traffic potential, search intent/SERP, audience segments, direct/indirect and country-specific competitors, competitor feature gaps, monetization caveats, and how InfoJano can do better. Use `project-notes/TOOL-RESEARCH-STANDARD.md` and `project-notes/templates/TOOL-RESEARCH-TEMPLATE.md`; save each dossier as `project-notes/tools/<tool-slug>/RESEARCH.md`. Screen all plausible countries for each tool, then prioritize by evidence; do not blindly duplicate country pages. Record sources, access dates, provider/database, confidence and unavailable metrics. CPC is not publisher RPM or guaranteed revenue. Do not begin planned implementation until the research decision is documented; urgent bug fixes may use a logged minimal-research exception.
+
 ## Current repository documentation
 - Rules: [TOOL-WORK-TRACKING-STANDARD.md](TOOL-WORK-TRACKING-STANDARD.md)
+- Research rules: [TOOL-RESEARCH-STANDARD.md](TOOL-RESEARCH-STANDARD.md)
+- Research template: [templates/TOOL-RESEARCH-TEMPLATE.md](templates/TOOL-RESEARCH-TEMPLATE.md)
 - Tool index: [TOOL-INDEX.md](TOOL-INDEX.md)
 - Elapsed Time Calculator tracker: [tools/elapsed-time-calculator/README.md](tools/elapsed-time-calculator/README.md)
 - Legacy Elapsed Time Calculator notes: [elapsed-time-calculator-progress.md](elapsed-time-calculator-progress.md)
