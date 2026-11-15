@@ -469,3 +469,24 @@ Scope: complete raw source fetched for 12 additional pages: `target-marks-calcul
 ### Limits / next
 - 7 root HTML files remain unreviewed in the current branch tree after this batch.
 - Complete the final root-page batch, then build the consolidated source-level inventory. Runtime consent and network verification remain separate and NOT RUN.
+
+## 24. Root-page inventory batch 10 — final root pages and opt-in work-hours storage (2026-11-15)
+
+Scope: complete raw source fetched for the final 7 root HTML pages: `whatsapp-qr-code-generator.html`, `wifi-qr-code-generator.html`, `word-to-jpg.html`, `word-to-pdf.html`, `word-to-png.html`, `words-to-number-converter.html`, and `work-hours-calculator.html`.
+
+### Findings (source verified)
+- `work-hours-calculator.html` has an explicit unchecked-by-default opt-in control, “Remember my entries on this device”. When enabled, it stores work-shift date, start/end times, unpaid break minutes, overtime threshold, hourly rate and currency in localStorage key `infojano_work_hours_entries_v1`. It includes Clear saved data and Reset actions; turning the remember option off removes the saved copy. Page copy states calculations run in the browser and entries are not uploaded. Static source inspection found localStorage use but no fetch/XHR/FormData upload route in this page.
+- `word-to-jpg.html`, `word-to-pdf.html` and `word-to-png.html` are thin internal redirects to `word-converter.html` with a format query parameter; they do not independently process files or call an external service.
+- WhatsApp QR and WiFi QR pages showed no direct external API/network, browser-storage, analytics/ads or CMP marker in the bounded scan. The generated QR content may include user-entered phone/message or WiFi network credentials; do not claim these values are sent to a server without evidence.
+- Words to Number Converter showed no direct network/storage/CMP marker in this scan.
+- No CMP/TCF marker found.
+
+### Inventory completion status
+- Root HTML file count on branch tree: 116.
+- Root HTML pages with source inspection recorded across batches 02–10 and earlier selected batches: all 116 are now covered by a source-level marker review. This does not mean every embedded dependency or dynamic module has been deeply audited.
+- D-001 can move from ROOT-PAGE SOURCE INVENTORY to CONSOLIDATION / DEPENDENCY AUDIT. Do not mark live/runtime/account configuration checks complete.
+
+### Limits / next
+- Source inspection is not browser network QA. Runtime tag injection, cookies, CMP/TCF signals, Consent Mode behavior and actual provider requests remain UNVERIFIED.
+- Shared scripts, CSS imports, worker modules, dynamic imports, PWA manifests and non-root nested HTML/resources still need dependency-aware review.
+- Reconcile the Birthday Countdown notification copy mismatch, Work Hours opt-in storage disclosure, BMI/time/percentage history, Word Converter optional upload route, GA4 tag map, AdSense loader and all CDN/API hosts before editing the policy.
