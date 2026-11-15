@@ -28,3 +28,21 @@ Source-only checks were run after page creation. Inline JavaScript syntax and ke
 ### 2026-11-15 — Deployment workflow status
 - GitHub Pages workflow run #2550: SUCCESS, commit `f44e679ad5e8e0746061ea98c81b017605229485`.
 - Direct live URL check, browser QA and functional tests WH-001–WH-010 remain NOT RUN.
+
+
+### 2026-11-15 — Work Hours QA resumed: focused source/logic audit
+- Request: return to InfoJano's main work and begin the pending Work Hours & Shift Calculator QA; honor the user's instruction to avoid paid SEO tools.
+- Re-fetched before work: current handoff, tracking standard, research standard, tool index, Work Hours README, RESEARCH.md, QA-TEST-LOG.md, page source and research template.
+- Inspected source paths in `work-hours-calculator.html`: `parseTime()`, `getEntries()`, overnight gross calculation, break validation, `mondayOf()`, daily/weekly aggregation, threshold estimate, earnings estimate, CSV serialization/download, opt-in localStorage, clear/reset handlers and live status message.
+- Source/logic findings:
+  - PASS (source inspection): 09:00–17:30 produces 510 gross minutes; a 30-minute break is deducted to 480 net minutes; decimal output is net minutes / 60 to two places (8.00).
+  - PASS (source inspection): 22:00–06:00 is treated as next-day rollover (480 gross minutes); 45-minute break leaves 435 minutes (7.25 decimal hours).
+  - PASS (source inspection): daily totals are keyed by shift date; weekly totals use Monday as the bucket start and group by shift start date. This matches the documented overnight attribution rule.
+  - PASS (source inspection): daily threshold excess is calculated per date from that day's net minutes; UI wording says it is based on the user's setting and not a legal/payroll determination.
+  - PASS (source inspection): earnings estimate is net hours × entered rate; the visible text excludes premiums, taxes and deductions.
+  - PASS (source inspection): CSV cells are quoted and embedded quotes doubled; output includes UTF-8 BOM, CRLF rows, shift details and summary totals.
+  - PASS (source inspection): localStorage write is gated by the Remember checkbox; turning it off removes the stored key; Clear saved data removes the key while retaining current on-screen rows; Reset clears entries and stored data.
+  - PASS (source inspection): missing/invalid date/time, equal start/end and break greater than gross duration are rejected; invalid rows are excluded from calculations and export is blocked while errors exist.
+- Important limitation: these are source/logic inspections, not real browser functional tests. No connected interactive browser/computer-control tool is available in this session. WH-001–WH-010 remain NOT RUN as runtime/browser tests; no CSV file download, localStorage UI interaction, keyboard or responsive rendering was executed.
+- Application source was not changed. Protected homepage hero, Elapsed Time Calculator hero and ID Card Print Studio hero were not changed.
+- Next concrete step: run WH-001–WH-009 in a real browser, capture actual outputs/download/storage behavior, then desktop/mobile/accessibility review and release verification. Do not claim runtime PASS from this source audit.
