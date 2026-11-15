@@ -249,3 +249,9 @@ Copy/paste prompt:
 - Created tracker folder `project-notes/tools/add-subtract-date-calculator/` with README, RESEARCH and QA-TEST-LOG; added TOOL-INDEX entry. Research uses free SERP review; volume/KD/CPC remain N/A.
 - User previously confirmed Elapsed Time copy/share and screen-reader checks were completed; treat these as user-reported completed checks, not re-run evidence. Desktop visual QA remains pending. Work Hours WH-001–WH-010 browser/runtime tests remain NOT RUN.
 - Latest Pages deployment must be rechecked after these commits. Browser visual, focus/keyboard and clipboard permission checks still require an actual browser environment; none is available in this session.
+
+
+## Deployment follow-up — 2026-11-15
+- GitHub Pages run #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`, which includes the add/subtract-date calculator implementation and tracker updates. Direct live-page fetch was inaccessible to the current browser tool; do not claim rendered page or browser interaction verified.
+- APK workflow #685, triggered by the add/subtract page change, passed repository validation and was still in its APK build step at last check. The prior published release v1.1.1 was verified to contain exactly 23 APK assets.
+- Add/Subtract Date Node syntax and arithmetic checks are PASS; real browser visual/interaction/accessibility QA remains pending.
