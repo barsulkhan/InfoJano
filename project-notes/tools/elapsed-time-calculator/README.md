@@ -293,3 +293,13 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Validation: source content confirmed on default branch. No live visual browser QA performed yet; deployment status not yet verified in this entry.
 - Protected areas: calculator hero and core calculator workspace/history logic untouched; homepage Hero Banner and ID Card Print Studio Hero untouched.
 - Next: verify the GitHub Pages deployment for the merge commit, then ask user for live mobile review of the refreshed lower sections. Continue ET-010 Clear History separately.
+
+
+### 2026-11-15 — Live mobile screenshot review: CARD-012 layout regression found
+- User supplied a live mobile screenshot after CARD-012 merge.
+- Confirmed visual defect: the compact original “How to Calculate Time Difference” card inside the result column is displaced into the workspace and overlaps the lower area. Cause identified in CSS: the newly added full-width `.ij-time-guide` selector also matched the existing inline result guide, because both shared the same class.
+- Other screenshot observations: hero appears intact; calculator controls and Recent Calculations remain visible; related-tool cards render. The lower new guide is not fully visible in the supplied viewport capture, so its complete mobile layout is not yet verified.
+- Fix prepared on branch `fix/elapsed-time-guide-layout`: new lower guide renamed to `.ij-time-guide-section`; full-width rules scoped to the new class; original `.ij-time-right .ij-time-guide` rule restored.
+- Fix PR: #231 — https://github.com/barsulkhan/InfoJano/pull/231. Source re-fetch confirms old inline guide markup remains and new lower guide uses a unique class. No live browser verification of the fix yet. PR currently reports mergeable=false; do not claim merged.
+- No main-branch source changed by this fix yet. Existing hero and calculator logic untouched.
+- Next: resolve PR mergeability/conflict or checks, merge only after GitHub permits; then verify deployment and request a fresh mobile screenshot to confirm the inline guide is back in its result-column position.
