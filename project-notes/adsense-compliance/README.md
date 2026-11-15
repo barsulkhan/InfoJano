@@ -493,3 +493,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: `f00a2281e0e3` (standard), `951205b20559` (handoff), `1e3c17326a66` (task evidence file).
 - The other three website repository names have not yet been supplied, so their individual repositories cannot be updated yet. Global rule is recorded in the InfoJano handoff and applies by default.
 - No production/account/DNS/PR merge/deployment changes.
+
+### 2026-11-15 — Source data-flow audit batch 02
+- Full source inspected for 12 files covering Countdown Studio, QR Maker/Scanner, Currency Converter, Word Converter/Worker, Age Calculator, BMI toolkit, shared header and Privacy Policy.
+- Confirmed source-level flows include YouTube Data API with visitor-entered API key, GA4 on sampled pages, QR camera/sessionStorage, exchange-rate APIs, optional DOCX upload to Worker/iLoveAPI, ipapi/Wikipedia/Wikidata, local BMI history and language preference.
+- Detailed findings, caveats and next actions: [2026-11-15-2319-source-data-flow-audit-batch-02.md](2026-11-15-2319-source-data-flow-audit-batch-02.md) and MASTER-RESEARCH-PLAN.md §14.
+- Task evidence file commit: `4f11ccdc3428`; research-plan commit: `659c7f2b2c36`.
+- D-001 remains IN PROGRESS; exhaustive all-page source inventory and live runtime/config verification are not complete.
+- No production code, settings, DNS, Worker binding, PR merge, deployment or protected design changed.
