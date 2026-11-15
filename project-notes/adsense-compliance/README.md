@@ -558,3 +558,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `2653d1bc921e`; task file `33dc27353426`.
 - D-001 remains in progress; 19 root HTML files remain unreviewed; live runtime tests not run.
 - No production, policy, account, DNS, merge or deployment changes.
+
+### 2026-11-15 — Root-page inventory batch 09
+- Inspected 12 more time/text/QR/voter pages. GA4 confirmed in Text Counter, Time Calculator, Tip Calculator and Unit Converter; Time Calculator stores up to 5 history records locally under `ijElapsedTimeHistoryV1`. Voter guide links to ECI portal as outbound navigation.
+- Task evidence: [2026-11-15-2327-root-page-inventory-batch-09.md](2026-11-15-2327-root-page-inventory-batch-09.md); master plan §23.
+- Commits: plan `5184eca083eb`; task file `514db10182a9`.
+- D-001 remains in progress; 7 root HTML files remain unreviewed; live runtime tests not run.
+- No production, policy, account, DNS, merge or deployment changes.
