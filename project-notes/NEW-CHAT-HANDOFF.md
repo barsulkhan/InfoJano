@@ -207,3 +207,13 @@ Copy/paste prompt:
 - SEO decision remains: create quality SEO pages when research supports distinct intent; existing Work Hours page is the consolidated Work Hours/Time Card/Timesheet destination. Business Hours, Decimal Hours and Military Time remain HOLD; no new URL should be built from unsupported demand claims. No paid SEO subscriptions or tools.
 - Protected homepage hero, Elapsed Time Calculator hero and ID Card Print Studio hero were not modified.
 - Next: verify the latest Pages workflow/live page; execute Work Hours validation and arithmetic in browser if available; otherwise batch source audits of remaining date pages and leave only live-browser tasks for the user.
+
+
+## Latest service-worker / CI correction — 2026-11-15
+- After Work Hours source validation changes, reviewed current GitHub Actions runs. APK workflow #682 failed during validation with `Tool page missing from service-worker cache: elapsed-time-calculator-guide.html`.
+- Compared all 112 root tool HTML pages against `sw.js`; the only missing entries were `elapsed-time-calculator-guide.html` and `work-hours-calculator.html`.
+- Added both paths to `sw.js`, bumped cache version to `infojano-v310`, and re-fetched the repository listing + service worker. Source parity check: 112 pages, zero missing entries.
+- Fix commit: `e8a0beab9cb70643fa612230956cc106474a71f1`.
+- Pages workflow #2624 for preceding handoff commit completed SUCCESS. APK #683 and Pages #2625 for the service-worker fix were queued at last check; do not claim their outcomes until rechecked.
+- Failed APK #682 stopped at validation, before APK build/package/release steps; no APK release was produced by that run.
+- Next: recheck latest Actions runs; continue source audit of date pages if CI is green. Keep user-only work to real browser visual/functional checks when needed.
