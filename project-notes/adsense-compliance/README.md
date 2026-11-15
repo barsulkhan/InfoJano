@@ -232,3 +232,12 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Changed: tracker documentation only. No website source, DNS, AdSense settings, CMP settings, or production deployment changed.
 - Next task chosen: continue independent public-source verification of ads.txt and privacy-policy link; if live inspection remains inaccessible, retain UNVERIFIED rather than ask user to repeat completed account steps.
 - Protected areas preserved: all production code, DNS, AdSense/CMP settings and protected hero sections untouched.
+
+
+### 2026-11-15 — Independent public URL verification attempt after Site Details review
+- Chosen next task: attempt public verification of https://infojano.com/ads.txt and https://infojano.com/privacy-policy.html without asking the user to repeat account checks.
+- Attempted direct public URL opens for both URLs through the available web inspection service. Both returned an internal inaccessible/error response. This is a TOOL ACCESS FAILURE, not evidence that either URL returns HTTP 404 or is down.
+- GitHub source evidence remains unchanged: root ads.txt source exists and is correct; privacy-policy.html is absent from the repository tree and work-hours-calculator.html contains a link to it.
+- Result: live ads.txt HTTP status/body/redirect and live Privacy Policy page status remain UNVERIFIED. No live HTTP 200 or 404 claim made.
+- Next work: complete source-only third-party/library inventory across the remaining pages and identify every Privacy Policy-linked feature/data flow; prepare a draft outline only after that inventory. Legal publication remains blocked until public contact email and production data-flow confirmation are supplied.
+- Changed: documentation only. No source, DNS, account setting, CMP setting or production state changed.
