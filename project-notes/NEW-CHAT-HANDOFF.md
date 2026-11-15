@@ -186,3 +186,12 @@ Copy/paste prompt:
 - New distinct opportunity priority: Business Hours (HOLD pending metrics/spec), Decimal Hours (HOLD), Military Time (HOLD). Clock-Out should be considered inside Work Hours first. No new URL or implementation is approved by this dossier.
 - Existing date-page source audit is not fully complete; remaining pages should be inspected before date architecture changes.
 - User requests batching research and saving it to files to avoid repeated back-and-forth. Prefer completing all feasible related research in one batch, documenting unavailable data once, and updating this handoff.
+
+
+## Work Hours QA resumed — 2026-11-15
+- User instructed to return to the main InfoJano work and begin. Work resumed on the existing Work Hours & Shift Calculator QA rather than expanding SEO candidate research.
+- Re-fetched current handoff, tracking/research standards, tool index, Work Hours tracker/research/QA log and page source.
+- Focused source/logic audit recorded in `project-notes/tools/work-hours-calculator/QA-TEST-LOG.md`: basic/overnight arithmetic paths, date/week grouping, daily threshold, earnings estimate caveat, CSV quoting/serialization and opt-in localStorage/clear/reset reviewed.
+- This is source review only. WH-001–WH-010 real browser/runtime checks remain NOT RUN; no connected interactive browser/computer-control tool is exposed in this session. Do not claim runtime QA or deployment.
+- No application source changed. Protected homepage, Elapsed Time Calculator and ID Card Print Studio heroes preserved.
+- Next: perform WH-001–WH-009 runtime checks in a real browser, then desktop/mobile/accessibility QA and verify the current Pages deployment/live URL. User does not want paid SEO tool spend; use free sources and qualitative analysis only.
