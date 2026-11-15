@@ -6,5 +6,5 @@ Last updated: 2026-11-15
 
 | Tool | Tracking folder | Overall status | Last updated | Next action |
 |---|---|---|---|---|
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; Pages workflow #2550 SUCCESS; follow-up SERP and qualitative localization research saved; live/browser/accessibility QA pending | 2026-11-15 | Run guide mobile/desktop browser QA; finish calculator desktop/accessibility QA and runtime five-entry-cap check |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — calculator + guide source checks PASS; Pages workflow #2550 SUCCESS; follow-up SERP/localization research and 16 static source checks saved; Pages workflow #2570 success for prior handoff commit; live/browser/accessibility QA pending | 2026-11-15 | Run guide/calculator mobile/desktop browser QA; runtime five-entry-cap, keyboard/focus, screen-reader and DST checks |
 | Work Hours & Shift Calculator | tools/work-hours-calculator/ | In progress — MVP page created; source checks PASS; Pages workflow #2550 SUCCESS; browser/functional QA pending; keyword metrics N/A | 2026-11-15 | Run WH-001–WH-009 functional/CSV/localStorage tests, then mobile/desktop/accessibility QA and live URL check |
