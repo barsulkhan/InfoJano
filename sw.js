@@ -1,6 +1,6 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v310";
-const HOME = "/InfoJano/";
+const CACHE_NAME = "infojano-v311";
+const HOME = new URL("./", self.location).pathname;
 const ASSETS = [
   HOME,
   "/InfoJano/404.html",
@@ -199,7 +199,7 @@ const ASSETS = [
   "/InfoJano/app-manifests/time-calculator.webmanifest",
   "/InfoJano/app-manifests/tip-calculator.webmanifest",
   "/InfoJano/app-manifests/unit-converter.webmanifest",
-];
+].map(path => path.startsWith("/InfoJano/") ? HOME + path.slice(10) : path);
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
