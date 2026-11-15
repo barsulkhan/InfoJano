@@ -809,3 +809,9 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - `site-header.js` is now included in the privacy QA workflow path filters. CI run #43749910209 passed both HTML validation and policy/sitemap/robots checks for the new workflow commit.
 - Task record: [2026-11-16-0017-shared-footer-qa-trigger.md](2026-11-16-0017-shared-footer-qa-trigger.md).
 - Remaining validation: live custom-domain deployment propagation and desktop/mobile browser spot-check.
+
+
+### Screenshot follow-up — 2026-11-16
+- Added direct Privacy Policy and Contact footer links to the 10 tool pages identified from the user's mobile screenshots: Image Resizer, Document Studio, Word Converter, Image to PDF, PDF Page Extractor, QR Maker, Social QR Maker, URL Toolkit, Currency Converter and Unit Converter.
+- Task record: [2026-11-16-0017-screenshot-pages-privacy-links.md](2026-11-16-0017-screenshot-pages-privacy-links.md).
+- Source commits are on `main`; after-state mobile browser verification/live cache propagation still needs confirmation.
