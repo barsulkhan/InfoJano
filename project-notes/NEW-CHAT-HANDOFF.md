@@ -106,3 +106,11 @@ Copy/paste prompt:
 - Actual mobile/desktop browser rendering, runtime five-entry cap, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime checks remain NOT RUN due unavailable interactive browser/computer-control session.
 - Pages workflow #2570 for prior handoff commit succeeded; it is not browser QA and predates the latest QA documentation commits. Check latest Actions run before claiming deployment for these commits.
 - Latest QA documentation commits: QA log `40a1ba3ef1dc14ebbe24e5d98ab277d59519fbb4`; README `5594345be7467300f70161e173b778efb35a2a36`; TOOL-INDEX `16ffc40ce7f53f763e2b619a6ae549a384db4c26`.
+
+
+## User clarification — future Elapsed Time SEO page hero (2026-11-15)
+- User said not to revise the existing guide hero now, despite it using the homepage hero treatment/artwork rather than the tool's own hero.
+- Mandatory design requirement for any future justified SEO landing page: use the existing Elapsed Time Calculator tool hero as the exact design reference (same layout, dimensions, visual styling, artwork, typography and copy treatment). Do not use the homepage hero as a substitute.
+- The current research decision remains: only two URLs are justified — /time-calculator.html (interactive utility) and /elapsed-time-calculator-guide.html (how-to guide). No additional keyword/country pages are justified by the available evidence; Ahrefs numeric metrics are unavailable and no GSC export exists.
+- Do not create duplicate/thin pages to satisfy a page-count target. Reopen CARD-010 only when a distinct intent is evidenced or a substantiated opportunity is approved.
+- Existing calculator hero, homepage hero and ID Card Print Studio hero remain protected.
