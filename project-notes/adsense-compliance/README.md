@@ -137,3 +137,16 @@ Overall status: In progress
 - Next manual check: click the infojano.com row to open Site details and inspect any displayed review details / ads.txt explanation. Do not click Request review or change any settings.
 - Tests: current approval status — OBSERVED: Getting ready; detailed reason/status details — NOT VISIBLE / NOT VERIFIED; ads.txt status — POSSIBLY “Not found”, LOW-CONFIDENCE and pending confirmation.
 - No account setting, website source, DNS or production state changed.
+
+
+### 2026-11-15 — Follow-up: Google status definitions and live URL checks
+- Reviewed current official Google AdSense help: https://support.google.com/adsense/answer/12170222?hl=en
+  - “Getting ready” means Google is running checks; Google says review usually takes a few days and can take 2–4 weeks in some cases.
+  - Google explicitly warns not to remove the site and resubmit, because this can delay the process.
+  - “Not found” ads.txt means no ads.txt file was found when the AdSense crawler last crawled the site.
+  - “Ready” means site is ready to show ads; “Needs attention” means issues must be fixed.
+- Current screenshot status therefore means wait for Google's checks; no re-submission or removal is indicated. User already confirmed Request review was submitted.
+- Additional context: Google AdSense community expert answers in recent threads state ads.txt is not required for the initial site review and may remain Not found while a new site is awaiting review; treat community replies as secondary guidance, not official policy.
+- Attempted live URL inspection for https://infojano.com/ads.txt, https://infojano.com/robots.txt, and https://infojano.com/privacy-policy.html; web inspection service returned internal inaccessible errors for all three. Live HTTP status, redirects, response body and page availability remain UNVERIFIED (not evidence that URLs are down).
+- No code, DNS, AdSense settings, CMP settings or production changes made.
+- Current next steps within audit scope: user may open the infojano.com row in AdSense Sites to view status details and ads.txt details if desired; do not press Request review, remove/re-add site, or publish CMP changes. The repository's missing privacy-policy.html remains a source-level blocker; drafting/deploying legal policy requires accurate publisher disclosures and explicit approval.
