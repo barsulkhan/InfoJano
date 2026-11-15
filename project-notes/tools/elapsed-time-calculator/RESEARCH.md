@@ -376,3 +376,12 @@ Attempted direct public fetches of the calculator, guide, robots.txt and sitemap
 - Public search results reviewed 2026-11-15: Toggl, TimeToolSet, PercentPoint, TimeDateLab, TimeCalculator.ca (URLs in table above).
 - Repository source files fetched 2026-11-15: time-calculator.html, elapsed-time-calculator-guide.html, sitemap.xml.
 - Limitations: result snippets/page content may change; no country-localized top-10 export, keyword database metrics, GSC data, live page fetch or interactive browser test was available.
+
+
+### 14.7 Calculator behavior verified directly in source (2026-11-15)
+
+A targeted source inspection of the clock-only calculation and date-time calculation functions found:
+- Clock-only mode converts both clock inputs to seconds after midnight and adds 86,400 seconds only when the end value is strictly less than the start value. Therefore an identical start/end clock reading returns zero duration, not an assumed 24-hour day. This boundary should be explained if discussed in copy.
+- Clock-only mode does not expose a timezone selector or perform a timezone conversion; it is arithmetic on the entered clock values.
+- Date + time mode parses the entered date-time strings with JavaScript Date and subtracts their epoch milliseconds. It rejects an end that is not later than the start. Because Date parsing of local date-time input uses the browser's local timezone and timezone offset rules, daylight-saving transitions may affect the elapsed seconds. The UI does not currently offer a timezone selector or explicit DST explanation. Do not describe it as timezone-independent or universally DST-neutral.
+- This is source-level inspection, not runtime/browser validation. A dedicated DST boundary test and equal-clock runtime test remain pending.
