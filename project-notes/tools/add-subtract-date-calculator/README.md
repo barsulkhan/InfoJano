@@ -59,3 +59,5 @@ Overall status: In progress — existing SEO page now contains a functional date
 - Pages workflow #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`, including the calculator implementation and tracker docs.
 - Direct live-page retrieval through the available browser fetch failed; do not claim live browser rendering or interaction verified. Browser QA remains pending.
 - APK workflow #685 for the calculator page change passed repository validation and was still building APKs at last check. The previous release tag v1.1.1 was independently verified to contain 23 APK assets.
+
+- APK workflow #685 also completed SUCCESS for the date-offset page code commit; 23 APKs verified, uploaded and published. Release v1.1.1 currently contains 23 APK assets: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1
