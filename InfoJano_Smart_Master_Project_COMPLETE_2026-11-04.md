@@ -3864,3 +3864,11 @@ All 16 files exist on main and have canonical URLs:
 7. Revisit Bengali/Hindi WebApplication schema and duplicate hreflang entries after layout work is approved and live-verified.
 
 **Checkpoint boundary:** Source audit and source-level tests only. PRs #210 and #211 are unmerged; no production code, sitemap or cache update is live from these PRs; no browser/device QA, live HTTP verification, Search Console submission or indexing verification was completed.
+
+
+### Follow-up found during the 16-URL functional audit
+- The `words-to-number-converter.html` page was incorrectly running a number-to-words script despite its reverse-conversion title and description. PR #210 now replaces it with an English words-to-digits parser, including Indian/International grouping, scale words, decimals, negative values, rupees/paise and dollars/cents. Nine source-level examples passed.
+- Legacy `?focus=reverse` links now route to the dedicated reverse converter rather than a nonexistent main-page control.
+- Bengali and Hindi SEO pages had duplicate hreflang entries and lacked WebApplication JSON-LD. PR #210 removes the duplicate tags and adds localized WebApplication schema. Reciprocal hreflang links are already present on the English main page.
+- PR #210 now covers six files: `number-to-words.html`, `number-to-words-locales.js`, `words-to-number-converter.html`, `bengali-number-to-words.html`, `hindi-number-to-words.html`, and `sw.js`. It remains OPEN / UNMERGED; its proposed cache is v309, not live.
+- These are source-level corrections only. Real browser/device, live URL, offline, clipboard, speech, download and print checks remain outstanding.
