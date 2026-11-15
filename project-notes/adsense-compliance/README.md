@@ -515,3 +515,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task-plan commit: `67b0082e6b99`; task file commit: `f9785952885f`.
 - D-001 remains in progress; this is a bounded source audit, not a complete sitewide inventory or runtime QA.
 - No production/settings/DNS/merge/deployment changes.
+
+### 2026-11-15 — Root-page inventory batch 03
+- Inspected 12 additional page sources: 404, Aadhaar/Ayushman print guides, date/age tools, Bengali and bulk number conversion, birthday countdown and BMI support pages.
+- Confirmed UIDAI/NHA references are outbound navigation links, not observed InfoJano data uploads; Add/Subtract Date loads Google Fonts; Birthday Countdown copy mentions notifications but source has no Notification API or reminder storage implementation; sampled local calculators/guides showed no direct API/storage/analytics markers.
+- Evidence file: [2026-11-15-2323-root-page-inventory-batch-03.md](2026-11-15-2323-root-page-inventory-batch-03.md); master plan §17.
+- Commits: research plan `182b51460e13`; task evidence `c39d9536ef51`.
+- D-001 remains IN PROGRESS; this is a bounded sample, not full sitewide/runtime verification.
+- No production code, policy, account settings, DNS, merge, deployment or protected design changed.
