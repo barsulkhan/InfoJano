@@ -152,6 +152,11 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
       <div class="ij-time-input-row"><input id="end" type="time" step="1" aria-describedby="time-input-help"><button class="ij-time-utility" type="button" onclick="setCurrentTime('end')">Use Now</button></div>
     </div>
     <p id="time-input-help" class="ij-time-help">Seconds are optional. Your device's local time is used for “Use Now”.</p>
+    <div class="ij-time-field">
+      <label for="break-duration">Break Duration (minutes, optional)</label>
+      <input id="break-duration" type="number" min="0" step="1" value="0" inputmode="numeric" aria-describedby="break-input-help">
+      <p id="break-input-help" class="ij-time-help">Enter unpaid break time in minutes. Leave 0 if there is no break.</p>
+    </div>
     <button class="ij-time-swap" type="button" onclick="swapTimes()" aria-label="Swap start and end times">⇅ Swap Start / End</button>
     <div class="ij-time-examples" aria-label="Quick time examples">
       <span>Quick examples</span>
@@ -254,9 +259,16 @@ function useTimeExample(button){
 function calculateTime(){
   const startValue=document.getElementById('start').value;
   const endValue=document.getElementById('end').value;
+  const breakInput=document.getElementById('break-duration');
   const out=document.getElementById('result');
   if(!startValue||!endValue){
     out.textContent='Please select both start and end times.';
+    return;
+  }
+  const breakMinutes=Number(breakInput.value);
+  if(!Number.isFinite(breakMinutes)||breakMinutes<0||!Number.isInteger(breakMinutes)){
+    out.textContent='Please enter a valid break duration in whole minutes (0 or more).';
+    breakInput.focus();
     return;
   }
   function toSeconds(value){
@@ -266,18 +278,33 @@ function calculateTime(){
   let start=toSeconds(startValue);
   let end=toSeconds(endValue);
   if(end<start)end+=24*60*60;
-  const totalSeconds=end-start;
-  const hours=Math.floor(totalSeconds/3600);
-  const minutes=Math.floor((totalSeconds%3600)/60);
-  const seconds=totalSeconds%60;
-  const totalMinutes=totalSeconds/60;
-  const decimalHours=(totalSeconds/3600).toFixed(2);
-  out.innerHTML='Time difference: <strong>'+hours+' hours '+minutes+' minutes '+seconds+' seconds</strong>'+
+  const elapsedSeconds=end-start;
+  const breakSeconds=breakMinutes*60;
+  if(breakSeconds>elapsedSeconds){
+    out.textContent='Break duration cannot be longer than the total elapsed time.';
+    breakInput.focus();
+    return;
+  }
+  const netSeconds=elapsedSeconds-breakSeconds;
+  function formatDuration(total){
+    const h=Math.floor(total/3600);
+    const m=Math.floor((total%3600)/60);
+    const s=total%60;
+    return h+'h '+m+'m '+s+'s';
+  }
+  const hours=Math.floor(netSeconds/3600);
+  const minutes=Math.floor((netSeconds%3600)/60);
+  const seconds=netSeconds%60;
+  const totalMinutes=netSeconds/60;
+  const decimalHours=(netSeconds/3600).toFixed(2);
+  out.innerHTML='Net working time: <strong>'+formatDuration(netSeconds)+'</strong>'+
     '<div class="ij-time-result-grid">'+
-    '<div class="ij-time-result-stat"><span>Total minutes</span><strong id="ij-total-minutes"></strong></div>'+
-    '<div class="ij-time-result-stat"><span>Total seconds</span><strong>'+totalSeconds.toLocaleString()+'</strong></div>'+
-    '<div class="ij-time-result-stat"><span>Decimal hours</span><strong>'+decimalHours+'</strong></div>'+
-    '<div class="ij-time-result-stat"><span>Duration</span><strong>'+hours+'h '+minutes+'m '+seconds+'s</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Gross elapsed time</span><strong>'+formatDuration(elapsedSeconds)+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Break deducted</span><strong>'+formatDuration(breakSeconds)+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Net total minutes</span><strong id="ij-total-minutes"></strong></div>'+
+    '<div class="ij-time-result-stat"><span>Net total seconds</span><strong>'+netSeconds.toLocaleString()+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Net decimal hours</span><strong>'+decimalHours+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Net duration</span><strong>'+hours+'h '+minutes+'m '+seconds+'s</strong></div>'+
     '</div>';
   const minuteStat=document.getElementById('ij-total-minutes');
   if(minuteStat)minuteStat.textContent=Number.isInteger(totalMinutes)?String(totalMinutes):totalMinutes.toFixed(2);

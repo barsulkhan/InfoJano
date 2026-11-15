@@ -41,8 +41,15 @@ Merge commit: a4b5017c1fd27061ca50aae63330e67e0af235bf
 - [x] Check GitHub Pages deployment after merge — Pages build/deployment run 43677856456 completed successfully.
 - [ ] Visual browser QA on mobile and desktop (requires an interactive browser session).
 
+## Completed — break deduction (PR in review)
+- Added an optional whole-minute break input, defaulting to 0.
+- Calculator validates non-negative whole minutes and rejects a break longer than the elapsed duration.
+- Results distinguish gross elapsed time, break deducted, and net working time; total minutes, total seconds, and decimal hours now describe the net duration.
+- Overnight calculations remain supported. Existing hero markup and styles were not edited.
+- Source-level checks passed for input, validation, overnight handling, output fields, and hero markup. Browser visual QA remains pending.
+
 ## Later roadmap
-- Break deduction.
+- Add/subtract time mode.
 - Add/subtract time mode.
 - Date + time duration mode.
 - Copy/share result and recent calculation history.
