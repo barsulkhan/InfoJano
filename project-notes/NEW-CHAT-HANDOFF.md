@@ -122,3 +122,9 @@ Copy/paste prompt:
 - Pending: runtime six-calculation/five-entry history cap; desktop and full responsive visual QA; keyboard/focus; screen-reader; copy/share end-to-end; DST runtime. Pages deployment for documentation commit 6afaeed98338a36db4bfbacbcc94653299a36f74 was not verified by PR-only workflow lookup.
 - Next single manual test: create six distinct calculations in the live calculator and confirm only the newest five appear in Recent Calculations; ask user for a screenshot.
 - Preserve the user instruction: do not revise the existing guide hero now. Any future justified SEO page hero must match the calculator hero, not homepage hero.
+
+
+## Latest Elapsed Time Calculator QA evidence — 2026-11-15
+- ET-011 Recent Calculations five-entry cap: runtime PASS. Sequential user screenshots show five entries before and after a sixth distinct calculation; after the sixth, exactly five remain, the new 2:11:37 PM record is first, and the prior oldest 2:07:49 PM record is evicted.
+- Detailed evidence is recorded in `project-notes/tools/elapsed-time-calculator/QA-TEST-LOG.md`; tracker and tool index updated.
+- Still pending: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery, and DST boundary runtime checks. No app source or protected hero/banner files changed.
