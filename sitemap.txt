@@ -99,3 +99,5 @@ https://infojano.com/about.html
 https://infojano.com/contact.html
 https://infojano.com/privacy-policy.html
 https://infojano.com/terms-of-use.html
+https://infojano.com/work-hours-calculator.html
+https://infojano.com/elapsed-time-calculator-guide.html
