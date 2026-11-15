@@ -138,3 +138,22 @@ Still required to close domain verification:
 2. A registrar expanded-row or export view confirming the four A records and TXT record host is apex/root, and the CNAME host is exactly `www`.
 3. Read-only confirmation of existing MX/TXT (SPF/DKIM/DMARC/email) records and nameservers; preserve them.
 4. Live DNS/HTTPS/redirect checks from an external resolver/browser remain outstanding. The screenshot is evidence of the registrar configuration, not proof of public propagation or a valid live certificate.
+
+
+## GitHub repository-side inspection — 2026-11-15
+User asked that repository-side evidence be inspected directly rather than asking them to navigate GitHub for information available in the repository.
+
+Read-only checks on the default `main` branch:
+- `CNAME` file content is exactly `infojano.com`.
+- `robots.txt` allows crawling and points to `https://infojano.com/sitemap.xml`.
+- `ads.txt` contains the expected publisher line for pub-2908196513377151.
+- Three sitemap variants are present in the root. The full URL-set consistency audit is separately recorded above.
+- Main branch head at inspection: `9b069a536b3b5f5ed4afac19f3de0257475c58ab`; latest commit message is “Mark ID Card Print Studio finalized”.
+- Main branch API metadata reports `protected: false` (no branch protection shown by this endpoint).
+- Repository `.github/workflows` currently lists only five build workflows (age APK, countdown desktop, desktop app, desktop apps, tool APKs); no Pages deployment workflow file is present in this directory listing. This is consistent with GitHub Pages being configured through repository settings/branch publishing, but does not prove the selected Pages source.
+- PR #233 remains open, draft, unmerged; latest branch contains the AdSense/domain/SEO proposal. No merge/deployment was performed.
+- Attempted read of GitHub REST `GET /repos/barsulkhan/InfoJano/pages`; the connected GitHub read tool rejects this endpoint as outside its allowlist. Therefore Pages Settings values (custom domain, publishing source, Enforce HTTPS) cannot be read through this connection. This is an access limitation, not evidence that the settings are wrong.
+- No repository files or settings were changed in this read-only inspection. No DNS records or AdSense account settings changed.
+
+Required single manual GitHub UI evidence:
+- Repository → Settings → Pages screenshot showing the Build and deployment source/branch-folder, Custom domain and Enforce HTTPS state. The user only needs to provide this one settings screenshot; do not ask them to repeat repository file checks already completed here.
