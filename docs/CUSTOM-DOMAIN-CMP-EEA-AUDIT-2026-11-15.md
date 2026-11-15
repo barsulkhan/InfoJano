@@ -174,3 +174,20 @@ Assessment:
 - GitHub Pages custom-domain and HTTPS configuration is VERIFIED from the screenshot. Together with the registrar DNS screenshot (four GitHub Pages A records and www CNAME), the configured DNS and GitHub Pages settings are coherent.
 - The site is shown live and GitHub's DNS check is successful. This still does not independently verify every public resolver, www-to-apex redirect response, certificate chain from multiple networks, MX/email records, or live robots/ads.txt responses.
 - No settings were changed. No PR merge or production deployment was initiated by this audit.
+
+
+## AdSense site review checkpoint — 2026-11-15
+Latest user screenshot shows the AdSense site details page for `infojano.com`:
+- Site status: `Requires review` / `Your site needs review`.
+- `Verify site ownership` has a green check.
+- `Request review` section is expanded with a visible `Request review` button.
+- No screenshot evidence that the button was clicked; review submission is therefore **NOT CONFIRMED**.
+- No specific policy rejection reason appears on this screen.
+- Previous onboarding screen showed Payments info received, Ads settings confirmed, and Sites required; user selected `Let's go` to reach the site details page.
+- The earlier checkbox + `Resubmit` onboarding screen should not be confused with this current site-level `Request review` action.
+
+Next:
+1. Confirm with the user whether they have clicked Request review. Do not submit on their behalf.
+2. If user chooses to submit, guide them to click it and capture the confirmation/status. Then see whether dashboard / Privacy & messaging access becomes available.
+3. CMP configuration remains NOT DONE: no European regulations message creation, site assignment, provider/purpose review, privacy URL assignment, publishing or EEA/UK/Swiss behavior test has been evidenced.
+4. Do not claim approval, review in progress, or CMP compliance until the corresponding status/evidence is provided.
