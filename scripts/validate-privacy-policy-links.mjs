@@ -69,7 +69,7 @@ for (const url of sitemapUrls) {
       errors.push("Unexpected sitemap URL origin: " + url);
       continue;
     }
-    const relativePath = decode(parsed.pathname.replace(/^\\//, "")) || "index.html";
+    const relativePath = decode(parsed.pathname.replace(/^\//, "")) || "index.html";
     const target = path.resolve(process.cwd(), relativePath);
     if (!fs.existsSync(target) || !fs.statSync(target).isFile()) {
       errors.push("Sitemap URL has no matching repository file: " + url);
