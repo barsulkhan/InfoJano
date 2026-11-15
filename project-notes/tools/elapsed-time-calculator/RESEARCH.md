@@ -535,3 +535,89 @@ Next, complete a dedicated US SERP overlap review for “date and time duration 
 - TimeMath.tools: https://timemath.tools/
 
 **Limitations:** Public web result pages were used as qualitative competitor evidence; no controlled US Google top-10 export, exact keyword-volume dataset, KD export, or InfoJano GSC query report was available. No app code, metadata, sitemap or existing hero changed.
+
+## 17. US Date & Time Duration vs existing Elapsed Time Calculator — SERP overlap review (2026-11-15)
+
+**Scope and method:** Qualitative public-web SERP/page review for US-oriented phrases including “date and time duration calculator”, “time duration calculator between dates and times”, “elapsed time between two dates”, and “time & date difference calculator”. This is not a location-locked Google top-10 export or rank-tracking dataset. Observation date: 2026-11-15. Search volume/KD/CPC/traffic metrics were not available from a verified keyword provider in this session.
+
+### 17.1 Existing InfoJano capability checked against source
+
+Re-fetched `time-calculator.html` (blob `815412e7ba90201f831d5cebcdf2da62fa9b386d`) and `elapsed-time-calculator-guide.html` (blob `b483a95afcbab48e493aa50d4bb619c95a0ea6db`).
+
+- The existing calculator already has a **Date + Time** mode with two `datetime-local` fields (start and end), calculates days plus remaining hours/minutes/seconds and total hours/minutes/seconds, and records the result in recent history.
+- The input help explicitly says the end must be later and that times use the device's local time zone.
+- Source calculation uses `new Date(startValue).getTime()` and `new Date(endValue).getTime()`, then subtracts epoch milliseconds. This means browser/device local timezone and its DST rules affect the timestamp difference. There is no IANA timezone selector, cross-zone conversion, explicit DST warning or ambiguous-time choice.
+- The guide already explains multi-date duration using Date + Time mode and links directly to the calculator.
+- The existing date-time mode is therefore a direct functional match for the basic “date and time duration” intent. It is not a business-hours calculator, calendar-month/year duration engine, or cross-timezone converter.
+
+### 17.2 Observed US-oriented competitors and page overlap
+
+| Page | Observed scope | Implication for InfoJano |
+|---|---|---|
+| Toggl — https://toggl.com/online-tools/time-duration-calculator | One page contains clock duration, multi-day date-and-time duration, add/subtract, break deduction, decimal totals and CSV. Its date-time mode explains multi-day spans, workdays and leap-year/month boundaries. | Strong evidence that clock and date-time duration can be served by one consolidated calculator URL. Its feature breadth exceeds InfoJano's current date mode. |
+| Count My Hours — https://countmyhours.com/time-duration-calculator/ | Dedicated date-time duration page shows days/hours/minutes, total decimal hours and minutes; explains DST-aware elapsed time and links to a separate clock-hours/timecard tool. | Shows a potential distinct *multi-day/DST-specific* proposition, but its value depends on explicit DST behavior and supporting UX, not a renamed duplicate. |
+| CalculatorSoup — https://www.calculatorsoup.com/calculators/time/time-date-difference-calculator.php | Date and time difference form with US mm/dd/yyyy conventions, answer across time units, years/months/days/hours/minutes/seconds explanations. | Confirms broader calendar-difference expectations in this query family; InfoJano currently reports fixed 24-hour days plus remainder, not calendar-month/year units. |
+| NumUtility — https://numutility.com/time-duration-calculator/ | Local date-time inputs, signed direction, day/hour/minute/second breakdown, total units, and explicit local-timezone/DST limitations. | Supports transparent timezone assumptions and signed/invalid-endpoint handling as meaningful product details. |
+| LiveTools — https://livetools.in/tools/date-time-duration-calculator | Date-time duration plus calendar breakdown (years/months/days/hours/minutes/seconds), exact totals and add/subtract date-time. | Adjacent product evidence for calendar-unit output, but not enough to justify another InfoJano URL. |
+| timezones.com — https://timezones.com/date-duration | Each endpoint has its own city/timezone selector; DST 23/25-hour day examples and ambiguous repeated-hour selection. | Cross-timezone and DST-aware calculations are a distinct, materially more complex intent; current InfoJano does not support this. |
+| All Over Tools — https://allovertools.com/calculators/date-and-time-calculators/time-duration-calculator/ | Date-time duration and add/subtract with a timezone selector and visible formula/assumptions. | Reinforces that timezone choice is a differentiating feature, but InfoJano must implement and test it before targeting that promise. |
+
+Additional observed result:
+- Keito — https://keito.ai/tools/time-duration-calculator/ distinguishes clock-label mode from date-time elapsed mode with user-supplied UTC offsets; it explicitly avoids guessing timezone.
+
+### 17.3 Intent overlap and architecture decision
+
+The reviewed pages show the following clusters overlap strongly:
+- date and time duration calculator
+- time duration calculator between dates
+- elapsed time between two dates and times
+- time & date difference calculator
+
+They generally describe the same core task: subtract one start date-time from one end date-time and express the elapsed interval in days/hours/minutes/seconds or total units. InfoJano already performs this calculation in its existing Date + Time mode, and the current guide already explains when to use it.
+
+**Decision: NO-GO for a separate generic Date & Time Duration URL at this time.** Map these phrases to the existing `/time-calculator.html` utility and `/elapsed-time-calculator-guide.html` how-to guide. Improve clarity on the existing page only if approved; do not create a near-duplicate landing page.
+
+Potentially distinct future opportunities, each requiring separate validation and feature work:
+1. **Date difference / calendar duration:** complete calendar years/months/days, inclusive vs exclusive day count, leap-year/month-end behavior. This is not the same as a fixed-24-hour elapsed duration.
+2. **DST-aware elapsed time:** explicitly detect and explain DST boundary crossings in the device timezone, with tests for spring-forward and fall-back.
+3. **Time zone duration converter:** separate timezone per endpoint, IANA zone database, ambiguous/nonexistent local time handling. This is not supported now and must not be marketed.
+4. **Business-hours duration:** scheduled weekdays, daily opening/closing hours, weekends and holidays. This is not supported now.
+
+Do not create any of these URLs until US SERP separation, verified keyword demand and product scope demonstrate a distinct user task.
+
+### 17.4 InfoJano gap and safe next actions
+
+- Existing capability is sufficient for basic local date-time elapsed duration, including spans longer than 24 hours, with days and remainder plus total units.
+- Current limitation: device-local Date parsing; no explicit timezone selection or DST-crossing explanation. Avoid claims such as “timezone accurate everywhere”, “cross-timezone”, “business days”, “calendar months/years” or guaranteed DST treatment.
+- Competitor opportunities are feature-level observations, not proof that InfoJano should copy all features. Prioritize truthful explanation of local-time semantics, examples across midnight/month/year boundaries, and tests for local DST behavior before considering new functionality.
+- Preserve the existing calculator hero. Any future separately justified SEO page must match the existing calculator hero exactly, per user direction; do not revise the existing guide hero.
+
+### 17.5 US keyword metrics, monetization and evidence limitations
+
+- No new verified US monthly search volume, trend, KD, CPC or traffic-potential figures were obtained for these exact date-time phrases. Record as **N/A**, not zero.
+- Existing preliminary third-party estimates in §15 remain directional only and are not upgraded by this qualitative SERP review.
+- CPC is advertiser bid context, not publisher RPM or guaranteed revenue. No revenue forecast is supportable from this evidence.
+- Sources were public search-result pages and competitor pages observed on 2026-11-15; SERP geography was not locked to a US IP/location, so this is a US-intent qualitative review, not a controlled US ranking report.
+- No usable GSC query/page/country export or authorized keyword-provider export was available.
+
+### 17.6 Three-concept architecture consolidation
+
+| Candidate concept | Research outcome | URL decision |
+|---|---|---|
+| Work Hours / Time Card | Strong overlap in reviewed US results; one useful weekly/biweekly multi-shift workflow can serve both related keyword clusters. | One consolidated `/work-hours-calculator.html` concept/page already exists in repository; do not create a second Time Card URL now. |
+| Date & Time Duration | Core calculation already exists in current Elapsed Time Calculator Date + Time mode; generic SERP intent overlaps. | No new URL. Keep mapped to `/time-calculator.html` and its guide. |
+| Generic Elapsed Time / Time Duration | Existing utility and how-to guide already cover the core task and informational intent. | Retain `/time-calculator.html` + `/elapsed-time-calculator-guide.html`; no duplicate generic page. |
+
+**Overall architecture recommendation:** retain the current elapsed calculator + guide, and treat the already-created Work Hours & Shift Calculator as the separate multi-shift product concept. Do not create another Time Card page or generic Date & Time Duration page. Quantitative SEO prioritization remains provisional until reliable US metrics/GSC evidence is available.
+
+### 17.7 Sources observed
+- Toggl: https://toggl.com/online-tools/time-duration-calculator
+- Count My Hours: https://countmyhours.com/time-duration-calculator/
+- CalculatorSoup: https://www.calculatorsoup.com/calculators/time/time-date-difference-calculator.php
+- NumUtility: https://numutility.com/time-duration-calculator/
+- LiveTools: https://livetools.in/tools/date-time-duration-calculator
+- timezones.com: https://timezones.com/date-duration
+- All Over Tools: https://allovertools.com/calculators/date-and-time-calculators/time-duration-calculator/
+- Keito: https://keito.ai/tools/time-duration-calculator/
+
+**Research status:** qualitative intent/SERP review complete for this decision; quantitative US metrics and controlled US SERP overlap export remain unavailable. No app code, metadata, sitemap, URLs or hero artwork changed.
