@@ -422,3 +422,19 @@ Scope: complete raw source fetched for 12 additional pages: `increase-decrease-b
 - 43 root HTML files remain unreviewed in the current branch tree after this batch (116 total root HTML files).
 - Continue page inventory; later produce a consolidated GA4 page list and classify local-only file/image processing separately from any optional upload routes.
 - Live runtime/network/cookie/consent testing remains NOT RUN.
+
+## 21. Root-page inventory batch 07 — percentage calculators and QR/photo tools (2026-11-15)
+
+Scope: complete raw source fetched for 12 additional pages: `percentage-change.html`, `percentage-decrease-calculator.html`, `percentage-difference-calculator.html`, `percentage-increase-calculator.html`, `percentage-of-percentage-calculator.html`, `percentage-pt-br.html`, `percentage-to-decimal-converter.html`, `percentage-to-fraction-converter.html`, `percentage.html`, `phone-number-qr-code-generator.html`, `print-document-image-resizer.html`, and `profit-loss-percentage-calculator.html`.
+
+### Findings (source verified)
+- GA4 measurement ID `G-P8D7XRGVEF` is present in `percentage-change.html`, `percentage-pt-br.html` and `percentage.html`.
+- Main Percentage Calculator (`percentage.html`) stores up to 8 percentage calculation history entries in localStorage key `ijPercentageHistory` and provides a clear-history action. This is user-entered calculator history stored in the browser; no server sync was identified in the inspected page source.
+- The other 9 inspected pages showed no direct GA4/AdSense/CMP, fetch/XHR, browser-storage or device-permission marker in this bounded scan.
+- No CMP/TCF API marker found in this batch.
+- No explicit QR-generation API, file upload endpoint or third-party data-processing request identified in the Phone Number QR Code Generator and Print Document Image Resizer page sources.
+
+### Limits / next
+- 31 root HTML files remain unreviewed in the branch tree after this batch.
+- Continue remaining page inventory; include local browser history/storage as a separate data category from external processing.
+- Live runtime/network/cookie/consent tests remain NOT RUN.
