@@ -171,3 +171,35 @@ Overall status: In progress
 - Official sources consulted: Google AdSense required content (https://support.google.com/adsense/answer/1348695); Google Publisher Policies privacy disclosures (https://support.google.com/adsense/answer/10502938); Google Analytics data collection (https://support.google.com/analytics/answer/11593727); Google AdSense cookie use (https://support.google.com/adsense/answer/7549925); iLovePDF Privacy Policy (https://www.ilovepdf.com/help/privacy); iLovePDF Terms (API file retention) (https://www.ilovepdf.com/help/terms).
 - Changed: tracker documentation only. No app source, privacy page, ads.txt, DNS, AdSense setting, CMP setting, or production deployment changed.
 - Next action: obtain the public privacy contact email to publish in the policy; then complete a full external-service inventory and prepare a reviewable draft before deployment. Independently, user can open the ads.txt status details in AdSense; do not press Request review or remove/re-add the site.
+
+## At-a-glance status dashboard (2026-11-15)
+This dashboard is the current handoff snapshot. Keep it updated whenever a check is completed, a defect is confirmed, a decision is made, or a manual action is requested.
+
+| Area | Current result | Status | Next action |
+|---|---|---|---|
+| AdSense site review | User already submitted Request review; latest Sites screenshot showed **Getting ready** | WAITING on Google | Do not resubmit/remove site; check status later |
+| Google European CMP message | Published; English +31 languages; Consent and Manage options enabled in observed settings | CONFIGURATION OBSERVED | Live behavior still needs testing |
+| Google CMP identity | CMP ID 300 is listed by Google as Google LLC CMP for Web and app | VERIFIED (identity/listing only) | Verify live runtime behavior |
+| TCF v2.4 | IAB web-CMP deadline was 23 Oct 2026; Google says its Privacy & Messaging European message supports v2.4 | DOCS VERIFIED; SITE SIGNAL UNVERIFIED | Verify live TC string / CMP behavior |
+| Consent revocation | Editor preview shows “Privacy and cookie settings”; live homepage browser Find showed 0/0 | NOT VERIFIED LIVE | Test on live site, ideally from EEA context |
+| ads.txt repository source | Root ads.txt has the Google DIRECT seller record and certification authority ID; robots.txt does not block it | SOURCE PASS | Verify live HTTP response and AdSense crawler status |
+| ads.txt live serving | Direct live fetch could not be completed; AdSense screenshot's “Not found” was low-confidence | UNVERIFIED | Inspect Site details and live URL; don't edit correct source without evidence |
+| Privacy Policy page | No privacy-policy.html in current main tree; work-hours-calculator.html links to /privacy-policy.html | SOURCE DEFECT CONFIRMED | Prepare accurate policy after publisher details are confirmed |
+| Privacy Policy data inventory | GA4; browser-local image/PDF tools; optional DOCX-to-Cloudflare-Worker-to-iLovePDF flow; localStorage use documented | PARTIAL INVENTORY | Finish full page-by-page third-party/library and production-config audit |
+| Public contact email | Not yet supplied/confirmed | BLOCKED | User to provide a public contact email or Contact-page screenshot |
+| Production changes | None made; no Publish changes pressed | PROTECTED | Obtain explicit approval before any code/settings/DNS/publish change |
+
+### Decisions already made — do not redo
+1. Do not ask the user to submit AdSense Request review again; it has already been submitted.
+2. Do not remove and re-add the site while status is Getting ready.
+3. Do not change CMP toggles (including Consent Mode, Special Feature 2, legitimate-interest or DSA/RTB controls) without evidence and explicit approval.
+4. Do not modify ads.txt just because the AdSense UI may show Not found; repository source is already correct and live serving is not yet established.
+5. Do not publish a placeholder Privacy Policy or invent contact/legal entity/jurisdiction/retention details.
+6. Do not change production, website code, DNS, AdSense/CMP settings, or protected hero sections without explicit approval.
+
+### Work tracking rule
+- Record every completed inspection with the evidence source and outcome (PASS / FAIL / UNVERIFIED / WAITING).
+- Record each confirmed defect separately from a suspected issue.
+- Record decisions and “do not repeat” instructions.
+- Update the “At-a-glance status dashboard”, detailed work log, and next single user action together when state changes.
+- The next manual instruction must be only one small action in Bengali, with exact click path and the specific screenshot/text requested.
