@@ -57,19 +57,19 @@ function groupDigits(value,system){
 }
 function convert(){
  const output=$('out'),raw=$('n').value;
- if(!raw.trim()){output.textContent='';return;}
+ if(!raw.trim()){output.textContent='';return '';}
  try{
   const numeric=parseWords(raw);
   const system=$('sys').value,mode=$('mode').value,currency=$('cur').value;
   let result=groupDigits(numeric,system);
-  if(mode==='currency'||mode==='cheque')result=(currency==='USD'?'<script src="site-header.js" defer></script>
-</body></html>:'₹')+result;
+  if(mode==='currency'||mode==='cheque')result=(currency==='USD'?String.fromCharCode(36):'₹')+result;
   if(mode==='cheque')result+=' only';
   output.textContent=result;
- }catch(error){output.textContent=error.message;}
+  return result;
+ }catch(error){output.textContent=error.message;return '';}
 }
 let last='';
-function run(){convert();last=$('out').textContent;}
+function run(){last=convert();}
 $('go').addEventListener('click',run);
 $('n').addEventListener('input',run);
 ['sys','mode','cur'].forEach(id=>$(id).addEventListener('change',run));
