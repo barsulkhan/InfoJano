@@ -1711,6 +1711,7 @@ body{background:linear-gradient(180deg,#eaf5ff 0%,#f7fbff 38%,#eef7ff 100%)!impo
   <div>InfoJano • Global Everyday Utility Portal</div>
   <div>Privacy-minded • Mobile-first • Built for everyone</div>
   <div class="footer-languages">Português: <a href="discount-pt-br.html">Calculadora de Desconto</a> · <a href="percentage-pt-br.html">Calculadora de Porcentagem</a></div>
+  <div class="footer-privacy"><a id="ij-privacy-revocation" href="#privacy-cookie-settings" hidden>Privacy and cookie settings</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/contact.html">Contact</a></div>
 </footer>
 </main>
 
@@ -2195,6 +2196,26 @@ html body header.header .nav button.nav-search{background:#eaf5ff!important;colo
   .bottom-nav { bottom: calc(9px + env(safe-area-inset-bottom)) !important; }
 }
 </style>
-
+<script>
+/* Google Privacy & Messaging consent revocation entry point. */
+(function(){
+  const link=document.getElementById('ij-privacy-revocation');
+  if(!link)return;
+  function reveal(){link.hidden=false;}
+  if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function'){
+    reveal();
+  }else{
+    window.googlefc=window.googlefc||{};
+    window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
+    window.googlefc.callbackQueue.push({'CONSENT_API_READY':reveal});
+  }
+  link.addEventListener('click',function(event){
+    event.preventDefault();
+    if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function'){
+      window.googlefc.showRevocationMessage();
+    }
+  });
+})();
+</script>
 </body>
 </html>
