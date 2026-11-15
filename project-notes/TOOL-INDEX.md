@@ -28,3 +28,8 @@ Last updated: 2026-11-15
 
 ### 2026-11-15 — QA status correction
 - ET-011 five-entry history cap is runtime PASS from sequential user screenshots; remove it from pending lists. Remaining QA is desktop/responsive, keyboard/focus, screen-reader, copy/share end-to-end and DST runtime.
+
+
+### 2026-11-15 — QA status clarification
+- User confirms copy/share and screen-reader tests were already completed. Removed them from the pending list; do not ask to repeat them.
+- Desktop visual QA is the remaining explicit manual check.
