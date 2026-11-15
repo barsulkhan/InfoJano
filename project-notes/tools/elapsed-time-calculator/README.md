@@ -23,7 +23,7 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - [x] [CARD-008] APK manifest relative icon path validation — PR #227; merge 4ae9624fb8978b832d58e2b93f2e41091227dc80. Workflow resolves relative icon src against manifest URL before checking repository asset.
 
 ### In progress
-- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-006 passed. Next: continue manual QA from ET-007, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
+- [ ] [CARD-009] Mobile and desktop visual browser QA — implementation is merged; no interactive browser session is available in this session. Source inspection only; live visual/interaction QA remains pending. User supplied mobile screenshot QA: ET-001–ET-007 passed. Next: continue manual QA from ET-008, then complete remaining mobile/desktop visual and interaction QA when browser access is available.
 - [x] [CARD-011] Date-duration results missing from recent history — fixed and merged via PR #229 (squash merge `69ad8a8865cedfc6df952fa87dae8598f904ad27`). `time-calculator.html` now calls `recordTimeCalculation('Date + Time Duration')` after valid output, enabling recent history and shared Copy/Share action visibility. Current default-branch file re-fetched and hook presence confirmed. Runtime/browser regression and post-merge deployment verification remain separate pending checks.
 
 ### Backlog
@@ -233,4 +233,16 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
 - Still pending: ET-007 Copy Result; Share Result; refresh persistence, Clear History and five-item cap; real mobile/desktop visual QA; accessibility review.
 - Next step: ask user to test Copy Result for the current Date + Time output, then record the observed result.
+- Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
+
+
+### 2026-11-15 — User-performed mobile QA: Copy Result (ET-007)
+- Requested: test Copy Result for the Date + Time output and paste it into a notes app to verify the clipboard contents.
+- Inspected: user-supplied screenshot of the pasted note.
+- Expected: copied text contains the complete duration summary and all total-unit values.
+- Observed: pasted content contains Total duration (0 days, 2 hours, 15 minutes, 0 seconds), Total days (0), Remaining time (2h 15m 0s), Total hours (2.25), Total minutes (135.00), and Total seconds (8,100).
+- Result: ET-007 PASS — successful paste confirms the copy action and complete summary content. No separate success toast was captured; this is not required to establish that clipboard paste succeeded.
+- Changed: QA log and this tracker only; no application source changed. No PR or deployment required for this documentation-only update.
+- Still pending: ET-008 Share Result; refresh persistence, Clear History and five-item cap; real mobile/desktop visual QA; accessibility review.
+- Next step: ask user to tap Share Result and report/show the resulting share sheet or fallback.
 - Protected areas preserved: no application source or hero/banner files changed; Calculator Hero dimensions/layout/styling/artwork/copy, homepage Hero Banner, and ID Card Print Studio Hero remain untouched.
