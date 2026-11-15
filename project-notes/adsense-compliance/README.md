@@ -730,3 +730,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Source commit: `fc1649439ccb7e33524043600dc080ebef6d7d0d`.
 - Task record: [2026-11-16-0016-shared-privacy-link-coverage.md](2026-11-16-0016-shared-privacy-link-coverage.md); commit `716a5da7def5c2cf284444400f2267e1f514f107`.
 - Browser/mobile QA and live deployment/cache propagation are not yet verified. Next: wait for source CI, then spot-check one tool page with no existing policy link and one page with an existing link at desktop/mobile widths.
+
+
+### 2026-11-16 — Shared footer QA workflow coverage
+- Added `site-header.js` to the Privacy Policy QA workflow path filters so future shared footer changes run CI.
+- CI run #43749910209 on commit `b4f58f1cd7d842cb74e30c391b70c0f2b3fa2165`: PASS. Privacy Policy and Contact HTML5 validation PASS; policy link/sitemap/robots checker PASS.
+- Task record: [2026-11-16-0017-shared-footer-qa-trigger.md](2026-11-16-0017-shared-footer-qa-trigger.md); commit `d0f08953346f975432b6d63affd5e914dc23ce1d`.
+- GitHub Pages deployment for this exact commit was still queued at the time of the CI check; browser/mobile visual QA and live cache propagation remain unverified.
