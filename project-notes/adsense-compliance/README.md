@@ -631,3 +631,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Updated `project-notes/NEW-CHAT-HANDOFF.md` with full source inventory status, policy gap/revision map, public app prerelease evidence, sitemap/ads.txt status, official-source updates and blockers.
 - Task evidence: [2026-11-15-2336-adsense-research-handoff-refresh.md](2026-11-15-2336-adsense-research-handoff-refresh.md).
 - Commit: handoff `778a7bcb279d`; task file `a5d11dee83f7`.
+
+
+### 2026-11-15 — Proposed Privacy Policy revision draft prepared
+- Converted the completed source reconciliation into ready-to-review replacement/addition text for analytics scope, browser storage, notification mismatch, Word Converter external processing, Android/Windows wrappers and consent revocation.
+- Kept legal controller identity/jurisdiction and live CMP/vendor/runtime facts as explicit blockers; no invented legal details or retention promise.
+- Full proposal and seven publication gates: [2026-11-15-2342-proposed-privacy-policy-revision-draft.md](2026-11-15-2342-proposed-privacy-policy-revision-draft.md).
+- Task file commit: `cf444e1244c3d9b333082b71aa679680989b6640`.
+- `privacy-policy.html` remains unchanged. No CMP/AdSense settings, Worker, DNS, merge or deployment changes. PR #236 remains open/draft/unmerged at last check.
