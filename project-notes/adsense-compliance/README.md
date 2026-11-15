@@ -589,3 +589,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `76482be21ded`; task file `651c36e09776`.
 - Next: inspect desktop/Android shells and workflows, then compare the complete source inventory against Privacy Policy. Live CMP/TCF/account/network and publisher legal facts remain pending.
 - No app code, policy, account, Cloudflare, DNS, merge, deployment or protected design changes.
+
+### 2026-11-15 — Android and Windows desktop wrapper audit
+- Inspected Android WebView shell and Electron wrappers. Android uses INTERNET, JavaScript/DOM storage, system file chooser and local Downloads bridge; no native sensitive permissions found in manifest. Desktop wrappers load hosted pages, sandbox Electron and route external links to system browser.
+- Native shells inherit hosted website tags/APIs/storage; runtime testing and app distribution status remain unverified. Android WebView JS bridge has no explicit origin allowlist in inspected source; noted for a separate security review, not changed.
+- Task evidence: [2026-11-15-2331-android-desktop-wrapper-audit.md](2026-11-15-2331-android-desktop-wrapper-audit.md); master plan §27.
+- Commits: plan `01872d5f8fd6`; task file `ae24225a3f2f`.
+- No native code, privacy policy, account, DNS, merge or deployment changes.
