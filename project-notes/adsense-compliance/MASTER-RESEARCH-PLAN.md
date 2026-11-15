@@ -815,3 +815,9 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - Added direct Privacy Policy and Contact footer links to the 10 tool pages identified from the user's mobile screenshots: Image Resizer, Document Studio, Word Converter, Image to PDF, PDF Page Extractor, QR Maker, Social QR Maker, URL Toolkit, Currency Converter and Unit Converter.
 - Task record: [2026-11-16-0017-screenshot-pages-privacy-links.md](2026-11-16-0017-screenshot-pages-privacy-links.md).
 - Source commits are on `main`; after-state mobile browser verification/live cache propagation still needs confirmation.
+
+
+### Second screenshot batch — 2026-11-16
+- Added Privacy Policy and Contact footer links to six more pages: Number to Words, Percentage Change, Tip Calculator, Date Difference, GST Calculator and Text Counter.
+- Task record: [2026-11-16-0018-second-screenshot-batch-privacy-links.md](2026-11-16-0018-second-screenshot-batch-privacy-links.md).
+- Live deployment/browser confirmation remains pending.
