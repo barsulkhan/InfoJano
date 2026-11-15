@@ -1,4 +1,5 @@
 | Add or Subtract Date Calculator | tools/add-subtract-date-calculator/ | In progress — functional calculator embedded in existing SEO page; Node syntax/date arithmetic checks pass; Pages workflow #2642 SUCCESS; browser QA pending | 2026-11-15 | Complete browser QA; verify Pages deployment; then review related date-page CTA consistency |
+| ID Card Print Studio | tools/id-card-print-studio/ | In progress — footer bullet spacing and direct PDF print action committed; browser QA and Pages deployment verification pending | 2026-11-15 | Run desktop/mobile browser QA and verify Pages workflow |
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — US Work Hours/Time Card SERP review recommends one consolidated concept; US Date & Time Duration review finds overlap with existing Date + Time mode; no additional elapsed/date-time URL justified; quantitative metrics/GSC unavailable; desktop visual QA pending | 2026-11-15 | Complete desktop visual QA when browser access is available; revisit US metrics/GSC when reliable data is available |
 
 Last updated: 2026-11-15
