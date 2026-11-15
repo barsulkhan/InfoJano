@@ -38,3 +38,8 @@ Last updated: 2026-11-15
 ### 2026-11-15 — USA-first Elapsed Time SEO research started
 - User set USA as the primary audience. Preliminary US keyword estimates and three page concepts are saved in `tools/elapsed-time-calculator/RESEARCH.md` §15.
 - Work Hours and Time Card appear overlapping; investigate SERP overlap before separate URLs. Date & Time Duration needs intent separation from the current calculator. No new page approved or coded.
+
+
+### 2026-11-15 — US Work Hours / Time Card SERP review
+- Qualitative competitor review found substantial overlap between “work hours calculator” and “time card calculator”. Plan one consolidated US-focused concept/URL, not separate thin pages. Feature gaps and safeguards saved in `tools/elapsed-time-calculator/RESEARCH.md` §16.
+- No app code or new URL approved. Next: verify Date & Time Duration intent overlap.
