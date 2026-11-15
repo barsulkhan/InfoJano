@@ -1,4 +1,4 @@
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — four-keyword and expanded public SERP/country-language research saved; no additional SEO URL justified; future SEO page hero must match the calculator hero (not homepage); quantitative metrics unavailable (Ahrefs plan restriction; no GSC data); live/browser/accessibility verification pending; latest QA continuation attempted, no interactive runtime checks available | 2026-11-15 | Run real browser QA on guide and calculator; validate equal-time/timezone assumptions; revisit metrics when a usable provider/property is available |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — US Work Hours/Time Card SERP review recommends one consolidated concept; US Date & Time Duration review finds overlap with existing Date + Time mode; no additional elapsed/date-time URL justified; quantitative metrics/GSC unavailable; desktop visual QA pending | 2026-11-15 | Complete desktop visual QA when browser access is available; revisit US metrics/GSC when reliable data is available |
 
 Last updated: 2026-11-15
 
@@ -42,4 +42,9 @@ Last updated: 2026-11-15
 
 ### 2026-11-15 — US Work Hours / Time Card SERP review
 - Qualitative competitor review found substantial overlap between “work hours calculator” and “time card calculator”. Plan one consolidated US-focused concept/URL, not separate thin pages. Feature gaps and safeguards saved in `tools/elapsed-time-calculator/RESEARCH.md` §16.
-- No app code or new URL approved. Next: verify Date & Time Duration intent overlap.
+- Repository inspection confirms a Work Hours & Shift Calculator page/tracker already exists; no second Time Card URL recommended.
+
+### 2026-11-15 — US Date & Time Duration SERP review
+- Existing `time-calculator.html` already supports date-time duration across multiple dates; the guide also explains this mode. Qualitative competitor review (Toggl, Count My Hours, CalculatorSoup, NumUtility, LiveTools and timezone-focused alternatives) found substantial generic intent overlap.
+- Decision: no separate generic Date & Time Duration URL. Keep phrase cluster mapped to `/time-calculator.html` and `/elapsed-time-calculator-guide.html`; only consider a future distinct calendar-date/business-hours/timezone feature if demand and scope justify it.
+- Detailed source/competitor evidence, feature gaps, metrics limitations and consolidated three-concept architecture saved in `tools/elapsed-time-calculator/RESEARCH.md` §17. No app code, metadata, sitemap or hero changed.
