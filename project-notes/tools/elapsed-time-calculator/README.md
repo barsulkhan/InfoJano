@@ -139,8 +139,20 @@ Overall status: In progress — feature work merged; mobile/desktop visual brows
 - Inspected: current default-branch `time-calculator.html`; focused on `calculateDateDuration()`, `recordTimeCalculation()`, `renderTimeHistory()`, and shared result-action visibility.
 - Changed: created branch `fix/date-duration-history-actions`; added `recordTimeCalculation('Date + Time Duration')` immediately after successful date-duration result rendering. Only `time-calculator.html` changed on the feature branch.
 - Tests and results: source-level placement check passed (expected output block found and hook insertion confirmed). No JavaScript syntax/test suite execution and no interactive runtime/browser test in this session. PR workflow lookup for commit `3253d2690ece6082e970e8aa1eadf1cd74d655c4` returned no workflow runs at the time checked; CI status therefore not verified.
-- PR/commit/workflow: PR #228 https://github.com/barsulkhan/InfoJano/pull/228; branch commit `3253d2690ece6082e970e8aa1eadf1cd74d655c4`. PR is open and unmerged. Connector reported mergeable=false at creation; do not infer a conflict or merge until status is refreshed.
+- PR/commit/workflow: PR #228 https://github.com/barsulkhan/InfoJano/pull/228; branch commit `3253d2690ece6082e970e8aa1eadf1cd74d655c4`. Latest metadata: open, unmerged, mergeable=false. GitHub check-runs endpoint returned 0 checks; commit status is pending with 0 statuses. CI is not verified; do not merge yet.
 - Issues and resolution: missing date-duration history/copy-share hook addressed in proposed change; awaiting review/checks and runtime validation.
 - Still pending: PR #228 checks/review/merge; regression tests for all three modes; CARD-009 actual mobile/desktop browser QA; accessibility review; CARD-010 SEO intent research.
-- Next step: refresh PR #228 metadata and associated workflow checks; after merge verify Pages deployment separately. Then perform browser QA when an interactive browser is available.
+- Next step: inspect why PR #228 is non-mergeable and why no checks are registered; resolve any real conflict or CI trigger issue, then re-check. After merge verify Pages deployment separately. Then perform browser QA when an interactive browser is available.
 - Protected areas preserved: only `time-calculator.html` changed on the feature branch; calculator hero, homepage Hero Banner, and ID Card Print Studio Hero were not edited.
+
+
+### 2026-11-15 — PR #228 status refresh
+- Requested: verify the newly opened CARD-011 pull request and its checks before treating the fix as complete.
+- Inspected: PR #228 metadata, commit check-runs endpoint, and commit combined-status endpoint.
+- Changed: tracker only; recorded refreshed CI/merge state.
+- Tests and results: check-runs returned 0; combined commit status is `pending` with 0 statuses. PR state is open/unmerged and API metadata reports `mergeable=false`. No CI success or merge is claimed.
+- PR/commit/workflow: PR #228 https://github.com/barsulkhan/InfoJano/pull/228; commit `3253d2690ece6082e970e8aa1eadf1cd74d655c4`; no associated workflow run surfaced.
+- Issues and resolution: mergeability and absent CI status remain unresolved; no speculative merge or conflict fix attempted.
+- Still pending: determine whether a real merge conflict exists or checks are not configured/triggered; run required regression validation; merge only after safe checks. CARD-009 interactive visual QA also pending.
+- Next step: inspect PR diff/base comparison and repository workflow configuration to determine mergeability/CI cause.
+- Protected areas preserved: no source or hero/banner changes made in this status-check step.
