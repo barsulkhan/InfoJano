@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 Tool page: https://infojano.com/time-calculator.html
-Overall status: Paused at user's request — current mobile checks and source audit recorded. Two computer-only tasks deferred until user is at a computer: (1) desktop visual QA and (2) keyboard/screen-reader accessibility QA. Five-entry cap runtime test also remains unverified.
+Overall status: In progress — mobile screenshot checks, source audit and ET-011 five-entry cap runtime test PASS. Remaining computer-dependent work: desktop visual QA and keyboard/screen-reader accessibility QA; broader responsive and DST checks also pending.
 
 ## Research dossier
 - SEO keyword and landing-page research: [RESEARCH.md](RESEARCH.md) — preliminary qualitative review saved 2026-11-15. Ahrefs metrics unavailable due plan entitlement; volume/KD/CPC/trend are N/A. Decision: optimize the existing canonical page first; no separate generic elapsed-time page yet. Further metrics validation is required before SEO implementation.
@@ -489,3 +489,8 @@ Overall status: Paused at user's request — current mobile checks and source au
 - This confirms the five-entry cap and newest-first retention for the tested session. It does not replace cross-browser/storage testing.
 - Remaining QA: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery, and DST boundary runtime checks.
 - No calculator source, SEO metadata, or protected hero artwork/layout changed.
+
+
+## Current QA status correction — 2026-11-15
+- ET-011 five-entry history cap is now runtime PASS based on the user's sequential screenshots; it is no longer pending. See QA-TEST-LOG.md.
+- Current remaining checks: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery and DST boundary runtime.
