@@ -122,6 +122,16 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
 .ij-time-result-stat{padding:10px 12px;border:1px solid #d5e8fb;border-radius:12px;background:#fff}
 .ij-time-result-stat span{display:block;color:#64748b;font-size:11px;font-weight:700}
 .ij-time-result-stat strong{display:block;margin-top:3px;color:#174a78;font-size:17px}
+.ij-time-result-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ij-time-result-actions button{width:auto;flex:1 1 120px;margin:0;padding:10px 12px;border:1px solid #cfe0f4;border-radius:10px;background:#f3f8ff;color:#17518d;font-size:13px;font-weight:800;cursor:pointer}
+.ij-time-history{margin-top:16px;padding-top:14px;border-top:1px solid #e1eafa}
+.ij-time-history-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ij-time-history-head h3{margin:0;color:#14264a;font-size:15px}
+.ij-time-history-head button{width:auto;margin:0;padding:5px 8px;background:transparent;color:#64748b;font-size:12px}
+.ij-time-history-list{display:grid;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+.ij-time-history-list li{padding:9px 10px;border:1px solid #e1eafa;border-radius:10px;background:#f8fbff;color:#425570;font-size:12px;overflow-wrap:anywhere}
+.ij-time-history-list time{display:block;margin-top:3px;color:#8290a5;font-size:10px}
+
 @media(max-width:480px){.ij-time-input-row{gap:6px}.ij-time-utility{min-width:82px;padding:0 9px;font-size:12px}.ij-time-examples button{font-size:11px}.ij-time-result-grid{grid-template-columns:1fr 1fr}}
 .ij-time-workspace .card{padding:20px;border-radius:17px;box-shadow:none}
 .ij-time-left{background:#f8fbff;border:1px solid #e1eafa}
@@ -211,6 +221,14 @@ main{width:min(calc(100% - 8px),1360px);max-width:1360px;margin:22px auto;paddin
       <span class="ij-time-step">STEP 2 · VIEW RESULT</span>
       <h2 id="ij-time-output-title">Elapsed Time Result</h2>
       <div id="result" class="result" role="status" aria-live="polite">Choose a start time and end time, then select Calculate Difference.</div>
+      <div class="ij-time-result-actions" id="ij-result-actions" hidden>
+        <button type="button" onclick="copyTimeResult()">Copy Result</button>
+        <button type="button" onclick="shareTimeResult()">Share Result</button>
+      </div>
+      <div class="ij-time-history">
+        <div class="ij-time-history-head"><h3>Recent Calculations</h3><button type="button" onclick="clearTimeHistory()">Clear history</button></div>
+        <ul class="ij-time-history-list" id="ij-time-history-list"><li>No recent calculations yet.</li></ul>
+      </div>
     </div>
     <div class="ij-time-guide card">
       <h2>How to Calculate Time Difference</h2>
@@ -340,7 +358,71 @@ function calculateAddSubtract(){
   const pad=value=>String(value).padStart(2,'0');
   const dayText=dayOffset===0?'Same day':dayOffset===1?'Following day':dayOffset===-1?'Previous day':dayOffset>1?dayOffset+' days later':Math.abs(dayOffset)+' days earlier';
   out.innerHTML='Calculated time: <strong>'+pad(h)+':'+pad(m)+':'+pad(s)+'</strong><div class="ij-time-result-grid"><div class="ij-time-result-stat"><span>Starting time</span><strong>'+baseValue+'</strong></div><div class="ij-time-result-stat"><span>Operation</span><strong>'+(signed<0?'Subtract':'Add')+'</strong></div><div class="ij-time-result-stat"><span>Duration</span><strong>'+nums[0]+'h '+nums[1]+'m '+nums[2]+'s</strong></div><div class="ij-time-result-stat"><span>Day adjustment</span><strong>'+dayText+'</strong></div></div>';
+  recordTimeCalculation('Add / Subtract');
 }
+const IJ_TIME_HISTORY_KEY='ijElapsedTimeHistoryV1';
+function getTimeHistory(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(IJ_TIME_HISTORY_KEY)||'[]');
+    return Array.isArray(saved)?saved.filter(item=>item&&typeof item.text==='string'&&typeof item.mode==='string').slice(0,5):[];
+  }catch(error){return [];}
+}
+function renderTimeHistory(){
+  const list=document.getElementById('ij-time-history-list');
+  if(!list)return;
+  const history=getTimeHistory();
+  list.textContent='';
+  if(!history.length){const empty=document.createElement('li');empty.textContent='No recent calculations yet.';list.appendChild(empty);return;}
+  history.forEach(function(item){
+    const row=document.createElement('li');
+    row.appendChild(document.createTextNode(item.mode+': '+item.text));
+    const time=document.createElement('time');
+    time.dateTime=item.timestamp;
+    time.textContent=new Date(item.timestamp).toLocaleString();
+    row.appendChild(time);
+    list.appendChild(row);
+  });
+}
+function recordTimeCalculation(mode){
+  const result=document.getElementById('result');
+  const actions=document.getElementById('ij-result-actions');
+  const text=(result.innerText||result.textContent||'').trim();
+  if(!text)return;
+  if(actions)actions.hidden=false;
+  try{
+    const history=getTimeHistory();
+    history.unshift({mode:mode,text:text,timestamp:new Date().toISOString()});
+    localStorage.setItem(IJ_TIME_HISTORY_KEY,JSON.stringify(history.slice(0,5)));
+  }catch(error){}
+  renderTimeHistory();
+}
+async function copyTimeResult(){
+  const result=document.getElementById('result');
+  const text=(result.innerText||result.textContent||'').trim();
+  if(!text)return;
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch(error){
+    const field=document.createElement('textarea');
+    field.value=text;field.style.position='fixed';field.style.opacity='0';
+    document.body.appendChild(field);field.select();
+    try{document.execCommand('copy');}catch(copyError){}
+    field.remove();
+  }
+}
+async function shareTimeResult(){
+  const text=(document.getElementById('result').innerText||'').trim();
+  if(!text)return;
+  if(navigator.share){
+    try{await navigator.share({title:'InfoJano Time Calculator Result',text:text});return;}catch(error){if(error&&error.name==='AbortError')return;}
+  }
+  copyTimeResult();
+}
+function clearTimeHistory(){
+  try{localStorage.removeItem(IJ_TIME_HISTORY_KEY);}catch(error){}
+  renderTimeHistory();
+}
+renderTimeHistory();
 function calculateDateDuration(){
   const startValue=document.getElementById('date-start').value;
   const endValue=document.getElementById('date-end').value;
@@ -409,6 +491,7 @@ function calculateTime(){
     '</div>';
   const minuteStat=document.getElementById('ij-total-minutes');
   if(minuteStat)minuteStat.textContent=Number.isInteger(totalMinutes)?String(totalMinutes):totalMinutes.toFixed(2);
+  recordTimeCalculation('Time Difference');
 }
 </script>
 
