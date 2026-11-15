@@ -67,6 +67,12 @@ for (const url of sitemapUrls) {
     const parsed = new URL(url);
     if (parsed.protocol !== "https:" || parsed.hostname !== "infojano.com") {
       errors.push("Unexpected sitemap URL origin: " + url);
+      continue;
+    }
+    const relativePath = decode(parsed.pathname.replace(/^\\//, "")) || "index.html";
+    const target = path.resolve(process.cwd(), relativePath);
+    if (!fs.existsSync(target) || !fs.statSync(target).isFile()) {
+      errors.push("Sitemap URL has no matching repository file: " + url);
     }
   } catch {
     errors.push("Invalid sitemap URL: " + url);
