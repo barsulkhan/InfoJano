@@ -796,3 +796,10 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - QA checker includes sitemap and robots consistency checks, and QA workflow now triggers on main pushes. The expanded checker has not yet been confirmed by a fresh CI run.
 - Live read-only fetch attempts for privacy-policy.html, contact.html, sitemap.xml, ads.txt and robots.txt were inaccessible. HTTP status, redirects, headers and crawler reachability remain UNVERIFIED.
 - Task evidence: [2026-11-16-0013-sitemap-qa-and-live-check.md](2026-11-16-0013-sitemap-qa-and-live-check.md).
+
+
+### Shared privacy-link coverage update — 2026-11-16
+- Source-only change: `site-header.js` now appends a small Privacy Policy + Contact footer to pages that do not already contain a Privacy Policy link. This avoids adding another item to the compact responsive header and avoids duplicate footers on pages already linking the policy.
+- Commit: `fc1649439ccb7e33524043600dc080ebef6d7d0d`.
+- Task record: [2026-11-16-0016-shared-privacy-link-coverage.md](2026-11-16-0016-shared-privacy-link-coverage.md).
+- Validation pending: CI and browser spot-check (desktop/mobile; one page with existing link, one without). Do not treat source commit as proof of live propagation.
