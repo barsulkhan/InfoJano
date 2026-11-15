@@ -128,3 +128,8 @@ Copy/paste prompt:
 - ET-011 Recent Calculations five-entry cap: runtime PASS. Sequential user screenshots show five entries before and after a sixth distinct calculation; after the sixth, exactly five remain, the new 2:11:37 PM record is first, and the prior oldest 2:07:49 PM record is evicted.
 - Detailed evidence is recorded in `project-notes/tools/elapsed-time-calculator/QA-TEST-LOG.md`; tracker and tool index updated.
 - Still pending: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery, and DST boundary runtime checks. No app source or protected hero/banner files changed.
+
+
+## Current status correction — 2026-11-15
+- The earlier QA continuation entry above listed the five-entry history cap as pending. That item has since been completed: ET-011 is runtime PASS, verified from sequential user screenshots showing six distinct calculations and only the newest five retained.
+- Do not ask the user to repeat ET-011. Remaining QA: desktop visual, broader responsive viewport/overflow, keyboard/focus, screen-reader, copy/share end-to-end delivery and DST boundary runtime.
