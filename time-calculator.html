@@ -274,12 +274,12 @@ function calculateTime(){
   const decimalHours=(totalSeconds/3600).toFixed(2);
   out.innerHTML='Time difference: <strong>'+hours+' hours '+minutes+' minutes '+seconds+' seconds</strong>'+
     '<div class="ij-time-result-grid">'+
-    '<div class="ij-time-result-stat"><span>Total minutes</span><strong>'+Number.isInteger(totalMinutes)?'': ''+'</strong></div>'+
+    '<div class="ij-time-result-stat"><span>Total minutes</span><strong id="ij-total-minutes"></strong></div>'+
     '<div class="ij-time-result-stat"><span>Total seconds</span><strong>'+totalSeconds.toLocaleString()+'</strong></div>'+
     '<div class="ij-time-result-stat"><span>Decimal hours</span><strong>'+decimalHours+'</strong></div>'+
     '<div class="ij-time-result-stat"><span>Duration</span><strong>'+hours+'h '+minutes+'m '+seconds+'s</strong></div>'+
     '</div>';
-  const minuteStat=out.querySelector('.ij-time-result-stat strong');
+  const minuteStat=document.getElementById('ij-total-minutes');
   if(minuteStat)minuteStat.textContent=Number.isInteger(totalMinutes)?String(totalMinutes):totalMinutes.toFixed(2);
 }
 </script>
