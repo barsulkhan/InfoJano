@@ -284,3 +284,9 @@ Copy/paste prompt:
 - Four BMI guides have had visible keyword-list blocks removed and CDC/WHO references added. Other reviewed Number to Words, percentage, QR, date and image-resizer pages were retained where task intent was distinct.
 - CMP source integration not found; AdSense Privacy & Messaging / certified CMP setup is still account-side pending. Browser/device/live HTTP, deployment, AdSense account and Search Console verification have not been completed.
 - Continue on the active branch; do not merge or deploy without explicit user approval. Preserve ID Card Print Studio behavior and visual design.
+
+### 15 Nov 2026 — AdSense cleanup PR
+- Draft PR #233: https://github.com/barsulkhan/InfoJano/pull/233 (open, clean/mergeable, not merged).
+- Head SHA: `a6730d90ae0af1adfe3e3687e800d59351fe4a5f`; main unchanged at `9b069a536b3b5f5ed4afac19f3de0257475c58ab`.
+- PR-triggered workflow runs not present yet; CI/deployment not verified.
+- Continue with remaining content audit and browser/device QA; obtain user approval before merge.
