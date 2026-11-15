@@ -29,6 +29,9 @@ Live site: https://infojano.com/
 - Elapsed Time Calculator tracker: [tools/elapsed-time-calculator/README.md](tools/elapsed-time-calculator/README.md)
 - Legacy Elapsed Time Calculator notes: [elapsed-time-calculator-progress.md](elapsed-time-calculator-progress.md)
 
+## Workflow improvement research
+- [WORKFLOW-IMPROVEMENT-PLAN.md](WORKFLOW-IMPROVEMENT-PLAN.md) — proposed improvements: GitHub Project board, issue/PR templates, Playwright browser tests, CI gates, visual regression, accessibility/performance checks, generated status dashboard and actionable notifications. This is a research proposal; no automation from it has been installed yet.
+
 ## Current project status — 2026-11-15
 
 ### Elapsed Time Calculator
