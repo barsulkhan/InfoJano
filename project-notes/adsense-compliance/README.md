@@ -26,7 +26,7 @@ Overall status: In progress
 - [x] [CARD-005] Check Google CMP listing and TCF v2.4 documentation — Google CMP ID 300 listing and official Google/IAB timeline/support reviewed; live TC signal remains unverified..
 
 ### Backlog
-- [ ] [CARD-007] Review Privacy Policy URL/content and its connection from the consent message.
+- [ ] [CARD-007] Finalize Privacy Policy URL/content and its connection from the consent message — draft PR exists; exact account vendor list, legal controller/jurisdiction and live runtime checks block finalization.
 - [ ] [CARD-008] Review Privacy & Messaging configuration recommendations after evidence collection; propose changes for user approval before applying.
 
 ## Current evidence and observations (user screenshots / confirmations)
@@ -383,3 +383,13 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - PR #236 remains OPEN, DRAFT, UNMERGED. Latest fetched mergeable flag was false; no merge attempted. The Cloudflare preview bot comment referred to an earlier commit and a Worker preview URL, not GitHub Pages production publication. Main branch remains at 497dfe2f676fd7ad6a9cd90e6a33b9d6bf15cf72.
 - Remaining blockers: exact account-selected ad-tech vendor list; publisher legal/controller identity and jurisdiction not supplied; actual production Word Worker/feature availability; live consent/revocation and TC signal; live ads.txt and policy URL response; complete runtime service/cookie inventory. These cannot be safely inferred from source or public documentation.
 - No source on main, production code, DNS, AdSense settings, CMP settings, ads.txt or protected hero/banner was changed. No Request review resubmission and no Publish changes action.
+
+
+### 2026-11-15 — Final batch validation checkpoint
+- Latest PR #236 head: `4fb937d58323aa4046d984105005ce94ff350db7`; policy file blob SHA `99150538b6eee7decbac4491da8b11acd48c4bd6`.
+- Re-ran lightweight HTML structural scan after all policy edits: 189 tags, no mismatched closing tags, no unclosed tags, no duplicate IDs, and 15 external href links. This remains a custom structural check, not a full validator.
+- GitHub Actions workflow runs associated with the latest PR commit: none returned. Check runs: none returned. No CI pass is claimed.
+- Latest PR metadata: OPEN / DRAFT / UNMERGED. GitHub REST currently reports mergeable=true, mergeable_state=unstable; no merge attempted because legal/vendor/runtime disclosures remain incomplete. The PR wrapper's mergeable flag was inconsistent on one fetch; REST metadata was used for the latest check.
+- Main branch SHA verified unchanged: `497dfe2f676fd7ad6a9cd90e6a33b9d6bf15cf72`. No production publication has occurred.
+- Live URLs remain inaccessible to the inspection tool, so no HTTP 200/404 claim is made. AdSense review remains previously submitted; no repeat request.
+- Next: obtain the exact currently selected ad technology provider names from the AdSense/Privacy & Messaging account and confirm publisher/controller legal identity + jurisdiction; then browser-test live consent/revocation, TC string, ads.txt and policy URL. Until those items are verified, keep PR draft and do not merge.
