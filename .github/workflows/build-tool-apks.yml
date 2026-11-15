@@ -61,7 +61,10 @@ jobs:
               resolved_scope = urlparse(urljoin(manifest_url, data.get('scope', ''))).path
               assert resolved_start == f'/InfoJano/{slug}.html', f'Wrong start_url: {manifest}'
               assert resolved_scope == '/InfoJano/', f'Wrong scope: {manifest}'
-              icon_paths = [item.get('src', '').removeprefix('/InfoJano/') for item in data.get('icons', [])]
+              icon_paths = [
+                  urlparse(urljoin(manifest_url, item.get('src', ''))).path.removeprefix('/InfoJano/')
+                  for item in data.get('icons', [])
+              ]
               assert icon_paths and any((root / icon_path).is_file() for icon_path in icon_paths), f'Missing manifest icon file: {manifest}'
               html = page.read_text(encoding='utf-8')
               assert f'app-manifests/{slug}.webmanifest' in html, f'Missing manifest link: {page}'
