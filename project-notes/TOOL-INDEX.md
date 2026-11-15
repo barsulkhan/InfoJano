@@ -1,4 +1,4 @@
-| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — four-keyword and expanded public SERP/country-language research saved; no additional SEO URL justified; future SEO page hero must match the calculator hero (not homepage); quantitative metrics unavailable (Ahrefs plan restriction; no GSC data); live/browser/accessibility verification pending | 2026-11-15 | Run real browser QA on guide and calculator; validate equal-time/timezone assumptions; revisit metrics when a usable provider/property is available |
+| Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — four-keyword and expanded public SERP/country-language research saved; no additional SEO URL justified; future SEO page hero must match the calculator hero (not homepage); quantitative metrics unavailable (Ahrefs plan restriction; no GSC data); live/browser/accessibility verification pending; latest QA continuation attempted, no interactive runtime checks available | 2026-11-15 | Run real browser QA on guide and calculator; validate equal-time/timezone assumptions; revisit metrics when a usable provider/property is available |
 
 Last updated: 2026-11-15
 
@@ -14,3 +14,8 @@ Last updated: 2026-11-15
 - User clarified that future Elapsed Time Calculator SEO landing pages must use the existing calculator hero as the exact design reference; the homepage hero is not an acceptable substitute. Existing guide is intentionally not being revised now.
 - Research still supports only the calculator + guide two-page architecture. CARD-010 remains conditional; no extra page should be created without distinct intent/demand evidence.
 - Detailed decision saved in tools/elapsed-time-calculator/README.md and NEW-CHAT-HANDOFF.md.
+
+
+### 2026-11-15 — QA continuation status
+- Re-fetched calculator, guide, sitemap and QA log; no new runtime/browser test was run because no interactive browser session is connected. Latest source/formula results remain unchanged.
+- Five-entry history runtime, desktop/responsive, keyboard/focus, screen-reader, copy/share and DST checks remain pending. Detailed status in tools/elapsed-time-calculator/README.md and QA-TEST-LOG.md.
