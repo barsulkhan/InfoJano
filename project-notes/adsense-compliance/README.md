@@ -508,3 +508,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Commits: plan `fa16fa93436d`; task log `c904bdae059f`.
 - D-001 remains in progress; no exhaustive all-pages scan or live runtime consent test claimed.
 - No production, settings, DNS, Worker, merge, deployment or protected design changes.
+
+### 2026-11-15 — Finance/health-adjacent/QR page audit batch
+- Inspected 12 additional page sources. GA4 tag confirmed in EMI, Loan Eligibility, Loan Interest, Savings, BMI and Password Generator; Document Studio loads Google Fonts/cdnjs. No explicit CMP marker found in this sample.
+- Task evidence: [2026-11-15-2321-finance-health-qr-page-audit.md](2026-11-15-2321-finance-health-qr-page-audit.md); research details in MASTER-RESEARCH-PLAN.md §16.
+- Task-plan commit: `67b0082e6b99`; task file commit: `f9785952885f`.
+- D-001 remains in progress; this is a bounded source audit, not a complete sitewide inventory or runtime QA.
+- No production/settings/DNS/merge/deployment changes.
