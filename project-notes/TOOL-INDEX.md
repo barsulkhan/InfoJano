@@ -1,4 +1,4 @@
-| Add or Subtract Date Calculator | tools/add-subtract-date-calculator/ | In progress — functional calculator embedded in existing SEO page; Node syntax and date arithmetic checks pass; browser QA/deployment verification pending | 2026-11-15 | Complete browser QA; verify Pages deployment; then review related date-page CTA consistency |
+| Add or Subtract Date Calculator | tools/add-subtract-date-calculator/ | In progress — functional calculator embedded in existing SEO page; Node syntax/date arithmetic checks pass; Pages workflow #2642 SUCCESS; browser QA pending | 2026-11-15 | Complete browser QA; verify Pages deployment; then review related date-page CTA consistency |
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — US Work Hours/Time Card SERP review recommends one consolidated concept; US Date & Time Duration review finds overlap with existing Date + Time mode; no additional elapsed/date-time URL justified; quantitative metrics/GSC unavailable; desktop visual QA pending | 2026-11-15 | Complete desktop visual QA when browser access is available; revisit US metrics/GSC when reliable data is available |
 
 Last updated: 2026-11-15
@@ -88,3 +88,8 @@ Last updated: 2026-11-15
 - Research and QA dossier: `project-notes/tools/add-subtract-date-calculator/`.
 - Code commits: `c9d8bc99a9273f4dbc7c33b805a7b0de674ac424`, `f6265401f3317f11af61c0013c6f4f1b6abe9518`. Node syntax + arithmetic cases passed; browser QA and latest deployment pending.
 - APK workflow #683 completed SUCCESS, including 23 APK package verification, artifact upload and release publication. Release: https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1
+
+
+### 2026-11-15 — Date offset page deployed
+- Pages workflow #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`. Direct live browser rendering could not be independently fetched; interaction QA remains pending.
+- APK workflow #685 passed repository validation and continued building; the previously published release has 23 APK assets.
