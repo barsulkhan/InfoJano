@@ -803,3 +803,9 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - Commit: `fc1649439ccb7e33524043600dc080ebef6d7d0d`.
 - Task record: [2026-11-16-0016-shared-privacy-link-coverage.md](2026-11-16-0016-shared-privacy-link-coverage.md).
 - Validation pending: CI and browser spot-check (desktop/mobile; one page with existing link, one without). Do not treat source commit as proof of live propagation.
+
+
+### Shared footer CI follow-up — 2026-11-16
+- `site-header.js` is now included in the privacy QA workflow path filters. CI run #43749910209 passed both HTML validation and policy/sitemap/robots checks for the new workflow commit.
+- Task record: [2026-11-16-0017-shared-footer-qa-trigger.md](2026-11-16-0017-shared-footer-qa-trigger.md).
+- Remaining validation: live custom-domain deployment propagation and desktop/mobile browser spot-check.
