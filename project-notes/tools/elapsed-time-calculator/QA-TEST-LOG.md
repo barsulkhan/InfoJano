@@ -66,3 +66,10 @@ ET-010: Clear History — use the Clear history control and confirm that the rec
 - Result: Clear History action and empty-state rendering are visually confirmed (partial ET-010 PASS).
 - The screenshot does not yet prove persistence after a page reload. Final ET-010 status remains pending until the user refreshes and confirms the list stays empty.
 - Five-entry cap remains source-reviewed only; runtime cap test is still pending.
+
+
+### 2026-11-15 — ET-010 Clear History persistence after refresh: PASS
+- User supplied a second live mobile screenshot after refreshing the calculator page.
+- The Recent Calculations section still displays “No recent calculations yet.” and contains no restored records.
+- Result: Clear History empty-state and persistence-after-refresh are visually confirmed. ET-010 marked PASS based on the two sequential user screenshots (empty state before refresh and still empty after refresh).
+- Remaining QA: five-entry cap runtime test; desktop visual QA; complete mobile responsive review; keyboard and screen-reader accessibility review.
