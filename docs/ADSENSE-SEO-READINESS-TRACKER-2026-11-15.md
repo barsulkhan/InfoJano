@@ -67,3 +67,70 @@ Static source checks, link/path audit, sitemap consistency, canonical/robots/sch
 - Issues: custom-domain path migration is cross-cutting and needs a complete reference audit; privacy text must reflect actual third-party processing; SEO keep/disable decision needs per-page evidence.
 - Still pending: full page inventory and duplication scoring; create policy/about/contact/terms; repair path references; reversible archive/noindex plan; static QA.
 - Protected areas: ID Card Print Studio and all production pages remain untouched.
+
+
+## Progress update — 2026-11-15 16:49 +05:30
+
+### CARD-001 — Privacy Policy and publisher disclosure
+Status: Source implementation completed; account-side consent setup pending.
+- Added `privacy-policy.html` with disclosures for GA4 where enabled, Google AdSense and third-party advertising cookies/identifiers, Google Ads Settings and aboutads.info opt-out routes, local browser storage, optional third-party DOCX conversion, external services, retention limitations and contact route.
+- Policy does not claim that all tools are local or that ads are currently serving. It explicitly describes the optional high-fidelity Word conversion upload path.
+- Added links to Google's partner-site data explanation and official CMP requirements.
+- Source search found no Google Funding Choices / Google-certified CMP integration in current `main` code. Account-side AdSense Privacy & Messaging / certified CMP configuration remains BLOCKED pending authenticated AdSense account access and user-side configuration.
+- `ads.txt` source line verified as `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`.
+
+### CARD-002 — Custom-domain path migration
+Status: Source implementation completed for identified production references; static/live QA pending.
+- Updated the root-relative `/InfoJano/` references found in production HTML, JavaScript and PWA manifests to deployment-relative paths where appropriate.
+- `install.js` now resolves `/` on `infojano.com` and `/InfoJano/` on legacy `barsulkhan.github.io`, and uses that root for service-worker registration and shared scripts.
+- `site-header.js` retains its hostname-aware root and now loads the shared legal links helper.
+- `sw.js` derives its base path from its own script location and maps the legacy precache entries to that base. Cache advanced sequentially from `infojano-v310` to `infojano-v312` because the new legal pages/helper were added to the precache.
+- Main PWA manifest and app manifests use relative URLs so they work from the custom-domain root and the GitHub Pages project subpath.
+- Updated root pages that were found by the repository code search, including the homepage, PDF/Word tools, core calculators, QR pages, Number to Words pages, BMI pages, ID Card Print Studio, and associated web manifests.
+- ID Card Print Studio's path references only were updated; crop, front/back selection, print dimensions, PDF/JPG export and approved visual layout were not changed.
+- Source checks confirm homepage has no remaining literal `/InfoJano/` path; the intentional legacy path remains only in hostname fallback logic and the Service Worker path-rewrite map. Live custom-domain behavior has not been tested.
+
+### CARD-003 — About, Contact and Terms
+Status: Source implementation completed; live navigation QA pending.
+- Added `about.html`, `contact.html`, `terms-of-use.html`.
+- Contact route points to the real public repository issue tracker. No email or postal address was invented; the page warns users not to post sensitive information publicly.
+- Added `legal-links.js` and wired it into the shared install/header scripts so Privacy, About, Contact and Terms links appear in shared footers on pages loading those helpers.
+- Added all four information pages to all three sitemap variants.
+
+### CARD-004 — Content quality
+Status: Partial review and targeted improvement completed; full 103-URL review remains in progress.
+- Reviewed source-level visible text, metadata, canonical, FAQ/schema presence and page purpose for: Number to Words (main + 15 landing pages), percentage landing pages, QR-specific pages and chooser, date tools, four BMI guides, and image-resizer landing pages.
+- Eight Number to Words landing pages had only about 151–171 visible words and overlapped with a more complete converter. Those are now temporarily noindex; their actual modes/pages remain accessible.
+- `qr-choice.html` had about 74 visible words and functions mainly as a chooser; it is now noindex while the real QR tools remain accessible.
+- Four BMI guides had visible keyword-list sections explicitly labelled as keyword lists. Removed those sections and added links to CDC adult/child BMI references and WHO obesity/overweight information, plus an explicit adult-only scope and screening-measure caveat.
+- The 16 percentage pages reviewed have distinct calculator tasks, roughly 274–336 visible words, FAQs and structured data; retained them pending any future evidence of cannibalization.
+- The QR tool pages reviewed have roughly 371–762 visible words with separate task descriptions/FAQs; retained them. No bulk deactivation based only on word count.
+- The reviewed date pages have separate user tasks and substantive explanatory copy; retained.
+- Search volume, KD, CPC, traffic potential and current Search Console performance were not available for this audit; no numeric demand claims were inferred.
+
+### CARD-005 — SEO landing-page curation and reversible deactivation
+Status: First reversible batch implemented; further review pending.
+- Created exact pre-change archive branch `archive/seo-landing-pages-before-cleanup-2026-11-15` from main commit `9b069a536b3b5f5ed4afac19f3de0257475c58ab`.
+- Temporarily applied `noindex,follow` to: `decimal-number-to-words.html`, `bulk-number-to-words.html`, `words-to-number-converter.html`, `ordinal-number-converter.html`, `million-billion-converter.html`, `lakh-crore-converter.html`, `number-to-words-uppercase.html`, `number-to-words-for-cheque.html`, and `qr-choice.html`.
+- Removed those nine URLs from the active sitemap variants. They are not deleted; their source and functionality remain available.
+- Retained the main Number to Words converter plus distinct Indian, International, INR, USD, cheque, Bengali and Hindi pages.
+- Restore manifest: `docs/SEO-LANDING-PAGE-RESTORE-MANIFEST-2026-11-15.md`. It lists exact paths, reasons and commands for restoring original files from the archive branch.
+- Historical indexing tracker entries were preserved. The noindex change does not prove Google has already deindexed any URL.
+
+### CARD-006 — QA and AdSense readiness
+Status: In progress.
+- Static source check: canonical sitemap, alternate XML sitemap and text sitemap now each contain 103 unique URLs and match exactly.
+- Static source check: `robots.txt` allows crawling and points to `https://infojano.com/sitemap.xml`.
+- Static source check: `ads.txt` contains the expected publisher record.
+- Static source check: main manifest uses relative `id`, `start_url`, `scope` and icon paths; Service Worker cache version is v312 and legal pages/helper are precached.
+- Static source check: all nine deactivated pages contain `noindex,follow` and are absent from the three active sitemap variants.
+- Not run: JavaScript runtime, browser rendering, desktop/mobile QA, PWA install/offline behavior, live HTTP redirects, AdSense account review, authenticated Search Console inspection, and deployment workflow.
+- No production merge or deployment has been performed.
+
+## Current blockers and next actions
+1. Finish the remaining sitemap page-by-page content and navigation audit; keep only evidence-based noindex decisions.
+2. Check all production path references and PWA manifest/service-worker behavior with a real browser on both custom domain and GitHub Pages path if the legacy host remains supported.
+3. Verify new pages, shared legal footer and all 103 sitemap URLs after deployment.
+4. Configure Google-certified CMP in AdSense Privacy & Messaging for eligible EEA/UK/Switzerland traffic; this requires account access and cannot be certified by source code alone.
+5. Create a draft PR for review. Do not merge or deploy without explicit approval.
+6. After merge/deploy, verify live page responses, crawler access, ads.txt, PWA/offline and Search Console. Only then consider AdSense resubmission.
