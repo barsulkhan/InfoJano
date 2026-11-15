@@ -163,3 +163,13 @@ When a real browser is available, perform the five-entry history test (create si
 - Hero instruction: user explicitly said not to revise the existing guide hero now. Future separately justified SEO pages must match the calculator tool hero, not the homepage hero; this requirement is recorded in README and handoff. Existing guide remains unchanged.
 - Next concrete manual test: on the live calculator, create six distinct calculations, then inspect Recent Calculations. Expected: only the newest five remain. Capture a screenshot showing the five entries and share it so the runtime cap can be verified. After that, continue desktop visual and keyboard/focus checks.
 - Protected areas: no application source or hero/banner files changed.
+
+
+### 2026-11-15 — ET-011 Recent Calculations five-entry cap: runtime PASS
+- User supplied sequential live mobile screenshots of Recent Calculations after creating six distinct calculations.
+- Screenshot sequence: the earlier state showed five entries, with the oldest at 2:07:49 PM. After a sixth calculation was created at 2:11:37 PM, the latest screenshot still showed exactly five entries.
+- The newest 2:11:37 PM Add / Subtract calculation appeared at the top. The prior oldest 2:07:49 PM entry disappeared; the four newer prior entries remained in order.
+- Result: ET-011 five-entry history cap and newest-first eviction behavior confirmed at runtime from sequential user screenshots. PASS.
+- Evidence limitation: screenshots establish the visible list state and ordering for this test sequence; they do not establish behavior across every browser/storage condition.
+- Remaining QA: desktop visual QA, broader mobile viewport/overflow sweep, keyboard/focus, screen-reader, copy/share end-to-end delivery, and DST boundary runtime checks remain pending.
+- No application source or hero/banner files changed.
