@@ -1053,3 +1053,47 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 ### 7. Handover
 - Research phase is finalized for US, UK, Canada, Australia and India. Do not reopen excluded countries in this phase.
 - Next implementation should be a separate, scoped SEO-content task, preserving the approved UI and existing calculator behavior.
+
+
+## Work session — 2026-11-16 (On-page SEO implementation and final handover)
+
+### 1. Owner request
+- Owner asked to complete the project work fully after the keyword research phase was finalized.
+
+### 2. Baseline inspected
+- Repository: barsulkhan/InfoJano, branch main.
+- Read current percentage.html, percentage-change.html, sitemap.xml, sitemap-infojano.xml, sitemap.txt, sw.js, research report and project record before changes.
+- Existing percentage-change page already supports Percentage Change, Reverse Percentage and Percentage Difference, with batch calculations, history and CSV export. Its guide explained percentage change and percentage difference, but did not explain the reverse-percentage formula in the visible guide.
+- Existing generic percentage page already had its main calculator and supporting FAQ/guide content. Existing page UI/hero was left intact.
+- Existing service worker precached both calculator pages at v310.
+
+### 3. Changes implemented
+- Updated percentage.html title/meta description and matching Open Graph/Twitter metadata for the primary “percentage calculator” intent.
+- Updated percentage-change.html title/meta description and matching Open Graph/Twitter/WebApplication metadata for the secondary “percentage change calculator” intent.
+- Expanded the existing percentage-change guide with reverse increase/decrease formulas, worked examples and percentage-difference formula/example; added one reverse-percentage FAQ.
+- Updated the existing hero description text only; preserved hero markup, styling and dimensions.
+- Updated lastmod for percentage.html and percentage-change.html in sitemap.xml and sitemap-infojano.xml.
+- Bumped sw.js cache version from v310 to v312 after the final code/sitemap changes. Both target URLs were already precached.
+- No new pages, translations, country clones, paid tools, homepage edits, global header/logo redesign or unrelated features.
+
+### 4. Tests and verification
+- [x] Source-level preflight assertions passed for updated title/description, formula sections, reverse FAQ and hero H1 preservation.
+- [x] Arithmetic spot checks: 80→100 = +25% change; 100→80 = −20%; 80 vs 100 = 22.22% difference; final 120 after +20% = original 100; final 80 after −20% = original 100.
+- [x] Confirmed existing calculator logic and input handlers were not edited.
+- [x] Confirmed both target pages are in service-worker precache list.
+- [x] XML sitemap entries and lastmod values updated.
+- [ ] Interactive browser testing, mobile visual regression, Copy Result, CSV download and history restore not run; no browser automation capability was available in this session.
+- [ ] Live URLs were not independently confirmed because the web reader could not access them. GitHub Pages deployment status must be checked after the latest commit.
+- [ ] Search Console indexing and performance remain unverified; no account data available.
+
+### 5. Google guidance
+- Applied Google's recommendations for concise, unique, descriptive titles and page-specific meta descriptions; no keyword stuffing. Sources: https://developers.google.com/search/docs/appearance/title-link and https://developers.google.com/search/docs/appearance/snippet.
+- Google can rewrite title links and generate snippets from visible page text. Search appearance is not guaranteed by metadata changes.
+
+### 6. Scope / deployment
+- Research active markets: US, UK, Canada, Australia and India only. Other markets remain temporarily excluded.
+- English-only scope retained.
+- No claim of ranking improvement, indexing or production deployment until independently verified.
+
+### 7. Commit status
+- Page, sitemap, service-worker and documentation commits are recorded in the final handover after verification.
