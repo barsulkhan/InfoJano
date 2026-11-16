@@ -922,3 +922,58 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 ### 7. Handover
 - Treat this as one consolidated discovery backlog. Do not keep asking the owner to pay or do manual keyword checks.
 - Any future pass should be consolidated and only continue if it can add direct Google-surface evidence, Search Console data or a verified free data source.
+
+
+## Work session — 2026-11-16 (Consolidated Google evidence refresh and SEO decision)
+
+### 1. Owner request and scope
+- Owner said “Koro kaj” after requesting fewer, larger work updates. Execute one consolidated research pass and report completed work in one response.
+- Scope: refresh Google-owned documentation, obtain accessible search phrase/volume evidence, attempt Trends comparison, derive a restrained SEO priority recommendation, and record everything.
+- Hard constraints: free sources only; no paid services, subscriptions, API spend or manual work requested from owner; English-only; no application implementation or design changes.
+
+### 2. Research performed
+- Verified Google's Autocomplete explanation and personalization/localization factors: https://support.google.com/websearch/answer/7368877?hl=en-GB.
+- Verified Google Trends Top and Rising related-query definitions: https://support.google.com/trends/answer/4355000?hl=en-GB.
+- Verified sampling, normalization, 0–100 scale and low-volume suppression: https://support.google.com/trends/answer/4365533?hl=en-GB.
+- Reviewed current KWS Trends US report for “percentage calculator”: 1,000,000 third-party average monthly estimate, SEO difficulty 65/100; separate Keyword Planner panel 550,000. Related phrase estimates: percentage increase calculator 110,000, calculate percentage 90,000, percentage difference calculator 82,000. Source: https://www.kwstrends.com/keywords/us/percentage-calculator.
+- Reviewed current KWS Trends US report for “percentage change calculator”: 60,000 third-party average monthly estimate, SEO difficulty 72/100. Related query estimates: how to calculate percentage change 16,000; calculate percentage change 14,000; how do you calculate percentage change 12,000. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator.
+- Attempted Google Trends five-year comparison for percentage calculator, percentage change calculator and percentage difference calculator. The Explore page was inaccessible through the current web reader; no chart or CSV values were extracted.
+
+### 3. Findings and interpretation
+- The two core phrases have publicly visible third-party US estimates, but these are not Google-owned direct exports. For “percentage calculator”, KWS's average monthly estimate and its separate Keyword Planner figure differ; both are retained separately, not averaged.
+- “percentage change calculator” has a useful informational long-tail cluster around how to calculate percentage change and its formula.
+- No verified volumes were found for percentage decrease, percentage difference or reverse percentage as independent seed reports in this pass. Keep them as intent candidates, not measured demand.
+- Do not equate SEO difficulty with Ads competition or treat Trends index as absolute volume. Do not extrapolate US estimates globally.
+- Recommendation: optimize the existing calculator around the six directly relevant core intents and support the change mode with concise formula/how-to content. Keep tax, discount, tip, grade, margin, commission and percentage-point tasks separate because they involve distinct intent/formulas.
+
+### 4. Changes made
+- Appended Section 19 to docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md.
+- Appended this dated work session to docs/PERCENTAGE-CALCULATOR-PROJECT-RECORD.md.
+- No calculator source, UI, homepage, Hero, Header, logo, metadata, unrelated feature or deployment changed.
+
+### 5. Mistakes / corrections
+- Clearly labeled KWS values as third-party estimates, not direct Google data.
+- Kept the separate Keyword Planner panel distinct from KWS's corrected average monthly estimate.
+- Did not claim the Trends comparison succeeded after the reader returned an access error.
+- Did not invent missing keyword volumes or country-level English demand.
+
+### 6. Verification
+- [x] Read both current project documents before editing.
+- [x] Checked Google Autocomplete and Google Trends official documentation.
+- [x] Checked two current KWS Trends US reports and recorded update dates/metric distinctions.
+- [x] Attempted Google Trends comparison and documented access failure.
+- [x] Derived SEO focus based on existing tool fit and available evidence.
+- [x] No paid service used; no application code changed.
+- [ ] Direct country-specific Autocomplete and Trends exports remain pending.
+- [ ] Consistent country volume matrix and Search Console validation remain pending.
+- [ ] Browser QA and live deployment status remain unchanged/unverified.
+
+### 7. Commit and deployment
+- Research commit: pending verification.
+- Project record commit: pending verification.
+- No app deployment; live status unverified.
+
+### 8. Handover
+- Current SEO recommendation: focus existing page on core percentage calculator/change/increase/decrease/difference/reverse intents; support with one clear formula/how-to section for percentage change.
+- Do not expand the product or publish separate pages for distinct formula intents without a separate evidence-backed decision.
+- Future research should only continue when it can obtain direct Google-surface evidence, verified free metrics, or Search Console data; keep updates consolidated.
