@@ -130,3 +130,7 @@ A source-level inspection was performed across all 117 HTML files in the recursi
 4. Verify whether Countdown Studio is intentionally excluded from sitemap.
 5. Prepare Image-to-PDF /Height regression harness and only then consider a minimal mitigation branch.
 6. Continue checking tool behavior, privacy disclosures, CMP/revocation, ads.txt HTTP and redirect evidence. Live/account tests require actual browser/owner evidence.
+
+
+### PR #240 branch refresh
+The first PR metadata snapshot reported `mergeable=false` because main advanced with documentation commits after the branch was created. The branch was safely rebuilt on the latest main commit using a one-file tree update (no production file touched): current comparison is `ahead`, 1 commit ahead / 0 behind, changing only `savings.html`. GitHub PR metadata may take time to refresh; browser QA is still required.
