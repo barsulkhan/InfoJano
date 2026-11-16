@@ -232,3 +232,13 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 5. Continue whole-site page-level metadata, accessibility, navigation, tool-function, content-quality and privacy/security audits. Live CMP/TCF/revocation, Worker/CORS/log-retention, AdSense account/vendor and legal facts require owner/browser evidence.
 6. Confirm whether Countdown Studio is intentionally excluded from sitemap before proposing a sitemap-only change.
 
+
+
+### Follow-up CI findings — 2026-11-16 17:58 +05:30
+- GitHub Pages workflow run [#43864387270](https://github.com/barsulkhan/InfoJano/actions/runs/43864387270) for merge commit `67d5924` completed successfully. Both the Jekyll build and Deploy to GitHub Pages jobs succeeded.
+- The documentation-only handoff update commit `a912a0364617bfdce984741d1bd39bf330683f6f` also completed GitHub Pages build/deployment successfully in run [#43866421782](https://github.com/barsulkhan/InfoJano/actions/runs/43866421782).
+- Privacy Policy QA run [#43864387854](https://github.com/barsulkhan/InfoJano/actions/runs/43864387854) succeeded on the merge commit.
+- Tool APK workflow run [#43864387912](https://github.com/barsulkhan/InfoJano/actions/runs/43864387912) failed during the static validation step before APK assembly. Exact assertion: it expected the literal `/InfoJano/app-icons/age.svg` inside `sw.js`, but the merged worker correctly stores relative precache entries and resolves them with `BASE + path`. This is a stale CI assertion, not evidence that APKs or page functionality are broken.
+- A draft-only correction was prepared in PR #244: https://github.com/barsulkhan/InfoJano/pull/244. It checks app manifest URL resolution under both `/` and `/InfoJano/`, parses the worker's relative precache entries, and checks file existence/coverage. One changed file only: `.github/workflows/build-tool-apks.yml`. It has not been merged and the APK/release workflow has not been re-run.
+- PR #244's proposed validation has been reviewed as a focused diff, but no CI execution has yet proven it passes. Keep it draft until reviewed. The existing APK workflow publishes a prerelease on main; do not manually dispatch or merge it without explicit approval for that release effect.
+- The screenshot Cloudflare preview remains separate from GitHub Pages production deployment. GitHub Pages deployment is confirmed; custom-domain DNS/CDN propagation and actual browser/live HTTP behavior remain unverified in this environment.
