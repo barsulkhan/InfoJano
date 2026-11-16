@@ -90,3 +90,23 @@ For the 27 alternate URLs, post-deployment live canonical and Google recrawl con
 ## Release and safety constraints
 
 No production deployment, merge, Google indexing request, or Validate Fix was performed as part of this consolidated report. The 18 Number-to-Words Pro and Countdown SEO URLs previously placed on hold remain excluded from indexing requests.
+
+
+## 2026-11-16 follow-up — merge queue and next work
+
+### Pending merge (explicitly not merged)
+- [ ] PR #237 — legacy `/InfoJano/` path compatibility across custom-domain pages/PWA. Draft, open; mergeability currently reported false. Needs conflict/rebase or GitHub mergeability refresh and final review.
+- [ ] PR #238 — align ID Card Print Studio `og:url` with its canonical custom-domain URL, plus 27-URL audit note. Draft, open; mergeability currently reported false. Needs conflict/rebase or GitHub mergeability refresh and final review.
+- [ ] PR #239 — five image-resizer guide sidebar copy refinements. Draft, open; mergeable currently true. Latest associated workflow run #43806628836 (“Privacy Policy QA”) completed successfully. This workflow is not a full SEO/canonical validation.
+- No PR has been merged or deployed. Do not merge/deploy or submit indexing requests without explicit authorization.
+
+### Additional work completed in this batch
+- Re-fetched all five edited guide pages from PR #239 branch.
+- Confirmed each still has its self-referencing canonical URL and the new topic-specific sidebar paragraph.
+- Confirmed five different sidebar paragraphs are present; no canonical tags were changed.
+- Attempted live URL fetch for the two redirect variants and canonical homepage through the available web fetch. All three requests were inaccessible through that fetch, so live redirect verification remains blocked and no HTTP status/hop count is claimed.
+
+### Next task taken up
+- The next safe task is to continue a repository-only quality audit of the five guide pages and PR #239, then examine remaining Search Console categories where source evidence exists.
+- For Google-selected canonical resolution, the exact Google-selected canonical values remain necessary; source changes cannot directly force Google's selection.
+- No Validate Fix, indexing request, deployment, or merge was performed.
