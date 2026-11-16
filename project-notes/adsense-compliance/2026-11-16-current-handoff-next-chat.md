@@ -187,3 +187,5 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 
 - PR #240 branch refreshed on latest main; compare now shows 1 ahead / 0 behind (single `savings.html` change). GitHub mergeability metadata may lag; visual QA still required.
 - Audit log added to adsense-compliance README. Latest report update is linked above.
+
+- PR #240 CI run #43861117912 completed successfully. Its only job is `validate`, which validates Privacy Policy HTML5 markup, policy links, sitemap and robots reference. This is not a dedicated heading/accessibility/browser visual test.
