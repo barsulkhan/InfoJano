@@ -120,3 +120,18 @@ These are not the five Search Console indexing categories, but they were also li
 
 ---
 This file is an evidence-based status inventory, not a claim of full Search Console recovery, AdSense approval, legal compliance or production deployment.
+
+
+## 7. Follow-up execution checkpoint — 2026-11-16
+
+- Rechecked PR #237: still OPEN and Draft; GitHub reports the branch mergeable. It remains unmerged and not deployed.
+- Rechecked PR #237 CI run #43799110775: job `validate` completed SUCCESS. This workflow validates Privacy Policy / Contact markup and policy/sitemap/robots links; it is not a full validation of all 89 changed files.
+- Independently compared the 198 service-worker precache entries in PR #237 against the complete Git tree for the PR branch (366 paths). **All 198 listed assets exist** in that branch; no missing precache target was found.
+- Retried live public reads for `https://infojano.com/robots.txt`, `/ads.txt`, and `/sitemap.xml`; the web fetcher reports the domain URLs are not accessible. Live HTTP status, redirects, headers, body and production path behavior therefore remain UNVERIFIED.
+- Code-search review of `/Height` continues to show only the PDF image-height dictionary context in `image-to-pdf.html`; no actionable route/link source identified. Exact references for `/(100)` and the screenshot's approximate `/(100)^ ` transcription remain unresolved.
+- No merge, deployment, Search Console Validate Fix, Request Indexing, or action against the 18 held SEO URLs was performed.
+
+### Immediate next safe work
+1. Complete a stronger PR #237 audit (all modified HTML/JS/manifest path references, dual-host resolution, canonical/OG preservation and workflow coverage) before any merge decision.
+2. Obtain the exact URL rows for the 27 alternate-canonical, 2 redirect, 5 duplicate-canonical and 2 crawled-not-indexed categories; aggregate screenshot counts are insufficient for safe per-URL fixes.
+3. Retry live HTTP/browser verification when the custom domain is reachable.
