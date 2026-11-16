@@ -179,3 +179,28 @@ The 27, 2 redirect and 5 duplicate-canonical groups were already audited in the 
 Validation for all five categories is shown as “Not Started” in this screenshot. Do not click Validate Fix yet. Request the detailed URL list for the 13 404s and the two crawled-not-indexed pages; a clear screenshot of each category's example URL table is sufficient to begin source-level checks.
 
 No fixes are claimed for these two newly discovered categories at this stage.
+
+
+## Updated task board — after detailed /Height inspection screenshot
+
+The owner supplied the requested URL Inspection details for `/Height`. Mark the following as completed evidence collection, not as a resolved production issue:
+- [x] Obtained Search Console referring-page evidence for `/Height`: `https://infojano.com/image-to-pdf.html`.
+- [x] Recorded crawl facts: 404; Googlebot smartphone; crawl allowed; last crawl Nov 14, 2026 12:31:37 PM (timezone not shown); no referring sitemap; canonical N/A.
+- [x] Rechecked current `image-to-pdf.html` source: `/Height` appears in PDF object dictionary strings, not as an HTML href. This is a plausible clue, not a proven extraction mechanism.
+
+### Remaining tasks — explicitly marked pending
+- [ ] **404 /Height:** determine whether PDF-generation output is exposed/discoverable to Google and how the PDF dictionary token became a URL. No redirect or code fix until confirmed.
+- [ ] **404 /InfoJano/:** obtain detailed URL Inspection screenshot with referring page and last crawl; then finish dual-host path audit.
+- [ ] **404 /(100):** confirm exact URL and detailed referring page.
+- [ ] **404 formula-like path /(100)^ :** confirm exact URL encoding/trailing character and detailed referring page.
+- [ ] **PR #237:** review 89 changed files, resolve branch divergence/overlaps, run path/PWA/service-worker QA; currently Draft, not mergeable, not merged/deployed.
+- [ ] **PR #238 and #239:** review divergence/overlap and QA before any merge; currently Draft, not merged/deployed.
+- [ ] **27 alternate canonical URLs:** source audit recorded; live preferred-canonical destinations and internal/sitemap consistency still need confirmation.
+- [ ] **2 redirect URLs:** verify exact redirect destinations, status codes and chains from live HTTP evidence.
+- [ ] **5 Google-selected canonical duplicates:** user screenshots now show Google selected the legacy GitHub Pages URLs; remediation and live post-deploy Google selection remain pending.
+- [ ] **2 crawled-not-indexed URLs:** obtain exact URLs and inspect each page's content, canonical, indexability and internal links.
+- [ ] **AdSense/privacy:** live revocation link/CMP/TCF behavior and ads.txt HTTP/crawler checks remain pending; AdSense site review is already submitted and should not be resubmitted.
+- [ ] **18 held SEO pages:** 15 Number-to-Words Pro + 3 Countdown pages remain intentionally NOT submitted for indexing.
+
+### Permission boundaries retained
+The owner's permission in chat is to mark and continue unfinished work. Earlier explicit release constraints remain: no production code changes outside draft PRs, no PR merge, no deployment, no Search Console Request Indexing, and no Validate Fix. Do not treat this task-board update as authorization to cross those release gates. Documentation updated only.
