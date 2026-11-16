@@ -88,3 +88,15 @@ This batch was read-only for source/PR state; only this report and tracker/hando
 - No DNS, Cloudflare Worker, secrets, AdSense/CMP/legal/publisher setting change.
 - No Google Request Indexing or Validate Fix.
 - The 18-page indexing hold remains unchanged.
+
+
+## 6. PR #237 — additional static dual-host/PWA review
+
+Read-only comparison of `main` and the PR branch for `sw.js`, `install.js`, root `manifest.json`, and representative page/app-manifest files found:
+- `install.js` chooses `/InfoJano/` on `barsulkhan.github.io` and `/` on the custom domain, then uses that root for service-worker registration and helper-script loading.
+- `sw.js` derives `BASE` from `self.registration.scope`, maps relative precache paths through that base, and uses the derived base as the offline HOME fallback.
+- Static check against the PR branch's Git tree: all 198 non-empty precache entries (199 array entries including the intentional empty root path) exist in the branch tree; no duplicate non-empty precache entries were found.
+- Root `manifest.json` uses relative `./` start/scope and relative icon paths; the three sampled dedicated app manifests use `../` paths that resolve from `app-manifests/` to their root-level tool pages/icons.
+- The source strategy appears internally consistent for the two URL roots in the files sampled. This is not a full review of all 89 changed files and is not browser/device validation.
+
+Still required before any release recommendation: run installed-PWA/service-worker tests on both `https://barsulkhan.github.io/InfoJano/` and `https://infojano.com/`, verify first install/upgrade/cache invalidation/offline fallback/navigation/assets, and verify the 29 dedicated app manifests. No code or PR branch change was made.
