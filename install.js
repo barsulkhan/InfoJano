@@ -1,5 +1,6 @@
 /* InfoJano shared page helpers: no top install banner; apply theme and contextual related apps. */
 (()=> {
+  const ROOT=(location.hostname==="barsulkhan.github.io")?"/InfoJano/":"/";
 /* Register the site-wide worker from every page that loads this shared helper. */
   function registerServiceWorker(){
     if(!("serviceWorker" in navigator))return;
