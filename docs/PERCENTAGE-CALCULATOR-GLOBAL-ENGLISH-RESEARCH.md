@@ -572,3 +572,71 @@ Business / work / education intent:
 - [ ] Export Google Trends Top and Rising queries for each seed and target country.
 - [ ] Obtain exact country/language search-volume data from a genuinely free source, if accessible.
 - [ ] Validate query demand and SERP intent before changing page content or architecture.
+
+
+## 18. Second free Google-query expansion pass — 2026-11-16
+
+### 18.1 Direct Google documentation checked
+- Google Autocomplete predictions reflect real Google searches but are filtered by query language, location, trending interest and prior searches; Google also notes some predictions may be phrase patterns rather than complete queries. Source: https://support.google.com/websearch/answer/7368877?hl=en (checked 2026-11-16).
+- Google Related searches are automatically generated from how people search. Source: https://support.google.com/websearch/answer/2466433?hl=en (checked 2026-11-16).
+- Google Trends Related queries have Top and Rising modes, but results are normalized 0–100 or growth labels, not absolute volume. Sources: https://newsinitiative.withgoogle.com/resources/trainings/google-trends-understanding-the-data/ and https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/ (checked 2026-11-16).
+
+### 18.2 Additional query variants discovered in public search results
+
+How-to / formula:
+- how to calculate percentage change
+- calculate percentage change
+- how do you calculate percentage change
+- percentage change formula
+- how to calculate percentage increase
+- how to calculate percentage decrease
+- how to calculate percent difference
+- percentage difference formula
+- percentage increase formula
+- percentage decrease formula
+
+Reverse / original-value:
+- find the original price
+- original price before discount
+- original value before percentage increase
+- original value before percentage decrease
+- undo a percentage
+- work backwards from a percentage
+- X is Y percent of what
+- find the whole from a part and percentage
+
+Apply / remove percentage:
+- add a percentage to a number
+- subtract a percentage from a number
+- increase a number by a percentage
+- decrease a number by a percentage
+- value after percentage increase
+- value after percentage decrease
+- price after percentage discount
+- remove tax from total price
+- price before tax
+- remove VAT from gross price
+
+Reporting / comparison:
+- percentage points vs percent change
+- percentage point difference calculator
+- percentage change over time
+- monthly percentage change calculator
+- year over year growth percentage
+- month over month growth percentage
+- calculate percentage growth between two values
+
+### 18.3 Search-result evidence and intent notes
+- Public search results for percentage change surfaced “how to calculate percentage change”, “calculate percentage change”, and “how do you calculate percentage change” as related phrases in one third-party keyword report. This is third-party reported related-keyword evidence, not a direct Google Autocomplete capture. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (checked 2026-11-16).
+- Search results for reverse-percentage tools explicitly associate the task with original price, before/after discount, undo a percentage, and “X is Y percent of what”. Sources: https://moneydeck.io/tools/reverse-percentage-calculator and https://numerith.com/calculators/reverse-percentage-calculator (checked 2026-11-16).
+- Search results also show percentage-points as a distinct concept from percent change; do not mix these into the existing Percentage Change mode without a separately designed feature. Source: https://omnibus.tools/percentage-calculator/reverse-percentage (checked 2026-11-16).
+- One third-party page reports approximately 60,000 monthly US searches for “percentage change calculator”, while its separate Keyword Planner figure and other providers differ. Treat all third-party values as estimates and do not combine incompatible data. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (checked 2026-11-16).
+
+### 18.4 What was and was not collected
+- [x] Added additional English phrase variants from public search results.
+- [x] Verified Google's own explanation of Autocomplete, Related searches and Trends.
+- [ ] No live, location-specific Google Autocomplete response list was captured in this web session.
+- [ ] No Google Trends Top/Rising CSV was retrieved.
+- [ ] No new verified country-level search volumes were collected.
+- [ ] No Search Console property data was available.
+- All query candidates remain hypotheses for validation; do not present as measured volume or confirmed Google suggestions.
