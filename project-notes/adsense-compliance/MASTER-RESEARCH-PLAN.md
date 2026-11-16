@@ -899,3 +899,12 @@ The user has authorized continuing through outstanding work without asking appro
 - ads.txt HTTP/HTTPS status, redirect chain, headers and AdSense crawler recognition: UNVERIFIED.
 - No production source, app manifest, workflow, CNAME, DNS, Worker, CMP/AdSense setting, merge, deployment trigger or indexing action changed.
 - Detailed task record: [2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md](2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md).
+
+
+## 26. Search Console 404 screenshot follow-up — 2026-11-16
+
+User supplied five additional Search Console photos. They confirm the report totals and provide the full 13-example 404 table. URL Inspection of the malformed Percentage of a Percentage URL explicitly reports 404, crawl allowed, Googlebot smartphone, referring page the clean calculator URL, no sitemap detected and last crawl 2026-11-16.
+
+Current main source was fetched again for nine affected calculator pages plus `404.html`. All nine calculator pages have clean canonical and Open Graph URL values; GitHub code search found no current source-code occurrence of the literal malformed `$3<meta property=` or `$3<script type=` suffix. This only establishes source-level cleanliness, not live HTTP or rendered-output correctness. The malformed suffix's origin remains unproven.
+
+The exact 13 screenshot examples and per-page source findings are recorded in [2026-11-16-search-console-404-screenshot-follow-up.md](2026-11-16-search-console-404-screenshot-follow-up.md). Continue by tracing the referring page's live raw/rendered output, cached/service-worker response and internal references to `/Height`, `/(100)`, `/(100)^ `, and `/InfoJano/`. Do not add blanket redirects. Do not submit Request Indexing or Validate Fix until causes and intended destinations are established. Existing 18-page indexing hold remains.
