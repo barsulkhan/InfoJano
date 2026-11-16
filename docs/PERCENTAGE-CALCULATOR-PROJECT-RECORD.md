@@ -111,3 +111,40 @@ These are test instructions, not a claim that every check has already been run.
 ### 2026-11-16
 - Created this durable project record.
 - Recorded current known feature scope, design protections, recent commits, QA checklist, research gaps, and next work queue.
+
+
+## Mandatory ongoing work log — owner instruction (2026-11-16)
+
+The owner requires a complete, dated record for every task performed on this tool. This is mandatory; do not skip updates, even for small fixes.
+
+For every work session, append a dated entry recording:
+
+- **Request and scope:** what the owner asked for, which tool/page/files are in scope, and what must not be touched.
+- **Research:** questions investigated, competitor/keyword/audience findings, source URLs and access dates, and which statements are facts, estimates, or hypotheses. If no research was done, explicitly say so.
+- **Baseline:** current commit/file state inspected before editing and any known-good rollback commit.
+- **Issues found:** every bug, visual issue, incorrect behavior, root cause if known, and reproduction steps.
+- **Changes made:** exact files/sections changed, behavior added/removed, and why.
+- **Mistakes and recovery:** any incorrect assumption, accidental change, failed attempt, regression, or user correction; record what was wrong and how it was corrected. Never hide mistakes.
+- **Verification:** tests actually run, input values, expected and actual results, devices/browsers if known, and anything not tested. Never mark untested work as verified.
+- **Commit/deployment:** commit SHA, branch, and deployment status. Clearly distinguish committed, deployed, and live-verified.
+- **Work checklist:** mark each item exactly as `[x] Complete`, `[ ] Pending`, or `[!] Blocked`; include the next action and priority.
+- **Next session handover:** the single best next task, dependencies, risks, and files to inspect first.
+
+Do not overwrite or silently rewrite earlier dated entries. Append a new dated entry so the full history remains auditable. Correct a past entry only by adding a dated correction note that explains what changed and why.
+
+At the start of every future session on this tool, read this record before making changes. At the end of every session, update this record in the same work session and commit the code and log together where practical. If the log cannot be updated, stop and tell the owner rather than claiming the work is fully recorded.
+
+### Work status snapshot — 2026-11-16
+
+- [x] Percentage Change mode recorded.
+- [x] Reverse % mode recorded.
+- [x] Percentage Difference mode recorded.
+- [x] History mode restoration and CSV labeling changes recorded.
+- [x] Batch modes for Change, Reverse %, and Difference recorded.
+- [ ] Browser QA of all three batch modes and regression checks — pending owner test / browser verification.
+- [ ] Full sourced US-focused competitor, keyword, audience and feature research — pending.
+- [ ] Deployment/live verification — pending.
+
+### Correction / clarification — 2026-11-16
+
+Earlier project notes listed commit short SHAs inconsistently. The authoritative source for the current state is the GitHub commit history on `main`; future log entries must record the full 40-character commit SHA returned by GitHub. The recent batch work was committed in two steps: feature implementation followed by exact row-format validation. The validation commit is `63af8a897de00c1e239ffadfe62283c65c13e291`. Do not infer production deployment from either commit.
