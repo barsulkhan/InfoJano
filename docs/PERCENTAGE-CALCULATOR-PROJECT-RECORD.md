@@ -825,3 +825,59 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Best next task: Test ToolerBox free bulk checker for the five exact English phrases, starting with US, UK, Canada and Australia; confirm whether the sign-in gate can be used without payment.
 - If interactive browser is still unavailable, do not claim data collection. Keep paid Apify unused unless the owner explicitly approves spending.
 - First inspect research report Section 16 and this project record.
+
+
+## Work session — 2026-11-16 (Free Google-surface keyword expansion)
+
+### 1. Owner request and scope
+- Request: Collect as many relevant keywords as possible from Google; owner cannot and will not pay for a paid version.
+- Scope: Use free Google Search/Trends surfaces and publicly accessible search results; expand English-only candidate inventory; record source provenance and limitations.
+- Constraints: Absolutely no paid tools, subscriptions, API purchases or paid runs. No translation or non-English content. No app code/design/deployment changes.
+
+### 2. Research performed
+- Verified Google Search Help: Related searches are automatically generated from Google's understanding of how people search. Source: https://support.google.com/websearch/answer/2466433?hl=en (checked 2026-11-16).
+- Verified Google Trends documentation: Related queries include Top and Rising terms searched with a seed in the same session; Trends data is sampled and normalized to 0–100, not absolute volume. Sources: https://newsinitiative.withgoogle.com/resources/trainings/google-trends-understanding-the-data/ and https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/ (checked 2026-11-16).
+- Expanded keyword candidates across core, percentage-of, change/growth, comparison/reverse, shopping/tax, business/work/education intents. Full inventory appended to the global research document, Section 17.
+- Tried opening a Google Trends Explore comparison directly; the web reader could not access the interactive page. No live related-query CSV or Autocomplete dump was obtained.
+
+### 3. Baseline and findings
+- Repository: barsulkhan/InfoJano, branch main.
+- No app code changed and no paid service used.
+- Candidate terms are discovery ideas derived from Google documentation plus publicly indexed search-result phrasing; they are not all verified live Autocomplete or People-also-ask suggestions.
+- No new numeric search volumes, country-level language demand, or keyword difficulty values were obtained.
+
+### 4. Changes made
+- Appended Section 17 to docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md.
+- Appended this dated session to the project record.
+- No homepage, Hero, Header, logo, calculator UI, metadata, other feature, or deployment changed.
+
+### 5. Mistakes and corrections
+- Avoided calling search-result-derived variants direct Google Autocomplete output.
+- Avoided treating Google Trends index values as search counts.
+- Kept separate-intent terms (tax, discount, margin, grade, commission) out of assumptions about the existing calculator's formula coverage.
+
+### 6. Verification
+- [x] Read both current project documents before editing.
+- [x] Reviewed official Google Search Help and Google Trends documentation.
+- [x] Added an English keyword candidate inventory and intent/prioritization notes.
+- [x] No paid tool, payment, subscription or paid API used.
+- [ ] Direct live Google Autocomplete capture remains pending.
+- [ ] Google Trends Top/Rising exports remain pending because interactive page access was unavailable.
+- [ ] Exact search-volume matrix remains pending; unknowns were not replaced with estimates.
+
+### 7. Commit and deployment
+- Research update: pending commit verification.
+- Project-record update: pending commit verification.
+- No application deployment; live status remains unverified.
+
+### 8. Work checklist
+- [x] Respect the owner's no-payment constraint.
+- [x] Expand relevant English keyword candidates from free research.
+- [ ] Obtain directly observed Google autocomplete/related-query exports.
+- [ ] Obtain verified country-level query demand without paid services.
+- [ ] Reprioritize SEO only after evidence is available.
+
+### 9. Next handover
+- Continue with free Google surfaces only: manually query Google Search suggestions/Related searches and Google Trends Top/Rising per seed and country if accessible.
+- Keep provenance labels precise: direct Google suggestion, Google Trends related query, publicly indexed SERP phrase, or unverified idea.
+- Do not ask owner to pay or use a paid tier.
