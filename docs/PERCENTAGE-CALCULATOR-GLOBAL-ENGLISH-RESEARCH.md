@@ -160,3 +160,67 @@ Limitations:
 - No country traffic share or audience size was asserted.
 - Competitor claims describe visible page features only; no independent traffic, ranking, or conversion data was obtained.
 - Russia and China market access and search-channel suitability remain unverified.
+
+
+## 11. Country demand evidence — second pass (2026-11-16)
+
+### 11.1 Public third-party keyword estimate for the head term
+
+A public KWS Trends report for the exact phrase **"percentage calculator"** reports:
+- Worldwide: approximately 1,900,000 average monthly searches across 121 countries.
+- United States: approximately 1,000,000 (53%).
+- United Kingdom: approximately 130,000 (6.8%).
+- Australia: approximately 40,000 (2.1%).
+- Germany: approximately 40,000 (2.1%).
+- Canada: approximately 22,000 (1.2%).
+- Spain: approximately 18,000 (0.9%).
+- Italy: approximately 18,000 (0.9%).
+- The remaining 111 countries together: approximately 200,000 (11%).
+
+Source: https://www.kwstrends.com/keywords/us/percentage-calculator (accessed 2026-11-16; report labels figures as average monthly searches and country shares).
+
+**Important limitations:** This is a third-party estimate, not a direct Google Keyword Planner export. The report does not provide a transparent per-country methodology in the visible result, and country list is truncated. The data is for the head term only, not the entire keyword cluster. Do not treat these figures as audited or guaranteed traffic. Brazil, Russia and China are not individually listed in the visible top-country table; this does NOT mean they have zero searches.
+
+### 11.2 What this suggests (interpretation, not measured fact)
+
+- US is the largest single market in this particular third-party head-term estimate.
+- UK, Australia, Germany and Canada appear as meaningful secondary markets in the same estimate.
+- Canada is smaller than UK/Australia/Germany in this report for this exact phrase, but it should remain in the target set because the product is English-only and the market has an English-speaking audience.
+- The report does not validate the English-query opportunity in Brazil, Russia or China. Those markets remain exploratory rather than priority markets until country-level English query data is obtained.
+- Search-volume estimates alone do not predict InfoJano traffic; ranking difficulty, SERP features, competition, CTR, product quality and site authority also matter.
+
+### 11.3 Search discovery context (not calculator demand)
+
+The Kepios / DataReportal Digital 2026 report search-engine-use chart (source report published October 2025; GWI Q2 2025 survey) reports the percentage of internet users aged 16+ who use search engines monthly:
+- Brazil 92.9%
+- Canada 89.7%
+- UK 87.8%
+- Australia 87.6%
+- Germany 87.3%
+- France 83.8%
+- Russia 70.9%
+- China 61.1%
+
+Source: https://learn.meltwater.com/rs/814-WJU-189/images/2026_Kepios_Digital_Global_Overview_Report.pdf?version=0
+
+These are general search-engine usage rates, NOT percentage-calculator keyword volumes, not Google-only shares, and not evidence that users in these markets search in English. They only provide broad context about search as a discovery behavior. Survey methodology and audience composition can affect comparisons.
+
+### 11.4 Reliable next measurement step
+
+Google's official Keyword Planner can provide average monthly search estimates for a selected location and keyword set, but requires a Google Ads account setup with billing information. It allows keyword ideas and location-specific historical metrics:
+- https://support.google.com/google-ads/answer/7337243?hl=en
+- https://support.google.com/google-ads/answer/3022575?hl=en
+
+Google Trends is useful for relative country interest and seasonality, but it is sampled and normalized to 0–100, not absolute volume:
+- https://newsinitiative.withgoogle.com/resources/trainings/google-trends/understanding-the-data/
+
+To complete the quantitative comparison, use the same English keyword set and date range for each market in Keyword Planner (or a clearly identified equivalent data provider). Keep exact match/location/language/network settings consistent. Record missing or low-volume results as such; never convert a Trends index into monthly searches.
+
+### 11.5 Revised provisional priority
+
+1. **Tier 1 validation:** US, UK, Australia, Canada — strongest immediate fit for a single English interface and visible third-party head-term demand.
+2. **Tier 2 validation:** Germany, France, Netherlands and other European markets — test English query demand separately; broad internet search use does not prove English keyword demand.
+3. **Tier 3 exploration:** Brazil — strong general search-engine use in the cited survey, but English percentage-calculator query volume remains unverified.
+4. **Tier 3 / feasibility first:** Russia and China — English query demand, search platform distribution, connectivity and site reachability must be checked before investment.
+
+This tiering is a planning recommendation based on product-language fit plus limited external indicators, not a definitive market-size ranking.
