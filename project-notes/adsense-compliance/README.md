@@ -803,3 +803,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Four remaining examples (/Height, /(100), /(100)^, /InfoJano/) are separately unresolved. /Height is a PDF dictionary key in image-to-pdf.html, not a link; /(100)^ appears in a percentage formula, not an anchor. Do not infer these as causes without a trace.
 - Do not add redirects or submit Validate Fix/Request Indexing until live output and residual URLs are verified. 18-page indexing hold unchanged.
 - Record: [2026-11-16-search-console-404-root-cause-confirmed.md](2026-11-16-search-console-404-root-cause-confirmed.md).
+
+### 2026-11-16 — Resume audit: /Height source trace and PR refresh
+- Read current handoff and linked tracker/research documents before resuming.
+- Confirmed `/Height` appears in two PDF serializers in `image-to-pdf.html`; active PDF creation happens only after a user action. Google extraction remains a hypothesis; runtime/PDF regression test is required before any patch.
+- Refreshed PR #237–239: all remain Draft/open/unmerged; current GitHub metadata says mergeable/clean, but branches are diverged from main. PR #237/#238 overlap in `id-card-print-studio.html`; successful current checks do not replace PWA/SEO/runtime QA.
+- No code/PR edits, merge, deploy, Request Indexing or Validate Fix. 18-page indexing hold retained.
+- Record: [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md).
