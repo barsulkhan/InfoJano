@@ -193,11 +193,11 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 ## Evening execution update — 2026-11-16
 
 ### Consolidated draft work
-- PR #243: https://github.com/barsulkhan/InfoJano/pull/243 — open, draft, mergeable, based on current main; 94 files, 2 commits, 0 commits behind. Consolidates the old host-relative path/PWA work, ID Card canonical social/structured-data URL, five image-resizer sidebar clarifications, and Savings Calculator duplicate-H1 correction.
+- PR #243: https://github.com/barsulkhan/InfoJano/pull/243 — open, draft, mergeable, based on current main; 94 files, 1 commit ahead, 0 commits behind. Consolidates the old host-relative path/PWA work, ID Card canonical social/structured-data URL, five image-resizer sidebar clarifications, and Savings Calculator duplicate-H1 correction.
 - PR #243 explicitly preserves hero/banner content and styling, page header content/markup, logo artwork, and existing InfoJano brand text. Document Studio's header block was restored byte-for-byte from main after detecting that its header link/logo paths had been included in the older broad branch.
 - Savings Calculator: hero H1 unchanged; calculator card title is now H2 with a scoped class preserving its prior 27px font size, margin and color. Static count 2 H1 -> 1.
 - All 29 changed root/webmanifest JSON files parse successfully. GitHub Actions run #46 passed; note this workflow only validates Privacy Policy HTML and policy/sitemap/robots links, not PWA runtime.
-- Smaller drafts #240, #241 and #242 contain subsets of #243; #237 is the original broad path draft. Do not merge duplicates separately.
+- Draft PRs #237–#242 were closed as superseded by #243; do not reopen or merge those duplicates. Unique audit-note evidence in #238/#239 remains visible in their closed diffs.
 
 ### Still blocked / do not guess
 - Browser visual QA, live HTTP and PWA install/offline regression remain unverified; do not claim production behavior fixed until tested.
