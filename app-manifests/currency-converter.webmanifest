@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/currency-converter.html",
+  "id": "../currency-converter.html",
   "name": "InfoJano — Currency Converter",
   "short_name": "Currency Converter",
   "description": "Install the InfoJano Currency Converter tool for quick access.",
-  "start_url": "/InfoJano/currency-converter.html",
-  "scope": "/InfoJano/",
+  "start_url": "../currency-converter.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/currency-converter.svg",
+      "src": "../app-icons/currency-converter.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

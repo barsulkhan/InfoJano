@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/time-calculator.html",
+  "id": "../time-calculator.html",
   "name": "InfoJano — Time Calculator",
   "short_name": "Time Calculator",
   "description": "Install the InfoJano Time Calculator tool for quick access.",
-  "start_url": "/InfoJano/time-calculator.html",
-  "scope": "/InfoJano/",
+  "start_url": "../time-calculator.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/time-calculator.svg",
+      "src": "../app-icons/time-calculator.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
