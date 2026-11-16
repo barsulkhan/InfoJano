@@ -89,3 +89,29 @@ The next useful manual evidence is not another screenshot of the aggregate 13-ro
 
 ### Actions in this batch
 Read-only GitHub source/search/PR checks and attempted live URL opens; updated this note only. No production code edits, DNS/Worker changes, PR edits, merge, deployment, Search Console submission, Request Indexing, or Validate Fix.
+
+
+## Owner supplied detailed Search Console inspection for /Height
+
+Screenshot evidence (user supplied):
+- Page indexing: **Page is not indexed: Not found (404)**.
+- Referring page: `https://infojano.com/image-to-pdf.html`.
+- Sitemaps: No referring sitemaps detected.
+- Last crawl: Nov 14, 2026, 12:31:37 PM (timezone not shown).
+- Crawled as: Googlebot smartphone.
+- Crawl allowed: Yes.
+- Page fetch: Failed — Not found (404).
+- Indexing allowed / user-declared canonical / Google-selected canonical: N/A.
+
+This is the first direct source attribution for the short 404 path: Google discovered `/Height` from `image-to-pdf.html`. Reopened current main source for `image-to-pdf.html`: its only `/Height` occurrences are inside generated PDF object dictionary strings (`/Width ... /Height ... /ColorSpace`) used when assembling PDF bytes. They are PDF structural keys, not HTML anchors or navigation links. This makes the PDF-generation code a plausible source of Google seeing the token, but does not yet prove the exact extraction mechanism or that Google fetched a generated PDF. Do not add a redirect to an arbitrary page. Next source investigation: inspect the page's generated-PDF download flow, response/content type, and whether any PDF output or text is exposed to crawlers; test the source in a browser/runtime if available. No production code change made.
+
+### Pending tasks marked from this evidence
+- [ ] Trace how Google extracted `/Height` from the PDF-generation page; confirm whether a generated PDF is crawl-discoverable.
+- [ ] Inspect Search Console detailed referring page for `/InfoJano/`.
+- [ ] Confirm exact encoded URL and referring page for `/(100)`.
+- [ ] Confirm exact encoded URL (including any trailing character/space) and referring page for `/(100)^ `.
+- [ ] Review and safely reconcile PR #237's 89-file patch and divergence before considering merge; no merge/deploy.
+- [ ] Verify live HTTP responses and redirects for the relevant URLs; currently not verifiable in this environment.
+- [ ] After fixes are approved and deployed, user may decide whether to use Search Console Validate Fix; do not submit it now.
+
+No code, PR, DNS, deployment, indexing or validation action was performed in response to this screenshot. Documentation only.
