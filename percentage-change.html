@@ -696,6 +696,7 @@ function calculateReverse(){
 }
 function calculate(){
  if(pctMode==='reverse'){return calculateReverse();}
+ const breakdownHeading=document.querySelector('#calculation-breakdown h3');if(breakdownHeading)breakdownHeading.textContent='How the result is calculated';
 
  const out=document.getElementById('result');
  const summary=document.getElementById('result-summary');
