@@ -761,3 +761,67 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Best next task: Run the five exact phrases in KWS Trends' interactive checker using a real browser and export CSVs, starting with US, UK, Canada and Australia.
 - If browser interaction remains unavailable, the owner will need to grant an interactive browser/account route; do not invent results or request manual CSV work unless that is the only viable route.
 - First inspect these two files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and docs/PERCENTAGE-CALCULATOR-PROJECT-RECORD.md.
+
+
+## Work session — 2026-11-16 (Alternative bulk keyword sources)
+
+### 1. Owner request and scope
+- Request: Continue obtaining a consistent five-keyword English search-volume matrix by country.
+- Scope: Research alternative public bulk keyword tools, document stated coverage/access/cost, and update durable project records.
+- Constraints: English-only audience/content; no translations; no calculator code/design changes; preserve homepage, Hero, Header, logo and unrelated tools.
+
+### 2. Research
+- KWS Trends bulk checker advertises up to 200 keywords, country selection, English-language Google Ads Keyword Planner metrics and CSV export. Source: https://www.kwstrends.com/google-ads-keyword-tool (checked 2026-11-16).
+- ToolerBox advertises up to 100 keywords, country selection, monthly volume, CPC, competition and CSV; free sign-in required beyond first three keywords. Visible supported countries: US, UK, Canada, Australia, India, New Zealand, South Africa and Global. Source: https://toolerbox.com/bulk-keyword-metrics/ (checked 2026-11-16).
+- Apify actor advertises 45 countries, language override, 24 months of history and exports; stated price USD $2 per 1,000 keyword results. Source: https://apify.com/ws-admin/keyword-search-volume (checked 2026-11-16).
+- Google Keyword Planner official help says billing information is required for basic access. Source: https://support.google.com/google-ads/answer/7337243?hl=en-IN (checked 2026-11-16).
+
+### 3. Baseline and risks
+- Repository: barsulkhan/InfoJano, branch main.
+- Starting project-record blob SHA: a4e006941095782e1675710766045504b601e2cc.
+- Starting research-document blob SHA: 486a469f1827ae96a45ff1972018bcff59d1e44b.
+- No application code edited.
+- Tool descriptions do not prove returned keyword volumes; sign-in, language filters and actual country options must be tested.
+
+### 4. Issues / findings
+- No interactive browser tool is available in this session to submit KWS Trends or ToolerBox forms.
+- ToolerBox's visible free tier gates more than three keyword checks behind sign-in.
+- Apify is paid; no paid run was authorized or performed.
+- No new numeric search-volume results were retrieved. The five-keyword × country matrix remains incomplete.
+
+### 5. Changes made
+- Appended Section 16 to the research report with alternative providers, documented features, coverage, price and execution order.
+- Appended this dated session to the project record.
+- No calculator source, page UI, metadata, design, homepage or deployment changed.
+
+### 6. Mistakes and recovery
+- No implementation mistakes. Tool capability claims are distinguished from actual query results.
+- No payment or sign-up was performed; paid Apify remains unused.
+
+### 7. Verification
+- [x] Read both current project documents before updating.
+- [x] Reviewed public search results for KWS Trends, ToolerBox, Apify and official Google Keyword Planner help.
+- [x] Recorded ToolerBox's visible country support and sign-in gate.
+- [x] Recorded Apify advertised coverage and price; no purchase made.
+- [ ] Run five exact phrases through ToolerBox.
+- [ ] Run KWS bulk checker and save country CSVs.
+- [ ] Verify language filter and coverage for DE, FR, NL, BR, RU and CN.
+- [ ] Calculator browser QA and production deployment verification remain pending.
+
+### 8. Commit and deployment
+- Research update: pending commit verification.
+- Project-record update: pending commit verification.
+- Branch: main.
+- No application deployment; live status remains unverified.
+
+### 9. Work checklist
+- [x] Identify alternative sources with documented capabilities.
+- [x] Record access and cost limitations.
+- [ ] Obtain actual query rows and CSV exports.
+- [ ] Complete same-source country matrix for supported markets.
+- [ ] Reassess SEO priorities only after exact phrase and country data exists.
+
+### 10. Next session handover
+- Best next task: Test ToolerBox free bulk checker for the five exact English phrases, starting with US, UK, Canada and Australia; confirm whether the sign-in gate can be used without payment.
+- If interactive browser is still unavailable, do not claim data collection. Keep paid Apify unused unless the owner explicitly approves spending.
+- First inspect research report Section 16 and this project record.
