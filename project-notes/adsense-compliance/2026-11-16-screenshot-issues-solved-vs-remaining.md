@@ -135,3 +135,12 @@ This file is an evidence-based status inventory, not a claim of full Search Cons
 1. Complete a stronger PR #237 audit (all modified HTML/JS/manifest path references, dual-host resolution, canonical/OG preservation and workflow coverage) before any merge decision.
 2. Obtain the exact URL rows for the 27 alternate-canonical, 2 redirect, 5 duplicate-canonical and 2 crawled-not-indexed categories; aggregate screenshot counts are insufficient for safe per-URL fixes.
 3. Retry live HTTP/browser verification when the custom domain is reachable.
+
+
+## 8. PR #237 deeper path audit — 2026-11-16
+
+A second pass over all 89 PR file patches found five remaining project-site path defects that were not caught by the initial validation:
+- `word-to-jpg.html`, `word-to-pdf.html`, `word-to-png.html`: the JavaScript redirect and fallback link had been made relative, but the HTML meta-refresh URL still pointed to `/InfoJano/word-converter.html`. Corrected all three meta-refresh targets to the same relative destination.
+- `emi.html` and `pdf-to-jpg.html`: their shared header script still used `/site-header.js`, which resolves to the domain root rather than the GitHub Pages project subpath. Corrected both to `./site-header.js`.
+
+These five follow-up corrections are committed directly to the existing PR #237 branch (no merge/deployment). The PR workflow should rerun against the new head. Re-review the resulting checks before any merge decision.
