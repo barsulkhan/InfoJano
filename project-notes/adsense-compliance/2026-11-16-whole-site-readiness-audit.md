@@ -87,3 +87,46 @@ These are evaluation criteria, not a promise of AdSense approval or search index
 - Full 335-file audit: not complete.
 - Coordinated code remediation: not yet started; existing PRs must be reconciled first.
 - Merge/deploy/Google validation: not authorized and not performed.
+
+
+## 9. Expanded static HTML + sitemap audit — 2026-11-16
+A source-level inspection was performed across all 117 HTML files in the recursive Git tree at main. This checks raw HTML only; it is not rendered-browser, live HTTP, accessibility automation or functional QA.
+
+### Metadata and heading exceptions found
+- Most public content/tool pages inspected have a title, meta description, self-referencing custom-domain canonical, one H1, and a declared HTML language.
+- `savings.html` has two H1 elements: the visual hero H1 (“Free Savings Calculator for Your Future”) and the calculator card title (“Savings Calculator - Estimate Future Savings”). A minimal draft-only correction was prepared in PR #240: the second heading becomes H2, preserving its text. Static count verified 2 → 1 H1. Browser visual/heading-outline test remains required.
+- `404.html` intentionally has no canonical and declares noindex,follow; this is expected for the not-found template.
+- `google4a4795e5c7c03eae.html` is a Google verification token file, not a content page; missing title/description/H1/canonical is expected.
+- `word-to-jpg.html`, `word-to-pdf.html`, and `word-to-png.html` are intentionally noindex aliases with canonical to `word-converter.html`; however, their redirect, manifest, icon and install helper paths on main still use legacy `/InfoJano/`. PR #237 changes these paths to relative paths, but live two-host testing remains outstanding.
+- `backups/InfoJano-Ayushman-VoterID-FINAL-LOCKED-2026-10-19.html` is under backups and has a legacy GitHub Pages canonical. Keep it out of public navigation/sitemap; assess hosting exposure and whether the backup directory should be excluded from Pages publishing without deleting the preserved backup.
+- `savings.html` also has a separate finance disclaimer in its description (“illustrative, not guaranteed”); preserve accurate financial limitations.
+
+### Sitemap reconciliation
+- Main `sitemap.xml` has 110 unique URL entries; all 110 map to existing HTML files in the repository tree.
+- No duplicate sitemap entries or sitemap URLs missing from the repository were found.
+- `countdown-studio.html` is the only ordinary HTML page identified as absent from the sitemap while its source declares index,follow and a self-referencing canonical. Decide whether it is intentionally excluded; if it should be indexable, add it in a dedicated sitemap change after checking live HTTP and content eligibility. Do not include the 18 held Number-to-Words Pro / Countdown SEO pages in any indexing request; this hold remains.
+
+### Additional confirmed main-branch issues
+- `id-card-print-studio.html` still has canonical `https://infojano.com/id-card-print-studio.html` but og:url points to `https://barsulkhan.github.io/InfoJano/id-card-print-studio.html`. PR #238 contains the intended og:url correction but overlaps PR #237 on this file; reconcile rather than create a duplicate patch.
+- The three Word format alias pages described above prove PR #237 fixes a real custom-domain path defect in those aliases; this supports further review of PR #237's broader host-aware path work.
+- `countdown-studio.html` uses an indexable canonical URL but is omitted from the sitemap. No change made pending editorial/indexing intent confirmation.
+
+### PR #240
+- Draft PR: https://github.com/barsulkhan/InfoJano/pull/240
+- Branch: `fix/savings-heading-hierarchy-2026-11-16`
+- One-file, one-line semantic heading correction. Draft, unmerged, undeployed.
+- GitHub currently reported `mergeable=false` at creation; investigate branch/merge status before any approval.
+
+### Existing PR overlap check
+- #237 changes 89 files; #238 changes 2; #239 changes 6.
+- The only overlap among these three is `id-card-print-studio.html` between #237 and #238.
+- #239 overlaps neither #237 nor #238.
+- #237 branch source was sampled: the three Word aliases switch from absolute `/InfoJano/` redirects to relative `./` paths. This is a positive static finding, not a full validation of the 89-file PR.
+
+## 10. Priority actions for the next work block
+1. Inspect why PR #240 currently reports mergeable=false; verify it is a simple branch-state conflict and keep it draft.
+2. Reconcile PR #237 and #238 into a clean review plan for their shared ID Card file; do not merge either automatically.
+3. Complete a focused audit of the 18 held pages' substantive uniqueness/content quality without submitting them to Google.
+4. Verify whether Countdown Studio is intentionally excluded from sitemap.
+5. Prepare Image-to-PDF /Height regression harness and only then consider a minimal mitigation branch.
+6. Continue checking tool behavior, privacy disclosures, CMP/revocation, ads.txt HTTP and redirect evidence. Live/account tests require actual browser/owner evidence.
