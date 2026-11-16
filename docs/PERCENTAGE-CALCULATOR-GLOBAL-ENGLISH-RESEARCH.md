@@ -351,3 +351,54 @@ Sources:
 - [ ] Confirm provider's country report language settings and whether country-level counts are limited to Google Web Search without language filtering.
 - [ ] Export Search Console queries and country performance once owner access is available.
 - [ ] Review current SERPs for all exact phrases before choosing new pages or metadata.
+
+
+## 14. Updated keyword report evidence and bulk-data path — fifth pass (2026-11-16)
+
+### 14.1 Refreshed US reports (public KWS Trends pages)
+
+The currently indexed US report for **"percentage calculator"** displays a worldwide total of 1,900,000 average monthly searches across 121 countries and the following visible country distribution: US 1,000,000 (53%), India 370,000 (19%), UK 130,000 (6.8%), Australia 40,000 (2.1%), Germany 40,000 (2.1%), Philippines 40,000 (2.1%), Canada 22,000 (1.2%), Taiwan 22,000 (1.2%), Spain 18,000 (0.9%), Italy 18,000 (0.9%), and 111 other countries 200,000 (11%). This is a global report country distribution for the selected phrase, not an English-language-only count for every country.
+
+Source: https://www.kwstrends.com/keywords/us/percentage-calculator
+
+The currently indexed US report for **"percentage change calculator"** displays:
+- Corrected average monthly searches: 60,000; 12-month average SEO difficulty: 72/100; estimated CPC: USD $0.01.
+- Separate Google Ads Keyword Planner figure: 110,000 monthly searches; top-of-page bid USD $0.01–$0.01; competition index 0/100 (Low).
+- Worldwide corrected estimate: 120,000/month across 108 countries. Visible distribution: US 60,000 (50%), UK 22,000 (18%), Canada 8,000 (6.7%), Australia 6,500 (5.4%), India 4,400 (3.7%), New Zealand 1,300 (1.1%), Philippines 1,300 (1.1%), Hong Kong 1,100 (0.9%), Singapore 870 (0.7%), UAE 710 (0.6%), and 98 other countries 13,820 (12%).
+- Related-keyword table currently lists "percentage increase calculator" at 170,000 and "percentage difference calculator" at 170,000. These are related-keyword entries, not independent exact reports, and differ from values in the percentage-calculator seed report. Preserve as seed-dependent estimates, not settled exact volumes.
+
+Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator
+
+### 14.2 Bulk Keyword Planner option verified
+
+KWS Trends publishes a separate bulk keyword checker. Its page says it accepts up to 200 keywords, returns Google Keyword Planner average monthly searches, top-of-page bid range, competition and monthly history, and provides a CSV download. The page explicitly states that results are for the country selected and in English; volumes are rounded by Google. The public page advertises 20 lookups per browser per day and no sign-up.
+
+Source: https://www.kwstrends.com/google-ads-keyword-tool
+
+**Access limitation:** The web viewer can inspect the tool description but cannot operate its interactive form or submit keyword batches. Therefore no actual bulk result rows or CSV were retrieved in this session. Do not claim the bulk dataset has been collected.
+
+### 14.3 Keyword comparison status
+
+| Exact target phrase | Latest evidence | Confidence / limitation |
+|---|---|---|
+| percentage calculator | US report: 1,000,000 corrected average monthly; separate Keyword Planner panel previously visible at 550,000. Country distribution visible worldwide. | Direct phrase report; two volume methods differ |
+| percentage change calculator | US report: 60,000 corrected average monthly; separate Keyword Planner 110,000; country split US/UK/Canada/Australia visible. | Direct phrase report; two volume methods differ |
+| percent increase calculator | Related keyword currently shown at 170,000 in percentage-change report; previously 110,000 in percentage-calculator report. | Related keyword only; seed-dependent discrepancy |
+| percentage difference calculator | Related keyword currently shown at 170,000 in percentage-change report; previously 82,000 in percentage-calculator report. | Related keyword only; seed-dependent discrepancy |
+| reverse percentage calculator | No exact report or usable related-keyword estimate located. | Unknown |
+
+### 14.4 Market and language interpretation
+
+- The bulk checker is the most practical reproducible next source because it explicitly documents country selection and English-language results.
+- Its description supports country-by-country checks for Tier 1 markets (US, UK, Canada, Australia) and potentially supported additional countries. The form must be operated to discover the actual available country list; do not assume Russia or China are supported.
+- The KWS Trends global country distributions are not sufficient to prove that searches in Germany, Brazil, Russia or China are English-language searches.
+- Keep all missing country/keyword cells marked unknown, not zero.
+- CPC and Google Ads competition are paid-search metrics; they do not replace SEO difficulty or organic SERP analysis.
+
+### 14.5 Next actions
+- [ ] Run the KWS Trends bulk checker for the five exact English phrases, separately for US, UK and Canada, then Australia and supported European/Brazil/Russia/China locations.
+- [ ] Save the CSV output and record country, retrieval date, exact phrase, monthly searches, bid low/high, competition and monthly history.
+- [ ] If a country is not offered, record it as unsupported by this provider rather than zero.
+- [ ] Compare bulk Keyword Planner values with corrected average monthly estimates in individual reports without merging them.
+- [ ] Review actual top-10 organic SERPs for the five phrases before final SEO page recommendations.
+- [ ] Reconcile the site strategy with actual Search Console data when access exists.
