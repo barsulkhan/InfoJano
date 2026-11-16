@@ -167,3 +167,31 @@ The PR branch now includes 11 targeted path corrections discovered during the de
 - Re-scanned added HTML resource/navigation references: no remaining root-relative `href`, `src`, `action`, `poster`, CSS `url()`, or location redirect targets were found.
 - PR #237 remains OPEN and Draft. It has not been merged or deployed.
 - Live custom-domain HTTP/browser verification remains unavailable; production behavior is still UNVERIFIED.
+
+
+## 9. Final bounded audit pass — 2026-11-16
+
+### Additional source checks
+- Re-opened current `main/index.html`: homepage source now contains a hidden `Privacy and cookie settings` link and a `googlefc.callbackQueue` / `CONSENT_API_READY` handler that reveals the link and calls `googlefc.showRevocationMessage()` on click. This is **source implementation evidence only**. The link remains hidden until the Google callback fires; no live browser test has confirmed that the CMP loads, the callback fires, the control becomes visible, or revocation works.
+- Current homepage source contains the AdSense loader. No `__tcfapi` implementation is directly embedded in the page source; the runtime CMP may supply it dynamically, so live browser inspection is still required.
+- Rechecked repository `ads.txt`: seller line is `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`. Repository `robots.txt` allows all and points to the canonical sitemap. These are source facts, not live HTTP/crawler confirmation.
+- Rechecked repository `sitemap.xml`: the 15 Number-to-Words Pro pages and 3 Countdown country pages are listed. They remain under the explicit indexing hold; no request was submitted and sitemap/indexing changes were not made without authorization.
+- Rechecked the current PR #237 branch core files (`install.js`, `sw.js`, `related-apps.js`) and the 89-file patch scan. Host-aware base paths are intentional; the 198 precache paths were previously verified to exist in the PR branch. The latest path QA run #43799984619 passed. PR #237 remains Draft/open/unmerged.
+
+### Work that cannot be truthfully marked solved from available evidence
+1. Google Search Console's 27 alternate canonical, 2 redirect, 5 duplicate canonical and 2 crawled-not-indexed rows: exact affected URLs and Google-selected canonicals are not in the supplied screenshot data. No safe per-URL correction can be inferred.
+2. Three residual 404 paths (`/Height`, `/(100)`, approximate `/(100)^ `): no verified referring source/target. No blanket redirects added.
+3. Live HTTP checks for `ads.txt`, `robots.txt`, sitemap, canonical URLs and the custom-domain path behavior: domain retrieval/DNS unavailable in this environment.
+4. Live CMP/TCF v2.4: requires an actual browser session in a relevant consent region to observe `__tcfapi`, CMP ping, TCData, TC string, first-visit choices and revocation. Source contains the callback integration but cannot prove it works live.
+5. AdSense account status/vendor configuration/crawler diagnostics: requires publisher account UI evidence. Existing review remains submitted; do not resubmit.
+6. Worker/iLoveAPI production CORS, secrets, allowlist, rate limits and logs/retention: requires account/provider configuration evidence; no secrets/configuration changed.
+7. Android/Windows runtime and permission behavior: requires installed app/device/emulator testing; source audit is not runtime proof.
+8. Publisher legal identity, jurisdiction, contact ownership and applicable policy statements: cannot be invented; require publisher-confirmed facts and legal review.
+
+### Explicit scope preserved
+- No merge or production deployment.
+- No Search Console Validate Fix / Request Indexing.
+- The 15 Number-to-Words Pro and 3 Countdown country SEO pages remain held.
+- No AdSense review resubmission, CMP/AdSense account setting changes, DNS, Worker secret changes, or native app release changes.
+
+**Assessment:** All remaining repository-only checks that could be completed without changing protected production/account settings have been advanced and documented. The remaining items are blocked by missing URL/account/live/device/legal evidence or by explicit release/indexing restrictions; claiming them “solved” would be inaccurate.
