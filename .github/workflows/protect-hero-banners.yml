@@ -1,0 +1,79 @@
+name: Protect approved hero banners
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+    paths:
+      - "**/*.html"
+      - "**/*.css"
+      - "**/*.js"
+      - "**/*.svg"
+      - "**/*.png"
+      - "**/*.webp"
+      - "**/*.jpg"
+      - "**/*.jpeg"
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  hero-banner-guard:
+    name: Block unapproved hero/banner edits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect hero/banner edits
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_LABELS: ${{ toJSON(github.event.pull_request.labels.*.name) }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, sys
+          base, head = os.environ["BASE_SHA"], os.environ["HEAD_SHA"]
+          labels = set(json.loads(os.environ.get("PR_LABELS", "[]")))
+          diff = subprocess.run(
+              ["git", "diff", "--no-ext-diff", "--unified=8", f"{base}...{head}", "--",
+               "*.html", "*.css", "*.js", "*.svg", "*.png", "*.webp", "*.jpg", "*.jpeg"],
+              check=True, text=True, capture_output=True
+          ).stdout
+          keyword = re.compile(r"hero|banner|ij-age-hero|url-hero|hero-neon", re.I)
+          touched = []
+          current_file = ""
+          hunk = []
+          def inspect(lines, path):
+              changed = any(line.startswith(("+", "-")) and not line.startswith(("+++", "---")) for line in lines)
+              relevant = any(keyword.search(line) for line in lines if line.startswith((" ", "+", "-")))
+              if changed and relevant:
+                  touched.append(path)
+          for line in diff.splitlines():
+              if line.startswith("diff --git "):
+                  if hunk:
+                      inspect(hunk, current_file)
+                  hunk = []
+                  current_file = line.split(" b/", 1)[-1]
+              elif line.startswith("@@"):
+                  if hunk:
+                      inspect(hunk, current_file)
+                  hunk = []
+              elif line.startswith((" ", "+", "-")):
+                  hunk.append(line)
+          if hunk:
+              inspect(hunk, current_file)
+          touched = sorted(set(touched))
+          if touched and "hero-change-approved" not in labels:
+              print("Protected hero/banner code or artwork appears in these changed files:")
+              print("\n".join(f" - {p}" for p in touched))
+              print("\nThis PR is blocked. Do not change hero/banner dimensions, layout, styling, artwork, or copy without the owner's explicit approval.")
+              print("After explicit approval only, an authorized maintainer may add the 'hero-change-approved' label.")
+              sys.exit(1)
+          if touched:
+              print("Hero/banner edits detected; explicit-approval label is present.")
+          else:
+              print("No hero/banner-related diff detected.")
+          PY
