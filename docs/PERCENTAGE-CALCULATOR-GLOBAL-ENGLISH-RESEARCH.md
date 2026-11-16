@@ -674,3 +674,29 @@ Reporting / comparison:
 - [ ] Google Trends Top/Rising exports by country.
 - [ ] Consistent, country-by-country monthly volumes for all five core phrases.
 - [ ] Search Console validation and actual ranking/traffic evidence.
+
+
+## 20. Temporary country-scope reduction — 2026-11-16
+
+### Owner instruction
+- Owner asked to temporarily drop countries for which usable keyword data is not being obtained, rather than repeatedly carrying blocked/unavailable markets through the research.
+
+### Active country set
+- Keep only countries with visible country-level keyword figures in the current percentage-change report: United States, United Kingdom, Canada, Australia and India.
+- Evidence: KWS Trends percentage-change report lists US 60,000; UK 22,000; Canada 8,000; Australia 6,500; India 4,400 estimated monthly searches. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (checked 2026-11-16).
+- The percentage-calculator report also lists US, India, UK, Australia and Canada among its visible country rows. Source: https://www.kwstrends.com/keywords/us/percentage-calculator (checked 2026-11-16).
+
+### Temporarily excluded
+- Germany, France, Netherlands, Brazil, Russia, China and all other countries without visible, separately attributable keyword data for the current core phrase set are removed from the active research scope for now.
+- Exclusion means “insufficient usable keyword evidence in the current source”, not zero demand, poor market quality, or a permanent decision.
+- Do not spend more time repeatedly retrying blocked countries in the current pass. Reopen a country only if a free, verifiable source later supplies keyword-level evidence.
+
+### Scope guardrail
+- Keep the website English-only. Active SEO country research is now limited to US, UK, Canada, Australia and India until better evidence appears.
+- Do not infer each country's English query volume from total country search volume or general internet usage.
+
+### Checklist
+- [x] Narrow active country scope to markets with visible keyword-level rows.
+- [x] Temporarily exclude markets without usable keyword evidence.
+- [x] Record the reason as data availability, not demand absence.
+- [ ] Reconsider excluded markets only when free, verifiable keyword data becomes available.
