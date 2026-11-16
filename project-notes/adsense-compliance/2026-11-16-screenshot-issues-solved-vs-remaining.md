@@ -144,3 +144,16 @@ A second pass over all 89 PR file patches found five remaining project-site path
 - `emi.html` and `pdf-to-jpg.html`: their shared header script still used `/site-header.js`, which resolves to the domain root rather than the GitHub Pages project subpath. Corrected both to `./site-header.js`.
 
 These five follow-up corrections are committed directly to the existing PR #237 branch (no merge/deployment). The PR workflow should rerun against the new head. Re-review the resulting checks before any merge decision.
+
+
+### Additional project-subpath pass — 2026-11-16
+
+A scan of added HTML resource references found six root-relative favicon references in six changed files. These would resolve at the domain root and fail under the GitHub Pages `/InfoJano/` project path. Updated all six to `./infojano-mark.svg`:
+- `extract-pdf-pages.html`
+- `image-resizer.html`
+- `word-converter.html`
+- `word-to-jpg.html`
+- `word-to-pdf.html`
+- `word-to-png.html`
+
+The PR branch now includes 11 targeted path corrections discovered during the deeper audit (five redirect/header issues plus six favicon references). These remain branch-only changes pending CI and review; no production changes were made.
