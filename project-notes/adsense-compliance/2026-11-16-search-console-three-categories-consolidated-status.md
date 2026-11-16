@@ -94,26 +94,28 @@ No production deployment, merge, Google indexing request, or Validate Fix was pe
 
 ## 2026-11-16 follow-up — merge queue and next work
 
-### Pending merge (explicitly not merged)
-- [ ] PR #237 — legacy `/InfoJano/` path compatibility across custom-domain pages/PWA. Draft, open; mergeability currently reported false. Needs conflict/rebase or GitHub mergeability refresh and final review.
-- [ ] PR #238 — align ID Card Print Studio `og:url` with its canonical custom-domain URL, plus 27-URL audit note. Draft, open; mergeability currently reported false. Needs conflict/rebase or GitHub mergeability refresh and final review.
-- [ ] PR #239 — five image-resizer guide sidebar copy refinements. Draft, open; mergeable currently true. Latest associated workflow run #43806628836 (“Privacy Policy QA”) completed successfully. This workflow is not a full SEO/canonical validation.
-- No PR has been merged or deployed. Do not merge/deploy or submit indexing requests without explicit authorization.
+### Merge queue — explicitly marked pending
+- [ ] **PR #237** — legacy `/InfoJano/` path compatibility across custom-domain pages/PWA. Open, Draft, not merged. Latest GitHub metadata call reports `mergeable=false`; inspect branch/base conflict or refresh mergeability before considering merge. Associated Privacy Policy QA run #43799984619 passed.
+- [ ] **PR #238** — align ID Card Print Studio `og:url` with its canonical custom-domain URL. Open, Draft, not merged. Latest GitHub metadata call reports `mergeable=false`; inspect branch/base conflict or refresh mergeability before considering merge. Associated Privacy Policy QA run #43801541371 passed.
+- [ ] **PR #239** — five image-resizer guide sidebar copy refinements. Open, Draft, not merged. Latest GitHub metadata call reports `mergeable=false` (earlier audit recorded mergeable=true, so current status must be refreshed before merge). Associated Privacy Policy QA run #43806648510 passed.
+- No merge, deployment, indexing request, or Validate Fix was performed. Prior release/indexing constraints remain in force.
 
-### Additional work completed in this batch
-- Re-fetched all five edited guide pages from PR #239 branch.
-- Confirmed each still has its self-referencing canonical URL and the new topic-specific sidebar paragraph.
-- Confirmed five different sidebar paragraphs are present; no canonical tags were changed.
-- Attempted live URL fetch for the two redirect variants and canonical homepage through the available web fetch. All three requests were inaccessible through that fetch, so live redirect verification remains blocked and no HTTP status/hop count is claimed.
+### Latest verification
+- PR #237 head: `49977ee5867daddbbaf92e94bff080158f318304`.
+- PR #238 head: `70243b2d2a77cb2d9564acb74964f6210f847c2a`.
+- PR #239 head: `03cb5f0b2f9a7c4b27bda966b2bf35dcbb72b81d`.
+- All three associated Privacy Policy QA workflows completed successfully. These are not full SEO/canonical, redirect, or runtime tests.
+- Re-fetched all five PR #239 pages: each has a self-referencing canonical and the intended distinct sidebar paragraph.
+- Live fetch attempts for `http://infojano.com/`, `http://www.infojano.com/`, and `https://infojano.com/` were inaccessible through the available web fetch; no HTTP status, redirect destination, or hop count is claimed.
 
-### Next task taken up
-- The next safe task is to continue a repository-only quality audit of the five guide pages and PR #239, then examine remaining Search Console categories where source evidence exists.
-- For Google-selected canonical resolution, the exact Google-selected canonical values remain necessary; source changes cannot directly force Google's selection.
-- No Validate Fix, indexing request, deployment, or merge was performed.
+### Next repository-only work
+- [x] Verify PR #239's five changed files still preserve canonical tags and contain the intended distinct copy.
+- [ ] Inspect why GitHub currently reports all three PRs as not mergeable; do not merge.
+- [ ] Continue source-only audit of remaining Search Console issues with available URL evidence.
+- [ ] Keep exact Google-selected canonical values and live redirect verification flagged as externally blocked until readable Search Console details and live HTTP evidence are available.
 
-
-### PR #239 patch review
-- Reviewed all five file patches and confirmed each changes only the intended sidebar paragraph; canonical tags, og:url, sitemap and main article body are untouched.
-- Re-read all five files from the PR branch; all five self-canonical URLs still match their page URLs and the five sidebar paragraphs are distinct.
-- PR #239 reports mergeable=true; associated Privacy Policy QA run #43806628836 succeeded. This QA workflow does not prove Google canonical selection.
-- PR #237 and #238 currently report mergeable=false; investigate GitHub's branch/base divergence or conflict state before either can be merged.
+### Outstanding user/device evidence
+- [ ] Clear URL Inspection capture for each of the five duplicate-canonical URLs, showing both user-declared and Google-selected canonical.
+- [ ] Live redirect chain for both HTTP/www homepage variants ending at `https://infojano.com/`.
+- [ ] Post-deployment live canonical and Google recrawl confirmation for the 27 alternate URLs.
+- [ ] No Google “Validate Fix” or indexing request until explicitly authorized; the 18 Number-to-Words Pro and Countdown URLs remain on hold.
