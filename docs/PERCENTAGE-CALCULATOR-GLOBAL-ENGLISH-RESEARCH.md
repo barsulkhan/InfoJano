@@ -224,3 +224,67 @@ To complete the quantitative comparison, use the same English keyword set and da
 4. **Tier 3 / feasibility first:** Russia and China — English query demand, search platform distribution, connectivity and site reachability must be checked before investment.
 
 This tiering is a planning recommendation based on product-language fit plus limited external indicators, not a definitive market-size ranking.
+
+
+## 12. Core keyword evidence — third pass (2026-11-16)
+
+### 12.1 Directly reported US keyword estimates
+
+A current public KWS Trends report for the exact phrase **"percentage change calculator"** (United States, Google Web Search; report updated 2026-11-09) shows:
+- Average monthly searches: approximately 60,000 (third-party SEO estimate).
+- 12-month average SEO difficulty: 72/100, labelled higher competition.
+- Estimated CPC: USD $0.01.
+- Its separate Google Ads / Keyword Planner panel reports 110,000 monthly searches, top-of-page bid USD $0.01–$0.01 and competition index 0/100 (low).
+- The report's worldwide estimate is approximately 120,000/month; visible country breakdown: US 60,000 (50%), UK 22,000 (18%), Canada 8,000 (6.7%), Australia 6,500 (5.4%), India 4,400 (3.7%), New Zealand 1,300 (1.1%), Philippines 1,300 (1.1%), Hong Kong 1,100 (0.9%), Singapore 870 (0.7%), UAE 710 (0.6%), and 98 other countries combined 13,820 (12%).
+
+Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (accessed 2026-11-16).
+
+**Do not combine the SEO estimate and Keyword Planner panel as if they were one metric.** The same page reports materially different values (60K vs 110K) because the provider's SEO estimate and Google's rounded Keyword Planner data are separate sources/methods. Use them as separate fields and retain the discrepancy.
+
+The US "percentage calculator" report (updated 2026-10-28) shows approximately 1,000,000 average monthly searches, SEO difficulty 65/100, estimated CPC USD $1.38, and a separate Keyword Planner monthly-search figure of 550,000 with top-of-page bid USD $0.76–$2.00 and competition index 0/100. The same report lists "percentage increase calculator" at 110,000 and "percentage difference calculator" at 82,000 as related-keyword estimates, not as independently opened exact-keyword reports.
+
+Source: https://www.kwstrends.com/keywords/us/percentage-calculator (accessed 2026-11-16).
+
+### 12.2 What is and is not measured for the five-keyword set
+
+| Target phrase | Evidence available in this pass | Status |
+|---|---|---|
+| percentage calculator | US: SEO estimate 1,000,000/month; separate Keyword Planner panel 550,000/month. Worldwide and visible country breakdown recorded in Section 11. | Direct US report; estimates differ by source/method |
+| percentage change calculator | US: SEO estimate 60,000/month; separate Keyword Planner panel 110,000/month. Country breakdown recorded above. | Direct US report; estimates differ by source/method |
+| percent increase calculator | "percentage increase calculator" appears as a related keyword in the US head-term report at 110,000/month; this is not the exact requested wording and not a separate opened report. | Related-keyword proxy only; exact phrase unverified |
+| percentage difference calculator | Appears as a related keyword in the US head-term report at 82,000/month and in the percentage-change report at 170,000/month; those related-keyword values conflict and are not independent exact-keyword reports. | Related-keyword proxies only; do not treat as a confirmed exact volume |
+| reverse percentage calculator | No usable exact report located in this pass. | Unknown |
+
+The 170,000 related-keyword value for "percentage difference calculator" is shown in the percentage-change report's related-keyword list; the 82,000 value is shown in the percentage-calculator report. Different seed reports may have different datasets, definitions or update times. The inconsistency is recorded rather than averaged.
+
+### 12.3 Geographic coverage and remaining gaps
+
+- The percentage-change report supplies a visible country breakdown for US, UK, Canada and Australia, giving better evidence for the Tier 1 English markets for this one exact phrase.
+- The percentage-calculator head-term report supplies visible country estimates for US, UK, Australia, Germany and Canada.
+- No same-provider, exact-phrase country matrix was obtained for all five target keywords across Germany, France, Netherlands, Brazil, Russia and China.
+- No reliable evidence was found to establish zero demand in any country; missing country rows remain unknown.
+- No live Google Trends CSV export was obtained in this pass. Google Trends values must remain relative indices, not monthly volume.
+
+### 12.4 Research interpretation (not measured fact)
+
+1. "Percentage calculator" is the broadest measured head term in the available US evidence, but it is also likely to contain broader intent than the specific three-mode tool.
+2. "Percentage change calculator" has a smaller reported volume, but its intent maps more closely to InfoJano's core Percentage Change mode.
+3. The related-keyword estimates suggest possible demand for increase and difference workflows, but exact keyword reports are needed before deciding whether to create dedicated landing pages.
+4. "Reverse percentage calculator" remains a validation gap. Its lack of a surfaced report must not be interpreted as no demand.
+5. The apparent CPC and difficulty values are provider estimates, not a ranking forecast. They do not establish InfoJano's ability to rank.
+
+### 12.5 Source methodology and cautions
+
+- KWS Trends identifies its data sources as Google Ads Keyword Planner, Google Trends, a keyword database and a web-traffic panel; individual report pages distinguish SEO estimates from Google Ads Keyword Planner fields.
+- Google Ads Keyword Planner volumes are rounded ranges; KWS Trends also warns that Keyword Planner figures can differ from its average monthly search estimates.
+- Google Trends is sampled and normalized to a 0–100 index, not absolute search counts. Google explains this methodology here: https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/
+- Keywords Everywhere describes a separate country-by-country volume checker and states that its Search Volume Checker sources data from Google Keyword Planner through its API. No authenticated bulk check was run in this session: https://keywordseverywhere.com/tools/search-volume-checker/ and https://keywordseverywhere.com/tools/keyword-volume-checker/
+
+### 12.6 Next measurement actions
+
+- [ ] Obtain one exact-phrase, same-provider matrix for all five target phrases across US, UK, Canada and Australia.
+- [ ] Extend the same settings to Germany, France, Netherlands, Brazil, Russia and China where the provider supports them; record unsupported markets as unknown.
+- [ ] Capture language = English, search network, location, date window, match setting, source, and refresh date for every export.
+- [ ] Separate average monthly search estimates, Keyword Planner ranges, CPC and competition into distinct columns.
+- [ ] Obtain Google Trends CSVs with consistent settings for relative trend/seasonality only.
+- [ ] Check InfoJano Search Console after access is available; actual impressions and clicks should supersede third-party estimates for the site's own performance.
