@@ -5,7 +5,7 @@ Evidence: three user-uploaded Search Console screenshots (27 visible example URL
 
 ## Screenshot URL inventory (27)
 
-### Percentage calculator variants (10)
+### Percentage calculator variants (12)
 - https://infojano.com/percentage.html?mode=reverse
 - https://infojano.com/percentage.html?mode=original
 - https://infojano.com/percentage.html?mode=removeTax
@@ -19,7 +19,7 @@ Evidence: three user-uploaded Search Console screenshots (27 visible example URL
 - https://infojano.com/percentage.html?mode=adjust
 - https://infojano.com/percentage.html?mode=decimal
 
-### Image resizer variants (7)
+### Image resizer variants (6)
 - https://infojano.com/image-resizer.html?preset=social-post
 - https://infojano.com/image-resizer.html?preset=web-large
 - https://infojano.com/image-resizer.html?preset=passport-photo
@@ -34,12 +34,11 @@ Evidence: three user-uploaded Search Console screenshots (27 visible example URL
 - https://infojano.com/qr-maker.html?type=whatsapp
 - https://infojano.com/qr-maker.html?type=phone
 
-### Standalone pages (5)
+### Standalone pages (4)
 - https://infojano.com/savings.html
 - https://infojano.com/id-card-print-studio.html
 - https://infojano.com/url-toolkit.html
 - https://infojano.com/index.html
-- (The screenshots show 27 rows total; this subsection contains four standalone URLs. The 27 total is 12 percentage + 6 image resizer + 5 QR + 4 standalone.)
 
 ## Source findings
 
