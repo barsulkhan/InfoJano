@@ -3,7 +3,7 @@ const CACHE_NAME = "infojano-v312";
 const BASE = new URL(".", self.registration.scope).pathname;
 const HOME = BASE;
 const ASSETS = [
-  HOME,
+  "",
   "404.html",
   "privacy-policy.html",
   "contact.html",
