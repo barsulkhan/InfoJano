@@ -168,3 +168,10 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 - Host-specific ROOT in `install.js` and scope-derived BASE in `sw.js` are internally consistent in the sampled files. All 198 non-empty precache entries (plus the intentional empty root entry) exist in the PR tree; no duplicate non-empty precache entries found.
 - Root manifest and three sampled app manifests use relative URLs that resolve correctly from their manifest locations. This is static source evidence only, not a complete 89-file review or browser/device test. Verify both custom domain and GitHub Pages installed PWA before release.
 - Detailed record: [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md).
+
+
+## Whole-site readiness audit — 2026-11-16
+- Research-first whole-site audit started per user's instruction. Initial official Google Search/AdSense requirements and 335-file main-branch inventory recorded in [2026-11-16-whole-site-readiness-audit.md](2026-11-16-whole-site-readiness-audit.md).
+- Initial representative source audit confirmed root PWA files still use legacy `/InfoJano/` paths on main (`index.html`, `manifest.json`, `install.js`, `sw.js`); PR #237 already addresses this broadly and must be reconciled/tested, not duplicated.
+- `privacy-policy.html` explicitly notes provider/live behavior and CMP revocation control are not fully verified; don't remove caveats or claim compliance without verifying facts.
+- Full 335-file per-page audit and coordinated remediation are still pending. No production code changed, no PR merged, no deployment, no Search Console Request Indexing/Validate Fix, and no AdSense review resubmission.
