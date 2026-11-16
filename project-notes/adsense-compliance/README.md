@@ -810,3 +810,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Refreshed PR #237–239: all remain Draft/open/unmerged; current GitHub metadata says mergeable/clean, but branches are diverged from main. PR #237/#238 overlap in `id-card-print-studio.html`; successful current checks do not replace PWA/SEO/runtime QA.
 - No code/PR edits, merge, deploy, Request Indexing or Validate Fix. 18-page indexing hold retained.
 - Record: [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md).
+
+### 2026-11-16 — Whole-site readiness audit and first semantic fix
+- Researched current official Google Search and AdSense guidance before auditing site source.
+- Enumerated all 117 HTML files in main; 110 sitemap entries are unique and all resolve to repository files. `countdown-studio.html` is an indexable canonical page omitted from sitemap (intent to be confirmed).
+- Confirmed `savings.html` has duplicate H1; prepared a one-line H1→H2 correction in Draft PR #240. Static assertion verifies 2→1 H1. PR branch was rebased onto latest main; compare is now 1 ahead / 0 behind. Browser visual QA remains pending.
+- Confirmed main ID Card Studio og:url mismatch; PR #238 contains the correction and overlaps #237 on the same file. Three Word format aliases still have legacy /InfoJano/ redirects on main; PR #237 changes them to relative paths.
+- Full findings: [2026-11-16-whole-site-readiness-audit.md](2026-11-16-whole-site-readiness-audit.md).
+- No merge, deploy, Search Console indexing/validation, AdSense review resubmission, or account/legal/hosting changes.
