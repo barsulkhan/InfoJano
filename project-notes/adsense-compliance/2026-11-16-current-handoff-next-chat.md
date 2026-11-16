@@ -18,6 +18,13 @@ This is the current source of truth for the user's ongoing InfoJano Search Conso
 - Keep “source inspected”, “draft PR prepared”, “merged”, “deployed”, and “live verified” as separate states.
 
 ## Latest work completed in this chat
+
+### 0. Resume audit — 2026-11-16 17:01 +05:30
+- Read the handoff and linked consolidated Search Console tracker, 404 investigation, Master Research Plan and historical pause note before resuming.
+- New read-only audit: [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md).
+- `/Height`: current `image-to-pdf.html` contains `/Height` in two PDF serializers: legacy `makePdf()` (no call site found) and active `buildPdf()` (called by the Create PDF handler). Both are PDF dictionary keys, not links. PDF Blob/object URL is created only after user action; AndroidBridge uses a separate save path. Google extraction remains a hypothesis. A narrow runtime-assembled key mitigation is possible but NOT prepared; actual browser/PDF regression test is required first.
+- Fresh PR metadata: #237/#238/#239 remain open Draft, unmerged and undeployed, but GitHub currently reports `mergeable=true` / `mergeable_state=clean` for all. Compare against current main: #237 105 ahead / 18 behind; #238 3 ahead / 12 behind; #239 6 ahead / 11 behind. #237 and #238 both edit `id-card-print-studio.html`; #239 has no overlap with #238. Their current check-runs succeeded, but are not complete PWA/SEO/runtime QA.
+- Documentation-only update saved; no code, PR branch, merge, deploy, indexing or validation action.
 ### 1. Five duplicate-canonical pages — screenshots all received
 All five Search Console screenshots show:
 - Status: “Duplicate, Google chose different canonical than user”.
@@ -91,15 +98,15 @@ Only ask the user for the next evidence that is actually needed; do not ask for 
   - Legacy `/InfoJano/` path/PWA/service-worker remediation.
   - 89 files changed; 471 additions / 469 deletions.
   - Branch `fix/search-console-404-paths-2026-11-16`, head `49977ee5867daddbbaf92e94bff080158f318304`.
-  - GitHub says mergeable=false, Draft, open, not merged. Latest compare check reported diverged, 105 commits ahead and 13 behind main. Must inspect/reconcile carefully; do not blindly rebase or merge. Dedicated service-worker/PWA runtime tests needed.
+  - Fresh GitHub metadata: Draft/open/unmerged, `mergeable=true` / `clean`; current compare is diverged, 105 ahead and 18 behind main. Broad 89-file patch. Must inspect/reconcile carefully; dedicated service-worker/PWA runtime tests needed.
 - PR #238: https://github.com/barsulkhan/InfoJano/pull/238
   - ID Card Print Studio og:url correction and 27 URL audit note.
   - Branch `fix/gsc-alternate-canonical-metadata-2026-11-16`, head `70243b2d2a77cb2d9564acb74964f6210f847c2a`.
-  - Draft, open, not merged, mergeable=false; earlier compare showed diverged (3 ahead, 4 behind).
+  - Fresh GitHub metadata: Draft/open/unmerged, `mergeable=true` / `clean`; current compare diverged (3 ahead, 12 behind). Overlaps `id-card-print-studio.html` with PR #237.
 - PR #239: https://github.com/barsulkhan/InfoJano/pull/239
   - Topic-specific sidebar text refinements on five image-resizer guides.
   - Branch `improve/gsc-image-resizer-canonical-signals-2026-11-16`, head `03cb5f0b2f9a7c4b27bda966b2bf35dcbb72b81d`.
-  - Draft, open, not merged, mergeable=false; earlier compare showed diverged (6 ahead, 3 behind).
+  - Fresh GitHub metadata: Draft/open/unmerged, `mergeable=true` / `clean`; current compare diverged (6 ahead, 11 behind).
 - All three associated CI runs were “Privacy Policy QA”; passing those is not full SEO, redirect, PWA, service-worker or runtime validation.
 - PR #237 and #238 both touch `id-card-print-studio.html`; reconcile overlap deliberately.
 - No PR merge, deployment, Request Indexing or Validate Fix has occurred.
@@ -139,7 +146,7 @@ Do not submit or request indexing for:
    https://github.com/barsulkhan/InfoJano/blob/main/project-notes/adsense-compliance/2026-11-16-new-chat-handoff-and-pause.md
 
 ## Suggested next work sequence
-1. Continue read-only tracing of the /Height token and inspect whether a minimal draft-only mitigation is feasible; test generated PDF correctness before creating any patch.
+1. Prepare and run a focused browser/runtime regression test for the actual Image-to-PDF flow; only then decide whether to create a minimal draft-only mitigation for `/Height`.
 2. Obtain /InfoJano/ URL Inspection Referring page screenshot when user is available.
 3. Obtain exact URL + Referring page for /(100) and /(100)^.
 4. Obtain the two Crawled-not-indexed example URLs.
@@ -150,3 +157,7 @@ Do not submit or request indexing for:
 ## Latest action in the preceding chat
 - Source-only investigation of `image-to-pdf.html` completed and recorded.
 - Documentation updated in main; no code changes, PR edits, merge, deployment, Google indexing or validation action.
+
+
+## Resume audit record
+See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md) for the latest source trace and PR comparison details.
