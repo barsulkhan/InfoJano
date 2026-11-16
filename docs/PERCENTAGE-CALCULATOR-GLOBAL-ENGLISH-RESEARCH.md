@@ -288,3 +288,66 @@ The 170,000 related-keyword value for "percentage difference calculator" is show
 - [ ] Separate average monthly search estimates, Keyword Planner ranges, CPC and competition into distinct columns.
 - [ ] Obtain Google Trends CSVs with consistent settings for relative trend/seasonality only.
 - [ ] Check InfoJano Search Console after access is available; actual impressions and clicks should supersede third-party estimates for the site's own performance.
+
+
+## 13. Search-intent and source-methodology review — fourth pass (2026-11-16)
+
+### 13.1 US search-result evidence for the broad and core terms
+
+The US KWS Trends report for **"percentage calculator"** (Google Web Search; updated 2026-10-28) reports:
+- Corrected average monthly searches: 1,000,000; estimated SEO difficulty: 65/100; estimated CPC: USD $1.38.
+- Separate Google Ads Keyword Planner panel: 550,000 monthly searches; top-of-page bid USD $0.76–$2.00; competition index 0/100 (labelled Low).
+- Related terms include "percentage increase calculator" at 110,000, "percentage difference calculator" at 82,000, and "percentage change calculator" at 60,000. These are related-keyword table values, not all separate exact-match reports.
+- 88% of related keywords with an intent label are informational and 12% commercial (labels can overlap).
+- Top organic results include PercentageCalculator.net, Calculator.net, DadsWorksheets, OmniCalculator and CalculatorSoup.
+
+Source: https://www.kwstrends.com/keywords/us/percentage-calculator
+
+The US KWS Trends report for **"percentage change calculator"** (Google Web Search; updated 2026-11-09) reports:
+- Corrected average monthly searches: 60,000; estimated SEO difficulty: 72/100; estimated CPC: USD $0.01.
+- Separate Google Ads Keyword Planner panel: 110,000 monthly searches; top-of-page bid USD $0.01–$0.01; competition index 0/100 (Low).
+- Worldwide estimate: 120,000/month, of which US 60,000 (50%), UK 22,000 (18%), Canada 8,000 (6.7%), Australia 6,500 (5.4%); India 4,400 (3.7%).
+- 95% of related keywords with an intent label are informational and 5% commercial (labels can overlap).
+- Top organic results include CalculatorSoup, PercentageCalculator.net, Percent-Change.com and OmniCalculator.
+
+Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator
+
+### 13.2 Methodology clarified
+
+KWS Trends' methodology page says its corrected average monthly search estimate combines Google Ads Keyword Planner and a second keyword database, with corrections benchmarked against Search Console impressions and Google Analytics 4 sessions from comparison websites. Its separate Google Ads panel displays Keyword Planner's own rounded figures. The two numbers can differ and should remain separate fields.
+
+The same methodology page says:
+- SEO difficulty, related-keyword CPC and intent labels come from the second keyword database.
+- Estimated CPC is the midpoint of Google's top-of-page bid range.
+- Google Trends interest is a normalized 0–100 series, not an absolute search count.
+- Search volume, CPC, difficulty and monthly figures are estimates and may be incomplete or revised.
+
+Sources:
+- https://www.kwstrends.com/methodology
+- https://www.kwstrends.com/terms
+- https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/
+
+### 13.3 Country evidence quality check
+
+- For "percentage calculator", the visible worldwide distribution includes US 1,000,000; UK 130,000; Australia 40,000; Germany 40,000; Canada 22,000, plus other countries. These are global report country shares for this one phrase, not proof that each query was typed in English in each country.
+- For "percentage change calculator", the report explicitly shows US, UK, Canada and Australia country estimates, but does not show a complete country matrix for Germany, France, Netherlands, Brazil, Russia or China in its visible top-country list.
+- The attempt to locate exact "percentage calculator" reports for Germany, France, Netherlands, Brazil, Russia and China did not return matching exact phrase reports. Search results for unrelated German and French queries are not used as substitutes.
+- No evidence in this pass establishes English-query demand for Brazil, Russia or China. Keep those markets as unverified feasibility tests, not proven demand markets.
+
+### 13.4 Product / SEO implications (reasoned recommendations)
+
+1. Keep the primary page focused on the exact core task family and make the distinction between percentage change, percentage difference and reverse percentage explicit. The high informational share in the related terms supports clear worked examples and formulas.
+2. The core page should target the broad "percentage calculator" intent while making its three modes immediately discoverable; a separate "percentage change calculator" content target may be worth testing because it maps directly to the main mode.
+3. Do not create standalone increase, difference or reverse pages solely from related-keyword numbers. First obtain exact phrase reports and inspect the live SERP/page intent for each.
+4. Do not use CPC as a proxy for organic ranking difficulty. The percentage calculator report shows low Google Ads competition alongside SEO difficulty 65/100; these are different metrics.
+5. Do not infer country-specific English demand from a country's share of a worldwide report. Require a country-specific report with language/query settings documented, or validate later with Search Console.
+
+### 13.5 Remaining evidence gaps
+
+- [ ] Exact independent report for "percent increase calculator" (US and other target countries).
+- [ ] Exact independent report for "percentage difference calculator" (US and other target countries).
+- [ ] Exact independent report for "reverse percentage calculator" (US and other target countries).
+- [ ] Country-specific English query dataset for all five terms across US, UK, Canada, Australia, Germany, France, Netherlands, Brazil, Russia and China.
+- [ ] Confirm provider's country report language settings and whether country-level counts are limited to Google Web Search without language filtering.
+- [ ] Export Search Console queries and country performance once owner access is available.
+- [ ] Review current SERPs for all exact phrases before choosing new pages or metadata.
