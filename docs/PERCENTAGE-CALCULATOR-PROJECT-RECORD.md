@@ -881,3 +881,44 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Continue with free Google surfaces only: manually query Google Search suggestions/Related searches and Google Trends Top/Rising per seed and country if accessible.
 - Keep provenance labels precise: direct Google suggestion, Google Trends related query, publicly indexed SERP phrase, or unverified idea.
 - Do not ask owner to pay or use a paid tier.
+
+
+## Work session — 2026-11-16 (Second free Google query expansion)
+
+### 1. Owner request and scope
+- Continue broad one-session research using free Google-derived evidence only; no paid versions, subscriptions, API spend or user payment.
+- Keep English-only and avoid product/code/design changes.
+
+### 2. Research and sources
+- Verified Google's official Autocomplete explanation: predictions reflect real searches and depend on language, location, trends and past searches. https://support.google.com/websearch/answer/7368877?hl=en
+- Rechecked Google's Related searches explanation: https://support.google.com/websearch/answer/2466433?hl=en
+- Rechecked Google Trends related queries and normalization limitations: https://newsinitiative.withgoogle.com/resources/trainings/google-trends/understanding-the-data/ and https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/
+- Searched public web results for additional exact query phrasing around percentage change, reverse percentage, original price, discount/tax and percentage points. The new candidate list is appended in research report Section 18.
+
+### 3. Findings and limitations
+- Added variants including how to calculate percentage change, original price before discount, undo a percentage, price before tax, monthly/year-over-year growth, and percentage points vs percent change.
+- Public result pages show related phrase examples, but they are not direct live Google Autocomplete output.
+- No direct live Autocomplete list, Trends CSV, Search Console data or new country volume matrix was obtained. No invented volumes.
+
+### 4. Changes and guardrails
+- Appended Section 18 to the global research report and this work session to the project record.
+- No application code, UI, homepage, Hero, Header, logo, metadata, unrelated feature or deployment changed.
+- No paid service or subscription used.
+
+### 5. Verification
+- [x] Read current report and project record before editing.
+- [x] Checked official Google Autocomplete and Related searches documentation.
+- [x] Checked Google Trends related-query guidance and 0–100 caveat.
+- [x] Added new English keyword variants and evidence labels.
+- [ ] Direct Google Autocomplete extraction remains pending.
+- [ ] Google Trends country CSV export remains pending.
+- [ ] Country-specific volumes and English query demand remain unknown.
+
+### 6. Commit and deployment
+- Research commit: pending verification.
+- Project record commit: pending verification.
+- No app deployment; live status unverified.
+
+### 7. Handover
+- Treat this as one consolidated discovery backlog. Do not keep asking the owner to pay or do manual keyword checks.
+- Any future pass should be consolidated and only continue if it can add direct Google-surface evidence, Search Console data or a verified free data source.
