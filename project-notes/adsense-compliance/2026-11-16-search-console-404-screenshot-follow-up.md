@@ -132,3 +132,12 @@ Recommended safe handling:
 - Current environment cannot run the actual browser page or verify live HTTP, so the Google parsing theory remains a hypothesis.
 
 No source code was changed in this investigation.
+
+
+## 2026-11-16 17:01 +05:30 — resume audit refinement for /Height
+
+Fresh main-branch source inspection found two PDF serializers in `image-to-pdf.html` containing the literal `/Height` PDF image dictionary key: a legacy `makePdf(pages)` declaration with no call site found by repository code search, and the active `buildPdf(pages)` function called by the Create PDF handler. Both write PDF dictionary text, not HTML routes or anchors. The page only creates the PDF Blob and download object URL after the user selects images and clicks Create PDF; Android WebView uses `AndroidBridge.savePdf` and keeps the download anchor hidden. This strengthens the source-token hypothesis but still does not prove Google's extraction mechanism.
+
+A narrow mitigation could assemble the slash-prefixed PDF key dynamically in both serializers, preserving `/Height` in generated PDF bytes while removing the literal token from embedded source. No code patch was made: an actual browser/runtime regression test of PDF generation, dictionary, xref/trailer and download/Android paths is required first. Do not redirect `/Height`.
+
+Full PR status refresh and current counts are in [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md). No code, PR, merge, deployment, Request Indexing or Validate Fix action was taken.
