@@ -750,3 +750,13 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Added direct Privacy Policy + Contact links to Number to Words, Percentage Change Calculator, Tip Calculator, Date Difference Calculator, GST Calculator and Text Counter.
 - Existing footer and calculator functionality preserved. Task record: [2026-11-16-0018-second-screenshot-batch-privacy-links.md](2026-11-16-0018-second-screenshot-batch-privacy-links.md), commit `10b8e79c42a2f264c65ec8561414c2f7eeb41999`.
 - Live deployment/browser confirmation remains pending.
+
+
+### 2026-11-16 08:12 +05:30 — Full-page link coverage and PWA cache QA
+- Audited the root-page inventory: 116 HTML files; 115 user-facing pages are now checked by CI. Every checked page must either contain Privacy Policy + Contact links or load the shared header that conditionally supplies them.
+- Added direct links to standalone pages that did not load the shared header (404, increase/decrease percentage, original-price-before-discount, repeated/successive percentage) and updated the elapsed-time guide and Work Hours footer.
+- Expanded `scripts/validate-privacy-policy-links.mjs` and workflow triggers for all root HTML/shared-header changes.
+- CI run #43794141231 PASS: 115 root HTML pages, 26 policy hrefs, 110 sitemap URLs; local links/fragments, required sitemap entries and robots sitemap reference passed.
+- APK workflow exposed a missing PWA precache entry for Contact. Added Contact + Privacy Policy to `sw.js` and bumped cache to v311. APK validation run #43794247117 is still running; Pages deployment for the fix commit is pending.
+- Task record: [2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md](2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md), commit `860df10a79227cf2e5a862f412e254b801b75cba`.
+- No AdSense/CMP settings, DNS, Worker secrets/configuration, policy legal wording, or app releases changed.
