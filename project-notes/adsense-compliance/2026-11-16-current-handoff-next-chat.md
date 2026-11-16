@@ -242,3 +242,33 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 - A draft-only correction was prepared in PR #244: https://github.com/barsulkhan/InfoJano/pull/244. It checks app manifest URL resolution under both `/` and `/InfoJano/`, parses the worker's relative precache entries, and checks file existence/coverage. One changed file only: `.github/workflows/build-tool-apks.yml`. It has not been merged and the APK/release workflow has not been re-run.
 - PR #244's proposed validation has been reviewed as a focused diff, but no CI execution has yet proven it passes. Keep it draft until reviewed. The existing APK workflow publishes a prerelease on main; do not manually dispatch or merge it without explicit approval for that release effect.
 - The screenshot Cloudflare preview remains separate from GitHub Pages production deployment. GitHub Pages deployment is confirmed; custom-domain DNS/CDN propagation and actual browser/live HTTP behavior remain unverified in this environment.
+
+
+### Rapid follow-up audit — 2026-11-16 18:36 +05:30
+
+#### Deployment and repository state
+- Latest GitHub Pages deployment for main commit `1120d07cf19d440110b3f3bb620c7a235a535adb` completed successfully: [run #43866850205](https://github.com/barsulkhan/InfoJano/actions/runs/43866850205). The original PR #243 merge commit deployment also succeeded: [run #43864387270](https://github.com/barsulkhan/InfoJano/actions/runs/43864387270).
+- The APK workflow failure remains limited to its pre-build validation assertion. Exact failure log: job expected hard-coded `/InfoJano/app-icons/age.svg` inside `sw.js`, while current worker correctly uses relative precache entries and `BASE + path`. No APK build step ran.
+- Draft PR #244 changes only `.github/workflows/build-tool-apks.yml` to validate manifest URL resolution under both `/` and `/InfoJano/` and check relative precache entries. It remains draft/unmerged; it is not CI-proven and must not be merged or dispatched casually because the workflow includes a GitHub prerelease publish step on main.
+
+#### Fresh static source audit
+- Root `manifest.json` is valid JSON and uses relative `./` values for id/start_url/scope and icon URLs.
+- `install.js` chooses `/InfoJano/` only for `barsulkhan.github.io`, otherwise `/`; `sw.js` derives BASE from service-worker registration scope, HOME=BASE, and cache name `infojano-v312`.
+- All 198 non-empty service-worker precache paths matched existing files in the main repository tree; no duplicates. All 115 user-facing root HTML files, 28 SVG app icons and 29 app manifests are included in the precache list.
+- Sitemap source contains 110 unique URLs. All 110 map to repository files. Of 115 user-facing root HTML pages, the only absent pages are `404.html`, `countdown-studio.html`, and the three Word format alias pages (`word-to-pdf.html`, `word-to-jpg.html`, `word-to-png.html`). The aliases are intentional noindex utility aliases; `404.html` is not an index target. Countdown Studio is self-canonical/indexable in source but absent from sitemap; do not change this until its indexability/hold decision is confirmed.
+- `robots.txt` source allows crawling and points to `https://infojano.com/sitemap.xml`. `ads.txt` source contains one seller record: `google.com, pub-2908196513377151, DIRECT, f08c47fec0942fa0`. Both remain LIVE HTTP/crawler-unverified.
+- Homepage source loads GA4 and AdSense scripts and contains a Google Privacy & Messaging revocation entry point. The entry is hidden until `googlefc.showRevocationMessage` is available or `CONSENT_API_READY` callback fires. The click handler calls that API. This confirms a source-level hook only; whether the live CMP injects/initializes it and whether the link is visible/works for visitors remains unverified.
+- Privacy Policy explicitly states that live consent/revocation behavior, account-selected vendors, and several external provider runtime/retention details are not yet verified. Do not remove these caveats or claim live compliance until evidence is obtained.
+- `image-to-pdf.html` still contains `/Height` only in PDF image-object serialization code; active `buildPdf(pages)` emits the required PDF dictionary key. The Search Console extraction hypothesis remains unproven. No patch made without an actual generated-PDF regression test.
+
+#### Live verification blocker
+- Direct fetch attempts to the custom domain for `/`, `/manifest.json`, `/sw.js`, `/Height`, `/ads.txt`, `/robots.txt`, `/sitemap.xml`, `/image-to-pdf.html` and `/countdown-studio.html` were inaccessible from the available retrieval environment. This is a tool-access limitation, not evidence that the site is down.
+- Therefore custom-domain HTTP status/redirects, ads.txt crawler access, live CMP/TCF, and browser PWA install/offline remain pending real browser/device or Search Console evidence.
+
+#### Next actions / permissions
+1. Obtain one Android Chrome run on custom domain: install PWA, launch, visit a few pages, then Airplane Mode and verify cached pages/assets. Also test GitHub Pages project-site separately if that host remains supported.
+2. On the same device, open homepage privacy settings control, verify the CMP opens and that Accept/Reject/Manage/withdrawal options behave as expected in a supported region.
+3. Generate a real PDF through Image-to-PDF using a small local image and inspect the downloaded PDF; do not alter serializer until a regression test exists.
+4. Obtain live HTTP response/status/redirect evidence for ads.txt, robots.txt, sitemap.xml, /Height and Countdown Studio.
+5. Keep PR #244 draft. Do not run or merge its release-producing workflow without separate explicit approval.
+6. No hero/banner, page header, logo, or InfoJano brand changes. No Search Console Request Indexing / Validate Fix, no AdSense resubmission, no DNS/Cloudflare/account/legal/publisher settings changes.
