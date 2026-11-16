@@ -157,3 +157,13 @@ A scan of added HTML resource references found six root-relative favicon referen
 - `word-to-png.html`
 
 The PR branch now includes 11 targeted path corrections discovered during the deeper audit (five redirect/header issues plus six favicon references). These remain branch-only changes pending CI and review; no production changes were made.
+
+
+### Batch verification result — 2026-11-16
+
+- Latest PR #237 head: `49977ee5867daddbbaf92e94bff080158f318304`.
+- Latest Privacy Policy QA run #43799984619 completed SUCCESS after the path corrections.
+- Re-scanned all 89 changed-file patches: no unexpected hard-coded `/InfoJano/` paths remain; the remaining occurrences are intentional host-detection/base-path logic in `install.js` and `related-apps.js`.
+- Re-scanned added HTML resource/navigation references: no remaining root-relative `href`, `src`, `action`, `poster`, CSS `url()`, or location redirect targets were found.
+- PR #237 remains OPEN and Draft. It has not been merged or deployed.
+- Live custom-domain HTTP/browser verification remains unavailable; production behavior is still UNVERIFIED.
