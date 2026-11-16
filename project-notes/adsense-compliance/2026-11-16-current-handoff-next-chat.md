@@ -209,3 +209,26 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 ### Owner guardrails reaffirmed
 - No hero banner, page header, logo or InfoJano brand-name design changes.
 - No merge, deploy, Search Console indexing/validation, AdSense resubmission, DNS/Cloudflare/Worker/account/legal/publisher changes without separate explicit approval.
+
+
+## Superseding status update — after PR #243 merge (2026-11-16)
+
+- User explicitly authorized merging the consolidated PR. PR #243 was squash-merged to `main` successfully: https://github.com/barsulkhan/InfoJano/pull/243
+- Merge commit: `67d5924a33314f07510bf7d0362586271c7133a2`; current `main` tree resolves to this commit.
+- This is a one-time authorization for PR #243 only. It does not authorize further merges, production deployment, Search Console Request Indexing / Validate Fix, AdSense resubmission, DNS/Cloudflare/Worker/account/legal/publisher changes.
+- Post-merge static verification: root manifest uses relative `./` id/start_url/scope; `install.js` chooses `/InfoJano/` only for the GitHub Pages hostname and `/` for other hosts; `sw.js` derives BASE from its registration scope. All 198 non-empty service-worker precache entries were matched against files in the merged repository tree; no missing or duplicate entries found.
+- The 29 changed root/webmanifest JSON files were parsed successfully in the PR review. This remains static verification only; no browser install/offline test has been completed.
+- Post-merge checks for commit `67d5924`: no associated PR workflow runs were returned and no combined status entries were returned. The screenshot's Cloudflare “Preview Deployment Success” was for preview commit `04bc14e`, not proof of production deployment for merge commit `67d5924`.
+- Attempts to access live `infojano.com` URLs through the available web retrieval path were unsuccessful, so HTTP status, redirects, deployed asset paths, CMP, ads.txt crawler response, and live `/Height` behavior remain unverified.
+- Confirmed merged source outcomes: `savings.html` has one H1; ID Card canonical and og:url now use the custom domain; Image-to-PDF still contains `/Height` only in PDF serialization code (not a source HTML link); `countdown-studio.html` remains self-canonical/indexable in source but absent from sitemap pending live/intent check.
+- The user's hard design constraint remains: do not change any hero banner, page header (logo/InfoJano name), logo artwork, or brand name.
+- Keep all 18 SEO URLs on indexing hold. No Google indexing/validation action or AdSense resubmission was performed.
+
+### Remaining work queue after merge
+1. Browser/device QA of PWA install, update, offline navigation, and cache behavior on both `https://infojano.com/` and `https://barsulkhan.github.io/InfoJano/`.
+2. Generate a real PDF through Image-to-PDF and verify its image XObject dictionary retains `/Height`; only then consider a narrow draft mitigation for the Search Console `/Height` 404.
+3. Verify live HTTP/redirects for root, `/Height`, `/countdown-studio.html`, `ads.txt`, `robots.txt`, and `sitemap.xml`; the current environment did not retrieve these live URLs.
+4. Obtain exact Search Console URL Inspection referring-page details for `/InfoJano/`, `/(100)`, the malformed `/(100)^ ` example, and the two Crawled-not-indexed URLs.
+5. Continue whole-site page-level metadata, accessibility, navigation, tool-function, content-quality and privacy/security audits. Live CMP/TCF/revocation, Worker/CORS/log-retention, AdSense account/vendor and legal facts require owner/browser evidence.
+6. Confirm whether Countdown Studio is intentionally excluded from sitemap before proposing a sitemap-only change.
+
