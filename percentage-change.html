@@ -805,7 +805,9 @@ function swapValues(){
 async function copyResult(){
  if(!lastPercentageResult)return;
  const r=lastPercentageResult;
- const text='Percentage change: '+(r.change>0?'+':r.change<0?'−':'')+r.formattedPercent+'% ('+r.direction+')\nOld value: '+pctFormatter.format(r.oldValue)+'\nNew value: '+pctFormatter.format(r.newValue)+'\nDifference: '+pctFormatter.format(r.difference);
+ const label=pctMode==='difference'?'Percentage difference: ':pctMode==='reverse'?'Reverse percentage result: ':'Percentage change: ';
+ const sign=pctMode==='difference'?'':(r.change>0?'+':r.change<0?'−':'');
+ const text=label+sign+r.formattedPercent+'% ('+r.direction+')\\nOld / first value: '+pctFormatter.format(r.oldValue)+'\\nNew / second value: '+pctFormatter.format(r.newValue)+'\\nAbsolute difference: '+pctFormatter.format(r.difference);
  const button=document.getElementById('copy-result');
  try{
   if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);}
