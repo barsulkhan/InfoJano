@@ -110,3 +110,10 @@ No production deployment, merge, Google indexing request, or Validate Fix was pe
 - The next safe task is to continue a repository-only quality audit of the five guide pages and PR #239, then examine remaining Search Console categories where source evidence exists.
 - For Google-selected canonical resolution, the exact Google-selected canonical values remain necessary; source changes cannot directly force Google's selection.
 - No Validate Fix, indexing request, deployment, or merge was performed.
+
+
+### PR #239 patch review
+- Reviewed all five file patches and confirmed each changes only the intended sidebar paragraph; canonical tags, og:url, sitemap and main article body are untouched.
+- Re-read all five files from the PR branch; all five self-canonical URLs still match their page URLs and the five sidebar paragraphs are distinct.
+- PR #239 reports mergeable=true; associated Privacy Policy QA run #43806628836 succeeded. This QA workflow does not prove Google canonical selection.
+- PR #237 and #238 currently report mergeable=false; investigate GitHub's branch/base divergence or conflict state before either can be merged.
