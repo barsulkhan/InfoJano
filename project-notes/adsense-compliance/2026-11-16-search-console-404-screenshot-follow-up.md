@@ -115,3 +115,20 @@ This is the first direct source attribution for the short 404 path: Google disco
 - [ ] After fixes are approved and deployed, user may decide whether to use Search Console Validate Fix; do not submit it now.
 
 No code, PR, DNS, deployment, indexing or validation action was performed in response to this screenshot. Documentation only.
+
+
+## 2026-11-16 — deeper source trace for /Height completed
+
+Reopened current `main` file `image-to-pdf.html` (blob SHA `291ce0c589bf7a172d2027e1126906b081cc405e`) and inspected the exact source around the PDF generator and download UI:
+- The only literal `/Height` occurrence in this file is in PDF object serialization: `/Type /XObject /Subtype /Image /Width ... /Height ... /ColorSpace /DeviceRGB ...`. This is a PDF dictionary key for the image pixel height, not an HTML route or href.
+- The page has a static `<a id="download" ... hidden download="InfoJano-Images.pdf">` element. It is hidden in the initial HTML.
+- The page generates the PDF in the browser using `new Blob(..., {type:'application/pdf'})`. Only after the user selects images and clicks Create PDF does JavaScript create an object URL via `URL.createObjectURL(pdf)`, assign it to the hidden anchor's `href`, and unhide it. The PDF is not a pre-existing public file or a static crawlable URL in the source.
+- In Android WebView, the code instead calls `window.AndroidBridge.savePdf(...)` and keeps the download anchor hidden.
+- Therefore the strongest current hypothesis is that Google discovered the literal PDF dictionary token `/Height` in the JavaScript source associated with `image-to-pdf.html` and treated it as a URL path. This is plausible given Search Console's Referring page, but Google’s extraction mechanism is not proven. There is no evidence of a real user-facing /Height page.
+
+Recommended safe handling:
+- Do not redirect `/Height` to the PDF tool or homepage merely to silence the report; there is no semantically equivalent page.
+- A narrowly scoped code mitigation may be considered in a draft PR only if a controlled source/runtime test supports it (for example, avoiding a slash-prefixed literal token in embedded JavaScript while preserving correct generated PDF bytes). Any change must be regression-tested by generating PDFs and checking the PDF image dictionary still has the required `/Height` key. Do not alter production directly.
+- Current environment cannot run the actual browser page or verify live HTTP, so the Google parsing theory remains a hypothesis.
+
+No source code was changed in this investigation.
