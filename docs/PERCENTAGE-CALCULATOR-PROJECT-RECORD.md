@@ -626,3 +626,73 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Priority 1: Investigate exact independent reports for the three remaining phrases and country-specific reports for Tier 1 markets. Confirm whether provider reports support an explicit English language filter; if not, state that limitation and avoid calling the numbers English-only demand.
 - First files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and this project record.
 - Keep application and design unchanged until evidence justifies a specific change.
+
+
+## Work session — 2026-11-16 (Refreshed keyword reports and bulk English checker — fifth pass)
+
+### 1. Owner request and scope
+- Request: Continue the keyword/country research ("Koro").
+- Scope: Refresh the exact public reports, validate whether a reproducible country-specific English dataset can be collected, and document the next measurable action.
+- Constraints: English-only site; no translation; no calculator code, approved Hero/Header, homepage, logo, shared navigation or unrelated files changed.
+
+### 2. Research and decisions
+- Read the current project record and research brief before starting.
+- Refreshed public KWS Trends report for "percentage calculator": worldwide 1.9M/month across 121 countries; visible shares include US 1.0M, India 370K, UK 130K, Australia 40K, Germany 40K, Philippines 40K, Canada 22K, Taiwan 22K, Spain 18K, Italy 18K and 111 other countries 200K. Source: https://www.kwstrends.com/keywords/us/percentage-calculator
+- Refreshed public report for "percentage change calculator": corrected average 60K/month; SEO difficulty 72/100; estimated CPC USD $0.01; separate Keyword Planner 110K/month, bid USD $0.01–$0.01 and competition index 0/100. Worldwide 120K/month; visible country estimates US 60K, UK 22K, Canada 8K, Australia 6.5K, India 4.4K, New Zealand 1.3K, Philippines 1.3K, Hong Kong 1.1K, Singapore 870, UAE 710 and 98 other countries 13.82K. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator
+- Current related-keyword table in the percentage-change report shows "percentage increase calculator" 170K and "percentage difference calculator" 170K. These are related entries, not exact independent reports, and differ from earlier related-keyword values (110K and 82K). Retained as seed-dependent discrepancies.
+- Verified KWS Trends bulk Keyword Planner checker description: up to 200 keywords, selected country, English, monthly searches, bid range, competition, monthly history and CSV export; public page says 20 lookups per browser/day, no sign-up. Source: https://www.kwstrends.com/google-ads-keyword-tool
+- The web viewer cannot interact with this form or download its CSV; no bulk result dataset was obtained. This is an access limitation, not a claim that the tool failed.
+- The bulk checker is the best next route to a consistent English country matrix, subject to actual country availability. Do not assume all target countries are supported.
+- Global report country splits do not prove every query was typed in English. Mark missing cells unknown, not zero.
+
+### 3. Baseline and risks
+- Repository: barsulkhan/InfoJano, branch main.
+- Starting research document blob SHA: f222f03ddac52cd1242378eee80d7bb722ca953f.
+- Starting project-record blob SHA: d8bf89da50d4deb621359f130ae8e702aa2f9a50.
+- No application source file changed.
+- Risks: Corrected estimates differ from raw Keyword Planner numbers; related-keyword values vary by seed report; provider terms say estimates can be incomplete/revised. Bulk checker country availability must be confirmed in the actual form.
+
+### 4. Issues / evidence gaps
+- No direct exact independent report obtained for percent increase, percentage difference or reverse percentage.
+- No bulk CSV results were retrieved because the tool's interactive form could not be operated in this environment.
+- Full country matrix for US, UK, Canada, Australia, Germany, France, Netherlands, Brazil, Russia and China remains incomplete.
+- Country report distribution does not isolate English language for every location.
+
+### 5. Changes made
+- Appended Section 14, "Updated keyword report evidence and bulk-data path — fifth pass", to docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md.
+- Added refreshed report values, related-keyword discrepancies, bulk checker capability and access limitation.
+- No calculator code, UI, metadata, design, homepage, Hero, Header, logo or unrelated files changed.
+
+### 6. Mistakes, failed attempts, and corrections
+- Attempted direct report URLs for percent-increase, percentage-difference and reverse-percentage exact reports; all three were inaccessible through the web viewer. They are not treated as data.
+- The exact keyword report values for related terms differ by seed page; recorded the current values alongside earlier values rather than selecting one as definitive.
+- Did not claim the bulk tool was run; only its documented capability was verified.
+
+### 7. Verification
+- Public report pages and bulk checker description were retrieved and reviewed.
+- Research document commit: fd76d28baf516d1a7a9a65879b312c81fdde9380.
+- Not performed: interactive bulk lookup, CSV download, exact reports for remaining three terms, full country matrix, Search Console export, Google Trends CSV, live SERP interaction, calculator browser QA.
+- No application behavior tested.
+
+### 8. Commit and deployment
+- Research document commit: fd76d28baf516d1a7a9a65879b312c81fdde9380.
+- Project record update: pending; resulting SHA to be confirmed.
+- Branch: main.
+- No application deployment; production status remains unverified.
+
+### 9. Work checklist
+- [x] Read project record and research brief.
+- [x] Refresh public reports for percentage calculator and percentage change calculator.
+- [x] Record current country distributions and related-keyword discrepancies.
+- [x] Verify public bulk checker documentation for country-specific English Google Ads data and CSV output.
+- [x] Document inability to operate the interactive checker in this environment.
+- [ ] Run five exact keywords through bulk checker for US, UK, Canada and Australia.
+- [ ] Run supported European, Brazil, Russia and China locations; record unsupported countries as unavailable.
+- [ ] Save and inspect CSV outputs.
+- [ ] Obtain exact phrase reports for increase, difference and reverse percentage.
+- [ ] Review organic SERPs and Search Console data before product changes.
+
+### 10. Next session handover
+- Priority 1: Obtain the KWS bulk checker results for the five exact phrases across Tier 1 countries. If direct interactive access remains unavailable, request the exported CSV from the owner only as a last resort; do not ask for it if an interactive browser becomes available.
+- First files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and this project record.
+- Keep application code and approved design untouched until evidence supports a specific implementation.
