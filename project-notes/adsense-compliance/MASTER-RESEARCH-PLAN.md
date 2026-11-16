@@ -830,3 +830,24 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - APK validation surfaced that Contact and Privacy Policy were missing from the PWA precache. Added both and bumped cache to v311; run #43794247117 and Pages deployment for fix commit remain pending at report time.
 - Task record: [2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md](2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md).
 - Live mobile after-state verification remains outstanding. Account-side CMP/AdSense and device-only tests remain deferred.
+
+
+## 22. Search Console 404 screenshot investigation — 2026-11-16
+
+### Evidence supplied by user
+- Search Console overview: 58 indexed, 49 not indexed. The 49 are categorized as 27 alternate canonical, 13 not found (404), 2 redirect, 5 duplicate with Google-selected canonical, and 2 crawled-currently-not-indexed.
+- The 404 examples include malformed URLs where `$3<meta property=` or `$3<script type=` is appended after an HTML filename. One URL Inspection for the percentage-of-percentage page reports Page is not indexed: Not found (404), referring page `https://infojano.com/percentage-of-percentage-calculator.html`, crawl allowed, Googlebot smartphone, fetch failed 404.
+
+### Source investigation and safe correction
+- Re-fetched the current main-branch source for the percentage calculator, increase/decrease calculator, Number to Words, repeated percentage change, what-percent, profit/loss, successive percentage change, percentage difference, and reverse-GST calculator. Sampled canonical and Open Graph URL tags are syntactically closed and point to their clean canonical paths.
+- GitHub code search for literal `$3` found only the historical PR #91 audit note in documentation, not a current source-file match. PR #91 is merged. This supports that the original metadata corruption was repaired in repository source; it does not prove every live edge/cache has refreshed.
+- Fixed the confirmed wrong homepage target in `404.html`: `/InfoJano/` → `/`. The 404 page stays `noindex,follow`. No blanket redirects were created for malformed URLs.
+- The examples `/Height`, `/(100)`, `/(100)^ ` and `/InfoJano/` still need attribution to a current referring link or confirmation as stale historical URLs. Do not redirect them without evidence.
+
+### Explicit indexing restriction
+- Keep the 15 Number to Words Pro SEO landing pages and 3 Countdown country SEO pages as Pending — not submitted. Do not request indexing for these pages in future batches unless the user explicitly authorizes it. Do not mark any URL Indexed without exact Search Console URL Inspection evidence.
+
+### Verification boundary
+- No Search Console Request Indexing or Validate Fix action was taken.
+- Repository source samples are clean; live custom-domain HTTP status, redirect behavior, and fresh Google crawl have not been independently verified.
+- Next safe step: after deployment, inspect exact malformed URL and referring-page live source again. If the current referring page contains no malformed href and canonical/OG tags remain clean, treat the old malformed URL as stale and let Google recrawl; use Validate Fix only after the source correction is live and the user approves.
