@@ -1116,3 +1116,74 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Build, artifact upload, status report and Deploy to GitHub Pages jobs all completed successfully.
 - Direct live URL inspection via the available web reader returned an access error, so deployment workflow success is confirmed but the rendered live page content has not been independently inspected.
 - Interactive browser QA, mobile visual regression, CSV download/history restore and Search Console indexing/performance remain pending. Do not mark these complete.
+
+
+## Work session — 2026-11-16 (Phase 2 technical SEO and Search Console access audit)
+
+### 1. Owner request and scope
+- Owner said “Koro” in response to the next-step plan: begin Phase 2 indexing checks, calculator QA planning and technical SEO review.
+- Scope: inspect the current two percentage calculator pages, robots.txt, both sitemap files, service-worker cache and deployment workflow; check available Search Console data access.
+- Guardrails: English-only; preserve approved page/Hero/Header/logo/homepage and unrelated tools; no feature additions or speculative code changes.
+
+### 2. Baseline inspected
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Read this project record and `docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md` before work.
+- Current GitHub blobs inspected:
+  - `sitemap.xml`: `c0d5e9f096d31389892af656fdc3db48e760b9be`
+  - `sitemap-infojano.xml`: `9830b587cc6c846df9fd26877951f1428b4655c6`
+  - `robots.txt`: `d9b19d5d098c81da0ceb3586a7a9107a26612d57`
+  - `percentage.html`: `4f6d3cadcbf70665fb3c2cfd55c57a69b9685bc2`
+  - `percentage-change.html`: `8f434234f1ce653f70681792da15a07c12f65de2`
+  - `sw.js`: `f037bee0f21c971395c9e04aca5c76fb8c386a0e`
+- Both target page files declare self-referencing canonical URLs on `https://infojano.com/`, and matching title, meta description, Open Graph URL, Twitter title/description and JSON-LD blocks.
+- `robots.txt` allows all paths for `User-agent: *` and declares `https://infojano.com/sitemap.xml`.
+- Both sitemap files list `https://infojano.com/percentage.html` and `https://infojano.com/percentage-change.html`, each with `lastmod` 2026-11-16.
+- `sw.js` remains v312 and precaches both calculator pages.
+- No source edits were made in this session.
+
+### 3. Research / access checks
+- Public URL checks attempted for `https://infojano.com/robots.txt`, `/sitemap.xml`, `/sitemap-infojano.xml`, `/percentage.html` and `/percentage-change.html`; the available web reader returned an access error for each. This is a tool-access limitation, not proof the site is down.
+- GitHub Pages workflow run `43919808905`, head commit `b554a28ee9d9b12f2851d5ac31e9136afacc6cd1`, was rechecked: status `completed`, conclusion `success`. This confirms the Pages workflow, not Search Console indexing or live page rendering.
+- Search Console data access was explored through available SEO integrations. Ahrefs project listing returned `Insufficient plan`; no usable Ahrefs project ID or GSC metrics were returned.
+- A Windsor.ai integration capable of reading Google Search Console clicks, impressions, CTR, positions and query/page breakdowns was surfaced for connection. It is not connected/confirmed yet; no GSC data was accessed.
+- No browser automation tool was available for real interactive calculator testing in this session.
+- Public-source background: Google Search Console URL Inspection is the authoritative way to inspect a URL's Google index status; sitemap processing is visible in its Sitemaps report. References: https://support.google.com/webmasters/answer/9012289 and https://support.google.com/webmasters/answer/7451001.
+
+### 4. Findings and issues
+- No confirmed source-level robots/canonical/sitemap omission was found for the two target pages.
+- Both sitemap files appear to carry the same URL inventory; no change was justified from source inspection alone.
+- Important limitation: sitemap membership and a successful deployment workflow do not prove Google indexed either page.
+- Live HTTP status, response headers, Google-selected canonical, sitemap fetch result and rendered page appearance remain unverified because public URL fetches failed.
+- Search Console indexing/performance remains blocked until a connected account/property is available.
+- Browser interaction checks remain pending; no interactive tests are claimed as passed.
+
+### 5. Mistakes and recovery
+- No code changes or regressions occurred.
+- Ahrefs access was attempted but blocked by plan entitlement; no data was inferred from the failure.
+- Windsor.ai was surfaced as a possible GSC connection, but connection is not assumed or claimed.
+
+### 6. Verification actually completed
+- [x] Read project record and research report before work.
+- [x] Inspected current target page metadata and canonical declarations in repository source.
+- [x] Inspected robots.txt rules and sitemap declaration.
+- [x] Confirmed both target pages occur in both sitemap source files with 2026-11-16 lastmod.
+- [x] Confirmed both pages remain in service-worker precache list (v312).
+- [x] Rechecked GitHub Pages workflow run 43919808905: completed successfully.
+- [ ] Public live HTTP status/headers/rendered HTML — blocked by public URL reader access errors.
+- [ ] Google Search Console URL Inspection, Page Indexing and Sitemap processing — blocked pending account connection.
+- [ ] Browser QA of Change, Reverse %, Difference, batch validation, CSV downloads, History restore and Copy Result — pending browser automation/real browser.
+- [ ] Desktop/mobile visual regression — pending.
+
+### 7. Commit and deployment
+- No application files changed.
+- This audit entry is appended to the project record only; commit SHA to be recorded after this update.
+- Latest verified Pages workflow remains run 43919808905 on commit b554a28ee9d9b12f2851d5ac31e9136afacc6cd1, completed successfully.
+- Do not mark live rendering, indexing, or browser QA complete.
+
+### 8. Handover / next actions
+- [x] Complete repository-source technical checks for target metadata, canonicals, robots and sitemap membership.
+- [!] Connect Windsor.ai to the Google Search Console property for `infojano.com`; only then run URL/page/query/country/device reports.
+- [ ] Once connected, inspect both URLs in GSC, review sitemap processing and record actual index status and any exclusion reason.
+- [ ] Run real browser QA across the calculator's three modes, batch, CSV, history restore and copy behavior; include mobile and desktop.
+- [ ] Revisit technical HTTP checks when a public fetch/browser is available.
+- Next best task: after the Search Console integration is connected, perform URL Inspection and extract the last 28 days of page/query/country/device data for the two target URLs. Do not add features before this evidence is reviewed.
