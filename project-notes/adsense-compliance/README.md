@@ -788,3 +788,11 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task record: [2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md](2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md).
 - Task record commit: `7c906b5336650dcf78935d65156f1d63fcc8769d`.
 - Next: complete the exact root HTML reference inventory and classify root-PWA versus dedicated-app path requirements; prepare a dual-host-safe proposal without changing production source.
+
+
+### 2026-11-16 — User Search Console 404 screenshot follow-up
+- Re-read five new Search Console photos: confirmed 58 indexed / 49 not indexed, 13 404s, 27 alternate canonical, 2 redirects, 5 Google-selected different canonical, 2 crawled-currently-not-indexed.
+- Transcribed all 13 404 examples in the task record. URL Inspection confirms the malformed Percentage of a Percentage URL is a 404, crawl allowed, Googlebot smartphone, referring page is the clean calculator URL, no sitemap detected, last crawl Nov 16, 2026.
+- Re-fetched nine affected calculator pages and 404.html from current main: canonical and og:url values are clean; code search finds no literal malformed $3 suffix in current source code. Live response/referrer/cached-output source remains unverified.
+- No speculative redirects, Search Console validation or indexing requests. Existing 18-URL indexing hold remains.
+- Record: [2026-11-16-search-console-404-screenshot-follow-up.md](2026-11-16-search-console-404-screenshot-follow-up.md).
