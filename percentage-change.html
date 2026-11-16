@@ -561,7 +561,7 @@ function renderPctHistory(){
   const row=document.createElement('div');row.className='ij-pct-history-row';
   const restore=document.createElement('button');restore.type='button';restore.className='ij-pct-history-restore';restore.onclick=function(){restorePctHistory(index);};
   const values=document.createElement('span');values.className='ij-pct-history-values';values.textContent=pctFormatter.format(item.oldValue)+' → '+pctFormatter.format(item.newValue);
-  const meta=document.createElement('span');meta.className='ij-pct-history-meta';meta.textContent=item.direction+' · '+new Date(item.savedAt).toLocaleString();
+  const meta=document.createElement('span');meta.className='ij-pct-history-meta';meta.textContent=(item.mode==='reverse'?'Reverse %':item.mode==='difference'?'% Difference':'% Change')+' · '+item.direction+' · '+new Date(item.savedAt).toLocaleString();
   restore.appendChild(values);restore.appendChild(meta);
   const result=document.createElement('span');result.className='ij-pct-history-result';result.textContent=(item.change>0?'+':item.change<0?'−':'')+new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(Math.abs(item.change))+'%';
   row.appendChild(restore);row.appendChild(result);list.appendChild(row);
@@ -571,7 +571,7 @@ function schedulePctHistorySave(item){
  if(pctHistorySaveTimer)clearTimeout(pctHistorySaveTimer);
  pctHistorySaveTimer=setTimeout(function(){
   const items=readPctHistory();
-  const existing=items.findIndex(x=>x.oldValue===item.oldValue&&x.newValue===item.newValue);
+  const existing=items.findIndex(x=>(x.mode||'change')===(item.mode||'change')&&x.oldValue===item.oldValue&&x.newValue===item.newValue);
   if(existing>=0)items.splice(existing,1);
   items.unshift({...item,savedAt:Date.now()});
   try{localStorage.setItem(pctHistoryStorageKey,JSON.stringify(items.slice(0,10)));renderPctHistory();}catch(e){
@@ -581,10 +581,22 @@ function schedulePctHistorySave(item){
 }
 function restorePctHistory(index){
  const item=readPctHistory()[index];if(!item)return;
+ const mode=item.mode||'change';
+ setPctMode(mode);
+ if(mode==='reverse'){
+  document.getElementById('ij-pct-final-value').value=String(item.newValue);
+  document.getElementById('ij-pct-rate').value=String(item.rate);
+  document.getElementById('ij-pct-direction').value=item.rateDirection||'increase';
+  calculate();document.getElementById('ij-pct-final-value').focus();return;
+ }
+ if(mode==='difference'){
+  document.getElementById('ij-pct-difference-a').value=String(item.oldValue);
+  document.getElementById('ij-pct-difference-b').value=String(item.newValue);
+  calculate();document.getElementById('ij-pct-difference-a').focus();return;
+ }
  document.getElementById('old').value=String(item.oldValue);
  document.getElementById('new').value=String(item.newValue);
- calculate();
- document.getElementById('old').focus();
+ calculate();document.getElementById('old').focus();
 }
 function clearPctHistory(){
  if(pctHistorySaveTimer)clearTimeout(pctHistorySaveTimer);
@@ -600,8 +612,8 @@ function downloadPctCsv(filename,rows){
 }
 function exportPctHistory(){
  const items=readPctHistory();if(!items.length)return;
- const rows=[['Old value','New value','Difference','Percentage change','Direction','Saved at']];
- items.forEach(x=>rows.push([x.oldValue,x.newValue,x.difference,x.change,x.direction,new Date(x.savedAt).toISOString()]));
+ const rows=[['Calculation type','Old / first value','New / second value','Absolute difference','Percentage result','Direction','Reverse rate (%)','Saved at']];
+ items.forEach(x=>rows.push([x.mode||'change',x.oldValue,x.newValue,x.difference,x.change,x.direction,x.rate==null?'':x.rate,new Date(x.savedAt).toISOString()]));
  downloadPctCsv('infojano-percentage-change-history.csv',rows);
 }
 function runPctBatch(){
@@ -676,7 +688,7 @@ function calculatePctDifference(){
  lines.forEach(function(line){const li=document.createElement('li');li.textContent=line;steps.appendChild(li);});
  document.getElementById('negative-value-note').hidden=true;breakdown.hidden=false;
  lastPercentageResult={oldValue:a,newValue:b,difference:absoluteDifference,change:result,direction:'Difference',formattedPercent:formatted};
- schedulePctHistorySave({oldValue:a,newValue:b,difference:absoluteDifference,change:result,direction:'Difference'});
+ schedulePctHistorySave({mode:'difference',oldValue:a,newValue:b,difference:absoluteDifference,change:result,direction:'Difference'});
  copyButton.disabled=false;document.getElementById('ij-pct-difference-status').textContent='Percentage difference calculated automatically.';
 }
 function calculateReverse(){
@@ -733,7 +745,7 @@ function calculateReverse(){
  const negativeNote=document.getElementById('negative-value-note');negativeNote.hidden=true;
  breakdown.hidden=false;
  lastPercentageResult={oldValue:originalValue,newValue:finalValue,difference,change:signedRate,direction:direction==='increase'?'Increase':'Decrease',formattedPercent:new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(rate)};
- schedulePctHistorySave({oldValue:originalValue,newValue:finalValue,difference,change:signedRate,direction:direction==='increase'?'Increase':'Decrease'});
+ schedulePctHistorySave({mode:'reverse',oldValue:originalValue,newValue:finalValue,difference,change:signedRate,rate:rate,rateDirection:direction,direction:direction==='increase'?'Increase':'Decrease'});
  copyButton.disabled=false;
  if(status)status.textContent='Original value calculated automatically.';
 }
@@ -795,7 +807,7 @@ function calculate(){
  negativeNote.hidden=!(oldValue<0||newValue<0);
  breakdown.hidden=false;
  lastPercentageResult={oldValue,newValue,difference,change,direction,formattedPercent};
- schedulePctHistorySave({oldValue,newValue,difference,change,direction});
+ schedulePctHistorySave({mode:'change',oldValue,newValue,difference,change,direction});
  copyButton.disabled=false;
 }
 function swapValues(){
