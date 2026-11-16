@@ -346,3 +346,70 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Priority 1 next task: Validate remaining CSV paths — export Change Batch and Reverse % Batch files, then open the supplied and new CSVs in a spreadsheet application to check encoding, columns, numeric precision, and UTC timestamps.
 - First file to inspect if code work becomes necessary: `percentage-change.html`; do not change code unless a reproducible defect is found.
 - Preserve the approved Hero/Header and current visual design. No new features or redesign until the remaining QA gaps are closed.
+
+
+## Work session — 2026-11-16 (Global English market research — initial pass)
+
+### 1. Owner request and scope
+- Requested: Start research for the Percentage Calculator with global coverage, explicitly including Canada, Brazil, Australia, European countries, Russia, China and the US.
+- Owner clarification: English only. No translated interface, translated pages, or non-English UI.
+- Scope: Desk research, public competitor feature scan, initial English keyword clusters, global market hypotheses and a research plan.
+- Constraints: Preserve approved calculator design, Hero, Header, logo, homepage and unrelated tools. No application code changes in this research phase.
+
+### 2. Research and decisions
+- Researched public competitor pages and Google Trends methodology on 2026-11-16.
+- Competitor pages reviewed: CalculatorSoup, OmniCalculator, W3Schools, Utiliby, Calculator-Soup alternative, ToolkitJar, Gera Tools and Any-Toolkit. Publicly visible features include multiple percentage modes, worked formulas, explanatory content, browser-side calculation/privacy claims, batch/export/print features on some tools.
+- Initial finding: InfoJano already has a useful differentiator in three-mode batch calculation, history and CSV export; competitors demonstrate that clear formula explanations and related percentage tasks are common expectations.
+- Keyword clusters drafted: core percentage calculator/change/increase/decrease/difference/reverse terms; discount/price change terms; business and education terms; country-modified English phrases.
+- Critical measurement note: Google Trends uses sampled, normalized 0–100 interest, not absolute search volume. No country-level monthly search volumes or audience shares were obtained in this pass.
+- Market prioritization is provisional, not a proven ranking: first validate US/UK/Canada/Australia; then English-query audiences in Europe and Brazil; then Russia and China after checking search-channel access and reachability.
+- Owner language rule applied: all product and SEO content remains English-only. Country relevance may be reflected in examples, number conventions and research, not translated UI.
+- Sources and detailed findings are in `docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md`.
+
+### 3. Baseline and risks
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Starting project-record commit: `8d25acde75121b4964cd7ac13da9678eb9bf7438`.
+- Read the full project record before work.
+- Fetched current `percentage-change.html` as baseline (approximately 102,810 characters); no application source changes made.
+- Risk: Public competitor page snapshots do not prove traffic, rankings, conversion, or live interaction quality. Search interest cannot be converted into search volume without a separate source.
+
+### 4. Issues found
+- No application code defect investigated or confirmed in this research session.
+- Evidence gap: country-level keyword volume, country traffic share, Search Console data, Russia/China discovery-channel feasibility, and spreadsheet locale compatibility remain unknown.
+
+### 5. Changes made
+- Created `docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md` with competitor scan, qualitative keyword clusters, market hypotheses, English-only localization strategy, initial recommendations, source links, limitations and next research tasks.
+- No application code, UI, design, metadata or unrelated files changed.
+
+### 6. Mistakes, failed attempts, and corrections
+- Earlier broad global strategy had mentioned translated language versions. Owner explicitly rejected this. This session corrected the strategy to English-only; no translation work was started.
+- No code edits or failed code changes in this session.
+
+### 7. Verification
+- Confirmed the new research document was created in GitHub.
+- Research statements distinguish visible competitor features from unverified traffic/market assumptions.
+- Not performed: Google Trends country-by-country export/comparison, keyword database volume analysis, Search Console analysis, interactive competitor UX tests, accessibility or page-speed benchmarks.
+
+### 8. Commit and deployment
+- Research document commit: `46b034ca81fd435fc6d60d689722942b6ebfe365`.
+- Project record update: this entry; resulting full SHA to be confirmed.
+- Branch: `main`.
+- No application code deployment. Production status unchanged and not verified.
+
+### 9. Work checklist
+- [x] Confirm global target-market scope and English-only rule.
+- [x] Conduct initial public competitor feature scan.
+- [x] Draft qualitative English keyword clusters.
+- [x] Document country hypotheses and provisional research order.
+- [x] Create global English research brief in GitHub.
+- [ ] Compare Google Trends for the same core queries across target countries and preserve exact settings/results.
+- [ ] Obtain credible country-level keyword volume estimates.
+- [ ] Review InfoJano Search Console query/country performance if data access is available.
+- [ ] Complete competitor UX, mobile, accessibility and page-speed review.
+- [ ] Produce evidence-backed feature gap matrix and prioritized roadmap.
+- [ ] Validate number parsing and CSV compatibility across target locale conventions.
+
+### 10. Next session handover
+- Priority 1: Build a reproducible country comparison for the same English keyword set (percentage calculator, percentage change calculator, percent increase calculator, percentage difference calculator, reverse percentage calculator) across US, Canada, UK, Australia, selected European countries, Brazil, Russia and China. Record Trends settings and avoid presenting index values as search volumes.
+- First files: `docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md`, then `percentage-change.html` only if a code change is justified.
+- Preserve English-only UI and approved design. Do not create translated pages or redesign the Hero/Header.
