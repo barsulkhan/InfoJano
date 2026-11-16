@@ -634,10 +634,10 @@ function updatePctBatchFormat(){
   input.placeholder='120, 20, decrease\n240, 20, increase\n90, 10';
  }else if(mode==='difference'){
   help.textContent='Format: First value, Second value. The order does not affect the result. Example: 80, 100';
-  input.placeholder='80, 100\n100, 120\\n50, 75';
+  input.placeholder='80, 100\n100, 120\n50, 75';
  }else{
   help.textContent='Format: Old value, New value. Example: 80, 100';
-  input.placeholder='80, 100\\n100, 80\n50, 75';
+  input.placeholder='80, 100\n100, 80\n50, 75';
  }
  document.getElementById('ij-pct-batch-results').textContent='';
  document.getElementById('ij-pct-batch-status').textContent='Enter values for the selected mode.';
