@@ -977,3 +977,33 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Current SEO recommendation: focus existing page on core percentage calculator/change/increase/decrease/difference/reverse intents; support with one clear formula/how-to section for percentage change.
 - Do not expand the product or publish separate pages for distinct formula intents without a separate evidence-backed decision.
 - Future research should only continue when it can obtain direct Google-surface evidence, verified free metrics, or Search Console data; keep updates consolidated.
+
+
+## Work session — 2026-11-16 (Temporary country scope reduction)
+
+### 1. Owner request
+- Owner instructed: temporarily remove countries where keyword data is unavailable/blocked, rather than repeatedly discussing them.
+
+### 2. Decision and evidence
+- Active set reduced to United States, United Kingdom, Canada, Australia and India because all five have visible country-level estimates in the current percentage-change report: US 60,000; UK 22,000; Canada 8,000; Australia 6,500; India 4,400. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (checked 2026-11-16).
+- The percentage-calculator report also provides visible country rows for these five. Source: https://www.kwstrends.com/keywords/us/percentage-calculator (checked 2026-11-16).
+- Temporarily excluded Germany, France, Netherlands, Brazil, Russia, China and all other countries without visible attributable data for the active core phrase set.
+- This is an evidence-availability filter only; it does not imply zero demand or permanent exclusion.
+
+### 3. Changes
+- Appended Section 20 to global research report.
+- Appended this dated decision to project record.
+- No code, content, design, homepage, metadata or deployment changed.
+- No paid tool or payment used.
+
+### 4. Verification
+- [x] Read both current project documents.
+- [x] Rechecked the current KWS country tables for percentage calculator and percentage change calculator.
+- [x] Updated active country scope to US, UK, Canada, Australia and India.
+- [x] Recorded excluded countries as temporary data-gap exclusions.
+- [ ] Restore a country only after free, verifiable keyword-level evidence is available.
+
+### 5. Commit and deployment
+- Research commit: pending verification.
+- Project record commit: pending verification.
+- No application deployment; live status remains unverified.
