@@ -640,3 +640,37 @@ Reporting / comparison:
 - [ ] No new verified country-level search volumes were collected.
 - [ ] No Search Console property data was available.
 - All query candidates remain hypotheses for validation; do not present as measured volume or confirmed Google suggestions.
+
+
+## 19. Consolidated Google-source evidence refresh — 2026-11-16
+
+### 19.1 Directly verified Google guidance
+- Google says Autocomplete predictions reflect real searches, but are influenced by query language, location, trending interest and a user's past searches. It may also predict phrase patterns found across the web; therefore Autocomplete is not a clean popularity ranking. Source: https://support.google.com/websearch/answer/7368877?hl=en-GB (checked 2026-11-16).
+- Google Trends Related queries can be viewed as Top (most frequently searched with the seed in the selected context) and Rising (largest growth in the selected period). “Breakout” means growth above 5,000%. Source: https://support.google.com/trends/answer/4355000?hl=en-GB (checked 2026-11-16).
+- Trends uses a sampled, anonymized and aggregated dataset, normalized by geography/time and scaled 0–100. It is not absolute search volume; low-volume queries may appear as 0. Source: https://support.google.com/trends/answer/4365533?hl=en-GB (checked 2026-11-16).
+- Google’s own training explains that Top/Rising tables are available at the bottom of Explore and can be switched between modes. Source: https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/ (checked 2026-11-16).
+
+### 19.2 Fresh third-party keyword estimates (not Google-owned data)
+- KWS Trends US report for “percentage calculator” (updated 2026-10-28) reports 1,000,000 average monthly searches and SEO difficulty 65/100; its separate Google Ads/Keyword Planner panel reports 550,000 monthly searches. The report says the largest related terms include “percentage increase calculator” (110,000), “calculate percentage” (90,000) and “percentage difference calculator” (82,000). Source: https://www.kwstrends.com/keywords/us/percentage-calculator (checked 2026-11-16).
+- KWS Trends US report for “percentage change calculator” (updated 2026-11-09) reports 60,000 average monthly searches and SEO difficulty 72/100. Its related-query examples include “how to calculate percentage change” (16,000), “calculate percentage change” (14,000) and “how do you calculate percentage change” (12,000). Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (checked 2026-11-16).
+- These are one third-party provider's estimates, not a direct Google export. The same provider's corrected average and separate Keyword Planner panel differ substantially; preserve both as separate metrics, never average or merge them. SEO difficulty is not Google Ads competition. Do not extrapolate US estimates to other countries.
+
+### 19.3 Google Trends comparison attempted
+- Prepared an Explore comparison for “percentage calculator”, “percentage change calculator” and “percentage difference calculator” over five years.
+- The Trends Explore page was inaccessible through the current web reader. No live graph values, related queries, or CSV were extracted. No claims about relative country interest are made from this attempt.
+
+### 19.4 SEO decisions supported by current evidence
+- Existing calculator's primary SEO focus should remain: “percentage calculator”, “percentage change calculator”, “percentage increase calculator”, “percentage decrease calculator”, “percentage difference calculator” and “reverse percentage calculator”. The first two have third-party estimates; the other four remain candidate phrases until independently measured.
+- The best supported informational long-tail cluster for the change mode is: “how to calculate percentage change”, “calculate percentage change”, “how do you calculate percentage change”, and “percentage change formula”. Keep these as explanatory content around the calculator, not as separate near-duplicate pages.
+- Related intent clusters (discount/original price, tax/VAT, tip, grade, margin, commission, percentage points) use different user tasks or formulas. Do not force them into the existing three-mode calculator or create doorway pages. Assess separate tools only after product scope approval and evidence.
+- Country strategy: retain English-first worldwide scope. Do not infer English-language demand from total country search use or from global share. Prioritize markets only after country-filtered query evidence is obtained.
+
+### 19.5 Final evidence status
+- [x] Verified Google Autocomplete official guidance.
+- [x] Verified Google Trends Top/Rising definitions and normalization caveat.
+- [x] Captured current public third-party estimates for two core phrases and three related phrase examples.
+- [x] Attempted five-year Google Trends comparison; recorded access failure without inventing values.
+- [ ] Direct Google Autocomplete suggestions by country.
+- [ ] Google Trends Top/Rising exports by country.
+- [ ] Consistent, country-by-country monthly volumes for all five core phrases.
+- [ ] Search Console validation and actual ranking/traffic evidence.
