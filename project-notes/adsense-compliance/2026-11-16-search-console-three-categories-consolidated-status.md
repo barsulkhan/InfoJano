@@ -204,3 +204,12 @@ The owner supplied the requested URL Inspection details for `/Height`. Mark the 
 
 ### Permission boundaries retained
 The owner's permission in chat is to mark and continue unfinished work. Earlier explicit release constraints remain: no production code changes outside draft PRs, no PR merge, no deployment, no Search Console Request Indexing, and no Validate Fix. Do not treat this task-board update as authorization to cross those release gates. Documentation updated only.
+
+
+## 2026-11-16 17:01 +05:30 — refreshed PR queue state
+
+Fresh GitHub metadata now reports all three draft PRs as `mergeable=true` / `mergeable_state=clean`, correcting the earlier stale `mergeable=false` snapshots. They remain open Draft PRs, unmerged and undeployed. Current comparisons against `main`: #237 is 105 ahead / 18 behind (89 files), #238 is 3 ahead / 12 behind (2 files), #239 is 6 ahead / 11 behind (6 files). PR #237 and #238 both modify `id-card-print-studio.html`; PR #239 does not overlap #238. Current `validate` check runs passed; #238/#239 also have successful Workers build checks. These checks are not dedicated PWA/service-worker/browser-runtime or full SEO validation.
+
+For `/Height`, current `image-to-pdf.html` has `/Height` in two PDF serializers: legacy `makePdf()` (no call site found) and active `buildPdf()` (called after the user clicks Create PDF). This remains a plausible extraction clue, not proof. A dynamic token assembly mitigation is only a proposal; actual browser/PDF regression testing is still required before a draft patch. No production code or PR branch was changed.
+
+Detailed record: [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md).
