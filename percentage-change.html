@@ -7,19 +7,19 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Percentage Change & Difference Calculator | InfoJano</title>
-<meta name="description" content="Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.">
+<title>Percentage Change Calculator – Increase or Decrease | InfoJano</title>
+<meta name="description" content="Calculate percentage increase or decrease between two values, find percentage difference, or work backward with reverse percentage. Includes batch results and CSV export.">
 <link rel="canonical" href="https://infojano.com/percentage-change.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Percentage Change Calculator | Increase or Decrease – InfoJano">
-<meta property="og:description" content="Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.">
+<meta property="og:title" content="Percentage Change Calculator – Increase or Decrease | InfoJano">
+<meta property="og:description" content="Calculate percentage increase or decrease between two values, find percentage difference, or work backward with reverse percentage. Includes batch results and CSV export.">
 <meta property="og:url" content="https://infojano.com/percentage-change.html">
 <meta property="og:image" content="https://infojano.com/icon-512.png">
 <meta property="og:image:alt" content="InfoJano useful online tools">
 <meta name="twitter:image" content="https://infojano.com/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Percentage Change Calculator | Increase or Decrease – InfoJano">
-<meta name="twitter:description" content="Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.">
+<meta name="twitter:title" content="Percentage Change Calculator – Increase or Decrease | InfoJano">
+<meta name="twitter:description" content="Calculate percentage increase or decrease between two values, find percentage difference, or work backward with reverse percentage. Includes batch results and CSV export.">
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
@@ -50,12 +50,12 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Percentage Change Calculator: Increase or Decrease",
+  "name": "Percentage Change Calculator",
   "url": "https://infojano.com/percentage-change.html",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "isAccessibleForFree": true,
-  "description": "Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.",
+  "description": "Calculate percentage increase or decrease between two values, find percentage difference, or work backward with reverse percentage. Includes batch results and CSV export.",
   "inLanguage": "en-US",
   "featureList": [
     "Instant percentage change calculation",
@@ -398,7 +398,7 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
   <div class="ij-pct-left">
     <div class="ij-pct-symbol" aria-hidden="true"><span>%</span></div>
     <h1 id="ij-pct-title">Percentage Change <span>Calculator</span></h1>
-    <p class="ij-pct-description">Calculate the percentage increase or decrease between an original value and a new value quickly and accurately.</p>
+    <p class="ij-pct-description">Calculate percentage increases or decreases, compare two values, or work backward to find an original value.</p>
     <div class="ij-pct-feature-grid" aria-label="Calculator features">
       <div class="ij-pct-feature"><span class="ij-pct-feature-icon blue"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 37h34M11 32l10-10 7 5 12-15M31 12h9v9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>Increase<br>Calculator</strong></div>
       <div class="ij-pct-feature"><span class="ij-pct-feature-icon purple"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 11v26h34M13 18l10 10 7-5 10 12M31 35h9v-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>Decrease<br>Calculator</strong></div>
@@ -487,11 +487,21 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
  <p>Format the result cell as Percentage. If A2 is zero, the formula cannot return a defined percentage change because it would divide by zero.</p>
  <h3>Percentage change vs. percentage difference</h3>
  <p>Percentage change compares a new value with a specific starting value, so the order of the values matters. Percentage difference compares two values symmetrically, usually using their average as the reference. They answer different questions and should not be used interchangeably.</p>
+ <h3>Reverse percentage formula</h3>
+ <p>Use reverse percentage when you know the final value and the rate that was applied, and want to recover the starting value. For an increase, divide the final value by <strong>1 + (rate ÷ 100)</strong>. For a decrease, divide it by <strong>1 − (rate ÷ 100)</strong>.</p>
+ <p class="ij-pct-guide-formula"><strong>Original value after an increase = Final value ÷ (1 + rate ÷ 100)</strong></p>
+ <p class="ij-pct-guide-formula"><strong>Original value after a decrease = Final value ÷ (1 − rate ÷ 100)</strong></p>
+ <p>Example: if a value becomes 120 after a 20% increase, the original value is 120 ÷ 1.20 = <strong>100</strong>. If a value becomes 80 after a 20% decrease, the original value is 80 ÷ 0.80 = <strong>100</strong>.</p>
+ <h3>Percentage difference formula</h3>
+ <p>Use percentage difference when neither value is the starting point. The calculator divides the absolute difference by the average of the two absolute values, then multiplies by 100.</p>
+ <p class="ij-pct-guide-formula"><strong>Percentage difference = (|A − B| ÷ ((|A| + |B|) ÷ 2)) × 100</strong></p>
+ <p>For 80 and 100, the difference is 20 and the average magnitude is 90, so the percentage difference is 20 ÷ 90 × 100 = <strong>22.22%</strong>. This differs from the 25% percentage change from 80 to 100 because percentage change uses 80 as its starting-value baseline.</p>
 </section>
 <section class="ij-pct-faq" aria-labelledby="ij-pct-faq-title">
  <span class="ij-pct-section-kicker">COMMON QUESTIONS</span><h2 id="ij-pct-faq-title">Percentage Change Calculator FAQs</h2>
  <details><summary>How do I calculate percentage change between two numbers?</summary><p>Subtract the old value from the new value, divide the result by the absolute old value, and multiply by 100. This calculator performs those steps and labels the result as an increase, decrease, or no change.</p></details>
  <details><summary>What is the difference between percentage change and percentage increase?</summary><p>Percentage change can be positive or negative. A positive result is a percentage increase; a negative result is a percentage decrease. The formula is the same, but the direction depends on whether the new value is higher or lower than the old value.</p></details>
+ <details><summary>How does reverse percentage work?</summary><p>Divide the final value by 1 plus the rate as a decimal for an increase, or by 1 minus the rate as a decimal for a decrease. For example, 120 after a 20% increase means the original value was 120 ÷ 1.20 = 100.</p></details>
  <details><summary>What is percentage difference?</summary><p>Percentage difference compares two values when neither is treated as the original or starting value. It divides the absolute difference by the average of the two absolute values, then multiplies by 100. Switching the order of the values does not change the result.</p></details>
  <details><summary>What is the difference between percentage difference and percentage change?</summary><p>Percentage change uses a specific starting value as its baseline, so order matters. Percentage difference treats both values equally and uses their average magnitude as the reference, so order does not matter.</p></details>
  <details><summary>Can I calculate percentage change if the old value is zero?</summary><p>No defined percentage change can be calculated from an old value of zero using this formula because it requires division by the old value. The calculator displays an explanation instead of showing an invalid number.</p></details>
