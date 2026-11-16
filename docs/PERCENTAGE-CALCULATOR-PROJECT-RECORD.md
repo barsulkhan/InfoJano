@@ -554,3 +554,75 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Priority 1: Obtain a reproducible same-provider exact-match dataset for the five phrases and the full country set; keep English language and location settings fixed and record unsupported markets as unknown.
 - First files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and this project record.
 - No product or design changes until keyword/competitor evidence supports a specific change.
+
+
+## Work session — 2026-11-16 (Search intent and methodology review — fourth pass)
+
+### 1. Owner request and scope
+- Request: Continue the next research task ("Koro") from the existing keyword and country research.
+- Scope: Deepen exact US keyword/search-result evidence, inspect provider methodology, and check whether available country data supports English-only market conclusions.
+- Constraints: English-only website/content; no translations; do not modify application code, approved Hero/Header, homepage, logo, shared navigation or unrelated tools.
+
+### 2. Research and decisions
+- Read the latest project record and global English research document first.
+- Reviewed KWS Trends exact US reports for "percentage calculator" and "percentage change calculator", its methodology and terms pages, and Google Trends methodology.
+- "percentage calculator" report: 1,000,000 corrected average monthly searches; SEO difficulty 65/100; estimated CPC USD $1.38. Separate Google Ads Keyword Planner panel: 550,000 monthly searches; top-of-page bid USD $0.76–$2.00; competition index 0/100 (Low). Related phrases include "percentage increase calculator" 110,000, "percentage difference calculator" 82,000 and "percentage change calculator" 60,000. These related values are not all separate exact-match reports. Source: https://www.kwstrends.com/keywords/us/percentage-calculator
+- "percentage change calculator" report: 60,000 corrected average monthly searches; SEO difficulty 72/100; estimated CPC USD $0.01. Separate Keyword Planner panel: 110,000 monthly searches; bid USD $0.01–$0.01; competition index 0/100. Worldwide 120,000/month, visible country distribution US 60,000, UK 22,000, Canada 8,000, Australia 6,500, India 4,400. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator
+- KWS methodology says its corrected average combines Google Ads Keyword Planner and a second keyword database, benchmarked against Search Console and GA4 data from comparison sites. The separate Google Ads panel is Keyword Planner's own rounded data. SEO difficulty and intent/CPC fields use the second keyword database. Source: https://www.kwstrends.com/methodology
+- KWS terms explicitly caution that search volume, CPC, difficulty and monthly values are estimates and may be incomplete, delayed or revised. Source: https://www.kwstrends.com/terms
+- Google Trends remains a normalized 0–100 relative-interest metric, not absolute volume. Source: https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/
+- Country review: percentage calculator visible distribution includes US, UK, Australia, Germany and Canada; percentage change report shows US, UK, Canada and Australia. No reliable exact country-level English query dataset for Brazil, Russia or China was obtained. Country distribution alone does not prove query language.
+- Recommendation: Keep the primary page aligned to broad percentage calculator intent and make the three existing modes explicit. Do not create standalone increase/difference/reverse pages based only on related-keyword proxies; obtain exact reports and inspect SERPs first.
+
+### 3. Baseline and risks
+- Repository: barsulkhan/InfoJano, branch main.
+- Starting research document blob SHA: f222f03ddac52cd1242378eee80d7bb722ca953f.
+- Starting project-record blob SHA: dc026237f54fdf15e90327cd7c725195102a9fcd.
+- No application source file was changed.
+- Risks: KWS corrected averages and Keyword Planner panel are different measures; related keyword metrics can be seed-dependent. CPC and ad competition do not equal organic ranking difficulty. Country totals do not isolate English-language queries.
+
+### 4. Issues / evidence gaps
+- Exact independent reports for percent increase, percentage difference and reverse percentage are still missing.
+- Same-provider exact-phrase country matrix for all five terms across all target countries remains incomplete.
+- No evidence of English keyword demand for Brazil, Russia or China.
+- No Search Console data or live Google Trends CSV export was available.
+
+### 5. Changes made
+- Appended Section 13, "Search-intent and source-methodology review — fourth pass", to docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md.
+- Added report-level search intent, SERP observations, methodology clarification and market-language caveats.
+- No calculator source, UI, metadata, design, homepage, Hero, Header, logo or unrelated files changed.
+
+### 6. Mistakes, failed attempts, and corrections
+- Search attempts for exact "percentage calculator" country reports in Germany, France, Netherlands, Brazil, Russia and China returned unrelated keyword pages; those pages were not used as proxies.
+- Retained the difference between Google Ads competition and SEO difficulty rather than describing them as the same competition measure.
+- No code edits or failed code changes.
+
+### 7. Verification
+- Confirmed two exact US report pages and the provider methodology/terms pages through public search results.
+- Research document update commit: 2588faacca69252ea7584afc3a96054f870a7254.
+- Not performed: exact phrase reports for the other three terms, authenticated bulk export, complete country matrix, Google Trends CSV export, Search Console analysis, competitor browser UX testing, calculator browser QA.
+- No application behavior tested because no application code changed.
+
+### 8. Commit and deployment
+- Research document commit: 2588faacca69252ea7584afc3a96054f870a7254.
+- Project record update: pending; resulting SHA to be confirmed.
+- Branch: main.
+- No application code deployment; production status remains unverified.
+
+### 9. Work checklist
+- [x] Read the project record and research document.
+- [x] Recheck exact US percentage calculator and percentage change reports.
+- [x] Inspect provider methodology and terms.
+- [x] Record SERP competitors and informational/commercial intent split visible in reports.
+- [x] Clarify the limitations of country shares and query-language assumptions.
+- [x] Update the research brief with recommendations and gaps.
+- [ ] Obtain independent exact reports for percent increase, percentage difference and reverse percentage.
+- [ ] Obtain the five-keyword country matrix across the target markets with English-language settings.
+- [ ] Export consistent Google Trends relative-interest data.
+- [ ] Review Search Console query and country performance.
+- [ ] Complete competitor SERP and UX comparison before proposing code changes.
+
+### 10. Next session handover
+- Priority 1: Investigate exact independent reports for the three remaining phrases and country-specific reports for Tier 1 markets. Confirm whether provider reports support an explicit English language filter; if not, state that limitation and avoid calling the numbers English-only demand.
+- First files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and this project record.
+- Keep application and design unchanged until evidence justifies a specific change.
