@@ -189,10 +189,59 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 @media(max-width:650px){main{width:calc(100% - 24px)!important;padding-top:0!important}.ij-pct-showcase{width:calc(100% - 20px);grid-template-columns:1fr;gap:8px;min-height:0;margin:14px auto 22px;padding:23px 17px 120px;border-radius:23px}.ij-pct-symbol{width:68px;height:68px;margin-bottom:14px;border-radius:20px}.ij-pct-symbol span{font-size:46px}.ij-pct-left h1{font-size:clamp(30px,8vw,39px);letter-spacing:-1px}.ij-pct-description{font-size:14px}.ij-pct-feature-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:19px}.ij-pct-feature{min-height:98px;padding:9px 3px;border-radius:15px}.ij-pct-feature-icon{width:37px;height:37px;border-radius:11px}.ij-pct-feature-icon svg{width:27px;height:27px}.ij-pct-feature strong{font-size:10px}.ij-pct-art{height:230px;max-width:360px;margin:4px auto 0}.ij-pct-calculator{border-width:8px;border-radius:28px;padding:12px}.ij-pct-calculator-screen span{font-size:38px}.ij-pct-keypad{gap:6px;margin-top:10px}.ij-pct-keypad i{height:24px;border-radius:7px}.ij-pct-chart-card{border-width:6px;border-radius:23px}.ij-pct-benefits{left:15px;right:15px;bottom:14px;gap:6px}.ij-pct-benefits span{min-height:36px;padding:5px 8px;font-size:10px;gap:5px}.ij-pct-benefits b{width:23px;height:23px;font-size:13px}.ij-pct-calculator-workspace{grid-template-columns:1fr;gap:14px}.ij-pct-entry-card,.ij-pct-output-card{padding:19px}.ij-pct-fields{grid-template-columns:1fr;gap:10px}.ij-pct-entry-card h2{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.ij-pct-showcase *{animation:none!important;scroll-behavior:auto!important}}
 </style>
+<style id="ij-percentage-header-three-options">
+.ij-brandbar{display:block!important;position:relative;z-index:1000;width:100%;box-sizing:border-box;background:rgba(255,255,255,.98)!important;border-bottom:1px solid #e5effa!important;padding:12px 18px!important;color:#14264a!important}
+.ij-brandbar *{box-sizing:border-box}
+.ij-brandbar-inner{width:min(100%,1360px)!important;max-width:1360px!important;margin:0 auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px!important}
+.ij-brand-home{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important;flex:1 1 auto!important;text-decoration:none!important;color:#14264a!important}
+.ij-brandmark{display:block!important;width:48px!important;height:48px!important;flex:0 0 48px!important;object-fit:contain!important;border-radius:13px!important}
+.ij-brand-copy{display:flex;flex-direction:column;min-width:0;gap:3px}
+.ij-brandname{font-size:24px!important;line-height:1!important;font-weight:850!important;letter-spacing:-.7px!important;color:#101d42!important;white-space:nowrap}
+.ij-brandname span{color:#e63d55!important}
+.ij-brandtag{font-size:11px!important;line-height:1.2!important;color:#64748b!important;white-space:nowrap}
+.ij-brand-nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:10px!important;flex:0 0 auto!important}
+.ij-brand-navlink{height:44px;min-width:104px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 15px;border:1px solid #dbe6f2;border-radius:26px;background:#f7fbff;color:#24456e;text-decoration:none;font-size:14px;font-weight:800;white-space:nowrap}
+.ij-brand-navlink svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.ij-brand-home-link svg{fill:currentColor;stroke:none}
+.ij-brand-language-wrap{display:flex;align-items:center}
+.ij-brand-language{height:44px;min-width:118px;max-width:126px;padding:0 28px 0 12px;border:1px solid #dbe6f2;border-radius:13px;background:#fff;color:#24456e;font:650 13px system-ui,Arial,sans-serif}
+.ij-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:620px){
+ .ij-brandbar{padding:9px 10px!important}
+ .ij-brandbar-inner{gap:7px!important}
+ .ij-brand-home{gap:6px!important;flex:1 1 auto!important}
+ .ij-brandmark{width:38px!important;height:38px!important;flex-basis:38px!important}
+ .ij-brandname{font-size:18px!important}
+ .ij-brandtag{font-size:8px!important;letter-spacing:-.1px}
+ .ij-brand-nav{gap:5px!important}
+ .ij-brand-navlink{height:36px;min-width:0;padding:0 8px;gap:4px;font-size:10px;border-radius:11px}
+ .ij-brand-navlink svg{width:15px;height:15px}
+ .ij-brand-language{height:36px;min-width:0;width:74px;padding:0 16px 0 6px;font-size:10px;border-radius:10px}
+}
+@media(max-width:380px){
+ .ij-brandtag{display:none!important}
+ .ij-brandmark{width:34px!important;height:34px!important;flex-basis:34px!important}
+ .ij-brandname{font-size:17px!important}
+ .ij-brand-navlink{padding:0 6px;font-size:9px}
+ .ij-brand-language{width:68px}
+}
+</style>
 </head>
 <body>
 
-<header class="ij-brandbar"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="/index.html" aria-label="InfoJano Home"><div class="ij-brandmark" aria-hidden="true"><svg viewBox="0 0 48 48" width="32" height="32" fill="none"><path d="M13 7h16l10 10v17a7 7 0 0 1-7 7H13a7 7 0 0 1-7-7V14a7 7 0 0 1 7-7Z" fill="white" fill-opacity=".16"/><path d="M17 14v20m0-20h7a7 7 0 0 1 0 14h-7" stroke="white" stroke-width="4" stroke-linecap="round"/><path d="M29 18h5v16h-5" stroke="white" stroke-width="4" stroke-linecap="round"/></svg></div><div><div class="ij-brandname">Info<span>Jano</span></div><div class="ij-brandtag">Smart Online Tools for Everyday Life</div></div></a><div class="ij-brand-divider"></div><div class="ij-brand-promise">Simple tools. Clear results.</div><a class="ij-home-back" href="/index.html">← Back to Home</a></div></header>
+<header class="ij-brandbar">
+ <div class="ij-brandbar-inner">
+  <a class="ij-brand-home" href="/index.html" aria-label="InfoJano Home">
+   <img class="ij-brandmark" src="/InfoJano/infojano-mark.svg" alt="InfoJano logo" width="48" height="48">
+   <span class="ij-brand-copy"><span class="ij-brandname">Info<span>Jano</span></span><span class="ij-brandtag">Smart Online Tools for Everyday Life</span></span>
+  </a>
+  <nav class="ij-brand-nav" aria-label="Main navigation">
+   <a class="ij-brand-navlink ij-brand-tools" href="/index.html#tools"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>All Tools</span></a>
+   <label class="ij-brand-language-wrap"><span class="ij-sr-only">Select language</span><select class="ij-brand-language" aria-label="Select language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="bn">বাংলা</option></select></label>
+   <a class="ij-brand-navlink ij-brand-home-link" href="/index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 11h2v10h6v-6h4v6h6V11h2L12 3z"/></svg><span>Home</span></a>
+  </nav>
+ </div>
+</header>
 
 <section class="ij-pct-showcase" aria-labelledby="ij-pct-title">
   <div class="ij-pct-left">
@@ -275,5 +324,19 @@ function resetPercentage(){
 <script src="/InfoJano/download-progress.js" defer></script>
 <script src="/InfoJano/install.js" defer></script>
 <script src="/InfoJano/site-header.js" defer></script>
+<script id="ij-percentage-header-language">
+(function(){
+ const select=document.querySelector('.ij-brand-language');if(!select)return;
+ const supported=['en','hi','bn'];let saved='en';
+ try{saved=localStorage.getItem('infojano-language')||'en'}catch(e){}
+ const params=new URLSearchParams(location.search);const current=(params.get('lang')||saved).toLowerCase();
+ select.value=supported.includes(current)?current:'en';
+ select.addEventListener('change',function(){
+  try{localStorage.setItem('infojano-language',this.value)}catch(e){}
+  const url=new URL(location.href);if(this.value==='en')url.searchParams.delete('lang');else url.searchParams.set('lang',this.value);
+  location.href=url.pathname+url.search+url.hash;
+ });
+})();
+</script>
 </body>
 </html>
