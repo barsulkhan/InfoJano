@@ -136,3 +136,11 @@ A source-level inspection was performed across all 117 HTML files in the recursi
 The first PR metadata snapshot reported `mergeable=false` because main advanced with documentation commits after the branch was created. The branch was safely rebuilt on the latest main commit using a one-file tree update (no production file touched): current comparison is `ahead`, 1 commit ahead / 0 behind, changing only `savings.html`. GitHub PR metadata may take time to refresh; browser QA is still required.
 
 - PR #240 CI run #43861117912 completed successfully. Its only job is `validate`, which validates Privacy Policy HTML5 markup, policy links, sitemap and robots reference. This is not a dedicated heading/accessibility/browser visual test.
+
+
+### Latest PR branch comparison refresh
+Compared against current main after audit documentation commits:
+- PR #237: diverged, 105 ahead / 34 behind, 89 changed files.
+- PR #238: diverged, 3 ahead / 28 behind, 2 changed files.
+- PR #239: diverged, 6 ahead / 27 behind, 6 changed files.
+- PR #240 compare remains 1 ahead / 0 behind with only `savings.html` changed, but GitHub PR metadata still reports `mergeable=false`; do not infer it is safe to merge until GitHub refreshes and required checks/review pass.
