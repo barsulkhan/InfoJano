@@ -700,3 +700,42 @@ Reporting / comparison:
 - [x] Temporarily exclude markets without usable keyword evidence.
 - [x] Record the reason as data availability, not demand absence.
 - [ ] Reconsider excluded markets only when free, verifiable keyword data becomes available.
+
+
+## 21. Final active-market SEO research decision — 2026-11-16
+
+### 21.1 Scope locked for this phase
+- Active countries: United States, United Kingdom, Canada, Australia and India only.
+- Temporarily excluded all other countries from active planning; do not revisit them in this phase.
+- English-only content and UI remain mandatory.
+
+### 21.2 Core phrase evidence
+- “percentage calculator” US report: corrected average monthly searches 1,000,000; SEO difficulty 65/100; separate Google Keyword Planner panel 550,000. Report's country table: US 1,000,000; India 370,000; UK 130,000; Australia 40,000; Canada 22,000. Source: https://www.kwstrends.com/keywords/us/percentage-calculator (checked 2026-11-16).
+- “percentage change calculator” US report: corrected average monthly searches 60,000; SEO difficulty 72/100; separate Google Keyword Planner panel 110,000. Country table: US 60,000; UK 22,000; Canada 8,000; Australia 6,500; India 4,400. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (checked 2026-11-16).
+- Percentage calculator report related terms include: percentage increase calculator 110,000; calculate percentage 90,000; percentage difference calculator 82,000; how to calculate percentage change 16,000; how to calculate percentage increase 27,000; percentage decrease calculator 15,000; percentage off calculator 22,000; grade percentage calculator 4,400. These are US related-keyword estimates in this report, not independently verified exact seed reports. Source: https://www.kwstrends.com/keywords/us/percentage-calculator (checked 2026-11-16).
+- Percentage-change report related terms include: how to calculate percentage change 16,000; calculate percentage change 14,000; how do you calculate percentage change 12,000; percentage change calculation 12,000; percentage of change calculator 8,900; how to calculate percentage change between two numbers 5,400. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator (checked 2026-11-16).
+
+### 21.3 Final SEO decision for the existing calculator
+- Primary target: percentage calculator.
+- Secondary target: percentage change calculator.
+- Closely related supported intents: percentage increase calculator, percentage decrease calculator, percentage difference calculator, reverse percentage calculator.
+- Supporting informational phrases: how to calculate percentage change; calculate percentage change; how do you calculate percentage change; percentage change formula; how to calculate percentage increase; how to calculate percentage difference.
+- Use one comprehensive calculator page with clearly labeled modes and concise formula/explanation sections. Avoid near-duplicate pages for minor wording variants.
+- Do not claim independent search volumes for reverse percentage; no reliable independent figure was found in this pass.
+- Separate tools/pages such as discount, VAT/tax, tip, profit margin, grade, commission and percentage-point difference are outside this current three-mode tool's formula scope. Do not add them in this SEO phase.
+
+### 21.4 Data quality and interpretation
+- KWS Trends describes its corrected average as a combination of Google Ads Keyword Planner and a second keyword database, corrected against comparison-site Search Console and GA4 data. Its separate Google Ads panel is raw rounded Keyword Planner data. Source: https://www.kwstrends.com/methodology (checked 2026-11-16).
+- KWS labels figures as estimates. Keep corrected average and Keyword Planner figures separate; never add, average or interchange them.
+- Country table numbers are country estimates from the report's combined dataset, not a guarantee of English-only queries in every country. Site content remains English-only; validate performance later with InfoJano Search Console.
+- Google Trends is normalized interest, not absolute monthly volume.
+
+### 21.5 Completion checklist
+- [x] Active country scope finalized: US, UK, Canada, Australia, India.
+- [x] Other countries temporarily excluded from this phase.
+- [x] Two core keyword reports and five-country rows recorded.
+- [x] Related query evidence and formula-intent boundaries recorded.
+- [x] SEO recommendation for existing three-mode calculator finalized.
+- [x] Research and work log committed and verified.
+- [ ] Implementation of any SEO content changes requires a separate approved task.
+- [ ] Live Search Console performance and interactive browser QA remain separate future verification tasks.
