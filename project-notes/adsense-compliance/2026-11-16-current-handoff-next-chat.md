@@ -161,3 +161,10 @@ Do not submit or request indexing for:
 
 ## Resume audit record
 See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md) for the latest source trace and PR comparison details.
+
+
+### PR #237 static source review — 2026-11-16
+- Compared `sw.js`, `install.js`, root `manifest.json`, and representative app manifests between main and PR #237.
+- Host-specific ROOT in `install.js` and scope-derived BASE in `sw.js` are internally consistent in the sampled files. All 198 non-empty precache entries (plus the intentional empty root entry) exist in the PR tree; no duplicate non-empty precache entries found.
+- Root manifest and three sampled app manifests use relative URLs that resolve correctly from their manifest locations. This is static source evidence only, not a complete 89-file review or browser/device test. Verify both custom domain and GitHub Pages installed PWA before release.
+- Detailed record: [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resume-audit-height-and-pr-refresh.md).
