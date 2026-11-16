@@ -261,6 +261,24 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
  .ij-brand-language{width:68px!important}
 }
 </style>
+<style id="ij-percentage-stage1-ux">
+.ij-pct-actions{flex-wrap:wrap}
+.ij-pct-actions button{width:auto;flex:1 1 125px;margin:0}
+.ij-pct-actions .ij-pct-secondary,.ij-pct-result-actions .ij-pct-secondary{border:1px solid #c9e2f8;background:#f5faff;color:#145a9d;box-shadow:none}
+.ij-pct-actions button:focus-visible,.ij-pct-result-actions button:focus-visible{outline:3px solid #1686e855;outline-offset:2px}
+.ij-pct-actions button:disabled,.ij-pct-result-actions button:disabled{opacity:.48;cursor:not-allowed}
+.ij-pct-live-note{margin:10px 0 0!important;color:#71839a!important;font-size:12px!important}
+.ij-pct-result-actions{display:flex;gap:8px;margin-top:12px}
+.ij-pct-result-actions button{width:auto;min-height:38px;margin:0;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer}
+.ij-pct-breakdown{grid-column:1/-1;padding:23px 26px;border:1px solid #d8e8f8;border-radius:22px;background:#fff;box-shadow:0 9px 28px rgba(24,74,130,.06)}
+.ij-pct-breakdown h3{margin:10px 0;color:#14264a;font-size:19px}
+.ij-pct-breakdown ol{margin:10px 0 0;padding-left:22px;color:#405875}
+.ij-pct-breakdown li{padding:5px 0;line-height:1.55}
+.ij-pct-breakdown p{margin:12px 0 0;color:#8a5a12;font-size:12px;line-height:1.5}
+.ij-pct-result-text .ij-pct-change-number{font-size:clamp(27px,3vw,38px);color:#087ce5}
+.ij-pct-result-text .ij-pct-change-direction{display:block;font-size:15px;color:#526985}
+@media(max-width:650px){.ij-pct-breakdown{padding:19px}.ij-pct-actions button{flex:1 1 100px;padding:10px 12px}.ij-pct-result-actions button{width:100%}}
+</style>
 </head>
 <body>
 
@@ -299,10 +317,12 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 </section>
 <main><section class="ij-pct-calculator-workspace" aria-labelledby="ij-pct-calc-title">
   <div class="ij-pct-entry-card"><span class="ij-pct-section-kicker">PERCENTAGE CHANGE</span><h2 id="ij-pct-calc-title">Calculate Percentage Change</h2><p>Enter your original and new values to find the percentage difference.</p>
-    <div class="ij-pct-fields"><label for="old">Old value<input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal"></label><label for="new">New value<input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal"></label></div>
-    <div class="ij-pct-actions"><button type="button" onclick="calculate()">Calculate Change</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
+    <div class="ij-pct-fields"><label for="old">Old value<input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal" autocomplete="off"></label><label for="new">New value<input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal" autocomplete="off"></label></div>
+    <div class="ij-pct-actions"><button type="button" onclick="calculate()">Calculate Change</button><button type="button" class="ij-pct-secondary" onclick="swapValues()">⇄ Swap</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
+    <p class="ij-pct-live-note" id="live-status" aria-live="polite">Results update automatically as you type.</p>
   </div>
-  <div class="ij-pct-output-card" aria-live="polite"><span class="ij-pct-section-kicker">YOUR RESULT</span><div class="ij-pct-output-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 39h34M11 32h7v7h-7zM22 23h7v16h-7zM33 11h7v28h-7z" fill="currentColor"/></svg></div><div id="result" class="ij-pct-result-text">Your percentage change will appear here.</div><p>Enter both values and select Calculate Change to see the result.</p></div>
+  <div class="ij-pct-output-card" aria-live="polite"><span class="ij-pct-section-kicker">YOUR RESULT</span><div class="ij-pct-output-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 39h34M11 32h7v7h-7zM22 23h7v16h-7zM33 11v28h-7V11z" fill="currentColor"/></svg></div><div id="result" class="ij-pct-result-text">Your percentage change will appear here.</div><p id="result-summary">Enter both values to see the percentage change.</p><div class="ij-pct-result-actions"><button type="button" id="copy-result" class="ij-pct-secondary" onclick="copyResult()" disabled>Copy Result</button></div></div>
+  <div class="ij-pct-breakdown" id="calculation-breakdown" hidden aria-live="polite"><span class="ij-pct-section-kicker">STEP-BY-STEP</span><h3>How the result is calculated</h3><ol id="breakdown-steps"></ol><p id="negative-value-note" hidden>Note: When the starting value is negative, percentage change conventions can vary. This calculator divides by the absolute starting value; interpret the direction in that context.</p></div>
 </section>
 <section><h2>Formula</h2><p>Percentage change = ((new value − old value) ÷ |old value|) × 100. A positive result is an increase; a negative result is a decrease.</p></section>
 <p><a href="index.html">← Back to InfoJano Home</a></p>
@@ -337,22 +357,105 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 </main>
 <footer>© InfoJano</footer>
 <script>
-function calculate(){
- const oldValue=Number(document.getElementById('old').value);
- const newValue=Number(document.getElementById('new').value);
- const out=document.getElementById('result');
- if(document.getElementById('old').value.trim()===''||document.getElementById('new').value.trim()===''||!Number.isFinite(oldValue)||!Number.isFinite(newValue)){out.textContent='Please enter valid numbers for both values.';return;}
- if(oldValue===0){out.textContent=newValue===0?'Both values are zero, so percentage change is undefined.':'Percentage change cannot be calculated from an old value of zero.';return;}
- const change=((newValue-oldValue)/Math.abs(oldValue))*100;
- const label=change>0?'Increase':change<0?'Decrease':'No change';
- out.innerHTML='<strong>'+label+':</strong> '+Math.abs(change).toFixed(2)+'%<br><strong>Difference:</strong> '+(newValue-oldValue).toLocaleString('en-IN',{maximumFractionDigits:6});
+const pctFormatter=new Intl.NumberFormat('en-US',{maximumFractionDigits:6});
+let lastPercentageResult=null;
+function readPercentageInputs(){
+ const oldText=document.getElementById('old').value.trim();
+ const newText=document.getElementById('new').value.trim();
+ if(oldText===''||newText==='')return {valid:false,empty:true};
+ const oldValue=Number(oldText),newValue=Number(newText);
+ if(!Number.isFinite(oldValue)||!Number.isFinite(newValue))return {valid:false,empty:false};
+ return {valid:true,oldValue,newValue};
 }
-
+function calculate(){
+ const out=document.getElementById('result');
+ const summary=document.getElementById('result-summary');
+ const breakdown=document.getElementById('calculation-breakdown');
+ const steps=document.getElementById('breakdown-steps');
+ const copyButton=document.getElementById('copy-result');
+ const negativeNote=document.getElementById('negative-value-note');
+ const values=readPercentageInputs();
+ lastPercentageResult=null;
+ copyButton.disabled=true;
+ if(values.empty){
+  out.textContent='Your percentage change will appear here.';
+  summary.textContent='Enter both values to see the percentage change.';
+  breakdown.hidden=true;
+  return;
+ }
+ if(!values.valid){
+  out.textContent='Please enter valid finite numbers for both values.';
+  summary.textContent='Check the values and try again.';
+  breakdown.hidden=true;
+  return;
+ }
+ const {oldValue,newValue}=values;
+ if(oldValue===0){
+  out.textContent='Percentage change is undefined when the old value is zero.';
+  summary.textContent=newValue===0?'Both values are zero. A percentage change cannot be calculated.':'A zero starting value cannot be used as the denominator.';
+  breakdown.hidden=true;
+  return;
+ }
+ const difference=newValue-oldValue;
+ const denominator=Math.abs(oldValue);
+ const ratio=difference/denominator;
+ const change=ratio*100;
+ if(!Number.isFinite(change)){
+  out.textContent='This change is too large to represent safely.';
+  summary.textContent='Try values with a smaller magnitude.';
+  breakdown.hidden=true;
+  return;
+ }
+ const direction=change>0?'Increase':change<0?'Decrease':'No change';
+ const absChange=Math.abs(change);
+ const formattedPercent=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(absChange);
+ out.innerHTML='<span class="ij-pct-change-number">'+(change>0?'+':change<0?'−':'')+formattedPercent+'%</span><span class="ij-pct-change-direction">'+direction+'</span>';
+ summary.textContent='Difference: '+pctFormatter.format(difference)+' · Change: '+(change>0?'+':change<0?'−':'')+formattedPercent+'%';
+ steps.innerHTML='';
+ const lines=[
+  'Difference = New value − Old value = '+pctFormatter.format(newValue)+' − '+pctFormatter.format(oldValue)+' = '+pctFormatter.format(difference),
+  'Divide by the absolute old value = '+pctFormatter.format(difference)+' ÷ '+pctFormatter.format(denominator)+' = '+pctFormatter.format(ratio),
+  'Convert to a percentage = '+pctFormatter.format(ratio)+' × 100 = '+(change>0?'+':change<0?'−':'')+formattedPercent+'%'
+ ];
+ lines.forEach(function(line){const li=document.createElement('li');li.textContent=line;steps.appendChild(li);});
+ negativeNote.hidden=!(oldValue<0||newValue<0);
+ breakdown.hidden=false;
+ lastPercentageResult={oldValue,newValue,difference,change,direction,formattedPercent};
+ copyButton.disabled=false;
+}
+function swapValues(){
+ const oldInput=document.getElementById('old'),newInput=document.getElementById('new');
+ const current=oldInput.value;oldInput.value=newInput.value;newInput.value=current;calculate();oldInput.focus();
+}
+async function copyResult(){
+ if(!lastPercentageResult)return;
+ const r=lastPercentageResult;
+ const text='Percentage change: '+(r.change>0?'+':r.change<0?'−':'')+r.formattedPercent+'% ('+r.direction+')\nOld value: '+pctFormatter.format(r.oldValue)+'\nNew value: '+pctFormatter.format(r.newValue)+'\nDifference: '+pctFormatter.format(r.difference);
+ const button=document.getElementById('copy-result');
+ try{
+  if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);}
+  else{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();const ok=document.execCommand('copy');area.remove();if(!ok)throw new Error('Copy command unavailable');}
+  button.textContent='Copied!';
+  setTimeout(()=>{button.textContent='Copy Result'},1600);
+ }catch(e){button.textContent='Copy unavailable';setTimeout(()=>{button.textContent='Copy Result'},1800);}
+}
 function resetPercentage(){
  document.getElementById('old').value='';
  document.getElementById('new').value='';
  document.getElementById('result').textContent='Your percentage change will appear here.';
+ document.getElementById('result-summary').textContent='Enter both values to see the percentage change.';
+ document.getElementById('calculation-breakdown').hidden=true;
+ document.getElementById('copy-result').disabled=true;
+ document.getElementById('live-status').textContent='Results update automatically as you type.';
+ lastPercentageResult=null;
+ document.getElementById('old').focus();
 }
+document.addEventListener('DOMContentLoaded',function(){
+ ['old','new'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){
+  calculate();
+  document.getElementById('live-status').textContent='Result updated automatically.';
+ });});
+});
 </script>
 
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
