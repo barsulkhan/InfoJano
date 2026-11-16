@@ -413,3 +413,69 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Priority 1: Build a reproducible country comparison for the same English keyword set (percentage calculator, percentage change calculator, percent increase calculator, percentage difference calculator, reverse percentage calculator) across US, Canada, UK, Australia, selected European countries, Brazil, Russia and China. Record Trends settings and avoid presenting index values as search volumes.
 - First files: `docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md`, then `percentage-change.html` only if a code change is justified.
 - Preserve English-only UI and approved design. Do not create translated pages or redesign the Hero/Header.
+
+
+## Work session — 2026-11-16 (Global English country-demand comparison — second pass)
+
+### 1. Owner request and scope
+- Requested: Continue the global English market research.
+- Countries retained: US, Canada, Australia, UK, European countries, Brazil, Russia and China.
+- Language constraint: English only across the site and product.
+- Scope: Find country-level evidence for the head keyword, assess broad search-discovery context, refine provisional market priorities.
+- No calculator code or design changes authorized or made.
+
+### 2. Research and decisions
+- Searched for country-level keyword evidence and official measurement methodology.
+- Third-party KWS Trends report for "percentage calculator" displays approximately 1.9M average monthly searches worldwide across 121 countries; visible country estimates: US 1.0M (53%), UK 130K (6.8%), Australia 40K (2.1%), Germany 40K (2.1%), Canada 22K (1.2%), Spain 18K (0.9%), Italy 18K (0.9%). Source: https://www.kwstrends.com/keywords/us/percentage-calculator (accessed 2026-11-16).
+- These are third-party estimates, not a Google Keyword Planner export; visible report does not disclose enough methodology to treat as audited. Figures cover the head term only. Brazil, Russia and China are not individually visible in the displayed top-country list; this is not evidence of zero searches.
+- Kepios/DataReportal Digital 2026 report (published October 2025; GWI Q2 2025) gives monthly search-engine usage among internet users 16+: Brazil 92.9%, Canada 89.7%, UK 87.8%, Australia 87.6%, Germany 87.3%, France 83.8%, Russia 70.9%, China 61.1%. Source: https://learn.meltwater.com/rs/814-WJU-189/images/2026_Kepios_Digital_Global_Overview_Report.pdf?version=0. These are broad search-engine usage rates, not calculator demand, not Google-only, and not English-query shares.
+- Google documentation confirms Keyword Planner provides location-specific average monthly search estimates but requires account setup/billing; Trends is normalized and sampled, not absolute volume. Sources: https://support.google.com/google-ads/answer/7337243?hl=en ; https://support.google.com/google-ads/answer/3022575?hl=en ; https://newsinitiative.withgoogle.com/resources/trainings/google-trends/understanding-the-data/
+- Provisional priority refined: Tier 1 validation US/UK/Australia/Canada; Tier 2 Germany/France/Netherlands/other Europe; Tier 3 exploratory Brazil; Russia and China feasibility-first. This is a recommendation from limited evidence, not definitive market ranking.
+- Detailed data, caveats, and measurement plan appended to `docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md`.
+
+### 3. Baseline and risks
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Research document prior blob SHA: `0d1fdd2b019e46c9eafa2ca3b602d99b8fa2d950`.
+- No application source inspected or changed in this research-only pass.
+- Risk: Third-party keyword estimates may vary by provider, match variants, database and date; broad search-engine use does not prove English search demand.
+
+### 4. Issues / evidence gaps
+- No consistent per-country volume matrix is yet available for the full keyword cluster.
+- Brazil, Russia and China English head-term volumes remain unknown from accessible evidence.
+- No Search Console data or Google Ads Keyword Planner export was available.
+- Country-level keyword difficulty, CPC, SERP competition and ranking opportunity remain unverified.
+
+### 5. Changes made
+- Appended Section 11, "Country demand evidence — second pass", to `docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md`.
+- No calculator source, metadata, UI, homepage, Hero, Header, logo or unrelated files changed.
+
+### 6. Mistakes, failed attempts, and corrections
+- No code mistakes or failed edits.
+- Guardrail applied: did not treat missing country entries as zero demand or general search-engine usage as calculator search volume.
+
+### 7. Verification
+- Confirmed research document update committed to GitHub.
+- Checked that source types and limitations are explicitly described.
+- Not performed: Keyword Planner live export, full Trends country comparison, Search Console analysis, competitor interaction tests, or browser QA.
+
+### 8. Commit and deployment
+- Research document update commit: `9a675aa2332bd9a570d209f226391bf67694d6a4`.
+- Project record update: this entry; resulting SHA to be confirmed.
+- Branch: `main`.
+- No application code deployment; production status unchanged and not verified.
+
+### 9. Work checklist
+- [x] Search for country-level head-term estimates.
+- [x] Record visible US, UK, Australia, Germany, Canada, Spain and Italy estimates with caveats.
+- [x] Add broad search-engine usage context for Brazil, Canada, UK, Australia, Germany, France, Russia and China.
+- [x] Distinguish keyword demand from search-engine adoption and Google Trends indices.
+- [x] Update provisional market tiers and next measurement requirements.
+- [ ] Obtain consistent per-country monthly search volumes for all core English keywords.
+- [ ] Obtain Google Trends exports with identical settings across target countries.
+- [ ] Review InfoJano Search Console country/query data if available.
+- [ ] Complete competitor SERP and UX comparison before product changes.
+- [ ] Produce evidence-backed feature roadmap.
+
+### 10. Next session handover
+- Priority 1: Complete a consistent multi-country keyword dataset for the five core terms (percentage calculator, percentage change calculator, percent increase calculator, percentage difference calculator, reverse percentage calculator). Use Keyword Planner or a transparent provider with location-specific data; preserve source/date/methodology and mark unavailable markets as unknown.
+- Preserve English-only UI and approved visual design. Do not add features or redesign before the roadmap is evidence-backed.
