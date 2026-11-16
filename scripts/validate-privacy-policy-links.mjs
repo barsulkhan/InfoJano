@@ -6,6 +6,20 @@ const source = fs.readFileSync(sourcePath, "utf8");
 const hrefs = [...source.matchAll(/\bhref\s*=\s*["']([^"']+)["']/gi)].map(match => match[1]);
 const errors = [];
 
+const rootHtmlFiles = fs.readdirSync(process.cwd()).filter(file => file.endsWith(".html"));
+let checkedPageLinks = 0;
+for (const file of rootHtmlFiles) {
+  if (file === "google4a4795e5c7c03eae.html") continue;
+  const html = fs.readFileSync(path.resolve(file), "utf8");
+  const hasPolicyLink = /href\\s*=\\s*["'][^"']*privacy-policy\\.html(?:[?#][^"']*)?["']/i.test(html);
+  const hasContactLink = /href\\s*=\\s*["'][^"']*contact\\.html(?:[?#][^"']*)?["']/i.test(html);
+  const loadsSharedHeader = /<script\\b[^>]*\\bsrc\\s*=\\s*["'][^"']*site-header\\.js(?:[?#][^"']*)?["']/i.test(html);
+  if (!loadsSharedHeader && (!hasPolicyLink || !hasContactLink)) {
+    errors.push(file + " must include Privacy Policy and Contact links or load site-header.js");
+  }
+  checkedPageLinks++;
+}
+
 function decode(value) {
   try {
     return decodeURIComponent(value);
@@ -94,4 +108,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Checked " + hrefs.length + " policy hrefs and " + sitemapUrls.length + " sitemap URLs; local targets, fragments, required sitemap entries and robots sitemap reference are valid.");
+console.log("Checked " + hrefs.length + " policy hrefs, " + checkedPageLinks + " root HTML pages and " + sitemapUrls.length + " sitemap URLs; page link coverage, local targets, fragments, required sitemap entries and robots sitemap reference are valid.");
