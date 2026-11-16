@@ -216,3 +216,60 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Priority 2: Test CSV downloads, History restore, Copy Result, and mobile layout.
 - First file to inspect: `percentage-change.html`.
 - Do not redesign or modify the approved Hero/Header.
+
+
+## Work session — 2026-11-16 (Follow-up QA and live-test availability check)
+
+### 1. Owner request and scope
+- Requested: Continue the next QA step ("Koro").
+- Scope: Check whether browser/live QA can be performed, inspect CI evidence, and retain the tool-only scope.
+- Constraints: No changes to approved Hero, Header, homepage, logo, or unrelated tools.
+
+### 2. Research and decisions
+- No external market research performed; this session was QA validation.
+- Attempted to open the production page at `https://infojano.com/percentage-change.html` using the available web viewer; it returned inaccessible. No browser automation or interactive browser control is available in this session.
+- Checked GitHub commit CI status and commit-associated workflow runs for `872b43bb276ab63e49481f109d93e16a798a8f11`; GitHub returned no statuses and no associated workflow runs. Therefore CI/browser success cannot be inferred.
+
+### 3. Baseline and risks
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Latest tool-file commit at start of this check: `872b43bb276ab63e49481f109d93e16a798a8f11`.
+- Inspected current `percentage-change.html` source and prior QA notes.
+- Risk: Static source checks cannot prove runtime behavior in a real desktop/mobile browser.
+
+### 4. Issues / findings
+- No additional code defect confirmed by this follow-up check.
+- Live page accessibility could not be confirmed through the available viewer.
+- No GitHub CI status or workflow run was associated with the parser fix commit.
+
+### 5. Changes made
+- No application code changed in this session.
+- No visual/layout changes made.
+
+### 6. Mistakes, failed attempts, and corrections
+- Earlier assistant said it would browser-test directly; this environment does not provide interactive browser automation, and the available web viewer cannot access the production URL. Corrected the expectation here rather than claiming a browser test passed.
+
+### 7. Verification
+- Reconfirmed source-level assertions from the previous session: correct CR/LF row splitting, tab/comma/semicolon cell splitting, multiline examples, three batch modes, 100-row cap, invalid-row filtering, reverse 100% decrease guard, CSV mode column, and presence of History/Copy and approved Hero/Header markup.
+- Recomputed expected formula spot-check values: +25.00%, -20.00%, Reverse decrease original 150, Reverse increase original 200, Difference 22.22%.
+- Not run: interactive desktop browser, mobile browser, real CSV download, localStorage History restore, keyboard navigation, or production visual regression.
+- These source/formula checks are not a substitute for browser QA.
+
+### 8. Commit and deployment
+- No application code commit in this follow-up session.
+- Project record update is committed separately on `main`.
+- Deployment/live status: Not verified.
+
+### 9. Work checklist
+- [x] Recheck parser and batch feature source assertions.
+- [x] Recheck arithmetic examples.
+- [x] Check available CI status and workflow-run evidence.
+- [ ] Interactive desktop QA — pending a browser session / owner-side browser test.
+- [ ] Interactive mobile QA — pending.
+- [ ] CSV download and History restore browser tests — pending.
+- [ ] Production deployment/live verification — pending.
+
+### 10. Next session handover
+- Next task: Complete interactive browser QA of the deployed tool.
+- Owner can help unblock this by opening the page and testing the three Batch modes; capture any issue/screenshot. If an interactive browser tool becomes available, run the full checklist directly.
+- First file: `percentage-change.html`.
+- Preserve approved Hero/Header; do not add more features until QA is complete.
