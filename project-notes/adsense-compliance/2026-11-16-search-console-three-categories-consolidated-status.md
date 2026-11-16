@@ -158,3 +158,24 @@ Fresh GitHub metadata and compare checks:
 - The PR-linked workflow runs are named “Privacy Policy QA”; passing those workflows is not evidence of full SEO, redirect, PWA, service-worker or browser-runtime correctness.
 
 No PR was merged, no production deployment was made, and no Google indexing request or Validate Fix was submitted during this review.
+
+
+## New Search Console overview screenshot — two additional categories identified
+
+The owner supplied a wider “Why pages aren’t indexed” overview screenshot. It shows five rows:
+
+| Reason | Pages | Validation |
+|---|---:|---|
+| Alternate page with proper canonical tag | 27 | Not Started |
+| Not found (404) | 13 | Not Started |
+| Page with redirect | 2 | Not Started |
+| Duplicate, Google chose different canonical than user | 5 | Not Started |
+| Crawled - currently not indexed | 2 | Not Started |
+
+The 27, 2 redirect and 5 duplicate-canonical groups were already audited in the sections above. Newly discovered groups:
+- **Not found (404): 13 pages.** Exact URLs and whether these are intentional removals, broken internal links, stale sitemap entries, or legacy paths are not visible in this overview screenshot. Do not redirect or recreate pages until the URL list and intended destinations are reviewed.
+- **Crawled - currently not indexed: 2 pages.** Exact URLs and page content are not visible. Need URL Inspection details and page-level review before deciding whether to improve content, internal linking, canonical signals, or take no action.
+
+Validation for all five categories is shown as “Not Started” in this screenshot. Do not click Validate Fix yet. Request the detailed URL list for the 13 404s and the two crawled-not-indexed pages; a clear screenshot of each category's example URL table is sufficient to begin source-level checks.
+
+No fixes are claimed for these two newly discovered categories at this stage.
