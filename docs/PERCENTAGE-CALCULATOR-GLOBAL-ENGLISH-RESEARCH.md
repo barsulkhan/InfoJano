@@ -431,3 +431,26 @@ Source: https://www.kwstrends.com/google-ads-keyword-tool
 - [ ] Google Ads Keyword Planner country matrix: pending account access.
 - [x] Confirmed the public checker supports country selection and documents English-language data.
 - [x] Confirmed the Google Ads official workflow allows location/language settings and requires account setup with billing information.
+
+
+## 16. Alternative bulk-data route and latest access check — 2026-11-16
+
+### 16.1 New public tools found
+- KWS Trends bulk checker advertises up to 200 keywords, selected country, English, Google Ads Keyword Planner monthly searches, bid range, competition, 12-month history and CSV download. The current session still has no interactive browser action to submit it. Source: https://www.kwstrends.com/google-ads-keyword-tool (checked 2026-11-16).
+- ToolerBox advertises a free bulk keyword metrics tool for up to 100 keywords, country selection, monthly volume, CPC, competition and CSV download. Free sign-in is required to check more than the first three keywords. Visible supported countries include US, UK, Canada, Australia, India, New Zealand, South Africa and Global. Source: https://toolerbox.com/bulk-keyword-metrics/ (checked 2026-11-16).
+- Apify actor "Keyword Search Volume, CPC & Trends (Google Ads data)" advertises up to 10,000 keywords per run across 45 countries, language override, 24 months of history and exports. It is a paid actor at USD $2 per 1,000 keyword results; it was not run. Source: https://apify.com/ws-admin/keyword-search-volume (checked 2026-11-16).
+
+### 16.2 Interpretation and execution order
+- ToolerBox is a plausible free-tier alternative for Tier 1 countries and India, but its page gates more than three keywords behind sign-in. It has not been submitted and no volumes were obtained.
+- Apify may cover more target countries and offers a language override, but is paid. No purchase or paid run was authorized.
+- These are tool capability descriptions, not evidence of actual volume for any target phrase.
+- Next: test ToolerBox's free route; then KWS interactive CSV. Consider Apify only after explicit cost approval.
+- No country-level English-language demand has been newly established for Brazil, Russia or China.
+
+### 16.3 Checklist
+- [x] Found an additional public bulk checker with a documented free tier and supported-country list.
+- [x] Found a broader paid bulk source and recorded its stated price and coverage.
+- [ ] Submit the five exact phrases in ToolerBox; sign-in gate may limit results.
+- [ ] Obtain KWS interactive CSV exports.
+- [ ] Obtain full target-country coverage and verify English-language filter.
+- [ ] Paid Apify run — not authorized; no spend made.
