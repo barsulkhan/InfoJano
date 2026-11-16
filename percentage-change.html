@@ -361,7 +361,19 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 .ij-pct-faq details p{margin:9px 0 0}
 @media(max-width:650px){.ij-pct-seo-guide,.ij-pct-faq{padding:19px 17px}.ij-pct-seo-guide h2,.ij-pct-faq h2{font-size:20px}.ij-pct-example-grid{grid-template-columns:1fr}}
 </style>
-</head>
+<style id="ij-percentage-reverse-mode">
+.ij-pct-mode-switch{display:flex;gap:8px;margin:15px 0 17px;padding:5px;border:1px solid #dbe8f6;border-radius:13px;background:#f3f8fe}
+.ij-pct-mode-button{flex:1;min-height:40px;margin:0!important;padding:9px 12px!important;border:1px solid transparent!important;border-radius:9px!important;background:transparent!important;color:#365879!important;box-shadow:none!important;font-size:13px!important;font-weight:800!important}
+.ij-pct-mode-button.is-active{border-color:#c8e3fa!important;background:#fff!important;color:#087ce5!important;box-shadow:0 3px 10px rgba(24,74,130,.09)!important}
+.ij-pct-mode-button:focus-visible{outline:3px solid #1686e855;outline-offset:2px}
+.ij-pct-mode-help{margin:0 0 14px!important;color:#647b95!important;font-size:13px!important;line-height:1.55}
+.ij-pct-reverse-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ij-pct-reverse-fields label:last-child{grid-column:1/-1}
+.ij-pct-reverse-fields select{display:block;width:100%;min-width:0;margin-top:7px;padding:13px 14px;border:1px solid #c9dced;border-radius:12px;background:#fbfdff;color:#14264a;font:600 15px system-ui,Arial,sans-serif}
+.ij-pct-reverse-fields select:focus{outline:3px solid #1686e822;border-color:#1686e8}
+#ij-pct-change-controls[hidden],#ij-pct-reverse-controls[hidden]{display:none!important}
+@media(max-width:650px){.ij-pct-mode-button{font-size:12px!important;padding:8px 6px!important}.ij-pct-reverse-fields{grid-template-columns:1fr}.ij-pct-reverse-fields label:last-child{grid-column:auto}}
+</style></head>
 <body>
 
 <header class="ij-brandbar">
@@ -399,9 +411,25 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 </section>
 <main><section class="ij-pct-calculator-workspace" aria-labelledby="ij-pct-calc-title">
   <div class="ij-pct-entry-card"><span class="ij-pct-section-kicker">PERCENTAGE CHANGE</span><h2 id="ij-pct-calc-title">Calculate Percentage Change</h2><p>Enter your original and new values to find the percentage difference.</p>
-    <div class="ij-pct-fields"><label for="old">Old value<input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal" autocomplete="off"></label><label for="new">New value<input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal" autocomplete="off"></label></div>
-    <div class="ij-pct-actions"><button type="button" onclick="calculate()">Calculate Change</button><button type="button" class="ij-pct-secondary" onclick="swapValues()">⇄ Swap</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
-    <p class="ij-pct-live-note" id="live-status" aria-live="polite">Results update automatically as you type.</p>
+    <div class="ij-pct-mode-switch" role="group" aria-label="Choose calculation mode">
+      <button type="button" class="ij-pct-mode-button is-active" id="ij-pct-mode-change" aria-pressed="true" onclick="setPctMode('change')">Find % Change</button>
+      <button type="button" class="ij-pct-mode-button" id="ij-pct-mode-reverse" aria-pressed="false" onclick="setPctMode('reverse')">Reverse %</button>
+    </div>
+    <div id="ij-pct-change-controls">
+      <div class="ij-pct-fields"><label for="old">Old value<input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal" autocomplete="off"></label><label for="new">New value<input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal" autocomplete="off"></label></div>
+      <div class="ij-pct-actions"><button type="button" onclick="calculate()">Calculate Change</button><button type="button" class="ij-pct-secondary" onclick="swapValues()">⇄ Swap</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
+      <p class="ij-pct-live-note" id="live-status" aria-live="polite">Results update automatically as you type.</p>
+    </div>
+    <div id="ij-pct-reverse-controls" hidden>
+      <p class="ij-pct-mode-help">Find the original value when you know the value after a percentage increase or decrease.</p>
+      <div class="ij-pct-fields ij-pct-reverse-fields">
+        <label for="ij-pct-final-value">Value after change<input id="ij-pct-final-value" type="number" step="any" placeholder="Example: 120" inputmode="decimal" autocomplete="off"></label>
+        <label for="ij-pct-rate">Percentage change (%)<input id="ij-pct-rate" type="number" min="0" step="any" placeholder="Example: 20" inputmode="decimal" autocomplete="off"></label>
+        <label for="ij-pct-direction">Change direction<select id="ij-pct-direction"><option value="increase">Increase</option><option value="decrease">Decrease</option></select></label>
+      </div>
+      <div class="ij-pct-actions"><button type="button" onclick="calculate()">Find Original Value</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
+      <p class="ij-pct-live-note" id="ij-pct-reverse-status" aria-live="polite">Results update automatically as you type.</p>
+    </div>
   </div>
   <div class="ij-pct-output-card" aria-live="polite"><span class="ij-pct-section-kicker">YOUR RESULT</span><div class="ij-pct-output-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 39h34M11 32h7v7h-7zM22 23h7v16h-7zM33 11v28h-7V11z" fill="currentColor"/></svg></div><div id="result" class="ij-pct-result-text">Your percentage change will appear here.</div><p id="result-summary">Enter both values to see the percentage change.</p><div class="ij-pct-result-actions"><button type="button" id="copy-result" class="ij-pct-secondary" onclick="copyResult()" disabled>Copy Result</button></div></div>
   <div class="ij-pct-breakdown" id="calculation-breakdown" hidden aria-live="polite"><span class="ij-pct-section-kicker">STEP-BY-STEP</span><h3>How the result is calculated</h3><ol id="breakdown-steps"></ol><p id="negative-value-note" hidden>Note: When the starting value is negative, percentage change conventions can vary. This calculator divides by the absolute starting value; interpret the direction in that context.</p></div>
@@ -484,6 +512,21 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 <script>
 const pctFormatter=new Intl.NumberFormat('en-US',{maximumFractionDigits:6});
 let lastPercentageResult=null;
+let pctMode='change';
+function setPctMode(mode){
+ if(mode!=='change'&&mode!=='reverse')return;
+ pctMode=mode;
+ const changeMode=mode==='change';
+ document.getElementById('ij-pct-change-controls').hidden=!changeMode;
+ document.getElementById('ij-pct-reverse-controls').hidden=changeMode;
+ const changeButton=document.getElementById('ij-pct-mode-change');
+ const reverseButton=document.getElementById('ij-pct-mode-reverse');
+ changeButton.classList.toggle('is-active',changeMode);
+ reverseButton.classList.toggle('is-active',!changeMode);
+ changeButton.setAttribute('aria-pressed',String(changeMode));
+ reverseButton.setAttribute('aria-pressed',String(!changeMode));
+ calculate();
+}
 let pctHistorySaveTimer=null;
 const pctHistoryStorageKey='infojano-percentage-change-history-v1';
 function readPercentageInputs(){
@@ -593,7 +636,67 @@ function clearPctBatch(){
  document.getElementById('ij-pct-batch-status').textContent='Your batch results will appear here.';
  document.getElementById('ij-pct-batch-export').disabled=true;pctBatchResults=[];
 }
+function calculateReverse(){
+ const out=document.getElementById('result');
+ const summary=document.getElementById('result-summary');
+ const breakdown=document.getElementById('calculation-breakdown');
+ const steps=document.getElementById('breakdown-steps');
+ const copyButton=document.getElementById('copy-result');
+ const finalText=document.getElementById('ij-pct-final-value').value.trim();
+ const rateText=document.getElementById('ij-pct-rate').value.trim();
+ const direction=document.getElementById('ij-pct-direction').value;
+ const status=document.getElementById('ij-pct-reverse-status');
+ lastPercentageResult=null;copyButton.disabled=true;
+ if(finalText===''||rateText===''){
+  out.textContent='Your original value will appear here.';
+  summary.textContent='Enter the value after the change and the percentage rate.';
+  breakdown.hidden=true;return;
+ }
+ const finalValue=Number(finalText),rate=Number(rateText);
+ if(!Number.isFinite(finalValue)||!Number.isFinite(rate)||rate<0){
+  out.textContent='Please enter valid numbers. The percentage rate must be zero or greater.';
+  summary.textContent='Check your entries and try again.';breakdown.hidden=true;return;
+ }
+ if(direction==='decrease'&&rate>=100){
+  out.textContent=rate===100?'The original value cannot be uniquely recovered after a 100% decrease.':'A decrease cannot be greater than 100%.';
+  summary.textContent='A 100% decrease makes the final value zero regardless of the starting value.';
+  breakdown.hidden=true;return;
+ }
+ const multiplier=direction==='increase'?1+rate/100:1-rate/100;
+ if(multiplier===0||!Number.isFinite(multiplier)){
+  out.textContent='The original value cannot be calculated from these inputs.';
+  summary.textContent='Check the percentage rate and direction.';breakdown.hidden=true;return;
+ }
+ const originalValue=finalValue/multiplier;
+ if(!Number.isFinite(originalValue)){
+  out.textContent='This result is too large to represent safely.';
+  summary.textContent='Try a smaller percentage rate or value.';breakdown.hidden=true;return;
+ }
+ const signedRate=direction==='increase'?rate:-rate;
+ const difference=finalValue-originalValue;
+ const formattedPercent=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(rate);
+ const formattedOriginal=pctFormatter.format(originalValue);
+ out.innerHTML='<span class="ij-pct-change-number">'+formattedOriginal+'</span><span class="ij-pct-change-direction">Original value</span>';
+ summary.textContent='After a '+formattedPercent+'% '+direction+', the final value is '+pctFormatter.format(finalValue)+'.';
+ steps.textContent='';
+ const formula=direction==='increase'?'Final value ÷ (1 + percentage ÷ 100)':'Final value ÷ (1 − percentage ÷ 100)';
+ const lines=[
+  'Multiplier = 1 '+(direction==='increase'?'+':'−')+' '+pctFormatter.format(rate)+' ÷ 100 = '+pctFormatter.format(multiplier),
+  'Original value = Final value ÷ multiplier',
+  pctFormatter.format(finalValue)+' ÷ '+pctFormatter.format(multiplier)+' = '+formattedOriginal
+ ];
+ lines.forEach(function(line){const li=document.createElement('li');li.textContent=line;steps.appendChild(li);});
+ const heading=breakdown.querySelector('h3');if(heading)heading.textContent='How the original value is calculated';
+ const negativeNote=document.getElementById('negative-value-note');negativeNote.hidden=true;
+ breakdown.hidden=false;
+ lastPercentageResult={oldValue:originalValue,newValue:finalValue,difference,change:signedRate,direction:direction==='increase'?'Increase':'Decrease',formattedPercent:new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(rate)};
+ schedulePctHistorySave({oldValue:originalValue,newValue:finalValue,difference,change:signedRate,direction:direction==='increase'?'Increase':'Decrease'});
+ copyButton.disabled=false;
+ if(status)status.textContent='Original value calculated automatically.';
+}
 function calculate(){
+ if(pctMode==='reverse'){return calculateReverse();}
+
  const out=document.getElementById('result');
  const summary=document.getElementById('result-summary');
  const breakdown=document.getElementById('calculation-breakdown');
@@ -667,6 +770,17 @@ async function copyResult(){
  }catch(e){button.textContent='Copy unavailable';setTimeout(()=>{button.textContent='Copy Result'},1800);}
 }
 function resetPercentage(){
+ if(pctMode==='reverse'){
+  ['ij-pct-final-value','ij-pct-rate'].forEach(id=>{document.getElementById(id).value='';});
+  document.getElementById('ij-pct-direction').value='increase';
+  document.getElementById('result').textContent='Your original value will appear here.';
+  document.getElementById('result-summary').textContent='Enter the value after the change and the percentage rate.';
+  document.getElementById('calculation-breakdown').hidden=true;
+  document.getElementById('copy-result').disabled=true;
+  document.getElementById('ij-pct-reverse-status').textContent='Results update automatically as you type.';
+  lastPercentageResult=null;document.getElementById('ij-pct-final-value').focus();return;
+ }
+
  document.getElementById('old').value='';
  document.getElementById('new').value='';
  document.getElementById('result').textContent='Your percentage change will appear here.';
@@ -679,6 +793,8 @@ function resetPercentage(){
 }
 document.addEventListener('DOMContentLoaded',function(){
  renderPctHistory();
+ ['ij-pct-final-value','ij-pct-rate'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){if(pctMode==='reverse'){calculate();}});});
+ document.getElementById('ij-pct-direction').addEventListener('change',function(){if(pctMode==='reverse')calculate();});
  ['old','new'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){
   calculate();
   document.getElementById('live-status').textContent='Result updated automatically.';
