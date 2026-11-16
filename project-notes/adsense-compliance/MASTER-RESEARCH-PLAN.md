@@ -865,3 +865,13 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - Previously researched AdSense/CMP, TCF v2.4, policy, ads.txt, Worker/iLoveAPI, Android/Windows runtime, deployment and account-side dependencies remain listed in §§1–8 and §§22–31; see the handoff for a concise resume checklist.
 - CI #43794141231 passed the 115-page privacy-link/sitemap/robots QA. APK workflow #43794247117 and latest Pages deployment were still pending at last observed checkpoint; verify only after the user resumes.
 - Pause boundary: no more code edits, merges, deployments, account-setting changes, DNS/Worker changes, indexing requests or Validate Fix until the user resumes and separately authorizes the action.
+
+
+## 24. Autonomous execution update — 2026-11-16
+
+The user has authorized continuing through outstanding work without asking approval at every small step and requested sequential task records in this existing folder. This supersedes the earlier general pause boundary. Specific restrictions remain: do not submit the 18 held SEO pages for indexing; do not invent publisher/legal/provider facts or change inaccessible account-side settings based on assumptions; distinguish source/CI/deployment/live/device evidence.
+
+- Task record: [2026-11-16-0019-custom-domain-path-audit-and-ads-txt-http-check.md](2026-11-16-0019-custom-domain-path-audit-and-ads-txt-http-check.md).
+- Confirmed source inconsistency: `site-header.js` selects a host-specific root, but `install.js`, `sw.js`, root `index.html`, `manifest.json` and many tool pages retain hardcoded `/InfoJano/` paths. This may break custom-domain navigation/assets/PWA behavior. Because GitHub Pages project-site hosting may also be supported, do not mass-replace until Pages configuration and all path categories are audited.
+- ads.txt: screenshot confirms visible body match; direct HTTP status/redirect/header evidence for HTTP and HTTPS was not obtained. Mark live response UNVERIFIED. Google's current guidance requires root reachability, valid format, robots access, HTTP 200/acceptable redirect, and both protocols; see official source in task record.
+- No code or production setting was changed in task 0019. Next: inspect hosting config and inventory path references, then implement a dual-host-safe correction and validate.
