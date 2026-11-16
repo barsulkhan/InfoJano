@@ -43,7 +43,12 @@ jobs:
               check=True, text=True, capture_output=True
           ).stdout
           keyword = re.compile(r"hero|banner|ij-age-hero|url-hero|hero-neon", re.I)
-          touched = []
+          changed_names = subprocess.run(
+              ["git", "diff", "--name-only", f"{base}...{head}"],
+              check=True, text=True, capture_output=True
+          ).stdout.splitlines()
+          # Any image asset change is gated too, because artwork filenames need not say "hero".
+          touched = [p for p in changed_names if p.lower().endswith((".svg", ".png", ".webp", ".jpg", ".jpeg"))]
           current_file = ""
           hunk = []
           def inspect(lines, path):
