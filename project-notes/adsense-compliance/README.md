@@ -770,3 +770,10 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - New-chat handoff and project pause: [2026-11-16-new-chat-handoff-and-pause.md](2026-11-16-new-chat-handoff-and-pause.md).
 - Detailed screenshot issue record: [2026-11-16-search-console-404-review-and-indexing-hold.md](2026-11-16-search-console-404-review-and-indexing-hold.md).
 - Master plan updated with the new findings and pause boundary. No further repository/account/indexing/deployment work is authorized until the user resumes.
+
+
+### 2026-11-16 — Autonomous execution resumed; custom-domain path audit
+- User authorized continuing remaining tasks without repeated per-step permission and requested sequential records in this existing folder.
+- Task 0019 records a confirmed mixed path-base source issue: custom-domain-aware ROOT in `site-header.js`, but `/InfoJano/` hardcoded in `install.js`, `sw.js`, index manifest href, `manifest.json` and many tool pages. A dual-host-safe audit is required before broad edits.
+- ads.txt visible body remains screenshot-verified; live HTTP/HTTPS status, redirect chain and headers remain unverified. Google requirements/source and next steps are recorded in task 0019.
+- No production source or settings changed in this audit.
