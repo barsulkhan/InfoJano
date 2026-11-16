@@ -482,7 +482,7 @@ function clearPctHistory(){
 let pctBatchResults=[];
 function pctCsvCell(value){const text=String(value==null?'':value);return '"'+text.replace(/"/g,'""')+'"';}
 function downloadPctCsv(filename,rows){
- const csv='\\uFEFF'+rows.map(row=>row.map(pctCsvCell).join(',')).join('\\r\\n');
+ const csv='\uFEFF'+rows.map(row=>row.map(pctCsvCell).join(',')).join('\r\n');
  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
  const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);
 }
@@ -496,12 +496,12 @@ function runPctBatch(){
  const input=document.getElementById('ij-pct-batch-input').value;
  const status=document.getElementById('ij-pct-batch-status');
  const output=document.getElementById('ij-pct-batch-results');
- const lines=input.split(/\\r?\\n/).map(x=>x.trim()).filter(Boolean);
+ const lines=input.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
  output.textContent='';pctBatchResults=[];
  if(!lines.length){status.textContent='Enter at least one row of values.';document.getElementById('ij-pct-batch-export').disabled=true;return;}
  if(lines.length>100){status.textContent='Please enter no more than 100 rows at a time.';document.getElementById('ij-pct-batch-export').disabled=true;return;}
  const results=lines.map((line,index)=>{
-  const cells=line.split(/[\\t,;]/).map(x=>x.trim());
+  const cells=line.split(/[\t,;]/).map(x=>x.trim());
   if(cells.length!==2||cells.some(x=>x===''))return {row:index+1,valid:false,reason:'Use Old value, New value'};
   const oldValue=Number(cells[0]),newValue=Number(cells[1]);
   if(!Number.isFinite(oldValue)||!Number.isFinite(newValue))return {row:index+1,valid:false,reason:'Enter valid numbers'};
