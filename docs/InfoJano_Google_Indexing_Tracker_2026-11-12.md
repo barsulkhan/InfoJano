@@ -214,3 +214,13 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 - PR #210 now covers six Number to Words feature-cluster files, including the reverse words-to-number parser, Bengali/Hindi hreflang and localized WebApplication schema, plus the mobile chip layout and v309 locale precache.
 - The reverse parser received a source correction for standalone minor currency phrases (e.g. `fifty paise` → `0.50`) and rejects minor-unit groups above 99.
 - PR #210 is still open/unmerged; no indexing or live deployment status changes as a result.
+
+
+## 16 Nov 2026 — User-provided Search Console 404 review
+- User screenshots show 58 indexed URLs and 49 not indexed URLs; the not-indexed report lists 13 Not found (404) examples (report total is 13, examples shown across two screenshots).
+- Example malformed URLs include root pages with literal `$3<meta property=` or `$3<script type=` appended to the .html path. URL Inspection for the percentage-of-percentage example reports: 404, Googlebot smartphone, crawl allowed, page fetch failed, and referring page `https://infojano.com/percentage-of-percentage-calculator.html`.
+- Current repository source for the affected canonical/OG metadata pages was rechecked after merged PR #91; sampled canonical and og:url tags are clean, and GitHub code search found no literal `$3` in current source files (the historical audit note remains in documentation). Treat these malformed URL examples as potentially stale/discovered historical URLs unless a fresh live source inspection proves a current emitting link. Do not mass-redirect arbitrary malformed paths.
+- Fixed a confirmed custom-domain path issue in `404.html`: homepage CTA changed from `/InfoJano/` to `/`. The 404 page remains `noindex,follow`.
+- Other examples such as `/Height`, `/(100)`, `/(100)^ ` and `/InfoJano/` have not yet been traced to a current internal link; no speculative redirects were added.
+- **Indexing hold:** the 15 Number to Words Pro SEO landing pages and 3 Countdown country SEO pages remain Pending — not submitted. Do not request indexing for these pages in any later batch unless the user explicitly changes this instruction. Their repository presence/sitemap inclusion is not a submission and does not establish indexing.
+- No Search Console validation request, URL submission, or manual indexing action was performed. Live HTTP status/redirect checks could not be confirmed from the available browser connection.
