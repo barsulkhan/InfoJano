@@ -56,3 +56,12 @@ All nine affected calculator pages expose clean, closed canonical and Open Graph
 - No source/code edits, DNS/Worker changes, account settings, PR, merge, deployment trigger, Search Console validation, Request Indexing, or manual indexing action.
 - Maintain the explicit 18-URL indexing hold (15 Number to Words Pro + 3 Countdown pages).
 - Next safe work: exact internal-reference inventory for `/Height`, `/(100)`, `/(100)^ `, `/InfoJano/`; source/rendered response tracing for the malformed suffix; live HTTP checks when environment permits.
+
+
+## 2026-11-16 — owner re-sent the 404 example-table screenshots
+
+The two newly uploaded photographs independently confirm the 13-row transcription above: the first page shows rows 1–10 and the second shows rows 11–13. The visible malformed suffixes are literal $3<script type= or $3<meta property= in the displayed URL examples; the short odd paths are /Height, /(100)^ , /(100), and /InfoJano/.
+
+No new cause is established by the re-sent screenshots. The earlier source audit remains the working assessment: the nine malformed metadata-suffix URLs correspond to a historical malformed SEO metadata defect fixed by merged PR #91; current sampled source has clean canonical/og:url tags and no literal $3 source string. These may be stale discovered URLs, but current live HTTP/rendered response remains unverified. The short paths remain untraced to a current source. Do not create broad redirects for these entries without evidence of an active source and a matching destination.
+
+The owner does not need to transcribe the list again. Next useful user evidence, only if available: open /Height in URL Inspection and share the detailed Page indexing panel including referring page; then do the same for /InfoJano/ if its referring source is not apparent. This helps distinguish stale historical URLs from active internal links. No Request Indexing or Validate Fix.
