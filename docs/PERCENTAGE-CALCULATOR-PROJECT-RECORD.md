@@ -1097,3 +1097,14 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### 7. Commit status
 - Page, sitemap, service-worker and documentation commits are recorded in the final handover after verification.
+
+
+### 8. Final implementation commit references
+- `percentage-change.html`: `3edf0ef468f174faf5796bb2fac17ace1ba6b49f`.
+- `percentage.html`: `c92a6f258f00910bb42585f87de11ec3913e1c48`.
+- `sitemap.xml`: `457fbe740330efbd24307b67574b4b8575030697`.
+- `sitemap-infojano.xml`: `78d52bbcfc4a1fe927d9aa0ff25b856a1a1a8bb9`.
+- `sw.js` cache v312: `a2143943c1883eff489bdf1377a7283c72d4e0c1`.
+- Research report: `d1ce9dd122c7ed0791434be5f2c4fdc15476edf0`.
+- This project record's implementation entry: appended immediately before this final reference list; current record update commit will be verified separately.
+- GitHub Pages run for final commit: pending completion check; do not state production is live until it succeeds and live page is independently accessible.
