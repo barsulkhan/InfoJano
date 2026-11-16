@@ -1,5 +1,5 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v312";
+const CACHE_NAME = "infojano-v313";
 const BASE = new URL(".", self.registration.scope).pathname;
 const HOME = BASE;
 const ASSETS = [
