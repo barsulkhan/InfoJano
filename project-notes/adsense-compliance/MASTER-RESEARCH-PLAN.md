@@ -875,3 +875,27 @@ The user has authorized continuing through outstanding work without asking appro
 - Confirmed source inconsistency: `site-header.js` selects a host-specific root, but `install.js`, `sw.js`, root `index.html`, `manifest.json` and many tool pages retain hardcoded `/InfoJano/` paths. This may break custom-domain navigation/assets/PWA behavior. Because GitHub Pages project-site hosting may also be supported, do not mass-replace until Pages configuration and all path categories are audited.
 - ads.txt: screenshot confirms visible body match; direct HTTP status/redirect/header evidence for HTTP and HTTPS was not obtained. Mark live response UNVERIFIED. Google's current guidance requires root reachability, valid format, robots access, HTTP 200/acceptable redirect, and both protocols; see official source in task record.
 - No code or production setting was changed in task 0019. Next: inspect hosting config and inventory path references, then implement a dual-host-safe correction and validate.
+
+
+## 25. Dual-host path inventory and workflow recheck — 2026-11-16 08:48 +05:30
+
+### Confirmed source state
+- Root `CNAME` contains `infojano.com`; this is repository evidence of custom-domain configuration, not proof of current DNS/HTTP propagation or all Pages settings.
+- `site-header.js` already selects `/InfoJano/` for `barsulkhan.github.io` and `/` for the custom domain.
+- The path strategy is not consistently applied: `install.js` unconditionally registers `/InfoJano/sw.js` with `/InfoJano/` scope and loads helper scripts from that prefix; `sw.js` uses `/InfoJano/` for HOME and precache; `index.html` links the root manifest at `/InfoJano/manifest.json`; root `manifest.json` uses that prefix for id/start_url/scope/icons.
+- Many root HTML files still contain hardcoded `/InfoJano/` links/scripts/assets. GitHub code search returned 61 `src` matches and 61 `href` matches, but result sets include non-production docs/backups and are limited; exact unique production-page count remains pending.
+- 29 dedicated app manifests and `.github/workflows/build-tool-apks.yml` deliberately validate/package tools under `https://barsulkhan.github.io/InfoJano/`. These app manifests must be treated separately from the root website PWA; no blind global replacement is safe.
+
+### Workflow evidence
+- APK workflow #43794247117 completed SUCCESS on `947f399eb900ca05fe4f068bd98bb8cf5746bda7`.
+- Latest Pages deployment run #43797089152 completed SUCCESS on main HEAD `778e4adb863f17679fbf6e301e2a021f30a6659f`.
+- Workflow success does not establish that `infojano.com` serves the intended content, that DNS/redirects are correct, or that installed PWA clients have refreshed.
+
+### Status / next actions
+- Source inconsistency: CONFIRMED.
+- Exact exhaustive root HTML inventory: IN PROGRESS.
+- Dual-host strategy and safe patch: NOT PREPARED; requires finishing inventory and determining whether the GitHub Pages project URL remains a supported public host.
+- Live HTTP/browser/PWA tests: UNVERIFIED.
+- ads.txt HTTP/HTTPS status, redirect chain, headers and AdSense crawler recognition: UNVERIFIED.
+- No production source, app manifest, workflow, CNAME, DNS, Worker, CMP/AdSense setting, merge, deployment trigger or indexing action changed.
+- Detailed task record: [2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md](2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md).
