@@ -696,3 +696,68 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Priority 1: Obtain the KWS bulk checker results for the five exact phrases across Tier 1 countries. If direct interactive access remains unavailable, request the exported CSV from the owner only as a last resort; do not ask for it if an interactive browser becomes available.
 - First files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and this project record.
 - Keep application code and approved design untouched until evidence supports a specific implementation.
+
+
+## Work session — 2026-11-16 (Country-matrix research access check)
+
+### 1. Owner request and scope
+- Request: Continue the next research step for the five exact English percentage-calculator phrases across target countries.
+- Scope: Research only; inspect the current research brief and project record, test available structured keyword-data routes, and document outcomes.
+- Constraints: English-only audience/content. No translations. No calculator code, homepage, Hero, Header, logo, shared navigation or unrelated tool changes.
+
+### 2. Research performed
+- Re-opened KWS Trends bulk checker. The public page documents up to 200 keywords, selected country, English-language Google Ads Keyword Planner figures, monthly searches, bids, competition, 12-month history and CSV export. Source: https://www.kwstrends.com/google-ads-keyword-tool (accessed 2026-11-16).
+- Confirmed from Google's official help that Keyword Planner supports location and language targeting; Google requires billing information to access basic Keyword Planner features. Source: https://support.google.com/google-ads/answer/7337243?hl=en (accessed 2026-11-16).
+- Tested the available Ahrefs Keywords Explorer endpoint as an alternative for exact phrase metrics by country. The service rejected the request with "Insufficient plan"; no result data was returned. The tool schema supports volume, difficulty, CPC, clicks and detected languages, but this is not a completed data pull.
+
+### 3. Baseline and risks
+- Repository: barsulkhan/InfoJano, branch main.
+- Baseline project-record blob SHA: 2c7211a7a0205dee4eaec535e39e54b00b31fed8.
+- Baseline research-document blob SHA: 4728588547b66fd30f1f93d60f89e2582917ab62.
+- Latest known research commit before this session: fd76d28baf516d1a7a9a65879b312c81fdde9380.
+- No application source file changed.
+- Risk: Third-party estimates, Google Ads volumes and SEO metrics are distinct measurements. Missing country/keyword rows cannot be treated as zero.
+
+### 4. Issues / findings
+- KWS Trends page can be inspected but its interactive form cannot be submitted from the available web view; no CSV or country-matrix values obtained.
+- Ahrefs structured keyword request is blocked by the connected plan entitlement.
+- Google Ads Keyword Planner remains a viable route, but billing/account setup is required; no connected Google Ads account data was available.
+- No new exact keyword-volume values were obtained. No claims made about English query demand in Brazil, Russia or China.
+
+### 5. Changes made
+- Appended Section 15 to docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md with the access attempts, exact outcome, source URLs and next measurement route.
+- Appended this dated work session to docs/PERCENTAGE-CALCULATOR-PROJECT-RECORD.md.
+- No application code, UI, metadata, design or deployment changes.
+
+### 6. Mistakes and recovery
+- No code or data-entry mistake. The Ahrefs query was attempted as an alternative, but it was blocked before returning data; it is recorded as blocked rather than treated as an empty dataset.
+- No unsupported volume estimates were added.
+
+### 7. Verification
+- [x] Re-read current project record and research brief before work.
+- [x] Re-opened and inspected the public KWS bulk-checker description.
+- [x] Confirmed Google's official Keyword Planner location/language workflow and billing prerequisite.
+- [x] Attempted Ahrefs structured lookup; recorded explicit entitlement error.
+- [ ] KWS interactive country lookups and CSV exports — pending.
+- [ ] Ahrefs country matrix — blocked by plan entitlement.
+- [ ] Google Ads Keyword Planner country matrix — pending account access.
+- [ ] Calculator browser QA and live deployment verification — still pending from earlier sessions.
+
+### 8. Commit and deployment
+- Research document update: pending commit verification.
+- Project record update: pending commit verification.
+- Branch: main.
+- No application deployment; production status remains unverified.
+
+### 9. Work checklist
+- [x] Inspect baseline project records.
+- [x] Try a second structured keyword-data source.
+- [x] Record the source access limitation and official alternative.
+- [ ] Obtain the five-keyword × country CSV matrix through a real interactive browser or Google Ads Keyword Planner.
+- [ ] Review exact organic SERPs and Search Console before making SEO implementation changes.
+- [ ] Keep English-only product scope and preserve approved design.
+
+### 10. Next session handover
+- Best next task: Run the five exact phrases in KWS Trends' interactive checker using a real browser and export CSVs, starting with US, UK, Canada and Australia.
+- If browser interaction remains unavailable, the owner will need to grant an interactive browser/account route; do not invent results or request manual CSV work unless that is the only viable route.
+- First inspect these two files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and docs/PERCENTAGE-CALCULATOR-PROJECT-RECORD.md.
