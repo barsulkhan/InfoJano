@@ -75,6 +75,22 @@ jobs:
           end = sw.index('].map(path => BASE + path);', start)
           cached_paths = [line.strip().strip('",') for line in sw[start:end].splitlines()]
           cached_paths = [path for path in cached_paths if path]
+          assert cached_paths, 'Service-worker precache list is empty'
+          assert len(cached_paths) == len(set(cached_paths)), 'Duplicate service-worker precache entries'
+          assert all((root / item).exists() for item in cached_paths if item), 'Service-worker precache references a missing file'
+          for icon in icons:
+              assert icon.as_posix() in cached_paths, f'Icon missing from service-worker cache: {icon}'
+          for page in pages:
+              assert page.name in cached_paths, f'Tool page missing from service-worker cache: {page}'
+          for manifest in manifests:
+              assert manifest.as_posix() in cached_paths, f'Manifest missing from service-worker cache: {manifest}'
+          workflow = (root / '.github/workflows/build-tool-apks.yml').read_text(encoding='utf-8')
+          section = workflow.split("done <<'TOOLS'", 1)[1]
+          entries = [line.strip() for line in section.splitlines() if line.strip().count('|') == 4 and line.strip().split('|')[0].isalnum()]
+          assert len(entries) == 23, f'Expected 23 APK targets, found {len(entries)}'
+          assert len({line.split('|')[0] for line in entries}) == 23, 'Duplicate APK IDs'
+          assert all((root / line.split('|')[2]).exists() for line in entries), 'An APK target references a missing tool page'
+          print(f'Validation passed for both hosting roots: {len(icons)} SVGs, {len(manifests)} manifests, {len(pages)} pages, {len(cached_paths)} precache entries and {len(entries)} APK targets.')
           PY
 
       - name: Build one APK for each remaining tool
