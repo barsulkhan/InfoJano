@@ -93,50 +93,65 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 @media(prefers-reduced-motion:reduce){.ij-reference-hero *{scroll-behavior:auto!important}}
 </style>
 
-<style id="ij-percentage-two-column-final">
-/* Percentage Change Calculator: owner-requested two-panel hero, matched to the ID Card Studio 1200px frame */
-.ij-install-card{width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;margin:14px auto 18px!important;padding:15px 18px!important;grid-template-columns:48px minmax(0,1fr) auto!important;gap:10px 14px!important;border:1px solid #cfe5fb!important;border-radius:18px!important;background:linear-gradient(115deg,#eaf6ff,#fff 58%,#eaf5ff)!important;box-shadow:0 8px 24px rgba(32,104,174,.09)!important}
-.ij-install-icon{width:46px!important;height:46px!important;border-radius:14px!important;background:linear-gradient(145deg,#d9f3ff,#dceaff)!important;color:#087ce5!important}
-.ij-install-copy strong{font-size:15px!important;color:#101d42!important}.ij-install-copy span{font-size:12px!important;color:#53647d!important}
-.ij-install-card button{grid-column:auto!important;min-height:42px!important;margin:0!important;padding:11px 18px!important;border-radius:12px!important;background:linear-gradient(110deg,#087ce5,#1555db)!important;box-shadow:0 6px 15px #087ce533!important}
-.ij-install-help{grid-column:1/-1!important;padding-top:2px!important;color:#53647d!important}.ij-install-help summary{cursor:pointer;font-weight:700}
-.ij-percentage-hero{width:min(calc(100% - 28px),1200px)!important;margin:18px auto 28px!important;padding:clamp(24px,4vw,48px)!important;border-radius:32px!important}
-.ij-percentage-heading{position:relative;z-index:1;max-width:850px;margin:0 auto 24px;text-align:center}
-.ij-percentage-heading h1{margin:12px 0 9px;color:#101d42;font-size:clamp(32px,4vw,52px);font-weight:850;line-height:1.08;letter-spacing:-1.5px}
-.ij-percentage-heading h1 span{color:#087ce5}.ij-percentage-heading p{margin:0 auto;color:#4c607c;font-size:clamp(14px,1.35vw,17px);line-height:1.55}
-.ij-percentage-workspace{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2.2vw,26px);align-items:stretch}
-.ij-percentage-input-panel,.ij-percentage-result-panel{min-width:0;min-height:255px;padding:clamp(18px,2.4vw,28px);border:1px solid #d7e9f9;border-radius:22px;background:rgba(255,255,255,.94);box-shadow:0 12px 28px rgba(31,91,151,.09)}
-.ij-percentage-input-panel h2{margin:0 0 15px;color:#14264a;font-size:20px;line-height:1.25}
-.ij-percentage-input-panel label{display:block;margin:12px 0 6px;color:#304a6c;font-size:13px;font-weight:800}
-.ij-percentage-input-panel input{display:block;width:100%;min-width:0;margin:0;padding:13px 14px;border:1px solid #c9dced;border-radius:12px;background:#fbfdff;color:#14264a;font:600 16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;outline:none}
+<style id="ij-percentage-id-studio-reference-final">
+/* Match the approved ID Card Print Studio hero frame and visual language. */
+.ij-percentage-hero{position:relative;isolation:isolate;overflow:hidden;width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;min-height:340px;margin:24px auto 28px!important;padding:clamp(26px,4vw,48px)!important;border:1px solid #cfe5fb!important;border-radius:32px!important;background:radial-gradient(ellipse at 78% 22%,#d9efff 0%,transparent 38%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%)!important;box-shadow:0 18px 44px rgba(32,104,174,.12)!important;color:#101d42!important}
+.ij-percentage-hero:before{content:"";position:absolute;z-index:-1;inset:auto -8% -95px -8%;height:180px;background:linear-gradient(105deg,#50c6f4,#0787ee 58%,#1555db);border-radius:50% 50% 0 0/36% 36% 0 0;opacity:.9}
+.ij-percentage-hero:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(125deg,transparent 20%,rgba(255,255,255,.28) 48%,transparent 72%);pointer-events:none}
+.ij-percentage-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);align-items:center;gap:clamp(22px,4vw,54px)}
+.ij-percentage-copy{min-width:0}
+.ij-percentage-kicker{display:inline-flex;align-items:center;padding:7px 12px;border:1px solid #c7e5fa;border-radius:99px;background:#ffffffc9;color:#1768b6;font-size:11px;font-weight:850;letter-spacing:.55px}
+.ij-percentage-copy h1{margin:14px 0 12px;color:#101b43;font-size:clamp(36px,4.3vw,58px);font-weight:850;line-height:1.04;letter-spacing:-2px;text-align:left}
+.ij-percentage-copy h1 span{color:#087ce5}
+.ij-percentage-subtitle{max-width:650px;margin:0;color:#4c607c;font-size:clamp(15px,1.45vw,19px);line-height:1.55}
+.ij-percentage-input-panel{margin-top:22px;padding:19px 20px 20px;border:1px solid rgba(255,255,255,.96);border-radius:21px;background:rgba(255,255,255,.92);box-shadow:0 10px 26px rgba(31,91,151,.10)}
+.ij-percentage-input-panel h2{margin:0 0 12px;color:#14264a;font-size:19px;font-weight:850}
+.ij-percentage-input-panel label{display:block;margin:11px 0 6px;color:#304a6c;font-size:13px;font-weight:800}
+.ij-percentage-input-panel input{display:block;width:100%;min-width:0;margin:0;padding:12px 14px;border:1px solid #c9dced;border-radius:12px;background:#fbfdff;color:#14264a;font:600 16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;outline:none}
 .ij-percentage-input-panel input:focus{border-color:#1686e8;box-shadow:0 0 0 3px #1686e822}
-.ij-percentage-input-panel button{width:100%;min-height:46px;margin:17px 0 0;border:0;border-radius:12px;background:linear-gradient(110deg,#087ce5,#1555db);color:#fff;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 7px 16px #087ce533}
-.ij-percentage-result-panel{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#fff,#f0f8ff);border-color:#c9e3f8}
-.ij-result-eyebrow{display:inline-flex;align-self:flex-start;padding:6px 10px;border:1px solid #c9e3f8;border-radius:99px;background:#eaf6ff;color:#1768b6;font-size:11px;font-weight:900;letter-spacing:.6px}
-.ij-result-output{margin:18px 0 8px;color:#10254a;font-size:clamp(22px,2.6vw,34px);font-weight:850;line-height:1.35;overflow-wrap:anywhere}
-.ij-result-output strong{color:#087ce5}.ij-result-note{margin:0;color:#60718a;font-size:13px;line-height:1.55}
-@media(max-width:700px){.ij-install-card{grid-template-columns:42px minmax(0,1fr)!important}.ij-install-card button{grid-column:1/-1!important;width:100%!important}.ij-install-help{grid-column:1/-1!important}.ij-percentage-hero{padding:22px 16px 25px!important;border-radius:24px!important}.ij-percentage-heading{margin-bottom:18px}.ij-percentage-heading h1{font-size:clamp(29px,8vw,40px);letter-spacing:-1px}.ij-percentage-workspace{grid-template-columns:minmax(0,1fr);gap:13px}.ij-percentage-input-panel,.ij-percentage-result-panel{min-height:0;padding:19px}.ij-percentage-result-panel{min-height:165px}.ij-result-output{font-size:27px}}
+.ij-percentage-input-panel button{width:100%;min-height:46px;margin:16px 0 0;border:0;border-radius:12px;background:linear-gradient(110deg,#087ce5,#1555db);color:#fff;font-size:15px;font-weight:850;cursor:pointer;box-shadow:0 7px 16px #087ce533}
+.ij-percentage-result-panel{position:relative;min-width:0;min-height:350px;padding:25px;border:8px solid rgba(255,255,255,.95);border-radius:28px;background:linear-gradient(145deg,#fff,#eaf5ff);box-shadow:0 18px 32px rgba(22,72,137,.18);transform:rotate(2deg);color:#16345d;display:flex;flex-direction:column;justify-content:center}
+.ij-percentage-result-top{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#5d7392;font-size:10px;font-weight:900;letter-spacing:.7px}
+.ij-percentage-result-top b{padding:6px 9px;border-radius:99px;background:#e4f6ee;color:#0a9b69;font-size:9px}
+.ij-percentage-chart{height:116px;position:relative;display:flex;align-items:end;gap:13px;padding:10px 12px 0;margin:17px 0 20px;border-bottom:2px solid #c9dced}
+.ij-percentage-chart i{flex:1;display:block;border-radius:9px 9px 0 0;background:linear-gradient(180deg,#42c9e9,#087ce5)}
+.ij-percentage-chart i:nth-child(1){height:38%}.ij-percentage-chart i:nth-child(2){height:57%}.ij-percentage-chart i:nth-child(3){height:76%}.ij-percentage-chart i:nth-child(4){height:96%}
+.ij-percentage-chart span{position:absolute;right:8px;top:0;color:#0a9b69;font-size:27px;font-weight:900}
+.ij-percentage-result-label{color:#5d7392;font-size:10px;font-weight:900;letter-spacing:1px}
+.ij-percentage-result-output{margin:8px 0;color:#10254a;font-size:clamp(22px,2.3vw,30px);font-weight:900;line-height:1.35;overflow-wrap:anywhere}
+.ij-percentage-result-output strong{color:#087ce5}
+.ij-percentage-result-note{margin:0;color:#637995;font-size:13px;line-height:1.5}
+@media(max-width:760px){.ij-percentage-hero{width:calc(100% - 20px)!important;margin:14px auto 22px!important;padding:24px 17px 34px!important;border-radius:24px!important}.ij-percentage-layout{grid-template-columns:1fr;gap:18px}.ij-percentage-copy{text-align:center}.ij-percentage-copy h1{text-align:center;font-size:clamp(32px,9vw,43px);letter-spacing:-1.2px}.ij-percentage-subtitle{font-size:15px;margin:0 auto}.ij-percentage-input-panel{text-align:left;margin-top:18px;padding:17px}.ij-percentage-result-panel{min-height:260px;transform:none;padding:20px;border-width:6px}.ij-percentage-chart{height:95px}}
+@media(prefers-reduced-motion:reduce){.ij-percentage-hero *{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
+
 <header class="ij-brandbar"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><span class="ij-brandmark">▣</span><span><span class="ij-brandname">Info<span>Jano</span></span><span class="ij-brandtag">Smart Online Tools for Everyday Life</span></span></a><span class="ij-brand-divider"></span><span class="ij-brand-promise">Simple tools. Clear results.</span><a class="ij-home-back" href="index.html">← Back to Home</a></div></header>
 <nav class="ij-hero-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a> <span aria-hidden="true">›</span> Percentage Change Calculator</nav>
-<section class="ij-reference-hero ij-percentage-hero" aria-labelledby="ij-reference-hero-title">
-<div class="ij-percentage-heading"><span class="ij-reference-kicker">PERCENTAGE TOOLS</span><h1 id="ij-reference-hero-title">Percentage <span>Change Calculator</span></h1><p>Calculate the percentage increase or decrease between an original value and a new value.</p></div>
-<div class="ij-percentage-workspace">
-<div class="ij-percentage-input-panel">
-<h2>Enter your values</h2>
-<label for="old">Old value</label><input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal">
-<label for="new">New value</label><input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal">
-<button type="button" onclick="calculate()">Calculate Change</button>
-</div>
-<div class="ij-percentage-result-panel" aria-live="polite">
-<span class="ij-result-eyebrow">YOUR RESULT</span>
-<div id="result" class="ij-result-output">Enter the old and new values, then select Calculate Change.</div>
-<p class="ij-result-note">Your percentage change and numerical difference will appear here.</p>
-</div>
-</div>
+<section class="ij-id-hero ij-percentage-hero" aria-labelledby="ij-percentage-title">
+  <div class="ij-percentage-layout">
+    <div class="ij-percentage-copy">
+      <span class="ij-percentage-kicker">PERCENTAGE TOOLS</span>
+      <h1 id="ij-percentage-title">Percentage <span>Change Calculator</span></h1>
+      <p class="ij-percentage-subtitle">Find the percentage increase or decrease between your original value and new value with a clear, instant result.</p>
+      <div class="ij-percentage-input-panel">
+        <h2>Enter your values</h2>
+        <label for="old">Old value</label>
+        <input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal">
+        <label for="new">New value</label>
+        <input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal">
+        <button type="button" onclick="calculate()">Calculate Change</button>
+      </div>
+    </div>
+    <div class="ij-percentage-result-panel" aria-live="polite">
+      <div class="ij-percentage-result-top"><span>CHANGE OVERVIEW</span><b>LIVE RESULT</b></div>
+      <div class="ij-percentage-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><span>↗</span></div>
+      <div class="ij-percentage-result-label">YOUR RESULT</div>
+      <div id="result" class="ij-percentage-result-output">Enter values to calculate your change.</div>
+      <p class="ij-percentage-result-note">Your percentage change and numerical difference will appear here.</p>
+    </div>
+  </div>
 </section>
 <main>
 <section><h2>Formula</h2><p>Percentage change = ((new value − old value) ÷ |old value|) × 100. A positive result is an increase; a negative result is a decrease.</p></section>
