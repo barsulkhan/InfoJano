@@ -1007,3 +1007,49 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Research commit: pending verification.
 - Project record commit: pending verification.
 - No application deployment; live status remains unverified.
+
+
+## Work session — 2026-11-16 (Final active-market SEO research decision)
+
+### 1. Owner request
+- Owner asked to finalize the work promptly while leaving previously excluded countries out.
+
+### 2. Research and evidence used
+- Reopened the current Google-derived/KWS report pages for “percentage calculator” and “percentage change calculator”.
+- “percentage calculator”: corrected average 1,000,000 US monthly; separate Google Ads Keyword Planner 550,000. Five active-country estimates: US 1,000,000; India 370,000; UK 130,000; Australia 40,000; Canada 22,000. Source: https://www.kwstrends.com/keywords/us/percentage-calculator.
+- “percentage change calculator”: corrected average 60,000 US monthly; separate Keyword Planner 110,000. Five active-country estimates: US 60,000; UK 22,000; Canada 8,000; Australia 6,500; India 4,400. Source: https://www.kwstrends.com/keywords/us/percentage-change-calculator.
+- Percentage calculator related estimates: percentage increase calculator 110,000; calculate percentage 90,000; percentage difference calculator 82,000; how to calculate percentage change 16,000; how to calculate percentage increase 27,000; percentage decrease calculator 15,000; percentage off calculator 22,000; grade percentage calculator 4,400. These are related-keyword estimates in a US report, not independent seed reports.
+- Percentage-change related estimates: how to calculate percentage change 16,000; calculate percentage change 14,000; how do you calculate percentage change 12,000; percentage change calculation 12,000; percentage of change calculator 8,900; how to calculate percentage change between two numbers 5,400.
+- Checked provider methodology: corrected averages combine Keyword Planner and a second database; the separate Google Ads block is raw rounded Keyword Planner data. Source: https://www.kwstrends.com/methodology.
+
+### 3. Final decision
+- Active countries locked to US, UK, Canada, Australia and India. All other countries remain excluded from this research phase.
+- Primary SEO target: percentage calculator. Secondary: percentage change calculator. Closely related modes: percentage increase, percentage decrease, percentage difference and reverse percentage.
+- Support with informational how-to/formula content. Avoid duplicate pages for trivial wording variants.
+- Do not represent reverse-percentage volume as measured. Keep discount/tax/VAT/tip/margin/grade/commission/percentage-point intents separate from the current three-mode formula tool.
+- The volume estimates are third-party approximations, not audited traffic and not necessarily English-only in every country. Use Search Console later to validate actual English query performance.
+
+### 4. Changes
+- Appended Section 21 to the global research report with active-market scope, country estimates, keyword clusters, methodology caveats and final SEO recommendation.
+- Appended this dated finalization record.
+- No application code, page content, design, homepage, Hero, Header, logo, metadata or deployment changed.
+- No paid services or purchases used.
+
+### 5. Verification
+- [x] Read both current project documents before editing.
+- [x] Reopened the two current keyword reports and methodology page.
+- [x] Recorded all five active-country values for both core phrases.
+- [x] Kept KWS corrected averages distinct from its raw Keyword Planner panels.
+- [x] Finalized keyword target hierarchy and formula boundaries.
+- [x] Committed and verified both documentation updates.
+- [ ] Implementation is intentionally not part of this research-only task.
+- [ ] Live Search Console validation and browser QA remain separate future work.
+
+### 6. Commit and deployment
+- Research commit: pending verification.
+- Project record commit: pending verification.
+- No app deployment; live status remains unverified.
+
+### 7. Handover
+- Research phase is finalized for US, UK, Canada, Australia and India. Do not reopen excluded countries in this phase.
+- Next implementation should be a separate, scoped SEO-content task, preserving the approved UI and existing calculator behavior.
