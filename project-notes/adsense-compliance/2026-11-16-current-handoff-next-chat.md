@@ -175,3 +175,12 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 - Initial representative source audit confirmed root PWA files still use legacy `/InfoJano/` paths on main (`index.html`, `manifest.json`, `install.js`, `sw.js`); PR #237 already addresses this broadly and must be reconciled/tested, not duplicated.
 - `privacy-policy.html` explicitly notes provider/live behavior and CMP revocation control are not fully verified; don't remove caveats or claim compliance without verifying facts.
 - Full 335-file per-page audit and coordinated remediation are still pending. No production code changed, no PR merged, no deployment, no Search Console Request Indexing/Validate Fix, and no AdSense review resubmission.
+
+
+## Expanded whole-site audit update — 2026-11-16
+- Static source inspection covered all 117 HTML files in main. 110 sitemap URLs are unique and all map to repository files; `countdown-studio.html` is the one ordinary indexable canonical page absent from sitemap, pending intent/live check.
+- `savings.html` has two H1 elements; prepared minimal H1→H2 semantic fix in draft PR #240. Static count 2→1. PR #240 currently reports mergeable=false; investigate before approval.
+- `id-card-print-studio.html` main still has og:url on legacy GitHub Pages host while canonical uses infojano.com. PR #238 carries correction; overlaps #237 on this same file, so reconcile deliberately.
+- Three Word format alias pages are noindex canonical aliases but their main-branch redirect/helper/manifest paths use legacy /InfoJano/; PR #237 switches them to relative paths.
+- Full findings and limitations recorded in [2026-11-16-whole-site-readiness-audit.md](2026-11-16-whole-site-readiness-audit.md).
+- No merge/deploy, Google indexing/validation, AdSense resubmission or live account/legal/hosting change. 18 SEO URL indexing hold remains.
