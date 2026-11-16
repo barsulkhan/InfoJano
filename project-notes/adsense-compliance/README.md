@@ -760,3 +760,13 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - APK workflow exposed a missing PWA precache entry for Contact. Added Contact + Privacy Policy to `sw.js` and bumped cache to v311. APK validation run #43794247117 is still running; Pages deployment for the fix commit is pending.
 - Task record: [2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md](2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md), commit `860df10a79227cf2e5a862f412e254b801b75cba`.
 - No AdSense/CMP settings, DNS, Worker secrets/configuration, policy legal wording, or app releases changed.
+
+
+### 2026-11-16 — Search Console 404 review, indexing hold and new-chat handoff
+- Saved the Search Console screenshot findings (58 indexed / 49 not indexed; 13 404s among the not-indexed reasons), malformed `$3<meta` / `$3<script` URLs and unresolved `/Height`, `/(100)`, `/(100)^ `, `/InfoJano/` examples.
+- Sampled source canonical/OG tags are clean; `404.html` homepage link points to `/` and remains noindex. Live response/referrer verification remains open; no arbitrary redirects or Search Console indexing/Validate Fix actions were made.
+- Explicit hold: 15 Number to Words Pro SEO pages + 3 Countdown country pages remain Pending — not submitted. Do not submit these 18 pages unless the user explicitly authorizes it.
+- PR #91, #210 and #211 are merged. Do not rely on outdated PR body statements saying they were unmerged.
+- New-chat handoff and project pause: [2026-11-16-new-chat-handoff-and-pause.md](2026-11-16-new-chat-handoff-and-pause.md).
+- Detailed screenshot issue record: [2026-11-16-search-console-404-review-and-indexing-hold.md](2026-11-16-search-console-404-review-and-indexing-hold.md).
+- Master plan updated with the new findings and pause boundary. No further repository/account/indexing/deployment work is authorized until the user resumes.
