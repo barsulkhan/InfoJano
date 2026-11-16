@@ -65,3 +65,27 @@ The two newly uploaded photographs independently confirm the 13-row transcriptio
 No new cause is established by the re-sent screenshots. The earlier source audit remains the working assessment: the nine malformed metadata-suffix URLs correspond to a historical malformed SEO metadata defect fixed by merged PR #91; current sampled source has clean canonical/og:url tags and no literal $3 source string. These may be stale discovered URLs, but current live HTTP/rendered response remains unverified. The short paths remain untraced to a current source. Do not create broad redirects for these entries without evidence of an active source and a matching destination.
 
 The owner does not need to transcribe the list again. Next useful user evidence, only if available: open /Height in URL Inspection and share the detailed Page indexing panel including referring page; then do the same for /InfoJano/ if its referring source is not apparent. This helps distinguish stale historical URLs from active internal links. No Request Indexing or Validate Fix.
+
+
+## Further investigation performed after owner said “do the work”
+
+### Confirmed historical source root cause for nine malformed URLs
+Reopened the dedicated root-cause report and the current issue-status report. The nine malformed suffix examples exactly match broken canonical/Open Graph metadata in the pre-PR #91 source for those nine pages. PR #91 was merged on 2026-11-12 (merge commit 3d5c6d26a8119231e634f270c070bf8eff7997b0). The current main source has clean canonical and og:url values for all nine. Pages workflow #43797089152 succeeded on main head 778e4adb863f17679fbf6e301e2a021f30a6659f at 2026-11-16 03:16:27Z. The user's Search Console screenshot showed a 404 crawl around 1:09 AM on Nov 16 (timezone not shown), which is consistent with Google having crawled the earlier broken version. This is historical/source/deployment correlation, not proof of a fresh live response or recrawl. No extra redirects or source edits are warranted for these nine based on current evidence.
+
+### Remaining four paths — fresh source-search result
+- `/Height`: exact search found no href or route. The only `/Height` code token located in the relevant source search is the PDF image dictionary key `/Height` inside `image-to-pdf.html`; it is not a web link. No safe destination can be inferred.
+- `/(100)`: exact source search found no matching href/link. No safe destination can be inferred.
+- `/(100)^ `: screenshot transcription still includes uncertain trailing symbol/space. Formula-like percentage expressions exist in `percentage.html`, but exact source search did not find an anchor that emits this path. Exact encoded URL and its Search Console referring page are needed.
+- `/InfoJano/`: this is a real legacy project-root path still referenced in current main by root PWA/helper and some pages (examples found: `install.js`, `sw.js`, `manifest.json`, `site-header.js`, `emi.html`, `extract-pdf-pages.html`, `pdf-to-jpg.html`, `word-converter.html`, `document-studio.html`, plus app manifests). This makes the legacy-path remediation relevant, but does not by itself prove which reference generated the Search Console 404.
+
+### PR #237 status rechecked
+Draft PR #237 remains open, not merged, and not deployed. It changes 89 files (471 additions / 469 deletions) and is still marked non-mergeable. A fresh compare against main now reports 105 commits ahead and 13 behind (diverged); actual conflicts must be reviewed and the broad patch revalidated before any merge decision. Do not merge, deploy, or rebase blindly. The PR is a prepared remediation, not a production fix.
+
+### Live verification attempt
+Tried opening the live custom-domain URLs for `/Height`, `/(100)`, `/InfoJano/`, `percentage.html`, and `image-to-pdf.html` in the available web browser. All were inaccessible through this environment, so HTTP status, redirect target, live HTML, and response headers remain unverified. GitHub source cannot substitute for live HTTP evidence.
+
+### What the owner should inspect next in Search Console
+The next useful manual evidence is not another screenshot of the aggregate 13-row table. Inspect `/Height` and `/InfoJano/` individually and send the detailed Page indexing panel showing the Referring page (and, if present, last crawl). For `/(100)` and the formula-like path, confirm the exact URL as displayed/copied by Search Console and its Referring page. Do not click Request Indexing or Validate Fix. No indexing hold was changed.
+
+### Actions in this batch
+Read-only GitHub source/search/PR checks and attempted live URL opens; updated this note only. No production code edits, DNS/Worker changes, PR edits, merge, deployment, Search Console submission, Request Indexing, or Validate Fix.
