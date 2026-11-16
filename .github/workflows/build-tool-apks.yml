@@ -40,7 +40,7 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json, pathlib, re, xml.etree.ElementTree as ET
+          import json, pathlib, xml.etree.ElementTree as ET
           from urllib.parse import urljoin, urlparse
           root = pathlib.Path('.')
           icons = sorted((root / 'app-icons').glob('*.svg'))
@@ -71,9 +71,10 @@ jobs:
               assert f'app-manifests/{slug}.webmanifest' in html, f'Missing manifest link: {page}'
               assert 'install.js' in html, f'Missing installer script: {page}'
           sw = (root / 'sw.js').read_text(encoding='utf-8')
-          match = re.search(r'const ASSETS = \\[([\\s\\S]*?)\\]\\.map\\(path => BASE \\+ path\\);', sw)
-          assert match, 'Could not parse service-worker precache list'
-          cached_paths = re.findall(r'^\\s*"([^"]+)",?\\s*
+          start = sw.index('const ASSETS = [') + len('const ASSETS = [')
+          end = sw.index('].map(path => BASE + path);', start)
+          cached_paths = [line.strip().strip('",') for line in sw[start:end].splitlines()]
+          cached_paths = [path for path in cached_paths if path]
           PY
 
       - name: Build one APK for each remaining tool
