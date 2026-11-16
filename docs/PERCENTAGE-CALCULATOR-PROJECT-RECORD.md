@@ -273,3 +273,76 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Owner can help unblock this by opening the page and testing the three Batch modes; capture any issue/screenshot. If an interactive browser tool becomes available, run the full checklist directly.
 - First file: `percentage-change.html`.
 - Preserve approved Hero/Header; do not add more features until QA is complete.
+
+
+## Work session — 2026-11-16 (Owner-supplied mobile QA screenshots and CSV export review)
+
+### 1. Owner request and scope
+- Requested: Record the latest QA evidence ("Koro") and identify the next task.
+- Scope: Percentage Calculator mobile screenshots, all three Batch Calculator modes, Batch CSV sample, and Calculation History CSV.
+- Constraints: Preserve the approved calculator design and existing layout. Do not touch homepage, Hero/Header, logo, shared navigation, or unrelated tools.
+
+### 2. Research and decisions
+- External competitor, keyword, and audience research: Not performed in this QA session.
+- Decision: Treat owner-supplied screenshots and exported CSV files as evidence for the specific cases shown; do not generalize them to untested cases or claim a complete browser QA pass.
+
+### 3. Baseline and risks
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Starting project-record commit: `48e155f3692fd0b5b19a6f614ae9d7092329f6b1`.
+- Read the mandatory work-log standard and this complete project record before updating it.
+- No application source file was changed in this session.
+- Known-good rollback point remains the previously recorded calculator source commits; no new code commit was made.
+
+### 4. Issues found / findings
+- No calculation defect was demonstrated by the supplied screenshots.
+- Clarification: 80 → 100 returning 22.22% is correct in Percentage Difference mode (absolute difference 20 divided by average 90); the same pair returns +25.00% in Percentage Change mode (20 divided by starting value 80). Earlier concern that 22.22% was inconsistent is withdrawn; the mode labels and History entries distinguish the two calculations.
+- Screenshot evidence shows the three Batch modes returning the expected sample results:
+  - Percentage Change: 80→100 = +25.00%; 800→3000 = +275.00%; 500→700 = +40.00%.
+  - Percentage Difference: 80/100 = 22.22%; 800/3000 = 115.79%; 500/700 = 33.33%.
+  - Reverse % (all Increase): final 80 at 100% → original 40; final 800 at 3,000% → original 25.806452; final 500 at 700% → original 62.5.
+- Owner-supplied mobile screenshots show the History, Batch results, and guide sections fitting within the captured narrow-screen viewport. This is screenshot-based visual evidence, not a full interaction or device/browser compatibility test.
+
+### 5. Changes made
+- No application code or design changes.
+- This project record is being extended with the new QA evidence and the corrected interpretation of Percentage Difference.
+- No unrelated files or features touched.
+
+### 6. Mistakes, failed attempts, and corrections
+- Earlier assistant described the 80→100 Percentage Difference result as a possible inconsistent denominator. That interpretation was incorrect because it overlooked that the screenshot was in Percentage Difference mode, whose denominator is the average of the two absolute values. Corrected based on the visible mode selector, step-by-step formula, History label, and exported CSV.
+- No failed code change or regression occurred in this session.
+
+### 7. Verification
+- Owner-supplied screenshot: Percentage Change Batch — 3/3 visible rows match expected results.
+- Owner-supplied screenshot: Percentage Difference Batch — 3/3 visible rows match expected results.
+- Owner-supplied screenshot: Reverse % Batch — 3/3 visible rows match expected original values.
+- File inspected: `infojano-percentage-calculator-batch.csv` — parsed as 3 rows × 8 columns; Calculation type is `difference` for all rows; results are 22.222222, 115.789474, and 33.333333; Difference values are 20, 2200, and 200. These match the Percentage Difference formula.
+- File inspected: `infojano-percentage-change-history (1).csv` — parsed as 6 rows × 8 columns; includes one Difference, two Reverse, and three Change records. All six percentage results match their respective formulas: 22.222222%, -20%, +20%, -20%, +25%, and -87.5%. Reverse rate is 20 for the two Reverse entries; non-Reverse rows leave it blank. Saved-at values are ISO UTC timestamps.
+- Screenshot evidence also shows History entries and both batch result tables.
+- Not verified: actual CSV opening/rendering in Excel or Google Sheets; CSV encoding/BOM and delimiter behavior across locales; Batch CSV export for Change and Reverse modes; History restore interaction; Copy Result; invalid-row handling; 100-row boundary; zero/negative/decimal/extreme-value edge cases; keyboard/accessibility behavior; full desktop/mobile responsive regression; production deployment/live status.
+- Important scope: the two supplied CSVs prove sample exports/data for Difference Batch and History only. They do not prove all CSV export modes or all spreadsheet applications.
+
+### 8. Commit and deployment
+- No application code commit in this session.
+- Project-record update only; full resulting commit SHA to be recorded after GitHub confirms it.
+- Branch: `main`.
+- Deployment: No code deployment performed; production live status remains unverified.
+
+### 9. Work checklist
+- [x] Review owner screenshots for Percentage Change Batch sample results.
+- [x] Review owner screenshots for Percentage Difference Batch sample results.
+- [x] Review owner screenshots for Reverse % Batch sample results.
+- [x] Inspect and formula-check the supplied Difference Batch CSV (3 rows).
+- [x] Inspect and formula-check the supplied History CSV (6 records).
+- [x] Correct the earlier misinterpretation of 22.22% as a possible formula inconsistency.
+- [ ] Test Change Batch CSV export with a real downloaded file.
+- [ ] Test Reverse % Batch CSV export with a real downloaded file.
+- [ ] Open both supplied CSVs in Excel or Google Sheets and check encoding/column parsing.
+- [ ] Test History restore, Copy Result, invalid rows, and the 100-row boundary.
+- [ ] Complete broader edge-case and accessibility QA.
+- [ ] Independently verify production deployment/live page.
+- [ ] Complete sourced competitor, US search-intent, and audience research before product expansion.
+
+### 10. Next session handover
+- Priority 1 next task: Validate remaining CSV paths — export Change Batch and Reverse % Batch files, then open the supplied and new CSVs in a spreadsheet application to check encoding, columns, numeric precision, and UTC timestamps.
+- First file to inspect if code work becomes necessary: `percentage-change.html`; do not change code unless a reproducible defect is found.
+- Preserve the approved Hero/Header and current visual design. No new features or redesign until the remaining QA gaps are closed.
