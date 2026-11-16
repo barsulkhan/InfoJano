@@ -1252,3 +1252,88 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - [ ] Review Page Indexing and the `sitemap.xml` report in GSC UI; do not infer indexed URL count from submitted count.
 - [ ] After indexing checks, compare page/query/country/device data again after an adequate observation window.
 - Next best task: URL Inspection for the two core English percentage pages, then implement only a confirmed technical/content issue. First inspect the current page source and the GSC URL Inspection result; do not redesign or touch unrelated files.
+
+
+## Work session — 2026-11-16 (Expanded SEO, sitemap, device and competitor review)
+
+### 1. Request and scope
+- Owner asked for as much research/review/work as possible in one pass and requested only the final results.
+- Scope expanded to: Search Console page/query/country/device review; sitemap and robots source review; current percentage-page source review; competitor feature comparison; identify safe, evidence-backed next actions.
+- Protected scope: English-first/global audience; preserve approved UI and calculator functionality; no homepage, Hero, Header, logo, shared navigation or unrelated-tool redesign. Do not alter Portuguese-language pages or create translations under this task.
+
+### 2. Additional Search Console data — canonical domain
+- Source: Windsor.ai Google Search Console connector, `sc-domain:infojano.com`, last 28 days (pulled 2026-11-16).
+- Device split:
+  - Mobile: 393 impressions, 1 click, 0.25% CTR, average position 9.97.
+  - Desktop: 301 impressions, 1 click, 0.33% CTR, average position 34.15.
+  - Tablet: 1 impression, 0 clicks, average position 3.
+- Important caution: device averages are affected by the mix of queries/pages and tiny sample sizes; this does not prove mobile pages rank better or that desktop has a technical issue. No device-specific code changes are justified from this data alone.
+- Page/device rows show many low-volume pages are currently desktop-only in this sample; this is not evidence that the pages are inaccessible on mobile.
+- Page/country breakdown for percentage cluster:
+  - `percentage-change.html`: 2 India impressions (avg position 42) and 1 US impression (position 80) in the page/country table; the query/page table separately has a few additional query rows due anonymized/omitted dimensions.
+  - `percentage-difference-calculator.html`: 2 Canada impressions (avg position 71), 2 UK (82.5), 1 Australia (81), 1 India (70), plus 1 Bahrain (39).
+  - `percentage.html`: 1 UK impression at position 3 (query `100-47.6`); too small to infer a ranking pattern.
+  - `repeated-percentage-change-calculator.html`: 1 US impression at position 22 in the page/country table; other impressions may be anonymized or grouped away.
+- Country and device dimensions are sparse; do not tune page content for a single country/device based on one or two impressions.
+
+### 3. Sitemap and crawl-discovery source review
+- Current `sitemap.xml` blob SHA: `c0d5e9f096d31389892af656fdc3db48e760b9be`.
+- Current `robots.txt` blob SHA: `d9b19d5d098c81da0ceb3586a7a9107a26612d57`.
+- `robots.txt` allows crawling and declares `https://infojano.com/sitemap.xml`.
+- Search Console Sitemaps row reports `https://infojano.com/sitemap.xml`: 106 submitted URLs, 0 errors, 0 warnings; last submitted 2026-11-14 and last downloaded 2026-11-14.
+- The source sitemap contains 106 URL entries. The two recently updated English percentage pages have `lastmod` 2026-11-16. Other entries without lastmod remain without it; do not fabricate dates.
+- The sitemap also contains several percentage-intent URLs (e.g. `percentage.html`, `percentage-change.html`, `percentage-difference-calculator.html`, `reverse-percentage-calculator.html`, `percentage-increase-calculator.html`, `percentage-decrease-calculator.html`, and supporting variants). These are separate user intents/landing pages in the current site architecture. No mass removal or redirect is justified without page-level indexing/canonical and content-overlap review.
+- Search Console's 106 submitted count matches the source sitemap entry count; this is not an indexed-URL count. The zero sitemap errors/warnings means the sitemap was accepted/processed without reported sitemap errors, not that all URLs are indexed.
+- Google recommends absolute canonical URLs in sitemaps and accurate lastmod only for significant, verifiable updates. Source: https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap.
+- No sitemap or robots source defect was confirmed; no source changes made.
+
+### 4. Current core page source review
+- `percentage.html` blob SHA: `4f6d3cadcbf70665fb3c2cfd55c57a69b9685bc2`.
+  - English document language, self-referencing canonical `https://infojano.com/percentage.html`, EN / pt-BR / x-default hreflang, and updated title/description/OG/Twitter metadata are present.
+  - Its current base calculator page and existing guide are preserved; no content or design edits made.
+- `percentage-change.html` blob SHA: `8f434234f1ce653f70681792da15a07c12f65de2`.
+  - English document language, self-referencing canonical, updated title/description/OG/Twitter metadata and WebApplication structured data are present.
+  - Existing three-mode tool (Change, Reverse %, Difference), batch/history/CSV feature set and guide remain in place; no calculator JS or design edits made.
+- `percentage-difference-calculator.html` blob SHA: `3c210daa16c3a9aa43db5814ec63a137360aca41`.
+  - Separate standalone page has its own self-referencing canonical, dedicated title/description, WebApplication schema and FAQ schema.
+  - It targets the same general topic as the Difference mode embedded in `percentage-change.html`, so there is a potential overlap/cannibalization question. Current GSC evidence is only 11 impressions across a few long-tail queries at an average position of 51.73. Do not merge, redirect, canonicalize or delete without URL Inspection and a full content/internal-link comparison.
+- Homepage source was read only to confirm its canonical/title context; no homepage changes made.
+
+### 5. Competitor feature research
+- Reviewed two current English-language competitor pages:
+  - Gera Tools Percentage Calculator: https://geratools.com/percentage-calculator
+  - TallyBench Percentage Calculator: https://tallybench.com/percentage-calculator.html
+- Both competitors present multiple related percentage tasks as one suite: percentage of a number, one number as a percent of another, reverse percentage, percentage change, quick increase/decrease and percentage difference. Gera Tools also explains the distinction between percentage change (directional, starting-value baseline) and percentage difference (symmetric, average baseline), and emphasizes step-by-step workings / in-browser processing.
+- InfoJano already has a broad percentage-tool cluster and its Percentage Change page has Change, Reverse %, Difference, batch and history/CSV. The generic `percentage.html` is a simpler percentage calculator, while adjacent pages cover related variants.
+- Strategic implication: InfoJano's differentiator can be the connected tool suite and precise explanations rather than creating many thin pages for wording variants. Strengthen contextual navigation between distinct intent pages and ensure the main percentage page explains its supported tasks clearly; avoid duplicating entire tools/content.
+- This is qualitative competitor page research, not a full market share, traffic or keyword-volume study. No competitor traffic figures were assumed.
+
+### 6. Decisions / prioritization
+1. **Do not make another metadata rewrite yet.** The latest metadata changes are dated 2026-11-16 and the available 28-day GSC window is too short / low-volume to assess impact.
+2. **First resolve indexing evidence** for `percentage.html`, `percentage-change.html` and `percentage-difference-calculator.html` using GSC URL Inspection: index status, last crawl, crawl allowed, page fetch, indexing allowed and Google-selected canonical.
+3. **Then review internal links** among the percentage suite. Link distinct pages contextually with descriptive anchors; avoid repetitive exact-match keyword stuffing.
+4. **Only after index/canonical checks**, decide whether standalone Difference page is sufficiently distinct from the Difference mode on Percentage Change page. Preserve URL equity unless evidence supports a merge.
+5. **No desktop/mobile redesign or broad page rewrite** is supported by current metrics.
+6. Monitor the primary pages over a longer period; one-impression ranking positions are not actionable.
+
+### 7. Verification completed / limitations
+- [x] Pulled 28-day canonical-domain totals and page-level performance.
+- [x] Pulled query, country and device dimensions.
+- [x] Pulled page/device and page/country breakdowns for the percentage cluster.
+- [x] Confirmed Search Console sitemap row: 106 submitted, 0 errors, 0 warnings.
+- [x] Read source `sitemap.xml`, `robots.txt`, `percentage.html`, `percentage-change.html`, `percentage-difference-calculator.html`, and homepage metadata.
+- [x] Reviewed two competitor calculator pages and recorded qualitative feature comparison.
+- [ ] Google URL Inspection / Google-selected canonical — not exposed by Windsor Search Analytics; must be performed in Search Console UI.
+- [ ] Live HTTP headers, rendered page, mobile/desktop visual QA and interactive browser tests — not performed; do not claim pass.
+- [ ] Keyword volume / country demand matrix — not refreshed in this task; no search volume invented.
+- [ ] Search Console change impact — cannot be measured yet.
+
+### 8. Changes and commit
+- No application source, metadata, sitemap, robots, service worker, homepage or design files changed.
+- Only this durable project record was updated.
+- Branch: `main`.
+- Record commit SHA to be captured after the GitHub update response.
+- No deployment triggered by this documentation-only change.
+
+### 9. Handover
+- Next best action: obtain GSC URL Inspection results for the three English percentage pages. If the URL Inspection data confirms all three are indexed with the expected canonical, proceed to a contextual internal-link/content distinction review; if not, fix the exact indexing/canonical issue first.
