@@ -272,3 +272,115 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 4. Obtain live HTTP response/status/redirect evidence for ads.txt, robots.txt, sitemap.xml, /Height and Countdown Studio.
 5. Keep PR #244 draft. Do not run or merge its release-producing workflow without separate explicit approval.
 6. No hero/banner, page header, logo, or InfoJano brand changes. No Search Console Request Indexing / Validate Fix, no AdSense resubmission, no DNS/Cloudflare/account/legal/publisher settings changes.
+
+
+---
+
+## 2026-11-16 — Homepage Privacy & Messaging / Consent troubleshooting handoff (latest session)
+
+### User request and working boundary
+- User asked to stop the repeated browser tests for today and preserve a dated record so the next chat can continue without asking them to repeat work.
+- User has finished their part for now. Do not ask for more DevTools screenshots, Console commands, Network filters, or repeated URL tests unless there is a genuinely new, essential reason.
+- Hard design constraint remains: do not change the homepage hero/banner, any page header, logo artwork, or InfoJano brand name.
+- Do not change AdSense account configuration, publish/resubmit messages, DNS/Cloudflare/Worker settings, Search Console indexing/validation, or legal/publisher settings without separate explicit approval.
+- No Search Console Request Indexing / Validate Fix and no AdSense review resubmission have been performed.
+
+### Work completed in this session
+- Reviewed live homepage screenshots supplied by the user. Initially the footer showed Privacy Policy and Contact but not the privacy settings control. After PR #245 deployment, the Privacy and cookie settings link became visible in the footer.
+- PR #245: [Keep Privacy and cookie settings link visible](https://github.com/barsulkhan/InfoJano/pull/245)
+  - Merged on 2026-11-16.
+  - Merge commit: 09ad3519cf9d097537966e2970cb747f8c791436.
+  - Only index.html changed (12 additions, 13 deletions).
+  - Kept the footer link visible and routed the click through a googlefc.callbackQueue / CONSENT_API_READY callback attempt.
+  - The user confirmed the link is now visible on the live homepage, but clicking it does not open a privacy/revocation dialog on desktop or mobile.
+  - GitHub Pages deployment run [#43874578447](https://github.com/barsulkhan/InfoJano/actions/runs/43874578447) was checked and reported successful.
+  - Important: link visibility is fixed; working CMP revocation is NOT fixed or verified. Do not describe PR #245 as a complete CMP fix.
+
+### AdSense account evidence supplied by user
+- User shared the AdSense > Privacy & messaging > European regulations screen.
+- The row showed:
+  - Message name: European regulations message - infojano.com
+  - Site: infojano.com
+  - Last modified: 10 Nov 2026
+  - Status: Published
+  - Publish toggle enabled.
+  - Messages shown: 0
+  - Consent rate: 0%
+  - Fallback messages shown: 0
+- This proves the European regulations message is Published in the account UI. It does NOT prove the live CMP script is injected, that the message is served to a particular visitor, or that the revocation API is initialized.
+- Do not ask the user to change the AdSense message/account settings based only on these screenshots.
+
+### Browser tests performed by the user and observed results
+1. Homepage footer:
+   - Privacy Policy and Contact visible.
+   - After PR #245, Privacy and cookie settings visible too.
+   - Clicking the privacy settings link on the computer did nothing visible.
+   - On mobile, long-press opened the normal Android link context menu (copy link address/text, download, share, open in Chrome); that is not evidence of CMP working. User also reports normal click did not open anything.
+2. Test URL:
+   - User opened https://infojano.com/?fc=alwaysshow&fctype=gdpr; homepage loaded, but no consent popup appeared. Screenshot showed the URL beginning with ?fc=alway... in the address bar. This test did not produce a popup.
+   - A later suggestion to try https://infojano.com/?fc=alwaysshow was made, but there is no evidence the user completed that new test. Do not ask them to repeat tests unless current documentation or new evidence makes it essential.
+3. Chrome DevTools Console:
+   - User ran the following:
+     ({
+       googlefc: typeof window.googlefc,
+       revoke: typeof window.googlefc?.showRevocationMessage,
+       tcf: typeof window.__tcfapi
+     })
+   - Visible result:
+     - googlefc: 'undefined'
+     - revoke: 'undefined'
+     - tcf: 'undefined'
+   - Therefore these globals were not present in that tested page/session at the time of inspection.
+4. Chrome DevTools Network:
+   - Filter fundingchoices: no matching request in the initial test.
+   - User then enabled Disable cache, performed a hard reload (Ctrl+Shift+R), and filtered fundingchoices again.
+   - Screenshot showed 0 / 50 requests and no matching rows. Thus no request whose displayed name matched fundingchoices was captured in that run.
+   - Filter adsbygoogle.js: request was present with HTTP 200.
+   - A first screenshot showed 200 (from disk cache); after enabling Disable cache and hard reloading, another screenshot still showed adsbygoogle.js with status 200 (about 57 KB, roughly 529 ms in the UI).
+   - Selected request Headers screenshot showed Referrer Policy: strict-origin-when-cross-origin, which is a normal browser policy and is not evidence by itself of a blocker.
+   - Do not conflate AdSense ad-delivery script success with Funding Choices / Privacy & Messaging CMP initialization. They are separate things.
+5. Test context:
+   - User initially tested with desktop Chrome and also showed Android Chrome. Exact browser version, extensions, network filtering, region, and consent state are not established.
+   - User's approximate location is India, but do not infer eligibility or final CMP behavior from location alone.
+
+### Current source inspection (main, after PR #245)
+- Repository: barsulkhan/InfoJano.
+- Main HEAD at time of handoff: 09ad3519cf9d097537966e2970cb747f8c791436.
+- index.html head:
+  - Lines 4–11 contain GA4 loader/config.
+  - No explicit Funding Choices / Google Privacy & Messaging CMP loader was found in the inspected homepage source.
+- AdSense script is present at approximately line 1507:
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2908196513377151" crossorigin="anonymous"></script>
+- Footer privacy link appears at approximately line 1714 after PR #245:
+  <div class="footer-privacy"><a id="ij-privacy-revocation" href="#privacy-cookie-settings">Privacy and cookie settings</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/contact.html">Contact</a></div>
+- A footer script near lines 2199–2218 creates/uses window.googlefc.callbackQueue and pushes a CONSENT_API_READY callback that calls showRevocationMessage() if the function exists. This is only a client-side hook; browser evidence shows the relevant globals are currently undefined in the tested session.
+- Source observation plus browser evidence suggests the missing/inactive CMP integration or initialization is the central issue to investigate. Do not yet claim the precise root cause: the AdSense script may be expected to inject CMP under account/site configuration, or the site may need the exact Google-provided CMP snippet. Confirm using current official Google AdSense Privacy & Messaging documentation and the actual configured message before editing.
+- Do not add a guessed Funding Choices script, invent a publisher-specific URL, or assume the AdSense loader alone guarantees the CMP. First determine the exact current Google-approved integration path for this account and site.
+
+### Key interpretation / what is and is not proven
+- Proven: AdSense page script loaded successfully with HTTP 200 in the user's browser.
+- Proven: the account UI showed European regulations message as Published.
+- Proven: the privacy link is visible after PR #245.
+- Proven: the user's tested page session did not expose googlefc, showRevocationMessage, or __tcfapi.
+- Proven: no Network request matching fundingchoices appeared in the user's cache-disabled hard reload (0/50 displayed requests).
+- Not proven: that Google CMP is universally absent for all visitors/regions; that the AdSense account/site is misconfigured; that the user is ineligible; that a particular Referrer Policy blocks it; or that PR #245's callback shape exactly matches current Google documentation.
+- The earlier test URL ?fc=alwaysshow&fctype=gdpr did not show a popup. Treat the URL test as inconclusive regarding the exact cause; do not repeatedly send the user through it.
+- Do not keep asking the user to repeat the same tests. The next work should be repository/source + official documentation research by the assistant, and only ask for owner-side account details if an unavoidable configuration fact cannot be read from public/source evidence.
+
+### Next-chat action plan (assistant-side first; no user work initially)
+1. Re-open this handoff file and inspect current main / index.html so no stale assumptions are used.
+2. Research current official Google AdSense Help documentation for:
+   - European regulations message setup and serving;
+   - the exact Google-provided Privacy & Messaging / Funding Choices CMP integration snippet and how it is injected on AdSense sites;
+   - the documented revocation link/API callback syntax and readiness event;
+   - supported preview/test parameters and limitations.
+   Prefer official Google sources; distinguish account-side setup from site-side integration.
+3. Compare the official current integration requirements against the actual live/source index.html, the Published message evidence, and browser test observations.
+4. Determine whether the site needs an explicit Google-provided CMP tag, whether an account/site configuration or consent-message condition prevents injection, or whether the current footer callback is incorrect. Do not guess.
+5. If a code fix is justified, create a narrow branch and PR that only touches the necessary consent integration/footer logic. Preserve hero/banner/header/logo/brand and all unrelated site UI. Add no other design changes.
+6. Validate source and workflow. Do not merge/deploy without explicit user approval for that new code change. PR #245's prior approval was specific to PR #245 and does not authorize additional merges.
+7. After any approved deployment, ask for at most one concise live check. Do not repeat the lengthy DevTools exercise unless truly necessary.
+8. Keep the existing hold: no indexing requests, no AdSense resubmission, no DNS/Cloudflare/Worker/account/legal/publisher setting changes without explicit approval.
+
+### User handoff note
+The user explicitly asked to stop work for today and start a fresh chat with this complete dated record. In the next chat, acknowledge that the notes are saved in this repository file and continue from the assistant-side research/diagnosis. Do not ask the user to repeat any of the tests above.
