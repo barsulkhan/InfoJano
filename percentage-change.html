@@ -7,19 +7,19 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Percentage Change Calculator: Increase or Decrease | InfoJano</title>
-<meta name="description" content="Calculate percentage increase or decrease between an original value and a new value with this free percentage change calculator.">
+<title>Percentage Change Calculator | Increase or Decrease – InfoJano</title>
+<meta name="description" content="Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.">
 <link rel="canonical" href="https://infojano.com/percentage-change.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Percentage Change Calculator: Increase or Decrease | InfoJano">
-<meta property="og:description" content="Calculate percentage increase or decrease between an original value and a new value with this free percentage change calculator.">
+<meta property="og:title" content="Percentage Change Calculator | Increase or Decrease – InfoJano">
+<meta property="og:description" content="Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.">
 <meta property="og:url" content="https://infojano.com/percentage-change.html">
 <meta property="og:image" content="https://infojano.com/icon-512.png">
 <meta property="og:image:alt" content="InfoJano useful online tools">
 <meta name="twitter:image" content="https://infojano.com/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Percentage Change Calculator: Increase or Decrease | InfoJano">
-<meta name="twitter:description" content="Calculate percentage increase or decrease between an original value and a new value with this free percentage change calculator.">
+<meta name="twitter:title" content="Percentage Change Calculator | Increase or Decrease – InfoJano">
+<meta name="twitter:description" content="Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.">
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
@@ -55,7 +55,16 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "isAccessibleForFree": true,
-  "description": "Calculate percentage increase or decrease between an original value and a new value with this free percentage change calculator.",
+  "description": "Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.",
+  "inLanguage": "en-US",
+  "featureList": [
+    "Instant percentage change calculation",
+    "Increase and decrease results",
+    "Step-by-step calculation breakdown",
+    "Calculation history stored in the current browser",
+    "Batch percentage change calculations for up to 100 rows",
+    "CSV export for history and batch results"
+  ],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
@@ -335,6 +344,23 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 .ij-pct-batch-table td:last-child{font-weight:800;color:#087ce5}
 @media(max-width:600px){.ij-pct-batch{padding:18px 15px}.ij-pct-history-tools{width:100%}.ij-pct-history-tools button{flex:1 1 auto}.ij-pct-batch-table{font-size:11px}.ij-pct-batch-table th,.ij-pct-batch-table td{padding:8px 5px}}
 </style>
+<style id="ij-percentage-seo-content">
+.ij-pct-seo-guide,.ij-pct-faq{margin:24px 0;padding:22px 24px;border:1px solid #dbe8f6;border-radius:20px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.ij-pct-seo-guide h2,.ij-pct-faq h2{margin:10px 0 12px;color:#14264a;font-size:23px;line-height:1.3}
+.ij-pct-seo-guide h3{margin:22px 0 8px;color:#1d3b65;font-size:17px;line-height:1.35}
+.ij-pct-seo-guide p,.ij-pct-faq p{color:#536781;font-size:14px;line-height:1.75}
+.ij-pct-guide-formula{padding:13px 15px;border:1px solid #dceafa;border-radius:12px;background:#f5faff;color:#123c70!important;overflow-wrap:anywhere}
+.ij-pct-example-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ij-pct-example-grid article{min-width:0;padding:14px;border:1px solid #e1edf8;border-radius:14px;background:#fbfdff}
+.ij-pct-example-grid h4{margin:0 0 7px;color:#174575;font-size:14px}
+.ij-pct-example-grid p{margin:5px 0;font-size:12px}
+.ij-pct-example-grid strong{color:#087ce5}
+.ij-pct-faq details{padding:14px 0;border-bottom:1px solid #e5eef8}
+.ij-pct-faq details:last-child{border-bottom:0;padding-bottom:0}
+.ij-pct-faq summary{color:#17365c;font-size:14px;font-weight:800;cursor:pointer;line-height:1.5}
+.ij-pct-faq details p{margin:9px 0 0}
+@media(max-width:650px){.ij-pct-seo-guide,.ij-pct-faq{padding:19px 17px}.ij-pct-seo-guide h2,.ij-pct-faq h2{font-size:20px}.ij-pct-example-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
@@ -392,6 +418,36 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
  <div class="ij-pct-batch-actions"><button type="button" onclick="runPctBatch()">Calculate all</button><button type="button" class="ij-pct-batch-secondary" onclick="clearPctBatch()">Clear</button><button type="button" class="ij-pct-batch-secondary" id="ij-pct-batch-export" onclick="exportPctBatch()" disabled>Export batch CSV</button></div>
  <p id="ij-pct-batch-status" class="ij-pct-batch-status" aria-live="polite">Your batch results will appear here.</p>
  <div id="ij-pct-batch-results" class="ij-pct-batch-results" aria-live="polite"></div>
+</section>
+<section class="ij-pct-seo-guide" aria-labelledby="ij-pct-guide-title">
+ <span class="ij-pct-section-kicker">PERCENT CHANGE GUIDE</span>
+ <h2 id="ij-pct-guide-title">How to Calculate Percentage Change</h2>
+ <p>Percentage change tells you how much a value has increased or decreased compared with its starting value. Enter the original value as <strong>Old value</strong> and the updated value as <strong>New value</strong>. The order matters because the old value is the baseline for the calculation.</p>
+ <h3>Percentage change formula</h3>
+ <p class="ij-pct-guide-formula"><strong>Percentage change = ((New value − Old value) ÷ |Old value|) × 100</strong></p>
+ <p>The absolute value bars around the old value mean the denominator is treated as positive. A positive result means an increase, a negative result means a decrease, and zero means no change.</p>
+ <h3>Worked examples</h3>
+ <div class="ij-pct-example-grid">
+  <article><h4>Percentage increase</h4><p>Old value: 80 · New value: 100</p><p>(100 − 80) ÷ 80 × 100 = <strong>25% increase</strong></p></article>
+  <article><h4>Percentage decrease</h4><p>Old value: 100 · New value: 80</p><p>(80 − 100) ÷ 100 × 100 = <strong>20% decrease</strong></p></article>
+  <article><h4>Large increase</h4><p>Old value: 58 · New value: 10,080</p><p>(10,080 − 58) ÷ 58 × 100 = <strong>17,279.31% increase</strong></p></article>
+ </div>
+ <h3>How to calculate percentage change in Excel or Google Sheets</h3>
+ <p>If cell <strong>A2</strong> contains the old value and cell <strong>B2</strong> contains the new value, use this formula:</p>
+ <p class="ij-pct-guide-formula"><code>=(B2-A2)/ABS(A2)</code></p>
+ <p>Format the result cell as Percentage. If A2 is zero, the formula cannot return a defined percentage change because it would divide by zero.</p>
+ <h3>Percentage change vs. percentage difference</h3>
+ <p>Percentage change compares a new value with a specific starting value, so the order of the values matters. Percentage difference compares two values symmetrically, usually using their average as the reference. They answer different questions and should not be used interchangeably.</p>
+</section>
+<section class="ij-pct-faq" aria-labelledby="ij-pct-faq-title">
+ <span class="ij-pct-section-kicker">COMMON QUESTIONS</span><h2 id="ij-pct-faq-title">Percentage Change Calculator FAQs</h2>
+ <details><summary>How do I calculate percentage change between two numbers?</summary><p>Subtract the old value from the new value, divide the result by the absolute old value, and multiply by 100. This calculator performs those steps and labels the result as an increase, decrease, or no change.</p></details>
+ <details><summary>What is the difference between percentage change and percentage increase?</summary><p>Percentage change can be positive or negative. A positive result is a percentage increase; a negative result is a percentage decrease. The formula is the same, but the direction depends on whether the new value is higher or lower than the old value.</p></details>
+ <details><summary>Can I calculate percentage change if the old value is zero?</summary><p>No defined percentage change can be calculated from an old value of zero using this formula because it requires division by the old value. The calculator displays an explanation instead of showing an invalid number.</p></details>
+ <details><summary>Can percentage change be negative?</summary><p>Yes. A negative percentage change means the new value is lower than the old value. For example, a change from 100 to 80 is a 20% decrease, or −20% when shown as a signed percentage.</p></details>
+ <details><summary>How do I calculate percentage change in Excel?</summary><p>Put the old value in A2 and the new value in B2, then enter =(B2-A2)/ABS(A2) in another cell. Format that cell as Percentage. The old value must not be zero.</p></details>
+ <details><summary>Can I calculate several percentage changes at once?</summary><p>Yes. Use Batch Percentage Change and enter one pair of values per line, with the old value first and the new value second. You can calculate up to 100 rows at a time and export valid results as a CSV file.</p></details>
+ <details><summary>Are my calculations saved?</summary><p>Your recent single calculations can be saved in this browser's local storage. They are not uploaded as a calculation-history list to InfoJano's server. You can clear the saved history at any time. Batch entries are not saved to history automatically.</p></details>
 </section>
 <section><h2>Formula</h2><p>Percentage change = ((new value − old value) ÷ |old value|) × 100. A positive result is an increase; a negative result is a decrease.</p></section>
 <p><a href="index.html">← Back to InfoJano Home</a></p>
