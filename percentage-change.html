@@ -279,6 +279,22 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 .ij-pct-result-text .ij-pct-change-direction{display:block;font-size:15px;color:#526985}
 @media(max-width:650px){.ij-pct-breakdown{padding:19px}.ij-pct-actions button{flex:1 1 100px;padding:10px 12px}.ij-pct-result-actions button{width:100%}}
 </style>
+<style id="ij-percentage-history">
+.ij-pct-history{margin:0 0 25px;padding:22px 24px;border:1px solid #d8e8f8;border-radius:22px;background:#fff;box-shadow:0 9px 28px rgba(24,74,130,.055)}
+.ij-pct-history-heading{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.ij-pct-history-heading h2{margin:9px 0 4px;color:#14264a;font-size:21px}
+.ij-pct-history-heading p,.ij-pct-history-empty{margin:0;color:#71839a;font-size:13px;line-height:1.5}
+.ij-pct-history-clear{flex:0 0 auto;padding:9px 13px;border:1px solid #d5e5f4;border-radius:10px;background:#f7fbff;color:#315a83;font-size:12px;font-weight:800;cursor:pointer}
+.ij-pct-history-list{display:grid;gap:8px;margin-top:15px}
+.ij-pct-history-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 14px;border:1px solid #e4eef8;border-radius:13px;background:#fbfdff}
+.ij-pct-history-restore{min-width:0;padding:0;border:0;background:transparent;text-align:left;color:#17365c;cursor:pointer}
+.ij-pct-history-values{display:block;font-size:13px;font-weight:800;overflow-wrap:anywhere}
+.ij-pct-history-meta{display:block;margin-top:4px;color:#71839a;font-size:11px}
+.ij-pct-history-result{font-size:14px;font-weight:900;color:#087ce5;text-align:right;white-space:nowrap}
+.ij-pct-history-empty{padding:12px 0}
+.ij-pct-history-clear:focus-visible,.ij-pct-history-restore:focus-visible{outline:3px solid #1686e855;outline-offset:3px;border-radius:6px}
+@media(max-width:600px){.ij-pct-history{padding:18px 15px}.ij-pct-history-heading{align-items:flex-start}.ij-pct-history-heading h2{font-size:19px}.ij-pct-history-clear{padding:8px 9px}.ij-pct-history-row{padding:10px;gap:8px}}
+</style>
 </head>
 <body>
 
@@ -324,6 +340,10 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
   <div class="ij-pct-output-card" aria-live="polite"><span class="ij-pct-section-kicker">YOUR RESULT</span><div class="ij-pct-output-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 39h34M11 32h7v7h-7zM22 23h7v16h-7zM33 11v28h-7V11z" fill="currentColor"/></svg></div><div id="result" class="ij-pct-result-text">Your percentage change will appear here.</div><p id="result-summary">Enter both values to see the percentage change.</p><div class="ij-pct-result-actions"><button type="button" id="copy-result" class="ij-pct-secondary" onclick="copyResult()" disabled>Copy Result</button></div></div>
   <div class="ij-pct-breakdown" id="calculation-breakdown" hidden aria-live="polite"><span class="ij-pct-section-kicker">STEP-BY-STEP</span><h3>How the result is calculated</h3><ol id="breakdown-steps"></ol><p id="negative-value-note" hidden>Note: When the starting value is negative, percentage change conventions can vary. This calculator divides by the absolute starting value; interpret the direction in that context.</p></div>
 </section>
+<section class="ij-pct-history" id="ij-pct-history" aria-labelledby="ij-pct-history-title">
+  <div class="ij-pct-history-heading"><div><span class="ij-pct-section-kicker">SAVED ON THIS DEVICE</span><h2 id="ij-pct-history-title">Calculation History</h2><p>Your recent calculations are saved only in this browser.</p></div><button type="button" class="ij-pct-history-clear" onclick="clearPctHistory()">Clear history</button></div>
+  <div id="ij-pct-history-list" class="ij-pct-history-list"><p class="ij-pct-history-empty">Your recent calculations will appear here.</p></div>
+</section>
 <section><h2>Formula</h2><p>Percentage change = ((new value − old value) ÷ |old value|) × 100. A positive result is an increase; a negative result is a decrease.</p></section>
 <p><a href="index.html">← Back to InfoJano Home</a></p>
 <section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
@@ -359,6 +379,8 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 <script>
 const pctFormatter=new Intl.NumberFormat('en-US',{maximumFractionDigits:6});
 let lastPercentageResult=null;
+let pctHistorySaveTimer=null;
+const pctHistoryStorageKey='infojano-percentage-change-history-v1';
 function readPercentageInputs(){
  const oldText=document.getElementById('old').value.trim();
  const newText=document.getElementById('new').value.trim();
@@ -366,6 +388,47 @@ function readPercentageInputs(){
  const oldValue=Number(oldText),newValue=Number(newText);
  if(!Number.isFinite(oldValue)||!Number.isFinite(newValue))return {valid:false,empty:false};
  return {valid:true,oldValue,newValue};
+}
+function readPctHistory(){
+ try{const data=JSON.parse(localStorage.getItem(pctHistoryStorageKey)||'[]');return Array.isArray(data)?data.filter(x=>x&&Number.isFinite(x.oldValue)&&Number.isFinite(x.newValue)&&Number.isFinite(x.change)).slice(0,10):[];}catch(e){return [];}
+}
+function renderPctHistory(){
+ const list=document.getElementById('ij-pct-history-list');if(!list)return;
+ const items=readPctHistory();list.textContent='';
+ if(!items.length){const empty=document.createElement('p');empty.className='ij-pct-history-empty';empty.textContent='Your recent calculations will appear here.';list.appendChild(empty);return;}
+ items.forEach(function(item,index){
+  const row=document.createElement('div');row.className='ij-pct-history-row';
+  const restore=document.createElement('button');restore.type='button';restore.className='ij-pct-history-restore';restore.onclick=function(){restorePctHistory(index);};
+  const values=document.createElement('span');values.className='ij-pct-history-values';values.textContent=pctFormatter.format(item.oldValue)+' → '+pctFormatter.format(item.newValue);
+  const meta=document.createElement('span');meta.className='ij-pct-history-meta';meta.textContent=item.direction+' · '+new Date(item.savedAt).toLocaleString();
+  restore.appendChild(values);restore.appendChild(meta);
+  const result=document.createElement('span');result.className='ij-pct-history-result';result.textContent=(item.change>0?'+':item.change<0?'−':'')+new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(Math.abs(item.change))+'%';
+  row.appendChild(restore);row.appendChild(result);list.appendChild(row);
+ });
+}
+function schedulePctHistorySave(item){
+ if(pctHistorySaveTimer)clearTimeout(pctHistorySaveTimer);
+ pctHistorySaveTimer=setTimeout(function(){
+  const items=readPctHistory();
+  const existing=items.findIndex(x=>x.oldValue===item.oldValue&&x.newValue===item.newValue);
+  if(existing>=0)items.splice(existing,1);
+  items.unshift({...item,savedAt:Date.now()});
+  try{localStorage.setItem(pctHistoryStorageKey,JSON.stringify(items.slice(0,10)));renderPctHistory();}catch(e){
+   const list=document.getElementById('ij-pct-history-list');if(list){list.textContent='';const msg=document.createElement('p');msg.className='ij-pct-history-empty';msg.textContent='History could not be saved in this browser. Check your browser storage settings.';list.appendChild(msg);}
+  }
+ },500);
+}
+function restorePctHistory(index){
+ const item=readPctHistory()[index];if(!item)return;
+ document.getElementById('old').value=String(item.oldValue);
+ document.getElementById('new').value=String(item.newValue);
+ calculate();
+ document.getElementById('old').focus();
+}
+function clearPctHistory(){
+ if(pctHistorySaveTimer)clearTimeout(pctHistorySaveTimer);
+ try{localStorage.removeItem(pctHistoryStorageKey);}catch(e){}
+ renderPctHistory();
 }
 function calculate(){
  const out=document.getElementById('result');
@@ -421,6 +484,7 @@ function calculate(){
  negativeNote.hidden=!(oldValue<0||newValue<0);
  breakdown.hidden=false;
  lastPercentageResult={oldValue,newValue,difference,change,direction,formattedPercent};
+ schedulePctHistorySave({oldValue,newValue,difference,change,direction});
  copyButton.disabled=false;
 }
 function swapValues(){
@@ -451,6 +515,7 @@ function resetPercentage(){
  document.getElementById('old').focus();
 }
 document.addEventListener('DOMContentLoaded',function(){
+ renderPctHistory();
  ['old','new'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){
   calculate();
   document.getElementById('live-status').textContent='Result updated automatically.';
