@@ -402,3 +402,32 @@ Source: https://www.kwstrends.com/google-ads-keyword-tool
 - [ ] Compare bulk Keyword Planner values with corrected average monthly estimates in individual reports without merging them.
 - [ ] Review actual top-10 organic SERPs for the five phrases before final SEO page recommendations.
 - [ ] Reconcile the site strategy with actual Search Console data when access exists.
+
+
+## 15. Follow-up attempt to obtain a consistent country matrix — 2026-11-16
+
+### 15.1 Sources and actions attempted
+- Re-opened the KWS Trends bulk checker. Its public page documents up to 200 keywords, country selection, English-language Google Ads Keyword Planner data, average monthly searches, top-of-page bid range, competition, 12-month history and CSV export. The page also says 20 lookups per browser per day and no sign-up. Source: https://www.kwstrends.com/google-ads-keyword-tool (accessed 2026-11-16).
+- The page's text-rendered view exposes the form labels but not a usable submission interface or result rows. No bulk lookup or CSV export could be completed from this session.
+- Checked the available Ahrefs Keywords Explorer overview as an alternate structured source. Its schema supports exact keyword metrics by country, including volume, difficulty, CPC, clicks and detected keyword languages. The actual request for the five phrases across US, GB, CA, AU, DE, FR, NL, BR, RU and CN was rejected by the connected service with **Insufficient plan**. No Ahrefs data was returned; no figures are inferred from this failed request.
+- Ahrefs documentation/schema: https://docs.ahrefs.com/docs/api/reference/introduction (tool schema inspected 2026-11-16).
+- Google's official Keyword Planner instructions confirm that monthly search estimates can be filtered by location and language, but basic access requires completing Google Ads account setup with billing information. Source: https://support.google.com/google-ads/answer/7337243?hl=en (accessed 2026-11-16).
+
+### 15.2 Result
+- No new exact-phrase country volume observations were obtained in this pass.
+- The planned five-keyword × ten-country matrix remains uncollected. Missing values remain **unknown**, not zero.
+- The public KWS page's claim that it uses English data is documented, but the interactive data retrieval has not been performed.
+- The Ahrefs alternative is technically suitable in schema but blocked by the connected plan entitlement. Do not report this as an Ahrefs keyword-volume result.
+
+### 15.3 Practical next route
+1. Use the KWS Trends interactive page in a real browser session and export one CSV per country; start with US, UK, Canada and Australia.
+2. If that page cannot be operated, use Google Ads Keyword Planner with location set country-by-country, language set to English, and Google Search network consistently. Google states billing setup is required for basic Keyword Planner access.
+3. Keep volume, CPC/bids, ad competition and SEO difficulty in separate fields. Do not combine provider estimates or treat missing values as zero.
+4. Extend to Germany, France, Netherlands, Brazil, Russia and China only where English-language filtering is explicitly available and documented.
+
+### 15.4 Research checklist
+- [ ] KWS interactive lookup / CSV: pending browser interaction.
+- [ ] Ahrefs exact phrase matrix: blocked by connected plan entitlement.
+- [ ] Google Ads Keyword Planner country matrix: pending account access.
+- [x] Confirmed the public checker supports country selection and documents English-language data.
+- [x] Confirmed the Google Ads official workflow allows location/language settings and requires account setup with billing information.
