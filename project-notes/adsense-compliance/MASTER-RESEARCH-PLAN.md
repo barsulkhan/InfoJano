@@ -821,3 +821,12 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - Added Privacy Policy and Contact footer links to six more pages: Number to Words, Percentage Change, Tip Calculator, Date Difference, GST Calculator and Text Counter.
 - Task record: [2026-11-16-0018-second-screenshot-batch-privacy-links.md](2026-11-16-0018-second-screenshot-batch-privacy-links.md).
 - Live deployment/browser confirmation remains pending.
+
+
+### Full-page privacy link coverage and PWA cache QA — 2026-11-16 08:12 +05:30
+- CI now validates link coverage across 115 user-facing root HTML pages (out of 116 root HTML files; Google verification file excluded). Each page must include both Privacy Policy and Contact links or load `site-header.js` for conditional shared links.
+- Added missing direct links to standalone pages, expanded root HTML workflow triggers, and corrected Work Hours/Elapsed Time footer links.
+- Privacy Policy QA run #43794141231 PASS: 115 root pages, 26 policy hrefs and 110 sitemap URLs checked; local targets, fragments, sitemap and robots reference passed.
+- APK validation surfaced that Contact and Privacy Policy were missing from the PWA precache. Added both and bumped cache to v311; run #43794247117 and Pages deployment for fix commit remain pending at report time.
+- Task record: [2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md](2026-11-16-0812-full-page-privacy-link-and-pwa-qa.md).
+- Live mobile after-state verification remains outstanding. Account-side CMP/AdSense and device-only tests remain deferred.
