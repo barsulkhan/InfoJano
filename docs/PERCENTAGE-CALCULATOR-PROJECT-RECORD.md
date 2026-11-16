@@ -148,3 +148,71 @@ At the start of every future session on this tool, read this record before makin
 ### Correction / clarification — 2026-11-16
 
 Earlier project notes listed commit short SHAs inconsistently. The authoritative source for the current state is the GitHub commit history on `main`; future log entries must record the full 40-character commit SHA returned by GitHub. The recent batch work was committed in two steps: feature implementation followed by exact row-format validation. The validation commit is `63af8a897de00c1e239ffadfe62283c65c13e291`. Do not infer production deployment from either commit.
+
+
+## Work session — 2026-11-16 (Batch Calculator QA and parser correction)
+
+### 1. Owner request and scope
+- Requested: Continue the next planned task after the owner said to start work.
+- Scope: QA of `percentage-change.html`, focused on all three Batch Calculator modes and nearby existing features.
+- Explicit constraints: Do not alter the approved tool Hero, Header, logo, homepage, or unrelated tools.
+
+### 2. Research and decisions
+- External market/competitor research: Not performed in this session; this was a code QA and bug-fix session.
+- Decision: Fix the confirmed batch input parsing issue before adding any new feature.
+
+### 3. Baseline and risks
+- Repository/branch: `barsulkhan/InfoJano`, `main`.
+- Starting file blob SHA: `91f497e3bbda960e918aac2bbd1f15c68ba1c83f`.
+- Files inspected: `percentage-change.html`, this project record, and `docs/TOOL-WORK-LOG-STANDARD.md`.
+- Preserved: Percentage Change, Reverse %, Percentage Difference, History, Copy Result, CSV export, approved Hero and Header.
+- Risk: Incorrect newline/tab parsing could cause multiline batch inputs to be treated as a single row or split incorrectly.
+
+### 4. Issues found
+- Confirmed issue: Batch parser used over-escaped regex patterns for line and cell splitting. The source had a pattern equivalent to matching literal backslash sequences instead of actual CR/LF and tab separators.
+- Confirmed issue: The example placeholders for Change and Difference modes contained inconsistent escaped newline sequences, so examples could display literal \\n text rather than separate lines.
+- Reproduction: Paste multiple comma-separated rows into Batch mode; parser's newline splitting did not correctly use the line break separator.
+- Root cause: Backslashes were doubled when the earlier batch feature code was inserted.
+
+### 5. Changes made
+- File: `percentage-change.html`.
+- Corrected batch line splitting to use CR/LF newline parsing.
+- Corrected cell splitting to use tab, comma, and semicolon separators.
+- Corrected multiline placeholders for Change, Reverse %, and Difference modes.
+- No Hero, Header, logo, homepage, or unrelated page layout changes.
+
+### 6. Mistakes, failed attempts, and corrections
+- The prior batch implementation contained incorrect escaping. This was an implementation mistake and is recorded as such.
+- During the placeholder correction, an initial scripted replacement expected a sequence that was already correctly escaped; the operation stopped before writing any file. The actual remaining incorrect sequences were then identified and corrected in a subsequent successful commit.
+
+### 7. Verification
+- Static source assertions passed for: newline parser, tab/comma/semicolon parser, all three multiline placeholders, all three mode options, 100-row cap, invalid-row filtering, Reverse 100% decrease guard, CSV calculation-type column, existing History/Copy controls, and preservation of Hero/Header markup.
+- Arithmetic checks (calculated directly from the formulas):
+  - Change 80 → 100 = +25.00%.
+  - Change 100 → 80 = -20.00%.
+  - Reverse: final 120 after 20% decrease → original 150.
+  - Reverse: final 240 after 20% increase → original 200.
+  - Difference: 80 and 100 → 22.22% (approximately).
+- Browser/device QA: Not performed in this session. Live deployment not verified. These are static checks and formula checks, not proof of live browser behavior.
+
+### 8. Commit and deployment
+- Fix commit 1: `a1e02affd4e4b9ce0135cbf3fbe899174d36d1c2` — corrected batch line and cell parser escaping.
+- Fix commit 2: `872b43bb276ab63e49481f109d93e16a798a8f11` — corrected multiline example placeholders.
+- Branch: `main`.
+- Deployment: Pending / not independently verified.
+
+### 9. Work checklist
+- [x] Static QA of batch parser and mode wiring.
+- [x] Correct newline and tab parsing.
+- [x] Correct multiline placeholders for all modes.
+- [x] Formula spot checks for Change, Reverse %, and Difference.
+- [ ] Browser QA on desktop and mobile — pending.
+- [ ] Test actual CSV downloads in a browser — pending.
+- [ ] Verify History restore for all three modes in a browser — pending.
+- [ ] Verify production deployment — pending.
+
+### 10. Next session handover
+- Priority 1: Browser-test all three Batch modes with multi-line data, tab-separated data, invalid rows, and the 100-row boundary.
+- Priority 2: Test CSV downloads, History restore, Copy Result, and mobile layout.
+- First file to inspect: `percentage-change.html`.
+- Do not redesign or modify the approved Hero/Header.
