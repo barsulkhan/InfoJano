@@ -851,3 +851,17 @@ This section supersedes earlier statements in this plan that PR #236 was still d
 - No Search Console Request Indexing or Validate Fix action was taken.
 - Repository source samples are clean; live custom-domain HTTP status, redirect behavior, and fresh Google crawl have not been independently verified.
 - Next safe step: after deployment, inspect exact malformed URL and referring-page live source again. If the current referring page contains no malformed href and canonical/OG tags remain clean, treat the old malformed URL as stale and let Google recrawl; use Validate Fix only after the source correction is live and the user approves.
+
+
+## 23. New-chat handoff and explicit pause — 2026-11-16
+
+- User requested that the remaining research work and newly observed Search Console issues be saved, prepared for a new chat, and parked. No further execution is authorized until the user resumes.
+- Handoff: [2026-11-16-new-chat-handoff-and-pause.md](2026-11-16-new-chat-handoff-and-pause.md).
+- Search Console screenshot findings and source checks: [2026-11-16-search-console-404-review-and-indexing-hold.md](2026-11-16-search-console-404-review-and-indexing-hold.md).
+- Screenshot summary: 58 indexed / 49 not indexed; categories 27 alternate canonical, 13 404, 2 redirect, 5 Google-selected different canonical, 2 crawled-currently-not-indexed. Some 404 URLs include literal `$3<meta property=` or `$3<script type=` suffixes; other examples are `/Height`, `/(100)`, `/(100)^ `, and `/InfoJano/`.
+- Sampled main-branch source canonical/OG tags are clean; code search found no current source-file `$3` match. `404.html` homepage CTA was corrected to `/`, remaining `noindex,follow`. Live custom-domain output and referring-link attribution remain unverified; no blanket redirects, Search Console Request Indexing or Validate Fix action was taken.
+- Indexing hold: 15 Number to Words Pro SEO pages and 3 Countdown country pages must remain Pending — not submitted. Never submit or request indexing for these 18 pages unless the user explicitly authorizes it.
+- PR #91, #210 and #211 are merged. Do not repeat old PR descriptions saying otherwise.
+- Previously researched AdSense/CMP, TCF v2.4, policy, ads.txt, Worker/iLoveAPI, Android/Windows runtime, deployment and account-side dependencies remain listed in §§1–8 and §§22–31; see the handoff for a concise resume checklist.
+- CI #43794141231 passed the 115-page privacy-link/sitemap/robots QA. APK workflow #43794247117 and latest Pages deployment were still pending at last observed checkpoint; verify only after the user resumes.
+- Pause boundary: no more code edits, merges, deployments, account-setting changes, DNS/Worker changes, indexing requests or Validate Fix until the user resumes and separately authorizes the action.
