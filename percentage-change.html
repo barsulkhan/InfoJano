@@ -7,7 +7,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Percentage Change Calculator | Increase or Decrease – InfoJano</title>
+<title>Percentage Change & Difference Calculator | InfoJano</title>
 <meta name="description" content="Use this free percentage change calculator to find the percent increase or decrease between two values. Get instant results, steps, batch calculations, and CSV exports.">
 <link rel="canonical" href="https://infojano.com/percentage-change.html">
 <meta property="og:type" content="website">
@@ -63,7 +63,9 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
     "Step-by-step calculation breakdown",
     "Calculation history stored in the current browser",
     "Batch percentage change calculations for up to 100 rows",
-    "CSV export for history and batch results"
+    "CSV export for history and batch results",
+    "Reverse percentage calculations",
+    "Average-based percentage difference comparisons"
   ],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
@@ -414,6 +416,7 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
     <div class="ij-pct-mode-switch" role="group" aria-label="Choose calculation mode">
       <button type="button" class="ij-pct-mode-button is-active" id="ij-pct-mode-change" aria-pressed="true" onclick="setPctMode('change')">Find % Change</button>
       <button type="button" class="ij-pct-mode-button" id="ij-pct-mode-reverse" aria-pressed="false" onclick="setPctMode('reverse')">Reverse %</button>
+      <button type="button" class="ij-pct-mode-button" id="ij-pct-mode-difference" aria-pressed="false" onclick="setPctMode('difference')">% Difference</button>
     </div>
     <div id="ij-pct-change-controls">
       <div class="ij-pct-fields"><label for="old">Old value<input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal" autocomplete="off"></label><label for="new">New value<input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal" autocomplete="off"></label></div>
@@ -429,6 +432,15 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
       </div>
       <div class="ij-pct-actions"><button type="button" onclick="calculate()">Find Original Value</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
       <p class="ij-pct-live-note" id="ij-pct-reverse-status" aria-live="polite">Results update automatically as you type.</p>
+    </div>
+    <div id="ij-pct-difference-controls" hidden>
+      <p class="ij-pct-mode-help">Compare two values when neither one is the starting value. The order of the values does not affect the result.</p>
+      <div class="ij-pct-fields">
+        <label for="ij-pct-difference-a">First value<input id="ij-pct-difference-a" type="number" step="any" placeholder="Example: 80" inputmode="decimal" autocomplete="off"></label>
+        <label for="ij-pct-difference-b">Second value<input id="ij-pct-difference-b" type="number" step="any" placeholder="Example: 100" inputmode="decimal" autocomplete="off"></label>
+      </div>
+      <div class="ij-pct-actions"><button type="button" onclick="calculate()">Calculate Difference</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
+      <p class="ij-pct-live-note" id="ij-pct-difference-status" aria-live="polite">Results update automatically as you type.</p>
     </div>
   </div>
   <div class="ij-pct-output-card" aria-live="polite"><span class="ij-pct-section-kicker">YOUR RESULT</span><div class="ij-pct-output-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 39h34M11 32h7v7h-7zM22 23h7v16h-7zM33 11v28h-7V11z" fill="currentColor"/></svg></div><div id="result" class="ij-pct-result-text">Your percentage change will appear here.</div><p id="result-summary">Enter both values to see the percentage change.</p><div class="ij-pct-result-actions"><button type="button" id="copy-result" class="ij-pct-secondary" onclick="copyResult()" disabled>Copy Result</button></div></div>
@@ -471,6 +483,8 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
  <span class="ij-pct-section-kicker">COMMON QUESTIONS</span><h2 id="ij-pct-faq-title">Percentage Change Calculator FAQs</h2>
  <details><summary>How do I calculate percentage change between two numbers?</summary><p>Subtract the old value from the new value, divide the result by the absolute old value, and multiply by 100. This calculator performs those steps and labels the result as an increase, decrease, or no change.</p></details>
  <details><summary>What is the difference between percentage change and percentage increase?</summary><p>Percentage change can be positive or negative. A positive result is a percentage increase; a negative result is a percentage decrease. The formula is the same, but the direction depends on whether the new value is higher or lower than the old value.</p></details>
+ <details><summary>What is percentage difference?</summary><p>Percentage difference compares two values when neither is treated as the original or starting value. It divides the absolute difference by the average of the two absolute values, then multiplies by 100. Switching the order of the values does not change the result.</p></details>
+ <details><summary>What is the difference between percentage difference and percentage change?</summary><p>Percentage change uses a specific starting value as its baseline, so order matters. Percentage difference treats both values equally and uses their average magnitude as the reference, so order does not matter.</p></details>
  <details><summary>Can I calculate percentage change if the old value is zero?</summary><p>No defined percentage change can be calculated from an old value of zero using this formula because it requires division by the old value. The calculator displays an explanation instead of showing an invalid number.</p></details>
  <details><summary>Can percentage change be negative?</summary><p>Yes. A negative percentage change means the new value is lower than the old value. For example, a change from 100 to 80 is a 20% decrease, or −20% when shown as a signed percentage.</p></details>
  <details><summary>How do I calculate percentage change in Excel?</summary><p>Put the old value in A2 and the new value in B2, then enter =(B2-A2)/ABS(A2) in another cell. Format that cell as Percentage. The old value must not be zero.</p></details>
@@ -514,17 +528,16 @@ const pctFormatter=new Intl.NumberFormat('en-US',{maximumFractionDigits:6});
 let lastPercentageResult=null;
 let pctMode='change';
 function setPctMode(mode){
- if(mode!=='change'&&mode!=='reverse')return;
+ if(!['change','reverse','difference'].includes(mode))return;
  pctMode=mode;
- const changeMode=mode==='change';
- document.getElementById('ij-pct-change-controls').hidden=!changeMode;
- document.getElementById('ij-pct-reverse-controls').hidden=changeMode;
- const changeButton=document.getElementById('ij-pct-mode-change');
- const reverseButton=document.getElementById('ij-pct-mode-reverse');
- changeButton.classList.toggle('is-active',changeMode);
- reverseButton.classList.toggle('is-active',!changeMode);
- changeButton.setAttribute('aria-pressed',String(changeMode));
- reverseButton.setAttribute('aria-pressed',String(!changeMode));
+ const panels={change:'ij-pct-change-controls',reverse:'ij-pct-reverse-controls',difference:'ij-pct-difference-controls'};
+ const buttons={change:'ij-pct-mode-change',reverse:'ij-pct-mode-reverse',difference:'ij-pct-mode-difference'};
+ Object.keys(panels).forEach(function(key){
+  document.getElementById(panels[key]).hidden=key!==mode;
+  const button=document.getElementById(buttons[key]);
+  button.classList.toggle('is-active',key===mode);
+  button.setAttribute('aria-pressed',String(key===mode));
+ });
  calculate();
 }
 let pctHistorySaveTimer=null;
@@ -636,6 +649,36 @@ function clearPctBatch(){
  document.getElementById('ij-pct-batch-status').textContent='Your batch results will appear here.';
  document.getElementById('ij-pct-batch-export').disabled=true;pctBatchResults=[];
 }
+function calculatePctDifference(){
+ const out=document.getElementById('result'),summary=document.getElementById('result-summary');
+ const breakdown=document.getElementById('calculation-breakdown'),steps=document.getElementById('breakdown-steps');
+ const copyButton=document.getElementById('copy-result');
+ const aText=document.getElementById('ij-pct-difference-a').value.trim();
+ const bText=document.getElementById('ij-pct-difference-b').value.trim();
+ lastPercentageResult=null;copyButton.disabled=true;
+ if(aText===''||bText===''){out.textContent='Your percentage difference will appear here.';summary.textContent='Enter both values to compare them.';breakdown.hidden=true;return;}
+ const a=Number(aText),b=Number(bText);
+ if(!Number.isFinite(a)||!Number.isFinite(b)){out.textContent='Please enter valid finite numbers for both values.';summary.textContent='Check the values and try again.';breakdown.hidden=true;return;}
+ const average=(Math.abs(a)+Math.abs(b))/2;
+ if(average===0){out.textContent='Percentage difference is undefined when both values are zero.';summary.textContent='Enter at least one non-zero value.';breakdown.hidden=true;return;}
+ const absoluteDifference=Math.abs(a-b),result=absoluteDifference/average*100;
+ if(!Number.isFinite(result)){out.textContent='This difference is too large to represent safely.';summary.textContent='Try values with a smaller magnitude.';breakdown.hidden=true;return;}
+ const formatted=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(result);
+ out.innerHTML='<span class="ij-pct-change-number">'+formatted+'%</span><span class="ij-pct-change-direction">Percentage difference</span>';
+ summary.textContent='The absolute difference is '+pctFormatter.format(absoluteDifference)+'.';
+ const heading=breakdown.querySelector('h3');if(heading)heading.textContent='How the percentage difference is calculated';
+ steps.textContent='';
+ const lines=[
+  'Absolute difference = |First value − Second value| = |'+pctFormatter.format(a)+' − '+pctFormatter.format(b)+'| = '+pctFormatter.format(absoluteDifference),
+  'Average of absolute values = (|First value| + |Second value|) ÷ 2 = '+pctFormatter.format(average),
+  'Percentage difference = '+pctFormatter.format(absoluteDifference)+' ÷ '+pctFormatter.format(average)+' × 100 = '+formatted+'%'
+ ];
+ lines.forEach(function(line){const li=document.createElement('li');li.textContent=line;steps.appendChild(li);});
+ document.getElementById('negative-value-note').hidden=true;breakdown.hidden=false;
+ lastPercentageResult={oldValue:a,newValue:b,difference:absoluteDifference,change:result,direction:'Difference',formattedPercent:formatted};
+ schedulePctHistorySave({oldValue:a,newValue:b,difference:absoluteDifference,change:result,direction:'Difference'});
+ copyButton.disabled=false;document.getElementById('ij-pct-difference-status').textContent='Percentage difference calculated automatically.';
+}
 function calculateReverse(){
  const out=document.getElementById('result');
  const summary=document.getElementById('result-summary');
@@ -696,6 +739,7 @@ function calculateReverse(){
 }
 function calculate(){
  if(pctMode==='reverse'){return calculateReverse();}
+ if(pctMode==='difference'){return calculatePctDifference();}
  const breakdownHeading=document.querySelector('#calculation-breakdown h3');if(breakdownHeading)breakdownHeading.textContent='How the result is calculated';
 
  const out=document.getElementById('result');
@@ -771,6 +815,15 @@ async function copyResult(){
  }catch(e){button.textContent='Copy unavailable';setTimeout(()=>{button.textContent='Copy Result'},1800);}
 }
 function resetPercentage(){
+ if(pctMode==='difference'){
+  ['ij-pct-difference-a','ij-pct-difference-b'].forEach(id=>{document.getElementById(id).value='';});
+  document.getElementById('result').textContent='Your percentage difference will appear here.';
+  document.getElementById('result-summary').textContent='Enter both values to compare them.';
+  document.getElementById('calculation-breakdown').hidden=true;
+  document.getElementById('copy-result').disabled=true;
+  document.getElementById('ij-pct-difference-status').textContent='Results update automatically as you type.';
+  lastPercentageResult=null;document.getElementById('ij-pct-difference-a').focus();return;
+ }
  if(pctMode==='reverse'){
   ['ij-pct-final-value','ij-pct-rate'].forEach(id=>{document.getElementById(id).value='';});
   document.getElementById('ij-pct-direction').value='increase';
@@ -795,6 +848,7 @@ function resetPercentage(){
 document.addEventListener('DOMContentLoaded',function(){
  renderPctHistory();
  ['ij-pct-final-value','ij-pct-rate'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){if(pctMode==='reverse'){calculate();}});});
+ ['ij-pct-difference-a','ij-pct-difference-b'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){if(pctMode==='difference'){calculate();}});});
  document.getElementById('ij-pct-direction').addEventListener('change',function(){if(pctMode==='reverse')calculate();});
  ['old','new'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){
   calculate();
