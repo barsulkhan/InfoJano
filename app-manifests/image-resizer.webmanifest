@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/image-resizer.html",
+  "id": "../image-resizer.html",
   "name": "InfoJano — Image Resizer",
   "short_name": "Image Resizer",
   "description": "Install the InfoJano Image Resizer tool for quick access.",
-  "start_url": "/InfoJano/image-resizer.html",
-  "scope": "/InfoJano/",
+  "start_url": "../image-resizer.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/image-resizer.svg",
+      "src": "../app-icons/image-resizer.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
