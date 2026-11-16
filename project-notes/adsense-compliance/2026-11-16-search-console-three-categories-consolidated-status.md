@@ -119,3 +119,42 @@ No production deployment, merge, Google indexing request, or Validate Fix was pe
 - [ ] Live redirect chain for both HTTP/www homepage variants ending at `https://infojano.com/`.
 - [ ] Post-deployment live canonical and Google recrawl confirmation for the 27 alternate URLs.
 - [ ] No Google “Validate Fix” or indexing request until explicitly authorized; the 18 Number-to-Words Pro and Countdown URLs remain on hold.
+
+
+## 2026-11-16 — five readable URL Inspection screenshots received
+
+The owner supplied readable Search Console screenshots for all five URLs in the “Duplicate, Google chose different canonical than user” group. All five show the same selected-canonical pattern:
+
+| URL | User-declared canonical | Google-selected canonical |
+|---|---|---|
+| `resize-image-by-percentage.html` | `https://infojano.com/resize-image-by-percentage.html` | `https://barsulkhan.github.io/InfoJano/resize-image-by-percentage.html` |
+| `passport-id-photo-resizer.html` | `https://infojano.com/passport-id-photo-resizer.html` | `https://barsulkhan.github.io/InfoJano/passport-id-photo-resizer.html` |
+| `social-media-image-resizer.html` | `https://infojano.com/social-media-image-resizer.html` | `https://barsulkhan.github.io/InfoJano/social-media-image-resizer.html` |
+| `resize-image-to-pixels.html` | `https://infojano.com/resize-image-to-pixels.html` | `https://barsulkhan.github.io/InfoJano/resize-image-to-pixels.html` |
+| `print-document-image-resizer.html` | `https://infojano.com/print-document-image-resizer.html` | `https://barsulkhan.github.io/InfoJano/print-document-image-resizer.html` |
+
+Common visible signals on the detailed Page indexing screenshots:
+- Status: “Duplicate, Google chose different canonical than user”.
+- Crawl allowed: Yes.
+- Page fetch: Successful.
+- Indexing allowed: Yes.
+- Each Google-selected canonical is the corresponding legacy GitHub Pages project-site URL.
+
+Additional screenshot detail:
+- The Social Media Resizer screenshot shows “Sitemaps: Temporary processing error”; this is recorded as a Search Console observation only, not proof that the sitemap file is broken.
+- The first Percentage Resizer screenshot showed a separate Page availability / tested-page panel with “Only determined after indexing”; a later detailed Page indexing screenshot for the same URL clearly showed the legacy GitHub URL as Google-selected canonical. Preserve both observations; the detailed indexing result is the evidence for this duplicate-canonical category.
+
+## Updated interpretation
+
+This is now direct Search Console evidence—not merely a source-code suspicion—that Google selected the legacy `barsulkhan.github.io/InfoJano/` version for all five pages at the time of the supplied reports. It still does not prove why Google selected it or that a code change will force Google to switch. Likely contributing signals must be tested, including historical links/discovery, internal links, redirect behavior, and the deployed canonical/metadata signals.
+
+## PR review after receiving the screenshots
+
+Fresh GitHub metadata and compare checks:
+- PR #237: open Draft, not merged, GitHub reports `mergeable=false`; branch is diverged from main (105 commits ahead, 10 behind), 89 files changed. It includes broad path, manifest, install helper and service-worker changes. It also changes `id-card-print-studio.html`, which overlaps PR #238. The service worker derives its base from its registration scope and rewrites its precache list; this needs dedicated project-site and custom-domain runtime testing before release.
+- PR #238: open Draft, not merged, `mergeable=false`; diverged (3 ahead, 4 behind), 2 files changed. It corrects ID Card Print Studio metadata and adds the 27-URL audit note.
+- PR #239: open Draft, not merged, `mergeable=false`; diverged (6 ahead, 3 behind), 6 files changed. It changes one sidebar paragraph on each of the five pages and adds its audit note.
+- “Diverged” means both main and the PR branch have commits the other does not. It does not by itself identify exact conflicting files. PR #237 and #238 both edit `id-card-print-studio.html`, so that overlap must be reconciled deliberately.
+- The PR-linked workflow runs are named “Privacy Policy QA”; passing those workflows is not evidence of full SEO, redirect, PWA, service-worker or browser-runtime correctness.
+
+No PR was merged, no production deployment was made, and no Google indexing request or Validate Fix was submitted during this review.
