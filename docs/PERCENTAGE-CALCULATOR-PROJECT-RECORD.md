@@ -1187,3 +1187,68 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - [ ] Run real browser QA across the calculator's three modes, batch, CSV, history restore and copy behavior; include mobile and desktop.
 - [ ] Revisit technical HTTP checks when a public fetch/browser is available.
 - Next best task: after the Search Console integration is connected, perform URL Inspection and extract the last 28 days of page/query/country/device data for the two target URLs. Do not add features before this evidence is reviewed.
+
+
+## Work session — 2026-11-16 (Live Search Console baseline and SEO prioritization)
+
+### 1. Owner request and scope
+- Owner asked to begin the next SEO work now ("Koro").
+- Scope: analyze the newly connected Google Search Console data for the canonical domain property `sc-domain:infojano.com`, identify page/query/country opportunities, and decide the safest next implementation step.
+- Guardrails retained: English-only target content; do not redesign or modify the homepage, Hero, Header, logo, shared navigation, unrelated tools, or approved calculator design. Do not create translated pages or change existing language pages as part of this work.
+
+### 2. Data source and baseline
+- Source: Windsor.ai Google Search Console connector, account `sc-domain:infojano.com`.
+- Date range: last 28 days as returned by the connector on 2026-11-16.
+- This is a live Search Console data pull, not third-party keyword-volume estimates.
+- Aggregate domain performance: 2 clicks, 695 impressions, 0.29% CTR, average position 20.43.
+- Country breakdown: Brazil 502 impressions / 1 click; India 67 / 1 click; United States 37 / 0; United Kingdom 12 / 0; Canada 7 / 0; Australia 2 / 0. Other countries each contributed very small impression counts.
+- Important interpretation: Brazil accounts for 502/695 impressions (about 72%) and this is largely associated with Portuguese-language page/query activity. Do not treat this as evidence of English-language demand in Brazil or alter language scope based on it.
+- English-market sample is currently small: US 37 impressions, UK 12, Canada 7 and Australia 2 in this 28-day window. This is too little data to make reliable country-level ranking or CTR conclusions.
+
+### 3. Page performance observations (domain property, last 28 days)
+- `percentage-pt-br.html`: 339 impressions, 0 clicks, average position 10.58. This is Portuguese traffic and is outside the English-only implementation scope.
+- `discount-pt-br.html`: 168 impressions, 1 click, average position 9.40. Also Portuguese traffic and outside the English-only implementation scope.
+- `percentage-change.html`: 4 impressions, 0 clicks, average position 43.75. Query rows included `change percentage calculator` (1 impression, position 24), `change calculator` (1, position 60), and `change amount` (1, position 80).
+- `percentage-difference-calculator.html`: 11 impressions, 0 clicks, average position 51.73. Queries were sparse (1–2 impressions each); `percentage difference calculator` had 2 impressions at position 60.
+- `repeated-percentage-change-calculator.html`: 16 impressions, 0 clicks, average position 11.63; the one exposed query was `interval increase calculator` (1 impression, position 22).
+- `successive-percentage-change-calculator.html`: 12 impressions, 0 clicks, average position 13.42; the one exposed query was `sequential percentage change` (1 impression, position 75).
+- `percentage.html`: 1 impression, 0 clicks, position 3 for the query `100-47.6`. One impression is not enough to infer broad ranking performance.
+- Other English pages had scattered low counts. No English target page in this 28-day pull has enough data for a confident CTR/title test.
+
+### 4. Findings and decision
+- The connected Search Console property is returning actual data for `infojano.com`; the integration is functioning.
+- The data does not yet justify a broad title rewrite or mass page edits. Most impressions come from two Portuguese pages, while the English percentage-tool pages have small samples.
+- The best evidence-led next focus is the English percentage tool cluster: confirm URL indexing/canonical status in Search Console, then monitor the existing primary `percentage.html` and `percentage-change.html` metadata/content changes already committed on 2026-11-16. Avoid repeating metadata edits before the new changes have had time to be crawled and accrue meaningful data.
+- Treat `repeated-percentage-change-calculator.html` and `successive-percentage-change-calculator.html` as a later content-alignment review, not as proven winners; their average positions are based on only 16 and 12 impressions respectively.
+- No country-specific optimization decision is supported yet for the five active target markets.
+
+### 5. Changes made
+- No application source, metadata, design, sitemap or service-worker files changed in this session.
+- Appended this live-data baseline and decision record only.
+- No translations, new pages, paid tools, or unrelated modifications.
+
+### 6. Verification actually completed
+- [x] Confirmed Windsor.ai plugin is installed and user-enabled.
+- [x] Confirmed connected Search Console accounts include `sc-domain:infojano.com` and `https://barsulkhan.github.io/InfoJano/`.
+- [x] Pulled last-28-day aggregate clicks/impressions/CTR/position for the canonical domain.
+- [x] Pulled page-level performance, query-level performance, and country-level performance for the canonical domain.
+- [x] Retrieved sitemap table rows: `https://infojano.com/sitemap.xml` reported 106 submitted URLs, 0 errors and 0 warnings; last submitted/downloaded 2026-11-14. This is sitemap processing evidence, not proof all 106 URLs are indexed.
+- [ ] URL Inspection / Google-selected canonical / Page Indexing report — not available through the Windsor Search Analytics connector; must be checked in Google Search Console UI.
+- [ ] Browser QA and live rendered-page inspection — not run.
+- [ ] Any ranking/CTR improvement after the 2026-11-16 metadata changes — too early to assess.
+
+### 7. Commit and deployment
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Application code changes: none.
+- This project-record append is committed separately; record the resulting commit SHA after GitHub confirms it.
+- No deployment was triggered by this documentation-only update. No claim is made that new page changes have been crawled or indexed.
+
+### 8. Work checklist and handover
+- [x] Connect and verify the Search Console source.
+- [x] Establish a 28-day canonical-domain baseline.
+- [x] Separate English-target observations from Portuguese-language traffic.
+- [x] Choose a conservative next step based on evidence rather than changing titles again.
+- [ ] In Google Search Console UI, inspect `https://infojano.com/percentage.html` and `https://infojano.com/percentage-change.html` with URL Inspection; record index status, Google-selected canonical and any exclusion/crawl reason.
+- [ ] Review Page Indexing and the `sitemap.xml` report in GSC UI; do not infer indexed URL count from submitted count.
+- [ ] After indexing checks, compare page/query/country/device data again after an adequate observation window.
+- Next best task: URL Inspection for the two core English percentage pages, then implement only a confirmed technical/content issue. First inspect the current page source and the GSC URL Inspection result; do not redesign or touch unrelated files.
