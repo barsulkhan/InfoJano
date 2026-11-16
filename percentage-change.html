@@ -315,20 +315,6 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
  .ij-pct-history-row{grid-template-columns:minmax(0,1fr) auto!important;padding:11px!important;gap:8px!important}
 }
 </style>
-<style id="ij-percentage-history-side-layout">
-/* Keep calculator and its history together in the first viewport area. */
-main.ij-pct-page-layout{display:grid!important;grid-template-columns:minmax(0,1.55fr) minmax(280px,.85fr)!important;column-gap:20px!important;row-gap:0!important;align-items:start!important}
-main.ij-pct-page-layout>.ij-pct-calculator-workspace{grid-column:1!important;grid-row:1!important;min-width:0!important;margin:0 0 22px!important}
-main.ij-pct-page-layout>.ij-pct-history{grid-column:2!important;grid-row:1!important;min-width:0!important;width:100%!important;margin:0 0 22px!important;align-self:start!important}
-main.ij-pct-page-layout>section:not(.ij-pct-calculator-workspace):not(.ij-pct-history),main.ij-pct-page-layout>p{grid-column:1/-1!important;min-width:0!important}
-@media(max-width:760px){
- main.ij-pct-page-layout{display:flex!important;flex-direction:column!important;gap:0!important}
- main.ij-pct-page-layout>.ij-pct-history{order:0!important;width:100%!important;margin:0 0 16px!important}
- main.ij-pct-page-layout>.ij-pct-calculator-workspace{order:1!important;width:100%!important;margin:0 0 18px!important}
- main.ij-pct-page-layout>section:not(.ij-pct-calculator-workspace):not(.ij-pct-history){order:2!important;width:100%!important}
- main.ij-pct-page-layout>p{order:3!important;width:100%!important}
-}
-</style>
 </head>
 <body>
 
@@ -365,7 +351,7 @@ main.ij-pct-page-layout>section:not(.ij-pct-calculator-workspace):not(.ij-pct-hi
   </div>
   <div class="ij-pct-benefits"><span><b class="green">✓</b> Easy to Use</span><span><b class="blue">↗</b> Fast &amp; Simple</span><span><b class="purple">▣</b> Accurate Result</span><span><b class="red">♥</b> Free to Use</span></div>
 </section>
-<main class="ij-pct-page-layout"><section class="ij-pct-calculator-workspace" aria-labelledby="ij-pct-calc-title">
+<main><section class="ij-pct-calculator-workspace" aria-labelledby="ij-pct-calc-title">
   <div class="ij-pct-entry-card"><span class="ij-pct-section-kicker">PERCENTAGE CHANGE</span><h2 id="ij-pct-calc-title">Calculate Percentage Change</h2><p>Enter your original and new values to find the percentage difference.</p>
     <div class="ij-pct-fields"><label for="old">Old value<input id="old" type="number" step="any" placeholder="Example: 80" inputmode="decimal" autocomplete="off"></label><label for="new">New value<input id="new" type="number" step="any" placeholder="Example: 100" inputmode="decimal" autocomplete="off"></label></div>
     <div class="ij-pct-actions"><button type="button" onclick="calculate()">Calculate Change</button><button type="button" class="ij-pct-secondary" onclick="swapValues()">⇄ Swap</button><button type="button" class="ij-pct-reset" onclick="resetPercentage()">Reset</button></div>
