@@ -3,6 +3,7 @@ name: Privacy Policy QA
 on:
   pull_request:
     paths:
+      - "*.html"
       - "privacy-policy.html"
       - "contact.html"
       - "index.html"
@@ -16,9 +17,12 @@ on:
       - main
       - feature/privacy-policy-adsense-compliance
     paths:
+      - "*.html"
+      - "site-header.js"
       - "privacy-policy.html"
       - "contact.html"
       - "index.html"
+      - "site-header.js"
       - "sitemap.xml"
       - "robots.txt"
       - "scripts/validate-privacy-policy-links.mjs"
