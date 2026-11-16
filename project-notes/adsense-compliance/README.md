@@ -777,3 +777,14 @@ This dashboard is the current handoff snapshot. Keep it updated whenever a check
 - Task 0019 records a confirmed mixed path-base source issue: custom-domain-aware ROOT in `site-header.js`, but `/InfoJano/` hardcoded in `install.js`, `sw.js`, index manifest href, `manifest.json` and many tool pages. A dual-host-safe audit is required before broad edits.
 - ads.txt visible body remains screenshot-verified; live HTTP/HTTPS status, redirect chain and headers remain unverified. Google requirements/source and next steps are recorded in task 0019.
 - No production source or settings changed in this audit.
+
+
+### 2026-11-16 08:48 +05:30 — Dual-host path inventory and deployment status
+- Re-read Task 0019, Master Research Plan, README and pause handoff before continuing.
+- Confirmed repository `CNAME` contains `infojano.com`; `site-header.js` has host-specific ROOT, but `install.js`, `sw.js`, homepage manifest href and root `manifest.json` still use hardcoded `/InfoJano/`.
+- GitHub code search found widespread root-page references; search limits prevent claiming a complete count. 29 dedicated app manifests and the APK workflow intentionally retain a GitHub Pages project-path contract; do not blanket-replace.
+- Rechecked APK workflow #43794247117: SUCCESS. Latest Pages deployment #43797089152 on main HEAD `778e4adb863f17679fbf6e301e2a021f30a6659f`: SUCCESS. Neither proves live custom-domain/browser propagation.
+- ads.txt HTTP/HTTPS status, redirects, headers and AdSense crawler status remain UNVERIFIED. No production code/settings, DNS, PR merge, indexing action or deployment trigger changed.
+- Task record: [2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md](2026-11-16-0848-dual-host-path-inventory-and-deployment-status.md).
+- Task record commit: `7c906b5336650dcf78935d65156f1d63fcc8769d`.
+- Next: complete the exact root HTML reference inventory and classify root-PWA versus dedicated-app path requirements; prepare a dual-host-safe proposal without changing production source.
