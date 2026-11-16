@@ -134,3 +134,5 @@ A source-level inspection was performed across all 117 HTML files in the recursi
 
 ### PR #240 branch refresh
 The first PR metadata snapshot reported `mergeable=false` because main advanced with documentation commits after the branch was created. The branch was safely rebuilt on the latest main commit using a one-file tree update (no production file touched): current comparison is `ahead`, 1 commit ahead / 0 behind, changing only `savings.html`. GitHub PR metadata may take time to refresh; browser QA is still required.
+
+- PR #240 CI run #43861117912 completed successfully. Its only job is `validate`, which validates Privacy Policy HTML5 markup, policy links, sitemap and robots reference. This is not a dedicated heading/accessibility/browser visual test.
