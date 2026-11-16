@@ -2,7 +2,7 @@
 
 Research date: 2026-11-16
 Scope: English-language users across multiple countries. English only; no translated interfaces or localized language pages.
-Status: Initial desk research, not a quantitative market-size or keyword-volume study.
+Status: Research phase finalized for five active markets; on-page SEO implementation committed. Live deployment, browser QA and Search Console performance remain pending verification.
 
 ## 1. Owner decisions and guardrails
 
@@ -739,3 +739,33 @@ Reporting / comparison:
 - [x] Research and work log committed and verified.
 - [ ] Implementation of any SEO content changes requires a separate approved task.
 - [ ] Live Search Console performance and interactive browser QA remain separate future verification tasks.
+
+
+## 22. On-page SEO implementation — 2026-11-16
+
+### 22.1 Scope
+- Implement the finalized keyword strategy on the existing English Percentage Calculator and Percentage Change Calculator pages only.
+- Active country strategy remains US, UK, Canada, Australia and India. English-only content. No new country pages or translated content.
+- Preserve existing page layout, approved hero/header, logo, calculator logic, homepage and unrelated tools.
+
+### 22.2 Changes
+- `percentage.html`: refined the HTML title to “Percentage Calculator – Calculate Any Percentage | InfoJano”; updated meta description, Open Graph title/description and Twitter title/description to accurately summarize the existing calculator.
+- `percentage-change.html`: refined the title to “Percentage Change Calculator – Increase or Decrease | InfoJano”; aligned meta description, Open Graph, Twitter and WebApplication structured-data name/description.
+- Updated the change-page hero description to reflect the three existing calculation modes without altering the hero design.
+- Expanded the existing visible guide with reverse-percentage formulas for increases/decreases and an average-based percentage-difference formula, plus worked examples (120 after +20% = 100; 80 after −20% = 100; 80 vs 100 = 22.22%). Added a matching reverse-percentage FAQ.
+- Updated both XML sitemaps' lastmod entries for the two changed pages. Plain-text sitemap URLs did not change.
+- Bumped the service-worker cache from v310 to v312 after the final code/sitemap updates; both calculator pages were already in the precache list.
+
+### 22.3 Verification
+- [x] Source preflight confirmed expected title/description updates and unchanged visible H1/hero structure.
+- [x] Confirmed reverse-percentage and percentage-difference formula examples mathematically.
+- [x] Confirmed both target pages are already in the service-worker precache list.
+- [x] Confirmed both URLs exist in the XML sitemaps and updated lastmod values.
+- [x] Existing calculator JavaScript and modes were not modified.
+- [ ] Browser interaction, responsive visual QA and actual CSV download QA not run in this session; no browser automation tool available.
+- [ ] Latest GitHub Pages deployment must finish and live pages must be checked; web reader could not access the live URLs during this pass.
+- [ ] Search Console indexing/performance cannot be verified without account data.
+
+### 22.4 Google guidance applied
+- Google recommends unique, descriptive, concise page titles and useful, page-specific descriptions; Google may generate snippets from visible page text instead of the meta description. Sources: https://developers.google.com/search/docs/appearance/title-link and https://developers.google.com/search/docs/appearance/snippet.
+- The implementation prioritizes clarity and accurate content rather than keyword stuffing. No ranking or traffic increase is claimed.
