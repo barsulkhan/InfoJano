@@ -11,9 +11,9 @@ let checkedPageLinks = 0;
 for (const file of rootHtmlFiles) {
   if (file === "google4a4795e5c7c03eae.html") continue;
   const html = fs.readFileSync(path.resolve(file), "utf8");
-  const hasPolicyLink = /href\\s*=\\s*["'][^"']*privacy-policy\\.html(?:[?#][^"']*)?["']/i.test(html);
-  const hasContactLink = /href\\s*=\\s*["'][^"']*contact\\.html(?:[?#][^"']*)?["']/i.test(html);
-  const loadsSharedHeader = /<script\\b[^>]*\\bsrc\\s*=\\s*["'][^"']*site-header\\.js(?:[?#][^"']*)?["']/i.test(html);
+  const hasPolicyLink = /href\s*=\s*["'][^"']*privacy-policy\.html(?:[?#][^"']*)?["']/i.test(html);
+  const hasContactLink = /href\s*=\s*["'][^"']*contact\.html(?:[?#][^"']*)?["']/i.test(html);
+  const loadsSharedHeader = /<script\b[^>]*\bsrc\s*=\s*["'][^"']*site-header\.js(?:[?#][^"']*)?["']/i.test(html);
   if (!loadsSharedHeader && (!hasPolicyLink || !hasContactLink)) {
     errors.push(file + " must include Privacy Policy and Contact links or load site-header.js");
   }
