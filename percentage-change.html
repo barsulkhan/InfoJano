@@ -654,8 +654,8 @@ function runPctBatch(){
  if(lines.length>100){status.textContent='Please enter no more than 100 rows at a time.';document.getElementById('ij-pct-batch-export').disabled=true;return;}
  const results=lines.map((line,index)=>{
   const cells=line.split(/[\\t,;]/).map(x=>x.trim());
-  const expected=mode==='reverse'?[2,3]:[2];
-  if(cells.length<expected[0]||cells.length>expected[1]||cells.some(x=>x===''))return {row:index+1,valid:false,reason:mode==='reverse'?'Use final value, rate, optional direction':'Enter exactly two values'};
+  const minCells=2,maxCells=mode==='reverse'?3:2;
+  if(cells.length<minCells||cells.length>maxCells||cells.some(x=>x===''))return {row:index+1,valid:false,reason:mode==='reverse'?'Use final value, rate, optional direction':'Enter exactly two values'};
   const values=cells.slice(0,2).map(Number);
   if(values.some(x=>!Number.isFinite(x)))return {row:index+1,valid:false,reason:'Enter valid finite numbers'};
   if(mode==='change'){
