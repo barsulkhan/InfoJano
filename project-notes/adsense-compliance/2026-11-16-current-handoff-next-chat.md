@@ -184,3 +184,6 @@ See [2026-11-16-1700-resume-audit-height-and-pr-refresh.md](2026-11-16-1700-resu
 - Three Word format alias pages are noindex canonical aliases but their main-branch redirect/helper/manifest paths use legacy /InfoJano/; PR #237 switches them to relative paths.
 - Full findings and limitations recorded in [2026-11-16-whole-site-readiness-audit.md](2026-11-16-whole-site-readiness-audit.md).
 - No merge/deploy, Google indexing/validation, AdSense resubmission or live account/legal/hosting change. 18 SEO URL indexing hold remains.
+
+- PR #240 branch refreshed on latest main; compare now shows 1 ahead / 0 behind (single `savings.html` change). GitHub mergeability metadata may lag; visual QA still required.
+- Audit log added to adsense-compliance README. Latest report update is linked above.
