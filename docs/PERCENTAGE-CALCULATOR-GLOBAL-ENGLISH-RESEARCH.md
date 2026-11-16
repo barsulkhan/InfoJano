@@ -454,3 +454,121 @@ Source: https://www.kwstrends.com/google-ads-keyword-tool
 - [ ] Obtain KWS interactive CSV exports.
 - [ ] Obtain full target-country coverage and verify English-language filter.
 - [ ] Paid Apify run — not authorized; no spend made.
+
+
+## 17. Free Google-surface keyword expansion — 2026-11-16
+
+### 17.1 Owner constraint
+- Owner explicitly declined paid keyword tools, paid plans, and paid data purchases.
+- Scope: collect as many relevant English keyword candidates as possible from free Google surfaces and freely accessible search results; do not request payment or use paid APIs.
+- Important provenance distinction: this session verified Google's documentation for Related searches and Google Trends, and searched publicly indexed result pages for additional query variants. It did not obtain a live Google Autocomplete dump, live People-also-ask extraction, or absolute Google Keyword Planner volumes. Do not label every candidate below as a directly observed autocomplete suggestion.
+
+### 17.2 Google sources and limitations
+- Google Search Help says Related searches are automatically generated from what Google understands about how people search: https://support.google.com/websearch/answer/2466433?hl=en (checked 2026-11-16).
+- Google Trends provides Top and Rising related queries for a selected term, time, geography and category. Google explains these are terms frequently searched with the seed in the same search session: https://newsinitiative.withgoogle.com/resources/trainings/google-trends-understanding-the-data/ (checked 2026-11-16).
+- Google Trends values are sampled, normalized 0–100 indices, not absolute search counts: https://newsinitiative.withgoogle.com/resources/trainings/google-trends/basics-of-google-trends/ (checked 2026-11-16).
+- The Trends Explore URL was attempted but was inaccessible through the current web reader; no related-query CSV was downloaded. No paid source was used.
+
+### 17.3 Expanded English keyword candidates
+
+Core / head terms:
+- percentage calculator
+- percent calculator
+- percentage calculation
+- online percentage calculator
+- free percentage calculator
+- percentage calculator online
+
+Percentage-of / part-whole intent:
+- percentage of a number calculator
+- what is X percent of Y calculator
+- what percent is X of Y calculator
+- X is what percent of Y
+- X is Y percent of what number
+- find the whole from a percentage
+- percentage to number calculator
+- fraction to percent calculator
+- percent to fraction calculator
+- decimal to percent calculator
+- percent to decimal calculator
+
+Change / growth intent:
+- percentage change calculator
+- percent change calculator
+- percentage increase calculator
+- percent increase calculator
+- percentage decrease calculator
+- percent decrease calculator
+- calculate percentage increase between two numbers
+- calculate percentage decrease between two numbers
+- percentage change between two numbers
+- percent increase from A to B
+- percent decrease from A to B
+- percentage growth calculator
+- growth rate percentage calculator
+
+Comparison / reverse intent:
+- percentage difference calculator
+- percent difference calculator
+- percent difference between two numbers
+- percentage difference between two values
+- reverse percentage calculator
+- reverse percent calculator
+- find original price before discount
+- original value before percentage increase
+- calculate original amount from final amount and percentage
+- what number before percentage increase
+
+Shopping / tax intent:
+- discount calculator
+- discount percentage calculator
+- percent off calculator
+- percentage off calculator
+- sale price calculator
+- discount amount calculator
+- price after discount calculator
+- original price before discount calculator
+- sales tax calculator
+- remove sales tax from total
+- price before tax calculator
+- VAT calculator
+- remove VAT from price
+- price before VAT calculator
+- markup calculator
+- add percentage to a number calculator
+- subtract percentage from a number calculator
+- tip percentage calculator
+
+Business / work / education intent:
+- sales growth percentage calculator
+- revenue growth calculator
+- month over month percentage change
+- year over year percentage change
+- monthly growth rate calculator
+- salary increase percentage calculator
+- pay rise percentage calculator
+- profit margin calculator
+- profit percentage calculator
+- markup vs margin calculator
+- commission percentage calculator
+- grade percentage calculator
+- test score percentage calculator
+- exam percentage calculator
+- percentage error calculator
+- percentage points calculator
+
+### 17.4 Prioritization notes
+- Highest fit for the existing page: percentage calculator, percentage change calculator, percentage increase calculator, percentage decrease calculator, percentage difference calculator, reverse percentage calculator, percent change between two numbers.
+- Secondary standalone intents (discount, sales tax/VAT, tip, grade, margin, commission, percent-of, fraction/decimal conversion) should not be conflated with the current three-mode calculator; consider separate pages only after evidence and product approval.
+- Business terms such as profit margin, revenue growth and commission have distinct definitions/formulas; do not target them with the existing percentage-change formula alone.
+- Candidate list is a discovery backlog, not a verified ranking or measured-volume list. No volumes, difficulty or country demand are assigned here.
+
+### 17.5 Checklist
+- [x] Confirmed Google Search Help description of Related searches.
+- [x] Confirmed Google Trends related-query feature and 0–100 normalization caveat.
+- [x] Expanded the English keyword candidate list using publicly indexed query phrasing.
+- [x] Respected the no-paid-tools/no-payment constraint.
+- [ ] Directly capture live Google Autocomplete suggestions for every seed.
+- [ ] Export Google Trends Top and Rising queries for each seed and target country.
+- [ ] Obtain exact country/language search-volume data from a genuinely free source, if accessible.
+- [ ] Validate query demand and SERP intent before changing page content or architecture.
