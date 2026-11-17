@@ -755,6 +755,53 @@ body > main > .ij-qr-features,body > main > .ij-qr-reader,body > main > .ij-qr-i
 }
 </style>
 
+
+<style id="ij-qr-maker-exact-percentage-header-hero">
+/* Exact approved Percentage Change header geometry and alignment. */
+@media(min-width:1001px){
+ .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
+  width:calc(100% - 112px)!important;max-width:1600px!important;
+  min-height:64px!important;gap:24px!important;justify-content:space-between!important;
+ }
+ .ij-global-header.ij-global-header--hero-aligned .ij-global-brand{
+  order:1!important;flex:0 0 auto!important;margin:0 auto 0 0!important;
+ }
+ .ij-global-header.ij-global-header--hero-aligned .ij-global-nav{
+  order:2!important;flex:0 0 auto!important;margin:0 0 0 auto!important;justify-content:flex-end!important;
+ }
+ /* Hero frame copied dimension-for-dimension from .ij-pct-showcase. */
+ body>main>.ij-qr-hero.ij-reference-hero{
+  width:100%!important;max-width:1600px!important;min-height:0!important;height:auto!important;
+  margin:12px 0 28px!important;padding:26px 42px 22px!important;
+  border-radius:22px!important;box-sizing:border-box!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;
+  gap:clamp(18px,3vw,38px)!important;
+ }
+}
+@media(min-width:1500px){
+ body>main>.ij-qr-hero.ij-reference-hero{padding:30px 50px 24px!important}
+}
+@media(min-width:641px) and (max-width:1000px){
+ /* Same tablet outer width as Percentage Change; account for main's inner padding. */
+ body>main>.ij-qr-hero.ij-reference-hero{
+  width:calc(100vw - 28px)!important;max-width:none!important;
+  margin:14px 0 22px calc((100% - (100vw - 28px))/2)!important;
+  min-height:0!important;height:auto!important;padding:28px 26px 34px!important;
+  border-radius:24px!important;grid-template-columns:minmax(0,1fr) minmax(250px,.8fr)!important;
+ }
+}
+@media(max-width:620px){
+ .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
+  width:calc(100% - 24px)!important;max-width:none!important;
+ }
+ body>main>.ij-qr-hero.ij-reference-hero{
+  width:100%!important;max-width:none!important;min-height:0!important;height:auto!important;
+  margin:0 0 22px!important;padding:24px 18px 34px!important;
+  border-radius:24px!important;grid-template-columns:1fr!important;gap:18px!important;
+ }
+}
+</style>
+
 </head>
 <body>
 
