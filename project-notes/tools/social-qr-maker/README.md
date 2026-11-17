@@ -3,7 +3,7 @@
 Last updated: 2026-11-17
 Tool page: https://infojano.com/social-qr-maker.html
 Source: `social-qr-maker.html`
-Overall status: In progress — core fixes merged; automated browser QA infrastructure awaiting first CI run
+Overall status: In progress — core fixes merged; automated browser QA passed; QR PNG payload-decoding assertions added and awaiting CI rerun
 
 ## User-approved scope and constraints
 - Complete only the unfinished Social Media QR Maker work.
@@ -36,16 +36,16 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 - 2026-11-17 — UI could announce success before asynchronous QR generation finished — corrected in CARD-004.
 
 ## QA and release checklist
-- [ ] JavaScript syntax check:
-- [ ] Source assertions for mode, URL allowlists, hub payload validation, and generation result:
+- [x] JavaScript syntax check (5/5 inline blocks parsed):
+- [x] Source assertions for mode, URL allowlists, hub payload validation, and generation result (6/6):
 - [x] 12-platform functional tests (Chromium):
 - [x] Bundle mode tests (generation, landing page and PNG download):
 - [x] Link-in-Bio generation and decoded-page tests:
 - [ ] Physical-device PNG scan reliability:
 - [x] Mobile browser QA (Pixel 7 emulation):
 - [x] Desktop browser QA (Chromium):
-- [ ] Keyboard/accessibility checks:
-- [ ] Pull request checks:
+- [x] Automated keyboard/ARIA state assertions (not a full screen-reader audit):
+- [x] Pull request CI browser checks (run #12 passed; latest QR-decoder enhancement awaits rerun):
 - [x] Merge: PR #247 merged to main (commit `7ba875f2480ce6a53cf2942566eafa6984ed0447`)
 - [ ] GitHub Pages deployment: not yet independently verified
 
@@ -91,3 +91,12 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 - Platform tile group now has an accessible name and each tile exposes the selected state through `aria-pressed`.
 - Keyboard Enter selection and state synchronization verified in desktop and mobile Chromium by Actions run #12: 15 passed, 1 expected skip, 0 failed.
 - Full screen-reader testing and physical QR scanning remain manual follow-ups.
+
+
+### 2026-11-17 — QR image decoding automation added
+- Added isolated QA-only dependencies `jsqr` and `pngjs` under `qa/browser/package.json`; no website/runtime dependency added.
+- Extended Playwright tests to decode the actual generated PNG pixel data and compare the QR payload with the expected profile URL for all 12 platforms.
+- Added the same image-decoding assertion for Bundle and Link-in-Bio QR output, checking that the encoded destination is exactly the generated `?hub=` URL.
+- This closes an important gap: prior browser tests checked that a PNG existed and that the text field held the expected URL, but did not independently decode the image itself.
+- Latest code commit: `7bd2094c727857447a2afa9c54d7732b55ac715c`; CI rerun is required before marking these new assertions passed.
+- Physical-device scanning remains useful as a final real-camera interoperability check, but should no longer be needed to prove the PNG contains the intended QR payload.
