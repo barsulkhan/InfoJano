@@ -24,3 +24,20 @@ Branch: `fix/social-qr-maker-completion`
 - No browser automation or live device is connected in this session.
 - No claim is made that runtime, visual, accessibility, download, scan, deployment or production tests passed.
 - The normal QR page was not changed and is not part of this QA scope.
+
+## 2026-11-17 — Static JavaScript and URL validation checks
+
+- Extracted all five inline JavaScript blocks (excluding JSON-LD and external script tags) from the latest committed source and compiled each with the JavaScript parser: **5/5 PASS**.
+- Executed the isolated profile URL normalizer with a URL test double:
+  - Instagram username -> expected profile URL: PASS
+  - YouTube @handle -> expected channel URL: PASS
+  - Valid Facebook URL accepted: PASS
+  - Facebook URL submitted under Instagram rejected: PASS
+  - `javascript:` scheme rejected as a username: PASS
+  - deceptive `instagram.com.evil.test` host rejected: PASS
+  - username path injection rejected: PASS
+  - valid 8–15 digit WhatsApp number normalized: PASS
+  - too-short WhatsApp number rejected: PASS
+- Source assertions: bundle theme reads active QR mode; shared validator is exposed for advanced modes; decoded hub destination allowlist is present; QR builder awaits and checks the generation result: **6/6 PASS**.
+- Important correction during review: the shared URL normalizer is explicitly exposed as `window.ijNormalizeSocialProfileUrl` so the separate advanced-mode script can call it. This avoids a cross-IIFE scope error.
+- These are source/parser and isolated function checks, not browser tests. Real QR library rendering, canvas export, link page rendering, scan reliability, responsive visuals and accessibility remain NOT RUN.
