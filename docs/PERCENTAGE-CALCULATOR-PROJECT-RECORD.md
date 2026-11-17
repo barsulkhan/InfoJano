@@ -1896,3 +1896,22 @@ Commits:
 - QR Maker: `0cfe092bc7f3b559c7ce28412f35450030da08f6`
 - Manifest: `a16b2ae3d9e4f9e37d4351c54f00d177240d8fc9`
 - Shared install helper: `32610f34d6353a6a54468744ab5de153157e910a`
+
+
+## Explicit QR Maker layout implementation — 2026-11-17
+
+User restated the approved requirement: match the ID Card Print Studio header and hero frame, and split the QR work area into left/right columns.
+
+### Implemented in `qr-maker.html`
+- Removed the manually-authored duplicate/fallback `.ij-brandbar` header. The page now relies on the same `/site-header.js` shared global header as the reference page.
+- Added `.ij-reference-hero` to the QR hero. This is the marker that makes `site-header.js` apply its reference-hero header alignment variant.
+- Reapplied the exact ID Studio hero frame: `width:min(calc(100% - 28px),1200px)`, content-driven height, `padding:clamp(26px,4vw,52px)`, 32px radius, same border, background gradient, shadow, 180px lower wave and sheen.
+- Set the QR workspace to an explicit two-column desktop layout: builder on the left (1.2fr), preview on the right (.82fr), aligned in a shared 1200px frame. At <=820px it stacks to one column for usability.
+- Kept QR artwork and QR generation logic intact.
+
+### Verification
+- Re-fetched QR Maker, ID Studio and shared header source.
+- Confirmed shared header script exists, reference marker is present, duplicate fallback header is removed, hero geometry declarations match reference, workspace left/right columns are explicit, and `window.makeQR` remains.
+- No live browser/device visual test has been run; do not claim the rendered page has been visually confirmed.
+
+Commit: `03d455671a4f2aa41cc99493702d7d65d7274259`.
