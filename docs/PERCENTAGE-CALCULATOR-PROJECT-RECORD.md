@@ -1870,3 +1870,13 @@ Commit: `325f80082016b742b184bb6e8a0d1ef6854bc81e`.
 - No live browser visual QA yet.
 
 Commit: `242a91aa3480c4892f9f69fec4f3a6e1dd10ff45`.
+
+
+## Root-cause fix: QR Maker header script path and page frame — 2026-11-17
+
+- Compared the actual ID Studio and QR Maker HTML after the latest screenshot. Found the key header defect: ID Studio loads `/site-header.js`, while QR Maker incorrectly loaded `/InfoJano/site-header.js`. On the custom domain that path prevents the shared header from loading, leaving the incomplete fallback header visible. Corrected QR Maker to load the exact same root-level shared header script as ID Studio. This supplies the real shared header with InfoJano logo, All Tools, language selector, and Home.
+- Added a final stylesheet at the end of the document head so old legacy `main` and hero rules cannot override the approved full-width frame. The main page frame is now full width and the hero uses the same centered 1200px maximum width / 14px side gutter / auto height / 26–52px padding / 32px radius as ID Studio.
+- Preserved QR hero artwork animations and generator code.
+- Re-fetched and verified the fixed script path, absence of the old broken path, final cascade override, exact hero geometry, and QR generation function. Live browser visual QA remains pending.
+
+Commit: `7d26176fd9a74783bd4efec6a43e3e2eefee1b2e`.
