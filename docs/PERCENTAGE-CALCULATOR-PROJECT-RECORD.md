@@ -1480,3 +1480,62 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 ### 9. Next session handover
 - Best next task: obtain Google URL Inspection results for the three priority percentage URLs and the latest Sitemaps UI fetch status. Then decide whether a precise indexing/canonical fix is warranted; if not, review contextual internal-link opportunities without changing the protected design.
 - First files to inspect if code work becomes justified: `percentage-change.html`, `percentage.html`, and `percentage-difference-calculator.html`.
+
+
+## Work session — 2026-11-17 (Full-site indexing evidence audit)
+
+### 1. Owner request and scope
+- Request: Perform as many checks as possible in one session and identify which site URLs are indexed versus still awaiting indexing.
+- Scope expanded from Percentage Calculator to the full InfoJano sitemap and Search Console evidence.
+- Protected: No homepage, hero, header, logo, shared navigation, or tool UI/source changes.
+
+### 2. Baseline
+- Repository: `barsulkhan/InfoJano`, branch `main`.
+- Starting commit: `4056051022d6bdf434247196c846ebf584ea353b`.
+- Recursive Git tree at that commit contains 315 repository entries.
+- Sitemap source contains 108 unique `<loc>` URLs.
+
+### 3. Full sitemap/repository reconciliation
+- Matched all 108 sitemap paths against the recursive GitHub repository tree.
+- Result: 108/108 sitemap paths have matching repository files; no missing source path found.
+- This proves source-file presence in GitHub, not that production serves each URL successfully.
+
+### 4. Search Console indexing evidence
+- Refreshed canonical-domain Search Analytics for the last 30 days on 2026-11-17.
+- Report returned 27 page rows with impressions; these have recent Google Search appearance evidence.
+- 82 sitemap URLs had no row in the last-30-day Search Analytics response. They are classified as **not confirmed by this report**, not as not indexed.
+- A last-16-month query was attempted but the connected Windsor.ai trial permits only the last 30 days; older data is unavailable through this connection.
+- Sitemap report remains 106 submitted, 0 errors, 0 warnings; last submitted/downloaded timestamps remain 2026-11-14. Current repo sitemap has 108 URLs. Reconciliation is pending a fresh Search Console sitemap fetch.
+- Exact Page Indexing report totals and per-URL URL Inspection results are not exposed by the connected read-only connector.
+
+### 5. Source-level checks
+- Inspected the canonical-domain robots.txt: global Allow and sitemap declaration; no global disallow.
+- Source-checked the 27 URLs with Search Analytics impressions (26 unique HTML files due to one QR parameter URL): all underlying files exist, have a title and self-canonical, and none of the inspected page heads contains a noindex directive.
+- The parameterized QR URL declares canonical to the base `qr-maker.html` page.
+- Full audit, including all 82 URLs without a last-30-day Search Analytics row, is saved at `docs/INFOJANO-INDEXING-AUDIT-2026-11-17.md`.
+
+### 6. Deployment check
+- GitHub Pages run `44009167922` for commit `4056051022d6bdf434247196c846ebf584ea353b` completed successfully.
+- `build`, `deploy`, and `report-build-status` jobs all concluded success.
+- This confirms GitHub Pages workflow deployment job success, but does not independently verify production HTTP responses or rendered pages.
+
+### 7. Mistakes and limitations
+- An initial attempt to fetch all 108 source files in one Code Mode batch exceeded the tool-call limit and returned no audit output; no repository files were changed by that failed attempt.
+- A subsequent recursive Git tree check successfully reconciled all sitemap paths without fetching every file body.
+- Google search-engine `site:` queries and the web viewer did not provide usable live production page results; direct web viewer fetches of infojano.com URLs were inaccessible.
+- Do not claim the 82 no-impression URLs are not indexed. URL Inspection/Page Indexing export is still needed for authoritative status.
+
+### 8. Work checklist
+- [x] Reconcile all sitemap URLs against repository files.
+- [x] Refresh last-30-day Search Console page report.
+- [x] Identify pages with recent Search impressions.
+- [x] Inspect robots.txt and source canonical/noindex for the impression-bearing URLs.
+- [x] Check latest GitHub Pages build/deploy workflow jobs.
+- [x] Create full-site indexing evidence audit.
+- [ ] Obtain Search Console Page Indexing report export for complete status totals/reasons.
+- [ ] Obtain URL Inspection data for priority URLs.
+- [ ] Confirm fresh sitemap download showing 108 submitted URLs.
+- [ ] Live HTTP/render/browser QA for sitemap URLs.
+
+### 9. Next session handover
+- Best next action: import the Page Indexing report export (or URL Inspection results) from Search Console, then map its exact statuses and reasons to the 108 sitemap URLs. Do not perform broad indexing changes until that evidence is available.
