@@ -469,6 +469,36 @@ main section.ij-qr-hero{display:grid!important;grid-template-columns:54% 46%!imp
 @media(max-width:640px){.ij-qr-site-header-inner{width:calc(100% - 24px)!important;min-height:0!important;padding:10px 0!important;align-items:flex-start!important;flex-direction:column!important;gap:9px!important}.ij-qr-site-logo{width:38px!important;height:38px!important;flex-basis:38px!important}.ij-qr-brand-copy strong{font-size:20px!important}.ij-qr-brand-copy small{font-size:11px!important}.ij-qr-main-nav{width:100%!important;justify-content:flex-end!important;gap:5px!important}.ij-qr-main-nav a,.ij-qr-language{min-height:35px!important;padding:7px 9px!important;font-size:11px!important}main section.ij-qr-hero{grid-template-columns:minmax(0,1fr) 38%!important;min-height:230px!important;padding:20px 16px!important;border-radius:24px!important}.ij-qr-hero h1{font-size:clamp(25px,6vw,36px)!important;letter-spacing:-1px!important}.ij-qr-hero p{font-size:12px!important;line-height:1.45!important}.ij-qr-hero-art{min-height:155px!important}.ij-qr-tile.tile-main{width:76px!important;height:76px!important;left:29%!important}.ij-qr-tile.tile-left,.ij-qr-tile.tile-right{width:50px!important;height:50px!important}.ij-qr-orbit{width:94px!important;height:94px!important;left:23%!important;top:9%!important}.ij-qr-orbit.orbit-b{width:112px!important;height:112px!important;left:18%!important;top:0!important}.ij-qr-scanline{left:14%!important;width:74%!important}}
 @media(prefers-reduced-motion:reduce){.ij-qr-hero .ij-qr-tile,.ij-qr-hero .ij-qr-orbit,.ij-qr-hero .ij-qr-scanline,.ij-qr-hero .ij-qr-spark,.ij-qr-hero h1 em{animation:none!important}}
 
+
+/* User-approved final refinement: widen only the horizontal hero span; preserve its vertical dimensions */
+.ij-qr-site-header{width:100%!important;min-height:78px!important;background:#fff!important;border-bottom:1px solid #e5effa!important;box-shadow:0 3px 14px rgba(15,35,65,.045)!important}
+.ij-qr-site-header-inner{width:calc(100% - 56px)!important;max-width:1320px!important;min-height:78px!important;margin:0 auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important}
+.ij-qr-site-brand{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important}
+.ij-qr-site-logo{width:48px!important;height:48px!important;flex:0 0 48px!important}
+.ij-qr-brand-copy{display:flex!important;flex-direction:column!important;gap:0!important}
+.ij-qr-brand-copy strong{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif!important;font-size:26px!important;line-height:1!important;font-weight:850!important;letter-spacing:-1.1px!important;color:#101d42!important}
+.ij-qr-brand-copy strong span{color:#e63d55!important}
+.ij-qr-brand-copy small{display:block!important;margin-top:5px!important;font-size:14px!important;line-height:1.2!important;font-weight:400!important;color:#64748b!important;white-space:nowrap!important}
+.ij-qr-main-nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important;margin-left:auto!important}
+.ij-qr-main-nav a,.ij-qr-language{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;min-height:42px!important;padding:9px 13px!important;border:1px solid transparent!important;border-radius:10px!important;background:transparent!important;color:#334155!important;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif!important;font-size:14px!important;font-weight:700!important;line-height:1.2!important;text-decoration:none!important;white-space:nowrap!important}
+.ij-qr-main-nav a:hover{background:#f1f7fd!important;border-color:#dceafa!important}
+.ij-qr-language{color:#475569!important;border-color:#e4ebf3!important;background:#fff!important}
+.ij-qr-nav-home{color:#1458c8!important}
+main section.ij-qr-hero{width:calc(100% - 56px)!important;max-width:none!important;min-height:230px!important;height:auto!important;box-sizing:border-box!important;padding:25px 32px!important;margin:12px auto 20px!important;border-radius:26px!important}
+.ij-qr-hero{background:radial-gradient(ellipse at 78% 22%,rgba(217,239,255,.92) 0%,transparent 38%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%)!important;border:1px solid #cfe5fb!important;box-shadow:0 18px 44px rgba(32,104,174,.12)!important;color:#101d42!important}
+.ij-qr-hero:before{inset:auto -8% -95px -8%!important;height:180px!important;background:linear-gradient(105deg,#50c6f4,#0787ee 58%,#1555db)!important;border-radius:50% 50% 0 0/36% 36% 0 0!important;opacity:.9!important;animation:none!important}
+.ij-qr-hero:after{left:-10%!important;right:-10%!important;bottom:24px!important;height:4px!important;background:linear-gradient(90deg,transparent,#50c6f4,#087ee8,#1555db,transparent)!important;filter:none!important;box-shadow:0 0 12px rgba(8,126,232,.35)!important;animation:qrLightSweep 4s linear infinite!important}
+.ij-qr-hero h1{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif!important;color:#101b43!important;-webkit-text-fill-color:#101b43!important;text-shadow:none!important;filter:none!important}
+.ij-qr-hero h1 em{background:none!important;color:#087ce5!important;-webkit-text-fill-color:#087ce5!important;text-shadow:none!important;filter:none!important;animation:none!important}
+.ij-qr-hero p{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif!important;color:#405775!important;-webkit-text-fill-color:#405775!important;text-shadow:none!important;filter:none!important;font-weight:500!important}
+.ij-qr-kicker{background:#122c72!important;border:1px solid #294e9b!important;color:#fff!important;box-shadow:0 4px 12px rgba(18,44,114,.18)!important;text-shadow:none!important;filter:none!important}
+.ij-qr-chips span{background:rgba(255,255,255,.94)!important;border:1px solid #b7d9f5!important;color:#164b91!important;box-shadow:0 3px 10px rgba(31,91,151,.07)!important;text-shadow:none!important;filter:none!important}
+.ij-qr-tile{box-shadow:0 0 0 4px rgba(71,232,255,.22),0 0 24px rgba(82,239,255,.35),0 12px 22px rgba(12,56,105,.16)!important}
+.ij-qr-orbit{border-color:#70cfff!important;box-shadow:0 0 12px rgba(69,223,255,.25)!important}.ij-qr-orbit.orbit-b{border-color:#9acfff!important}
+.ij-qr-scanline{background:linear-gradient(90deg,transparent,#48cfff,#fff,#48cfff,transparent)!important;box-shadow:0 0 10px 3px rgba(54,186,255,.35)!important}
+.ij-qr-spark{color:#087ee8!important;text-shadow:0 0 8px #fff!important}
+@media(max-width:760px){.ij-qr-site-header-inner{width:calc(100% - 28px)!important;min-height:0!important;padding:10px 0!important;align-items:flex-start!important;flex-direction:column!important;gap:9px!important}.ij-qr-site-logo{width:42px!important;height:42px!important;flex-basis:42px!important}.ij-qr-brand-copy strong{font-size:22px!important}.ij-qr-brand-copy small{font-size:12px!important}.ij-qr-main-nav{width:100%!important;justify-content:flex-end!important;gap:6px!important}.ij-qr-main-nav a,.ij-qr-language{min-height:36px!important;padding:7px 10px!important;font-size:12px!important}main section.ij-qr-hero{width:calc(100% - 28px)!important;min-height:230px!important;padding:20px 16px!important}}
+
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
@@ -563,7 +593,7 @@ main section.ij-qr-hero{display:grid!important;grid-template-columns:54% 46%!imp
 </a>
 <nav class="ij-qr-main-nav" aria-label="Main navigation">
 <a href="/index.html#toolGrid" class="ij-qr-nav-tools"><span aria-hidden="true">▦</span> All Tools</a>
-<span class="ij-qr-language" aria-label="Current language">English <span aria-hidden="true">⌄</span></span>
+<span class="ij-qr-language" aria-label="Language">English <span aria-hidden="true">⌄</span></span>
 <a href="/index.html" class="ij-qr-nav-home"><span aria-hidden="true">⌂</span> Home</a>
 </nav></div></header>
 
