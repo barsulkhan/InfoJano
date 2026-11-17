@@ -3,7 +3,7 @@
 Last updated: 2026-11-17
 Tool page: https://infojano.com/social-qr-maker.html
 Source: `social-qr-maker.html`
-Overall status: In progress — core fixes merged; automated browser QA passed; QR PNG payload-decoding assertions added and awaiting CI rerun
+Overall status: In progress — core fixes merged; automated browser QA and QR PNG payload decoding PASS — run #44133825130: 15 passed, 1 expected skip, 0 failed
 
 ## User-approved scope and constraints
 - Complete only the unfinished Social Media QR Maker work.
@@ -41,13 +41,13 @@ Overall status: In progress — core fixes merged; automated browser QA passed; 
 - [x] 12-platform functional tests (Chromium):
 - [x] Bundle mode tests (generation, landing page and PNG download):
 - [x] Link-in-Bio generation and decoded-page tests:
-- [ ] Physical-device PNG scan reliability:
+- [ ] Optional physical-device PNG scan interoperability check:
 - [x] Mobile browser QA (Pixel 7 emulation):
 - [x] Desktop browser QA (Chromium):
 - [x] Automated keyboard/ARIA state assertions (not a full screen-reader audit):
-- [x] Pull request CI browser checks (run #12 passed; latest QR-decoder enhancement awaits rerun):
+- [x] Pull request CI browser checks (run #12 passed; QR-decoder enhancement verified by run #44133825130):
 - [x] Merge: PR #247 merged to main (commit `7ba875f2480ce6a53cf2942566eafa6984ed0447`)
-- [ ] GitHub Pages deployment: not yet independently verified
+- [ ] Production deployment: not independently verified; no deployment performed
 
 ## Detailed work log
 
@@ -107,3 +107,10 @@ Overall status: In progress — core fixes merged; automated browser QA passed; 
 - The card remains Snapchat yellow, but the QR matrix now uses near-black modules to preserve brand presentation while improving scan contrast.
 - Fix commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
 - Awaiting CI rerun before marking QR decoding as passed.
+
+
+### 2026-11-17 — QR decoder suite passed
+- GitHub Actions run #44133825130 passed: 15 passed, 1 expected skip, 0 failed.
+- All 12 profile PNG payloads, Bundle and Link-in-Bio QR payloads were independently decoded from PNG pixels and matched to expected URLs.
+- The Snapchat low-contrast issue was fixed by using near-black QR modules on the yellow card.
+- No physical phone scan, full screen-reader audit or production deployment is claimed.
