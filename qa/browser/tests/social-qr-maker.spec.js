@@ -94,7 +94,7 @@ test('Link-in-Bio rejects mismatched social profile hosts', async ({ page }) => 
 test('decoded Social Link Page rejects unsafe destination protocols', async ({ page }) => {
   const payload = { n: 'Untrusted Profile', b: '', l: [['Instagram', 'javascript:alert(1)']] };
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))))
-    .replace(/\\+/g, '-').replace(/\\//g, '_').replace(/=+$/g, '');
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
   await page.goto('/social-qr-maker.html?hub=' + encoded);
   await expect(page.locator('h1')).toHaveCount(0);
   await expect(page.locator('a[href^="javascript:"]')).toHaveCount(0);
