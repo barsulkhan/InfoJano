@@ -1337,3 +1337,71 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### 9. Handover
 - Next best action: obtain GSC URL Inspection results for the three English percentage pages. If the URL Inspection data confirms all three are indexed with the expected canonical, proceed to a contextual internal-link/content distinction review; if not, fix the exact indexing/canonical issue first.
+
+
+## Work session — 2026-11-17 (Continuation check, refreshed GSC snapshot and deployment verification)
+
+### 1. Scope and guardrails
+- Continued from the 2026-11-16 handover without requiring the owner to repeat project context.
+- Rechecked the default branch, latest commits, project record, percentage calculator source files, sitemap and robots.txt.
+- Reused the connected Windsor.ai Search Console account `sc-domain:infojano.com` for a fresh last-28-day read.
+- Preserved the established scope: English-first/global SEO; no homepage, Hero, Header, logo, shared navigation, unrelated tools, translations or calculator-design changes.
+
+### 2. Repository and commit state
+- Repository: `barsulkhan/InfoJano`; working branch: `main`.
+- Latest commit returned by GitHub commit search: `41aff7ce77d27f3876fcefeac14ee3528a179b12` — `docs: expand SEO and competitor review findings` (2026-11-16 18:12:58 UTC).
+- Current project-record blob SHA before this append: `292e9ec83f4b1ba4b39d0feb5b5f785af8a14e77`.
+- Percentage source hashes remain:
+  - `percentage.html`: `4f6d3cadcbf70665fb3c2cfd55c57a69b9685bc2`
+  - `percentage-change.html`: `8f434234f1ce653f70681792da15a07c12f65de2`
+  - `percentage-difference-calculator.html`: `3c210daa16c3a9aa43db5814ec63a137360aca41`
+- The previous 2026-11-16 research append is present in the latest history; its commit is `41aff7ce77d27f3876fcefeac14ee3528a179b12`. This resolves the earlier “commit SHA to be captured” note for that append.
+
+### 3. Fresh Search Console read — canonical domain, last 28 days
+- Source: Windsor.ai Search Console connector; account `sc-domain:infojano.com`; pulled 2026-11-17.
+- Aggregate: **2 clicks, 695 impressions, 0.29% CTR, average position 20.43**.
+- The two clicks remain outside the English percentage targets: `custom-qr-code-generator.html` (1 click / 2 impressions) and `discount-pt-br.html` (1 click / 168 impressions). Do not attribute either click to the English percentage pages.
+- Percentage-cluster page rows:
+  - `percentage.html`: 1 impression, 0 clicks, position 3.
+  - `percentage-change.html`: 4 impressions, 0 clicks, position 43.75.
+  - `percentage-difference-calculator.html`: 11 impressions, 0 clicks, position 51.73.
+  - `repeated-percentage-change-calculator.html`: 16 impressions, 0 clicks, position 11.63.
+  - `successive-percentage-change-calculator.html`: 12 impressions, 0 clicks, position 13.42.
+  - `percentage-to-decimal-converter.html`: 5 impressions, position 71.2.
+  - `percentage-to-fraction-converter.html`: 6 impressions, position 62.5.
+  - `profit-loss-percentage-calculator.html`: 19 impressions, position 62.42.
+  - `exam-marks-percentage-calculator.html`: 2 impressions, position 50.5.
+  - `target-marks-calculator.html`: 2 impressions, position 10.
+- Query observations remain very low-volume: `percentage-change.html` had one impression each for “change percentage calculator” (position 24), “change calculator” (60) and “change amount” (80). `percentage-difference-calculator.html` had 2 impressions for “percentage difference calculator” (position 60); other exposed query rows were one impression each.
+- These samples are too small to justify another title rewrite, country-specific edits, or a ranking/CTR claim. Existing 2026-11-16 metadata changes need time to be crawled and accumulate data.
+
+### 4. Sitemap and crawl-discovery reconciliation
+- Current repository `sitemap.xml` blob SHA: `c0d5e9f096d31389892af656fdc3db48e760b9be`; source contains **108** `<loc>` entries.
+- Search Console's sitemap row still reports **106 submitted**, 0 errors, 0 warnings; last submitted/downloaded timestamp returned is **2026-11-14**.
+- This is a real count mismatch between the current repository source (108) and the Search Console report (106). The report's last-download timestamp predates this audit; it may not yet reflect the current source, but the exact reason and which URLs are absent cannot be established from the connector response alone.
+- Do not change or remove sitemap URLs to force the counts to match. Recheck the Sitemaps screen in Search Console UI and confirm the latest fetch before taking action.
+- `robots.txt` remains unchanged (blob SHA `d9b19d5d098c81da0ceb3586a7a9107a26612d57`), allows crawling and declares `https://infojano.com/sitemap.xml`.
+
+### 5. Deployment status
+- GitHub Pages workflow run `43922580306` was rechecked. `build`, `deploy` and `report-build-status` jobs all completed with conclusion `success`.
+- This verifies the workflow's build/deploy jobs completed; it does **not** prove live HTTP response, rendered-page correctness, Google crawl, or indexing.
+- Combined commit-status endpoint returned no individual status rows for `41aff7ce77d27f3876fcefeac14ee3528a179b12`; no extra status-check pass is claimed.
+
+### 6. Decisions and work performed
+- No application source, metadata, canonical, sitemap, robots, service-worker, homepage or design file was changed.
+- No internal-link edits were made yet: the prior handover explicitly places Google URL Inspection before the next percentage-cluster implementation decision, and the owner has not supplied those UI results.
+- No duplicate-page merge, redirect, canonical change, sitemap URL deletion or broad content rewrite is justified by the current evidence.
+- This session's safe work was limited to repository/GSC/deployment verification and this durable project-record append.
+
+### 7. Verification boundaries and next actions
+- [x] Re-read the project record and confirm latest repository commit/branch history.
+- [x] Re-read the three percentage page source files and verify their recorded blob hashes are unchanged.
+- [x] Refresh the canonical-domain last-28-day aggregate, page and query reports.
+- [x] Count current sitemap source entries and compare with the Search Console sitemap report.
+- [x] Recheck GitHub Pages workflow run `43922580306`; all three jobs succeeded.
+- [ ] Google Search Console URL Inspection for `percentage.html`, `percentage-change.html` and `percentage-difference-calculator.html`: still unavailable through the Windsor Search Analytics connector. Need Page indexing, last crawl, crawl allowed, indexing allowed, user-declared canonical and Google-selected canonical from the GSC UI.
+- [ ] Reconcile the 108 source URLs vs 106 submitted in the GSC Sitemaps UI and confirm the latest sitemap fetch.
+- [ ] Browser QA of Change / Reverse % / Difference modes, batch validation, CSV export, history restore and copy behavior — not run.
+- [ ] Desktop/mobile visual regression and live rendered-page/HTTP-header checks — not run.
+- [ ] No claim that all sitemap URLs are indexed or that the 2026-11-16 SEO edits have improved rankings.
+- Next best step: obtain the three URL Inspection results and current Sitemaps UI status; then make only the specific confirmed indexing/canonical fix, or proceed with contextual internal links if all three URLs are indexed with expected canonicals.
