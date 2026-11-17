@@ -593,6 +593,28 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 }
 </style>
 
+
+<style id="ij-percentage-benefits-original-size-left">
+/* Restore the original compact benefit-chip dimensions; only align the row to the left. */
+.ij-pct-benefits{
+ display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+ justify-content:flex-start!important;align-items:center!important;
+ gap:12px!important;width:100%!important;max-width:none!important;
+}
+.ij-pct-benefits span{
+ flex:0 0 auto!important;width:auto!important;min-width:0!important;
+ min-height:52px!important;padding:8px 17px!important;
+ display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;
+ font-size:14px!important;gap:9px!important;white-space:nowrap!important;
+}
+.ij-pct-benefits b{width:34px!important;height:34px!important;font-size:19px!important;flex:0 0 34px!important}
+@media(max-width:620px){
+ .ij-pct-benefits{flex-wrap:wrap!important;justify-content:flex-start!important;gap:7px!important}
+ .ij-pct-benefits span{min-height:36px!important;padding:5px 8px!important;font-size:10px!important;gap:5px!important}
+ .ij-pct-benefits b{width:23px!important;height:23px!important;flex-basis:23px!important;font-size:13px!important}
+}
+</style>
+
 </head>
 <body>
 
