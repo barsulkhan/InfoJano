@@ -3,7 +3,7 @@
 Last updated: 2026-11-17
 Tool page: https://infojano.com/social-qr-maker.html
 Source: `social-qr-maker.html`
-Overall status: In progress
+Overall status: In progress — core fixes merged; automated browser QA infrastructure awaiting first CI run
 
 ## User-approved scope and constraints
 - Complete only the unfinished Social Media QR Maker work.
@@ -24,7 +24,7 @@ Overall status: In progress
 ### In progress
 - [x] [CARD-005] Source and script syntax verification — all five inline JavaScript blocks parse; six source assertions and nine isolated URL-normalizer tests pass.
 - [ ] [CARD-006] Functional/browser QA — run the new Playwright suite for all 12 platforms, bundle, Link-in-Bio, PNG download, error states and desktop/mobile emulation; physical scan and accessibility review remain manual.
-- [ ] [CARD-008] Isolated Playwright harness — test files, desktop/mobile Chromium config and PR workflow added on `qa/social-qr-playwright`; execution/CI evidence pending.
+- [x] [CARD-008] Isolated Playwright harness — desktop/mobile Chromium config, 7 browser scenarios, scoped PR workflow and README added; PR #248 open. JS/config parse checks pass; first GitHub Actions run not yet reported.
 
 ### Backlog / blocked
 - [ ] [CARD-007] Dynamic QR editing, scan analytics and account-backed saved pages — not present in this static page; requires a separately researched backend/API, privacy/security design, and explicit scope approval.
@@ -56,7 +56,7 @@ Overall status: In progress
 - Inspected: current `social-qr-maker.html`, tool work-tracking standard, research standard, tool index, and current master/project records.
 - Changed: only `social-qr-maker.html` in this branch; added this tracker and QA ledger; updated tool index.
 - Tests and results: source implementation re-fetched after each commit; source-level assertions and actual JS syntax/browser tests remain to be recorded. No real browser is connected in this session.
-- PR/commit/workflow: PR #247 merged to `main` by squash commit `7ba875f2480ce6a53cf2942566eafa6984ed0447`; no PR workflow runs or status checks were returned.
+- PR/commit/workflow: PR #247 merged to `main` by squash commit `7ba875f2480ce6a53cf2942566eafa6984ed0447`. Next QA harness is in PR #248 (draft): https://github.com/barsulkhan/InfoJano/pull/248.
 - Issues and resolution: fixed bundle theme selection, platform/domain URL validation across modes, decoded hub destination validation, asynchronous generation status reporting, and cross-IIFE validator scope.
 - Still pending: real browser and device QA; verify QR scan behavior and actual image downloads. Dynamic editing/analytics/account storage remain blocked pending backend research and approval.
 - Next step: run the new isolated Playwright suite; retain manual physical-device QR scan and accessibility QA as separate evidence.
@@ -71,4 +71,10 @@ Overall status: In progress
 - Planned automated coverage: 12 platforms, wrong-host rejection, Bundle QR + Social Links page, Link-in-Bio rendering/validation, PNG download, mobile control bounds.
 - Tests: not executed in this environment; dependency installation/browser binaries are unavailable here. The new workflow will execute in GitHub Actions after PR creation. No claim of browser test pass.
 - Protected areas: no changes to `social-qr-maker.html` after the merge, `qr-maker.html`, shared header/assets, homepage or unrelated tools.
-- Next: create PR for isolated QA harness, inspect workflow result and fix any test failures; physical phone scanning and accessibility remain manual.
+- Next: inspect PR #248 browser workflow once GitHub Actions reports; fix failures before merge. Physical phone scanning and accessibility remain manual.
+
+### 2026-11-17 — Browser QA harness PR opened
+- Created draft PR #248: https://github.com/barsulkhan/InfoJano/pull/248.
+- PR changed-file audit: exactly eight QA/tracking/workflow files; neither QR product source is changed in this PR.
+- JavaScript parser checks and package.json parse passed. GitHub Actions workflow/status has not reported a run yet; do not infer pass.
+- The test suite is isolated to Social QR; no Normal QR feature or source was copied.
