@@ -531,6 +531,28 @@ main section.ij-qr-hero:after{content:""!important;position:absolute!important;z
 @media(max-width:480px){.ij-brandbar{padding:10px 12px!important}.ij-brandname{font-size:20px!important}.ij-brandtag{font-size:11px!important}.ij-brandmark{width:40px!important;height:40px!important;flex-basis:40px!important}.ij-qr-hero h1{font-size:clamp(27px,7vw,36px)!important;letter-spacing:-1px!important}.ij-qr-hero p{font-size:14px!important}.ij-qr-hero-art{min-height:130px!important}.ij-qr-chips span{font-size:10px!important;padding:6px 9px!important}}
 @media(prefers-reduced-motion:reduce){.ij-qr-hero .ij-qr-tile,.ij-qr-hero .ij-qr-orbit,.ij-qr-hero .ij-qr-scanline,.ij-qr-hero .ij-qr-spark,.ij-qr-hero h1 em{animation:none!important}}
 
+
+/* Final screenshot-driven correction: match the ID Studio content span and remove all text glow */
+html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+body > main{display:block!important;width:100%!important;max-width:none!important;margin:0 auto!important;padding:0 0 48px!important;box-sizing:border-box!important}
+body > main > .ij-qr-breadcrumb{width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;margin:2px auto 17px!important}
+body > main > section.ij-qr-hero{display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;align-items:center!important;gap:clamp(22px,4vw,54px)!important;width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;min-height:0!important;height:auto!important;margin:24px auto 28px!important;padding:clamp(26px,4vw,52px)!important;border:1px solid #cfe5fb!important;border-radius:32px!important;box-sizing:border-box!important}
+body > main > section.ij-qr-hero .ij-qr-hero-copy{min-width:0!important;max-width:none!important;position:relative!important;z-index:2!important}
+body > main > section.ij-qr-hero .ij-qr-hero-art{position:relative!important;min-width:0!important;min-height:220px!important;z-index:2!important}
+body > main > section.ij-qr-hero h1,
+body > main > section.ij-qr-hero h1 em,
+body > main > section.ij-qr-hero p,
+body > main > section.ij-qr-hero .ij-qr-kicker,
+body > main > section.ij-qr-hero .ij-qr-chips span{ text-shadow:none!important;filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important; }
+body > main > section.ij-qr-hero h1{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(36px,4.3vw,62px)!important;line-height:1.04!important;letter-spacing:-2.1px!important;font-weight:850!important;color:#101b43!important;-webkit-text-fill-color:#101b43!important;margin:0 0 14px!important;opacity:1!important}
+body > main > section.ij-qr-hero h1 em{font-style:normal!important;background:none!important;color:#087ce5!important;-webkit-text-fill-color:#087ce5!important;animation:none!important;opacity:1!important}
+body > main > section.ij-qr-hero p{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(16px,1.55vw,20px)!important;line-height:1.55!important;font-weight:400!important;color:#405775!important;-webkit-text-fill-color:#405775!important;opacity:1!important}
+body > main > section.ij-qr-hero .ij-qr-kicker{background:#e8f5ff!important;color:#123a80!important;-webkit-text-fill-color:#123a80!important;border:1px solid #a9d8ff!important;box-shadow:none!important}
+body > main > section.ij-qr-hero .ij-qr-chips span{background:#f5fbff!important;color:#164b91!important;-webkit-text-fill-color:#164b91!important;border:1px solid #b7ddfb!important;box-shadow:none!important}
+body > main > section.ij-qr-hero:after{filter:none!important;box-shadow:none!important}
+@media(max-width:760px){body > main{padding:0 0 32px!important}body > main > section.ij-qr-hero{grid-template-columns:minmax(0,1fr) 38%!important;gap:12px!important;padding:22px 18px!important;width:calc(100% - 28px)!important}body > main > section.ij-qr-hero h1{font-size:clamp(27px,6vw,38px)!important;letter-spacing:-1px!important}body > main > section.ij-qr-hero p{font-size:14px!important}body > main > section.ij-qr-hero .ij-qr-hero-art{min-height:150px!important}}
+@media(max-width:480px){body > main > section.ij-qr-hero{grid-template-columns:1fr!important}body > main > section.ij-qr-hero .ij-qr-hero-art{min-height:140px!important}}
+
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
