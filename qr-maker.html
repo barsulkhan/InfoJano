@@ -803,48 +803,30 @@ body > main > .ij-qr-features,body > main > .ij-qr-reader,body > main > .ij-qr-i
 </style>
 
 
-<style id="ij-qr-maker-height-and-section-alignment">
-/* Taller hero frame; preserve its current left/right width and proportions. */
-@media(min-width:1001px){
+
+
+
+
+
+
+
+
+
+<style id="ij-qr-maker-hero-height-match-percentage">
+/* Match Percentage Change hero's vertical rhythm; leave QR hero width and horizontal geometry untouched. */
+@media(min-width:1001px) and (max-width:1499px){
  body>main>.ij-qr-hero.ij-reference-hero{
-  min-height:310px!important;
-  padding-top:38px!important;
-  padding-bottom:38px!important;
+  min-height:337px!important;height:auto!important;
+  padding:26px 42px 22px!important;
  }
+ .ij-qr-hero-art{height:235px!important;min-height:235px!important}
 }
-/* Every section below the hero shares the exact same content edges. */
-@media(min-width:641px){
- body>main>.ij-qr-features,
- body>main>.ij-qr-workspace,
- body>main>.ij-qr-reader,
- body>main>.ij-qr-info-grid,
- body>main>.ij-qr-print-guide,
- body>main>.ij-practical-guide{
-  width:100%!important;
-  max-width:none!important;
-  margin-left:0!important;
-  margin-right:0!important;
-  box-sizing:border-box!important;
+@media(min-width:1500px){
+ body>main>.ij-qr-hero.ij-reference-hero{
+  min-height:358px!important;height:auto!important;
+  padding:30px 50px 24px!important;
  }
-}
-@media(min-width:641px) and (max-width:1000px){
- body>main>.ij-qr-hero.ij-reference-hero{min-height:300px!important}
-}
-@media(max-width:640px){
- body>main>.ij-qr-hero.ij-reference-hero{min-height:0!important}
-}
-</style>
-
-
-
-
-
-<style id="ij-qr-maker-hero-height-plus-8mm">
-@media(min-width:1001px){
- body>main>.ij-qr-hero.ij-reference-hero{min-height:340px!important}
-}
-@media(min-width:641px) and (max-width:1000px){
- body>main>.ij-qr-hero.ij-reference-hero{min-height:330px!important}
+ .ij-qr-hero-art{height:250px!important;min-height:250px!important}
 }
 </style>
 
