@@ -1745,3 +1745,27 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### Commit
 - `20ce26794d18bed128c1a30d72f14b8abc54236e` — Align QR Maker header and improve hero text contrast.
+
+
+## QR Maker reference-layout rebuild — 2026-11-17
+
+### User-approved scope
+- Rebuild only the QR Maker header and hero composition to match the user's supplied ID Card Print Studio screenshots more closely.
+- Preserve the approved QR banner width/overall frame and the animated QR artwork.
+- Do not modify QR generation controls or functionality, homepage, ID Card Print Studio, or unrelated pages.
+
+### Changes applied
+- Replaced the custom QR-only header (Create QR / Features / Back to Home) with a clean white InfoJano header using the same brand logo artwork and typography as the homepage header, aligned to the 1200px content frame.
+- Header navigation now follows the supplied screenshot pattern: All Tools, English language indicator, and Home.
+- Rebuilt the QR hero composition using the ID Studio arrangement: large QR icon above the heading, title and description, three feature tiles (Website / Link, WiFi Access, Contact Details), animated QR artwork on the right, and a separate bottom benefit strip over the blue wave.
+- Kept the floating QR tiles, orbit rings, scanline and sparkle animation; retained reduced-motion handling.
+- Applied the ID Studio light-blue/white palette and dark readable heading/description colors. Main hero frame remains centered at max 1200px.
+- Left the QR builder, QR type buttons, input fields, preview, generation/download/share logic, and other content intact.
+
+### Verification
+- Re-fetched `qr-maker.html` after commit.
+- Confirmed the new header/nav labels, QR icon, three feature tiles, bottom benefits strip, animated artwork markup, and original `window.makeQR` function remain present.
+- This is source-level verification only. No production browser/device screenshot or live visual QA has been run. The English label is a visual language indicator only; no language-switching behavior was added because no such language-switch implementation was identified in the page source.
+
+### Commit
+- `8e0beac309ae4e2c81e651e5e1065c5652e6423d` — Match QR Maker header and hero layout to ID Studio reference.
