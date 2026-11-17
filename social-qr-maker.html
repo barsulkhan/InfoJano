@@ -384,6 +384,7 @@ const name=input.replace(/^@/,'').replace(/^\/+/, '');if(!name||/[\s/:?#\\]/.tes
 const bases={instagram:'https://www.instagram.com/',facebook:'https://www.facebook.com/',youtube:'https://www.youtube.com/@',tiktok:'https://www.tiktok.com/@',telegram:'https://t.me/',linkedin:'https://www.linkedin.com/in/',x:'https://x.com/',pinterest:'https://www.pinterest.com/',snapchat:'https://www.snapchat.com/add/',threads:'https://www.threads.net/@',reddit:'https://www.reddit.com/user/'};
 if(!bases[type])throw new Error('Select a supported social platform.');return bases[type]+encodeURIComponent(name);
 }
+window.ijNormalizeSocialProfileUrl=profileUrl;
 document.getElementById('social-build-button').addEventListener('click',async function(){
 const buildButton=this;buildButton.disabled=true;
 try{let payload=window.ijBuildAdvancedPayload?window.ijBuildAdvancedPayload():null;if(payload===null){const raw=value.value.trim();if(!raw)throw new Error('Enter a username, phone number or profile link.');payload=profileUrl(platform.value,raw);}
@@ -398,11 +399,11 @@ function makeSocialHub(n,b,l){const data={n:n,b:b,l:l};const enc=btoa(unescape(e
 if(m==='profile')return null;
 if(m==='bundle'){
 const name=g('bundle-name'),specs=[['Instagram','instagram','bundle-instagram'],['Facebook','facebook','bundle-facebook'],['YouTube','youtube','bundle-youtube'],['WhatsApp','whatsapp','bundle-whatsapp'],['TikTok','tiktok','bundle-tiktok'],['Telegram','telegram','bundle-telegram'],['LinkedIn','linkedin','bundle-linkedin'],['X','x','bundle-x'],['Pinterest','pinterest','bundle-pinterest'],['Snapchat','snapchat','bundle-snapchat'],['Threads','threads','bundle-threads']];
-const fields=specs.filter(x=>g(x[2])).map(x=>[x[0],profileUrl(x[1],g(x[2]))]);if(!fields.length)throw Error('Add at least one valid social profile or WhatsApp number.');return makeSocialHub(name,'',fields);
+const fields=specs.filter(x=>g(x[2])).map(x=>[x[0],window.ijNormalizeSocialProfileUrl(x[1],g(x[2]))]);if(!fields.length)throw Error('Add at least one valid social profile or WhatsApp number.');return makeSocialHub(name,'',fields);
 }
 const name=g('ij-hub-name');if(!name)throw Error('Enter your name or brand name for the Social Link Page.');
 const specs=[['Instagram','instagram','ij-hub-instagram'],['Facebook','facebook','ij-hub-facebook'],['YouTube','youtube','ij-hub-youtube'],['TikTok','tiktok','ij-hub-tiktok'],['LinkedIn','linkedin','ij-hub-linkedin'],['X','x','ij-hub-x'],['Pinterest','pinterest','ij-hub-pinterest'],['Snapchat','snapchat','ij-hub-snapchat'],['Threads','threads','ij-hub-threads']];
-const links=specs.filter(x=>g(x[2])).map(x=>[x[0],profileUrl(x[1],g(x[2]))]);if(g('ij-hub-whatsapp'))links.push(['WhatsApp',profileUrl('whatsapp',g('ij-hub-whatsapp'))]);if(!links.length)throw Error('Add at least one valid social profile or WhatsApp number.');return makeSocialHub(name,g('ij-hub-bio'),links);
+const links=specs.filter(x=>g(x[2])).map(x=>[x[0],window.ijNormalizeSocialProfileUrl(x[1],g(x[2]))]);if(g('ij-hub-whatsapp'))links.push(['WhatsApp',window.ijNormalizeSocialProfileUrl('whatsapp',g('ij-hub-whatsapp'))]);if(!links.length)throw Error('Add at least one valid social profile or WhatsApp number.');return makeSocialHub(name,g('ij-hub-bio'),links);
 }})();(function(){const p=new URLSearchParams(location.search).get('hub');if(!p)return;try{const raw=decodeURIComponent(escape(atob(p.replace(/-/g,'+').replace(/_/g,'/'))));const d=JSON.parse(raw);if(!d||typeof d.n!=='string'||!d.n.trim()||d.n.length>100||typeof d.b!=='string'||d.b.length>120||!Array.isArray(d.l)||d.l.length>11)return;
 const allowedHosts={Instagram:['instagram.com'],Facebook:['facebook.com','fb.watch','fb.com'],YouTube:['youtube.com','youtu.be'],TikTok:['tiktok.com'],Telegram:['t.me','telegram.me'],WhatsApp:['wa.me'],LinkedIn:['linkedin.com'],X:['x.com','twitter.com'],Pinterest:['pinterest.com'],Snapchat:['snapchat.com'],Threads:['threads.net'],Reddit:['reddit.com']};
 const safeLinks=d.l.filter(x=>{if(!Array.isArray(x)||typeof x[0]!=='string'||typeof x[1]!=='string'||!allowedHosts[x[0]])return false;try{const u=new URL(x[1]);const host=u.hostname.toLowerCase().replace(/^www\./,'');return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password&&allowedHosts[x[0]].some(domain=>host===domain||host.endsWith('.'+domain));}catch(e){return false;}}).slice(0,11);
