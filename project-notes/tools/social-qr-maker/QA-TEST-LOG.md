@@ -81,3 +81,14 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - During QA, a real long-payload QR overflow was fixed by using QR error-correction level M for Bundle/Link-in-Bio while retaining H for single-profile QR. The unsafe-payload assertion was corrected to verify the original maker UI remains and no unsafe link/profile is rendered.
 - This is automated Chromium desktop + Pixel 7 emulation evidence. Physical-device QR scan, manual keyboard/screen-reader/accessibility review, and production deployment verification remain pending.
 - PR #248 remains draft/open and is not merged. Do not merge or deploy without explicit approval.
+
+
+## 2026-11-17 — Keyboard accessibility follow-up and CI run #12
+
+- Source improvement: social platform tile controls now form a labelled group (`role="group"`, `aria-label="Choose a social platform"`) and expose selected state with `aria-pressed` true/false. The click and select-change synchronization keeps the state in step with the native platform select.
+- Added a Playwright keyboard test: focus the Facebook tile, activate with Enter, confirm the native select changes and the pressed state updates for Facebook/Instagram.
+- GitHub Actions run #12: https://github.com/barsulkhan/InfoJano/actions/runs/44128659910 — **SUCCESS**.
+- Result: **15 passed, 1 expected skip, 0 failed** across Chromium desktop and Pixel 7 mobile emulation. Keyboard selection/pressed-state test passed in both projects.
+- Earlier run #11 also passed after the platform-state markup change: 13 passed, 1 expected skip, 0 failed.
+- These are automated keyboard interaction and ARIA-state assertions, not a complete screen-reader audit. Manual screen-reader review and physical-device QR scanning remain pending.
+- PR #248 remains draft/open and unmerged; no deployment performed.
