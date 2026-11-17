@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-17
 Source under test: `social-qr-maker.html`
-Branch: `fix/social-qr-maker-completion`
+Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 
 ## 2026-11-17 — Source implementation review
 
@@ -43,8 +43,24 @@ Branch: `fix/social-qr-maker-completion`
 - These are source/parser and isolated function checks, not browser tests. Real QR library rendering, canvas export, link page rendering, scan reliability, responsive visuals and accessibility remain NOT RUN.
 
 ## Pull request and CI status — 2026-11-17
-- Draft PR: https://github.com/barsulkhan/InfoJano/pull/247
+- PR #247: https://github.com/barsulkhan/InfoJano/pull/247 — **merged** by squash commit `7ba875f2480ce6a53cf2942566eafa6984ed0447`
 - Changed-file audit: exactly four files — `social-qr-maker.html`, `project-notes/TOOL-INDEX.md`, and the new Social QR README/QA log.
 - Confirmed `qr-maker.html` (Normal QR) and all other source pages are absent from the PR changed-file list.
 - PR-triggered workflow runs returned none; combined commit status returned no checks. CI is therefore **not run / no status**, not PASS.
-- PR is draft and unmerged. No deployment was performed.
+- PR is closed/merged. Cloudflare preview bot reported preview build/deployment success for the earlier branch commit; that is not evidence of the production website deployment.
+
+## 2026-11-17 — Browser QA harness added (execution pending)
+
+| ID | Test | Expected | Result | Evidence / notes |
+|---|---|---|---|---|
+| SQ-011 | 12-platform browser QR generation | Each platform creates a designed PNG and expected destination | Added; not run | `qa/browser/tests/social-qr-maker.spec.js` |
+| SQ-012 | Wrong-platform host rejection | Instagram rejects a Facebook URL | Added; not run | Playwright browser assertion |
+| SQ-013 | Bundle mode and landing page | Social Links QR generates, downloads and opens valid Instagram/WhatsApp links | Added; not run | Playwright browser assertion |
+| SQ-014 | Link-in-Bio generation | Name, bio and Instagram destination render on the generated page | Added; not run | Playwright browser assertion |
+| SQ-015 | Link-in-Bio invalid host | Mismatched host is rejected before QR generation | Added; not run | Playwright browser assertion |
+| SQ-016 | Mobile controls | Primary button and bundle field remain within mobile viewport | Added; not run | Pixel 7 Chromium emulation |
+
+- Added isolated Playwright configuration under `qa/browser/` and workflow `.github/workflows/social-qr-browser-tests.yml`.
+- Workflow triggers on pull requests changing Social QR or the isolated QA harness, plus manual dispatch.
+- Test execution is pending: no Node package installation or browser binaries were available in the current tool environment.
+- Physical QR scanning and screen-reader/manual accessibility checks remain outside automated emulation.
