@@ -171,14 +171,14 @@ body{background:linear-gradient(180deg,#eff6ff,#f7f8ff 45%,#eef3ff)!important;co
 main.wrap{width:100%!important;max-width:1180px!important;margin:0 auto!important;padding:16px 12px 48px!important}
 .ij-social-hero{
  display:grid!important;grid-template-columns:54% 46%!important;align-items:center!important;
- min-height:250px!important;height:auto!important;padding:26px 34px!important;margin:12px 0 12px!important;
+ min-height:350px!important;height:auto!important;padding:38px 42px!important;margin:12px 0 12px!important;
  border:1px solid #cfe5fb!important;border-radius:26px!important;overflow:hidden!important;isolation:isolate!important;
- background:linear-gradient(115deg,#3110a8 0%,#2025dc 52%,#101b9d 100%)!important;
- box-shadow:0 13px 30px #2523a43a!important;color:#fff!important
+ background:radial-gradient(ellipse at 78% 24%,#d9efff 0%,transparent 38%),linear-gradient(118deg,#f8fcff 0%,#ffffff 48%,#e6f3ff 100%)!important;
+ box-shadow:0 18px 44px rgba(32,104,174,.14)!important;color:#101d42!important
 }
 .ij-social-hero:before{
  inset:-10%!important;z-index:0!important;
- background:radial-gradient(ellipse at 75% 50%,#00c9ff55,transparent 38%),linear-gradient(110deg,transparent 32%,#fff2 48%,transparent 61%)!important;
+ background:radial-gradient(ellipse at 76% 46%,rgba(0,160,230,.18),transparent 38%),radial-gradient(ellipse at 45% 100%,rgba(170,70,220,.10),transparent 45%),linear-gradient(110deg,transparent 28%,rgba(255,255,255,.7) 48%,transparent 62%)!important;
  animation:socialGlow 5s ease-in-out infinite alternate!important
 }
 .ij-social-hero:after{
@@ -187,15 +187,15 @@ main.wrap{width:100%!important;max-width:1180px!important;margin:0 auto!importan
  box-shadow:0 0 15px #65dfff!important;animation:socialSweep 3.6s linear infinite!important
 }
 .ij-social-copy{z-index:4!important}
-.ij-social-copy .kicker{color:#c9eaff!important;font-size:11px!important;letter-spacing:2px!important}
-.ij-social-copy h1{color:#fff!important;font-size:clamp(34px,5vw,58px)!important;line-height:1.04!important;letter-spacing:-1.8px!important;text-shadow:none!important}
-.ij-social-copy h1 em{color:#ffdf35!important}
-.ij-social-copy p{color:#f3f7ff!important;font-size:clamp(14px,1.7vw,19px)!important;line-height:1.45!important}
-.ij-social-art{z-index:2!important;min-height:210px!important}
+.ij-social-copy .kicker{display:inline-block;padding:9px 17px;border-radius:999px;background:#101e65;color:#fff!important;font-size:11px!important;letter-spacing:1.5px!important;box-shadow:0 5px 14px #163b8b25}
+.ij-social-copy h1{color:#101b43!important;font-size:clamp(34px,5vw,58px)!important;line-height:1.04!important;letter-spacing:-1.8px!important;text-shadow:none!important}
+.ij-social-copy h1 em{color:#087ce5!important}
+.ij-social-copy p{max-width:620px!important;color:#53647d!important;font-size:clamp(14px,1.7vw,19px)!important;line-height:1.45!important}
+.ij-social-art{z-index:2!important;min-height:280px!important}
 .social-qr-core{width:126px!important;height:126px!important}
 .social-orbit{width:180px!important;height:180px!important}
 .social-float-icon{width:48px!important;height:48px!important;border-radius:14px!important}
-.ij-social-features{margin:10px 0 18px!important}
+.ij-social-hero-pills{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin-top:22px!important;max-width:690px!important}.ij-social-hero-pills span{display:inline-flex!important;align-items:center!important;gap:6px!important;padding:10px 15px!important;border:1px solid #e2ebf8!important;border-radius:999px!important;background:#fff!important;color:#142653!important;font-size:13px!important;font-weight:850!important;box-shadow:0 6px 16px #1b4e8b12!important;white-space:nowrap!important}.ij-social-features{margin:10px 0 18px!important}
 .ij-social-workspace{
  display:grid!important;grid-template-columns:minmax(0,1.2fr) minmax(340px,.82fr)!important;
  align-items:stretch!important;gap:16px!important;width:100%!important;margin:0 0 16px!important
@@ -228,13 +228,13 @@ main.wrap>.ij-social-workspace>.card{
 .ij-social-preview-placeholder small{max-width:260px;font-size:12px;line-height:1.5}
 .ij-social-workspace .ij-advanced-card,.ij-social-workspace .ij-social-extras{margin-top:16px!important;padding:18px!important;border-radius:18px!important;background:#f9fbff!important}
 @media(max-width:900px){
- .ij-social-hero{min-height:225px!important;padding:22px 24px!important}
+ .ij-social-hero{min-height:310px!important;padding:28px 26px!important}
  .ij-social-workspace{grid-template-columns:minmax(0,1fr) minmax(280px,.85fr)!important;gap:12px!important}
  .ij-social-features{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 @media(max-width:680px){
  main.wrap{padding:12px 10px 36px!important}
- .ij-social-hero{grid-template-columns:54% 46%!important;min-height:190px!important;padding:17px 13px!important;border-radius:20px!important}
+ .ij-social-hero{grid-template-columns:1fr!important;min-height:0!important;padding:24px 18px!important;border-radius:20px!important}.ij-social-art{min-height:190px!important;grid-row:1!important}.ij-social-copy{grid-row:2!important}.ij-social-hero-pills{gap:7px!important;margin-top:16px!important}.ij-social-hero-pills span{padding:8px 10px!important;font-size:11px!important}
  .ij-social-copy h1{font-size:clamp(26px,7vw,36px)!important;letter-spacing:-1px!important}
  .ij-social-copy p{font-size:11px!important}.ij-social-copy .kicker{font-size:8px!important;letter-spacing:1px!important}
  .ij-social-art{min-height:145px!important}
@@ -255,7 +255,7 @@ main.wrap>.ij-social-workspace>.card{
 </style>
 </head><body>
 
-<main class="wrap"><div class="ij-social-crumb"><a href="index.html">⌂ Home</a> › <a href="qr-choice.html">QR Code</a> › Social Media QR Code Maker</div><section class="ij-social-hero"><div class="ij-social-copy"><span class="kicker">CONNECT YOUR SOCIAL WORLD</span><h1>Social Media <em>QR Maker</em></h1><p>Create a beautiful QR code for your social profiles.</p></div><div class="ij-social-art" aria-hidden="true"><div class="social-orbit"></div><div class="social-qr-core"><svg viewBox="0 0 100 100"><path fill="#111b43" d="M5 5h28v28H5zm7 7v14h14V12zM67 5h28v28H67zm7 7v14h14V12zM5 67h28v28H5zm7 7v14h14V74zM40 5h8v8h-8zm16 0h8v8h-8zm-16 16h8v8h-8zm16 0h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-40 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8z"/></svg><b>ij</b></div><div class="social-scan"></div><span class="social-float-icon instagram">◎</span><span class="social-float-icon facebook">f</span><span class="social-float-icon youtube">▶</span><span class="social-float-icon tiktok">♪</span><span class="social-float-icon telegram">➤</span><span class="social-float-icon whatsapp">◉</span></div></section><section class="ij-social-features" aria-label="Social QR benefits">
+<main class="wrap"><div class="ij-social-crumb"><a href="index.html">⌂ Home</a> › <a href="qr-choice.html">QR Code</a> › Social Media QR Code Maker</div><section class="ij-social-hero"><div class="ij-social-copy"><span class="kicker">● &nbsp; SOCIAL MEDIA QR MAKER</span><h1>Social Media QR Code<br><em>Generator Online</em></h1><p>Create a QR code for your social media account or page (Facebook, Instagram, YouTube, TikTok, WhatsApp and more) in seconds.</p><div class="ij-social-hero-pills"><span>ϟ &nbsp; Fast &amp; Easy</span><span>✓ &nbsp; Free to Use</span><span>🎨 &nbsp; Fully Customizable</span><span>▦ &nbsp; Multiple Uses</span></div></div><div class="ij-social-art" aria-hidden="true"><div class="social-orbit"></div><div class="social-qr-core"><svg viewBox="0 0 100 100"><path fill="#111b43" d="M5 5h28v28H5zm7 7v14h14V12zM67 5h28v28H67zm7 7v14h14V12zM5 67h28v28H5zm7 7v14h14V74zM40 5h8v8h-8zm16 0h8v8h-8zm-16 16h8v8h-8zm16 0h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-40 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8z"/></svg><b>ij</b></div><div class="social-scan"></div><span class="social-float-icon instagram">◎</span><span class="social-float-icon facebook">f</span><span class="social-float-icon youtube">▶</span><span class="social-float-icon tiktok">♪</span><span class="social-float-icon telegram">➤</span><span class="social-float-icon whatsapp">◉</span></div></section><section class="ij-social-features" aria-label="Social QR benefits">
 <article><span class="feature-symbol">◎</span><div><b>Multiple Platforms</b><small>Instagram, Facebook, YouTube and more</small></div></article>
 <article><span class="feature-symbol">↗</span><div><b>Quick & Easy</b><small>Create a shareable QR in seconds</small></div></article>
 <article><span class="feature-symbol">▣</span><div><b>Custom QR Design</b><small>Choose a style and platform colour</small></div></article>
