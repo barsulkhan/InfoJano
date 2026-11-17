@@ -1858,3 +1858,15 @@ The latest QR change used `calc(100% - 56px)` and a 230px minimum height. These 
 - No live browser screenshot/device visual QA was run.
 
 Commit: `325f80082016b742b184bb6e8a0d1ef6854bc81e`.
+
+
+## Screenshot comparison correction — QR Maker hero width and text clarity — 2026-11-17
+
+- Compared the user's latest monitor photos: ID Card Print Studio hero occupies the broad centered content width, while QR Maker hero rendered noticeably narrower; QR text appeared shadowed/soft.
+- Added a high-specificity body-main width reset so legacy `main{max-width:650px}` / intermediate page container rules cannot constrain the QR page. The hero now explicitly matches the ID Studio reference width: `min(calc(100% - 28px),1200px)`, centered.
+- Restored the same 1.08fr / .92fr two-column hero grid, content-driven height, clamp padding, 32px radius and reference margins. No fixed height was introduced.
+- Applied high-specificity typography reset to title, subtitle, kicker and chips: removed text-shadow, filter, backdrop-filter and opacity effects; heading uses crisp solid ink/blue (no animated text gradient) to avoid shimmer/blur. Kept animated QR tile/orbit/scan effects.
+- Verified latest source contains the width reset, exact hero width/padding/radius, two-column grid, text-effect resets and QR generation function.
+- No live browser visual QA yet.
+
+Commit: `242a91aa3480c4892f9f69fec4f3a6e1dd10ff45`.
