@@ -31,7 +31,7 @@ test.describe('Normal QR Maker', () => {
     await page.locator('#generate-button').click();
     await expect(page.locator('#qr img[alt="Generated QR code preview"]')).toBeVisible();
     const downloadPromise = page.waitForEvent('download');
-    await page.locator('#qr a.qr-download').click();
+    await page.locator('#qr a.qr-download[download$=".png"]').click();
     const download = await downloadPromise;
     const result = await decodeQrDownload(download);
     expect(result.width).toBeGreaterThan(400);
