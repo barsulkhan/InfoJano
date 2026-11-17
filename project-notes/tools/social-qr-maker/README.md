@@ -106,7 +106,7 @@ Overall status: In progress — core fixes merged; automated browser QA and QR P
 - New PNG decoding tests caught a real issue missed by the previous UI-only checks: Snapchat's yellow QR modules had insufficient contrast against white for reliable decoding.
 - The card remains Snapchat yellow, but the QR matrix now uses near-black modules to preserve brand presentation while improving scan contrast.
 - Fix commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
-- Awaiting CI rerun before marking QR decoding as passed.
+- Historical note: the rerun passed in GitHub Actions #44133825130 (15 passed, 1 expected skip, 0 failed); see the verified result below.
 
 
 ### 2026-11-17 — QR decoder suite passed
@@ -114,3 +114,10 @@ Overall status: In progress — core fixes merged; automated browser QA and QR P
 - All 12 profile PNG payloads, Bundle and Link-in-Bio QR payloads were independently decoded from PNG pixels and matched to expected URLs.
 - The Snapchat low-contrast issue was fixed by using near-black QR modules on the yellow card.
 - No physical phone scan, full screen-reader audit or production deployment is claimed.
+
+
+### Merge and current release state
+- PR #248 merged by squash: https://github.com/barsulkhan/InfoJano/pull/248
+- Merge commit: `2004275634f3d14af468a89cc82f3775635a1886`.
+- Post-merge source and documentation verified on `main`.
+- No production deployment performed or verified. Physical-device scan and manual screen-reader review remain optional QA follow-ups.
