@@ -45,7 +45,7 @@ Resolution: label the tile group and synchronize each tile's `aria-pressed` stat
 ### 2.7 QR image evidence gap
 Finding: previous browser tests verified that a PNG data URI existed and the adjacent URL field was correct, but did not independently decode the QR image. Therefore the tests did not prove that the pixels in the PNG encoded the intended destination.
 Resolution added on 2026-11-17: install QA-only `jsqr` and `pngjs`; decode actual PNG pixel data and compare the decoded QR text to the expected URL for each of the 12 profile platforms, Bundle and Link-in-Bio. This is a major step toward removing the need for a human to scan every test image.
-Initial CI run #44132861727 exposed a real contrast problem: 13 passed, 1 skipped, 2 failed (the 12-platform decode test failed on Snapchat in both desktop and mobile). The screenshot showed the Snapchat QR's yellow modules were too close to the white background for reliable decoding. Fix applied on the PR branch: keep the Snapchat card yellow but render QR modules in near-black for high contrast. The rerun is pending; do not mark the decoder suite passed until CI confirms it.
+Initial CI run #44132861727 exposed a real contrast problem: 13 passed, 1 skipped, 2 failed (the 12-platform decode test failed on Snapchat in both desktop and mobile). The screenshot showed the Snapchat QR's yellow modules were too close to the white background for reliable decoding. Fix applied on the PR branch: keep the Snapchat card yellow but render QR modules in near-black for high contrast. Verified by GitHub Actions run #44133825130: **SUCCESS**, 15 passed, 1 expected skip, 0 failed. The all-12-platform decoder and Bundle/Link-in-Bio payload assertions passed in desktop and Pixel 7 mobile emulation.
 
 ## 3. Implemented changes
 
@@ -129,3 +129,11 @@ Most QR correctness checks can be performed automatically by decoding the genera
 - Fix on PR #248 branch: use near-black QR modules for Snapchat while preserving the Snapchat yellow branded card and footer. Other platforms retain their selected theme accent.
 - Commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
 - Status: CI rerun pending. Do not claim fix verified until the new workflow run passes.
+
+
+## 2026-11-17 — Snapchat contrast fix verified
+- GitHub Actions run #44133825130: **SUCCESS** — 15 passed, 1 expected skip, 0 failed.
+- Verified on Chromium desktop and Pixel 7 mobile emulation.
+- Actual generated PNG decoding passed for all 12 profile platforms, Bundle and Link-in-Bio; keyboard/ARIA, mobile layout, validation, unsafe payload and landing-page checks also passed.
+- Snapchat now retains its yellow branded card while using near-black QR modules; the PNG decoder confirms the generated image encodes the expected URL.
+- This run verifies the code/test state at the Snapchat contrast-fix commit. The later commits only reconcile project documentation.
