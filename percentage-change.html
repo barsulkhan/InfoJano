@@ -566,6 +566,33 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 }
 </style>
 
+
+<style id="ij-percentage-header-benefits-order-final">
+/* Correct header order without changing its height, width, or spacing. */
+@media(min-width:621px){
+ .ij-brandbar-inner{justify-content:space-between!important}
+ .ij-brand-home{order:1!important;flex:0 0 auto!important;margin:0 auto 0 0!important;justify-content:flex-start!important}
+ .ij-brand-nav{order:2!important;flex:0 0 auto!important;margin:0 0 0 auto!important;justify-content:flex-end!important}
+}
+/* Keep all four hero benefits together in one aligned horizontal row. */
+.ij-pct-benefits{
+ display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+ justify-content:space-between!important;align-items:center!important;
+ gap:12px!important;width:100%!important;max-width:none!important;
+}
+.ij-pct-benefits span{
+ flex:1 1 0!important;min-width:0!important;
+ display:inline-flex!important;justify-content:center!important;
+ white-space:nowrap!important;
+}
+@media(max-width:620px){
+ .ij-brand-home{order:1!important;margin-right:auto!important}
+ .ij-brand-nav{order:2!important;margin-left:auto!important}
+ .ij-pct-benefits{flex-wrap:wrap!important;justify-content:center!important;gap:7px!important}
+ .ij-pct-benefits span{flex:0 1 auto!important}
+}
+</style>
+
 </head>
 <body>
 
