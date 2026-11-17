@@ -1,4 +1,15 @@
 const { test, expect } = require('@playwright/test');
+const jsQR = require('jsqr');
+const { PNG } = require('pngjs');
+
+function decodeQrDataUri(dataUri) {
+  const match = /^data:image\\/png;base64,(.+)$/.exec(dataUri || '');
+  if (!match) throw new Error('QR image is not a base64 PNG data URI');
+  const png = PNG.sync.read(Buffer.from(match[1], 'base64'));
+  const decoded = jsQR(new Uint8ClampedArray(png.data), png.width, png.height);
+  if (!decoded) throw new Error('QR PNG could not be decoded');
+  return decoded.data;
+}
 
 const platforms = [
   ['instagram', 'creator_one', 'https://www.instagram.com/creator_one'],
