@@ -1,5 +1,7 @@
 /* InfoJano shared visual system — polished mobile-first tool pages. */
 (()=> {
+  /* QR Maker owns its approved header and hero layout; skip generic theme overrides on this page. */
+  if(document.body && document.body.dataset.ijPage === "qr-maker")return;
   if(document.getElementById("ij-pro-theme"))return;
   const style=document.createElement("style");style.id="ij-pro-theme";
   style.textContent=`
