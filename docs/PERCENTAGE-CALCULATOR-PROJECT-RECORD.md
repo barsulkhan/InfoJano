@@ -1791,3 +1791,24 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### Commit
 - `0dd270b6c9b0ec8bcc001d6ce2d87bf28acbec88` — Restore approved QR hero size and refine colors and header.
+
+
+## QR Maker horizontal width, text clarity, and header refinement — 2026-11-17
+
+### User's latest visual feedback
+- User confirmed the hero's top/bottom dimensions are correct, but asked for more horizontal width, improved colors/text sharpness, and a properly finished header.
+
+### Changes applied
+- Expanded only the hero's horizontal span to `calc(100% - 56px)` with no max-width cap; preserved desktop minimum height 230px and padding 25px 32px, plus the existing corner radius. Mobile keeps a 28px side inset.
+- Refined header to use the exact InfoJano brand SVG mark used by the homepage, larger wordmark/tagline typography, aligned brand block, and right-aligned All Tools / English / Home navigation.
+- Removed animated gradient fill and text filters from the heading; the second title phrase is now a crisp solid blue to avoid shimmer/blur in text.
+- Increased paragraph contrast and removed text shadow/filter effects from title and description.
+- Refined pale blue hero surface, blue wave and scanline, and QR orbit/glow colors while retaining QR tile/orbit/scanline animations.
+- No changes to vertical hero dimensions, QR content generation, builder/preview, homepage, or ID Card Print Studio.
+
+### Verification
+- Re-fetched `qr-maker.html`; confirmed width-only sizing override, 230px min-height, original 25px/32px padding, homepage brand SVG, All Tools/English/Home labels, and original QR generation function are present.
+- Source-level verification only; no live browser screenshot/device visual QA has been performed.
+
+### Commit
+- `8d94742b59ab8bdaec79523e8486ae57e7438ebf` — Widen QR hero and sharpen colors and header.
