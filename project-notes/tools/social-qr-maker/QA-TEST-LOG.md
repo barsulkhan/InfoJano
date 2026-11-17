@@ -67,4 +67,4 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 
 - Draft PR #248: https://github.com/barsulkhan/InfoJano/pull/248.
 - PR file audit lists eight QA/tracking/workflow files only; `social-qr-maker.html` and `qr-maker.html` are unchanged by this PR.
-- First workflow run/status not yet returned at time of logging. Browser suite remains NOT RUN.
+- First workflow run #3 is queued/in progress: https://github.com/barsulkhan/InfoJano/actions/runs/44125592825. Dependency installation completed; Chromium installation is in progress. Browser test result is not yet available.
