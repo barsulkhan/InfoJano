@@ -1539,3 +1539,53 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### 9. Next session handover
 - Best next action: import the Page Indexing report export (or URL Inspection results) from Search Console, then map its exact statuses and reasons to the 108 sitemap URLs. Do not perform broad indexing changes until that evidence is available.
+
+
+## Full-site indexing evidence review — 2026-11-17
+
+### Scope and method
+- User asked for a broad site-wide review and an indication of which sitemap URLs are indexed vs still pending.
+- Repository sitemap inspected: `sitemap.xml`, blob `c0d5e9f096d31389892af656fdc3db48e760b9be`; contains 108 `<loc>` URLs.
+- Google Search Console connected property used: `sc-domain:infojano.com`.
+- Read-only Search Analytics page dimension queried for `last_28d`; this provides URLs Google showed in search results during that window. A page with an impression is strong evidence Google has indexed/served that URL, but this is not a substitute for URL Inspection's current indexing verdict.
+- Attempt to request `last_16m` failed because the connected Windsor.ai trial only exposes the last 30 days. Therefore no all-time GSC indexing inventory could be retrieved.
+- Search Console Sitemaps row: `https://infojano.com/sitemap.xml`, 106 submitted, 0 errors, 0 warnings; last submitted 2026-11-14T18:43:50.269Z, last downloaded 2026-11-14T18:43:52.126Z.
+
+### Current evidence classification (not a definitive URL Inspection report)
+- 26 of 108 sitemap URLs had at least one Google Search impression in the last 28 days. Treat these as **Google search-visible / indexed evidence**:
+  - `/` (2 impressions)
+  - `/date-difference.html` (5)
+  - `/loan-interest.html` (1)
+  - `/number-to-words.html` (18)
+  - `/percentage.html` (1)
+  - `/qr-maker.html` (3; a separate `?type=upi` URL also appeared with 1 impression but is not a sitemap entry)
+  - `/time-calculator.html` (28)
+  - `/percentage-change.html` (4)
+  - `/discount-pt-br.html` (168)
+  - `/percentage-pt-br.html` (339)
+  - `/upi-payment-qr-code-generator.html` (32)
+  - `/qr-scanner.html` (3)
+  - `/sms-qr-code-generator.html` (1)
+  - `/vcard-qr-code-generator.html` (1)
+  - `/custom-qr-code-generator.html` (2)
+  - `/resize-image-for-website.html` (9)
+  - `/what-happened-on-my-birthday.html` (10)
+  - `/percentage-difference-calculator.html` (11)
+  - `/original-price-before-discount-calculator.html` (1)
+  - `/profit-loss-percentage-calculator.html` (19)
+  - `/exam-marks-percentage-calculator.html` (2)
+  - `/target-marks-calculator.html` (2)
+  - `/repeated-percentage-change-calculator.html` (16)
+  - `/successive-percentage-change-calculator.html` (12)
+  - `/percentage-to-decimal-converter.html` (5)
+  - `/percentage-to-fraction-converter.html` (6)
+- 82 of 108 sitemap URLs had **no page impression returned in the last 28 days**. This does NOT prove they are not indexed; they may be indexed but receive no impressions in this short window. Exact list:
+  `/age.html`, `/bmi.html`, `/currency-converter.html`, `/discount.html`, `/emi.html`, `/gst-calculator.html`, `/image-compressor.html`, `/image-resizer.html`, `/image-to-pdf.html`, `/pdf-to-jpg.html`, `/extract-pdf-pages.html`, `/word-converter.html`, `/document-studio.html`, `/loan-eligibility.html`, `/password-generator.html`, `/qr-choice.html`, `/social-qr-maker.html`, `/text-counter.html`, `/tip-calculator.html`, `/unit-converter.html`, `/url-toolkit.html`, `/savings.html`, `/id-card-print-studio.html`, `/bulk-qr-generator.html`, `/whatsapp-qr-code-generator.html`, `/wifi-qr-code-generator.html`, `/url-qr-code-generator.html`, `/text-qr-code-generator.html`, `/contact-qr-code-generator.html`, `/phone-number-qr-code-generator.html`, `/email-qr-code-generator.html`, `/google-maps-location-qr-code-generator.html`, `/barcode-scanner-online.html`, `/resize-image-to-pixels.html`, `/resize-image-by-percentage.html`, `/passport-id-photo-resizer.html`, `/social-media-image-resizer.html`, `/print-document-image-resizer.html`, `/age-in-days-calculator.html`, `/birthday-countdown-calculator.html`, `/day-of-week-born-calculator.html`, `/days-between-dates-calculator.html`, `/business-days-calculator.html`, `/date-duration-calculator.html`, `/add-subtract-date-calculator.html`, `/bmi-calculation-guide.html`, `/bmi-weight-categories.html`, `/bmi-healthy-weight-range.html`, `/bmi-health-guide.html`, `/bmr-calculator.html`, `/percent-of-number-calculator.html`, `/what-percent-calculator.html`, `/reverse-percentage-calculator.html`, `/percentage-increase-calculator.html`, `/percentage-decrease-calculator.html`, `/increase-decrease-by-percentage-calculator.html`, `/percentage-of-percentage-calculator.html`, `/remove-gst-from-total-calculator.html`, `/ayushman-card-print.html`, `/aadhaar-card-print.html`, `/voter-id-card-print.html`, `/digital-ration-card-print.html`, `/number-to-words-indian.html`, `/number-to-words-international.html`, `/rupees-in-words.html`, `/dollars-in-words.html`, `/cheque-amount-in-words.html`, `/decimal-number-to-words.html`, `/bulk-number-to-words.html`, `/words-to-number-converter.html`, `/hindi-number-to-words.html`, `/bengali-number-to-words.html`, `/ordinal-number-converter.html`, `/million-billion-converter.html`, `/lakh-crore-converter.html`, `/number-to-words-uppercase.html`, `/number-to-words-for-cheque.html`, `/countdown-timer-india.html`, `/countdown-timer-bangladesh.html`, `/countdown-timer-usa.html`, `/work-hours-calculator.html`, `/elapsed-time-calculator-guide.html`.
+
+### Important limitation and next steps
+- This connector exposes Search Analytics and Sitemaps summary only; it does not expose Google URL Inspection API or submit/refresh sitemap.
+- Therefore the 82 URLs above are **not yet classified as Not Indexed**; their exact states (Indexed, Crawled - currently not indexed, Discovered - currently not indexed, Excluded, blocked, etc.) remain unverified.
+- Search Console's 106 submitted vs repository's 108 entries remains unresolved. GSC's last sitemap fetch is 2026-11-14, so the counts may be stale; do not remove entries to force a match.
+- URL Inspection still required for each URL to build a definitive index status inventory. GSC UI or an authorized URL Inspection API connection is needed.
+- No production source changes, sitemap edits, design/header/homepage/logo/navigation changes, or feature changes were made in this review.
+- No browser tests, live-site crawl, rendered visual QA, or 108-URL fetch audit was completed. Search Analytics queries are read-only and not a substitute for these tests.
