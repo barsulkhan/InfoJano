@@ -92,3 +92,14 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - Earlier run #11 also passed after the platform-state markup change: 13 passed, 1 expected skip, 0 failed.
 - These are automated keyboard interaction and ARIA-state assertions, not a complete screen-reader audit. Manual screen-reader review and physical-device QR scanning remain pending.
 - PR #248 remains draft/open and unmerged; no deployment performed.
+
+
+## 2026-11-17 — QR PNG payload decoding added (CI rerun pending)
+
+- Identified an evidence gap: earlier browser tests asserted that the generated image was a PNG and that the adjacent text field contained the expected URL, but did not independently inspect the QR image's encoded contents.
+- Added QA-only `jsqr` and `pngjs` dependencies in `qa/browser/package.json`.
+- New test helper decodes the PNG pixel data from the generated image's base64 data URI.
+- Added exact payload assertions for all 12 profile QR codes, Bundle QR, and Link-in-Bio QR.
+- Expected: each decoded QR payload equals the corresponding profile URL or generated `?hub=` URL.
+- Implementation committed to PR #248 branch; a new GitHub Actions run must pass before these new checks can be marked PASS.
+- Physical phone camera scan remains an optional final interoperability check; automated decoding now independently verifies the image's QR payload.
