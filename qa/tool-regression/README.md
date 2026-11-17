@@ -28,3 +28,12 @@ The suite serves the repository root on port 4174 and runs on Chromium desktop a
 - Image processing is tested with a small synthetic image, not every browser codec, large file or physical device.
 - Desktop/mobile emulation is not a physical phone camera test or a full screen-reader audit.
 - CI results must be reported from actual workflow runs. Do not infer test counts from run status alone.
+
+
+## Verified CI result
+
+- GitHub Actions run #3: https://github.com/barsulkhan/InfoJano/actions/runs/44146546297
+- Result: **20 passed, 0 failed** across Chromium desktop and Pixel 7 mobile emulation.
+- The earlier failures were test-harness issues: the QR preview selector did not match its actual alt text, the Image Resizer test needed to disable the default aspect-ratio lock for exact dimensions, and the QR download locator needed to target the PNG link specifically.
+- These fixes are confined to this QA test suite. No website runtime files were changed.
+- This result verifies the current PR branch in CI; it does not mean the PR is merged or deployed.
