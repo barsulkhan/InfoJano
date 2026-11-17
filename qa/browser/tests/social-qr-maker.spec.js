@@ -115,3 +115,16 @@ test('mobile layout keeps primary controls visible and within viewport', async (
   expect(fieldBox.x).toBeGreaterThanOrEqual(0);
   expect(fieldBox.x + fieldBox.width).toBeLessThanOrEqual(viewport.width + 1);
 });
+
+test('platform picker supports keyboard selection and announces pressed state', async ({ page }) => {
+  const facebook = page.locator('[data-pick="facebook"]');
+  const instagram = page.locator('[data-pick="instagram"]');
+
+  await facebook.focus();
+  await expect(facebook).toBeFocused();
+  await page.keyboard.press('Enter');
+
+  await expect(page.locator('#social-platform')).toHaveValue('facebook');
+  await expect(facebook).toHaveAttribute('aria-pressed', 'true');
+  await expect(instagram).toHaveAttribute('aria-pressed', 'false');
+});
