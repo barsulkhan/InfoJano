@@ -300,8 +300,8 @@ main.wrap>.ij-social-workspace>.card{
 async function makeQR(){
 const value=document.getElementById('content').value.trim(),box=document.getElementById('qr'),button=document.getElementById('generate-button');
 box.replaceChildren();
-if(!value){box.textContent='Please enter a profile link or social information first.';return;}
-if(!window.QRCode){box.textContent='The offline QR library did not load. Refresh the page and try again.';return;}
+if(!value){box.textContent='Please enter a profile link or social information first.';return false;}
+if(!window.QRCode){box.textContent='The offline QR library did not load. Refresh the page and try again.';return false;}
 button.disabled=true;button.textContent='Creating your QR design…';
 let holder=null,photoUrl=null;
 try{
@@ -337,8 +337,8 @@ ctx.textAlign='center';ctx.font='bold 22px Arial';ctx.fillText('▣  '+cta,414,5
 ctx.textAlign='center';ctx.font='13px Arial';ctx.globalAlpha=.9;ctx.fillText('Made with InfoJano',260,610);ctx.restore();
 const dataUrl=canvas.toDataURL('image/png'),img=document.createElement('img');img.alt=theme.name+' social QR code design';img.src=dataUrl;box.appendChild(img);
 const download=document.createElement('a');download.className='qr-download';download.href=dataUrl;download.download='InfoJano-'+theme.file+'-QR.png';download.textContent='⬇ Download Designed QR Code (PNG)';box.appendChild(download);
-const note=document.createElement('p');note.className='brand-preview';note.textContent='This downloaded PNG uses the selected platform colours, logo mark and wave footer. Scan-test the QR before printing or sharing.';box.appendChild(note);
-}catch(error){console.error('InfoJano Social QR generation failed:',error);box.textContent='Could not create this QR code. '+(error&&error.message?error.message:'Please refresh and try again.');}
+const note=document.createElement('p');note.className='brand-preview';note.textContent='This downloaded PNG uses the selected platform colours, logo mark and wave footer. Scan-test the QR before printing or sharing.';box.appendChild(note);return true;
+}catch(error){console.error('InfoJano Social QR generation failed:',error);box.textContent='Could not create this QR code. '+(error&&error.message?error.message:'Please refresh and try again.');return false;}
 finally{if(holder)holder.remove();if(photoUrl)URL.revokeObjectURL(photoUrl);button.disabled=false;button.textContent='Create Social Media QR Code';}
 }
 function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
