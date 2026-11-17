@@ -442,6 +442,33 @@ main section.ij-qr-hero{position:relative!important;isolation:isolate!important;
 @media(max-width:640px){.ij-qr-site-header-inner{width:calc(100% - 24px);padding:10px 0;align-items:flex-start;flex-direction:column;gap:9px}.ij-qr-site-logo{width:38px;height:38px;flex-basis:38px}.ij-qr-brand-copy strong{font-size:20px}.ij-qr-main-nav{width:100%;justify-content:flex-end;gap:5px}.ij-qr-main-nav a,.ij-qr-language{min-height:35px;padding:7px 9px;font-size:11px}.ij-qr-hero-grid{grid-template-columns:minmax(0,1fr) 38%!important;gap:8px!important}.ij-qr-hero-art{min-height:155px!important}.ij-qr-hero-symbol{width:58px;height:58px;border-radius:17px;margin-bottom:12px}.ij-qr-hero-symbol svg{width:42px;height:42px}.ij-qr-hero h1{font-size:clamp(25px,6vw,36px)!important;letter-spacing:-1px!important}.ij-qr-hero p{font-size:12px!important;line-height:1.45!important}.ij-qr-choice-tiles{gap:5px;margin-top:13px}.ij-qr-choice-tile{min-height:64px;padding:7px 4px;border-radius:12px;gap:5px}.ij-qr-choice-tile .tile-icon{font-size:18px}.ij-qr-choice-tile strong{font-size:9px}.ij-qr-tile.tile-main{width:76px!important;height:76px!important;left:29%!important}.ij-qr-tile.tile-left,.ij-qr-tile.tile-right{width:50px!important;height:50px!important}.ij-qr-orbit{width:94px!important;height:94px!important;left:23%!important;top:9%!important}.ij-qr-orbit.orbit-b{width:112px!important;height:112px!important;left:18%!important;top:0!important}.ij-qr-scanline{left:14%!important;width:74%!important}.ij-qr-hero-benefits{margin:14px -6px -20px;padding:8px 6px 2px;gap:5px}.ij-qr-hero-benefits span{font-size:9px;padding:6px 8px}.ij-qr-hero-benefits b{width:16px;height:16px;font-size:9px}}
 @media(prefers-reduced-motion:reduce){.ij-qr-hero .ij-qr-tile,.ij-qr-hero .ij-qr-orbit,.ij-qr-hero .ij-qr-scanline,.ij-qr-hero .ij-qr-spark,.ij-qr-hero h1 em{animation:none!important}}
 
+
+/* Final correction: preserve the previously approved QR hero dimensions and composition */
+.ij-qr-site-header-inner{width:min(calc(100% - 40px),1200px)!important;min-height:76px!important;margin:0 auto!important}
+.ij-qr-site-logo{width:48px!important;height:48px!important;flex-basis:48px!important}
+.ij-qr-brand-copy strong{font-size:26px!important;letter-spacing:-1.1px!important}
+.ij-qr-brand-copy small{font-size:14px!important;margin-top:3px!important}
+.ij-qr-main-nav a,.ij-qr-language{font-size:13px!important;min-height:40px!important;padding:8px 12px!important}
+main section.ij-qr-hero{display:grid!important;grid-template-columns:54% 46%!important;align-items:center!important;width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;min-height:230px!important;padding:25px 32px!important;margin:0 auto 28px!important;border-radius:26px!important;box-sizing:border-box!important}
+.ij-qr-hero-grid{display:contents!important}
+.ij-qr-hero-copy{grid-column:1!important;grid-row:1!important;align-self:center!important}
+.ij-qr-hero-art{grid-column:2!important;grid-row:1!important;min-height:180px!important}
+.ij-qr-hero:before{inset:auto -8% -95px -8%!important;height:180px!important;background:linear-gradient(105deg,#50c6f4,#087ee8 58%,#164bd2)!important;border-radius:50% 50% 0 0/36% 36% 0 0!important;opacity:.9!important;animation:none!important}
+.ij-qr-hero:after{inset:0!important;background:linear-gradient(125deg,transparent 20%,rgba(255,255,255,.28) 48%,transparent 72%)!important;filter:none!important;box-shadow:none!important;animation:none!important}
+.ij-qr-kicker{display:inline-flex!important;align-items:center!important;padding:7px 12px!important;border-radius:99px!important;background:linear-gradient(110deg,#edf8ff,#d9efff)!important;border:1px solid #a9d8ff!important;color:#123a80!important;font-size:10px!important;letter-spacing:1.5px!important}
+.ij-qr-hero h1{font-size:clamp(34px,4.1vw,58px)!important;line-height:1.05!important;letter-spacing:-2px!important;color:#101b43!important;-webkit-text-fill-color:#101b43!important;margin:8px 0 12px!important}
+.ij-qr-hero h1 em{font-style:normal!important;color:#087ce5!important;background:linear-gradient(105deg,#087ce5 0%,#087ce5 36%,#fff 48%,#32bdec 57%,#087ce5 72%,#087ce5 100%)!important;background-size:230% 100%!important;background-position:100% 0!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:ijTextSweep 5.8s ease-in-out infinite!important}
+.ij-qr-hero p{font-size:clamp(14px,1.5vw,19px)!important;line-height:1.5!important;max-width:530px!important;color:#4c607c!important;-webkit-text-fill-color:#4c607c!important}
+.ij-qr-chips{display:flex!important;gap:8px!important;flex-wrap:wrap!important;margin-top:17px!important}
+.ij-qr-chips span{padding:6px 11px!important;border:1px solid #b7ddfb!important;background:rgba(255,255,255,.88)!important;border-radius:99px!important;font-size:11px!important;font-weight:800!important;color:#164b91!important}
+.ij-qr-tile{border:3px solid #fff!important;border-radius:17px!important;background:#fff!important;color:#132a60!important;box-shadow:0 0 0 4px #47e8ff33,0 0 24px #52efff66,0 12px 22px rgba(12,56,105,.16)!important}
+.ij-qr-orbit{border-color:#70cfff!important;box-shadow:0 0 15px #45dfff44!important}.ij-qr-orbit.orbit-b{border-color:#a6d9ff!important}
+.ij-qr-scanline{background:linear-gradient(90deg,transparent,#48cfff,#fff,#48cfff,transparent)!important;box-shadow:0 0 12px 4px #36baff66!important}
+.ij-qr-spark{color:#087ee8!important;text-shadow:0 0 12px #fff!important}
+@media(max-width:850px){main section.ij-qr-hero{grid-template-columns:54% 46%!important;padding:22px 24px!important;min-height:220px!important}.ij-qr-hero-art{min-height:170px!important}}
+@media(max-width:640px){.ij-qr-site-header-inner{width:calc(100% - 24px)!important;min-height:0!important;padding:10px 0!important;align-items:flex-start!important;flex-direction:column!important;gap:9px!important}.ij-qr-site-logo{width:38px!important;height:38px!important;flex-basis:38px!important}.ij-qr-brand-copy strong{font-size:20px!important}.ij-qr-brand-copy small{font-size:11px!important}.ij-qr-main-nav{width:100%!important;justify-content:flex-end!important;gap:5px!important}.ij-qr-main-nav a,.ij-qr-language{min-height:35px!important;padding:7px 9px!important;font-size:11px!important}main section.ij-qr-hero{grid-template-columns:minmax(0,1fr) 38%!important;min-height:230px!important;padding:20px 16px!important;border-radius:24px!important}.ij-qr-hero h1{font-size:clamp(25px,6vw,36px)!important;letter-spacing:-1px!important}.ij-qr-hero p{font-size:12px!important;line-height:1.45!important}.ij-qr-hero-art{min-height:155px!important}.ij-qr-tile.tile-main{width:76px!important;height:76px!important;left:29%!important}.ij-qr-tile.tile-left,.ij-qr-tile.tile-right{width:50px!important;height:50px!important}.ij-qr-orbit{width:94px!important;height:94px!important;left:23%!important;top:9%!important}.ij-qr-orbit.orbit-b{width:112px!important;height:112px!important;left:18%!important;top:0!important}.ij-qr-scanline{left:14%!important;width:74%!important}}
+@media(prefers-reduced-motion:reduce){.ij-qr-hero .ij-qr-tile,.ij-qr-hero .ij-qr-orbit,.ij-qr-hero .ij-qr-scanline,.ij-qr-hero .ij-qr-spark,.ij-qr-hero h1 em{animation:none!important}}
+
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
@@ -543,17 +570,7 @@ main section.ij-qr-hero{position:relative!important;isolation:isolate!important;
 <main>
 <div class="ij-qr-breadcrumb"><a href="index.html">⌂ Home</a> › Image Tools › QR Code Maker</div>
 <section class="ij-qr-hero" aria-label="QR Code Maker banner">
-<div class="ij-qr-hero-grid">
-<div class="ij-qr-hero-copy">
-<div class="ij-qr-hero-symbol" aria-hidden="true"><svg viewBox="0 0 96 96" width="70" height="70" fill="none"><rect x="8" y="8" width="80" height="80" rx="17" fill="white"/><path d="M17 17h23v23H17zm6 6v11h11V23zM56 17h23v23H56zm6 6v11h11V23zM17 56h23v23H17zm6 6v11h11V62z" fill="#087ce5"/><path d="M47 17h7v7h-7zm0 14h7v7h-7zm-7 7h7v7h-7zm14 0h7v7h-7zm14 0h7v7h-7zm-21 7h7v7h-7zm14 7h7v7h-7zm14 7h7v7h-7z" fill="#087ce5"/></svg></div>
-<h1>Free QR Code <em>Generator Online</em></h1>
-<p>Make a QR code online free for a website link, text, WiFi or contact details. Generate it in seconds and download a PNG.</p>
-<div class="ij-qr-choice-tiles" aria-label="Popular QR code types">
-<div class="ij-qr-choice-tile"><span class="tile-icon">↗</span><strong>Website / Link</strong></div>
-<div class="ij-qr-choice-tile"><span class="tile-icon">⌁</span><strong>WiFi Access</strong></div>
-<div class="ij-qr-choice-tile"><span class="tile-icon">♙</span><strong>Contact Details</strong></div>
-</div>
-</div>
+<div class="ij-qr-hero-copy"><span class="ij-qr-kicker">SMART QR GENERATOR</span><h1>Free QR Code <em>Generator Online</em></h1><p>Make a QR code online free for a website link, text, WiFi or contact details. Generate it in seconds and download a PNG.</p><div class="ij-qr-chips"><span>⚡ Fast</span><span>✓ Free</span><span>▣ Easy to scan</span></div></div>
 <div class="ij-qr-hero-art" aria-hidden="true">
 <div class="ij-qr-orbit orbit-a"></div><div class="ij-qr-orbit orbit-b"></div>
 <div class="ij-qr-tile tile-left"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M8 8h30v30H8zm8 8v14h14V16zM62 8h30v30H62zm8 8v14h14V16zM8 62h30v30H8zm8 8v14h14V70zM48 8h8v8h-8zm0 16h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-24 8h8v8h-8zm16 8h8v8h-8zm16 0h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8z"/></svg></div>
@@ -561,8 +578,6 @@ main section.ij-qr-hero{position:relative!important;isolation:isolate!important;
 <div class="ij-qr-tile tile-right"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M8 8h30v30H8zm8 8v14h14V16zM62 8h30v30H62zm8 8v14h14V16zM8 62h30v30H8zm8 8v14h14V70zM48 8h8v8h-8zm0 16h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-24 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8z"/></svg></div>
 <div class="ij-qr-scanline"></div><span class="ij-qr-spark s1">✦</span><span class="ij-qr-spark s2">✧</span>
 </div>
-</div>
-<div class="ij-qr-hero-benefits"><span><b>✓</b> Fast &amp; Easy</span><span><b>↗</b> Easy to Scan</span><span><b>▣</b> Free to Use</span><span><b>✓</b> Privacy Friendly</span></div>
 </section>
 <section class="ij-qr-workspace" id="ij-qr-workspace" aria-label="QR code generator">
 <div class="ij-qr-builder">
