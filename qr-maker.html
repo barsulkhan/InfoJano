@@ -638,6 +638,23 @@ body > main > section.ij-qr-hero:after{filter:none!important;box-shadow:none!imp
 
 <link rel="icon" type="image/svg+xml" href="/infojano-mark.svg">
 <link rel="shortcut icon" href="/infojano-mark.svg" type="image/svg+xml">
+<style id="ij-qr-final-reference-overrides">
+
+/* Last-in-cascade: QR Maker must use the same full-width page frame and hero geometry as ID Studio */
+html,body{width:100%!important;max-width:100%!important;margin:0!important;overflow-x:hidden!important}
+body > main{display:block!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;margin:0 auto!important;padding:0 0 48px!important}
+body > main > .ij-qr-breadcrumb{box-sizing:border-box!important;width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;margin:2px auto 17px!important}
+body > main > .ij-qr-hero{box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;align-items:center!important;gap:clamp(22px,4vw,54px)!important;width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;height:auto!important;min-height:0!important;margin:24px auto 28px!important;padding:clamp(26px,4vw,52px)!important;border:1px solid #cfe5fb!important;border-radius:32px!important}
+body > main > .ij-qr-hero .ij-qr-hero-copy{min-width:0!important;max-width:none!important}
+body > main > .ij-qr-hero .ij-qr-hero-art{min-width:0!important;min-height:220px!important}
+body > main > .ij-qr-hero h1,body > main > .ij-qr-hero h1 em,body > main > .ij-qr-hero p,body > main > .ij-qr-hero .ij-qr-kicker,body > main > .ij-qr-hero .ij-qr-chips span{text-shadow:none!important;filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body > main > .ij-qr-hero h1{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(36px,4.3vw,62px)!important;line-height:1.04!important;letter-spacing:-2.1px!important;font-weight:850!important;color:#101b43!important;-webkit-text-fill-color:#101b43!important;opacity:1!important}
+body > main > .ij-qr-hero h1 em{font-style:normal!important;background:none!important;color:#087ce5!important;-webkit-text-fill-color:#087ce5!important;animation:none!important}
+body > main > .ij-qr-hero p{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(16px,1.55vw,20px)!important;line-height:1.55!important;color:#405775!important;-webkit-text-fill-color:#405775!important;opacity:1!important}
+@media(max-width:760px){body > main{padding-bottom:32px!important}body > main > .ij-qr-hero{grid-template-columns:minmax(0,1fr) 38%!important;gap:12px!important;padding:22px 18px!important}body > main > .ij-qr-hero h1{font-size:clamp(27px,6vw,38px)!important;letter-spacing:-1px!important}body > main > .ij-qr-hero p{font-size:14px!important}body > main > .ij-qr-hero .ij-qr-hero-art{min-height:150px!important}}
+@media(max-width:480px){body > main > .ij-qr-hero{grid-template-columns:1fr!important}body > main > .ij-qr-hero .ij-qr-hero-art{min-height:140px!important}}
+
+</style>
 </head>
 <body>
 <header class="ij-brandbar"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="/index.html" aria-label="InfoJano Home"><div class="ij-brandmark" aria-hidden="true"><svg viewBox="0 0 48 48" width="32" height="32" fill="none"><path d="M13 7h16l10 10v17a7 7 0 0 1-7 7H13a7 7 0 0 1-7-7V14a7 7 0 0 1 7-7Z" fill="white" fill-opacity=".16"/><path d="M17 14v20m0-20h7a7 7 0 0 1 0 14h-7" stroke="white" stroke-width="4" stroke-linecap="round"/><path d="M29 18h5v16h-5" stroke="white" stroke-width="4" stroke-linecap="round"/></svg></div><div><div class="ij-brandname">Info<span>Jano</span></div><div class="ij-brandtag">Smart Online Tools for Everyday Life</div></div></a><div class="ij-brand-divider"></div><div class="ij-brand-promise">Create QR codes · Fast, free & easy</div><a class="ij-home-back" href="/index.html">← Back to Home</a></div></header>
@@ -854,7 +871,7 @@ button.textContent='Generate QR Code';
 }
 </script>
 
-<script src="/InfoJano/site-header.js" defer></script>
+<script src="/site-header.js" defer></script>
 <script>
 (function(){
  const typeButtons=[...document.querySelectorAll('[data-qrtype]')];
