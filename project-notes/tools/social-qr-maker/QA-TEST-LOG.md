@@ -68,3 +68,16 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - Draft PR #248: https://github.com/barsulkhan/InfoJano/pull/248.
 - PR file audit lists eight QA/tracking/workflow files only; `social-qr-maker.html` and `qr-maker.html` are unchanged by this PR.
 - First workflow run #3 is queued/in progress: https://github.com/barsulkhan/InfoJano/actions/runs/44125592825. Dependency installation completed; Chromium installation is in progress. Browser test result is not yet available.
+
+
+## 2026-11-17 — Playwright browser QA result (GitHub Actions run #7)
+
+- Workflow run #7: https://github.com/barsulkhan/InfoJano/actions/runs/44127825234 — **SUCCESS**.
+- Job: Social QR — Chromium desktop and mobile — **SUCCESS**.
+- Browser suite: **13 passed, 1 skipped, 0 failed** (15.1 seconds).
+- Passed desktop Chromium scenarios: 12-platform PNG generation, wrong-platform host rejection, Bundle QR + landing page + PNG download, Link-in-Bio rendering, Link-in-Bio host rejection, and unsafe decoded payload rejection.
+- Passed mobile Chromium scenarios: same six scenarios plus mobile control visibility/viewport bounds.
+- One expected skip: mobile-layout-only test is skipped in desktop project.
+- During QA, a real long-payload QR overflow was fixed by using QR error-correction level M for Bundle/Link-in-Bio while retaining H for single-profile QR. The unsafe-payload assertion was corrected to verify the original maker UI remains and no unsafe link/profile is rendered.
+- This is automated Chromium desktop + Pixel 7 emulation evidence. Physical-device QR scan, manual keyboard/screen-reader/accessibility review, and production deployment verification remain pending.
+- PR #248 remains draft/open and is not merged. Do not merge or deploy without explicit approval.
