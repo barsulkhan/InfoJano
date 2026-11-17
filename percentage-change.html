@@ -521,6 +521,51 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 }
 </style>
 
+
+<style id="ij-percentage-final-alignment-polish">
+/* Final polish: keep the graph bars clear of the blue wave and restore the % display. */
+.ij-pct-calculator-screen span{
+ display:grid!important;visibility:visible!important;opacity:1!important;
+ position:relative!important;z-index:5!important;
+ color:#087ce5!important;background:#eaf8ff!important;
+ font-size:56px!important;font-weight:900!important;line-height:1!important;
+ text-indent:0!important;filter:none!important
+}
+.ij-pct-keypad{margin-top:12px!important;gap:8px!important}
+.ij-pct-keypad i{height:29px!important}
+.ij-pct-chart-card{bottom:16%!important;height:57%!important}
+.ij-pct-chart-card svg rect{
+ transform:scaleY(.72)!important;transform-box:fill-box!important;
+ transform-origin:50% 100%!important
+}
+.ij-pct-chart-card svg rect:nth-of-type(2){transform:scaleY(.72)!important}
+.ij-pct-chart-card svg rect:nth-of-type(3){transform:scaleY(.72)!important}
+.ij-pct-chart-card svg{overflow:visible!important}
+@media(min-width:1001px){
+ /* Calculator entry and result cards share the exact hero left/right edges. */
+ main{
+  display:block!important;width:calc(100% - 112px)!important;
+  max-width:1600px!important;margin:28px auto 36px!important;
+  padding:0!important;box-sizing:border-box!important
+ }
+ .ij-pct-calculator-workspace{
+  width:100%!important;max-width:none!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(280px,.92fr)!important;
+  gap:20px!important;margin:0!important;box-sizing:border-box!important
+ }
+ .ij-pct-entry-card,.ij-pct-output-card{min-width:0!important}
+}
+@media(max-width:1000px){
+ main{width:calc(100% - 28px)!important;max-width:none!important;padding:0!important;margin:24px auto!important}
+ .ij-pct-calculator-workspace{width:100%!important}
+}
+@media(max-width:640px){
+ .ij-pct-chart-card{bottom:12%!important;height:55%!important}
+ .ij-pct-calculator-screen span{font-size:46px!important}
+ .ij-pct-keypad i{height:24px!important}
+}
+</style>
+
 </head>
 <body>
 
