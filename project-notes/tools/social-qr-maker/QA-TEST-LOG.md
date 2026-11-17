@@ -113,3 +113,13 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - Fix committed on PR #248 branch: QR modules for Snapchat now use near-black while the surrounding card retains the Snapchat yellow theme.
 - Fix commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
 - New CI run required to verify; status pending.
+
+
+## 2026-11-17 — QR image decoding and Snapchat contrast fix verified
+
+- GitHub Actions run #44133825130: https://github.com/barsulkhan/InfoJano/actions/runs/44133825130 — **SUCCESS**.
+- Result: **15 passed, 1 expected skip, 0 failed** in Chromium desktop and Pixel 7 mobile emulation.
+- The test decoded generated PNG pixel data and checked exact payloads for all 12 social profile platforms, Bundle QR and Link-in-Bio QR.
+- Snapchat's QR uses near-black modules while the card remains yellow; decoder assertions now pass on desktop and mobile.
+- Existing wrong-host, unsafe payload, landing-page, download, mobile bounds and keyboard/ARIA assertions passed.
+- The single skip is the mobile-only viewport assertion in the desktop project; it runs in the mobile project.
