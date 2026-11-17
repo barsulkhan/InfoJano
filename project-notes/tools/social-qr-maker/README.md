@@ -15,7 +15,7 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 
 ## Feature cards
 
-### Completed in this branch (source implementation; QA still pending)
+### Completed
 - [x] [CARD-001] Bundle mode theme — choose bundle styling from the active QR mode, not the disabled platform selector.
 - [x] [CARD-002] Social URL validation — validate HTTP(S) URLs against the selected platform's allowed domains; validate usernames before constructing profile URLs; apply consistent validation to bundle and Link-in-Bio inputs.
 - [x] [CARD-003] Social Link Page destination safety — validate decoded hub payload fields and destination domains before creating outbound links.
@@ -23,8 +23,8 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 
 ### In progress
 - [x] [CARD-005] Source and script syntax verification — all five inline JavaScript blocks parse; six source assertions and nine isolated URL-normalizer tests pass.
-- [ ] [CARD-006] Functional/browser QA — run the new Playwright suite for all 12 platforms, bundle, Link-in-Bio, PNG download, error states and desktop/mobile emulation; physical scan and accessibility review remain manual.
-- [x] [CARD-008] Isolated Playwright harness — desktop/mobile Chromium config, 7 browser scenarios, scoped PR workflow and README added; PR #248 open. JS/config parse checks pass; GitHub Actions run #3 in progress; npm dependency install passed, Chromium install pending.
+- [x] [CARD-006] Automated functional/browser QA — GitHub Actions run #7 passed: 13 passed, 1 expected desktop-only skip, 0 failed across Chromium desktop and Pixel 7 emulation. Physical scan and manual accessibility review remain pending.
+- [x] [CARD-008] Isolated Playwright harness — desktop/mobile Chromium config, 7 browser scenarios, scoped PR workflow and README added; GitHub Actions run #7 passed (13 passed, 1 expected skip, 0 failed). PR #248 remains draft/open and unmerged.
 
 ### Backlog / blocked
 - [ ] [CARD-007] Dynamic QR editing, scan analytics and account-backed saved pages — not present in this static page; requires a separately researched backend/API, privacy/security design, and explicit scope approval.
@@ -38,12 +38,12 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 ## QA and release checklist
 - [ ] JavaScript syntax check:
 - [ ] Source assertions for mode, URL allowlists, hub payload validation, and generation result:
-- [ ] 12-platform functional tests:
-- [ ] Bundle mode tests:
-- [ ] Link-in-Bio generation and decoded-page tests:
-- [ ] PNG download and scan reliability:
-- [ ] Mobile browser QA:
-- [ ] Desktop browser QA:
+- [x] 12-platform functional tests (Chromium):
+- [x] Bundle mode tests (generation, landing page and PNG download):
+- [x] Link-in-Bio generation and decoded-page tests:
+- [ ] Physical-device PNG scan reliability:
+- [x] Mobile browser QA (Pixel 7 emulation):
+- [x] Desktop browser QA (Chromium):
 - [ ] Keyboard/accessibility checks:
 - [ ] Pull request checks:
 - [x] Merge: PR #247 merged to main (commit `7ba875f2480ce6a53cf2942566eafa6984ed0447`)
@@ -78,3 +78,10 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 - PR changed-file audit: exactly eight QA/tracking/workflow files; neither QR product source is changed in this PR.
 - JavaScript parser checks and package.json parse passed. GitHub Actions run #3 is in progress (dependency install passed; Chromium install in progress); browser test result not yet available.
 - The test suite is isolated to Social QR; no Normal QR feature or source was copied.
+
+
+### 2026-11-17 — Automated browser QA passed
+- GitHub Actions run #7 completed successfully: 13 passed, 1 expected skip, 0 failed.
+- Desktop Chromium and Pixel 7 mobile emulation passed profile QR generation (all 12 platforms), wrong-host rejection, Bundle QR/landing page/download, Link-in-Bio rendering/validation, unsafe decoded payload rejection, and mobile viewport checks.
+- Bundle/Link-in-Bio QR overflow fixed by using QR error-correction level M for long hub URLs; single-profile QR retains level H.
+- PR #248 remains draft/open and unmerged. Physical device scan, manual accessibility QA and deployment verification remain pending.
