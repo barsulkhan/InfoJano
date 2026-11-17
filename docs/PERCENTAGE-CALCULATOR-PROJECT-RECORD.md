@@ -1769,3 +1769,25 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### Commit
 - `8e0beac309ae4e2c81e651e5e1065c5652e6423d` — Match QR Maker header and hero layout to ID Studio reference.
+
+
+## QR Maker dimension-preserving correction — 2026-11-17
+
+### User correction
+- User explicitly clarified that the QR hero dimensions were already approved and must not be changed; requested only color/design line styling and header corrections.
+
+### Changes applied
+- Reverted the added QR symbol, three extra feature tiles, and separate benefits strip that had expanded the hero's content height.
+- Restored the original QR hero composition: kicker, title, description, three chips on the left, animated QR artwork on the right.
+- Restored the original desktop hero geometry from the QR Maker's initial approved CSS: 54/46 columns, 230px minimum height, 25px 32px padding, 26px radius, centered 1200px maximum width.
+- Kept the light blue/white ID Studio-inspired palette, readable title/description, softer cyan/blue scan/orbit lines, and existing QR animations.
+- Refined header brand sizing and kept All Tools / English / Home navigation.
+- Kept mobile responsive rules; desktop geometry preserved.
+- No changes to QR generation logic, builder, preview, or other pages.
+
+### Verification
+- Re-fetched `qr-maker.html`; confirmed original hero composition, animated QR art, intended dimensions CSS, header nav, and QR generation function are present.
+- Source-level verification only; no live browser visual test was run.
+
+### Commit
+- `0dd270b6c9b0ec8bcc001d6ce2d87bf28acbec88` — Restore approved QR hero size and refine colors and header.
