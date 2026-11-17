@@ -41,3 +41,10 @@ Branch: `fix/social-qr-maker-completion`
 - Source assertions: bundle theme reads active QR mode; shared validator is exposed for advanced modes; decoded hub destination allowlist is present; QR builder awaits and checks the generation result: **6/6 PASS**.
 - Important correction during review: the shared URL normalizer is explicitly exposed as `window.ijNormalizeSocialProfileUrl` so the separate advanced-mode script can call it. This avoids a cross-IIFE scope error.
 - These are source/parser and isolated function checks, not browser tests. Real QR library rendering, canvas export, link page rendering, scan reliability, responsive visuals and accessibility remain NOT RUN.
+
+## Pull request and CI status — 2026-11-17
+- Draft PR: https://github.com/barsulkhan/InfoJano/pull/247
+- Changed-file audit: exactly four files — `social-qr-maker.html`, `project-notes/TOOL-INDEX.md`, and the new Social QR README/QA log.
+- Confirmed `qr-maker.html` (Normal QR) and all other source pages are absent from the PR changed-file list.
+- PR-triggered workflow runs returned none; combined commit status returned no checks. CI is therefore **not run / no status**, not PASS.
+- PR is draft and unmerged. No deployment was performed.
