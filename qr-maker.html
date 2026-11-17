@@ -553,6 +553,61 @@ body > main > section.ij-qr-hero:after{filter:none!important;box-shadow:none!imp
 @media(max-width:760px){body > main{padding:0 0 32px!important}body > main > section.ij-qr-hero{grid-template-columns:minmax(0,1fr) 38%!important;gap:12px!important;padding:22px 18px!important;width:calc(100% - 28px)!important}body > main > section.ij-qr-hero h1{font-size:clamp(27px,6vw,38px)!important;letter-spacing:-1px!important}body > main > section.ij-qr-hero p{font-size:14px!important}body > main > section.ij-qr-hero .ij-qr-hero-art{min-height:150px!important}}
 @media(max-width:480px){body > main > section.ij-qr-hero{grid-template-columns:1fr!important}body > main > section.ij-qr-hero .ij-qr-hero-art{min-height:140px!important}}
 
+
+/* Final QR page geometry: taller shared header, balanced hero, aligned feature row */
+.ij-brandbar{padding:19px 18px!important}
+body > main > section.ij-qr-hero{
+  width:min(calc(100% - 36px),1200px)!important;
+  max-width:1200px!important;
+  min-height:396px!important;
+  height:auto!important;
+  margin:24px auto 28px!important;
+  padding:clamp(32px,4vw,48px)!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;
+  align-items:center!important;
+  gap:clamp(24px,4vw,54px)!important;
+  box-sizing:border-box!important;
+}
+body > main > section.ij-qr-hero .ij-qr-hero-copy{min-width:0!important}
+body > main > section.ij-qr-hero .ij-qr-hero-art{
+  min-width:0!important;
+  min-height:270px!important;
+  width:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+body > main > .ij-qr-features{
+  width:min(calc(100% - 36px),1200px)!important;
+  max-width:1200px!important;
+  margin:0 auto 24px!important;
+  box-sizing:border-box!important;
+}
+@media(min-width:1500px){
+  body > main > section.ij-qr-hero{min-height:410px!important;padding:38px 50px!important}
+}
+@media(max-width:760px){
+  .ij-brandbar{padding:13px 12px!important}
+  body > main > section.ij-qr-hero{
+    width:calc(100% - 28px)!important;
+    min-height:330px!important;
+    grid-template-columns:minmax(0,1fr) 38%!important;
+    gap:14px!important;
+    padding:26px 20px!important;
+  }
+  body > main > section.ij-qr-hero .ij-qr-hero-art{min-height:190px!important}
+  body > main > .ij-qr-features{width:calc(100% - 28px)!important}
+}
+@media(max-width:480px){
+  body > main > section.ij-qr-hero{
+    min-height:0!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:24px 18px!important;
+  }
+  body > main > section.ij-qr-hero .ij-qr-hero-art{min-height:150px!important}
+}
+
 </style>
 <link rel="manifest" href="/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
