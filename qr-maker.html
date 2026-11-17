@@ -1112,6 +1112,105 @@ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-spark{display:none!important}
 }
 </style>
 
+
+<style id="ij-qr-maker-feature-squares-and-original-art">
+/* Restore the original QR scan artwork and give its column the full hero height. */
+@media(min-width:1001px){
+ body>main>.ij-qr-hero.ij-reference-hero{
+  grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;
+  grid-template-rows:minmax(235px,auto) auto!important;
+  align-items:stretch!important;min-height:0!important;height:auto!important;
+  padding:28px 42px 24px!important;gap:14px 30px!important;
+ }
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-hero-art{
+  width:100%!important;height:100%!important;min-height:235px!important;max-height:none!important;
+  align-self:stretch!important;display:block!important;position:relative!important;
+ }
+}
+@media(min-width:1500px){
+ body>main>.ij-qr-hero.ij-reference-hero{padding:30px 50px 26px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-hero-art{min-height:260px!important}
+}
+/* Four neat compact square-corner feature cards, not long pills. */
+body>main>.ij-qr-hero.ij-reference-hero>.ij-qr-features{
+ display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ gap:10px!important;width:100%!important;margin:8px 0 0!important;padding:0!important;
+ border:0!important;background:transparent!important;box-shadow:none!important;
+}
+body>main>.ij-qr-hero.ij-reference-hero>.ij-qr-features>div{
+ box-sizing:border-box!important;display:flex!important;flex-direction:row!important;
+ align-items:center!important;justify-content:flex-start!important;gap:8px!important;
+ min-width:0!important;min-height:58px!important;height:auto!important;padding:9px 12px!important;
+ border:1px solid #d5e5f6!important;border-radius:12px!important;
+ background:linear-gradient(145deg,#fff,#f5faff)!important;
+ box-shadow:0 3px 10px rgba(31,91,151,.06)!important;text-align:left!important;
+}
+body>main>.ij-qr-hero.ij-reference-hero>.ij-qr-features>div:before{display:none!important}
+body>main>.ij-qr-hero.ij-reference-hero>.ij-qr-features>div svg{
+ flex:0 0 19px!important;width:19px!important;height:19px!important;
+ fill:none!important;stroke:currentColor!important;stroke-width:1.9!important;
+ stroke-linecap:round!important;stroke-linejoin:round!important
+}
+body>main>.ij-qr-hero.ij-reference-hero>.ij-qr-features b{
+ display:block!important;margin:0!important;font-size:12px!important;line-height:1.25!important;
+ color:#172b50!important;font-weight:800!important
+}
+body>main>.ij-qr-hero.ij-reference-hero>.ij-qr-features small{display:none!important}
+/* Preserve QR artwork, glow, orbital motion and scanning animation. */
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit{
+ display:block!important;position:absolute!important;border-style:dashed!important;
+ animation:qrOrbit 12s linear infinite!important
+}
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit.orbit-a{
+ width:190px!important;height:190px!important;left:calc(50% - 95px)!important;top:calc(50% - 95px)!important
+}
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit.orbit-b{
+ display:block!important;width:228px!important;height:228px!important;
+ left:calc(50% - 114px)!important;top:calc(50% - 114px)!important;
+ animation-direction:reverse!important
+}
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-tile.tile-main{
+ display:block!important;position:absolute!important;z-index:3!important;
+ width:112px!important;height:112px!important;left:calc(50% - 56px)!important;
+ top:calc(50% - 56px)!important;animation:qrTileMain 3s ease-in-out infinite!important
+}
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-scanline{
+ display:block!important;position:absolute!important;z-index:4!important;
+ left:calc(50% - 92px)!important;top:calc(50% - 62px)!important;width:184px!important;
+ animation:qrScan 2.4s ease-in-out infinite!important
+}
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-spark{
+ display:block!important;position:absolute!important;z-index:5!important;
+ animation:qrSpark 2s ease-in-out infinite!important
+}
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-spark.s1{left:22%;top:20%}
+body>main>.ij-qr-hero.ij-reference-hero .ij-qr-spark.s2{right:18%;bottom:18%;animation-delay:.8s!important}
+@media(min-width:641px) and (max-width:1000px){
+ body>main>.ij-qr-hero.ij-reference-hero{grid-template-columns:minmax(0,1fr) minmax(220px,.8fr)!important;grid-template-rows:auto auto!important;align-items:center!important;gap:14px 18px!important;padding:24px 26px 22px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-hero-art{height:220px!important;min-height:220px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit.orbit-a{width:150px!important;height:150px!important;left:calc(50% - 75px)!important;top:calc(50% - 75px)!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit.orbit-b{width:180px!important;height:180px!important;left:calc(50% - 90px)!important;top:calc(50% - 90px)!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-features>div{min-height:52px!important;padding:7px 8px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-features b{font-size:11px!important}
+}
+@media(max-width:640px){
+ body>main>.ij-qr-hero.ij-reference-hero{padding:22px 18px!important;gap:12px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-hero-art{height:170px!important;min-height:170px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit.orbit-a{width:130px!important;height:130px!important;left:calc(50% - 65px)!important;top:calc(50% - 65px)!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit.orbit-b{width:154px!important;height:154px!important;left:calc(50% - 77px)!important;top:calc(50% - 77px)!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-tile.tile-main{width:88px!important;height:88px!important;left:calc(50% - 44px)!important;top:calc(50% - 44px)!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-features{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-features>div{min-height:48px!important;padding:7px 8px!important;border-radius:10px!important}
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-features b{font-size:11px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-orbit,
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-tile.tile-main,
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-scanline,
+ body>main>.ij-qr-hero.ij-reference-hero .ij-qr-spark{animation:none!important}
+}
+</style>
+
 </head>
 <body data-ij-page="qr-maker">
 
