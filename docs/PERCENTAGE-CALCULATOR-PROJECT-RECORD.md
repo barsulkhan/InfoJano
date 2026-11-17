@@ -1880,3 +1880,19 @@ Commit: `242a91aa3480c4892f9f69fec4f3a6e1dd10ff45`.
 - Re-fetched and verified the fixed script path, absence of the old broken path, final cascade override, exact hero geometry, and QR generation function. Live browser visual QA remains pending.
 
 Commit: `7d26176fd9a74783bd4efec6a43e3e2eefee1b2e`.
+
+
+## QR Maker production-path audit and fixes — 2026-11-17
+
+- Full source audit found 97 legacy CSS rule blocks touching `main` / QR hero, including repeated desktop/mobile width, grid, padding, and minimum-height overrides. The final scoped override remains in place; broad stylesheet deletion was deliberately avoided to protect generator content and existing responsive behavior.
+- Confirmed QR Maker had stale GitHub Pages `/InfoJano/` paths on the custom domain: QR library, web manifest, and install helper. This could prevent the QR library from loading, meaning QR generation may fail even while the visual UI appears.
+- Fixed QR Maker to load `/qr-code-generator.min.js`, `/site-header.js`, `/install.js`, and `/app-manifests/qr-maker.webmanifest` from the custom-domain root.
+- Corrected QR manifest `id`, `start_url`, `scope`, and icon URL to root deployment paths.
+- Updated shared `install.js` to resolve helper assets from `/` on custom domain and `/InfoJano/` on GitHub Pages. It now registers the existing `/InfoJano/`-scoped service worker only on `barsulkhan.github.io`; it skips registration on the custom domain rather than attempting to register a worker whose cache paths are all hard-coded to the old subpath. Theme and related-app scripts still load using the correct root.
+- Re-fetched and verified all three updated files, correct script URLs, no stale `/InfoJano/` references in QR Maker HTML, and manifest root paths.
+- No live browser/network request test or QR generation click test has been run. The full `sw.js` cache manifest still uses GitHub Pages `/InfoJano/` paths; custom-domain service-worker support remains intentionally disabled until that file is migrated safely.
+
+Commits:
+- QR Maker: `0cfe092bc7f3b559c7ce28412f35450030da08f6`
+- Manifest: `a16b2ae3d9e4f9e37d4351c54f00d177240d8fc9`
+- Shared install helper: `32610f34d6353a6a54468744ab5de153157e910a`
