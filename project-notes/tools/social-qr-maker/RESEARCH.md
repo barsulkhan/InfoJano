@@ -84,7 +84,7 @@ Merged squash commit: `7ba875f2480ce6a53cf2942566eafa6984ed0447`.
 - Decode each generated QR PNG with `jsqr` using pixel data parsed by `pngjs`.
 - Assert decoded profile payload equals each expected profile URL for all 12 platforms.
 - Assert decoded Bundle and Link-in-Bio payload equals the generated hub URL.
-- Status: awaiting CI rerun on the latest branch commits. The earlier run #12 does not include this newly added code and cannot be used as evidence for it.
+- Verified by GitHub Actions run #44133825130: **SUCCESS**, 15 passed, 1 expected skip, 0 failed. This run includes the QR PNG decoding assertions and Snapchat contrast correction.
 
 ## 5. What can be tested without a physical phone
 
@@ -106,12 +106,13 @@ The physical scan is therefore a final interoperability confidence check, not a 
 
 ## 6. Current state and remaining work
 
-1. Wait for GitHub Actions to run against the latest PR #248 commits after adding QR image decoding.
-2. Inspect the workflow result and logs. If dependency install, decoder or image assertions fail, fix and rerun; record each failure and root cause here and in the QA log.
-3. Reconcile README, QA log and Tool Index with the final CI evidence.
-4. Perform a final changed-file audit to ensure protected files and `qr-maker.html` remain untouched.
-5. Ask the user for one optional physical-camera scan of representative Profile and Bundle/Link-in-Bio output if they are willing; user does not need to scan all 12 profiles.
-6. Obtain explicit approval before merging PR #248. Verify production only after a separately confirmed deployment.
+- PR #248 was marked ready and squash-merged after the passing decoder CI run and final changed-file audit.
+- Merge commit: `2004275634f3d14af468a89cc82f3775635a1886`.
+- The merge was verified by re-fetching `main`: Snapchat's contrast correction, README and Tool Index changes are present.
+- Changed-file audit: exactly 10 files, all Social QR source, isolated browser QA/workflow and Social QR documentation. `qr-maker.html`, homepage, shared header/footer/assets and unrelated tools were not changed.
+- GitHub Actions run #44133825130 passed: 15 passed, 1 expected skip, 0 failed.
+- Remaining optional checks: one physical phone scan of representative Profile and Bundle/Link-in-Bio output; manual screen-reader review; production deployment verification after an authorized release.
+- No production deployment was performed or verified.
 
 ## 7. Product backlog requiring separate research and approval
 
@@ -119,7 +120,7 @@ Dynamic QR editing, scan analytics and account-backed saved pages are not implem
 
 ## 8. Decision
 
-Most QR correctness checks can be performed automatically by decoding the generated PNG in CI. A physical phone scan can be reduced to a small final interoperability check. Until the new QR-decoder CI run passes, the added decoder coverage is implemented but not yet verified. PR #248 remains unmerged and no production deployment is claimed.
+Most QR correctness checks are now automated by decoding the generated PNG in CI. Run #44133825130 passed for all 12 profile platforms, Bundle and Link-in-Bio on desktop and Pixel 7 mobile emulation. PR #248 has been merged. A physical phone scan remains a useful optional final camera-interoperability check; full screen-reader review and production deployment verification remain outstanding. No production deployment is claimed.
 
 
 ## 2026-11-17 — QR decoder CI failure and contrast correction
@@ -137,3 +138,10 @@ Most QR correctness checks can be performed automatically by decoding the genera
 - Actual generated PNG decoding passed for all 12 profile platforms, Bundle and Link-in-Bio; keyboard/ARIA, mobile layout, validation, unsafe payload and landing-page checks also passed.
 - Snapchat now retains its yellow branded card while using near-black QR modules; the PNG decoder confirms the generated image encodes the expected URL.
 - This run verifies the code/test state at the Snapchat contrast-fix commit. The later commits only reconcile project documentation.
+
+
+## 9. Merge verification
+- PR #248: https://github.com/barsulkhan/InfoJano/pull/248 — closed and merged.
+- Squash merge commit: `2004275634f3d14af468a89cc82f3775635a1886`.
+- Post-merge fetch from `main` confirmed the Snapchat high-contrast QR fix and the updated README/Tool Index are present.
+- No production deployment was initiated or verified.
