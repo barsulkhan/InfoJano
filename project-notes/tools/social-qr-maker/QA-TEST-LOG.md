@@ -49,7 +49,7 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - PR-triggered workflow runs returned none; combined commit status returned no checks. CI is therefore **not run / no status**, not PASS.
 - PR is closed/merged. Cloudflare preview bot reported preview build/deployment success for the earlier branch commit; that is not evidence of the production website deployment.
 
-## 2026-11-17 — Browser QA harness added (execution pending)
+## 2026-11-17 — Browser QA harness added (execution pending; PR #248 open)
 
 | ID | Test | Expected | Result | Evidence / notes |
 |---|---|---|---|---|
@@ -64,3 +64,7 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - Workflow triggers on pull requests changing Social QR or the isolated QA harness, plus manual dispatch.
 - Test execution is pending: no Node package installation or browser binaries were available in the current tool environment.
 - Physical QR scanning and screen-reader/manual accessibility checks remain outside automated emulation.
+
+- Draft PR #248: https://github.com/barsulkhan/InfoJano/pull/248.
+- PR file audit lists eight QA/tracking/workflow files only; `social-qr-maker.html` and `qr-maker.html` are unchanged by this PR.
+- First workflow run/status not yet returned at time of logging. Browser suite remains NOT RUN.
