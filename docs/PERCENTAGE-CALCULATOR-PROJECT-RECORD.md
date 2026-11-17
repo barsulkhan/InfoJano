@@ -348,7 +348,6 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Preserve the approved Hero/Header and current visual design. No new features or redesign until the remaining QA gaps are closed.
 
 ## Work session — 2026-11-16 (Global English market research — initial pass)
-
 ### 1. Owner request and scope
 - Requested: Start research for the Percentage Calculator with global coverage, explicitly including Canada, Brazil, Australia, European countries, Russia, China and the US.
 - Owner clarification: English only. No translated interface, translated pages, or non-English UI.
@@ -697,7 +696,6 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Keep application code and approved design untouched until evidence supports a specific implementation.
 
 ## Work session — 2026-11-16 (Country-matrix research access check)
-
 ### 1. Owner request and scope
 - Request: Continue the next research step for the five exact English percentage-calculator phrases across target countries.
 - Scope: Research only; inspect the current research brief and project record, test available structured keyword-data routes, and document outcomes.
@@ -1047,8 +1045,7 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Research commit: pending verification.
 - Project record commit: pending verification.- No app deployment; live status remains unverified.
 
-### 7. Handover
-- Research phase is finalized for US, UK, Canada, Australia and India. Do not reopen excluded countries in this phase.
+### 7. Handover- Research phase is finalized for US, UK, Canada, Australia and India. Do not reopen excluded countries in this phase.
 - Next implementation should be a separate, scoped SEO-content task, preserving the approved UI and existing calculator behavior.
 
 
@@ -1397,8 +1394,7 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - [x] Count current sitemap source entries and compare with the Search Console sitemap report.- [x] Recheck GitHub Pages workflow run `43922580306`; all three jobs succeeded.
 - [ ] Google Search Console URL Inspection for `percentage.html`, `percentage-change.html` and `percentage-difference-calculator.html`: still unavailable through the Windsor Search Analytics connector. Need Page indexing, last crawl, crawl allowed, indexing allowed, user-declared canonical and Google-selected canonical from the GSC UI.
 - [ ] Reconcile the 108 source URLs vs 106 submitted in the GSC Sitemaps UI and confirm the latest sitemap fetch.
-- [ ] Browser QA of Change / Reverse % / Difference modes, batch validation, CSV export, history restore and copy behavior — not run.
-- [ ] Desktop/mobile visual regression and live rendered-page/HTTP-header checks — not run.
+- [ ] Browser QA of Change / Reverse % / Difference modes, batch validation, CSV export, history restore and copy behavior — not run.- [ ] Desktop/mobile visual regression and live rendered-page/HTTP-header checks — not run.
 - [ ] No claim that all sitemap URLs are indexed or that the 2026-11-16 SEO edits have improved rankings.
 - Next best step: obtain the three URL Inspection results and current Sitemaps UI status; then make only the specific confirmed indexing/canonical fix, or proceed with contextual internal links if all three URLs are indexed with expected canonicals.
 
@@ -1689,3 +1685,24 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - First inspect the 13 affected 404 URL examples and compare them with current internal links and the 108-entry primary sitemap.
 - Candidate low-risk source fix: change the 404 page CTA from `/InfoJano/` to `/`, after confirming the intended custom-domain deployment.
 - Do not infer that the historic metadata commits resolved the current Google-reported URL-level errors; confirm with URL Inspection.
+
+## Fixes applied — 2026-11-17 (404 homepage link and sitemap synchronization)
+
+### Changes
+- Updated `404.html` homepage CTA from the GitHub Pages project path `/InfoJano/` to the custom-domain root `/`.
+- Synchronized `sitemap-infojano.xml` with the canonical `sitemap.xml` URL set. Both now contain the same 108 URLs, including `work-hours-calculator.html` and `elapsed-time-calculator-guide.html`.
+- Added those same two missing URLs to `sitemap.txt`; it now also contains the same 108 URL paths.
+- Left `sitemap.xml` and `robots.txt` unchanged. `robots.txt` continues to advertise the canonical sitemap.
+- No changes to homepage, hero banner, header, navigation, logo, shared design, or calculator functionality.
+
+### Verification
+- Re-fetched all four files from GitHub after the commits.
+- Confirmed the 404 homepage CTA now targets `/`.
+- Confirmed URL counts: `sitemap.xml` 108; `sitemap-infojano.xml` 108; `sitemap.txt` 108.
+- Confirmed both secondary sitemap URL sets exactly match the primary sitemap: no missing or extra URLs.
+- Not run: live production HTTP checks, Google Search Console URL Inspection, browser tests, or visual QA. Sitemap file synchronization does not itself submit or reprocess the files in Google Search Console.
+
+### Commits
+- 404 CTA: `3a9b0fd365418605bbe4cf9906c50817d2a8682d`
+- Secondary XML sitemap: `995e25322a6485b69864498f570ac2d454295537`
+- Text sitemap: `f00b96be6daabe9c1bf6bce02e629229be24601d`
