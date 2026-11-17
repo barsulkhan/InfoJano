@@ -24,7 +24,7 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 ### In progress
 - [x] [CARD-005] Source and script syntax verification — all five inline JavaScript blocks parse; six source assertions and nine isolated URL-normalizer tests pass.
 - [ ] [CARD-006] Functional/browser QA — run the new Playwright suite for all 12 platforms, bundle, Link-in-Bio, PNG download, error states and desktop/mobile emulation; physical scan and accessibility review remain manual.
-- [x] [CARD-008] Isolated Playwright harness — desktop/mobile Chromium config, 7 browser scenarios, scoped PR workflow and README added; PR #248 open. JS/config parse checks pass; first GitHub Actions run not yet reported.
+- [x] [CARD-008] Isolated Playwright harness — desktop/mobile Chromium config, 7 browser scenarios, scoped PR workflow and README added; PR #248 open. JS/config parse checks pass; GitHub Actions run #3 in progress; npm dependency install passed, Chromium install pending.
 
 ### Backlog / blocked
 - [ ] [CARD-007] Dynamic QR editing, scan analytics and account-backed saved pages — not present in this static page; requires a separately researched backend/API, privacy/security design, and explicit scope approval.
@@ -76,5 +76,5 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 ### 2026-11-17 — Browser QA harness PR opened
 - Created draft PR #248: https://github.com/barsulkhan/InfoJano/pull/248.
 - PR changed-file audit: exactly eight QA/tracking/workflow files; neither QR product source is changed in this PR.
-- JavaScript parser checks and package.json parse passed. GitHub Actions workflow/status has not reported a run yet; do not infer pass.
+- JavaScript parser checks and package.json parse passed. GitHub Actions run #3 is in progress (dependency install passed; Chromium install in progress); browser test result not yet available.
 - The test suite is isolated to Social QR; no Normal QR feature or source was copied.
