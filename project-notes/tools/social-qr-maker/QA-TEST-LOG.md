@@ -103,3 +103,13 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - Expected: each decoded QR payload equals the corresponding profile URL or generated `?hub=` URL.
 - Implementation committed to PR #248 branch; a new GitHub Actions run must pass before these new checks can be marked PASS.
 - Physical phone camera scan remains an optional final interoperability check; automated decoding now independently verifies the image's QR payload.
+
+
+## 2026-11-17 — Decoder CI found Snapchat contrast defect
+
+- Run #44132861727: **FAILURE** — 13 passed, 1 skipped, 2 failed (same all-12-platform decoder test on desktop and mobile).
+- Failure evidence: QR decoder could not decode the generated Snapchat image. Inspected CI screenshot; yellow Snapchat QR modules on white background were low contrast.
+- Root cause: brand accent #D6B900 was reused as the QR module color.
+- Fix committed on PR #248 branch: QR modules for Snapchat now use near-black while the surrounding card retains the Snapchat yellow theme.
+- Fix commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
+- New CI run required to verify; status pending.
