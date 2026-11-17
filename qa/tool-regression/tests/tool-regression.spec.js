@@ -29,7 +29,7 @@ test.describe('Normal QR Maker', () => {
     const payload = 'https://example.com/infojano-qa?source=browser-test';
     await page.locator('#content').fill(payload);
     await page.locator('#generate-button').click();
-    await expect(page.locator('#qr img[alt="Generated QR code"]')).toBeVisible();
+    await expect(page.locator('#qr img[alt="Generated QR code preview"]')).toBeVisible();
     const downloadPromise = page.waitForEvent('download');
     await page.locator('#qr a.qr-download').click();
     const download = await downloadPromise;
@@ -42,11 +42,12 @@ test.describe('Normal QR Maker', () => {
   test('rejects empty content and switches content modes', async ({ page }) => {
     await page.goto('/qr-maker.html');
     await page.locator('#generate-button').click();
-    await expect(page.locator('#qr')).toContainText('Please enter text');
+    await expect(page.locator('#qr')).toContainText('Please enter your QR content first.');
     await page.locator('[data-qrtype="wifi"]').click();
     await expect(page.locator('#ij-qr-input-label')).toContainText('WiFi');
     await page.locator('[data-qrtype="upi"]').click();
-    await expect(page.locator('#ij-qr-input-label')).toContainText('UPI');
+    await expect(page.locator('#ij-qr-structured')).toContainText('UPI Payment');
+  await expect(page.locator('#ij-qr-pa')).toBeVisible();
   });
 });
 
@@ -55,7 +56,8 @@ test('UPI landing page routes into the UPI mode of Normal QR Maker', async ({ pa
   await page.getByRole('link', { name: /Create UPI QR Code/i }).first().click();
   await expect(page).toHaveURL(/qr-maker\.html\?type=upi/);
   await expect(page.locator('[data-qrtype="upi"]')).toHaveClass(/active/);
-  await expect(page.locator('#ij-qr-input-label')).toContainText('UPI');
+  await expect(page.locator('#ij-qr-structured')).toContainText('UPI Payment');
+  await expect(page.locator('#ij-qr-pa')).toBeVisible();
 });
 
 test('Image Resizer creates a downloadable image at the requested exact dimensions', async ({ page }) => {
@@ -66,6 +68,7 @@ test('Image Resizer creates a downloadable image at the requested exact dimensio
     buffer: samplePng()
   });
   await expect(page.locator('#resizeBtn')).toBeEnabled();
+  await page.locator('#ratio').uncheck();
   await page.locator('#width').fill('32');
   await page.locator('#height').fill('48');
   await page.locator('#format').selectOption('image/png');
