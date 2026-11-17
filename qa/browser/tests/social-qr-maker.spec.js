@@ -78,7 +78,7 @@ test('Link-in-Bio creates a page with the entered name, bio and social link', as
   const hubUrl = await page.locator('#content').inputValue();
   await page.goto(hubUrl);
   await expect(page.locator('h1')).toHaveText('Test Creator');
-  await expect(page.locator('main p')).toContainText('Photography and design');
+  await expect(page.locator('main section > p').first()).toContainText('Photography and design');
   await expect(page.locator('a', { hasText: 'Instagram' })).toHaveAttribute('href', 'https://www.instagram.com/testcreator');
 });
 
@@ -89,6 +89,15 @@ test('Link-in-Bio rejects mismatched social profile hosts', async ({ page }) => 
   await page.locator('#social-build-button').click();
   await expect(page.locator('#social-status')).toContainText('does not match the selected social platform');
   await expect(page.locator('#qr img')).toHaveCount(0);
+});
+
+test('decoded Social Link Page rejects unsafe destination protocols', async ({ page }) => {
+  const payload = { n: 'Untrusted Profile', b: '', l: [['Instagram', 'javascript:alert(1)']] };
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))))
+    .replace(/\\+/g, '-').replace(/\\//g, '_').replace(/=+$/g, '');
+  await page.goto('/social-qr-maker.html?hub=' + encoded);
+  await expect(page.locator('h1')).toHaveCount(0);
+  await expect(page.locator('a[href^="javascript:"]')).toHaveCount(0);
 });
 
 test('mobile layout keeps primary controls visible and within viewport', async ({ page, isMobile }) => {
