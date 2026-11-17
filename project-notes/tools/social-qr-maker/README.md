@@ -23,8 +23,8 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 
 ### In progress
 - [x] [CARD-005] Source and script syntax verification — all five inline JavaScript blocks parse; six source assertions and nine isolated URL-normalizer tests pass.
-- [x] [CARD-006] Automated functional/browser QA — GitHub Actions run #7 passed: 13 passed, 1 expected desktop-only skip, 0 failed across Chromium desktop and Pixel 7 emulation. Physical scan and manual accessibility review remain pending.
-- [x] [CARD-008] Isolated Playwright harness — desktop/mobile Chromium config, 7 browser scenarios, scoped PR workflow and README added; GitHub Actions run #7 passed (13 passed, 1 expected skip, 0 failed). PR #248 remains draft/open and unmerged.
+- [x] [CARD-006] Automated functional/browser QA — GitHub Actions run #12 passed: 15 passed, 1 expected desktop-only skip, 0 failed across Chromium desktop and Pixel 7 emulation. Keyboard platform selection and ARIA pressed-state checks passed; physical scan and manual screen-reader review remain pending.
+- [x] [CARD-008] Isolated Playwright harness — desktop/mobile Chromium config, 8 browser scenarios, scoped PR workflow and README added; GitHub Actions run #12 passed (15 passed, 1 expected skip, 0 failed). PR #248 remains draft/open and unmerged.
 
 ### Backlog / blocked
 - [ ] [CARD-007] Dynamic QR editing, scan analytics and account-backed saved pages — not present in this static page; requires a separately researched backend/API, privacy/security design, and explicit scope approval.
@@ -85,3 +85,9 @@ Overall status: In progress — core fixes merged; automated browser QA infrastr
 - Desktop Chromium and Pixel 7 mobile emulation passed profile QR generation (all 12 platforms), wrong-host rejection, Bundle QR/landing page/download, Link-in-Bio rendering/validation, unsafe decoded payload rejection, and mobile viewport checks.
 - Bundle/Link-in-Bio QR overflow fixed by using QR error-correction level M for long hub URLs; single-profile QR retains level H.
 - PR #248 remains draft/open and unmerged. Physical device scan, manual accessibility QA and deployment verification remain pending.
+
+
+### 2026-11-17 — Keyboard accessibility follow-up
+- Platform tile group now has an accessible name and each tile exposes the selected state through `aria-pressed`.
+- Keyboard Enter selection and state synchronization verified in desktop and mobile Chromium by Actions run #12: 15 passed, 1 expected skip, 0 failed.
+- Full screen-reader testing and physical QR scanning remain manual follow-ups.
