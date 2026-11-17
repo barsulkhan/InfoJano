@@ -22,7 +22,7 @@ Overall status: In progress
 - [x] [CARD-004] Honest generation status — wait for asynchronous QR generation and show success only when a PNG was actually produced.
 
 ### In progress
-- [ ] [CARD-005] Source and script syntax verification — re-fetch latest branch source and run available checks; record exact evidence.
+- [x] [CARD-005] Source and script syntax verification — all five inline JavaScript blocks parse; six source assertions pass; nine isolated URL-normalizer tests pass. Browser QA remains separate.
 - [ ] [CARD-006] Functional/browser QA — test all 12 platform profile paths, bundle, Link-in-Bio, download, scan behavior, error states, and desktop/mobile layout in a real browser.
 
 ### Backlog / blocked
@@ -56,7 +56,7 @@ Overall status: In progress
 - Changed: only `social-qr-maker.html` in this branch; added this tracker and QA ledger; updated tool index.
 - Tests and results: source implementation re-fetched after each commit; source-level assertions and actual JS syntax/browser tests remain to be recorded. No real browser is connected in this session.
 - PR/commit/workflow: commits are listed in the branch history; no PR or merge created yet.
-- Issues and resolution: fixed bundle theme selection, platform/domain URL validation across modes, decoded hub destination validation, and asynchronous generation status reporting.
+- Issues and resolution: fixed bundle theme selection, platform/domain URL validation across modes, decoded hub destination validation, asynchronous generation status reporting, and cross-IIFE validator scope.
 - Still pending: real browser and device QA; verify QR scan behavior and actual image downloads. Dynamic editing/analytics/account storage remain blocked pending backend research and approval.
 - Next step: complete static source checks, then open a reviewable PR; do not merge/deploy without explicit approval.
 - Protected areas preserved: `qr-maker.html`, shared scripts/assets, homepage, headers/footers and unrelated tool pages were not edited.
