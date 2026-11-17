@@ -100,3 +100,10 @@ Overall status: In progress — core fixes merged; automated browser QA passed; 
 - This closes an important gap: prior browser tests checked that a PNG existed and that the text field held the expected URL, but did not independently decode the image itself.
 - Latest code commit: `7bd2094c727857447a2afa9c54d7732b55ac715c`; CI rerun is required before marking these new assertions passed.
 - Physical-device scanning remains useful as a final real-camera interoperability check, but should no longer be needed to prove the PNG contains the intended QR payload.
+
+
+### QR decoder follow-up — Snapchat contrast issue found
+- New PNG decoding tests caught a real issue missed by the previous UI-only checks: Snapchat's yellow QR modules had insufficient contrast against white for reliable decoding.
+- The card remains Snapchat yellow, but the QR matrix now uses near-black modules to preserve brand presentation while improving scan contrast.
+- Fix commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
+- Awaiting CI rerun before marking QR decoding as passed.
