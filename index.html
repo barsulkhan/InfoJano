@@ -2195,6 +2195,135 @@ html body header.header .nav button.nav-search{background:#eaf5ff!important;colo
   .bottom-nav { bottom: calc(9px + env(safe-area-inset-bottom)) !important; }
 }
 </style>
+<!-- AI Chat Widget CSS -->
+<style>
+  .ai-chat-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    background: linear-gradient(135deg, #0876e8, #19c8f5);
+    color: white; border: none; border-radius: 50px;
+    padding: 15px 25px; font-size: 16px; font-weight: bold;
+    cursor: pointer; box-shadow: 0 10px 20px rgba(8, 118, 232, 0.4);
+    z-index: 1000; transition: transform 0.3s;
+  }
+  .ai-chat-btn:hover { transform: scale(1.05); }
 
+  .ai-chat-container {
+    position: fixed; bottom: 80px; right: 20px;
+    width: 350px; height: 500px;
+    background: #fff; border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    display: none; flex-direction: column;
+    z-index: 1000; overflow: hidden;
+    border: 1px solid #e0e0e0;
+  }
+  .ai-chat-container.active { display: flex; }
+
+  .ai-chat-header {
+    background: #0876e8; color: white;
+    padding: 15px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .ai-chat-header h3 { margin: 0; font-size: 18px; }
+  .ai-chat-close { background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
+
+  .ai-chat-messages {
+    flex: 1; padding: 15px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 10px;
+    background: #f9f9f9;
+  }
+  .msg { padding: 10px 15px; border-radius: 15px; max-width: 80%; font-size: 14px; }
+  .msg.user { background: #0876e8; color: white; align-self: flex-end; border-bottom-right-radius: 0; }
+  .msg.bot { background: #e0f2fe; color: #333; align-self: flex-start; border-bottom-left-radius: 0; }
+
+  .ai-chat-input-area {
+    display: flex; padding: 10px; background: white; border-top: 1px solid #eee; gap: 10px;
+  }
+  .ai-chat-input-area input {
+    flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none;
+  }
+  .ai-chat-input-area button {
+    background: #0876e8; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;
+  }
+
+  .model-selector {
+    padding: 10px; background: #f0f7ff; border-bottom: 1px solid #ddd; display: flex; gap: 10px; align-items: center;
+  }
+  .model-selector select {
+    padding: 5px 10px; border-radius: 10px; border: 1px solid #ccc; outline: none;
+  }
+</style>
+
+<button class="ai-chat-btn" onclick="document.querySelector('.ai-chat-container').classList.toggle('active')">
+  💬 AI Assistant
+</button>
+
+<div class="ai-chat-container">
+  <div class="ai-chat-header">
+    <h3>InfoJano AI</h3>
+    <button class="ai-chat-close" onclick="document.querySelector('.ai-chat-container').classList.remove('active')">✖</button>
+  </div>
+  
+  <div class="model-selector">
+    <label>Model:</label>
+    <select id="ai-model-select">
+      <option value="deepseek">DeepSeek (Fast)</option>
+      <option value="chatgpt">ChatGPT (OpenAI)</option>
+    </select>
+  </div>
+
+  <div class="ai-chat-messages" id="ai-chat-messages">
+    <div class="msg bot">Hello! How can I help you today?</div>
+  </div>
+
+  <div class="ai-chat-input-area">
+    <input type="text" id="ai-chat-input" placeholder="Ask something..." onkeypress="if(event.key === 'Enter') sendAIMessage()">
+    <button onclick="sendAIMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+  const DEEPSEEK_URL = "https://deepseek-api.bank8420.workers.dev";
+  
+  async function sendAIMessage() {
+    const input = document.getElementById('ai-chat-input');
+    const message = input.value.trim();
+    if (!message) return;
+
+    const chatBox = document.getElementById('ai-chat-messages');
+    const modelSelect = document.getElementById('ai-model-select').value;
+
+    chatBox.innerHTML += `<div class="msg user">${message}</div>`;
+    input.value = '';
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    const loadingId = 'loading-' + Date.now();
+    chatBox.innerHTML += `<div class="msg bot" id="${loadingId}">Typing...</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+      let reply = "";
+
+      if (modelSelect === 'deepseek') {
+        const res = await fetch(DEEPSEEK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: [{ role: "user", content: message }] })
+        });
+        const data = await res.json();
+        reply = data.text || "দুঃখিত, কোনো উত্তর পাওয়া যায়নি।";
+      } else {
+        reply = "ChatGPT-এর জন্য আপনার OpenAI API Key এবং প্রক্সি লিংক প্রয়োজন।";
+      }
+
+      document.getElementById(loadingId).remove();
+      chatBox.innerHTML += `<div class="msg bot">${reply}</div>`;
+      
+    } catch (error) {
+      document.getElementById(loadingId).remove();
+      chatBox.innerHTML += `<div class="msg bot">Error: সংযোগ ব্যর্থ হয়েছে।</div>`;
+    }
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+</script>
 </body>
 </html>
