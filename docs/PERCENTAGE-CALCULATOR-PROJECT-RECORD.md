@@ -1847,3 +1847,14 @@ For future QR Maker revisions, change only the property the user specifically as
 
 ### Important correction to the latest QR revision
 The latest QR change used `calc(100% - 56px)` and a 230px minimum height. These are NOT the ID Studio reference geometry. Treat the locked dimensions above as authoritative for the next explicitly requested geometry correction; do not silently apply another resize without the user's instruction.
+
+
+## Applied locked ID Studio dimensions to QR Maker — 2026-11-17
+
+- Reopened the actual `id-card-print-studio.html` source and copied its exact `.ij-id-hero` geometry and surface design to the QR Maker hero: `min(calc(100% - 28px), 1200px)`, content-driven height, `clamp(26px,4vw,52px)` padding, 32px radius, matching border/background/shadow, 180px lower wave and subtle diagonal sheen.
+- Replaced the custom QR header markup with the exact ID Studio brandbar structure and exact brand SVG mark; the QR page's contextual promise and Back to Home action remain.
+- Kept QR hero's original title, description, three chips, animated QR artwork and all QR generator controls/functionality. No unrelated page/design edits.
+- Verified by re-fetching the committed source and checking all exact geometry declarations, matching header structure, and original QR generation function.
+- No live browser screenshot/device visual QA was run.
+
+Commit: `325f80082016b742b184bb6e8a0d1ef6854bc81e`.
