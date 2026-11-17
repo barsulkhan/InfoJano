@@ -463,6 +463,64 @@ main{width:min(calc(100% - 40px),1200px)!important;max-width:1200px!important;ma
 }
 </style>
 
+
+<style id="ij-percentage-final-header-artwork">
+/* Header edges align exactly with the finalized hero frame: navigation left, brand right. */
+@media(min-width:1001px){
+ .ij-brandbar-inner{
+  width:calc(100% - 112px)!important;max-width:1600px!important;
+  min-height:64px!important;justify-content:space-between!important;
+  gap:24px!important
+ }
+ .ij-brand-nav{order:1!important;margin:0 auto 0 0!important;justify-content:flex-start!important}
+ .ij-brand-home{order:2!important;flex:0 0 auto!important;justify-content:flex-end!important;margin-left:auto!important}
+}
+/* Keep the four benefit chips on the same full-width row as the hero content. */
+.ij-pct-benefits{
+ width:100%!important;max-width:none!important;box-sizing:border-box!important;
+ justify-content:space-between!important;align-items:center!important;
+}
+/* Rebuild the artwork's visual stacking so the chart is legible, not hidden behind its card. */
+.ij-pct-art{isolation:isolate!important;overflow:visible!important}
+.ij-pct-calculator{z-index:1!important;transform-origin:50% 50%;animation:ijPctCalculatorFloat 6s ease-in-out infinite}
+.ij-pct-chart-card{
+ z-index:3!important;display:grid!important;place-items:center!important;
+ overflow:visible!important;transform-origin:50% 50%;
+ animation:ijPctChartFloat 5.5s ease-in-out infinite .35s
+}
+.ij-pct-chart-card svg{
+ display:block!important;position:relative!important;width:100%!important;height:100%!important;
+ max-width:100%!important;max-height:100%!important;overflow:visible!important;
+}
+.ij-pct-chart-card svg rect{transform-box:fill-box;transform-origin:50% 100%;animation:ijPctBarRise 2.8s ease-in-out infinite alternate}
+.ij-pct-chart-card svg rect:nth-of-type(2){animation-delay:.25s}
+.ij-pct-chart-card svg rect:nth-of-type(3){animation-delay:.5s}
+.ij-pct-chart-card svg path:first-child{stroke-dasharray:260;stroke-dashoffset:260;animation:ijPctLineDraw 3.4s ease-in-out infinite}
+.ij-pct-chart-card svg path:nth-child(2){stroke-dasharray:90;stroke-dashoffset:90;animation:ijPctArrowDraw 3.4s ease-in-out infinite .5s}
+.ij-pct-spark{z-index:4;animation:ijPctSpark 2.8s ease-in-out infinite}
+.ij-pct-spark-two{animation-delay:.45s}.ij-pct-spark-three{animation-delay:.9s}
+.ij-pct-benefits{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;grid-column:1/-1!important;margin:16px 0 0!important}
+@keyframes ijPctCalculatorFloat{0%,100%{translate:0 0;rotate:-8deg}50%{translate:0 -8px;rotate:-6deg}}
+@keyframes ijPctChartFloat{0%,100%{translate:0 0;rotate:5deg}50%{translate:0 -11px;rotate:3deg}}
+@keyframes ijPctBarRise{0%{scale:1 .72}100%{scale:1 1}}
+@keyframes ijPctLineDraw{0%,12%{stroke-dashoffset:260}70%,100%{stroke-dashoffset:0}}
+@keyframes ijPctArrowDraw{0%,35%{stroke-dashoffset:90}80%,100%{stroke-dashoffset:0}}
+@keyframes ijPctSpark{0%,100%{translate:0 0;opacity:.55}50%{translate:0 -10px;opacity:1}}
+@media(max-width:1000px){
+ .ij-pct-benefits{justify-content:center!important}
+}
+@media(max-width:620px){
+ .ij-brandbar-inner{flex-direction:row!important}
+ .ij-brand-nav{order:1!important}
+ .ij-brand-home{order:2!important;flex:0 1 auto!important;margin-left:auto!important}
+ .ij-pct-benefits{justify-content:center!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .ij-pct-calculator,.ij-pct-chart-card,.ij-pct-chart-card svg rect,
+ .ij-pct-chart-card svg path,.ij-pct-spark{animation:none!important;translate:none!important}
+}
+</style>
+
 </head>
 <body>
 
