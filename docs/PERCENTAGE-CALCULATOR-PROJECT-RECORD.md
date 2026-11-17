@@ -1812,3 +1812,38 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### Commit
 - `8d94742b59ab8bdaec79523e8486ae57e7438ebf` — Widen QR hero and sharpen colors and header.
+
+
+## LOCKED DESIGN SPEC — QR Maker hero/header reference dimensions (2026-11-17)
+
+This is a standing instruction for future QR Maker work. Do not ask the user to repeat measurements and do not independently resize the hero.
+
+### Source of truth
+Use the existing `id-card-print-studio.html` reference CSS, specifically `.ij-id-hero` and `.ij-brandbar`, as the authoritative geometry and brand-header reference. Do not estimate dimensions from monitor photographs when the source CSS is available.
+
+### Hero geometry to match
+- Outer width: `width: min(calc(100% - 28px), 1200px)`.
+- Horizontal centering: `margin-left/right: auto`.
+- Vertical sizing: content-driven (`height: auto`); do not impose a new fixed height or change the reference content's natural height.
+- Inner padding: `clamp(26px, 4vw, 52px)`.
+- Border radius: `32px`.
+- Border: `1px solid #cfe5fb`.
+- Background: `radial-gradient(ellipse at 78% 22%, #d9efff 0%, transparent 38%), linear-gradient(118deg, #eaf6ff 0%, #f8fcff 55%, #e5f3ff 100%)`.
+- Bottom wave: use the reference `:before` wave geometry (180px high, bottom -95px, blue/cyan gradient).
+- Highlight: use the reference `:after` subtle white diagonal sheen.
+- The QR artwork can remain animated, but it must not change the hero's outer geometry or make text blurry.
+
+### Header geometry and branding to match
+- Header inner content max width: `1200px`, centered.
+- Header padding: `15px 18px`.
+- Brand mark: `48px × 48px`, 15px radius.
+- Brand name: `26px`, weight 850, letter spacing -1.1px.
+- Tagline: `14px`, top margin 5px.
+- Preserve the same InfoJano logo SVG, brand colors, and clear alignment as the ID Studio reference.
+- Header navigation stays on the right and must align vertically with the brand block.
+
+### Non-negotiable implementation rule
+For future QR Maker revisions, change only the property the user specifically asks to change. Never alter the hero's width, height behavior, padding, radius, or header geometry as a side effect. If a requested change conflicts with this locked spec, ask one concise clarification before editing.
+
+### Important correction to the latest QR revision
+The latest QR change used `calc(100% - 56px)` and a 230px minimum height. These are NOT the ID Studio reference geometry. Treat the locked dimensions above as authoritative for the next explicitly requested geometry correction; do not silently apply another resize without the user's instruction.
