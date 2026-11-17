@@ -1706,3 +1706,24 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - 404 CTA: `3a9b0fd365418605bbe4cf9906c50817d2a8682d`
 - Secondary XML sitemap: `995e25322a6485b69864498f570ac2d454295537`
 - Text sitemap: `f00b96be6daabe9c1bf6bce02e629229be24601d`
+
+
+## QR Maker header and hero alignment — 2026-11-17
+
+### User-approved scope
+- Update only `qr-maker.html` to add the missing page header and align the QR Maker hero with the approved ID Card Print Studio visual frame.
+- Keep the QR generator workspace, controls, generation logic, and remaining page content/functionality unchanged.
+
+### Changes applied
+- Added the InfoJano brand header above the QR Maker hero, following the ID Card Print Studio header structure: brand mark, InfoJano wordmark/tagline, page promise, and Back to Home link.
+- Restyled the existing QR hero toward the ID Card Print Studio light-blue premium theme and desktop frame: full-width within the main content, 1200px reference width behavior on the studio page (the shared wide frame expands responsively), 220px minimum desktop hero height, 42px/46px desktop padding family, and 22px radius.
+- Kept the QR tile/orbit/spark/scanline motion concept and added matching reduced-motion handling.
+- Added tablet/mobile sizing and header wrapping rules; desktop/tablet/mobile hero sizing is CSS-responsive rather than a fixed screenshot pixel size.
+- No edits to the homepage, global navigation, logo asset, other pages, sitemap, or indexing files.
+
+### Verification
+- Re-fetched `qr-maker.html` after commit and confirmed the new header markup, ID Studio-aligned 220px hero sizing rule, mobile breakpoints, reduced-motion rule, and existing QR generation function are present.
+- This was a source-level verification only. No production browser screenshot, live deployment check, or device visual QA was performed in this session. Confirm the deployed appearance after the site publishes.
+
+### Commit
+- `be9e510444407f5a25910f948bfe04d832c62a5e` — Add ID Studio-aligned header and responsive QR hero banner.
