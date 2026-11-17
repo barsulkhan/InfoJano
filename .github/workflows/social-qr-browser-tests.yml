@@ -1,0 +1,51 @@
+name: Social QR Browser Tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'social-qr-maker.html'
+      - 'qa/browser/**'
+      - '.github/workflows/social-qr-browser-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  social-qr-browser:
+    name: Social QR — Chromium desktop and mobile
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: qa/browser
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: qa/browser/package-lock.json
+      - name: Set up Python static server
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run Social QR browser tests
+        run: npm test
+      - name: Upload Playwright report and traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-qr-playwright-report
+          path: |
+            qa/browser/playwright-report/
+            qa/browser/test-results/
+          if-no-files-found: ignore
+          retention-days: 14
