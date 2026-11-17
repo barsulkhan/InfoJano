@@ -45,7 +45,7 @@ Resolution: label the tile group and synchronize each tile's `aria-pressed` stat
 ### 2.7 QR image evidence gap
 Finding: previous browser tests verified that a PNG data URI existed and the adjacent URL field was correct, but did not independently decode the QR image. Therefore the tests did not prove that the pixels in the PNG encoded the intended destination.
 Resolution added on 2026-11-17: install QA-only `jsqr` and `pngjs`; decode actual PNG pixel data and compare the decoded QR text to the expected URL for each of the 12 profile platforms, Bundle and Link-in-Bio. This is a major step toward removing the need for a human to scan every test image.
-Status: code and documentation committed to PR #248 branch; the CI rerun for this latest enhancement is pending. Do not mark it passed until a successful workflow run confirms it.
+Initial CI run #44132861727 exposed a real contrast problem: 13 passed, 1 skipped, 2 failed (the 12-platform decode test failed on Snapchat in both desktop and mobile). The screenshot showed the Snapchat QR's yellow modules were too close to the white background for reliable decoding. Fix applied on the PR branch: keep the Snapchat card yellow but render QR modules in near-black for high contrast. The rerun is pending; do not mark the decoder suite passed until CI confirms it.
 
 ## 3. Implemented changes
 
@@ -120,3 +120,12 @@ Dynamic QR editing, scan analytics and account-backed saved pages are not implem
 ## 8. Decision
 
 Most QR correctness checks can be performed automatically by decoding the generated PNG in CI. A physical phone scan can be reduced to a small final interoperability check. Until the new QR-decoder CI run passes, the added decoder coverage is implemented but not yet verified. PR #248 remains unmerged and no production deployment is claimed.
+
+
+## 2026-11-17 — QR decoder CI failure and contrast correction
+- Workflow run #44132861727 failed only in the new all-platform QR decode test: 13 passed, 1 skipped, 2 failed (desktop and mobile variants).
+- Downloaded and inspected the Playwright failure screenshot. The loop had advanced to Snapchat; its yellow QR modules (#D6B900) on white did not decode reliably.
+- Root cause: the Snapchat brand accent was also used as the QR foreground, producing insufficient foreground/background contrast for machine decoding.
+- Fix on PR #248 branch: use near-black QR modules for Snapchat while preserving the Snapchat yellow branded card and footer. Other platforms retain their selected theme accent.
+- Commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
+- Status: CI rerun pending. Do not claim fix verified until the new workflow run passes.
