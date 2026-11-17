@@ -1405,3 +1405,78 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - [ ] Desktop/mobile visual regression and live rendered-page/HTTP-header checks — not run.
 - [ ] No claim that all sitemap URLs are indexed or that the 2026-11-16 SEO edits have improved rankings.
 - Next best step: obtain the three URL Inspection results and current Sitemaps UI status; then make only the specific confirmed indexing/canonical fix, or proceed with contextual internal links if all three URLs are indexed with expected canonicals.
+
+
+## Work session — 2026-11-17 (Follow-up source QA and Search Console refresh)
+
+### 1. Owner request and scope
+- Request: Continue InfoJano work from the durable project record ("Kaj suru koro").
+- Scope: Percentage Calculator project; inspect current repository, refresh connected Search Console evidence, and perform safe source-level checks.
+- Protected scope: Homepage, homepage hero, approved Percentage Change Calculator hero/header, logo, shared navigation, and unrelated tools were not edited.
+
+### 2. Baseline inspected
+- Repository: `barsulkhan/InfoJano`; default/working branch: `main`.
+- Latest commit at session start: `7a2d96e0215ae5735affce765c27fcba9ea12736` (docs: append Nov 17 SEO and deployment verification).
+- Project Record blob before this append: `e4f51c4d35acecb13d66a20dcd15e1c0ed149ecd`.
+- Source blob hashes inspected:
+  - `percentage-change.html`: `8f434234f1ce653f70681792da15a07c12f65de2`
+  - `percentage.html`: `4f6d3cadcbf70665fb3c2cfd55c57a69b9685bc2`
+  - `percentage-difference-calculator.html`: `3c210daa16c3a9aa43db5814ec63a137360aca41`
+  - `sitemap.xml`: `c0d5e9f096d31389892af656fdc3db48e760b9be`
+  - `robots.txt`: `d9b19d5d098c81da0ceb3586a7a9107a26612d57`
+
+### 3. Search Console refresh (read-only)
+- Confirmed connected property: `sc-domain:infojano.com`. A separate GitHub Pages property also exists; this report uses the canonical-domain property only.
+- Refreshed the Search Analytics page/query report for the connector's `last_28d` preset on 2026-11-17. Search Console has a normal reporting delay; the preset is not a guarantee that today's data is complete.
+- Current returned page rows for the percentage cluster:
+  - `percentage.html`: 0 clicks, 1 impression, average position 3.00.
+  - `percentage-change.html`: 0 clicks, 4 impressions, average position 43.75.
+  - `percentage-difference-calculator.html`: 0 clicks, 11 impressions, average position 51.7273.
+  - `repeated-percentage-change-calculator.html`: 0 clicks, 16 impressions, average position 11.625.
+  - `successive-percentage-change-calculator.html`: 0 clicks, 12 impressions, average position 13.4167.
+  - `percentage-pt-br.html`: 0 clicks, 339 impressions, average position 10.5841.
+- Returned visible query examples remain very sparse: "change percentage calculator" (1 impression, position 24) for `percentage-change.html`; "percentage difference calculator" (2 impressions, position 60) for the difference page. Do not infer meaningful CTR/ranking trends from one- or two-impression samples.
+- Sitemap report still returns 106 submitted, 0 errors, 0 warnings; last submitted 2026-11-14T18:43:50Z and last downloaded 2026-11-14T18:43:52Z. It has not yet demonstrated a new fetch after the repository sitemap's current 108 URLs.
+- Windsor Search Console connector is read-only Search Analytics/Sitemaps data; it does not expose URL Inspection's crawl/indexing/canonical verdicts or allow sitemap submission/settings changes.
+
+### 4. Source-level checks actually run
+- Confirmed `percentage-change.html` contains all three recorded modes, Batch Calculator control, History/localStorage references, Copy and CSV references, 100-row cap reference, and its self-canonical.
+- Confirmed `percentage.html` and `percentage-difference-calculator.html` each contain the expected self-canonical.
+- Confirmed the difference page contains WebApplication and FAQPage JSON-LD.
+- Counted `sitemap.xml`: 108 `<loc>` entries and 108 unique URLs; no duplicate URL was found by this check.
+- These are source-text assertions/counts only. They do not execute JavaScript, validate JSON-LD with Google's tools, fetch the production website, or prove indexing.
+
+### 5. Findings and decisions
+- No confirmed new application defect found by these limited source checks.
+- The 108-vs-106 sitemap discrepancy remains unresolved and is consistent with the sitemap's older last-download timestamp. Do not delete URLs or alter sitemap entries merely to force the counts to match.
+- Search Console URL Inspection for the three priority URLs remains a prerequisite before deciding canonical/indexing fixes or new SEO changes.
+- No application source, metadata, internal links, sitemap, robots.txt, design, or navigation files were changed in this session.
+
+### 6. Verification limits
+- [x] Re-read durable project record and verify latest GitHub main commit.
+- [x] Refresh canonical-domain Search Console page/query and sitemap reports.
+- [x] Inspect current three percentage page sources and robots.txt.
+- [x] Run source-text assertions for recorded features/canonicals/schema and count sitemap URLs/uniqueness.
+- [ ] Google URL Inspection for `percentage.html`, `percentage-change.html`, and `percentage-difference-calculator.html` — not available through the connected read-only connector; owner/UI access required.
+- [ ] Confirm new sitemap fetch and reconcile 108 repository URLs vs 106 Search Console submitted — pending.
+- [ ] Browser interaction QA (calculator modes, batch parsing, CSV downloads, History restore, Copy Result) — not run.
+- [ ] Desktop/mobile visual QA and live HTTP/render verification — not run.
+- [ ] No application tests or browser tests were run in this session.
+
+### 7. Commit and deployment
+- This session changes only this durable project record.
+- Application code commit: none.
+- Deployment/live status: unchanged and not newly verified. A record-only commit does not change the website.
+
+### 8. Work checklist
+- [x] Refresh Search Console analytics evidence.
+- [x] Inspect relevant source files and sitemap.
+- [x] Record exact source hashes and verification boundaries.
+- [ ] Obtain URL Inspection results from Search Console UI.
+- [ ] Confirm sitemap recrawl and reconcile submitted URL count.
+- [ ] Run real browser QA and visual regression.
+- [ ] Make a narrowly scoped code change only after a specific issue is confirmed.
+
+### 9. Next session handover
+- Best next task: obtain Google URL Inspection results for the three priority percentage URLs and the latest Sitemaps UI fetch status. Then decide whether a precise indexing/canonical fix is warranted; if not, review contextual internal-link opportunities without changing the protected design.
+- First files to inspect if code work becomes justified: `percentage-change.html`, `percentage.html`, and `percentage-difference-calculator.html`.
