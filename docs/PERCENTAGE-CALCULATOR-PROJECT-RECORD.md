@@ -1727,3 +1727,21 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### Commit
 - `be9e510444407f5a25910f948bfe04d832c62a5e` — Add ID Studio-aligned header and responsive QR hero banner.
+
+
+## QR Maker header alignment and contrast refinement — 2026-11-17
+
+### User feedback and changes
+- Reviewed the user's latest monitor photo: the hero banner dimensions were approved; header content was visibly too far left compared with the hero's content frame, and hero title/description/chips had weak contrast.
+- Reworked only the QR Maker header: aligned its inner content to the same desktop main/hero frame (including the 24px inner gutters), matching the ID Card Print Studio's white header treatment and brand identity.
+- Added two header navigation links, **Create QR** and **Features**, anchored to the QR workspace and feature section; retained **Back to Home** as the rightmost action.
+- Corrected hero title, subtitle, kicker, and chip text/background contrast for readability. Hero dimensions and QR animation concept remain unchanged.
+- Added stable section IDs for the two in-page navigation links.
+- No edits to QR generation logic, homepage, ID Card Print Studio, global navigation, or other pages.
+
+### Verification
+- Re-fetched `qr-maker.html` and confirmed header action links, both anchor targets, contrast overrides, and the original QR generation function are present.
+- Source-level verification only; production browser screenshot and visual/device QA have not been run.
+
+### Commit
+- `20ce26794d18bed128c1a30d72f14b8abc54236e` — Align QR Maker header and improve hero text contrast.
