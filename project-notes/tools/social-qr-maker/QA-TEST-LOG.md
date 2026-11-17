@@ -112,7 +112,7 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - Root cause: brand accent #D6B900 was reused as the QR module color.
 - Fix committed on PR #248 branch: QR modules for Snapchat now use near-black while the surrounding card retains the Snapchat yellow theme.
 - Fix commit: `5f35b40e40f26c7b98a9dfba88112a37a215f717`.
-- New CI run required to verify; status pending.
+- Historical note: the immediate rerun subsequently passed in GitHub Actions #44133825130 (15 passed, 1 expected skip, 0 failed); see the verified result below.
 
 
 ## 2026-11-17 — QR image decoding and Snapchat contrast fix verified
@@ -123,3 +123,11 @@ Source merged to `main`; browser QA branch: `qa/social-qr-playwright`
 - Snapchat's QR uses near-black modules while the card remains yellow; decoder assertions now pass on desktop and mobile.
 - Existing wrong-host, unsafe payload, landing-page, download, mobile bounds and keyboard/ARIA assertions passed.
 - The single skip is the mobile-only viewport assertion in the desktop project; it runs in the mobile project.
+
+
+## 2026-11-17 — PR #248 merge and main-branch verification
+- PR #248 merged by squash after decoder CI and final scope audit: https://github.com/barsulkhan/InfoJano/pull/248
+- Merge commit: `2004275634f3d14af468a89cc82f3775635a1886`.
+- Post-merge fetch verified Social QR source and documentation are present on `main`.
+- Exactly 10 changed files; no `qr-maker.html`, homepage, shared header/footer/assets or unrelated tools were changed.
+- No production deployment performed or claimed.
