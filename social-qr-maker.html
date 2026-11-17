@@ -162,6 +162,97 @@ main.wrap>.card h2{font-size:25px!important;letter-spacing:-.7px!important;color
 @media(prefers-reduced-motion:reduce){.ij-social-hero:before,.ij-social-hero:after,.social-orbit,.social-scan,.social-qr-core,.social-float-icon{animation:none!important}}
 </style>
 
+
+<style id="ij-social-qr-header-hero-workspace-final">
+/* Restore the shared site header and align this page to the normal QR Maker layout. */
+header:not(.ij-global-header){display:none!important}
+.ij-global-header{display:block!important;visibility:visible!important}
+body{background:linear-gradient(180deg,#eff6ff,#f7f8ff 45%,#eef3ff)!important;color:#142044!important}
+main.wrap{width:100%!important;max-width:1180px!important;margin:0 auto!important;padding:16px 12px 48px!important}
+.ij-social-hero{
+ display:grid!important;grid-template-columns:54% 46%!important;align-items:center!important;
+ min-height:250px!important;height:auto!important;padding:26px 34px!important;margin:12px 0 12px!important;
+ border:1px solid #cfe5fb!important;border-radius:26px!important;overflow:hidden!important;isolation:isolate!important;
+ background:radial-gradient(ellipse at 78% 22%,#d9efff 0%,transparent 38%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%)!important;
+ box-shadow:0 18px 44px rgba(32,104,174,.12)!important;color:#101d42!important
+}
+.ij-social-hero:before{
+ inset:-10%!important;z-index:0!important;
+ background:radial-gradient(ellipse at 76% 46%,rgba(0,160,230,.16),transparent 34%),radial-gradient(ellipse at 45% 100%,rgba(170,70,220,.12),transparent 45%),linear-gradient(110deg,transparent 28%,rgba(255,255,255,.55) 48%,transparent 62%)!important;
+ animation:socialGlow 5s ease-in-out infinite alternate!important
+}
+.ij-social-hero:after{
+ bottom:18px!important;height:4px!important;z-index:1!important;
+ background:linear-gradient(90deg,transparent,#ff55d9,#36c9f6,#fff,#ff55d9,transparent)!important;
+ box-shadow:0 0 15px #65dfff!important;animation:socialSweep 3.6s linear infinite!important
+}
+.ij-social-copy{z-index:4!important}
+.ij-social-copy .kicker{color:#1765a9!important;font-size:11px!important;letter-spacing:2px!important}
+.ij-social-copy h1{color:#101b43!important;font-size:clamp(34px,5vw,58px)!important;line-height:1.04!important;letter-spacing:-1.8px!important;text-shadow:none!important}
+.ij-social-copy h1 em{color:#087ce5!important}
+.ij-social-copy p{color:#53647d!important;font-size:clamp(14px,1.7vw,19px)!important;line-height:1.45!important}
+.ij-social-art{z-index:2!important;min-height:210px!important}
+.social-qr-core{width:126px!important;height:126px!important}
+.social-orbit{width:180px!important;height:180px!important}
+.social-float-icon{width:48px!important;height:48px!important;border-radius:14px!important}
+.ij-social-features{margin:10px 0 18px!important}
+.ij-social-workspace{
+ display:grid!important;grid-template-columns:minmax(0,1.2fr) minmax(340px,.82fr)!important;
+ align-items:stretch!important;gap:16px!important;width:100%!important;margin:0 0 16px!important
+}
+main.wrap>.ij-social-workspace>.card{
+ width:100%!important;max-width:none!important;min-width:0!important;height:100%!important;
+ margin:0!important;padding:22px!important;border:1px solid #dce7fa!important;border-radius:24px!important;
+ box-shadow:0 10px 28px #173b7714!important;background:#fff!important
+}
+.ij-social-workspace .card h2{font-size:25px!important;letter-spacing:-.7px!important;color:#101e4a!important}
+.ij-social-builder{grid-column:1!important}
+.ij-social-preview{grid-column:2!important;display:flex!important;flex-direction:column!important}
+.ij-social-preview>p{margin:0 0 12px!important}
+.ij-social-workspace .card input,.ij-social-workspace .card select{
+ min-height:44px!important;border:1px solid #bfd0ed!important;border-radius:11px!important;background:#fbfdff!important;padding:12px 13px!important
+}
+.social-platform-tiles{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#social-build-button{min-height:48px!important}
+#qr{
+ flex:1!important;min-height:360px!important;margin:0!important;padding:16px!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ border:1px solid #e0e9fa!important;border-radius:18px!important;
+ background:linear-gradient(145deg,#fff,#f8faff)!important;overflow-wrap:anywhere!important
+}
+#qr img{max-width:min(100%,420px)!important}
+#qr .qr-download{display:block!important;width:100%!important;max-width:420px!important;text-align:center!important}
+.ij-social-preview-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;min-height:260px;text-align:center;color:#73829b}
+.ij-social-preview-placeholder span{font-size:66px;line-height:1;color:#2476d5}
+.ij-social-preview-placeholder b{font-size:16px;color:#263a5c}
+.ij-social-preview-placeholder small{max-width:260px;font-size:12px;line-height:1.5}
+.ij-social-workspace .ij-advanced-card,.ij-social-workspace .ij-social-extras{margin-top:16px!important;padding:18px!important;border-radius:18px!important;background:#f9fbff!important}
+@media(max-width:900px){
+ .ij-social-hero{min-height:225px!important;padding:22px 24px!important}
+ .ij-social-workspace{grid-template-columns:minmax(0,1fr) minmax(280px,.85fr)!important;gap:12px!important}
+ .ij-social-features{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:680px){
+ main.wrap{padding:12px 10px 36px!important}
+ .ij-social-hero{grid-template-columns:54% 46%!important;min-height:190px!important;padding:17px 13px!important;border-radius:20px!important}
+ .ij-social-copy h1{font-size:clamp(26px,7vw,36px)!important;letter-spacing:-1px!important}
+ .ij-social-copy p{font-size:11px!important}.ij-social-copy .kicker{font-size:8px!important;letter-spacing:1px!important}
+ .ij-social-art{min-height:145px!important}
+ .social-qr-core{width:94px!important;height:94px!important;padding:8px!important;border-width:3px!important}
+ .social-orbit{width:130px!important;height:130px!important}
+ .social-float-icon{width:37px!important;height:37px!important;font-size:20px!important}
+ .ij-social-features{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin:8px 0 15px!important}
+ .ij-social-features article{min-height:68px!important;padding:9px!important;gap:7px!important}
+ .ij-social-features .feature-symbol{flex-basis:25px!important;width:25px!important;height:25px!important;font-size:15px!important}
+ .ij-social-features small{font-size:9px!important}
+ .ij-social-workspace{grid-template-columns:1fr!important;gap:12px!important}
+ .ij-social-builder,.ij-social-preview{grid-column:1!important}
+ main.wrap>.ij-social-workspace>.card{padding:15px!important;border-radius:18px!important}
+ .ij-social-workspace .card h2{font-size:21px!important}
+ #qr{min-height:280px!important}
+}
+@media(prefers-reduced-motion:reduce){.ij-social-hero:before,.ij-social-hero:after,.social-orbit,.social-scan,.social-qr-core,.social-float-icon{animation:none!important}}
+</style>
 </head><body>
 
 <main class="wrap"><div class="ij-social-crumb"><a href="index.html">⌂ Home</a> › <a href="qr-choice.html">QR Code</a> › Social Media QR Code Maker</div><section class="ij-social-hero"><div class="ij-social-copy"><span class="kicker">CONNECT YOUR SOCIAL WORLD</span><h1>Social Media <em>QR Maker</em></h1><p>Create a beautiful QR code for your social profiles.</p></div><div class="ij-social-art" aria-hidden="true"><div class="social-orbit"></div><div class="social-qr-core"><svg viewBox="0 0 100 100"><path fill="#111b43" d="M5 5h28v28H5zm7 7v14h14V12zM67 5h28v28H67zm7 7v14h14V12zM5 67h28v28H5zm7 7v14h14V74zM40 5h8v8h-8zm16 0h8v8h-8zm-16 16h8v8h-8zm16 0h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-40 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8z"/></svg><b>ij</b></div><div class="social-scan"></div><span class="social-float-icon instagram">◎</span><span class="social-float-icon facebook">f</span><span class="social-float-icon youtube">▶</span><span class="social-float-icon tiktok">♪</span><span class="social-float-icon telegram">➤</span><span class="social-float-icon whatsapp">◉</span></div></section><section class="ij-social-features" aria-label="Social QR benefits">
@@ -169,7 +260,7 @@ main.wrap>.card h2{font-size:25px!important;letter-spacing:-.7px!important;color
 <article><span class="feature-symbol">↗</span><div><b>Quick & Easy</b><small>Create a shareable QR in seconds</small></div></article>
 <article><span class="feature-symbol">▣</span><div><b>Custom QR Design</b><small>Choose a style and platform colour</small></div></article>
 <article><span class="feature-symbol">↓</span><div><b>Free to Use</b><small>Download your social QR as PNG</small></div></article>
-</section><section class="card">
+</section><div class="ij-social-workspace"><section class="card ij-social-builder">
 <h2>▦ Create Your Social QR Code</h2><label>Choose Social Platform</label><div class="social-platform-tiles"><button type="button" data-pick="instagram" class="active">◎<b>Instagram</b></button><button type="button" data-pick="facebook">f<b>Facebook</b></button><button type="button" data-pick="youtube">▶<b>YouTube</b></button><button type="button" data-pick="tiktok">♪<b>TikTok</b></button><button type="button" data-pick="telegram">➤<b>Telegram</b></button><button type="button" data-pick="whatsapp">◉<b>WhatsApp</b></button></div>
 <label for="social-platform">Select a platform</label>
 <select id="social-platform">
@@ -191,9 +282,8 @@ main.wrap>.card h2{font-size:25px!important;letter-spacing:-.7px!important;color
 <section class="card ij-advanced-card" id="ij-advanced-tools"><h2>✨ More Social QR Tools</h2><p class="note">Create a shareable social link page or a digital contact card.</p><label for="ij-qr-mode">QR type</label><select id="ij-qr-mode"><option value="profile">Single social profile</option><option value="bundle">All social links in one QR</option><option value="linkbio">Link-in-Bio landing page QR</option><option value="vcard">Digital business card QR</option></select><div id="ij-linkbio-fields" hidden><label for="ij-hub-name">Name or brand name</label><input id="ij-hub-name" placeholder="Your name or business"><label for="ij-hub-bio">Short introduction</label><input id="ij-hub-bio" maxlength="120" placeholder="Creator, shop owner, photographer..."><label for="ij-hub-instagram">Instagram URL</label><input id="ij-hub-instagram" type="url" placeholder="https://instagram.com/username"><label for="ij-hub-facebook">Facebook URL</label><input id="ij-hub-facebook" type="url" placeholder="https://facebook.com/username"><label for="ij-hub-youtube">YouTube URL</label><input id="ij-hub-youtube" type="url" placeholder="https://youtube.com/@channel"><label for="ij-hub-tiktok">TikTok URL</label><input id="ij-hub-tiktok" type="url" placeholder="https://tiktok.com/@username"><label for="ij-hub-whatsapp">WhatsApp number with country code</label><input id="ij-hub-whatsapp" type="tel" placeholder="919876543210"><label for="ij-hub-website">Website or other link</label><input id="ij-hub-website" type="url" placeholder="https://example.com"><p class="note">The QR opens a mini profile page hosted on InfoJano. Keep links short for easier scanning.</p></div><div id="ij-vcard-fields" hidden><label for="ij-card-name">Full name</label><input id="ij-card-name" placeholder="Full name"><label for="ij-card-role">Profession or business</label><input id="ij-card-role" placeholder="Designer / Shop owner"><label for="ij-card-phone">Phone number</label><input id="ij-card-phone" type="tel" placeholder="+91 98765 43210"><label for="ij-card-email">Email</label><input id="ij-card-email" type="email" placeholder="name@example.com"><label for="ij-card-website">Website</label><input id="ij-card-website" type="url" placeholder="https://example.com"><p class="note">Scanning opens a contact card that compatible phones can save.</p></div><label for="ij-qr-style">QR card style</label><select id="ij-qr-style"><option value="brand">Platform brand</option><option value="neon">Neon holographic</option><option value="premium">Premium profile card</option><option value="glass">Glass-inspired blue</option></select><label for="ij-qr-cta">Card call-to-action</label><select id="ij-qr-cta"><option value="SCAN ME">Scan Me</option><option value="FOLLOW ME">Follow Me</option><option value="SUBSCRIBE">Subscribe</option><option value="LET'S CONNECT">Let's Connect</option><option value="CHAT WITH ME">Chat With Me</option></select><p class="note" id="ij-dynamic-note">Dynamic QR analytics and destination editing need a secure account and database. They are planned as a future server-backed feature; this version creates free static QR codes.</p></section>
 <section class="card ij-social-extras" id="ij-social-extras"><h2>More Social QR Tools</h2><label for="ij-mode">QR type</label><select id="ij-mode"><option value="profile">Single profile</option><option value="bundle">All social links in one QR</option><option value="hub">Link-in-Bio page QR</option><option value="contact">Digital business card</option></select><div id="ij-hub-fields" hidden><label>Name or brand</label><input id="ij-hub-name"><label>Short bio</label><input id="ij-hub-bio"><label>Instagram URL</label><input id="ij-hub-ig" type="url"><label>Facebook URL</label><input id="ij-hub-fb" type="url"><label>YouTube URL</label><input id="ij-hub-yt" type="url"><label>TikTok URL</label><input id="ij-hub-tt" type="url"><label>WhatsApp number with country code</label><input id="ij-hub-wa" type="tel"><label>Website URL</label><input id="ij-hub-web" type="url"></div><div id="ij-contact-fields" hidden><label>Full name</label><input id="ij-contact-name"><label>Profession</label><input id="ij-contact-role"><label>Phone</label><input id="ij-contact-phone" type="tel"><label>Email</label><input id="ij-contact-email" type="email"><label>Website</label><input id="ij-contact-web" type="url"></div><label for="ij-style">QR design style</label><select id="ij-style"><option value="brand">Platform brand</option><option value="neon">Neon holographic</option><option value="premium">Premium profile</option><option value="glass">Glass blue</option></select><label for="ij-cta">Card action text</label><select id="ij-cta"><option>SCAN ME</option><option>FOLLOW ME</option><option>SUBSCRIBE</option><option>LET'S CONNECT</option><option>CHAT WITH ME</option></select><p class="note">Dynamic QR editing and scan analytics need a secure server and database, so they are planned for a later upgrade.</p></section><button id="social-build-button" type="button">Create Social Media QR Code</button>
 <p class="note" id="social-status" aria-live="polite">Enter the details for the social profile you want to share.</p>
-<div id="qr" aria-live="polite"></div>
 <textarea id="content" hidden></textarea><button id="generate-button" type="button" hidden>Generate QR Code</button>
-</section><a class="back" href="qr-choice.html">← Back to QR Code Options</a></main>
+</section><section class="card ij-social-preview"><h2>▦ Your Social QR Preview</h2><p class="note">Your generated QR code and download option will appear here.</p><div id="qr" aria-live="polite"><div class="ij-social-preview-placeholder"><span>▦</span><b>Your QR code will appear here</b><small>Select a platform, enter your details and create your QR code.</small></div></div></section></div><a class="back" href="qr-choice.html">← Back to QR Code Options</a></main>
 <script>(function(){const s=document.getElementById('social-platform');document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{s.value=b.dataset.pick;s.dispatchEvent(new Event('change'));document.querySelectorAll('[data-pick]').forEach(x=>x.classList.toggle('active',x===b));}));s.addEventListener('change',()=>document.querySelectorAll('[data-pick]').forEach(b=>b.classList.toggle('active',b.dataset.pick===s.value)));})();</script><script>
 async function makeQR(){
 const value=document.getElementById('content').value.trim(),box=document.getElementById('qr'),button=document.getElementById('generate-button');
