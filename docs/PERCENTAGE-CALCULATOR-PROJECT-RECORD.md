@@ -1589,3 +1589,54 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - URL Inspection still required for each URL to build a definitive index status inventory. GSC UI or an authorized URL Inspection API connection is needed.
 - No production source changes, sitemap edits, design/header/homepage/logo/navigation changes, or feature changes were made in this review.
 - No browser tests, live-site crawl, rendered visual QA, or 108-URL fetch audit was completed. Search Analytics queries are read-only and not a substitute for these tests.
+
+
+## Work session — 2026-11-17 (Owner-supplied Search Console Page indexing export)
+
+### 1. Request and scope
+- Owner supplied `infojano.com-Coverage-2026-11-17.zip` after being asked for the Search Console Page indexing / Pages report.
+- Scope: inspect the exported CSV files, interpret reported indexing totals and reasons, and identify what further owner input is actually needed.
+- Protected scope: no homepage, design, hero, header, logo, navigation, calculator, or production source changes.
+
+### 2. Source files inspected
+- ZIP contains four CSV files: `Chart.csv`, `Critical issues.csv`, `Non-critical issues.csv`, and `Metadata.csv`.
+- `Chart.csv` contains one dated row: 2026-11-13; Not indexed = 49; Indexed = 58; Impressions = 269.
+- `Critical issues.csv` contains reason totals:
+  - Alternate page with proper canonical tag — Website — Not Started — 27 pages.
+  - Not found (404) — Website — Not Started — 13 pages.
+  - Page with redirect — Website — Not Started — 2 pages.
+  - Duplicate, Google chose different canonical than user — Google systems — Not Started — 5 pages.
+  - Crawled - currently not indexed — Google systems — Not Started — 2 pages.
+- `Non-critical issues.csv` contains headers only and no issue rows.
+- `Metadata.csv` identifies the property scope as `All known pages`.
+- The five reason counts sum to 49, matching the chart's Not indexed total.
+- The chart totals 107 URLs (58 + 49), while the repository sitemap previously inspected contains 108 unique URLs. This one-URL discrepancy is unresolved; the export is for All known pages, not a URL-by-URL sitemap mapping.
+
+### 3. Interpretation and safe decisions
+- The export gives a site-wide status snapshot: 58 indexed and 49 not indexed as of the chart date 2026-11-13.
+- The report does not include the individual affected URL list, so none of the five reason buckets can yet be mapped to exact sitemap paths.
+- The 27 Alternate page with proper canonical tag and 2 Page with redirect entries are not automatically defects; do not remove or redirect pages without checking intended canonical/redirect behavior.
+- The 13 404 URLs need identification and review before deciding whether to restore, redirect, or intentionally leave unavailable.
+- The 5 Google-selected canonical mismatches need URL Inspection details (user-declared vs Google-selected canonical) before changing canonical tags or internal links.
+- The 2 Crawled - currently not indexed URLs need URL-level content/technical review after identifying them.
+- No unsupported conclusion is made about which of the 108 sitemap URLs correspond to the 58 indexed or 49 not-indexed counts.
+
+### 4. Changes and verification
+- No repository application code or sitemap files changed.
+- Read and parsed all four CSV files from the supplied ZIP.
+- No browser tests, live crawl, URL Inspection, or URL-specific fixes were performed.
+- No deployment claim is made.
+
+### 5. Work checklist
+- [x] Inspect all CSV files in owner-supplied Search Console export.
+- [x] Record indexed/not-indexed totals and issue reason counts.
+- [x] Identify mismatch between 107 report rows (58 + 49) and 108 sitemap URLs.
+- [ ] Obtain URL-level examples/list for each Page indexing reason, especially all 13 404s, 5 canonical mismatches, and 2 crawled-not-indexed URLs.
+- [ ] Map the exported URLs against the 108 sitemap URLs.
+- [ ] Make only evidence-backed, URL-specific fixes after the mapping.
+- [ ] Verify fixes with URL Inspection and a fresh sitemap fetch.
+
+### 6. Next owner action / handover
+- The uploaded ZIP is an aggregate summary only; it does not contain URL examples or per-URL status.
+- In Search Console, open Indexing → Pages, open each issue reason row, and export the affected examples/URLs (or send screenshots showing the URL examples). Prioritize the 404, Google-selected canonical mismatch, and Crawled-not-indexed groups.
+- Once those URL lists are supplied, map them to the sitemap and prepare a specific fix list. Do not make broad changes based only on aggregate counts.
