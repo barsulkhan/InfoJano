@@ -3,7 +3,7 @@ const jsQR = require('jsqr');
 const { PNG } = require('pngjs');
 
 function decodeQrDataUri(dataUri) {
-  const match = /^data:image\\/png;base64,(.+)$/.exec(dataUri || '');
+  const match = /^data:image\/png;base64,(.+)$/.exec(dataUri || '');
   if (!match) throw new Error('QR image is not a base64 PNG data URI');
   const png = PNG.sync.read(Buffer.from(match[1], 'base64'));
   const decoded = jsQR(new Uint8ClampedArray(png.data), png.width, png.height);
@@ -43,6 +43,8 @@ test('all 12 supported platforms create a designed QR PNG', async ({ page }) => 
     await page.locator('#social-build-button').click();
     await expect(page.locator('#qr img')).toBeVisible();
     await expect(page.locator('#qr img')).toHaveAttribute('src', /^data:image\/png;base64,/);
+    const imageData = await page.locator('#qr img').getAttribute('src');
+    expect(decodeQrDataUri(imageData)).toBe(expectedUrl);
     await expect(page.locator('#content')).toHaveValue(expectedUrl);
     await expect(page.locator('#social-status')).toContainText('ready');
   }
@@ -67,6 +69,8 @@ test('bundle mode creates a Social Links QR and its landing page', async ({ page
   await expect(page.locator('#qr img')).toHaveAttribute('alt', 'Social Links social QR code design');
   const hubUrl = await page.locator('#content').inputValue();
   expect(hubUrl).toContain('?hub=');
+  const bundlePng = await page.locator('#qr img').getAttribute('src');
+  expect(decodeQrDataUri(bundlePng)).toBe(hubUrl);
   const download = page.waitForEvent('download');
   await page.locator('#qr a.qr-download').click();
   expect((await download).suggestedFilename()).toBe('InfoJano-Social-Links-QR.png');
@@ -87,6 +91,8 @@ test('Link-in-Bio creates a page with the entered name, bio and social link', as
 
   await expect(page.locator('#qr img')).toHaveAttribute('alt', 'Social Link Page social QR code design');
   const hubUrl = await page.locator('#content').inputValue();
+  const linkBioPng = await page.locator('#qr img').getAttribute('src');
+  expect(decodeQrDataUri(linkBioPng)).toBe(hubUrl);
   await page.goto(hubUrl);
   await expect(page.locator('h1')).toHaveText('Test Creator');
   await expect(page.locator('main section > p').first()).toContainText('Photography and design');
