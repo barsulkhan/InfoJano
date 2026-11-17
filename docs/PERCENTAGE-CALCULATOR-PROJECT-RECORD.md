@@ -347,7 +347,6 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - First file to inspect if code work becomes necessary: `percentage-change.html`; do not change code unless a reproducible defect is found.
 - Preserve the approved Hero/Header and current visual design. No new features or redesign until the remaining QA gaps are closed.
 
-
 ## Work session — 2026-11-16 (Global English market research — initial pass)
 
 ### 1. Owner request and scope
@@ -696,7 +695,6 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - Priority 1: Obtain the KWS bulk checker results for the five exact phrases across Tier 1 countries. If direct interactive access remains unavailable, request the exported CSV from the owner only as a last resort; do not ask for it if an interactive browser becomes available.
 - First files: docs/PERCENTAGE-CALCULATOR-GLOBAL-ENGLISH-RESEARCH.md and this project record.
 - Keep application code and approved design untouched until evidence supports a specific implementation.
-
 
 ## Work session — 2026-11-16 (Country-matrix research access check)
 
@@ -1047,8 +1045,7 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 
 ### 6. Commit and deployment
 - Research commit: pending verification.
-- Project record commit: pending verification.
-- No app deployment; live status remains unverified.
+- Project record commit: pending verification.- No app deployment; live status remains unverified.
 
 ### 7. Handover
 - Research phase is finalized for US, UK, Canada, Australia and India. Do not reopen excluded countries in this phase.
@@ -1397,8 +1394,7 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - [x] Re-read the project record and confirm latest repository commit/branch history.
 - [x] Re-read the three percentage page source files and verify their recorded blob hashes are unchanged.
 - [x] Refresh the canonical-domain last-28-day aggregate, page and query reports.
-- [x] Count current sitemap source entries and compare with the Search Console sitemap report.
-- [x] Recheck GitHub Pages workflow run `43922580306`; all three jobs succeeded.
+- [x] Count current sitemap source entries and compare with the Search Console sitemap report.- [x] Recheck GitHub Pages workflow run `43922580306`; all three jobs succeeded.
 - [ ] Google Search Console URL Inspection for `percentage.html`, `percentage-change.html` and `percentage-difference-calculator.html`: still unavailable through the Windsor Search Analytics connector. Need Page indexing, last crawl, crawl allowed, indexing allowed, user-declared canonical and Google-selected canonical from the GSC UI.
 - [ ] Reconcile the 108 source URLs vs 106 submitted in the GSC Sitemaps UI and confirm the latest sitemap fetch.
 - [ ] Browser QA of Change / Reverse % / Difference modes, batch validation, CSV export, history restore and copy behavior — not run.
@@ -1640,3 +1636,56 @@ Earlier project notes listed commit short SHAs inconsistently. The authoritative
 - The uploaded ZIP is an aggregate summary only; it does not contain URL examples or per-URL status.
 - In Search Console, open Indexing → Pages, open each issue reason row, and export the affected examples/URLs (or send screenshots showing the URL examples). Prioritize the 404, Google-selected canonical mismatch, and Crawled-not-indexed groups.
 - Once those URL lists are supplied, map them to the sitemap and prepare a specific fix list. Do not make broad changes based only on aggregate counts.
+
+## Work session — 2026-11-17 (Repository search for prior indexing fixes)
+
+### 1. Owner request and scope
+- Owner clarified that the Search Console indexing issues may already have been worked on and asked to locate the relevant repository files.
+- Scope: inspect current main-branch documentation, source files, sitemap variants, robots.txt, and commit history for previous 404/canonical/redirect/indexing remediation.
+- Protected: no homepage, approved design, header, logo, navigation, calculator features, or unrelated production code changes.
+
+### 2. Files and history located
+- `docs/INFOJANO-INDEXING-AUDIT-2026-11-17.md`: site-wide Search Analytics/source audit; contains 108 sitemap URL paths, 27 recent Search Analytics page rows (including one parameterized QR URL), and 82 sitemap URLs with no row in that report. It explicitly states that no-row does not mean not indexed.
+- `docs/InfoJano_Google_Indexing_Tracker_2026-11-12.md`: historical screenshot-based indexing tracker; not a current URL Inspection inventory.
+- `404.html`: custom not-found page, declares `noindex,follow`.
+- `robots.txt`: allows crawling and points crawlers to `https://infojano.com/sitemap.xml`.
+- `sitemap.xml`: 108 unique canonical custom-domain URLs.
+- `sitemap-infojano.xml` and `sitemap.txt`: each contain 106 URLs; both omit `work-hours-calculator.html` and `elapsed-time-calculator-guide.html`, which are present in the primary sitemap and repository.
+- All 108 primary sitemap paths match files in the current GitHub repository tree (repository-source existence only; not a live HTTP status check).
+
+### 3. Prior remediation commits found
+- `3d5c6d26a8119231e634f270c070bf8eff7997b0` (2026-11-12): repaired malformed canonical and Open Graph metadata across 73 HTML files, including `404.html`, many calculator/QR/date/image pages, and fixed custom-domain asset references. The 404 change in this commit corrected its favicon path; it did not change the homepage CTA path.
+- `8a81465af7c48e13c259c42dfe12de5dedb8a7da` (2026-11-11): corrected malformed canonical/Open Graph metadata in `bmi.html`, `emi.html`, `gst-calculator.html`, `image-resizer.html`, `qr-scanner.html`, `text-counter.html`, `time-calculator.html`, and `url-toolkit.html`.
+- `622fda7eaafe1ba984b748a95ea804372267ddf0` (2026-11-11): corrected custom-domain SEO URLs/metadata in `index.html`, `qr-choice.html`, `qr-maker.html`, `qr-scanner.html`, and `social-qr-maker.html`; also updated `robots.txt` and `sitemap.xml`.
+- `d733a8b9e6489668a6b8489339ddceee112e0a9e` (2026-11-12): synchronized sitemap URLs to the custom domain and corrected the ID Card Print Studio canonical.
+- `e5fac749ee8461bf62b144ac83b2f6bff7a7c97c` (2026-11-15): synchronized the two secondary sitemap files to the primary 106-URL sitemap as of that date.
+- `7480563cc07a25ec603c4a39fc8913dd9592971b`: changed robots.txt to advertise the canonical InfoJano sitemap.
+
+### 4. Current source-level findings and unresolved points
+- `404.html` is correctly marked `noindex,follow`, but its “Go to InfoJano homepage” link currently points to `/InfoJano/` rather than the custom-domain root `/`. This is a concrete source-level path inconsistency and likely a leftover project-path link. It was not changed in this inspection.
+- The 13 Search Console “Not found (404)” affected URLs are not included in the four aggregate CSVs. Therefore they cannot yet be mapped to specific source files or classified as stale URLs, removed pages, broken links, or deployment problems.
+- The five Google-selected canonical mismatches and two Crawled-currently-not-indexed URLs also cannot be mapped to exact files without the affected URL examples.
+- The primary sitemap is the one declared in robots.txt and has 108 entries. The two secondary sitemap variants are two URLs behind, but they are not currently advertised by robots.txt. Their mismatch is a repository consistency issue, not proof of a Google indexing error.
+- A file existing in the GitHub tree and having a self-canonical does not prove its deployed URL returns HTTP 200 or that Google indexed it.
+
+### 5. Verification and changes
+- Read current main-branch source for the indexing audit, historical tracker, 404 page, robots.txt, all three sitemap variants, homepage canonical, and the two newer time pages.
+- Compared sitemap URL sets programmatically: primary 108; secondary XML 106; text sitemap 106; exactly two missing from both secondary variants.
+- Inspected GitHub commit file lists for the prior canonical/metadata repair commits.
+- No production source, sitemap, robots, or design files changed in this session.
+- Not run: live HTTP status checks for all 108 pages, Google URL Inspection, browser testing, or production visual QA.
+
+### 6. Work checklist
+- [x] Locate the indexing audit and historical tracker files.
+- [x] Locate the 404 page, robots.txt, and sitemap variants.
+- [x] Identify prior canonical/metadata and sitemap remediation commits.
+- [x] Compare current primary and secondary sitemap URL sets.
+- [x] Record the concrete 404 homepage-link inconsistency.
+- [ ] Obtain per-URL Search Console examples for 13 404, 5 canonical mismatch, and 2 Crawled-not-indexed entries.
+- [ ] Decide whether to correct the 404 homepage CTA and synchronize secondary sitemaps after owner confirmation / scope review.
+- [ ] Verify deployed HTTP responses and URL Inspection after URL-level mapping.
+
+### 7. Next-session handover
+- First inspect the 13 affected 404 URL examples and compare them with current internal links and the 108-entry primary sitemap.
+- Candidate low-risk source fix: change the 404 page CTA from `/InfoJano/` to `/`, after confirming the intended custom-domain deployment.
+- Do not infer that the historic metadata commits resolved the current Google-reported URL-level errors; confirm with URL Inspection.
