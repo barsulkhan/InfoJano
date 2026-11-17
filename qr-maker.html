@@ -392,6 +392,56 @@ main section.ij-qr-hero .ij-qr-chips span{background:rgba(255,255,255,.88)!impor
 @media(max-width:760px){.ij-qr-brandbar-inner{padding:10px 12px!important;gap:9px!important}.ij-qr-brand-promise{display:none!important}.ij-qr-header-actions{margin-left:auto!important;gap:6px!important}.ij-qr-header-link,.ij-qr-home-back{min-height:36px!important;padding:7px 9px!important;font-size:11px!important}}
 @media(max-width:480px){.ij-qr-brandbar-inner{align-items:center!important}.ij-qr-brandname{font-size:20px!important}.ij-qr-brandtag{font-size:11px!important}.ij-qr-brandmark{width:40px!important;height:40px!important;flex-basis:40px!important}.ij-qr-header-actions{width:100%!important;justify-content:flex-end!important;margin:2px 0 0!important}.ij-qr-header-link,.ij-qr-home-back{font-size:10px!important;padding:7px 8px!important}}
 
+
+/* QR Maker: match the approved ID Card Print Studio header and hero composition */
+.ij-qr-site-header{position:relative;z-index:30;width:100%;background:rgba(255,255,255,.98);border-bottom:1px solid #e6edf5;box-shadow:0 3px 14px rgba(15,35,65,.045);color:#172033}
+.ij-qr-site-header-inner{width:min(calc(100% - 40px),1200px);min-height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.ij-qr-site-brand{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;color:#172033}
+.ij-qr-site-logo{width:42px;height:42px;display:block;flex:0 0 42px}
+.ij-qr-brand-copy{display:flex;flex-direction:column;gap:2px}
+.ij-qr-brand-copy strong{font-size:22px;line-height:1.1;font-weight:850;letter-spacing:-.4px;color:#172033}
+.ij-qr-brand-copy strong span{color:#087ee8}
+.ij-qr-brand-copy small{font-size:11px;color:#64748b}
+.ij-qr-main-nav{display:flex;align-items:center;gap:9px}
+.ij-qr-main-nav a,.ij-qr-language{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 12px;border:1px solid transparent;border-radius:10px;text-decoration:none;font-size:13px;font-weight:750;white-space:nowrap}
+.ij-qr-main-nav a{color:#334155;background:transparent}
+.ij-qr-main-nav a:hover{background:#f1f7fd;border-color:#dceafa}
+.ij-qr-language{color:#475569;border-color:#e4ebf3;background:#fff}
+.ij-qr-nav-home{color:#1d4ed8!important}
+main{width:100%!important;max-width:none!important;margin:0 auto!important;padding:14px 0 48px!important}
+.ij-qr-breadcrumb{width:min(calc(100% - 28px),1200px)!important;margin:2px auto 17px!important}
+main section.ij-qr-hero{position:relative!important;isolation:isolate!important;display:block!important;width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;min-height:0!important;margin:0 auto 28px!important;padding:clamp(24px,3.3vw,40px)!important;border:1px solid #cfe5fb!important;border-radius:32px!important;overflow:hidden!important;background:radial-gradient(ellipse at 78% 22%,#d9efff 0%,transparent 38%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%)!important;box-shadow:0 18px 44px rgba(32,104,174,.12)!important;color:#101d42!important}
+.ij-qr-hero:before{content:""!important;position:absolute!important;z-index:-1!important;inset:auto -8% -95px -8%!important;height:180px!important;background:linear-gradient(105deg,#50c6f4,#087ee8 58%,#164bd2)!important;border-radius:50% 50% 0 0/36% 36% 0 0!important;opacity:.9!important;animation:none!important}
+.ij-qr-hero:after{content:""!important;position:absolute!important;z-index:-1!important;inset:0!important;background:linear-gradient(125deg,transparent 20%,rgba(255,255,255,.28) 48%,transparent 72%)!important;pointer-events:none!important;filter:none!important;box-shadow:none!important;animation:none!important}
+.ij-qr-hero-grid{position:relative!important;z-index:1!important;display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;align-items:center!important;gap:clamp(22px,4vw,54px)!important}
+.ij-qr-hero-copy{min-width:0!important;position:relative!important;z-index:3!important}
+.ij-qr-hero-symbol{width:82px;height:82px;display:grid;place-items:center;margin:0 0 16px;border-radius:24px;background:linear-gradient(145deg,#23c5ee,#0879e9 62%,#1948cf);box-shadow:0 15px 30px rgba(15,102,210,.25);color:#fff}
+.ij-qr-hero-symbol svg{width:58px;height:58px}
+.ij-qr-hero h1{font-size:clamp(36px,4.1vw,58px)!important;line-height:1.04!important;letter-spacing:-2.1px!important;font-weight:850!important;color:#101b43!important;-webkit-text-fill-color:#101b43!important;margin:0 0 12px!important;text-align:left!important}
+.ij-qr-hero h1 em{font-style:normal!important;display:inline-block!important;color:#087ce5!important;background:linear-gradient(105deg,#087ce5 0%,#087ce5 36%,#fff 48%,#32bdec 57%,#087ce5 72%,#087ce5 100%)!important;background-size:230% 100%!important;background-position:100% 0!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:ijTextSweep 5.8s ease-in-out infinite!important}
+.ij-qr-hero p{max-width:660px!important;margin:0!important;color:#4c607c!important;-webkit-text-fill-color:#4c607c!important;font-size:clamp(15px,1.35vw,19px)!important;line-height:1.5!important}
+.ij-qr-choice-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:22px}
+.ij-qr-choice-tile{min-width:0;min-height:86px;padding:12px 8px;border:1px solid rgba(255,255,255,.95);border-radius:17px;background:rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(31,91,151,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;color:#13234a}
+.ij-qr-choice-tile .tile-icon{font-size:24px;line-height:1;color:#087ce5;font-weight:900}
+.ij-qr-choice-tile:nth-child(2) .tile-icon{color:#7050df}.ij-qr-choice-tile:nth-child(3) .tile-icon{color:#0ca66c}
+.ij-qr-choice-tile strong{font-size:clamp(10px,1vw,13px);line-height:1.2}
+.ij-qr-hero-art{position:relative!important;min-height:240px!important;display:flex!important;align-items:center!important;justify-content:center!important;perspective:1000px!important}
+.ij-qr-tile{border:7px solid rgba(255,255,255,.96)!important;border-radius:25px!important;background:#fff!important;color:#101d42!important;box-shadow:0 18px 32px rgba(22,72,137,.22),0 0 0 4px rgba(71,232,255,.18)!important}
+.ij-qr-tile.tile-main{width:126px!important;height:126px!important;left:37%!important;top:14%!important}
+.ij-qr-tile.tile-left,.ij-qr-tile.tile-right{width:84px!important;height:84px!important}
+.ij-qr-orbit{border-color:#70cfff!important;box-shadow:0 0 15px #45dfff44!important}.ij-qr-orbit.orbit-b{border-color:#a6d9ff!important}
+.ij-qr-scanline{background:linear-gradient(90deg,transparent,#48cfff,#fff,#48cfff,transparent)!important;box-shadow:0 0 12px 4px #36baff66!important}
+.ij-qr-spark{color:#087ee8!important;text-shadow:0 0 12px #fff!important}
+.ij-qr-hero-benefits{position:relative;z-index:2;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:24px -10px -22px;padding:10px 10px 4px}
+.ij-qr-hero-benefits span{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border:1px solid rgba(255,255,255,.9);border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 4px 12px rgba(31,91,151,.1);font-size:12px;font-weight:800;color:#29415f;white-space:nowrap}
+.ij-qr-hero-benefits b{display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:#0ca66c;color:#fff;font-size:11px}
+.ij-qr-hero-benefits span:nth-child(2) b{background:#087ee8}.ij-qr-hero-benefits span:nth-child(3) b{background:#7050df}.ij-qr-hero-benefits span:nth-child(4) b{background:#e98b20}
+.ij-qr-workspace{width:min(calc(100% - 28px),1200px)!important;margin:0 auto!important}
+.ij-qr-features,.ij-qr-info-card,.ij-qr-steps{width:min(calc(100% - 28px),1200px)!important;margin-left:auto!important;margin-right:auto!important}
+@media(max-width:850px){.ij-qr-site-header-inner{width:calc(100% - 28px);min-height:68px}.ij-qr-hero-grid{grid-template-columns:minmax(0,1fr) minmax(220px,.8fr)!important;gap:18px!important}.ij-qr-hero-art{min-height:205px!important}.ij-qr-hero-symbol{width:70px;height:70px}.ij-qr-hero-symbol svg{width:50px;height:50px}}
+@media(max-width:640px){.ij-qr-site-header-inner{width:calc(100% - 24px);padding:10px 0;align-items:flex-start;flex-direction:column;gap:9px}.ij-qr-site-logo{width:38px;height:38px;flex-basis:38px}.ij-qr-brand-copy strong{font-size:20px}.ij-qr-main-nav{width:100%;justify-content:flex-end;gap:5px}.ij-qr-main-nav a,.ij-qr-language{min-height:35px;padding:7px 9px;font-size:11px}.ij-qr-hero-grid{grid-template-columns:minmax(0,1fr) 38%!important;gap:8px!important}.ij-qr-hero-art{min-height:155px!important}.ij-qr-hero-symbol{width:58px;height:58px;border-radius:17px;margin-bottom:12px}.ij-qr-hero-symbol svg{width:42px;height:42px}.ij-qr-hero h1{font-size:clamp(25px,6vw,36px)!important;letter-spacing:-1px!important}.ij-qr-hero p{font-size:12px!important;line-height:1.45!important}.ij-qr-choice-tiles{gap:5px;margin-top:13px}.ij-qr-choice-tile{min-height:64px;padding:7px 4px;border-radius:12px;gap:5px}.ij-qr-choice-tile .tile-icon{font-size:18px}.ij-qr-choice-tile strong{font-size:9px}.ij-qr-tile.tile-main{width:76px!important;height:76px!important;left:29%!important}.ij-qr-tile.tile-left,.ij-qr-tile.tile-right{width:50px!important;height:50px!important}.ij-qr-orbit{width:94px!important;height:94px!important;left:23%!important;top:9%!important}.ij-qr-orbit.orbit-b{width:112px!important;height:112px!important;left:18%!important;top:0!important}.ij-qr-scanline{left:14%!important;width:74%!important}.ij-qr-hero-benefits{margin:14px -6px -20px;padding:8px 6px 2px;gap:5px}.ij-qr-hero-benefits span{font-size:9px;padding:6px 8px}.ij-qr-hero-benefits b{width:16px;height:16px;font-size:9px}}
+@media(prefers-reduced-motion:reduce){.ij-qr-hero .ij-qr-tile,.ij-qr-hero .ij-qr-orbit,.ij-qr-hero .ij-qr-scanline,.ij-qr-hero .ij-qr-spark,.ij-qr-hero h1 em{animation:none!important}}
+
 </style>
 <link rel="manifest" href="/InfoJano/app-manifests/qr-maker.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}
@@ -479,19 +529,41 @@ main section.ij-qr-hero .ij-qr-chips span{background:rgba(255,255,255,.88)!impor
 <link rel="shortcut icon" href="/infojano-mark.svg" type="image/svg+xml">
 </head>
 <body>
-<header class="ij-qr-brandbar"><div class="ij-qr-brandbar-inner"><a class="ij-qr-brand-home" href="/index.html" aria-label="InfoJano Home"><div class="ij-qr-brandmark" aria-hidden="true"><svg viewBox="0 0 48 48" width="32" height="32" fill="none"><path d="M13 7h16l10 10v17a7 7 0 0 1-7 7H13a7 7 0 0 1-7-7V14a7 7 0 0 1 7-7Z" fill="white" fill-opacity=".16"/><path d="M17 14v20m0-20h7a7 7 0 0 1 0 14h-7" stroke="white" stroke-width="4" stroke-linecap="round"/><path d="M29 18h5v16h-5" stroke="white" stroke-width="4" stroke-linecap="round"/></svg></div><div><div class="ij-qr-brandname">Info<span>Jano</span></div><div class="ij-qr-brandtag">Smart Online Tools for Everyday Life</div></div></a><div class="ij-qr-brand-divider"></div><div class="ij-qr-brand-promise">Create QR codes · Fast, free & easy</div><nav class="ij-qr-header-actions" aria-label="QR Maker navigation"><a class="ij-qr-header-link" href="#ij-qr-workspace">Create QR</a><a class="ij-qr-header-link" href="#ij-qr-features">Features</a><a class="ij-qr-home-back" href="/index.html">← Back to Home</a></nav></div></header>
+<header class="ij-qr-site-header"><div class="ij-qr-site-header-inner">
+<a class="ij-qr-site-brand" href="/index.html" aria-label="InfoJano Home">
+<svg class="ij-qr-site-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="InfoJano logo"><defs><linearGradient id="ij-qr-brand-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19c8f5"/><stop offset=".5" stop-color="#0876e8"/><stop offset="1" stop-color="#06358f"/></linearGradient></defs><path d="M120 60 Q96 60 80 80 L48 120 Q36 136 36 156 V356 Q36 420 104 420 H320 Q356 420 378 392 L452 296 Q474 268 444 244 L168 84 Q148 70 120 60Z" fill="url(#ij-qr-brand-bg)"/><rect x="150" y="150" width="52" height="200" rx="14" fill="#fff"/><path d="M250 150 H302 V300 Q302 360 242 360 H222 V310 H242 Q250 310 250 300 Z" fill="#fff"/></svg>
+<span class="ij-qr-brand-copy"><strong>Info<span>Jano</span></strong><small>Smart Online Tools for Everyday Life</small></span>
+</a>
+<nav class="ij-qr-main-nav" aria-label="Main navigation">
+<a href="/index.html#toolGrid" class="ij-qr-nav-tools"><span aria-hidden="true">▦</span> All Tools</a>
+<span class="ij-qr-language" aria-label="Current language">English <span aria-hidden="true">⌄</span></span>
+<a href="/index.html" class="ij-qr-nav-home"><span aria-hidden="true">⌂</span> Home</a>
+</nav></div></header>
 
 <main>
 <div class="ij-qr-breadcrumb"><a href="index.html">⌂ Home</a> › Image Tools › QR Code Maker</div>
 <section class="ij-qr-hero" aria-label="QR Code Maker banner">
-<div class="ij-qr-hero-copy"><span class="ij-qr-kicker">SMART QR GENERATOR</span><h1>Free QR Code <em>Generator Online</em></h1><p>Make a QR code online free for a website link, text, WiFi or contact details. Generate it in seconds and download a PNG.</p><div class="ij-qr-chips"><span>⚡ Fast</span><span>✓ Free</span><span>▣ Easy to scan</span></div></div>
+<div class="ij-qr-hero-grid">
+<div class="ij-qr-hero-copy">
+<div class="ij-qr-hero-symbol" aria-hidden="true"><svg viewBox="0 0 96 96" width="70" height="70" fill="none"><rect x="8" y="8" width="80" height="80" rx="17" fill="white"/><path d="M17 17h23v23H17zm6 6v11h11V23zM56 17h23v23H56zm6 6v11h11V23zM17 56h23v23H17zm6 6v11h11V62z" fill="#087ce5"/><path d="M47 17h7v7h-7zm0 14h7v7h-7zm-7 7h7v7h-7zm14 0h7v7h-7zm14 0h7v7h-7zm-21 7h7v7h-7zm14 7h7v7h-7zm14 7h7v7h-7z" fill="#087ce5"/></svg></div>
+<h1>Free QR Code <em>Generator Online</em></h1>
+<p>Make a QR code online free for a website link, text, WiFi or contact details. Generate it in seconds and download a PNG.</p>
+<div class="ij-qr-choice-tiles" aria-label="Popular QR code types">
+<div class="ij-qr-choice-tile"><span class="tile-icon">↗</span><strong>Website / Link</strong></div>
+<div class="ij-qr-choice-tile"><span class="tile-icon">⌁</span><strong>WiFi Access</strong></div>
+<div class="ij-qr-choice-tile"><span class="tile-icon">♙</span><strong>Contact Details</strong></div>
+</div>
+</div>
 <div class="ij-qr-hero-art" aria-hidden="true">
 <div class="ij-qr-orbit orbit-a"></div><div class="ij-qr-orbit orbit-b"></div>
 <div class="ij-qr-tile tile-left"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M8 8h30v30H8zm8 8v14h14V16zM62 8h30v30H62zm8 8v14h14V16zM8 62h30v30H8zm8 8v14h14V70zM48 8h8v8h-8zm0 16h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-24 8h8v8h-8zm16 8h8v8h-8zm16 0h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8z"/></svg></div>
 <div class="ij-qr-tile tile-main"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M5 5h30v30H5zm8 8v14h14V13zM65 5h30v30H65zm8 8v14h14V13zM5 65h30v30H5zm8 8v14h14V73zM43 5h8v8h-8zm0 16h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-24 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8z"/></svg><span>↗</span></div>
 <div class="ij-qr-tile tile-right"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M8 8h30v30H8zm8 8v14h14V16zM62 8h30v30H62zm8 8v14h14V16zM8 62h30v30H8zm8 8v14h14V70zM48 8h8v8h-8zm0 16h8v8h-8zm-8 16h8v8h-8zm16 0h8v8h-8zm16 0h8v8h-8zm-24 8h8v8h-8zm16 8h8v8h-8zm16 8h8v8h-8zm-32 8h8v8h-8zm16 8h8v8h-8z"/></svg></div>
 <div class="ij-qr-scanline"></div><span class="ij-qr-spark s1">✦</span><span class="ij-qr-spark s2">✧</span>
-</div></section>
+</div>
+</div>
+<div class="ij-qr-hero-benefits"><span><b>✓</b> Fast &amp; Easy</span><span><b>↗</b> Easy to Scan</span><span><b>▣</b> Free to Use</span><span><b>✓</b> Privacy Friendly</span></div>
+</section>
 <section class="ij-qr-workspace" id="ij-qr-workspace" aria-label="QR code generator">
 <div class="ij-qr-builder">
 <h2><span>▦</span> Create Your QR Code</h2>
