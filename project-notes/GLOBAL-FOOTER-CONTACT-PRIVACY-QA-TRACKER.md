@@ -447,3 +447,10 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Static validation: JSON-LD parses, title/social titles match, canonical is unchanged, feature section + 8 FAQs exist, 2 style blocks remain. Header/Hero source rules unchanged.
 - Latest source commit for structured-data alignment: `da4cf52e6a67845fb3bc8faf5c764da1fee5e275`; sitemap commit `87a6fbdf5de4957f1a34fdcaab6afc8f7fb272c3`.
 - GitHub connector has no status checks on latest commits and only exposes PR workflow runs. Live URL fetch unavailable. Pages deployment, actual Playwright run, live visual check and Search Console indexing/performance remain unverified.
+
+
+### 2026-11-19 — Password Generator keyword targets applied
+- OpenSEO country metrics collected for English India and USA. Key estimates: `password generator` 74,000 (India) / 368,000 (USA); `random password generator` 22,200 / 74,000; `strong password generator` 14,800 / 33,100 monthly searches respectively.
+- Applied the strong/random/free/online/secure keyword cluster naturally to the existing Password Generator feature copy. Page title/meta/H1/FAQ already cover the main intent clusters; no feature claims added.
+- Header and Hero were not modified. Source commit `201d701cace148e9f48aff951bd24d97ff01bcfd`; tracker update is documentation only.
+- Pages deployment, live rendering, browser QA, indexing and ranking impact remain unverified.
