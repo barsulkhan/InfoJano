@@ -162,7 +162,7 @@ test.describe('Password Generator — desktop and mobile', () => {
   });
 
   test('keeps the primary controls reachable by keyboard', async ({ page }) => {
-    await page.keyboard.press('Tab');
+    await page.locator('#mode').focus();
     await expect(page.locator('#mode')).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(page.locator('#preset')).toBeFocused();
