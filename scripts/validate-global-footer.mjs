@@ -23,6 +23,8 @@ for (const label of ["Home", "All Tools", "Privacy Policy", "Contact", "Privacy 
 }
 if (!footer.includes("googlefc.showRevocationMessage")) failures.push("site-footer.js: missing Google Privacy & Messaging revocation hook");
 if (!footer.includes("CONSENT_API_READY")) failures.push("site-footer.js: missing CONSENT_API_READY callback");
+if (footer.includes("a.hidden=true")) failures.push("site-footer.js: privacy-settings link must not be hidden until CMP readiness");
+if (!footer.includes("Google privacy settings are not ready")) failures.push("site-footer.js: missing visible fallback when Google CMP is unavailable");
 if (!sw.includes('"/InfoJano/site-footer.js"')) failures.push("sw.js: shared footer script is not precached");
 for (const required of ["contact.html", "privacy-policy.html"]) {
   if (!fs.existsSync(path.join(root, required))) failures.push(`missing required public page: ${required}`);
