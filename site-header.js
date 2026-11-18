@@ -54,7 +54,9 @@
   /* Unified light hero standard based on the approved ID Card Print Studio layout. */
   .ij-unified-currency-hero{box-sizing:border-box!important;width:100%!important;max-width:none!important;min-height:220px!important;height:auto!important;margin:12px 0 28px!important;padding:42px 46px!important;border-radius:22px!important;position:relative!important;isolation:isolate!important;overflow:hidden!important;border:1px solid #cfe5fb!important;background:radial-gradient(ellipse at 78% 22%,#d9efff 0%,transparent 38%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%)!important;box-shadow:0 18px 44px rgba(32,104,174,.12)!important;color:#101d42!important;animation:none!important}
   .ij-unified-currency-hero h1{color:#101b43!important;text-align:left!important}
+  .ij-unified-currency-hero .ij-unified-currency-title{font-size:clamp(36px,4.3vw,62px)!important;line-height:1.04!important;letter-spacing:-1.2px!important;font-weight:850!important}
   .ij-unified-currency-hero p,.ij-unified-currency-hero .hero-kicker,.ij-unified-currency-hero .ij-tool-hero-kicker{color:#53647d!important}
+  .ij-unified-currency-hero p{max-width:660px;font-size:clamp(16px,1.55vw,20px)!important;line-height:1.55!important}
   .ij-unified-currency-hero .ij-unified-currency-title{background:none!important;-webkit-text-fill-color:initial!important;color:#101b43!important}
   .ij-unified-currency-hero .ij-unified-currency-title .ij-lightword{color:#087ce5!important;-webkit-text-fill-color:#087ce5!important}
   .ij-unified-currency-title{position:relative!important;isolation:isolate!important;overflow:hidden!important}
@@ -65,7 +67,7 @@
   .ij-unified-currency-pill:nth-child(1):after{animation-delay:2.4s!important}.ij-unified-currency-pill:nth-child(2):after{animation-delay:4.8s!important}.ij-unified-currency-pill:nth-child(3):after{animation-delay:7.2s!important}.ij-unified-currency-pill:nth-child(4):after{animation-delay:9.6s!important}
   @keyframes ijUnifiedPillSweep{0%{left:-75%;opacity:0}3%{opacity:1}18%{left:135%;opacity:0}100%{left:135%;opacity:0}}
   @media(max-width:950px){.ij-unified-currency-hero{padding:28px 26px!important;min-height:220px!important}}
-  @media(max-width:600px){.ij-unified-currency-hero{width:100%!important;min-height:0!important;height:auto!important;margin:12px 0 22px!important;padding:24px 18px!important;border-radius:22px!important}.ij-unified-currency-title{font-size:clamp(29px,8vw,38px)!important;letter-spacing:-.8px!important;line-height:1.12!important}}
+  @media(max-width:640px){.ij-unified-currency-hero{width:100%!important;min-height:0!important;height:auto!important;margin:12px 0 22px!important;padding:24px 18px 34px!important;border-radius:24px!important}.ij-unified-currency-hero h1,.ij-unified-currency-title{text-align:center!important;font-size:clamp(32px,9vw,43px)!important;letter-spacing:-.8px!important;line-height:1.08!important}.ij-unified-currency-hero p{text-align:center!important;margin-left:auto!important;margin-right:auto!important}}
   @media(max-width:600px){.ij-unified-currency-hero.emi-hero{min-height:220px!important;aspect-ratio:auto!important;padding:20px 17px!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy{width:62%!important;margin-left:3%!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy h1{font-size:clamp(30px,8vw,40px)!important}}
   @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}
 `;
