@@ -383,3 +383,9 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - APK run `44364594298`: **success**; 23 APKs built, package count verified, artifact uploaded and 23 release assets published.
 - Global Footer QA run `44364594313`: **success**.
 - Overall completion remains blocked on live browser QA: first paint, normal/hard/cache-disabled refresh, rendered desktop/tablet/mobile geometry, keyboard/screen-reader, actual clipboard permission/fallback and CMP revocation dialog runtime.
+
+
+### Tracker publication deployment — 2026-11-18
+
+- Pages run `44365697746`: **success** for main HEAD `8f58e1545d35808013ab532f0aa3409617e64263`; build, report and deploy jobs passed.
+- The latest tracker documents and website source are published. Live interactive browser QA remains pending.
