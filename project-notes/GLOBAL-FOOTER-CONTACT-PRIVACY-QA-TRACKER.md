@@ -322,3 +322,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - GitHub Pages deployment `44363616294`: **success** for main HEAD `ba6d3841a0b74b7ab5f5eca14658dafb00cc648b`; build, deploy and status-report jobs all passed. The deployed commit includes the header/CSS source changes and restored manifest/JSON-LD/favicon metadata.
 - APK workflow `44363575672`: manifest/icon/APK-matrix validation **passed**; 23-APK build still running. Package count, artifact upload and release publication are not yet confirmed.
 - Live browser QA (first paint, normal reload, hard reload, cache-disabled, desktop/tablet/mobile visual geometry) remains **pending**. No visual completion claim.
+
+
+### Password Generator functional regression test — 2026-11-18
+
+- Executed an isolated DOM-stub test harness against the current generator JavaScript (not browser/device QA).
+- Passed: 64-character password generation with all four selected groups, minimum-one-per-group and ambiguous-character exclusion; six-word capitalized passphrase with optional two-digit suffix; 16-digit PIN; no-character-group validation message; clipboard write path.
+- Identified a screen-reader label defect: Show/Hide visible text changes but `aria-label` does not; result input label stays “Generated password” in passphrase/PIN modes. Track this for a focused accessibility fix.
+- Browser reload, clipboard permission/fallback, keyboard-only and screen-reader testing remain pending.
