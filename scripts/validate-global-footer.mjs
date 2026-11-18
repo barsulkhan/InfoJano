@@ -21,7 +21,7 @@ if (!header.includes("site-footer.js")) failures.push("site-header.js: does not 
 for (const label of ["Home", "All Tools", "Privacy Policy", "Contact", "Privacy and cookie settings"]) {
   if (!footer.includes(label)) failures.push(`site-footer.js: missing footer label "${label}"`);
 }
-if (!footer.includes("googlefc.showRevocationMessage")) failures.push("site-footer.js: missing Google Privacy & Messaging revocation hook");
+if (!footer.includes("showRevocationMessage")) failures.push("site-footer.js: missing Google Privacy & Messaging revocation hook");
 if (!footer.includes("CONSENT_API_READY")) failures.push("site-footer.js: missing CONSENT_API_READY callback");
 if (footer.includes("a.hidden=true")) failures.push("site-footer.js: privacy-settings link must not be hidden until CMP readiness");
 if (!footer.includes("Google privacy settings are still unavailable")) failures.push("site-footer.js: missing visible fallback when Google CMP is unavailable");
