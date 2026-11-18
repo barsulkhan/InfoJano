@@ -1,6 +1,6 @@
 # InfoJano — Global Footer, Contact & Privacy QA Tracker
 
-Last updated: 2026-11-18 (Shared hero typography rollout and global CMP loader committed)
+Last updated: 2026-11-18 (Latest Pages deployment succeeded; APK matrix validated and 23-build stage running)
 Repository: https://github.com/barsulkhan/InfoJano
 Live site: https://infojano.com/
 Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
@@ -75,6 +75,8 @@ Status: **Global AdSense loader added to shared footer; QA passed; live CMP dial
 - New finding: homepage alone contained the AdSense loader; tool pages did not load adsbygoogle.js, so the Google googlefc API could remain unavailable there. Shared site-footer.js now injects the AdSense loader on every page (with duplicate detection), initializes googlefc.callbackQueue, and queues showRevocationMessage under CONSENT_API_READY.
 - Updated Global Footer validator to assert the sitewide AdSense loader and callback behavior. QA run 44296350935 passed.
 - Bumped Service Worker cache to v329.
+- Latest Pages deployment after the global CMP loader + shared hero changes succeeded: run 44296651029, deployed commit 47d06f2ae563076f9458877b5b972d3cc7bd7be3.
+- Latest Global Footer QA run 44296565924 passed after hero typography/CMP validation updates.
 - Runtime behavior is not yet confirmed: user must test the live settings link on homepage and one tool page in a clean browser. If fallback persists, investigate script load/network blocking and AdSense site/message configuration; do not claim resolved before user retest.
 - All pages now render the settings entry and invoke Google revocation UI through callbackQueue.
 - If CMP is not ready, a visible status/fallback message is shown.
@@ -139,3 +141,10 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Shared hero system now includes .ij-social-hero and applies approved title typography (36–62px desktop; 32–43px mobile), copy sizing/line-height, centered mobile title/copy, and the approved 24px 18px 34px mobile padding.
 - Homepage remains excluded; page-specific artwork/copy retained. Source and QA are complete; rendered all-page visual QA remains pending.
 - Current source commits: hero typography 4bf7bd136df201e8402660274cc6ce634ddefce1; validator 298f62a6630a0a369e190f7cc0c552243989664a; cache v330 f13fa41f1bf7a91e13287600bf98afe5811a6e82. Latest Global Footer QA run 44296565924 passed.
+
+
+### Latest batch update — 2026-11-18 17:11 IST
+- GitHub Pages deployment #44296651029: build, upload artifact, and deploy all succeeded for commit 47d06f2ae563076f9458877b5b972d3cc7bd7be3.
+- Global Footer QA #44296565924: validation job succeeded after the global AdSense loader and responsive hero rules were added.
+- APK workflow #44296565914: setup and manifest/icon matrix validation succeeded; the 23-APK build step is still running. Package count, artifact upload and release are not yet confirmed.
+- Shared hero source changes remain deployed, but actual visual QA at desktop/tablet/mobile sizes on every individual tool page is still outstanding. Keep this status separate from source/CI success.
