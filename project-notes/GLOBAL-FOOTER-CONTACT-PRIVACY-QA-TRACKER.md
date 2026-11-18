@@ -1,0 +1,90 @@
+# InfoJano — Global Footer, Contact & Privacy QA Tracker
+
+Last updated: 2026-11-18
+Repository: https://github.com/barsulkhan/InfoJano
+Live site: https://infojano.com/
+Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
+
+এই tracker-এ এই কাজের প্রতিটি ধাপ, প্রমাণ, অসম্পূর্ণতা এবং পরবর্তী পদক্ষেপ রাখা হবে। কাজ শেষ না হওয়া পর্যন্ত status পরিবর্তন করে Completed বলা যাবে না।
+
+## User requirements
+- একই shared footer সব public pages-এ থাকতে হবে, শুধু homepage-এ নয়।
+- Footer links: Home, All Tools, Privacy Policy, Contact, Privacy and cookie settings.
+- Contact email: infojanowebsite@gmail.com.
+- Contact page visual: user-approved illustrated layout (no large website logo); blue envelope/chat bubbles/support headset illustration, readable email support and helpful links.
+- প্রতিটি কাজের শেষে এই tracker এবং প্রয়োজনে সংশ্লিষ্ট QA log আপডেট করতে হবে।
+- Source validation, browser visual QA, deployment এবং Google CMP runtime verification আলাদা করে রিপোর্ট করতে হবে।
+- User permission ছাড়া merge/deploy করা যাবে না; PR #251 merge-এর জন্য user permission দিয়েছেন।
+
+## Completed and verified
+- [x] PR #251 merged into main. Merge commit: 1b5a5aab1a59a63a92f347b2b6237f16f7f635f1.
+- [x] Global Footer QA passed after merge: run 44292491829.
+- [x] GitHub Pages deployment passed for merge commit: run 44292490789.
+- [x] Contact page updated to user-approved illustration layout. User explicitly said: “খুব সুন্দর হয়েছে”.
+- [x] Added `contact-support.svg` (illustrated envelope, message, chat bubbles and headset): commit db4780c1f76c95f247e650cca4cfe441c65a8b12.
+- [x] Updated `contact.html` to use `contact-support.svg`, retain email support and helpful links: commit 675a0523161d8cfa35706aa7c2e677203177ebd8.
+- [x] Contact page deployment passed: Pages run 44293264197 for commit 675a0523161d8cfa35706aa7c2e677203177ebd8.
+- [x] Global Footer QA passed again after Contact visual update: run 44293264383.
+- [x] User visually approved the Contact page design.
+- [x] Repository source check found 114 root public HTML pages (excluding homepage and Google verification file); global footer validator is configured to check all root public HTML pages.
+- [x] Contact and Privacy Policy files exist on main and include shared footer loader.
+- [x] Investigated APK workflow failure (run 44293264370): validation was treating Contact and Privacy Policy as APK tool pages and requiring them to be listed in the tool service-worker cache. They are informational/legal pages, not installable tool pages.
+- [x] Fixed APK validation exclusion to omit `contact.html` and `privacy-policy.html` from the APK tool-page/cache matrix. Commit f99c38c3a850511ffac857a97d8d5cb74d44db37.
+
+## Current status — 2026-11-18
+
+### Shared footer
+Status: **Source/CI verified; live visual and link-click QA pending**
+- Footer loader and labels validated by Global Footer QA.
+- 114 root public HTML pages are in the source coverage set.
+- Need a real browser/device pass to confirm actual footer rendering, spacing, link destinations and no duplicate footer on representative pages and edge pages.
+
+### Contact page
+Status: **Implemented, deployed, user visual approval received**
+- Illustration asset: `contact-support.svg`.
+- Contact email: infojanowebsite@gmail.com.
+- Need browser click QA for mailto link and Home/Privacy Policy links; user visual approval is not a full browser QA pass.
+
+### Privacy Policy
+Status: **Present and deployed; content/legal and navigation QA pending**
+- Verify relative links, mailto, policy sections, footer and settings link.
+- Do not represent this as legal advice or certify legal compliance.
+
+### Privacy and Cookie Settings / Google CMP
+Status: **Code hook exists; runtime verification pending**
+- Homepage footer invokes `googlefc.showRevocationMessage()` when available.
+- If CMP is not ready, visible fallback is shown and callback queued.
+- Non-home pages link back to homepage settings anchor.
+- Must test on live site with CMP API ready and not ready; confirm revocation dialog actually opens.
+- AdSense account screenshots previously showed European message published, 199 common ad partners, legitimate-interest controls on, Consent Mode advertising purposes off, Special Feature 2 off, no custom purposes; US State Regulations message published with supported states selected and opt-out enabled; 344 active ad partners selected.
+- Do not change AdSense settings blindly. Verify Google CMP/GPP/Consent Mode runtime signals and current Google documentation before recommending any toggle.
+
+### APK workflow
+Status: **Validator fix committed; rerun pending**
+- Previous failure: run 44293264370, step “Validate tool icons, manifests, and APK matrix”.
+- Root cause: Contact and Privacy Policy are not installable tool pages and are not in the APK service-worker tool cache, but the validator treated every root HTML file as an APK tool page.
+- Fix commit: f99c38c3a850511ffac857a97d8d5cb74d44db37.
+- Next: inspect new APK workflow run; verify validator passes and full APK build/release completes. Do not call APKs successful before run conclusion is success.
+
+## Remaining checklist
+- [ ] Confirm deployment/run state after commit f99c38c3a850511ffac857a97d8d5cb74d44db37; ensure workflow changes did not affect Pages.
+- [ ] Confirm APK workflow validator passes after exclusion fix; complete APK build, count, artifact and release verification.
+- [ ] Browser QA: homepage footer on desktop and mobile.
+- [ ] Browser QA: representative calculator, converter, image tool, QR tool, SEO/guide page, 404 page, Contact and Privacy Policy.
+- [ ] Confirm no duplicate footer/header and correct root paths on infojano.com and GitHub Pages path where relevant.
+- [ ] Click-test Home, All Tools, Privacy Policy, Contact and email mailto links.
+- [ ] Test Cookie Settings with Google CMP API ready; verify revocation UI appears.
+- [ ] Test CMP-not-ready fallback and callback behavior.
+- [ ] Verify EEA/UK consent and US state privacy signals (including GPP/opt-out) in browser runtime; record evidence and do not change account settings without reason.
+- [ ] Review consent mode/ad tag behavior against current official Google documentation.
+- [ ] Final QA summary with completed/failed/not-run evidence.
+- [ ] No additional merge/deploy without explicit user permission for future changes.
+
+## Latest commits
+- `1b5a5aab1a59a63a92f347b2b6237f16f7f635f1` — merge PR #251.
+- `db4780c1f76c95f247e650cca4cfe441c65a8b12` — add contact support illustration.
+- `675a0523161d8cfa35706aa7c2e677203177ebd8` — update Contact page illustration.
+- `f99c38c3a850511ffac857a97d8d5cb74d44db37` — exclude non-tool legal/contact pages from APK validation matrix.
+
+## Next concrete action
+Inspect GitHub Actions for commit `f99c38c3a850511ffac857a97d8d5cb74d44db37`; verify APK validator/build and Pages state. Then proceed to browser/runtime QA, updating this file after each meaningful task.
