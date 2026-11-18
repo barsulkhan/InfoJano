@@ -422,3 +422,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Only inline generator JavaScript was edited. The existing Header override and Hero 1200px max-width / 340px min-height / 42px 46px padding rules were verified present after the change.
 - Static source check passed for two style blocks, Header CSS marker preserved, Hero geometry preserved, new feedback logic and preset synchronization present.
 - Regression/browser/deployment verification remains pending. Workflow lookup and combined commit status returned no runs/statuses at time of check. Do not call this live or browser-tested.
+
+
+### 2026-11-19 — Password Generator browser QA suite added
+- Added a separate Playwright suite and GitHub Actions workflow for Password Generator, reusing existing `qa/browser` Chromium desktop/mobile setup; no production dependencies added.
+- Regression coverage: random password constraints and validation; preset Custom synchronization; passphrase count/capitalization/optional number; PIN length; Show/Hide accessible names; clipboard success/failure fallback; secure-randomness unavailable; no generated credential in network requests; keyboard reachability; common desktop/tablet/mobile widths and Hero/workspace alignment.
+- DOM-stub regression harness passed 9/9 checks; inline production scripts and test source parse successfully. Full Playwright CI result is pending; this environment cannot install/run the browser suite, and available GitHub workflow lookup does not expose push-triggered runs.
+- Header and Hero remain frozen and unchanged. Static source confirms Header override remains present and approved Hero dimensions remain 1200px / 340px / 42px 46px.
+- Release checks still pending: actual Playwright run, real screen-reader and clipboard permission test, live hard refresh and Pages deployment confirmation.
