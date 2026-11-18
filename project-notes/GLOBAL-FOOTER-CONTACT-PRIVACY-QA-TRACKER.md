@@ -348,3 +348,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Artifact `InfoJano-Tool-APKs`, ID `14454474102`, is present and not expired.
 - Release `infojano-tool-apps-v1.1.1` contains exactly 23 APK assets.
 - Deployment/CI success is separate from live browser visual QA; refresh and responsive browser verification remain pending.
+
+
+### Password Generator accessibility correction — 2026-11-18
+
+- Fixed mode-specific accessible names and Show/Hide labels in commit `bb958deb3db99eb769090f47238b07096480778e`.
+- Password, passphrase and PIN modes now expose the correct generated-result label; Show/Hide labels track the actual visibility state. Switching modes resets visibility; clipboard fallback updates the action label.
+- Isolated DOM-stub regression harness: **13/13 checks passed** (password length/groups/similar-character exclusion, passphrase format, PIN format, labels, toggle, clipboard success/fallback, empty-group validation and script parse).
+- Browser-based clipboard permission, keyboard focus order and assistive-technology tests remain pending. New Pages and APK workflow runs for this commit must be verified before declaring CI complete.
