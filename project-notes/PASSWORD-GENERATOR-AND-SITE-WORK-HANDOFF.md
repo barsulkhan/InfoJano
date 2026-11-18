@@ -182,3 +182,12 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Artifact: `InfoJano-Tool-APKs` (ID `14454474102`, not expired).
 - Release `infojano-tool-apps-v1.1.1` currently contains exactly 23 APK assets.
 - These CI/deployment results verify the source package and deployment pipeline, not browser-rendered visual behavior.
+
+
+### P1 accessibility correction — 2026-11-18
+
+- Fixed the stale screen-reader labels in `password-generator.html` (commit `bb958deb3db99eb769090f47238b07096480778e`).
+- Added mode-aware result labels (`Generated password`, `Generated passphrase`, `Generated PIN`) and matching Show/Hide action labels.
+- Switching modes and generating a new result now reset visibility and update the accessible labels together. Clipboard fallback now also exposes the result and changes the action label to Hide.
+- Re-ran the isolated DOM-stub regression harness: all 13 checks passed, including password/passphrase/PIN generation, character constraints, Show/Hide labels, clipboard success/fallback, invalid group handling and JavaScript parse.
+- This is source/logic testing only; real browser clipboard permissions, keyboard-only focus and screen-reader review remain pending. Fresh Pages/APK workflow status for this commit must be checked.
