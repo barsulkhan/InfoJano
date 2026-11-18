@@ -201,3 +201,12 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Latest Pages deployment run `44364642099` succeeded for main HEAD `7990bb74b828745af79d1a0817175c44d9ac536b`.
 - APK run `44364594298` passed validation; the 23-APK build stage was still in progress at this check.
 - Live visual/browser QA remains unavailable in this session. Do not mark first-paint, hard-reload, cache-disabled, viewport rendering, CMP dialog or real-device accessibility checks complete based on source/CI alone.
+
+
+### Latest CI confirmation after accessibility fix — 2026-11-18
+
+- Password Generator accessibility correction commit `bb958deb3db99eb769090f47238b07096480778e` passed Global Footer QA run `44364594313`.
+- Pages deployment run `44364890515` succeeded for main HEAD `8384ba75da5951afaa39052bcd6e4d0f4a82b5b2`, including the mode-aware result labels and Show/Hide accessibility fix.
+- APK workflow run `44364594298` completed successfully: validation, 23 APK builds, package-count verification, artifact upload and release publication all passed.
+- Artifact `InfoJano-Tool-APKs` ID `14454849212` is present and not expired. Release `infojano-tool-apps-v1.1.1` contains 23 APK assets.
+- Remaining blocker for calling this work complete: live browser QA of first paint, normal/hard reload, cache-disabled reload, desktop/tablet/mobile rendered geometry, keyboard focus, real clipboard behavior and CMP revocation. No live interactive browser session or prior-chat video is available in this chat.
