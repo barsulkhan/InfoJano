@@ -167,3 +167,39 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Latest CI for header commit: Global Footer QA run 44299523643 was in progress; Pages deployment run 44299524228 was pending at the time of this note. Do not call live until deployment succeeds.
 - Visual browser review of desktop/mobile layout and animation is still pending.
 - Next check: confirm QA + deployment runs for commit `89ca4d3c801659fe4f76278b7c556a544624aec6`, then ask user to inspect the live Password Generator page. No merge action was performed; commits were made directly to main.
+
+
+### 2026-11-18 — Password Generator research and redesign specification (research only; no new page code changed)
+#### Source inspection
+- Inspected the live-main source `password-generator.html`.
+- Current generator is a single-column `.card`: settings, Generate button, password output and Copy button all sit in one vertical flow. The user-requested two-panel generator/result layout is therefore NOT implemented yet.
+- The page still contains a page-local `.ij-brandbar` header with a square `.ij-brandmark` and a “Back to Home” button. This is the visible reason the header change is not reflected on this page; shared `site-header.js` does not automatically replace this page-local header markup.
+- The page still has a separate text link “← Back to InfoJano Home” immediately after the How It Works section. User requested removing that link.
+- “Tips for Using a Password Generator” remains a narrow 900px max-width card. “Create a Strong Password in a Few Steps” is inside a 1392px max-width how-to card, but its actual heading and content need to be checked after the generator split and consistent page-width rules.
+- Existing generator uses Web Crypto `crypto.getRandomValues` with rejection sampling and generates locally. It currently has 8–64 length, lowercase/uppercase/numbers/symbols, generate and copy. It does not currently offer passphrase, PIN, ambiguous-character exclusion, minimum category counts, strength/pattern feedback, or presets.
+#### External research
+- NIST SP 800-63B-4 (July 2025) says verifiers should support at least 64-character passwords, allow password managers/autofill and paste, and avoid composition rules as a mandatory verifier requirement. NIST also recommends minimum 15 characters for single-factor passwords; 8 minimum can apply when password is used as part of MFA. This supports adding a 15+ recommended default and flexible length up to 64, but retaining optional character-set controls for sites that impose requirements. Source: https://pages.nist.gov/800-63-4/sp800-63b.html
+- Bitwarden's generator supports password/passphrase, configurable word count/separator/capitalization/numbers, minimum numbers/specials, ambiguous-character avoidance, and username generation. Source: https://bitwarden.com/help/generator/
+- Dashlane supports password/passphrase modes, custom length/character types, look-alike exclusion, history, and a strength estimator that checks common passwords, dictionary words, names, keyboard patterns and dates. Source: https://support.dashlane.com/hc/en-us/articles/202625022-Generate-a-password-or-passphrase-using-Dashlane
+- User behavior research: an international 2025 survey report (25,076 cumulative adults across US, UK, Canada, France, Germany, Australia, New Zealand, India, Brazil and Mexico) reports 31% write passwords down, 21% rely on memory, and 19% use password managers. This supports a memorable passphrase option and simple copy workflow. Source: report PDF https://pub-mediabox-storage.rxweb-prd.com/exhibitor/document/exh-f4db828f-a659-4953-9111-938dbade7dc0/3dfacda7-7036-4c0e-a946-5a510cc0db8f.pdf
+- Device mix: StatCounter-derived 2025 worldwide web page views were 58.5% mobile, 39.92% desktop, 1.58% tablet. 12-month averages to Oct 2026 in one secondary aggregation: India 70.83% mobile / 28.64% desktop; Bangladesh 41.68% mobile / 58.01% desktop. This is general web usage, NOT InfoJano audience data. Source: https://statisticsglobal.org/mobile-vs-desktop-usage/
+- Keyboard caveat: the sources support that users need both manual entry and password-manager paste/autofill; they do not provide reliable global market shares for physical QWERTY vs regional keyboard layouts, nor touchscreen vs hardware keyboard use specifically for password-generator visitors. Do not claim exact keyboard distribution. Design should support both touchscreen tap targets and desktop keyboard/tab navigation, copy/paste, and long password strings.
+- Search demand: a third-party keyword estimate (US, updated Oct 27 2026) reports about 740,000 average monthly searches for “password generator”, with “random password generator” 74,000, “password generator 12 characters” 50,000, and “strong password generator” 33,000; estimated difficulty 80/100. Treat as directional vendor estimates, not guaranteed traffic. Source: https://www.kwstrends.com/keywords/us/password-generator
+#### InfoJano-specific audience / reach limits
+- The repo page includes GA4 measurement ID `G-P8D7XRGVEF`, but no GA4 reporting/property connector was available in this session. Ahrefs domain/keyword data request returned “Insufficient plan”. Therefore actual InfoJano password-generator users, device/browser split, geography, search impressions/clicks, retention, and reachable audience are NOT verified here. Do not turn global device shares or keyword volumes into a site traffic forecast.
+- To produce a defensible audience estimate, obtain GA4 report for `password-generator.html` (users/sessions, country, device category, browser, engagement) and Search Console page/query report (clicks, impressions, CTR, average position) for the last 3 months and 12 months.
+#### Recommended product scope, in priority order
+1. Redesign the generator as a wide two-column panel: left = controls/actions; right = generated result, strength feedback, copy/regenerate/show-hide. On mobile stack controls then result with result kept prominent.
+2. Remove the page-local header and the in-body “Back to Home” link; use one consistent shared header only. Correct the page's local header collision with `site-header.js`; check the real full wordmark asset before sizing it.
+3. Align Hero, generator panel, “Create a Strong Password…” and “Tips…” to the same desktop max-width and consistent section padding/typography. Keep mobile spacing proportional and readable.
+4. Add password presets (Balanced / Maximum compatibility / Long), length default 16 or 20 and range 8–64, exclude ambiguous characters, optional minimum numbers/symbols for compatibility. Do not force all character classes as a universal security rule.
+5. Add memorable passphrase mode (random word list, 4–6 words, separator, capitalization, optional number) and numeric PIN mode.
+6. Add an honest strength meter/pattern warnings (common/repeated/sequential/date/keyboard patterns); never send the typed/generated password to a server or third-party API. Prefer a local zxcvbn-style estimator and clearly explain that the estimate is not a guarantee.
+7. Add one-click copy, regenerate, show/hide, copy confirmation, paste-friendly output, and accessible keyboard focus/labels. Do not add password history or cloud save by default because it increases exposure risk.
+8. Optional later: generate username/alias only if there is a safe, useful scope; not core to this password-generator page.
+#### Next implementation sequence (not yet done)
+- First correct local header collision and remove duplicate Back to Home link.
+- Build wide responsive two-column generator controls/result card.
+- Harmonize Hero, how-to, and Tips card widths and typography.
+- Implement core additions (passphrase, PIN, ambiguous-character exclusion, presets, local strength/pattern feedback) and regression-test Web Crypto generation/copy.
+- Then run desktop/mobile and keyboard-only QA. No implementation from this research batch has been made.
