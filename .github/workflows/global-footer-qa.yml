@@ -1,0 +1,32 @@
+name: Global footer QA
+
+on:
+  pull_request:
+    paths:
+      - "*.html"
+      - "site-header.js"
+      - "site-footer.js"
+      - "sw.js"
+      - "scripts/validate-global-footer.mjs"
+      - ".github/workflows/global-footer-qa.yml"
+  push:
+    branches: [main]
+    paths:
+      - "*.html"
+      - "site-header.js"
+      - "site-footer.js"
+      - "sw.js"
+      - "scripts/validate-global-footer.mjs"
+      - ".github/workflows/global-footer-qa.yml"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate shared footer coverage and privacy entry point
+        run: node scripts/validate-global-footer.mjs
