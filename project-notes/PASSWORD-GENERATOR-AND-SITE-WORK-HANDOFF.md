@@ -148,3 +148,11 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Correction commit: `f46b051038aa2891bdb597881938b025960c8e48`.
 - Post-correction source checks pass for manifest link, JSON-LD, favicon, `install.js`, two CSS blocks, body alignment marker and synchronous header script.
 - The failed APK run was caused by this temporary source regression, not by an APK manifest configuration issue. A new APK workflow run should validate the restored metadata; its result must be checked before updating APK status.
+
+
+### CI and Pages follow-up — 2026-11-18 23:24 IST
+
+- Global Footer QA run `44363575458` passed for the restored source commit `f46b051038aa2891bdb597881938b025960c8e48`.
+- GitHub Pages deployment run `44363616294` passed for current `main` HEAD `ba6d3841a0b74b7ab5f5eca14658dafb00cc648b`; build, deploy and report-build-status jobs all succeeded. This deployment includes the Password Generator header/CSS fix and restored head metadata.
+- APK workflow `44363575672` passed its icon/manifest/APK-matrix validation after metadata restoration. The 23-APK build stage was still in progress at this check; package count, artifact and release steps remain unverified.
+- Live browser first-paint/reload and responsive visual QA remain pending; deployment success is not visual QA.
