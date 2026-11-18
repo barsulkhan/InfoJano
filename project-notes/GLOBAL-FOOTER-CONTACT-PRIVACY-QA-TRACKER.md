@@ -259,3 +259,12 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - How It Works, related tools, practical guide, and FAQ remain constrained to the same 1200px frame. Existing illustration/media sizing was not globally stretched.
 - Commit: db1d8d409cd75bcbb4e11705d969203a219d3ed4
 - Pending deployment and live desktop/mobile visual verification.
+
+
+## Password Generator visual correction — 2026-11-18
+- Updated `site-header.js` to mount the shared header immediately when the script executes with `document.body` available, rather than waiting for `DOMContentLoaded`; this reduces the initial fallback/header flash during refresh.
+- Moved the Password Generator page's shared-header script from the deferred footer position to immediately after `<body>` so its shared white header is available before the page content paints.
+- Added a final, page-scoped layout override: desktop workspace is a 1200px two-column grid with equal controls/result panels; mobile stacks them. Header follows the ID Card Studio white treatment and 1600px inner alignment.
+- Preserved the approved hero rule exactly (`min-height:340px; padding:42px 46px`); no hero dimension changes in this correction.
+- Commits: `2c3f56b1153a2378a7d3cfe6f0ff7ed2d31c2501` (`site-header.js`), `626908fa3952f5c3d9acbb946c71b9c7ae171b45` (`password-generator.html`).
+- Visual browser verification still required after Pages deployment; do not mark visual QA complete based only on source inspection.
