@@ -24,33 +24,40 @@
   function addSep(nav){
     const s=document.createElement('span');s.className='ij-footer-separator';s.setAttribute('aria-hidden','true');s.textContent='·';nav.appendChild(s);
   }
+  function ensureGooglePrivacyMessaging(){
+    window.googlefc=window.googlefc||{};
+    window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
+    const exists=[...document.scripts].some(s=>s.src.includes('pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'));
+    if(!exists){
+      const script=document.createElement('script');
+      script.async=true;
+      script.crossOrigin='anonymous';
+      script.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2908196513377151';
+      script.dataset.ijAdsense='true';
+      (document.head||document.documentElement).appendChild(script);
+    }
+  }
   function bindPrivacySettings(link,status){
     link.addEventListener('click',function(event){
       event.preventDefault();
       status.hidden=false;
       status.textContent='Opening Google privacy settings…';
-      window.googlefc=window.googlefc||{};
-      const fc=window.googlefc;
-      fc.callbackQueue=fc.callbackQueue||[];
+      ensureGooglePrivacyMessaging();
       let finished=false;
       const finish=()=>{finished=true;status.hidden=true;};
       const openRevocation=()=>{
         const current=window.googlefc;
-        if(current&&typeof current.showRevocationMessage==='function'&&current.callbackQueue&&typeof current.callbackQueue.push==='function'){
-          current.callbackQueue.push(current.showRevocationMessage);
+        if(current&&typeof current.showRevocationMessage==='function'){
+          current.showRevocationMessage();
           finish();
         }else{
-          status.textContent='Google privacy settings could not load. Please check that Google AdSense Privacy & messaging is enabled and that this page is not blocking Google scripts.';
+          status.textContent='Google privacy settings could not load. Please check the AdSense Privacy & messaging setup or whether a browser extension is blocking Google scripts.';
         }
       };
-      if(typeof fc.showRevocationMessage==='function'){
-        openRevocation();
-      }else{
-        fc.callbackQueue.push({'CONSENT_API_READY':openRevocation});
-        window.setTimeout(function(){
-          if(!finished)status.textContent='Google privacy settings are still unavailable. Check the AdSense Privacy & messaging setup or whether a browser extension is blocking Google scripts.';
-        },8000);
-      }
+      window.googlefc.callbackQueue.push({'CONSENT_API_READY':openRevocation});
+      window.setTimeout(function(){
+        if(!finished)status.textContent='Google privacy settings are still unavailable. Check the AdSense Privacy & messaging setup or whether a browser extension is blocking Google scripts.';
+      },12000);
     });
   }
   function mount(){
@@ -59,6 +66,7 @@
     }
     let footer=document.querySelector('footer');
     if(!footer){footer=document.createElement('footer');document.body.appendChild(footer);footer.textContent='© InfoJano';}
+    ensureGooglePrivacyMessaging();
     footer.classList.add('ij-global-footer');
     let intro=footer.querySelector('.ij-global-footer-intro');
     if(!intro){
