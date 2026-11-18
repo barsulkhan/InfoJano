@@ -139,3 +139,12 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Static source QA passed: two style blocks remain; no 650px/1392px/1440px/1516px/420px legacy width/hero overrides remain; hero geometry, equal desktop columns, mobile stack and shared mobile width are present; shared header JavaScript and all three page inline scripts parse.
 - **Not yet verified:** a real browser refresh from first paint through completion, hard reload/cache-disabled behavior, responsive rendered geometry, and the new Pages deployment. The previous successful Pages run predates these two code commits. The earlier supplied video is not attached in this chat, so dense frame sampling was not possible here. Do not mark the header visually resolved until browser evidence is available.
 - Remaining P1/P2 work is unchanged: generator interaction/accessibility/privacy browser QA; sitewide footer/contact/privacy/CMP runtime checks; APK release re-check only if a new APK workflow is triggered by this change.
+
+
+### Follow-up correction — preserve head metadata after CSS consolidation
+
+- The first CSS consolidation replacement inadvertently removed the non-CSS head metadata located between the first and second style blocks. The APK workflow caught this with its strict assertion: run `44363365139`, step `Validate tool icons, manifests, and APK matrix`, error `Missing manifest link: password-generator.html`.
+- Restored the original Password Generator PWA manifest link, WebApplication JSON-LD block and SVG favicon from the pre-change source. No validator change was made.
+- Correction commit: `f46b051038aa2891bdb597881938b025960c8e48`.
+- Post-correction source checks pass for manifest link, JSON-LD, favicon, `install.js`, two CSS blocks, body alignment marker and synchronous header script.
+- The failed APK run was caused by this temporary source regression, not by an APK manifest configuration issue. A new APK workflow run should validate the restored metadata; its result must be checked before updating APK status.
