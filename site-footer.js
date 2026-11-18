@@ -34,7 +34,7 @@
     addLink(nav,'All Tools',ROOT+'index.html#tools');addSep(nav);
     addLink(nav,'Privacy Policy',ROOT+'privacy-policy.html');addSep(nav);
     addLink(nav,'Contact',ROOT+'contact.html');addSep(nav);
-    const isHome=location.pathname==='/'||location.pathname.endsWith('/index.html');
+    const isHome=location.pathname==='/'||location.pathname===ROOT||location.pathname===ROOT+'index.html'||location.pathname.endsWith('/index.html');
     if(isHome){
       const a=document.createElement('a');a.id='ij-privacy-revocation';a.href='#privacy-cookie-settings';a.textContent='Privacy and cookie settings';a.hidden=true;nav.appendChild(a);
       const reveal=()=>{a.hidden=false;};
