@@ -158,3 +158,12 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Global Footer QA for this commit: run 44298782422 passed. Pages deployment run 44298782196 was building/uploading at the last check; wait for deploy success before asking user to inspect.
 - Latest APK workflow for this commit: run 44298782515 was still running icon tooling/validation at the last check. Earlier full APK run 44296565914 completed successfully with package-count verification, artifact upload and release publication; artifact InfoJano-Tool-APKs contains the 23 APKs, release tag infojano-tool-apps-v1.1.1 lists 23 APK assets. Re-run 44298782515 is newer and must be allowed to finish before marking the current commit's APK matrix complete.
 - Visual browser review of the redesigned Password Generator page remains pending; user will inspect the deployed version.
+
+
+### 2026-11-18 — Password Generator hero/header refinement
+- Updated `password-generator.html` in commit `9d633386aea1fde814edb48b02fb766e1555babe`: hero right side now has a phone keypad, animated fingertip press/ripple, masked password and padlock shackle opening; the how-to section retains the two-column layout and matching wide-card proportions.
+- The hero illustration is inline SVG/CSS animation (not separate PNG files). This keeps the phone, pressed key and opening lock independently animatable and avoids a static raster image. If separate PNG artwork is a strict requirement, that remains a follow-up asset task.
+- Updated shared `site-header.js` in commit `89ca4d3c801659fe4f76278b7c556a544624aec6`: header now uses the full `infojano-logo.svg` wordmark instead of the square mark, with responsive sizing, and adds a third right-side “Back to Home” link alongside “All Tools” and “Home”.
+- Latest CI for header commit: Global Footer QA run 44299523643 was in progress; Pages deployment run 44299524228 was pending at the time of this note. Do not call live until deployment succeeds.
+- Visual browser review of desktop/mobile layout and animation is still pending.
+- Next check: confirm QA + deployment runs for commit `89ca4d3c801659fe4f76278b7c556a544624aec6`, then ask user to inspect the live Password Generator page. No merge action was performed; commits were made directly to main.
