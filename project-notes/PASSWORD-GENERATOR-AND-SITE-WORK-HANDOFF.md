@@ -124,3 +124,18 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Full-page Password Generator functional/accessibility QA: **pending**.
 - Global footer/contact/privacy/CMP: tracked in the broader QA tracker; live visual/runtime verification remains pending in several areas.
 - APK: earlier 23-APK run succeeded, but latest batch/run must be checked for final current status.
+
+
+## 2026-11-18 — P0 Password Generator header refresh fix (source-level; live QA pending)
+
+- Re-audited current `main` source before editing. The Password Generator loaded `site-header.js` with `defer` at the beginning of `<body>`; the deferred script therefore mounted the shared header only after HTML parsing, leaving an initial-render window in which the header did not yet exist. The script also inferred hero alignment from parsed hero markup, which was the original timing race.
+- Changed `password-generator.html` to load the shared header synchronously as the first body script and added `data-ij-header-align="hero"` to the body. This gives the shared header its correct hero-aligned class before any page content is parsed/painted.
+- Updated `site-header.js` to honor that explicit body marker as well as its existing hero-element detection. It injects the shared header stylesheet before inserting the header DOM.
+- Removed the page-local generic `header{...}` rule that could style the injected header, and removed the obsolete `main{max-width:650px...}` cap.
+- Consolidated seven Password Generator style blocks into two while preserving their cascade order. Removed stale 1516px/420px hero, 1440px main, 1392px content-width, and superseded workspace-gap overrides.
+- Kept the approved desktop hero geometry unchanged: 1200px max width, 340px min-height, 42px 46px padding. Desktop workspace remains an equal two-column grid whose outer width matches the hero; mobile workspace now uses the same outer width as the mobile hero and stacks to one column.
+- Commits: `1efe92e1b95fbbfab1d2fd84a0308a2ced8614c2` (Password Generator markup/CSS) and `db562ec176f5fca192e1c6c1938f065c3ea34f0e` (shared header alignment marker).
+- Current source blob SHAs after the changes: `password-generator.html` = `3396d4e55ec09fa1096c5aac7346598cebda03ac`; `site-header.js` = `f482aeebfecce737b9f4f6d69232db75e8305d44`.
+- Static source QA passed: two style blocks remain; no 650px/1392px/1440px/1516px/420px legacy width/hero overrides remain; hero geometry, equal desktop columns, mobile stack and shared mobile width are present; shared header JavaScript and all three page inline scripts parse.
+- **Not yet verified:** a real browser refresh from first paint through completion, hard reload/cache-disabled behavior, responsive rendered geometry, and the new Pages deployment. The previous successful Pages run predates these two code commits. The earlier supplied video is not attached in this chat, so dense frame sampling was not possible here. Do not mark the header visually resolved until browser evidence is available.
+- Remaining P1/P2 work is unchanged: generator interaction/accessibility/privacy browser QA; sitewide footer/contact/privacy/CMP runtime checks; APK release re-check only if a new APK workflow is triggered by this change.
