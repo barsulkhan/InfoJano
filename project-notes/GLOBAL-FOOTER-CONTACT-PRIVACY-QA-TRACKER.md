@@ -226,3 +226,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Increased Tips and FAQ section widths, headings, body text and spacing to match the hero content canvas; FAQ is no longer a narrow 900px card.
 - Kept responsive mobile overrides so the sections stack and the shared logo/header remain compact on small screens.
 - Pending: verify latest Pages deployment, then inspect live desktop/mobile rendering and confirm header logo asset is visibly correct. Do not mark visual QA complete until checked in browser.
+
+
+### 2026-11-18 — Password Generator header loading and exact hero-width correction
+- User reported shared header still absent and lower content panels remained visually undersized.
+- Source inspection found Password Generator still referenced shared scripts using absolute `/InfoJano/` paths. On the custom-domain root these resolve to the wrong location, so `site-header.js` may fail to load and the shared header is not inserted. Changed page-local references for `site-header.js`, `download-progress.js`, and `install.js` to relative paths.
+- Updated `password-generator.html`, commit `5d2e40c432b27c4b889843a6ba0c824041e8219b`.
+- Removed the 1440px cap and excess inner padding from `main`; hero, generator workspace, How It Works (including its illustration), Related Tools, Tips, and FAQ now share a 1516px max-width canvas and the same horizontal gutter. Kept responsive stacking on mobile.
+- This is a code-level correction only. Must confirm deployment and inspect live page in desktop/mobile browser before declaring header and width issue resolved.
