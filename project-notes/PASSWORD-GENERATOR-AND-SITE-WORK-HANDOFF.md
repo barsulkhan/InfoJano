@@ -245,3 +245,10 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Commit: `ddbfbcb5e2fef40527673757850421eea478e7ba`.
 - Confirmed in source that the approved Password Generator hero geometry remains unchanged: 1200px max-width, 340px min-height, 42px 46px padding; the workspace grid rules were not edited.
 - Deployment and real browser/live visual verification are still pending. Do not claim the live header is fixed until the new commit is deployed and checked on desktop/mobile, including a hard refresh.
+
+
+### 2026-11-18 — Supplied custom-header code implemented on Password Generator
+- Replaced the earlier desktop-only approximation with a page-scoped implementation of the user's supplied `.custom-header` design: white background, subtle gray bottom border, pill controls, matching language dropdown chevron, and the provided <=768px stacked responsive behavior.
+- Uses the existing InfoJano SVG logo and shared navigation links; no placeholder logo URL was introduced. Shared `site-header.js` was not modified, so other tools/homepage are unaffected.
+- Source commit: `de7055b9704a700aa6398cba5fbb41f8b14c4630`.
+- Confirmed the Password Generator Hero remains at 1200px max width, 340px min-height and 42px 46px padding. Deployment and live desktop/mobile visual QA are pending.
