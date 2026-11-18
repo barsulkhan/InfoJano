@@ -225,3 +225,15 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 
 - Pages run `44365697746` succeeded for tracker-updated main HEAD `8f58e1545d35808013ab532f0aa3409617e64263`; build, report and deploy jobs all passed.
 - This confirms the tracker documents and the deployed site source are both published. Live interactive browser QA remains the only release gate still blocked in this session.
+
+
+### Re-check after resuming work — 2026-11-18
+
+- Re-read the current handoff and tracker from `main`, then re-fetched the live source blobs. Current `main` HEAD at this check: `3116dd22343d5ec8c804a93dcaccd14cccba730e`.
+- Current source blobs: `password-generator.html` `b620313ca8838916a2de7cbbdfaab0c2362d1613`; `site-header.js` `f482aeebfecce737b9f4f6d69232db75e8305d44`; `install.js` `425241344dd48aefdf83da78d8b2afbbf6a3870a`; `sw.js` `17e767b205c01e961b3b7b1ba18455336ff3175c`.
+- Current Pages deployment run `44365899700` completed successfully for this exact main HEAD.
+- Re-verified Password Generator source: two style blocks; no page-global generic `header{...}` selector; body alignment marker is present; shared header script is the first body child and is parser-blocking (not deferred); header CSS is inserted before the shared header DOM; approved hero rules remain 1200px max-width, 340px min-height, 42px 46px padding; workspace remains equal two-column desktop and one-column mobile with matching 1200px/mobile outer widths.
+- Re-verified the custom-domain service-worker scope: `install.js` registers the worker only on `barsulkhan.github.io`; the canonical `infojano.com` host does not register it. The Pages-host worker uses cache `infojano-v330`, but it is not the custom-domain refresh path.
+- Important remaining timing observation: the header is still created client-side by the external `site-header.js` after that script is fetched and executed; there is no static header element in the page HTML. The synchronous first-body script prevents later page content from preceding header insertion, but source inspection alone cannot establish that the header is present in the browser's very first paint. This is a possible first-paint gap, not proof of the exact transition seen in the user's video.
+- Attempted live page/script access from this session, but the runtime could not resolve `infojano.com` (DNS/network unavailable) and the web page fetch was inaccessible. This is a limitation of this QA session, not evidence that the public site is down.
+- **Do not mark header refresh resolved.** Browser first-paint, normal reload, hard reload, cache-disabled reload and rendered viewport measurements remain unverified. The previously supplied video is not available in this session for dense frame extraction.
