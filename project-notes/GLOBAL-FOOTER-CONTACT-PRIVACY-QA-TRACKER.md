@@ -430,3 +430,13 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - DOM-stub regression harness passed 9/9 checks; inline production scripts and test source parse successfully. Full Playwright CI result is pending; this environment cannot install/run the browser suite, and available GitHub workflow lookup does not expose push-triggered runs.
 - Header and Hero remain frozen and unchanged. Static source confirms Header override remains present and approved Hero dimensions remain 1200px / 340px / 42px 46px.
 - Release checks still pending: actual Playwright run, real screen-reader and clipboard permission test, live hard refresh and Pages deployment confirmation.
+
+
+### 2026-11-19 — Password Generator feature-led SEO refresh
+- Researched Google SERP intent and competitor feature terminology. Keyword clusters: free/online/random password generator (primary); strong/secure password generator; passphrase/memorable password generator; PIN/numeric PIN generator; password length/character options; exclude similar characters; copy/regenerate; local browser generation/privacy; strength feedback.
+- Google official Keyword Planner documentation confirms it provides keyword ideas and location-based average monthly search estimates; numerical volume requires account setup, chosen location and Search Network. Ahrefs metrics attempt for IN/US returned “Insufficient plan”; no volume/KD/CPC values were invented.
+- Audited real page functionality and aligned content to actual features: 8–64 character password; 16/24/32 presets; four character groups; similar-character exclusion; include-at-least-one option; 4–6-word passphrases and four separators with optional caps/two-digit suffix; 4–16 digit PIN; local heuristic feedback; Show/Hide; copy/manual fallback; regenerate; custom preset sync; browser Web Crypto.
+- Updated page title/meta/social descriptions, added a feature-focused explanatory section and expanded FAQ to 8 accurate questions. No non-existent features claimed.
+- Header and Hero remain locked. Static checks confirm header marker, Hero dimensions, workspace layout, canonical URL and all three inline script syntax checks.
+- Page source commit `98c765afe233b20f51c9b4107ae9152e80d7ce11`; current page blob `a085e95c3bfc73edf222d73118c9a9659ec55e67`.
+- Outstanding: Google Keyword Planner numerical metrics, Search Console follow-up after indexing, Playwright/real-browser and live Pages QA. No deployment or ranking outcome is claimed.
