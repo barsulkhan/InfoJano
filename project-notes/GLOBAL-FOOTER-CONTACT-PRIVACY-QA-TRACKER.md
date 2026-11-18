@@ -366,3 +366,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Pages deployment run `44364642099`: **success** for main HEAD `7990bb74b828745af79d1a0817175c44d9ac536b`.
 - APK run `44364594298`: manifest/icon/matrix validation passed; 23-APK build still running.
 - Still pending: live page-by-page footer visual QA, CMP revocation dialog runtime test, real browser refresh/viewport QA, clipboard permission/fallback in browser and keyboard/screen-reader/device checks.
+
+
+### Latest CI confirmation after accessibility fix — 2026-11-18
+
+- Global Footer QA `44364594313`: **success** for Password Generator accessibility commit `bb958deb3db99eb769090f47238b07096480778e`.
+- Pages deployment `44364890515`: **success** for main HEAD `8384ba75da5951afaa39052bcd6e4d0f4a82b5b2`.
+- APK workflow `44364594298`: **success**; all validation/build/package-count/artifact/release steps passed. Artifact `InfoJano-Tool-APKs` ID `14454849212` is not expired; release `infojano-tool-apps-v1.1.1` has 23 APK assets.
+- Live browser QA remains a release gate: first paint, normal/hard/cache-disabled refresh, desktop/tablet/mobile rendered geometry, keyboard focus, real clipboard behavior and CMP revocation runtime. No browser visual completion is claimed.
