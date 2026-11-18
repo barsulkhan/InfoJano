@@ -203,3 +203,16 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Harmonize Hero, how-to, and Tips card widths and typography.
 - Implement core additions (passphrase, PIN, ambiguous-character exclusion, presets, local strength/pattern feedback) and regression-test Web Crypto generation/copy.
 - Then run desktop/mobile and keyboard-only QA. No implementation from this research batch has been made.
+
+
+### 2026-11-18 — Password Generator implementation batch 1
+- Implemented in `password-generator.html`, commit `ce2f58c64c00a38a0d4bab9fbb19dbb2b57a9f2b`.
+- Removed page-local brand header (which conflicted with shared `site-header.js`) and removed the extra in-body “Back to InfoJano Home” link.
+- Replaced the single-column generator with a responsive two-column workspace: controls on the left, generated result/strength/copy/show-hide/regenerate on the right; stacks on narrow screens.
+- Added three modes: random password (8–64 chars), memorable passphrase (4–6 random words, separators, optional number/capitalization), numeric PIN (4–16 digits).
+- Added presets (Balanced 16, Long 24, Maximum 32), exclude similar characters, optional minimum-one-from-each-selected-group, and a local heuristic strength/pattern feedback display.
+- Uses Web Crypto rejection-sampled random selection and Fisher-Yates shuffle. Password generation and strength estimate run in the browser; no password submission/storage endpoint added.
+- Expanded Tips card and How It Works to the same 1392px content width and increased How It Works heading scale.
+- QA / deployment for this commit are running: Global Footer QA #44302235990, Pages deployment #44302235261, APK build #44302236019. Do not call deployed until Pages workflow succeeds.
+- Remaining QA: inspect actual HTML/JS after workflow; test all modes and edge cases, copy/show-hide, mobile/tablet/desktop rendering, keyboard navigation, screen reader labels, and verify shared header rendering on the live page. Current strength feedback is intentionally a local heuristic, not a security guarantee; UI copy should not call it a formal entropy score.
+- Research data limitation remains: GA4/Search Console audience data not connected; third-party market estimates are not InfoJano traffic.
