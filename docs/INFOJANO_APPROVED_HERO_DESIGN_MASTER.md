@@ -87,3 +87,12 @@ No additional page is marked complete until its source change and rendered layou
 - Related Privacy Settings diagnosis: only homepage included the AdSense adsbygoogle.js loader; tool pages did not. site-footer.js now injects the AdSense loader on every page if absent, initializes googlefc.callbackQueue, and calls showRevocationMessage from CONSENT_API_READY. This addresses a concrete missing dependency, but live browser confirmation is still required.
 - Changes: site-footer.js commit 0e4abc7b4416b036a97d5224a76a8b68f505c670; site-header.js commit 96ee7b192aac1e9dcf074cc0f0281c40e96a023d; validator commit 2090f7f59919974af9abee7dbfd6bbf710cf7746; service-worker v329 commit b22f21f1a11ccba349b0d6107319a141956706e7.
 - Global Footer QA run 44296350935 passed. Latest Pages deployment and APK workflow were still running when this record was added.
+
+
+## 2026-11-18 — Shared hero typography rollout
+- Extended shared title typography to the approved reference scale: desktop clamp 36px–62px, line-height 1.04, heavy navy title; mobile clamp 32px–43px, centered title and copy.
+- Supporting copy uses 16px–20px, line-height 1.55 and max-width 660px. Mobile hero padding is 24px 18px 34px with 24px radius.
+- Added .ij-social-hero to the selector family so Social QR Maker receives the shared light hero surface.
+- Homepage excluded. Each page's own hero art, labels, copy, inputs and tool behavior remain page-specific.
+- Source change: site-header.js commit 4bf7bd136df201e8402660274cc6ce634ddefce1; validator commit 298f62a6630a0a369e190f7cc0c552243989664a; service-worker cache v330 commit f13fa41f1bf7a91e13287600bf98afe5811a6e82.
+- Global Footer QA run 44296565924 passed. Visual browser QA across all pages, tablet and mobile is still pending; no page is marked visually verified from source inspection alone.
