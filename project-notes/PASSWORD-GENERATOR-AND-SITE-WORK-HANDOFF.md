@@ -164,3 +164,12 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Passed: 64-character password with all four selected character groups, minimum-one-per-group and similar-character exclusion; six-word capitalized passphrase with a two-digit suffix; 16-digit numeric PIN; clear error when no password character groups are selected; clipboard copy path.
 - Found one accessibility issue: the Show/Hide button's visible text changes, but its `aria-label` remains stale; the generated-result input label also remains “Generated password” when the selected mode is passphrase or PIN. Fix this before calling the keyboard/screen-reader QA complete.
 - These checks do not replace browser testing, clipboard permission testing in a real browser, keyboard-only navigation or screen-reader review.
+
+
+### Service-worker/cache investigation and latest deployment
+
+- Inspected `install.js` and `sw.js`. Service-worker registration occurs **only** on `barsulkhan.github.io`; the canonical live host `infojano.com` does not register this service worker. Therefore the v330 service-worker cache is not the cause of the canonical site's Password Generator refresh behavior.
+- The GitHub Pages project-host cache is `infojano-v330` and includes `password-generator.html`, `site-header.js`, `site-footer.js` and the logo. The fetch strategy is network-first for same-origin assets with cached fallback. No cache-version bump was made because the affected canonical host does not use this service worker; reassess only if GitHub Pages-hosted PWA clients are part of the required release target.
+- Latest Pages deployment run `44363901199` succeeded for main HEAD `fedc22a1179c2dc1a69b60ad0a6e5959d0b2c945`, which includes the source fix, restored metadata and latest tracker updates.
+- Global Footer QA `44363575458` succeeded for the source code commit `f46b051038aa2891bdb597881938b025960c8e48`.
+- APK run `44363575672` has passed manifest/icon/matrix validation; the 23-APK build stage remains in progress. Do not mark APK complete until package count, artifact upload and release publication succeed.
