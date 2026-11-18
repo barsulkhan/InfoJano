@@ -45,7 +45,7 @@ jobs:
           root = pathlib.Path('.')
           icons = sorted((root / 'app-icons').glob('*.svg'))
           manifests = sorted((root / 'app-manifests').glob('*.webmanifest'))
-          pages = sorted(p for p in root.glob('*.html') if p.name not in {'index.html', 'google4a4795e5c7c03eae.html'})
+          pages = sorted(p for p in root.glob('*.html') if p.name not in {'index.html', 'google4a4795e5c7c03eae.html', 'contact.html', 'privacy-policy.html'})
           assert len(icons) >= 23, f'Expected at least 23 SVG icons, found {len(icons)}'
           assert len(manifests) >= 22, f'Expected at least 22 manifests, found {len(manifests)}'
           assert len(pages) >= 23, f'Expected at least 23 tool pages, found {len(pages)}'
