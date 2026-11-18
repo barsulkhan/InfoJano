@@ -389,3 +389,15 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 
 - Pages run `44365697746`: **success** for main HEAD `8f58e1545d35808013ab532f0aa3409617e64263`; build, report and deploy jobs passed.
 - The latest tracker documents and website source are published. Live interactive browser QA remains pending.
+
+
+### Resume re-check — 2026-11-18
+
+- Re-read both current trackers and re-fetched `main` source. Current HEAD: `3116dd22343d5ec8c804a93dcaccd14cccba730e`.
+- Pages run `44365899700`: **success** for this exact HEAD.
+- Password Generator source audit reconfirmed: 2 CSS blocks; no generic page-level `header{...}` rule; explicit hero alignment body marker; synchronous shared-header script as first body child; shared-header CSS injected before its DOM node; hero 1200px max-width / 340px min-height / 42px 46px padding retained; equal desktop columns and mobile one-column stack retained.
+- Current blobs: password page `b620313ca8838916a2de7cbbdfaab0c2362d1613`; shared header `f482aeebfecce737b9f4f6d69232db75e8305d44`.
+- Service-worker scope rechecked: registration is limited to `barsulkhan.github.io`; canonical `infojano.com` does not use this worker. The Pages-host worker cache is `infojano-v330`.
+- The header still has no static HTML element: `site-header.js` creates it after the external script fetch/execute. Synchronous loading reduces the race with following page content but does not, by source inspection alone, prove first-paint stability. Treat this as a possible timing gap pending browser reproduction, not as a confirmed video diagnosis.
+- Live HTTP/browser access could not be completed in this session because `infojano.com` DNS resolution failed and the web page fetch was inaccessible. This does not indicate that the website itself is down.
+- Outstanding P0 gate: verify first paint, normal/hard/cache-disabled reload and header visual consistency in a real browser; do not mark resolved without that evidence.
