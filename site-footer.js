@@ -7,6 +7,10 @@
   .ij-global-footer{box-sizing:border-box;width:100%;margin:0;padding:24px 14px 28px;text-align:center;color:#718096;font:12px/1.6 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:transparent;clear:both}
   .ij-global-footer a{color:#52627b;text-decoration:underline;text-underline-offset:2px}
   .ij-global-footer a:hover,.ij-global-footer a:focus-visible{color:#075fc4}
+  .ij-global-footer-intro{display:grid;gap:3px;justify-items:center;line-height:1.55;margin:0 auto 10px}
+  .ij-global-footer-brand{font-size:14px;font-weight:600;color:#52627b}
+  .ij-global-footer-tagline{font-size:13px;color:#52627b}
+  .ij-global-footer-languages{margin-top:8px;font-size:12px}
   .ij-global-footer-nav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:7px 12px;margin:12px auto 0;padding:0;max-width:100%}
   .ij-global-footer-nav a{display:inline-block;overflow-wrap:anywhere}
   .ij-global-footer-nav .ij-footer-separator{color:#a0aec0;text-decoration:none}
@@ -56,6 +60,27 @@
     let footer=document.querySelector('footer');
     if(!footer){footer=document.createElement('footer');document.body.appendChild(footer);footer.textContent='© InfoJano';}
     footer.classList.add('ij-global-footer');
+    let intro=footer.querySelector('.ij-global-footer-intro');
+    if(!intro){
+      intro=document.createElement('div');intro.className='ij-global-footer-intro';
+      const oldNodes=[...footer.children];
+      const brand=oldNodes.find(el=>el.textContent.includes('InfoJano')&&el.textContent.includes('Global Everyday Utility Portal'));
+      const tagline=oldNodes.find(el=>el.textContent.includes('Privacy-minded')&&el.textContent.includes('Mobile-first'));
+      const languages=oldNodes.find(el=>el.textContent.includes('Português:')&&el.querySelector('a[href*="discount-pt-br"]'));
+      if(brand){brand.classList.add('ij-global-footer-brand');intro.appendChild(brand);}
+      else{const el=document.createElement('div');el.className='ij-global-footer-brand';el.textContent='InfoJano • Global Everyday Utility Portal';intro.appendChild(el);}
+      if(tagline){tagline.classList.add('ij-global-footer-tagline');intro.appendChild(tagline);}
+      else{const el=document.createElement('div');el.className='ij-global-footer-tagline';el.textContent='Privacy-minded • Mobile-first • Built for everyone';intro.appendChild(el);}
+      if(languages){languages.classList.add('ij-global-footer-languages');intro.appendChild(languages);}
+      else{
+        const el=document.createElement('div');el.className='ij-global-footer-languages';el.append('Português: ');
+        const a=document.createElement('a');a.href=ROOT+'discount-pt-br.html';a.textContent='Calculadora de Desconto';el.appendChild(a);
+        el.append(' · ');
+        const b=document.createElement('a');b.href=ROOT+'percentage-pt-br.html';b.textContent='Calculadora de Porcentagem';el.appendChild(b);
+        intro.appendChild(el);
+      }
+      footer.prepend(intro);
+    }
     let nav=footer.querySelector('.ij-global-footer-nav');
     if(!nav){nav=document.createElement('nav');nav.className='ij-global-footer-nav';nav.setAttribute('aria-label','Footer navigation');footer.appendChild(nav);}
     if(nav.dataset.ijBuilt==='true')return;
