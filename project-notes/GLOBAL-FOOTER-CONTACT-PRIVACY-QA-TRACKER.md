@@ -242,3 +242,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Did not revert or remove the shared-header path corrections or header styling.
 - Commit: 35ef9de0616320b8847d123253478a351bd94eba
 - Deployment/live visual verification remains pending.
+
+
+## Password Generator shared-header isolation fix — 2026-11-18
+- Root cause identified: site-header.js was adding the reference hero to the global unified-hero selector, applying global hero sizing; the shared header's hero-aligned inner container was also set to 1516px.
+- Removed .ij-reference-hero from the global hero-reskin selector so its own page dimensions remain authoritative.
+- Set the shared header alignment canvas to 1200px and matched the Password Generator page's desktop/mobile header widths to the restored hero canvas.
+- Related commits: 2c717f4ba685e0370d5e0f33818a3e7e49826562 and 244a523be5e683dc3a2f8d91e7f85eaa88545bfa.
+- Pending: verify Pages deployment and live desktop/mobile rendering; do not mark visually complete until confirmed.
