@@ -330,3 +330,12 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Passed: 64-character password generation with all four selected groups, minimum-one-per-group and ambiguous-character exclusion; six-word capitalized passphrase with optional two-digit suffix; 16-digit PIN; no-character-group validation message; clipboard write path.
 - Identified a screen-reader label defect: Show/Hide visible text changes but `aria-label` does not; result input label stays “Generated password” in passphrase/PIN modes. Track this for a focused accessibility fix.
 - Browser reload, clipboard permission/fallback, keyboard-only and screen-reader testing remain pending.
+
+
+### Service-worker/cache and latest deployment check
+
+- Audited `install.js`: service-worker registration is restricted to `barsulkhan.github.io`. The canonical `infojano.com` host does not register the service worker, so its `infojano-v330` cache is not responsible for the canonical live page's header refresh issue.
+- GitHub Pages project-host service worker is `infojano-v330`, precaches Password Generator, `site-header.js`, `site-footer.js` and the logo, and uses network-first fetch with cached fallback for same-origin assets. No cache-version change was made for the custom-domain fix.
+- Pages deployment `44363901199`: **success** for current main HEAD `fedc22a1179c2dc1a69b60ad0a6e5959d0b2c945`.
+- Global Footer QA `44363575458`: **success** for source commit `f46b051038aa2891bdb597881938b025960c8e48`.
+- APK run `44363575672`: validation passed; 23-APK build still in progress; package count, artifact and release are pending.
