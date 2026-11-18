@@ -339,3 +339,12 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Pages deployment `44363901199`: **success** for current main HEAD `fedc22a1179c2dc1a69b60ad0a6e5959d0b2c945`.
 - Global Footer QA `44363575458`: **success** for source commit `f46b051038aa2891bdb597881938b025960c8e48`.
 - APK run `44363575672`: validation passed; 23-APK build still in progress; package count, artifact and release are pending.
+
+
+### Latest deployment and APK verification — 2026-11-18
+
+- Pages deployment `44364160434`: **success** for current main HEAD `3c99d477e30ed7e0e6a263d0582990a567a1a910`.
+- APK workflow `44363575672`: **success**. All stages passed: manifest/icon/matrix validation, 23 builds, package-count verification, artifact upload and release publication.
+- Artifact `InfoJano-Tool-APKs`, ID `14454474102`, is present and not expired.
+- Release `infojano-tool-apps-v1.1.1` contains exactly 23 APK assets.
+- Deployment/CI success is separate from live browser visual QA; refresh and responsive browser verification remain pending.
