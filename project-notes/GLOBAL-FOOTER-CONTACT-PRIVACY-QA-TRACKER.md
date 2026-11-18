@@ -414,3 +414,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Applied user-provided custom-header styling to Password Generator only, including mobile stacking/wrapping at 768px and narrower-phone spacing. Existing InfoJano logo asset and shared navigation behavior retained.
 - No shared header script, homepage, Hero Banner or generator workspace changes.
 - Source commit: `de7055b9704a700aa6398cba5fbb41f8b14c4630`; live verification pending.
+
+
+### 2026-11-19 — Password Generator feature work resumed; Header/Hero locked
+- User instruction: do not modify the approved Header or Hero Banner; proceed only with remaining Password Generator features/QA.
+- Feature-only source commit `e73cddeee26680c5faeba48868f9ebdc2abe434b`: enhanced local heuristic warnings for common password fragments, repeated characters, sequential/keyboard patterns and date-like patterns; added PIN pattern warnings; clarified passphrase score wording; manual length/character-setting changes now switch preset to Custom.
+- Only inline generator JavaScript was edited. The existing Header override and Hero 1200px max-width / 340px min-height / 42px 46px padding rules were verified present after the change.
+- Static source check passed for two style blocks, Header CSS marker preserved, Hero geometry preserved, new feedback logic and preset synchronization present.
+- Regression/browser/deployment verification remains pending. Workflow lookup and combined commit status returned no runs/statuses at time of check. Do not call this live or browser-tested.
