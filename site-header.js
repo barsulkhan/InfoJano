@@ -23,7 +23,7 @@
   .ij-global-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex:0 0 auto;min-width:0;align-self:center}
   .ij-global-header-spacer{height:0}
   /* On reference-hero tool pages, align the shared header edges to the hero. */
-  .ij-global-header--hero-aligned .ij-global-header-inner{width:min(calc(100% - 24px),1516px);max-width:1516px;gap:18px}
+  .ij-global-header--hero-aligned .ij-global-header-inner{width:min(calc(100% - 28px),1200px);max-width:1200px;gap:18px}
   .ij-global-header--hero-aligned .ij-global-brand{flex:0 1 auto}
   .ij-global-header--hero-aligned .ij-global-nav{margin-left:auto}
   .ij-global-header--hero-aligned .ij-global-divider{display:none}
@@ -80,7 +80,7 @@
       footerScript.dataset.ijSiteFooter='true';
       document.body.appendChild(footerScript);
     }
-    const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-reference-hero,.ij-id-hero,.ij-social-hero,.idg-hero');
+    const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-id-hero,.ij-social-hero,.idg-hero');
     heroes.forEach((hero)=>{
       hero.classList.add('ij-unified-currency-hero');
       const title=hero.querySelector('h1');
