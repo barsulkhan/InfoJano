@@ -10,11 +10,12 @@
   .ij-global-footer-nav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:7px 12px;margin:12px auto 0;padding:0;max-width:100%}
   .ij-global-footer-nav a{display:inline-block;overflow-wrap:anywhere}
   .ij-global-footer-nav .ij-footer-separator{color:#a0aec0;text-decoration:none}
+  .ij-privacy-settings-status{display:block;margin:8px auto 0;max-width:620px;color:#718096;font-size:12px}
   @media(max-width:520px){.ij-global-footer{padding:20px 12px 26px}.ij-global-footer-nav{gap:8px 10px;font-size:12px}}
   `;
   function addLink(nav,label,href,id){
     const a=document.createElement('a');a.textContent=label;a.href=href;
-    if(id)a.id=id;nav.appendChild(a);
+    if(id)a.id=id;nav.appendChild(a);return a;
   }
   function addSep(nav){
     const s=document.createElement('span');s.className='ij-footer-separator';s.setAttribute('aria-hidden','true');s.textContent='·';nav.appendChild(s);
@@ -36,17 +37,21 @@
     addLink(nav,'Contact',ROOT+'contact.html');addSep(nav);
     const isHome=location.pathname==='/'||location.pathname===ROOT||location.pathname===ROOT+'index.html'||location.pathname.endsWith('/index.html');
     if(isHome){
-      const a=document.createElement('a');a.id='ij-privacy-revocation';a.href='#privacy-cookie-settings';a.textContent='Privacy and cookie settings';a.hidden=true;nav.appendChild(a);
-      const reveal=()=>{a.hidden=false;};
-      if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function')reveal();
-      else{
-        window.googlefc=window.googlefc||{};
-        window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
-        window.googlefc.callbackQueue.push({'CONSENT_API_READY':reveal});
-      }
+      const a=addLink(nav,'Privacy and cookie settings','#ij-privacy-revocation','ij-privacy-revocation');
+      const status=document.createElement('span');status.className='ij-privacy-settings-status';status.setAttribute('role','status');status.hidden=true;footer.appendChild(status);
       a.addEventListener('click',function(event){
         event.preventDefault();
-        if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function')window.googlefc.showRevocationMessage();
+        if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function'){
+          status.hidden=true;window.googlefc.showRevocationMessage();return;
+        }
+        status.textContent='Google privacy settings are not ready on this page. If this message remains, the site’s consent settings need to be checked in Google AdSense.';
+        status.hidden=false;
+        window.googlefc=window.googlefc||{};
+        window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
+        window.googlefc.callbackQueue.push({'CONSENT_API_READY':function(){
+          status.hidden=true;
+          if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function')window.googlefc.showRevocationMessage();
+        }});
       });
     }else{
       addLink(nav,'Privacy and cookie settings',ROOT+'index.html#ij-privacy-revocation');
