@@ -1,6 +1,6 @@
 # InfoJano — Global Footer, Contact & Privacy QA Tracker
 
-Last updated: 2026-11-18
+Last updated: 2026-11-18 (Privacy settings fix deployed)
 Repository: https://github.com/barsulkhan/InfoJano
 Live site: https://infojano.com/
 Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
@@ -51,7 +51,7 @@ Status: **Present and deployed; content/legal and navigation QA pending**
 - Do not represent this as legal advice or certify legal compliance.
 
 ### Privacy and Cookie Settings / Google CMP
-Status: **All-page callback fix committed; CI/runtime verification pending**
+Status: **All-page callback fix deployed; CI passed; live CMP click-test pending**
 - User provided screenshots confirming footer links appear on homepage, but Privacy and cookie settings displays the fallback warning when clicked.
 - Root cause in prior code: it directly invoked `googlefc.showRevocationMessage()` instead of invoking the method through Google's supported `googlefc.callbackQueue`.
 - Also prior implementation showed a direct action only on homepage and linked other pages back to homepage; user requires the entrypoint on every page.
@@ -60,11 +60,12 @@ Status: **All-page callback fix committed; CI/runtime verification pending**
 - Bumped service worker cache from v326 to v327.
 - Commits: `80776d15ab2984c6c475554278ce7fc5ab3464a0` (footer behavior), `8c20dd6df7d3e9a251cdc8e9276b81471c5d5574` (validator), `cef5a3872374370e79873072b03c242957ff8d72` (SW cache).
 - Google docs confirm only supported invocation is through callbackQueue; see https://developers.google.com/funding-choices/fc-api-docs and https://support.google.com/admanager/answer/10114217.
-- QA run `44294422362` failed only because validator expected literal `googlefc.showRevocationMessage` while implementation correctly uses `current.showRevocationMessage` inside the callback queue. Validator expectation fixed in commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51`; await next QA run before marking passed.
-- Runtime behavior is not yet confirmed: AdSense tag must load and CMP must be available; test on live site and in clean browser. If fallback persists after deployment, investigate script load/network blocking and AdSense site/message configuration; do not claim resolved before user retest.
-- Homepage footer invokes `googlefc.showRevocationMessage()` when available.
-- If CMP is not ready, visible fallback is shown and callback queued.
-- Non-home pages link back to homepage settings anchor.
+- Latest Global Footer QA passed: run `44294497068` on commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51`.
+- Latest Pages deployment passed: run `44294523708` on commit `b7a731ecad42efb06a3ea8340bac465f5e2c14da`; build, upload and deploy steps all succeeded.
+- The tracker update itself is a documentation-only commit after that deployment; no site code changed after the deployed footer fix.
+- Runtime behavior is not yet confirmed: user must test the live settings link on homepage and one tool page in a clean browser. If fallback persists, investigate script load/network blocking and AdSense site/message configuration; do not claim resolved before user retest.
+- All pages now render the settings entry and invoke Google revocation UI through callbackQueue.
+- If CMP is not ready, a visible status/fallback message is shown.
 - Must test on live site with CMP API ready and not ready; confirm revocation dialog actually opens.
 - AdSense account screenshots previously showed European message published, 199 common ad partners, legitimate-interest controls on, Consent Mode advertising purposes off, Special Feature 2 off, no custom purposes; US State Regulations message published with supported states selected and opt-out enabled; 344 active ad partners selected.
 - Do not change AdSense settings blindly. Verify Google CMP/GPP/Consent Mode runtime signals and current Google documentation before recommending any toggle.
@@ -78,7 +79,7 @@ Status: **Blocked — validation still failing; root cause investigation require
 - Root cause is not confirmed. Do not claim the Contact/Privacy exclusion fixed the failure. Inspect exact validator output/logs or reproduce each assertion locally before changing the workflow again.
 
 ## Remaining checklist
-- [ ] Confirm deployment/run state after commit f99c38c3a850511ffac857a97d8d5cb74d44db37; ensure workflow changes did not affect Pages.
+- [x] Confirm Pages deployment after Privacy Settings fix: run 44294523708 succeeded; Global Footer QA run 44294497068 passed.
 - [ ] Investigate why APK validator still fails in run 44293738380; reproduce every assertion and fix only the confirmed failing condition.
 - [ ] After validator passes, complete APK build, count, artifact and release verification.
 - [ ] Browser QA: homepage footer on desktop and mobile.
@@ -86,12 +87,17 @@ Status: **Blocked — validation still failing; root cause investigation require
 - [ ] Confirm no duplicate footer/header and correct root paths on infojano.com and GitHub Pages path where relevant.
 - [ ] Click-test Home, All Tools, Privacy Policy, Contact and email mailto links.
 - [ ] Test Cookie Settings with Google CMP API ready; verify revocation UI appears.
-- [ ] After v327 deployment, user/browser test settings link on homepage and representative tool page; verify dialog opens.
+- [ ] User/browser test settings link on homepage and representative tool page after deployment; verify dialog opens.
 - [ ] Test CMP-not-ready fallback and callback behavior.
 - [ ] Verify EEA/UK consent and US state privacy signals (including GPP/opt-out) in browser runtime; record evidence and do not change account settings without reason.
 - [ ] Review consent mode/ad tag behavior against current official Google documentation.
 - [ ] Final QA summary with completed/failed/not-run evidence.
 - [ ] No additional merge/deploy without explicit user permission for future changes.
+
+## Latest verification
+- Global Footer QA: `44294497068` — success.
+- GitHub Pages deployment: `44294523708` — success.
+- Deployment includes shared Footer privacy settings callback fix, SW cache v327 and validator correction.
 
 ## Latest commits
 - `1b5a5aab1a59a63a92f347b2b6237f16f7f635f1` — merge PR #251.
