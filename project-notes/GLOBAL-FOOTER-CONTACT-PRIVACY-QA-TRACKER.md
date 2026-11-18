@@ -374,3 +374,12 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Pages deployment `44364890515`: **success** for main HEAD `8384ba75da5951afaa39052bcd6e4d0f4a82b5b2`.
 - APK workflow `44364594298`: **success**; all validation/build/package-count/artifact/release steps passed. Artifact `InfoJano-Tool-APKs` ID `14454849212` is not expired; release `infojano-tool-apps-v1.1.1` has 23 APK assets.
 - Live browser QA remains a release gate: first paint, normal/hard/cache-disabled refresh, desktop/tablet/mobile rendered geometry, keyboard focus, real clipboard behavior and CMP revocation runtime. No browser visual completion is claimed.
+
+
+### Final current-HEAD deployment verification — 2026-11-18
+
+- Pages run `44365519800`: **success** for main HEAD `32385cb6f562784b39c77ed33601cc1be1b7b435`; build, report-build-status and deploy all succeeded.
+- Main contains the shared-header first-paint timing correction, explicit hero alignment marker, consolidated two-block Password Generator CSS, preserved PWA metadata and accessible mode-aware result labels.
+- APK run `44364594298`: **success**; 23 APKs built, package count verified, artifact uploaded and 23 release assets published.
+- Global Footer QA run `44364594313`: **success**.
+- Overall completion remains blocked on live browser QA: first paint, normal/hard/cache-disabled refresh, rendered desktop/tablet/mobile geometry, keyboard/screen-reader, actual clipboard permission/fallback and CMP revocation dialog runtime.
