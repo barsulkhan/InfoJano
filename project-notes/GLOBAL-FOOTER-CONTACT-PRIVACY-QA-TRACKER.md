@@ -250,3 +250,12 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Set the shared header alignment canvas to 1200px and matched the Password Generator page's desktop/mobile header widths to the restored hero canvas.
 - Related commits: 2c717f4ba685e0370d5e0f33818a3e7e49826562 and 244a523be5e683dc3a2f8d91e7f85eaa88545bfa.
 - Pending: verify Pages deployment and live desktop/mobile rendering; do not mark visually complete until confirmed.
+
+
+## Password Generator header reference + workspace layout — 2026-11-18
+- Inspected the actual ID Card Print Studio page and used its shared-header treatment: desktop header inner width calc(100% - 112px), max-width 1600px; page-context label hidden.
+- Password Generator hero CSS/dimensions intentionally left untouched in this batch.
+- Password workspace constrained to the hero's 1200px frame with equal left/right columns (controls on left, generated result on right); mobile stacks the two panels.
+- How It Works, related tools, practical guide, and FAQ remain constrained to the same 1200px frame. Existing illustration/media sizing was not globally stretched.
+- Commit: db1d8d409cd75bcbb4e11705d969203a219d3ed4
+- Pending deployment and live desktop/mobile visual verification.
