@@ -1,6 +1,6 @@
 # InfoJano — Global Footer, Contact & Privacy QA Tracker
 
-Last updated: 2026-11-18 (Complete shared footer deployed; APK validator root cause found)
+Last updated: 2026-11-18 (APK manifest corrected; global CMP loader and hero selector updated)
 Repository: https://github.com/barsulkhan/InfoJano
 Live site: https://infojano.com/
 Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
@@ -60,7 +60,7 @@ Status: **Present and deployed; content/legal and navigation QA pending**
 - Do not represent this as legal advice or certify legal compliance.
 
 ### Privacy and Cookie Settings / Google CMP
-Status: **All-page callback fix deployed; CI passed; live CMP click-test pending**
+Status: **Global AdSense loader added to shared footer; QA passed; live CMP dialog test pending**
 - User provided screenshots confirming footer links appear on homepage, but Privacy and cookie settings displays the fallback warning when clicked.
 - Root cause in prior code: it directly invoked `googlefc.showRevocationMessage()` instead of invoking the method through Google's supported `googlefc.callbackQueue`.
 - Also prior implementation showed a direct action only on homepage and linked other pages back to homepage; user requires the entrypoint on every page.
@@ -72,6 +72,9 @@ Status: **All-page callback fix deployed; CI passed; live CMP click-test pending
 - Latest Global Footer QA passed: run `44294497068` on commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51`.
 - Latest Pages deployment passed: run `44294523708` on commit `b7a731ecad42efb06a3ea8340bac465f5e2c14da`; build, upload and deploy steps all succeeded.
 - The tracker update itself is a documentation-only commit after that deployment; no site code changed after the deployed footer fix.
+- New finding: homepage alone contained the AdSense loader; tool pages did not load adsbygoogle.js, so the Google googlefc API could remain unavailable there. Shared site-footer.js now injects the AdSense loader on every page (with duplicate detection), initializes googlefc.callbackQueue, and queues showRevocationMessage under CONSENT_API_READY.
+- Updated Global Footer validator to assert the sitewide AdSense loader and callback behavior. QA run 44296350935 passed.
+- Bumped Service Worker cache to v329.
 - Runtime behavior is not yet confirmed: user must test the live settings link on homepage and one tool page in a clean browser. If fallback persists, investigate script load/network blocking and AdSense site/message configuration; do not claim resolved before user retest.
 - All pages now render the settings entry and invoke Google revocation UI through callbackQueue.
 - If CMP is not ready, a visible status/fallback message is shown.
@@ -80,7 +83,7 @@ Status: **All-page callback fix deployed; CI passed; live CMP click-test pending
 - Do not change AdSense settings blindly. Verify Google CMP/GPP/Consent Mode runtime signals and current Google documentation before recommending any toggle.
 
 ### APK workflow
-Status: **Blocked — validation still failing; root cause investigation required**
+Status: **QR Maker manifest corrected; validation/build in progress**
 - Previous failure: run 44293264370, step “Validate tool icons, manifests, and APK matrix”.
 - Root cause: Contact and Privacy Policy are not installable tool pages and are not in the APK service-worker tool cache, but the validator treated every root HTML file as an APK tool page.
 - Attempted fix commit: f99c38c3a850511ffac857a97d8d5cb74d44db37.
@@ -109,6 +112,9 @@ Status: **Blocked — validation still failing; root cause investigation require
 - [ ] No additional merge/deploy without explicit user permission for future changes.
 
 ## Latest verification
+- Global Footer QA after global AdSense loader + hero selector validation: run 44296350935 — success.
+- QR Maker manifest correction Pages deployment: run 44296054034 — success.
+- APK rerun: 44296359270 — in progress at last check.
 - Complete shared footer QA: run `44295049154` — success.
 - GitHub Pages deployment: run `44295080078` — success.
 - APK validation: run `44295049073` — failed on exact assertion `Wrong start_url: app-manifests/qr-maker.webmanifest`; investigate/fix.
