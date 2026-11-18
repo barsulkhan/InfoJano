@@ -191,3 +191,13 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Switching modes and generating a new result now reset visibility and update the accessible labels together. Clipboard fallback now also exposes the result and changes the action label to Hide.
 - Re-ran the isolated DOM-stub regression harness: all 13 checks passed, including password/passphrase/PIN generation, character constraints, Show/Hide labels, clipboard success/fallback, invalid group handling and JavaScript parse.
 - This is source/logic testing only; real browser clipboard permissions, keyboard-only focus and screen-reader review remain pending. Fresh Pages/APK workflow status for this commit must be checked.
+
+
+### P1/P2 source checks and deployment update — 2026-11-18
+
+- Final static source assertions on Password Generator passed: two CSS blocks; approved desktop hero geometry; equal desktop columns; matching mobile hero/workspace width and stacked panels; no legacy 650px/1392px/1440px/1516px/420px overrides; manifest, JSON-LD, favicon and install.js retained; synchronous header-first body script; explicit alignment marker; mode-aware result labels; shared header stylesheet injected before header DOM. Shared header JS and all three inline page scripts parse.
+- Password-generation privacy source check passed: generator code contains no `fetch`, `XMLHttpRequest`, `sendBeacon`, local/session storage or console logging; generation uses Web Crypto and clipboard access only. The page's separate GA4 page-view tag remains; no generated result is passed to it in the inspected source.
+- Static footer coverage spot-check: Contact, Privacy Policy, 404 and homepage load `site-footer.js`; representative tool pages load `site-header.js`, which injects the shared footer. Contact and Privacy Policy contain the support email and policy/contact navigation targets. Global Footer QA also passed on run `44364594313`.
+- Latest Pages deployment run `44364642099` succeeded for main HEAD `7990bb74b828745af79d1a0817175c44d9ac536b`.
+- APK run `44364594298` passed validation; the 23-APK build stage was still in progress at this check.
+- Live visual/browser QA remains unavailable in this session. Do not mark first-paint, hard-reload, cache-disabled, viewport rendering, CMP dialog or real-device accessibility checks complete based on source/CI alone.
