@@ -270,3 +270,5 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Visual browser verification still required after Pages deployment; do not mark visual QA complete based only on source inspection.
 
 - Follow-up from user's reference video: root cause identified in Password Generator's legacy generic `header{background:#10458e;color:white;text-align:center;padding:24px 15px}` rule, which also applies to the dynamically injected shared header. Added a higher-specificity `body header.ij-global-header` reset for white background, dark text, zero padding, left alignment and flat edges. Hero dimensions unchanged. Commit: `b663b192e4da423213a3b43f2f8f70b8ca584d76`.
+
+- Password Generator follow-up from user screenshots: boosted contrast for the four shared navigation controls (All Tools, language, Home, Back to Home), improved hero feature-chip contrast, and widened the controls/result workspace to a 1440px desktop canvas matching the visible hero width. Mobile remains stacked. Hero CSS/dimensions untouched. Commit: `0a0215716ab4a02092d39725da1e0356cd9628a9`.
