@@ -156,3 +156,11 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - GitHub Pages deployment run `44363616294` passed for current `main` HEAD `ba6d3841a0b74b7ab5f5eca14658dafb00cc648b`; build, deploy and report-build-status jobs all succeeded. This deployment includes the Password Generator header/CSS fix and restored head metadata.
 - APK workflow `44363575672` passed its icon/manifest/APK-matrix validation after metadata restoration. The 23-APK build stage was still in progress at this check; package count, artifact and release steps remain unverified.
 - Live browser first-paint/reload and responsive visual QA remain pending; deployment success is not visual QA.
+
+
+### Password Generator functional regression checks — 2026-11-18
+
+- Ran an isolated JavaScript/DOM-stub regression harness against the current page generator script (not a real browser).
+- Passed: 64-character password with all four selected character groups, minimum-one-per-group and similar-character exclusion; six-word capitalized passphrase with a two-digit suffix; 16-digit numeric PIN; clear error when no password character groups are selected; clipboard copy path.
+- Found one accessibility issue: the Show/Hide button's visible text changes, but its `aria-label` remains stale; the generated-result input label also remains “Generated password” when the selected mode is passphrase or PIN. Fix this before calling the keyboard/screen-reader QA complete.
+- These checks do not replace browser testing, clipboard permission testing in a real browser, keyboard-only navigation or screen-reader review.
