@@ -20,6 +20,35 @@
   function addSep(nav){
     const s=document.createElement('span');s.className='ij-footer-separator';s.setAttribute('aria-hidden','true');s.textContent='·';nav.appendChild(s);
   }
+  function bindPrivacySettings(link,status){
+    link.addEventListener('click',function(event){
+      event.preventDefault();
+      status.hidden=false;
+      status.textContent='Opening Google privacy settings…';
+      window.googlefc=window.googlefc||{};
+      const fc=window.googlefc;
+      fc.callbackQueue=fc.callbackQueue||[];
+      let finished=false;
+      const finish=()=>{finished=true;status.hidden=true;};
+      const openRevocation=()=>{
+        const current=window.googlefc;
+        if(current&&typeof current.showRevocationMessage==='function'&&current.callbackQueue&&typeof current.callbackQueue.push==='function'){
+          current.callbackQueue.push(current.showRevocationMessage);
+          finish();
+        }else{
+          status.textContent='Google privacy settings could not load. Please check that Google AdSense Privacy & messaging is enabled and that this page is not blocking Google scripts.';
+        }
+      };
+      if(typeof fc.showRevocationMessage==='function'){
+        openRevocation();
+      }else{
+        fc.callbackQueue.push({'CONSENT_API_READY':openRevocation});
+        window.setTimeout(function(){
+          if(!finished)status.textContent='Google privacy settings are still unavailable. Check the AdSense Privacy & messaging setup or whether a browser extension is blocking Google scripts.';
+        },8000);
+      }
+    });
+  }
   function mount(){
     if(!document.head.querySelector('#ij-global-footer-style')){
       const style=document.createElement('style');style.id='ij-global-footer-style';style.textContent=css;document.head.appendChild(style);
@@ -35,27 +64,9 @@
     addLink(nav,'All Tools',ROOT+'index.html#tools');addSep(nav);
     addLink(nav,'Privacy Policy',ROOT+'privacy-policy.html');addSep(nav);
     addLink(nav,'Contact',ROOT+'contact.html');addSep(nav);
-    const isHome=location.pathname==='/'||location.pathname===ROOT||location.pathname===ROOT+'index.html'||location.pathname.endsWith('/index.html');
-    if(isHome){
-      const a=addLink(nav,'Privacy and cookie settings','#ij-privacy-revocation','ij-privacy-revocation');
-      const status=document.createElement('span');status.className='ij-privacy-settings-status';status.setAttribute('role','status');status.hidden=true;footer.appendChild(status);
-      a.addEventListener('click',function(event){
-        event.preventDefault();
-        if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function'){
-          status.hidden=true;window.googlefc.showRevocationMessage();return;
-        }
-        status.textContent='Google privacy settings are not ready on this page. If this message remains, the site’s consent settings need to be checked in Google AdSense.';
-        status.hidden=false;
-        window.googlefc=window.googlefc||{};
-        window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
-        window.googlefc.callbackQueue.push({'CONSENT_API_READY':function(){
-          status.hidden=true;
-          if(window.googlefc&&typeof window.googlefc.showRevocationMessage==='function')window.googlefc.showRevocationMessage();
-        }});
-      });
-    }else{
-      addLink(nav,'Privacy and cookie settings',ROOT+'index.html#ij-privacy-revocation');
-    }
+    const settings=addLink(nav,'Privacy and cookie settings','#ij-privacy-revocation','ij-privacy-revocation');
+    const status=document.createElement('span');status.className='ij-privacy-settings-status';status.setAttribute('role','status');status.hidden=true;footer.appendChild(status);
+    bindPrivacySettings(settings,status);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
