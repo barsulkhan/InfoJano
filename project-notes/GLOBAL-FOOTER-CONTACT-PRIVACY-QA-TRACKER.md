@@ -60,7 +60,7 @@ Status: **All-page callback fix committed; CI/runtime verification pending**
 - Bumped service worker cache from v326 to v327.
 - Commits: `80776d15ab2984c6c475554278ce7fc5ab3464a0` (footer behavior), `8c20dd6df7d3e9a251cdc8e9276b81471c5d5574` (validator), `cef5a3872374370e79873072b03c242957ff8d72` (SW cache).
 - Google docs confirm only supported invocation is through callbackQueue; see https://developers.google.com/funding-choices/fc-api-docs and https://support.google.com/admanager/answer/10114217.
-- Latest Global Footer QA run `44294415966` was in progress at tracker update; prior run `44294401105` failed because validator was changed in the following commit. Confirm latest run before marking passed.
+- QA run `44294422362` failed only because validator expected literal `googlefc.showRevocationMessage` while implementation correctly uses `current.showRevocationMessage` inside the callback queue. Validator expectation fixed in commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51`; await next QA run before marking passed.
 - Runtime behavior is not yet confirmed: AdSense tag must load and CMP must be available; test on live site and in clean browser. If fallback persists after deployment, investigate script load/network blocking and AdSense site/message configuration; do not claim resolved before user retest.
 - Homepage footer invokes `googlefc.showRevocationMessage()` when available.
 - If CMP is not ready, visible fallback is shown and callback queued.
@@ -100,4 +100,4 @@ Status: **Blocked — validation still failing; root cause investigation require
 - `f99c38c3a850511ffac857a97d8d5cb74d44db37` — exclude non-tool legal/contact pages from APK validation matrix.
 
 ## Next concrete action
-Investigate APK validator failure in run `44293738380` using exact job output; do not assume root cause. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. A Privacy Settings fix has been committed; verify latest footer QA run `44294415966` and wait for v327 Pages deployment, then test CMP runtime. Continue investigating APK validator failure and browser/runtime QA, updating this file after each meaningful task.
+Investigate APK validator failure in run `44293738380` using exact job output; do not assume root cause. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. A Privacy Settings fix has been committed; verify latest footer QA run after commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51` and wait for v327 Pages deployment, then test CMP runtime. Continue investigating APK validator failure and browser/runtime QA, updating this file after each meaningful task.
