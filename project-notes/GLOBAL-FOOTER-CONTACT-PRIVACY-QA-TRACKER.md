@@ -148,3 +148,13 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Global Footer QA #44296565924: validation job succeeded after the global AdSense loader and responsive hero rules were added.
 - APK workflow #44296565914: setup and manifest/icon matrix validation succeeded; the 23-APK build step is still running. Package count, artifact upload and release are not yet confirmed.
 - Shared hero source changes remain deployed, but actual visual QA at desktop/tablet/mobile sizes on every individual tool page is still outstanding. Keep this status separate from source/CI success.
+
+
+### 2026-11-18 — Password Generator hero redesign batch
+- Updated `password-generator.html` in commit `65a7dc551fcadb81fbc0f1e932331dacebf0e4f4`.
+- Removed the visible “Keep this tool on your phone / Install this tool” banner and its page-specific CSS. Kept shared install.js helper because it also registers the service worker and applies shared page helpers; no install prompt is left in this page markup.
+- Widened the Password Generator hero to a 1440px desktop container, increased its vertical space and adjusted the copy/art columns. Mobile layout remains stacked and responsive.
+- Rebuilt “How to Create a Strong Password” as a two-column instruction card: numbered steps on the left and an inline SVG phone illustration on the right showing a numeric keypad, masked password, press ripple and security shield. No external image asset is required.
+- Global Footer QA for this commit: run 44298782422 passed. Pages deployment run 44298782196 was building/uploading at the last check; wait for deploy success before asking user to inspect.
+- Latest APK workflow for this commit: run 44298782515 was still running icon tooling/validation at the last check. Earlier full APK run 44296565914 completed successfully with package-count verification, artifact upload and release publication; artifact InfoJano-Tool-APKs contains the 23 APKs, release tag infojano-tool-apps-v1.1.1 lists 23 APK assets. Re-run 44298782515 is newer and must be allowed to finish before marking the current commit's APK matrix complete.
+- Visual browser review of the redesigned Password Generator page remains pending; user will inspect the deployed version.
