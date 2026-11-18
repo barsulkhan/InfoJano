@@ -314,3 +314,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Restored the exact original Password Generator PWA manifest link, WebApplication JSON-LD and SVG favicon in commit `f46b051038aa2891bdb597881938b025960c8e48`. The validator was not weakened or modified.
 - Rechecked source: manifest link, JSON-LD, favicon, `install.js`, two style blocks, synchronous shared-header script and body alignment marker are all present.
 - APK run `44363365139` remains a **failed** historical run; wait for the new run triggered by the correction commit and verify validation/build/package/artifact/release before marking current APK workflow successful.
+
+
+### 2026-11-18 23:24 IST — CI / deployment follow-up
+
+- Global Footer QA `44363575458`: **success** for source commit `f46b051038aa2891bdb597881938b025960c8e48`.
+- GitHub Pages deployment `44363616294`: **success** for main HEAD `ba6d3841a0b74b7ab5f5eca14658dafb00cc648b`; build, deploy and status-report jobs all passed. The deployed commit includes the header/CSS source changes and restored manifest/JSON-LD/favicon metadata.
+- APK workflow `44363575672`: manifest/icon/APK-matrix validation **passed**; 23-APK build still running. Package count, artifact upload and release publication are not yet confirmed.
+- Live browser QA (first paint, normal reload, hard reload, cache-disabled, desktop/tablet/mobile visual geometry) remains **pending**. No visual completion claim.
