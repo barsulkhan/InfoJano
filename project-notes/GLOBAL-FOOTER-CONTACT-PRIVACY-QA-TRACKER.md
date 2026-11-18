@@ -268,3 +268,5 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Preserved the approved hero rule exactly (`min-height:340px; padding:42px 46px`); no hero dimension changes in this correction.
 - Commits: `2c3f56b1153a2378a7d3cfe6f0ff7ed2d31c2501` (`site-header.js`), `626908fa3952f5c3d9acbb946c71b9c7ae171b45` (`password-generator.html`).
 - Visual browser verification still required after Pages deployment; do not mark visual QA complete based only on source inspection.
+
+- Follow-up from user's reference video: root cause identified in Password Generator's legacy generic `header{background:#10458e;color:white;text-align:center;padding:24px 15px}` rule, which also applies to the dynamically injected shared header. Added a higher-specificity `body header.ij-global-header` reset for white background, dark text, zero padding, left alignment and flat edges. Hero dimensions unchanged. Commit: `b663b192e4da423213a3b43f2f8f70b8ca584d76`.
