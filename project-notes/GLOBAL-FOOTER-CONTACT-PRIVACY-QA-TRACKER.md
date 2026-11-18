@@ -306,3 +306,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Current source SHAs: Password Generator `3396d4e55ec09fa1096c5aac7346598cebda03ac`; shared header `f482aeebfecce737b9f4f6d69232db75e8305d44`.
 - Prior baseline checks (before this change): Pages run `44362682326` succeeded for previous HEAD `b6cee0f8574de9740badf5671646fca942a26e2f`; Footer QA `44315693307` succeeded; APK run `44315693349` succeeded with all 23 package-count checks, artifact upload and release publication. These do not verify the new code commits.
 - **Still pending:** fresh Footer QA/Pages deployment status for the new commits, real browser first-paint/normal reload/hard reload/cache-disabled verification, rendered desktop/tablet/mobile measurements and generator functional/accessibility/privacy browser tests. Live-site browser access and the earlier video were unavailable in this session; no live visual QA is claimed.
+
+
+### Follow-up correction — APK validator caught missing head metadata
+
+- APK run `44363365139` failed at the strict manifest-link assertion: `Missing manifest link: password-generator.html`. This was introduced by the first CSS consolidation edit, which accidentally removed the HTML head metadata located between the original first and second style blocks.
+- Restored the exact original Password Generator PWA manifest link, WebApplication JSON-LD and SVG favicon in commit `f46b051038aa2891bdb597881938b025960c8e48`. The validator was not weakened or modified.
+- Rechecked source: manifest link, JSON-LD, favicon, `install.js`, two style blocks, synchronous shared-header script and body alignment marker are all present.
+- APK run `44363365139` remains a **failed** historical run; wait for the new run triggered by the correction commit and verify validation/build/package/artifact/release before marking current APK workflow successful.
