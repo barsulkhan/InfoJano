@@ -77,3 +77,13 @@ No additional page is marked complete until its source change and rendered layou
 - Hardened birthday fireworks canvas sizing and cleanup; added result-panel resize observation so the overlay follows the result panel dimensions and removes animation resources cleanly.
 - Source commits: `4a79188f2651fc496cf5084cfeed9ebffce4c5dd`, `4647b608581b6934c1bdbdf9a25eb81a6716bab9`.
 - Status: source committed; deployment and live browser verification pending.
+
+
+## 2026-11-18 — Shared hero coverage audit and CMP dependency fix
+- Re-read the approved reference specification before making changes. Homepage remains excluded; preserve each tool's title, copy, illustration and working controls.
+- Shared site-header.js already applies the approved light hero dimensions/palette to .hero, .ij-age-hero, .ij-bmi-hero, .ij-discount-hero, .emi-hero, .ij-qr-hero, .ij-full-hero, .ij-master-hero, .ij-tool-hero, .ij-reference-hero, .ij-id-hero and .idg-hero.
+- Added .ij-social-hero to the shared hero selector list so Social QR Maker receives the same approved styling.
+- Search audit found hero markup in 93 repository HTML/code search matches; the common selector covers generic .hero plus the documented specialized families. A complete rendered desktop/tablet/mobile pass for every page remains pending; do not mark visual QA complete based on source alone.
+- Related Privacy Settings diagnosis: only homepage included the AdSense adsbygoogle.js loader; tool pages did not. site-footer.js now injects the AdSense loader on every page if absent, initializes googlefc.callbackQueue, and calls showRevocationMessage from CONSENT_API_READY. This addresses a concrete missing dependency, but live browser confirmation is still required.
+- Changes: site-footer.js commit 0e4abc7b4416b036a97d5224a76a8b68f505c670; site-header.js commit 96ee7b192aac1e9dcf074cc0f0281c40e96a023d; validator commit 2090f7f59919974af9abee7dbfd6bbf710cf7746; service-worker v329 commit b22f21f1a11ccba349b0d6107319a141956706e7.
+- Global Footer QA run 44296350935 passed. Latest Pages deployment and APK workflow were still running when this record was added.
