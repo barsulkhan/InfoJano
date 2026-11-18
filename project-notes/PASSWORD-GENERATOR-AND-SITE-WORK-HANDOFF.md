@@ -237,3 +237,11 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Important remaining timing observation: the header is still created client-side by the external `site-header.js` after that script is fetched and executed; there is no static header element in the page HTML. The synchronous first-body script prevents later page content from preceding header insertion, but source inspection alone cannot establish that the header is present in the browser's very first paint. This is a possible first-paint gap, not proof of the exact transition seen in the user's video.
 - Attempted live page/script access from this session, but the runtime could not resolve `infojano.com` (DNS/network unavailable) and the web page fetch was inaccessible. This is a limitation of this QA session, not evidence that the public site is down.
 - **Do not mark header refresh resolved.** Browser first-paint, normal reload, hard reload, cache-disabled reload and rendered viewport measurements remain unverified. The previously supplied video is not available in this session for dense frame extraction.
+
+
+### 2026-11-18 — User-provided approved header reference applied
+- User supplied the Elapsed Time Calculator header screenshot as the exact visual reference and asked to make Password Generator match it.
+- Updated only the Password Generator page's final CSS with a page-scoped desktop override: white shared-header background, flat full-width header surface, wider header inner row, larger logo, and larger pale navigation controls to match the reference proportions. Existing shared-header markup remains in use.
+- Commit: `ddbfbcb5e2fef40527673757850421eea478e7ba`.
+- Confirmed in source that the approved Password Generator hero geometry remains unchanged: 1200px max-width, 340px min-height, 42px 46px padding; the workspace grid rules were not edited.
+- Deployment and real browser/live visual verification are still pending. Do not claim the live header is fixed until the new commit is deployed and checked on desktop/mobile, including a hard refresh.
