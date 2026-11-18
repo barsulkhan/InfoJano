@@ -252,3 +252,12 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Uses the existing InfoJano SVG logo and shared navigation links; no placeholder logo URL was introduced. Shared `site-header.js` was not modified, so other tools/homepage are unaffected.
 - Source commit: `de7055b9704a700aa6398cba5fbb41f8b14c4630`.
 - Confirmed the Password Generator Hero remains at 1200px max width, 340px min-height and 42px 46px padding. Deployment and live desktop/mobile visual QA are pending.
+
+
+### 2026-11-19 — Password Generator feature follow-up (Header/Hero frozen)
+- User explicitly instructed that the Header and Hero Banner are final and must not be changed while remaining Password Generator work proceeds.
+- Updated only the generator's inline feature JavaScript in `password-generator.html` (no Header/Hero markup or CSS edits): local heuristic feedback now flags common-password fragments, repeated characters, sequential/keyboard patterns and date-like patterns; PIN feedback flags simple sequences/repeated digits/date-like values; passphrase feedback explicitly describes itself as a local word-count estimate.
+- Manual changes to password length or character options now switch the preset selector to `Custom settings`, preventing the UI from showing a stale preset after customization.
+- Source commit: `e73cddeee26680c5faeba48868f9ebdc2abe434b`; page blob: `dc077cd282446340086aa5dcb6eb77004389a91b`.
+- Static checks: two style blocks remain; supplied Header CSS marker and approved Hero 1200px / 340px / 42px 46px rule remain present; new feedback and preset-sync code present. No Header/Hero edits were made in this feature commit.
+- Not yet complete: run actual JS syntax/regression tests and browser checks for all modes, keyboard/assistive technology, clipboard failure, and desktop/tablet/mobile. Workflow-run lookup and commit status currently return no runs/statuses; do not claim deployment or live verification.
