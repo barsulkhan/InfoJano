@@ -51,7 +51,17 @@ Status: **Present and deployed; content/legal and navigation QA pending**
 - Do not represent this as legal advice or certify legal compliance.
 
 ### Privacy and Cookie Settings / Google CMP
-Status: **Code hook exists; runtime verification pending**
+Status: **All-page callback fix committed; CI/runtime verification pending**
+- User provided screenshots confirming footer links appear on homepage, but Privacy and cookie settings displays the fallback warning when clicked.
+- Root cause in prior code: it directly invoked `googlefc.showRevocationMessage()` instead of invoking the method through Google's supported `googlefc.callbackQueue`.
+- Also prior implementation showed a direct action only on homepage and linked other pages back to homepage; user requires the entrypoint on every page.
+- Updated `site-footer.js` so every page renders the settings link and uses `CONSENT_API_READY` then `callbackQueue.push(showRevocationMessage)`; it shows a timeout/error message only if CMP never becomes ready.
+- Updated validator to require callbackQueue invocation and all-page binding.
+- Bumped service worker cache from v326 to v327.
+- Commits: `80776d15ab2984c6c475554278ce7fc5ab3464a0` (footer behavior), `8c20dd6df7d3e9a251cdc8e9276b81471c5d5574` (validator), `cef5a3872374370e79873072b03c242957ff8d72` (SW cache).
+- Google docs confirm only supported invocation is through callbackQueue; see https://developers.google.com/funding-choices/fc-api-docs and https://support.google.com/admanager/answer/10114217.
+- Latest Global Footer QA run `44294415966` was in progress at tracker update; prior run `44294401105` failed because validator was changed in the following commit. Confirm latest run before marking passed.
+- Runtime behavior is not yet confirmed: AdSense tag must load and CMP must be available; test on live site and in clean browser. If fallback persists after deployment, investigate script load/network blocking and AdSense site/message configuration; do not claim resolved before user retest.
 - Homepage footer invokes `googlefc.showRevocationMessage()` when available.
 - If CMP is not ready, visible fallback is shown and callback queued.
 - Non-home pages link back to homepage settings anchor.
@@ -76,6 +86,7 @@ Status: **Blocked — validation still failing; root cause investigation require
 - [ ] Confirm no duplicate footer/header and correct root paths on infojano.com and GitHub Pages path where relevant.
 - [ ] Click-test Home, All Tools, Privacy Policy, Contact and email mailto links.
 - [ ] Test Cookie Settings with Google CMP API ready; verify revocation UI appears.
+- [ ] After v327 deployment, user/browser test settings link on homepage and representative tool page; verify dialog opens.
 - [ ] Test CMP-not-ready fallback and callback behavior.
 - [ ] Verify EEA/UK consent and US state privacy signals (including GPP/opt-out) in browser runtime; record evidence and do not change account settings without reason.
 - [ ] Review consent mode/ad tag behavior against current official Google documentation.
@@ -89,4 +100,4 @@ Status: **Blocked — validation still failing; root cause investigation require
 - `f99c38c3a850511ffac857a97d8d5cb74d44db37` — exclude non-tool legal/contact pages from APK validation matrix.
 
 ## Next concrete action
-Investigate APK validator failure in run `44293738380` using exact job output; do not assume root cause. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. Then proceed to browser/runtime QA, updating this file after each meaningful task.
+Investigate APK validator failure in run `44293738380` using exact job output; do not assume root cause. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. A Privacy Settings fix has been committed; verify latest footer QA run `44294415966` and wait for v327 Pages deployment, then test CMP runtime. Continue investigating APK validator failure and browser/runtime QA, updating this file after each meaningful task.
