@@ -1,5 +1,6 @@
 | Social Media QR Maker | tools/social-qr-maker/ | Automated browser QA + QR PNG decoding PASS — GitHub Actions #44133825130: 15 passed, 1 expected skip, 0 failed; 12 platforms + Bundle + Link-in-Bio payloads decoded on desktop/mobile Chromium; physical scan/manual screen-reader/deployment checks pending | 2026-11-17 | Optional physical-device QR scan and manual screen-reader review; production deployment requires separate release verification |
 | Add or Subtract Date Calculator | tools/add-subtract-date-calculator/ | In progress — functional calculator embedded in existing SEO page; Node syntax/date arithmetic checks pass; Pages workflow #2642 SUCCESS; browser QA pending | 2026-11-15 | Complete browser QA; verify Pages deployment; then review related date-page CTA consistency |
+| ID Card Print Studio | tools/id-card-print-studio/ | Completed — user confirmed live footer spacing, PDF generation and print flow working after jsPDF asset-path fix | 2026-11-15 | Finalized; resume only if user reports a new issue |
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — US Work Hours/Time Card SERP review recommends one consolidated concept; US Date & Time Duration review finds overlap with existing Date + Time mode; no additional elapsed/date-time URL justified; quantitative metrics/GSC unavailable; desktop visual QA pending | 2026-11-15 | Complete desktop visual QA when browser access is available; revisit US metrics/GSC when reliable data is available |
 
 Last updated: 2026-11-15
@@ -94,3 +95,5 @@ Last updated: 2026-11-15
 ### 2026-11-15 — Date offset page deployed
 - Pages workflow #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`. Direct live browser rendering could not be independently fetched; interaction QA remains pending.
 - APK workflow #685 passed repository validation and continued building; the previously published release has 23 APK assets.
+
+| Clean URL Migration | clean-urls/ | In progress — GitHub Pages/Jekyll route audit complete; pilot on feature branch adds `/image-resizer/` and legacy `.html` refresh redirect; build/live QA pending | 2026-11-15 | Validate pilot build and redirects, then migrate all public HTML pages and sitemap/internal links |

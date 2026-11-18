@@ -261,3 +261,15 @@ Copy/paste prompt:
 - APK workflow #685 completed SUCCESS for the date-offset page change: all 23 APKs built, package count verified, artifact uploaded and release published. Release tag `infojano-tool-apps-v1.1.1` has exactly 23 APK assets (rechecked after run): https://github.com/barsulkhan/InfoJano/releases/tag/infojano-tool-apps-v1.1.1
 - Pages run #2642 succeeded for date-offset implementation commit + tracker docs. Documentation-only latest Pages run #2646 was in progress at last check.
 - Work Hours browser/runtime tests remain NOT RUN; do not conflate APK/Pages CI with browser QA.
+
+
+## 2026-11-15 — ID Card Print Studio finalized; next chat is AdSense discussion
+- User confirmed the updated live ID Card Print Studio is working correctly and asked to finalize it. Treat this work as accepted/final; do not make further changes unless asked.
+- Tool page: https://infojano.com/id-card-print-studio.html
+- Latest tool source fix commit: `c5270c0cbcc38c3e01b6ff93eb2eba300660d4b6`.
+- Root cause of the PDF error: HTML loaded jsPDF from the incorrect absolute path `/InfoJano/jspdf.umd.min.js`, while the asset exists at repository root as `jspdf.umd.min.js`. Fixed to relative `jspdf.umd.min.js`, compatible with the custom domain and GitHub Pages project path.
+- Earlier approved changes: footer bullet indentation tightened (text starts closer to bullet markers); added `Create & Print PDF` alongside existing `Create & Download PDF` and `Download JPG (600 DPI)`. Direct print reuses the generated jsPDF document, opens a browser tab and invokes print. Android app bridge does not have native direct-print support; PDF download remains fallback there.
+- Protected areas intentionally preserved: hero/banner, both mock-card labels and `ABDUL BARIK / FARAKKA, WEST BENGAL`, workspace layout, crop behavior, document-processing logic, card sizing and existing exports.
+- User confirmed live operation works on 2026-11-15. Tracker: `project-notes/tools/id-card-print-studio/README.md`; QA: `project-notes/tools/id-card-print-studio/QA-TEST-LOG.md`.
+- Latest source URL: https://github.com/barsulkhan/InfoJano/blob/main/id-card-print-studio.html
+- Next conversation topic: user has a new AdSense-related problem and wants to discuss it. No details of that problem have been provided yet; ask them to explain/show the issue before diagnosing. First reread `NEW-CHAT-HANDOFF.md`, `TOOL-WORK-TRACKING-STANDARD.md`, `TOOL-RESEARCH-STANDARD.md`, `TOOL-INDEX.md`, and relevant AdSense/monetization notes if present. Do not assume the issue or make AdSense/account changes without explicit authorization.
