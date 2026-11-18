@@ -1,6 +1,6 @@
 # InfoJano — Global Footer, Contact & Privacy QA Tracker
 
-Last updated: 2026-11-18 (Complete shared footer rollout in progress)
+Last updated: 2026-11-18 (Complete shared footer deployed; APK validator root cause found)
 Repository: https://github.com/barsulkhan/InfoJano
 Live site: https://infojano.com/
 Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
@@ -35,14 +35,16 @@ Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
 ## Current status — 2026-11-18
 
 ### Shared footer
-Status: **Complete shared footer implementation committed; deployment/visual QA pending**
+Status: **Complete shared footer deployed; source QA passed; live page-by-page visual verification pending**
 - Previous implementation only injected the navigation links. It did not standardize the InfoJano brand line, tagline or Portuguese links on every page; user screenshots exposed this gap.
 - Updated `site-footer.js` to build the complete shared footer intro, Portuguese links, and all navigation links on every page; it reuses existing homepage intro/language markup to avoid duplication.
 - Updated `scripts/validate-global-footer.mjs` to check the shared brand/tagline/Portuguese link content as well as navigation and CMP callback.
 - Bumped service worker cache to v328.
 - Implementation commit: `9b8e0cb8607f3e4582e2bea9b2ae737bfe60b2cb`; validator commit: `f45c5385110f8d28f6605b0437049eb2b46d529b`; SW cache commit: `08a631be114f1e14c842013a9d9daae4bb5725ac`.
 - Global Footer QA on implementation commit passed: run `44295019882`; validator was further strengthened afterward, so confirm a run for the latest commit.
-- Pages deployment for implementation commit was in progress at last check: run `44295019341`; latest cache/validator commits may trigger a newer deployment.
+- Latest Pages deployment completed successfully: run `44295080078` on commit `5e26c0ce2efeced724bbe7d542ad4d96fe027967`; build, artifact upload and deploy all passed. This includes the shared footer implementation and v328 cache change.
+- The earlier Pages run `44295048969` shown as Cancelled was superseded by a newer Pages run; the later run `44295080078` succeeded. This cancellation is not a site build failure.
+- Global Footer QA run `44295049154` passed on the implementation/cache commit `08a631be114f1e14c842013a9d9daae4bb5725ac`.
 - Root HTML coverage should be re-counted by validator; backup HTML under `backups/` is not a public tool page.
 - Need a real browser/device pass to confirm actual footer rendering, spacing, link destinations and no duplicate footer on representative pages and edge pages.
 
@@ -82,15 +84,18 @@ Status: **Blocked — validation still failing; root cause investigation require
 - Previous failure: run 44293264370, step “Validate tool icons, manifests, and APK matrix”.
 - Root cause: Contact and Privacy Policy are not installable tool pages and are not in the APK service-worker tool cache, but the validator treated every root HTML file as an APK tool page.
 - Attempted fix commit: f99c38c3a850511ffac857a97d8d5cb74d44db37.
-- Rerun: 44293738380; step “Validate tool icons, manifests, and APK matrix” still failed. APK build/package/artifact/release steps skipped.
+- Latest run `44295049073` failed at “Validate tool icons, manifests, and APK matrix”. Exact assertion from job log: `AssertionError: Wrong start_url: app-manifests/qr-maker.webmanifest`.
+- This is a manifest configuration mismatch, not the footer change and not a cancellation. The APK build/package/artifact/release steps were skipped because validation stopped first.
+- Next: inspect QR Maker manifest and the validator's expected `start_url` convention, then correct the source manifest (not weaken the validator) and rerun.
 - Root cause is not confirmed. Do not claim the Contact/Privacy exclusion fixed the failure. Inspect exact validator output/logs or reproduce each assertion locally before changing the workflow again.
 
 ## Remaining checklist
 - [x] Confirm Pages deployment after Privacy Settings fix: run 44294523708 succeeded; Global Footer QA run 44294497068 passed.
-- [ ] Investigate why APK validator still fails in run 44293738380; reproduce every assertion and fix only the confirmed failing condition.
+- [ ] Fix the confirmed QR Maker manifest `start_url` mismatch in `app-manifests/qr-maker.webmanifest` and rerun APK validation/build.
 - [ ] After validator passes, complete APK build, count, artifact and release verification.
 - [ ] Confirm Global Footer QA passes on latest commit `08a631be114f1e14c842013a9d9daae4bb5725ac`.
-- [ ] Confirm Pages deployment for latest commit completes successfully.
+- [x] Confirm Pages deployment: run `44295080078` succeeded.
+- [ ] Live visual verification across representative pages and tool pages.
 - [ ] Browser QA: homepage footer on desktop and mobile.
 - [ ] Browser QA: representative calculator, converter, image tool, QR tool, SEO/guide page, 404 page, Contact and Privacy Policy.
 - [ ] Confirm no duplicate footer/header and correct root paths on infojano.com and GitHub Pages path where relevant.
@@ -104,6 +109,9 @@ Status: **Blocked — validation still failing; root cause investigation require
 - [ ] No additional merge/deploy without explicit user permission for future changes.
 
 ## Latest verification
+- Complete shared footer QA: run `44295049154` — success.
+- GitHub Pages deployment: run `44295080078` — success.
+- APK validation: run `44295049073` — failed on exact assertion `Wrong start_url: app-manifests/qr-maker.webmanifest`; investigate/fix.
 - Complete shared footer QA on initial implementation: run `44295019882` — success. Latest validator/cache commits are newer and need their own verification.
 - Global Footer QA: `44294497068` — success.
 - GitHub Pages deployment: `44294523708` — success.
@@ -116,4 +124,4 @@ Status: **Blocked — validation still failing; root cause investigation require
 - `f99c38c3a850511ffac857a97d8d5cb74d44db37` — exclude non-tool legal/contact pages from APK validation matrix.
 
 ## Next concrete action
-Investigate APK validator failure in run `44293738380` using exact job output; do not assume root cause. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. Complete shared footer content (brand, tagline, Portuguese links, navigation) has now been implemented for every page; verify QA and Pages deployment for latest commit `08a631be114f1e14c842013a9d9daae4bb5725ac`. Also continue the CMP live runtime test after commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51` and wait for v327 Pages deployment, then test CMP runtime. Continue investigating APK validator failure and browser/runtime QA, updating this file after each meaningful task.
+Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken validation. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. Complete shared footer content (brand, tagline, Portuguese links, navigation) has now been implemented for every page; verify QA and Pages deployment for latest commit `08a631be114f1e14c842013a9d9daae4bb5725ac`. Also continue the CMP live runtime test after commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51` and wait for v327 Pages deployment, then test CMP runtime. Continue investigating APK validator failure and browser/runtime QA, updating this file after each meaningful task.
