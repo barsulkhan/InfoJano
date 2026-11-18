@@ -1,6 +1,6 @@
 # InfoJano — Global Footer, Contact & Privacy QA Tracker
 
-Last updated: 2026-11-18 (APK manifest corrected; global CMP loader and hero selector updated)
+Last updated: 2026-11-18 (Shared hero typography rollout and global CMP loader committed)
 Repository: https://github.com/barsulkhan/InfoJano
 Live site: https://infojano.com/
 Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
@@ -35,7 +35,7 @@ Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
 ## Current status — 2026-11-18
 
 ### Shared footer
-Status: **Complete shared footer deployed; source QA passed; live page-by-page visual verification pending**
+Status: **Complete shared footer deployed; latest source QA passed; live page-by-page visual verification pending**
 - Previous implementation only injected the navigation links. It did not standardize the InfoJano brand line, tagline or Portuguese links on every page; user screenshots exposed this gap.
 - Updated `site-footer.js` to build the complete shared footer intro, Portuguese links, and all navigation links on every page; it reuses existing homepage intro/language markup to avoid duplication.
 - Updated `scripts/validate-global-footer.mjs` to check the shared brand/tagline/Portuguese link content as well as navigation and CMP callback.
@@ -112,9 +112,9 @@ Status: **QR Maker manifest corrected; validation/build in progress**
 - [ ] No additional merge/deploy without explicit user permission for future changes.
 
 ## Latest verification
-- Global Footer QA after global AdSense loader + hero selector validation: run 44296350935 — success.
+- Global Footer QA after global AdSense loader + shared hero typography rules: run 44296565924 — success.
 - QR Maker manifest correction Pages deployment: run 44296054034 — success.
-- APK rerun: 44296359270 — in progress at last check.
+- APK reruns: 44296359270 and latest 44296565914; first rerun passed manifest validation and proceeded to APK build, latest run remains in progress.
 - Complete shared footer QA: run `44295049154` — success.
 - GitHub Pages deployment: run `44295080078` — success.
 - APK validation: run `44295049073` — failed on exact assertion `Wrong start_url: app-manifests/qr-maker.webmanifest`; investigate/fix.
@@ -131,3 +131,11 @@ Status: **QR Maker manifest corrected; validation/build in progress**
 
 ## Next concrete action
 Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken validation. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. Complete shared footer content (brand, tagline, Portuguese links, navigation) has now been implemented for every page; verify QA and Pages deployment for latest commit `08a631be114f1e14c842013a9d9daae4bb5725ac`. Also continue the CMP live runtime test after commit `57e8b0b5b39c0ace4661c84933d0dffbe3454c51` and wait for v327 Pages deployment, then test CMP runtime. Continue investigating APK validator failure and browser/runtime QA, updating this file after each meaningful task.
+
+
+### 2026-11-18 — Global CMP dependency and shared hero typography
+- AdSense loader is now injected from the shared footer on all pages, with duplicate detection so homepage's existing loader is not repeated.
+- Privacy Settings now queues the revocation action under CONSENT_API_READY; QA validates the loader and callback wiring. Live CMP dialog still requires runtime confirmation.
+- Shared hero system now includes .ij-social-hero and applies approved title typography (36–62px desktop; 32–43px mobile), copy sizing/line-height, centered mobile title/copy, and the approved 24px 18px 34px mobile padding.
+- Homepage remains excluded; page-specific artwork/copy retained. Source and QA are complete; rendered all-page visual QA remains pending.
+- Current source commits: hero typography 4bf7bd136df201e8402660274cc6ce634ddefce1; validator 298f62a6630a0a369e190f7cc0c552243989664a; cache v330 f13fa41f1bf7a91e13287600bf98afe5811a6e82. Latest Global Footer QA run 44296565924 passed.
