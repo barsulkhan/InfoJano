@@ -234,3 +234,11 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Updated `password-generator.html`, commit `5d2e40c432b27c4b889843a6ba0c824041e8219b`.
 - Removed the 1440px cap and excess inner padding from `main`; hero, generator workspace, How It Works (including its illustration), Related Tools, Tips, and FAQ now share a 1516px max-width canvas and the same horizontal gutter. Kept responsive stacking on mobile.
 - This is a code-level correction only. Must confirm deployment and inspect live page in desktop/mobile browser before declaring header and width issue resolved.
+
+
+## Password Generator hero-size rollback — 2026-11-18
+- User clarified that the request was to add/fix the shared header, not enlarge the hero banner.
+- Reverted the hero's desktop size to its original 1200px maximum width, 340px minimum height, and 42px 46px padding. Kept the content sections aligned to the same 1200px canvas.
+- Did not revert or remove the shared-header path corrections or header styling.
+- Commit: 35ef9de0616320b8847d123253478a351bd94eba
+- Deployment/live visual verification remains pending.
