@@ -70,6 +70,14 @@
   @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}
 `;
   function mount(){
+    // Load the same footer implementation used by pages without the shared header.
+    if(!document.querySelector('script[data-ij-site-footer]')){
+      const footerScript=document.createElement('script');
+      footerScript.src=ROOT+'site-footer.js';
+      footerScript.defer=true;
+      footerScript.dataset.ijSiteFooter='true';
+      document.body.appendChild(footerScript);
+    }
     const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-reference-hero,.ij-id-hero,.idg-hero');
     heroes.forEach((hero)=>{
       hero.classList.add('ij-unified-currency-hero');
@@ -119,14 +127,6 @@
       if(lang==='en')url.searchParams.delete('lang');else url.searchParams.set('lang',lang);
       location.href=url.pathname+url.search+url.hash;
     });
-    // Load the same footer implementation used by pages without the shared header.
-    if(!document.querySelector('script[data-ij-site-footer]')){
-      const footerScript=document.createElement('script');
-      footerScript.src=ROOT+'site-footer.js';
-      footerScript.defer=true;
-      footerScript.dataset.ijSiteFooter='true';
-      document.body.appendChild(footerScript);
-    }
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
