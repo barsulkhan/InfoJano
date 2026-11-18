@@ -78,7 +78,7 @@
       footerScript.dataset.ijSiteFooter='true';
       document.body.appendChild(footerScript);
     }
-    const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-reference-hero,.ij-id-hero,.idg-hero');
+    const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-reference-hero,.ij-id-hero,.ij-social-hero,.idg-hero');
     heroes.forEach((hero)=>{
       hero.classList.add('ij-unified-currency-hero');
       const title=hero.querySelector('h1');
