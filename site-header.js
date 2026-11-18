@@ -67,8 +67,17 @@
   @media(max-width:950px){.ij-unified-currency-hero{padding:28px 26px!important;min-height:220px!important}}
   @media(max-width:600px){.ij-unified-currency-hero{width:100%!important;min-height:0!important;height:auto!important;margin:12px 0 22px!important;padding:24px 18px!important;border-radius:22px!important}.ij-unified-currency-title{font-size:clamp(29px,8vw,38px)!important;letter-spacing:-.8px!important;line-height:1.12!important}}
   @media(max-width:600px){.ij-unified-currency-hero.emi-hero{min-height:220px!important;aspect-ratio:auto!important;padding:20px 17px!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy{width:62%!important;margin-left:3%!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy h1{font-size:clamp(30px,8vw,40px)!important}}
-  @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}`;
+  @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}
+`;
   function mount(){
+    // Load the same footer implementation used by pages without the shared header.
+    if(!document.querySelector('script[data-ij-site-footer]')){
+      const footerScript=document.createElement('script');
+      footerScript.src=ROOT+'site-footer.js';
+      footerScript.defer=true;
+      footerScript.dataset.ijSiteFooter='true';
+      document.body.appendChild(footerScript);
+    }
     const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-reference-hero,.ij-id-hero,.idg-hero');
     heroes.forEach((hero)=>{
       hero.classList.add('ij-unified-currency-hero');
