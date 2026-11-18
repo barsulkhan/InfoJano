@@ -219,3 +219,9 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - APK run `44364594298` succeeded for the accessibility source commit and produced 23 APK assets in `infojano-tool-apps-v1.1.1`.
 - Global Footer QA `44364594313` succeeded.
 - **Release gate still open:** no live browser first-paint/reload/hard-reload/cache-disabled test, no real rendered viewport measurements, no real keyboard/screen-reader/clipboard test, and no CMP revocation dialog runtime test have been performed in this session. Do not label the overall task complete until these are verified.
+
+
+### Tracker-publication deployment confirmation — 2026-11-18
+
+- Pages run `44365697746` succeeded for tracker-updated main HEAD `8f58e1545d35808013ab532f0aa3409617e64263`; build, report and deploy jobs all passed.
+- This confirms the tracker documents and the deployed site source are both published. Live interactive browser QA remains the only release gate still blocked in this session.
