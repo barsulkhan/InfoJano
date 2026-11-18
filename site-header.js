@@ -6,8 +6,8 @@
   .ij-global-header *{box-sizing:border-box}
   .ij-global-header-inner{width:min(calc(100% - 28px),1200px);max-width:1200px;min-height:84px;margin:0 auto!important;padding:10px 0!important;display:flex;align-items:center;gap:18px}
   .ij-global-brand{display:flex;align-items:center;gap:10px;min-width:0;color:#14264a;text-decoration:none;flex:1;margin-left:0}
-  .ij-global-logo{width:44px;height:44px;flex:0 0 44px;border-radius:13px;box-shadow:0 3px 10px #001b5b18}
-  .ij-global-brand-copy{display:flex;flex-direction:column;line-height:1.08;min-width:0;gap:3px}
+  .ij-global-logo{width:164px;height:58px;flex:0 0 164px;object-fit:contain;object-position:left center;border-radius:0;box-shadow:none}
+  .ij-global-brand-copy{display:none!important}
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
   .ij-global-brand-tagline{display:inline-block;width:max-content;max-width:100%;font-size:11px;font-weight:850;line-height:1.25;letter-spacing:0;background:linear-gradient(100deg,#0756c9 0%,#0786d8 52%,#0b9b86 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
   .ij-global-divider{width:1px;height:38px;background:#dbe4ef}
@@ -33,20 +33,20 @@
     .ij-global-header-inner{width:calc(100% - 24px);min-height:62px;padding:8px 0;gap:8px}
     .ij-global-header--hero-aligned .ij-global-header-inner{width:calc(100% - 8px)}
     .ij-global-nav{gap:7px;align-items:center}
-    .ij-global-logo{width:39px;height:39px;flex-basis:39px;border-radius:12px}
+    .ij-global-logo{width:128px;height:46px;flex-basis:128px;border-radius:0}
     .ij-global-brand{gap:6px;margin-left:0}
     .ij-global-brand-name{font-size:19px;letter-spacing:-.4px}
     .ij-global-brand-tagline{font-size:9px;line-height:1.15}
     .ij-global-divider{height:30px}
     .ij-global-tools{font-size:0;padding:0;width:40px;height:40px;justify-content:center;gap:0;border-radius:13px}
     .ij-global-tools svg{width:20px;height:20px}
-    .ij-global-home{min-width:0;margin-right:0;padding:0 11px;height:40px;font-size:12px;gap:6px;border-radius:13px}
+    .ij-global-home{min-width:0;margin-right:0;padding:0 11px;height:40px;font-size:12px;gap:6px;border-radius:13px}.ij-global-back-home{font-size:11px;padding:0 9px}
     .ij-global-home svg{width:17px;height:17px}.ij-global-language{max-width:100px;height:40px;min-height:40px;padding:0 22px 0 8px;font-size:12px;border-radius:11px}
   }
   @media(max-width:360px){
     .ij-global-header-inner{gap:5px;width:calc(100% - 16px)}
     .ij-global-nav{gap:5px}
-    .ij-global-brand-name{font-size:17px}
+    .ij-global-brand-name{font-size:17px}.ij-global-logo{width:112px;height:40px;flex-basis:112px}
     .ij-global-home{height:38px;min-height:38px;padding:0 8px;font-size:11px}.ij-global-language{height:38px;min-height:38px;max-width:88px;font-size:11px}
     .ij-global-tools{width:36px;height:38px}
   }
@@ -94,7 +94,7 @@
     header.innerHTML=`
       <div class="ij-global-header-inner">
         <a class="ij-global-brand" href="${ROOT}index.html" aria-label="InfoJano home">
-          <img class="ij-global-logo" src="${ROOT}infojano-mark.svg" alt="InfoJano logo">
+          <img class="ij-global-logo" src="${ROOT}infojano-logo.svg" alt="InfoJano logo">
           <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span><span class="ij-global-brand-tagline">Smart Online Tools for Everyday Life</span></span>
         </a>
         <span class="ij-global-divider" aria-hidden="true"></span>
@@ -113,6 +113,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 2 11h2v10h6v-6h4v6h6V11h2L12 3z"/></svg>
           Home
         </a>
+        <a class="ij-global-home ij-global-back-home" href="${ROOT}index.html#tools" aria-label="Back to all InfoJano tools">Back to Home</a>
         </nav>
       </div>`;
     document.body.insertBefore(header,document.body.firstChild);
