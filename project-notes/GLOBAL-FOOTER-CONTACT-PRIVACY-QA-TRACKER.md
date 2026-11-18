@@ -216,3 +216,13 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - QA / deployment for this commit are running: Global Footer QA #44302235990, Pages deployment #44302235261, APK build #44302236019. Do not call deployed until Pages workflow succeeds.
 - Remaining QA: inspect actual HTML/JS after workflow; test all modes and edge cases, copy/show-hide, mobile/tablet/desktop rendering, keyboard navigation, screen reader labels, and verify shared header rendering on the live page. Current strength feedback is intentionally a local heuristic, not a security guarantee; UI copy should not call it a formal entropy score.
 - Research data limitation remains: GA4/Search Console audience data not connected; third-party market estimates are not InfoJano traffic.
+
+
+### 2026-11-18 — Password Generator visual correction batch 2
+- Updated `password-generator.html`, commit `3bb37befee252b366df485cfa8238fe9a4f2f7db`.
+- Restored/retained the shared global header via `site-header.js` (not a duplicate page-local header); explicitly increased the visible InfoJano logo sizing and aligned the header content width to the 1440px hero canvas.
+- Increased the primary Generate Password CTA size and minimum height.
+- Increased the How It Works title, body/step typography and panel height.
+- Increased Tips and FAQ section widths, headings, body text and spacing to match the hero content canvas; FAQ is no longer a narrow 900px card.
+- Kept responsive mobile overrides so the sections stack and the shared logo/header remain compact on small screens.
+- Pending: verify latest Pages deployment, then inspect live desktop/mobile rendering and confirm header logo asset is visibly correct. Do not mark visual QA complete until checked in browser.
