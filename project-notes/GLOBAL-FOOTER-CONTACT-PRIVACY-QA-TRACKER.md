@@ -285,3 +285,12 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 
 - Password Generator refresh/header inconsistency found: `site-header.js` was loaded synchronously at the very start of `<body>`, before `.ij-reference-hero` had been parsed. The shared header script checks for `.ij-reference-hero` immediately when mounting, so it could miss `ij-global-header--hero-aligned` on first render and use the generic header layout. Changed the page script to `<script src="site-header.js" defer></script>` so it mounts after HTML parsing and detects the hero consistently. Commit: `e5b701351297c2700dbd4207c93b3ff3495e1417`.
 - CSS audit also found six earlier page style blocks plus a final clean-layout override (7 total), including obsolete 1440px/1516px hero and 1392px workspace declarations. The final clean-layout block currently overrides the desktop hero/workspace geometry, but the stale rules remain a maintenance/conflict risk and should be consolidated after visual verification.
+
+
+## 2026-11-18 — Password Generator / new-chat handoff
+- Created dedicated continuation file: `project-notes/PASSWORD-GENERATOR-AND-SITE-WORK-HANDOFF.md`.
+- It records Password Generator work completed, current source observations, approved hero/workspace constraints, video inspection evidence and limitations, pending refresh/header root-cause work, functional/accessibility QA, plus outstanding global footer/CMP/APK tasks.
+- New chat should read that handoff first, then re-fetch current main source and GitHub Actions status before editing. Do not assume the old deployment/run status is still current.
+- Handoff commit: `49d8e9abefe0b0d0693f9078da70b8c5bed7aea8`.
+- Important: Password Generator source currently has 7 style blocks; final clean-layout override is in place but older CSS blocks remain. `site-header.js` dynamically injects header CSS and inserts the header at the start of body. Legacy generic `header{...}` styling must be checked against the shared header reset/cascade. Header refresh issue is not yet verified as resolved.
+- The supplied 33.627-second video was opened and sampled at roughly 3-second intervals (11 frames). Sampled frames show the blue shared header consistently; a few frames show a browser dropdown/menu overlay. The sampled stills alone do not prove the exact refresh transition, so dense frame sampling around the refresh is still required.
