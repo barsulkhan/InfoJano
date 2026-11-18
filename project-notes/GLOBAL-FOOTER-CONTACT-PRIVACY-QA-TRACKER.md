@@ -29,7 +29,7 @@ Primary PR: https://github.com/barsulkhan/InfoJano/pull/251 (merged)
 - [x] Repository source check found 114 root public HTML pages (excluding homepage and Google verification file); global footer validator is configured to check all root public HTML pages.
 - [x] Contact and Privacy Policy files exist on main and include shared footer loader.
 - [x] Investigated APK workflow failure (run 44293264370): validation was treating Contact and Privacy Policy as APK tool pages and requiring them to be listed in the tool service-worker cache. They are informational/legal pages, not installable tool pages.
-- [x] Fixed APK validation exclusion to omit `contact.html` and `privacy-policy.html` from the APK tool-page/cache matrix. Commit f99c38c3a850511ffac857a97d8d5cb74d44db37.
+- [x] Attempted APK validation exclusion for `contact.html` and `privacy-policy.html` (commit f99c38c3a850511ffac857a97d8d5cb74d44db37), but the rerun still failed at the same validation step. Therefore this was not the complete root cause; investigate the exact failing assertion before further changes.
 
 ## Current status — 2026-11-18
 
@@ -60,15 +60,17 @@ Status: **Code hook exists; runtime verification pending**
 - Do not change AdSense settings blindly. Verify Google CMP/GPP/Consent Mode runtime signals and current Google documentation before recommending any toggle.
 
 ### APK workflow
-Status: **Validator fix committed; rerun pending**
+Status: **Blocked — validation still failing; root cause investigation required**
 - Previous failure: run 44293264370, step “Validate tool icons, manifests, and APK matrix”.
 - Root cause: Contact and Privacy Policy are not installable tool pages and are not in the APK service-worker tool cache, but the validator treated every root HTML file as an APK tool page.
-- Fix commit: f99c38c3a850511ffac857a97d8d5cb74d44db37.
-- Next: inspect new APK workflow run; verify validator passes and full APK build/release completes. Do not call APKs successful before run conclusion is success.
+- Attempted fix commit: f99c38c3a850511ffac857a97d8d5cb74d44db37.
+- Rerun: 44293738380; step “Validate tool icons, manifests, and APK matrix” still failed. APK build/package/artifact/release steps skipped.
+- Root cause is not confirmed. Do not claim the Contact/Privacy exclusion fixed the failure. Inspect exact validator output/logs or reproduce each assertion locally before changing the workflow again.
 
 ## Remaining checklist
 - [ ] Confirm deployment/run state after commit f99c38c3a850511ffac857a97d8d5cb74d44db37; ensure workflow changes did not affect Pages.
-- [ ] Confirm APK workflow validator passes after exclusion fix; complete APK build, count, artifact and release verification.
+- [ ] Investigate why APK validator still fails in run 44293738380; reproduce every assertion and fix only the confirmed failing condition.
+- [ ] After validator passes, complete APK build, count, artifact and release verification.
 - [ ] Browser QA: homepage footer on desktop and mobile.
 - [ ] Browser QA: representative calculator, converter, image tool, QR tool, SEO/guide page, 404 page, Contact and Privacy Policy.
 - [ ] Confirm no duplicate footer/header and correct root paths on infojano.com and GitHub Pages path where relevant.
@@ -87,4 +89,4 @@ Status: **Validator fix committed; rerun pending**
 - `f99c38c3a850511ffac857a97d8d5cb74d44db37` — exclude non-tool legal/contact pages from APK validation matrix.
 
 ## Next concrete action
-Inspect GitHub Actions for commit `f99c38c3a850511ffac857a97d8d5cb74d44db37`; verify APK validator/build and Pages state. Then proceed to browser/runtime QA, updating this file after each meaningful task.
+Investigate APK validator failure in run `44293738380` using exact job output; do not assume root cause. Pages build for `f99c38c3` completed its build stage, but deployment job was cancelled after a newer commit. Then proceed to browser/runtime QA, updating this file after each meaningful task.
