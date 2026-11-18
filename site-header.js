@@ -131,5 +131,5 @@
       location.href=url.pathname+url.search+url.hash;
     });
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+  if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount,{once:true});
 })();
