@@ -401,3 +401,10 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - The header still has no static HTML element: `site-header.js` creates it after the external script fetch/execute. Synchronous loading reduces the race with following page content but does not, by source inspection alone, prove first-paint stability. Treat this as a possible timing gap pending browser reproduction, not as a confirmed video diagnosis.
 - Live HTTP/browser access could not be completed in this session because `infojano.com` DNS resolution failed and the web page fetch was inaccessible. This does not indicate that the website itself is down.
 - Outstanding P0 gate: verify first paint, normal/hard/cache-disabled reload and header visual consistency in a real browser; do not mark resolved without that evidence.
+
+
+### 2026-11-18 — Password Generator header reference follow-up
+- Applied a page-scoped desktop CSS override to `password-generator.html` to match the user's supplied white-header reference from the Elapsed Time Calculator: white full-width header, larger logo, and larger pale navigation controls.
+- Source commit: `ddbfbcb5e2fef40527673757850421eea478e7ba`.
+- No shared header script, homepage, or Hero/workspace geometry was changed. Password Generator's approved 1200px / 340px / 42px 46px Hero dimensions remain intact.
+- Deployment and live desktop/mobile hard-refresh visual QA remain pending; source-level confirmation is not a substitute for browser verification.
