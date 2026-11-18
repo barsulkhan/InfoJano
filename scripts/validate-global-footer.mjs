@@ -31,7 +31,9 @@ if (footer.includes("a.hidden=true")) failures.push("site-footer.js: privacy-set
 if (!footer.includes("Google privacy settings are still unavailable")) failures.push("site-footer.js: missing visible fallback when Google CMP is unavailable");
 if (!footer.includes("callbackQueue.push({'CONSENT_API_READY':openRevocation})")) failures.push("site-footer.js: revocation must be invoked through Google CONSENT_API_READY callbackQueue");
 if (!footer.includes("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2908196513377151")) failures.push("site-footer.js: AdSense/Privacy Messaging loader is not installed globally");
-if (!header.includes(".ij-social-hero")) failures.push("site-header.js: social QR hero is missing from shared hero styling");
+for (const selector of [".ij-social-hero", ".ij-unified-currency-hero", "clamp(36px,4.3vw,62px)", "clamp(32px,9vw,43px)", "padding:24px 18px 34px"]) {
+  if (!header.includes(selector)) failures.push(`site-header.js: missing approved shared hero rule "${selector}"`);
+}
 if (!footer.includes("bindPrivacySettings(settings,status)")) failures.push("site-footer.js: privacy settings must be bound on every page, not homepage only");
 if (!sw.includes('"/InfoJano/site-footer.js"')) failures.push("sw.js: shared footer script is not precached");
 for (const required of ["contact.html", "privacy-policy.html"]) {
