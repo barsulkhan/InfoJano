@@ -122,4 +122,52 @@ test.describe('Password Generator — desktop and mobile', () => {
       expect(metrics.hero).toBeGreaterThan(0);
     }
   });
+
+  test('adds the optional two-digit suffix to a passphrase', async ({ page }) => {
+    await page.locator('#mode').selectOption('passphrase');
+    await page.locator('#word-count').evaluate(el => { el.value = '4'; el.dispatchEvent(new Event('input', { bubbles: true })); });
+    await page.locator('#passphrase-number').check();
+    await page.locator('#generate-button').click();
+    const value = await page.locator('#result').inputValue();
+    expect(value).toMatch(/-\\d{2}$/);
+    expect(value.split('-')).toHaveLength(5);
+  });
+
+  test('does not transmit the generated credential in requests', async ({ page }) => {
+    const requests = [];
+    page.on('request', request => requests.push({ url: request.url(), body: request.postData() || '' }));
+    await page.locator('#generate-button').click();
+    const value = await page.locator('#result').inputValue();
+    expect(value.length).toBeGreaterThan(0);
+    expect(requests.some(request => request.url.includes(value) || request.body.includes(value))).toBe(false);
+  });
+
+  test('keeps Hero and generator workspace aligned without horizontal overflow', async ({ page }) => {
+    for (const width of [1440, 1024, 768, 390, 360]) {
+      await page.setViewportSize({ width, height: 900 });
+      const metrics = await page.evaluate(() => {
+        const hero = document.querySelector('.ij-reference-hero')?.getBoundingClientRect();
+        const workspace = document.querySelector('.ij-password-workspace')?.getBoundingClientRect();
+        return {
+          viewport: document.documentElement.clientWidth,
+          document: document.documentElement.scrollWidth,
+          heroWidth: hero?.width || 0,
+          workspaceWidth: workspace?.width || 0
+        };
+      });
+      expect(metrics.document, 'horizontal overflow at '+width+'px').toBeLessThanOrEqual(metrics.viewport + 1);
+      expect(metrics.heroWidth).toBeGreaterThan(0);
+      expect(Math.abs(metrics.heroWidth - metrics.workspaceWidth), 'Hero/workspace width mismatch at '+width+'px').toBeLessThanOrEqual(2);
+    }
+  });
+
+  test('keeps the primary controls reachable by keyboard', async ({ page }) => {
+    await page.keyboard.press('Tab');
+    await expect(page.locator('#mode')).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(page.locator('#preset')).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(page.locator('#length')).toBeFocused();
+  });
+
 });
