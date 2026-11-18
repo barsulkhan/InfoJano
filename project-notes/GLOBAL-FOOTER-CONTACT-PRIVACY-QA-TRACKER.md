@@ -356,3 +356,13 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Password, passphrase and PIN modes now expose the correct generated-result label; Show/Hide labels track the actual visibility state. Switching modes resets visibility; clipboard fallback updates the action label.
 - Isolated DOM-stub regression harness: **13/13 checks passed** (password length/groups/similar-character exclusion, passphrase format, PIN format, labels, toggle, clipboard success/fallback, empty-group validation and script parse).
 - Browser-based clipboard permission, keyboard focus order and assistive-technology tests remain pending. New Pages and APK workflow runs for this commit must be verified before declaring CI complete.
+
+
+### Source/privacy/footer checks and Pages deployment — 2026-11-18
+
+- Password Generator static QA passed after the accessibility fix: 2 CSS blocks; 1200px/340px/42px 46px desktop hero; equal desktop columns; mobile hero/workspace matching width and one-column stack; obsolete sizing rules removed; manifest/JSON-LD/favicon/install.js retained; synchronous header-first load and explicit hero marker; mode-aware result labels. Shared header and inline page JavaScript parse.
+- Password-generator script privacy audit passed: no `fetch`, `XMLHttpRequest`, `sendBeacon`, local/session storage or console logging; Web Crypto and clipboard only. Separate GA4 page-view instrumentation remains and does not receive the generated result in the inspected code.
+- Static footer spot-check: homepage, 404, Contact and Privacy Policy load the shared footer script; representative tool pages load shared header, which loads the footer. Contact and Privacy Policy include the support email and relevant navigation targets. Global Footer QA run `44364594313`: **success**.
+- Pages deployment run `44364642099`: **success** for main HEAD `7990bb74b828745af79d1a0817175c44d9ac536b`.
+- APK run `44364594298`: manifest/icon/matrix validation passed; 23-APK build still running.
+- Still pending: live page-by-page footer visual QA, CMP revocation dialog runtime test, real browser refresh/viewport QA, clipboard permission/fallback in browser and keyboard/screen-reader/device checks.
