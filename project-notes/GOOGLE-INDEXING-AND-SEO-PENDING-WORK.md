@@ -211,7 +211,7 @@ A separate live source inconsistency was confirmed in `id-card-print-studio.html
 - `qr-choice.html` and `resize-image-to-pixels.html` still report Google-selected GitHub Pages URLs (last crawl Nov 15 and Nov 13 respectively), while current source canonicals point to infojano.com. This needs post-deployment recrawl/host consolidation verification; no redirect workaround was added because GitHub Pages host behavior and app dependencies need a deliberate test.
 - `url-toolkit.html` and `savings.html` currently declare infojano.com canonical in source, but Search Console's older inspection records still select the GitHub Pages host.
 - `age-in-days-calculator.html` currently declares infojano.com canonical in source; Search Console's crawl record is older and selected the GitHub Pages URL.
-- Pages deployment and post-deploy URL Inspection for commit `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6` remain pending.
+- Pages deployment for commit `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6` is confirmed via successful run `44521322334` (head `93a1904...`). URL Inspection was repeated after deployment, but Google still returns stored crawl records dated 11–17 Nov; a fresh recrawl has not yet occurred.
 
 ### Deployment and post-deployment inspection cross-check — 2026-11-19
 - GitHub Pages run `44521322334` for `main` completed with conclusion `success` at 2026-11-19 12:10 UTC. It deployed head commit `93a1904d60dc8b3b31996cac53b947a2215d1052`.
@@ -222,3 +222,9 @@ A separate live source inconsistency was confirmed in `id-card-print-studio.html
 - The custom-domain live URLs could not be independently fetched in this environment, so HTTP/rendered mobile verification remains open. Pages workflow success confirms the deployment job, not browser visual QA.
 - No redirects or GitHub Pages host-routing changes were made. Keep the host-consolidation issue separate from the ID Card metadata correction.
 - Next: after Google recrawls, inspect ID Card Studio and the 12 cases again; review the remaining 4 discovered/3 unknown URLs and age-in-days page separately. Do not repeatedly request indexing while the stored crawl data is unchanged.
+
+
+### 12-case source canonical verification — 2026-11-19
+- Re-fetched all 12 pages listed in the Duplicate/Alternate sections: `qr-choice.html`, the six Image Resizer landing pages, the three date-calculator pages, `url-toolkit.html`, `savings.html`, and `id-card-print-studio.html`.
+- All 12 current source files have a self-referencing canonical URL on `https://infojano.com/`, matching `og:url`. Checked JSON-LD URL values on these pages; none still references `barsulkhan.github.io/InfoJano/`.
+- This confirms repository source consistency, not Google's current selected canonical. Search Console still reports GitHub Pages as canonical for the 12 cases using older crawls dated 11–17 Nov. No redirects or routing changes are justified from this evidence alone.
