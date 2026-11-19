@@ -90,7 +90,7 @@
     });
     if(!document.getElementById('ij-global-header-style')){const style=document.createElement('style');style.id='ij-global-header-style';style.textContent=css;document.head.appendChild(style);}
     if(document.querySelector('.ij-global-header'))return;
-    const header=document.createElement('header');header.className='ij-global-header'+((document.body.hasAttribute('data-ij-header-align')||document.querySelector('.ij-reference-hero,.ij-social-hero'))?' ij-global-header--hero-aligned':'');header.setAttribute('role','banner');
+    const header=document.createElement('header');header.className='ij-global-header'+((document.body.hasAttribute('data-ij-header-align')||document.querySelector('.ij-reference-hero,.ij-social-hero,.ij-loan-reference-hero'))?' ij-global-header--hero-aligned':'');header.setAttribute('role','banner');
     header.innerHTML=`
       <div class="ij-global-header-inner">
         <a class="ij-global-brand" href="${ROOT}index.html" aria-label="InfoJano home">
