@@ -210,10 +210,10 @@ main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:0 auto 38px;pad
       result.textContent='These values are too large to calculate. Please enter smaller amounts.';
       return false;
     }
-    let status='Your estimated new EMI is limited by both your selected income ratio and the cash left after regular outgoings.';
+    let status='Your estimated new EMI is limited by both your selected fixed-obligations-to-income limit and the cash left after regular outgoings.';
     if(cashAfterOutgoings<0)status='Your household expenses and existing obligations exceed the entered income. There is no remaining cash budget for a new EMI.';
     else if(cashAfterOutgoings===0)status='Your household expenses and existing obligations use all of the entered income. There is no remaining cash budget for a new EMI.';
-    else if(roomUnderRatio<=0)status='Your existing fixed obligations already meet or exceed the selected EMI-to-income limit.';
+    else if(roomUnderRatio<=0)status='Your existing fixed obligations already meet or exceed the selected fixed-obligations-to-income limit.';
     else if(roomAfterExpenses<roomUnderRatio)status='Your household budget is the limiting factor. Consider a lower EMI so you can keep a buffer for unexpected costs.';
     result.innerHTML=
       '<p class="ij-result-status">'+status+'</p>'+
