@@ -170,4 +170,44 @@ test.describe('Password Generator — desktop and mobile', () => {
     await expect(page.locator('#length')).toBeFocused();
   });
 
+  test('shows the complete header logo and navigation icons at desktop and mobile sizes', async ({ page }) => {
+    for (const width of [1440, 1024, 390, 360]) {
+      await page.setViewportSize({ width, height: 900 });
+      const header = page.locator('.ij-global-header');
+      await expect(header).toBeVisible();
+      const logo = page.locator('.ij-global-logo');
+      await expect(logo).toBeVisible();
+      expect(await logo.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+      await expect(page.locator('.ij-global-tools svg')).toBeVisible();
+      await expect(page.locator('.ij-global-home:not(.ij-global-back-home) svg')).toBeVisible();
+      await expect(page.locator('.ij-global-home:not(.ij-global-back-home)')).toBeVisible();
+    }
+  });
+
+  test('matches the expanded Hero and Related Apps rails at desktop and mobile sizes', async ({ page }) => {
+    for (const width of [1440, 1024, 768, 390, 360]) {
+      await page.setViewportSize({ width, height: 900 });
+      const metrics = await page.evaluate(() => {
+        const rect = selector => document.querySelector(selector)?.getBoundingClientRect();
+        const hero = rect('.ij-reference-hero');
+        const workspace = rect('.ij-password-workspace');
+        const related = rect('body > section[aria-labelledby="related-tools-title"]');
+        return {
+          viewport: document.documentElement.clientWidth,
+          document: document.documentElement.scrollWidth,
+          hero: hero?.width || 0,
+          workspace: workspace?.width || 0,
+          related: related?.width || 0,
+          heroLeft: hero?.left || 0,
+          relatedLeft: related?.left || 0
+        };
+      });
+      expect(metrics.document, 'horizontal overflow at '+width+'px').toBeLessThanOrEqual(metrics.viewport + 1);
+      expect(metrics.hero).toBeGreaterThan(0);
+      expect(Math.abs(metrics.hero - metrics.workspace), 'Hero/workspace width mismatch at '+width+'px').toBeLessThanOrEqual(2);
+      expect(Math.abs(metrics.hero - metrics.related), 'Hero/Related Apps width mismatch at '+width+'px').toBeLessThanOrEqual(2);
+      expect(Math.abs(metrics.heroLeft - metrics.relatedLeft), 'Hero/Related Apps left edge mismatch at '+width+'px').toBeLessThanOrEqual(2);
+    }
+  });
+
 });
