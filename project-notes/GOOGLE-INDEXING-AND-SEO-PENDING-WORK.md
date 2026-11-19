@@ -212,3 +212,13 @@ A separate live source inconsistency was confirmed in `id-card-print-studio.html
 - `url-toolkit.html` and `savings.html` currently declare infojano.com canonical in source, but Search Console's older inspection records still select the GitHub Pages host.
 - `age-in-days-calculator.html` currently declares infojano.com canonical in source; Search Console's crawl record is older and selected the GitHub Pages URL.
 - Pages deployment and post-deploy URL Inspection for commit `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6` remain pending.
+
+### Deployment and post-deployment inspection cross-check — 2026-11-19
+- GitHub Pages run `44521322334` for `main` completed with conclusion `success` at 2026-11-19 12:10 UTC. It deployed head commit `93a1904d60dc8b3b31996cac53b947a2215d1052`.
+- Verified by GitHub compare that commit `93a1904...` is three commits ahead of and includes the ID Card metadata fix `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6`.
+- Re-fetched current `id-card-print-studio.html`: canonical, `og:url`, and WebPage JSON-LD `url` all now point to `https://infojano.com/id-card-print-studio.html`. The previous GitHub-host metadata mismatch is fixed in source and included in the successful Pages deployment.
+- Ran Search Console URL Inspection for all 12 duplicate/alternate cases plus Password Generator. The API returned the stored inspection records; it did not trigger a fresh Google crawl. All 12 canonical-conflict records still show GitHub Pages as the selected canonical, with last crawls between 2026-11-11 and 2026-11-17. ID Card Studio still shows the old GitHub Pages declared/Google canonical in the stored inspection, last crawled 2026-11-11. Do not treat this as evidence that the new source metadata failed; wait for Google to recrawl.
+- Password Generator currently reports `Submitted and indexed`, with both Google-selected and user-declared canonical set to `https://infojano.com/password-generator.html` (last crawl 2026-11-15).
+- The custom-domain live URLs could not be independently fetched in this environment, so HTTP/rendered mobile verification remains open. Pages workflow success confirms the deployment job, not browser visual QA.
+- No redirects or GitHub Pages host-routing changes were made. Keep the host-consolidation issue separate from the ID Card metadata correction.
+- Next: after Google recrawls, inspect ID Card Studio and the 12 cases again; review the remaining 4 discovered/3 unknown URLs and age-in-days page separately. Do not repeatedly request indexing while the stored crawl data is unchanged.
