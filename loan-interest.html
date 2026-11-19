@@ -1,172 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics 4: InfoJano -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loan Interest Calculator – How to Calculate Loan Interest | InfoJano</title>
-<meta name="description" content="Calculate loan interest, total interest and repayment with this free loan interest calculator. Learn the simple interest formula using your loan amount, rate and time.">
+<title>Loan Interest Calculator – Calculate Simple Interest &amp; Total Repayment | InfoJano</title>
+<meta name="description" content="Use InfoJano's free loan interest calculator to estimate simple interest and total repayment. Enter your loan amount, annual interest rate and tenure for an instant result.">
 <link rel="canonical" href="https://infojano.com/loan-interest.html">
+<meta name="theme-color" content="#f2f8ff">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Loan Interest Calculator – How to Calculate Loan Interest | InfoJano">
-<meta property="og:description" content="Calculate loan interest, total interest and repayment with this free loan interest calculator. Learn the simple interest formula using your loan amount, rate and time.">
+<meta property="og:title" content="Loan Interest Calculator | InfoJano">
+<meta property="og:description" content="Calculate simple loan interest and total repayment instantly with an easy, free calculator.">
 <meta property="og:url" content="https://infojano.com/loan-interest.html">
 <meta property="og:image" content="https://infojano.com/icon-512.png">
-<meta property="og:image:alt" content="InfoJano useful online tools">
-<meta name="twitter:image" content="https://infojano.com/icon-512.png">
+<meta property="og:image:alt" content="InfoJano online calculators">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loan Interest Calculator – How to Calculate Loan Interest | InfoJano">
-<meta name="twitter:description" content="Calculate loan interest, total interest and repayment with this free loan interest calculator. Learn the simple interest formula using your loan amount, rate and time.">
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
-header{background:#10458e;color:white;text-align:center;padding:24px 15px}
-main{max-width:650px;margin:24px auto;padding:16px}
-.card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px #0001}
-label{display:block;margin-top:15px;font-weight:600}
-input{width:100%;padding:13px;margin-top:7px;border:1px solid #bbb;border-radius:8px;font-size:16px}
-button{width:100%;margin-top:20px;padding:14px;border:0;border-radius:8px;background:#1458c8;color:white;font-size:17px}
-.result{margin-top:18px;padding:15px;background:#edf3ff;border-radius:9px;line-height:1.9;overflow-wrap:anywhere}
-a{color:#1458c8}
-
-/* InfoJano animated page-entry loader */
-.ij-page-loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#f2f6ff;color:#172033;transition:opacity .28s ease,visibility .28s ease}.ij-page-loader.ij-loaded{opacity:0;visibility:hidden;pointer-events:none}.ij-loader-card{width:min(82vw,300px);padding:28px 22px;border-radius:22px;background:#fff;box-shadow:0 12px 38px #102a5018;text-align:center}.ij-loader-mark{width:66px;height:66px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#dbeafe,#eff6ff);color:#1458c8;font-size:34px;font-weight:800;animation:ij-loader-bob .85s ease-in-out infinite alternate}.ij-loader-ring{width:34px;height:34px;margin:0 auto 13px;border:4px solid #dbeafe;border-top-color:#2563eb;border-right-color:#06b6d4;border-radius:50%;animation:ij-loader-spin .8s linear infinite}.ij-loader-title{font-size:18px;font-weight:800;margin:0 0 5px}.ij-loader-subtitle{font-size:13px;color:#64748b;margin:0}.ij-loader-dots{display:flex;justify-content:center;gap:5px;margin-top:14px}.ij-loader-dots span{width:7px;height:7px;border-radius:50%;background:#2563eb;animation:ij-loader-dot .8s ease-in-out infinite alternate}.ij-loader-dots span:nth-child(2){animation-delay:.18s}.ij-loader-dots span:nth-child(3){animation-delay:.36s}@keyframes ij-loader-spin{to{transform:rotate(360deg)}}@keyframes ij-loader-bob{to{transform:translateY(-6px) scale(1.04)}}@keyframes ij-loader-dot{to{opacity:.25;transform:translateY(-4px)}}@media(prefers-reduced-motion:reduce){.ij-loader-mark,.ij-loader-ring,.ij-loader-dots span{animation:none!important}.ij-page-loader{transition:none}}
-
-/* Consistent spacing for informational cards on every tool page */
-main > section:not([style]){margin:24px 0;padding:22px;background:#fff;border:1px solid #dbe5f2;border-radius:22px;box-shadow:0 8px 24px rgba(15,23,42,.04);box-sizing:border-box;overflow-wrap:anywhere}
-main > section:not([style]) > :first-child{margin-top:0}
-main > section:not([style]) > :last-child{margin-bottom:0}
-main > section:not([style]) p{line-height:1.7;margin:14px 0}
-main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
-@media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
-
-/* InfoJano premium tool-page hero — batch 1 */
-.ij-tool-hero{width:min(calc(100% - 32px),1100px);margin:18px auto 24px;padding:clamp(22px,4vw,42px);display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:24px;align-items:center;border:1px solid #cfe2fb;border-radius:26px;background:linear-gradient(115deg,#e7f3ff 0%,#f8fbff 62%,#eaf6ff 100%);box-shadow:0 12px 30px rgba(28,80,145,.09);color:#142c50;box-sizing:border-box;overflow:hidden}
-.ij-tool-hero-kicker{display:inline-flex;align-items:center;padding:6px 12px;border:1px solid #c2dcfa;border-radius:30px;background:#fff;color:#1761b5;font-size:11px;font-weight:850;letter-spacing:.7px}
-.ij-tool-hero h1{margin:12px 0 10px;color:#102b50;font-size:clamp(27px,4vw,42px);line-height:1.12;letter-spacing:-.8px;text-align:left}
-.ij-tool-hero p{max-width:760px;margin:0;color:#455d78;font-size:clamp(14px,1.6vw,17px);line-height:1.65;text-align:left}
-.ij-tool-hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
-.ij-tool-hero-pills span{display:inline-flex;align-items:center;padding:7px 11px;border:1px solid #d4e5f8;border-radius:30px;background:rgba(255,255,255,.88);color:#315879;font-size:12px;font-weight:750}
-.ij-tool-hero-art{width:132px;height:132px;display:grid;place-items:center;justify-self:center;border:1px solid rgba(255,255,255,.75);border-radius:34px;background:linear-gradient(145deg,#16b9ed,#1454d8 68%,#2739a8);box-shadow:0 14px 28px rgba(27,93,190,.22);color:#fff;font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1px;text-shadow:0 2px 8px rgba(0,0,0,.12)}
-@media(max-width:600px){.ij-tool-hero{grid-template-columns:minmax(0,1fr) 66px;gap:10px;padding:22px 18px;margin:14px auto 20px;border-radius:22px}.ij-tool-hero h1{font-size:27px;line-height:1.15}.ij-tool-hero p{font-size:14px}.ij-tool-hero-art{width:62px;height:62px;border-radius:19px;font-size:21px}.ij-tool-hero-pills{gap:6px;margin-top:13px}.ij-tool-hero-pills span{font-size:11px;padding:6px 9px}}
-@media(prefers-reduced-motion:reduce){.ij-tool-hero,.ij-tool-hero-art{scroll-behavior:auto}}
-</style>
-  <link rel="manifest" href="/InfoJano/app-manifests/loan-interest.webmanifest">
-<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Loan Interest Calculator: Estimate Simple Interest",
-  "url": "https://infojano.com/loan-interest.html",
-  "description": "Calculate loan interest, total interest and repayment with this free loan interest calculator. Learn the simple interest formula using your loan amount, rate and time.",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
+<meta name="twitter:title" content="Loan Interest Calculator | InfoJano">
+<meta name="twitter:description" content="Calculate simple loan interest and total repayment instantly.">
+<meta name="twitter:image" content="https://infojano.com/icon-512.png">
+<link rel="manifest" href="/InfoJano/app-manifests/loan-interest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="/infojano-mark.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8D7XRGVEF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P8D7XRGVEF');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"InfoJano Loan Interest Calculator","url":"https://infojano.com/loan-interest.html","description":"A free online calculator to estimate simple interest and total repayment from principal, annual interest rate and loan tenure.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+</script>
+<style>
+:root{--ij-ink:#101d42;--ij-muted:#5b6e89;--ij-blue:#087ee8;--ij-deep:#1458c8;--ij-cyan:#23bce9;--ij-line:#d6e7f8;--ij-bg:#f2f8ff;--ij-green:#0c9c66}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ij-bg);color:var(--ij-ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}a{color:#075fc7}button,input,select{font:inherit}
+.ij-install-card{width:min(calc(100% - 28px),1200px);margin:14px auto;padding:13px 15px;display:grid;grid-template-columns:42px 1fr auto;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:22px}.ij-install-copy strong{display:block;font-size:14px}.ij-install-copy span,.ij-install-help{font-size:12px;color:#52627a}.ij-install-card button{border:0;border-radius:11px;background:#1458c8;color:#fff;padding:11px 15px;font-weight:750;cursor:pointer}.ij-install-help{grid-column:1/-1}.ij-install-help p{margin:8px 0 0}
+.ij-breadcrumb{width:min(calc(100% - 28px),1200px);margin:0 auto 10px;color:#66809c;font-size:12px}.ij-breadcrumb a{color:#1768b4;text-decoration:none}
+main{width:min(calc(100% - 28px),1200px);margin:0 auto;padding:0 0 34px}
+.ij-loan-hero{position:relative;isolation:isolate;overflow:hidden;width:100%;min-height:220px;margin:12px 0 22px;padding:30px 42px 26px;border:1px solid #cfe5fb;border-radius:22px;background:radial-gradient(ellipse at 78% 24%,#d9efff 0%,transparent 39%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%);box-shadow:0 18px 44px rgba(32,104,174,.11)}
+.ij-loan-hero:before{content:"";position:absolute;z-index:-1;inset:auto -8% -105px -8%;height:170px;background:linear-gradient(105deg,#50c6f4,#0787ee 58%,#1555db);border-radius:50% 50% 0 0/36% 36% 0 0;opacity:.88}
+.ij-hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(280px,.92fr);align-items:center;gap:28px}
+.ij-kicker{display:inline-flex;padding:6px 12px;border:1px solid #c2dcfa;border-radius:30px;background:#fff;color:#1761b5;font-size:11px;font-weight:850;letter-spacing:.65px}
+.ij-loan-hero h1{margin:12px 0 10px;color:#101b43;font-size:clamp(34px,3.7vw,52px);line-height:1.06;letter-spacing:-1.8px}.ij-loan-hero h1 span{color:#087ce5}
+.ij-loan-hero p{max-width:650px;margin:0;color:#4c607c;font-size:clamp(15px,1.25vw,18px);line-height:1.5}
+.ij-hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.ij-hero-pills span{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:1px solid #fff;border-radius:30px;background:rgba(255,255,255,.9);color:#244768;font-size:12px;font-weight:750}.ij-hero-pills b{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#0ca66c;color:white;font-size:11px}
+.ij-hero-art{position:relative;min-height:245px;display:grid;place-items:center}.ij-illustration-glow{position:absolute;width:270px;height:210px;border-radius:50%;background:#9ed8ff66;filter:blur(5px)}
+.ij-calc-visual{position:relative;z-index:2;width:148px;padding:13px 12px 15px;border:6px solid #fff;border-radius:25px;background:linear-gradient(155deg,#1b8ff2,#154bd0);box-shadow:0 17px 32px #1554b944;transform:rotate(-7deg)}
+.ij-calc-screen{min-height:54px;padding:8px 7px;border-radius:11px;background:#dff4ff;color:#102e67;text-align:right;font-size:19px;font-weight:850;letter-spacing:.6px;box-shadow:inset 0 2px 5px #103c6b24}
+.ij-calc-keys{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.ij-calc-keys i{height:21px;border-radius:6px;background:linear-gradient(#f8fcff,#c5e5ff);box-shadow:0 2px 0 #0e3d9c}.ij-calc-keys i:nth-child(3n){background:linear-gradient(#b7eaff,#72c6f7)}
+.ij-loan-paper{position:absolute;z-index:1;right:3%;top:5%;width:155px;min-height:190px;padding:17px 14px;border:7px solid #fff;border-radius:20px;background:linear-gradient(145deg,#fff,#eff7ff);box-shadow:0 15px 30px #164f9330;transform:rotate(9deg)}
+.ij-paper-title{font-size:18px;font-weight:900;color:#10275b;margin-bottom:14px}.ij-paper-row{display:flex;align-items:center;gap:8px;margin:12px 0;color:#56708e;font-size:10px;font-weight:750}.ij-check{width:19px;height:19px;flex:0 0 19px;display:grid;place-items:center;border-radius:50%;background:#0caf78;color:#fff;font-size:12px;opacity:0;transform:scale(.45)}.ij-check.on{animation:ijCheckIn .42s cubic-bezier(.2,.8,.2,1) forwards}.ij-paper-line{height:6px;flex:1;border-radius:9px;background:#d8e7f7}
+@keyframes ijCheckIn{to{opacity:1;transform:scale(1)}}
+.ij-coin{position:absolute;z-index:3;top:-25px;width:30px;height:30px;border:3px solid #ffdc70;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff2a7,#ffb321 65%,#dc8100);box-shadow:0 5px 9px #a8662355;color:#a96500;display:grid;place-items:center;font-size:15px;font-weight:900;animation:ijCoinFall var(--fall,3.5s) linear infinite;animation-delay:var(--delay,0s);left:var(--left,20%)}
+.ij-coin:after{content:"";position:absolute;inset:4px;border:1px solid #e89a18;border-radius:50%}
+@keyframes ijCoinFall{0%{transform:translateY(-12px) rotateY(0) rotate(0);opacity:0}10%{opacity:1}85%{opacity:1}100%{transform:translateY(285px) rotateY(540deg) rotate(200deg);opacity:0}}
+.ij-section-heading{display:flex;align-items:center;gap:10px;margin:0 0 13px;font-size:20px;font-weight:850;letter-spacing:-.3px;color:#14264a}.ij-section-heading:before{content:"";width:5px;height:23px;border-radius:8px;background:linear-gradient(#21b9ec,#1760d5)}
+.ij-related-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 22px}.ij-tool-link{display:flex;align-items:center;gap:11px;min-width:0;min-height:74px;padding:12px 14px;border:1px solid #d8e8f8;border-radius:16px;background:linear-gradient(145deg,#fff,#f5faff);box-shadow:0 5px 16px #1f5b970d;color:#172554;text-decoration:none;transition:transform .2s,box-shadow .2s}.ij-tool-link:hover{transform:translateY(-3px);box-shadow:0 10px 20px #1f5b9718}.ij-tool-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:#e7eaff;color:#6044db;font-size:23px;font-weight:900}.ij-tool-link:nth-child(2) .ij-tool-icon{background:#f2e8ff;color:#8050d9}.ij-tool-link:nth-child(3) .ij-tool-icon{background:#e2f8ee;color:#139b64}.ij-tool-link:nth-child(4) .ij-tool-icon{background:#fff2d9;color:#d78a16}.ij-tool-link strong{font-size:13px;line-height:1.25}.ij-tool-arrow{margin-left:auto;color:#135ec7;font-size:18px}
+.ij-calc-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}.ij-panel{min-width:0;padding:20px;border:1px solid #cfe0f8;border-radius:20px;background:linear-gradient(155deg,#fff,#fbfdff);box-shadow:0 8px 24px #1a4c7a10}.ij-panel-title{display:flex;align-items:center;gap:10px;margin:0 0 15px;padding:8px 10px;border-radius:11px;background:linear-gradient(100deg,#e8f4ff,#e9f1ff);font-size:19px;font-weight:850;color:#10234d}.ij-panel-title i{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#087ee8;color:#fff;font-style:normal}
+.ij-field{margin:14px 0}.ij-field label{display:block;margin:0 0 7px;color:#1c2b49;font-size:14px;font-weight:800}.ij-input-wrap{display:flex;align-items:center;min-width:0;border:1px solid #b9cdea;border-radius:12px;background:#fff;overflow:hidden;box-shadow:inset 0 1px 2px #102d5208}.ij-input-prefix{padding:0 13px;color:#1d3671;font-size:17px;font-weight:800}.ij-input-wrap input,.ij-input-wrap select{width:100%;min-width:0;height:45px;padding:9px 12px;border:0;outline:0;background:transparent;color:#172033;font-size:16px;font-weight:700}.ij-input-wrap:focus-within{border-color:#2689ed;box-shadow:0 0 0 3px #1685ed20}.ij-input-suffix{padding:0 13px;color:#1d3671;font-weight:800}.ij-presets{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.ij-preset{padding:6px 10px;border:1px solid #c7dcfb;border-radius:30px;background:#edf5ff;color:#1458c8;font-size:12px;font-weight:750;cursor:pointer}.ij-preset:hover,.ij-preset.active{background:#147ee8;color:#fff;border-color:#147ee8}
+.ij-tenure-row{display:grid;grid-template-columns:minmax(0,1fr) 145px;gap:10px}.ij-actions{display:grid;grid-template-columns:1.4fr .7fr;gap:10px;margin-top:17px}.ij-btn{min-height:45px;border:0;border-radius:12px;background:linear-gradient(100deg,#168df0,#0758d9);color:white;font-weight:850;cursor:pointer;box-shadow:0 5px 13px #087ee833}.ij-btn:hover{filter:brightness(1.04);transform:translateY(-1px)}.ij-btn.secondary{background:#eaf1fd;color:#1746a2;box-shadow:none;border:1px solid #d6e2f5}
+.ij-result-panel{background:linear-gradient(155deg,#fff,#f8fcff)}.ij-result-panel .ij-panel-title{background:linear-gradient(100deg,#e5f8ef,#d9f5e8)}.ij-result-panel .ij-panel-title i{background:#0ca66c;border-radius:50%}
+.ij-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:4px 0 12px}.ij-result-box{min-width:0;padding:16px 10px;border-radius:14px;background:linear-gradient(145deg,#f0f5ff,#e8f0ff);text-align:center}.ij-result-box:nth-child(2){background:linear-gradient(145deg,#eaf9f1,#def5e8)}.ij-result-emoji{font-size:23px}.ij-result-label{font-size:13px;color:#344b70}.ij-result-value{margin-top:3px;color:#064ed2;font-size:clamp(20px,2.2vw,29px);font-weight:900;letter-spacing:-.7px;overflow-wrap:anywhere}.ij-result-box:nth-child(2) .ij-result-value{color:#07854e}.ij-breakdown{display:grid;gap:0}.ij-breakdown-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 5px;border-bottom:1px solid #e7edf6;font-size:13px}.ij-breakdown-row:last-child{border-bottom:0}.ij-breakdown-row strong{text-align:right;overflow-wrap:anywhere}.ij-method-pill{padding:5px 10px;border-radius:10px;background:#eeeaff;color:#5843c6;font-weight:800}
+.ij-info-band{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;margin:18px 0;padding:18px 20px;border:1px solid #d4e5fa;border-radius:18px;background:linear-gradient(110deg,#f5faff,#e6f2ff);}.ij-formula{display:flex;flex-direction:column;justify-content:center;gap:10px}.ij-formula h2,.ij-where h3{margin:0;font-size:18px}.ij-formula-equation{padding:15px;border-radius:14px;background:#fff4d7;text-align:center;font-size:25px;font-weight:900;color:#172033}.ij-formula-equation em{font-style:normal}.ij-where{padding-left:20px;border-left:1px solid #a9c9f4}.ij-where ul{margin:8px 0 0;padding-left:20px}.ij-where li{margin:4px 0;font-size:14px}
+.ij-content-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin:18px 0}.ij-content-card{padding:18px;border:1px solid #d6e5f8;border-radius:18px;background:#fff;box-shadow:0 6px 18px #1f5b970b}.ij-content-card h2{margin:0 0 12px;font-size:19px}.ij-content-card p,.ij-content-card li{color:#52647c;font-size:14px;line-height:1.7}.ij-content-card ul{padding-left:20px;margin:8px 0}.ij-related-list{list-style:none;padding:0!important;margin:0!important}.ij-related-list li{padding:8px 0;border-bottom:1px solid #edf1f7}.ij-related-list li:last-child{border:0}.ij-related-list a{display:flex;justify-content:space-between;gap:10px;text-decoration:none;font-weight:750;color:#1458c8}
+.ij-faq{margin:18px 0;padding:18px;border:1px solid #d6e5f8;border-radius:18px;background:#fff;box-shadow:0 6px 18px #1f5b970b}.ij-faq h2{margin:0 0 12px;font-size:20px}.ij-faq details{padding:12px 4px;border-top:1px solid #e4ecf7}.ij-faq summary{cursor:pointer;font-weight:800;color:#172033}.ij-faq details p{margin:8px 0 0;color:#52647c;font-size:14px;line-height:1.7}.ij-disclaimer{padding:12px 14px;border-radius:12px;background:#f3f7fd;color:#60718a;font-size:12px;line-height:1.6}
+footer{text-align:center;padding:22px;color:#718096;font-size:12px}
+@media(min-width:1001px){main{width:calc(100% - 64px);max-width:1600px;padding:0 24px 36px}.ij-breadcrumb{width:calc(100% - 64px);max-width:1600px}.ij-loan-hero{padding:30px 42px 26px;margin:12px 0 22px}.ij-hero-grid{min-height:220px}.ij-related-strip{gap:16px}.ij-calc-layout{gap:20px}.ij-panel{padding:22px}}
+@media(min-width:1500px){.ij-loan-hero{padding:34px 50px 28px}.ij-hero-art{min-height:265px}}
+@media(max-width:850px){.ij-related-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.ij-content-grid{grid-template-columns:1fr}.ij-calc-layout{grid-template-columns:1fr}.ij-hero-grid{grid-template-columns:minmax(0,1fr) 280px}.ij-loan-paper{right:0}.ij-info-band{grid-template-columns:1fr}.ij-where{padding:12px 0 0;border-left:0;border-top:1px solid #a9c9f4}}
+@media(max-width:600px){.ij-install-card{width:calc(100% - 20px);grid-template-columns:40px 1fr}.ij-install-card button{grid-column:1/-1}.ij-breadcrumb{width:calc(100% - 20px)}main{width:calc(100% - 20px);padding-bottom:26px}.ij-loan-hero{margin:12px 0 18px;padding:23px 17px 29px;border-radius:22px}.ij-hero-grid{grid-template-columns:1fr;gap:6px}.ij-loan-hero h1{font-size:34px;letter-spacing:-1.2px}.ij-loan-hero p{font-size:14px}.ij-hero-pills{gap:6px}.ij-hero-pills span{padding:7px 9px;font-size:11px}.ij-hero-art{min-height:210px;margin-top:4px}.ij-calc-visual{width:126px;border-width:5px}.ij-calc-screen{min-height:46px;font-size:17px}.ij-calc-keys i{height:17px}.ij-loan-paper{right:5%;top:2%;width:130px;min-height:165px;padding:12px 10px;border-width:6px}.ij-paper-title{font-size:15px;margin-bottom:8px}.ij-paper-row{margin:9px 0}.ij-coin{width:25px;height:25px}.ij-related-strip{gap:8px}.ij-tool-link{min-height:66px;padding:9px}.ij-tool-icon{width:35px;height:35px;flex-basis:35px;font-size:19px}.ij-tool-link strong{font-size:12px}.ij-panel{padding:15px;border-radius:17px}.ij-panel-title{font-size:17px}.ij-tenure-row{grid-template-columns:minmax(0,1fr) 112px}.ij-actions{grid-template-columns:1fr 105px}.ij-result-value{font-size:22px}.ij-info-band,.ij-content-card,.ij-faq{padding:15px}.ij-section-heading{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
-<section class="ij-tool-hero" aria-labelledby="ij-tool-hero-title"><div class="ij-tool-hero-copy"><span class="ij-tool-hero-kicker">FREE LOAN INTEREST TOOL</span><h1 id="ij-tool-hero-title">Loan Interest Calculator</h1><p>Estimate simple interest, total interest and repayment from your loan amount, annual rate and loan period.</p><div class="ij-tool-hero-pills"><span>✓ Simple interest formula</span><span>✓ Clear repayment estimate</span><span>✓ Mobile friendly</span></div></div><div class="ij-tool-hero-art" aria-hidden="true">%</div></section>
+<section class="ij-install-card" id="ij-install-card" aria-label="Install InfoJano"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>.</p></details></section>
+<nav class="ij-breadcrumb" aria-label="Breadcrumb"><a href="index.html">InfoJano Home</a> › <a href="index.html#calculators">Calculators</a> › Loan Interest Calculator</nav>
 <main>
-<div class="card">
-
-<h2>Calculate Loan Interest</h2>
-<label for="principal">Loan Amount</label>
-<input id="principal" type="number" min="0" step="any" placeholder="Example: 50000">
-<label for="rate">Annual Interest Rate (%)</label>
-<input id="rate" type="number" min="0" step="any" placeholder="Example: 8">
-<label for="years">Loan Period (Years)</label>
-<input id="years" type="number" min="0" step="any" placeholder="Example: 2">
-<button onclick="calculate()">Calculate Interest</button>
-<div id="result" class="result" aria-live="polite">Enter your loan details.</div>
+<section class="ij-loan-hero" aria-labelledby="ij-hero-title">
+<div class="ij-hero-grid"><div><span class="ij-kicker">FREE FINANCIAL CALCULATOR</span><h1 id="ij-hero-title">Loan Interest <span>Calculator</span></h1><p>Calculate simple loan interest and total repayment in seconds. Enter your principal, annual interest rate and loan tenure to get a clear estimate before you plan your borrowing.</p><div class="ij-hero-pills"><span><b>✓</b> Quick calculation</span><span><b>✓</b> Simple interest formula</span><span><b>✓</b> Works on all devices</span><span><b>✓</b> Free to use</span></div></div>
+<div class="ij-hero-art" aria-label="Animated calculator, falling coins and verified loan document">
+<div class="ij-illustration-glow"></div><div class="ij-loan-paper"><div class="ij-paper-title">Loan Details</div><div class="ij-paper-row"><span class="ij-check">✓</span><span class="ij-paper-line"></span></div><div class="ij-paper-row"><span class="ij-check">✓</span><span class="ij-paper-line"></span></div><div class="ij-paper-row"><span class="ij-check">✓</span><span class="ij-paper-line"></span></div><div class="ij-paper-row"><span class="ij-check">✓</span><span class="ij-paper-line"></span></div></div>
+<div class="ij-calc-visual"><div class="ij-calc-screen" id="ij-typing-display" aria-label="Calculator animation">1 + 1 = 2</div><div class="ij-calc-keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<span class="ij-coin" style="--left:9%;--delay:-.2s;--fall:3.8s">₹</span><span class="ij-coin" style="--left:32%;--delay:-2.1s;--fall:4.2s">₹</span><span class="ij-coin" style="--left:72%;--delay:-1.1s;--fall:3.5s">₹</span><span class="ij-coin" style="--left:91%;--delay:-3s;--fall:4.5s">₹</span>
+</div></div></section>
+<section aria-labelledby="ij-related-title"><h2 class="ij-section-heading" id="ij-related-title">Explore Related Financial Tools</h2><div class="ij-related-strip">
+<a class="ij-tool-link" href="emi.html"><span class="ij-tool-icon">▦</span><strong>EMI Calculator</strong><span class="ij-tool-arrow">→</span></a>
+<a class="ij-tool-link" href="loan-eligibility.html"><span class="ij-tool-icon">％</span><strong>Loan Eligibility</strong><span class="ij-tool-arrow">→</span></a>
+<a class="ij-tool-link" href="savings.html"><span class="ij-tool-icon">▥</span><strong>Savings Calculator</strong><span class="ij-tool-arrow">→</span></a>
+<a class="ij-tool-link" href="percentage.html"><span class="ij-tool-icon">％</span><strong>Percentage Calculator</strong><span class="ij-tool-arrow">→</span></a>
+</div></section>
+<section class="ij-calc-layout" aria-label="Loan interest calculator">
+<div class="ij-panel"><h2 class="ij-panel-title"><i>▦</i> Calculate Loan Interest</h2>
+<div class="ij-field"><label for="principal">Loan Amount (Principal)</label><div class="ij-input-wrap"><span class="ij-input-prefix">₹</span><input id="principal" type="number" min="0" step="any" inputmode="decimal" placeholder="Example: 500000" value="500000"></div><div class="ij-presets"><button class="ij-preset" type="button" data-amount="100000">₹1,00,000</button><button class="ij-preset" type="button" data-amount="200000">₹2,00,000</button><button class="ij-preset active" type="button" data-amount="500000">₹5,00,000</button><button class="ij-preset" type="button" data-amount="1000000">₹10,00,000</button></div></div>
+<div class="ij-field"><label for="rate">Interest Rate (Annual)</label><div class="ij-input-wrap"><span class="ij-input-prefix">％</span><input id="rate" type="number" min="0" step="any" inputmode="decimal" placeholder="Example: 12" value="12"><span class="ij-input-suffix">%</span></div></div>
+<div class="ij-field"><label for="years">Loan Tenure</label><div class="ij-tenure-row"><div class="ij-input-wrap"><span class="ij-input-prefix">◷</span><input id="years" type="number" min="0" step="any" inputmode="decimal" placeholder="Example: 3" value="3"></div><div class="ij-input-wrap"><select id="tenure-unit" aria-label="Loan tenure unit"><option value="years" selected>Years</option><option value="months">Months</option></select></div></div></div>
+<div class="ij-actions"><button class="ij-btn" type="button" id="calculate-button">▦ &nbsp; Calculate Interest</button><button class="ij-btn secondary" type="button" id="reset-button">↶ &nbsp; Reset</button></div>
+<p class="ij-disclaimer" style="margin:13px 0 0">This tool estimates simple interest on the original principal. It is not an EMI or reducing-balance loan calculator.</p>
 </div>
-<section>
-<h2>What Is Simple Interest?</h2>
-<p>Simple interest is calculated on the original principal amount for the chosen period.</p>
-<p><strong>Formula:</strong> Simple Interest = Principal × Annual Rate × Time ÷ 100.</p>
-<p>This calculator estimates simple interest, not reducing-balance or compound interest.</p>
+<div class="ij-panel ij-result-panel"><h2 class="ij-panel-title"><i>✓</i> Calculation Result</h2><div class="ij-result-grid"><div class="ij-result-box"><div class="ij-result-emoji">🪙</div><div class="ij-result-label">Total Interest</div><div class="ij-result-value" id="interest-result">₹1,80,000</div></div><div class="ij-result-box"><div class="ij-result-emoji">💰</div><div class="ij-result-label">Total Repayment</div><div class="ij-result-value" id="total-result">₹6,80,000</div></div></div>
+<div class="ij-breakdown"><div class="ij-breakdown-row"><span>Loan Amount (Principal)</span><strong id="principal-result">₹5,00,000</strong></div><div class="ij-breakdown-row"><span>Interest Rate (Annual)</span><strong id="rate-result">12%</strong></div><div class="ij-breakdown-row"><span>Loan Tenure</span><strong id="tenure-result">3 Years</strong></div><div class="ij-breakdown-row"><span>Interest Method</span><span class="ij-method-pill">Simple Interest</span></div></div><p id="result-status" class="ij-disclaimer" style="margin:12px 0 0" aria-live="polite">Illustrative estimate based on the values entered. Actual loan terms and charges may differ.</p>
+</div></section>
+<section class="ij-info-band" aria-labelledby="ij-formula-title"><div class="ij-formula"><h2 id="ij-formula-title">ⓘ Simple Interest Formula</h2><div class="ij-formula-equation"><em>SI</em> = (P × R × T) / 100</div></div><div class="ij-where"><h3>Where,</h3><ul><li><strong>SI</strong> = Simple Interest amount</li><li><strong>P</strong> = Principal (loan amount)</li><li><strong>R</strong> = Annual interest rate (%)</li><li><strong>T</strong> = Time in years</li></ul></div></section>
+<section class="ij-content-grid"><article class="ij-content-card"><h2>Key Points About Loan Interest</h2><ul><li>This calculator uses the simple interest formula on the original principal.</li><li>Interest is calculated from the annual rate and the selected time period.</li><li>Total repayment is the original principal plus estimated simple interest.</li><li>Many bank loans use reducing-balance interest with monthly EMIs, which is different.</li><li>Check processing fees, insurance, penalties and other charges in your loan agreement.</li></ul><p>Need to estimate your monthly instalment? Use our <a href="emi.html">EMI Calculator</a> for a reducing-balance EMI estimate.</p></article>
+<aside class="ij-content-card"><h2>Related Tools</h2><ul class="ij-related-list"><li><a href="emi.html">EMI Calculator <span>→</span></a></li><li><a href="loan-eligibility.html">Loan Eligibility Calculator <span>→</span></a></li><li><a href="savings.html">Savings Calculator <span>→</span></a></li><li><a href="percentage.html">Percentage Calculator <span>→</span></a></li></ul></aside></section>
+<section class="ij-content-card" aria-labelledby="ij-example-title"><h2 id="ij-example-title">Simple Interest Calculation Example</h2><p>Suppose you borrow ₹1,00,000 at an annual simple interest rate of 10% for 2 years.</p><ul><li>Interest = ₹1,00,000 × 10 × 2 ÷ 100 = ₹20,000</li><li>Total repayment = ₹1,00,000 + ₹20,000 = ₹1,20,000</li></ul><p>Use the calculator above with your own amount, rate and tenure to get an estimate. If your lender calculates interest on a reducing balance, use the <a href="emi.html">EMI Calculator</a> instead.</p></section>
+<section class="ij-faq" id="ij-seo-faq" aria-labelledby="ij-faq-title"><h2 id="ij-faq-title">Frequently Asked Questions (FAQ)</h2>
+<details><summary>What is simple interest on a loan?</summary><p>Simple interest is calculated only on the original principal amount for the selected period. It does not add previously accrued interest to the principal.</p></details>
+<details><summary>How do I calculate interest on a loan?</summary><p>For simple interest, multiply the principal by the annual interest rate and the time in years, then divide by 100. The formula is SI = (P × R × T) ÷ 100.</p></details>
+<details><summary>Is simple interest the same as EMI interest?</summary><p>No. Many EMI loans use a reducing-balance method. Interest is calculated on the outstanding principal, which generally decreases as instalments are paid.</p></details>
+<details><summary>Can I calculate loan interest per month?</summary><p>This calculator accepts tenure in years or months. When you select months, it converts the period into years before applying the simple interest formula.</p></details>
+<details><summary>Does this calculator include processing fees?</summary><p>No. It estimates simple interest and principal repayment only. Check your lender's loan agreement for processing fees, taxes, insurance and other charges.</p></details>
+<details><summary>Which calculator should I use for monthly loan instalments?</summary><p>Use the InfoJano <a href="emi.html">EMI Calculator</a> to estimate monthly instalments, total interest and repayment for a reducing-balance loan.</p></details>
 </section>
-<section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">Simple Interest Example</h2><p>For a principal of ₹10,000 at 10% simple interest per year for 2 years, interest is ₹10,000 × 0.10 × 2 = ₹2,000. Total principal plus interest is ₹12,000, before fees or other terms.</p><h3>Check the loan terms</h3><ul><li>Confirm whether the quoted rate is annual or monthly.</li><li>Simple interest differs from reducing-balance interest used in many EMI loans.</li><li>Review fees, repayment dates and whether the rate can change.</li></ul><p>Related tools: <a href="emi.html">EMI Calculator</a> and <a href="loan-eligibility.html">Loan Affordability Calculator</a>.</p></section>
-
-<section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
-<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Loan Interest FAQs</h2>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">How is simple interest calculated?</summary><p style="margin:8px 0 0;color:#536174">Simple interest is principal multiplied by annual rate and time, with rate and time expressed in compatible units.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Is simple interest the same as EMI interest?</summary><p style="margin:8px 0 0;color:#536174">No. EMI loans commonly use a reducing-balance method, so the interest calculation can differ.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">What should I check before borrowing?</summary><p style="margin:8px 0 0;color:#536174">Confirm the lender’s rate, fees, repayment schedule, and whether the rate is fixed or variable.</p></details>
-<p style="margin:12px 0 0;font-size:14px">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="emi.html">EMI Calculator</a></p>
-</section>
-<p><a href="index.html">← Back to InfoJano Home</a></p>
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="emi.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 9h10M7 13h3m3 0h4m-10 4h10"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">EMI Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate monthly payments and total interest.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="loan-eligibility.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18L12 3zM5 10v9m4-9v9m6-9v9m4-9v9M3 21h18"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Loan Affordability Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate an affordable loan payment.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="savings.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 10H5z"/><path d="M7 10V7a5 5 0 0 1 10 0v3M9 15h6"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Savings Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate future savings.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="discount.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13 11 22 2 13V4h9z"/><circle cx="7" cy="9" r="1"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Discount Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate discounts and final prices.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
-</section>
-<section class="ij-practical-guide" aria-labelledby="ij-loan-search-questions" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%">
-<h2 id="ij-loan-search-questions">How to Calculate Interest on a Loan</h2>
-<p>To calculate loan interest, enter the original loan amount, annual interest rate and loan period. The simple interest formula is principal × annual rate × time ÷ 100. This explains how to calculate interest on a loan, how to work out interest on a loan, and the calculation of loan interest for a simple-interest estimate.</p>
-<p>If you are working out interest on a loan, figuring interest on a loan, or calculating interest on a loan, first check whether the lender uses simple interest, compound interest or a reducing balance. This page estimates simple interest only; it does not calculate an EMI or reducing-balance schedule.</p>
-<p>How do I calculate interest on a loan? Use the loan interest calculation formula: principal × annual rate × time ÷ 100 for simple interest. If you need to figure interest on a loan, confirm the rate period and interest method in your loan agreement before using the estimate.</p>
-</section>
+<p class="ij-disclaimer">Disclaimer: This calculator is for educational and planning purposes only. It does not provide a loan offer, approval, financial advice or a lender quote. Always verify the applicable interest method, rate and charges with your lender.</p>
+<p style="margin:18px 0"><a href="index.html">← Back to InfoJano Home</a></p>
 </main>
-<footer style="text-align:center;padding:20px">© InfoJano</footer>
+<footer>© InfoJano</footer>
 <script>
-function calculate(){
-const pInput=document.getElementById('principal').value;
-const rInput=document.getElementById('rate').value;
-const tInput=document.getElementById('years').value;
-const out=document.getElementById('result');
-const p=Number(pInput),r=Number(rInput),t=Number(tInput);
-if(pInput===''||rInput===''||tInput===''||!Number.isFinite(p)||!Number.isFinite(r)||!Number.isFinite(t)||p<0||r<0||t<0){
-out.textContent='Please enter valid non-negative values.';
-return;
-}
-const interest=p*r*t/100;
-const total=p+interest;
-const money=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
-out.innerHTML='Simple Interest: <strong>'+money(interest)+'</strong><br>Total Repayment: <strong>'+money(total)+'</strong><br>Original Loan: '+money(p);
-}
+(function(){
+ const $=id=>document.getElementById(id);
+ const amount=$('principal'),rate=$('rate'),tenure=$('years'),unit=$('tenure-unit');
+ const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(n);
+ const number=n=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:2}).format(n);
+ function calculate(){
+  const p=Number(amount.value),r=Number(rate.value),t=Number(tenure.value);
+  if(amount.value===''||rate.value===''||tenure.value===''||!Number.isFinite(p)||!Number.isFinite(r)||!Number.isFinite(t)||p<0||r<0||t<0){
+   $('result-status').textContent='Please enter valid non-negative values in all three fields.';return;
+  }
+  const years=unit.value==='months'?t/12:t;
+  const interest=p*r*years/100,total=p+interest;
+  if(!Number.isFinite(interest)||!Number.isFinite(total)){ $('result-status').textContent='The entered values are too large. Please use smaller values.';return; }
+  $('interest-result').textContent=money(interest);
+  $('total-result').textContent=money(total);
+  $('principal-result').textContent=money(p);
+  $('rate-result').textContent=number(r)+'%';
+  $('tenure-result').textContent=number(t)+' '+(unit.value==='months'?'Months':'Years');
+  $('result-status').textContent='Updated estimate: simple interest is calculated on the original principal for '+number(years)+' year(s).';
+ }
+ $('calculate-button').addEventListener('click',calculate);
+ $('reset-button').addEventListener('click',function(){amount.value='500000';rate.value='12';tenure.value='3';unit.value='years';document.querySelectorAll('.ij-preset').forEach(b=>b.classList.toggle('active',b.dataset.amount==='500000'));calculate();});
+ document.querySelectorAll('.ij-preset').forEach(b=>b.addEventListener('click',function(){amount.value=b.dataset.amount;document.querySelectorAll('.ij-preset').forEach(x=>x.classList.toggle('active',x===b));calculate();}));
+ [amount,rate,tenure,unit].forEach(el=>el.addEventListener('input',calculate));
+ unit.addEventListener('change',calculate);
+ calculate();
+ // Type-on calculator display: a short arithmetic loop that repeats without blocking the page.
+ const display=$('ij-typing-display'),reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(display&&!reduce){const frames=['1','1 +','1 + 1','1 + 1 =','1 + 1 = 2','5 × 2','5 × 2 =','5 × 2 = 10'];let i=0;function type(){display.textContent=frames[i];i=(i+1)%frames.length;setTimeout(type,i===0?1100:440)}type();}
+ // Reveal the document checks one by one, then repeat gently.
+ const checks=[...document.querySelectorAll('.ij-check')];
+ if(!reduce&&checks.length){let timer;function playChecks(){checks.forEach(c=>c.classList.remove('on'));checks.forEach((c,i)=>setTimeout(()=>c.classList.add('on'),360+i*520));timer=setTimeout(playChecks,5200)}playChecks();}
+})();
 </script>
-
-<script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
 <script src="/InfoJano/download-progress.js" defer></script>
 <script src="/InfoJano/install.js" defer></script>
-
-
-
-
 <script src="/InfoJano/site-header.js" defer></script>
 </body>
 </html>
