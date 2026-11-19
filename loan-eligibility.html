@@ -315,6 +315,163 @@ body[data-ij-header-align="hero"] .ij-global-divider,body[data-ij-header-align="
  main > section.ij-loan-reference-hero .ij-summary-line{font-size:8px}
  main > section.ij-loan-reference-hero .ij-summary-line b{font-size:9px}
 }
+
+/* Balanced hero pair: equal footprint, matched card height and clear separation. */
+@media(min-width:761px){
+ main > section.ij-loan-reference-hero .ij-loan-hero-art{min-height:320px}
+ main > section.ij-loan-reference-hero .ij-hero-calculator,
+ main > section.ij-loan-reference-hero .ij-hero-summary{
+   position:absolute;top:50%;width:46%;height:258px;max-width:270px;margin:0;
+   transform:translateY(-50%);box-sizing:border-box
+ }
+ main > section.ij-loan-reference-hero .ij-hero-calculator{
+   left:0;right:auto;z-index:4;padding:10px;border-radius:19px;
+   display:flex;flex-direction:column;justify-content:space-between
+ }
+ main > section.ij-loan-reference-hero .ij-hero-summary{
+   right:0;left:auto;z-index:2;padding:11px;border-radius:19px;
+   display:flex;flex-direction:column;justify-content:space-between
+ }
+ main > section.ij-loan-reference-hero .ij-calc-screen{height:65px;min-height:65px;padding:8px}
+ main > section.ij-loan-reference-hero .ij-calc-screen strong{font-size:21px}
+ main > section.ij-loan-reference-hero .ij-calc-keys{flex:1;grid-auto-rows:minmax(0,1fr);gap:4px;margin-top:7px}
+ main > section.ij-loan-reference-hero .ij-calc-keys i{height:auto;min-height:0;font-size:11px}
+ main > section.ij-loan-reference-hero .ij-summary-heading{padding:7px 8px;margin:0 0 3px}
+ main > section.ij-loan-reference-hero .ij-summary-wallet{width:31px;height:31px;font-size:20px}
+ main > section.ij-loan-reference-hero .ij-summary-heading small{font-size:8px}
+ main > section.ij-loan-reference-hero .ij-summary-heading strong{font-size:13px}
+ main > section.ij-loan-reference-hero .ij-summary-line{padding:7px 3px;font-size:10px}
+ main > section.ij-loan-reference-hero .ij-summary-line i{font-size:14px}
+ main > section.ij-loan-reference-hero .ij-summary-line b{font-size:12px}
+ main > section.ij-loan-reference-hero .ij-safe-budget{margin:5px 0 0;padding:8px}
+ main > section.ij-loan-reference-hero .ij-safe-budget div span{width:23px;height:23px;font-size:15px}
+ main > section.ij-loan-reference-hero .ij-safe-budget label{font-size:11px}
+ main > section.ij-loan-reference-hero .ij-safe-budget strong{margin:0 0 0 30px;font-size:22px}
+ main > section.ij-loan-reference-hero .ij-safe-budget small{margin:2px 0 0 30px;font-size:7px}
+}
+@media(max-width:760px){
+ main > section.ij-loan-reference-hero .ij-loan-hero-art{min-height:250px}
+ main > section.ij-loan-reference-hero .ij-hero-calculator,
+ main > section.ij-loan-reference-hero .ij-hero-summary{
+   position:absolute;top:50%;width:47%;height:218px;max-width:220px;margin:0;
+   transform:translateY(-50%);box-sizing:border-box
+ }
+ main > section.ij-loan-reference-hero .ij-hero-calculator{
+   left:0;right:auto;z-index:4;padding:7px;border-radius:15px;
+   display:flex;flex-direction:column;justify-content:space-between
+ }
+ main > section.ij-loan-reference-hero .ij-hero-summary{
+   right:0;left:auto;z-index:2;padding:7px;border-radius:15px;
+   display:flex;flex-direction:column;justify-content:space-between
+ }
+ main > section.ij-loan-reference-hero .ij-calc-screen{height:54px;min-height:54px;padding:6px}
+ main > section.ij-loan-reference-hero .ij-calc-screen small{font-size:6px}
+ main > section.ij-loan-reference-hero .ij-calc-screen strong{font-size:16px}
+ main > section.ij-loan-reference-hero .ij-calc-screen span{font-size:6px}
+ main > section.ij-loan-reference-hero .ij-calc-keys{flex:1;grid-auto-rows:minmax(0,1fr);gap:3px;margin-top:6px}
+ main > section.ij-loan-reference-hero .ij-calc-keys i{height:auto;min-height:0;font-size:8px;border-radius:5px}
+ main > section.ij-loan-reference-hero .ij-summary-heading{gap:4px;padding:5px;margin:0 0 3px}
+ main > section.ij-loan-reference-hero .ij-summary-wallet{width:21px;height:21px;font-size:14px}
+ main > section.ij-loan-reference-hero .ij-summary-heading small{font-size:6px}
+ main > section.ij-loan-reference-hero .ij-summary-heading strong{font-size:10px}
+ main > section.ij-loan-reference-hero .ij-summary-line{gap:2px;padding:5px 1px;font-size:8px}
+ main > section.ij-loan-reference-hero .ij-summary-line i{font-size:11px}
+ main > section.ij-loan-reference-hero .ij-summary-line b{font-size:9px}
+ main > section.ij-loan-reference-hero .ij-safe-budget{margin:4px 0 0;padding:6px}
+ main > section.ij-loan-reference-hero .ij-safe-budget div span{width:18px;height:18px;font-size:12px}
+ main > section.ij-loan-reference-hero .ij-safe-budget label{font-size:8px}
+ main > section.ij-loan-reference-hero .ij-safe-budget strong{margin:1px 0 0 23px;font-size:17px}
+ main > section.ij-loan-reference-hero .ij-safe-budget small{margin:1px 0 0 23px;font-size:6px}
+ main > section.ij-loan-reference-hero .ij-hero-calculating{right:0;bottom:-4px;font-size:7px;padding:5px 7px}
+}
+@media(max-width:380px){
+ main > section.ij-loan-reference-hero .ij-loan-hero-art{min-height:232px}
+ main > section.ij-loan-reference-hero .ij-hero-calculator,
+ main > section.ij-loan-reference-hero .ij-hero-summary{height:204px;width:47%}
+}
+
+/* Premium finish for the explanatory content below the calculator. */
+.ij-content-card,.ij-faq,.ij-related-tools{
+ position:relative;isolation:isolate;overflow:hidden;
+ border:1px solid #dce8f5!important;border-radius:22px!important;
+ background:linear-gradient(145deg,#fff 0%,#fbfdff 68%,#f3f8ff 100%)!important;
+ box-shadow:0 10px 30px rgba(25,65,112,.055),0 2px 7px rgba(25,65,112,.025)!important;
+ transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease
+}
+.ij-content-card:before,.ij-faq:before,.ij-related-tools:before{
+ content:"";position:absolute;z-index:-1;left:0;right:0;top:0;height:3px;
+ background:linear-gradient(90deg,#20b9e8,#3479e7 55%,#7567df)
+}
+.ij-content-card:hover,.ij-faq:hover,.ij-related-tools:hover{
+ border-color:#c8dcf1!important;box-shadow:0 14px 34px rgba(25,65,112,.085)!important
+}
+.ij-content-card h2,.ij-faq h2,.ij-related-tools h2{
+ color:#142c50!important;font-size:clamp(20px,2.2vw,24px)!important;
+ font-weight:850;letter-spacing:-.45px;line-height:1.25;margin-bottom:13px!important
+}
+.ij-content-card>p,.ij-faq details p{color:#52647b;line-height:1.8}
+.ij-formula-card{
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+ gap:0 14px;padding:17px!important;border:1px solid #dce9f7!important;
+ border-radius:17px!important;
+ background:linear-gradient(135deg,#f5faff,#fff 72%)!important
+}
+.ij-formula-card h3{
+ align-self:end;margin:7px 0 5px!important;padding-left:11px;
+ border-left:3px solid #2997df;color:#29496f;font-size:13px!important;
+ line-height:1.45
+}
+.ij-formula-card p{
+ margin:0!important;padding:8px 11px 10px;border-radius:10px;
+ background:#fff;border:1px solid #e6eef8;color:#14569a!important;
+ font-size:13px;line-height:1.55
+}
+.ij-content-card ul{padding-left:22px;color:#52647b}
+.ij-content-card li{padding:5px 0;line-height:1.65}
+.ij-content-card a,.ij-faq a{color:#1769c2;font-weight:750;text-decoration:none}
+.ij-content-card a:hover,.ij-faq a:hover{text-decoration:underline}
+.ij-faq details{
+ margin:0;padding:15px 2px;border-top:1px solid #e8eff7
+}
+.ij-faq summary{
+ position:relative;padding:2px 30px 2px 2px;color:#263f60;
+ font-weight:750;line-height:1.5;cursor:pointer;list-style:none
+}
+.ij-faq summary::-webkit-details-marker{display:none}
+.ij-faq summary:after{
+ content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);
+ width:23px;height:23px;display:grid;place-items:center;border-radius:50%;
+ background:#eaf4ff;color:#1769c2;font-size:17px;font-weight:700
+}
+.ij-faq details[open] summary:after{content:"−";background:#dff4ff}
+.ij-faq details p{padding:0 2px 2px}
+.ij-related-grid a{
+ position:relative;min-height:150px;padding:19px!important;
+ border:1px solid #dce8f5!important;border-radius:17px!important;
+ background:linear-gradient(145deg,#fff,#f6faff)!important;
+ box-shadow:0 5px 15px rgba(30,75,130,.045)!important;
+ transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease
+}
+.ij-related-grid a:hover{
+ transform:translateY(-3px);border-color:#a9ccef!important;
+ box-shadow:0 12px 24px rgba(30,75,130,.1)!important
+}
+.ij-related-grid strong{color:#17385e;font-size:16px!important}
+.ij-related-grid span{font-size:13px!important;line-height:1.65}
+.ij-related-grid b{font-size:12px!important;color:#1769c2!important}
+.ij-back-link{padding:8px 2px;text-align:center}
+.ij-back-link a{color:#47719e;font-weight:750;text-decoration:none}
+.ij-back-link a:hover{color:#1769c2}
+@media(max-width:760px){
+ .ij-formula-card{grid-template-columns:minmax(0,1fr);gap:0;padding:13px!important}
+ .ij-formula-card h3{margin-top:10px!important}
+ .ij-content-card h2,.ij-faq h2,.ij-related-tools h2{font-size:20px!important}
+ .ij-related-grid a{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .ij-content-card,.ij-faq,.ij-related-tools,.ij-related-grid a{transition:none!important}
+ .ij-content-card:hover,.ij-faq:hover,.ij-related-tools:hover,.ij-related-grid a:hover{transform:none}
+}
 </style>
   
 
