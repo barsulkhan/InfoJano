@@ -158,3 +158,51 @@ A URL appearing in the sitemap means it is submitted/discoverable via the sitema
 - Do not treat a zero-click/zero-impression page as not indexed.
 - Use Google Search Console URL Inspection as the source of truth for index status.
 - Preserve the approved Password Generator Header and Hero exactly; no changes to either.
+
+
+## Google Search Console inspection — 2026-11-19
+- Connected property: `sc-domain:infojano.com` (siteOwner). All 108 URLs from repository sitemap.xml were inspected via Search Console URL Inspection in 11 batches.
+- **88 / 108** report `Submitted and indexed`.
+- **20 / 108** have other states:
+
+### Discovered — currently not indexed (4)
+- `https://infojano.com/pdf-to-jpg.html`
+- `https://infojano.com/google-maps-location-qr-code-generator.html`
+- `https://infojano.com/percentage-decrease-calculator.html`
+- `https://infojano.com/cheque-amount-in-words.html`
+
+### URL is unknown to Google (3)
+- `https://infojano.com/word-converter.html`
+- `https://infojano.com/bmi-health-guide.html`
+- `https://infojano.com/elapsed-time-calculator-guide.html`
+
+### Crawled — currently not indexed (1)
+- `https://infojano.com/age-in-days-calculator.html`
+
+### Duplicate — Google chose a different canonical (9)
+Google selected the GitHub Pages URL under `https://barsulkhan.github.io/InfoJano/` instead of the InfoJano custom-domain URL:
+- `https://infojano.com/qr-choice.html`
+- `https://infojano.com/resize-image-to-pixels.html`
+- `https://infojano.com/resize-image-by-percentage.html`
+- `https://infojano.com/passport-id-photo-resizer.html`
+- `https://infojano.com/social-media-image-resizer.html`
+- `https://infojano.com/print-document-image-resizer.html`
+- `https://infojano.com/days-between-dates-calculator.html`
+- `https://infojano.com/business-days-calculator.html`
+- `https://infojano.com/date-duration-calculator.html`
+
+### Alternate page with proper canonical (3)
+These also point their declared/Google canonical to the GitHub Pages host; verify source canonical strategy and whether GitHub Pages should be consolidated/redirected:
+- `https://infojano.com/url-toolkit.html`
+- `https://infojano.com/savings.html`
+- `https://infojano.com/id-card-print-studio.html`
+
+### Important canonical anomalies among pages still indexed
+Several inspected pages are indexed on infojano.com but Search Console returned a declared canonical value containing a malformed suffix, e.g. `$3%3Cmeta%20property=` or `$3%3Cscript%20type=`. Examples observed include `percentage-change.html`, `what-percent-calculator.html`, `percentage-difference-calculator.html`, `increase-decrease-by-percentage-calculator.html`, `profit-loss-percentage-calculator.html`, `target-marks-calculator.html`, `percentage-of-percentage-calculator.html`, `repeated-percentage-change-calculator.html`, `successive-percentage-change-calculator.html`, and `remove-gst-from-total-calculator.html`. Inspect source HTML/template before editing; likely malformed canonical output needs correction.
+
+### Next actions
+1. Audit canonical tags site-wide and ensure only `https://infojano.com/` canonical URLs are emitted. Investigate why GitHub Pages origin is being declared as canonical on selected pages.
+2. Inspect and fix malformed canonical strings on the percentage-related pages and any other affected pages.
+3. Check content quality, internal links and sitemap inclusion for the 4 discovered and 3 unknown URLs; then request indexing for eligible pages.
+4. Improve the one crawled-not-indexed age-in-days page before requesting another crawl.
+5. Re-run URL Inspection after fixes. Do not promise Google will index every URL; final inclusion is Google's decision.
