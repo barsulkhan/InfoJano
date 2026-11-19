@@ -303,3 +303,12 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Reinspected 10 representative URLs. Percentage-page canonical anomalies reported by Search Console contain stale malformed suffixes in the Nov 11 inspection record, but current representative source tags are clean and correctly point to infojano.com. No speculative canonical edits were made.
 - Found and corrected two actual metadata inconsistencies in `id-card-print-studio.html`: `og:url` and WebPage JSON-LD `url` pointed to the GitHub Pages host while the canonical pointed to infojano.com. Commit: `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6`.
 - Password Generator Header and Hero were not edited. Deployment and post-deploy/browser verification are still pending; do not infer success from older workflow runs.
+
+
+## 2026-11-19 — Current main source re-audit
+- Current main `password-generator.html` blob SHA: `0b94627479680c1e20616d9472a3f43b452cf985`; current `site-header.js` blob SHA: `f482aeebfecce737b9f4f6d69232db75e8305d44`.
+- Current Password Generator head metadata has a self-canonical and matching `og:url` on `https://infojano.com/password-generator.html`.
+- The shared header script is currently a normal synchronous script at HTML line 294, immediately after the page body begins and before `<main>`. `site-header.js` injects its shared CSS before creating/inserting the header element, and inserts the header as the first body child.
+- Current Password Generator page header overrides are scoped to `body[data-ij-header-align="hero"] .ij-global-header...`; the current file does not contain an unscoped legacy `header{...}` selector. This narrows the old generic-header CSS collision theory but does not establish the refresh-transition root cause.
+- The referenced video `video_20261118_193242.mp4` is not present in the current work session, and no browser/DevTools session is available here. Do not claim the reload flash is reproduced or fixed. Obtain the video again or a short screen recording around the refresh, then test normal reload, hard reload and cache-disabled reload on a real browser.
+- No Password Generator source changes were made during this re-audit. Desktop/mobile visual, functional, accessibility, clipboard-fallback and no-network-secret QA remain open.
