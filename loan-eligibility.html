@@ -133,7 +133,7 @@ main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:0 auto 38px;pad
       <div class="ij-field"><label for="income">Monthly Take-Home Income (₹)</label><input id="income" name="income" type="number" min="1" max="1000000000000" step="any" inputmode="decimal" placeholder="e.g. 60000" required><small>Use the income you actually receive after payroll deductions.</small></div>
       <div class="ij-field"><label for="expenses">Essential Monthly Household Expenses (₹)</label><input id="expenses" name="expenses" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" placeholder="e.g. 25000" required><small>Exclude loan EMIs and fixed financial obligations entered separately.</small></div>
       <div class="ij-field"><label for="existingEmi">Existing EMIs &amp; Fixed Obligations (₹)</label><input id="existingEmi" name="existingEmi" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" placeholder="e.g. 8000" required><small>Include current loan EMIs and other regular commitments you want counted.</small></div>
-      <div class="ij-field"><label for="share">Target Total EMI-to-Income Limit (%)</label><input id="share" name="share" type="number" min="1" max="80" step="1" value="40" inputmode="numeric" required><small>40% is a cautious starting assumption, not a universal lender limit.</small></div>
+      <div class="ij-field"><label for="share">Target Fixed-Obligations-to-Income Limit (%)</label><input id="share" name="share" type="number" min="1" max="80" step="1" value="40" inputmode="numeric" required><small>40% is a cautious starting assumption, not a universal lender limit.</small></div>
     </div>
     <button type="submit" id="calculate-button">Calculate Affordable EMI</button>
   </form>
@@ -143,13 +143,13 @@ main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:0 auto 38px;pad
 <section class="ij-content-card" aria-labelledby="ij-method-title">
   <h2 id="ij-method-title">How This Loan Affordability Calculator Works</h2>
   <p>The calculator applies two practical limits and uses the lower result. First, it checks how much room remains under your selected total EMI-to-income ratio. Second, it checks how much cash remains after essential household expenses and existing fixed obligations.</p>
-  <div class="ij-formula-card"><h3>1. Maximum total EMI at your selected ratio</h3><p><strong>Monthly take-home income × selected ratio</strong></p><h3>2. Remaining room under the ratio</h3><p><strong>Maximum total EMI − existing EMIs and fixed obligations</strong></p><h3>3. Cash available after regular outgoings</h3><p><strong>Income − household expenses − existing fixed obligations</strong></p><h3>4. Estimated affordable new EMI</h3><p><strong>Lower of (2) and (3), but not below zero</strong></p></div>
+  <div class="ij-formula-card"><h3>1. Maximum total fixed obligations at your selected limit</h3><p><strong>Monthly take-home income × selected ratio</strong></p><h3>2. Remaining room under the ratio</h3><p><strong>Maximum total fixed obligations − existing EMIs and fixed obligations</strong></p><h3>3. Cash available after regular outgoings</h3><p><strong>Income − household expenses − existing fixed obligations</strong></p><h3>4. Estimated affordable new EMI</h3><p><strong>Lower of (2) and (3), but not below zero</strong></p></div>
   <p>Separating household expenses from existing EMIs helps avoid counting the same payment twice. Do not include an EMI in both fields.</p>
 </section>
 <section class="ij-content-card" aria-labelledby="ij-example-title">
   <h2 id="ij-example-title">Loan Affordability Calculation Example</h2>
   <p>Suppose your monthly take-home income is ₹60,000, household expenses are ₹30,000, existing EMIs and fixed obligations are ₹8,000, and your selected limit is 40%.</p>
-  <ul><li>Maximum total EMI at 40%: ₹60,000 × 40% = ₹24,000</li><li>Remaining EMI room: ₹24,000 − ₹8,000 = ₹16,000</li><li>Cash after expenses and existing obligations: ₹60,000 − ₹30,000 − ₹8,000 = ₹22,000</li><li>Estimated affordable new EMI: the lower amount, ₹16,000</li><li>Estimated cash remaining after that EMI: ₹6,000</li></ul>
+  <ul><li>Maximum total fixed obligations at 40%: ₹60,000 × 40% = ₹24,000</li><li>Remaining EMI room: ₹24,000 − ₹8,000 = ₹16,000</li><li>Cash after expenses and existing obligations: ₹60,000 − ₹30,000 − ₹8,000 = ₹22,000</li><li>Estimated affordable new EMI: the lower amount, ₹16,000</li><li>Estimated cash remaining after that EMI: ₹6,000</li></ul>
   <p>This example is illustrative. Keep a buffer for irregular bills, savings and emergencies rather than borrowing up to the calculated maximum.</p>
 </section>
 <section class="ij-content-card" aria-labelledby="ij-foir-title">
@@ -198,15 +198,15 @@ main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:0 auto 38px;pad
       if(showValidation||hasCalculated)result.textContent='Please enter a positive monthly income, non-negative expenses and obligations, and an EMI-to-income limit from 1% to 80%.';
       return false;
     }
-    const maxTotalEmi=v.income*v.share/100;
-    const roomUnderRatio=Math.max(0,maxTotalEmi-v.existing);
+    const maxTotalObligations=v.income*v.share/100;
+    const roomUnderRatio=Math.max(0,maxTotalObligations-v.existing);
     const cashAfterOutgoings=v.income-v.expenses-v.existing;
     const roomAfterExpenses=Math.max(0,cashAfterOutgoings);
     const newEmi=Math.min(roomUnderRatio,roomAfterExpenses);
-    const projectedCash=Math.max(0,cashAfterOutgoings-newEmi);
+    const projectedCash=cashAfterOutgoings-newEmi;
     const currentRatio=v.existing/v.income*100;
     const projectedRatio=(v.existing+newEmi)/v.income*100;
-    if(![maxTotalEmi,roomUnderRatio,cashAfterOutgoings,newEmi,projectedCash,currentRatio,projectedRatio].every(Number.isFinite)){
+    if(![maxTotalObligations,roomUnderRatio,cashAfterOutgoings,newEmi,projectedCash,currentRatio,projectedRatio].every(Number.isFinite)){
       result.textContent='These values are too large to calculate. Please enter smaller amounts.';
       return false;
     }
@@ -218,14 +218,14 @@ main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:0 auto 38px;pad
       '<p class="ij-result-status">'+status+'</p>'+
       '<div class="ij-result-tiles">'+
         '<div class="ij-result-tile"><span>Estimated Affordable New EMI</span><strong>'+money(newEmi)+'</strong></div>'+
-        '<div class="ij-result-tile"><span>Cash Remaining After This EMI</span><strong>'+money(projectedCash)+'</strong></div>'+
+        '<div class="ij-result-tile"><span>Cash Position After This EMI</span><strong>'+money(projectedCash)+'</strong></div>'+
       '</div>'+
       '<dl class="ij-result-detail">'+
-        '<dt>Maximum total EMI at selected ratio</dt><dd>'+money(maxTotalEmi)+'</dd>'+
+        '<dt>Maximum total fixed obligations at selected limit</dt><dd>'+money(maxTotalObligations)+'</dd>'+
         '<dt>Room under selected ratio after existing obligations</dt><dd>'+money(roomUnderRatio)+'</dd>'+
         '<dt>Cash after household expenses and existing obligations</dt><dd>'+money(cashAfterOutgoings)+'</dd>'+
-        '<dt>Current EMI-to-income ratio</dt><dd>'+percent(currentRatio)+'</dd>'+
-        '<dt>Estimated ratio after proposed EMI</dt><dd>'+percent(projectedRatio)+'</dd>'+
+        '<dt>Current obligation-to-income ratio</dt><dd>'+percent(currentRatio)+'</dd>'+
+        '<dt>Estimated obligation ratio after proposed EMI</dt><dd>'+percent(projectedRatio)+'</dd>'+
       '</dl>'+
       '<p class="ij-result-caution">Planning estimate only. Your lender may count other obligations, use a different income basis or apply its own affordability rules. The amount shown is not a loan approval or a recommended borrowing target.</p>';
     return true;
