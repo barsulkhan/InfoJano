@@ -63,7 +63,7 @@ footer{text-align:center;padding:22px;color:#718096;font-size:12px}
 @media(min-width:1500px){.ij-loan-hero{padding:34px 50px 28px}.ij-hero-art{min-height:265px}}
 @media(max-width:850px){.ij-related-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.ij-content-grid{grid-template-columns:1fr}.ij-calc-layout{grid-template-columns:1fr}.ij-hero-grid{grid-template-columns:minmax(0,1fr) 280px}.ij-loan-paper{right:0}.ij-info-band{grid-template-columns:1fr}.ij-where{padding:12px 0 0;border-left:0;border-top:1px solid #a9c9f4}}
 @media(max-width:600px){.ij-install-card{width:calc(100% - 20px);grid-template-columns:40px 1fr}.ij-install-card button{grid-column:1/-1}.ij-breadcrumb{width:calc(100% - 20px)}main{width:calc(100% - 20px);padding-bottom:26px}.ij-loan-hero{margin:12px 0 18px;padding:23px 17px 29px;border-radius:22px}.ij-hero-grid{grid-template-columns:1fr;gap:6px}.ij-loan-hero h1{font-size:34px;letter-spacing:-1.2px}.ij-loan-hero p{font-size:14px}.ij-hero-pills{gap:6px}.ij-hero-pills span{padding:7px 9px;font-size:11px}.ij-hero-art{min-height:210px;margin-top:4px}.ij-calc-visual{width:126px;border-width:5px}.ij-calc-screen{min-height:46px;font-size:17px}.ij-calc-keys i{height:17px}.ij-loan-paper{right:5%;top:2%;width:130px;min-height:165px;padding:12px 10px;border-width:6px}.ij-paper-title{font-size:15px;margin-bottom:8px}.ij-paper-row{margin:9px 0}.ij-coin{width:25px;height:25px}.ij-related-strip{gap:8px}.ij-tool-link{min-height:66px;padding:9px}.ij-tool-icon{width:35px;height:35px;flex-basis:35px;font-size:19px}.ij-tool-link strong{font-size:12px}.ij-panel{padding:15px;border-radius:17px}.ij-panel-title{font-size:17px}.ij-tenure-row{grid-template-columns:minmax(0,1fr) 112px}.ij-actions{grid-template-columns:1fr 105px}.ij-result-value{font-size:22px}.ij-info-band,.ij-content-card,.ij-faq{padding:15px}.ij-section-heading{font-size:18px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.ij-check{opacity:1;transform:none}.ij-coin{display:none}}
 </style>
 </head>
 <body>
@@ -123,11 +123,25 @@ footer{text-align:center;padding:22px;color:#718096;font-size:12px}
  function calculate(){
   const p=Number(amount.value),r=Number(rate.value),t=Number(tenure.value);
   if(amount.value===''||rate.value===''||tenure.value===''||!Number.isFinite(p)||!Number.isFinite(r)||!Number.isFinite(t)||p<0||r<0||t<0){
-   $('result-status').textContent='Please enter valid non-negative values in all three fields.';return;
+   $('interest-result').textContent='—';
+   $('total-result').textContent='—';
+   $('principal-result').textContent='—';
+   $('rate-result').textContent='—';
+   $('tenure-result').textContent='—';
+   $('result-status').textContent='Please enter valid non-negative values in all three fields.';
+   return;
   }
   const years=unit.value==='months'?t/12:t;
   const interest=p*r*years/100,total=p+interest;
-  if(!Number.isFinite(interest)||!Number.isFinite(total)){ $('result-status').textContent='The entered values are too large. Please use smaller values.';return; }
+  if(!Number.isFinite(interest)||!Number.isFinite(total)){
+   $('interest-result').textContent='—';
+   $('total-result').textContent='—';
+   $('principal-result').textContent='—';
+   $('rate-result').textContent='—';
+   $('tenure-result').textContent='—';
+   $('result-status').textContent='The entered values are too large. Please use smaller values.';
+   return;
+  }
   $('interest-result').textContent=money(interest);
   $('total-result').textContent=money(total);
   $('principal-result').textContent=money(p);
