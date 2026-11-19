@@ -7,19 +7,19 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loan Affordability Calculator: Estimate Loan Payments | InfoJano</title>
-<meta name="description" content="Estimate a manageable monthly loan payment from income and expenses with this free loan affordability calculator. Results are estimates, not loan approval.">
+<title>Loan Affordability Calculator | EMI Budget | InfoJano</title>
+<meta name="description" content="Estimate a manageable new loan EMI from take-home income, living expenses and existing EMIs. Adjust your EMI-to-income limit with this free calculator.">
 <link rel="canonical" href="https://infojano.com/loan-eligibility.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Loan Affordability Calculator: Estimate Loan Payments | InfoJano">
-<meta property="og:description" content="Estimate a manageable monthly loan payment from income and expenses with this free loan affordability calculator. Results are estimates, not loan approval.">
+<meta property="og:title" content="Loan Affordability Calculator | EMI Budget | InfoJano">
+<meta property="og:description" content="Estimate a manageable new loan EMI from take-home income, living expenses and existing EMIs. Adjust your EMI-to-income limit with this free calculator.">
 <meta property="og:url" content="https://infojano.com/loan-eligibility.html">
 <meta property="og:image" content="https://infojano.com/icon-512.png">
 <meta property="og:image:alt" content="InfoJano useful online tools">
 <meta name="twitter:image" content="https://infojano.com/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loan Affordability Calculator: Estimate Loan Payments | InfoJano">
-<meta name="twitter:description" content="Estimate a manageable monthly loan payment from income and expenses with this free loan affordability calculator. Results are estimates, not loan approval.">
+<meta name="twitter:title" content="Loan Affordability Calculator | EMI Budget | InfoJano">
+<meta name="twitter:description" content="Estimate a manageable new loan EMI from take-home income, living expenses and existing EMIs. Adjust your EMI-to-income limit with this free calculator.">
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f2f6ff;color:#172033;line-height:1.6}
@@ -76,23 +76,47 @@ main>.card .note{color:#62748b;line-height:1.65}
 @media(max-width:600px){main{margin:16px auto 26px;padding:12px}main>.card{padding:19px 16px;border-radius:18px}main>.card>h2{font-size:19px;margin-bottom:16px}main>.card label{font-size:12px}main>.card input,main>.card select{min-height:47px;font-size:16px}main>.card button{width:100%}}
 @media(prefers-reduced-motion:reduce){main>.card,main>.card input,main>.card select,main>.card button{transition:none}main>.card button:hover{transform:none}}
 
+
+/* Loan Affordability Calculator refresh — page-scoped layout and form styles */
+main{width:min(calc(100% - 28px),1200px);max-width:1200px;margin:0 auto 38px;padding:0}
+.ij-breadcrumb{display:flex;align-items:center;gap:9px;margin:14px 0 10px;color:#6b7f99;font-size:13px;font-weight:700}.ij-breadcrumb a{color:#1768b4;text-decoration:none}.ij-breadcrumb a:hover{text-decoration:underline}
+.ij-affordability-card{max-width:900px;margin:22px auto!important}
+.ij-calculator-heading{display:flex;align-items:center;gap:13px;margin-bottom:12px}.ij-calculator-icon{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#dff4ff,#dce8ff);color:#1458c8;font-size:24px;font-weight:900}.ij-calculator-heading h2{margin:0!important}.ij-calculator-heading p{margin:4px 0 0;color:#64748b;font-size:14px}
+.ij-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px;row-gap:2px}.ij-field{min-width:0}.ij-field small{display:block;margin-top:6px;color:#718198;font-size:12px;font-weight:500;line-height:1.45}.ij-affordability-card form button{width:100%}
+.ij-affordability-result{min-height:74px}.ij-result-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}.ij-result-tile{padding:13px;border:1px solid #d5e6f8;border-radius:13px;background:rgba(255,255,255,.72)}.ij-result-tile span{display:block;color:#58708d;font-size:12px;font-weight:750;line-height:1.4}.ij-result-tile strong{display:block;margin-top:5px;color:#124e9a;font-size:clamp(17px,2.4vw,22px);line-height:1.3;overflow-wrap:anywhere}.ij-result-detail{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 14px;margin:0;padding-top:12px;border-top:1px solid #d5e6f8;font-size:13px}.ij-result-detail dt{color:#53677f}.ij-result-detail dd{margin:0;color:#1b365a;font-weight:800;text-align:right;font-variant-numeric:tabular-nums}.ij-result-status{margin:0 0 12px;color:#244b75;font-weight:750}.ij-result-caution{margin:12px 0 0;color:#64748b;font-size:12px;line-height:1.55}
+.ij-content-card{max-width:900px;margin:22px auto;padding:24px;background:#fff;border:1px solid #dbe5f2;border-radius:20px;box-shadow:0 8px 24px rgba(15,23,42,.04);overflow-wrap:anywhere}.ij-content-card h2{margin:0 0 12px;color:#142c50;font-size:clamp(19px,2.4vw,23px);line-height:1.3}.ij-content-card h3{margin:16px 0 5px;color:#1c4779;font-size:15px}.ij-content-card p,.ij-content-card li{color:#53657c;line-height:1.7}.ij-content-card ul{padding-left:22px}.ij-formula-card{padding:14px 17px;border:1px solid #dce9f7;border-radius:14px;background:#f7fbff}.ij-formula-card h3{margin:9px 0 3px}.ij-formula-card p{margin:0;color:#1d4778;font-weight:750}
+.ij-faq{max-width:900px;margin:22px auto;padding:22px 24px;background:#fff;border:1px solid #dbe5f2;border-radius:20px;box-shadow:0 8px 24px rgba(15,23,42,.04)}.ij-faq h2{margin:0 0 8px;color:#142c50;font-size:22px}.ij-faq details{padding:13px 0;border-top:1px solid #e5edf6}.ij-faq summary{color:#24466e;font-weight:750;cursor:pointer}.ij-faq details p{margin:8px 0 0;color:#536174;line-height:1.65}
+.ij-related-tools{max-width:900px;margin:22px auto;padding:22px 24px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#fff)}.ij-related-tools h2{margin:0 0 14px;color:#142c50;font-size:21px}.ij-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.ij-related-grid a{display:flex;flex-direction:column;gap:8px;min-width:0;padding:16px;border:1px solid #dbeafe;border-radius:15px;background:#fff;color:#172554;text-decoration:none;box-shadow:0 3px 12px rgba(37,99,235,.05)}.ij-related-grid a:hover{border-color:#9dc8f3;box-shadow:0 7px 18px rgba(37,99,235,.1)}.ij-related-grid strong{font-size:15px}.ij-related-grid span{color:#64748b;font-size:13px;line-height:1.5}.ij-related-grid b{margin-top:auto;color:#1d4ed8;font-size:12px}.ij-back-link{max-width:900px;margin:16px auto;color:#52677f}
+@media(max-width:620px){main{width:calc(100% - 24px)}.ij-form-grid,.ij-related-grid{grid-template-columns:minmax(0,1fr)}.ij-affordability-card{margin:16px auto!important}.ij-calculator-heading{align-items:flex-start}.ij-result-tiles{grid-template-columns:minmax(0,1fr)}.ij-content-card,.ij-faq,.ij-related-tools{padding:19px 17px;margin:18px auto}.ij-result-detail{grid-template-columns:minmax(0,1fr) auto;gap:8px}.ij-result-detail dd{max-width:48vw}}
+@media(prefers-reduced-motion:reduce){.ij-related-grid a{transition:none!important}}
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/loan-eligibility.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Loan Affordability Calculator: Estimate Loan Payments",
-  "url": "https://infojano.com/loan-eligibility.html",
-  "description": "Estimate a manageable monthly loan payment from income and expenses with this free loan affordability calculator. Results are estimates, not loan approval.",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "InfoJano Loan Affordability Calculator",
+      "url": "https://infojano.com/loan-eligibility.html",
+      "description": "Estimate a manageable new loan EMI from take-home income, living expenses and existing EMIs. Adjust your EMI-to-income limit with this free calculator.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What does a loan affordability calculator estimate?","acceptedAnswer":{"@type":"Answer","text":"It estimates a monthly EMI budget by comparing take-home income, household expenses, existing EMIs and a user-selected EMI-to-income limit. It does not calculate a lender-approved loan amount."}},
+        {"@type":"Question","name":"How is my affordable new EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"The estimate takes the lower of the remaining EMI room under your selected income ratio and the cash left after household expenses and existing fixed obligations."}},
+        {"@type":"Question","name":"What is FOIR?","acceptedAnswer":{"@type":"Answer","text":"FOIR means Fixed Obligations to Income Ratio. It compares relevant monthly fixed obligations with monthly income. Lenders may define income and obligations differently."}},
+        {"@type":"Question","name":"Is 40% a universal FOIR limit?","acceptedAnswer":{"@type":"Answer","text":"No. The default is an adjustable planning assumption, not a universal lender rule or a guarantee of approval."}},
+        {"@type":"Question","name":"Should I include existing EMIs in household expenses?","acceptedAnswer":{"@type":"Answer","text":"No. Enter existing EMIs and fixed financial obligations in their separate field so they are not counted twice."}},
+        {"@type":"Question","name":"Can this calculator tell me the maximum loan amount?","acceptedAnswer":{"@type":"Answer","text":"No. It estimates a monthly payment budget. Use the InfoJano EMI Calculator to convert a chosen EMI, interest rate and tenure into an indicative loan amount and repayment estimate."}}
+      ]
+    }
+  ]
 }
 </script>
 <link rel="icon" type="image/svg+xml" href="/infojano-mark.svg">
@@ -101,84 +125,117 @@ main>.card .note{color:#62748b;line-height:1.65}
 <section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
 <section class="ij-tool-hero" aria-labelledby="ij-tool-hero-title"><div class="ij-tool-hero-copy"><span class="ij-tool-hero-kicker">FREE LOAN PLANNING TOOL</span><h1 id="ij-tool-hero-title">Loan Affordability Calculator</h1><p>Estimate a manageable monthly loan payment using your income, expenses and preferred EMI share.</p><div class="ij-tool-hero-pills"><span>✓ Income-based estimate</span><span>✓ Simple monthly planning</span><span>✓ Mobile friendly</span></div></div><div class="ij-tool-hero-art" aria-hidden="true">₹</div></section>
 <main>
-<div class="card">
-
-<h2>Estimate Loan Affordability</h2>
-<label for="income">Monthly Take-Home Income (₹)</label>
-<input id="income" type="number" min="0" step="any" placeholder="Example: 40000">
-<label for="expenses">Monthly Expenses and Existing EMIs (₹)</label>
-<input id="expenses" type="number" min="0" step="any" placeholder="Example: 20000">
-<label for="share">Income Share for New EMI (%)</label>
-<input id="share" type="number" min="1" max="100" step="any" value="30">
-<button onclick="calculate()">Estimate Affordability</button>
-<div id="result" class="result" aria-live="polite">Enter your monthly income and expenses.</div>
-<p class="note">This is a simple budgeting estimate, not a bank approval or a guarantee of loan eligibility.</p>
-</div>
-<section>
-<h2>How This Calculator Works</h2>
-<p>The calculator estimates the amount remaining after monthly expenses, then applies the percentage you choose to estimate a potential new EMI budget.</p>
-<p>Actual loan eligibility depends on lender rules, credit history, existing debt, income stability and other factors.</p>
+<nav class="ij-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">›</span><span aria-current="page">Loan Affordability Calculator</span></nav>
+<section class="ij-tool-hero" aria-labelledby="ij-tool-hero-title"><div class="ij-tool-hero-copy"><span class="ij-tool-hero-kicker">FREE LOAN PLANNING TOOL</span><h1 id="ij-tool-hero-title">Loan Affordability Calculator</h1><p>Estimate a manageable monthly EMI using your take-home income, household expenses and existing financial commitments.</p><div class="ij-tool-hero-pills"><span>✓ Income-based estimate</span><span>✓ Expense-aware budget</span><span>✓ Adjustable EMI limit</span></div></div><div class="ij-tool-hero-art" aria-hidden="true">₹</div></section>
+<section class="card ij-affordability-card" aria-labelledby="ij-calculator-title">
+  <div class="ij-calculator-heading"><span class="ij-calculator-icon" aria-hidden="true">₹</span><div><h2 id="ij-calculator-title">Estimate Your Monthly EMI Budget</h2><p>Enter your monthly take-home income and regular outgoings. The estimate updates after you calculate.</p></div></div>
+  <form id="affordability-form" novalidate>
+    <div class="ij-form-grid">
+      <div class="ij-field"><label for="income">Monthly Take-Home Income (₹)</label><input id="income" name="income" type="number" min="1" max="1000000000000" step="any" inputmode="decimal" placeholder="e.g. 60000" required><small>Use the income you actually receive after payroll deductions.</small></div>
+      <div class="ij-field"><label for="expenses">Essential Monthly Household Expenses (₹)</label><input id="expenses" name="expenses" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" placeholder="e.g. 25000" required><small>Exclude loan EMIs and fixed financial obligations entered separately.</small></div>
+      <div class="ij-field"><label for="existingEmi">Existing EMIs &amp; Fixed Obligations (₹)</label><input id="existingEmi" name="existingEmi" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" placeholder="e.g. 8000" required><small>Include current loan EMIs and other regular commitments you want counted.</small></div>
+      <div class="ij-field"><label for="share">Target Total EMI-to-Income Limit (%)</label><input id="share" name="share" type="number" min="1" max="80" step="1" value="40" inputmode="numeric" required><small>40% is a cautious starting assumption, not a universal lender limit.</small></div>
+    </div>
+    <button type="submit" id="calculate-button">Calculate Affordable EMI</button>
+  </form>
+  <div id="result" class="result ij-affordability-result" role="status" aria-live="polite" aria-atomic="true">Enter your details and select Calculate Affordable EMI to see your estimate.</div>
+  <p class="note">This is an educational household-budget estimate, not a bank eligibility decision, loan offer or guarantee of approval. Lenders may use different income definitions and include other obligations.</p>
 </section>
-<section class="ij-practical-guide" aria-labelledby="ij-guide-title" style="max-width:900px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;line-height:1.65;box-sizing:border-box;width:100%"><h2 id="ij-guide-title">Loan Affordability Example</h2><p>A practical estimate starts with monthly take-home income, existing loan payments and essential expenses. The amount left over is not automatically the amount a lender will approve; household needs and unexpected costs also matter.</p><h3>Use a cautious estimate</h3><ul><li>Enter income and existing obligations accurately.</li><li>Leave room for essential spending and emergencies.</li><li>Approval depends on lender checks, credit history, documents and loan policy.</li></ul><p>Related tools: <a href="emi.html">EMI Calculator</a> and <a href="loan-interest.html">Loan Interest Calculator</a>.</p></section>
-
-<section id="ij-seo-faq" aria-labelledby="ij-seo-faq-title" style="max-width:900px;margin:28px auto;padding:20px;background:#fff;border:1px solid #e5eaf2;border-radius:16px;color:#172033;line-height:1.6">
-<h2 id="ij-seo-faq-title" style="margin:0 0 12px;font-size:22px">Loan Affordability FAQs</h2>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">What does loan affordability mean?</summary><p style="margin:8px 0 0;color:#536174">It is an estimate of a loan payment that may fit your income and expenses.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Does this guarantee loan approval?</summary><p style="margin:8px 0 0;color:#536174">No. Lenders assess credit history, income proof, existing debts, policy, and other eligibility criteria.</p></details>
-<details style="padding:12px 0;border-top:1px solid #e5eaf2"><summary style="font-weight:700;cursor:pointer">Why include existing expenses?</summary><p style="margin:8px 0 0;color:#536174">Existing commitments reduce the amount of monthly income available for a new loan payment.</p></details>
-<p style="margin:12px 0 0;font-size:14px">Explore more tools: <a href="percentage.html">Percentage Calculator</a> · <a href="date-difference.html">Date Difference</a> · <a href="emi.html">EMI Calculator</a></p>
+<section class="ij-content-card" aria-labelledby="ij-method-title">
+  <h2 id="ij-method-title">How This Loan Affordability Calculator Works</h2>
+  <p>The calculator applies two practical limits and uses the lower result. First, it checks how much room remains under your selected total EMI-to-income ratio. Second, it checks how much cash remains after essential household expenses and existing fixed obligations.</p>
+  <div class="ij-formula-card"><h3>1. Maximum total EMI at your selected ratio</h3><p><strong>Monthly take-home income × selected ratio</strong></p><h3>2. Remaining room under the ratio</h3><p><strong>Maximum total EMI − existing EMIs and fixed obligations</strong></p><h3>3. Cash available after regular outgoings</h3><p><strong>Income − household expenses − existing fixed obligations</strong></p><h3>4. Estimated affordable new EMI</h3><p><strong>Lower of (2) and (3), but not below zero</strong></p></div>
+  <p>Separating household expenses from existing EMIs helps avoid counting the same payment twice. Do not include an EMI in both fields.</p>
 </section>
-<p><a href="index.html">← Back to InfoJano Home</a></p>
-<section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
-<h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
-<p style="margin:0 0 16px;color:#64748b;font-size:14px;line-height:1.5">Keep exploring with these handy tools from InfoJano.</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px"><a href="emi.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 9h10M7 13h3m3 0h4m-10 4h10"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">EMI Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate monthly loan payments.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="loan-interest.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Loan Interest Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate simple loan interest.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="savings.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Savings Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">estimate future savings.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a>
-<a href="percentage.html" style="display:flex;flex-direction:column;gap:9px;padding:15px 13px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#ffffff,#f0f7ff);color:#172554;text-decoration:none;min-height:158px;box-shadow:0 3px 12px rgba(37,99,235,.07);transition:transform .18s ease,box-shadow .18s ease">
-<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></span>
-<strong style="font-size:15px;line-height:1.3">Percentage Calculator</strong>
-<span style="font-size:13px;line-height:1.45;color:#64748b">calculate percentages.</span>
-<span style="margin-top:auto;font-size:12px;font-weight:700;color:#1d4ed8">Explore tool →</span>
-</a></div>
+<section class="ij-content-card" aria-labelledby="ij-example-title">
+  <h2 id="ij-example-title">Loan Affordability Calculation Example</h2>
+  <p>Suppose your monthly take-home income is ₹60,000, household expenses are ₹30,000, existing EMIs and fixed obligations are ₹8,000, and your selected limit is 40%.</p>
+  <ul><li>Maximum total EMI at 40%: ₹60,000 × 40% = ₹24,000</li><li>Remaining EMI room: ₹24,000 − ₹8,000 = ₹16,000</li><li>Cash after expenses and existing obligations: ₹60,000 − ₹30,000 − ₹8,000 = ₹22,000</li><li>Estimated affordable new EMI: the lower amount, ₹16,000</li><li>Estimated cash remaining after that EMI: ₹6,000</li></ul>
+  <p>This example is illustrative. Keep a buffer for irregular bills, savings and emergencies rather than borrowing up to the calculated maximum.</p>
 </section>
+<section class="ij-content-card" aria-labelledby="ij-foir-title">
+  <h2 id="ij-foir-title">What Is FOIR?</h2>
+  <p>FOIR means Fixed Obligations to Income Ratio. It is one way lenders assess how much of a borrower's income is already committed to regular financial obligations. Lenders can differ in how they define eligible income, fixed obligations and acceptable ratios.</p>
+  <p>The percentage in this calculator is a planning limit you can adjust. It is not an official approval threshold. Your credit history, employment or business income, documentation, loan type and lender policy may also affect an application.</p>
+  <p>Need to estimate a loan amount from a monthly EMI, interest rate and tenure? Use the <a href="emi.html">InfoJano EMI Calculator</a>. For simple interest and a reducing-balance interest illustration, visit the <a href="loan-interest.html">Loan Interest Calculator</a>.</p>
+</section>
+<section class="ij-faq" id="ij-seo-faq" aria-labelledby="ij-seo-faq-title">
+  <h2 id="ij-seo-faq-title">Loan Affordability FAQs</h2>
+  <details><summary>What does a loan affordability calculator estimate?</summary><p>It estimates a monthly EMI budget by comparing take-home income, household expenses, existing EMIs and a user-selected EMI-to-income limit. It does not calculate a lender-approved loan amount.</p></details>
+  <details><summary>How is my affordable new EMI calculated?</summary><p>The estimate takes the lower of the remaining EMI room under your selected income ratio and the cash left after household expenses and existing fixed obligations.</p></details>
+  <details><summary>What is FOIR?</summary><p>FOIR means Fixed Obligations to Income Ratio. It compares relevant monthly fixed obligations with monthly income. Lenders may define income and obligations differently.</p></details>
+  <details><summary>Is 40% a universal FOIR limit?</summary><p>No. The default is an adjustable planning assumption, not a universal lender rule or a guarantee of approval. Choose a lower limit if you want a more cautious budget.</p></details>
+  <details><summary>Should I include existing EMIs in household expenses?</summary><p>No. Enter existing EMIs and fixed financial obligations in their separate field so they are not counted twice. Keep household expenses separate.</p></details>
+  <details><summary>Can this calculator tell me the maximum loan amount?</summary><p>No. It estimates a monthly payment budget. Use the InfoJano <a href="emi.html">EMI Calculator</a> to convert a chosen EMI, interest rate and tenure into an indicative loan amount and repayment estimate.</p></details>
+</section>
+<section class="ij-related-tools" aria-labelledby="related-tools-title"><h2 id="related-tools-title">Related Loan Tools</h2><div class="ij-related-grid">
+  <a href="emi.html"><strong>EMI Calculator</strong><span>Estimate monthly EMI, total interest and repayment schedule.</span><b>Explore EMI Calculator →</b></a>
+  <a href="loan-interest.html"><strong>Loan Interest Calculator</strong><span>Calculate simple interest and view a reducing-balance illustration.</span><b>Explore Loan Interest →</b></a>
+</div></section>
+<p class="ij-back-link"><a href="index.html">← Back to InfoJano Home</a></p>
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script>
-function calculate(){
-const i=document.getElementById('income').value;
-const e=document.getElementById('expenses').value;
-const s=document.getElementById('share').value;
-const out=document.getElementById('result');
-const income=Number(i),expenses=Number(e),share=Number(s);
-if(i===''||e===''||s===''||!Number.isFinite(income)||!Number.isFinite(expenses)||!Number.isFinite(share)||income<=0||expenses<0||share<=0||share>100){
-out.textContent='Please enter valid income, expenses and a percentage from 1 to 100.';
-return;
-}
-const remaining=income-expenses;
-const budget=Math.max(0,Math.min(remaining,income*share/100));
-const money=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
-out.innerHTML='Monthly Income: <strong>'+money(income)+'</strong><br>After Expenses: <strong>'+money(remaining)+'</strong><br>Estimated New EMI Budget: <strong>'+money(budget)+'</strong>';
-if(remaining<0)out.innerHTML+='<br><strong>Your entered expenses exceed your income.</strong>';
-}
+(function(){
+  const form=document.getElementById('affordability-form');
+  const result=document.getElementById('result');
+  if(!form||!result)return;
+  const fields={
+    income:document.getElementById('income'),
+    expenses:document.getElementById('expenses'),
+    existing:document.getElementById('existingEmi'),
+    share:document.getElementById('share')
+  };
+  let hasCalculated=false;
+  const money=value=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(value);
+  const percent=value=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:1}).format(value)+'%';
+  function calculate(showValidation){
+    const raw={income:fields.income.value,expenses:fields.expenses.value,existing:fields.existing.value,share:fields.share.value};
+    const v={income:Number(raw.income),expenses:Number(raw.expenses),existing:Number(raw.existing),share:Number(raw.share)};
+    const invalid=raw.income===''||raw.expenses===''||raw.existing===''||raw.share===''||
+      !Object.values(v).every(Number.isFinite)||v.income<=0||v.expenses<0||v.existing<0||v.share<1||v.share>80||
+      v.income>1e12||v.expenses>1e12||v.existing>1e12;
+    if(invalid){
+      if(showValidation||hasCalculated)result.textContent='Please enter a positive monthly income, non-negative expenses and obligations, and an EMI-to-income limit from 1% to 80%.';
+      return false;
+    }
+    const maxTotalEmi=v.income*v.share/100;
+    const roomUnderRatio=Math.max(0,maxTotalEmi-v.existing);
+    const cashAfterOutgoings=v.income-v.expenses-v.existing;
+    const roomAfterExpenses=Math.max(0,cashAfterOutgoings);
+    const newEmi=Math.min(roomUnderRatio,roomAfterExpenses);
+    const projectedCash=Math.max(0,cashAfterOutgoings-newEmi);
+    const currentRatio=v.existing/v.income*100;
+    const projectedRatio=(v.existing+newEmi)/v.income*100;
+    if(![maxTotalEmi,roomUnderRatio,cashAfterOutgoings,newEmi,projectedCash,currentRatio,projectedRatio].every(Number.isFinite)){
+      result.textContent='These values are too large to calculate. Please enter smaller amounts.';
+      return false;
+    }
+    let status='Your estimated new EMI is limited by both your selected income ratio and the cash left after regular outgoings.';
+    if(cashAfterOutgoings<=0)status='Your household expenses and existing obligations use all of the entered income. There is no remaining cash budget for a new EMI.';
+    else if(roomUnderRatio<=0)status='Your existing fixed obligations already meet or exceed the selected EMI-to-income limit.';
+    else if(roomAfterExpenses<roomUnderRatio)status='Your household budget is the limiting factor. Consider a lower EMI so you can keep a buffer for unexpected costs.';
+    result.innerHTML=
+      '<p class="ij-result-status">'+status+'</p>'+
+      '<div class="ij-result-tiles">'+
+        '<div class="ij-result-tile"><span>Estimated Affordable New EMI</span><strong>'+money(newEmi)+'</strong></div>'+
+        '<div class="ij-result-tile"><span>Cash Remaining After This EMI</span><strong>'+money(projectedCash)+'</strong></div>'+
+      '</div>'+
+      '<dl class="ij-result-detail">'+
+        '<dt>Maximum total EMI at selected ratio</dt><dd>'+money(maxTotalEmi)+'</dd>'+
+        '<dt>Room under selected ratio after existing obligations</dt><dd>'+money(roomUnderRatio)+'</dd>'+
+        '<dt>Cash after household expenses and existing obligations</dt><dd>'+money(cashAfterOutgoings)+'</dd>'+
+        '<dt>Current EMI-to-income ratio</dt><dd>'+percent(currentRatio)+'</dd>'+
+        '<dt>Estimated ratio after proposed EMI</dt><dd>'+percent(projectedRatio)+'</dd>'+
+      '</dl>'+
+      '<p class="ij-result-caution">Planning estimate only. Your lender may count other obligations, use a different income basis or apply its own affordability rules. The amount shown is not a loan approval or a recommended borrowing target.</p>';
+    return true;
+  }
+  form.addEventListener('submit',function(event){event.preventDefault();hasCalculated=true;calculate(true);});
+  form.addEventListener('input',function(){if(hasCalculated)calculate(false);});
+})();
 </script>
 
-<script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
 <script src="/InfoJano/download-progress.js" defer></script>
 <script src="/InfoJano/install.js" defer></script>
 
