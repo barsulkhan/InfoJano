@@ -118,7 +118,7 @@
       </div>`;
     document.body.insertBefore(header,document.body.firstChild);
     // Loan calculator keeps the primary Home button and omits the duplicate Back to Home action.
-    if(location.pathname.endsWith('/loan-interest.html')) header.querySelector('.ij-global-back-home')?.remove();
+    if(location.pathname.endsWith('/loan-interest.html')||location.pathname.endsWith('/loan-eligibility.html')) header.querySelector('.ij-global-back-home')?.remove();
     const languageSelect=header.querySelector('.ij-global-language');
     const supported=['en','hi','bn'];
     let saved='en';try{saved=localStorage.getItem('infojano-language')||'en'}catch(e){}
