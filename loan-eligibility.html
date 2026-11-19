@@ -148,6 +148,18 @@ body{background:#fff;color:#111d32}
  .ij-result-tiles{grid-template-columns:minmax(0,1fr)}
  .ij-content-card,.ij-faq,.ij-related-tools{padding:19px 17px;margin:18px 0}
 }
+
+/* Ensure the hero's page-specific geometry wins over the generic section-card defaults. */
+@media(min-width:1001px){
+ main > section.ij-loan-reference-hero{width:100%;max-width:none;min-height:390px;margin:12px 0 28px;padding:26px 42px 22px;border:1px solid #cfe5fb;border-radius:22px;background:radial-gradient(ellipse at 83% 52%,#9bd1ff 0%,#c5e4ff 36%,transparent 61%),linear-gradient(112deg,#edf7ff,#f8fbff 49%,#e0f1ff);box-shadow:0 18px 44px rgba(32,104,174,.12)}
+}
+@media(min-width:1500px){main > section.ij-loan-reference-hero{padding:30px 50px 24px}}
+@media(max-width:1000px){
+ main > section.ij-loan-reference-hero{width:100%;min-height:0;margin:12px 0 22px;padding:30px 28px;border:1px solid #cfe5fb;border-radius:24px;background:radial-gradient(ellipse at 83% 52%,#9bd1ff 0%,#c5e4ff 36%,transparent 61%),linear-gradient(112deg,#edf7ff,#f8fbff 49%,#e0f1ff)}
+}
+@media(max-width:640px){
+ main > section.ij-loan-reference-hero{width:100%;min-height:0;margin:12px 0 22px;padding:24px 18px 20px;border-radius:24px}
+}
 </style>
   
 
