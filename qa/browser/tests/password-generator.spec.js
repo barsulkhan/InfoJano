@@ -26,7 +26,7 @@ test.describe('Password Generator — desktop and mobile', () => {
     await page.locator('#generate-button').click();
     await expect(page.locator('#message')).toContainText('Select at least one character type');
     for (const id of ['lower','upper','numbers','symbols']) await page.locator('#'+id).check();
-    await page.locator('#length').evaluate(el => { el.value = '8'; el.dispatchEvent(new Event('input', { bubbles: true })); });
+    await page.locator('#length').evaluate(el => { el.value = '3'; el.dispatchEvent(new Event('input', { bubbles: true })); });
     await page.locator('#min-each').check();
     await page.locator('#generate-button').click();
     await expect(page.locator('#message')).toContainText('Increase the length');
@@ -129,7 +129,7 @@ test.describe('Password Generator — desktop and mobile', () => {
     await page.locator('#passphrase-number').check();
     await page.locator('#generate-button').click();
     const value = await page.locator('#result').inputValue();
-    expect(value).toMatch(/-\\d{2}$/);
+    expect(value).toMatch(/-\d{2}$/);
     expect(value.split('-')).toHaveLength(5);
   });
 
