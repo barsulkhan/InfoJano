@@ -557,6 +557,41 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
  main > section.ij-loan-reference-hero .ij-summary-line{font-size:8px}
  main > section.ij-loan-reference-hero .ij-summary-line b{font-size:9px}
 }
+
+/* Keep the hero focused; place its three feature chips in a separate row below. */
+.ij-hero-feature-strip{
+ width:min(100% - 32px,1440px);margin:14px auto 24px;
+ padding:0 4px;position:relative;z-index:1
+}
+.ij-hero-feature-strip .ij-loan-hero-pills{
+ display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
+ gap:12px;margin:0
+}
+.ij-hero-feature-strip .ij-loan-hero-pills span{
+ min-height:48px;padding:11px 19px;border:1px solid #e0ebf7;
+ border-radius:15px;background:linear-gradient(135deg,#fff,#f5faff);
+ box-shadow:0 5px 16px rgba(31,79,130,.055);
+ font-size:14px;font-weight:750;color:#1a3556
+}
+.ij-hero-feature-strip .ij-loan-hero-pills b{
+ display:grid;place-items:center;width:27px;height:27px;
+ border-radius:9px;background:#e8f5ff;color:#168c3b;font-size:19px
+}
+.ij-hero-feature-strip .ij-loan-hero-pills span:nth-child(2) b{color:#1768ee;background:#eaf1ff}
+.ij-hero-feature-strip .ij-loan-hero-pills span:nth-child(3) b{color:#159653;background:#e9f8ef}
+@media(max-width:760px){
+ .ij-hero-feature-strip{width:calc(100% - 24px);margin:11px auto 19px;padding:0}
+ .ij-hero-feature-strip .ij-loan-hero-pills{justify-content:flex-start;gap:8px}
+ .ij-hero-feature-strip .ij-loan-hero-pills span{
+  min-height:40px;padding:8px 11px;gap:7px;border-radius:12px;
+  font-size:11px;white-space:normal
+ }
+ .ij-hero-feature-strip .ij-loan-hero-pills b{width:22px;height:22px;font-size:15px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .ij-hero-feature-strip .ij-loan-hero-pills span{transition:transform .18s ease,box-shadow .18s ease}
+ .ij-hero-feature-strip .ij-loan-hero-pills span:hover{transform:translateY(-2px);box-shadow:0 9px 20px rgba(31,79,130,.1)}
+}
 </style>
   
 
@@ -592,7 +627,11 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
 <body data-ij-header-align="hero">
 <main>
 <nav class="ij-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">›</span><span aria-current="page">Loan Affordability Calculator</span></nav>
-<section class="ij-loan-reference-hero" aria-labelledby="ij-tool-hero-title"><div class="ij-loan-hero-copy"><span class="ij-loan-hero-kicker"><span class="ij-kicker-icon">▦</span> Loan Affordability Calculator</span><h1 id="ij-tool-hero-title">Find Your Safe Loan EMI &amp; <span>Affordability</span></h1><p>Check how much EMI you can comfortably afford based on your income, monthly expenses and existing loans.</p><div class="ij-loan-hero-pills"><span><b>▦</b> Smart EMI Budget</span><span><b>▱</b> Income &amp; Expense View</span><span><b>♢</b> Plan Your Loan Safely</span></div><a class="ij-hero-cta" href="#affordability-form"><span>▦</span> Calculate Your EMI Now <b>→</b></a></div><div class="ij-loan-hero-art" aria-label="Animated loan affordability calculation preview"><div class="ij-hero-orbit"></div><div class="ij-hero-calculator" aria-hidden="true"><div class="ij-calc-screen"><small>LOAN PLANNER</small><strong id="ij-calc-display">₹0</strong><span>READY TO CALCULATE</span></div><div class="ij-calc-keys"><i>AC</i><i>±</i><i>%</i><i class="op">÷</i><i>7</i><i>8</i><i>9</i><i class="op">×</i><i>4</i><i>5</i><i>6</i><i class="op">−</i><i>1</i><i>2</i><i>3</i><i class="op">+</i><i class="zero">0</i><i>.</i><i class="equal">=</i></div></div><div class="ij-hero-summary"><div class="ij-summary-heading"><span class="ij-summary-wallet">▣</span><div><small>YOUR LOAN SUMMARY</small><strong>Monthly Budget</strong></div><span class="ij-live-dot"></span></div><div class="ij-summary-line"><span><i>▤</i> Monthly Income</span><b data-count="60000">₹0</b></div><div class="ij-summary-line"><span><i>▱</i> Monthly Expenses</span><b data-count="25000">₹0</b></div><div class="ij-summary-line"><span><i>▰</i> Existing EMIs</span><b data-count="8000">₹0</b></div><div class="ij-safe-budget"><div><span>✓</span><label>Safe EMI Budget</label></div><strong data-count="16000">₹0</strong><small>Calculated from your monthly cash flow</small></div></div><div class="ij-hero-spark ij-spark-one"></div><div class="ij-hero-spark ij-spark-two"></div><div class="ij-hero-calculating"><span class="ij-calculating-pulse"></span> Calculating your budget <b>•••</b></div></div></section><section class="card ij-affordability-card" aria-labelledby="ij-calculator-title">
+<section class="ij-loan-reference-hero" aria-labelledby="ij-tool-hero-title"><div class="ij-loan-hero-copy"><span class="ij-loan-hero-kicker"><span class="ij-kicker-icon">▦</span> Loan Affordability Calculator</span><h1 id="ij-tool-hero-title">Find Your Safe Loan EMI &amp; <span>Affordability</span></h1><p>Check how much EMI you can comfortably afford based on your income, monthly expenses and existing loans.</p><a class="ij-hero-cta" href="#affordability-form"><span>▦</span> Calculate Your EMI Now <b>→</b></a></div><div class="ij-loan-hero-art" aria-label="Animated loan affordability calculation preview"><div class="ij-hero-orbit"></div><div class="ij-hero-calculator" aria-hidden="true"><div class="ij-calc-screen"><small>LOAN PLANNER</small><strong id="ij-calc-display">₹0</strong><span>READY TO CALCULATE</span></div><div class="ij-calc-keys"><i>AC</i><i>±</i><i>%</i><i class="op">÷</i><i>7</i><i>8</i><i>9</i><i class="op">×</i><i>4</i><i>5</i><i>6</i><i class="op">−</i><i>1</i><i>2</i><i>3</i><i class="op">+</i><i class="zero">0</i><i>.</i><i class="equal">=</i></div></div><div class="ij-hero-summary"><div class="ij-summary-heading"><span class="ij-summary-wallet">▣</span><div><small>YOUR LOAN SUMMARY</small><strong>Monthly Budget</strong></div><span class="ij-live-dot"></span></div><div class="ij-summary-line"><span><i>▤</i> Monthly Income</span><b data-count="60000">₹0</b></div><div class="ij-summary-line"><span><i>▱</i> Monthly Expenses</span><b data-count="25000">₹0</b></div><div class="ij-summary-line"><span><i>▰</i> Existing EMIs</span><b data-count="8000">₹0</b></div><div class="ij-safe-budget"><div><span>✓</span><label>Safe EMI Budget</label></div><strong data-count="16000">₹0</strong><small>Calculated from your monthly cash flow</small></div></div><div class="ij-hero-spark ij-spark-one"></div><div class="ij-hero-spark ij-spark-two"></div><div class="ij-hero-calculating"><span class="ij-calculating-pulse"></span> Calculating your budget <b>•••</b></div></div></section>
+<div class="ij-hero-feature-strip" aria-label="Calculator features">
+<div class="ij-loan-hero-pills"><span><b>▦</b> Smart EMI Budget</span><span><b>▱</b> Income &amp; Expense View</span><span><b>♢</b> Plan Your Loan Safely</span></div>
+</div>
+<section class="card ij-affordability-card" aria-labelledby="ij-calculator-title">
   <div class="ij-affordability-workspace">
     <div class="ij-affordability-input-panel">
       <div class="ij-calculator-heading"><span class="ij-calculator-icon" aria-hidden="true">₹</span><div><h2 id="ij-calculator-title">Estimate Your Monthly EMI Budget</h2><p>Enter your monthly take-home income and regular outgoings. The estimate updates after you calculate.</p></div></div>
