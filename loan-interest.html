@@ -132,6 +132,32 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 <div class="ij-panel ij-result-panel"><h2 class="ij-panel-title"><i>✓</i> Calculation Result</h2><div class="ij-result-grid"><div class="ij-result-box"><div class="ij-result-emoji">🪙</div><div class="ij-result-label">Total Interest</div><div class="ij-result-value" id="interest-result">₹1,80,000</div></div><div class="ij-result-box"><div class="ij-result-emoji">💰</div><div class="ij-result-label">Total Repayment</div><div class="ij-result-value" id="total-result">₹6,80,000</div></div></div>
 <div class="ij-breakdown"><div class="ij-breakdown-row"><span>Loan Amount (Principal)</span><strong id="principal-result">₹5,00,000</strong></div><div class="ij-breakdown-row"><span>Interest Rate (Annual)</span><strong id="rate-result">12%</strong></div><div class="ij-breakdown-row"><span>Loan Tenure</span><strong id="tenure-result">3 Years</strong></div><div class="ij-breakdown-row"><span>Interest Method</span><span class="ij-method-pill">Simple Interest</span></div></div><p id="result-status" class="ij-disclaimer" style="margin:12px 0 0" aria-live="polite">Illustrative estimate based on the values entered. Actual loan terms and charges may differ.</p>
 </div></section>
+<section class="ij-panel ij-reducing-panel" aria-labelledby="ij-reducing-title" style="margin-top:18px">
+<h2 class="ij-panel-title" id="ij-reducing-title"><i>↘</i> Reducing Balance Loan Calculator (EMI)</h2>
+<p style="margin:0 0 14px;color:#52647c;font-size:14px">Uses the same loan amount, annual rate and tenure entered above. Each monthly EMI pays interest on the outstanding balance; the principal portion reduces the balance for the next month.</p>
+<div class="ij-result-grid">
+<div class="ij-result-box"><div class="ij-result-emoji">📅</div><div class="ij-result-label">Monthly EMI</div><div class="ij-result-value" id="rb-emi">—</div></div>
+<div class="ij-result-box"><div class="ij-result-emoji">🪙</div><div class="ij-result-label">Total Reducing-Balance Interest</div><div class="ij-result-value" id="rb-interest">—</div></div>
+<div class="ij-result-box"><div class="ij-result-emoji">💰</div><div class="ij-result-label">Total Repayment</div><div class="ij-result-value" id="rb-total">—</div></div>
+<div class="ij-result-box"><div class="ij-result-emoji">📉</div><div class="ij-result-label">Balance After First EMI</div><div class="ij-result-value" id="rb-first-balance">—</div></div>
+</div>
+<div class="ij-breakdown">
+<div class="ij-breakdown-row"><span>Starting Principal</span><strong id="rb-principal">—</strong></div>
+<div class="ij-breakdown-row"><span>Monthly Interest Rate</span><strong id="rb-monthly-rate">—</strong></div>
+<div class="ij-breakdown-row"><span>Number of EMIs</span><strong id="rb-months">—</strong></div>
+<div class="ij-breakdown-row"><span>Interest Method</span><span class="ij-method-pill">Monthly Reducing Balance</span></div>
+</div>
+<div style="margin-top:16px">
+<h3 style="margin:0 0 9px;font-size:16px">Monthly Repayment Schedule</h3>
+<div style="overflow-x:auto;border:1px solid #d9e5f7;border-radius:10px">
+<table style="width:100%;min-width:560px;border-collapse:collapse;font-size:12px;text-align:right">
+<thead><tr style="background:#0758df;color:white"><th style="padding:9px;text-align:center">Month</th><th style="padding:9px">EMI</th><th style="padding:9px">Principal Paid</th><th style="padding:9px">Interest</th><th style="padding:9px">Remaining Balance</th></tr></thead>
+<tbody id="rb-schedule"></tbody>
+</table></div>
+<button class="ij-preset" id="rb-full-schedule" type="button" style="margin-top:9px">Show full repayment schedule</button>
+</div>
+<p class="ij-disclaimer" id="rb-status" style="margin:13px 0 0" aria-live="polite">Estimate assumes a fixed annual rate, monthly payments and no fees or extra repayments.</p>
+</section>
 <section class="ij-rate-check" aria-labelledby="ij-rate-check-title"><div><h2 id="ij-rate-check-title">Monthly Interest Rate to Annual Rate Checker</h2><p>Sometimes a lender or offer displays an interest rate per month. Convert it to a simple annualised rate to make the time period easier to understand before comparing loan terms.</p><div class="ij-rate-field"><label for="monthly-rate">Quoted Monthly Interest Rate</label><div class="ij-input-wrap"><input id="monthly-rate" type="number" min="0" max="100" step="any" inputmode="decimal" value="2" aria-describedby="ij-rate-check-note"><span class="ij-input-suffix">% / month</span></div></div><p class="ij-rate-note" id="ij-rate-check-note">Enter the monthly percentage shown in the offer or loan document.</p></div><div class="ij-rate-result" aria-live="polite"><span>Simple annualised equivalent</span><strong id="annual-rate-result">24% per year</strong><p id="rate-example-text">2% per month × 12 = 24% per year.</p></div><p class="ij-rate-note" style="grid-column:1/-1">Important: This is a simple annualisation (monthly rate × 12), not an APR, effective annual rate or lender quote. It does not account for reducing balance, compounding, fees or taxes. Always read the sanction letter and confirm the actual calculation method with the lender.</p></section>
 <section class="ij-info-band" aria-labelledby="ij-formula-title"><div class="ij-formula"><h2 id="ij-formula-title">ⓘ Simple Interest Formula</h2><div class="ij-formula-equation"><em>SI</em> = (P × R × T) / 100</div></div><div class="ij-where"><h3>Where,</h3><ul><li><strong>SI</strong> = Simple Interest amount</li><li><strong>P</strong> = Principal (loan amount)</li><li><strong>R</strong> = Annual interest rate (%)</li><li><strong>T</strong> = Time in years</li></ul></div></section>
 <section class="ij-content-grid"><article class="ij-content-card"><h2>Key Points About Loan Interest</h2><ul><li>This calculator uses the simple interest formula on the original principal.</li><li>Interest is calculated from the annual rate and the selected time period.</li><li>Total repayment is the original principal plus estimated simple interest.</li><li>Many bank loans use reducing-balance interest with monthly EMIs, which is different.</li><li>Check processing fees, insurance, penalties and other charges in your loan agreement.</li></ul><p>Need to estimate your monthly instalment? Use our <a href="emi.html">EMI Calculator</a> for a reducing-balance EMI estimate.</p></article>
@@ -195,6 +221,42 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
  [amount,rate,tenure,unit].forEach(el=>el.addEventListener('input',calculate));
  unit.addEventListener('change',calculate);
  calculate();
+ // Reducing-balance EMI calculation using the same principal, rate and tenure inputs.
+ let rbRows=[],rbExpanded=false;
+ function calculateReducingBalance(){
+  const p=Number(amount.value),annual=Number(rate.value),t=Number(tenure.value);
+  const months=unit.value==='months'?t: t*12;
+  const out=['rb-emi','rb-interest','rb-total','rb-first-balance','rb-principal','rb-monthly-rate','rb-months'];
+  if(amount.value===''||rate.value===''||tenure.value===''||!Number.isFinite(p)||!Number.isFinite(annual)||!Number.isFinite(months)||p<=0||annual<0||annual>100||months<1||months>600||!Number.isInteger(months)){
+   out.forEach(id=>$(id).textContent='—');$('rb-schedule').innerHTML='';$('rb-status').textContent='Enter a positive loan amount, a rate from 0% to 100%, and a whole-number tenure of 1–600 months.';return;
+  }
+  const monthlyRate=annual/1200;
+  const emi=monthlyRate===0?p/months:p*monthlyRate*Math.pow(1+monthlyRate,months)/(Math.pow(1+monthlyRate,months)-1);
+  if(!Number.isFinite(emi)){out.forEach(id=>$(id).textContent='—');$('rb-schedule').innerHTML='';$('rb-status').textContent='These values are too large to calculate.';return;}
+  let balance=p,totalInterest=0;rbRows=[];
+  for(let m=1;m<=months;m++){
+   const interest=balance*monthlyRate;
+   const principalPaid=Math.min(balance,emi-interest);
+   balance=Math.max(0,balance-principalPaid);
+   if(m===months)balance=0;
+   totalInterest+=interest;
+   rbRows.push({month:m,emi:principalPaid+interest,principal:principalPaid,interest,balance});
+  }
+  $('rb-emi').textContent=money(emi);$('rb-interest').textContent=money(totalInterest);$('rb-total').textContent=money(p+totalInterest);
+  $('rb-first-balance').textContent=money(rbRows[0].balance);$('rb-principal').textContent=money(p);
+  $('rb-monthly-rate').textContent=number(monthlyRate*100)+'%';$('rb-months').textContent=number(months);
+  renderReducingSchedule();
+  $('rb-status').textContent='Estimated fixed EMI over '+number(months)+' months. Interest is recalculated monthly on the remaining principal; fees, rate changes and extra payments are not included.';
+ }
+ function renderReducingSchedule(){
+  const rows=rbExpanded?rbRows:rbRows.slice(0,12);
+  $('rb-schedule').innerHTML=rows.map(x=>'<tr><td style="padding:8px;text-align:center;border-bottom:1px solid #e5edf9">'+x.month+'</td><td style="padding:8px;border-bottom:1px solid #e5edf9">'+money(x.emi)+'</td><td style="padding:8px;border-bottom:1px solid #e5edf9">'+money(x.principal)+'</td><td style="padding:8px;border-bottom:1px solid #e5edf9">'+money(x.interest)+'</td><td style="padding:8px;border-bottom:1px solid #e5edf9">'+money(x.balance)+'</td></tr>').join('');
+  $('rb-full-schedule').textContent=rbExpanded?'Show first 12 months':'Show full repayment schedule ('+rbRows.length+' months)';
+ }
+ $('rb-full-schedule').addEventListener('click',function(){rbExpanded=!rbExpanded;renderReducingSchedule();});
+ [amount,rate,tenure,unit].forEach(el=>el.addEventListener('input',calculateReducingBalance));
+ unit.addEventListener('change',calculateReducingBalance);
+ calculateReducingBalance();
  const monthlyRateInput=$('monthly-rate');
  const annualRateOutput=$('annual-rate-result');
  const rateExample=$('rate-example-text');
