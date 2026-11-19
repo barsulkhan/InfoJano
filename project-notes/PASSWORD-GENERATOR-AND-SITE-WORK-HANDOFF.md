@@ -297,3 +297,9 @@ Current focus: Password Generator refresh/header visual consistency and full-pag
 - Header and Hero remain frozen. Only the feature-section copy changed; no Header/Hero markup or CSS was touched.
 - Source commit: `201d701cace148e9f48aff951bd24d97ff01bcfd`.
 - Remaining before calling SEO task fully verified: check Pages deployment for this commit, live page and sitemap, run browser/Playwright QA, and later inspect Search Console indexing/query data. No live deployment, indexing or ranking improvement is claimed.
+
+### 2026-11-19 — Google indexing/canonical source audit follow-up
+- Search Console property `sc-domain:infojano.com` is connected; all 108 sitemap URLs were inspected (88 indexed, 20 other states). Detailed findings and current follow-ups are in `project-notes/GOOGLE-INDEXING-AND-SEO-PENDING-WORK.md`.
+- Reinspected 10 representative URLs. Percentage-page canonical anomalies reported by Search Console contain stale malformed suffixes in the Nov 11 inspection record, but current representative source tags are clean and correctly point to infojano.com. No speculative canonical edits were made.
+- Found and corrected two actual metadata inconsistencies in `id-card-print-studio.html`: `og:url` and WebPage JSON-LD `url` pointed to the GitHub Pages host while the canonical pointed to infojano.com. Commit: `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6`.
+- Password Generator Header and Hero were not edited. Deployment and post-deploy/browser verification are still pending; do not infer success from older workflow runs.
