@@ -1,3 +1,4 @@
+| USA + India SEO Competitor Research | SEO opportunity dossier | Research saved — limited GSC sample (Nov 13–15 only), source audit and public competitor-page review; recommendations only; no implementation/deployment | 2026-11-17 | Obtain full date-scoped GSC export + URL Inspection; approve page-specific copy/product changes before PR |
 | Social Media QR Maker | tools/social-qr-maker/ | Automated browser QA + QR PNG decoding PASS — GitHub Actions #44133825130: 15 passed, 1 expected skip, 0 failed; 12 platforms + Bundle + Link-in-Bio payloads decoded on desktop/mobile Chromium; physical scan/manual screen-reader/deployment checks pending | 2026-11-17 | Optional physical-device QR scan and manual screen-reader review; production deployment requires separate release verification |
 | Add or Subtract Date Calculator | tools/add-subtract-date-calculator/ | In progress — functional calculator embedded in existing SEO page; Node syntax/date arithmetic checks pass; Pages workflow #2642 SUCCESS; browser QA pending | 2026-11-15 | Complete browser QA; verify Pages deployment; then review related date-page CTA consistency |
 | Elapsed Time Calculator | tools/elapsed-time-calculator/ | In progress — US Work Hours/Time Card SERP review recommends one consolidated concept; US Date & Time Duration review finds overlap with existing Date + Time mode; no additional elapsed/date-time URL justified; quantitative metrics/GSC unavailable; desktop visual QA pending | 2026-11-15 | Complete desktop visual QA when browser access is available; revisit US metrics/GSC when reliable data is available |
@@ -94,3 +95,10 @@ Last updated: 2026-11-15
 ### 2026-11-15 — Date offset page deployed
 - Pages workflow #2642 completed SUCCESS for commit `6810fdf2dd02d6bdef535b6def92673d2555d1b9`. Direct live browser rendering could not be independently fetched; interaction QA remains pending.
 - APK workflow #685 passed repository validation and continued building; the previously published release has 23 APK assets.
+
+
+### 2026-11-17 — USA + India SEO competitor research saved
+- Master dossier: [SEO-OPPORTUNITY-RESEARCH-US-INDIA-2026-11-17.md](SEO-OPPORTUNITY-RESEARCH-US-INDIA-2026-11-17.md).
+- Covers India UPI QR, Normal QR vs Social QR boundaries, India image-resizer/exam-photo competitors, USA percentage/discount calculators, current InfoJano source promises, proposed metadata, action priorities and measurement plan.
+- GSC request for last_28d returned only Nov 13–15, 2026 rows (184 query/page/country/device records); clearly treated as a limited sample, not a full 28-day report. Ahrefs volume/KD metrics and individual URL Inspection status are not claimed.
+- Competitor pages were reviewed as public claims/content; no full controlled hands-on testing of every competitor. No code, metadata, sitemap, homepage, shared files or deployment changed.
