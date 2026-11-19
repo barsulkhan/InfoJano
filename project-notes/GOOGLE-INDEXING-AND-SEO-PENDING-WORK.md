@@ -5,24 +5,19 @@
 **Source of page inventory:** repository `sitemap.xml`  
 **Current sitemap inventory:** 108 URLs
 
-## Important status note
-Google Search Console is **not connected** to the OpenSEO project yet. The connection lookup returned no connected Google accounts or Search Console properties. Therefore, no URL Inspection result is currently available and it is not possible to truthfully label any individual URL as indexed or not indexed from the available data.
+## Current status
+Google Search Console is connected to the OpenSEO project through the verified domain property `sc-domain:infojano.com` (siteOwner). On 2026-11-19, all 108 sitemap URLs were inspected in 11 batches. The results are recorded below. Sitemap presence alone is not evidence of indexing; URL Inspection is the source of truth.
 
-A URL appearing in the sitemap means it is submitted/discoverable via the sitemap; it does **not** prove Google indexed it.
+The 108-URL audit returned 88 Submitted and indexed and 20 URLs in other states. A 10-URL representative reinspection on 2026-11-19 reconfirmed the main canonical patterns and found one current source metadata inconsistency on the ID Card Studio page, which has now been corrected in commit `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6`. Deployment and a post-deployment inspection are still pending.
 
 ## Work remaining
 
-### A. Connect Search Console (first task)
-- [ ] Connect the Google account that has access to the verified Search Console property for `sc-domain:infojano.com` (or the exact URL-prefix property).
-- [ ] In OpenSEO, bind that property to the `InfoJano SEO` project.
-- [ ] Confirm the selected property is the intended production domain.
-
-### B. Audit every sitemap URL
-- [ ] Read the sitemap submitted in Search Console and compare it with the repository sitemap.
-- [ ] Run URL Inspection in batches of up to 10 URLs.
-- [ ] Record each URL's Google index verdict, coverage/index state, last crawl, Google-selected canonical, declared canonical, mobile verdict and rich-results verdict.
-- [ ] Categorize each page: Indexed; Discovered — currently not indexed; Crawled — currently not indexed; Duplicate/canonical issue; Blocked/noindex/robots; Redirect; Fetch/server error; Other.
-- [ ] Do not request indexing for every URL blindly. Fix technical/content causes first, then request indexing for eligible updated URLs.
+### A. Search Console connection and audit
+- [x] Connected verified `sc-domain:infojano.com` property (siteOwner).
+- [x] Inspected all 108 sitemap URLs in 11 batches of up to 10.
+- [x] Recorded verdicts, crawl dates and canonical selections in the audit section below.
+- [ ] Reinspect changed pages after a successful Pages deployment.
+- [ ] Review the remaining non-indexed URLs and compare sitemap coverage with current live responses.
 
 ### C. Fix and resubmit
 - [ ] Check robots.txt, sitemap response, canonical tags, noindex directives, HTTP status, redirects and internal links for non-indexed URLs.
@@ -43,8 +38,8 @@ A URL appearing in the sitemap means it is submitted/discoverable via the sitema
 - [ ] Recheck sitemap and page discovery.
 - [ ] Review indexing and performance after recrawl.
 
-## Sitemap URL inventory — inspection status pending
-- [ ] `https://infojano.com/` — **Not inspected yet** (Search Console connection required)
+## Sitemap URL inventory — original 2026-11-19 inspection
+- [ ] `https://infojano.com/` — **Not inspected yet** (URL Inspection completed; see status summary below)
 - [ ] `https://infojano.com/age.html` — **Not inspected yet** (Search Console connection required)
 - [ ] `https://infojano.com/bmi.html` — **Not inspected yet** (Search Console connection required)
 - [ ] `https://infojano.com/currency-converter.html` — **Not inspected yet** (Search Console connection required)
@@ -197,12 +192,23 @@ These also point their declared/Google canonical to the GitHub Pages host; verif
 - `https://infojano.com/savings.html`
 - `https://infojano.com/id-card-print-studio.html`
 
-### Important canonical anomalies among pages still indexed
-Several inspected pages are indexed on infojano.com but Search Console returned a declared canonical value containing a malformed suffix, e.g. `$3%3Cmeta%20property=` or `$3%3Cscript%20type=`. Examples observed include `percentage-change.html`, `what-percent-calculator.html`, `percentage-difference-calculator.html`, `increase-decrease-by-percentage-calculator.html`, `profit-loss-percentage-calculator.html`, `target-marks-calculator.html`, `percentage-of-percentage-calculator.html`, `repeated-percentage-change-calculator.html`, `successive-percentage-change-calculator.html`, and `remove-gst-from-total-calculator.html`. Inspect source HTML/template before editing; likely malformed canonical output needs correction.
+### Canonical inspection follow-up — 2026-11-19
+Search Console's stored inspection results for several percentage pages returned a declared-canonical string with suffixes such as `$3%3Cmeta%20property=` or `$3%3Cscript%20type=`. Current GitHub source was re-fetched for representative affected pages (`percentage-change.html`, `what-percent-calculator.html`, `percentage-difference-calculator.html`, `remove-gst-from-total-calculator.html`) and each contains a correctly closed canonical tag pointing to its own `https://infojano.com/...` URL. GitHub code search found no literal encoded suffix. Their Search Console last-crawl timestamps are 2026-11-11, so the available evidence does not justify changing clean current canonical markup; treat these as stale crawl/output observations and verify again after a fresh deployment/recrawl.
+
+A separate live source inconsistency was confirmed in `id-card-print-studio.html`: its canonical tag pointed to infojano.com, but its `og:url` and WebPage JSON-LD `url` still pointed to the GitHub Pages host. Both metadata values were aligned to the custom domain in commit `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6`.
 
 ### Next actions
-1. Audit canonical tags site-wide and ensure only `https://infojano.com/` canonical URLs are emitted. Investigate why GitHub Pages origin is being declared as canonical on selected pages.
-2. Inspect and fix malformed canonical strings on the percentage-related pages and any other affected pages.
-3. Check content quality, internal links and sitemap inclusion for the 4 discovered and 3 unknown URLs; then request indexing for eligible pages.
-4. Improve the one crawled-not-indexed age-in-days page before requesting another crawl.
-5. Re-run URL Inspection after fixes. Do not promise Google will index every URL; final inclusion is Google's decision.
+1. [x] Recheck representative canonical source files; current custom-domain canonical tags are correctly closed.
+2. [x] Correct the two stale GitHub-host metadata URLs in ID Card Studio (commit above).
+3. [ ] Verify successful Pages deployment for the metadata fix, then reinspect ID Card Studio and the 12 duplicate/alternate canonical cases.
+4. [ ] Check current live responses and internal-link consistency for the 4 discovered and 3 unknown URLs; improve page content where needed.
+5. [ ] Improve the crawled-not-indexed age-in-days page before requesting another crawl.
+6. [ ] Request indexing only for a small, eligible priority batch after deployment and fixes. Google makes the final indexing decision.
+
+
+### Source verification update — 2026-11-19
+- Representative Search Console reinspection reconfirmed: `percentage-change.html`, `what-percent-calculator.html`, `percentage-difference-calculator.html`, and `remove-gst-from-total-calculator.html` are indexed with Google-selected canonicals on infojano.com. The unusual declared-canonical suffixes are in old inspection output (last crawl Nov 11); current checked source tags are clean. No speculative canonical edits were made.
+- `qr-choice.html` and `resize-image-to-pixels.html` still report Google-selected GitHub Pages URLs (last crawl Nov 15 and Nov 13 respectively), while current source canonicals point to infojano.com. This needs post-deployment recrawl/host consolidation verification; no redirect workaround was added because GitHub Pages host behavior and app dependencies need a deliberate test.
+- `url-toolkit.html` and `savings.html` currently declare infojano.com canonical in source, but Search Console's older inspection records still select the GitHub Pages host.
+- `age-in-days-calculator.html` currently declares infojano.com canonical in source; Search Console's crawl record is older and selected the GitHub Pages URL.
+- Pages deployment and post-deploy URL Inspection for commit `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6` remain pending.
