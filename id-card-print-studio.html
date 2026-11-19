@@ -275,6 +275,16 @@ body .ij-global-header .ij-global-page-context{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){.ij-reference-hero *{scroll-behavior:auto!important}.ij-id-card-mock.front,.ij-id-card-mock.back{animation:none!important}}
 
+
+/* Exact shared-header sizing used by Password Generator (desktop and mobile). */
+.ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{width:min(calc(100% - clamp(24px,4.4vw,64px)),1200px)!important;max-width:1200px!important;min-height:88px!important}
+.ij-global-header .ij-global-logo{width:190px!important;height:68px!important;flex-basis:190px!important;object-fit:contain!important;object-position:left center!important}
+@media(max-width:900px){.ij-doc-shortcuts .ij-doc-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{width:calc(100% - 24px)!important;max-width:1200px!important;min-height:64px!important}
+ .ij-global-header .ij-global-logo{width:128px!important;height:46px!important;flex-basis:128px!important}
+}
+
 </style>
 <script type="application/ld+json">
 {
