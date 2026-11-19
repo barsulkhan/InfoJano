@@ -1,8 +1,8 @@
 {
   "id": "/InfoJano/loan-eligibility.html",
-  "name": "InfoJano — Loan Eligibility Calculator",
-  "short_name": "Loan Eligibility Calculator",
-  "description": "Install the InfoJano Loan Eligibility Calculator tool for quick access.",
+  "name": "InfoJano — Loan Affordability Calculator",
+  "short_name": "Loan Affordability",
+  "description": "Install the InfoJano Loan Affordability Calculator for quick monthly EMI budget estimates.",
   "start_url": "/InfoJano/loan-eligibility.html",
   "scope": "/InfoJano/",
   "display": "standalone",
