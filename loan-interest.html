@@ -102,6 +102,10 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
  .ij-hero-grid{min-height:250px}
 }
 @media(min-width:1500px){.ij-loan-hero{padding:48px 56px}}
+/* Both loan calculation methods remain expanded and visible; no method selector. */
+.ij-methods-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start;margin:0 0 18px}.ij-method-card{min-width:0;padding:18px;border:1px solid #cfe0f8;border-radius:20px;background:linear-gradient(155deg,#fff,#fbfdff);box-shadow:0 8px 24px #1a4c7a10}.ij-method-heading{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:19px;color:#14264a}.ij-method-heading span{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#e5f1ff;color:#1458c8;font-size:13px}.ij-method-card .ij-calc-layout{grid-template-columns:1fr;gap:12px}.ij-method-card .ij-panel{padding:14px;border-radius:14px;box-shadow:none}.ij-method-card .ij-panel-title{font-size:16px}.ij-reducing-panel{margin-top:0!important}.ij-method-card .ij-result-grid{gap:7px}.ij-method-card .ij-result-box{padding:12px 8px}
+@media(max-width:850px){.ij-methods-grid{grid-template-columns:1fr}.ij-method-card .ij-calc-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:600px){.ij-method-card{padding:14px}.ij-method-card .ij-calc-layout{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-ij-header-align="hero">
@@ -121,7 +125,10 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 <a class="ij-tool-link" href="savings.html"><span class="ij-tool-icon">▥</span><strong>Savings Calculator</strong><span class="ij-tool-arrow">→</span></a>
 <a class="ij-tool-link" href="percentage.html"><span class="ij-tool-icon">％</span><strong>Percentage Calculator</strong><span class="ij-tool-arrow">→</span></a>
 </div></section>
-<section class="ij-calc-layout" aria-label="Loan interest calculator">
+<div class="ij-methods-grid">
+<section class="ij-method-card" aria-labelledby="ij-simple-method-title">
+<h2 class="ij-method-heading" id="ij-simple-method-title"><span>01</span> Simple Interest Calculator</h2>
+<section class="ij-calc-layout" aria-label="Simple interest calculator">
 <div class="ij-panel"><h2 class="ij-panel-title"><i>▦</i> Calculate Loan Interest</h2>
 <div class="ij-field"><label for="principal">Loan Amount (Principal)</label><div class="ij-input-wrap"><span class="ij-input-prefix">₹</span><input id="principal" type="number" min="0" step="any" inputmode="decimal" placeholder="Example: 500000" value="500000"></div><div class="ij-presets"><button class="ij-preset" type="button" data-amount="100000">₹1,00,000</button><button class="ij-preset" type="button" data-amount="200000">₹2,00,000</button><button class="ij-preset active" type="button" data-amount="500000">₹5,00,000</button><button class="ij-preset" type="button" data-amount="1000000">₹10,00,000</button></div></div>
 <div class="ij-field"><label for="rate">Interest Rate (Annual)</label><div class="ij-input-wrap"><span class="ij-input-prefix">％</span><input id="rate" type="number" min="0" step="any" inputmode="decimal" placeholder="Example: 12" value="12"><span class="ij-input-suffix">%</span></div></div>
@@ -132,7 +139,8 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 <div class="ij-panel ij-result-panel"><h2 class="ij-panel-title"><i>✓</i> Calculation Result</h2><div class="ij-result-grid"><div class="ij-result-box"><div class="ij-result-emoji">🪙</div><div class="ij-result-label">Total Interest</div><div class="ij-result-value" id="interest-result">₹1,80,000</div></div><div class="ij-result-box"><div class="ij-result-emoji">💰</div><div class="ij-result-label">Total Repayment</div><div class="ij-result-value" id="total-result">₹6,80,000</div></div></div>
 <div class="ij-breakdown"><div class="ij-breakdown-row"><span>Loan Amount (Principal)</span><strong id="principal-result">₹5,00,000</strong></div><div class="ij-breakdown-row"><span>Interest Rate (Annual)</span><strong id="rate-result">12%</strong></div><div class="ij-breakdown-row"><span>Loan Tenure</span><strong id="tenure-result">3 Years</strong></div><div class="ij-breakdown-row"><span>Interest Method</span><span class="ij-method-pill">Simple Interest</span></div></div><p id="result-status" class="ij-disclaimer" style="margin:12px 0 0" aria-live="polite">Illustrative estimate based on the values entered. Actual loan terms and charges may differ.</p>
 </div></section>
-<section class="ij-panel ij-reducing-panel" aria-labelledby="ij-reducing-title" style="margin-top:18px">
+</section>
+<section class="ij-panel ij-reducing-panel ij-method-card" aria-labelledby="ij-reducing-title" aria-labelledby="ij-reducing-title" style="margin-top:18px">
 <h2 class="ij-panel-title" id="ij-reducing-title"><i>↘</i> Reducing Balance Loan Calculator (EMI)</h2>
 <p style="margin:0 0 14px;color:#52647c;font-size:14px">Uses the same loan amount, annual rate and tenure entered above. Each monthly EMI pays interest on the outstanding balance; the principal portion reduces the balance for the next month.</p>
 <div class="ij-result-grid">
@@ -158,6 +166,7 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 </div>
 <p class="ij-disclaimer" id="rb-status" style="margin:13px 0 0" aria-live="polite">Estimate assumes a fixed annual rate, monthly payments and no fees or extra repayments.</p>
 </section>
+</div>
 <section class="ij-rate-check" aria-labelledby="ij-rate-check-title"><div><h2 id="ij-rate-check-title">Monthly Interest Rate to Annual Rate Checker</h2><p>Sometimes a lender or offer displays an interest rate per month. Convert it to a simple annualised rate to make the time period easier to understand before comparing loan terms.</p><div class="ij-rate-field"><label for="monthly-rate">Quoted Monthly Interest Rate</label><div class="ij-input-wrap"><input id="monthly-rate" type="number" min="0" max="100" step="any" inputmode="decimal" value="2" aria-describedby="ij-rate-check-note"><span class="ij-input-suffix">% / month</span></div></div><p class="ij-rate-note" id="ij-rate-check-note">Enter the monthly percentage shown in the offer or loan document.</p></div><div class="ij-rate-result" aria-live="polite"><span>Simple annualised equivalent</span><strong id="annual-rate-result">24% per year</strong><p id="rate-example-text">2% per month × 12 = 24% per year.</p></div><p class="ij-rate-note" style="grid-column:1/-1">Important: This is a simple annualisation (monthly rate × 12), not an APR, effective annual rate or lender quote. It does not account for reducing balance, compounding, fees or taxes. Always read the sanction letter and confirm the actual calculation method with the lender.</p></section>
 <section class="ij-info-band" aria-labelledby="ij-formula-title"><div class="ij-formula"><h2 id="ij-formula-title">ⓘ Simple Interest Formula</h2><div class="ij-formula-equation"><em>SI</em> = (P × R × T) / 100</div></div><div class="ij-where"><h3>Where,</h3><ul><li><strong>SI</strong> = Simple Interest amount</li><li><strong>P</strong> = Principal (loan amount)</li><li><strong>R</strong> = Annual interest rate (%)</li><li><strong>T</strong> = Time in years</li></ul></div></section>
 <section class="ij-content-grid"><article class="ij-content-card"><h2>Key Points About Loan Interest</h2><ul><li>This calculator uses the simple interest formula on the original principal.</li><li>Interest is calculated from the annual rate and the selected time period.</li><li>Total repayment is the original principal plus estimated simple interest.</li><li>Many bank loans use reducing-balance interest with monthly EMIs, which is different.</li><li>Check processing fees, insurance, penalties and other charges in your loan agreement.</li></ul><p>Need to estimate your monthly instalment? Use our <a href="emi.html">EMI Calculator</a> for a reducing-balance EMI estimate.</p></article>
