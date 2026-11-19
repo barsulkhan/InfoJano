@@ -653,6 +653,42 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
  main > section.ij-loan-reference-hero .ij-summary-line{font-size:9px}
  main > section.ij-loan-reference-hero .ij-summary-line b{font-size:10px}
 }
+
+/* Final mobile clipping fix: the parent hero must grow with the full artwork. */
+@media(max-width:760px){
+ main > section.ij-loan-reference-hero{
+  display:flex!important;flex-direction:column!important;
+  height:auto!important;min-height:610px!important;max-height:none!important;
+  overflow:visible!important;box-sizing:border-box;
+  padding-bottom:28px!important;gap:16px!important
+ }
+ main > section.ij-loan-reference-hero .ij-loan-hero-art{
+  display:block!important;position:relative!important;
+  width:100%!important;height:360px!important;min-height:360px!important;
+  max-height:none!important;flex:0 0 360px!important;flex-shrink:0!important;
+  overflow:visible!important;margin:0!important;padding:0 4px!important
+ }
+ main > section.ij-loan-reference-hero .ij-hero-calculator,
+ main > section.ij-loan-reference-hero .ij-hero-summary{
+  position:absolute!important;top:50%!important;
+  width:48%!important;height:300px!important;max-height:none!important;
+  transform:translateY(-50%)!important;box-sizing:border-box!important
+ }
+ main > section.ij-loan-reference-hero .ij-hero-calculator{
+  left:0!important;right:auto!important;z-index:4!important
+ }
+ main > section.ij-loan-reference-hero .ij-hero-summary{
+  right:0!important;left:auto!important;z-index:2!important
+ }
+}
+@media(max-width:380px){
+ main > section.ij-loan-reference-hero{min-height:570px!important}
+ main > section.ij-loan-reference-hero .ij-loan-hero-art{
+  height:330px!important;min-height:330px!important;flex-basis:330px!important
+ }
+ main > section.ij-loan-reference-hero .ij-hero-calculator,
+ main > section.ij-loan-reference-hero .ij-hero-summary{height:278px!important}
+}
 </style>
   
 
