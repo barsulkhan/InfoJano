@@ -454,3 +454,8 @@ Fix QR Maker manifest `start_url` mismatch from run `44295049073`; do not weaken
 - Applied the strong/random/free/online/secure keyword cluster naturally to the existing Password Generator feature copy. Page title/meta/H1/FAQ already cover the main intent clusters; no feature claims added.
 - Header and Hero were not modified. Source commit `201d701cace148e9f48aff951bd24d97ff01bcfd`; tracker update is documentation only.
 - Pages deployment, live rendering, browser QA, indexing and ranking impact remain unverified.
+
+### 2026-11-19 — Site-wide indexing audit cross-check
+- Google Search Console domain property `sc-domain:infojano.com` is connected; the 108-URL sitemap audit returned 88 indexed and 20 other states. See `project-notes/GOOGLE-INDEXING-AND-SEO-PENDING-WORK.md` for the URL-level list and next actions.
+- Corrected ID Card Studio social/structured metadata host mismatch (two values changed from `barsulkhan.github.io/InfoJano/` to `infojano.com/`) in commit `6351b3d1774bd5e55edd2f6662d675ff35c1e3f6`.
+- No footer, contact, privacy, CMP or shared header changes were made in this pass. Existing footer QA/deployment runs are historical and do not validate this new metadata commit; fresh deployment confirmation remains pending.
