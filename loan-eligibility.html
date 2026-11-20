@@ -1492,26 +1492,15 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
 }
 
 
-/* User-requested desktop hero width: extend 10mm beyond the content frame on each side. */
-@media screen and (min-width:1001px) and (pointer:fine){
-  body main > section.ij-loan-reference-hero{
-    width:calc(100% + 20mm)!important;
-    max-width:none!important;
-    margin-left:-10mm!important;
-    margin-right:-10mm!important;
-  }
-}
-
-
-/* Correct the 20mm hero expansion against the OUTER main frame.
-   The main element has 16px horizontal inner gutters; remove those gutters
-   on desktop so the hero's +20mm width and -10mm side margins use the full frame. */
+/* Single authoritative desktop width rule.
+   Expand the hero by exactly 10mm on each side of the main content frame. */
 @media screen and (min-width:1001px) and (pointer:fine){
   body main{
     padding-left:0!important;
     padding-right:0!important;
   }
   body main > section.ij-loan-reference-hero{
+    box-sizing:border-box!important;
     width:calc(100% + 20mm)!important;
     max-width:none!important;
     margin-left:-10mm!important;
@@ -1677,7 +1666,7 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
 })();
 </script>
 
-<script src="/InfoJano/download-progress.js" defer></script>
+<script src="/download-progress.js" defer></script>
 
 
 
