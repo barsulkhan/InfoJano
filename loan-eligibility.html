@@ -1312,6 +1312,32 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
   }
 }
 
+
+/* Stabilize the loan page: remove viewport-linked fades and transform animations
+   that can make the layout appear to pulse while the page settles or scrolls. */
+.ij-loan-reference-hero,
+.ij-loan-reference-hero *,
+.ij-affordability-card,
+.ij-content-card,
+.ij-faq,
+.ij-related-tools {
+  animation: none !important;
+  animation-timeline: auto !important;
+  transition: none !important;
+}
+.ij-loan-reference-hero,
+.ij-loan-reference-hero * {
+  transform: none !important;
+  opacity: 1 !important;
+}
+.ij-affordability-card,
+.ij-content-card,
+.ij-faq,
+.ij-related-tools {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
 </style>
   
 
