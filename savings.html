@@ -154,38 +154,44 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
           <linearGradient id="savGold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe66a"/><stop offset=".55" stop-color="#ffbd18"/><stop offset="1" stop-color="#ed8b00"/></linearGradient>
           <linearGradient id="savBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#70caff"/><stop offset="1" stop-color="#0875ed"/></linearGradient>
           <linearGradient id="savLeaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a3ef39"/><stop offset="1" stop-color="#16a34a"/></linearGradient>
+          <filter id="savShadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="9"/></filter>
         </defs>
-        <ellipse cx="314" cy="414" rx="260" ry="27" fill="#55aaf0" opacity=".22"/>
-        <g opacity=".9" transform="translate(405 78)">
-          <rect x="0" y="150" width="48" height="145" rx="13" fill="#58b9fa"/><rect x="62" y="105" width="48" height="190" rx="13" fill="#39a6f6"/><rect x="124" y="55" width="48" height="240" rx="13" fill="#1688ed"/>
-          <path d="M5 135 Q85 110 155 14" fill="none" stroke="#0878f5" stroke-width="9" stroke-linecap="round"/><path d="M129 15l33-9-6 35" fill="none" stroke="#0878f5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <ellipse cx="318" cy="420" rx="260" ry="25" fill="#55aaf0" opacity=".17"/>
+        <g class="sav-chart" opacity=".95" transform="translate(410 45)">
+          <rect x="0" y="175" width="42" height="125" rx="12" fill="#58b9fa"/><rect x="55" y="125" width="42" height="175" rx="12" fill="#39a6f6"/><rect x="110" y="70" width="42" height="230" rx="12" fill="#1688ed"/>
+          <path d="M4 155 Q75 135 145 24" fill="none" stroke="#0878f5" stroke-width="9" stroke-linecap="round"/><path d="M119 24l32-8-5 34" fill="none" stroke="#0878f5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
-        <g transform="translate(45 120) rotate(-9 125 150)">
-          <rect x="12" y="0" width="218" height="310" rx="32" fill="#fff" stroke="#c9e6ff" stroke-width="9"/>
-          <rect x="31" y="20" width="180" height="76" rx="15" fill="#123f79"/>
-          <rect x="43" y="111" width="42" height="38" rx="9" fill="#7fcaff"/><rect x="94" y="111" width="42" height="38" rx="9" fill="#55b5f7"/><rect x="145" y="111" width="42" height="38" rx="9" fill="#3298ef"/>
-          <g fill="#68bdf7"><rect x="43" y="161" width="42" height="38" rx="9"/><rect x="94" y="161" width="42" height="38" rx="9"/><rect x="145" y="161" width="42" height="38" rx="9"/><rect x="43" y="207" width="42" height="38" rx="9"/><rect x="94" y="207" width="42" height="38" rx="9"/><rect x="145" y="207" width="42" height="38" rx="9"/></g>
-          <rect x="145" y="253" width="42" height="38" rx="9" fill="#0875ed"/>
-        </g>
-        <g transform="translate(240 95)">
-          <path d="M112 114 C66 82 54 35 82 14 C113 18 129 55 120 91 C140 42 178 10 211 22 C218 61 182 103 132 118" fill="url(#savLeaf)"/>
-          <path d="M123 120Q118 81 91 36M129 119Q155 73 195 36" fill="none" stroke="#16834b" stroke-width="5" stroke-linecap="round"/>
-          <path d="M111 112L111 166" stroke="#16834b" stroke-width="9" stroke-linecap="round"/>
-          <rect x="48" y="151" width="174" height="27" rx="12" fill="url(#savGold)"/>
-          <path d="M57 171H213L199 329Q195 360 166 360H103Q74 360 70 330Z" fill="url(#savJar)" stroke="#fff" stroke-width="10"/>
-          <path d="M78 195Q100 179 122 193V332Q92 342 80 319Z" fill="#fff" opacity=".48"/>
-          <g fill="url(#savGold)" stroke="#f59e0b" stroke-width="3">
-            <ellipse cx="116" cy="278" rx="35" ry="18"/><ellipse cx="161" cy="293" rx="35" ry="18"/><ellipse cx="126" cy="318" rx="34" ry="17"/>
-            <ellipse cx="160" cy="250" rx="31" ry="17"/><ellipse cx="103" cy="245" rx="29" ry="16"/>
+        <ellipse cx="225" cy="392" rx="150" ry="22" fill="#1688ed" opacity=".12" filter="url(#savShadow)"/>
+        <g class="sav-jar" transform="translate(78 108)">
+          <g class="sav-plant">
+            <path d="M122 88C68 66 56 18 84 0c34 9 49 42 44 78 20-48 58-75 91-58 3 39-32 72-87 82" fill="url(#savLeaf)"/>
+            <path d="M128 104Q122 55 91 20M131 104Q158 55 204 29" fill="none" stroke="#16834b" stroke-width="5" stroke-linecap="round"/>
+            <path d="M129 104v42" stroke="#16834b" stroke-width="9" stroke-linecap="round"/>
           </g>
-          <g fill="#fff0a6" opacity=".8"><path d="M111 268l9-5 9 5-9 5z"/><path d="M155 284l8-5 8 5-8 5z"/><path d="M119 310l8-5 8 5-8 5z"/></g>
-          <path d="M88 151H182" stroke="#ffdf55" stroke-width="5" stroke-linecap="round"/>
+          <path d="M48 140h174l-14 188q-3 31-34 31H96q-31 0-34-31z" fill="url(#savJar)" stroke="#fff" stroke-width="10"/>
+          <rect x="40" y="130" width="190" height="28" rx="13" fill="url(#savGold)"/>
+          <path d="M69 171q23-13 43 0v145q-28 11-43-8z" fill="#fff" opacity=".42"/>
+          <g fill="url(#savGold)" stroke="#f59e0b" stroke-width="3">
+            <ellipse cx="110" cy="275" rx="34" ry="17"/><ellipse cx="157" cy="288" rx="34" ry="17"/><ellipse cx="119" cy="316" rx="34" ry="17"/><ellipse cx="160" cy="246" rx="30" ry="16"/><ellipse cx="102" cy="237" rx="27" ry="15"/>
+          </g>
         </g>
-        <g fill="url(#savGold)" stroke="#f59e0b" stroke-width="3">
-          <ellipse cx="245" cy="374" rx="44" ry="14"/><path d="M201 374v26c0 9 20 16 44 16s44-7 44-16v-26" fill="#f9b91d"/><ellipse cx="245" cy="400" rx="44" ry="14"/>
-          <ellipse cx="480" cy="365" rx="39" ry="13"/><path d="M441 365v24c0 8 17 14 39 14s39-6 39-14v-24" fill="#f9b91d"/><ellipse cx="480" cy="389" rx="39" ry="13"/>
+        <g class="sav-calculator" transform="translate(300 168) rotate(7 105 125)">
+          <rect x="8" y="9" width="218" height="292" rx="30" fill="#1d5eaa" opacity=".16"/>
+          <rect x="0" y="0" width="218" height="292" rx="30" fill="#fff" stroke="#c9e6ff" stroke-width="8"/>
+          <rect x="20" y="20" width="178" height="62" rx="13" fill="#123f79"/>
+          <text x="183" y="63" text-anchor="end" font-size="36" font-weight="700" fill="#fff">1200</text>
+          <g font-size="18" font-weight="700" text-anchor="middle">
+            <g fill="#70c8ff"><rect x="20" y="100" width="38" height="36" rx="9"/><rect x="68" y="100" width="38" height="36" rx="9"/><rect x="116" y="100" width="38" height="36" rx="9"/><rect x="20" y="145" width="38" height="36" rx="9"/><rect x="68" y="145" width="38" height="36" rx="9"/><rect x="116" y="145" width="38" height="36" rx="9"/><rect x="20" y="190" width="38" height="36" rx="9"/><rect x="68" y="190" width="38" height="36" rx="9"/><rect x="116" y="190" width="38" height="36" rx="9"/><rect x="20" y="235" width="86" height="36" rx="9"/></g>
+            <g fill="#fff"><text x="39" y="125">7</text><text x="87" y="125">8</text><text x="135" y="125">9</text><text x="39" y="170">4</text><text x="87" y="170">5</text><text x="135" y="170">6</text><text x="39" y="215">1</text><text x="87" y="215">2</text><text x="135" y="215">3</text><text x="63" y="260">0</text></g>
+            <g fill="#fff"><rect x="164" y="100" width="34" height="36" rx="9" fill="#0875ed"/><rect x="164" y="145" width="34" height="36" rx="9" fill="#0875ed"/><rect x="164" y="190" width="34" height="36" rx="9" fill="#0875ed"/><rect x="116" y="235" width="82" height="36" rx="9" fill="#f59e0b"/></g>
+            <g fill="#fff"><text x="181" y="125">÷</text><text x="181" y="170">×</text><text x="181" y="215">−</text><text x="157" y="260">+</text></g>
+          </g>
         </g>
-        <g stroke="#ffb21a" stroke-width="8" stroke-linecap="round"><path d="M70 55l-15-16M100 42l-3-23M42 82l-22-5"/></g>
+        <g class="sav-coins" fill="url(#savGold)" stroke="#f59e0b" stroke-width="3">
+          <ellipse cx="260" cy="371" rx="40" ry="13"/><path d="M220 371v23c0 8 18 14 40 14s40-6 40-14v-23" fill="#f9b91d"/><ellipse cx="260" cy="394" rx="40" ry="13"/>
+          <ellipse cx="525" cy="382" rx="34" ry="11"/><path d="M491 382v19c0 7 15 12 34 12s34-5 34-12v-19" fill="#f9b91d"/><ellipse cx="525" cy="401" rx="34" ry="11"/>
+        </g>
+        <g class="sav-sparkles" stroke="#ffb21a" stroke-width="8" stroke-linecap="round"><path d="M66 68l-15-16M95 52l-3-23M39 94l-22-5"/></g>
       </svg>
     </div>
   </div>
@@ -194,6 +200,21 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 
 <style>
 /* Savings page full-layout visual refresh */
+/* Savings hero illustration motion: subtle, purposeful, and accessible */
+.savings-art .sav-jar{transform-box:fill-box;transform-origin:center;animation:savFloat 5.5s ease-in-out infinite}
+.savings-art .sav-calculator{transform-box:fill-box;transform-origin:center bottom;animation:savCalcFloat 4.8s ease-in-out infinite}
+.savings-art .sav-plant{transform-box:fill-box;transform-origin:50% 100%;animation:savSway 4.2s ease-in-out infinite}
+.savings-art .sav-coins{transform-box:fill-box;transform-origin:center;animation:savCoins 3.8s ease-in-out infinite}
+.savings-art .sav-chart{transform-box:fill-box;transform-origin:center bottom;animation:savRise 4.6s ease-in-out infinite}
+.savings-art .sav-sparkles{animation:savPulse 2.8s ease-in-out infinite}
+@keyframes savFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes savCalcFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(-1deg)}}
+@keyframes savSway{0%,100%{transform:rotate(0)}50%{transform:rotate(3deg)}}
+@keyframes savCoins{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes savRise{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes savPulse{0%,100%{opacity:.55}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.savings-art .sav-jar,.savings-art .sav-calculator,.savings-art .sav-plant,.savings-art .sav-coins,.savings-art .sav-chart,.savings-art .sav-sparkles{animation:none!important}}
+
 .savings-page{max-width:1180px!important;margin:28px auto!important;padding:0 20px!important}
 .savings-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:22px;align-items:stretch}
 .savings-page .card{padding:28px;border:1px solid #e5edf8;border-radius:22px;box-shadow:0 12px 34px rgba(20,55,100,.08)}
