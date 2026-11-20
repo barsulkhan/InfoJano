@@ -1508,6 +1508,58 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
   }
 }
 
+/* Authoritative final desktop hero geometry.
+   Earlier overrides competed with each other and a blanket transform reset.
+   Keep one desktop-only rule; touch/mobile layouts remain unchanged. */
+@media screen and (min-width:1001px) and (pointer:fine){
+  body[data-ij-header-align="hero"] main{
+    width:min(calc(100% - 64px),1600px)!important;max-width:1600px!important;
+    margin:0 auto 38px!important;padding:28px 0 36px!important;box-sizing:border-box!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero{
+    display:grid!important;box-sizing:border-box!important;
+    width:calc(100% + 20mm)!important;max-width:none!important;
+    min-height:360px!important;height:auto!important;max-height:none!important;
+    margin:14px 0 22px -10mm!important;
+    padding:34px clamp(28px,3.2vw,48px)!important;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)!important;
+    align-items:center!important;gap:clamp(22px,3vw,42px)!important;overflow:hidden!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-copy{
+    min-width:0!important;align-self:center!important;text-align:left!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-copy h1{
+    max-width:680px!important;margin:14px 0 12px!important;
+    font-size:clamp(36px,3.5vw,54px)!important;line-height:1.06!important;
+    letter-spacing:-1.6px!important;text-align:left!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-copy p{
+    max-width:650px!important;font-size:clamp(15px,1.25vw,18px)!important;line-height:1.5!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-art{
+    position:relative!important;display:block!important;width:100%!important;
+    height:300px!important;min-height:300px!important;max-height:300px!important;
+    align-self:center!important;margin:0!important;padding:0!important;overflow:visible!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-calculator,
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-summary{
+    position:absolute!important;top:50%!important;bottom:auto!important;
+    width:47%!important;max-width:320px!important;height:250px!important;
+    min-height:250px!important;max-height:250px!important;margin:0!important;
+    box-sizing:border-box!important;transform:translateY(-50%)!important;
+    display:flex!important;flex-direction:column!important;justify-content:space-between!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-calculator{
+    left:1%!important;right:auto!important;z-index:4!important;padding:11px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-summary{
+    right:1%!important;left:auto!important;z-index:3!important;padding:11px!important;
+  }
+  body[data-ij-header-align="hero"] main > .ij-hero-feature-strip{
+    width:100%!important;max-width:none!important;margin:0 0 24px!important;
+  }
+}
+
 </style>
   
 
