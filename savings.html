@@ -145,7 +145,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
         <span><b aria-hidden="true">▣</b> Mobile Ready</span>
         <span><b aria-hidden="true">🛡</b> No Signup</span>
       </div>
-      
+      <div class="savings-cta-wrap"><a href="#calculator" class="savings-btn"><span aria-hidden="true">▦</span> Start Calculating Now <span aria-hidden="true">→</span></a></div>
     </div>
     <div class="savings-art" aria-hidden="true">
       <svg viewBox="0 0 620 470" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -196,25 +196,24 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
     </div>
   </div>
 </section>
-<div class="savings-cta-wrap"><a href="#calculator" class="savings-btn"><span aria-hidden="true">▦</span> Start Calculating Now <span aria-hidden="true">→</span></a></div>
 
 <style>
 /* Savings page full-layout visual refresh */
-/* Savings hero illustration motion: subtle, purposeful, and accessible */
-.savings-art .sav-jar{transform-box:fill-box;transform-origin:center;animation:savFloat 5.5s ease-in-out infinite}
-.savings-art .sav-calculator{transform-box:fill-box;transform-origin:center bottom;animation:savCalcFloat 4.8s ease-in-out infinite}
-.savings-art .sav-plant{transform-box:fill-box;transform-origin:50% 100%;animation:savSway 4.2s ease-in-out infinite}
-.savings-art .sav-coins{transform-box:fill-box;transform-origin:center;animation:savCoins 3.8s ease-in-out infinite}
-.savings-art .sav-chart{transform-box:fill-box;transform-origin:center bottom;animation:savRise 4.6s ease-in-out infinite}
-.savings-art .sav-sparkles{animation:savPulse 2.8s ease-in-out infinite}
-@keyframes savFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes savCalcFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(-1deg)}}
-@keyframes savSway{0%,100%{transform:rotate(0)}50%{transform:rotate(3deg)}}
-@keyframes savCoins{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes savRise{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes savPulse{0%,100%{opacity:.55}50%{opacity:1}}
-@media(prefers-reduced-motion:reduce){.savings-art .sav-jar,.savings-art .sav-calculator,.savings-art .sav-plant,.savings-art .sav-coins,.savings-art .sav-chart,.savings-art .sav-sparkles{animation:none!important}}
-
+/* Independent SVG motion preserves the illustration's authored layout transforms. */
+.savings-art .sav-jar,.savings-art .sav-calculator,.savings-art .sav-chart,.savings-art .sav-coins{transform-box:fill-box;transform-origin:center;will-change:translate}
+.savings-art .sav-jar{animation:savJarDrift 5.8s ease-in-out infinite}
+.savings-art .sav-calculator{animation:savCalcDrift 4.7s ease-in-out infinite}
+.savings-art .sav-plant{transform-box:fill-box;transform-origin:50% 100%;animation:savLeafSway 4.2s ease-in-out infinite}
+.savings-art .sav-coins{animation:savCoinDrift 3.8s ease-in-out infinite}
+.savings-art .sav-chart{animation:savChartDrift 5.2s ease-in-out infinite}
+.savings-art .sav-sparkles{animation:savSparkle 2.8s ease-in-out infinite}
+@keyframes savJarDrift{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes savCalcDrift{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -5px;rotate:-1deg}}
+@keyframes savLeafSway{0%,100%{rotate:0deg}50%{rotate:3deg}}
+@keyframes savCoinDrift{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes savChartDrift{0%,100%{translate:0 0}50%{translate:0 -4px}}
+@keyframes savSparkle{0%,100%{opacity:.5}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.savings-art .sav-jar,.savings-art .sav-calculator,.savings-art .sav-plant,.savings-art .sav-coins,.savings-art .sav-chart,.savings-art .sav-sparkles{animation:none!important;will-change:auto}}
 .savings-page{max-width:1180px!important;margin:28px auto!important;padding:0 20px!important}
 .savings-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:22px;align-items:stretch}
 .savings-page .card{padding:28px;border:1px solid #e5edf8;border-radius:22px;box-shadow:0 12px 34px rgba(20,55,100,.08)}
