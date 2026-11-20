@@ -1491,6 +1491,17 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
   body main > section.ij-loan-reference-hero .ij-loan-hero-art{min-height:250px!important}
 }
 
+
+/* User-requested desktop hero width: extend 10mm beyond the content frame on each side. */
+@media screen and (min-width:1001px) and (pointer:fine){
+  body main > section.ij-loan-reference-hero{
+    width:calc(100% + 20mm)!important;
+    max-width:none!important;
+    margin-left:-10mm!important;
+    margin-right:-10mm!important;
+  }
+}
+
 </style>
   
 
