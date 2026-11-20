@@ -45,7 +45,6 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/savings.webmanifest">
-<style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
 
 <script type="application/ld+json">
 {
@@ -89,20 +88,19 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 .savings-content p{max-width:690px;margin:26px 0 24px;color:#52647f;font-size:clamp(15px,1.35vw,19px);line-height:1.65}
 .feature-tags{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:10px;margin:0 0 0}
 .feature-tags span{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid #e0ebf8;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 5px 15px rgba(40,95,155,.07);color:#14284e;font-size:13px;font-weight:700;white-space:nowrap}
-.savings-cta-wrap{position:relative;z-index:1;text-align:center;margin:14px auto 0;padding:0 16px}
+.savings-cta-wrap{position:relative;z-index:1;text-align:left;margin:22px 0 0;padding:0}
 .savings-btn{display:inline-flex;align-items:center;justify-content:center;gap:15px;min-height:58px;padding:15px 24px;border:0;border-radius:17px;background:linear-gradient(100deg,#0878f5,#0756df);box-shadow:0 12px 24px rgba(13,100,225,.23);color:#fff;font-size:17px;font-weight:800;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
 .savings-btn:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(13,100,225,.3);background:linear-gradient(100deg,#0878f5,#0756df);color:#fff}
 .savings-btn:focus-visible{outline:3px solid #f5b82e;outline-offset:4px}
 .savings-art{position:relative;display:grid;place-items:center;min-width:0;min-height:410px}
 .savings-art:before{content:"";position:absolute;width:94%;height:78%;border-radius:48% 52% 45% 55%;background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(93,177,255,.16));transform:rotate(-7deg)}
-.savings-art svg{position:relative;width:100%;max-width:590px;height:auto;overflow:visible;filter:drop-shadow(0 20px 22px rgba(35,104,170,.14))}
+.savings-art svg{position:relative;width:100%;max-width:590px;height:auto;overflow:visible;filter:drop-shadow(0 20px 22px rgba(35,104,170,.14))}.savings-breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding:9px clamp(18px,3vw,42px);background:#edf7ff;color:#647b91;font:15px/1.5 system-ui,-apple-system,Segoe UI,Arial,sans-serif}.savings-breadcrumb a{color:#176b9f;text-decoration:none}.savings-breadcrumb a:hover{text-decoration:underline}.savings-breadcrumb span[aria-current]{color:#647b91}
 @media(max-width:900px){.savings-hero{padding:38px 24px 54px}.savings-container{grid-template-columns:minmax(0,1fr) minmax(250px,.82fr);gap:18px}.savings-content h1{font-size:clamp(32px,5vw,46px)}.savings-art{min-height:300px}}
 @media(max-width:640px){.savings-hero{padding:30px 20px 48px;border-radius:0 0 22px 22px}.savings-container{grid-template-columns:1fr;gap:12px}.savings-content .badge{margin-bottom:15px;padding:8px 13px;font-size:12px}.savings-content h1{max-width:520px;font-size:clamp(32px,8.5vw,43px);line-height:1.08}.savings-content p{margin:17px 0 18px;font-size:15px;line-height:1.55}.savings-btn{min-height:50px;padding:12px 18px;border-radius:14px;font-size:15px}.savings-art{min-height:0;margin:0 auto;width:min(100%,430px)}.savings-art svg{width:100%;max-height:260px}.savings-hero:after{height:55px}}
 @media(max-width:380px){.savings-hero{padding:26px 15px 42px}.savings-content h1{font-size:31px}.savings-art svg{max-height:220px}}
-@media(prefers-reduced-motion:reduce){.savings-btn{transition:none}}
+@keyframes savings-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes savings-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}.savings-art svg > g:nth-of-type(2){transform-box:fill-box;transform-origin:center;animation:savings-float 4.8s ease-in-out infinite}.savings-art svg > g:nth-of-type(3){transform-box:fill-box;transform-origin:center;animation:savings-float 5.6s ease-in-out infinite reverse}.savings-art svg > g:nth-of-type(4){transform-box:fill-box;transform-origin:center;animation:savings-pulse 4s ease-in-out infinite}.savings-art svg > g:nth-of-type(5){transform-box:fill-box;transform-origin:center;animation:savings-float 3.8s ease-in-out infinite}.savings-art svg > g:nth-of-type(6){transform-box:fill-box;transform-origin:center;animation:savings-float 3.2s ease-in-out infinite reverse}@media(prefers-reduced-motion:reduce){.savings-btn{transition:none}.savings-art svg > g{animation:none!important}}
 
 /* Final sizing pass: align the hero proportions with the compact ID Card Studio layout */
-.ij-install-card{width:min(1180px,calc(100% - 40px));max-width:1180px;margin:14px auto 18px}
 @media(min-width:901px){.savings-hero{min-height:clamp(500px,43.3vw,666px);display:flex;align-items:center;padding:clamp(54px,5vw,78px) clamp(28px,5.2vw,80px) clamp(70px,6vw,92px);border-radius:26px}.savings-container{grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);gap:clamp(28px,4vw,64px)}.savings-art{min-height:clamp(360px,34vw,500px)}}
 @media(max-width:900px) and (min-width:641px){.savings-hero{min-height:390px;padding:34px 28px 58px}.savings-container{grid-template-columns:minmax(0,1.08fr) minmax(260px,.92fr);gap:14px}.savings-content h1{font-size:clamp(30px,4.6vw,42px)}.savings-content p{font-size:14px;margin:14px 0}.savings-art{min-height:270px}.savings-art svg{max-height:300px}}
 @media(max-width:640px){
@@ -114,17 +112,12 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
  .savings-content p{margin:10px 0 12px;font-size:11px;line-height:1.45}
  .feature-tags{gap:5px;margin:0}
  .feature-tags span{gap:4px;padding:6px 7px;font-size:9px;line-height:1.15;white-space:normal}
- .savings-cta-wrap .savings-btn{min-height:42px;gap:8px;padding:10px 18px;border-radius:12px;font-size:12px;white-space:nowrap}
+ .savings-cta-wrap{margin-top:14px}.savings-cta-wrap .savings-btn{min-height:42px;gap:8px;padding:10px 18px;border-radius:12px;font-size:12px;white-space:nowrap}
  .savings-art{width:100%;min-height:0;margin:0 auto}
  .savings-art:before{width:100%;height:74%}
  .savings-art svg{width:115%;max-width:none;max-height:205px;transform:translateX(-3%);filter:drop-shadow(0 10px 12px rgba(35,104,170,.13))}
  .savings-hero:after{height:35px}
- .ij-install-card{width:calc(100% - 28px);margin:12px auto 16px;padding:11px;grid-template-columns:34px minmax(0,1fr) auto;gap:8px;}
- .ij-install-icon{width:34px;height:34px;font-size:18px;border-radius:10px}
- .ij-install-copy strong{font-size:12px}
- .ij-install-copy span{font-size:10px;line-height:1.3}
- .ij-install-card button{grid-column:auto;padding:9px 10px;font-size:10px;white-space:nowrap}
- .ij-install-help{grid-column:1/-1;font-size:10px}
+
 }
 @media(max-width:380px){
  .savings-hero{padding:21px 12px 36px}
@@ -134,15 +127,14 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
  .feature-tags span{font-size:8px;padding:5px 6px}
  .savings-btn{font-size:9px;padding:8px 7px}
  .savings-art svg{max-height:180px}
- .ij-install-card{grid-template-columns:30px minmax(0,1fr);}
- .ij-install-icon{width:30px;height:30px}
- .ij-install-card button{grid-column:1/-1}
+
 }
 </style>
 
 
 <!-- ================= HTML শুরু ================= -->
 
+<nav class="savings-breadcrumb" aria-label="Breadcrumb"><a href="/">InfoJano Home</a><span aria-hidden="true">›</span><a href="/calculators.html">Calculators</a><span aria-hidden="true">›</span><span aria-current="page">Savings Calculator</span></nav>
 <section class="savings-hero" aria-labelledby="savings-hero-title">
   <div class="savings-container">
     <div class="savings-content">
@@ -155,6 +147,7 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
         <span><b aria-hidden="true">▣</b> Mobile Ready</span>
         <span><b aria-hidden="true">🛡</b> No Signup</span>
       </div>
+      <div class="savings-cta-wrap"><a href="#calculator" class="savings-btn"><span aria-hidden="true">▦</span> Start Calculating Now <span aria-hidden="true">→</span></a></div>
     </div>
     <div class="savings-art" aria-hidden="true">
       <svg viewBox="0 0 620 470" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -199,11 +192,6 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
     </div>
   </div>
 </section>
-<div class="savings-cta-wrap">
-  <a href="#calculator" class="savings-btn"><span aria-hidden="true">▦</span> Start Calculating Now <span aria-hidden="true">→</span></a>
-</div>
-
-<section class="ij-install-card" id="ij-install-card" aria-label="Install this tool"><div class="ij-install-icon" aria-hidden="true">⬇</div><div class="ij-install-copy"><strong>Keep this tool on your phone</strong><span>Install it for one-tap access from your home screen.</span></div><button type="button" id="ij-install-button">Install this tool</button><details class="ij-install-help"><summary>Can’t install?</summary><p>In your browser menu, choose <b>Add to Home screen</b> or <b>Install app</b>. The shortcut opens this tool directly.</p></details></section>
 
 <style>
 /* Savings page full-layout visual refresh */
@@ -324,7 +312,6 @@ function calculate(){
 
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
 <script src="/InfoJano/download-progress.js" defer></script>
-<script src="/InfoJano/install.js" defer></script>
 <script src="/site-header.js" defer></script>
 </body>
 </html>
