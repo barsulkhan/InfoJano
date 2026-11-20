@@ -1641,6 +1641,95 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
   body[data-ij-header-align="hero"] .ij-loan-hero-copy h1{font-size:clamp(29px,8vw,34px)!important}
 }
 
+/* Reference-design pass: wide, airy desktop hero with the calculator artwork
+   balanced against the copy. Mobile rules below 640px remain independent. */
+@media screen and (min-width:1001px) and (pointer:fine){
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero{
+    width:calc(100% + 64px)!important;
+    max-width:none!important;
+    min-height:clamp(560px,44.5vw,690px)!important;
+    height:auto!important;
+    margin:0 0 26px -32px!important;
+    padding:clamp(38px,4vw,62px) clamp(34px,4.5vw,70px)!important;
+    grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr)!important;
+    gap:clamp(18px,2.3vw,36px)!important;
+    border-radius:0 0 24px 24px!important;
+    background:radial-gradient(ellipse at 84% 51%,#9bd1ff 0%,#c5e4ff 36%,transparent 61%),linear-gradient(112deg,#edf7ff,#f8fbff 49%,#e0f1ff)!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-copy h1{
+    max-width:800px!important;
+    margin:24px 0 18px!important;
+    font-size:clamp(48px,4.25vw,68px)!important;
+    line-height:1.06!important;
+    letter-spacing:-2.4px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-copy p{
+    max-width:720px!important;
+    font-size:clamp(18px,1.55vw,25px)!important;
+    line-height:1.55!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-kicker{
+    gap:12px!important;padding:12px 23px!important;font-size:clamp(17px,1.45vw,22px)!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-pills{
+    gap:12px!important;margin-top:28px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-pills span{
+    padding:12px 15px!important;font-size:clamp(13px,1vw,16px)!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-cta{
+    margin-top:30px!important;padding:16px 25px!important;font-size:18px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-art{
+    height:100%!important;min-height:500px!important;max-height:580px!important;
+    align-self:center!important;overflow:visible!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-orbit{
+    width:96%!important;height:84%!important;right:-1%!important;top:8%!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-calculator{
+    width:43%!important;max-width:270px!important;left:0!important;top:26%!important;
+    padding:14px!important;border-radius:24px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-calc-screen{
+    height:90px!important;padding:12px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-calc-screen strong{font-size:26px!important}
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-calc-keys{
+    gap:7px!important;margin-top:11px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-calc-keys i{
+    height:33px!important;font-size:12px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-hero-summary{
+    width:75%!important;max-width:470px!important;margin-left:20%!important;
+    padding:19px!important;border-radius:27px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-summary-heading{
+    padding:12px 14px!important;border-radius:16px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-summary-heading strong{font-size:18px!important}
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-summary-line{
+    padding:14px 7px!important;font-size:15px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-summary-line b{font-size:18px!important}
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-safe-budget{
+    margin-top:14px!important;padding:16px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-safe-budget strong{font-size:36px!important}
+}
+@media screen and (min-width:1001px) and (max-width:1250px) and (pointer:fine){
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero{
+    min-height:560px!important;padding:36px 34px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-copy h1{
+    font-size:clamp(42px,4.3vw,54px)!important;letter-spacing:-1.8px!important;
+  }
+  body[data-ij-header-align="hero"] main > section.ij-loan-reference-hero .ij-loan-hero-art{
+    min-height:440px!important;
+  }
+}
+
 </style>
   
 
