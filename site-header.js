@@ -72,18 +72,6 @@
   @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}
 `;
 
-/* Hard-align all header content to the page's 1200px hero/container edges. */
-@media(min-width:761px){
- .ij-loan-reference-header .ij-global-header-inner{
-  width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;
-  margin-inline:auto!important;padding-inline:0!important
- }
- .ij-loan-reference-header .ij-global-brand{margin:0!important}
- .ij-loan-reference-header .ij-global-nav{margin-left:auto!important}
- .ij-loan-reference-header .ij-global-nav>*:last-child{margin-right:0!important}
- .ij-loan-reference-header svg{display:block!important;visibility:visible!important;opacity:1!important;overflow:visible}
-}
-
   function mount(){
     // Load the same footer implementation used by pages without the shared header.
     if(!document.querySelector('script[data-ij-site-footer]')){
