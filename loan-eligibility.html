@@ -1430,6 +1430,67 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
   .ij-hero-cta{transition:none!important}
 }
 
+
+/* Final cascade correction: override older fixed-width/fixed-height desktop rules.
+   Match ID Card Print Studio's approved desktop frame without touching touch layouts. */
+@media screen and (min-width:1001px) and (pointer:fine){
+  body main{
+    width:calc(100% - 64px)!important;
+    max-width:1600px!important;
+    margin:0 auto 38px!important;
+    padding:28px 24px 36px!important;
+    box-sizing:border-box!important;
+  }
+  body main > section.ij-loan-reference-hero{
+    width:100%!important;
+    max-width:none!important;
+    min-height:220px!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:12px 0 22px!important;
+    padding:26px 42px 22px!important;
+    border-radius:22px!important;
+    box-sizing:border-box!important;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)!important;
+    align-items:center!important;
+    gap:clamp(18px,3vw,38px)!important;
+    overflow:hidden!important;
+  }
+  body main > section.ij-loan-reference-hero .ij-loan-hero-copy{
+    min-width:0!important;align-self:center!important;
+  }
+  body main > section.ij-loan-reference-hero .ij-loan-hero-copy h1{
+    max-width:620px!important;
+    font-size:clamp(34px,3.5vw,50px)!important;
+    line-height:1.04!important;letter-spacing:-2.1px!important;
+    margin:14px 0 9px!important;
+  }
+  body main > section.ij-loan-reference-hero .ij-loan-hero-copy p{
+    max-width:660px!important;font-size:clamp(15px,1.2vw,18px)!important;line-height:1.4!important;
+  }
+  body main > section.ij-loan-reference-hero .ij-loan-hero-kicker{
+    gap:8px!important;padding:8px 14px!important;font-size:14px!important;
+  }
+  body main > section.ij-loan-reference-hero .ij-hero-cta{
+    margin-top:18px!important;padding:12px 18px!important;font-size:15px!important;border-radius:12px!important;
+  }
+  body main > section.ij-loan-reference-hero .ij-loan-hero-art{
+    width:100%!important;height:auto!important;min-height:235px!important;max-height:none!important;
+    align-self:center!important;margin:0!important;padding:0!important;overflow:visible!important;
+  }
+  body main > section.ij-loan-reference-hero .ij-hero-calculator,
+  body main > section.ij-loan-reference-hero .ij-hero-summary{
+    height:250px!important;min-height:0!important;max-height:250px!important;
+  }
+  body main > .ij-hero-feature-strip{
+    width:100%!important;max-width:none!important;margin:0 0 24px!important;
+  }
+}
+@media screen and (min-width:1500px) and (pointer:fine){
+  body main > section.ij-loan-reference-hero{padding:30px 50px 24px!important}
+  body main > section.ij-loan-reference-hero .ij-loan-hero-art{min-height:250px!important}
+}
+
 </style>
   
 
