@@ -72,6 +72,14 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 
 <!-- User-supplied header and Savings Calculator hero code -->
 <style>
+/* Hero fixes: use a self-contained savings illustration and balanced responsive columns. */
+.hero-visual{flex:1;min-width:0;display:flex;justify-content:center;align-items:center;}
+.hero-savings-art{display:block;width:100%;max-width:510px;height:auto;filter:drop-shadow(0 16px 24px rgba(2,132,199,.13));}
+@media(min-width:601px){.hero-banner{flex-direction:row;text-align:left;gap:28px;padding:clamp(28px,5vw,60px)}.hero-content{flex:0 1 52%;max-width:550px;align-items:flex-start}.hero-visual{flex:0 1 48%;margin-top:0}.hero-title{font-size:clamp(34px,4.2vw,52px)}.feature-pills{justify-content:flex-start}.hero-desc{max-width:500px}}
+@media(max-width:600px){.hero-banner{flex-direction:column;text-align:center;padding:30px 18px}.hero-content{align-items:center}.hero-title{font-size:clamp(29px,8vw,36px)}.hero-visual{width:100%;margin-top:22px}.hero-savings-art{max-width:360px}}
+</style>
+
+<style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
 .header { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 12px 0; width: 100%; }
@@ -123,7 +131,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 </style>
 <header class="header">
  <div class="header-container">
-  <a href="#" class="logo-area">
+  <a href="/" class="logo-area">
    <svg class="logo-img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
     <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19c8f5"/><stop offset=".5" stop-color="#0876e8"/><stop offset="1" stop-color="#06358f"/></linearGradient></defs>
     <path d="M120 60 Q96 60 80 80 L48 120 Q36 136 36 156 V356 Q36 420 104 420 H320 Q356 420 378 392 L452 296 Q474 268 444 244 L168 84 Q148 70 120 60Z" fill="url(#bg)"/>
@@ -133,10 +141,10 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
    <div class="logo-text"><span class="logo-title">Info<span>Jano</span></span><span class="logo-subtitle">Smart Tools for Everyday Life</span></div>
   </a>
   <nav class="nav-area">
-   <a href="#" class="nav-btn"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/></svg>All Tools</a>
+   <a href="/tools.html" class="nav-btn"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/></svg>All Tools</a>
    <select class="nav-select" aria-label="Language"><option>English</option></select>
-   <a href="#" class="nav-btn"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</a>
-   <a href="#" class="nav-btn">Back to Home</a>
+   <a href="/" class="nav-btn"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</a>
+   <a href="/" class="nav-btn">Back to Home</a>
   </nav>
  </div>
 </header>
@@ -157,7 +165,45 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
     Start Calculating Now <span style="font-size: 20px; margin-left: 5px;">→</span>
    </a>
   </div>
-  <div class="hero-visual"><img src="https://img.freepik.com/free-vector/savings-concept-illustration_114360-1133.jpg?w=1060&amp;t=st=1700000000~exp=1700000600~hmac=abcdef" alt="Savings Illustration" style="border-radius: 20px;"></div>
+  <div class="hero-visual" role="img" aria-label="Savings jar, coins, calculator and upward growth arrow">
+   <svg class="hero-savings-art" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+     <linearGradient id="heroJar" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#bdeeff"/></linearGradient>
+     <linearGradient id="heroCalc" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#164e9a"/><stop offset="1" stop-color="#0284c7"/></linearGradient>
+     <linearGradient id="heroCoin" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe66b"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+     <filter id="heroShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#2563eb" flood-opacity=".16"/></filter>
+    </defs>
+    <ellipse cx="280" cy="365" rx="225" ry="23" fill="#7dd3fc" opacity=".22"/>
+    <g fill="none" stroke="#0284c7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M462 292V82l-30 34m30-34-31 2"/><path d="M462 292h-18"/></g>
+    <g class="hero-plant">
+     <path d="M175 155C125 118 132 63 145 45c43 22 62 64 30 110Z" fill="#22c55e" stroke="#15803d" stroke-width="4"/>
+     <path d="M179 157c5-55-1-83-26-105" fill="none" stroke="#15803d" stroke-width="4"/>
+     <path d="M180 157c20-57 58-76 91-72-2 49-37 83-91 72Z" fill="#16a34a" stroke="#15803d" stroke-width="4"/>
+     <path d="M182 157c30-35 52-52 78-64" fill="none" stroke="#166534" stroke-width="4"/>
+     <path d="M145 45l-6-23m-20 44-21-7m195 27 20-17" stroke="#facc15" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <g filter="url(#heroShadow)">
+     <path d="M92 180h174l-15 155q-3 30-32 30h-81q-28 0-31-30Z" fill="url(#heroJar)" stroke="#fff" stroke-width="9"/>
+     <rect x="82" y="169" width="194" height="24" rx="12" fill="#fbbf24"/>
+     <g fill="url(#heroCoin)" stroke="#f59e0b" stroke-width="2">
+      <ellipse cx="145" cy="267" rx="29" ry="13"/><ellipse cx="204" cy="270" rx="29" ry="13"/>
+      <ellipse cx="171" cy="298" rx="31" ry="13"/><ellipse cx="131" cy="324" rx="28" ry="12"/><ellipse cx="199" cy="327" rx="28" ry="12"/>
+      <ellipse cx="330" cy="314" rx="38" ry="15"/><ellipse cx="410" cy="342" rx="32" ry="13"/>
+     </g>
+     <g transform="rotate(6 382 224)">
+      <rect x="286" y="120" width="174" height="218" rx="22" fill="#fff" stroke="#bfdbfe" stroke-width="8"/>
+      <rect x="301" y="137" width="144" height="43" rx="9" fill="#0f2f63"/>
+      <text x="429" y="167" text-anchor="end" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#fff">1200</text>
+      <g fill="#38bdf8">
+       <rect x="302" y="193" width="30" height="25" rx="6"/><rect x="339" y="193" width="30" height="25" rx="6"/><rect x="376" y="193" width="30" height="25" rx="6"/><rect x="413" y="193" width="30" height="25" rx="6"/>
+       <rect x="302" y="226" width="30" height="25" rx="6"/><rect x="339" y="226" width="30" height="25" rx="6"/><rect x="376" y="226" width="30" height="25" rx="6"/><rect x="413" y="226" width="30" height="25" rx="6"/>
+       <rect x="302" y="259" width="30" height="25" rx="6"/><rect x="339" y="259" width="30" height="25" rx="6"/><rect x="376" y="259" width="30" height="25" rx="6"/><rect x="413" y="259" width="30" height="25" rx="6"/>
+       <rect x="302" y="292" width="67" height="25" rx="6"/><rect x="376" y="292" width="67" height="25" rx="6"/>
+      </g>
+     </g>
+    </g>
+   </svg>
+  </div>
  </div>
 </div>
 
