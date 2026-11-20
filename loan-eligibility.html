@@ -788,6 +788,34 @@ main > section.ij-loan-reference-hero .ij-hero-spark{opacity:.55}
  .ij-summary-wallet svg{width:25px;height:25px;display:block}
  .ij-summary-line i svg{width:19px;height:19px;display:block}
 }
+
+/* Desktop: feature strip follows the exact hero/container width; make its SVG icons explicit. */
+@media(min-width:901px){
+ .ij-hero-feature-strip{
+  display:block!important;width:100%!important;max-width:1200px!important;
+  margin:14px auto 24px!important;padding:0!important
+ }
+ .ij-hero-feature-strip .ij-loan-hero-pills{
+  display:flex!important;width:100%!important;justify-content:space-between!important;
+  align-items:center!important;flex-wrap:nowrap!important;gap:16px!important
+ }
+ .ij-hero-feature-strip .ij-loan-hero-pills span{
+  display:inline-flex!important;flex:1 1 0!important;min-width:0!important;
+  justify-content:center!important;white-space:nowrap!important
+ }
+ .ij-hero-feature-strip .ij-loan-hero-pills span>b{
+  display:inline-flex!important;flex:0 0 27px!important;align-items:center!important;
+  justify-content:center!important;width:27px!important;height:27px!important;
+  min-width:27px!important;min-height:27px!important;line-height:1!important;
+  overflow:visible!important
+ }
+ .ij-hero-feature-strip .ij-loan-hero-pills span>b svg{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  width:22px!important;height:22px!important;min-width:22px!important;
+  min-height:22px!important;max-width:none!important;max-height:none!important;
+  overflow:visible!important;stroke:currentColor!important;fill:none!important
+ }
+}
 </style>
   
 
