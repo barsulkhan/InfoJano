@@ -31,6 +31,8 @@
   .ij-global-header--hero-aligned .ij-global-divider{display:none}
 
   .ij-site-brand,.ij-brandbar{display:none!important}
+  /* Hide legacy install-this-tool prompts across every tool page. */
+  .ij-install-card,#ij-install-card{display:none!important}
   @media(max-width:620px){
     .ij-global-header-inner{width:calc(100% - 24px);min-height:62px;padding:8px 0;gap:8px}
     .ij-global-header--hero-aligned .ij-global-header-inner{width:calc(100% - 8px)}
