@@ -166,6 +166,23 @@ main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;ma
 }
 </style>
 
+
+<style id="ij-tip-hero-motion-v1">
+/* Subtle motion for the Tip Calculator hero illustration */
+.ij-tip-hero-svg{transform-origin:50% 55%}
+.ij-tip-hero-svg g[transform^="translate(75"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-calc-float 5.8s ease-in-out infinite}
+.ij-tip-hero-svg g[transform^="translate(285"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-receipt-float 6.4s ease-in-out infinite}
+.ij-tip-hero-svg g[transform^="translate(95"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-coin-bob 3.8s ease-in-out infinite}
+.ij-tip-hero-svg g[transform^="translate(390"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-badge-pop 4.8s ease-in-out infinite}
+.ij-tip-hero-svg>circle:nth-of-type(2){transform-box:fill-box;transform-origin:center;animation:ij-tip-orbit-pulse 7s ease-in-out infinite}
+@keyframes ij-tip-calc-float{0%,100%{translate:0 0;rotate:-1deg}50%{translate:0 -8px;rotate:1deg}}
+@keyframes ij-tip-receipt-float{0%,100%{translate:0 0;rotate:1deg}50%{translate:0 7px;rotate:-1deg}}
+@keyframes ij-tip-coin-bob{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes ij-tip-badge-pop{0%,100%{scale:1}50%{scale:1.045}}
+@keyframes ij-tip-orbit-pulse{0%,100%{scale:1;opacity:.68}50%{scale:1.035;opacity:.95}}
+@media(prefers-reduced-motion:reduce){.ij-tip-hero-svg g[transform^="translate(75"],.ij-tip-hero-svg g[transform^="translate(285"],.ij-tip-hero-svg g[transform^="translate(95"],.ij-tip-hero-svg g[transform^="translate(390"],.ij-tip-hero-svg>circle:nth-of-type(2){animation:none!important}}
+</style>
+
 </head>
 <body data-ij-header-align="true">
 <header class="ij-brandbar ij-tip-header"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><img src="/infojano-logo.svg" alt="InfoJano" class="ij-tip-logo"></a><nav class="ij-tip-nav" aria-label="Main navigation"><a href="tools.html">▦ <span>All Tools</span></a><span class="ij-tip-language">English <span aria-hidden="true">⌄</span></span><a href="index.html">◆ <span>Home</span></a></nav></div></header>
