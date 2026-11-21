@@ -4,22 +4,22 @@
   const css=`
   .ij-global-header{position:sticky;top:0;z-index:100000;width:100%;margin:0!important;padding:0!important;background:#fff!important;color:#14264a!important;box-shadow:0 3px 16px rgba(15,40,80,.08);border:0;border-bottom:1px solid #e6edf6;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;text-align:left!important;line-height:normal!important}
   .ij-global-header *{box-sizing:border-box}
-  .ij-global-header-inner{width:min(calc(100% - 28px),1200px);max-width:1200px;min-height:84px;margin:0 auto!important;padding:10px 0!important;display:flex;align-items:center;gap:18px}
+  .ij-global-header-inner{width:min(calc(100% - 64px),1600px);max-width:1600px;min-height:104px;margin:0 auto!important;padding:10px 0!important;display:flex;align-items:center;gap:24px}
   .ij-global-brand{display:flex;align-items:center;gap:10px;min-width:0;color:#14264a;text-decoration:none;flex:1;margin-left:0}
-  .ij-global-logo{width:164px;height:58px;flex:0 0 164px;object-fit:contain;object-position:left center;border-radius:0;box-shadow:none}
+  .ij-global-logo{width:270px;height:78px;flex:0 0 270px;object-fit:contain;object-position:left center;border-radius:0;box-shadow:none}
   .ij-global-brand-copy{display:none!important}
   /* Keep the loan-only hamburger icon out of every other tool header. */
   .ij-global-brand > .ij-loan-menu-icon{display:none!important}
   .ij-global-brand-name{font-size:23px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
   .ij-global-brand-tagline{display:inline-block;width:max-content;max-width:100%;font-size:11px;font-weight:850;line-height:1.25;letter-spacing:0;background:linear-gradient(100deg,#0756c9 0%,#0786d8 52%,#0b9b86 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
   .ij-global-divider{width:1px;height:38px;background:#dbe4ef}
-  .ij-global-tools{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;gap:8px;height:44px;min-height:44px;padding:0 16px;border:1px solid #dbe6f2;border-radius:30px;color:#24456e;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap;background:#f8fbff}
+  .ij-global-tools{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;gap:8px;height:62px;min-height:62px;padding:0 28px;border:1px solid #d7dce2;border-radius:36px;color:#263746;text-decoration:none;font-size:18px;font-weight:600;white-space:nowrap;background:#fff}
   .ij-global-tools:hover,.ij-global-tools:focus-visible{background:#eef6ff;outline:2px solid #93c5fd;outline-offset:2px}
-  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;gap:9px;height:44px;min-height:44px;min-width:116px;margin-right:0;padding:0 17px;border:1px solid #d5e5f5;border-radius:28px;background:#f3f8fe;color:#174a78;text-decoration:none;font-weight:850;font-size:14px;white-space:nowrap;box-shadow:0 3px 10px rgba(15,60,110,.06)}
+  .ij-global-home{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;gap:9px;height:62px;min-height:62px;min-width:168px;margin-right:0;padding:0 28px;border:1px solid #d7dce2;border-radius:36px;background:#fff;color:#263746;text-decoration:none;font-weight:600;font-size:18px;white-space:nowrap;box-shadow:none}
   .ij-global-home:hover,.ij-global-home:focus-visible{background:#e8f3ff;outline:2px solid #93c5fd;outline-offset:2px}
   .ij-global-home svg,.ij-global-tools svg{width:19px;height:19px;flex:0 0 auto}
 
-  .ij-global-language{display:block;box-sizing:border-box;align-self:center;vertical-align:middle;line-height:1;height:44px;min-height:44px;max-width:126px;margin:0;padding:0 30px 0 11px;border:1px solid #dbe6f2;border-radius:12px;background:#fff;color:#24456e;font:650 13px Inter,system-ui,sans-serif;cursor:pointer}
+  .ij-global-language{display:block;box-sizing:border-box;align-self:center;vertical-align:middle;line-height:1;height:62px;min-height:62px;max-width:230px;margin:0;padding:0 30px 0 24px;border:1px solid #d7dce2;border-radius:36px;background:#fff;color:#263746;font:600 18px Inter,system-ui,sans-serif;cursor:pointer}
   .ij-global-language:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
 
   .ij-global-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex:0 0 auto;min-width:0;align-self:center}
@@ -31,6 +31,8 @@
   .ij-global-header--hero-aligned .ij-global-divider{display:none}
 
   .ij-site-brand,.ij-brandbar{display:none!important}
+  /* Hide legacy install-this-tool prompts across every tool page. */
+  .ij-install-card,#ij-install-card{display:none!important}
   @media(max-width:620px){
     .ij-global-header-inner{width:calc(100% - 24px);min-height:62px;padding:8px 0;gap:8px}
     .ij-global-header--hero-aligned .ij-global-header-inner{width:calc(100% - 8px)}
@@ -42,7 +44,7 @@
     .ij-global-divider{height:30px}
     .ij-global-tools{font-size:0;padding:0;width:40px;height:40px;justify-content:center;gap:0;border-radius:13px}
     .ij-global-tools svg{width:20px;height:20px}
-    .ij-global-home{min-width:0;margin-right:0;padding:0 11px;height:40px;font-size:12px;gap:6px;border-radius:13px}.ij-global-back-home{font-size:11px;padding:0 9px}
+    .ij-global-home{min-width:0;margin-right:0;padding:0 11px;height:40px;font-size:12px;gap:6px;border-radius:13px}
     .ij-global-home svg{width:17px;height:17px}.ij-global-language{max-width:100px;height:40px;min-height:40px;padding:0 22px 0 8px;font-size:12px;border-radius:11px}
   }
   @media(max-width:360px){
@@ -117,7 +119,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 2 11h2v10h6v-6h4v6h6V11h2L12 3z"/></svg>
           Home
         </a>
-        <a class="ij-global-home ij-global-back-home" href="${ROOT}index.html#tools" aria-label="Back to all InfoJano tools">Back to Home</a>
+        
         </nav>
       </div>`;
     if(location.pathname.endsWith('/loan-eligibility.html')){
