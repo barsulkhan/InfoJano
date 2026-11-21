@@ -146,6 +146,26 @@ main{max-width:1240px!important;width:100%;margin:24px auto;padding:16px}
 @media(max-width:760px){.ij-tip-new-hero{width:calc(100% - 20px)!important;padding:22px 15px 30px!important}.ij-tip-new-hero .ij-reference-grid{grid-template-columns:1fr;gap:8px}.ij-tip-new-hero .ij-reference-copy{text-align:center}.ij-tip-new-hero .ij-reference-copy h1{text-align:center}.ij-tip-new-art{max-width:500px;margin:0 auto;min-height:0}.ij-tip-hero-svg{width:100%;max-width:470px}}
 @media(max-width:390px){.ij-tip-new-hero{padding:19px 11px 26px!important}.ij-tip-new-hero .ij-reference-pills span{font-size:9px;padding:6px 8px}.ij-tip-hero-svg{width:108%}}
 </style>
+
+<style id="ij-tip-final-proportion-pass">
+/* One shared frame: header, hero and every section below use the same outer width. */
+.ij-tip-header .ij-brandbar-inner{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;margin-inline:auto!important}
+.ij-tip-logo{width:clamp(190px,19vw,250px)!important;max-width:34vw!important;max-height:58px!important;object-fit:contain}
+.ij-tip-new-hero,.ij-reference-hero{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;margin-left:auto!important;margin-right:auto!important}
+main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;margin:24px auto!important;padding:0!important}
+.ij-tip-content-grid{width:100%;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.ij-tip-content-grid>.card,.ij-tip-content-grid>.ij-tip-guide{width:100%;min-width:0}
+.ij-tip-related{width:100%;grid-column:1/-1}
+@media(max-width:760px){
+ .ij-tip-header .ij-brandbar-inner{width:calc(100% - 20px)!important;min-height:54px!important}
+ .ij-tip-logo{width:clamp(126px,34vw,150px)!important;max-width:34vw!important;max-height:44px!important}
+ .ij-tip-new-hero,.ij-reference-hero{width:calc(100% - 20px)!important}
+ main{width:calc(100% - 20px)!important;padding:0!important;margin:18px auto!important}
+ .ij-tip-content-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+ .ij-tip-related{grid-column:auto}
+}
+</style>
+
 </head>
 <body data-ij-header-align="true">
 <header class="ij-brandbar ij-tip-header"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><img src="/infojano-logo.svg" alt="InfoJano" class="ij-tip-logo"></a><nav class="ij-tip-nav" aria-label="Main navigation"><a href="tools.html">▦ <span>All Tools</span></a><span class="ij-tip-language">English <span aria-hidden="true">⌄</span></span><a href="index.html">◆ <span>Home</span></a></nav></div></header>
