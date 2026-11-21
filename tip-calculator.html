@@ -42,6 +42,16 @@ main > section:not([style]) > :last-child{margin-bottom:0}
 main > section:not([style]) p{line-height:1.7;margin:14px 0}
 main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
+
+/* Two-column Tip Calculator instructions */
+.ij-tip-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.ij-tip-guide-panel{min-width:0;padding:17px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#fff,#f3f8ff)}
+.ij-tip-guide-panel h3{margin:0 0 9px;color:#183b73;font-size:16px;line-height:1.35}
+.ij-tip-guide-panel p{margin:8px 0}
+.ij-tip-formula{padding:11px 12px;border-radius:10px;background:#eaf3ff;color:#174477;overflow-wrap:anywhere}
+.ij-tip-guide-note{margin:14px 0 0;color:#64748b;font-size:13px}
+@media(max-width:560px){.ij-tip-guide-grid{grid-template-columns:1fr}.ij-tip-guide-panel{padding:15px}}
+
 </style>
   <link rel="manifest" href="/InfoJano/app-manifests/tip-calculator.webmanifest">
 <script type="application/ld+json">
@@ -108,12 +118,21 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 <button onclick="calculateTip()">Calculate Tip</button>
 <div id="result" class="result" aria-live="polite">Enter the bill amount to begin.</div>
 </div>
-<section>
-<h2>How to Calculate a Tip</h2>
-<p>Multiply the bill amount by the tip percentage and divide by 100. Add the tip to the bill to find the total payment.</p>
-<p><strong>Tip</strong> = Bill Amount × Tip Percentage ÷ 100.</p>
-<p><strong>Total</strong> = Bill Amount + Tip.</p>
-<p>This calculator estimates the tip you enter. Local tipping customs and service charges vary.</p>
+<section class="ij-tip-guide" aria-labelledby="tip-guide-title">
+<h2 id="tip-guide-title">How to Calculate a Tip</h2>
+<div class="ij-tip-guide-grid">
+<div class="ij-tip-guide-panel">
+<h3>1. Calculate the Tip</h3>
+<p>Multiply the bill amount by the tip percentage, then divide by 100.</p>
+<p class="ij-tip-formula"><strong>Tip</strong> = Bill Amount × Tip Percentage ÷ 100</p>
+</div>
+<div class="ij-tip-guide-panel">
+<h3>2. Find the Total Bill</h3>
+<p>Add the tip amount to the original bill to get the total payment.</p>
+<p class="ij-tip-formula"><strong>Total</strong> = Bill Amount + Tip</p>
+</div>
+</div>
+<p class="ij-tip-guide-note">This calculator estimates the tip you enter. Local tipping customs and service charges vary.</p>
 </section>
 <section aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
 <h2 id="related-tools-title" style="display:flex;align-items:center;gap:10px;margin:0 0 7px;font-size:22px;line-height:1.25;color:#0f172a"><span style="display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:linear-gradient(135deg,#dbeafe,#e0f2fe);color:#1d4ed8"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3 14.7 9.3 21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></svg></span><span>Explore More Free Tools</span></h2>
