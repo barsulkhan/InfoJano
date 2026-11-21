@@ -221,6 +221,70 @@ main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;ma
 @media(prefers-reduced-motion:reduce){.ij-tip-new-art .ij-tip-hero-svg>ellipse{animation:none!important}.ij-tip-new-art .ij-tip-hero-svg animate,.ij-tip-new-art .ij-tip-hero-svg animateTransform{display:none}}
 </style>
 
+
+<style id="ij-tip-premium-polish">
+/* Tip Calculator visual refresh — presentation only */
+:root{color-scheme:light}
+body{background:radial-gradient(ellipse at 12% 8%,#e4f2ff 0,transparent 34%),linear-gradient(180deg,#f5f9ff 0%,#eef4fc 52%,#f8fbff 100%);color:#152b49}
+.ij-tip-header{background:linear-gradient(110deg,#0d3979 0%,#1058ad 56%,#087ec2 100%);box-shadow:0 8px 26px rgba(14,61,120,.16)}
+.ij-hero-breadcrumb{max-width:1240px;margin:15px auto 10px;padding:0 18px;color:#647b98;font-size:13px}
+.ij-hero-breadcrumb a{color:#2866ad;text-decoration:none;font-weight:700}
+.ij-reference-hero.ij-tip-new-hero{position:relative;overflow:hidden;margin:14px auto 28px;padding:clamp(24px,4vw,48px);border:1px solid #d9e9fb;border-radius:28px;background:linear-gradient(115deg,#fff 0%,#f2f8ff 55%,#e7f4ff 100%);box-shadow:0 18px 48px rgba(28,76,132,.10)}
+.ij-reference-hero.ij-tip-new-hero:before{content:"";position:absolute;width:300px;height:300px;right:-110px;top:-160px;border-radius:50%;background:radial-gradient(circle,#bde5ff88,transparent 70%);pointer-events:none}
+.ij-reference-copy,.ij-tip-new-art{position:relative;z-index:1}
+.ij-reference-kicker{display:inline-flex;align-items:center;padding:7px 12px;border:1px solid #c9e3ff;border-radius:30px;background:#eaf5ff;color:#1760a9;font-size:11px;font-weight:900;letter-spacing:1.5px}
+.ij-reference-copy h1{margin:15px 0 12px;color:#102e56;font-size:clamp(36px,5vw,58px);font-weight:900;letter-spacing:-1.8px;line-height:1.06}
+.ij-reference-copy h1 span{color:#1673cf}
+.ij-reference-copy>p{max-width:560px;color:#536b87;font-size:17px;line-height:1.7}
+.ij-reference-pills{gap:9px!important}
+.ij-reference-pills span{padding:8px 12px;border:1px solid #d8e8f8;border-radius:30px;background:#ffffffc9;color:#365777;font-size:12px;font-weight:700}
+main{padding:16px 18px 40px!important}
+.ij-tip-content-grid{gap:24px}
+.ij-tip-content-grid>.card,.ij-tip-advanced-sidebar{border:1px solid #dce8f6!important;border-radius:24px!important;background:rgba(255,255,255,.96)!important;box-shadow:0 14px 38px rgba(24,65,112,.09)!important}
+.ij-tip-content-grid>.card{padding:clamp(20px,3vw,32px)!important}
+.ij-tip-content-grid>.card h2{margin:0 0 20px;color:#15365f;font-size:25px;font-weight:850;letter-spacing:-.5px}
+.ij-tip-content-grid label{margin-top:17px;color:#344f70;font-size:14px;font-weight:750}
+.ij-tip-content-grid input,.ij-tip-advanced-sidebar input,.ij-tip-advanced-sidebar select{min-height:48px;padding:12px 14px;border:1px solid #d3e0ef;border-radius:12px;background:#fbfdff;color:#183452;font-size:15px;transition:border-color .18s,box-shadow .18s,background .18s}
+.ij-tip-content-grid input:focus,.ij-tip-advanced-sidebar input:focus,.ij-tip-advanced-sidebar select:focus{outline:none;border-color:#3888df;background:#fff;box-shadow:0 0 0 4px rgba(56,136,223,.13)}
+.ij-tip-quick{gap:8px;margin-top:20px}
+.ij-tip-quick span{width:100%;margin-bottom:2px;color:#526b88;font-size:13px}
+.ij-tip-quick button{padding:8px 14px;border:1px solid #cfe2f8;background:#f1f7ff;color:#1c64ad;transition:transform .16s,background .16s,box-shadow .16s}
+.ij-tip-quick button:hover{transform:translateY(-2px);box-shadow:0 5px 12px #2563eb20}
+.ij-tip-quick button[aria-pressed=true]{border-color:#1769bf;background:linear-gradient(135deg,#1769bf,#1689d5);color:white;box-shadow:0 5px 14px #1769bf35}
+.ij-tip-content-grid>.card>button:not(.ij-tip-result-actions button){min-height:52px;margin-top:22px;border-radius:13px;background:linear-gradient(105deg,#1557b7,#087fce);box-shadow:0 9px 18px rgba(21,87,183,.2);font-weight:800;letter-spacing:.15px;transition:transform .18s,box-shadow .18s}
+.ij-tip-content-grid>.card>button:not(.ij-tip-result-actions button):hover{transform:translateY(-2px);box-shadow:0 13px 22px rgba(21,87,183,.25)}
+#result{min-height:76px;margin-top:20px;padding:20px;border:1px solid #d8e9fb;border-radius:16px;background:linear-gradient(145deg,#f5faff,#eaf4ff);color:#34516f}
+.ij-tip-breakdown{gap:10px}
+.ij-tip-breakdown-row{align-items:center;padding:5px 0;color:#536b87}
+.ij-tip-breakdown-row strong{color:#193c67;font-variant-numeric:tabular-nums}
+.ij-tip-breakdown-total{margin-top:4px;padding:13px 0 2px;border-top:1px solid #c9def4;color:#164d91;font-size:18px}
+.ij-tip-breakdown-total strong{color:#086bc4;font-size:21px}
+.ij-tip-person-list{padding-left:20px;color:#526b88}
+.ij-tip-person-list li{padding:4px 0}
+.ij-tip-result-actions{gap:10px;margin-top:2px}
+.ij-tip-result-actions button{min-height:44px;margin-top:12px;border:1px solid #c9def5;border-radius:12px;background:#f0f7ff;color:#1763ad;font-weight:750;transition:background .18s,transform .18s}
+.ij-tip-result-actions button:not(:disabled):hover{transform:translateY(-1px);background:#e1efff}
+.ij-tip-advanced-sidebar{padding:clamp(20px,3vw,30px)!important;background:linear-gradient(155deg,#fff 0%,#f6faff 100%)!important}
+.ij-tip-advanced-sidebar h3{display:flex;align-items:center;gap:10px;margin:0 0 18px!important;color:#173d69!important;font-size:23px!important;font-weight:850}
+.ij-tip-advanced-sidebar h3:before{content:"";width:7px;height:25px;border-radius:8px;background:linear-gradient(#1684d6,#1458b8)}
+.ij-tip-advanced-sidebar label{color:#385675}
+.ij-tip-advanced-sidebar .ij-tip-guide-note{padding:12px 13px;border-radius:12px;background:#edf6ff;color:#5c7590;line-height:1.55}
+.ij-tip-guide{margin-top:34px!important;padding-top:30px!important;border-top:1px solid #d9e6f4!important}
+.ij-tip-guide>h2{margin:0 0 6px;color:#15365f;font-size:27px;font-weight:850;letter-spacing:-.5px}
+.ij-tip-guide-panel{border-color:#dce9f7;background:linear-gradient(145deg,#fff,#f3f8ff);box-shadow:0 8px 22px rgba(24,65,112,.045)}
+.ij-tip-guide-panel h3{color:#1c4f83}
+.ij-tip-formula{border:1px solid #d8e9fb;background:#edf6ff;color:#174477}
+.ij-tip-related{box-shadow:0 12px 30px rgba(24,65,112,.06)}
+@media(max-width:760px){
+ .ij-reference-hero.ij-tip-new-hero{margin:10px 12px 22px;padding:24px 20px;border-radius:22px}
+ .ij-reference-copy>p{font-size:15px}
+ .ij-tip-content-grid{gap:16px}
+ .ij-tip-advanced-sidebar{border-radius:20px!important}
+ main{padding:10px 12px 30px!important}
+}
+@media(prefers-reduced-motion:reduce){.ij-tip-quick button,.ij-tip-content-grid button,.ij-tip-result-actions button{transition:none!important}}
+</style>
+
 </head>
 <body data-ij-header-align="true">
 <header class="ij-brandbar ij-tip-header"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><img src="/infojano-logo.svg" alt="InfoJano" class="ij-tip-logo"></a><nav class="ij-tip-nav" aria-label="Main navigation"><a href="tools.html">▦ <span>All Tools</span></a><span class="ij-tip-language">English <span aria-hidden="true">⌄</span></span><a href="index.html">◆ <span>Home</span></a></nav></div></header>
