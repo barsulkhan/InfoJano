@@ -81,6 +81,7 @@ main{max-width:1240px!important;width:100%;margin:24px auto;padding:16px}
 .ij-reference-hero{width:min(calc(100% - 0px),1280px)!important}
 @media(max-width:760px){main{padding:12px!important}.ij-tip-content-grid{grid-template-columns:1fr;gap:18px}.ij-tip-related{grid-column:auto}.ij-reference-hero{width:calc(100% - 12px)!important}}
 
+.ij-tip-advanced-sidebar{margin:0;align-self:start;position:sticky;top:18px}.ij-tip-advanced-sidebar h3{font-size:20px}.ij-tip-content-grid>.card{height:auto}.ij-tip-guide{margin-top:24px;padding-top:20px;border-top:1px solid #dbe5f2}@media(max-width:760px){.ij-tip-advanced-sidebar{position:static;grid-row:2}.ij-tip-content-grid>.card{grid-row:1}}
 @media(max-width:560px){.ij-tip-guide-grid{grid-template-columns:1fr}.ij-tip-guide-panel{padding:15px}}
 
 </style>
@@ -251,26 +252,13 @@ main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;ma
 <input id="tip" type="number" min="0" max="100" step="any" value="10">
 <label for="people">Number of People</label>
 <input id="people" type="number" min="1" step="1" value="1">
-<div class="ij-tip-advanced" aria-label="Advanced bill options">
-  <h3>Bill Details</h3>
-  <div class="ij-tip-fields">
-    <div><label for="taxRate">Tax (%)</label><input id="taxRate" type="number" min="0" max="100" step="any" value="0"></div>
-    <div><label for="serviceRate">Service Charge (%)</label><input id="serviceRate" type="number" min="0" max="100" step="any" value="0"></div>
-  </div>
-  <label for="tipBasis">Calculate tip on</label>
-  <select id="tipBasis"><option value="bill">Bill amount before tax and service</option><option value="after-tax">Bill amount + tax</option><option value="after-charges">Bill amount + tax + service charge</option></select>
-  <label for="splitMode">Split method</label>
-  <select id="splitMode"><option value="equal">Split equally</option><option value="custom">Custom shares (weighted)</option></select>
-  <div id="customShares" class="ij-tip-custom-shares" hidden></div>
-  <label for="rounding">Per-person rounding</label>
-  <select id="rounding"><option value="none">No rounding</option><option value="1">Nearest ₹1</option><option value="5">Nearest ₹5</option><option value="10">Nearest ₹10</option><option value="up-1">Round up to ₹1</option><option value="up-5">Round up to ₹5</option><option value="up-10">Round up to ₹10</option></select>
-  <p class="ij-tip-guide-note">Tax and service charge are optional. Add only charges that are not already included in the bill.</p>
-</div>
+
 <div class="ij-tip-quick" aria-label="Quick tip percentages"><span>Quick tip:</span><button type="button" data-tip="5">5%</button><button type="button" data-tip="10">10%</button><button type="button" data-tip="12">12%</button><button type="button" data-tip="15">15%</button><button type="button" data-tip="18">18%</button><button type="button" data-tip="20">20%</button></div>
 <button onclick="calculateTip()">Calculate Tip</button>
 <div id="result" class="result" aria-live="polite">Enter the bill amount to begin.</div>
 <div class="ij-tip-result-actions"><button type="button" id="copyTipResult" disabled>Copy breakdown</button><button type="button" id="shareTipResult" disabled>Share result</button></div>
 </div>
+
 <section class="ij-tip-guide" aria-labelledby="tip-guide-title">
 <h2 id="tip-guide-title">How to Calculate a Tip</h2>
 <div class="ij-tip-guide-grid">
@@ -286,6 +274,22 @@ main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;ma
 </div>
 </div>
 <p class="ij-tip-guide-note">This calculator estimates the tip you enter. Local tipping customs and service charges vary.</p>
+</section>
+</div>
+<section class="ij-tip-advanced ij-tip-advanced-sidebar" aria-label="Advanced bill options">
+  <h3>Bill Details</h3>
+  <div class="ij-tip-fields">
+    <div><label for="taxRate">Tax (%)</label><input id="taxRate" type="number" min="0" max="100" step="any" value="0"></div>
+    <div><label for="serviceRate">Service Charge (%)</label><input id="serviceRate" type="number" min="0" max="100" step="any" value="0"></div>
+  </div>
+  <label for="tipBasis">Calculate tip on</label>
+  <select id="tipBasis"><option value="bill">Bill amount before tax and service</option><option value="after-tax">Bill amount + tax</option><option value="after-charges">Bill amount + tax + service charge</option></select>
+  <label for="splitMode">Split method</label>
+  <select id="splitMode"><option value="equal">Split equally</option><option value="custom">Custom shares (weighted)</option></select>
+  <div id="customShares" class="ij-tip-custom-shares" hidden></div>
+  <label for="rounding">Per-person rounding</label>
+  <select id="rounding"><option value="none">No rounding</option><option value="1">Nearest ₹1</option><option value="5">Nearest ₹5</option><option value="10">Nearest ₹10</option><option value="up-1">Round up to ₹1</option><option value="up-5">Round up to ₹5</option><option value="up-10">Round up to ₹10</option></select>
+  <p class="ij-tip-guide-note">Tax and service charge are optional. Add only charges that are not already included in the bill.</p>
 </section>
 </div>
 <section class="ij-tip-related" aria-labelledby="related-tools-title" style="margin:28px 0;padding:20px 16px;border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#f8fbff,#ffffff)">
