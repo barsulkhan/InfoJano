@@ -285,6 +285,7 @@ main{padding:16px 18px 40px!important}
 @media(prefers-reduced-motion:reduce){.ij-tip-quick button,.ij-tip-content-grid button,.ij-tip-result-actions button{transition:none!important}}
 </style>
 
+<style id="ij-tip-neutral-header">.ij-tip-header,header{background:#fff!important;color:#14243b!important;box-shadow:none!important}</style>
 </head>
 <body data-ij-header-align="true">
 <header class="ij-brandbar ij-tip-header"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><img src="/infojano-logo.svg" alt="InfoJano" class="ij-tip-logo"></a><nav class="ij-tip-nav" aria-label="Main navigation"><a href="tools.html">▦ <span>All Tools</span></a><span class="ij-tip-language">English <span aria-hidden="true">⌄</span></span><a href="index.html">◆ <span>Home</span></a></nav></div></header>
@@ -449,6 +450,7 @@ document.getElementById('shareTipResult').addEventListener('click',async()=>{if(
 
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
 <script src="/InfoJano/download-progress.js" defer></script>
+<script src="/InfoJano/site-footer.js" defer data-ij-site-footer></script>
 <script src="/InfoJano/site-header.js" defer></script>
 </body>
 </html>
