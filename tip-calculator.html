@@ -43,6 +43,28 @@ main > section:not([style]) p{line-height:1.7;margin:14px 0}
 main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;overflow-wrap:anywhere}
 @media(max-width:480px){main > section:not([style]){padding:20px 18px;margin:20px 0}}
 
+/* Advanced restaurant bill and tip options */
+.ij-tip-advanced{margin-top:20px;padding:16px;border:1px solid #dbeafe;border-radius:14px;background:#f8fbff}
+.ij-tip-advanced h3{margin:0 0 8px;color:#173b70;font-size:17px}
+.ij-tip-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ij-tip-advanced label{margin-top:12px;font-size:14px}
+.ij-tip-advanced input,.ij-tip-advanced select{width:100%;min-width:0;padding:11px;margin-top:6px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;font-size:15px}
+.ij-tip-quick{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:16px}
+.ij-tip-quick span{font-size:13px;font-weight:700;color:#475569}
+.ij-tip-quick button{width:auto;margin:0;padding:8px 12px;border:1px solid #bfdbfe;border-radius:20px;background:#eff6ff;color:#1458c8;font-size:13px;font-weight:700}
+.ij-tip-quick button[aria-pressed="true"]{background:#1458c8;color:#fff}
+.ij-tip-custom-shares{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.ij-tip-share-field label{margin:0;font-size:13px}
+.ij-tip-share-field input{margin-top:5px}
+.ij-tip-result-actions{display:flex;gap:10px}
+.ij-tip-result-actions button{flex:1;width:auto;margin-top:10px;padding:11px;background:#e8f1ff;color:#1458c8;border:1px solid #bfdbfe;font-size:14px}
+.ij-tip-result-actions button:disabled{opacity:.45;cursor:not-allowed}
+.ij-tip-breakdown{display:grid;gap:7px}
+.ij-tip-breakdown-row{display:flex;justify-content:space-between;gap:14px}
+.ij-tip-breakdown-total{padding-top:8px;border-top:1px solid #c9d9ef;font-size:17px}
+.ij-tip-person-list{margin:8px 0 0;padding-left:20px}
+@media(max-width:420px){.ij-tip-fields,.ij-tip-custom-shares{grid-template-columns:1fr}.ij-tip-result-actions{flex-direction:column;gap:0}}
+
 /* Two-column Tip Calculator instructions */
 .ij-tip-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
 .ij-tip-guide-panel{min-width:0;padding:17px;border:1px solid #dbeafe;border-radius:16px;background:linear-gradient(145deg,#fff,#f3f8ff)}
@@ -229,8 +251,25 @@ main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;ma
 <input id="tip" type="number" min="0" max="100" step="any" value="10">
 <label for="people">Number of People</label>
 <input id="people" type="number" min="1" step="1" value="1">
+<div class="ij-tip-advanced" aria-label="Advanced bill options">
+  <h3>Bill Details</h3>
+  <div class="ij-tip-fields">
+    <div><label for="taxRate">Tax (%)</label><input id="taxRate" type="number" min="0" max="100" step="any" value="0"></div>
+    <div><label for="serviceRate">Service Charge (%)</label><input id="serviceRate" type="number" min="0" max="100" step="any" value="0"></div>
+  </div>
+  <label for="tipBasis">Calculate tip on</label>
+  <select id="tipBasis"><option value="bill">Bill amount before tax and service</option><option value="after-tax">Bill amount + tax</option><option value="after-charges">Bill amount + tax + service charge</option></select>
+  <label for="splitMode">Split method</label>
+  <select id="splitMode"><option value="equal">Split equally</option><option value="custom">Custom shares (weighted)</option></select>
+  <div id="customShares" class="ij-tip-custom-shares" hidden></div>
+  <label for="rounding">Per-person rounding</label>
+  <select id="rounding"><option value="none">No rounding</option><option value="1">Nearest ₹1</option><option value="5">Nearest ₹5</option><option value="10">Nearest ₹10</option><option value="up-1">Round up to ₹1</option><option value="up-5">Round up to ₹5</option><option value="up-10">Round up to ₹10</option></select>
+  <p class="ij-tip-guide-note">Tax and service charge are optional. Add only charges that are not already included in the bill.</p>
+</div>
+<div class="ij-tip-quick" aria-label="Quick tip percentages"><span>Quick tip:</span><button type="button" data-tip="5">5%</button><button type="button" data-tip="10">10%</button><button type="button" data-tip="12">12%</button><button type="button" data-tip="15">15%</button><button type="button" data-tip="18">18%</button><button type="button" data-tip="20">20%</button></div>
 <button onclick="calculateTip()">Calculate Tip</button>
 <div id="result" class="result" aria-live="polite">Enter the bill amount to begin.</div>
+<div class="ij-tip-result-actions"><button type="button" id="copyTipResult" disabled>Copy breakdown</button><button type="button" id="shareTipResult" disabled>Share result</button></div>
 </div>
 <section class="ij-tip-guide" aria-labelledby="tip-guide-title">
 <h2 id="tip-guide-title">How to Calculate a Tip</h2>
@@ -281,22 +320,64 @@ main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;ma
 </main>
 <footer style="text-align:center;padding:20px">© InfoJano</footer>
 <script>
+let lastTipSummary='';
+const tipMoney=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
+function renderCustomShares(){
+ const count=Math.max(1,Math.min(30,Math.floor(Number(document.getElementById('people').value)||1)));
+ const wrap=document.getElementById('customShares');
+ const old=[...wrap.querySelectorAll('input')].map(el=>el.value);
+ wrap.innerHTML='';
+ for(let i=0;i<count;i++){
+  const field=document.createElement('div');field.className='ij-tip-share-field';
+  const label=document.createElement('label');label.htmlFor='tipShare'+i;label.textContent='Person '+(i+1)+' share weight';
+  const input=document.createElement('input');input.id='tipShare'+i;input.type='number';input.min='0';input.step='any';input.value=old[i]!==undefined?old[i]:'1';input.setAttribute('aria-label','Person '+(i+1)+' share weight');
+  field.append(label,input);wrap.append(field);
+ }
+}
+function setTipResultError(message){
+ const out=document.getElementById('result');out.textContent=message;lastTipSummary='';
+ document.getElementById('copyTipResult').disabled=true;document.getElementById('shareTipResult').disabled=true;
+}
 function calculateTip(){
-const bInput=document.getElementById('bill').value;
-const tInput=document.getElementById('tip').value;
-const pInput=document.getElementById('people').value;
-const out=document.getElementById('result');
-const bill=Number(bInput),tipRate=Number(tInput),people=Number(pInput);
-if(bInput===''||tInput===''||pInput===''||!Number.isFinite(bill)||!Number.isFinite(tipRate)||!Number.isInteger(people)||bill<0||tipRate<0||tipRate>100||people<1){
-out.textContent='Enter a valid bill, tip percentage from 0 to 100, and a whole number of people.';
-return;
+ const billInput=document.getElementById('bill').value,tipInput=document.getElementById('tip').value,peopleInput=document.getElementById('people').value;
+ const bill=Number(billInput),tipRate=Number(tipInput),people=Number(peopleInput);
+ const taxRate=Number(document.getElementById('taxRate').value),serviceRate=Number(document.getElementById('serviceRate').value);
+ if([bill,tipRate,people,taxRate,serviceRate].some(n=>!Number.isFinite(n))||billInput===''||tipInput===''||peopleInput===''||!Number.isInteger(people)||people<1||people>30||bill<0||tipRate<0||tipRate>100||taxRate<0||taxRate>100||serviceRate<0||serviceRate>100){
+  setTipResultError('Enter a valid bill, tip/tax/service percentages from 0 to 100, and a whole number of people (1–30).');return;
+ }
+ const tax=bill*taxRate/100,service=bill*serviceRate/100;
+ const basis=document.getElementById('tipBasis').value;
+ const tipBase=basis==='after-tax'?bill+tax:basis==='after-charges'?bill+tax+service:bill;
+ const tip=tipBase*tipRate/100,total=bill+tax+service+tip;
+ let weights=Array(people).fill(1);
+ if(document.getElementById('splitMode').value==='custom'){
+  weights=[...document.querySelectorAll('#customShares input')].map(el=>Number(el.value));
+  if(weights.length!==people||weights.some(n=>!Number.isFinite(n)||n<0)||weights.reduce((a,b)=>a+b,0)<=0){setTipResultError('Enter a valid non-negative share weight for every person. At least one share must be greater than zero.');return;}
+ }
+ const weightTotal=weights.reduce((a,b)=>a+b,0),rounding=document.getElementById('rounding').value;
+ const roundShare=value=>{
+  if(rounding==='none')return value;
+  if(rounding.startsWith('up-')){const step=Number(rounding.split('-')[1]);return Math.ceil((value-1e-10)/step)*step;}
+  const step=Number(rounding);return Math.round(value/step)*step;
+ };
+ const shares=weights.map(w=>roundShare(total*w/weightTotal));
+ const fmt=tipMoney;
+ const rows=[
+  ['Bill amount',fmt(bill)],['Tax ('+taxRate+'%)',fmt(tax)],['Service charge ('+serviceRate+'%)',fmt(service)],
+  ['Tip ('+tipRate+'%)',fmt(tip)],['Total bill',fmt(total)]
+ ];
+ const peopleHtml=shares.map((amount,i)=>'<li>Person '+(i+1)+' ('+weights[i]+' share'+(weights[i]===1?'':'s')+'): <strong>'+fmt(amount)+'</strong></li>').join('');
+ const out=document.getElementById('result');
+ out.innerHTML='<div class="ij-tip-breakdown">'+rows.map((r,i)=>'<div class="ij-tip-breakdown-row'+(i===4?' ij-tip-breakdown-total':'')+'"><span>'+r[0]+'</span><strong>'+r[1]+'</strong></div>').join('')+'</div><p><strong>Split summary</strong></p><ul class="ij-tip-person-list">'+peopleHtml+'</ul>'+(rounding!=='none'?'<p class="ij-tip-guide-note">Per-person amounts are rounded individually. Their sum may differ slightly from the exact total.</p>':'');
+ lastTipSummary=['InfoJano Tip Calculator','Bill amount: '+fmt(bill),'Tax: '+fmt(tax),'Service charge: '+fmt(service),'Tip: '+fmt(tip),'Total bill: '+fmt(total),'Split: '+shares.map((v,i)=>'Person '+(i+1)+': '+fmt(v)).join('; ')].join('\n');
+ document.getElementById('copyTipResult').disabled=false;document.getElementById('shareTipResult').disabled=false;
 }
-const tip=bill*tipRate/100;
-const total=bill+tip;
-const money=n=>n.toLocaleString('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2});
-out.innerHTML='Tip Amount: <strong>'+money(tip)+'</strong><br>Total Bill: <strong>'+money(total)+'</strong><br>Per Person: <strong>'+money(total/people)+'</strong>';
-}
-</script>
+document.getElementById('splitMode').addEventListener('change',e=>{document.getElementById('customShares').hidden=e.target.value!=='custom';if(e.target.value==='custom')renderCustomShares();});
+document.getElementById('people').addEventListener('input',()=>{if(document.getElementById('splitMode').value==='custom')renderCustomShares();});
+document.querySelectorAll('[data-tip]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('tip').value=button.dataset.tip;document.querySelectorAll('[data-tip]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));calculateTip();}));
+document.getElementById('copyTipResult').addEventListener('click',async()=>{if(!lastTipSummary)return;const button=document.getElementById('copyTipResult');try{await navigator.clipboard.writeText(lastTipSummary);button.textContent='Copied!';setTimeout(()=>button.textContent='Copy breakdown',1800);}catch(e){const area=document.createElement('textarea');area.value=lastTipSummary;document.body.append(area);area.select();document.execCommand('copy');area.remove();button.textContent='Copied!';setTimeout(()=>button.textContent='Copy breakdown',1800);}});
+document.getElementById('shareTipResult').addEventListener('click',async()=>{if(!lastTipSummary)return;if(navigator.share){try{await navigator.share({title:'Tip and Bill Breakdown',text:lastTipSummary});}catch(e){if(e.name!=='AbortError')setTipResultError('Unable to share this result on this device. You can copy the breakdown instead.');}}else{try{await navigator.clipboard.writeText(lastTipSummary);document.getElementById('shareTipResult').textContent='Copied to share';}catch(e){setTipResultError('Sharing is not available here. Please copy the breakdown instead.');}}});
+</script>>
 
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
 <script src="/InfoJano/download-progress.js" defer></script>
