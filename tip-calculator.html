@@ -167,22 +167,29 @@ main{width:min(calc(100% - 20px),1280px)!important;max-width:1280px!important;ma
 </style>
 
 
-<style id="ij-tip-hero-motion-v1">
-/* Subtle motion for the Tip Calculator hero illustration */
-.ij-tip-hero-svg{transform-origin:50% 55%}
-.ij-tip-hero-svg g[transform^="translate(75"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-calc-float 5.8s ease-in-out infinite}
-.ij-tip-hero-svg g[transform^="translate(285"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-receipt-float 6.4s ease-in-out infinite}
-.ij-tip-hero-svg g[transform^="translate(95"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-coin-bob 3.8s ease-in-out infinite}
-.ij-tip-hero-svg g[transform^="translate(390"]{transform-box:fill-box;transform-origin:center;animation:ij-tip-badge-pop 4.8s ease-in-out infinite}
-.ij-tip-hero-svg>circle:nth-of-type(2){transform-box:fill-box;transform-origin:center;animation:ij-tip-orbit-pulse 7s ease-in-out infinite}
-@keyframes ij-tip-calc-float{0%,100%{translate:0 0;rotate:-1deg}50%{translate:0 -8px;rotate:1deg}}
-@keyframes ij-tip-receipt-float{0%,100%{translate:0 0;rotate:1deg}50%{translate:0 7px;rotate:-1deg}}
-@keyframes ij-tip-coin-bob{0%,100%{translate:0 0}50%{translate:0 -9px}}
-@keyframes ij-tip-badge-pop{0%,100%{scale:1}50%{scale:1.045}}
-@keyframes ij-tip-orbit-pulse{0%,100%{scale:1;opacity:.68}50%{scale:1.035;opacity:.95}}
-@media(prefers-reduced-motion:reduce){.ij-tip-hero-svg g[transform^="translate(75"],.ij-tip-hero-svg g[transform^="translate(285"],.ij-tip-hero-svg g[transform^="translate(95"],.ij-tip-hero-svg g[transform^="translate(390"],.ij-tip-hero-svg>circle:nth-of-type(2){animation:none!important}}
+<style id="ij-tip-hero-text-motion-v2">
+/* Text-led motion: keep the illustration still and animate the message gently. */
+.ij-tip-new-hero .ij-reference-kicker,
+.ij-tip-new-hero h1,
+.ij-tip-new-hero .ij-reference-copy>p,
+.ij-tip-new-hero .ij-reference-pills>span{
+ opacity:0;animation:ij-tip-text-reveal .72s cubic-bezier(.2,.75,.25,1) forwards;
+}
+.ij-tip-new-hero .ij-reference-kicker{animation-delay:.08s}
+.ij-tip-new-hero h1{animation-delay:.2s}
+.ij-tip-new-hero .ij-reference-copy>p{animation-delay:.34s}
+.ij-tip-new-hero .ij-reference-pills>span:nth-child(1){animation-delay:.48s}
+.ij-tip-new-hero .ij-reference-pills>span:nth-child(2){animation-delay:.6s}
+.ij-tip-new-hero .ij-reference-pills>span:nth-child(3){animation-delay:.72s}
+.ij-tip-new-hero h1 span{display:inline-block;animation:ij-tip-title-glow 4.8s ease-in-out 1.2s infinite}
+.ij-tip-new-art .ij-tip-hero-svg g[transform^="translate(285"] text{transform-box:fill-box;transform-origin:left center;animation:ij-tip-number-focus 5.4s ease-in-out infinite}
+.ij-tip-new-art .ij-tip-hero-svg g[transform^="translate(285"] text:nth-of-type(3){animation-delay:.35s}
+.ij-tip-new-art .ij-tip-hero-svg g[transform^="translate(285"] text:nth-of-type(5){animation-delay:.7s}
+@keyframes ij-tip-text-reveal{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ij-tip-title-glow{0%,100%{filter:drop-shadow(0 0 0 transparent)}50%{filter:drop-shadow(0 3px 9px rgba(8,124,229,.2))}}
+@keyframes ij-tip-number-focus{0%,75%,100%{opacity:1}82%{opacity:.72}90%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.ij-tip-new-hero .ij-reference-kicker,.ij-tip-new-hero h1,.ij-tip-new-hero .ij-reference-copy>p,.ij-tip-new-hero .ij-reference-pills>span,.ij-tip-new-hero h1 span,.ij-tip-new-art .ij-tip-hero-svg g[transform^="translate(285"] text{opacity:1;animation:none!important;transform:none!important;filter:none!important}}
 </style>
-
 </head>
 <body data-ij-header-align="true">
 <header class="ij-brandbar ij-tip-header"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><img src="/infojano-logo.svg" alt="InfoJano" class="ij-tip-logo"></a><nav class="ij-tip-nav" aria-label="Main navigation"><a href="tools.html">▦ <span>All Tools</span></a><span class="ij-tip-language">English <span aria-hidden="true">⌄</span></span><a href="index.html">◆ <span>Home</span></a></nav></div></header>
