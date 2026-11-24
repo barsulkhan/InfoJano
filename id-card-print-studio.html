@@ -544,21 +544,33 @@ function trimRationDottedCutline(input){
 }
 /* Voter ID only: trim extra paper around a manually selected card when its continuous outer frame is clearly detectable. If detection is uncertain, preserve the user's crop unchanged. */
 function trimVoterCropToOuterFrame(canvas){
+ // Voter ID scans/photos may be slightly rotated or perspective-skewed.
+ // Find the complete dark outer frame by its pixel bounds instead of assuming
+ // perfectly horizontal/vertical borders; this removes blank margins on all sides.
  const w=canvas.width,h=canvas.height;
  if(w<100||h<70)return canvas;
- const ctx=canvas.getContext('2d',{willReadFrequently:true}),data=ctx.getImageData(0,0,w,h).data;
- const step=Math.max(1,Math.floor(Math.min(w,h)/900));
- function dark(x,y){const i=(y*w+x)*4;return Math.max(data[i],data[i+1],data[i+2])<155;}
- function rowScore(y){let n=0,total=0;for(let x=Math.round(w*.06);x<Math.round(w*.94);x+=step){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
- function colScore(x){let n=0,total=0;for(let y=Math.round(h*.06);y<Math.round(h*.94);y+=step){total++;if(dark(x,y))n++;}return n/Math.max(1,total);}
- function bestLine(start,end,scoreFn,threshold){let best=-1,bestScore=0;for(let p=start;p<end;p+=step){const s=scoreFn(p);if(s>bestScore){bestScore=s;best=p;}}return bestScore>=threshold?best:-1;}
- const top=bestLine(Math.round(h*.02),Math.round(h*.28),rowScore,.48);
- const bottom=bestLine(Math.round(h*.72),Math.round(h*.98),rowScore,.48);
- const left=bestLine(Math.round(w*.02),Math.round(w*.28),colScore,.42);
- const right=bestLine(Math.round(w*.72),Math.round(w*.98),colScore,.42);
- if(top<0||bottom<0||left<0||right<0||bottom<=top||right<=left)return canvas;
- const rect={x:left,y:top,w:right-left+1,h:bottom-top+1},ratio=rect.w/rect.h;
- if(ratio<1.25||ratio>2.0||rect.w<w*.55||rect.h<h*.45)return canvas;
+ const ctx=canvas.getContext('2d',{willReadFrequently:true});
+ const data=ctx.getImageData(0,0,w,h).data;
+ let left=w,top=h,right=-1,bottom=-1,count=0;
+ // Ignore isolated antialiasing/light-grey pixels; retain the printed black frame.
+ for(let y=0;y<h;y++){
+  for(let x=0;x<w;x++){
+   const i=(y*w+x)*4,r=data[i],g=data[i+1],b=data[i+2];
+   if(Math.max(r,g,b)<145){
+    left=Math.min(left,x);right=Math.max(right,x);
+    top=Math.min(top,y);bottom=Math.max(bottom,y);count++;
+   }
+  }
+ }
+ if(right<=left||bottom<=top||count<Math.max(80,Math.floor(w*h*.0005)))return canvas;
+ const rect={x:left,y:top,w:right-left+1,h:bottom-top+1};
+ const ratio=rect.w/rect.h;
+ // Reject a crop if its detected dark content does not resemble a card frame.
+ if(ratio<1.25||ratio>2.0||rect.w<w*.50||rect.h<h*.40)return canvas;
+ // Keep the outer printed border itself; only discard the blank area beyond it.
+ const pad=2;
+ rect.x=Math.max(0,rect.x-pad);rect.y=Math.max(0,rect.y-pad);
+ rect.w=Math.min(w-rect.x,rect.w+pad*2);rect.h=Math.min(h-rect.y,rect.h+pad*2);
  const out=document.createElement('canvas');out.width=rect.w;out.height=rect.h;
  out.getContext('2d').drawImage(canvas,rect.x,rect.y,rect.w,rect.h,0,0,rect.w,rect.h);
  return out;
