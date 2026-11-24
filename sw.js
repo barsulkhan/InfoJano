@@ -173,6 +173,7 @@ const ASSETS = [
   "/install.js",
   "/site-header.js",
   "/site-footer.js",
+  "/InfoJano/site-footer.js",
   "/infojano-mark.svg",
   "/infojano-logo.svg",
   "/related-apps.js",
