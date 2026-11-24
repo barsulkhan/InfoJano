@@ -265,6 +265,47 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 
 
 @media(max-width:760px){.ij-reference-hero{width:calc(100% - 20px)!important;min-height:0!important;padding:23px 17px 35px!important;margin:12px auto 20px!important}}
+
+/* Keep the hero and four document guides in one compact, parallel row. */
+.ij-hero-guide-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;gap:16px;width:min(calc(100% - 28px),1200px);margin:18px auto 22px}
+.ij-hero-guide-row .ij-id-hero{width:100%;max-width:none;min-width:0;height:100%;min-height:0;margin:0;padding:20px;border-radius:20px;display:flex;flex-direction:column;justify-content:center}
+.ij-hero-guide-row .ij-id-hero-grid{grid-template-columns:minmax(0,1fr) minmax(110px,.65fr);gap:12px;min-height:0}
+.ij-hero-guide-row .ij-id-hero-symbol{width:52px;height:52px;margin:0 0 9px;border-radius:15px}
+.ij-hero-guide-row .ij-id-hero-symbol svg{width:38px;height:38px}
+.ij-hero-guide-row .ij-id-hero h1{font-size:clamp(22px,2.3vw,34px);letter-spacing:-1px;margin-bottom:7px}
+.ij-hero-guide-row .ij-id-hero-subtitle{font-size:13px;line-height:1.4}
+.ij-hero-guide-row .ij-doc-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px}
+.ij-hero-guide-row .ij-doc-tile{min-height:58px;padding:6px;border-radius:11px;gap:3px}
+.ij-hero-guide-row .ij-doc-tile svg{width:22px;height:22px}
+.ij-hero-guide-row .ij-doc-tile strong{font-size:11px}
+.ij-hero-guide-row .ij-id-hero-art{min-height:145px;overflow:hidden}
+.ij-hero-guide-row .ij-id-card-mock{width:115%;border-width:4px;border-radius:14px}
+.ij-hero-guide-row .ij-id-card-mock .mock-photo{height:42px}
+.ij-hero-guide-row .ij-id-card-mock .mock-body{padding:7px;gap:6px}
+.ij-hero-guide-row .ij-id-card-mock.front{transform:translate(-5px,16px) rotate(-5deg)}
+.ij-hero-guide-row .ij-id-card-mock.back{transform:translate(10px,-25px) rotate(9deg)}
+.ij-hero-guide-row .ij-id-hero-benefits{gap:5px;margin-top:10px}
+.ij-hero-guide-row .ij-id-hero-benefits span{font-size:10px;padding:5px 7px;gap:4px}
+.ij-hero-guide-row .ij-id-hero-benefits b{width:17px;height:17px;font-size:10px}
+.ij-hero-guide-row .ij-doc-guide-links{width:100%;max-width:none;height:100%;margin:0;padding:18px;border:1px solid #d9e9f8;border-radius:20px;background:linear-gradient(145deg,#fff,#f6fbff);display:flex;flex-direction:column;justify-content:center}
+.ij-hero-guide-row .ij-doc-guide-links h2{font-size:17px;margin-bottom:12px}
+.ij-hero-guide-row .ij-doc-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.ij-hero-guide-row .ij-doc-guide-grid a{min-height:75px}
+@media(max-width:760px){
+ .ij-hero-guide-row{grid-template-columns:minmax(0,1fr);width:calc(100% - 20px);gap:12px;margin:12px auto 18px}
+ .ij-hero-guide-row .ij-id-hero{padding:18px}
+ .ij-hero-guide-row .ij-id-hero-grid{grid-template-columns:minmax(0,1fr) minmax(100px,.65fr)}
+ .ij-hero-guide-row .ij-id-hero-art{min-height:130px}
+ .ij-hero-guide-row .ij-doc-guide-links{padding:15px}
+}
+@media(max-width:420px){
+ .ij-hero-guide-row .ij-id-hero-grid{grid-template-columns:1fr}
+ .ij-hero-guide-row .ij-id-hero-art{display:none}
+ .ij-hero-guide-row .ij-id-hero-copy{text-align:center}
+ .ij-hero-guide-row .ij-id-hero-symbol{margin-left:auto;margin-right:auto}
+ .ij-hero-guide-row .ij-id-hero h1{text-align:center}
+ .ij-hero-guide-row .ij-id-hero-benefits{justify-content:center}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -284,6 +325,7 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 <body data-ij-header-align="hero">
 <script src="site-header.js"></script>
 
+<div class="ij-hero-guide-row">
 <section class="ij-id-hero" aria-labelledby="ij-id-hero-title">
  <div class="ij-id-hero-grid">
   <div class="ij-id-hero-copy">
@@ -304,9 +346,10 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
  </div>
  <div class="ij-id-hero-benefits"><span><b>✓</b> Easy to Use</span><span><b>↗</b> Quick Processing</span><span><b>▣</b> Print Ready</span><span><b>✓</b> Free to Use</span></div>
 </section>
-
-<main>
 <section class="ij-doc-guide-links" aria-label="Document print guides"><h2>Document-specific print guides</h2><div class="ij-doc-guide-grid"><a href="/ayushman-card-print.html">Ayushman Card Guide <span>PDF and photo printing</span></a><a href="/aadhaar-card-print.html">Aadhaar Card Guide <span>e-Aadhaar crop and print</span></a><a href="/voter-id-card-print.html">Voter ID Guide <span>e-EPIC manual crop</span></a><a href="/digital-ration-card-print.html">Ration Card Guide <span>West Bengal e-Ration PDF</span></a></div></section>
+</div>
+<main>
+
 <div class="ij-studio-workspace"><div class="ij-studio-left">
 <section class="card" id="ij-document-selector"><h2><span class="step">1</span>Choose card type</h2>
 <div class="grid">
