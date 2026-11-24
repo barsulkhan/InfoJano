@@ -252,6 +252,30 @@ body .ij-global-header .ij-global-page-context{display:none!important}
 
 
 /* Header uses the shared site-header.js hero-aligned 1200px layout. */
+
+/* ID Studio header fine positioning and readable logo tagline. */
+@media (min-width:1001px){
+ body[data-ij-header-align="hero"] .ij-global-header-inner{
+  min-height:128px!important;
+  align-items:center!important;
+ }
+ body[data-ij-header-align="hero"] .ij-global-brand{
+  margin-left:30px!important; /* approx. 8 mm right */
+ }
+ body[data-ij-header-align="hero"] .ij-global-logo{
+  width:340px!important;
+  height:119px!important;
+  flex:0 0 340px!important;
+ }
+ body[data-ij-header-align="hero"] .ij-global-nav{
+  transform:translateX(38px)!important; /* approx. 10 mm right */
+ }
+}
+@media (min-width:641px) and (max-width:1000px){
+ body[data-ij-header-align="hero"] .ij-global-brand{margin-left:20px!important}
+ body[data-ij-header-align="hero"] .ij-global-logo{width:290px!important;height:102px!important;flex-basis:290px!important}
+ body[data-ij-header-align="hero"] .ij-global-nav{transform:translateX(20px)!important}
+}
 </style>
 <script type="application/ld+json">
 {
