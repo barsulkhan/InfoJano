@@ -387,16 +387,28 @@ body .ij-global-header .ij-global-language{width:132px!important;max-width:132px
  body .ij-global-header .ij-global-language{width:92px!important;max-width:92px!important}
 }
 
-/* Match the visible hero banner width (1200px), not the wider page frame. */
+/* Header content spans the same 1200px frame as the restored hero.
+   Brand occupies the left side; navigation is pushed to the far right. */
 @media (min-width:1001px){
  body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
   width:min(calc(100% - 28px),1200px)!important;
   max-width:1200px!important;
   margin-left:auto!important;
   margin-right:auto!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
   justify-content:space-between!important;
+  gap:18px!important;
+ }
+ body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-brand{
+  flex:1 1 auto!important;
+  min-width:0!important;
+  margin:0!important;
  }
  body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-nav{
+  flex:0 0 auto!important;
+  width:auto!important;
   margin-left:auto!important;
   justify-content:flex-end!important;
  }
@@ -406,6 +418,8 @@ body .ij-global-header .ij-global-language{width:132px!important;max-width:132px
   width:min(calc(100% - 28px),1200px)!important;
   max-width:1200px!important;
  }
+ body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-brand{flex:1 1 auto!important}
+ body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-nav{margin-left:auto!important}
 }
 @media (max-width:640px){
  body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
