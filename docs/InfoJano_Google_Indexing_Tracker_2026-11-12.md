@@ -214,3 +214,55 @@ All 10 URLs in Batch 1 are marked **Submitted — Pending Indexing**, not Indexe
 - PR #210 now covers six Number to Words feature-cluster files, including the reverse words-to-number parser, Bengali/Hindi hreflang and localized WebApplication schema, plus the mobile chip layout and v309 locale precache.
 - The reverse parser received a source correction for standalone minor currency phrases (e.g. `fifty paise` → `0.50`) and rejects minor-unit groups above 99.
 - PR #210 is still open/unmerged; no indexing or live deployment status changes as a result.
+
+
+## 25 Nov 2026 — SEO handover verification and current status
+
+### Asset-path verification
+- Re-fetched all 8 files from the interrupted handover list. All 8 are now free of legacy `/InfoJano/` references in their HTML source:
+  - `bmi-health-guide.html`
+  - `bmi-calculation-guide.html`
+  - `bmi-weight-categories.html`
+  - `bmi-healthy-weight-range.html`
+  - `bmi.html`
+  - `time-calculator.html`
+  - `number-to-words.html`
+  - `percentage.html`
+- Re-fetched the 4 previously fixed custom-domain pages; their HTML sources also remain free of legacy `/InfoJano/` references:
+  - `word-converter.html`
+  - `pdf-to-jpg.html`
+  - `google-maps-location-qr-code-generator.html`
+  - `age-in-days-calculator.html`
+- These are source checks, not a claim that Google has indexed the pages.
+- The Pages deployment for commit `e3ac56a548b4990841c0419362c837445942960d` completed successfully (run 45441368104). Later no-op restoration commits were made to return out-of-scope files to their pre-session content; verify the newest Pages deployment before treating the current branch head as deployed.
+
+### Current Search Console inspection (25 Nov 2026)
+Inspected 10 URLs in `sc-domain:infojano.com`:
+- `pdf-to-jpg.html`: Discovered — currently not indexed. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=nvDQqsw-Fl2aABtxo9yDCA
+- `google-maps-location-qr-code-generator.html`: URL is unknown to Google. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=EowFx2C2n5T3V4uppBRIww
+- `percentage-decrease-calculator.html`: Discovered — currently not indexed. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=G-vRP8gjHcW6CM_vMM-b-A
+- `cheque-amount-in-words.html`: URL is unknown to Google. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=g6KTzQLzRz5J7yk4fkXcUQ
+- `word-converter.html`: URL is unknown to Google. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=0v_XbRn_5rUaIty_O8TNIA
+- `bmi-health-guide.html`: Discovered — currently not indexed. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=-_dCEOMQ5VbyPn53lRMSeg
+- `age-in-days-calculator.html`: Crawled — currently not indexed. Last crawl 2026-11-11; Google canonical is infojano.com but the inspected declared canonical was GitHub Pages. Do not change the source canonical again without a fresh source check or newer crawl. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=14otpTKm8PzZP4euP9Gzjg
+- `elapsed-time-calculator-guide.html`: Submitted and indexed; canonical agrees; last crawl 2026-11-19. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=3WpC_Elb0BDxoknDxLGm5g
+- `bmi-calculation-guide.html`: Submitted and indexed; canonical agrees; last crawl 2026-11-16. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=NZulof_bf0C7peedYKS2UQ
+- `bmi-weight-categories.html`: Submitted and indexed; canonical agrees; last crawl 2026-11-16. Inspection: https://search.google.com/search-console/inspect?resource_id=sc-domain:infojano.com&id=8L4p1Zy3acEq6x_eaFXC-w
+
+### Technical audit
+- OpenSEO audit `6cc874e4-f0bc-4017-bd02-ba4ee3eda2a9` completed: 50/50 pages crawled; 77 URLs not crawled because the account/tool capped the requested 100-page budget at 50.
+- The only reported issue was the crawl-page-limit warning. This does not mean the full 127-URL site is issue-free.
+- The 50 crawled pages returned HTTP 200 in the audit sample; titles and H1s were present in the sampled page records.
+- Do not change robots.txt to work around the audit limit.
+
+### CI / scope guard
+- Global Footer QA passed on the latest checked commit `035c50ec4aa79e77b03452d6bbb9767b22ca7c08` (run 45472109976).
+- APK workflow still fails at the existing validation step: `Missing installer script: savings.html` (run 45472110450). The APK build is skipped after this assertion.
+- Per the SEO handover restrictions, do not change `savings.html` PWA install behavior or the APK validator without explicit user approval. Those files were restored to their pre-session content; no PWA/validator fix is claimed.
+- `index.html` still contains legacy `/InfoJano/` manifest/download-progress/install references. Do not change until a safe custom-domain and GitHub Pages fallback strategy is approved.
+- Header/Hero, ID Card Print Studio, analytics location views/filters, and unrelated app functionality were not changed.
+
+### Remaining external/user actions
+1. In Search Console, review/request indexing once for the five unknown/discovered URLs above (PDF to JPG, Google Maps QR, Percentage Decrease, Cheque Amount, Word Converter, BMI Health Guide). Do not repeatedly request the same stale URL-inspection record.
+2. Decide whether to authorize the separate Savings PWA/APK validator repair. Until then, the APK workflow remains blocked by design/scope.
+3. Verify the newest Pages deployment run for the final main-branch head before treating the latest branch state as live.
