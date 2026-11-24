@@ -71,11 +71,11 @@ jobs:
               assert 'install.js' in html, f'Missing installer script: {page}'
           sw = (root / 'sw.js').read_text(encoding='utf-8')
           for icon in icons:
-              assert f'/{icon.as_posix()}' in sw or f'/InfoJano/{icon.as_posix()}' in sw, f'Icon missing from service-worker cache: {icon}'
+              assert f'/InfoJano/{icon.as_posix()}' in sw, f'Icon missing from service-worker cache: {icon}'
           for page in pages:
-              assert f'/{page.name}' in sw or f'/InfoJano/{page.name}' in sw, f'Tool page missing from service-worker cache: {page}'
+              assert f'/InfoJano/{page.name}' in sw, f'Tool page missing from service-worker cache: {page}'
           for manifest in manifests:
-              assert f'/{manifest.as_posix()}' in sw or f'/InfoJano/{manifest.as_posix()}' in sw, f'Manifest missing from service-worker cache: {manifest}'
+              assert f'/InfoJano/{manifest.as_posix()}' in sw, f'Manifest missing from service-worker cache: {manifest}'
           workflow = (root / '.github/workflows/build-tool-apks.yml').read_text(encoding='utf-8')
           section = workflow.split("done <<'TOOLS'", 1)[1]
           entries = [line.strip() for line in section.splitlines() if line.strip().count('|') == 4 and line.strip().split('|')[0].isalnum()]
