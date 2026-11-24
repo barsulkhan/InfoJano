@@ -386,6 +386,28 @@ body .ij-global-header .ij-global-language{width:132px!important;max-width:132px
  body .ij-global-header .ij-global-home{padding:0 8px!important}
  body .ij-global-header .ij-global-language{width:92px!important;max-width:92px!important}
 }
+
+/* Final alignment: use the exact same responsive width rule as the ID Studio hero. */
+@media (min-width:1001px){
+ body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
+  width:min(calc(100% - 112px),1552px)!important;
+  max-width:1552px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+ }
+}
+@media (min-width:641px) and (max-width:1000px){
+ body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
+  width:min(calc(100% - 28px),1200px)!important;
+  max-width:1200px!important;
+ }
+}
+@media (max-width:640px){
+ body[data-ij-header-align="hero"] .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
+  width:calc(100% - 20px)!important;
+  max-width:none!important;
+ }
+}
 </style>
 <script type="application/ld+json">
 {
