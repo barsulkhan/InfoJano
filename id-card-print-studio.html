@@ -536,6 +536,40 @@ function detectRationCardFaces(pageCanvas){
  if(result.some(q=>q.canvas.width/q.canvas.height<1.45||q.canvas.width/q.canvas.height>2.15))return [];
  return result;
 }
+/* Voter ID only: remove blank paper around the user's manual card selection.
+   Find the printed outer frame by dark-pixel projections; keep a tiny safety margin
+   so the actual frame is not shaved off. Other document workflows never call this. */
+function trimVoterManualCrop(input){
+ const w=input.width,h=input.height;
+ if(w<120||h<70)return input;
+ const ctx=input.getContext('2d',{willReadFrequently:true});
+ const px=ctx.getImageData(0,0,w,h).data;
+ const rows=new Uint32Array(h),cols=new Uint32Array(w);
+ const step=Math.max(1,Math.floor(Math.max(w,h)/1800));
+ for(let y=0;y<h;y+=step){
+  for(let x=0;x<w;x+=step){
+   const i=(y*w+x)*4,r=px[i],g=px[i+1],b=px[i+2];
+   // Dark frame/printed ink; ignore pale paper and light scan texture.
+   if(Math.max(r,g,b)<178){
+    rows[y]++;cols[x]++;
+   }
+  }
+ }
+ const rowMin=Math.max(2,Math.floor(w*.003/step));
+ const colMin=Math.max(2,Math.floor(h*.003/step));
+ let top=-1,bottom=-1,left=-1,right=-1;
+ for(let y=0;y<h;y+=step)if(rows[y]>=rowMin){if(top<0)top=y;bottom=y;}
+ for(let x=0;x<w;x+=step)if(cols[x]>=colMin){if(left<0)left=x;right=x;}
+ if(top<0||bottom<=top||left<0||right<=left)return input;
+ const x0=Math.max(0,left-step),y0=Math.max(0,top-step);
+ const x1=Math.min(w,right+step+1),y1=Math.min(h,bottom+step+1);
+ const cw=x1-x0,ch=y1-y0,ratio=cw/ch;
+ // Guard against accidentally cropping to a text block or a partial card.
+ if(ratio<1.25||ratio>2.0||cw<w*.45||ch<h*.35)return input;
+ const out=document.createElement('canvas');out.width=cw;out.height=ch;
+ out.getContext('2d').drawImage(input,x0,y0,cw,ch,0,0,cw,ch);
+ return out;
+}
 function trimRationDottedCutline(input){
  // Safety-first for Digital Ration Card: do not auto-trim the selected crop.
  // Dotted guides can be close to real content (Not Transferable, QR, barcode, address and issue details).
@@ -682,7 +716,7 @@ function trimAyushmanOuterWhitespace(canvas){
  if(left===0&&top===0&&right===w-1&&bottom===h-1)return canvas;
  return cropRegion({canvas},{x:left,y:top,w:right-left+1,h:bottom-top+1});
 }
-function useManualCrop(side){const src=cropSource;if(!src||!cropRect||cropRect.w<20||cropRect.h<20){status('আগে কার্ডের চারপাশে টেনে Crop নির্বাচন করুন।','error');return}const scaleX=src.canvas.width/$('cropCanvas').width,scaleY=src.canvas.height/$('cropCanvas').height;const rect={x:Math.max(0,Math.floor(cropRect.x*scaleX)),y:Math.max(0,Math.floor(cropRect.y*scaleY)),w:Math.min(src.canvas.width-Math.floor(cropRect.x*scaleX),Math.ceil(cropRect.w*scaleX)),h:Math.min(src.canvas.height-Math.floor(cropRect.y*scaleY),Math.ceil(cropRect.h*scaleY))};let cropped=cropRegion(src,rect);if($('cardType').value==='Ayushman Bharat Card')cropped=trimAyushmanOuterWhitespace(cropped);if($('cardType').value==='Digital Ration Card')cropped=trimRationDottedCutline(cropped);sources.push(makeImageSource(src.name+' — manual crop '+side,cropped));const index=sources.length-1;addOption(sources[index],index);$(side==='Front'?'frontSelect':'backSelect').value=String(index);if($('cardType').value==='Digital Ration Card'&&side==='Front'){const w=85,h=Math.max(10,Math.round(w*cropped.height/cropped.width*100)/100);$('sizePreset').value='custom';$('widthMM').value=String(w);$('heightMM').value=String(h);$('layout').value='paired';$('paper').value='a4';}updateSidePreviews();status($('cardType').value==='Aadhaar Card'?'Aadhaar '+side+' crop selected. Confirm the entire card edge, all text, portrait and QR code are visible in preview.':$('cardType').value==='Digital Ration Card'?'Digital Ration Card '+side+' crop selected. Keep the full coloured outer boundary, text, photo, barcode and QR code intact. Front-left/Back-right PDF layout is selected.':side+' crop selected. Check the preview, including every text line and the QR code.','ok');drawCropCanvas()}
+function useManualCrop(side){const src=cropSource;if(!src||!cropRect||cropRect.w<20||cropRect.h<20){status('আগে কার্ডের চারপাশে টেনে Crop নির্বাচন করুন।','error');return}const scaleX=src.canvas.width/$('cropCanvas').width,scaleY=src.canvas.height/$('cropCanvas').height;const rect={x:Math.max(0,Math.floor(cropRect.x*scaleX)),y:Math.max(0,Math.floor(cropRect.y*scaleY)),w:Math.min(src.canvas.width-Math.floor(cropRect.x*scaleX),Math.ceil(cropRect.w*scaleX)),h:Math.min(src.canvas.height-Math.floor(cropRect.y*scaleY),Math.ceil(cropRect.h*scaleY))};let cropped=cropRegion(src,rect);if($('cardType').value==='Ayushman Bharat Card')cropped=trimAyushmanOuterWhitespace(cropped);if($('cardType').value==='Voter ID')cropped=trimVoterManualCrop(cropped);if($('cardType').value==='Digital Ration Card')cropped=trimRationDottedCutline(cropped);sources.push(makeImageSource(src.name+' — manual crop '+side,cropped));const index=sources.length-1;addOption(sources[index],index);$(side==='Front'?'frontSelect':'backSelect').value=String(index);if($('cardType').value==='Digital Ration Card'&&side==='Front'){const w=85,h=Math.max(10,Math.round(w*cropped.height/cropped.width*100)/100);$('sizePreset').value='custom';$('widthMM').value=String(w);$('heightMM').value=String(h);$('layout').value='paired';$('paper').value='a4';}updateSidePreviews();status($('cardType').value==='Aadhaar Card'?'Aadhaar '+side+' crop selected. Confirm the entire card edge, all text, portrait and QR code are visible in preview.':$('cardType').value==='Digital Ration Card'?'Digital Ration Card '+side+' crop selected. Keep the full coloured outer boundary, text, photo, barcode and QR code intact. Front-left/Back-right PDF layout is selected.':side+' crop selected. Check the preview, including every text line and the QR code.','ok');drawCropCanvas()}
 $('cropFrontBtn').addEventListener('click',()=>useManualCrop('Front'));$('cropBackBtn').addEventListener('click',()=>useManualCrop('Back'));$('cropResetBtn').addEventListener('click',()=>{cropRect=null;cropDrag=null;drawCropCanvas()});
 function selected(id){const n=$(id).value;return n===''||n==='none'?null:sources[Number(n)]||null}
 function aadhaarSourceNeedsCrop(src){return $('cardType').value==='Aadhaar Card'&&!!src&&/(full PDF page \(manual crop\)|image \(manual crop required\)|original photo \(manual crop fallback\))/i.test(src.name)}
