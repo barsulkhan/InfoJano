@@ -85,7 +85,7 @@ main{max-width:1240px!important;width:100%;margin:24px auto;padding:16px}
 @media(max-width:560px){.ij-tip-guide-grid{grid-template-columns:1fr}.ij-tip-guide-panel{padding:15px}}
 
 </style>
-  <link rel="manifest" href="app-manifests/tip-calculator.webmanifest">
+  <link rel="manifest" href="/InfoJano/app-manifests/tip-calculator.webmanifest">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -463,12 +463,11 @@ document.getElementById('people').addEventListener('input',()=>{if(document.getE
 document.querySelectorAll('[data-tip]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('tip').value=button.dataset.tip;document.querySelectorAll('[data-tip]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));calculateTip();}));
 document.getElementById('copyTipResult').addEventListener('click',async()=>{if(!lastTipSummary)return;const button=document.getElementById('copyTipResult');try{await navigator.clipboard.writeText(lastTipSummary);button.textContent='Copied!';setTimeout(()=>button.textContent='Copy breakdown',1800);}catch(e){const area=document.createElement('textarea');area.value=lastTipSummary;document.body.append(area);area.select();document.execCommand('copy');area.remove();button.textContent='Copied!';setTimeout(()=>button.textContent='Copy breakdown',1800);}});
 document.getElementById('shareTipResult').addEventListener('click',async()=>{if(!lastTipSummary)return;if(navigator.share){try{await navigator.share({title:'Tip and Bill Breakdown',text:lastTipSummary});}catch(e){if(e.name!=='AbortError')setTipResultError('Unable to share this result on this device. You can copy the breakdown instead.');}}else{try{await navigator.clipboard.writeText(lastTipSummary);document.getElementById('shareTipResult').textContent='Copied to share';}catch(e){setTipResultError('Sharing is not available here. Please copy the breakdown instead.');}}});
-</script>
+</script>>
 
 <script>(function(){const loader=document.getElementById('ijPageLoader');if(!loader)return;function hideLoader(){setTimeout(()=>loader.classList.add('ij-loaded'),420)}if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader,{once:true});setTimeout(hideLoader,5000)}})();</script>
-<script src="install.js" defer></script>
-<script src="download-progress.js" defer></script>
+<script src="/InfoJano/download-progress.js" defer></script>
 <script src="/site-footer.js" defer data-ij-site-footer></script>
-<script src="site-header.js" defer></script>
+<script src="/InfoJano/site-header.js" defer></script>
 </body>
 </html>
