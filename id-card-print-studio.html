@@ -274,6 +274,114 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
  .ij-brandbar{padding:12px 0!important}
  .ij-brandbar-inner{width:calc(100% - 20px)!important;max-width:960px!important;padding:0 10px!important}
 }
+
+/* ID Studio header: same outer left/right edges as the hero; brand left, three controls right. */
+body .ij-global-header .ij-global-header-inner{
+ width:calc(100% - 112px)!important;
+ max-width:1600px!important;
+ min-height:88px!important;
+ margin:0 auto!important;
+ padding:10px 0!important;
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:center!important;
+ justify-content:space-between!important;
+ gap:20px!important;
+ box-sizing:border-box!important;
+}
+body .ij-global-header .ij-global-brand{
+ display:flex!important;
+ align-items:center!important;
+ flex:0 1 auto!important;
+ min-width:0!important;
+ margin:0!important;
+ gap:12px!important;
+}
+body .ij-global-header .ij-global-logo{
+ display:block!important;
+ width:190px!important;
+ height:55px!important;
+ flex:0 0 190px!important;
+ object-fit:contain!important;
+ object-position:left center!important;
+}
+body .ij-global-header .ij-global-brand-copy{
+ display:flex!important;
+ flex-direction:column!important;
+ gap:3px!important;
+ min-width:0!important;
+}
+body .ij-global-header .ij-global-brand-name{
+ display:block!important;
+ color:#14264a!important;
+ font-size:21px!important;
+ font-weight:850!important;
+ line-height:1.1!important;
+ white-space:nowrap!important;
+}
+body .ij-global-header .ij-global-brand-tagline{
+ display:block!important;
+ font-size:10px!important;
+ line-height:1.25!important;
+ white-space:nowrap!important;
+}
+body .ij-global-header .ij-global-nav{
+ display:flex!important;
+ flex:0 0 auto!important;
+ align-items:center!important;
+ justify-content:flex-end!important;
+ gap:12px!important;
+ width:auto!important;
+ min-width:0!important;
+ margin:0 0 0 auto!important;
+}
+body .ij-global-header .ij-global-divider{display:none!important}
+body .ij-global-header .ij-global-tools,
+body .ij-global-header .ij-global-home,
+body .ij-global-header .ij-global-language{
+ height:44px!important;
+ min-height:44px!important;
+ font-size:14px!important;
+}
+body .ij-global-header .ij-global-tools,
+body .ij-global-header .ij-global-home{padding:0 18px!important;border-radius:24px!important}
+body .ij-global-header .ij-global-home{min-width:0!important}
+body .ij-global-header .ij-global-language{width:132px!important;max-width:132px!important;padding:0 28px 0 14px!important}
+@media(max-width:760px){
+ body .ij-global-header .ij-global-header-inner{
+  width:calc(100% - 20px)!important;
+  min-height:0!important;
+  padding:10px 0!important;
+  flex-wrap:wrap!important;
+  gap:9px!important;
+ }
+ body .ij-global-header .ij-global-brand{gap:7px!important}
+ body .ij-global-header .ij-global-logo{width:112px!important;height:40px!important;flex-basis:112px!important}
+ body .ij-global-header .ij-global-brand-name{font-size:17px!important}
+ body .ij-global-header .ij-global-brand-tagline{font-size:8px!important}
+ body .ij-global-header .ij-global-nav{
+  width:100%!important;
+  flex:1 1 100%!important;
+  justify-content:flex-end!important;
+  gap:7px!important;
+  margin:0!important;
+ }
+ body .ij-global-header .ij-global-tools,
+ body .ij-global-header .ij-global-home,
+ body .ij-global-header .ij-global-language{height:38px!important;min-height:38px!important;font-size:12px!important}
+ body .ij-global-header .ij-global-tools{width:auto!important;padding:0 12px!important;font-size:12px!important}
+ body .ij-global-header .ij-global-home{padding:0 11px!important}
+ body .ij-global-header .ij-global-language{width:105px!important;max-width:105px!important;padding:0 22px 0 9px!important}
+}
+@media(max-width:380px){
+ body .ij-global-header .ij-global-logo{width:96px!important;height:35px!important;flex-basis:96px!important}
+ body .ij-global-header .ij-global-brand-name{font-size:15px!important}
+ body .ij-global-header .ij-global-brand-tagline{font-size:7px!important}
+ body .ij-global-header .ij-global-nav{gap:5px!important}
+ body .ij-global-header .ij-global-tools{padding:0 8px!important}
+ body .ij-global-header .ij-global-home{padding:0 8px!important}
+ body .ij-global-header .ij-global-language{width:92px!important;max-width:92px!important}
+}
 </style>
 <script type="application/ld+json">
 {
