@@ -2070,3 +2070,14 @@ The following are not all blockers to the Number to Words website release; they 
 
 ### Financial / project closeout
 - No contract, agreed rate, invoice, expense ledger or outstanding payment amount is recorded in this Read Hub snapshot. Do not calculate or invent a final amount. A financial closeout requires the agreed amount/rate and any paid/outstanding records from the user.
+
+
+## 25 Nov 2026 — SEO continuation checkpoint
+- The interrupted eight-file custom-domain asset-path batch was re-fetched and verified clean; the four previously fixed SEO pages were also re-fetched and remain clean.
+- The 25 Nov Search Console inspection, 50-page OpenSEO audit limitation, deployment checks, and remaining user actions are recorded in [InfoJano Google Indexing Tracker](InfoJano_Google_Indexing_Tracker_2026-11-12.md).
+- Current GSC batch: six pages remain unknown/discovered, age-in-days remains crawled-not-indexed with an older canonical observation, and three inspected guide pages are indexed.
+- OpenSEO audit 6cc874e4-f0bc-4017-bd02-ba4ee3eda2a9 reached 50/50 pages; 77 URLs remain outside the crawl because the available page budget is capped at 50. Only crawl-page-limit was reported; this is not a full-site clean audit.
+- Pages deployment for the e3ac56a commit succeeded. Verify deployment for the newest main commit before claiming the current branch is live.
+- Global Footer QA passed on 035c50e. APK workflow remains blocked by the existing `Missing installer script: savings.html` assertion. Per scope restrictions, do not alter Savings PWA behavior or the APK validator without explicit approval.
+- No Header/Hero, ID Card Print Studio, analytics-location, or unrelated feature changes were made.
+- Next: manual Search Console review/request for the six unknown/discovered URLs (at most ten per batch), verify latest Pages deployment, and ask user approval only if the separate Savings PWA/APK-validator repair is desired.
