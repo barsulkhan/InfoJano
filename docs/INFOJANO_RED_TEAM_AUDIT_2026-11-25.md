@@ -274,3 +274,21 @@ Reviewed all 29 tool PWA manifests plus the root manifest.json. Compared their s
 - Root manifest.json references ./, icon-192.png, icon-512.png and infojano-mark.svg; all referenced files exist in the repo tree.
 - Static source-level check: 30 manifests, 92 referenced paths, zero missing targets.
 - This does not replace live HTTP checks for correct Content-Type, 200 status, installability, service-worker scope, actual installation or offline launch. Manifest files and related app paths are part of the 25-Nov PWA work and were not modified in this audit.
+
+
+## Backend readiness review — 25 Nov 2026
+
+Read-only review of backend/shortlinks and backend/word-converter configuration and setup guides.
+
+### Short-link Worker
+- README explicitly labels it an undeployed staging scaffold. It requires Cloudflare Worker/D1 setup, secret ADMIN_API_TOKEN, a real short domain and HTTPS, rate limiting, authentication, abuse reporting/monitoring and production policy before public launch.
+- wrangler.toml currently sets ALLOWED_ORIGIN to https://barsulkhan.github.io and SHORT_BASE_URL is not configured in the reviewed main worker setup. URL Toolkit correctly says real short links are not yet available. Do not deploy or expose public creation until the listed production controls are implemented.
+- PR #1 security branch is still Draft/Open/Unmerged; its test workflow passed, but this does not equal deployment approval.
+
+### Word Converter Worker
+- Worker source and config were last changed 2026-11-05, so they were not part of today's code freeze. The worker is an optional third-party iLoveAPI proxy; it requires an ILOVEPDF_PUBLIC_KEY Worker secret and active provider credits.
+- The worker hardcodes ALLOWED_ORIGIN = https://barsulkhan.github.io and rejects other browser Origins. The public site also uses https://infojano.com, so if the high-fidelity conversion UI is expected to work on the custom domain, CORS allow-list/config must be extended to include that exact origin before deployment/use.
+- README explicitly requires Cloudflare rate limiting on POST /convert and user consent before third-party document upload. No Worker deployment, secret setup, provider account, rate-limit configuration or conversion integration test was performed.
+
+### Decision
+No backend was deployed and no secrets were requested or added. Both services remain optional/staging until the user confirms account access and required provider credentials/costs, and all security controls are verified. Keep current user-facing wording transparent about these limitations.
