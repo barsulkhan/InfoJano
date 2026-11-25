@@ -57,15 +57,15 @@ jobs:
               page = root / f'{slug}.html'
               assert page.exists(), f'Missing tool page: {page}'
               html = page.read_text(encoding='utf-8')
-              tags = re.findall(r'<link\\b[^>]*>', html, re.I)
-              manifest_tags = [tag for tag in tags if re.search(r'\\brel=["\\']manifest["\\']', tag, re.I)]
+              tags = re.findall(r'<link\b[^>]*>', html, re.I)
+              manifest_tags = [tag for tag in tags if re.search(r'\brel=["\']manifest["\']', tag, re.I)]
               assert manifest_tags, f'Missing manifest link: {page}'
-              href_match = re.search(r'\\bhref=["\\']([^"\\']+)', manifest_tags[0], re.I)
+              href_match = re.search(r'\bhref=["\']([^"\']+)', manifest_tags[0], re.I)
               assert href_match, f'Missing manifest href: {page}'
               manifest_href = href_match.group(1)
               assert not manifest_href.startswith('/'), f'Manifest href must be deployment-relative: {page}'
               assert 'install.js' in html, f'Missing installer script: {page}'
-              install_srcs = re.findall(r'<script\\b[^>]*\\bsrc=["\\']([^"\\']*install\\.js[^"\\']*)["\\'][^>]*>', html, re.I)
+              install_srcs = re.findall(r'<script\b[^>]*\bsrc=["\']([^"\']*install\.js[^"\']*)["\'][^>]*>', html, re.I)
               if install_srcs:
                   assert all(not src.startswith('/') for src in install_srcs), f'Installer script must be deployment-relative: {page}'
               else:
