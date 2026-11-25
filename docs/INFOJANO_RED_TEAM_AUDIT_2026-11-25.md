@@ -212,3 +212,15 @@ Inspected 10 additional high-impression or priority URLs (read-only):
 - BMI Calculation Guide and BMI Weight Categories remain indexed and fetch-successful.
 
 No source code was changed during this batch. Fresh crawl is needed before judging the recently corrected canonical signals.
+
+
+## Third 10-URL Search Console batch — 25 Nov 2026
+
+Inspected: percentage.html, repeated-percentage-change-calculator.html, percentage-change.html, percentage-to-decimal-converter.html, profit-loss-percentage-calculator.html, date-difference.html, age.html, loan-interest.html, qr-scanner.html, resize-image-for-website.html.
+
+- All 10 are reported Submitted and indexed with successful page fetches.
+- Canonical mismatches from old crawls: repeated-percentage-change-calculator.html, percentage-change.html, profit-loss-percentage-calculator.html and qr-scanner.html. Current source was checked for all four and declares clean infojano.com canonical and og:url values. Their last GSC crawls (11-Nov) predate later source repairs/SEO updates (12-Nov or 24-Nov). Treat these as stale GSC records pending recrawl; no source edit required based on this evidence.
+- percentage-change.html was modified in the 25-Nov dual-host PWA commit and remains excluded from any edits.
+- Remaining six pages in this batch show matching Google and declared canonicals.
+
+No application source changed during this batch. Reinspect after Google recrawls the pages.
