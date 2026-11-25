@@ -188,3 +188,15 @@ Inspected `qa/browser/package.json`, `playwright.config.js`, `tests/password-gen
 
 ### QA next step
 Add a separate cross-page smoke suite for manifest/icon resolution, navigation, no horizontal overflow, console errors, and key happy-path calculations/conversions. Run it against both `https://infojano.com` and `https://barsulkhan.github.io/InfoJano` after excluding or separately snapshotting 25-Nov-touched application files. Add explicit offline/PWA tests separately so network and cache failures are distinguishable.
+
+
+## Canonical discrepancy triage — 25 Nov 2026
+
+A second read-only inspection checked current main HTML source and recent file history for the three QR pages and Percentage Difference Calculator whose GSC URL Inspection records showed a canonical mismatch or malformed declared canonical.
+
+- upi-payment-qr-code-generator.html: current source declares canonical and og:url as https://infojano.com/upi-payment-qr-code-generator.html; source was refined 2026-11-24. GSC last crawled 2026-11-11 and reported an old GitHub Pages declared canonical. Likely stale GSC crawl; do not edit current source based on this record.
+- custom-qr-code-generator.html: current source declares canonical and og:url on infojano.com; SEO title/description refined 2026-11-24. GSC last crawled 2026-11-11 and reported the older GitHub Pages canonical. Likely stale GSC crawl; do not edit current source.
+- qr-maker.html: current source declares canonical and og:url on infojano.com. However this file was touched by the 2026-11-25 dual-host PWA commit, so it remains explicitly excluded from edits. GSC last crawled 2026-11-11; the mismatch may be stale.
+- percentage-difference-calculator.html: current source contains a clean infojano.com canonical and og:url. Its GSC last crawl was 2026-11-11, while source SEO was updated 2026-11-21. The malformed userCanonical string returned by GSC therefore appears to be an older crawl record, not the current source. No source edit made.
+
+Conclusion: the GSC mismatch signals are not proof of current source defects. Request/await a fresh Google crawl and re-inspect before changing canonical tags. Do not modify the 25-Nov-touched QR Maker file.
