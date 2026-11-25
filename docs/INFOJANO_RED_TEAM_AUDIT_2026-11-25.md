@@ -96,3 +96,14 @@ Not performed:
 - No Search Console manual indexing requests.
 - No real Android device test.
 - No complete 127-URL crawl or interactive browser sweep.
+
+
+## Follow-up execution — PR #1 security fixes
+
+- Updated only the existing PR branch `security/shortlink-url-validation-tests`; no main-branch application files were changed.
+- Corrected the IPv6 hostname bracket normalization in `validateDestination`.
+- Tightened the IPv6 deny policy to conservatively reject the IETF special-purpose `2001::/23` range, in addition to documentation, 6to4, NAT64 translation, IPv4-mapped and local/non-global ranges.
+- Added a positive test for a globally routable IPv6 destination and negative tests for `2001:20::/32` and `2001:100::/32` examples, alongside the existing special-range tests.
+- Latest PR head: `262e8b86fb6c2a84f142f4f4d42265c8382ff218`.
+- GitHub Actions run `45577870283` (Short Link Security Tests) completed; job `url-validation` and its `npm test` step both **SUCCESS**.
+- PR remains OPEN / DRAFT / UNMERGED. This does not establish Cloudflare preview success, full Worker runtime security, or production readiness. No deployment was performed.
