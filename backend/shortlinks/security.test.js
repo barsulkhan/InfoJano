@@ -38,11 +38,18 @@ test("rejects unusual numeric forms that normalize to loopback", () => {
   }
 });
 
+test("accepts globally routable IPv6 destinations", () => {
+  assert.equal(
+    validateDestination("https://[2001:4860:4860::8888]/path"),
+    "https://[2001:4860:4860::8888]/path",
+  );
+});
+
 test("rejects special and non-global IPv6 destinations", () => {
   for (const host of [
     "[::]", "[::1]", "[fc00::1]", "[fd00::1]", "[fe80::1]",
-    "[ff02::1]", "[2001:db8::1]", "[::ffff:127.0.0.1]",
-    "[64:ff9b::7f00:1]", "[2002:7f00:1::]",
+    "[ff02::1]", "[2001:db8::1]", "[2001:20::1]", "[2001:100::1]",
+    "[::ffff:127.0.0.1]", "[64:ff9b::7f00:1]", "[2002:7f00:1::]",
   ]) assert.throws(() => validateDestination("http://" + host));
 });
 
