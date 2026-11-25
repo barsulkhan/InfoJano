@@ -2213,3 +2213,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Public crawler sample retrieved homepage, URL Toolkit, Password Generator, QR Maker, Image to PDF, Number to Words and Work Hours pages. This is not interactive browser QA or a complete status sweep.
 - Remaining priority work: six manual Search Console review/request actions, exact-current-HEAD Pages deployment verification, real Android PWA install/offline QA, and an expanded crawl beyond the previous 50/127-page budget.
 - No application code, PR state, deployment, or indexing state was changed by this audit.
+
+
+### PR #1 follow-up — security corrections and CI (25 Nov 2026)
+- Updated only the existing `security/shortlink-url-validation-tests` branch; main application files dated 25 Nov remain untouched.
+- Corrected IPv6 hostname bracket normalization, conservatively rejected special-purpose `2001::/23`, and added globally routable IPv6 positive coverage plus special-range negative cases.
+- Latest PR head: `262e8b86fb6c2a84f142f4f4d42265c8382ff218`; GitHub Actions run `45577870283` completed successfully, including `npm test`.
+- PR #1 remains Draft / Open / Unmerged. No Cloudflare deployment or production release was performed. Detailed notes: [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
