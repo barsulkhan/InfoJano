@@ -2231,3 +2231,11 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Detailed results: [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
 
 - Direct Search Console inspection links for all six unknown URLs are saved in [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md). They open URL Inspection records only; a manual request still has to be submitted in Search Console.
+
+
+### Live website spot-check — 25 Nov 2026
+- Read-only web rendering confirmed homepage, Password Generator, QR Maker, URL Toolkit, Time Calculator and Google Maps Location QR landing page load with their expected main content.
+- URL Toolkit still explicitly says real short links/click analytics are a future phase; no live short-link backend should be advertised before Worker deployment and verification.
+- Search Console's “URL unknown” for Google Maps QR does not mean the page is down: the public landing page rendered during the live spot-check.
+- Web viewer could not retrieve PDF to JPG, Percentage Decrease, Cheque Amount in Words, Word Converter and BMI Health Guide; their source files exist in main, so HTTP status is unconfirmed, not declared 404.
+- No interactive Playwright, real mobile-device, PWA offline/install, conversion, or Cloudflare Worker deployment test was run. Next QA steps are recorded in [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
