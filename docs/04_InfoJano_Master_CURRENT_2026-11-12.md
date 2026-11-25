@@ -2317,3 +2317,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Query variants percentage.html?mode=repeated and qr-maker.html?type=upi are indexed separately. Review canonical/indexing strategy for query-state URLs after recrawl; qr-maker.html touched 25-Nov and is not to be edited now.
 - Older SMS QR / Successive Percentage canonical values need source comparison before action; current GSC records date to 11-Nov.
 - Details saved in Red Team Audit.
+
+
+### Homepage and host canonical check — 25 Nov 2026
+- Apex homepage indexed, fetched successfully, and canonical agrees; last crawl 25-Nov. www host redirects to apex as expected.
+- vCard QR, SMS QR and Successive Percentage GSC canonical anomalies are stale 11-Nov records; current source now declares clean infojano.com canonical/og:url after later 12/24-Nov fixes. Words-to-Number is indexed with canonical agreement.
+- Avoid further canonical source edits until fresh Google recrawl confirms whether any mismatch persists.
+- Details saved in Red Team Audit.
