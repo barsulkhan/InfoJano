@@ -82,7 +82,7 @@ jobs:
                   assert resolved_start == expected_prefix + f'{slug}.html', f'Wrong start_url for host {expected_prefix}: {manifest}'
                   assert resolved_scope == expected_prefix, f'Wrong scope for host {expected_prefix}: {manifest}'
                   icon_paths = [urlparse(urljoin(resolved_manifest_url, item.get('src', ''))).path for item in data.get('icons', [])]
-                  assert icon_paths and any((root / path.lstrip('/InfoJano/').lstrip('/')).is_file() for path in icon_paths), f'Missing manifest icon file: {manifest}'
+                  assert icon_paths and any((root / path.removeprefix('/InfoJano/').removeprefix('/')).is_file() for path in icon_paths), f'Missing manifest icon file: {manifest}'
           sw = (root / 'sw.js').read_text(encoding='utf-8')
           def cached(path):
               rel = path.as_posix()
