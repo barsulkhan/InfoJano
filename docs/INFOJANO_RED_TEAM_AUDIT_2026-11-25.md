@@ -243,3 +243,13 @@ Inspected: Aadhaar Card Print, Ayushman Card Print, Digital Ration Card Print, V
 - What Happened on My Birthday has an old GSC userCanonical pointing to GitHub Pages, but current source canonical and og:url point to infojano.com. GSC last crawled 2026-11-11; source metadata repair was committed 2026-11-12. Treat as stale record and await recrawl.
 - Image Compressor and Image Resizer are Crawled — currently not indexed, with successful fetches and canonical agreement. Both files were touched by the 25-Nov dual-host PWA change and are excluded from source edits. This is an indexing/quality/discovery issue, not a fetch/canonical failure based on current GSC evidence.
 - QR Scanner is indexed and fetch-successful; its old GitHub Pages userCanonical was already triaged against clean current source in the prior batch.
+
+
+## Sixth 10-URL Search Console batch — 25 Nov 2026
+
+Inspected: Add/Subtract Date, BMI, BMR, Currency Converter, Exam Marks Percentage, Million/Billion Converter, Savings, Tip Calculator, Unit Converter and What Percent Calculator.
+
+- Nine of ten pages are indexed with successful fetches; Savings is the exception and is reported as Duplicate — Google chose a different canonical than user.
+- Savings current source declares infojano.com canonical and og:url, but the file was modified on 2026-11-24 and 2026-11-25 (dual-host PWA path work). GSC last crawled 2026-11-21 and chose the older GitHub Pages URL. **Do not edit this 25-Nov-touched file; wait for deployment and fresh recrawl.**
+- What Percent Calculator has a malformed old GSC userCanonical string, but current source has clean infojano.com canonical and og:url; GSC last crawled 2026-11-11, before the 2026-11-12 metadata repair. Treat as stale GSC record.
+- The remaining eight pages have canonical agreement and successful fetches.
