@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="Calculadora de Porcentagem Grátis Online – Sem Cadastro | InfoJano">
 <meta name="twitter:description" content="Calcule porcentagem online, descubra a parte de um valor e resolva contas rapidamente. Grátis, fácil de usar e ilimitada: sem cadastro, login ou pagamento.">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172033;font:16px/1.65 system-ui,-apple-system,Segoe UI,Arial,sans-serif}header{background:#102a56;color:white;padding:26px 18px;text-align:center}header p{color:#d9e5f7;margin:8px auto 0;max-width:650px}main{width:min(100% - 28px,760px);margin:22px auto 40px}.card,section{background:#fff;border:1px solid #e0e7f0;border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 5px 20px #17203308}h1{font-size:clamp(25px,5vw,34px);line-height:1.2;margin:0}h2{font-size:22px;line-height:1.3;margin-top:0}label{display:block;font-weight:650;margin:14px 0 6px}input{width:100%;min-width:0;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font:inherit}button{width:100%;padding:14px;margin-top:18px;border:0;border-radius:10px;background:#1d4ed8;color:white;font:inherit;font-weight:750;cursor:pointer}.result{margin-top:16px;padding:15px;background:#eef4ff;border-radius:12px;overflow-wrap:anywhere}.muted{color:#64748b;font-size:14px}a{color:#1d4ed8}footer{text-align:center;padding:20px;color:#64748b;font-size:14px}@media(max-width:480px){.card,section{padding:20px 18px}}
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172033;font:16px/1.65 system-ui,-apple-system,Segoe UI,Arial,sans-serif}header{background:#102a56;color:white;padding:26px 18px;text-align:center}header p{color:#d9e5f7;margin:8px auto 0;max-width:650px}main{width:min(100% - 28px,760px);margin:22px auto 40px}.card,section{background:#fff;border:1px solid #e0e7f0;border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 5px 20px #17203308}h1{font-size:clamp(25px,5vw,34px);line-height:1.2;margin:0}h2{font-size:22px;line-height:1.3;margin-top:0}label{display:block;font-weight:650;margin:14px 0 6px}input,select{width:100%;min-width:0;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;background:#fff}button{width:100%;padding:14px;margin-top:18px;border:0;border-radius:10px;background:#1d4ed8;color:white;font:inherit;font-weight:750;cursor:pointer}.result{margin-top:16px;padding:15px;background:#eef4ff;border-radius:12px;overflow-wrap:anywhere}.muted{color:#64748b;font-size:14px}a{color:#1d4ed8}footer{text-align:center;padding:20px;color:#64748b;font-size:14px}@media(max-width:480px){.card,section{padding:20px 18px}}
 
 /* Brazilian Portuguese premium hero */
 .pt-hero{position:relative;overflow:hidden;text-align:left;padding:0;margin:0;background:linear-gradient(120deg,#eff7ff 0%,#e8f3ff 58%,#f5f0ff 100%);color:#142e5d;border:0;border-radius:0;box-shadow:none}
@@ -101,8 +101,8 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
-  <link rel="manifest" href="/InfoJano/manifest.json">
-  <script src="/InfoJano/install.js" defer></script>
+  <link rel="manifest" href="./manifest.json">
+  <script src="./install.js" defer></script>
 <link rel="icon" type="image/svg+xml" href="/infojano-mark.svg">
 </head>
 <body>
@@ -128,23 +128,106 @@
 </header>
 <main>
 <div class="card" id="calculadora">
-<h2>Calcular porcentagem de um valor</h2>
-<label for="pct">Porcentagem (%)</label><input id="pct" type="number" step="any" inputmode="decimal" placeholder="Ex.: 28">
-<label for="amount">Valor</label><input id="amount" type="number" step="any" inputmode="decimal" placeholder="Ex.: 170">
+<h2>Calculadora de porcentagem online</h2>
+<label for="calcMode">O que você deseja calcular?</label>
+<select id="calcMode">
+<option value="of">Quanto é X% de um valor?</option>
+<option value="what">Um valor representa quantos % do total?</option>
+<option value="increase">Aumentar um valor em X%</option>
+<option value="decrease">Aplicar desconto de X%</option>
+<option value="change">Variação percentual entre dois valores</option>
+</select>
+<label id="firstLabel" for="pct">Porcentagem (%)</label>
+<input id="pct" type="number" step="any" inputmode="decimal" placeholder="Ex.: 28">
+<label id="secondLabel" for="amount">Valor</label>
+<input id="amount" type="number" step="any" inputmode="decimal" placeholder="Ex.: 170">
 <button id="calculate" type="button">Calcular</button>
-<div class="result" id="result" aria-live="polite">Digite uma porcentagem e um valor para ver o resultado.</div>
+<div class="result" id="result" aria-live="polite">Escolha o tipo de cálculo e informe os valores.</div>
+<p class="muted">Resultados formatados para o padrão brasileiro. O cálculo acontece neste navegador; os valores não são enviados a um servidor.</p>
 </div>
-<section><h2>Como calcular uma porcentagem?</h2><p>Multiplique o valor pela porcentagem e divida por 100.</p><p><strong>Fórmula:</strong> resultado = valor × porcentagem ÷ 100.</p><p><strong>Exemplo:</strong> 28% de 170 = 170 × 28 ÷ 100 = 47,6.</p></section>
-<section><h2>Perguntas frequentes</h2><h3>Como calcular 10% de um valor?</h3><p>Multiplique o valor por 10 e divida por 100; isso equivale a dividir o valor por 10.</p><h3>Como descubro que porcentagem um número representa?</h3><p>Divida a parte pelo total e multiplique por 100.</p><p>Veja também: <a href="percentage.html" lang="en">Percentage Calculator in English</a> e <a href="discount-pt-br.html">Calculadora de Desconto</a>.</p></section>
-<section aria-labelledby="buscas-porcentagem" style="background:#fff;border:1px solid #e0e7f0;border-radius:18px;padding:22px;margin:18px 0;line-height:1.65">
-<h2 id="buscas-porcentagem">Porcentagem online: dúvidas comuns</h2>
-<p>Esta ferramenta funciona como uma calculadora de porcentagem online e ajuda a calcular porcentagens de valores, descobrir quanto uma parte representa do total e resolver contas do dia a dia. Também atende a buscas como “porcentagem online”, “calculadora porcentagem online”, “calculadora online de porcentagens” e “calculadora porcentagem”.</p>
-<p>Quem procura por “porcentagem online calculadora” pode inserir a taxa e o valor para obter o resultado. Por exemplo, 28% de 170 é 47,6. A fórmula é valor × porcentagem ÷ 100.</p>
+<section>
+<h2>O que você pode calcular?</h2>
+<p>Use a calculadora para descobrir a porcentagem de um valor, saber quanto uma parte representa do total, calcular um aumento, aplicar um desconto ou comparar a variação entre dois valores.</p>
+<ul>
+<li><strong>Porcentagem de um valor:</strong> descubra, por exemplo, quanto é 28% de 170.</li>
+<li><strong>Proporção:</strong> veja quantos por cento 35 representa de 140.</li>
+<li><strong>Aumento:</strong> calcule o novo valor depois de acrescentar uma porcentagem.</li>
+<li><strong>Desconto:</strong> veja quanto economiza e o preço final após a redução.</li>
+<li><strong>Variação percentual:</strong> compare um valor inicial com um valor final.</li>
+</ul>
+</section>
+<section>
+<h2>Fórmulas de porcentagem com exemplos</h2>
+<p><strong>X% de um valor:</strong> valor × porcentagem ÷ 100. Exemplo: 28% de 170 = 47,6.</p>
+<p><strong>Qual porcentagem uma parte representa:</strong> parte ÷ total × 100. Exemplo: 35 de 140 = 25%.</p>
+<p><strong>Aumento percentual:</strong> valor inicial × (1 + porcentagem ÷ 100).</p>
+<p><strong>Desconto percentual:</strong> valor inicial × (1 − porcentagem ÷ 100).</p>
+<p><strong>Variação percentual:</strong> (valor final − valor inicial) ÷ valor inicial × 100. Se o valor inicial for zero, a variação percentual não pode ser calculada por esta fórmula.</p>
+</section>
+<section>
+<h2>Perguntas frequentes</h2>
+<h3>Como calcular 10% de um valor?</h3><p>Multiplique o valor por 10 e divida por 100. Isso equivale a dividir o valor por 10.</p>
+<h3>Como descubro que porcentagem um número representa?</h3><p>Divida a parte pelo total e multiplique por 100. O total não pode ser zero.</p>
+<h3>Como calcular aumento ou desconto?</h3><p>Escolha a opção correspondente na calculadora, informe a porcentagem e o valor inicial. O resultado mostra o novo valor.</p>
+<h3>Como calcular a variação percentual entre dois valores?</h3><p>Subtraia o valor inicial do valor final, divida pelo valor inicial e multiplique por 100. Um resultado positivo indica aumento; um resultado negativo indica redução.</p>
+<p>Veja também: <a href="percentage.html" lang="en">Percentage Calculator in English</a> e <a href="discount-pt-br.html">Calculadora de Desconto</a>.</p>
 </section>
 </main>
 <footer><a href="./">InfoJano — ferramentas online gratuitas</a></footer>
 <script>
-(function(){const p=document.getElementById('pct'),a=document.getElementById('amount'),r=document.getElementById('result');function calc(){if(p.value===''||a.value===''||!Number.isFinite(Number(p.value))||!Number.isFinite(Number(a.value))){r.textContent='Informe uma porcentagem e um valor válidos.';return}const v=Number(p.value)*Number(a.value)/100;r.textContent=Number(p.value).toLocaleString('pt-BR')+'% de '+Number(a.value).toLocaleString('pt-BR')+' = '+v.toLocaleString('pt-BR',{maximumFractionDigits:8})}document.getElementById('calculate').addEventListener('click',calc);[p,a].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calc()}));})();
+(function(){
+ const mode=document.getElementById('calcMode');
+ const first=document.getElementById('pct');
+ const second=document.getElementById('amount');
+ const firstLabel=document.getElementById('firstLabel');
+ const secondLabel=document.getElementById('secondLabel');
+ const result=document.getElementById('result');
+ const fmt=n=>Number(n).toLocaleString('pt-BR',{maximumFractionDigits:8});
+ const settings={
+  of:{a:'Porcentagem (%)',b:'Valor',pa:'Ex.: 28',pb:'Ex.: 170'},
+  what:{a:'Parte',b:'Valor total',pa:'Ex.: 35',pb:'Ex.: 140'},
+  increase:{a:'Aumento (%)',b:'Valor inicial',pa:'Ex.: 10',pb:'Ex.: 200'},
+  decrease:{a:'Desconto (%)',b:'Preço original',pa:'Ex.: 15',pb:'Ex.: 200'},
+  change:{a:'Valor inicial',b:'Valor final',pa:'Ex.: 100',pb:'Ex.: 125'}
+ };
+ function updateMode(){
+  const s=settings[mode.value];
+  firstLabel.textContent=s.a; secondLabel.textContent=s.b;
+  first.placeholder=s.pa; second.placeholder=s.pb;
+  result.textContent='Informe os dois valores para calcular.';
+  calculate();
+ }
+ function calculate(){
+  if(first.value===''||second.value===''){result.textContent='Informe os dois valores para calcular.';return}
+  const x=Number(first.value),y=Number(second.value);
+  if(!Number.isFinite(x)||!Number.isFinite(y)){result.textContent='Informe números válidos.';return}
+  let message='';
+  switch(mode.value){
+   case 'of': message=fmt(x)+'% de '+fmt(y)+' = '+fmt(y*x/100); break;
+   case 'what':
+    if(y===0){result.textContent='O valor total não pode ser zero.';return}
+    message=fmt(x)+' representa '+fmt(x/y*100)+'% de '+fmt(y)+'.'; break;
+   case 'increase':
+    if(x<0){result.textContent='Informe uma porcentagem de aumento igual ou maior que zero.';return}
+    message='Aumento: '+fmt(y*x/100)+'. Novo valor: '+fmt(y+y*x/100)+'.'; break;
+   case 'decrease':
+    if(x<0||x>100){result.textContent='Informe um desconto entre 0% e 100%.';return}
+    message='Economia: '+fmt(y*x/100)+'. Preço final: '+fmt(y-y*x/100)+'.'; break;
+   case 'change':
+    if(x===0){result.textContent='O valor inicial não pode ser zero para calcular a variação percentual.';return}
+    const delta=y-x,variation=delta/x*100;
+    message='Variação: '+fmt(variation)+'% ('+(delta>0?'aumento':delta<0?'redução':'sem alteração')+' de '+fmt(Math.abs(delta))+').'; break;
+  }
+  result.textContent=message;
+ }
+ mode.addEventListener('change',updateMode);
+ document.getElementById('calculate').addEventListener('click',calculate);
+ [first,second].forEach(el=>{
+  el.addEventListener('input',calculate);
+  el.addEventListener('keydown',e=>{if(e.key==='Enter')calculate()});
+ });
+ updateMode();
+})();
 </script>
 <script src="site-header.js" defer></script>
 </body>
