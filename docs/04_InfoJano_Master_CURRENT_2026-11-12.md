@@ -2246,3 +2246,9 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Password Generator tests include secure random generation, invalid selections, passphrases, PINs, clipboard fallback, privacy, keyboard accessibility and responsive widths. Social QR tests cover 12 platforms, unsafe URLs, link bundles and mobile controls.
 - Remaining gap: other PWA pages, 29 manifest/icon/install paths, SW offline behavior, conversion flows, all sitemap pages, and live custom-domain/GitHub Pages deployment are not covered by the existing suite. Configured tests were inspected but not executed here; no pass is claimed.
 - Details and recommended next suite are saved in [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
+
+
+### Canonical mismatch triage — 25 Nov 2026
+- Checked current source and file history for UPI QR, Custom QR, QR Maker and Percentage Difference. Current HTML source for all four declares clean infojano.com canonical URLs. GSC records were last crawled 11-Nov, before recent source updates on 21/24-Nov (QR Maker also touched 25-Nov and remains excluded from edits).
+- Treat the reported old GitHub Pages / malformed canonical values as stale GSC crawl data until Google recrawls. No source files were changed. Reinspect after crawl.
+- Details saved in Red Team Audit: docs/INFOJANO_RED_TEAM_AUDIT_2026-11-25.md.
