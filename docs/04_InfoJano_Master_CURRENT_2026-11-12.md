@@ -2272,3 +2272,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - The query variant UPI QR ?type=upi is unknown to Google, while the canonical dedicated UPI page is indexed. Do not request indexing of a UI-state/query variant unless separately intended.
 - Target Marks had stale malformed canonical text in its 11-Nov GSC record; current source has clean infojano.com canonical after 12-Nov repair. No code change needed.
 - Details saved in Red Team Audit.
+
+
+### Fifth Search Console batch — 25 Nov 2026
+- Aadhaar, Ayushman, Digital Ration Card, Voter ID, Image to PDF, Social QR and Birthday pages are indexed with successful fetches.
+- Birthday's GSC old GitHub Pages canonical predates the clean 12-Nov source repair; wait for recrawl.
+- Image Compressor and Image Resizer are Crawled — currently not indexed despite successful fetch and canonical agreement. Both were touched on 25-Nov and remain excluded from edits; investigate content/internal links and recheck after deploy.
+- Details saved in Red Team Audit.
