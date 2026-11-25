@@ -292,3 +292,10 @@ Read-only review of backend/shortlinks and backend/word-converter configuration 
 
 ### Decision
 No backend was deployed and no secrets were requested or added. Both services remain optional/staging until the user confirms account access and required provider credentials/costs, and all security controls are verified. Keep current user-facing wording transparent about these limitations.
+
+
+## PR #1 latest Cloudflare preview result — 25 Nov 2026
+
+Rechecked PR #1 conversation bot status after the latest security branch push. Cloudflare bot reports the Preview Build for commit 262e8b8 (full head 262e8b86fb6c2a84f142f4f4d42265c8382ff218) as **FAILED** at 2026-11-25T08:37:36Z. GitHub Actions Short Link Security Tests run 45577870283 is separately SUCCESSFUL. These are different systems/results: passing unit tests do not override the failed Cloudflare preview build.
+
+Cloudflare dashboard log URL is present in the bot comment, but this connected inspection could not read the authenticated dashboard log. Root cause is therefore unknown; do not guess or claim fixed. PR #1 remains Draft / Open / Unmerged. Keep production deployment blocked until the Cloudflare build log is inspected, the cause is corrected, a new preview build succeeds, and security review is complete.
