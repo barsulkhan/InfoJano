@@ -174,3 +174,17 @@ Scope: read-only web-rendered checks of the public custom-domain site. This is n
 3. Verify actual HTTP status and canonical/manifest/icon URLs for the five pages the web viewer could not open.
 4. Deploy the Short Link Worker only after separate security review, production environment configuration, domain/route setup, and abuse/rate-limit tests; current URL Toolkit still truthfully describes real short links as a future phase.
 5. Complete GSC URL inspection and request indexing manually for the six unknown URLs; the inspection tool does not submit Google's request.
+
+
+## Existing automated browser-test coverage review — 25 Nov 2026
+
+Inspected `qa/browser/package.json`, `playwright.config.js`, `tests/password-generator.spec.js`, and `tests/social-qr-maker.spec.js` from main (read-only).
+
+- The Playwright project is configured for Chromium desktop and Pixel 7 mobile emulation, with a local Python static server.
+- Password Generator spec includes generation settings, excluded characters, invalid selection clearing, passphrase, PIN, show/hide accessibility, clipboard fallback, secure-randomness failure, request-payload privacy, keyboard navigation, and responsive-width checks.
+- Social QR spec covers 12 platforms, mismatch rejection, bundle and link-in-bio payload decoding, unsafe destination protocol rejection, mobile control bounds, and keyboard selection.
+- **Coverage gap:** the current browser suite has only these two spec files. It does not automatically exercise the other PWA pages, manifest/icon/install paths, SW offline behavior, conversion tools, or all 108 sitemap URLs. The Playwright config also uses a local static server, so it does not prove Cloudflare Pages production behavior or GitHub Pages project-path behavior.
+- No Playwright execution was performed in this session because the repository checkout and browser runtime are not available inside this connected GitHub read-only inspection workflow. Do not report these test definitions as a passing test run.
+
+### QA next step
+Add a separate cross-page smoke suite for manifest/icon resolution, navigation, no horizontal overflow, console errors, and key happy-path calculations/conversions. Run it against both `https://infojano.com` and `https://barsulkhan.github.io/InfoJano` after excluding or separately snapshotting 25-Nov-touched application files. Add explicit offline/PWA tests separately so network and cache failures are distinguishable.
