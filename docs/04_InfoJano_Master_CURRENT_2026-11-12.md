@@ -2324,3 +2324,48 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - vCard QR, SMS QR and Successive Percentage GSC canonical anomalies are stale 11-Nov records; current source now declares clean infojano.com canonical/og:url after later 12/24-Nov fixes. Words-to-Number is indexed with canonical agreement.
 - Avoid further canonical source edits until fresh Google recrawl confirms whether any mismatch persists.
 - Details saved in Red Team Audit.
+
+
+## PDF to JPG mobile loading repair + hero concept — 25 Nov 2026
+
+### User-reported issue
+A mobile screenshot showed the selected filename `Mostufa SK_MZM2M38I1.pdf`, while the page still said "No PDF selected yet" and displayed the generic message "Could not open this PDF. It may be damaged or password-protected." The screenshot is not the actual PDF file, so the exact cause (encrypted/damaged file, unsupported structure, or PDF.js worker/CDN issue) cannot yet be proven.
+
+### Source inspection
+- File: `pdf-to-jpg.html`
+- Main pre-change blob: `9e8088dc0c55686df8fc1fd81d7e9cab2e46fac7`
+- It used PDF.js 4.10.38 from cdnjs and a single hard-coded worker URL.
+- The catch block hid the actual exception behind one generic message.
+- `fileInfo` was updated only after parsing succeeded, which made a selected file still appear as "No PDF selected yet".
+- PDF.js 4.10.38's module and worker assets are listed by cdnjs; a matching jsDelivr build is also available. Both fallbacks are pinned to the same version.
+
+### Repair implemented in draft PR #352
+- Branch: `fix/pdf-to-jpg-loading-and-password-handling`
+- PR: https://github.com/barsulkhan/InfoJano/pull/352
+- Latest branch commit: `96feeae98769e0db0f5aa2338b5a37d3fb8a1c4e`
+- Only application file changed: `pdf-to-jpg.html`.
+- Added fallback loading of the PDF.js module and matching worker from jsDelivr if cdnjs fails.
+- Added password entry/retry callback for encrypted PDFs.
+- Added PDF signature check (searching the first 1,024 bytes so valid PDFs with a short leading header offset are not rejected).
+- Shows filename and file size immediately when selected.
+- Adds clearer errors for invalid PDF, password, unsupported format, worker/CDN and canvas failures.
+- Keeps conversion browser-side; no PDF upload server introduced.
+- Existing hero block is intentionally unchanged in this first repair.
+
+### Validation status
+- Embedded module JavaScript syntax parse: PASS on initial repair commit `26d0fd735072cccf36c24aadc50d59b4dde642f0`. Re-run parse after final signature adjustment.
+- Static checks: CDN fallback, same-version worker, password callback, detailed errors and early file status are present.
+- Global Footer QA for PR commit: PASS (run `45627888220`).
+- APK build workflow: IN PROGRESS at last check (run `45627888059`).
+- Real sample-PDF test and Android browser interaction: NOT YET RUN. The screenshot does not include the actual PDF.
+- Live site not changed; PR remains DRAFT / OPEN / UNMERGED. Do not merge until valid, encrypted and invalid PDF fixtures plus mobile test pass.
+
+### Hero banner concept prepared for review
+A clean white/off-white, navy and light-blue banner with InfoJano branding; left-side headline and privacy/page-selection/JPG+PNG feature chips; right-side visual showing a PDF page converting to JPG/PNG images and page thumbnails. Image concept is shown in the chat; it has not yet been integrated into the site. Wait for user approval before replacing the existing hero.
+
+### Next steps
+1. Re-run JavaScript syntax and static checks on latest branch commit.
+2. Test a known-good PDF, a password-protected PDF, a malformed file, a multi-page PDF, JPG/PNG output and ZIP download.
+3. Test on Android Chrome, including slow/blocked CDN fallback.
+4. If tests pass, request review/approval before merging PR #352.
+5. After the PDF tool repair is approved, implement the reviewed hero concept in HTML/CSS and verify desktop/mobile layout.
