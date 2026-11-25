@@ -253,3 +253,13 @@ Inspected: Add/Subtract Date, BMI, BMR, Currency Converter, Exam Marks Percentag
 - Savings current source declares infojano.com canonical and og:url, but the file was modified on 2026-11-24 and 2026-11-25 (dual-host PWA path work). GSC last crawled 2026-11-21 and chose the older GitHub Pages URL. **Do not edit this 25-Nov-touched file; wait for deployment and fresh recrawl.**
 - What Percent Calculator has a malformed old GSC userCanonical string, but current source has clean infojano.com canonical and og:url; GSC last crawled 2026-11-11, before the 2026-11-12 metadata repair. Treat as stale GSC record.
 - The remaining eight pages have canonical agreement and successful fetches.
+
+
+## Service Worker asset inventory check — 25 Nov 2026
+
+Parsed the current main sw.js ASSET_PATHS array (198 entries) and compared every referenced root-relative path against the GitHub main tree.
+
+- 197 of 198 referenced paths exist in the repository tree.
+- One path is missing: /InfoJano/site-footer.js. The repository file exists at /site-footer.js, not /InfoJano/site-footer.js. On the custom domain, the hard-coded /InfoJano/ prefix is inconsistent with the root deployment path and can produce an unnecessary 404 fetch from the Service Worker asset list.
+- Current sw.js uses cache version infojano-v334 and was modified in the 25-Nov dual-host PWA commit. Per the user's protection rule, do not edit sw.js in this pass. Record this as a confirmed cleanup item for a later commit after today's code freeze.
+- The install path uses Promise.allSettled, so one failed cache asset should not necessarily abort the whole SW installation; still, the invalid entry wastes a request and can create avoidable console/network noise. Confirm runtime behavior with a browser after the code-freeze window.
