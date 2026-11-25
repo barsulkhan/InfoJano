@@ -2220,3 +2220,12 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Corrected IPv6 hostname bracket normalization, conservatively rejected special-purpose `2001::/23`, and added globally routable IPv6 positive coverage plus special-range negative cases.
 - Latest PR head: `262e8b86fb6c2a84f142f4f4d42265c8382ff218`; GitHub Actions run `45577870283` completed successfully, including `npm test`.
 - PR #1 remains Draft / Open / Unmerged. No Cloudflare deployment or production release was performed. Detailed notes: [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
+
+
+### Fresh Search Console re-check — 25 Nov 2026
+- Read-only inspection confirms `bmi-calculation-guide.html` and `bmi-weight-categories.html` are now Submitted and indexed (last crawl 16 Nov; canonical agreement). This supersedes earlier pending status notes.
+- Six URLs remain unknown to Google: PDF to JPG, Google Maps Location QR, Percentage Decrease, Cheque Amount in Words, Word Converter, BMI Health Guide.
+- `time-calculator.html` remains Crawled — currently not indexed (last crawl 13 Nov; canonical agrees). `age-in-days-calculator.html` remains Crawled — currently not indexed; old declared GitHub Pages canonical still conflicts with Google's custom-domain canonical. Do not change source based on this stale inspection alone.
+- Fresh 3-month GSC page data (22 Aug–22 Nov 2026) highlights percentage-pt-br (2,053 impressions / 0 clicks / position 9.2), discount-pt-br (1,632 / 1 / 8.3), BMI calculation guide (811 / 0 / 62.1), BMI weight categories (412 / 0 / 58.7), Number to Words (280 / 1 / 35.3), UPI QR (274 / 0 / 45.9), Number to Words Indian (180 / 0 / 24.6), Time Calculator (156 / 1 / 33.1).
+- Query-level sample suggests small opportunities around Bengali Number to Words and UPI terms; volumes are small, so no metadata overwrite made.
+- Detailed results: [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
