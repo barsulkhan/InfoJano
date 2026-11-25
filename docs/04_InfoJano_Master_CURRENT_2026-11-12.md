@@ -2239,3 +2239,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Search Console's “URL unknown” for Google Maps QR does not mean the page is down: the public landing page rendered during the live spot-check.
 - Web viewer could not retrieve PDF to JPG, Percentage Decrease, Cheque Amount in Words, Word Converter and BMI Health Guide; their source files exist in main, so HTTP status is unconfirmed, not declared 404.
 - No interactive Playwright, real mobile-device, PWA offline/install, conversion, or Cloudflare Worker deployment test was run. Next QA steps are recorded in [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
+
+
+### Automated QA coverage review — 25 Nov 2026
+- Existing Playwright specs cover Password Generator and Social QR only; desktop Chromium + Pixel 7 mobile emulation are configured.
+- Password Generator tests include secure random generation, invalid selections, passphrases, PINs, clipboard fallback, privacy, keyboard accessibility and responsive widths. Social QR tests cover 12 platforms, unsafe URLs, link bundles and mobile controls.
+- Remaining gap: other PWA pages, 29 manifest/icon/install paths, SW offline behavior, conversion flows, all sitemap pages, and live custom-domain/GitHub Pages deployment are not covered by the existing suite. Configured tests were inspected but not executed here; no pass is claimed.
+- Details and recommended next suite are saved in [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
