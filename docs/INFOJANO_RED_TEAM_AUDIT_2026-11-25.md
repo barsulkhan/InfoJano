@@ -200,3 +200,15 @@ A second read-only inspection checked current main HTML source and recent file h
 - percentage-difference-calculator.html: current source contains a clean infojano.com canonical and og:url. Its GSC last crawl was 2026-11-11, while source SEO was updated 2026-11-21. The malformed userCanonical string returned by GSC therefore appears to be an older crawl record, not the current source. No source edit made.
 
 Conclusion: the GSC mismatch signals are not proof of current source defects. Request/await a fresh Google crawl and re-inspect before changing canonical tags. Do not modify the 25-Nov-touched QR Maker file.
+
+
+## Second 10-URL Search Console batch — 25 Nov 2026
+
+Inspected 10 additional high-impression or priority URLs (read-only):
+- Submitted and indexed, successful fetch, canonical agreement: percentage-pt-br.html, discount-pt-br.html, number-to-words.html, number-to-words-uppercase.html, number-to-words-indian.html, rupees-in-words.html, contact-qr-code-generator.html, percentage-increase-calculator.html, percentage-to-fraction-converter.html, bmi-weight-categories.html, bmi-calculation-guide.html, and qr-maker.html (the latter was included in the prior batch).
+- UPI Payment QR is indexed and fetch-successful. GSC's userCanonical still reports the old GitHub Pages URL, but current source was corrected 2026-11-24 and GSC last crawled 2026-11-11. Treat as stale crawl, not current source issue.
+- Age in Days remains Crawled — currently not indexed. GSC last crawled 2026-11-11 and reports the old GitHub Pages userCanonical; current source now has a clean infojano.com canonical and og:url, with the file updated 2026-11-24. This is also a stale GSC record pending recrawl, not a current-source defect.
+- Bengali Number to Words query URL (?lang=bn) is indexed, successful fetch, Google-selected canonical is the query URL, while the declared canonical points to the base number-to-words.html. This may be intentional canonical consolidation or a localization signal mismatch. Preserve the existing behavior until language/canonical intent is confirmed; do not change without reviewing the page's localized content and hreflang strategy.
+- BMI Calculation Guide and BMI Weight Categories remain indexed and fetch-successful.
+
+No source code was changed during this batch. Fresh crawl is needed before judging the recently corrected canonical signals.
