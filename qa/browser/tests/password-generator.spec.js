@@ -198,7 +198,8 @@ test.describe('Password Generator — desktop and mobile', () => {
         const rect = selector => document.querySelector(selector)?.getBoundingClientRect();
         const hero = rect('.ij-reference-hero');
         const workspace = rect('.ij-password-workspace');
-        const related = rect('main > section[aria-labelledby="related-tools-title"]');
+        const relatedTitle = document.querySelector('#related-tools-title');
+        const related = relatedTitle?.closest('section')?.getBoundingClientRect();
         return {
           viewport: document.documentElement.clientWidth,
           document: document.documentElement.scrollWidth,
