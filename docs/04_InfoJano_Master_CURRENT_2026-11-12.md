@@ -2324,3 +2324,29 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - vCard QR, SMS QR and Successive Percentage GSC canonical anomalies are stale 11-Nov records; current source now declares clean infojano.com canonical/og:url after later 12/24-Nov fixes. Words-to-Number is indexed with canonical agreement.
 - Avoid further canonical source edits until fresh Google recrawl confirms whether any mismatch persists.
 - Details saved in Red Team Audit.
+
+
+## PDF to JPG converter — targeted fix checkpoint (25 Nov 2026)
+
+User supplied a screenshot showing the native file picker displaying `Mostufa SK_MZM2M3811.pdf`, while InfoJano's own file label still showed “No PDF selected yet” and the status reported “Could not open this PDF. It may be damaged or password-protected.”
+
+### Source review
+- Inspected `pdf-to-jpg.html` on main. The file input's filename was only copied into `#fileInfo` after PDF.js successfully opened the file. All PDF.js failures were collapsed into one generic damaged/password-protected message. Therefore the screenshot is consistent with a parser/worker/network/password/file error, but does not prove which one occurred.
+- The screenshot does not include the PDF bytes. The exact sample file cannot be diagnosed as valid, corrupt or password-protected until it is tested directly.
+- The PDF.js 4.10.38 CDN assets exist on cdnjs (including `pdf.min.mjs` and `pdf.worker.min.mjs`); alternate jsDelivr source is also configured in the draft.
+
+### Draft fix
+- PR: https://github.com/barsulkhan/InfoJano/pull/351
+- Branch: `fix/pdf-to-jpg-loader-diagnostics`
+- Commit: `ce14929635a9cfd7140f5265ce9f878762643f29`
+- Only application file changed: `pdf-to-jpg.html`.
+- Selected filename is shown immediately, before parsing.
+- PDF.js 4.10.38 uses cdnjs first and jsDelivr as fallback with matching worker URL; retries after source/worker/network failures.
+- Checks PDF signature, distinguishes password-protected, invalid/corrupt, missing-data and engine/network errors.
+- Sets `isEvalSupported: false` when parsing untrusted PDFs.
+- Existing hero remains unchanged in this fix.
+- Module syntax parse and static source checks passed.
+- PR is Draft/Open/Unmerged. Do not claim live fix or merge yet. Must test with the actual user sample PDF and a known-good PDF on Android and desktop; verify worker fallback and page preview/conversion.
+
+### Banner request
+After the PDF issue is fixed, user asked for a new hero banner preview for this tool. No hero code has been applied; the existing banner was deliberately preserved in PR #351. Create and show a separate visual concept first, then wait for approval before applying it.
