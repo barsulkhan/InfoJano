@@ -2113,3 +2113,10 @@ The following are not all blockers to the Number to Words website release; they 
 - APK workflow run `45552640605`: validation stage PASSED after the Savings and Tip fixes; the 23-APK build stage was still running at the time of this note. Do not call the APK release complete until build, package-count, artifact upload and release steps finish successfully.
 - The first Pages deployment run after PR #347 (`45552640137`) was cancelled when the follow-up Tip fix was pushed. A fresh Pages deployment is required for the final main HEAD. Live domain and Android install/offline checks remain pending.
 - The separate per-tool manifest set still requires a full dual-host path review; this closeout confirms the root manifest and the Savings/Tip per-tool manifests only. No ID Card Print Studio tool logic or design was changed.
+
+
+## 25 Nov 2026 — Post-merge workflow status
+- Latest GitHub Pages build/deploy run `45552716358` completed successfully for main commit `675f7e601990b7e69f424ee3c88061282c4d0708` (build, report-build-status and deploy succeeded).
+- APK runs `45552640605` and `45552644833`: validation stage passed, including the 23-target matrix and service-worker cache checks. The sequential APK build stage was still in progress at this check; package-count verification, artifact upload and release publication are not yet confirmed.
+- The public web viewer could not directly retrieve `infojano.com/manifest.json` or `infojano.com/sw.js`; therefore Pages workflow success is confirmed, but independent live HTTP/PWA install verification is not claimed.
+- The Savings and Tip per-tool manifests were converted to relative paths. Other per-tool manifests still need a separate dual-host path review; do not mark the entire individual-PWA migration complete.
