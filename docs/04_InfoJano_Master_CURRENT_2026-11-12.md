@@ -2265,3 +2265,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - 10 more pages checked: Percentage, Repeated Percentage Change, Percentage Change, Percentage to Decimal, Profit/Loss, Date Difference, Age, Loan Interest, QR Scanner and Resize Image for Website. All 10 are Indexed with successful fetches.
 - Four old canonical mismatches were compared against current source; all current source tags are clean infojano.com canonical/og:url. Their GSC crawls are old (11-Nov). Wait for recrawl; do not make unnecessary source changes. Percentage Change was touched 25-Nov and remains excluded.
 - Detailed batch saved in Red Team Audit.
+
+
+### Fourth Search Console batch — 25 Nov 2026
+- Nine more pages checked (three countdown pages, target marks, GST, loan eligibility, cheque number-to-words, dollars-in-words and decimal-number-to-words): all indexed and fetch-successful.
+- The query variant UPI QR ?type=upi is unknown to Google, while the canonical dedicated UPI page is indexed. Do not request indexing of a UI-state/query variant unless separately intended.
+- Target Marks had stale malformed canonical text in its 11-Nov GSC record; current source has clean infojano.com canonical after 12-Nov repair. No code change needed.
+- Details saved in Red Team Audit.
