@@ -299,3 +299,13 @@ No backend was deployed and no secrets were requested or added. Both services re
 Rechecked PR #1 conversation bot status after the latest security branch push. Cloudflare bot reports the Preview Build for commit 262e8b8 (full head 262e8b86fb6c2a84f142f4f4d42265c8382ff218) as **FAILED** at 2026-11-25T08:37:36Z. GitHub Actions Short Link Security Tests run 45577870283 is separately SUCCESSFUL. These are different systems/results: passing unit tests do not override the failed Cloudflare preview build.
 
 Cloudflare dashboard log URL is present in the bot comment, but this connected inspection could not read the authenticated dashboard log. Root cause is therefore unknown; do not guess or claim fixed. PR #1 remains Draft / Open / Unmerged. Keep production deployment blocked until the Cloudflare build log is inspected, the cause is corrected, a new preview build succeeds, and security review is complete.
+
+
+## Seventh 10-URL Search Console batch — 25 Nov 2026
+
+Inspected: Bengali Number to Words, Document Studio, Ordinal Number Converter, Original Price Before Discount, Percent of Number, Percentage query variant (?mode=repeated), QR Maker query variant (?type=upi), Reverse Percentage, SMS QR, Successive Percentage Change.
+
+- All 10 URLs are reported Submitted and indexed with successful page fetches.
+- Several query-parameter URLs are indexed separately: percentage.html?mode=repeated and qr-maker.html?type=upi. The latter GSC record declares an old GitHub Pages canonical, but this is a UI-mode URL and qr-maker.html was touched 25-Nov; do not change it during the code freeze. Review query-URL canonical strategy after fresh recrawl and decide whether these variants should be indexed or consolidated.
+- SMS QR has an old GSC GitHub Pages declared canonical, last crawled 11-Nov; compare against current source after the batch before any change. Successive Percentage also has a malformed old GSC canonical string from its 11-Nov crawl; verify current source before treating it as a defect.
+- The other clean landing pages in this batch have canonical agreement.
