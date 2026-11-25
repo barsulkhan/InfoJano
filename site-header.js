@@ -32,7 +32,7 @@
 
   .ij-site-brand,.ij-brandbar{display:none!important}
   /* Replace legacy top-level page headers with the unified ID Studio header. */
-  body>header.header{display:none!important}
+  body>header.header,body>header.top,body>header.topbar,body>header.brand,body>header.idg-top,body>header.sitebar,body>header.site-nav,body>header.site-header,body>header.ij-head,body>header:not([class]){display:none!important}
   /* Hide legacy install-this-tool prompts across every tool page. */
   .ij-install-card,#ij-install-card{display:none!important}
   @media(max-width:620px){
@@ -131,7 +131,12 @@
   html body .ij-loan-reference-hero,
   html body .ij-loan-hero,
   html body .ij-pct-showcase,
-  html body .hero-banner{
+  html body .hero-banner,
+  html body .ij-pdf-hero,
+  html body .pt-hero,
+  html body .url-hero,
+  html body .dd-hero,
+  html body .wh-hero{
     box-sizing:border-box!important;width:min(calc(100% - 28px),1200px)!important;
     max-width:1200px!important;min-height:340px!important;height:auto!important;
     margin:14px auto 26px!important;padding:42px 46px!important;
@@ -145,7 +150,12 @@
   html body .ij-loan-reference-hero h1,
   html body .ij-loan-hero h1,
   html body .ij-pct-showcase h1,
-  html body .hero-banner h1{
+  html body .hero-banner h1,
+  html body .ij-pdf-hero h1,
+  html body .pt-hero h1,
+  html body .url-hero h1,
+  html body .dd-hero h1,
+  html body .wh-hero h1{
     color:#101b43!important;font-size:clamp(34px,4vw,56px)!important;
     line-height:1.06!important;letter-spacing:-1.8px!important;font-weight:850!important;text-align:left!important
   }
@@ -154,7 +164,12 @@
   html body .ij-loan-reference-hero p,
   html body .ij-loan-hero p,
   html body .ij-pct-showcase p,
-  html body .hero-banner p{
+  html body .hero-banner p,
+  html body .ij-pdf-hero p,
+  html body .pt-hero p,
+  html body .url-hero p,
+  html body .dd-hero p,
+  html body .wh-hero p{
     color:#4c607c!important;font-size:clamp(15px,1.4vw,18px)!important;line-height:1.55!important
   }
   @media(max-width:768px){
@@ -179,7 +194,12 @@
     html body .ij-loan-reference-hero,
     html body .ij-loan-hero,
     html body .ij-pct-showcase,
-    html body .hero-banner{
+    html body .hero-banner,
+    html body .ij-pdf-hero,
+    html body .pt-hero,
+    html body .url-hero,
+    html body .dd-hero,
+    html body .wh-hero{
       width:calc(100% - 20px)!important;min-height:0!important;
       margin:12px auto 20px!important;padding:23px 17px 35px!important;border-radius:23px!important
     }
@@ -188,7 +208,12 @@
     html body .ij-loan-reference-hero h1,
     html body .ij-loan-hero h1,
     html body .ij-pct-showcase h1,
-    html body .hero-banner h1{
+    html body .hero-banner h1,
+    html body .ij-pdf-hero h1,
+    html body .pt-hero h1,
+    html body .url-hero h1,
+    html body .dd-hero h1,
+    html body .wh-hero h1{
       text-align:center!important;font-size:clamp(31px,8.5vw,42px)!important;letter-spacing:-1.1px!important
     }
   }
@@ -207,14 +232,14 @@
 
   function mount(){
     // Load the same footer implementation used by pages without the shared header.
-    if(!document.querySelector('script[data-ij-site-footer]')){
+    if(!document.querySelector('script[data-ij-site-footer],script[src*="site-footer.js"]')){
       const footerScript=document.createElement('script');
       footerScript.src=ROOT+'site-footer.js';
       footerScript.defer=true;
       footerScript.dataset.ijSiteFooter='true';
       document.body.appendChild(footerScript);
     }
-    const heroes=document.querySelectorAll('.hero,.hero-banner,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-id-hero,.ij-social-hero,.idg-hero,.ij-reference-hero,.ij-loan-reference-hero,.ij-loan-hero,.ij-pct-showcase');
+    const heroes=document.querySelectorAll('.hero,.hero-banner,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-id-hero,.ij-social-hero,.idg-hero,.ij-reference-hero,.ij-loan-reference-hero,.ij-loan-hero,.ij-pct-showcase,.ij-pdf-hero,.pt-hero,.url-hero,.dd-hero,.wh-hero');
     heroes.forEach((hero)=>{
       hero.classList.add('ij-unified-currency-hero');
       const title=hero.querySelector('h1');
