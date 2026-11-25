@@ -2229,3 +2229,5 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Fresh 3-month GSC page data (22 Aug–22 Nov 2026) highlights percentage-pt-br (2,053 impressions / 0 clicks / position 9.2), discount-pt-br (1,632 / 1 / 8.3), BMI calculation guide (811 / 0 / 62.1), BMI weight categories (412 / 0 / 58.7), Number to Words (280 / 1 / 35.3), UPI QR (274 / 0 / 45.9), Number to Words Indian (180 / 0 / 24.6), Time Calculator (156 / 1 / 33.1).
 - Query-level sample suggests small opportunities around Bengali Number to Words and UPI terms; volumes are small, so no metadata overwrite made.
 - Detailed results: [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
+
+- Direct Search Console inspection links for all six unknown URLs are saved in [Red Team Audit](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md). They open URL Inspection records only; a manual request still has to be submitted in Search Console.
