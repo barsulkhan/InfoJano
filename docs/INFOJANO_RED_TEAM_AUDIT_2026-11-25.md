@@ -107,3 +107,34 @@ Not performed:
 - Latest PR head: `262e8b86fb6c2a84f142f4f4d42265c8382ff218`.
 - GitHub Actions run `45577870283` (Short Link Security Tests) completed; job `url-validation` and its `npm test` step both **SUCCESS**.
 - PR remains OPEN / DRAFT / UNMERGED. This does not establish Cloudflare preview success, full Worker runtime security, or production readiness. No deployment was performed.
+
+
+## Fresh Search Console re-check and query opportunities — 25 Nov 2026
+
+Connected property: `sc-domain:infojano.com`. These are read-only inspection results; no Google indexing request was submitted.
+
+### Fresh URL Inspection results
+- Still **URL is unknown to Google**: `pdf-to-jpg.html`, `google-maps-location-qr-code-generator.html`, `percentage-decrease-calculator.html`, `cheque-amount-in-words.html`, `word-converter.html`, and `bmi-health-guide.html`.
+- `time-calculator.html`: **Crawled — currently not indexed**; last crawl 2026-11-13; Google and declared canonical both `https://infojano.com/time-calculator.html`; fetched successfully; mobile crawl.
+- `bmi-calculation-guide.html`: now **Submitted and indexed**; last crawl 2026-11-16; Google and declared canonical agree. This supersedes the earlier 25-Nov handoff state that had it pending.
+- `bmi-weight-categories.html`: now **Submitted and indexed**; last crawl 2026-11-16; Google and declared canonical agree. This supersedes the earlier 25-Nov handoff state that had it pending.
+- `age-in-days-calculator.html`: still **Crawled — currently not indexed**; last crawl 2026-11-11; Google canonical is `https://infojano.com/age-in-days-calculator.html`, but the stored declared canonical is the GitHub Pages URL. Leave source untouched pending a newer crawl/source check.
+
+### Fresh GSC performance window
+Window: 2026-08-22 to 2026-11-22; 67 page rows and 126 query/page rows. High-impression pages from the page report:
+- `percentage-pt-br.html`: 2,053 impressions, 0 clicks, average position 9.2.
+- `discount-pt-br.html`: 1,632 impressions, 1 click, average position 8.3.
+- `bmi-calculation-guide.html`: 811 impressions, 0 clicks, average position 62.1 (now indexed, but low ranking).
+- `bmi-weight-categories.html`: 412 impressions, 0 clicks, average position 58.7 (now indexed, but low ranking).
+- `number-to-words.html`: 280 impressions, 1 click, average position 35.3.
+- `upi-payment-qr-code-generator.html`: 274 impressions, 0 clicks, average position 45.9.
+- `number-to-words-indian.html`: 180 impressions, 0 clicks, average position 24.6.
+- `time-calculator.html`: 156 impressions, 1 click, average position 33.1.
+
+The query/page report only returned eight rows at position 20 or better with at least five impressions. They include Bengali number-to-words terms (positions 4.4 and 9.2, 6–7 impressions), UPI terms (`generate upi id` position 11.1, `upi qr code` position 18.3), and Portuguese percentage calculations (`33% de 1741` / `35% de 1741`, positions 11.1 / 8.9). These query samples are small; treat them as direction, not proof of demand or guaranteed ranking.
+
+### Practical SEO priority
+1. Keep the six unknown URLs in the manual Search Console request queue; this tool only inspected status and cannot submit Google's indexing request.
+2. Do not rewrite metadata based solely on the two Portuguese pages' zero/near-zero CTR; inspect the complete query set and search-result snippets before making content changes.
+3. Improve BMI content usefulness and internal relevance based on the broad BMI calculation/category query cluster, but check file commit dates first and do not touch any application code changed on 25-Nov.
+4. Avoid duplicate UPI landing pages; compare the dedicated UPI page and `qr-maker.html?type=upi` before changing canonicalization or internal links.
