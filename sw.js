@@ -207,7 +207,7 @@ const ASSET_PATHS = [
 // Resolve cache entries against the worker scope for custom-domain and GitHub Pages deployments.
 const ASSETS = [...new Set(ASSET_PATHS.map((asset) => {
   if (asset === HOME) return HOME;
-  const relativePath = asset.replace(/^\\/InfoJano\\//, "").replace(/^\\/+/, "");
+  const relativePath = asset.startsWith("/InfoJano/") ? asset.slice(10) : (asset.startsWith("/") ? asset.slice(1) : asset);
   return new URL(relativePath, self.location.origin + ROOT).pathname;
 }))];
 
