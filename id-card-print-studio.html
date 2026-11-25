@@ -230,6 +230,52 @@ body .ij-global-header .ij-global-page-context{display:none!important}
 @media(max-width:760px){.ij-studio-seo-footer{width:calc(100% - 20px);margin-top:28px;padding:24px 18px 18px;border-radius:20px 20px 0 0}.ij-studio-footer-grid{grid-template-columns:1fr;gap:18px}.ij-studio-seo-footer p,.ij-studio-seo-footer li{font-size:13px}}
 
 
+/* ID Card Print Studio — match the Password Generator reference header and hero geometry. */
+.ij-hero-breadcrumb{width:min(calc(100% - 36px),1200px);margin:14px auto 8px;color:#60718a;font:600 12px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.ij-hero-breadcrumb a{color:#1768c8;text-decoration:none;font-weight:750}
+.ij-reference-hero{position:relative;isolation:isolate;overflow:hidden;width:min(calc(100% - 28px),1200px);max-width:1200px;min-height:340px;margin:14px auto 26px;padding:42px 46px;border:1px solid #cfe5fb;border-radius:30px;background:radial-gradient(ellipse at 78% 22%,#d9efff 0%,transparent 38%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%);box-shadow:0 18px 44px rgba(32,104,174,.12);color:#101d42;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;box-sizing:border-box}
+.ij-reference-hero:before{content:"";position:absolute;z-index:-1;inset:auto -8% -95px -8%;height:180px;background:linear-gradient(105deg,#50c6f4,#0787ee 58%,#1555db);border-radius:50% 50% 0 0/36% 36% 0 0;opacity:.9}
+.ij-reference-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(260px,.92fr);align-items:center;gap:clamp(22px,4vw,54px);min-height:250px}
+.ij-reference-copy{min-width:0}
+.ij-reference-kicker{display:inline-flex;align-items:center;padding:6px 11px;border:1px solid #c7e5fa;border-radius:99px;background:#ffffffc9;color:#1768b6;font-size:11px;font-weight:850;letter-spacing:.35px}
+.ij-reference-copy h1{font-size:clamp(34px,4vw,56px);line-height:1.06;letter-spacing:-1.8px;font-weight:850;color:#101b43;margin:14px 0 12px;text-align:left}
+.ij-reference-copy h1 span{color:#087ce5}
+.ij-reference-copy p{max-width:620px;margin:0;color:#4c607c;font-size:clamp(15px,1.4vw,18px);line-height:1.55}
+.ij-reference-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:21px}
+.ij-reference-pills span{display:inline-flex;align-items:center;gap:7px;border:1px solid #fff;border-radius:40px;background:rgba(255,255,255,.9);padding:9px 12px;color:#17284a;font-size:12px;font-weight:750;box-shadow:0 6px 16px rgba(31,91,151,.08)}
+.ij-reference-pills b{width:19px;height:19px;display:grid;place-items:center;border-radius:50%;background:#10a96d;color:#fff;font-size:11px}
+.ij-reference-art{position:relative;min-height:300px;display:grid;place-items:center;isolation:isolate}
+.ij-reference-art:before{content:"";position:absolute;width:85%;height:85%;border-radius:50%;background:radial-gradient(circle,#ffffffd9,#d5edff66 62%,transparent 72%)}
+.ij-id-hero-art{min-height:300px;perspective:1000px}
+.ij-id-card-mock{width:min(82%,360px)}
+.ij-doc-shortcuts{width:min(calc(100% - 28px),1200px);margin:0 auto 24px}
+.ij-doc-shortcuts h2{margin:0 0 12px;color:#14264a;font-size:18px;font-weight:850;letter-spacing:-.25px}
+.ij-doc-shortcuts .ij-doc-tiles{margin-top:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.ij-reference-grid{grid-template-columns:minmax(0,1fr) minmax(230px,.8fr);gap:20px}.ij-id-hero-art{min-height:260px}.ij-id-card-mock{width:92%}}
+@media(max-width:760px){
+ .ij-hero-breadcrumb{width:calc(100% - 24px);margin:12px auto 7px;font-size:11px}
+ .ij-reference-hero{width:calc(100% - 20px);min-height:0;margin:12px auto 20px;padding:23px 17px 28px;border-radius:23px}
+ .ij-reference-grid{grid-template-columns:1fr;gap:17px;min-height:0}
+ .ij-reference-copy{text-align:center}
+ .ij-reference-kicker{font-size:10px}
+ .ij-reference-copy h1{text-align:center;font-size:clamp(31px,8.5vw,42px);letter-spacing:-1.1px;margin:12px 0 10px}
+ .ij-reference-copy p{font-size:14px;margin:0 auto}
+ .ij-reference-pills{justify-content:center;gap:6px;margin-top:17px}
+ .ij-reference-pills span{font-size:10px;padding:7px 9px}
+ .ij-id-hero-art{min-height:205px;margin:0 2px 2px}
+ .ij-id-card-mock{width:min(82%,320px);border-width:6px;border-radius:21px}
+ .ij-id-card-mock .mock-body{padding:10px;gap:8px}
+ .ij-id-card-mock .mock-photo{height:78px}
+ .ij-id-card-mock .mock-lines{gap:7px}
+ .ij-doc-shortcuts{width:calc(100% - 20px);margin-bottom:20px}
+ .ij-doc-shortcuts h2{font-size:16px}
+ .ij-doc-shortcuts .ij-doc-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .ij-doc-tile{min-height:112px;border-radius:17px;padding:12px 6px}
+ .ij-doc-tile strong{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.ij-reference-hero *{scroll-behavior:auto!important}.ij-id-card-mock.front,.ij-id-card-mock.back{animation:none!important}}
+
+
 /* Exact shared-header sizing used by Password Generator (desktop and mobile). */
 .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{width:min(calc(100% - clamp(24px,4.4vw,64px)),1200px)!important;max-width:1200px!important;min-height:88px!important}
 .ij-global-header .ij-global-logo{width:190px!important;height:68px!important;flex-basis:190px!important;object-fit:contain!important;object-position:left center!important}
@@ -248,24 +294,23 @@ body .ij-global-header .ij-global-page-context{display:none!important}
  margin:14px auto 28px!important;box-sizing:border-box!important;
 }
 
+/* Password Generator header: supplied custom-header design, scoped to this page. */
+body[data-ij-header-align="hero"] .ij-global-header{width:100%!important;margin:0!important;padding:0!important;background:#fff!important;color:#0f172a!important;border:0!important;border-bottom:1px solid #e5e7eb!important;border-radius:0!important;box-shadow:none!important;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif!important}
+body[data-ij-header-align="hero"] .ij-global-header-inner{width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:12px 24px!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:15px!important;box-sizing:border-box!important}
+body[data-ij-header-align="hero"] .ij-global-brand{display:flex!important;align-items:center!important;flex:0 1 auto!important;min-width:0!important;gap:12px!important;text-decoration:none!important}
+body[data-ij-header-align="hero"] .ij-global-logo{display:block!important;width:220px!important;height:77px!important;flex:0 1 220px!important;object-fit:contain!important;object-position:left center!important}
+body[data-ij-header-align="hero"] .ij-global-nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;flex:0 1 auto!important;flex-wrap:wrap!important;gap:12px!important;width:auto!important;min-width:0!important;margin-left:auto!important}
+body[data-ij-header-align="hero"] .ij-global-tools,body[data-ij-header-align="hero"] .ij-global-home{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-width:0!important;height:auto!important;min-height:40px!important;padding:8px 20px!important;border:1px solid #cbd5e1!important;border-radius:50px!important;background:#fff!important;color:#1e293b!important;box-shadow:none!important;font-family:inherit!important;font-size:15px!important;font-weight:600!important;line-height:1.2!important;text-decoration:none!important;white-space:nowrap!important;transition:all .2s ease!important}
+body[data-ij-header-align="hero"] .ij-global-tools:hover,body[data-ij-header-align="hero"] .ij-global-home:hover{background:#f8fafc!important;border-color:#94a3b8!important}
+body[data-ij-header-align="hero"] .ij-global-tools svg,body[data-ij-header-align="hero"] .ij-global-home svg{width:18px!important;height:18px!important;flex:0 0 18px!important}
+body[data-ij-header-align="hero"] .ij-global-language-wrap{display:flex!important;align-items:center!important;justify-content:center!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important}
+body[data-ij-header-align="hero"] .ij-global-language{display:block!important;box-sizing:border-box!important;align-self:center!important;width:145px!important;max-width:145px!important;height:40px!important;min-height:40px!important;margin:0!important;padding:8px 35px 8px 20px!important;border:1px solid #cbd5e1!important;border-radius:50px!important;background-color:#fff!important;color:#1e293b!important;font:600 15px 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif!important;cursor:pointer!important;appearance:none!important;-webkit-appearance:none!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 12px center!important;background-size:16px!important}
+body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
+@media(max-width:768px){body[data-ij-header-align="hero"] .ij-global-header-inner{flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;padding:12px 18px!important;gap:12px!important}body[data-ij-header-align="hero"] .ij-global-logo{width:200px!important;height:70px!important;flex:0 1 200px!important}body[data-ij-header-align="hero"] .ij-global-nav{width:100%!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:10px!important;margin:0!important}body[data-ij-header-align="hero"] .ij-global-tools,body[data-ij-header-align="hero"] .ij-global-home{min-height:40px!important;padding:8px 16px!important;font-size:14px!important}body[data-ij-header-align="hero"] .ij-global-language{width:130px!important;max-width:130px!important;height:40px!important;min-height:40px!important;font-size:14px!important;padding:8px 32px 8px 16px!important}}
+@media(max-width:380px){body[data-ij-header-align="hero"] .ij-global-header-inner{padding:10px 12px!important}body[data-ij-header-align="hero"] .ij-global-logo{width:180px!important;height:63px!important;flex-basis:180px!important}body[data-ij-header-align="hero"] .ij-global-nav{gap:8px!important}body[data-ij-header-align="hero"] .ij-global-tools,body[data-ij-header-align="hero"] .ij-global-home{padding:7px 12px!important;font-size:13px!important}body[data-ij-header-align="hero"] .ij-global-language{width:118px!important;max-width:118px!important;font-size:13px!important}
+
+
 @media(max-width:760px){.ij-reference-hero{width:calc(100% - 20px)!important;min-height:0!important;padding:23px 17px 35px!important;margin:12px auto 20px!important}}
-
-
-/* Header uses the shared site-header.js hero-aligned 1200px layout. */
-
-/* ID Studio: keep original header size; enlarge only the tagline in its page-specific logo asset. */
-@media (min-width:1001px){
- body[data-ij-header-align="hero"] .ij-global-header-inner{min-height:104px!important;align-items:center!important}
- body[data-ij-header-align="hero"] .ij-global-brand{margin-left:30px!important}
- body[data-ij-header-align="hero"] .ij-global-logo{width:270px!important;height:78px!important;flex:0 0 270px!important}
- body[data-ij-header-align="hero"] .ij-global-nav{transform:translateX(38px)!important}
-}
-@media (min-width:641px) and (max-width:1000px){
- body[data-ij-header-align="hero"] .ij-global-header-inner{min-height:104px!important}
- body[data-ij-header-align="hero"] .ij-global-brand{margin-left:20px!important}
- body[data-ij-header-align="hero"] .ij-global-logo{width:270px!important;height:78px!important;flex:0 0 270px!important}
- body[data-ij-header-align="hero"] .ij-global-nav{transform:translateX(20px)!important}
-}
 </style>
 <script type="application/ld+json">
 {
@@ -284,28 +329,34 @@ body .ij-global-header .ij-global-page-context{display:none!important}
 </head>
 <body data-ij-header-align="hero">
 <script src="site-header.js"></script>
-<script>document.querySelector(".ij-global-logo")?.setAttribute("src","id-studio-logo.svg");</script>
 
+<nav class="ij-hero-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a> <span aria-hidden="true">›</span> ID Card Print Studio</nav>
 <main>
-<section class="ij-id-hero" aria-labelledby="ij-id-hero-title">
- <div class="ij-id-hero-grid">
-  <div class="ij-id-hero-copy">
-   <div class="ij-id-hero-symbol" aria-hidden="true"><svg viewBox="0 0 96 96" width="70" height="70" fill="none"><rect x="8" y="17" width="80" height="62" rx="13" fill="white"/><circle cx="31" cy="39" r="10" fill="#087ce5"/><path d="M15 68c2-11 8-17 16-17s14 6 16 17" stroke="#087ce5" stroke-width="7" stroke-linecap="round"/><path d="M57 35h20M57 48h20" stroke="#087ce5" stroke-width="6" stroke-linecap="round"/></svg></div>
-   <h1 id="ij-id-hero-title">ID Card <span class="ij-lightword">Print Studio</span></h1>
-   <p class="ij-id-hero-subtitle">Prepare your government ID documents for clean, accurate, print-ready PDF and JPG output.</p>
-   <div class="ij-doc-tiles" aria-label="Choose a document type">
+<section class="ij-reference-hero ij-id-reference-hero" aria-labelledby="ij-id-hero-title">
+ <div class="ij-reference-grid">
+  <div class="ij-reference-copy">
+   <span class="ij-reference-kicker">DOCUMENT PRINT TOOLS</span>
+   <h1 id="ij-id-hero-title">ID Card <span>Print Studio</span></h1>
+   <p>Prepare government ID documents for clean, accurate, print-ready PDF and JPG output. Crop both sides, set the card size and export in your browser.</p>
+   <div class="ij-reference-pills">
+    <span><b>✓</b>PDF &amp; JPG export</span>
+    <span><b>↗</b>Front &amp; back cropping</span>
+    <span><b>•</b>Print-ready sizing</span>
+   </div>
+  </div>
+  <div class="ij-reference-art ij-id-hero-art" aria-hidden="true">
+   <div class="ij-id-card-mock back"><div class="mock-band">DOCUMENT CARD</div><div class="mock-body"><div class="mock-photo"></div><div class="mock-lines"><strong class="mock-name">ABDUL BARIK</strong><small class="mock-location">FARAKKA, WEST BENGAL</small><i></i><i></i><i></i><div class="mock-code"></div></div></div></div>
+   <div class="ij-id-card-mock front"><div class="mock-band">IDENTITY CARD</div><div class="mock-body"><div class="mock-photo"><svg viewBox="0 0 64 64" width="65" height="65" fill="none"><circle cx="32" cy="22" r="12" fill="#6ba6dc"/><path d="M10 58c2-14 10-21 22-21s20 7 22 21" fill="#6ba6dc"/></svg></div><div class="mock-lines"><strong class="mock-name">ABDUL BARIK</strong><small class="mock-location">FARAKKA, WEST BENGAL</small><i></i><i></i><i></i><div class="mock-code"></div></div></div></div>
+ </div>
+</section>
+<section class="ij-doc-shortcuts" aria-labelledby="ij-doc-shortcuts-title">
+ <h2 id="ij-doc-shortcuts-title">Choose a document to get started</h2>
+ <div class="ij-doc-tiles" aria-label="Choose a document type">
     <button class="ij-doc-tile" type="button" data-ij-doc="Ayushman Bharat Card"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="6" fill="currentColor" opacity=".16"/><circle cx="17" cy="20" r="5" fill="currentColor"/><path d="M9 33c1-6 4-9 8-9s7 3 8 9M29 18h9M29 24h9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Ayushman Card</strong></button>
     <button class="ij-doc-tile" type="button" data-ij-doc="Aadhaar Card"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="6" fill="currentColor" opacity=".16"/><circle cx="17" cy="20" r="5" fill="currentColor"/><path d="M9 33c1-6 4-9 8-9s7 3 8 9M29 18h9M29 24h9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Aadhaar Card</strong></button>
     <button class="ij-doc-tile" type="button" data-ij-doc="Voter ID"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 5 40 12v11c0 10-7 16-16 20C15 39 8 33 8 23V12L24 5Z" fill="currentColor" opacity=".17"/><path d="m16 24 5 5 11-12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Voter ID</strong></button>
     <button class="ij-doc-tile" type="button" data-ij-doc="Digital Ration Card"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="7" y="8" width="34" height="32" rx="6" fill="currentColor" opacity=".16"/><path d="M14 17h20M14 23h20M14 29h12M14 34h17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Ration Card</strong></button>
    </div>
-  </div>
-  <div class="ij-id-hero-art" aria-hidden="true">
-   <div class="ij-id-card-mock back"><div class="mock-band">DOCUMENT CARD</div><div class="mock-body"><div class="mock-photo"></div><div class="mock-lines"><i></i><i></i><i></i><div class="mock-code"></div></div></div></div>
-   <div class="ij-id-card-mock front"><div class="mock-band">IDENTITY CARD</div><div class="mock-body"><div class="mock-photo"><svg viewBox="0 0 64 64" width="65" height="65" fill="none"><circle cx="32" cy="22" r="12" fill="#6ba6dc"/><path d="M10 58c2-14 10-21 22-21s20 7 22 21" fill="#6ba6dc"/></svg></div><div class="mock-lines"><i></i><i></i><i></i><div class="mock-code"></div></div></div></div>
-  </div>
- </div>
- <div class="ij-id-hero-benefits"><span><b>✓</b> Easy to Use</span><span><b>↗</b> Quick Processing</span><span><b>▣</b> Print Ready</span><span><b>✓</b> Free to Use</span></div>
 </section>
 <section class="ij-doc-guide-links" aria-label="Document print guides"><h2>Document-specific print guides</h2><div class="ij-doc-guide-grid"><a href="/ayushman-card-print.html">Ayushman Card Guide <span>PDF and photo printing</span></a><a href="/aadhaar-card-print.html">Aadhaar Card Guide <span>e-Aadhaar crop and print</span></a><a href="/voter-id-card-print.html">Voter ID Guide <span>e-EPIC manual crop</span></a><a href="/digital-ration-card-print.html">Ration Card Guide <span>West Bengal e-Ration PDF</span></a></div></section>
 
