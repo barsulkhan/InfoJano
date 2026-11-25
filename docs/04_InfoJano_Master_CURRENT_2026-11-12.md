@@ -2286,3 +2286,9 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Savings is Duplicate (Google chose GitHub Pages canonical), but its current source canonical is infojano.com and it was updated 24/25-Nov. GSC crawl is 21-Nov; do not edit today's touched file; wait for deployment and recrawl.
 - What Percent's malformed GSC canonical is from 11-Nov, before 12-Nov metadata repair; current source is clean.
 - Details saved in Red Team Audit.
+
+
+### Service Worker asset inventory — 25 Nov 2026
+- Compared 198 sw.js ASSET_PATHS entries with the repo tree: 197 resolve, one does not: /InfoJano/site-footer.js (actual file is /site-footer.js).
+- sw.js was touched 25-Nov, so it was not modified. Record for post-freeze cleanup; Promise.allSettled likely lets installation continue despite one failed asset, but runtime confirmation remains.
+- Details saved in Red Team Audit.
