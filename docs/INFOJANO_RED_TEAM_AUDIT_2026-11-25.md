@@ -233,3 +233,13 @@ Inspected: countdown-timer-bangladesh.html, countdown-timer-india.html, countdow
 - Nine of ten URLs are Submitted and indexed with successful fetches. The parameterized URL https://infojano.com/upi-payment-qr-code-generator.html?type=upi is URL unknown to Google; this is a query-parameter variant, not evidence that the dedicated UPI landing page is missing (the clean dedicated page is indexed). Review only if that variant is intentionally intended to be separately indexed; otherwise keep it out of sitemap/indexing queue.
 - target-marks-calculator.html had an old malformed GSC userCanonical string, but current source declares a clean infojano.com canonical and og:url. GSC last crawled 2026-11-11, before the 2026-11-12 metadata repair commit. Treat as stale GSC data; no source edit made.
 - All other pages in this batch have Google-selected and declared canonical aligned.
+
+
+## Fifth 10-URL Search Console batch — 25 Nov 2026
+
+Inspected: Aadhaar Card Print, Ayushman Card Print, Digital Ration Card Print, Voter ID Print, What Happened on My Birthday, Image Compressor, Image Resizer, Image to PDF, QR Scanner, Social QR Maker.
+
+- Seven pages are Submitted and indexed with successful fetches and canonical agreement: Aadhaar, Ayushman, Digital Ration, Voter ID, Image to PDF, Social QR, and (after source comparison) Birthday page canonical is now clean.
+- What Happened on My Birthday has an old GSC userCanonical pointing to GitHub Pages, but current source canonical and og:url point to infojano.com. GSC last crawled 2026-11-11; source metadata repair was committed 2026-11-12. Treat as stale record and await recrawl.
+- Image Compressor and Image Resizer are Crawled — currently not indexed, with successful fetches and canonical agreement. Both files were touched by the 25-Nov dual-host PWA change and are excluded from source edits. This is an indexing/quality/discovery issue, not a fetch/canonical failure based on current GSC evidence.
+- QR Scanner is indexed and fetch-successful; its old GitHub Pages userCanonical was already triaged against clean current source in the prior batch.
