@@ -2145,3 +2145,61 @@ The following are not all blockers to the Number to Words website release; they 
 - Still requires a real Android device: install the PWA from both the custom domain and GitHub Pages, open it once online, then verify launch/offline fallback after disconnecting. Cloud browser tests cannot certify an actual Android install.
 - Previously recorded Search Console manual requests for six unknown/discovered URLs remain a user-side task; the OpenSEO index inspection tool reads status but does not submit Google's indexing request. The 50-page site audit also left 77 URLs uncrawled due to the audit page cap.
 - No calculator formulas, homepage visual design, ID Card Print Studio behavior, or Savings calculations were changed.
+
+
+
+## 25 Nov 2026 — SEO handoff continuation, asset-path closeout and current GSC/audit status
+
+### Asset-path closeout (PR #348)
+- Re-fetched all eight interrupted files from the current main branch: `bmi-health-guide.html`, `bmi-calculation-guide.html`, `bmi-weight-categories.html`, `bmi-healthy-weight-range.html`, `bmi.html`, `time-calculator.html`, `number-to-words.html`, and `percentage.html`.
+- None of the eight currently contains a `/InfoJano/` reference. The interrupted edits do not need to be repeated.
+- These updates were superseded by PR #348, merge commit `1273e0b959cd7e9f9a1147f09d9a9ebfd5f21ecf`, which converted all 29 tool PWAs to deployment-relative paths for both custom-domain and GitHub Pages hosting.
+- GitHub Pages build/deploy run `45554400503` completed successfully for the PR #348 merge commit. No additional asset-path code changes or commits were made in this SEO continuation.
+- `index.html` also currently has no `/InfoJano/` references; preserve the existing dual-host relative-path approach.
+
+### Current deployment verification
+- Latest main commit at this checkpoint: `c6d9549f5f82434a9ae5b085801f9df0aabe6bcf`.
+- Pages deployment run `45557044130` completed successfully for that exact main SHA; build, deploy and report-build-status jobs all succeeded.
+- PR #349 merge commit `2c5108235ef263be803f9ddf17bb29e486aab159` also has successful main runs: Password Generator Browser QA `45557006375`, Global Footer QA `45557006924`, and APK build `45557006382`. The APK build workflow completed successfully.
+- Workflow success confirms GitHub Pages deployment; it is not proof of Google indexing or real-device Android PWA installation.
+
+### Current sitemap and internal-link checks
+- Current `sitemap.xml` contains 108 URLs.
+- The sitemap includes `bmi-health-guide.html`, `cheque-amount-in-words.html`, `pdf-to-jpg.html`, `google-maps-location-qr-code-generator.html`, `percentage-decrease-calculator.html`, `word-converter.html`, and `time-calculator.html`.
+- Relevant internal links were confirmed: homepage to PDF-to-JPG and Word Converter; BMI calculator and sibling guides to BMI Health Guide; Number to Words to Cheque Amount; QR Maker to Google Maps Location QR; Percentage Calculator to Percentage Decrease. Do not add duplicate links without new evidence.
+- The current source of `bmi-calculation-guide.html` still uses root-relative `/install.js` and `/site-header.js`; this was outside the eight-file approved path list. Do not mass-replace or change it without a separately scoped dual-host review.
+
+### Latest Search Console inspection (25 Nov 2026)
+Property: `sc-domain:infojano.com`.
+- Indexed: `bmi.html`, `number-to-words.html`.
+- URL is unknown to Google: `bmi-health-guide.html`, `cheque-amount-in-words.html`, `pdf-to-jpg.html`, `google-maps-location-qr-code-generator.html`, `percentage-decrease-calculator.html`, `word-converter.html`.
+- Crawled — currently not indexed: `time-calculator.html`.
+- `age-in-days-calculator.html`: still crawled — currently not indexed; Google canonical is `https://infojano.com/age-in-days-calculator.html`, while the recorded user canonical remains `https://barsulkhan.github.io/InfoJano/age-in-days-calculator.html`. Do not change source canonical or repeatedly submit based only on this stale crawl.
+- OpenSEO `inspect_urls` only reads Search Console state; it does not submit Google's indexing request. No Google indexing success is claimed.
+
+### Latest 3-month Search Console performance
+Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
+- `percentage-pt-br.html`: 2,053 impressions, 0 clicks, average position 9.2.
+- `discount-pt-br.html`: 1,632 impressions, 1 click, average position 8.3.
+- `bmi-calculation-guide.html`: 811 impressions, 0 clicks, average position 62.1.
+- `bmi-weight-categories.html`: 412 impressions, 0 clicks, average position 58.7.
+- `number-to-words.html`: 280 impressions, 1 click, average position 35.3.
+- `upi-payment-qr-code-generator.html`: 274 impressions, 0 clicks, average position 45.9.
+- `number-to-words-indian.html`: 180 impressions, 0 clicks, average position 24.6.
+- `time-calculator.html`: 156 impressions, 1 click, average position 33.1.
+- The Portuguese pages' current titles/descriptions are already concise and localized. Treat their impressions as an opportunity for query/content analysis; do not promise rankings or rewrite metadata solely from low CTR.
+
+### Latest broad OpenSEO audit
+- Audit ID: `e1cececa-21ec-4b89-a081-2203550d4b0e`.
+- Requested `maxPages=100`; account/page-budget cap limited the actual crawl to 50 pages.
+- Completed 50/50 pages; all 50 crawled pages returned HTTP 200.
+- Only reported issue: `crawl-page-limit`; 77 URLs were not crawled. No other issues were reported within this sample.
+- Do not add robots.txt disallow rules to evade the crawler limit.
+
+### Next actions
+1. Continue checking GSC discovery/indexing for the six unknown URLs, but use the manual URL Inspection workflow only when appropriate; OpenSEO inspection is read-only.
+2. Leave the age-in-days canonical conflict untouched until a new Google crawl updates the record.
+3. Use query-level Search Console data to prioritize the BMI guides and high-impression Portuguese pages; preserve already-correct metadata unless evidence supports a specific change.
+4. For broader site QA, use an authorized larger audit budget if available. Current audit only covered 50 of 127 discovered URLs (50 crawled + 77 not crawled).
+5. Keep commit, deployment, Google indexing and real-device PWA installation as separate verification states.
+6. Continue respecting protected scope: no Header/Hero redesign, no ID Card Print Studio workflow/print logic changes, no Savings PWA/APK changes without permission, no analytics-location changes, and no robots.txt crawler-limit workaround.
