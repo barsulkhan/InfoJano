@@ -2310,3 +2310,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 ### PR #1 Cloudflare preview status — 25 Nov 2026
 - GitHub Actions security tests passed, but Cloudflare Preview Build for latest commit 262e8b8 FAILED at 08:37:36 UTC. Cloudflare dashboard logs could not be read through this connection, so root cause is unknown.
 - PR #1 remains Draft/Open/Unmerged. Do not merge or deploy until Cloudflare build log is reviewed and a new preview succeeds. Details in Red Team Audit.
+
+
+### Seventh Search Console batch — 25 Nov 2026
+- Bengali Number to Words, Document Studio, Ordinal, Original Price Before Discount, Percent of Number, Reverse Percentage, SMS QR and Successive Percentage Change plus two query variants all report indexed with successful fetches.
+- Query variants percentage.html?mode=repeated and qr-maker.html?type=upi are indexed separately. Review canonical/indexing strategy for query-state URLs after recrawl; qr-maker.html touched 25-Nov and is not to be edited now.
+- Older SMS QR / Successive Percentage canonical values need source comparison before action; current GSC records date to 11-Nov.
+- Details saved in Red Team Audit.
