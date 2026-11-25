@@ -4,7 +4,7 @@ const INFOJANO_ROOT = location.hostname === "barsulkhan.github.io" ? "/InfoJano/
 /* Register the site-wide worker from every page that loads this shared helper. */
   function registerServiceWorker(){
     if(!("serviceWorker" in navigator))return;
-    if(location.hostname === "barsulkhan.github.io") navigator.serviceWorker.register(INFOJANO_ROOT+"sw.js",{scope:INFOJANO_ROOT})
+    navigator.serviceWorker.register(INFOJANO_ROOT+"sw.js",{scope:INFOJANO_ROOT})
       .catch(error=>console.error("Service Worker registration failed:",error));
   }
   if(document.readyState==="complete")registerServiceWorker();

@@ -2092,3 +2092,14 @@ The following are not all blockers to the Number to Words website release; they 
 - OpenSEO audit completed 50/50 with 77 URLs outside the crawl budget; only crawl-page-limit was reported. Do not call this a full-site pass.
 - APK workflow still fails at `Missing installer script: savings.html`. `index.html` still contains legacy PWA asset paths and the root manifest still declares the GitHub Pages base path. Both areas remain on hold under the existing scope restrictions; no Header/Hero, ID Card, Savings PWA, APK validator, analytics-location, or unrelated functionality was changed.
 - User-side remaining tasks are limited to one manual Search Console indexing-request batch for the six unknown/discovered URLs, and explicit approval if the dual-host PWA/APK repair is wanted.
+
+
+## 25 Nov 2026 — Dual-host PWA / Savings APK validation repair (PR #347)
+- Focused branch: `fix/dual-host-pwa-apk-validation-2026-11-25-v2`; PR #347: https://github.com/barsulkhan/InfoJano/pull/347.
+- Root homepage manifest link is now relative; root `manifest.json` uses relative id/start_url/scope/icon paths so it resolves at both `https://infojano.com/` and the GitHub Pages `/InfoJano/` project root.
+- `install.js` now registers the service worker on both supported hosts. `sw.js` cache entries resolve against the worker scope, and cache version is `infojano-v333`.
+- Savings page now links its app manifest and shared scripts relatively and includes the missing `install.js` script. Savings manifest uses relative start/scope/icon paths.
+- APK validator accepts either root-relative or legacy `/InfoJano/` service-worker cache entries.
+- Source QA: JavaScript syntax for `sw.js` and `install.js` passed; root manifest JSON parses; Savings script/manifest references checked. This addresses the exact previous workflow error `Missing installer script: savings.html` and the next hard-coded service-worker path assertion.
+- PR #347 is OPEN and not merged/deployed. GitHub compare shows 8 commits ahead and 0 behind; mergeability is still reported false by GitHub and needs recheck before any merge. APK workflow has not yet rerun; successful APK build and real Android install/offline testing are NOT verified.
+- No calculator logic, homepage design, ID Card Print Studio, or unrelated tool UI was changed. Merge/deployment requires review and approval.

@@ -1,7 +1,8 @@
 /* InfoJano offline support: cache visited pages and provide a safer offline fallback. */
-const CACHE_NAME = "infojano-v332";
-const HOME = "/";
-const ASSETS = [
+const CACHE_NAME = "infojano-v333";
+const ROOT = new URL("./", self.location).pathname;
+const HOME = ROOT;
+const ASSET_PATHS = [
   HOME,
   "/404.html",
   "/index.html",
@@ -202,6 +203,13 @@ const ASSETS = [
   "/app-manifests/tip-calculator.webmanifest",
   "/app-manifests/unit-converter.webmanifest",
 ];
+
+// Resolve cache entries against the worker scope for custom-domain and GitHub Pages deployments.
+const ASSETS = [...new Set(ASSET_PATHS.map((asset) => {
+  if (asset === HOME) return HOME;
+  const relativePath = asset.startsWith("/InfoJano/") ? asset.slice(10) : (asset.startsWith("/") ? asset.slice(1) : asset);
+  return new URL(relativePath, self.location.origin + ROOT).pathname;
+}))];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
