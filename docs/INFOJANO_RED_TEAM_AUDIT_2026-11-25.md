@@ -263,3 +263,14 @@ Parsed the current main sw.js ASSET_PATHS array (198 entries) and compared every
 - One path is missing: /InfoJano/site-footer.js. The repository file exists at /site-footer.js, not /InfoJano/site-footer.js. On the custom domain, the hard-coded /InfoJano/ prefix is inconsistent with the root deployment path and can produce an unnecessary 404 fetch from the Service Worker asset list.
 - Current sw.js uses cache version infojano-v334 and was modified in the 25-Nov dual-host PWA commit. Per the user's protection rule, do not edit sw.js in this pass. Record this as a confirmed cleanup item for a later commit after today's code freeze.
 - The install path uses Promise.allSettled, so one failed cache asset should not necessarily abort the whole SW installation; still, the invalid entry wastes a request and can create avoidable console/network noise. Confirm runtime behavior with a browser after the code-freeze window.
+
+
+## PWA manifest path resolution audit — 25 Nov 2026
+
+Reviewed all 29 tool PWA manifests plus the root manifest.json. Compared their start_url, scope, id, and icon references against the current repository tree and evaluated the relative-path layout for the custom-domain root and GitHub Pages /InfoJano/ project path.
+
+- All 29 tool manifests use deployment-relative start_url and scope values (for example ../tool.html and ../), which resolve to the correct host root on both deployment layouts.
+- All 29 tool start_url pages and icon targets exist in the repository tree.
+- Root manifest.json references ./, icon-192.png, icon-512.png and infojano-mark.svg; all referenced files exist in the repo tree.
+- Static source-level check: 30 manifests, 92 referenced paths, zero missing targets.
+- This does not replace live HTTP checks for correct Content-Type, 200 status, installability, service-worker scope, actual installation or offline launch. Manifest files and related app paths are part of the 25-Nov PWA work and were not modified in this audit.
