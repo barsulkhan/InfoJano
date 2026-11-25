@@ -2,6 +2,14 @@ name: Build InfoJano Tool APKs
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'android/**'
+      - 'app-icons/**'
+      - 'app-manifests/**'
+      - '*.html'
+      - 'sw.js'
+      - '.github/workflows/build-tool-apks.yml'
   push:
     branches: [main]
     paths:
@@ -191,6 +199,7 @@ jobs:
           retention-days: 30
 
       - name: Publish tool APK release
+        if: github.event_name != 'pull_request'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: infojano-tool-apps-v1.1.1
