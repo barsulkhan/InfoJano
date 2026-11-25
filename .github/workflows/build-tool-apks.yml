@@ -40,7 +40,7 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json, pathlib, xml.etree.ElementTree as ET
+          import json, pathlib, re, xml.etree.ElementTree as ET
           from urllib.parse import urljoin, urlparse
           root = pathlib.Path('.')
           icons = sorted((root / 'app-icons').glob('*.svg'))
@@ -56,19 +56,33 @@ jobs:
               slug = manifest.stem
               page = root / f'{slug}.html'
               assert page.exists(), f'Missing tool page: {page}'
-              manifest_url = f'https://infojano.example/InfoJano/{manifest.as_posix()}'
-              resolved_start = urlparse(urljoin(manifest_url, data.get('start_url', ''))).path
-              resolved_scope = urlparse(urljoin(manifest_url, data.get('scope', ''))).path
-              assert resolved_start == f'/InfoJano/{slug}.html', f'Wrong start_url: {manifest}'
-              assert resolved_scope == '/InfoJano/', f'Wrong scope: {manifest}'
-              icon_paths = [
-                  urlparse(urljoin(manifest_url, item.get('src', ''))).path.removeprefix('/InfoJano/')
-                  for item in data.get('icons', [])
-              ]
-              assert icon_paths and any((root / icon_path).is_file() for icon_path in icon_paths), f'Missing manifest icon file: {manifest}'
               html = page.read_text(encoding='utf-8')
-              assert f'app-manifests/{slug}.webmanifest' in html, f'Missing manifest link: {page}'
+              tags = re.findall(r'<link\\b[^>]*>', html, re.I)
+              manifest_tags = [tag for tag in tags if re.search(r'\\brel=["\\']manifest["\\']', tag, re.I)]
+              assert manifest_tags, f'Missing manifest link: {page}'
+              href_match = re.search(r'\\bhref=["\\']([^"\\']+)', manifest_tags[0], re.I)
+              assert href_match, f'Missing manifest href: {page}'
+              manifest_href = href_match.group(1)
+              assert not manifest_href.startswith('/'), f'Manifest href must be deployment-relative: {page}'
               assert 'install.js' in html, f'Missing installer script: {page}'
+              install_srcs = re.findall(r'<script\\b[^>]*\\bsrc=["\\']([^"\\']*install\\.js[^"\\']*)["\\'][^>]*>', html, re.I)
+              if install_srcs:
+                  assert all(not src.startswith('/') for src in install_srcs), f'Installer script must be deployment-relative: {page}'
+              else:
+                  assert 'loadApp("./install.js")' in html, f'Dynamic installer must use a deployment-relative URL: {page}'
+              for page_url, expected_prefix in [
+                  (f'https://infojano.example/InfoJano/{slug}.html', '/InfoJano/'),
+                  (f'https://infojano.example/{slug}.html', '/')
+              ]:
+                  resolved_manifest_url = urljoin(page_url, manifest_href)
+                  expected_manifest_path = expected_prefix + f'app-manifests/{slug}.webmanifest'
+                  assert urlparse(resolved_manifest_url).path == expected_manifest_path, f'Manifest href fails on host path: {page}'
+                  resolved_start = urlparse(urljoin(resolved_manifest_url, data.get('start_url', ''))).path
+                  resolved_scope = urlparse(urljoin(resolved_manifest_url, data.get('scope', ''))).path
+                  assert resolved_start == expected_prefix + f'{slug}.html', f'Wrong start_url for host {expected_prefix}: {manifest}'
+                  assert resolved_scope == expected_prefix, f'Wrong scope for host {expected_prefix}: {manifest}'
+                  icon_paths = [urlparse(urljoin(resolved_manifest_url, item.get('src', ''))).path for item in data.get('icons', [])]
+                  assert icon_paths and any((root / path.lstrip('/InfoJano/').lstrip('/')).is_file() for path in icon_paths), f'Missing manifest icon file: {manifest}'
           sw = (root / 'sw.js').read_text(encoding='utf-8')
           def cached(path):
               rel = path.as_posix()
@@ -85,7 +99,7 @@ jobs:
           assert len(entries) == 23, f'Expected 23 APK targets, found {len(entries)}'
           assert len({line.split('|')[0] for line in entries}) == 23, 'Duplicate APK IDs'
           assert all((root / line.split('|')[2]).exists() for line in entries), 'An APK target references a missing tool page'
-          print(f'Validation passed: {len(icons)} SVGs, {len(manifests)} manifests, {len(pages)} pages and {len(entries)} APK targets.')
+          print(f'Dual-host validation passed: {len(icons)} SVGs, {len(manifests)} manifests, {len(pages)} pages and {len(entries)} APK targets.')
           PY
 
       - name: Build one APK for each remaining tool
