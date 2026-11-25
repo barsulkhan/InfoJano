@@ -138,3 +138,14 @@ The query/page report only returned eight rows at position 20 or better with at 
 2. Do not rewrite metadata based solely on the two Portuguese pages' zero/near-zero CTR; inspect the complete query set and search-result snippets before making content changes.
 3. Improve BMI content usefulness and internal relevance based on the broad BMI calculation/category query cluster, but check file commit dates first and do not touch any application code changed on 25-Nov.
 4. Avoid duplicate UPI landing pages; compare the dedicated UPI page and `qr-maker.html?type=upi` before changing canonicalization or internal links.
+
+
+### Direct Search Console inspection links for the six pending URLs
+- [PDF to JPG](https://search.google.com/search-console/inspect?resource_id=sc-domain%3Ainfojano.com&id=Ue81vPU9cFckj91j_YPnZg)
+- [Google Maps Location QR](https://search.google.com/search-console/inspect?resource_id=sc-domain%3Ainfojano.com&id=tXihai7sg-ZQ2_U_oP5zLw)
+- [Percentage Decrease Calculator](https://search.google.com/search-console/inspect?resource_id=sc-domain%3Ainfojano.com&id=6qc6ef9B_KE9gqFkBHR6ng)
+- [Cheque Amount in Words](https://search.google.com/search-console/inspect?resource_id=sc-domain%3Ainfojano.com&id=GOREe5HHDHWodX0bMrxf0w)
+- [Word Converter](https://search.google.com/search-console/inspect?resource_id=sc-domain%3Ainfojano.com&id=IY5YW0izQRthcPAUf6VjHw)
+- [BMI Health Guide](https://search.google.com/search-console/inspect?resource_id=sc-domain%3Ainfojano.com&id=WIr2GilgIi0QNHH6sRieVQ)
+
+These links open the existing URL Inspection record. The user must still use Search Console's manual indexing-request action where Google offers it; merely opening the record does not submit a request.
