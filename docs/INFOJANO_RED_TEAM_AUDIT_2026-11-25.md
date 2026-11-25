@@ -149,3 +149,28 @@ The query/page report only returned eight rows at position 20 or better with at 
 - [BMI Health Guide](https://search.google.com/search-console/inspect?resource_id=sc-domain%3Ainfojano.com&id=WIr2GilgIi0QNHH6sRieVQ)
 
 These links open the existing URL Inspection record. The user must still use Search Console's manual indexing-request action where Google offers it; merely opening the record does not submit a request.
+
+
+## Live website spot-check — 25 Nov 2026
+
+Scope: read-only web-rendered checks of the public custom-domain site. This is not a full interactive browser test, and crawler/open errors are not treated as proof of an HTTP 404.
+
+### Confirmed page rendering/content
+- Homepage `https://infojano.com/` loads and presents the tool directory, popular tools, guide links, and utility navigation. The public render shows 24 popular tools and the Explore All Tools section.
+- Password Generator loads and presents Random Password / Passphrase / PIN modes, length and character controls, bulk generation, copy/regenerate controls, and local-only generation messaging. The page copy says generated credentials are handled in-browser; an actual button-by-button security test was not run in this read-only pass.
+- QR Maker loads and presents URL, Text, WiFi, Contact, Phone, WhatsApp, UPI, Email, SMS, Location and vCard modes, plus uploaded QR/barcode reading. Actual QR generation/scanning was not exercised.
+- URL Toolkit loads and exposes eight browser-based utilities (UTM builder, cleaner, encoder/decoder, validator, parser, slug maker, query builder, QR). The page explicitly says real short links/click analytics are a later phase and not yet available on this static page. Do not market the current URL Toolkit as a live short-link service until the backend is deployed and verified.
+- Time Calculator loads and shows Time Difference, Add/Subtract, Date+Time, break deduction, recent calculations, and share/copy controls. GSC still reports Crawled — currently not indexed.
+- Google Maps Location QR landing page loads and explains coordinate-based Location mode. Search Console had marked its URL unknown to Google; this confirms that URL Inspection status and public page availability are different questions.
+
+### Inconclusive checks / limits
+- Web page open could not retrieve `pdf-to-jpg.html`, `percentage-decrease-calculator.html`, `cheque-amount-in-words.html`, `word-converter.html`, or `bmi-health-guide.html`. These files exist in the GitHub main tree, so this crawler/open-tool error is not sufficient evidence of a production 404. They need a real HTTP/browser check.
+- Direct opens of `sitemap.xml`, `robots.txt`, `sw.js`, and `manifest.json` were not readable through the web viewer. GitHub main source confirms robots allows crawling and declares `https://infojano.com/sitemap.xml`; sitemap source contains 108 URLs. This is source inspection, not a live HTTP status verification.
+- No interactive Playwright run, mobile-device test, install/offline test, actual file conversion test, or Cloudflare Worker deployment test was performed in this spot-check.
+
+### Follow-up actions
+1. Run Playwright against custom-domain and GitHub Pages hosts, including the 29 PWA manifest/install paths; compare against the already-merged 25-Nov changes without editing those files.
+2. Exercise Password Generator, QR Maker, PDF/image conversion, Word Converter, and Time Calculator controls on desktop and mobile.
+3. Verify actual HTTP status and canonical/manifest/icon URLs for the five pages the web viewer could not open.
+4. Deploy the Short Link Worker only after separate security review, production environment configuration, domain/route setup, and abuse/rate-limit tests; current URL Toolkit still truthfully describes real short links as a future phase.
+5. Complete GSC URL inspection and request indexing manually for the six unknown URLs; the inspection tool does not submit Google's request.
