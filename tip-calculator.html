@@ -279,10 +279,26 @@ main{padding:16px 18px 40px!important}
 @media(prefers-reduced-motion:reduce){.ij-tip-quick button,.ij-tip-content-grid button,.ij-tip-result-actions button{transition:none!important}}
 </style>
 
-<style id="ij-tip-neutral-header">.ij-tip-header,header{background:#fff!important;color:#14243b!important;box-shadow:none!important}</style>
+
+
+<style id="ij-nov21-header-hero-dimension-restore">
+/* Restore the pre-21-Nov Tip Calculator header and hero frame; retain the newer illustration and calculator logic. */
+.ij-tip-header .ij-brandbar-inner{width:min(100%,1200px)!important;max-width:1200px!important;min-height:0!important;padding:0!important;gap:12px!important}
+.ij-tip-logo{width:auto!important;max-width:none!important;max-height:none!important}
+.ij-tip-nav{display:none!important}
+.ij-reference-hero.ij-tip-new-hero{width:min(calc(100% - 28px),1200px)!important;max-width:1200px!important;min-height:340px!important;margin:14px auto 26px!important;padding:42px 46px!important;border-radius:30px!important;box-sizing:border-box!important}
+.ij-tip-new-hero .ij-reference-grid{grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;align-items:center!important;gap:clamp(22px,4vw,54px)!important;min-height:250px!important}
+@media(max-width:760px){
+ .ij-tip-header .ij-brandbar-inner{width:calc(100% - 24px)!important;max-width:1200px!important;min-height:0!important;padding:0!important}
+ .ij-tip-logo{width:auto!important;max-width:100%!important;max-height:none!important}
+ .ij-reference-hero.ij-tip-new-hero{width:calc(100% - 20px)!important;max-width:none!important;min-height:0!important;margin:12px auto 20px!important;padding:23px 17px 35px!important;border-radius:23px!important}
+ .ij-tip-new-hero .ij-reference-grid{grid-template-columns:1fr!important;gap:17px!important;min-height:0!important}
+}
+</style>
+
 </head>
 <body data-ij-header-align="true">
-<header class="ij-brandbar ij-tip-header"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><img src="./infojano-logo.svg" alt="InfoJano" class="ij-tip-logo"></a><nav class="ij-tip-nav" aria-label="Main navigation"><a href="tools.html">▦ <span>All Tools</span></a><span class="ij-tip-language">English <span aria-hidden="true">⌄</span></span><a href="index.html">◆ <span>Home</span></a></nav></div></header>
+<header class="ij-brandbar"><div class="ij-brandbar-inner"><a class="ij-brand-home" href="index.html" aria-label="InfoJano Home"><span class="ij-brandmark">▣</span><span><span class="ij-brandname">Info<span>Jano</span></span><span class="ij-brandtag">Smart Online Tools for Everyday Life</span></span></a><span class="ij-brand-divider"></span><span class="ij-brand-promise">Simple tools. Clear results.</span><a class="ij-home-back" href="index.html">← Back to Home</a></div></header>
 <nav class="ij-hero-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a> <span aria-hidden="true">›</span> Tip Calculator</nav>
 <section class="ij-reference-hero ij-tip-new-hero" aria-labelledby="ij-reference-hero-title">
 <div class="ij-reference-grid"><div class="ij-reference-copy">
