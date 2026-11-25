@@ -166,7 +166,7 @@ $('file').addEventListener('change',async e=>{
  try{
   status('Reading the selected PDF on this device…');
   const bytes=new Uint8Array(await f.arrayBuffer());
-  if(bytes.length<5||String.fromCharCode(...bytes.slice(0,5))!=='%PDF-')throw new Error('The selected file does not begin with a valid PDF signature. It may be damaged or may not actually be a PDF.');
+  if(bytes.length<5||!String.fromCharCode(...bytes.slice(0,Math.min(bytes.length,1024))).includes('%PDF-'))throw new Error('The selected file does not contain a valid PDF signature. It may be damaged or may not actually be a PDF.');
   status('Opening PDF and preparing page previews…');
   pdf=await openPdf(bytes);
   $('fileInfo').textContent=f.name+' · '+pdf.numPages+' page(s) · '+(f.size/1048576).toFixed(2)+' MB';
