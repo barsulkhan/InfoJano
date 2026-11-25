@@ -2120,3 +2120,14 @@ The following are not all blockers to the Number to Words website release; they 
 - APK runs `45552640605` and `45552644833`: validation stage passed, including the 23-target matrix and service-worker cache checks. The sequential APK build stage was still in progress at this check; package-count verification, artifact upload and release publication are not yet confirmed.
 - The public web viewer could not directly retrieve `infojano.com/manifest.json` or `infojano.com/sw.js`; therefore Pages workflow success is confirmed, but independent live HTTP/PWA install verification is not claimed.
 - The Savings and Tip per-tool manifests were converted to relative paths. Other per-tool manifests still need a separate dual-host path review; do not mark the entire individual-PWA migration complete.
+
+
+## 25 Nov 2026 — All tool PWA paths made dual-host compatible (PR #348)
+- PR #348 merged to `main`: https://github.com/barsulkhan/InfoJano/pull/348. Merge commit: `1273e0b959cd7e9f9a1147f09d9a9ebfd5f21ecf`.
+- All 29 per-tool manifests now use deployment-relative `id`, `start_url`, `scope`, and icon paths. All 29 matching HTML pages use relative manifest, installer, shared-script and local asset URLs. This supports both `https://infojano.com/` and `https://barsulkhan.github.io/InfoJano/` without maintaining two variants.
+- Fixed Word Converter dynamic script loading and Word-to-JPG/PDF/PNG redirect paths. Root PWA manifest and scope-aware service worker remain dual-host compatible (cache `infojano-v333`).
+- APK workflow validator now simulates both hosting roots and checks manifest href, start_url, scope, icon existence, installer path, service-worker cache coverage, and the 23 APK target matrix. The dual-host validation step passed in PR run `45554209773` and again in main run `45554400866` (APK build stage still running at note time).
+- GitHub Pages build/deploy run `45554400503` completed successfully for merge commit `1273e0b959cd7e9f9a1147f09d9a9ebfd5f21ecf`.
+- The previous 23-APK build/release run `45552644833` completed all steps successfully. A fresh post-merge APK build is running in `45554400866`; a Password Generator Chromium desktop/mobile test is running in `45554400983`.
+- Production HTML page `https://infojano.com/age.html` is reachable. The web retrieval tool cannot independently fetch the JSON manifest endpoints, so no claim is made that a real device install test has been completed. Verify installation and offline behavior on Android after deployment.
+- No calculator formulas, homepage visual design, ID Card Print Studio logic, or Savings tool calculations were changed.
