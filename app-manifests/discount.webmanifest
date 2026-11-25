@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/discount.html",
+  "id": "../discount.html",
   "name": "InfoJano — Discount Calculator",
   "short_name": "Discount Calculator",
   "description": "Install the InfoJano Discount Calculator tool for quick access.",
-  "start_url": "/InfoJano/discount.html",
-  "scope": "/InfoJano/",
+  "start_url": "../discount.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/discount.svg",
+      "src": "../app-icons/discount.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
