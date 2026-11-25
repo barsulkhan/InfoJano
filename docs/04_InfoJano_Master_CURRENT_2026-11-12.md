@@ -2119,7 +2119,7 @@ The following are not all blockers to the Number to Words website release; they 
 - Latest GitHub Pages build/deploy run `45552716358` completed successfully for main commit `675f7e601990b7e69f424ee3c88061282c4d0708` (build, report-build-status and deploy succeeded).
 - APK runs `45552640605` and `45552644833`: validation stage passed, including the 23-target matrix and service-worker cache checks. The sequential APK build stage was still in progress at this check; package-count verification, artifact upload and release publication are not yet confirmed.
 - The public web viewer could not directly retrieve `infojano.com/manifest.json` or `infojano.com/sw.js`; therefore Pages workflow success is confirmed, but independent live HTTP/PWA install verification is not claimed.
-- The Savings and Tip per-tool manifests were converted to relative paths. Other per-tool manifests still need a separate dual-host path review; do not mark the entire individual-PWA migration complete.
+- Historical note, superseded by PR #348 below: at that earlier checkpoint only Savings and Tip manifests had been converted; the remaining individual-PWA migration was subsequently completed in PR #348.
 
 
 ## 25 Nov 2026 — All tool PWA paths made dual-host compatible (PR #348)
@@ -2131,3 +2131,17 @@ The following are not all blockers to the Number to Words website release; they 
 - The previous 23-APK build/release run `45552644833` completed all steps successfully. A fresh post-merge APK build is running in `45554400866`; a Password Generator Chromium desktop/mobile test is running in `45554400983`.
 - Production HTML page `https://infojano.com/age.html` is reachable. The web retrieval tool cannot independently fetch the JSON manifest endpoints, so no claim is made that a real device install test has been completed. Verify installation and offline behavior on Android after deployment.
 - No calculator formulas, homepage visual design, ID Card Print Studio logic, or Savings tool calculations were changed.
+
+
+## 25 Nov 2026 — Password Generator QA, shared Related Apps and homepage PWA follow-up (PR #349)
+- PR #349 merged to `main`: https://github.com/barsulkhan/InfoJano/pull/349. Merge commit: `2c5108235ef263be803f9ddf17bb29e486aab159`.
+- Password Generator validation now clears any previously generated credential after an invalid selection or secure-random failure, resets strength/entropy feedback, and returns the result field to hidden. Its 8-character minimum remains unchanged.
+- Fixed the dynamic Related Apps mismatch: `install.js` loads `related-apps.js`, which replaces the static `related-tools-title` section with `#ij-related-apps`. The Password Generator now aligns that actual dynamic section with the hero rail; browser QA waits for the dynamic section and measures the correct element.
+- Updated `related-apps.js` to choose `/InfoJano/` only on `barsulkhan.github.io`, and `/` on the custom domain/other hosts. This fixes page and icon links on both hosts.
+- Updated homepage local paths (favicon, hero artwork, download-progress and install scripts) to deployment-relative paths. Root `manifest.json` was already relative and remains so.
+- Bumped Service Worker cache from `infojano-v333` to `infojano-v334` so the new homepage and Related Apps scripts/assets are refreshed for offline-capable installs.
+- Password Generator Chromium desktop/mobile QA passed **32/32** tests in run `45556385350` and passed again on the latest PR head in run `45556657670`. Social QR Chromium desktop/mobile QA passed in run `45556657775`; shared footer QA passed in run `45556658384`.
+- APK workflow dual-host manifest validation passed in PR run `45556657609`; its 23-target Gradle build was still running when PR #349 was merged. The earlier main-branch 23-APK release `infojano-tool-apps-v1.1.1` remains available; monitor the post-merge build/release run for refreshed assets.
+- Still requires a real Android device: install the PWA from both the custom domain and GitHub Pages, open it once online, then verify launch/offline fallback after disconnecting. Cloud browser tests cannot certify an actual Android install.
+- Previously recorded Search Console manual requests for six unknown/discovered URLs remain a user-side task; the OpenSEO index inspection tool reads status but does not submit Google's indexing request. The 50-page site audit also left 77 URLs uncrawled due to the audit page cap.
+- No calculator formulas, homepage visual design, ID Card Print Studio behavior, or Savings calculations were changed.
