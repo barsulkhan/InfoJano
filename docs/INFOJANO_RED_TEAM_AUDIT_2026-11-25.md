@@ -224,3 +224,12 @@ Inspected: percentage.html, repeated-percentage-change-calculator.html, percenta
 - Remaining six pages in this batch show matching Google and declared canonicals.
 
 No application source changed during this batch. Reinspect after Google recrawls the pages.
+
+
+## Fourth 10-URL Search Console batch — 25 Nov 2026
+
+Inspected: countdown-timer-bangladesh.html, countdown-timer-india.html, countdown-timer-usa.html, the parameterized UPI QR URL, target-marks-calculator.html, gst-calculator.html, loan-eligibility.html, number-to-words-for-cheque.html, dollars-in-words.html, decimal-number-to-words.html.
+
+- Nine of ten URLs are Submitted and indexed with successful fetches. The parameterized URL https://infojano.com/upi-payment-qr-code-generator.html?type=upi is URL unknown to Google; this is a query-parameter variant, not evidence that the dedicated UPI landing page is missing (the clean dedicated page is indexed). Review only if that variant is intentionally intended to be separately indexed; otherwise keep it out of sitemap/indexing queue.
+- target-marks-calculator.html had an old malformed GSC userCanonical string, but current source declares a clean infojano.com canonical and og:url. GSC last crawled 2026-11-11, before the 2026-11-12 metadata repair commit. Treat as stale GSC data; no source edit made.
+- All other pages in this batch have Google-selected and declared canonical aligned.
