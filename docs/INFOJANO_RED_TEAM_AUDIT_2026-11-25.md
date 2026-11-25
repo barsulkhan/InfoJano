@@ -309,3 +309,15 @@ Inspected: Bengali Number to Words, Document Studio, Ordinal Number Converter, O
 - Several query-parameter URLs are indexed separately: percentage.html?mode=repeated and qr-maker.html?type=upi. The latter GSC record declares an old GitHub Pages canonical, but this is a UI-mode URL and qr-maker.html was touched 25-Nov; do not change it during the code freeze. Review query-URL canonical strategy after fresh recrawl and decide whether these variants should be indexed or consolidated.
 - SMS QR has an old GSC GitHub Pages declared canonical, last crawled 11-Nov; compare against current source after the batch before any change. Successive Percentage also has a malformed old GSC canonical string from its 11-Nov crawl; verify current source before treating it as a defect.
 - The other clean landing pages in this batch have canonical agreement.
+
+
+## Homepage, host redirect and final priority URL checks — 25 Nov 2026
+
+- https://infojano.com/ is Submitted and indexed; last crawl 2026-11-25T00:52:37Z; fetch successful; Google and user canonical agree.
+- https://www.infojano.com/ is Page with redirect; Google-selected canonical is the apex https://infojano.com/. This is the expected host consolidation, not a defect.
+- vcard-qr-code-generator.html is indexed and fetch-successful. GSC's old declared canonical points to GitHub Pages, but current source declares infojano.com canonical/og:url and was refined 2026-11-24. Treat as stale crawl (last crawl 2026-11-11).
+- sms-qr-code-generator.html is indexed and fetch-successful. Current source declares infojano.com canonical/og:url and was refined 2026-11-24; GSC's GitHub Pages userCanonical is from the older 2026-11-11 crawl. Treat as stale.
+- successive-percentage-change-calculator.html is indexed and fetch-successful. Current source declares a clean infojano.com canonical/og:url; malformed GSC userCanonical comes from its 2026-11-11 crawl, before the 2026-11-12 metadata repair.
+- words-to-number-converter.html is indexed with successful fetch and canonical agreement.
+
+Overall: the reviewed canonical mismatch pattern is largely stale Search Console data predating recent source repairs, rather than evidence that current HTML still contains broken canonical tags. Wait for Google recrawl and re-inspect before editing metadata.
