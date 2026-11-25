@@ -2299,3 +2299,9 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Root manifest icon and start/scope targets also exist. Static path check: 30 manifests / 92 referenced files / 0 missing targets.
 - No PWA files changed. Actual install/offline/HTTP status still needs live browser verification.
 - Full notes saved in Red Team Audit.
+
+
+### Backend readiness — 25 Nov 2026
+- Short-link Worker is explicitly undeployed staging scaffold; production requires Cloudflare Worker/D1, admin secret, custom short domain, rate limits, auth, abuse controls and monitoring. URL Toolkit currently correctly says genuine short links are not live. PR #1 remains draft and unmerged despite passing CI.
+- Word Converter Worker needs iLoveAPI key/credits and Cloudflare rate limiting. Its CORS allow-list only permits barsulkhan.github.io; if using the feature on infojano.com, add the custom domain before deploying. Worker/config last changed 5-Nov; no today-file restrictions apply, but no deployment/secrets/test were available in this pass.
+- No backend service was deployed. Details saved in Red Team Audit.
