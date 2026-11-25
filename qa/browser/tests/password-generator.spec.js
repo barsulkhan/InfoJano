@@ -4,6 +4,7 @@ test.describe('Password Generator — desktop and mobile', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/password-generator.html');
     await expect(page.locator('#generate-button')).toBeVisible();
+    await expect(page.locator('#ij-related-apps')).toBeVisible();
   });
 
   test('generates a password with selected groups, required group coverage and exclusions', async ({ page }) => {
@@ -21,15 +22,22 @@ test.describe('Password Generator — desktop and mobile', () => {
     await expect(page.locator('#message')).toContainText('Generated locally');
   });
 
-  test('rejects empty character selection and impossible minimum group coverage', async ({ page }) => {
+  test('rejects invalid character selections without retaining a previous result', async ({ page }) => {
+    await page.locator('#generate-button').click();
+    expect(await page.locator('#result').inputValue()).not.toBe('');
+
     for (const id of ['lower','upper','numbers','symbols']) await page.locator('#'+id).uncheck();
     await page.locator('#generate-button').click();
     await expect(page.locator('#message')).toContainText('Select at least one character type');
+    await expect(page.locator('#result')).toHaveValue('');
+
     for (const id of ['lower','upper','numbers','symbols']) await page.locator('#'+id).check();
-    await page.locator('#length').evaluate(el => { el.value = '3'; el.dispatchEvent(new Event('input', { bubbles: true })); });
+    await page.locator('#exclude-custom').fill('abcdefghijklmnopqrstuvwxyz');
     await page.locator('#min-each').check();
     await page.locator('#generate-button').click();
-    await expect(page.locator('#message')).toContainText('Increase the length');
+    await expect(page.locator('#message')).toContainText('selected character group is empty');
+    await expect(page.locator('#result')).toHaveValue('');
+    await expect(page.locator('#result')).toHaveAttribute('type', 'password');
   });
 
   test('switches the preset to Custom after manual settings change', async ({ page }) => {
@@ -191,7 +199,7 @@ test.describe('Password Generator — desktop and mobile', () => {
         const rect = selector => document.querySelector(selector)?.getBoundingClientRect();
         const hero = rect('.ij-reference-hero');
         const workspace = rect('.ij-password-workspace');
-        const related = rect('body > section[aria-labelledby="related-tools-title"]');
+        const related = document.querySelector('#ij-related-apps')?.getBoundingClientRect();
         return {
           viewport: document.documentElement.clientWidth,
           document: document.documentElement.scrollWidth,

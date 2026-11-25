@@ -1,6 +1,6 @@
 /* InfoJano contextual Related Apps: show four other tools, excluding the current tool. */
 (()=> {
-  const base="/InfoJano/";
+  const base=location.hostname==="barsulkhan.github.io"?"/InfoJano/":"/";
   const release="https://github.com/barsulkhan/InfoJano/releases/download/infojano-tool-apps-v1.1.1/";
   const desktopRelease="https://github.com/barsulkhan/InfoJano/releases/download/infojano-desktop-apps-v1.0.0/";
   const apps=[
