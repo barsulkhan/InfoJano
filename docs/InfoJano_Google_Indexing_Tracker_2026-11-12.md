@@ -266,3 +266,48 @@ Inspected 10 URLs in `sc-domain:infojano.com`:
 1. In Search Console, review/request indexing once for the five unknown/discovered URLs above (PDF to JPG, Google Maps QR, Percentage Decrease, Cheque Amount, Word Converter, BMI Health Guide). Do not repeatedly request the same stale URL-inspection record.
 2. Decide whether to authorize the separate Savings PWA/APK validator repair. Until then, the APK workflow remains blocked by design/scope.
 3. Verify the newest Pages deployment run for the final main-branch head before treating the latest branch state as live.
+
+
+## 25 Nov 2026 — Final verification after continuation
+
+### Main branch and deployment
+- Current `main` HEAD at verification: `1cde62a0f06ea3c41f96d59ce727f8cf07610710`.
+- GitHub Pages deployment run `45472472776` completed successfully for that exact HEAD (build, report-build-status, and deploy jobs all passed).
+- This verifies the GitHub Pages deployment workflow, not a direct HTTP/browser check of the custom-domain pages; the web fetch used in this session could not access `infojano.com`.
+
+### Asset paths
+- Re-fetched the 8 interrupted files and confirmed zero legacy `/InfoJano/` asset references in their HTML source. Their manifest/script references now use root paths such as `/install.js`, `/site-header.js`, `/download-progress.js`, and `/app-manifests/*.webmanifest`.
+- Re-fetched the 4 previously fixed pages (`word-converter.html`, `pdf-to-jpg.html`, `google-maps-location-qr-code-generator.html`, `age-in-days-calculator.html`); all remain free of legacy `/InfoJano/` references in HTML source.
+- No mass replacement was performed.
+
+### Latest 10-URL Search Console inspection
+- `pdf-to-jpg.html`: Discovered — currently not indexed.
+- `google-maps-location-qr-code-generator.html`: URL is unknown to Google.
+- `percentage-decrease-calculator.html`: URL is unknown to Google.
+- `cheque-amount-in-words.html`: Discovered — currently not indexed.
+- `word-converter.html`: Discovered — currently not indexed.
+- `bmi-health-guide.html`: Discovered — currently not indexed.
+- `elapsed-time-calculator-guide.html`: Submitted and indexed; Google/user canonical agree; last crawl 2026-11-19.
+- `bmi-calculation-guide.html`: Submitted and indexed; Google/user canonical agree; last crawl 2026-11-16.
+- `bmi-weight-categories.html`: Submitted and indexed; Google/user canonical agree; last crawl 2026-11-16.
+- `age-in-days-calculator.html`: Crawled — currently not indexed; last crawl 2026-11-11. Google canonical is `https://infojano.com/age-in-days-calculator.html`, while the inspection record's declared canonical is the GitHub Pages URL. Current source canonical is already infojano.com; do not change it again based on this stale inspection alone.
+- Search Console inspection reads existing status; it does not send an indexing request. Six unknown/discovered URLs remain for one manual review/request batch.
+
+### Internal linking / sitemap
+- Sitemap currently contains 108 URLs and includes both `bmi-health-guide.html` and `cheque-amount-in-words.html`.
+- `bmi.html` links to `bmi-health-guide.html`; the BMI health guide links back to the BMI tool and to the three supporting BMI guides.
+- `number-to-words.html` already links directly to `cheque-amount-in-words.html`; no extra duplicate link was added.
+
+### OpenSEO audit and performance
+- Audit `6cc874e4-f0bc-4017-bd02-ba4ee3eda2a9` is completed, 50/50 pages. The tool capped the requested 100-page budget at 50; 77 URLs were not crawled. The only issue is `crawl-page-limit`; the 50-page sample had HTTP 200 responses, titles, and one H1 each. This is not a full-site clean bill.
+- Latest three-month GSC page data (2026-08-22 to 2026-11-22; 67 rows) includes `discount-pt-br.html`: 1,632 impressions, 1 click, average position 8.3; `percentage-pt-br.html`: 2,046 impressions, 0 clicks in the earlier handover snapshot. Query data currently returned for those pages is low-volume/noisy, so no speculative metadata overwrite was made.
+- Sitemap count remains 108.
+
+### PWA / APK hold — no changes
+- `index.html` still points to `/InfoJano/manifest.json`, `/InfoJano/download-progress.js`, and `/InfoJano/install.js`.
+- Root `manifest.json` still declares GitHub Pages `/InfoJano/` start URL/scope and icon paths. Shared `install.js`, `site-header.js`, and `site-footer.js` have host-aware ROOT logic. This needs a deliberate dual-host PWA strategy; no PWA-sensitive file was changed.
+- Latest checked APK workflow `45472110450` fails at validation with `Missing installer script: savings.html`; APK build steps are skipped. Per scope restriction, no Savings PWA behavior or APK validator change was made.
+
+### Only remaining user-side actions
+1. In Search Console, manually review and request indexing once for the six unknown/discovered URLs listed above (do not repeatedly submit stale records).
+2. Decide separately whether to authorize a dual-host PWA/index.html repair and the Savings APK validator repair. Until explicit approval, these remain untouched.
