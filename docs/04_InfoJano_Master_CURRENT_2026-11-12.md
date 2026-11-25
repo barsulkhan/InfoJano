@@ -2252,3 +2252,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Checked current source and file history for UPI QR, Custom QR, QR Maker and Percentage Difference. Current HTML source for all four declares clean infojano.com canonical URLs. GSC records were last crawled 11-Nov, before recent source updates on 21/24-Nov (QR Maker also touched 25-Nov and remains excluded from edits).
 - Treat the reported old GitHub Pages / malformed canonical values as stale GSC crawl data until Google recrawls. No source files were changed. Reinspect after crawl.
 - Details saved in Red Team Audit: docs/INFOJANO_RED_TEAM_AUDIT_2026-11-25.md.
+
+
+### Second Search Console batch — 25 Nov 2026
+- Additional priority pages checked: Percentage PT-BR, Discount PT-BR, Number to Words (English and Indian), Rupees in Words, Number to Words uppercase, UPI QR, Contact QR, Percentage Increase, Percentage to Fraction, BMI Calculation and BMI Weight Categories. All were Indexed with successful fetches; canonical status is mostly aligned.
+- UPI QR and Age in Days show old GitHub Pages canonical values in GSC, but current source was updated to infojano.com on 24-Nov, after their last 11-Nov crawl. Treat as stale GSC data until recrawl; no code changes.
+- Bengali Number to Words ?lang=bn is indexed; Google-selected canonical is query URL while declared canonical points to base URL. Review localization/hreflang intent before changing.
+- Full URL-by-URL detail saved in Red Team Audit.
