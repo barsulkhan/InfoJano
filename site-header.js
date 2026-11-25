@@ -31,6 +31,8 @@
   .ij-global-header--hero-aligned .ij-global-divider{display:none}
 
   .ij-site-brand,.ij-brandbar{display:none!important}
+  /* Replace legacy top-level page headers with the unified ID Studio header. */
+  body>header.header{display:none!important}
   /* Hide legacy install-this-tool prompts across every tool page. */
   .ij-install-card,#ij-install-card{display:none!important}
   @media(max-width:620px){
