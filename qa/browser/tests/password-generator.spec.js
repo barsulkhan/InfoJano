@@ -4,6 +4,7 @@ test.describe('Password Generator — desktop and mobile', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/password-generator.html');
     await expect(page.locator('#generate-button')).toBeVisible();
+    await expect(page.locator('#ij-related-apps')).toBeVisible();
   });
 
   test('generates a password with selected groups, required group coverage and exclusions', async ({ page }) => {
