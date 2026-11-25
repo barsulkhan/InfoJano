@@ -2203,3 +2203,13 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 4. For broader site QA, use an authorized larger audit budget if available. Current audit only covered 50 of 127 discovered URLs (50 crawled + 77 not crawled).
 5. Keep commit, deployment, Google indexing and real-device PWA installation as separate verification states.
 6. Continue respecting protected scope: no Header/Hero redesign, no ID Card Print Studio workflow/print logic changes, no Savings PWA/APK changes without permission, no analytics-location changes, and no robots.txt crawler-limit workaround.
+
+
+
+## 25 Nov 2026 — Red-team audit continuation
+- Completed a source/PR/public-page review without changing application code. All application-code changes dated 2026-11-25 remained protected.
+- Saved the detailed findings and priority backlog in [INFOJANO_RED_TEAM_AUDIT_2026-11-25.md](INFOJANO_RED_TEAM_AUDIT_2026-11-25.md).
+- PR #1 remains OPEN / DRAFT / unmerged. Its GitHub Actions security test run 41401938946 passed, but review found an over-escaped IPv6 bracket-removal expression in the validation helper and insufficient positive/global IPv6 boundary tests. This is not established as an exploitable bypass because a downstream helper strips brackets independently; fix and retest before approval. Keep the Worker staging-only.
+- Public crawler sample retrieved homepage, URL Toolkit, Password Generator, QR Maker, Image to PDF, Number to Words and Work Hours pages. This is not interactive browser QA or a complete status sweep.
+- Remaining priority work: six manual Search Console review/request actions, exact-current-HEAD Pages deployment verification, real Android PWA install/offline QA, and an expanded crawl beyond the previous 50/127-page budget.
+- No application code, PR state, deployment, or indexing state was changed by this audit.
