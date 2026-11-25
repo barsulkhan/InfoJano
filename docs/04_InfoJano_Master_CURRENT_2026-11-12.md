@@ -2279,3 +2279,10 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Birthday's GSC old GitHub Pages canonical predates the clean 12-Nov source repair; wait for recrawl.
 - Image Compressor and Image Resizer are Crawled — currently not indexed despite successful fetch and canonical agreement. Both were touched on 25-Nov and remain excluded from edits; investigate content/internal links and recheck after deploy.
 - Details saved in Red Team Audit.
+
+
+### Sixth Search Console batch — 25 Nov 2026
+- Add/Subtract Date, BMI, BMR, Currency Converter, Exam Marks Percentage, Million/Billion Converter, Tip Calculator, Unit Converter and What Percent Calculator are indexed with successful fetches.
+- Savings is Duplicate (Google chose GitHub Pages canonical), but its current source canonical is infojano.com and it was updated 24/25-Nov. GSC crawl is 21-Nov; do not edit today's touched file; wait for deployment and recrawl.
+- What Percent's malformed GSC canonical is from 11-Nov, before 12-Nov metadata repair; current source is clean.
+- Details saved in Red Team Audit.
