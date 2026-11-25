@@ -236,3 +236,107 @@ Visible status:
 - HTTPS: "Page is served over HTTPS"
 Interpretation: the legacy GitHub Pages QR Maker URL is definitely indexed according to the user's Search Console screenshot. This explains why the Performance report attributes impressions to the legacy URL. The screenshot does NOT show user-declared canonical or Google-selected canonical, so canonical consolidation is still unverified. Do not remove the legacy URL or make SEO/code changes based on this evidence alone.
 Next exact check: inspect `https://infojano.com/qr-maker.html` in the same property; capture URL is on Google/Page indexing status, then expand Page indexing details on both URLs and compare user-declared canonical and Google-selected canonical. If the custom-domain URL is indexed and Google-selected canonical is the custom domain, this is a healthy consolidation signal; if not, investigate canonical/redirect/sitemap/internal-link consistency before edits.
+
+
+## Audience-growth research and implementation checkpoint — 25 Nov 2026
+
+### Evidence window and data quality
+Google Search Console property: `sc-domain:infojano.com`. Read-only data window: **2026-08-22 through 2026-11-22**. The page report contained 67 URLs. Query report was read for the first 200 rows; country-specific query/page reports were read for Brazil and India. These are observed impressions/clicks, not keyword-volume estimates.
+
+Top page opportunities:
+- `percentage-pt-br.html`: 2,053 impressions, 0 clicks, average position 9.2.
+- `discount-pt-br.html`: 1,632 impressions, 1 click, average position 8.3.
+- `bmi-calculation-guide.html`: 811 impressions, 0 clicks, average position 62.1.
+- `bmi-weight-categories.html`: 412 impressions, 0 clicks, average position 58.7.
+- `upi-payment-qr-code-generator.html`: 274 impressions, 0 clicks, average position 45.9.
+- `number-to-words.html`: 280 impressions, 1 click, average position 35.3.
+- `number-to-words-indian.html`: 180 impressions, 0 clicks, average position 24.6.
+- `time-calculator.html`: 156 impressions, 1 click, average position 33.1.
+
+Country report:
+- Brazil: 3,669 impressions / 1 click.
+- India: 977 / 5.
+- Bangladesh: 115 / 2.
+- United States: 461 / 1.
+- United Kingdom: 439 / 1.
+This shows current visibility in both Brazil and India; it does not prove stable country-level demand or future traffic.
+
+Device report:
+- Desktop: 3,729 impressions / 13 clicks (CTR 0.35%).
+- Mobile: 3,068 / 3 (CTR 0.10%).
+- Tablet: 45 / 0.
+Mobile is a substantial share of visibility and deserves explicit mobile conversion QA. Do not infer that device alone caused the CTR difference.
+
+Data caveat: a `last_28_days` request returned the same rows and totals as the 3-month report. Do not use that response for a 28-day vs 3-month trend comparison; fetch a verified explicit date window before future trend claims.
+
+### Query-to-page evidence
+Brazil query/page sample mapped Portuguese percentage phrases to `percentage-pt-br.html`, including:
+- `porcentagem online`: 11 impressions, average position 25.7.
+- `calculadora de porcentagem online`: 5, position 46.6.
+- `calculadora porcentagem online`: 4, position 47.
+- `calcular porcentagem online`: 7, position 48.3.
+The query/page sample is incomplete and does not explain all 2,053 page impressions; do not treat it as the complete query set.
+
+India query/page sample showed amount-in-words intent for the Indian number-to-words pages, and UPI intent including:
+- `create upi payment link`: 19 impressions, position 57.3.
+- `create your upi qr code`: 8, position 47.5.
+- `create upi qr code`: 4, position 42.
+The UPI page's 274 page-level impressions are a stronger aggregate signal than any single small query row.
+
+### Competitor and official-source research (25 Nov 2026)
+This was a public search-result feature review, not a full rank-tracked competitor audit. No competitor copy or design was copied.
+
+Brazil percentage calculators:
+- https://www.utilaria.com.br/calculadora-de-porcentagem/ — five everyday percentage modes, live results and Brazilian number formatting.
+- https://dica.com.br/calculadora-porcentagem/ — multiple calculation modes, live results, practical examples and BR formatting.
+- https://tautil.com.br/ferramentas/calculadora-de-porcentagem — instant results, formula explanation, decimal input and an explicit editorial-check note.
+- https://blog.ailos.coop.br/calculadoras/calculadora-de-porcentagem — part, increase, discount and proportion examples with formula explanations.
+Finding: the current InfoJano PT-BR percentage calculator only calculated X% of a value, while the visible hero copy referenced increase/reduction and the FAQ text also described proportion. A more complete calculator would make the page's promises accurate and satisfy more of the observed task types.
+
+India number-to-words:
+- https://isolutionindia.in/tools/number-to-words.html — Indian lakh/crore and international formats, cheque-ready output, case controls and presets.
+- https://praxtools.in/numbertoword/ — multiple languages, paise, cheque/invoice output, bulk conversion and CSV export; the page itself warns that some language spellings are approximate.
+Finding: audit InfoJano's existing Indian number-to-words workflow against cheque-safe output, lakh/crore grouping, paise, case options and bulk tasks before adding anything. Do not create duplicate near-identical pages.
+
+UPI QR:
+- https://www.qrmaker.in/ — QR customization, PNG/SVG downloads, scanner and UPI/WhatsApp use cases.
+- https://upi.pe/ — UPI QR plus shareable payment link and browser-side generation messaging.
+- https://infomukesh.co.in/ — UPI ID/payee/optional amount, browser-side generation and verification caveats.
+Finding: InfoJano already has a dedicated UPI QR page, but its current ranking is weak. Review the exact feature gap and mobile flow before proposing a payment-link feature. Never imply that InfoJano receives, processes or verifies payments.
+
+BMI accuracy references:
+- India Ministry of Health/NHM reference: https://www.mohfw.gov.in/sites/default/files/Module%20for%20Multi-Purpose%20Workers%20-%20Prevention%2C%20Screening%20and%20Control%20of%20Common%20NCDS.pdf — source describes Asian Indian adult BMI cut-offs: normal 18.0–22.9, overweight 23.0–24.9, obesity at/above 25.0.
+- CDC formula reference: https://www.cdc.gov/growth-chart-training/hcp/using-bmi/calculating-bmi.html
+Finding: before changing BMI pages, check the actual age-specific and India-specific classification content, cite appropriate official guidance, and avoid presenting BMI as a diagnosis. This is health-related content and needs extra accuracy review.
+
+Google guidance:
+- https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+- https://developers.google.com/search/docs/essentials
+Principle: prioritize people-first, accurate, original and genuinely useful content; do not mass-produce thin pages, keyword-stuff, or create pages solely for rankings.
+
+### Implemented experiment — GROW-20261125-001
+Target: `percentage-pt-br.html`.
+- Added five calculation modes: X% of a value; part as a percentage of total; percentage increase; percentage discount; percentage change.
+- Added Brazilian Portuguese number formatting, input-triggered recalculation, zero-denominator handling and clear validation messages.
+- Expanded visible formula/examples/FAQ content to match the supported modes.
+- Changed manifest and install script paths to relative paths so the page works from both the custom-domain root and GitHub Pages project path.
+- Preserved the existing approved hero section unchanged.
+- Only this file changed in the application code. Its latest pre-change commit was 24-Nov-2026 (`44591545e7a000232ac772b61a4cfbe8941e6962)); no 25-Nov protected application file was edited.
+
+PR: https://github.com/barsulkhan/InfoJano/pull/350
+Branch: `growth/ptbr-percentage-calculator-v1`
+Commit: `0bb9c9ed969cf43f129cf56f3d924e41c12cdcd9`
+Status at checkpoint: OPEN / DRAFT / UNMERGED.
+Validation: embedded JavaScript syntax parse PASS; five representative calculation examples PASS; source diff confirms hero unchanged and relative manifest/install paths. Global Footer QA run `45600925028` completed SUCCESS. APK workflow `45600925032` was still in progress at the checkpoint. Full browser/mobile interaction QA and live deployment have NOT been verified. Do not merge until all checks complete and the diff is reviewed.
+
+### Next growth priorities
+1. Complete PR #350 browser/mobile QA; verify both custom domain and GitHub Pages paths after approval/deployment; then measure the page over a clean, comparable Search Console window. Do not rewrite its title/description again immediately: both PT-BR snippets were updated on 24-Nov.
+2. Audit `discount-pt-br.html` tool behavior and wait for the 24-Nov snippet update to be recrawled before further metadata changes.
+3. After the 25-Nov code-freeze restriction is lifted, inspect Indian number-to-words and cheque tasks for lakh/crore, paise, cheque-safe output, case and bulk conversion gaps.
+4. Improve the UPI QR page only after feature/security review; distinguish generating a QR from receiving or verifying a payment.
+5. Audit BMI pages against official Indian adult guidance and appropriate age-specific references; do not make health claims without reliable sources.
+6. Add mobile-first interaction and conversion QA to the top landing pages; current mobile GSC impressions are substantial.
+7. Distribute genuinely useful tool demos and answers in relevant communities without spam, fake engagement, purchased backlinks or unapproved paid ads.
+
+### Research limitations
+OpenSEO keyword-volume/ranked-keyword research could not run because the connected organization reported insufficient credits. No credits were purchased or spent. AI-visibility tracking is not configured; no paid AI visibility run was started. Search Console data and public web search were used instead. No traffic increase, ranking improvement, indexing or live deployment is claimed.

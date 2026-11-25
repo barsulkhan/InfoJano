@@ -2324,3 +2324,53 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - vCard QR, SMS QR and Successive Percentage GSC canonical anomalies are stale 11-Nov records; current source now declares clean infojano.com canonical/og:url after later 12/24-Nov fixes. Words-to-Number is indexed with canonical agreement.
 - Avoid further canonical source edits until fresh Google recrawl confirms whether any mismatch persists.
 - Details saved in Red Team Audit.
+
+
+## Audience Growth — Research & implementation checkpoint (25 Nov 2026)
+
+**Goal:** grow real, relevant InfoJano visitors using Search Console evidence, better tools, people-first content and measured distribution. Traffic or rankings are not guaranteed.
+
+### Search Console evidence (2026-08-22 to 2026-11-22)
+Property: `sc-domain:infojano.com`; page report 67 URLs.
+- `percentage-pt-br.html`: 2,053 impressions / 0 clicks / avg position 9.2.
+- `discount-pt-br.html`: 1,632 / 1 / 8.3.
+- `bmi-calculation-guide.html`: 811 / 0 / 62.1.
+- `bmi-weight-categories.html`: 412 / 0 / 58.7.
+- `upi-payment-qr-code-generator.html`: 274 / 0 / 45.9.
+- `number-to-words.html`: 280 / 1 / 35.3.
+- `number-to-words-indian.html`: 180 / 0 / 24.6.
+- `time-calculator.html`: 156 / 1 / 33.1.
+
+Country impressions/clicks: Brazil 3,669/1; India 977/5; Bangladesh 115/2; USA 461/1; UK 439/1. Device: desktop 3,729 impressions/13 clicks; mobile 3,068/3; tablet 45/0. Mobile needs explicit usability checks. A last-28-days request unexpectedly returned the same rows as the 3-month report; do not use it as a trend comparison.
+
+Brazil query/page samples include `porcentagem online` (11 impressions), `calculadora de porcentagem online` (5), `calculadora porcentagem online` (4), and `calcular porcentagem online` (7), all mapped to the PT-BR percentage page. Query samples are incomplete and do not explain the entire page impression total.
+
+### Research conclusions
+1. Brazil is a real visibility opportunity: Portuguese percentage and discount pages together account for 3,685 impressions in the period, but almost no clicks. Competitor pages such as Utilaria, Dica, Tá Útil and Ailos offer multiple calculator modes, live results, Brazilian formatting and formula/examples. InfoJano's PT-BR percentage calculator previously only calculated X% of a value despite page copy mentioning additional tasks.
+2. India number-to-words is a second opportunity: the Indian page has 180 impressions at average position 24.6. Competitor examples include lakh/crore formatting, cheque-ready wording, paise, case controls and bulk conversion. Review existing features before creating any new page.
+3. UPI QR page has 274 impressions at average position 45.9. Search terms include creating UPI payment links. Competitors show QR customization, PNG/SVG, scanner and shareable link patterns. Do not claim payment processing or verification.
+4. BMI guides have meaningful impressions but weak positions. Check them against official Indian adult BMI guidance and age-appropriate sources; do not present BMI as a diagnosis.
+5. Mobile impressions are significant; prioritize mobile tool completion and page usability.
+
+### Applied in draft PR #350
+- Branch: `growth/ptbr-percentage-calculator-v1`
+- Commit: `0bb9c9ed969cf43f129cf56f3d924e41c12cdcd9`
+- PR: https://github.com/barsulkhan/InfoJano/pull/350
+- Only `percentage-pt-br.html` changed; its previous file commit was 24-Nov, not 25-Nov. No protected 25-Nov app code touched.
+- Added five percentage modes (percentage of value, part/total, increase, discount, percentage change), Brazilian formatting, live calculation, validation, formulas and FAQ.
+- Corrected manifest/install references to relative paths for both supported hosts.
+- Approved hero section was preserved.
+- Embedded JS syntax and five sample calculations passed. Global Footer QA run 45600925028 passed. APK workflow 45600925032 was still running at checkpoint. Browser/mobile QA and live deployment remain unverified.
+- PR is DRAFT / OPEN / UNMERGED. Do not merge until checks and real mobile/browser QA are complete.
+
+### Research sources
+- Google people-first guidance: https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+- Google Search Essentials: https://developers.google.com/search/docs/essentials
+- Brazil competitor examples: https://www.utilaria.com.br/calculadora-de-porcentagem/ ; https://dica.com.br/calculadora-porcentagem/ ; https://tautil.com.br/ferramentas/calculadora-de-porcentagem ; https://blog.ailos.coop.br/calculadoras/calculadora-de-porcentagem
+- India number-to-words examples: https://isolutionindia.in/tools/number-to-words.html ; https://praxtools.in/numbertoword/
+- UPI QR examples: https://www.qrmaker.in/ ; https://upi.pe/ ; https://infomukesh.co.in/
+- India BMI guidance: https://www.mohfw.gov.in/sites/default/files/Module%20for%20Multi-Purpose%20Workers%20-%20Prevention%2C%20Screening%20and%20Control%20of%20Common%20NCDS.pdf ; CDC formula: https://www.cdc.gov/growth-chart-training/hcp/using-bmi/calculating-bmi.html
+
+### Limitations and next steps
+OpenSEO keyword-volume/ranked-keyword research could not run because the connected organization reported insufficient credits; no credits were bought. AI-visibility tracking is not configured and no paid run was started. No traffic increase, ranking improvement, indexing or live deployment is claimed.
+Next: finish PR #350 QA; then measure PT-BR pages on a valid comparable GSC window; inspect Indian number-to-words, UPI and BMI opportunities without editing any 25-Nov protected application files.
