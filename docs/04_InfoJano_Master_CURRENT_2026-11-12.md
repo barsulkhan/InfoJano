@@ -2259,3 +2259,9 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - UPI QR and Age in Days show old GitHub Pages canonical values in GSC, but current source was updated to infojano.com on 24-Nov, after their last 11-Nov crawl. Treat as stale GSC data until recrawl; no code changes.
 - Bengali Number to Words ?lang=bn is indexed; Google-selected canonical is query URL while declared canonical points to base URL. Review localization/hreflang intent before changing.
 - Full URL-by-URL detail saved in Red Team Audit.
+
+
+### Third Search Console batch — 25 Nov 2026
+- 10 more pages checked: Percentage, Repeated Percentage Change, Percentage Change, Percentage to Decimal, Profit/Loss, Date Difference, Age, Loan Interest, QR Scanner and Resize Image for Website. All 10 are Indexed with successful fetches.
+- Four old canonical mismatches were compared against current source; all current source tags are clean infojano.com canonical/og:url. Their GSC crawls are old (11-Nov). Wait for recrawl; do not make unnecessary source changes. Percentage Change was touched 25-Nov and remains excluded.
+- Detailed batch saved in Red Team Audit.
