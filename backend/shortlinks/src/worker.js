@@ -62,9 +62,12 @@ function isPrivateDestination(url) {
     // Conservatively reject mapped, translation, 6to4, Teredo, documentation and local ranges.
     const h = host.replace(/^\[|\]$/g, "");
     if (!/^[0-9a-f:]+$/.test(h)) return true;
-    const first = parseInt(h.split(":")[0] || "0", 16);
+    const hextets = h.split(":");
+    const first = parseInt(hextets[0] || "0", 16);
+    const second = parseInt(hextets[1] || "0", 16);
     return (first & 0xe000) !== 0x2000 ||
-      h.startsWith("2001:db8") || h.startsWith("2001:0") ||
+      (first === 0x2001 && second <= 0x01ff) || // conservative deny IETF special-purpose 2001::/23
+      h.startsWith("2001:db8") ||
       h.startsWith("2002:") || h.startsWith("64:ff9b:") ||
       h.startsWith("::ffff:") || h === "::" || h === "::1";
   }
