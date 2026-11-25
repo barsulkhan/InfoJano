@@ -2103,3 +2103,13 @@ The following are not all blockers to the Number to Words website release; they 
 - Source QA: JavaScript syntax for `sw.js` and `install.js` passed; root manifest JSON parses; Savings script/manifest references checked. This addresses the exact previous workflow error `Missing installer script: savings.html` and the next hard-coded service-worker path assertion.
 - PR #347 is OPEN and not merged/deployed. GitHub compare shows 8 commits ahead and 0 behind; mergeability is still reported false by GitHub and needs recheck before any merge. APK workflow has not yet rerun; successful APK build and real Android install/offline testing are NOT verified.
 - No calculator logic, homepage design, ID Card Print Studio, or unrelated tool UI was changed. Merge/deployment requires review and approval.
+
+
+## 25 Nov 2026 — Dual-host PWA repair merged; APK validation follow-up
+- PR #347 merged to `main`: https://github.com/barsulkhan/InfoJano/pull/347. Merge commit: `0273b98c30dfb804076d5cb5feeace150f8f70f7`.
+- Root `index.html` manifest href and `manifest.json` id/start_url/scope/icons now use host-relative paths. `install.js` registers the service worker on both the custom domain and GitHub Pages project path. `sw.js` resolves cached assets against its worker scope; cache is `infojano-v333`.
+- Savings PWA references and manifest were made host-relative, and the missing installer script was added. APK workflow cache assertions now accept both root and legacy project-path entries.
+- Post-merge APK workflow initially exposed a second missing installer reference on `tip-calculator.html`; repaired the page and its manifest in commits `0fd46f94cec7ca04beba956354813ebb8e57c003` and `678755da05a1632f62e0f282f98c256d071c055e`.
+- APK workflow run `45552640605`: validation stage PASSED after the Savings and Tip fixes; the 23-APK build stage was still running at the time of this note. Do not call the APK release complete until build, package-count, artifact upload and release steps finish successfully.
+- The first Pages deployment run after PR #347 (`45552640137`) was cancelled when the follow-up Tip fix was pushed. A fresh Pages deployment is required for the final main HEAD. Live domain and Android install/offline checks remain pending.
+- The separate per-tool manifest set still requires a full dual-host path review; this closeout confirms the root manifest and the Savings/Tip per-tool manifests only. No ID Card Print Studio tool logic or design was changed.
