@@ -2081,3 +2081,14 @@ The following are not all blockers to the Number to Words website release; they 
 - Global Footer QA passed on 035c50e. APK workflow remains blocked by the existing `Missing installer script: savings.html` assertion. Per scope restrictions, do not alter Savings PWA behavior or the APK validator without explicit approval.
 - No Header/Hero, ID Card Print Studio, analytics-location, or unrelated feature changes were made.
 - Next: manual Search Console review/request for the six unknown/discovered URLs (at most ten per batch), verify latest Pages deployment, and ask user approval only if the separate Savings PWA/APK-validator repair is desired.
+
+
+## 25 Nov 2026 — SEO verification closeout update
+- Updated the Google Indexing Tracker with the final 25 Nov checks: [full verification and remaining actions](InfoJano_Google_Indexing_Tracker_2026-11-12.md).
+- Confirmed all 8 interrupted asset-path files and the 4 previously fixed pages are clean of legacy `/InfoJano/` references in their HTML source.
+- Current main HEAD at verification was `1cde62a0f06ea3c41f96d59ce727f8cf07610710`; GitHub Pages deployment run `45472472776` succeeded for that exact commit.
+- Search Console: three inspected pages are indexed (elapsed-time guide, BMI calculation guide, BMI weight-categories guide); six remain unknown/discovered; age-in-days remains crawled-not-indexed with the older declared-canonical mismatch. Exact statuses and inspection links are in the tracker.
+- Sitemap: 108 URLs. BMI health guide and cheque amount page are both included and have contextual internal links from their parent tools.
+- OpenSEO audit completed 50/50 with 77 URLs outside the crawl budget; only crawl-page-limit was reported. Do not call this a full-site pass.
+- APK workflow still fails at `Missing installer script: savings.html`. `index.html` still contains legacy PWA asset paths and the root manifest still declares the GitHub Pages base path. Both areas remain on hold under the existing scope restrictions; no Header/Hero, ID Card, Savings PWA, APK validator, analytics-location, or unrelated functionality was changed.
+- User-side remaining tasks are limited to one manual Search Console indexing-request batch for the six unknown/discovered URLs, and explicit approval if the dual-host PWA/APK repair is wanted.
