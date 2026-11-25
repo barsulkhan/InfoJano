@@ -1,16 +1,16 @@
 {
-  "id": "/InfoJano/loan-eligibility.html",
+  "id": "../loan-eligibility.html",
   "name": "InfoJano — Loan Affordability Calculator",
   "short_name": "Loan Affordability",
   "description": "Install the InfoJano Loan Affordability Calculator for quick monthly EMI budget estimates.",
-  "start_url": "/InfoJano/loan-eligibility.html",
-  "scope": "/InfoJano/",
+  "start_url": "../loan-eligibility.html",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/InfoJano/app-icons/loan-eligibility.svg",
+      "src": "../app-icons/loan-eligibility.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
