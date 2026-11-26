@@ -2398,3 +2398,16 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - No height/min-height, vertical spacing, padding, inner grid, artwork, text, lower sections, homepage, calculator, or shared header script changes.
 - Latest PR #355 head: `5e746940dd0d392b0cd60efe674e1220e90117f4`; PR remains OPEN / DRAFT / UNMERGED: https://github.com/barsulkhan/InfoJano/pull/355
 - Browser visual verification and deployment remain pending. Do not describe this as live or visually confirmed.
+
+
+
+### 26 November 2026 — PR #355 merged; live deployment queued
+
+- User's latest screenshots showed the old live page: the hero remained centered/narrow and the lower page was shown in a separate scrolled screenshot.
+- Root cause of the unchanged live appearance: PR #355 was still a draft and had not been merged, so its CSS was not part of the deployed `main` branch. The screenshots were not evidence that the new branch CSS had been deployed.
+- Confirmed page markup: hero is the direct child `<section class="ij-reference-hero ij-id-reference-hero">` of `main`. Shared `site-header.js` applies `html body .ij-reference-hero` with a 1200px max-width. PR #355's higher-specificity `html body main > .ij-reference-hero` overrides only width, max-width, and horizontal margins.
+- Merged PR #355 (squash) at 2026-11-26 04:01:53 UTC. Merge/main SHA: `8e1edfdf618b04de9176f7113d81607c2fb31a82`.
+- Exact result: hero outer width `calc(100vw - 12mm)`, 6 mm equal side gutters. No hero height, min-height, vertical margin, padding, inner grid, text/artwork, document selection, print guide, or workspace section declarations changed.
+- Protected: no `index.html`, Savings Calculator, calculator logic, or shared `site-header.js` edits.
+- GitHub Pages deployment run `45752602662` was QUEUED at time of check for the exact merge SHA. APK build and Global Footer QA runs were also queued. Live deployment and browser visual verification are not yet confirmed.
+- Next: wait for Pages run `45752602662` to complete; then check live `https://infojano.com/id-card-print-studio.html` at desktop and mobile. If the hero still does not span the intended width after the exact SHA deploys, inspect live CSS cascade/cache and correct from browser evidence. Do not alter lower sections.
