@@ -334,7 +334,7 @@
           <a class="ij-global-search" href="${ROOT}index.html#search" aria-label="Search tools"><span aria-hidden="true">⌕</span></a>
         </nav>
       </div>`;
-    document.body.insertBefore(header,header.nextSibling===document.body.firstChild?header:document.body.firstChild);
+    document.body.insertBefore(header,document.body.firstChild);
   }
   if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount,{once:true});
 })();
