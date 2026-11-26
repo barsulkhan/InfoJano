@@ -2422,3 +2422,17 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/45752628625
 - No additional code change was needed in response to the cancellation screenshot.
 - Browser-level live visual verification is still outstanding; deployment workflow success confirms GitHub Pages deployment completed, not pixel-perfect alignment on the user's monitor.
+
+
+
+### 26 November 2026 — User asks all ID Studio page sections to match hero width
+
+- User provided three desktop screenshots showing the hero at near-full viewport width while the document shortcut cards, print guides, work area and lower content remained narrower.
+- Interpreted the latest instruction "সব জিনিসকে হিরো বানানোর মাপে নিয়ে আসো" as: all page-level sections should share the same 6 mm left/right outer gutter as the hero.
+- Created branch `fix/id-studio-sections-match-hero-width-2026-11-26`.
+- Changed only `id-card-print-studio.html`: breadcrumb, main wrapper, hero, document shortcuts/cards, print guides, workspace, and SEO footer now share `calc(100vw - 12mm)` outer width. Removed narrower page-level 1200px caps for those containers.
+- Width/alignment only. No section heights, card styles, typography, internal workspace controls, processing logic or functionality changed.
+- Commit: `40505330220658538f76f7ec62227639262631ae`.
+- PR #356: created as draft — OPEN / DRAFT / UNMERGED.
+- Protected: no `index.html`, Savings Calculator, calculator logic, or shared `site-header.js` changes.
+- Browser visual verification remains pending. Do not merge or claim live until desktop and mobile widths are visually checked.
