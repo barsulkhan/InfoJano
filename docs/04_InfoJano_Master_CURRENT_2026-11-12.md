@@ -2374,3 +2374,16 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Protected: no `index.html` edits, no Savings Calculator edits, no calculation logic changes, no shared `site-header.js` edits.
 - Verification: source-level CSS review only. No interactive browser screenshot or desktop/mobile visual test has been performed. Do not claim the live page is updated. Keep draft pending visual QA and user approval.
 - Next: inspect PR #355 diff; test the ID Card Print Studio page at desktop, tablet, mobile and narrow mobile widths; confirm hero left/right edges align with header gutters and inner content remains intact; only then request merge approval.
+
+
+
+### 26 November 2026 — User clarified exact ID Studio hero width (6 mm gutters)
+
+- User clarified: make the hero banner nearly full-screen, leave approximately 5–7 mm from each screen edge, do not increase/reduce hero height, and keep all content below (document choices, print guides, work methods) at exactly its existing width and alignment.
+- Updated the existing PR #355 branch only in `id-card-print-studio.html`.
+- Final scoped CSS targets only `main > .ij-reference-hero`: `width:calc(100vw - 12mm)`, `margin-left:calc(50% - 50vw + 6mm)`, `margin-right:0`. This produces a 6 mm left/right viewport gutter.
+- No height, min-height, padding, inner grid, title, illustration, or behavior declarations were changed. No selector targets the sections below the hero.
+- Latest PR head commit: `e1f6758efea5975cdf41552a770bbb3af0dac735`.
+- PR #355 remains OPEN / DRAFT / UNMERGED: https://github.com/barsulkhan/InfoJano/pull/355
+- No changes to homepage, Savings Calculator, calculation logic, or shared header script.
+- Browser visual verification has not yet been performed. Do not claim live deployment or visual completion; keep PR draft until visual check.
