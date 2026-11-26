@@ -2461,3 +2461,16 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Successful deployment: https://github.com/barsulkhan/InfoJano/actions/runs/45754244727
 - No further code changes were needed to address the cancelled run.
 - Browser-level visual verification of the breadcrumb's exact screen position is still pending; user should refresh the page and share a screenshot if the breadcrumb still appears centered.
+
+
+
+### 26 November 2026 — PR #357: equal top/bottom breadcrumb whitespace
+
+- User's latest screenshot showed the small breadcrumb line with a visibly larger gap below than above. Exact request: equal visible whitespace above and below `InfoJano Home > ID Card Print Studio`.
+- Read the live source cascade: breadcrumb row had 64px min-height and centered text, but the main wrapper retained a 28px top margin and the hero retained a 12px top margin; these added excess space below the breadcrumb.
+- Created branch `fix/id-studio-breadcrumb-equal-vertical-gap-2026-11-26`.
+- Changed only `id-card-print-studio.html`: fixed breadcrumb row height at 64px, zeroed its margins, set main top margin to 0 and hero top margin to 0. Breadcrumb remains left-aligned. This yields matching vertical whitespace within the row above and below the text, without changing hero height or design.
+- Commit: `37ea89fd489d534e325c56872b3f0570c990e9bf`.
+- PR #357: https://github.com/barsulkhan/InfoJano/pull/357 — OPEN, not merged. CI status was pending/no checks reported at time of handoff.
+- Protected: no homepage, Savings Calculator, calculator logic, or shared `site-header.js` changes.
+- After checks succeed, merge and verify the resulting Pages deployment. Live visual verification of exact spacing still pending.
