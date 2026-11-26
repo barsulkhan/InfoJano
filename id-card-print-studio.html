@@ -371,6 +371,25 @@ html body nav.ij-hero-breadcrumb{
   text-align:left!important;
   box-sizing:border-box!important;
 }
+
+/* Equalize the visible whitespace around the breadcrumb:
+   the 64px row centers the text, and the main/hero top margins must not
+   add a second, larger gap below it. */
+html body nav.ij-hero-breadcrumb{
+  min-height:64px!important;
+  height:64px!important;
+  margin:0 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  box-sizing:border-box!important;
+}
+html body main{
+  margin-top:0!important;
+}
+html body main > .ij-reference-hero{
+  margin-top:0!important;
+}
 </style>
 <script type="application/ld+json">
 {
