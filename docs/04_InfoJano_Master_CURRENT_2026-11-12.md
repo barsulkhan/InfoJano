@@ -2360,3 +2360,17 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 3. Keep PR #354 draft until those checks pass. Merge only with explicit user approval.
 4. After an approved merge, verify Pages deployment for the exact new main SHA, then separately check the live custom domain in a real browser.
 5. Keep `index.html` and Savings Calculator calculation logic protected; do not broaden this correction into unrelated site-wide changes.
+
+
+
+### 26 November 2026 — ID Card Print Studio hero/header edge alignment (user screenshot)
+
+- User supplied a desktop screenshot of ID Card Print Studio and requested that the hero panel's left/right outer edges align with the header's left/right content gutters.
+- Inspected `id-card-print-studio.html`: the hero is inside a `main` wrapper capped at 960px, while the shared header spans the viewport with 24px desktop horizontal padding. This explains the narrower centered hero panel.
+- Created branch `fix/hero-align-with-header-2026-11-26`.
+- Changed only `id-card-print-studio.html`: the hero panel now breaks out of the narrower main wrapper and uses 24px desktop gutters, 18px tablet/mobile gutters, and 12px very narrow-screen gutters. Its internal grid, text, illustration, colors and behavior were left unchanged.
+- Commit: `ce5ab50310fb2e0f599a30edac2386dea4d84011`.
+- PR #355: https://github.com/barsulkhan/InfoJano/pull/355 — OPEN / DRAFT / UNMERGED; one file, 26 additions, zero deletions.
+- Protected: no `index.html` edits, no Savings Calculator edits, no calculation logic changes, no shared `site-header.js` edits.
+- Verification: source-level CSS review only. No interactive browser screenshot or desktop/mobile visual test has been performed. Do not claim the live page is updated. Keep draft pending visual QA and user approval.
+- Next: inspect PR #355 diff; test the ID Card Print Studio page at desktop, tablet, mobile and narrow mobile widths; confirm hero left/right edges align with header gutters and inner content remains intact; only then request merge approval.
