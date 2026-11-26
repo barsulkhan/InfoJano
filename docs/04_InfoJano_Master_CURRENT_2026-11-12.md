@@ -2449,3 +2449,15 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Intended result: small breadcrumb text is vertically centered in the header-to-hero gap and starts at the left 6 mm gutter, aligned with the hero outer edge. Hero headline itself is unchanged.
 - Earlier PR #356 also widens page-level sections to match hero width. No `index.html`, Savings Calculator, calculator logic, or shared `site-header.js` changes.
 - Live browser verification remains pending until Pages run #45754223906 completes and the deployed page is visually checked.
+
+
+
+### 26 November 2026 — Pages run #3407 cancelled; replacement #3408 succeeded
+
+- User shared screenshot of GitHub Pages workflow #3407 / run ID `45754223906`, showing Cancelled due to a higher-priority Pages build request.
+- Verified run #3407 was cancelled; this is a superseded workflow run, not a CSS/build failure.
+- Verified replacement Pages workflow #3408 / run ID `45754244727` completed **SUCCESS** at 2026-11-26 04:18:05 UTC.
+- #3408 deployed main SHA `32ac5db0bb1d58403359f900b38e99ce489fdd4d`; that commit's parent is PR #356 merge SHA `33d1fd4775cdd8ac34b7e71595ee8ebafbb3da34`. Therefore the successful deployment includes PR #356's page-width and breadcrumb alignment CSS.
+- Successful deployment: https://github.com/barsulkhan/InfoJano/actions/runs/45754244727
+- No further code changes were needed to address the cancelled run.
+- Browser-level visual verification of the breadcrumb's exact screen position is still pending; user should refresh the page and share a screenshot if the breadcrumb still appears centered.
