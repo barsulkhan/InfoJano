@@ -390,6 +390,80 @@ html body main{
 html body main > .ij-reference-hero{
   margin-top:0!important;
 }
+
+/* User-approved wireframe: shared centered header and hero frame with equal side gaps. */
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header{
+  width:100%!important;margin:0!important;padding:0!important;
+}
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-header-inner{
+  width:min(calc(100vw - 28px),1200px)!important;max-width:1200px!important;
+  min-height:76px!important;margin:0 auto!important;padding:10px 0!important;
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  justify-content:space-between!important;gap:16px!important;box-sizing:border-box!important;
+}
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-brand{
+  flex:0 1 auto!important;min-width:0!important;margin:0!important;gap:8px!important;
+}
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-logo{
+  width:150px!important;height:54px!important;flex:0 1 150px!important;
+  object-fit:contain!important;object-position:left center!important;
+}
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-nav{
+  display:flex!important;flex:0 1 auto!important;width:auto!important;min-width:0!important;
+  margin-left:auto!important;justify-content:flex-end!important;align-items:center!important;
+  flex-wrap:wrap!important;gap:10px!important;
+}
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-home,
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-tools{
+  min-height:40px!important;padding:8px 16px!important;border-radius:24px!important;
+  font-size:14px!important;white-space:nowrap!important;
+}
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-language{
+  width:118px!important;max-width:118px!important;height:40px!important;min-height:40px!important;
+  padding:8px 28px 8px 14px!important;font-size:13px!important;border-radius:24px!important;
+}
+html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-divider{display:none!important}
+html body main > .ij-reference-hero{
+  width:min(calc(100vw - 28px),1200px)!important;max-width:1200px!important;
+  margin:16px auto 28px!important;box-sizing:border-box!important;
+}
+html body nav.ij-hero-breadcrumb{display:none!important}
+@media(max-width:760px){
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-header-inner{
+    width:calc(100vw - 24px)!important;min-height:0!important;padding:9px 0!important;
+    flex-direction:row!important;align-items:center!important;justify-content:space-between!important;
+    flex-wrap:wrap!important;gap:8px!important;
+  }
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-brand{flex:0 1 auto!important}
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-logo{
+    width:116px!important;height:42px!important;flex-basis:116px!important;
+  }
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-nav{
+    width:auto!important;flex:0 1 auto!important;margin-left:auto!important;
+    justify-content:flex-end!important;gap:6px!important;
+  }
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-home{
+    min-height:36px!important;padding:7px 10px!important;font-size:12px!important;
+  }
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-tools{
+    width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;
+  }
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-language{
+    width:104px!important;max-width:104px!important;height:36px!important;min-height:36px!important;
+    padding:7px 24px 7px 10px!important;font-size:12px!important;
+  }
+  html body main > .ij-reference-hero{
+    width:calc(100vw - 24px)!important;min-height:0!important;
+    margin:12px auto 22px!important;padding:23px 17px 28px!important;
+  }
+}
+@media(max-width:390px){
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-header-inner{width:calc(100vw - 20px)!important;gap:6px!important}
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-logo{width:102px!important;height:38px!important;flex-basis:102px!important}
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-home{padding:6px 8px!important;font-size:11px!important}
+  html body[data-ij-header-align="hero"] .ij-global-header.ij-global-header .ij-global-language{width:92px!important;max-width:92px!important}
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -405,37 +479,82 @@ html body main > .ij-reference-hero{
 }
 </script>
   <link rel="manifest" href="/InfoJano/manifest.json">
-</head>
+<style id="ij-final-id-studio-refresh">
+.ij-hero-breadcrumb{display:none!important}
+.ij-final-hero{width:min(calc(100% - 56px),1500px);min-height:470px;margin:34px auto 0;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(112deg,#e8f5ff 0%,#d9efff 52%,#bde6ff 100%);display:grid;grid-template-columns:1.02fr .98fr;align-items:center;box-shadow:0 14px 38px rgba(26,95,153,.10);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.ij-final-hero:after{content:"";position:absolute;right:-9%;bottom:-49%;width:67%;height:78%;border-radius:50%;background:linear-gradient(120deg,#59c6f4,#0789ed);z-index:0}
+.ij-final-copy{padding:45px 16px 45px 54px;position:relative;z-index:2}
+.ij-final-kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid #a4d9ff;background:#d4edff;color:#0875cc;border-radius:30px;padding:10px 18px;font-weight:800;font-size:16px;margin-bottom:27px}
+.ij-final-copy h1{font-size:clamp(44px,4.8vw,70px);line-height:1.06;letter-spacing:-2.4px;color:#10264b;margin:0 0 18px;font-weight:850}
+.ij-final-copy h1 span{color:#0786e8}
+.ij-final-copy p{font-size:clamp(16px,1.55vw,21px);line-height:1.55;color:#233d5d;max-width:680px;margin:0 0 27px}
+.ij-final-pills{display:flex;gap:12px;flex-wrap:wrap}.ij-final-pills span{display:inline-flex;align-items:center;gap:9px;background:#fff;border-radius:28px;padding:11px 16px;color:#172e4d;font-weight:700;font-size:14px;box-shadow:0 5px 14px rgba(20,80,140,.07)}.ij-final-pills b{font-size:18px;color:#12a978}
+.ij-final-art{height:460px;min-width:0;position:relative;z-index:1;overflow:hidden}
+.ij-final-woman{position:absolute;right:5%;bottom:-3px;width:min(72%,420px);height:96%;z-index:2}
+.ij-final-idcard{position:absolute;z-index:3;width:255px;height:155px;border-radius:18px;background:#fff;box-shadow:0 14px 30px rgba(25,77,135,.18);padding:0;overflow:hidden}
+.ij-final-idcard.student{left:4%;top:16%;transform:rotate(-8deg)}.ij-final-idcard.employee{left:0;top:48%;transform:rotate(7deg)}
+.ij-final-idcard .bar{height:42px;background:#087fe4;color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800}.ij-final-idcard.employee .bar{background:#7752df}
+.ij-final-idcard .inside{display:flex;gap:12px;padding:13px}.ij-final-idcard .avatar{width:58px;height:66px;border-radius:9px;background:#d9edff;position:relative;flex:none}.ij-final-idcard .avatar:before{content:"";position:absolute;width:20px;height:20px;border-radius:50%;background:#5ba6e9;left:19px;top:10px}.ij-final-idcard .avatar:after{content:"";position:absolute;width:39px;height:22px;border-radius:20px 20px 5px 5px;background:#5ba6e9;left:10px;bottom:7px}.ij-final-idcard .lines{flex:1;padding-top:3px}.ij-final-idcard .lines i{display:block;height:7px;border-radius:5px;background:#dce5ef;margin:7px 0}.ij-final-idcard .lines i:first-child{width:70%}.ij-final-idcard .lines i:nth-child(2){width:95%}.ij-final-idcard .lines i:nth-child(3){width:55%}
+.ij-final-docs{width:min(calc(100% - 64px),1450px);margin:42px auto 28px;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.ij-final-docs h2{font-size:clamp(23px,2.1vw,32px);letter-spacing:-.6px;color:#10284b;margin:0 0 25px;display:flex;align-items:center;gap:14px}
+.ij-final-docs h2:before{content:"▣";color:#0789e8;font-size:30px}
+.ij-final-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.ij-final-tile{min-height:112px;border:1px solid #e4edf6;border-radius:17px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;color:#142947;font-weight:750;font-size:15px;box-shadow:0 5px 14px rgba(23,55,88,.07);cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s}
+.ij-final-tile:hover,.ij-final-tile:focus-visible{border-color:#8bcdf8;background:#eff8ff;box-shadow:0 8px 20px rgba(22,136,232,.12);transform:translateY(-2px);outline:0}
+.ij-final-tile svg{width:38px;height:38px;color:#0789e8}.ij-final-tile:nth-child(2) svg{color:#7050df}.ij-final-tile:nth-child(3) svg{color:#0ca66c}.ij-final-tile:nth-child(4) svg{color:#ee8b2c}
+@media(max-width:1000px){.ij-final-hero{width:calc(100% - 36px);min-height:410px}.ij-final-copy{padding-left:34px}.ij-final-art{height:410px}.ij-final-idcard{transform:scale(.82)!important;transform-origin:left center}.ij-final-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.ij-final-hero{display:flex;flex-direction:column;width:calc(100% - 28px);margin:18px auto 0;min-height:0;border-radius:20px}.ij-final-copy{padding:28px 22px 12px}.ij-final-copy h1{font-size:39px;letter-spacing:-1.2px}.ij-final-copy p{font-size:15px}.ij-final-kicker{font-size:13px;margin-bottom:18px}.ij-final-art{width:100%;height:300px}.ij-final-woman{right:0;width:68%;height:100%}.ij-final-idcard{width:205px;height:125px}.ij-final-idcard .bar{height:34px;font-size:11px}.ij-final-idcard .inside{padding:9px;gap:8px}.ij-final-idcard .avatar{width:44px;height:52px}.ij-final-idcard .avatar:before{left:13px;top:7px}.ij-final-idcard .avatar:after{left:6px;bottom:5px}.ij-final-docs{width:calc(100% - 32px);margin:30px auto 24px}.ij-final-docs h2{font-size:21px;margin-bottom:17px}.ij-final-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ij-final-tile{min-height:94px;font-size:13px}}
+</style></head>
 <body data-ij-header-align="hero">
 <script src="site-header.js"></script>
 
-<nav class="ij-hero-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ InfoJano Home</a> <span aria-hidden="true">›</span> ID Card Print Studio</nav>
 <main>
-<section class="ij-reference-hero ij-id-reference-hero" aria-labelledby="ij-id-hero-title">
- <div class="ij-reference-grid">
-  <div class="ij-reference-copy">
-   <span class="ij-reference-kicker">DOCUMENT PRINT TOOLS</span>
-   <h1 id="ij-id-hero-title">ID Card <span>Print Studio</span></h1>
-   <p>Prepare government ID documents for clean, accurate, print-ready PDF and JPG output. Crop both sides, set the card size and export in your browser.</p>
-   <div class="ij-reference-pills">
-    <span><b>✓</b>PDF &amp; JPG export</span>
-    <span><b>↗</b>Front &amp; back cropping</span>
-    <span><b>•</b>Print-ready sizing</span>
-   </div>
-  </div>
-  <div class="ij-reference-art ij-id-hero-art" aria-hidden="true">
-   <div class="ij-id-card-mock back"><div class="mock-band">DOCUMENT CARD</div><div class="mock-body"><div class="mock-photo"></div><div class="mock-lines"><strong class="mock-name">ABDUL BARIK</strong><small class="mock-location">FARAKKA, WEST BENGAL</small><i></i><i></i><i></i><div class="mock-code"></div></div></div></div>
-   <div class="ij-id-card-mock front"><div class="mock-band">IDENTITY CARD</div><div class="mock-body"><div class="mock-photo"><svg viewBox="0 0 64 64" width="65" height="65" fill="none"><circle cx="32" cy="22" r="12" fill="#6ba6dc"/><path d="M10 58c2-14 10-21 22-21s20 7 22 21" fill="#6ba6dc"/></svg></div><div class="mock-lines"><strong class="mock-name">ABDUL BARIK</strong><small class="mock-location">FARAKKA, WEST BENGAL</small><i></i><i></i><i></i><div class="mock-code"></div></div></div></div>
+<section class="ij-final-hero" aria-labelledby="ij-id-hero-title">
+ <div class="ij-final-copy">
+  <span class="ij-final-kicker">▣ &nbsp; ID Card Studio</span>
+  <h1 id="ij-id-hero-title">ID Card <span>Studio</span></h1>
+  <p>Create professional ID cards online. Upload your photo, add your details, and download a print-ready PDF or JPG file instantly.</p>
+  <div class="ij-final-pills"><span><b>✓</b>Print ready</span><span><b>ϟ</b>High quality</span><span><b>✓</b>100% secure</span></div>
+ </div>
+ <div class="ij-final-art" aria-label="Illustration of a woman presenting an identity card">
+  <div class="ij-final-idcard student"><div class="bar">Student ID Card</div><div class="inside"><div class="avatar"></div><div class="lines"><i></i><i></i><i></i></div></div></div>
+  <div class="ij-final-idcard employee"><div class="bar">Employee ID Card</div><div class="inside"><div class="avatar"></div><div class="lines"><i></i><i></i><i></i></div></div></div>
+  <svg class="ij-final-woman" viewBox="0 0 420 500" role="img" aria-label="Illustrated woman with dark hair, blue outfit and white scarf holding an ID card">
+   <defs><linearGradient id="ijSkin" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffd1b5"/><stop offset="1" stop-color="#e9a184"/></linearGradient><linearGradient id="ijHair" x1="0" x2="1"><stop stop-color="#211a25"/><stop offset="1" stop-color="#49323b"/></linearGradient><linearGradient id="ijBlue" x1="0" x2="1"><stop stop-color="#087bd5"/><stop offset="1" stop-color="#164b9c"/></linearGradient></defs>
+   <path d="M77 500c8-103 45-163 119-163s125 60 139 163Z" fill="url(#ijBlue)"/>
+   <path d="M174 327c-1 42 17 66 43 66s46-24 45-66l-23-32h-44Z" fill="url(#ijSkin)"/>
+   <path d="M103 500c16-83 38-133 79-155l37 52 38-52c43 22 67 72 81 155Z" fill="#f5f8fc"/>
+   <path d="M217 394 188 500h-56l47-155Z" fill="#1d64b4"/><path d="m217 394 30 106h56l-49-155Z" fill="#1b58a5"/>
+   <path d="M125 205c-14-101 28-172 104-172 82 0 121 74 91 183l-16 94c-11 44-48 79-94 79-48 0-84-34-94-81Z" fill="url(#ijHair)"/>
+   <ellipse cx="225" cy="198" rx="72" ry="91" fill="url(#ijSkin)"/>
+   <path d="M153 179c-7-77 27-123 91-123 60 0 92 48 76 116-25-8-43-29-54-53-28 27-67 44-113 47Z" fill="url(#ijHair)"/>
+   <path d="M153 177c-22 65-4 130 19 157-40-14-66-61-62-117 4-65 22-121 64-151-21 40-24 72-21 111Z" fill="url(#ijHair)"/>
+   <path d="M299 157c31 58 24 128-4 176 45-21 63-71 55-127-7-52-26-91-60-119 12 22 13 45 9 70Z" fill="url(#ijHair)"/>
+   <path d="M184 193q17-12 32 0M239 193q17-12 32 0" fill="none" stroke="#50313a" stroke-width="5" stroke-linecap="round"/>
+   <ellipse cx="201" cy="207" rx="5" ry="8" fill="#35242a"/><ellipse cx="255" cy="207" rx="5" ry="8" fill="#35242a"/>
+   <path d="M221 212q-8 18 2 20" fill="none" stroke="#bd806c" stroke-width="3" stroke-linecap="round"/>
+   <path d="M204 250q21 17 43 0" fill="none" stroke="#a94e54" stroke-width="4" stroke-linecap="round"/><path d="M207 250q18 8 36 0" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+   <path d="M178 286q45 30 91 0" fill="none" stroke="#d78d76" stroke-width="3"/>
+   <path d="M143 350q-32 25-44 93" fill="none" stroke="#f7f9fd" stroke-width="24" stroke-linecap="round"/>
+   <path d="M277 348q37 28 53 86" fill="none" stroke="#f7f9fd" stroke-width="24" stroke-linecap="round"/>
+   <path d="M320 420q-27-28-42-7-12 18 11 37l28 18 23-23Z" fill="url(#ijSkin)"/>
+   <rect x="302" y="365" width="65" height="84" rx="8" fill="#fff" stroke="#d5e7f7" stroke-width="3" transform="rotate(5 302 365)"/>
+   <rect x="302" y="365" width="65" height="17" rx="7" fill="#087fe4" transform="rotate(5 302 365)"/>
+   <circle cx="333" cy="399" r="9" fill="#8bc2ef"/><path d="M318 425q15-20 30 0" fill="#8bc2ef"/><path d="M319 434h30" stroke="#d3dfea" stroke-width="3"/>
+   <path d="M170 339q-16 24-16 51M275 338q20 22 22 49" stroke="#fff" stroke-width="5" fill="none" opacity=".8"/>
+  </svg>
  </div>
 </section>
-<section class="ij-doc-shortcuts" aria-labelledby="ij-doc-shortcuts-title">
- <h2 id="ij-doc-shortcuts-title">Choose a document to get started</h2>
- <div class="ij-doc-tiles" aria-label="Choose a document type">
-    <button class="ij-doc-tile" type="button" data-ij-doc="Ayushman Bharat Card"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="6" fill="currentColor" opacity=".16"/><circle cx="17" cy="20" r="5" fill="currentColor"/><path d="M9 33c1-6 4-9 8-9s7 3 8 9M29 18h9M29 24h9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Ayushman Card</strong></button>
-    <button class="ij-doc-tile" type="button" data-ij-doc="Aadhaar Card"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="6" fill="currentColor" opacity=".16"/><circle cx="17" cy="20" r="5" fill="currentColor"/><path d="M9 33c1-6 4-9 8-9s7 3 8 9M29 18h9M29 24h9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Aadhaar Card</strong></button>
-    <button class="ij-doc-tile" type="button" data-ij-doc="Voter ID"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 5 40 12v11c0 10-7 16-16 20C15 39 8 33 8 23V12L24 5Z" fill="currentColor" opacity=".17"/><path d="m16 24 5 5 11-12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Voter ID</strong></button>
-    <button class="ij-doc-tile" type="button" data-ij-doc="Digital Ration Card"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="7" y="8" width="34" height="32" rx="6" fill="currentColor" opacity=".16"/><path d="M14 17h20M14 23h20M14 29h12M14 34h17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Ration Card</strong></button>
-   </div>
+<section class="ij-final-docs" aria-labelledby="ij-final-doc-title">
+ <h2 id="ij-final-doc-title">Choose a document to get started</h2>
+ <div class="ij-final-grid" aria-label="Choose a document type">
+  <button class="ij-final-tile" type="button" data-ij-doc="Ayushman Bharat Card"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="14" r="7" stroke="currentColor" stroke-width="3"/><path d="M10 39c1-8 6-13 14-13s13 5 14 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>ID Card</strong></button>
+  <button class="ij-final-tile" type="button" disabled aria-label="Student Card design only; tool not available"><svg viewBox="0 0 48 48" fill="none"><path d="m4 17 20-10 20 10-20 10L4 17Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 22v10c7 6 17 6 24 0V22M42 18v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Student Card</strong></button>
+  <button class="ij-final-tile" type="button" disabled aria-label="Employee Card design only; tool not available"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="14" width="34" height="27" rx="5" stroke="currentColor" stroke-width="3"/><path d="M17 14v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M7 24h34M20 24v4h8v-4" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg><strong>Employee Card</strong></button>
+  <button class="ij-final-tile" type="button" disabled aria-label="Visitor Card design only; tool not available"><svg viewBox="0 0 48 48" fill="none"><circle cx="18" cy="16" r="6" stroke="currentColor" stroke-width="3"/><circle cx="33" cy="19" r="5" stroke="currentColor" stroke-width="3"/><path d="M5 39c1-8 5-12 13-12s12 4 13 12M29 29c7-1 12 3 14 9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Visitor Card</strong></button>
+  <button class="ij-final-tile" type="button" data-ij-doc="Aadhaar Card"><svg viewBox="0 0 48 48" fill="none"><rect x="5" y="9" width="38" height="30" rx="5" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="21" r="5" stroke="currentColor" stroke-width="2.5"/><path d="M9 33c1-5 3-7 7-7s7 2 8 7M28 18h9M28 24h9M28 30h7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><strong>Aadhaar Card</strong></button>
+  <button class="ij-final-tile" type="button" data-ij-doc="Digital Ration Card"><svg viewBox="0 0 48 48" fill="none"><path d="M5 20 24 7l19 13v21H5V20Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M15 41V27h18v14M10 20h28" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg><strong>Ration Card</strong></button>
+ </div>
 </section>
 <section class="ij-doc-guide-links" aria-label="Document print guides"><h2>Document-specific print guides</h2><div class="ij-doc-guide-grid"><a href="/ayushman-card-print.html">Ayushman Card Guide <span>PDF and photo printing</span></a><a href="/aadhaar-card-print.html">Aadhaar Card Guide <span>e-Aadhaar crop and print</span></a><a href="/voter-id-card-print.html">Voter ID Guide <span>e-EPIC manual crop</span></a><a href="/digital-ration-card-print.html">Ration Card Guide <span>West Bengal e-Ration PDF</span></a></div></section>
 
