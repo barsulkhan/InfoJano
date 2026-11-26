@@ -2411,3 +2411,14 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - Protected: no `index.html`, Savings Calculator, calculator logic, or shared `site-header.js` edits.
 - GitHub Pages deployment run `45752602662` was QUEUED at time of check for the exact merge SHA. APK build and Global Footer QA runs were also queued. Live deployment and browser visual verification are not yet confirmed.
 - Next: wait for Pages run `45752602662` to complete; then check live `https://infojano.com/id-card-print-studio.html` at desktop and mobile. If the hero still does not span the intended width after the exact SHA deploys, inspect live CSS cascade/cache and correct from browser evidence. Do not alter lower sections.
+
+
+
+### 26 November 2026 — Follow-up to user's cancelled Pages run screenshot
+
+- User shared screenshot of Pages workflow run #3403 / ID `45752602662`, showing **Cancelled** with annotation: "Cancelling since a higher priority waiting request for pages build and deployment ...". This is a superseded deployment request, not a build error in the hero CSS.
+- Checked latest Actions runs: subsequent Pages run #3404 / ID `45752628625` completed **SUCCESS**.
+- Run #3404 deployed commit `d046cdcdd57eecf350f876faed3b711e139a036a`, whose parent is the PR #355 merge commit `8e1edfdf618b04de9176f7113d81607c2fb31a82`. Therefore it includes the merged hero width change.
+- Deployment run: https://github.com/barsulkhan/InfoJano/actions/runs/45752628625
+- No additional code change was needed in response to the cancellation screenshot.
+- Browser-level live visual verification is still outstanding; deployment workflow success confirms GitHub Pages deployment completed, not pixel-perfect alignment on the user's monitor.
