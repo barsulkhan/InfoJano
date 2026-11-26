@@ -31,8 +31,6 @@
   .ij-global-header--hero-aligned .ij-global-divider{display:none}
 
   .ij-site-brand,.ij-brandbar{display:none!important}
-  /* Replace legacy top-level page headers with the unified ID Studio header. */
-  body>header.header,body>header.top,body>header.topbar,body>header.brand,body>header.idg-top,body>header.sitebar,body>header.site-nav,body>header.site-header,body>header.ij-head,body>header:not([class]){display:none!important}
   /* Hide legacy install-this-tool prompts across every tool page. */
   .ij-install-card,#ij-install-card{display:none!important}
   @media(max-width:620px){
@@ -76,170 +74,18 @@
   @media(max-width:640px){.ij-unified-currency-hero{width:100%!important;min-height:0!important;height:auto!important;margin:12px 0 22px!important;padding:24px 18px 34px!important;border-radius:24px!important}.ij-unified-currency-hero h1,.ij-unified-currency-title{text-align:center!important;font-size:clamp(32px,9vw,43px)!important;letter-spacing:-.8px!important;line-height:1.08!important}.ij-unified-currency-hero p{text-align:center!important;margin-left:auto!important;margin-right:auto!important}}
   @media(max-width:600px){.ij-unified-currency-hero.emi-hero{min-height:220px!important;aspect-ratio:auto!important;padding:20px 17px!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy{width:62%!important;margin-left:3%!important}.ij-unified-currency-hero.emi-hero .emi-hero-copy h1{font-size:clamp(30px,8vw,40px)!important}}
   @media(prefers-reduced-motion:reduce){.ij-unified-currency-hero,.ij-unified-currency-title:after,.ij-unified-currency-pill:after{animation:none!important}}
-
-  /* 25 Nov ID Card Print Studio reference: unify every tool-page header and hero. */
-  html body .ij-global-header{
-    background:#fff!important;color:#0f172a!important;border:0!important;
-    border-bottom:1px solid #e5e7eb!important;border-radius:0!important;
-    box-shadow:none!important;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif!important
-  }
-  html body .ij-global-header .ij-global-header-inner,
-  html body[data-ij-header-align] .ij-global-header .ij-global-header-inner{
-    width:100%!important;max-width:none!important;min-height:0!important;
-    margin:0 auto!important;padding:12px 24px!important;display:flex!important;
-    flex-direction:row!important;align-items:center!important;justify-content:space-between!important;
-    gap:15px!important;box-sizing:border-box!important
-  }
-  html body .ij-global-header .ij-global-logo,
-  html body[data-ij-header-align] .ij-global-header .ij-global-logo{
-    display:block!important;width:220px!important;height:77px!important;
-    flex:0 1 220px!important;object-fit:contain!important;object-position:left center!important
-  }
-  html body .ij-global-header .ij-global-nav,
-  html body[data-ij-header-align] .ij-global-header .ij-global-nav{
-    display:flex!important;align-items:center!important;justify-content:flex-end!important;
-    flex:0 1 auto!important;flex-wrap:wrap!important;gap:12px!important;
-    width:auto!important;min-width:0!important;margin-left:auto!important
-  }
-  html body .ij-global-header .ij-global-tools,
-  html body .ij-global-header .ij-global-home{
-    display:inline-flex!important;align-items:center!important;justify-content:center!important;
-    gap:8px!important;min-width:0!important;height:auto!important;min-height:40px!important;
-    padding:8px 20px!important;border:1px solid #cbd5e1!important;border-radius:50px!important;
-    background:#fff!important;color:#1e293b!important;box-shadow:none!important;
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif!important;font-size:15px!important;
-    font-weight:600!important;line-height:1.2!important;text-decoration:none!important;white-space:nowrap!important
-  }
-  html body .ij-global-header .ij-global-tools:hover,
-  html body .ij-global-header .ij-global-home:hover{background:#f8fafc!important;border-color:#94a3b8!important}
-  html body .ij-global-header .ij-global-tools svg,
-  html body .ij-global-header .ij-global-home svg{width:18px!important;height:18px!important;flex:0 0 18px!important}
-  html body .ij-global-header .ij-global-language-wrap{display:flex!important;align-items:center!important;justify-content:center!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important}
-  html body .ij-global-header .ij-global-language{
-    display:block!important;box-sizing:border-box!important;align-self:center!important;
-    width:145px!important;max-width:145px!important;height:40px!important;min-height:40px!important;
-    margin:0!important;padding:8px 35px 8px 20px!important;border:1px solid #cbd5e1!important;
-    border-radius:50px!important;background-color:#fff!important;color:#1e293b!important;
-    font:600 15px 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif!important;cursor:pointer!important;
-    appearance:none!important;-webkit-appearance:none!important
-  }
-  html body .ij-global-header .ij-global-divider{display:none!important}
-
-  /* Exact ID Card Print Studio hero frame applied to tool-page hero containers. */
-  html body .ij-unified-currency-hero,
-  html body .ij-reference-hero,
-  html body .ij-loan-reference-hero,
-  html body .ij-loan-hero,
-  html body .ij-pct-showcase,
-  html body .hero-banner,
-  html body .ij-pdf-hero,
-  html body .pt-hero,
-  html body .url-hero,
-  html body .dd-hero,
-  html body .wh-hero{
-    box-sizing:border-box!important;width:min(calc(100% - 28px),1200px)!important;
-    max-width:1200px!important;min-height:340px!important;height:auto!important;
-    margin:14px auto 26px!important;padding:42px 46px!important;
-    border:1px solid #cfe5fb!important;border-radius:30px!important;
-    background:radial-gradient(ellipse at 78% 22%,#d9efff 0%,transparent 38%),linear-gradient(118deg,#eaf6ff 0%,#f8fcff 55%,#e5f3ff 100%)!important;
-    box-shadow:0 18px 44px rgba(32,104,174,.12)!important;color:#101d42!important;
-    position:relative!important;isolation:isolate!important;overflow:hidden!important;animation:none!important
-  }
-  html body .ij-unified-currency-hero h1,
-  html body .ij-reference-hero h1,
-  html body .ij-loan-reference-hero h1,
-  html body .ij-loan-hero h1,
-  html body .ij-pct-showcase h1,
-  html body .hero-banner h1,
-  html body .ij-pdf-hero h1,
-  html body .pt-hero h1,
-  html body .url-hero h1,
-  html body .dd-hero h1,
-  html body .wh-hero h1{
-    color:#101b43!important;font-size:clamp(34px,4vw,56px)!important;
-    line-height:1.06!important;letter-spacing:-1.8px!important;font-weight:850!important;text-align:left!important
-  }
-  html body .ij-unified-currency-hero p,
-  html body .ij-reference-hero p,
-  html body .ij-loan-reference-hero p,
-  html body .ij-loan-hero p,
-  html body .ij-pct-showcase p,
-  html body .hero-banner p,
-  html body .ij-pdf-hero p,
-  html body .pt-hero p,
-  html body .url-hero p,
-  html body .dd-hero p,
-  html body .wh-hero p{
-    color:#4c607c!important;font-size:clamp(15px,1.4vw,18px)!important;line-height:1.55!important
-  }
-  @media(max-width:768px){
-    html body .ij-global-header .ij-global-header-inner,
-    html body[data-ij-header-align] .ij-global-header .ij-global-header-inner{
-      flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;
-      padding:12px 18px!important;gap:12px!important
-    }
-    html body .ij-global-header .ij-global-logo,
-    html body[data-ij-header-align] .ij-global-header .ij-global-logo{
-      width:200px!important;height:70px!important;flex:0 1 200px!important
-    }
-    html body .ij-global-header .ij-global-nav,
-    html body[data-ij-header-align] .ij-global-header .ij-global-nav{
-      width:100%!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:10px!important;margin:0!important
-    }
-    html body .ij-global-header .ij-global-tools,
-    html body .ij-global-header .ij-global-home{min-height:40px!important;padding:8px 16px!important;font-size:14px!important}
-    html body .ij-global-header .ij-global-language{width:130px!important;max-width:130px!important;height:40px!important;min-height:40px!important;font-size:14px!important;padding:8px 32px 8px 16px!important}
-    html body .ij-unified-currency-hero,
-    html body .ij-reference-hero,
-    html body .ij-loan-reference-hero,
-    html body .ij-loan-hero,
-    html body .ij-pct-showcase,
-    html body .hero-banner,
-    html body .ij-pdf-hero,
-    html body .pt-hero,
-    html body .url-hero,
-    html body .dd-hero,
-    html body .wh-hero{
-      width:calc(100% - 20px)!important;min-height:0!important;
-      margin:12px auto 20px!important;padding:23px 17px 35px!important;border-radius:23px!important
-    }
-    html body .ij-unified-currency-hero h1,
-    html body .ij-reference-hero h1,
-    html body .ij-loan-reference-hero h1,
-    html body .ij-loan-hero h1,
-    html body .ij-pct-showcase h1,
-    html body .hero-banner h1,
-    html body .ij-pdf-hero h1,
-    html body .pt-hero h1,
-    html body .url-hero h1,
-    html body .dd-hero h1,
-    html body .wh-hero h1{
-      text-align:center!important;font-size:clamp(31px,8.5vw,42px)!important;letter-spacing:-1.1px!important
-    }
-  }
-  @media(max-width:380px){
-    html body .ij-global-header .ij-global-header-inner,
-    html body[data-ij-header-align] .ij-global-header .ij-global-header-inner{padding:10px 12px!important}
-    html body .ij-global-header .ij-global-logo,
-    html body[data-ij-header-align] .ij-global-header .ij-global-logo{width:180px!important;height:63px!important;flex-basis:180px!important}
-    html body .ij-global-header .ij-global-nav{gap:8px!important}
-    html body .ij-global-header .ij-global-tools,
-    html body .ij-global-header .ij-global-home{padding:7px 12px!important;font-size:13px!important}
-    html body .ij-global-header .ij-global-language{width:118px!important;max-width:118px!important;font-size:13px!important}
-  }
-
 `;
 
   function mount(){
     // Load the same footer implementation used by pages without the shared header.
-    if(!document.querySelector('script[data-ij-site-footer],script[src*="site-footer.js"]')){
+    if(!document.querySelector('script[data-ij-site-footer]')){
       const footerScript=document.createElement('script');
       footerScript.src=ROOT+'site-footer.js';
       footerScript.defer=true;
       footerScript.dataset.ijSiteFooter='true';
       document.body.appendChild(footerScript);
     }
-    const heroes=document.querySelectorAll('.hero,.hero-banner,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-id-hero,.ij-social-hero,.idg-hero,.ij-reference-hero,.ij-loan-reference-hero,.ij-loan-hero,.ij-pct-showcase,.ij-pdf-hero,.pt-hero,.url-hero,.dd-hero,.wh-hero');
+    const heroes=document.querySelectorAll('.hero,.ij-age-hero,.ij-bmi-hero,.ij-discount-hero,.emi-hero,.ij-qr-hero,.ij-full-hero,.ij-master-hero,.ij-tool-hero,.ij-id-hero,.ij-social-hero,.idg-hero');
     heroes.forEach((hero)=>{
       hero.classList.add('ij-unified-currency-hero');
       const title=hero.querySelector('h1');
