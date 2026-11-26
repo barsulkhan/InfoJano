@@ -2436,3 +2436,16 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - PR #356: created as draft — OPEN / DRAFT / UNMERGED.
 - Protected: no `index.html`, Savings Calculator, calculator logic, or shared `site-header.js` changes.
 - Browser visual verification remains pending. Do not merge or claim live until desktop and mobile widths are visually checked.
+
+
+
+### 26 November 2026 — PR #356 merged; breadcrumb alignment clarification
+
+- User clarified the exact target in screenshot: the SMALL breadcrumb text `InfoJano Home > ID Card Print Studio` between the header and the large hero title, not the large `ID Card Print Studio` hero heading.
+- Confirmed source CSS already set breadcrumb flex alignment to left and vertical centering; user's live screenshot was still showing pre-merge deployment because PR #356 had not yet been merged.
+- PR #356 checks all passed: Workers Build success, validate success, APK build success, Global Footer QA success.
+- Merged PR #356 via squash. Main SHA: `33d1fd4775cdd8ac34b7e71595ee8ebafbb3da34`.
+- Pages deployment for this exact main SHA is queued as run `45754223906`: https://github.com/barsulkhan/InfoJano/actions/runs/45754223906
+- Intended result: small breadcrumb text is vertically centered in the header-to-hero gap and starts at the left 6 mm gutter, aligned with the hero outer edge. Hero headline itself is unchanged.
+- Earlier PR #356 also widens page-level sections to match hero width. No `index.html`, Savings Calculator, calculator logic, or shared `site-header.js` changes.
+- Live browser verification remains pending until Pages run #45754223906 completes and the deployed page is visually checked.
