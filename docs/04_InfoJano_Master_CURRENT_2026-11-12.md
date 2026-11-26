@@ -2324,3 +2324,39 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - vCard QR, SMS QR and Successive Percentage GSC canonical anomalies are stale 11-Nov records; current source now declares clean infojano.com canonical/og:url after later 12/24-Nov fixes. Words-to-Number is indexed with canonical agreement.
 - Avoid further canonical source edits until fresh Google recrawl confirms whether any mismatch persists.
 - Details saved in Red Team Audit.
+
+
+
+### 26 November 2026 — PR #353 post-merge verification and Savings Calculator protection
+
+**Repository state**
+- Read the 25-Nov handoff `docs/INFOJANO_7_DAY_WORK_SEPARATION_AND_ROLLBACK_HANDOFF_2026-11-25.md` first, then verified `main`.
+- Current `main` HEAD: `d0cadd1de86cd537627b4316230b04648e59aa85`; this exactly matches the reported PR #353 merge commit.
+- PR #353 is closed/merged; merge timestamp 2026-11-25 16:24:01 UTC.
+- PR #353's complete merge diff contains exactly five files: `contact.html`, `elapsed-time-calculator-guide.html`, `privacy-policy.html`, `site-header.js`, and `work-hours-calculator.html`. The four HTML files each add the shared header script; `site-header.js` adds global header/hero styling and selector behavior.
+- `index.html` was not in the PR diff; current fetched blob SHA: `25c38a7785309eb995de8efd01668956f9c52c6c`. No homepage source edit was made in this session.
+- `savings.html` was not in the PR diff; current fetched blob SHA: `af5b91292f6ee3443a71d5f4dbda74c161d8a999`. Its own `<header class="header">` and `.hero-banner` are present, and it loads `site-header.js`.
+- Important regression found by source inspection: PR #353 added a global CSS rule hiding `body>header.header`, added `.hero-banner` to global hero styling, and added `.hero-banner` to the runtime hero selector. Those selectors match the Savings Calculator's own header and hero. Thus, although `savings.html` itself was not modified by PR #353, its custom design was not safely isolated from the shared script.
+- The homepage does not load `site-header.js` from the PR #353 changes; its file remains untouched.
+
+**Deployment evidence**
+- Pages deployment run `45653442311`: SUCCESS, exact head SHA `d0cadd1de86cd537627b4316230b04648e59aa85`.
+- APK build run `45653442228`: SUCCESS, exact same head SHA.
+- Global Footer QA run `45653442222`: SUCCESS, exact same head SHA.
+- These workflow results do not prove live custom-domain visual correctness, browser interaction, responsive rendering, or Android install/offline behavior. No interactive browser verification was available in this session.
+
+**Backup and corrective proposal**
+- Created backup branch `backup/pre-savings-hero-exclusion-2026-11-26` from the verified PR #353 main HEAD before making a code change.
+- Created working branch `fix/preserve-savings-calculator-design-2026-11-26`.
+- Added a narrowly scoped early return in `site-header.js` for `/savings.html`. This prevents the shared header injection and global hero overrides from running on the Savings Calculator, leaving its own header and hero CSS in control.
+- No edits to `savings.html`, its calculation JavaScript, inputs, outputs, or `index.html`.
+- Commit: `54ea3d040f723480c5b75e821b353bf40664b43e`.
+- PR #354: https://github.com/barsulkhan/InfoJano/pull/354 — OPEN / DRAFT / UNMERGED. One file changed (`site-header.js`), two lines added, zero deletions. Branch compare: ahead 1, behind 0 at creation. No workflow runs were reported for the PR head at check time.
+- No code was merged and no new deployment was triggered for PR #354. Browser visual and calculator regression checks remain pending; do not claim the fix is live.
+
+**Next actions**
+1. Review PR #354's one-file guard and run JavaScript syntax plus focused browser checks for `savings.html` at desktop/mobile widths.
+2. Confirm the Savings Calculator retains its original header, hero artwork/layout, and working calculation results; verify that other ordinary pages still receive the PR #353 shared header/hero.
+3. Keep PR #354 draft until those checks pass. Merge only with explicit user approval.
+4. After an approved merge, verify Pages deployment for the exact new main SHA, then separately check the live custom domain in a real browser.
+5. Keep `index.html` and Savings Calculator calculation logic protected; do not broaden this correction into unrelated site-wide changes.
