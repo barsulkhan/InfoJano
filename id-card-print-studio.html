@@ -312,10 +312,9 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 
 @media(max-width:760px){.ij-reference-hero{width:calc(100% - 20px)!important;min-height:0!important;padding:23px 17px 35px!important;margin:12px auto 20px!important}}
 
-/* Full-width hero panel: keep a physical 6 mm gutter on each side.
-   Only the hero container width/position changes; its height, inner content,
-   and all following document/work-guide sections remain untouched. */
-main>.ij-reference-hero{
+/* Match the viewport-wide header row: override the more-specific shared
+   hero rule. Only the outer hero box changes; height and inner layout stay put. */
+html body main > .ij-reference-hero{
   width:calc(100vw - 12mm)!important;
   max-width:none!important;
   margin-left:calc(50% - 50vw + 6mm)!important;
