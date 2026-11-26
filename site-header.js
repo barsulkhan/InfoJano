@@ -1,6 +1,8 @@
 /* InfoJano shared sticky header for every tool page. */
 (function(){
   const ROOT=(location.hostname==='barsulkhan.github.io')?'/InfoJano/':'/';
+  // Savings Calculator owns its page header and hero; do not inject global chrome or hero overrides there.
+  if(location.pathname.endsWith('/savings.html'))return;
   const css=`
   .ij-global-header{position:sticky;top:0;z-index:100000;width:100%;margin:0!important;padding:0!important;background:#fff!important;color:#14264a!important;box-shadow:0 3px 16px rgba(15,40,80,.08);border:0;border-bottom:1px solid #e6edf6;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;text-align:left!important;line-height:normal!important}
   .ij-global-header *{box-sizing:border-box}
