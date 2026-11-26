@@ -557,6 +557,39 @@ html body .ij-final-tile svg{width:32px!important;height:32px!important}
 .ij-final-tile svg{width:38px;height:38px;color:#0789e8}.ij-final-tile:nth-child(2) svg{color:#7050df}.ij-final-tile:nth-child(3) svg{color:#0ca66c}.ij-final-tile:nth-child(4) svg{color:#ee8b2c}
 @media(max-width:1000px){.ij-final-hero{width:calc(100% - 36px);min-height:410px}.ij-final-copy{padding-left:34px}.ij-final-art{height:410px}.ij-final-idcard{transform:scale(.82)!important;transform-origin:left center}.ij-final-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.ij-final-hero{display:flex;flex-direction:column;width:calc(100% - 28px);margin:18px auto 0;min-height:0;border-radius:20px}.ij-final-copy{padding:28px 22px 12px}.ij-final-copy h1{font-size:39px;letter-spacing:-1.2px}.ij-final-copy p{font-size:15px}.ij-final-kicker{font-size:13px;margin-bottom:18px}.ij-final-art{width:100%;height:300px}.ij-final-woman{right:0;width:68%;height:100%}.ij-final-idcard{width:205px;height:125px}.ij-final-idcard .bar{height:34px;font-size:11px}.ij-final-idcard .inside{padding:9px;gap:8px}.ij-final-idcard .avatar{width:44px;height:52px}.ij-final-idcard .avatar:before{left:13px;top:7px}.ij-final-idcard .avatar:after{left:6px;bottom:5px}.ij-final-docs{width:calc(100% - 32px);margin:30px auto 24px}.ij-final-docs h2{font-size:21px;margin-bottom:17px}.ij-final-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ij-final-tile{min-height:94px;font-size:13px}}
+
+/* Hero artwork update: two animated card mockups, no character illustration. */
+html body .ij-final-art{position:relative!important;isolation:isolate!important;overflow:visible!important;perspective:1100px!important}
+html body .ij-final-woman{display:none!important}
+html body .ij-final-idcard{width:clamp(205px,22vw,285px)!important;height:clamp(132px,14vw,178px)!important;border:7px solid rgba(255,255,255,.96)!important;border-radius:19px!important;box-shadow:0 22px 42px rgba(18,73,139,.22)!important;will-change:transform}
+html body .ij-final-idcard.student{left:auto!important;right:3%!important;top:9%!important;z-index:1!important;animation:ijStudentCardFloat 5.8s ease-in-out infinite!important}
+html body .ij-final-idcard.employee{left:4%!important;top:48%!important;z-index:2!important;animation:ijEmployeeCardFloat 5.1s ease-in-out infinite!important}
+@keyframes ijStudentCardFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(8deg)}
+  50%{transform:translate3d(0,-13px,0) rotate(5deg)}
+}
+@keyframes ijEmployeeCardFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(-6deg)}
+  50%{transform:translate3d(0,12px,0) rotate(-3deg)}
+}
+@media(max-width:1200px){
+ html body .ij-final-idcard{width:clamp(185px,25vw,250px)!important;height:clamp(120px,16vw,156px)!important}
+ html body .ij-final-idcard.student{right:0!important;top:8%!important}
+ html body .ij-final-idcard.employee{left:0!important;top:47%!important}
+}
+@media(max-width:768px){
+ html body .ij-final-art{height:245px!important;min-height:245px!important;overflow:hidden!important}
+ html body .ij-final-idcard{width:clamp(158px,45vw,205px)!important;height:116px!important;border-width:5px!important;border-radius:15px!important}
+ html body .ij-final-idcard.student{right:2%!important;left:auto!important;top:7%!important}
+ html body .ij-final-idcard.employee{left:2%!important;top:43%!important}
+ html body .ij-final-idcard .bar{height:29px!important;font-size:10px!important}
+ html body .ij-final-idcard .inside{padding:8px!important;gap:7px!important}
+ html body .ij-final-idcard .avatar{width:38px!important;height:48px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html body .ij-final-idcard.student,html body .ij-final-idcard.employee{animation:none!important}
+}
+
 </style></head>
 <body data-ij-header-align="hero">
 <script src="site-header.js"></script>
@@ -569,33 +602,10 @@ html body .ij-final-tile svg{width:32px!important;height:32px!important}
   <p>Create professional ID cards online. Upload your photo, add your details, and download a print-ready PDF or JPG file instantly.</p>
   <div class="ij-final-pills"><span><b>✓</b>Print ready</span><span><b>ϟ</b>High quality</span><span><b>✓</b>100% secure</span></div>
  </div>
- <div class="ij-final-art" aria-label="Illustration of a woman presenting an identity card">
+ <div class="ij-final-art" aria-label="Two animated ID card illustrations">
   <div class="ij-final-idcard student"><div class="bar">Student ID Card</div><div class="inside"><div class="avatar"></div><div class="lines"><i></i><i></i><i></i></div></div></div>
   <div class="ij-final-idcard employee"><div class="bar">Employee ID Card</div><div class="inside"><div class="avatar"></div><div class="lines"><i></i><i></i><i></i></div></div></div>
-  <svg class="ij-final-woman" viewBox="0 0 420 500" role="img" aria-label="Illustrated woman with dark hair, blue outfit and white scarf holding an ID card">
-   <defs><linearGradient id="ijSkin" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffd1b5"/><stop offset="1" stop-color="#e9a184"/></linearGradient><linearGradient id="ijHair" x1="0" x2="1"><stop stop-color="#211a25"/><stop offset="1" stop-color="#49323b"/></linearGradient><linearGradient id="ijBlue" x1="0" x2="1"><stop stop-color="#087bd5"/><stop offset="1" stop-color="#164b9c"/></linearGradient></defs>
-   <path d="M77 500c8-103 45-163 119-163s125 60 139 163Z" fill="url(#ijBlue)"/>
-   <path d="M174 327c-1 42 17 66 43 66s46-24 45-66l-23-32h-44Z" fill="url(#ijSkin)"/>
-   <path d="M103 500c16-83 38-133 79-155l37 52 38-52c43 22 67 72 81 155Z" fill="#f5f8fc"/>
-   <path d="M217 394 188 500h-56l47-155Z" fill="#1d64b4"/><path d="m217 394 30 106h56l-49-155Z" fill="#1b58a5"/>
-   <path d="M125 205c-14-101 28-172 104-172 82 0 121 74 91 183l-16 94c-11 44-48 79-94 79-48 0-84-34-94-81Z" fill="url(#ijHair)"/>
-   <ellipse cx="225" cy="198" rx="72" ry="91" fill="url(#ijSkin)"/>
-   <path d="M153 179c-7-77 27-123 91-123 60 0 92 48 76 116-25-8-43-29-54-53-28 27-67 44-113 47Z" fill="url(#ijHair)"/>
-   <path d="M153 177c-22 65-4 130 19 157-40-14-66-61-62-117 4-65 22-121 64-151-21 40-24 72-21 111Z" fill="url(#ijHair)"/>
-   <path d="M299 157c31 58 24 128-4 176 45-21 63-71 55-127-7-52-26-91-60-119 12 22 13 45 9 70Z" fill="url(#ijHair)"/>
-   <path d="M184 193q17-12 32 0M239 193q17-12 32 0" fill="none" stroke="#50313a" stroke-width="5" stroke-linecap="round"/>
-   <ellipse cx="201" cy="207" rx="5" ry="8" fill="#35242a"/><ellipse cx="255" cy="207" rx="5" ry="8" fill="#35242a"/>
-   <path d="M221 212q-8 18 2 20" fill="none" stroke="#bd806c" stroke-width="3" stroke-linecap="round"/>
-   <path d="M204 250q21 17 43 0" fill="none" stroke="#a94e54" stroke-width="4" stroke-linecap="round"/><path d="M207 250q18 8 36 0" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-   <path d="M178 286q45 30 91 0" fill="none" stroke="#d78d76" stroke-width="3"/>
-   <path d="M143 350q-32 25-44 93" fill="none" stroke="#f7f9fd" stroke-width="24" stroke-linecap="round"/>
-   <path d="M277 348q37 28 53 86" fill="none" stroke="#f7f9fd" stroke-width="24" stroke-linecap="round"/>
-   <path d="M320 420q-27-28-42-7-12 18 11 37l28 18 23-23Z" fill="url(#ijSkin)"/>
-   <rect x="302" y="365" width="65" height="84" rx="8" fill="#fff" stroke="#d5e7f7" stroke-width="3" transform="rotate(5 302 365)"/>
-   <rect x="302" y="365" width="65" height="17" rx="7" fill="#087fe4" transform="rotate(5 302 365)"/>
-   <circle cx="333" cy="399" r="9" fill="#8bc2ef"/><path d="M318 425q15-20 30 0" fill="#8bc2ef"/><path d="M319 434h30" stroke="#d3dfea" stroke-width="3"/>
-   <path d="M170 339q-16 24-16 51M275 338q20 22 22 49" stroke="#fff" stroke-width="5" fill="none" opacity=".8"/>
-  </svg>
+  
  </div>
 </section>
 <section class="ij-final-docs" aria-labelledby="ij-final-doc-title">
