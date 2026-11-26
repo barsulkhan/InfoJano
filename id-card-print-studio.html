@@ -320,6 +320,57 @@ html body main > .ij-reference-hero{
   margin-left:calc(50% - 50vw + 6mm)!important;
   margin-right:0!important;
 }
+
+/* Match every ID Studio page section to the hero's outer width.
+   Width-only layout adjustment: preserve section heights, card styling,
+   typography, tool behavior, and all internal workspace controls. */
+html body .ij-hero-breadcrumb,
+html body .ij-studio-seo-footer{
+  width:calc(100vw - 12mm)!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+html body main{
+  width:calc(100vw - 12mm)!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+html body main > .ij-reference-hero{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html body main > .ij-doc-shortcuts,
+html body main > .ij-doc-guide-links,
+html body main > .ij-studio-workspace{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  box-sizing:border-box!important;
+}
+
+/* Place the breadcrumb in the vertical middle of the header-to-hero gap,
+   aligned flush with the hero's left content edge. */
+html body nav.ij-hero-breadcrumb{
+  width:calc(100vw - 12mm)!important;
+  max-width:none!important;
+  min-height:64px!important;
+  margin:0 auto 14px!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+  box-sizing:border-box!important;
+}
 </style>
 <script type="application/ld+json">
 {
