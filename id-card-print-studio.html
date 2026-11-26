@@ -312,30 +312,14 @@ body[data-ij-header-align="hero"] .ij-global-divider{display:none!important}
 
 @media(max-width:760px){.ij-reference-hero{width:calc(100% - 20px)!important;min-height:0!important;padding:23px 17px 35px!important;margin:12px auto 20px!important}}
 
-/* Align the ID Studio hero panel's outer edges with the shared header gutters.
-   The page main wrapper is intentionally narrower for the tool content, so the
-   hero breaks out of that wrapper without changing its inner artwork/layout. */
-@media(min-width:769px){
-  main>.ij-reference-hero{
-    width:calc(100vw - 48px)!important;
-    max-width:none!important;
-    margin-left:calc(50% - 50vw + 24px)!important;
-    margin-right:0!important;
-  }
-}
-@media(max-width:768px){
-  main>.ij-reference-hero{
-    width:calc(100vw - 36px)!important;
-    max-width:none!important;
-    margin-left:calc(50% - 50vw + 18px)!important;
-    margin-right:0!important;
-  }
-}
-@media(max-width:380px){
-  main>.ij-reference-hero{
-    width:calc(100vw - 24px)!important;
-    margin-left:calc(50% - 50vw + 12px)!important;
-  }
+/* Full-width hero panel: keep a physical 6 mm gutter on each side.
+   Only the hero container width/position changes; its height, inner content,
+   and all following document/work-guide sections remain untouched. */
+main>.ij-reference-hero{
+  width:calc(100vw - 12mm)!important;
+  max-width:none!important;
+  margin-left:calc(50% - 50vw + 6mm)!important;
+  margin-right:0!important;
 }
 </style>
 <script type="application/ld+json">
