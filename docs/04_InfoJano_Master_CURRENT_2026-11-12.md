@@ -2387,3 +2387,14 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - PR #355 remains OPEN / DRAFT / UNMERGED: https://github.com/barsulkhan/InfoJano/pull/355
 - No changes to homepage, Savings Calculator, calculation logic, or shared header script.
 - Browser visual verification has not yet been performed. Do not claim live deployment or visual completion; keep PR draft until visual check.
+
+
+
+### 26 November 2026 — Hero full-width cascade correction after user's reference image
+
+- Latest user screenshot reiterates the exact visual target: hero outer panel should align to the same near-full viewport width as the InfoJano header row; content below the hero must keep its existing width and position.
+- Diagnosed a CSS cascade issue in the earlier PR #355 rule: its selector `main > .ij-reference-hero` was less specific than the shared global selector `html body .ij-reference-hero` (both use `!important`). Thus the shared rule could still win and preserve the narrow 1200px cap.
+- Corrected only the hero selector in PR #355 to `html body main > .ij-reference-hero`, which has higher specificity than the shared selector. Kept `width:calc(100vw - 12mm)`, equal 6 mm viewport gutters, and `max-width:none`.
+- No height/min-height, vertical spacing, padding, inner grid, artwork, text, lower sections, homepage, calculator, or shared header script changes.
+- Latest PR #355 head: `5e746940dd0d392b0cd60efe674e1220e90117f4`; PR remains OPEN / DRAFT / UNMERGED: https://github.com/barsulkhan/InfoJano/pull/355
+- Browser visual verification and deployment remain pending. Do not describe this as live or visually confirmed.
