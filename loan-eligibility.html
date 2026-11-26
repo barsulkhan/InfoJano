@@ -174,8 +174,8 @@ body{background:#fff;color:#111d32}
  .ij-affordability-result-panel{min-width:0;padding:20px;border:1px solid #d8e7f7;border-radius:18px;background:linear-gradient(155deg,#f8fbff,#fff)}
 }
 @media(min-width:1500px){main > section.ij-loan-reference-hero{padding:42px 46px}}
-/* Desktop-only width override: supersede the earlier capped hero width. Keep tablet/mobile geometry unchanged. */
-@media(min-width:1001px){main > section.ij-loan-reference-hero{width:min(calc(100% + 48px),1314px);max-width:1314px}}
+/* Match the reference: let the desktop hero span the full viewport width. Tablet/mobile geometry remains unchanged. */
+@media(min-width:761px){main > section.ij-loan-reference-hero{width:100%;max-width:none;margin-left:0;margin-right:0}}
 /* Mobile follows the Studio's compact, centered, single-column treatment. */
 @media(max-width:760px){
  main{width:100%;max-width:none;margin:0 auto 26px;padding:0}
