@@ -227,6 +227,71 @@
     html body .ij-global-header .ij-global-home{padding:7px 12px!important;font-size:13px!important}
     html body .ij-global-header .ij-global-language{width:118px!important;max-width:118px!important;font-size:13px!important}
   }
+  /* Homepage reference: shared Header and Hero frame across standalone pages. */
+  html body .ij-global-header{
+    position:sticky!important;top:0!important;z-index:100000!important;width:100%!important;
+    margin:0!important;padding:0 20px!important;background:#fff!important;color:#111!important;
+    border:0!important;border-bottom:1px solid #edf2f8!important;border-radius:0!important;
+    box-shadow:0 2px 10px rgba(0,0,0,.05)!important;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif!important;
+  }
+  html body .ij-global-header .ij-global-header-inner{
+    display:flex!important;align-items:center!important;justify-content:space-between!important;
+    width:100%!important;max-width:1200px!important;min-height:0!important;margin:0 auto!important;
+    padding:15px 0!important;gap:12px!important;box-sizing:border-box!important;
+  }
+  html body .ij-global-header .ij-global-brand{display:flex!important;align-items:center!important;gap:12px!important;
+    min-width:0!important;flex:0 1 auto!important;margin:0!important;color:#111!important;text-decoration:none!important}
+  html body .ij-global-header .ij-global-logo{display:block!important;width:45px!important;height:45px!important;
+    flex:0 0 45px!important;object-fit:contain!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+  html body .ij-global-header .ij-global-brand-copy{display:flex!important;flex-direction:column!important}
+  html body .ij-global-header .ij-global-brand-name{font-size:22px!important;font-weight:800!important;color:#111!important;
+    line-height:1.2!important;letter-spacing:-.4px!important}
+  html body .ij-global-header .ij-global-brand-name span{color:#e63946!important}
+  html body .ij-global-header .ij-global-brand-tagline{display:block!important;width:auto!important;max-width:none!important;
+    margin-top:3px!important;background:none!important;color:#666!important;-webkit-text-fill-color:#666!important;
+    font-size:12px!important;font-weight:500!important;line-height:1.25!important;letter-spacing:0!important}
+  html body .ij-global-header .ij-global-divider,html body .ij-global-header .ij-global-language-wrap{display:none!important}
+  html body .ij-global-header .ij-global-nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;
+    flex:0 1 auto!important;gap:7px!important;margin-left:auto!important;min-width:0!important;flex-wrap:wrap!important}
+  html body .ij-global-header .ij-global-nav a{display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    gap:6px!important;min-height:0!important;height:auto!important;padding:9px 12px!important;border:1px solid #e0eafa!important;
+    border-radius:10px!important;background:#f2f7ff!important;color:#173a70!important;box-shadow:none!important;
+    font:600 13px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif!important;text-decoration:none!important;white-space:nowrap!important}
+  html body .ij-global-header .ij-global-nav a.ij-global-home{background:#0876e8!important;color:#fff!important;border-color:#0876e8!important}
+  html body .ij-global-header .ij-global-nav a.ij-global-search{background:#eaf5ff!important;color:#0876e8!important}
+  html body .ij-global-header .ij-global-nav svg{width:16px!important;height:16px!important;flex:0 0 16px!important}
+  html body .ij-unified-currency-hero{
+    box-sizing:border-box!important;width:calc(100% - 36px)!important;max-width:1200px!important;min-height:0!important;height:auto!important;
+    margin:20px auto 28px!important;padding:60px 20px!important;border:0!important;border-radius:24px!important;
+    background:linear-gradient(180deg,#f0f7ff 0%,#fff 100%)!important;color:#111!important;
+    box-shadow:none!important;overflow:hidden!important;isolation:isolate!important;
+  }
+  html body .ij-unified-currency-hero h1,html body .ij-unified-currency-hero .ij-unified-currency-title{
+    color:#111!important;-webkit-text-fill-color:#111!important;font-size:clamp(32px,3.5vw,42px)!important;
+    line-height:1.2!important;letter-spacing:-.7px!important;font-weight:800!important;text-align:center!important;
+  }
+  html body .ij-unified-currency-hero h1 span{background:linear-gradient(90deg,#0876e8,#19c8f5)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+  html body .ij-unified-currency-hero p{font-size:18px!important;color:#555!important;line-height:1.45!important;text-align:center!important}
+  html body .ij-unified-currency-hero .ij-unified-currency-pill{background:#fff!important;border:1px solid #eaeaea!important;
+    border-radius:20px!important;color:#333!important;box-shadow:0 2px 10px rgba(0,0,0,.05)!important}
+  @media(max-width:768px){
+    html body .ij-global-header{padding:0 14px!important}
+    html body .ij-global-header .ij-global-header-inner{padding:12px 0!important;gap:10px!important}
+    html body .ij-global-header .ij-global-nav{display:none!important}
+    html body .ij-global-header .ij-global-logo{width:45px!important;height:45px!important;flex-basis:45px!important}
+    html body .ij-global-header .ij-global-brand-name{font-size:23px!important;line-height:1.05!important}
+    html body .ij-global-header .ij-global-brand-tagline{font-size:12px!important;margin-top:3px!important}
+    html body .ij-unified-currency-hero{width:calc(100% - 24px)!important;max-width:none!important;
+      margin:16px 12px 22px!important;padding:34px 18px!important;gap:0!important;border-radius:24px!important}
+    html body .ij-unified-currency-hero h1,html body .ij-unified-currency-hero .ij-unified-currency-title{
+      font-size:32px!important;text-align:center!important;line-height:1.2!important}
+    html body .ij-unified-currency-hero p{font-size:16px!important;text-align:center!important;color:#465a73!important}
+    html body .ij-unified-currency-hero .hero-art,html body .ij-unified-currency-hero .ij-reference-art,
+    html body .ij-unified-currency-hero .ij-id-hero-art,html body .ij-unified-currency-hero .ij-master-visual{
+      display:none!important}
+  }
+
 
 `;
 
@@ -253,52 +318,23 @@
     header.innerHTML=`
       <div class="ij-global-header-inner">
         <a class="ij-global-brand" href="${ROOT}index.html" aria-label="InfoJano home">
-          <svg class="ij-loan-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-          <img class="ij-global-logo" src="${ROOT}infojano-logo.svg" alt="InfoJano logo">
-          <span class="ij-global-brand-copy"><span class="ij-global-brand-name">InfoJano</span><span class="ij-global-brand-tagline">Smart Online Tools for Everyday Life</span></span>
+          <svg class="ij-global-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="InfoJano logo">
+            <defs><linearGradient id="ij-shared-brand-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19c8f5"/><stop offset=".5" stop-color="#0876e8"/><stop offset="1" stop-color="#06358f"/></linearGradient></defs>
+            <path d="M120 60 Q96 60 80 80 L48 120 Q36 136 36 156 V356 Q36 420 104 420 H320 Q356 420 378 392 L452 296 Q474 268 444 244 L168 84 Q148 70 120 60Z" fill="url(#ij-shared-brand-bg)"/>
+            <rect x="150" y="150" width="52" height="200" rx="14" fill="#fff"/>
+            <path d="M250 150 H302 V300 Q302 360 242 360 H222 V310 H242 Q250 310 250 300 Z" fill="#fff"/>
+          </svg>
+          <span class="ij-global-brand-copy"><span class="ij-global-brand-name">Info<span>Jano</span></span><span class="ij-global-brand-tagline">Smart Online Tools for Everyday Life</span></span>
         </a>
-        <span class="ij-global-divider" aria-hidden="true"></span>
         <nav class="ij-global-nav" aria-label="Main navigation">
-        <a class="ij-global-tools" href="${ROOT}index.html#tools" aria-label="Browse all tools">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-          All Tools
-        </a>
-        <label class="ij-global-language-wrap" style="display:flex;align-items:center;justify-content:center;height:44px;min-height:44px;margin:0;padding:0">
-          <span class="ij-sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Select language</span>
-          <select class="ij-global-language" aria-label="Select language">
-            <option value="en">English</option><option value="hi">हिन्दी</option><option value="bn">বাংলা</option>
-          </select>
-        </label>
-        <a class="ij-global-home" href="${ROOT}index.html" aria-label="Go to InfoJano Home">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 2 11h2v10h6v-6h4v6h6V11h2L12 3z"/></svg>
-          Home
-        </a>
-        
+          <a class="ij-global-home" href="${ROOT}index.html"><span aria-hidden="true">⌂</span> Home</a>
+          <a href="${ROOT}index.html#toolGrid"><span aria-hidden="true">▦</span> All Tools</a>
+          <a href="${ROOT}index.html#guides"><span aria-hidden="true">▤</span> Guides</a>
+          <a href="${ROOT}index.html#about"><span aria-hidden="true">ⓘ</span> About</a>
+          <a class="ij-global-search" href="${ROOT}index.html#search" aria-label="Search tools"><span aria-hidden="true">⌕</span></a>
         </nav>
       </div>`;
-    if(location.pathname.endsWith('/loan-eligibility.html')){
-      header.classList.add('ij-loan-reference-header');
-      const nav=header.querySelector('.ij-global-nav');
-      const blog=document.createElement('a');blog.className='ij-global-blog';blog.href=ROOT+'blog/';blog.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg><span>Blog</span>';nav.appendChild(blog);
-      const search=document.createElement('a');search.className='ij-global-search';search.href=ROOT+'index.html#tools';search.setAttribute('aria-label','Search tools');search.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-4.2-4.2"/></svg>';nav.appendChild(search);
-      const pageStyle=document.createElement('style');pageStyle.textContent='.ij-loan-reference-header .ij-global-header-inner{width:min(calc(100% - 64px),1600px)!important;max-width:1600px!important;min-height:92px;gap:18px;padding-left:24px!important;padding-right:24px!important;box-sizing:border-box!important;margin-left:auto!important;margin-right:auto!important}.ij-loan-reference-header .ij-global-brand{display:flex;align-items:center;gap:18px;flex:0 1 auto}.ij-loan-reference-header .ij-loan-menu-icon{display:block;width:27px;height:27px;flex:0 0 27px;color:#14243b}.ij-loan-reference-header .ij-global-logo{width:230px;height:62px;flex:0 0 230px}.ij-loan-reference-header .ij-global-nav{gap:28px;margin-left:auto}.ij-loan-reference-header .ij-global-blog,.ij-loan-reference-header .ij-global-search{display:inline-flex;align-items:center;gap:9px}.ij-loan-reference-header .ij-global-blog svg,.ij-loan-reference-header .ij-global-search svg{display:block;width:22px;height:22px;flex:0 0 22px}.ij-loan-reference-header .ij-global-home svg,.ij-loan-reference-header .ij-global-tools svg{display:block;width:22px;height:22px;flex:0 0 22px}.ij-loan-reference-header .ij-global-tools,.ij-loan-reference-header .ij-global-home,.ij-loan-reference-header .ij-global-blog,.ij-loan-reference-header .ij-global-search{border:0;background:transparent;box-shadow:none;border-radius:0;color:#17243b;font-size:20px;font-weight:600;padding:0 4px}.ij-loan-reference-header .ij-global-home{order:1}.ij-loan-reference-header .ij-global-tools{order:2}.ij-loan-reference-header .ij-global-blog{order:3;text-decoration:none}.ij-loan-reference-header .ij-global-search{order:4;font-size:28px;text-decoration:none}.ij-loan-reference-header .ij-global-language-wrap,.ij-loan-reference-header .ij-global-divider,.ij-loan-reference-header .ij-global-back-home{display:none!important}@media(max-width:620px){.ij-loan-reference-header .ij-global-header-inner{width:calc(100% - 18px)!important;padding-left:0!important;padding-right:0!important;min-height:64px}.ij-loan-reference-header .ij-global-brand{gap:7px}.ij-loan-reference-header .ij-loan-menu-icon{width:22px;height:22px;flex-basis:22px}.ij-loan-reference-header .ij-global-logo{width:145px;height:44px;flex-basis:145px}.ij-loan-reference-header .ij-global-nav{gap:6px}.ij-loan-reference-header .ij-global-home,.ij-loan-reference-header .ij-global-tools,.ij-loan-reference-header .ij-global-blog{font-size:0;width:34px;height:38px;display:inline-flex;justify-content:center}.ij-loan-reference-header .ij-global-search svg{width:20px;height:20px}}';document.head.appendChild(pageStyle);
-    }
-    document.body.insertBefore(header,document.body.firstChild);
-    // Loan calculator keeps the primary Home button and omits the duplicate Back to Home action.
-    if(location.pathname.endsWith('/loan-interest.html')||location.pathname.endsWith('/loan-eligibility.html')||location.pathname.endsWith('/savings.html')) header.querySelector('.ij-global-back-home')?.remove();
-    const languageSelect=header.querySelector('.ij-global-language');
-    const supported=['en','hi','bn'];
-    let saved='en';try{saved=localStorage.getItem('infojano-language')||'en'}catch(e){}
-    const params=new URLSearchParams(location.search);
-    const initial=(params.get('lang')||saved).toLowerCase();
-    languageSelect.value=supported.includes(initial)?initial:'en';
-    languageSelect.addEventListener('change',function(){
-      const lang=this.value;
-      try{localStorage.setItem('infojano-language',lang)}catch(e){}
-      const url=new URL(location.href);
-      if(lang==='en')url.searchParams.delete('lang');else url.searchParams.set('lang',lang);
-      location.href=url.pathname+url.search+url.hash;
-    });
+    document.body.insertBefore(header,header.nextSibling===document.body.firstChild?header:document.body.firstChild);
   }
   if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount,{once:true});
 })();
