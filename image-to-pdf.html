@@ -59,7 +59,65 @@ main > section:not([style]) h2,main > section:not([style]) h3{line-height:1.3;ov
 @media(max-width:850px){.ij-upload-layout{grid-template-columns:1fr}.ij-options-grid{grid-template-columns:1fr 1fr}.ij-options-grid>.ij-option:last-child{grid-column:1/-1}.ij-feature-strip{grid-template-columns:1fr 1fr}.ij-related-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.ij-pdf-main{padding:12px 12px 28px}.ij-pdf-hero{min-height:0;padding:18px 16px;gap:13px;border-radius:19px}.ij-hero-art{flex:0 0 92px;min-height:88px;gap:5px;padding-right:10px}.ij-art-photo{width:43px;height:54px;border-radius:10px;font-size:26px}.ij-art-file{width:38px;height:52px;border-radius:8px;font-size:13px}.ij-art-arrow{font-size:17px}.ij-pdf-hero h1{font-size:23px}.ij-pdf-hero p{font-size:13px;margin-bottom:10px}.ij-hero-benefits{gap:6px 9px;font-size:10px}.ij-builder{padding:14px;border-radius:19px}.ij-step-head h2{font-size:20px}.ij-step-no{width:39px;height:39px;flex-basis:39px}.ij-dropzone{min-height:190px;padding:16px}.ij-dropzone strong{font-size:18px}.ij-selected-panel{padding:10px}.ij-selected-head h3{font-size:15px}.ij-options-grid{grid-template-columns:1fr}.ij-options-grid>.ij-option:last-child{grid-column:auto}.ij-option{padding:10px}.ij-option-icon{width:42px;height:42px;flex-basis:42px}.ij-feature-strip{gap:7px;padding:10px}.ij-feature-strip>div{grid-template-columns:32px 1fr;gap:2px 7px;padding:9px}.ij-feature-strip>div>span{width:32px;height:32px;font-size:18px}.ij-feature-strip strong{font-size:11px}.ij-feature-strip small{font-size:10px}.ij-guide-grid{grid-template-columns:1fr;gap:10px}.ij-guide{padding:16px}.ij-guide h2{font-size:19px}.ij-related{padding:14px}.ij-related-grid{gap:8px}.ij-related-grid>a{padding:11px}.ij-related-head h2{font-size:19px}#reorderHint{align-items:flex-start;padding:11px;font-size:12px}.ij-create-btn{min-height:50px;font-size:17px}}
 @media(max-width:360px){.ij-hero-art{display:none}.ij-pdf-hero h1{font-size:22px}.ij-feature-strip{grid-template-columns:1fr}.ij-related-grid{grid-template-columns:1fr}.ij-related-grid small{min-height:0}}
-.ij-image-count{display:grid;place-items:center;min-width:25px;height:25px;padding:0 7px;border-radius:20px;background:#dbeafe;color:#0752c8;font-size:12px;font-weight:850}.ij-dropzone.ij-drag-over{background:#e1efff!important;border-color:#075ee5!important}</style>
+.ij-image-count{display:grid;place-items:center;min-width:25px;height:25px;padding:0 7px;border-radius:20px;background:#dbeafe;color:#0752c8;font-size:12px;font-weight:850}.ij-dropzone.ij-drag-over{background:#e1efff!important;border-color:#075ee5!important}
+
+/* Image-to-PDF hero refresh — page-scoped; does not affect shared/site-wide designs */
+.ij-pdf-main{width:min(1160px,100%);max-width:1160px;margin-inline:auto}
+.ij-pdf-hero{
+  position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(260px, .82fr) minmax(0,1.5fr);
+  align-items:center;gap:34px;min-height:292px;padding:38px 48px;
+  border:1px solid rgba(255,255,255,.9);border-radius:28px;
+  background:linear-gradient(112deg,#bff5fa 0%,#eafaff 48%,#dceaff 100%);
+  color:#102b52;box-shadow:0 18px 42px rgba(31,108,176,.16),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.ij-pdf-hero:after{content:"";position:absolute;z-index:-1;inset:auto 0 0;height:28%;border-radius:0 0 28px 28px;background:linear-gradient(165deg,transparent 10%,rgba(77,177,244,.10));pointer-events:none}
+.ij-hero-art{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;flex:initial;min-height:190px;border:0;padding:0}
+.ij-art-photo,.ij-art-file{
+  position:relative;display:grid;place-items:center;width:126px;height:146px;padding:11px;
+  border:1px solid rgba(255,255,255,.96);border-radius:24px;
+  background:linear-gradient(145deg,#fff 4%,#dff6ff 100%);
+  box-shadow:0 17px 28px rgba(0,91,165,.24),0 5px 12px rgba(9,42,91,.12),inset 0 1px 0 #fff;
+  filter:drop-shadow(0 10px 13px rgba(0,119,194,.15));
+  animation:ijPdfFloat 4.2s ease-in-out infinite;
+}
+.ij-art-photo svg,.ij-art-file svg{width:100%;height:100%}
+.ij-art-file{width:108px;height:136px;border-radius:19px;background:linear-gradient(145deg,#fff,#f6eaff);box-shadow:0 18px 30px rgba(135,37,116,.20),0 5px 12px rgba(9,42,91,.10),inset 0 1px 0 #fff;animation-delay:-2.1s}
+.ij-art-arrow{font-size:34px;font-weight:900;color:#0878e8;filter:drop-shadow(0 5px 5px rgba(0,96,190,.24));animation:ijPdfArrow 1.8s ease-in-out infinite}
+.ij-hero-copy{min-width:0}
+.ij-kicker{display:inline-block;color:#087c9e;font-size:11px;font-weight:900;letter-spacing:1.8px}
+.ij-pdf-hero h1{margin:9px 0 10px;color:#102b52;font-size:clamp(32px,3.6vw,48px);line-height:1.08;letter-spacing:-1.2px}
+.ij-pdf-hero p{max-width:660px;margin:0 0 21px;color:#294a70!important;font-size:18px;line-height:1.55;font-weight:550;text-shadow:none}
+.ij-hero-benefits{display:flex;flex-wrap:wrap;gap:10px;color:#173c65;font-size:13px;font-weight:800}
+.ij-benefit{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid rgba(255,255,255,.9);border-radius:999px;background:rgba(255,255,255,.72);box-shadow:0 5px 13px rgba(27,89,145,.09);white-space:nowrap}
+.ij-benefit svg{width:17px;height:17px;flex:0 0 17px}
+.ij-benefit-fast{color:#075bbd}.ij-benefit-quality{color:#087b63}.ij-benefit-offline{color:#a6530a}.ij-benefit-private{color:#6841b5}
+@keyframes ijPdfFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+@keyframes ijPdfArrow{0%,100%{transform:translateX(0);opacity:.8}50%{transform:translateX(7px);opacity:1}}
+@media(max-width:760px){
+  .ij-pdf-main{width:100%;padding:14px 13px 30px}
+  .ij-pdf-hero{grid-template-columns:1fr;gap:13px;min-height:0;padding:24px 19px 25px;border-radius:22px;text-align:center}
+  .ij-hero-art{min-height:150px;gap:16px}
+  .ij-art-photo{width:106px;height:124px;border-radius:20px}
+  .ij-art-file{width:91px;height:116px;border-radius:17px}
+  .ij-art-arrow{font-size:28px}
+  .ij-hero-copy{width:100%}
+  .ij-pdf-hero h1{font-size:clamp(27px,7vw,36px);letter-spacing:-.7px}
+  .ij-pdf-hero p{margin:0 auto 16px;font-size:15px}
+  .ij-hero-benefits{justify-content:center;gap:8px}
+  .ij-benefit{padding:8px 11px;font-size:11px}
+}
+@media(max-width:380px){
+  .ij-pdf-hero{padding:20px 14px;border-radius:19px}
+  .ij-hero-art{display:flex;min-height:128px;gap:12px}
+  .ij-art-photo{width:88px;height:106px;padding:8px}
+  .ij-art-file{width:77px;height:99px;padding:6px}
+  .ij-hero-benefits{gap:7px}
+  .ij-benefit{padding:7px 9px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ij-art-photo,.ij-art-file,.ij-art-arrow{animation:none!important;transform:none!important}
+}
+</style>
   <link rel="manifest" href="./app-manifests/image-to-pdf.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
 <style>.ij-download-progress{display:flex;align-items:center;gap:12px;margin:12px 0;padding:12px 14px;border-radius:12px;background:#eef5ff;color:#15325b;line-height:1.45}.ij-download-progress small{color:#52627a}.ij-download-spinner{display:inline-block;flex:0 0 28px;width:28px;height:28px;border:4px solid #bfdbfe;border-top-color:#075bd8;border-right-color:#0891b2;border-radius:50%;animation:ij-download-spin .75s linear infinite}.ij-download-check{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:#dbeafe;color:#075bd8;font-size:20px;font-weight:800}.ij-download-done{background:#eafaf0;color:#14532d}.ij-download-done .ij-download-check{background:#bbf7d0;color:#166534}@keyframes ij-download-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.ij-download-spinner{animation:none}}</style>
