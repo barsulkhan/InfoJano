@@ -1,4 +1,20 @@
 # InfoJano — Master Project (Portfolio Edition)
+
+> # 🚨 CRITICAL — LOCKED HOMEPAGE & APPROVED HERO/BANNER DESIGNS
+>
+> **OWNER'S NON-NEGOTIABLE RULE — READ BEFORE EVERY TASK**
+>
+> 1. **Homepage lock:** Never modify the homepage header, hero, banner, their HTML/CSS/JS, artwork, dimensions, spacing, layout, colors, typography, responsive behavior, or related assets unless the owner gives explicit permission for that specific change.
+> 2. **Approved-design lock:** Every page hero/banner that the owner has finalized or approved is permanently treated as LOCKED. Do not directly or indirectly alter its markup, styles, dimensions, spacing, artwork, layout, text placement, responsive behavior, or visual appearance without the owner's explicit permission.
+> 3. **Shared-code side effects count:** Before changing shared CSS, JavaScript (including `site-header.js`), global selectors, components, templates, build steps, or assets, inspect which locked pages/designs they can affect. A change to a shared file is NOT safe merely because the protected page file is untouched.
+> 4. **Stop-and-ask rule:** If the requested task could affect a locked homepage or approved hero/banner—directly, through inheritance/cascade, shared code, runtime injection, responsive rules, or any other side effect—STOP before making the change. Explain the exact file(s), selector(s)/code path, likely impact, and safer alternatives; then ask the owner for explicit approval. Do not proceed until approval is given.
+> 5. **No implied permission:** General requests to improve, redesign, align, modernize, fix, or make pages consistent do not authorize changes to locked designs. Approval must clearly identify the protected design/change being authorized.
+> 6. **Preserve by default:** When uncertain, leave the locked design unchanged and choose an isolated implementation that cannot affect it. Verify the diff and relevant page-specific overrides before proposing completion.
+>
+> **Golden rule: FINAL / APPROVED DESIGN = LOCKED DESIGN. No exceptions without the owner's explicit permission.**
+>
+> This rule has priority over routine design consistency and refactoring requests. Every new chat or agent working on InfoJano must read and obey it before inspecting or changing code.
+
 Updated: 8 November 2026 | Status: Existing project; fresh live/deployment verification required.
 
 ## Identity
