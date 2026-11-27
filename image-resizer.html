@@ -733,32 +733,93 @@ main{max-width:1600px!important;width:100%!important;padding-left:clamp(14px,2.4
 #download.download-btn:not([hidden]):hover{filter:brightness(1.08)!important;transform:translateY(-1px)}
 #download.download-btn[hidden]{display:none!important}
 #download.download-btn:focus-visible{outline:3px solid #52bfff!important;outline-offset:3px!important}
+
+/* Image Resizer — clean InfoJano shared design system */
+html,body{background:#f5f8ff!important;color:#142344!important}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif!important;line-height:1.55!important}
+main{width:min(100% - 32px,1380px)!important;max-width:1380px!important;margin:22px auto 42px!important;padding:0!important}
+.resize-breadcrumb{margin:4px 0 18px!important;color:#64748b!important;font-size:13px!important}
+.resize-breadcrumb a{color:#1261d8!important;text-decoration:none!important}
+.ij-resizer-hero{display:grid!important;grid-template-columns:minmax(210px,.72fr) minmax(0,1.6fr)!important;align-items:center!important;gap:30px!important;min-height:255px!important;margin:0 0 18px!important;padding:30px 42px!important;overflow:hidden!important;border:1px solid #d5e8ff!important;border-radius:25px!important;background:linear-gradient(115deg,#eaf5ff 0%,#f8fbff 54%,#e8f6ff 100%)!important;box-shadow:0 12px 34px rgba(25,76,145,.08)!important;color:#10234b!important;position:relative!important}
+.ij-resizer-hero:after{content:""!important;position:absolute!important;right:-90px!important;top:-150px!important;width:420px!important;height:420px!important;border-radius:50%!important;background:radial-gradient(circle,#b8e5ff 0,rgba(184,229,255,0) 70%)!important;pointer-events:none!important;z-index:0!important}
+.ij-resizer-visual,.ij-resizer-copy{position:relative!important;z-index:1!important;min-width:0!important}
+.ij-resizer-visual{height:180px!important;max-width:280px!important;width:100%!important;margin:auto!important}
+.ij-resizer-photo{position:absolute!important;width:180px!important;height:126px!important;filter:drop-shadow(0 12px 14px rgba(30,85,150,.17))!important}
+.ij-resizer-photo svg{display:block!important;width:100%!important;height:100%!important}
+.ij-resizer-photo-back{left:18px!important;top:5px!important;transform:rotate(-12deg)!important}
+.ij-resizer-photo-front{left:76px!important;top:48px!important;transform:rotate(3deg)!important}
+.ij-resize-corner{position:absolute!important;right:-7px!important;bottom:-7px!important;width:27px!important;height:27px!important;border:4px solid #fff!important;border-radius:7px!important;background:#0878ee!important;box-shadow:0 2px 7px #1b5bb744!important}
+.ij-resize-mark{position:absolute!important;right:0!important;bottom:0!important;display:grid!important;place-items:center!important;width:46px!important;height:46px!important;border:4px solid #fff!important;border-radius:14px!important;background:linear-gradient(135deg,#0aa9ee,#1764e9)!important;color:white!important;font-size:27px!important;font-weight:900!important;box-shadow:0 8px 18px #1266d633!important}
+.ij-resizer-kicker{display:inline-flex!important;align-items:center!important;padding:6px 12px!important;border:1px solid #c9e1ff!important;border-radius:99px!important;background:#fff!important;color:#1762c6!important;font-size:11px!important;font-weight:850!important;letter-spacing:.1em!important}
+.ij-resizer-copy h1{margin:12px 0 8px!important;color:#10234b!important;font-size:clamp(34px,4.4vw,52px)!important;line-height:1.08!important;letter-spacing:-.04em!important;font-weight:900!important}
+.ij-resizer-copy h1 span{color:#0876e9!important}
+.ij-resizer-copy p{max-width:720px!important;margin:0!important;color:#4c6080!important;font-size:17px!important;line-height:1.65!important}
+.ij-resizer-benefits{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin-top:18px!important}
+.ij-resizer-benefits span{display:inline-flex!important;align-items:center!important;padding:8px 12px!important;border:1px solid #d8e7fa!important;border-radius:999px!important;background:#fff!important;color:#234a80!important;font-size:12px!important;font-weight:750!important;box-shadow:0 3px 10px rgba(24,73,137,.04)!important}
+.workspace{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important;gap:18px!important;padding:22px!important;border:1px solid #dce7f6!important;border-radius:23px!important;background:#fff!important;box-shadow:0 12px 34px rgba(24,61,115,.07)!important}
+.panel{padding:8px!important;background:transparent!important}
+.panel+.panel{border-left:1px solid #dce6f4!important;padding-left:22px!important}
+.step-title h2{color:#142344!important}
+.step-title p{color:#637491!important}
+.step-number{background:linear-gradient(135deg,#168bf5,#315be8)!important}
+.dropzone{border-color:#8bbaff!important;background:linear-gradient(145deg,#f7fbff,#edf5ff)!important;color:#142344!important}
+.dropzone strong{color:#142344!important}
+.dropzone small,.dropzone span{color:#637491!important}
+.upload-icon{color:#1377e8!important}
+.preview-card{border:1px solid #dce7f6!important;background:#f8fbff!important}
+.preview-head h3{color:#142344!important}
+.small-btn{border:1px solid #d5e2f3!important;background:#fff!important;color:#25436f!important}
+.preview-stage{background:repeating-conic-gradient(#eef3fb 0% 25%,#fff 0% 50%) 50%/20px 20px!important}
+.preview-empty,.preview-meta{color:#647795!important}
+.tabs{background:#edf4ff!important;border:1px solid #dce8f8!important}
+.tab{background:transparent!important;color:#385477!important;border:1px solid transparent!important}
+.tab.active{background:linear-gradient(110deg,#087cf3,#3656e8)!important;color:#fff!important}
+.field label,.setting label{color:#203b65!important}
+.field input,.setting select{background:#fff!important;border:1px solid #d1deee!important;color:#142344!important}
+.lock-icon{background:#edf5ff!important;color:#176de0!important}
+.checkline{background:#f1f6ff!important;border-color:#dce8f8!important;color:#29466e!important}
+.info{background:#eff7ff!important;border-color:#d9eaff!important;color:#38577f!important}
+.action-btn{background:linear-gradient(100deg,#087cf3,#3656e8)!important;box-shadow:0 6px 16px rgba(35,102,220,.18)!important}
+.preset-section,.info-section,.seo-card{background:#fff!important;border:1px solid #dce7f6!important;box-shadow:0 8px 26px rgba(24,61,115,.05)!important}
+.preset{background:#fff!important;color:#142344!important;border-color:#d4e2f3!important}
+.preset strong{color:#142344!important}
+.preset small{color:#647795!important}
+.info-card{background:#f1fbf7!important}
+.info-card:nth-child(2){background:#f7f4ff!important}
+.seo-card p{color:#526783!important}
+footer{color:#71819c!important}
+@media(max-width:760px){
+ main{width:calc(100% - 24px)!important;margin:14px auto 28px!important}
+ .ij-resizer-hero{grid-template-columns:1fr!important;gap:8px!important;padding:20px!important;min-height:0!important}
+ .ij-resizer-visual{height:145px!important;width:240px!important;max-width:100%!important}
+ .ij-resizer-photo{transform-origin:center!important}
+ .ij-resizer-photo-back{left:4px!important;top:0!important}
+ .ij-resizer-photo-front{left:58px!important;top:35px!important}
+ .ij-resizer-copy h1{font-size:36px!important}
+ .ij-resizer-copy p{font-size:15px!important}
+ .workspace{grid-template-columns:1fr!important;padding:13px!important}
+ .panel{padding:4px!important}
+ .panel+.panel{border-left:0!important;border-top:1px solid #dce6f4!important;padding:17px 4px 4px!important}
+ .preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
 </style><link rel="stylesheet" href="image-resizer-advanced.css?v=1">
 </head><body>
 <div class="ij-page-loader" id="ijPageLoader" role="status" aria-live="polite" aria-label="Loading Image Resize and Converter"><div class="ij-loader-card"><div class="ij-loader-mark" aria-hidden="true">↔</div><div class="ij-loader-ring" aria-hidden="true"></div><p class="ij-loader-title">Image Resize &amp; Converter</p><p class="ij-loader-subtitle">Getting your image tools ready…</p><div class="ij-loader-dots" aria-hidden="true"><span></span><span></span><span></span></div></div></div>
 <main>
 <nav class="resize-breadcrumb" aria-label="Breadcrumb"><a href="index.html">⌂ Home</a><span>›</span><a href="index.html#image-tools">Image Tools</a><span>›</span><strong>Image Resize</strong></nav>
-<div class="ij-full-hero ij-resizer-hero" aria-label="Image Resizer premium banner">
-  <div class="ij-rz-art" aria-hidden="true">
-    <div class="ij-rz-frame ij-rz-frame-back"><svg viewBox="0 0 180 126"><rect x="3" y="3" width="174" height="120" rx="17" fill="#102f78" stroke="#61d9ff" stroke-width="4"/><circle cx="139" cy="30" r="10" fill="#ffe38a"/><path d="M12 91 57 43l30 34 27-29 54 51v15H12Z" fill="#258bd5"/><path d="m12 105 44-34 34 24 27-18 51 34H12Z" fill="#16c6b5"/></svg></div>
-    <div class="ij-rz-frame ij-rz-frame-front"><svg viewBox="0 0 180 126"><rect x="3" y="3" width="174" height="120" rx="17" fill="#f5fbff" stroke="#fff" stroke-width="4"/><circle cx="139" cy="30" r="10" fill="#ffc857"/><path d="M12 91 57 43l30 34 27-29 54 51v15H12Z" fill="#3389dc"/><path d="m12 105 44-34 34 24 27-18 51 34H12Z" fill="#17b9a7"/></svg></div>
-    <div class="ij-rz-hd"><strong>HD</strong><span>QUALITY</span></div>
-    <div class="ij-rz-spark">✦</div>
+<section class="ij-resizer-hero" aria-labelledby="image-resizer-title">
+  <div class="ij-resizer-visual" aria-hidden="true">
+    <div class="ij-resizer-photo ij-resizer-photo-back"><svg viewBox="0 0 180 126"><rect x="3" y="3" width="174" height="120" rx="17" fill="#e8f5ff" stroke="#fff" stroke-width="4"/><circle cx="139" cy="30" r="10" fill="#ffc857"/><path d="M12 91 57 43l30 34 27-29 54 51v15H12Z" fill="#4b9ee8"/><path d="m12 105 44-34 34 24 27-18 51 34H12Z" fill="#22b99d"/></svg></div>
+    <div class="ij-resizer-photo ij-resizer-photo-front"><svg viewBox="0 0 180 126"><rect x="3" y="3" width="174" height="120" rx="17" fill="#fff" stroke="#dcecff" stroke-width="4"/><circle cx="139" cy="30" r="10" fill="#ffc857"/><path d="M12 91 57 43l30 34 27-29 54 51v15H12Z" fill="#348be0"/><path d="m12 105 44-34 34 24 27-18 51 34H12Z" fill="#18b99b"/></svg><span class="ij-resize-corner"></span></div>
+    <span class="ij-resize-mark">↗</span>
   </div>
-  <div class="ij-rz-copy">
-    <span class="ij-rz-kicker">SMART IMAGE RESIZER</span>
-    <h1>Image <em>Resizer</em></h1>
-    <p>Resize images for print, web and official use with precise control.</p>
-    <div class="ij-rz-pills">
-      <span><b>↔</b> Exact Size</span><span><b>◇</b> Private</span><span><b>✓</b> Free</span><span><b>▣</b> HD Quality</span>
-    </div>
+  <div class="ij-resizer-copy">
+    <span class="ij-resizer-kicker">SIMPLE • PRECISE • FREE</span>
+    <h1 id="image-resizer-title">Image <span>Resizer</span></h1>
+    <p>Resize images to the exact dimensions you need for websites, social media, documents and print.</p>
+    <div class="ij-resizer-benefits"><span>↔ Custom dimensions</span><span>▦ Ready-made presets</span><span>◉ Private processing</span></div>
   </div>
-  <div class="ij-rz-side" aria-hidden="true">
-    <div class="ij-rz-side-label">BEFORE <span>→</span> AFTER</div>
-    <div class="ij-rz-side-card"><div class="ij-rz-mini-img"></div><div><strong>Perfect fit</strong><small>Pixels • Print • Web</small></div><span class="ij-rz-check">✓</span></div>
-    <div class="ij-rz-side-note"><span>✧</span> Your image stays on your device</div>
-  </div>
-</div>
+</section>
 <section class="workspace" aria-label="Image resizing tool">
 <div class="panel"><div class="step-title"><span class="step-number">1</span><div><h2>Upload Image</h2><p>Choose an image from your device</p></div></div>
 <input class="file-input" id="file" type="file" accept="image/jpeg,image/png,image/webp">
