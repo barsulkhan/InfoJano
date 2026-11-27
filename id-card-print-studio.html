@@ -1077,10 +1077,16 @@ function detectAadhaarPdfCardRegions(canvas){
  const left=bestX(.035,.18),centreL=bestX(.40,.50),centreR=bestX(.50,.60),right=bestX(.82,.965);
  if([left,centreL,centreR,right].some(v=>v.x<0||v.score<.22)||centreL.x>=centreR.x)return [];
  const pad=Math.max(1,sample);
- const topClearance=Math.max(sample*2,Math.round(h*.008)); // Aadhaar PDF: include a little more of the upper artwork so it is not clipped in print preview.
+ // Treat the dotted scissors guide as the top reference line, not printable card content.
+ // Start the crop 2 mm BELOW that guide; derive pixels from the detected card width (85 mm).
+ const leftW=centreL.x-left.x,rightW=right.x-centreR.x;
+ const leftInset=Math.max(sample*2,Math.round(leftW*2/85));
+ const rightInset=Math.max(sample*2,Math.round(rightW*2/85));
+ const cropTopLeft=Math.min(bottomY-1,topY+leftInset);
+ const cropTopRight=Math.min(bottomY-1,topY+rightInset);
  const boxes=[
-  {x:Math.max(0,left.x-pad),y:Math.max(0,topY-topClearance),w:centreL.x-left.x+pad*2,h:bottomY-topY+topClearance+pad},
-  {x:Math.max(0,centreR.x-pad),y:Math.max(0,topY-topClearance),w:right.x-centreR.x+pad*2,h:bottomY-topY+topClearance+pad}
+  {x:Math.max(0,left.x-pad),y:cropTopLeft,w:leftW+pad*2,h:bottomY-cropTopLeft+pad},
+  {x:Math.max(0,centreR.x-pad),y:cropTopRight,w:rightW+pad*2,h:bottomY-cropTopRight+pad}
  ];
  if(boxes.some(r=>r.w/r.h<1.25||r.w/r.h>1.9||r.w<w*.2||r.h<h*.08))return [];
  return boxes;
@@ -1114,13 +1120,13 @@ function detectAadhaarScannedPhotoRegions(canvas){
   for(let y=0;y<sh;y++)if(rowHits[y]>=rowThreshold){if(top<0)top=y;bottom=y}
   for(let x=0;x<sw;x++)if(colHits[x]>=colThreshold){if(left<0)left=x;right=x}
   if(top<0||left<0||bottom<=top||right<=left)return [];
-  // Pad around the detected print so dotted/scissor marks and complete footer content are retained.
-  const cardW=right-left+1,cardH=bottom-top+1;
+  // Dotted cut guide is the top reference. Exclude it, the scissors mark,
+  // and blank area by beginning exactly 2 mm below the dotted line.
+  const cardW=right-left+1;
   const padX=Math.max(2,Math.round(cardW*.025));
-  // Keep the Aadhaar front's dotted/scissor guide and top artwork fully inside the crop; add about 3 mm of extra top clearance.
-  const padTop=Math.max(2,Math.round(cardW*.053));
+  const topInset=Math.max(2,Math.round(cardW*2/85)); // 2 mm relative to 85 mm card width
   const padBottom=Math.max(2,Math.round(cardW*.045));
-  const bx=Math.max(x1,x1+left-padX),by=Math.max(0,y1+top-padTop);
+  const bx=Math.max(x1,x1+left-padX),by=Math.min(y1+bottom-1,y1+top+topInset);
   const ex=Math.min(x2,x1+right+padX+1),ey=Math.min(h,y1+bottom+padBottom+1);
   const box={x:bx,y:by,w:ex-bx,h:ey-by};
   const ratio=box.w/box.h;
