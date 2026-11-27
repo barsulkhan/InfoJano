@@ -679,7 +679,21 @@ html body .ij-final-idcard.employee{left:4%!important;top:48%!important;z-index:
  html body .ij-final-idcard.student,html body .ij-final-idcard.employee{animation:none!important}
 }
 
-</style></head>
+</style>
+<style>
+/* Desktop: keep every section below the hero within the same 1200px frame. */
+@media screen and (min-width:1001px){
+  .ij-doc-guide-links,
+  #ij-document-selector,
+  .ij-studio-workspace{
+    width:min(100%,1200px)!important;
+    max-width:1200px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
+</style>
+</head>
 <body data-ij-header-align="hero">
 <script src="site-header.js"></script>
 
