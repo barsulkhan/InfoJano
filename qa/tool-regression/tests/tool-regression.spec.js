@@ -157,3 +157,95 @@ test.describe('Discount Calculator', () => {
     await expect(page.locator('#result')).toContainText('discount from 0 to 100');
   });
 });
+
+function sampleWidePng() {
+  const png = new PNG({ width: 4, height: 2 });
+  for (let i = 0; i < png.width * png.height; i++) png.data.set([i * 20, 100, 180, 255], i * 4);
+  return PNG.sync.write(png);
+}
+async function downloadedBytes(download) {
+  const stream = await download.createReadStream();
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks);
+}
+test.describe('Image Resizer — remaining core features', () => {
+  test('exports valid JPG and WebP files at requested dimensions', async ({ page }) => {
+    for (const type of ['image/jpeg', 'image/webp']) {
+      await page.goto('/image-resizer.html');
+      await page.locator('#file').setInputFiles({name:'qa-wide.png',mimeType:'image/png',buffer:sampleWidePng()});
+      await page.locator('#ratio').uncheck();
+      await page.locator('#width').fill('40'); await page.locator('#height').fill('20');
+      await page.locator('#format').selectOption(type); await page.locator('#resizeBtn').click();
+      await expect(page.locator('#download')).toBeVisible();
+      const dp=page.waitForEvent('download'); await page.locator('#download').click();
+      const bytes=await downloadedBytes(await dp), base64=bytes.toString('base64');
+      const result=await page.evaluate(async ({base64,type})=>{const raw=atob(base64),data=Uint8Array.from(raw,c=>c.charCodeAt(0)),blob=new Blob([data],{type}),bitmap=await createImageBitmap(blob);return {width:bitmap.width,height:bitmap.height,size:blob.size}}, {base64,type});
+      expect(result).toEqual({width:40,height:20,size:expect.any(Number)});
+      expect(result.size).toBeGreaterThan(0);
+      if(type==='image/jpeg') expect(bytes.subarray(0,2).toString('hex')).toBe('ffd8');
+      if(type==='image/webp') expect(bytes.subarray(8,12).toString()).toBe('WEBP');
+    }
+  });
+  test('preserves aspect ratio when resizing by width', async ({page}) => {
+    await page.goto('/image-resizer.html');
+    await page.locator('#file').setInputFiles({name:'wide.png',mimeType:'image/png',buffer:sampleWidePng()});
+    await page.locator('#ratio').check(); await page.locator('#width').fill('80');
+    await expect(page.locator('#height')).toHaveValue('40');
+    await page.locator('#resizeBtn').click(); await expect(page.locator('#download')).toBeVisible();
+    const dp=page.waitForEvent('download'); await page.locator('#download').click();
+    const png=PNG.sync.read(await downloadedBytes(await dp)); expect(png.width).toBe(80); expect(png.height).toBe(40);
+  });
+  test('percentage mode calculates half-size dimensions', async ({page}) => {
+    await page.goto('/image-resizer.html');
+    await page.locator('#file').setInputFiles({name:'wide.png',mimeType:'image/png',buffer:sampleWidePng()});
+    await page.locator('[data-mode="percent"]').click(); await page.locator('#percent').fill('50');
+    await expect(page.locator('#width')).toHaveValue('2'); await expect(page.locator('#height')).toHaveValue('1');
+    await expect(page.locator('#percentPanel')).toBeVisible();
+  });
+  test('popular preset sets exact dimensions and activates preset mode', async ({page}) => {
+    await page.goto('/image-resizer.html');
+    await page.locator('.preset[data-w="1280"][data-h="720"]').click();
+    await expect(page.locator('#width')).toHaveValue('1280'); await expect(page.locator('#height')).toHaveValue('720');
+    await expect(page.locator('.tab[data-mode="preset"]')).toHaveClass(/active/);
+  });
+  test('converts centimetres and DPI to exact pixel dimensions', async ({page}) => {
+    await page.goto('/image-resizer.html');
+    await page.locator('summary').filter({hasText:'More Settings'}).click();
+    await page.locator('#ijUnit').selectOption('cm'); await page.locator('#ijPhysicalW').fill('2.54');
+    await page.locator('#ijPhysicalH').fill('5.08'); await page.locator('#ijDpi').fill('300');
+    await page.locator('#ijApplyPhysical').click();
+    await expect(page.locator('#width')).toHaveValue('300'); await expect(page.locator('#height')).toHaveValue('600');
+  });
+  test('centred crop changes dimensions and reset restores original', async ({page}) => {
+    await page.goto('/image-resizer.html');
+    await page.locator('#file').setInputFiles({name:'wide.png',mimeType:'image/png',buffer:sampleWidePng()});
+    await page.locator('summary').filter({hasText:'More Settings'}).click();
+    await page.locator('#ijCropRatio').selectOption('1:1'); await page.locator('#ijApplyCrop').click();
+    await expect(page.locator('#width')).toHaveValue('2'); await expect(page.locator('#height')).toHaveValue('2');
+    await page.locator('#ijResetCrop').click();
+    await expect(page.locator('#width')).toHaveValue('4'); await expect(page.locator('#height')).toHaveValue('2');
+  });
+  test('batch-resizes two images and provides separate downloads', async ({page}) => {
+    await page.goto('/image-resizer.html');
+    await page.locator('#file').setInputFiles({name:'wide.png',mimeType:'image/png',buffer:sampleWidePng()});
+    await page.locator('summary').filter({hasText:'More Settings'}).click();
+    await page.locator('#width').fill('20'); await page.locator('#height').fill('10');
+    await page.locator('#ijBatchFiles').setInputFiles([
+      {name:'first.png',mimeType:'image/png',buffer:sampleWidePng()},
+      {name:'second.png',mimeType:'image/png',buffer:sampleWidePng()}
+    ]);
+    await page.locator('#ijRunBatch').click();
+    await expect(page.locator('#ijBatchStatus')).toContainText('Batch complete');
+    await expect(page.locator('#ijBatchList a')).toHaveCount(2);
+    const dp=page.waitForEvent('download'); await page.locator('#ijBatchList a').first().click();
+    const png=PNG.sync.read(await downloadedBytes(await dp)); expect(png.width).toBe(20); expect(png.height).toBe(10);
+  });
+  test('rejects unsupported and over-10MB files', async ({page}) => {
+    await page.goto('/image-resizer.html');
+    await page.locator('#file').setInputFiles({name:'notes.txt',mimeType:'text/plain',buffer:Buffer.from('not image')});
+    await expect(page.locator('#status')).toContainText('JPG, PNG or WebP');
+    await page.locator('#file').setInputFiles({name:'large.png',mimeType:'image/png',buffer:Buffer.alloc(10*1024*1024+1)});
+    await expect(page.locator('#status')).toContainText('larger than 10 MB');
+  });
+});
