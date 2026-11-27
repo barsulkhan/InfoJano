@@ -169,6 +169,15 @@ async function downloadedBytes(download) {
   for await (const chunk of stream) chunks.push(chunk);
   return Buffer.concat(chunks);
 }
+async function decodeImageDimensions(page, bytes) {
+  const base64 = bytes.toString('base64');
+  return page.evaluate(async base64 => {
+    const raw = atob(base64);
+    const data = Uint8Array.from(raw, c => c.charCodeAt(0));
+    const bitmap = await createImageBitmap(new Blob([data]));
+    return { width: bitmap.width, height: bitmap.height };
+  }, base64);
+}
 test.describe('Image Resizer — remaining core features', () => {
   test('exports valid JPG and WebP files at requested dimensions', async ({ page }) => {
     for (const type of ['image/jpeg', 'image/webp']) {
@@ -194,7 +203,7 @@ test.describe('Image Resizer — remaining core features', () => {
     await expect(page.locator('#height')).toHaveValue('40');
     await page.locator('#resizeBtn').click(); await expect(page.locator('#download')).toBeVisible();
     const dp=page.waitForEvent('download'); await page.locator('#download').click();
-    const png=PNG.sync.read(await downloadedBytes(await dp)); expect(png.width).toBe(80); expect(png.height).toBe(40);
+    const dimensions=await decodeImageDimensions(page, await downloadedBytes(await dp)); expect(dimensions).toEqual({width:80,height:40});
   });
   test('percentage mode calculates half-size dimensions', async ({page}) => {
     await page.goto('/image-resizer.html');
@@ -239,7 +248,7 @@ test.describe('Image Resizer — remaining core features', () => {
     await expect(page.locator('#ijBatchStatus')).toContainText('Batch complete');
     await expect(page.locator('#ijBatchList a')).toHaveCount(2);
     const dp=page.waitForEvent('download'); await page.locator('#ijBatchList a').first().click();
-    const png=PNG.sync.read(await downloadedBytes(await dp)); expect(png.width).toBe(20); expect(png.height).toBe(10);
+    const dimensions=await decodeImageDimensions(page, await downloadedBytes(await dp)); expect(dimensions).toEqual({width:20,height:10});
   });
   test('rejects unsupported and over-10MB files', async ({page}) => {
     await page.goto('/image-resizer.html');
