@@ -724,6 +724,55 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
  .ij-benefit i .ij-icon{width:24px;height:24px}
 }
 @media(prefers-reduced-motion:reduce){.ij-benefit,.ij-preset-buttons button,.ij-action,.ij-upload-zone{transition:none!important}.ij-benefit:hover,.ij-preset-buttons button:hover,.ij-action:hover,.ij-upload-zone:hover{transform:none}}
+
+/* 2026 layout refinement: one consistent content grid and a compact workflow hero */
+main.wrap{width:min(100%,1180px)!important;max-width:1180px!important;margin-inline:auto!important}
+.ij-breadcrumb{max-width:none!important;margin:0 0 16px!important}
+.ij-full-hero{width:100%!important;min-height:285px!important;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr)!important;gap:clamp(20px,4vw,56px)!important;padding:clamp(26px,4vw,48px)!important;border-radius:24px!important;overflow:hidden}
+.ij-hero-copy{max-width:590px!important}
+.ij-hero-copy p{max-width:520px!important;line-height:1.65!important}
+.ij-hero-workflow{display:flex!important;align-items:center!important;justify-content:center!important;max-width:480px!important;min-height:220px!important;padding:10px!important;border:0!important;background:transparent!important}
+.ij-workflow-window{width:min(100%,410px);padding:18px;border:1px solid rgba(180,207,238,.9);border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 22px 55px rgba(36,83,137,.15);transform:rotate(1.2deg)}
+.ij-workflow-top{display:flex;align-items:center;gap:6px;padding-bottom:14px;border-bottom:1px solid #e9eff7}
+.ij-workflow-top>span{width:8px;height:8px;border-radius:50%;background:#c5d5e7}
+.ij-workflow-top>span:first-child{background:#f3a2a2}.ij-workflow-top>span:nth-child(2){background:#f4d27d}.ij-workflow-top>span:nth-child(3){background:#8ed7ad}
+.ij-workflow-top b{margin-left:auto;color:#72839a;font-size:11px;font-weight:700}
+.ij-workflow-file{display:flex;align-items:center;gap:12px;margin:16px 0;padding:13px;border:1px solid #e7edf6;border-radius:13px;background:#f9fbff}
+.ij-workflow-fileicon{width:42px;height:42px;display:grid;place-items:center;border-radius:11px;background:#e9f2ff;color:#2872d7}
+.ij-workflow-fileicon svg{width:23px;height:23px}
+.ij-workflow-file>span:nth-child(2){display:grid;gap:3px}
+.ij-workflow-file b{font-size:13px;color:#203653}.ij-workflow-file small{font-size:11px;color:#8090a4}
+.ij-workflow-check{margin-left:auto;color:#159b68;font-size:19px;font-weight:900}
+.ij-workflow-settings{display:grid;gap:7px;padding:3px 2px 15px;color:#71829a;font-size:11px}
+.ij-workflow-settings b{font-size:14px;color:#1d3655}
+.ij-workflow-settings>div{display:flex;gap:7px}
+.ij-workflow-settings i{height:7px;flex:1;border-radius:10px;background:#e4edf9}
+.ij-workflow-settings i:first-child{background:#3987eb}
+.ij-workflow-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:13px;border-top:1px solid #e9eff7}
+.ij-workflow-footer span{display:flex;align-items:center;gap:6px;color:#687b93;font-size:10px}
+.ij-workflow-footer svg{width:15px;height:15px;color:#159b68}
+.ij-workflow-footer>b{padding:7px 10px;border-radius:8px;background:#e8f8ef;color:#168452;font-size:10px}
+.ij-compressor-card{width:100%!important;margin:18px 0 22px!important}
+.ij-benefits,.ij-result-panel,.ij-practical-guide,.ij-seo-intro,#ij-seo-faq,#ij-related-apps{width:100%!important;max-width:none!important}
+.ij-benefits{margin:20px 0 30px!important}
+.ij-practical-guide,.ij-seo-intro,#ij-seo-faq{padding:clamp(18px,3vw,30px)!important}
+@media(max-width:760px){
+ main.wrap{width:100%!important}
+ .ij-full-hero{grid-template-columns:1fr!important;min-height:0!important;gap:14px!important;padding:25px 22px!important}
+ .ij-hero-copy{grid-column:1!important;grid-row:1!important}
+ .ij-hero-copy h1{font-size:clamp(31px,8vw,43px)!important}
+ .ij-hero-workflow{grid-column:1!important;grid-row:2!important;justify-self:center!important;width:min(100%,390px)!important;min-height:0!important;padding:8px 0 0!important}
+ .ij-workflow-window{transform:none!important;padding:14px}
+}
+@media(max-width:430px){
+ body{padding:10px!important}
+ .ij-full-hero{padding:21px 16px!important;border-radius:18px!important}
+ .ij-hero-pills{gap:7px!important}
+ .ij-hero-pills span{min-width:0!important;padding:7px 10px!important;font-size:11px!important}
+ .ij-compressor-card{padding:13px!important;border-radius:18px!important}
+ .ij-benefits{gap:8px!important}
+}
+
 </style>
   <link rel="manifest" href="./app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -749,11 +798,17 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
     <p>Reduce image size, keep good quality</p>
     <div class="ij-hero-pills"><span class="ij-format-jpg">▧&nbsp; JPG</span><span class="ij-format-png">▧&nbsp; PNG</span><span class="ij-format-webp">▧&nbsp; WEBP</span></div>
   </div>
-  <div class="ij-hero-visuals" aria-hidden="true">
-    <div class="ij-hero-photo photo-one"><svg viewBox="0 0 160 100"><rect width="160" height="100" rx="12" fill="#69c9ff"/><circle cx="125" cy="20" r="11" fill="#ffe38c"/><path d="M0 68 38 25l26 34 28-42 68 55v28H0" fill="#477eaa"/><path d="m20 47 18-22 26 34-18-9-10 6zM70 53 92 17l32 42-25-15-12 8z" fill="#fff"/><path d="M0 72q40-14 80 0t80 0v28H0" fill="#087f8b"/><path d="M0 82q40-8 80 0t80 0v18H0" fill="#0876b5"/></svg></div>
-    <div class="ij-hero-photo photo-two"><svg viewBox="0 0 160 100"><rect width="160" height="100" rx="12" fill="#69c9ff"/><circle cx="125" cy="20" r="11" fill="#ffe38c"/><path d="M0 68 38 25l26 34 28-42 68 55v28H0" fill="#477eaa"/><path d="m20 47 18-22 26 34-18-9-10 6zM70 53 92 17l32 42-25-15-12 8z" fill="#fff"/><path d="M0 72q40-14 80 0t80 0v28H0" fill="#087f8b"/><path d="M0 82q40-8 80 0t80 0v18H0" fill="#0876b5"/></svg></div>
-    <div class="ij-hero-photo photo-three"><svg viewBox="0 0 160 100"><rect width="160" height="100" rx="12" fill="#69c9ff"/><circle cx="125" cy="20" r="11" fill="#ffe38c"/><path d="M0 68 38 25l26 34 28-42 68 55v28H0" fill="#477eaa"/><path d="m20 47 18-22 26 34-18-9-10 6zM70 53 92 17l32 42-25-15-12 8z" fill="#fff"/><path d="M0 72q40-14 80 0t80 0v28H0" fill="#087f8b"/><path d="M0 82q40-8 80 0t80 0v18H0" fill="#0876b5"/></svg></div>
-    <div class="ij-hero-save"><strong>≈ 93%</strong><small>Smaller Size</small></div>
+  <div class="ij-hero-visuals ij-hero-workflow" aria-hidden="true">
+    <div class="ij-workflow-window">
+      <div class="ij-workflow-top"><span></span><span></span><span></span><b>Image optimization</b></div>
+      <div class="ij-workflow-file">
+        <span class="ij-workflow-fileicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 15l2-2 3 3 2-2 3 3"/></svg></span>
+        <span><b>Your image</b><small>JPG · PNG · WebP</small></span>
+        <span class="ij-workflow-check">✓</span>
+      </div>
+      <div class="ij-workflow-settings"><span>Target file size</span><b>Choose your KB limit</b><div><i></i><i></i><i></i><i></i></div></div>
+      <div class="ij-workflow-footer"><span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg> Processed on your device</span><b>Ready to download</b></div>
+    </div>
   </div>
   <span class="ij-hero-light"></span>
 </div>
