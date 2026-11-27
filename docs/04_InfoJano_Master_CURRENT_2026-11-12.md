@@ -15,6 +15,24 @@
 >
 > This rule has priority over routine design consistency and refactoring requests. Every new chat or agent working on InfoJano must read and obey it before inspecting or changing code.
 
+
+## 🚨 MANDATORY BEFORE-EVERY-PAGE WORKFLOW — SEO, COMPETITORS & AUDIENCE RESEARCH
+
+**Owner's standing instruction: automatically do this for every page we work on. The owner must not need to repeat the request.**
+
+Before proposing or implementing page-level changes, complete and record a focused research pass:
+
+1. **Google indexing status:** Check the exact page URL in Google Search Console URL Inspection when authorized access is available. Record whether it is indexed, excluded, crawled/discovered but not indexed, or unknown; capture the stated reason and last crawl when shown. Check canonical, robots/noindex, sitemap and live URL response as relevant. A `site:` search alone is only a rough clue, not proof of indexing. Never claim indexed/not indexed without evidence.
+2. **Competitor/SERP research:** Search the target query in the relevant country/language and inspect the actual competing pages/tools. Record competitor URLs, what services/features they provide, user flows, strengths, weaknesses, content format and notable gaps. Do not copy their code, design, text or proprietary work.
+3. **Keyword research:** Identify the primary query and close variants, related questions, search intent and relevant long-tail keywords. Use available Search Console query/page data first, then reliable keyword/SERP research sources. Do not invent volume, difficulty, CPC or ranking metrics; label unavailable data and estimates clearly.
+4. **Audience geography:** Review available Google Search Console country/device breakdowns and Google Analytics audience/acquisition geography for the page or relevant query cluster. Identify which countries/regions actually show meaningful impressions, clicks or engaged users. If data is unavailable or too small, say so; do not infer a country from the user's location or assume a market.
+5. **Audience targeting decision:** Prioritize the countries/languages with evidence of relevant demand and a realistic service fit. Adapt examples, terminology, units, language, page usefulness and keyword targeting to those audiences only where appropriate. Do not add awkward country/keyword stuffing or create thin duplicate pages.
+6. **Opportunity and plan:** Compare InfoJano's current tool/page with competitor offerings; identify the user need competitors leave underserved and the original improvement InfoJano can deliver. State one clear hypothesis, target audience/query, success metric and measurement window.
+7. **Safe implementation and verification:** Inspect the page source and actual functionality. Follow the LOCKED HOMEPAGE & APPROVED HERO/BANNER rule above. If research-led work could affect a locked design, stop and ask first. Verify source, mobile/desktop behavior, workflow, deployment and indexing separately; never conflate them.
+8. **Record the result:** Add a dated work-item note to the Audience Growth Research Playbook with sources, country/language, queries, competitor URLs, indexing evidence, audience findings, files/PR/commit, QA state and next measurement date.
+
+**This workflow is automatic for every new page/task.** If the owner moves from one page to another, repeat the research for the new page; do not assume competitors, keywords, indexing or audience geography are the same across pages. If a connected account, report or data source is inaccessible, clearly state the limitation and continue only with evidence that is available. No paid service, subscription, API or purchase without explicit approval.
+
 Updated: 8 November 2026 | Status: Existing project; fresh live/deployment verification required.
 
 ## Identity
