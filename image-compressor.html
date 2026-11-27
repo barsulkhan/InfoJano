@@ -23,17 +23,101 @@
 <meta name="twitter:description" content="Compress JPG, PNG and WebP images to a target KB size. Adjust quality, format and dimensions in your browser.">
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"How can I compress an image to 20KB, 50KB or 100KB?","acceptedAnswer":{"@type":"Answer","text":"Choose an image, select a target such as 20KB, 50KB or 100KB, and run Smart Compress. The tool tests supported formats, quality and dimensions to try to fit the selected maximum. Check the final size before downloading."}},
-    {"@type":"Question","name":"Can I compress an image to 200KB, 500KB or 1MB?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose the 200KB or 500KB preset, or the 1MB preset. You can enter another custom maximum from 1KB to 20,000KB."}},
-    {"@type":"Question","name":"Can I compress JPG, PNG and WebP files?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tool accepts JPG, PNG and WebP images and provides JPG, PNG and WebP output options. The best choice depends on your image and whether transparency needs to be retained."}},
-    {"@type":"Question","name":"What can I do in Advanced Mode?","acceptedAnswer":{"@type":"Answer","text":"Advanced Mode includes quality, compression preset, output format, original or custom pixel dimensions, percentage resizing and aspect-ratio crop controls."}},
-    {"@type":"Question","name":"Does this image compressor work on a PC or Mac?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use it in a modern desktop browser on Windows or macOS. Choose an image from your computer, adjust settings and download the result. No desktop application is needed."}},
-    {"@type":"Question","name":"Are my images uploaded to InfoJano?","acceptedAnswer":{"@type":"Answer","text":"Image processing takes place locally in your browser. The image is not uploaded to an InfoJano file-processing server."}},
-    {"@type":"Question","name":"Will compression reduce image quality?","acceptedAnswer":{"@type":"Answer","text":"Lossy compression can reduce quality. Preview the result and keep the original if quality matters."}},
-    {"@type":"Question","name":"Does image compression change pixel dimensions?","acceptedAnswer":{"@type":"Answer","text":"Smart Mode may reduce dimensions when needed to fit a target KB size. Advanced Mode lets you keep original dimensions or choose custom pixel or percentage resizing."}}
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Image Compressor Online",
+      "url": "https://infojano.com/image-compressor.html",
+      "description": "Free online image compressor for JPG, PNG and WebP. Reduce images to a target KB size, adjust quality, choose output format and resize dimensions in your browser.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "InfoJano",
+        "url": "https://infojano.com/"
+      },
+      "mainEntity": {
+        "@type": "SoftwareApplication",
+        "name": "InfoJano Image Compressor",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        },
+        "url": "https://infojano.com/image-compressor.html"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I compress an image to 20KB, 50KB or 100KB?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose an image, select a target such as 20KB, 50KB or 100KB, and run Smart Compress. The tool tests supported formats, quality and dimensions to try to fit the selected maximum. Check the final size before downloading."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I compress an image to 200KB, 500KB or 1MB?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Choose the 200KB or 500KB preset, or the 1MB preset. You can enter another custom maximum from 1KB to 20,000KB."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I compress JPG, PNG and WebP files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The tool accepts JPG, PNG and WebP images and provides JPG, PNG and WebP output options. The best choice depends on your image and whether transparency needs to be retained."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can I do in Advanced Mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Advanced Mode includes quality, compression preset, output format, original or custom pixel dimensions, percentage resizing and aspect-ratio crop controls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this image compressor work on a PC or Mac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Use it in a modern desktop browser on Windows or macOS. Choose an image from your computer, adjust settings and download the result. No desktop application is needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my images uploaded to InfoJano?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Image processing takes place locally in your browser. The image is not uploaded to an InfoJano file-processing server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will compression reduce image quality?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lossy compression can reduce quality. Preview the result and keep the original if quality matters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does image compression change pixel dimensions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smart Mode may reduce dimensions when needed to fit a target KB size. Advanced Mode lets you keep original dimensions or choose custom pixel or percentage resizing."
+          }
+        }
+      ]
+    }
   ]
 }
 </script>
@@ -643,34 +727,9 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 </style>
   <link rel="manifest" href="./app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Image Compressor Online - Reduce JPG, PNG & WebP Size",
-  "url": "https://infojano.com/image-compressor.html",
-  "description": "Compress JPG, PNG and WebP images online for free. Reduce image size in KB, adjust quality and download smaller images securely in your browser.",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
 
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"FAQPage",
- "mainEntity":[
-  {"@type":"Question","name":"Why compress an image?","acceptedAnswer":{"@type":"Answer","text":"Image compression can reduce file size for online uploads, sharing and storage."}},
-  {"@type":"Question","name":"Will image compression reduce quality?","acceptedAnswer":{"@type":"Answer","text":"Lossy compression can reduce image quality. Preview the result and keep the original file when quality matters."}},
-  {"@type":"Question","name":"Can I compress an image to an exact KB size?","acceptedAnswer":{"@type":"Answer","text":"The target KB option is best-effort. Exact file size cannot be guaranteed for every image, format and browser."}}
- ]
-}
-</script>
+
+
 
 <link rel="icon" type="image/svg+xml" href="./infojano-mark.svg">
 </head>
