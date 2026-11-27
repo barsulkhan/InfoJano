@@ -616,6 +616,51 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 .ij-hero-save{background:#08b64f!important;box-shadow:0 9px 22px rgba(8,182,79,.25)!important}
 @media(max-width:650px){.ij-full-hero{grid-template-columns:minmax(0,1fr) minmax(145px,.78fr)!important;gap:8px!important;min-height:0!important;padding:24px 18px!important}.ij-hero-copy{grid-column:1!important;grid-row:1!important}.ij-hero-copy h1{font-size:clamp(25px,6vw,38px)!important;letter-spacing:-1px!important}.ij-hero-pills{flex-wrap:wrap!important;gap:6px!important;margin-top:14px!important}.ij-hero-pills span{min-width:0;padding:7px 9px!important;font-size:10px!important}.ij-hero-visuals{grid-column:2!important;grid-row:1!important;min-height:145px!important;width:100%!important;margin:0!important}.ij-hero-photo{border-width:3px!important}}
 @media(max-width:390px){.ij-full-hero{grid-template-columns:1fr!important}.ij-hero-visuals{grid-column:1!important;grid-row:2!important;justify-self:center!important;width:min(100%,310px)!important;min-height:135px!important}}
+
+/* Desktop workspace: dedicated upload (left) and controls (right) columns */
+.ij-compressor-card{
+ display:grid!important;
+ grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)!important;
+ align-items:stretch!important;gap:0!important;
+ padding:26px!important;border-radius:24px!important;
+}
+.ij-upload-side{min-width:0;padding:10px 24px 10px 2px!important;border-right:1px solid #e4ebf7!important;border-bottom:0!important}
+.ij-upload-zone{min-height:300px!important;border:2px dashed #8db5ff!important;border-radius:20px!important;background:linear-gradient(145deg,#f2f7ff,#fbfdff)!important}
+.ij-upload-zone:hover,.ij-upload-zone.ij-dragover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(35,94,190,.10),inset 0 0 0 1px #4e8cff!important}
+.ij-upload-icon{width:66px;height:66px;display:grid;place-items:center;border-radius:20px;background:linear-gradient(145deg,#e0edff,#f2f7ff);box-shadow:0 7px 18px rgba(33,95,190,.10)}
+.ij-upload-icon .ij-icon{width:38px;height:38px}
+.ij-settings-side{min-width:0;padding:8px 2px 8px 26px!important}
+.ij-mode-switch{box-shadow:inset 0 1px 2px rgba(24,54,105,.04)}
+.ij-preset-buttons button{min-height:43px;border-radius:12px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.ij-preset-buttons button:hover{transform:translateY(-2px);border-color:#8bb4ff;box-shadow:0 7px 16px rgba(36,91,190,.10)}
+.ij-smart-note{border:1px solid #e1eaff;border-radius:12px;background:linear-gradient(100deg,#f1f6ff,#f8f5ff)!important;line-height:1.5}
+.ij-action{border-radius:13px!important;box-shadow:0 8px 18px rgba(30,91,220,.20)!important;transition:transform .18s ease,box-shadow .18s ease}
+.ij-action:hover{transform:translateY(-1px);box-shadow:0 11px 22px rgba(30,91,220,.26)!important}
+.ij-benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 30px;padding:0!important}
+.ij-benefit{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:160px;padding:20px 14px 16px!important;border:1px solid #e4ebf7!important;border-radius:18px;background:linear-gradient(155deg,#fff 0%,#f8faff 100%);box-shadow:0 7px 22px rgba(26,57,110,.045);text-align:center;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.ij-benefit:hover{transform:translateY(-4px);border-color:#c6d9ff!important;box-shadow:0 13px 28px rgba(32,82,165,.10)}
+.ij-benefit i{width:52px;height:52px;display:grid;place-items:center;margin:0 0 12px!important;border-radius:16px;background:linear-gradient(145deg,#e6f0ff,#f2edff);color:#2463db}
+.ij-benefit i .ij-icon{width:27px;height:27px;stroke-width:2}
+.ij-benefit:nth-child(2) i{background:linear-gradient(145deg,#e5fbf0,#e9f6ff);color:#0b9b68}
+.ij-benefit:nth-child(3) i{background:linear-gradient(145deg,#fff2df,#fff7e9);color:#dc8a18}
+.ij-benefit:nth-child(4) i{background:linear-gradient(145deg,#f0eaff,#e8f0ff);color:#7652d8}
+.ij-benefit b{font-size:14px!important;font-weight:850;color:#17284b}
+.ij-benefit p{max-width:230px;font-size:12px!important;line-height:1.55!important;color:#64738d;margin:6px 0 0!important}
+@media(max-width:850px){
+ .ij-compressor-card{grid-template-columns:1fr!important;padding:20px!important}
+ .ij-upload-side{padding:2px 2px 20px!important;border-right:0!important;border-bottom:1px solid #e4ebf7!important}
+ .ij-upload-zone{min-height:220px!important}
+ .ij-settings-side{padding:20px 2px 2px!important}
+}
+@media(max-width:560px){
+ .ij-compressor-card{padding:15px!important}
+ .ij-upload-zone{min-height:190px!important}
+ .ij-benefits{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .ij-benefit{min-height:150px;padding:15px 10px!important}
+ .ij-benefit i{width:45px;height:45px;border-radius:14px;margin-bottom:9px!important}
+ .ij-benefit i .ij-icon{width:24px;height:24px}
+}
+@media(prefers-reduced-motion:reduce){.ij-benefit,.ij-preset-buttons button,.ij-action,.ij-upload-zone{transition:none!important}.ij-benefit:hover,.ij-preset-buttons button:hover,.ij-action:hover,.ij-upload-zone:hover{transform:none}}
 </style>
   <link rel="manifest" href="./app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
