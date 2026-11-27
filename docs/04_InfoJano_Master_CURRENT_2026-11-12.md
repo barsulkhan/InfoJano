@@ -2474,3 +2474,48 @@ Window returned by GSC: 2026-08-22 through 2026-11-22; 67 page rows.
 - PR #357: https://github.com/barsulkhan/InfoJano/pull/357 — OPEN, not merged. CI status was pending/no checks reported at time of handoff.
 - Protected: no homepage, Savings Calculator, calculator logic, or shared `site-header.js` changes.
 - After checks succeed, merge and verify the resulting Pages deployment. Live visual verification of exact spacing still pending.
+
+
+---
+
+## 27 November 2026 — New-chat handoff and current continuation point
+
+### Purpose
+This entry preserves the current InfoJano working context so the next chat continues the same active task instead of starting unrelated work. Read this section together with `PROJECT_RULES.md`, the approved hero design master, and the relevant PR diff before taking action.
+
+### Repository state freshly verified
+- Repository: https://github.com/barsulkhan/InfoJano
+- Live site: https://infojano.com/
+- Verified `main` HEAD at handoff: `7cc7c0bad19e0be13e15d9a8b8190ca8be962c4a`.
+- Latest main commit: PR #383, `fix: improve Image Resizer aspect ratio label contrast`, merged 27-Nov-2026.
+- PR #383 changed only `image-resizer.html`: the aspect-ratio checkbox row now has a light blue surface, dark navy text, blue accent and visible keyboard focus outline. Resize behavior was not changed.
+- PR #357 (ID Card Print Studio breadcrumb equal top/bottom spacing) is now **merged**, not open as stated in the older 26-Nov checkpoint. Merge commit: `17b9f48b0022342197637a1cc1e6c1df911419ea`.
+- PR #359 is the **only open PR found** in the current open-PR listing at this handoff.
+
+### Active task — PR #359: match site-wide Header and Hero to homepage design
+- PR: https://github.com/barsulkhan/InfoJano/pull/359
+- Branch: `restore/homepage-header-hero-sitewide`
+- Head commit: `a2f8901a489e36b6ff8ae666f52310facaeffecd`
+- State: OPEN / DRAFT / UNMERGED.
+- Base main SHA when checked: `09f9c52bff1fb90e0a300105379e7aeb69980a01`; re-check the PR base/head before resuming because main has since advanced to `7cc7c0bad19e0be13e15d9a8b8190ca8be962c4a`.
+- Current PR diff modifies only `site-header.js` (77 additions, 41 deletions).
+- User-approved visual reference recorded in PR: current homepage `index.html` Header and Hero are the sole design reference. Homepage itself must remain untouched.
+- Proposed shared header changes: match homepage brand mark, wordmark/tagline, navigation labels and button treatment.
+- Proposed shared hero changes: match homepage container width, desktop spacing, light gradient, radius, typography and mobile dimensions.
+- Preserve each standalone page's own hero copy, artwork/content, tool functionality, SEO content, lower sections and footer.
+- PR body says draft proposal only; no merge or deployment. Visual review across desktop/mobile and representative page types is required before merge.
+- The PR status endpoint for head `a2f8901...` showed pending with no status checks reported at the time of inspection. Re-check current checks; do not infer success from no checks.
+- Important review caution: inspect the full diff and test representative special pages before approval. The diff replaces prior shared-header markup and removes some page-specific loan-header behavior; ensure Loan Eligibility/Loan Interest, Savings Calculator, ID Card Print Studio, BMI, QR and ordinary tool pages do not lose required controls, responsive layout, or protected page-specific designs. Do not broaden the PR or change the homepage.
+- **Next exact action:** re-fetch current `main`, PR #359 full diff, PR checks, and the homepage reference; then do a source-level impact review and desktop/mobile visual QA on representative pages. Keep PR #359 draft until QA and user approval. Do not merge or deploy without explicit approval.
+
+### ID Card Print Studio work carried forward
+- PR #355 (hero 6 mm side gutters) merged; later Pages deployment run #3404 / ID `45752628625` succeeded for a commit containing the change. Live visual check is a separate status.
+- PR #356 (page sections aligned to hero width and breadcrumb left alignment) merged; replacement Pages run #3408 / ID `45754244727` succeeded.
+- PR #357 (equal top/bottom breadcrumb whitespace) merged at `17b9f48b0022342197637a1cc1e6c1df911419ea`.
+- Do not report visual/browser verification unless freshly performed. Preserve the 6 mm outer gutter, lower-section width alignment, breadcrumb left alignment and equal vertical whitespace unless the user explicitly changes the requirement.
+
+### This chat's read-only repository review
+- Re-opened and reviewed `PROJECT_RULES.md`, the current master project record, `docs/INFOJANO_APPROVED_HERO_DESIGN_MASTER.md`, `INFOJANO_AUDIENCE_GROWTH_RESEARCH_PLAYBOOK.md`, `project-notes/GLOBAL-FOOTER-CONTACT-PRIVACY-QA-TRACKER.md`, and `image-to-pdf.html`.
+- Confirmed the project rule: no code, feature, layout, workflow, commit, merge or deployment changes without the owner's explicit permission. Discussion, inspection, testing and recommendations are allowed.
+- No application source, assets, configuration, feature, PR, merge or deployment was changed in this review. This entry is a documentation-only handoff update.
+- New-chat instruction from owner: continue the same ongoing InfoJano work; do not switch to unrelated tasks. Start by reading this handoff and resuming PR #359 review/QA.
