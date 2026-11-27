@@ -517,6 +517,53 @@ html body .ij-final-tile svg{width:32px!important;height:32px!important}
  html body .ij-final-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
  html body .ij-final-tile{min-height:96px!important;font-size:13px!important}
 }
+
+
+/* Unified page frame: header, hero, guides and every work section share
+   one exact left/right alignment; no section may overflow the hero frame. */
+@media(min-width:1001px){
+  .ij-brandbar-inner{
+    width:min(calc(100% - 112px),1552px);
+    max-width:1552px;
+    margin:0 auto;
+    padding:0;
+  }
+  main{
+    width:min(calc(100% - 64px),1600px);
+    max-width:1600px;
+    padding-left:24px;
+    padding-right:24px;
+  }
+  .ij-id-hero,
+  .ij-doc-guide-links,
+  .ij-studio-workspace{
+    width:100%;
+    max-width:none;
+    margin-left:0;
+    margin-right:0;
+  }
+  .ij-studio-workspace,
+  .ij-studio-left,
+  .ij-studio-right{min-width:0;max-width:100%}
+  .ij-studio-workspace .card{min-width:0;max-width:100%}
+}
+@media(max-width:1000px){
+  .ij-brandbar-inner{width:100%;max-width:none}
+  main{width:100%;max-width:none}
+  .ij-id-hero,
+  .ij-doc-guide-links,
+  .ij-studio-workspace{
+    width:100%;
+    max-width:none;
+    margin-left:0;
+    margin-right:0;
+  }
+  .ij-studio-workspace,
+  .ij-studio-left,
+  .ij-studio-right{min-width:0;max-width:100%}
+  .ij-studio-workspace .card{min-width:0;max-width:100%}
+}
+
 </style>
 <script type="application/ld+json">
 {
