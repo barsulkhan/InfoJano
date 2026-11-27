@@ -603,6 +603,19 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
 @media(prefers-reduced-motion:reduce){
  .ij-hero-photo,.ij-hero-save{animation:none!important}
 }
+
+/* Reference-match: image-format badges and wider banner proportions */
+.ij-full-hero{min-height:300px!important;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr)!important;padding:34px 46px!important;border-radius:28px!important;background:linear-gradient(112deg,#e7f3ff 0%,#e5f5ff 55%,#d9f5f5 100%)!important}
+.ij-hero-copy h1{font-size:clamp(34px,4.6vw,58px)!important;letter-spacing:-1.9px!important}
+.ij-hero-copy h1 span{background:linear-gradient(100deg,#078be7 0%,#2856d8 45%,#f05a31 100%)!important;-webkit-background-clip:text!important;background-clip:text!important}
+.ij-hero-pills{gap:12px!important;margin-top:22px!important}
+.ij-hero-pills span{min-width:112px;justify-content:center;padding:10px 16px!important;border:1px solid rgba(255,255,255,.9)!important;border-radius:999px!important;background:rgba(255,255,255,.86)!important;color:#173d5b!important;font-size:15px!important;font-weight:800!important;box-shadow:0 5px 16px rgba(29,87,145,.08)!important}
+.ij-hero-pills .ij-format-jpg{color:#bd7900!important}.ij-hero-pills .ij-format-png{color:#0898a8!important}.ij-hero-pills .ij-format-webp{color:#169b55!important}
+.ij-hero-visuals{min-height:220px!important;max-width:500px!important;background:transparent!important}
+.ij-hero-photo{border-width:5px!important;border-radius:20px!important;box-shadow:0 13px 28px rgba(32,92,158,.18)!important}
+.ij-hero-save{background:#08b64f!important;box-shadow:0 9px 22px rgba(8,182,79,.25)!important}
+@media(max-width:650px){.ij-full-hero{grid-template-columns:minmax(0,1fr) minmax(145px,.78fr)!important;gap:8px!important;min-height:0!important;padding:24px 18px!important}.ij-hero-copy{grid-column:1!important;grid-row:1!important}.ij-hero-copy h1{font-size:clamp(25px,6vw,38px)!important;letter-spacing:-1px!important}.ij-hero-pills{flex-wrap:wrap!important;gap:6px!important;margin-top:14px!important}.ij-hero-pills span{min-width:0;padding:7px 9px!important;font-size:10px!important}.ij-hero-visuals{grid-column:2!important;grid-row:1!important;min-height:145px!important;width:100%!important;margin:0!important}.ij-hero-photo{border-width:3px!important}}
+@media(max-width:390px){.ij-full-hero{grid-template-columns:1fr!important}.ij-hero-visuals{grid-column:1!important;grid-row:2!important;justify-self:center!important;width:min(100%,310px)!important;min-height:135px!important}}
 </style>
   <link rel="manifest" href="./app-manifests/image-compressor.webmanifest">
 <style>.ij-install-card{max-width:650px;margin:14px auto;padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px 12px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f8fbff);border:1px solid #cfe0ff;border-radius:16px;box-shadow:0 5px 18px #153c7710;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.ij-install-icon{width:42px;height:42px;display:grid;place-items:center;background:#dbeafe;color:#1458c8;border-radius:13px;font-size:23px}.ij-install-copy strong{display:block;font-size:15px;color:#172033}.ij-install-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#52627a}.ij-install-card button{grid-column:1/-1;border:0;border-radius:11px;background:#1458c8;color:#fff;padding:12px 14px;font-weight:750;font-size:14px;cursor:pointer}.ij-install-help{grid-column:1/-1;font-size:12px;color:#52627a}.ij-install-help p{margin:8px 0 0;line-height:1.5}@media(min-width:560px){.ij-install-card{grid-template-columns:42px 1fr auto}.ij-install-card button{grid-column:auto}.ij-install-help{grid-column:1/-1}}</style>
@@ -651,7 +664,7 @@ body{padding:0;background:#f7f9ff;color:#111b36;font-family:Inter,ui-sans-serif,
     <div class="ij-hero-kicker">SMART IMAGE OPTIMIZER</div>
     <h1>Image <span>Compressor</span></h1>
     <p>Reduce image size, keep good quality</p>
-    <div class="ij-hero-pills"><span><svg class="ij-icon ij-icon-speed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17a9 9 0 1 1 16 0"/><path d="m12 13 4-4"/><path d="M7 17h10"/></svg> Fast</span><span><svg class="ij-icon ij-icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/><path d="M12 14v3"/></svg> Private</span><span><svg class="ij-icon ij-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg> Free</span></div>
+    <div class="ij-hero-pills"><span class="ij-format-jpg">▧&nbsp; JPG</span><span class="ij-format-png">▧&nbsp; PNG</span><span class="ij-format-webp">▧&nbsp; WEBP</span></div>
   </div>
   <div class="ij-hero-visuals" aria-hidden="true">
     <div class="ij-hero-photo photo-one"><svg viewBox="0 0 160 100"><rect width="160" height="100" rx="12" fill="#69c9ff"/><circle cx="125" cy="20" r="11" fill="#ffe38c"/><path d="M0 68 38 25l26 34 28-42 68 55v28H0" fill="#477eaa"/><path d="m20 47 18-22 26 34-18-9-10 6zM70 53 92 17l32 42-25-15-12 8z" fill="#fff"/><path d="M0 72q40-14 80 0t80 0v28H0" fill="#087f8b"/><path d="M0 82q40-8 80 0t80 0v18H0" fill="#0876b5"/></svg></div>
