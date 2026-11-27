@@ -60,6 +60,22 @@ Interpretation:
    https://ahrefs.com/blog/the-free-tools-seo-strategy/
    Key lesson: a genuinely useful free tool can satisfy an action-oriented query better than an article. Ahrefs reports its own free writing tools reached nearly one million US organic visits/month at peak; this is a company-reported case, not a forecast for InfoJano. The transferable principle is to build a distinct tool that solves a real query better than alternatives, then support it with clear explanatory content and distribution.
 
+
+## Mandatory per-page research checklist (run automatically every time)
+
+This checklist is required for every page the owner asks us to work on; do not wait for the owner to repeat it. It complements the Audience Growth operating method below.
+
+- **Indexing:** Inspect the exact URL in Search Console URL Inspection if access is available. Record verdict, exclusion/indexing reason, canonical, last crawl and relevant sitemap/robots findings. Treat `site:` queries as indicative only. If URL Inspection access is unavailable, mark indexing as **not verified**, not indexed or not indexed.
+- **SERP and competitors:** Search the target query in the intended country and language. Record the actual ranking/visible competitor URLs and the concrete services, tool features, formats, workflow, content, and trust signals each offers. Note gaps and opportunities without copying.
+- **Keywords and intent:** Build a small intent-led cluster: primary keyword, variants, long-tail terms, related questions, and whether users want to calculate, convert, create, compare, print, download or learn. Use GSC first; supplement with available keyword research tools. Clearly label missing metrics, estimates and confidence.
+- **Audience countries/regions:** Segment GSC performance by country, device, page and query. Use GA4 geography/acquisition/engagement only when connected and available. Distinguish impressions from clicks and engaged users; account for small samples and date completeness. Do not guess the target market.
+- **Targeting choice:** Prioritize relevant geographies with evidence of demand and service fit. Consider localization (language, terminology, currency/units, examples, formats) only where it improves the task. Avoid keyword stuffing, doorway pages and thin country duplicates.
+- **Opportunity:** Compare the existing InfoJano page to competitors and state the user problem/gap, proposed original improvement, target query/market, measurable hypothesis and follow-up window.
+- **Protection and QA:** Preserve all locked/finalized heroes and the homepage. Stop and obtain explicit permission if any change may affect them. Record source review, functional tests, desktop/mobile QA, CI, deployment and indexing as separate statuses.
+- **Evidence log:** Save date, sources/URLs, query, country/language/device, competitor observations, indexing evidence, data limitations, recommendation, changed files/PR/commit and next review date in this playbook.
+
+Research must be page-specific. A previous page's competitor set, keyword cluster, indexing state or audience geography must not be carried over as fact to another page.
+
 ## Audience growth operating method
 For each work item:
 1. **Discover intent** — identify the exact user task behind a query (calculate, convert, create, compare, understand, download, print, etc.).
