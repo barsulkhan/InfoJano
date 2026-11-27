@@ -564,6 +564,48 @@ html body .ij-final-tile svg{width:32px!important;height:32px!important}
   .ij-studio-workspace .card{min-width:0;max-width:100%}
 }
 
+
+
+/* Desktop: enlarge the hero and use its exact frame for all following sections. */
+@media screen and (min-width:1001px){
+  main{
+    width:calc(100% - 48px);
+    max-width:1800px;
+    padding-left:0;
+    padding-right:0;
+    padding-top:30px;
+  }
+  .ij-id-hero{
+    width:100%;
+    max-width:none;
+    min-height:410px;
+    padding:48px 58px 42px;
+    margin:12px 0 28px;
+    border-radius:26px;
+  }
+  .ij-id-hero-grid{
+    min-height:310px;
+    grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+    gap:clamp(28px,4vw,64px);
+  }
+  .ij-id-hero-art{min-height:340px}
+  .ij-id-card-mock{width:min(82%,390px)}
+  .ij-doc-guide-links,
+  .ij-studio-workspace{
+    width:100%;
+    max-width:none;
+    margin-left:0;
+    margin-right:0;
+  }
+  .ij-studio-workspace{gap:24px}
+  .ij-studio-workspace .card{min-width:0}
+  .ij-brandbar-inner{
+    width:calc(100% - 48px);
+    max-width:1800px;
+    margin:0 auto;
+  }
+}
+
 </style>
 <script type="application/ld+json">
 {
