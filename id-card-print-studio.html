@@ -717,6 +717,39 @@ html body .ij-final-idcard.employee{left:4%!important;top:48%!important;z-index:
   html body .ij-final-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 }
 </style>
+
+<style id="ij-desktop-hero-header-tune">
+/* Desktop-only: trim hero height by about 10 mm and let the shared header use the full viewport width. */
+@media screen and (min-width:1001px){
+  html body main > .ij-final-hero{
+    min-height:352px!important;
+  }
+  html body main > .ij-final-hero .ij-final-art{
+    height:352px!important;min-height:352px!important;
+  }
+  html body .ij-global-header{
+    width:100vw!important;max-width:none!important;
+    margin-left:calc(50% - 50vw)!important;margin-right:0!important;
+  }
+  html body .ij-global-header .ij-global-header-inner,
+  html body .ij-global-header.ij-global-header--hero-aligned .ij-global-header-inner{
+    width:100%!important;max-width:none!important;min-height:104px!important;
+    margin:0!important;padding:12px clamp(28px,4.2vw,72px)!important;
+    gap:clamp(18px,2.2vw,36px)!important;box-sizing:border-box!important;
+  }
+  html body .ij-global-header .ij-global-logo{
+    width:196px!important;height:70px!important;flex-basis:196px!important;
+  }
+  html body .ij-global-header .ij-global-nav{gap:clamp(14px,1.7vw,26px)!important}
+  html body .ij-global-header .ij-global-tools,
+  html body .ij-global-header .ij-global-home{
+    min-height:48px!important;height:48px!important;padding-left:20px!important;padding-right:20px!important;font-size:15px!important;
+  }
+  html body .ij-global-header .ij-global-language{
+    height:48px!important;min-height:48px!important;max-width:150px!important;font-size:14px!important;
+  }
+}
+</style>
 </head>
 <body data-ij-header-align="hero">
 <script src="site-header.js"></script>
