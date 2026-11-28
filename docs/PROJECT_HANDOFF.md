@@ -135,3 +135,52 @@
 
 ---
 এই নথি একটি operational handoff; live settings বদলালে বা নতুন test result এলে তারিখসহ update করতে হবে।
+
+
+## 8. পরবর্তী কাজের সূচি / Roadmap — পরবর্তী সেশন থেকে
+
+> এই সূচি কাজের অগ্রাধিকার অনুযায়ী সাজানো। প্রতিটি ধাপে আগে read-only inspection/test; কোনো configuration বা code change প্রয়োজন হলে কাজ শুরুর আগে মালিকের স্পষ্ট অনুমতি নিতে হবে।
+
+### Phase 1 — Hosting ও redirect নিশ্চিত করা (প্রথমে)
+- [ ] Cloudflare Overview-এ zone Active/healthy আছে কি না বর্তমান status দেখা।
+- [ ] Spaceship-এ nameserver delegation এখনও Cloudflare-এর assigned nameserver-এ আছে কি না যাচাই।
+- [ ] Cloudflare DNS-এ apex-এর চারটি GitHub Pages A record, www CNAME এবং Google verification TXT এখনও সঠিক আছে কি না পরীক্ষা; proxy status নথিভুক্ত করা।
+- [ ] Cloudflare Redirect Rules-এ “InfoJano Tools Page Redirect” enabled কি না, match expression `(http.request.uri.path eq "/tools.html")`, destination `https://infojano.com/index.html#toolGrid`, status 301 এবং Preserve query string Off আছে কি না inspect করা।
+- [ ] Browser DevTools বা উপযুক্ত HTTP header checker দিয়ে `/tools.html`-এর response status 301 এবং Location header পরীক্ষা; final destination, fragment/Tools section এবং query-string আচরণ যাচাই।
+- [ ] `www.infojano.com` ও `infojano.com` উভয় host-এর HTTPS/redirect আচরণ পরীক্ষা।
+- [ ] একটি নতুন random nonexistent path পরীক্ষা করে সেটি এখনও genuine 404 দেয় কি না নিশ্চিত করা; 404 page-কে homepage-এ blanket redirect করা যাবে না।
+
+### Phase 2 — Google Search Console follow-up
+- [ ] আগের SEO audit-এর 108 sitemap URL-এর status list-কে baseline হিসেবে ব্যবহার করা।
+- [ ] Google recrawl হয়েছে কি না দেখে আগে যেসব page Crawled — currently not indexed ছিল (image-compressor, image-resizer, time-calculator, age-in-days-calculator) সেগুলো পুনরায় inspect করা।
+- [ ] আগে Google-এর selected canonical GitHub Pages host-এ যাওয়া 10টি duplicate URL এবং 2টি alternate canonical URL পুনরায় inspect করা।
+- [ ] Google-selected canonical ও current user-declared canonical তুলনা করে host consolidation-এর প্রকৃত scope নির্ধারণ করা।
+- [ ] Search Console-এর URL unknown status-এ থাকা ছয়টি URL-এর live HTTP status আলাদাভাবে পরীক্ষা; unknown মানেই 404 নয়।
+- [ ] প্রমাণ সংগ্রহের পরই প্রয়োজন হলে Search Console-এ Validate Fix / Request Indexing-এর উপযুক্ত পদক্ষেপ নেওয়া; কোনো indexing ফল নিশ্চিত না হলে নিশ্চিত বলে লেখা যাবে না।
+
+### Phase 3 — Domain purchase history ও account documentation
+- [ ] Spaceship-এর Domain/Order/Invoice history থেকে original purchase date ও order details দেখা; বর্তমান provider হিসেবে Spaceship ইতিমধ্যে নিশ্চিত।
+- [ ] প্রয়োজনীয় তথ্যের শুধু non-sensitive অংশ নথিতে লেখা; password, OTP, payment credentials, full payment-card details বা secret token কখনো সংরক্ষণ নয়।
+- [ ] MX record নেই—এই আগের observation পুনরায় DNS screen-এ যাচাই; ব্যবহারকারী ভবিষ্যতে domain email ব্যবহার করতে চাইলে তবেই mail DNS পরিকল্পনা করা।
+
+### Phase 4 — Site quality ও SEO audit (hosting স্থিতিশীল হওয়ার পরে)
+- [ ] আগের crawler audit-এর 50-page cap মাথায় রেখে বাকি discovered URLs-সহ যতটা সম্ভব পূর্ণ site crawl করা।
+- [ ] broken internal links, HTTP 4xx/5xx, redirect chains/loops, canonical, sitemap coverage এবং robots.txt আলাদাভাবে পরীক্ষা।
+- [ ] image-resizer metadata fix deploy-এর পর crawler ও Google recrawl evidence পরীক্ষা।
+- [ ] প্রতিটি finding-কে severity, affected URL, evidence, recommended fix এবং approval status-সহ log করা।
+- [ ] কোনো code/metadata/design পরিবর্তন করার আগে PROJECT_RULES.md মেনে নির্দিষ্ট অনুমতি নেওয়া।
+
+### Phase 5 — Documentation ও session handoff
+- [ ] প্রতিটি কাজের পর এই handoff-এ তারিখ, কী পরীক্ষা/পরিবর্তন হয়েছে, evidence, ফলাফল, unresolved items এবং next action যোগ করা।
+- [ ] README-র current status সংক্ষিপ্তভাবে আপডেট করা।
+- [ ] পরবর্তী নতুন chat-এ কাজ শুরুর আগে README, PROJECT_HANDOFF এবং প্রয়োজনমতো 404/SEO audit পুনরায় পড়া।
+- [ ] একই তথ্য ব্যবহারকারীকে পুনরায় জিজ্ঞাসা করার আগে repository ও আগের প্রমাণ খুঁজে দেখা।
+
+### কাজের অগ্রাধিকার
+1. Hosting / DNS / Redirect live verification.
+2. Search Console recrawl ও canonical status review.
+3. Spaceship purchase history থেকে বাকি domain তথ্য নিশ্চিত করা.
+4. পূর্ণাঙ্গ SEO/site crawl এবং findings triage.
+5. প্রতিটি ধাপের documentation update.
+
+**বর্তমান অবস্থা:** roadmap তৈরি করা হয়েছে; এই roadmap-এর কোনো নতুন verification বা configuration কাজ এই নথি update করার সময় করা হয়নি। Website source code, Cloudflare settings, DNS records বা redirect rule-এ কোনো নতুন পরিবর্তন করা হয়নি।
