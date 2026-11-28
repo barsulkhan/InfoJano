@@ -126,3 +126,18 @@ InfoJano-র connected Search Console property `sc-domain:infojano.com` থে�
 2. Search Console-এ PR #389 deploy-এর পর Google recrawl হওয়ার জন্য অপেক্ষা করে affected URL-গুলো পুনরায় inspect করা।
 3. Cloudflare/GitHub Pages hosting layer-এ `/404.html`-এর actual HTTP status পরীক্ষা করা।
 4. GSC Page Indexing report-এর reported URLs একে একে inspect করে কেবল equivalent replacement থাকলে redirect নির্ধারণ করা।
+
+
+## 12. Post-deployment site crawl — 28 November 2026
+A fresh same-origin crawl of `https://infojano.com/` completed successfully.
+- **Crawl coverage:** 50 pages fetched, 74 additional discovered URLs not crawled because the 50-page limit was reached.
+- **HTTP fetch results:** all 50 crawled pages returned HTTP 200 to the audit crawler; all were indexable in the crawler report; all were in sitemap; no missing image alt text found in the crawled set.
+- **Issue summary:** 3 findings total:
+  - 1 warning: crawl page limit (50 of at least 124 discovered URLs; 74 not crawled).
+  - 1 informational: `image-resizer.html` meta description is 161 characters (tool guideline max 160).
+  - 1 informational: `image-resizer.html` title is 65 characters (tool guideline max 60).
+- **Broken internal links / server errors / redirect loops:** none appeared in the returned issue list for this 50-page crawl.
+- **Performance note:** crawler response times on sampled pages were generally around 14–91 ms; this is crawler fetch timing, not a Lighthouse/Core Web Vitals test.
+- **Audit ID:** `38220a90-5978-4b63-9134-38b2071a42f3`.
+
+**Coverage limitation:** this was a 50-page crawl, not a complete crawl of all discovered URLs. Therefore “no broken internal links” applies only to the completed crawl's findings and is not a site-wide guarantee.
