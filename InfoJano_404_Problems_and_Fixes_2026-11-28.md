@@ -94,3 +94,35 @@ Google Search Console-এ রিপোর্ট হওয়া 404 / not-found URL
 
 ---
 **সারাংশ:** PR #389-এর মাধ্যমে শনাক্ত broken internal navigation path সংশোধন, automated checks এবং production deployment সম্পন্ন। তবে Search Console URL Inspection, reported URL-গুলোর exhaustive live HTTP status এবং Google validation এখনো আলাদা follow-up কাজ।
+
+
+## 10. অতিরিক্ত Google Search Console URL Inspection — 28 November 2026
+InfoJano-র connected Search Console property `sc-domain:infojano.com` থেকে 10টি URL inspect করা হয়েছে। এগুলো existing Google index status; এটি live HTTP status test নয় এবং inspection চালানো মানেই Google re-index করেছে এমন নয়।
+
+| URL | Google-এর বর্তমান ফলাফল | পর্যবেক্ষণ |
+|---|---|---|
+| `/` | Submitted and indexed — PASS | Google ও user canonical দুটোই `https://infojano.com/`; fetch successful |
+| `/document-studio.html` | Submitted and indexed — PASS | Google ও user canonical একই; fetch successful |
+| `/add-subtract-date-calculator.html` | Submitted and indexed — PASS | Google ও user canonical একই |
+| `/savings.html` | Duplicate — Google chose different canonical | Google canonical `https://barsulkhan.github.io/InfoJano/savings.html`; declared canonical `https://infojano.com/savings.html` |
+| `/business-days-calculator.html` | Duplicate — Google chose different canonical | Google canonical GitHub Pages URL `https://barsulkhan.github.io/InfoJano/business-days-calculator.html`; declared canonical infojano.com |
+| `/date-duration-calculator.html` | Duplicate — Google chose different canonical | Google canonical GitHub Pages URL; declared canonical infojano.com |
+| `/days-between-dates-calculator.html` | Duplicate — Google chose different canonical | Google canonical GitHub Pages URL; declared canonical infojano.com |
+| `/404.html` | URL is unknown to Google | Google index report থেকে HTTP response code নির্ধারণ করা যায়নি |
+| `/tools.html` | Not found (404) — NOT_FOUND | Google-এর last crawl 18 Nov 2026; referring page ছিল `business-days-calculator.html` |
+| `/sitemap.xml` | URL is unknown to Google | Sitemap discovery/processing status আলাদা sitemap report-এ যাচাই করতে হবে |
+
+### গুরুত্বপূর্ণ নতুন finding
+চারটি পেজে Google-এর নির্বাচিত canonical `barsulkhan.github.io/InfoJano/`-এ যাচ্ছে, যদিও পেজগুলোর declared canonical `infojano.com`। এটি সরাসরি broken-link fix নয়; duplicate-host/canonical consolidation issue। Search Console-এ Google-এর selected canonical বদলানোর জন্য দুই host-এর content, redirects, canonical signals ও internal links একসঙ্গে পরীক্ষা করা দরকার। Homepage ও shared header/site configuration সুরক্ষিত থাকায় এবং এ কাজ 404-link fix-এর scope-এর বাইরে হওয়ায় এখানে কোনো domain-wide redirect বা canonical পরিবর্তন করা হয়নি।
+
+### URL Inspection সীমাবদ্ধতা
+- Inspection-এর `lastCrawlTime` আগের crawl-এর সময়; PR #389 deploy-এর পর নতুন crawl হয়েছে—এমন নিশ্চয়তা নয়।
+- `/tools.html`-এর জন্য Google স্পষ্টভাবে Not found (404) দেখিয়েছে। সংশোধিত internal links এখন `index.html#toolGrid`-এ পাঠায়; পুরোনো URL-টি অপ্রয়োজনীয় redirect দিয়ে বাঁচানো হয়নি।
+- `404.html`-এর inspection-এ URL unknown ছিল; এটি custom 404 page বাস্তবে HTTP 404 status ফেরায় কি না প্রমাণ করে না।
+- এই inspection batch-এর ফল Search Console URL Inspection API থেকে পাওয়া; Google-এর **Validate Fix** চালানো হয়নি।
+
+## 11. পরবর্তী নিরাপদ পদক্ষেপ
+1. `barsulkhan.github.io/InfoJano/` এবং `infojano.com` host-এর canonical/redirect consolidation আলাদা করে audit করা; homepage/hero/shared header পরিবর্তনের আগে explicit approval নিতে হবে।
+2. Search Console-এ PR #389 deploy-এর পর Google recrawl হওয়ার জন্য অপেক্ষা করে affected URL-গুলো পুনরায় inspect করা।
+3. Cloudflare/GitHub Pages hosting layer-এ `/404.html`-এর actual HTTP status পরীক্ষা করা।
+4. GSC Page Indexing report-এর reported URLs একে একে inspect করে কেবল equivalent replacement থাকলে redirect নির্ধারণ করা।
