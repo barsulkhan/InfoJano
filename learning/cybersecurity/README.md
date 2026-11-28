@@ -4,9 +4,9 @@ A beginner-friendly, Android/Termux-based learning log. The course focuses on et
 
 ## Learner
 - Name used in examples: Barsul
-- Device/workflow: Android phone with Termux
-- Goal: Build foundational skills toward a cybersecurity career
-- Learning style: Bengali explanations, small steps, copy-and-paste commands, and short quizzes
+- Device/workflow: Android phone with Termux; two Android phones may be used for authorized lab exercises
+- Goal: Build foundational skills toward a cybersecurity career and help creators protect their accounts
+- Learning style: Bengali explanations, one small step at a time, copy-and-paste commands, and clear instructions rather than frequent quizzes
 
 ## Progress
 
@@ -27,15 +27,15 @@ A beginner-friendly, Android/Termux-based learning log. The course focuses on et
 - Counting lines/words with `wc`
 
 ### Python setup and early practice
-- Installed Python in Termux
+- Installed Python in Termux (Python 3.14.10 at the time)
 - Used `print()` and variables
 - Created and ran `first.py` and `second.py`
-- Practiced arithmetic in `calculator.py`
+- Practiced arithmetic in a calculator program
 
 ### Day 7 — Conditions
 - `if` / `else`
 - Comparison operator `>=`
-- Indentation (four spaces inside the condition blocks)
+- Indentation
 - Practiced with `age = 15`
 
 ### Day 8 — `for` loops
@@ -63,16 +63,63 @@ A beginner-friendly, Android/Termux-based learning log. The course focuses on et
 - Assigning to an existing key changes its value
 - Example: `student["subject"] = "Linux"`
 
-## Current checkpoint
+### Day 13 — Deleting dictionary entries
+- Used `del student["subject"]`
+- Confirmed that `del` removes both the key and its value
 
-The current lesson is Day 12. The latest quiz asked what `student["subject"]` returns after changing the existing subject value from `"Python"` to `"Linux"`. The expected answer is **Linux**.
+### Day 14 — Functions
+- Defined a function with `def welcome():`
+- Called the function more than once
 
-## Next topics
-Continue gradually with Python functions, strings, files, error handling, and safe cybersecurity/networking labs. Only practice on systems and accounts owned by the learner or where explicit permission has been granted.
+### Day 15 — Function parameters
+- Passed different names into `welcome(name)`
+- Understood that the parameter receives the supplied value
+
+### Day 16 — Return values
+- Used `return` to send a result back from a function
+- Example: `add(10, 20)`
+
+### Day 17 — Function practice
+- Created a subtraction function using `return a - b`
+- Ran the program successfully
+
+## Email security learning plan
+
+Barsul wants practical, hands-on learning about sponsorship scams, phishing, malicious attachments, APK risks, and WhatsApp/account compromise, motivated in part by a past incident affecting a family member. The aim is defensive learning and helping creators stay safe.
+
+Planned modules:
+1. Email headers and sender investigation: From, Reply-To, Return-Path, SPF, DKIM, DMARC.
+2. Images and tracking pixels: how remote images load and how to limit tracking.
+3. Attachment security: PDF, ZIP, APK file identification and safe static analysis.
+4. Download-link investigation: URL structure, redirects, domain reputation, and safe inspection.
+5. Android APK and malware analysis: package contents, permissions, accessibility risks, indicators, and defenses.
+
+Practical boundaries:
+- Use owned devices, test accounts, and intentionally vulnerable training environments, or systems with explicit authorization.
+- Safe simulations and analysis are appropriate.
+- Do not steal real credentials, take over another person's account, deploy malware, or send deceptive harmful files to real people.
+- For sponsorship exercises, use clearly fictional brands and transparent training messages. Do not impersonate real businesses or creators.
+
+## Current practical lab
+
+- Created `~/cyberlab/email_lab` in Termux.
+- Created `sponsorship.txt` containing a fictional sponsorship email for training.
+- A `link_test.py` example was provided to parse a harmless reserved `.invalid` demo URL, but the user has not yet confirmed running it.
+- A fictional campaign concept was drafted for “Bengal Gadget House,” including a 20-item gadget catalogue and creator sponsorship terms. It is a training scenario, not a real company or offer.
+- The fictional creator/channel scenario discussed was “Sabir Uddin Sheikh” / “mukya g”; do not treat these as verified facts or contact them. Any real-world test would require explicit authorization.
+
+## Current checkpoint — paused
+
+Barsul has paused lessons for now and wants to resume later. Start next time by briefly reminding him:
+- Python Day 17 is complete.
+- The Email Lab folder and fictional `sponsorship.txt` are in place.
+- Next planned lesson is Module 1: inspect and understand email headers, starting with the sample header file `email_header.txt` (a command to create it was provided, but completion was not confirmed).
+- Continue one small task at a time, in Bengali, with direct instructions and no unnecessary quizzes.
 
 ## Teaching preferences
 - Explain in Bengali.
-- Give one small step at a time.
+- Give one small task at a time; avoid overwhelming lists of commands.
+- Prefer pasteable Termux commands using `cat > filename <<'EOF'`; Nano editing has been difficult.
 - Use the name `Barsul` in examples.
-- Prefer Termux commands that can be pasted directly; Nano editing has been difficult.
-- Explain expected output and wait for a screenshot or confirmation before moving on.
+- Explain what the task does and what output to expect.
+- Wait for a screenshot or confirmation before giving the next step.
