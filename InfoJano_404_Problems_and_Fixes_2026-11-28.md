@@ -150,3 +150,32 @@ A fresh same-origin crawl of `https://infojano.com/` completed successfully.
 - The four Google-selected GitHub Pages canonicals remain an unresolved host-consolidation signal. Their current source canonical tags are correct; changing tags alone would not reliably resolve Google's choice. No sitewide redirect, CNAME, Pages configuration, homepage, or shared header changes were made because those could affect protected pages and need a separately scoped hosting-level plan.
 - `/tools.html` remains an old Google 404 from its 18 Nov crawl. PR #389 replaced the known internal reference with `index.html#toolGrid`; no current internal link was found in the repaired path. No artificial redirect page was added.
 - The audit tool still capped the crawl at 50 pages even when a 100-page budget was requested. The remaining 74 discovered URLs therefore remain outside this crawl's evidence. Search Console Validate Fix and post-merge Google recrawl have not been run/confirmed.
+
+
+## 14. Additional targeted verification — 28 November 2026
+### Live crawler HTTP checks
+Three focused crawls were run from specific URLs:
+- `https://infojano.com/tools.html`: crawler confirmed **HTTP 404**. It is not in the current GitHub source search results for `tools.html`, consistent with the stale internal reference having been removed by PR #389. It is not listed as a sitemap URL in the prior sitemap audit.
+- `https://infojano.com/404.html`: crawler fetched the static file with **HTTP 200** and confirmed its intentional `noindex,follow` directive. This direct file URL returning 200 is normal for a static custom 404 document; this test does **not** test whether a nonexistent path is served with HTTP 404.
+- `https://infojano.com/savings.html`: fetched HTTP 200, indexable, declared canonical is infojano.com.
+The focused crawls also reached their 10-page cap; they are targeted checks, not full-site crawls.
+
+### Fresh Search Console inspection (existing Google index data, not a live fetch)
+- `image-resizer.html`: Google currently reports **Crawled - currently not indexed**; last crawl 2026-11-13; Google/user canonical agree on infojano.com. The new metadata fix was merged 28 Nov, so Google has not yet recrawled it according to this record.
+- `tools.html`: Google still reports Not found (404), last crawl 2026-11-18; old referring page is `business-days-calculator.html`. Current source search finds no remaining `tools.html` match in application files.
+- `404.html`: URL unknown to Google; not evidence of a bad status.
+- `savings.html`, `business-days-calculator.html`, `date-duration-calculator.html`, `days-between-dates-calculator.html`: Google still chooses `barsulkhan.github.io/InfoJano/...` instead of the declared `infojano.com/...` canonical. Last crawl times range 17–27 Nov; source canonical tags were re-fetched and are correctly self-referencing infojano.com.
+- `percentage-change.html`, `target-marks-calculator.html`, `remove-gst-from-total-calculator.html`: all three are **Submitted and indexed**; their userCanonical strings in Search Console still contain historic malformed suffixes (`$3<meta property=` or `$3<script type=`), while current source canonical markup is valid and self-referencing. Last crawls were 11 Nov, before the current inspection date. No source-level malformed canonical string was found in the earlier repository search; no code change is justified from these stale inspection records alone.
+
+### Hosting / protected-scope boundary
+- Repository root `CNAME` contains `infojano.com`.
+- There is no root `_redirects`, `_config.yml`, or `wrangler.toml` file in the current repository.
+- A route-level redirect for `/tools.html` would change legacy URL navigation and requires choosing a hosting mechanism; no such redirect was added.
+- A GitHub Pages-to-custom-domain redirect or canonical consolidation may affect all routes, including the homepage and approved hero pages. No CNAME, Pages setting, DNS, site-wide redirect, homepage, shared header, hero/banner, or navigation file was changed.
+- The web retrieval environment could not fetch the live domain directly. Therefore TLS/redirect headers and the actual response to arbitrary nonexistent paths could not be independently verified outside the focused SEO crawler.
+
+### Remaining actions / constraints
+1. Wait for Google to recrawl `image-resizer.html` and the affected canonical pages; then inspect again. No Search Console Validate Fix or Request Indexing action is exposed through the connected read-only inspection operation.
+2. Decide whether legacy `/tools.html` should remain a genuine 404 or be redirected to `/index.html#toolGrid`. Implementing a redirect changes navigation; hosting-layer route configuration must be identified first.
+3. Resolve the four GitHub Pages canonical selections only after reviewing the live behavior of both hosts and selecting a domain-consolidation approach. Any sitewide host redirect/config change needs separate explicit approval because it could alter navigation and affect protected homepage/hero routes.
+4. Verify a random nonexistent URL returns HTTP 404, not merely the direct `/404.html` document. This remains unverified by the available crawler test.
