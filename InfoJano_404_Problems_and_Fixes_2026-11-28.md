@@ -141,3 +141,12 @@ A fresh same-origin crawl of `https://infojano.com/` completed successfully.
 - **Audit ID:** `38220a90-5978-4b63-9134-38b2071a42f3`.
 
 **Coverage limitation:** this was a 50-page crawl, not a complete crawl of all discovered URLs. Therefore “no broken internal links” applies only to the completed crawl's findings and is not a site-wide guarantee.
+
+
+## 13. Follow-up remediation — 28 November 2026
+- A second 50-page crawl completed as audit `9525f979-f042-47f7-a9d1-751224cd0217`. It returned the same three findings: 50-page crawl cap (74 discovered URLs left), plus the image-resizer title (65 chars) and description (161 chars). All 50 fetched pages returned HTTP 200, were indexable and in the sitemap; no missing image alt text, broken internal links, server errors or redirect loops appeared in this crawl's issue list.
+- The image-resizer metadata was shortened in PR [#390](https://github.com/barsulkhan/InfoJano/pull/390), merged to `main` as commit `349e15ae48f70c13e8e0a1067cb39a5055f6a4c9`. New title: `Free Image Resizer | JPG, PNG & WebP – InfoJano` (47 characters). New meta description: 151 characters. Open Graph and Twitter title/description were aligned. Only metadata in `image-resizer.html` changed; hero/banner, CSS, JS, shared header and homepage were untouched.
+- The previous malformed Search Console canonical strings were rechecked against current repository source and prior indexing audit notes: affected pages have properly closed, self-referencing `infojano.com` canonical tags, and the reported crawls date from 11 Nov 2026. No malformed suffix was found in the current source search. No speculative markup edits were made.
+- The four Google-selected GitHub Pages canonicals remain an unresolved host-consolidation signal. Their current source canonical tags are correct; changing tags alone would not reliably resolve Google's choice. No sitewide redirect, CNAME, Pages configuration, homepage, or shared header changes were made because those could affect protected pages and need a separately scoped hosting-level plan.
+- `/tools.html` remains an old Google 404 from its 18 Nov crawl. PR #389 replaced the known internal reference with `index.html#toolGrid`; no current internal link was found in the repaired path. No artificial redirect page was added.
+- The audit tool still capped the crawl at 50 pages even when a 100-page budget was requested. The remaining 74 discovered URLs therefore remain outside this crawl's evidence. Search Console Validate Fix and post-merge Google recrawl have not been run/confirmed.
