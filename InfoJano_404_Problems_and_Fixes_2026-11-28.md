@@ -179,3 +179,63 @@ The focused crawls also reached their 10-page cap; they are targeted checks, not
 2. Decide whether legacy `/tools.html` should remain a genuine 404 or be redirected to `/index.html#toolGrid`. Implementing a redirect changes navigation; hosting-layer route configuration must be identified first.
 3. Resolve the four GitHub Pages canonical selections only after reviewing the live behavior of both hosts and selecting a domain-consolidation approach. Any sitewide host redirect/config change needs separate explicit approval because it could alter navigation and affect protected homepage/hero routes.
 4. Verify a random nonexistent URL returns HTTP 404, not merely the direct `/404.html` document. This remains unverified by the available crawler test.
+
+
+## 15. Full sitemap URL Inspection — 28 November 2026
+The current repository `sitemap.xml` contains **108 URLs**. All 108 were inspected in the connected Google Search Console domain property `sc-domain:infojano.com`. This reads Google's stored index records; it is not a live fetch and does not submit indexing requests.
+
+| Google coverage state | URLs |
+|---|---:|
+| Submitted and indexed | 86 |
+| Crawled — currently not indexed | 4 |
+| URL is unknown to Google | 6 |
+| Duplicate — Google chose a different canonical | 10 |
+| Alternate page with proper canonical tag | 2 |
+| **Total** | **108** |
+
+### Crawled — currently not indexed (4)
+- `image-compressor.html` — last crawl 13 Nov 2026.
+- `image-resizer.html` — last crawl 13 Nov 2026; new metadata fix merged 28 Nov, so this record predates that fix.
+- `time-calculator.html` — last crawl 13 Nov 2026.
+- `age-in-days-calculator.html` — last crawl 11 Nov 2026; Google canonical infojano.com, stored user canonical GitHub Pages URL.
+
+These are indexing outcomes, not HTTP 404s. No page content was changed in this pass because improving indexing requires content/quality evaluation and Google recrawl, not arbitrary metadata edits.
+
+### URL unknown to Google (6)
+- `pdf-to-jpg.html`
+- `word-converter.html`
+- `google-maps-location-qr-code-generator.html`
+- `bmi-health-guide.html`
+- `percentage-decrease-calculator.html`
+- `cheque-amount-in-words.html`
+
+“Unknown” does not mean missing or 404. Their live HTTP status must be checked separately; no changes were made on this status alone.
+
+### Duplicate — Google chose GitHub Pages canonical (10)
+- `qr-choice.html`
+- `savings.html`
+- `resize-image-to-pixels.html`
+- `resize-image-by-percentage.html`
+- `passport-id-photo-resizer.html`
+- `social-media-image-resizer.html`
+- `print-document-image-resizer.html`
+- `days-between-dates-calculator.html`
+- `business-days-calculator.html`
+- `date-duration-calculator.html`
+
+For all 10, current GitHub source was re-fetched. Each declares a self-referencing `https://infojano.com/<page>.html` canonical and matching `og:url`. Google still selects the GitHub Pages URL in its stored record. Last crawl dates range from 13 Nov to 27 Nov 2026. This is a host-level duplicate-signal problem, not a malformed canonical tag in current source.
+
+### Alternate page with proper canonical tag (2)
+- `url-toolkit.html`
+- `id-card-print-studio.html`
+
+Google's stored record shows the GitHub Pages URL as canonical for both. Current source now declares self-referencing infojano.com canonical and matching `og:url`; stored Google crawl is from 11 Nov 2026. The records are stale relative to current source.
+
+### Other historic canonical string observations
+Several indexed pages' stored Search Console `userCanonical` fields contain old GitHub Pages URLs or the malformed `$3<meta...` / `$3<script...` suffixes, while the current source is valid. Examples include the percentage-calculator family and several QR pages. The pages are nevertheless reported Submitted and indexed, and their last crawls are mostly 11–13 Nov. Do not rewrite clean source HTML based only on these stale API records.
+
+### What this full inspection establishes
+- 86 of the 108 sitemap URLs are reported indexed.
+- The 10 Google-selected GitHub Pages duplicates are the main unresolved canonical consolidation group.
+- Four URLs are crawled but not indexed; six are unknown to Google. Neither category by itself proves a broken page.
+- No indexing requests, Validate Fix action, redirect, canonical, sitemap, robots, hosting, or design changes were performed during this inspection.
