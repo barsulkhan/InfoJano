@@ -239,3 +239,7 @@ Several indexed pages' stored Search Console `userCanonical` fields contain old 
 - The 10 Google-selected GitHub Pages duplicates are the main unresolved canonical consolidation group.
 - Four URLs are crawled but not indexed; six are unknown to Google. Neither category by itself proves a broken page.
 - No indexing requests, Validate Fix action, redirect, canonical, sitemap, robots, hosting, or design changes were performed during this inspection.
+
+
+## 16. Arbitrary missing-path HTTP status test — 28 November 2026
+A fresh crawler request was made to the intentionally nonexistent path `/__infojano-404-check-20261128__`. The crawler issue report explicitly returned **HTTP 404** for that path. This confirms the host returns a real 404 for an arbitrary missing route (unlike directly requesting the static `/404.html` document, which correctly returned HTTP 200). No application file or hosting configuration was changed for this test.
